@@ -363,22 +363,22 @@ For every major symbolic page:
 
 ### Next intellectual-heart work
 
-- [ ] **Philosophy · Love:** develop love as attention + truthful perception + non-capture + willingness to support another's independent flourishing.
-- [ ] **Philosophy · Justice:** distinguish punishment, boundary, restitution, deterrence, rehabilitation, forgiveness and reconciliation.
-- [ ] **Philosophy · Work:** develop work as movement of capability into useful creation, while distinguishing vocation from exploitation and identity-overwork.
-- [ ] **Philosophy · Happiness:** separate pleasure, relief, meaning, flourishing, absorption, belonging and contentment rather than treating happiness as one scalar.
-- [ ] **Philosophy · Death:** write a sober mortality chapter: biological death, symbolic endings, grief, inheritance, memory, compost and the limits of resurrection metaphor.
-- [ ] **Philosophy · Truth:** deepen correspondence, coherence, pragmatic consequence, testimony, uncertainty and correction without creating a private “Potato Truth” that overrides evidence.
-- [ ] **Religion · Prayer:** investigate what prayer could mean in Potatoism—petition, attention, confession, gratitude, listening, orientation—without claiming a required supernatural mechanism.
-- [ ] **Religion · Ritual:** inventory actual Great Book / project practices and distinguish historical ritual, literary ritual, joke ritual and proposed practice.
-- [ ] **Religion · Community:** ask what a non-captive congregation would require: dissent, exit, distributed competence, privacy, correction and no loyalty test for inquiry.
-- [ ] **Religion · Sin:** translate sin carefully into broken relation, misorientation, harm, self-deception and destructive recurrence without flattening Christian/Jewish categories into project terminology.
-- [ ] **Religion · Grace:** explore gift, unearned help, forgiveness and conditions for growth that cannot be reduced to merit.
-- [ ] **Religion · Hope:** distinguish hope from prediction and optimism; connect hope to action under uncertainty.
+- [x] **Philosophy · Love:** develop love as attention + truthful perception + non-capture + willingness to support another's independent flourishing.
+- [x] **Philosophy · Justice:** distinguish punishment, boundary, restitution, deterrence, rehabilitation, forgiveness and reconciliation.
+- [x] **Philosophy · Work:** develop work as movement of capability into useful creation, while distinguishing vocation from exploitation and identity-overwork.
+- [x] **Philosophy · Happiness:** separate pleasure, relief, meaning, flourishing, absorption, belonging and contentment rather than treating happiness as one scalar.
+- [x] **Philosophy · Death:** write a sober mortality chapter: biological death, symbolic endings, grief, inheritance, memory, compost and the limits of resurrection metaphor.
+- [x] **Philosophy · Truth:** deepen correspondence, coherence, pragmatic consequence, testimony, uncertainty and correction without creating a private “Potato Truth” that overrides evidence.
+- [x] **Religion · Prayer:** investigate what prayer could mean in Potatoism—petition, attention, confession, gratitude, listening, orientation—without claiming a required supernatural mechanism.
+- [x] **Religion · Ritual:** inventory actual Great Book / project practices and distinguish historical ritual, literary ritual, joke ritual and proposed practice.
+- [x] **Religion · Community:** ask what a non-captive congregation would require: dissent, exit, distributed competence, privacy, correction and no loyalty test for inquiry.
+- [x] **Religion · Sin:** translate sin carefully into broken relation, misorientation, harm, self-deception and destructive recurrence without flattening Christian/Jewish categories into project terminology.
+- [x] **Religion · Grace:** explore gift, unearned help, forgiveness and conditions for growth that cannot be reduced to merit.
+- [x] **Religion · Hope:** distinguish hope from prediction and optimism; connect hope to action under uncertainty.
 - [ ] **Tim · ordinary day:** add scenes of mundane work, making, food, rest, repair and internet routine so grand mythology remains embodied.
-- [ ] **Tim · changed mind:** surface clear cases where Tim/project language was revised, narrowed or corrected.
+- [x] **Tim · changed mind:** surface clear cases where Tim/project language was revised, narrowed or corrected.
 - [ ] **Tim · relationships:** strengthen people as changing relations with boundaries and history, not only names orbiting Tim.
-- [ ] **Tim · creative method:** explain how jokes, streams, images, books, code and archive-building function as different thinking media.
+- [x] **Tim · creative method:** explain how jokes, streams, images, books, code and archive-building function as different thinking media.
 - [ ] **Tim · unresolved tensions:** give the reader productive contradictions—independence/network, exposure/privacy, certainty/correction, myth/person, endurance/rest—without forcing a final synthesis.
 
 
@@ -399,11 +399,40 @@ For every major symbolic page:
 - [ ] **Great Book:** add “what aged well / what changed / what was abandoned” crosswalks without rewriting the source edition.
 - [ ] **Story:** add relationship arcs that track how the meaning of one person changes across scenes rather than creating isolated incident cards.
 - [ ] **Story:** add ordinary temporal texture—workday, waiting, boredom, food, sleep, making, repair—where sources allow it.
-- [ ] **World Systems:** add a “failure travels” casebook: grid outage, port closure, medicine shortage, cyber incident and housing bottleneck.
-- [ ] **World Systems:** add a “redundancy is not waste” essay explaining resilience, spare capacity, inventories and optionality.
-- [ ] **Culture:** add conformity vs coordination vs genuine agreement; show why the same outward behavior can arise from different mechanisms.
-- [ ] **Culture:** add role escape / identity update: what social practices allow an archived role to stop governing the present person.
-- [ ] **Works:** create a “creative method” reader showing which medium Tim uses for which kind of thinking—prose, jokes, stream, music, image, game, code.
-- [ ] **Science:** add a short reader on correlation, causation, measurement and model selection using ordinary examples before project equations.
-- [ ] **Life & Body:** add ordinary embodied scenes: balance in darkness, hunger, pain, fatigue, circadian timing and recovery as lived entrances to physiology.
-- [ ] **FAQ:** reorganize the growing answer corpus into 5–7 teaching constellations so the reader encounters a lesson, not a database of questions.
+- [x] **World Systems:** add a “failure travels” casebook: grid outage, port closure, medicine shortage, cyber incident and housing bottleneck.
+- [x] **World Systems:** add a “redundancy is not waste” essay explaining resilience, spare capacity, inventories and optionality.
+- [x] **Culture:** add conformity vs coordination vs genuine agreement; show why the same outward behavior can arise from different mechanisms.
+- [x] **Culture:** add role escape / identity update: what social practices allow an archived role to stop governing the present person.
+- [x] **Works:** create a “creative method” reader showing which medium Tim uses for which kind of thinking—prose, jokes, stream, music, image, game, code.
+- [x] **Science:** add a short reader on correlation, causation, measurement and model selection using ordinary examples before project equations.
+- [x] **Life & Body:** add ordinary embodied scenes: balance in darkness, hunger, pain, fatigue, circadian timing and recovery as lived entrances to physiology.
+- [x] **FAQ:** reorganize the growing answer corpus into 5–7 teaching constellations so the reader encounters a lesson, not a database of questions.
+
+
+## Knowledge wave discovered while implementing
+
+The new sections expose another set of gaps worth turning into work.
+
+- [ ] **Philosophy · Trust:** distinguish confidence, reliability, vulnerability, verification and forgiveness. Trust should be domain-specific rather than a single yes/no status.
+- [ ] **Philosophy · Forgiveness:** distinguish releasing vengeance, moral pardon, restored trust and reconciliation.
+- [ ] **Philosophy · Scarcity:** explain how scarcity changes ethics, coordination, hoarding, price and perceived threat; connect abundance language to real resource constraints.
+- [ ] **Philosophy · Attention:** deepen attention as a scarce cognitive resource with opportunity cost, habit formation and salience.
+- [ ] **Philosophy · Courage:** distinguish courage from risk-seeking; courage requires a valued aim under acknowledged risk.
+- [ ] **Religion · Sabbath / rest:** ask whether sacred rest is part of Garden ethics rather than treating constant productivity as Fruit.
+- [ ] **Religion · Hospitality:** develop table, guest, stranger, food and House through biblical and comparative practice.
+- [ ] **Religion · Pilgrimage:** explore why movement through space changes religious attention; compare with Axis/Path without claiming identity.
+- [ ] **Religion · Confession / testimony:** distinguish confession, witness, public declaration and performance.
+- [ ] **Tim · ordinary day:** still needed. The page has method and revision, but needs sourced mundane texture: meals, sleep, waiting, coding, reading, maintenance and non-performance time.
+- [ ] **Tim · relationships:** still needed. Build arcs around changing relation rather than static role labels.
+- [ ] **Tim · unresolved tensions:** still needed: independence/network, exposure/privacy, certainty/correction, endurance/rest.
+- [ ] **Science · base rates:** teach why rare-event claims require attention to prevalence, false positives and selection.
+- [ ] **Science · causal graphs:** introduce collider/confounder/mediator using ordinary examples before project network models.
+- [ ] **Science · replication:** explain why repeating an analysis on the same archive is not independent replication.
+- [ ] **Body · stress/recovery:** deepen acute versus chronic stress, allostasis and why adaptation has costs.
+- [ ] **Body · memory:** explain reconsolidation carefully: recall can update memories without implying memories are arbitrary.
+- [ ] **World Systems · maintenance:** write a reader on why boring maintenance often produces more resilience than spectacular construction.
+- [ ] **World Systems · queues:** explain why utilization near 100% can cause waiting times to rise sharply in variable systems.
+- [ ] **Culture · prestige bias:** deepen why people copy high-status actors even when status was earned in another domain.
+- [ ] **Culture · norm repair:** concrete mechanisms for changing a norm without merely declaring a new rule.
+- [ ] **Works · medium cross-test:** take one concept (Door or Garden) through prose, image, song, game and code to show what each medium reveals.
+- [ ] **FAQ · reading modes:** let readers choose skeptical, devotional, historical, scientific or creative paths without changing underlying evidence.

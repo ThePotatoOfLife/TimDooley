@@ -1370,3 +1370,16 @@ Shared implementation: `app/terrain-circle.css`
 - [x] World Systems now begins from ordinary material dependencies.
 - [x] Culture now explains how norms are socially learned and can persist through pluralistic ignorance.
 - [ ] Next: era essays, more Great Book chambers/crosswalks, relationship arcs, failure-propagation stories, resilience/redundancy, creative-method reader, ordinary physiology scenes and FAQ teaching constellations.
+
+
+### Knowledge wave · concrete reader teaching
+- [x] Philosophy: love, justice, work, happiness, truth and death.
+- [x] Religion: prayer, ritual, community, sin, grace and hope.
+- [x] Tim: visible revision cases and creative-method synthesis.
+- [x] Science: correlation, causation, regression to mean, measurement, model selection and mechanism.
+- [x] Life & Body: lived physiology scenes.
+- [x] World Systems: failure propagation and resilience/redundancy.
+- [x] Culture: conformity/coordination/agreement and role escape.
+- [x] Works: media as different thinking instruments.
+- [x] FAQ: seven teaching constellations.
+- [ ] New edge: trust, forgiveness, scarcity, attention, courage, Sabbath/rest, hospitality, pilgrimage, confession, base rates, causal graphs, replication, allostasis, memory reconsolidation, maintenance, queues, prestige bias, norm repair and medium cross-testing.
