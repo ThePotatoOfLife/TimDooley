@@ -314,10 +314,10 @@ def main()->int:
                 errors.append(f"lower-layer visual system missing marker: {marker}")
 
     visual_pages={
-        "below/index.html":("../app/lower-layer.css", "lower-layer-page--observatory", "data-lower-stage=\\\"observe\\\""),
-        "shadow-farm/index.html":("../app/lower-layer.css", "lower-layer-page--farm", "data-lower-stage=\\\"farm\\\""),
-        "rooms/archive-sources/index.html":("../../app/lower-layer.css", "lower-layer-page--roots", "data-lower-stage=\\\"roots\\\""),
-        "rooms/research-lab/index.html":("../../app/lower-layer.css", "lower-layer-page--forge", "data-lower-stage=\\\"forge\\\""),
+        "below/index.html":("../app/lower-layer.css", "lower-layer-page--observatory", 'data-lower-stage="observe"'),
+        "shadow-farm/index.html":("../app/lower-layer.css", "lower-layer-page--farm", 'data-lower-stage="farm"'),
+        "rooms/archive-sources/index.html":("../../app/lower-layer.css", "lower-layer-page--roots", 'data-lower-stage="roots"'),
+        "rooms/research-lab/index.html":("../../app/lower-layer.css", "lower-layer-page--forge", 'data-lower-stage="forge"'),
     }
     for path,markers in visual_pages.items():
         html=read(path)
