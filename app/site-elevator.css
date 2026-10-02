@@ -82,6 +82,7 @@ html[data-site-floor="heaven"]{
   --site-line:rgba(214,204,236,.24);
   --site-muted:#c3bfd0;
   --site-faint:#918ba1;
+  background-color:#0b1028;
   background:
     radial-gradient(circle at 84% 9%,rgba(255,225,151,.55) 0 1px,transparent 2.5px),
     radial-gradient(circle at 18% 13%,rgba(255,247,220,.38) 0 1px,transparent 2.1px),
@@ -109,6 +110,7 @@ html[data-site-floor="plane"]{
   --site-line:rgba(184,205,185,.22);
   --site-muted:#bdc9bf;
   --site-faint:#87958a;
+  background-color:#244f66;
   background:
     radial-gradient(circle at 84% 9%,rgba(255,225,151,.34),transparent 11%),
     radial-gradient(ellipse at 50% 12%,rgba(124,187,220,.34),transparent 50%),
@@ -129,6 +131,7 @@ html[data-site-floor="below"]{
   --site-line:rgba(165,95,59,.30);
   --site-muted:#c0a08f;
   --site-faint:#8e6d5d;
+  background-color:#3a2117;
   background:
     radial-gradient(ellipse at 12% -1%,rgba(143,76,42,.36) 0 34px,transparent 39px),
     radial-gradient(ellipse at 38% 1%,rgba(103,51,31,.34) 0 50px,transparent 55px),
@@ -738,7 +741,6 @@ html[data-site-floor="heaven"],
 html[data-site-floor="plane"]{
   --site-depth-tree-opacity:.145;
   --site-depth-ground-rgb:66,52,36;
-  position:relative;
 }
 html[data-site-floor="heaven"]{
   --site-depth-tree-opacity:.16;
@@ -753,17 +755,18 @@ html[data-site-floor="plane"]{
 html[data-site-floor="heaven"] body:not(.lower-layer-page),
 html[data-site-floor="plane"] body:not(.lower-layer-page){
   position:relative;
-  z-index:1;
+  isolation:isolate;
+  z-index:0;
 }
 
 /* One tall under-tree plate. A soft radial mask keeps the reading column quiet
    while allowing branches and the widening lower tree to remain perceptible. */
-html[data-site-floor="heaven"]::before,
-html[data-site-floor="plane"]::before{
+html[data-site-floor="heaven"] body:not(.lower-layer-page)::before,
+html[data-site-floor="plane"] body:not(.lower-layer-page)::before{
   content:"";
   position:fixed;
   inset:-10vh -9vw;
-  z-index:0;
+  z-index:-2;
   pointer-events:none;
   background-image:url("./site-tree-perspective.svg");
   background-repeat:no-repeat;
@@ -780,12 +783,12 @@ html[data-site-floor="plane"]::before{
 
 /* The page colour does not jump between zones. It slowly grows more terrestrial
    as the same page moves from crown to ground. */
-html[data-site-floor="heaven"]::after,
-html[data-site-floor="plane"]::after{
+html[data-site-floor="heaven"] body:not(.lower-layer-page)::after,
+html[data-site-floor="plane"] body:not(.lower-layer-page)::after{
   content:"";
   position:fixed;
   inset:0;
-  z-index:0;
+  z-index:-1;
   pointer-events:none;
   opacity:.035;
   background:
