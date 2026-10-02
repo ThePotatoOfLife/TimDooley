@@ -1,4 +1,3 @@
-const $ = s => document.querySelector(s);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 const investigation = window.__potatoAtlasInvestigationSurface;
 
