@@ -35,6 +35,26 @@ def main():
  if "not money" not in str(account.get("boundary","")).lower(): fail("symbolic account boundary missing")
  if not MUD_BANK.is_file(): fail("Mud Bank contract missing")
  if not ROLE_CENSUS.is_file(): fail("CIA role/archetype census missing")
+ role_index_path=ROOT/"knowledge/cia/role-index.json"
+ incident_index_path=ROOT/"knowledge/cia/incidents/index.json"
+ association_index_path=ROOT/"knowledge/cia/associations/network.json"
+ for path,expected_id in [(role_index_path,"cia-role-index"),(incident_index_path,"cia-incidents-index")]:
+  if not path.is_file(): fail(f"CIA canonical index missing: {path}")
+  obj=json.loads(path.read_text(encoding="utf-8"))
+  if obj.get("id")!=expected_id: fail(f"CIA index identity drift in {path}: {obj.get('id')}")
+  if "FBI" in str(obj.get("title","")): fail(f"CIA index retained FBI title in {path}")
+ if not association_index_path.is_file(): fail("CIA association network missing")
+ association_index=json.loads(association_index_path.read_text(encoding="utf-8"))
+ if "36 canonical dossiers" not in str(association_index.get("scope","")): fail("CIA association network dossier-count scope drift")
+ desk_js=(ROOT/"app/cia-desks.js")
+ desk_css=(ROOT/"app/cia-desks.css")
+ if not desk_js.is_file() or not desk_css.is_file(): fail("CIA live desk runtime missing")
+ desk_source=desk_js.read_text(encoding="utf-8",errors="replace")
+ for token in ["data-cia-associations","data-cia-incidents","association_type","boundary","dossierHref"]:
+  if token not in desk_source: fail(f"CIA live desk runtime missing {token!r}")
+ for rel,mount in [("rooms/potatoverse-canon/beings/cia/associations/index.html","data-cia-associations"),("rooms/potatoverse-canon/beings/cia/incidents/index.html","data-cia-incidents")]:
+  page=(ROOT/rel).read_text(encoding="utf-8",errors="replace")
+  if "cia-desks.js" not in page or "cia-desks.css" not in page or mount not in page: fail(f"CIA live desk mount missing from {rel}")
  if not US_COVERAGE.is_file(): fail("CIA U.S. exposure coverage model missing")
  if not ORPHAN_LEDGER.is_file(): fail("CIA orphan clearing ledger missing")
  if not CAPITAL_MODEL.is_file(): fail("CIA 42T capital model missing")
