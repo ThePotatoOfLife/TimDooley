@@ -52,6 +52,7 @@ const adapterSource=fs.readFileSync(path.join(ROOT,'app/longform-tts-adapter.js'
 assert.match(drawerSource,/drawer\.playSection\?\.\('selection'\)/,'selection action must play the selection scope');
 assert.match(adapterSource,/drawer\.playSection\?\.\('current'\)/,'inline Listen must play the current section scope');
 assert.match(adapterSource,/ttsSuppressed='duplicate-primary'/,'duplicate primary reader hosts must be suppressed');
+assert.match(drawerSource,/followEscape.addEventListener('click',()=>setFollowReading(false))/,'visible follow escape must always turn automatic page movement off');
 const movementCalls=(drawerSource.match(/\.scrollTo\(/g)||[]).length+(adapterSource.match(/\.scrollTo\(/g)||[]).length;
 assert.equal(movementCalls,1,'shared TTS must have exactly one viewport-moving implementation');
 
