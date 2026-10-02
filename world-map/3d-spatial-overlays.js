@@ -207,12 +207,37 @@ function installRenderedLayers(row, fc) {
   }
   if (kinds.has('point')) {
     const pointId = `${sourceId}-point`;
+    const isConflict = row.family === 'conflict.context';
     addMapLayer({
       id:pointId, type:'circle', source:sourceId,
-      paint:{'circle-radius':6,'circle-color':style.line,'circle-stroke-color':'#0b1010','circle-stroke-width':1.3,'circle-opacity':.9},
+      paint:isConflict
+        ? {
+            'circle-radius':['interpolate',['linear'],['zoom'],1,7,4,10,7,13],
+            'circle-color':'#ffd34f',
+            'circle-stroke-color':'#b44936',
+            'circle-stroke-width':3,
+            'circle-opacity':.92,
+            'circle-blur':.06,
+          }
+        : {'circle-radius':6,'circle-color':style.line,'circle-stroke-color':'#0b1010','circle-stroke-width':1.3,'circle-opacity':.9},
       metadata:{atlasSpatialOverlay:row.id, epistemic_type:row.epistemic_type},
     }, beforeId);
     layerIds.push(pointId);
+    if (isConflict) {
+      const haloId = `${sourceId}-halo`;
+      addMapLayer({
+        id:haloId, type:'circle', source:sourceId,
+        paint:{
+          'circle-radius':['interpolate',['linear'],['zoom'],1,13,4,17,7,22],
+          'circle-color':'rgba(255,211,79,0)',
+          'circle-stroke-color':'#ffd34f',
+          'circle-stroke-width':1.2,
+          'circle-stroke-opacity':.42,
+        },
+        metadata:{atlasSpatialOverlay:row.id, epistemic_type:row.epistemic_type},
+      }, beforeId);
+      layerIds.push(haloId);
+    }
   }
 
   registerRenderedLayers(row, layerIds);
@@ -298,6 +323,23 @@ function featuresAt(point) {
       geometry_version:feature?.properties?.geometry_version || null,
       measurement_policy:feature?.properties?.measurement_policy || null,
       source_ids:Array.isArray(sourceIds) ? sourceIds : row?.source_ids || [],
+      snapshot_date:feature?.properties?.snapshot_date || row?.snapshot_date || null,
+      started:feature?.properties?.started || null,
+      current_status:feature?.properties?.current_status || null,
+      conflict_type:feature?.properties?.conflict_type || null,
+      human_toll:feature?.properties?.human_toll || null,
+      countries:(() => {
+        let value = feature?.properties?.countries;
+        try { if (typeof value === 'string' && value.startsWith('[')) value = JSON.parse(value); } catch {}
+        return Array.isArray(value) ? value : [];
+      })(),
+      source_links:(() => {
+        let value = feature?.properties?.source_links;
+        try { if (typeof value === 'string' && value.startsWith('[')) value = JSON.parse(value); } catch {}
+        return Array.isArray(value) ? value : [];
+      })(),
+      source_updated:feature?.properties?.source_updated || null,
+      not_live:feature?.properties?.not_live === true || feature?.properties?.not_live === 'true',
     };
   }).filter(Boolean).sort((a,b) => Z_ORDER.indexOf(b.epistemic_type) - Z_ORDER.indexOf(a.epistemic_type));
 }
