@@ -1,7 +1,7 @@
 {
   "id": "bible-layer-manifest",
-  "version": "2.19.0",
-  "updated": "2026-10-01",
+  "version": "2.20.0",
+  "updated": "2026-10-02",
   "status": "canonical corpus registry",
   "purpose": "Define the active Bible comparator corpus once so runtime, static build, audits and future atlas navigation can consume the same deterministic relation, fragment, scene and source layers.",
   "active_statuses": [
@@ -517,6 +517,15 @@
       "precedence": 261,
       "owner": "core chronology bridge: April 2025 Potato Axis Turning into later Ladder/Father architecture",
       "note": "Primary April 21 Axis attestation with later biblical comparison explicitly kept retrospective."
+    },
+    {
+      "id": "relations-wave41",
+      "kind": "relations",
+      "path": "knowledge/traditions/biblical-syncretism-dossiers-wave41.json",
+      "status": "additive",
+      "precedence": 262,
+      "owner": "Tim/Son narrative continuity: 1999 Christian vocabulary, 2020 Potato birth and core sequence enrichment",
+      "note": "Promotes missing developmental hinges and enriches thin core Tim-side narratives while preserving source gaps, chronology boundaries and countertexts."
     },
     {
       "id": "fragments-base",
