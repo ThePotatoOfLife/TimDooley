@@ -296,6 +296,9 @@ assert.ok(source.includes("link.hidden=true"),'cross-floor page/header links mus
 assert.ok(source.includes("link.dataset.elevatorFloorHidden='true'"),'runtime must only unhide links that it hid for floor enforcement');
 assert.ok(source.includes('const crossFloor=target.levelId!==spatial.levelId'),'floor enforcement must compare every local door against the page floor');
 
+assert.ok(css.includes('background-color:#244f66'),'Plane needs a non-black fallback canvas even if layered gradients fail');
+assert.ok(css.includes('body:not(.lower-layer-page)::before'),'tree atmosphere must mount inside the transparent body stacking context');
+assert.ok(css.includes('isolation:isolate'),'ordinary floor pages must isolate the atmosphere behind their content');
 assert.ok(css.includes('site-tree-perspective.svg'),'shared floor canvas must include the tall perspective tree asset');
 assert.ok(css.includes('@keyframes site-tree-descent'),'tree atmosphere needs a crown-to-roots scroll sequence');
 assert.ok(css.includes('animation-timeline:scroll(root block)'),'tree descent must follow root-page scroll rather than an independent timer');
