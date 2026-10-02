@@ -298,9 +298,26 @@ async function activate(id, { silent=false }={}) {
   if (!silent) { persist(); emit('activate'); }
   return true;
 }
+function unloadRendered(id) {
+  const state = rendered.get(id);
+  if (!state) return false;
+  unbindFallbackInteraction();
+  const stack = window.__potatoAtlasRenderStack;
+  for (const layerId of [...(state.layerIds || [])].reverse()) {
+    try { stack?.unregister?.(layerId); } catch {}
+    try { if (map.getLayer(layerId)) map.removeLayer(layerId); } catch {}
+  }
+  try { if (map.getSource(state.sourceId)) map.removeSource(state.sourceId); } catch {}
+  rendered.delete(id);
+  if (!syncInteractionRegistration()) {
+    const remaining = [...rendered.values()].flatMap(row => row.layerIds || []).filter(layerId => map.getLayer(layerId));
+    if (remaining.length) bindFallbackInteraction(remaining);
+  }
+  return true;
+}
 function deactivate(id, { silent=false }={}) {
   const changed = activeIds.delete(id);
-  if (rendered.has(id)) setVisibility(id, false);
+  if (rendered.has(id)) unloadRendered(id);
   if (changed && !silent) { persist(); emit('deactivate'); }
   return changed;
 }
