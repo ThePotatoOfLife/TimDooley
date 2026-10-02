@@ -1,154 +1,160 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 2600" role="img" aria-labelledby="title desc">
-  <title id="title">Luminous world-tree perspective</title>
-  <desc id="desc">A quiet world tree seen from beneath, with light rising from broad roots, spiralling through the trunk and opening into a crown among the stars.</desc>
-  <defs>
-    <linearGradient id="trunk" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#423a34" stop-opacity=".08"/>
-      <stop offset=".24" stop-color="#8b765e" stop-opacity=".22"/>
-      <stop offset=".50" stop-color="#dcc394" stop-opacity=".34"/>
-      <stop offset=".74" stop-color="#806b56" stop-opacity=".18"/>
-      <stop offset="1" stop-color="#3d3631" stop-opacity=".06"/>
-    </linearGradient>
-    <linearGradient id="root" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#d6b77f" stop-opacity=".34"/>
-      <stop offset=".56" stop-color="#9b7754" stop-opacity=".22"/>
-      <stop offset="1" stop-color="#594536" stop-opacity=".05"/>
-    </linearGradient>
-    <linearGradient id="lightRise" x1="0" y1="1" x2="0" y2="0">
-      <stop offset="0" stop-color="#efb76c" stop-opacity=".12"/>
-      <stop offset=".28" stop-color="#ffe4a8" stop-opacity=".72"/>
-      <stop offset=".58" stop-color="#f7f2cf" stop-opacity=".86"/>
-      <stop offset=".82" stop-color="#d8e7ff" stop-opacity=".66"/>
-      <stop offset="1" stop-color="#cbbcff" stop-opacity=".08"/>
-    </linearGradient>
-    <linearGradient id="lightTwin" x1="0" y1="1" x2="0" y2="0">
-      <stop offset="0" stop-color="#c98b5e" stop-opacity=".06"/>
-      <stop offset=".34" stop-color="#f2c99a" stop-opacity=".48"/>
-      <stop offset=".66" stop-color="#d7eaff" stop-opacity=".54"/>
-      <stop offset="1" stop-color="#bfa7ff" stop-opacity=".05"/>
-    </linearGradient>
-    <radialGradient id="leaf" cx=".5" cy=".5" r=".5">
-      <stop offset="0" stop-color="#cbd8b4" stop-opacity=".18"/>
-      <stop offset=".58" stop-color="#9faf8c" stop-opacity=".08"/>
-      <stop offset="1" stop-color="#6d7867" stop-opacity="0"/>
-    </radialGradient>
-    <radialGradient id="halo" cx=".5" cy=".5" r=".5">
-      <stop offset="0" stop-color="#fff0c8" stop-opacity=".22"/>
-      <stop offset=".55" stop-color="#dce9ff" stop-opacity=".08"/>
-      <stop offset="1" stop-color="#dce9ff" stop-opacity="0"/>
-    </radialGradient>
-    <filter id="soft"><feGaussianBlur stdDeviation="12"/></filter>
-    <filter id="softer"><feGaussianBlur stdDeviation="34"/></filter>
-    <filter id="glow">
-      <feGaussianBlur stdDeviation="9" result="blur"/>
-      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
-    <filter id="wideGlow"><feGaussianBlur stdDeviation="28"/></filter>
-  </defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 2600" role="img" aria-labelledby="title desc" shape-rendering="crispEdges">
+<title id="title">Pixel world tree above the heavenly garden</title>
+<desc id="desc">A cozy low-resolution RPG-style world tree seen from below: bright crown, blue sky, cloud terraces, garden lights and a trunk carrying light rising from broad roots toward the stars.</desc>
 
-  <!-- high sky: stars remain visible through the open crown -->
-  <g fill="#f5efd9">
-    <circle cx="166" cy="116" r="3" opacity=".58"/><circle cx="336" cy="244" r="2.2" opacity=".40"/>
-    <circle cx="515" cy="88" r="2.6" opacity=".52"/><circle cx="736" cy="176" r="2.3" opacity=".36"/>
-    <circle cx="931" cy="92" r="3.2" opacity=".58"/><circle cx="1128" cy="223" r="2.1" opacity=".44"/>
-    <circle cx="1335" cy="110" r="2.8" opacity=".50"/><circle cx="1460" cy="292" r="2.2" opacity=".38"/>
-    <circle cx="250" cy="420" r="1.8" opacity=".32"/><circle cx="1264" cy="452" r="1.9" opacity=".34"/>
-    <circle cx="690" cy="315" r="1.8" opacity=".26"/><circle cx="866" cy="258" r="2" opacity=".32"/>
-  </g>
-  <ellipse cx="800" cy="330" rx="650" ry="390" fill="url(#halo)" filter="url(#softer)"/>
+<!--
+  HEAVEN SCENE PLATE
+  ------------------
+  Deliberately built from large block shapes rather than filters or fine vector detail.
+  It should read like an old 16/32-bit RPG background when viewed through the site glass.
+  Continuity rule: crown and sky above, garden/terrace near the lower edge, trunk continues
+  toward the Plane instead of ending as a decorative poster.
+-->
 
-  <!-- crown seen from beneath: broad peripheral masses, open reading centre -->
-  <g fill="url(#leaf)" filter="url(#soft)">
-    <ellipse cx="245" cy="520" rx="345" ry="278"/>
-    <ellipse cx="548" cy="392" rx="392" ry="304"/>
-    <ellipse cx="988" cy="392" rx="420" ry="315"/>
-    <ellipse cx="1362" cy="530" rx="360" ry="290"/>
-    <ellipse cx="800" cy="674" rx="625" ry="320" opacity=".68"/>
-  </g>
+<!-- sky bands -->
+<rect width="1600" height="2600" fill="#173f78"/>
+<rect y="300" width="1600" height="720" fill="#286cb0"/>
+<rect y="1020" width="1600" height="520" fill="#6f79be"/>
+<rect y="1540" width="1600" height="500" fill="#b779b5"/>
+<rect y="2040" width="1600" height="560" fill="#d88d76"/>
 
-  <!-- a dim physical tree gives the light a body without becoming a foreground illustration -->
-  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M785 1375 C760 1185 720 1030 625 900 C520 760 365 662 170 590" stroke="url(#trunk)" stroke-width="58"/>
-    <path d="M808 1368 C845 1168 902 1020 1005 880 C1112 735 1260 650 1472 575" stroke="url(#trunk)" stroke-width="62"/>
-    <path d="M770 1180 C645 1080 520 1010 338 960" stroke="#b39972" stroke-opacity=".16" stroke-width="31"/>
-    <path d="M840 1155 C1000 1055 1125 1008 1324 975" stroke="#b39972" stroke-opacity=".15" stroke-width="30"/>
-    <path d="M674 932 C545 815 434 746 265 704" stroke="#c3a47b" stroke-opacity=".12" stroke-width="18"/>
-    <path d="M1000 905 C1118 808 1240 748 1390 712" stroke="#c3a47b" stroke-opacity=".12" stroke-width="18"/>
-  </g>
+<!-- square stars / little heaven lights -->
+<g fill="#fff3c5">
+  <rect x="90" y="98" width="12" height="12"/><rect x="188" y="170" width="8" height="8"/>
+  <rect x="326" y="88" width="10" height="10"/><rect x="515" y="156" width="8" height="8"/>
+  <rect x="716" y="86" width="12" height="12"/><rect x="935" y="126" width="8" height="8"/>
+  <rect x="1150" y="82" width="11" height="11"/><rect x="1405" y="164" width="8" height="8"/>
+  <rect x="1490" y="294" width="12" height="12"/><rect x="116" y="326" width="8" height="8"/>
+</g>
 
-  <!-- broad lower trunk, deliberately translucent -->
-  <path d="M708 1840 C710 1680 725 1515 770 1340 C792 1252 814 1248 836 1340 C880 1518 894 1685 902 1840 Z" fill="url(#trunk)"/>
+<!-- pixel cloud terraces -->
+<g fill="#eaf6f0">
+  <path d="M0 440h140v-44h74v-42h88v42h130v44h120v78H0z"/>
+  <path d="M1050 385h112v-38h74v-44h96v44h84v38h184v102h-550z"/>
+  <path d="M38 1415h180v-52h88v-48h104v48h118v52h106v96H38z"/>
+  <path d="M980 1485h120v-42h88v-52h126v52h86v42h200v96H980z"/>
+</g>
+<g fill="#c6e3ef">
+  <rect x="0" y="518" width="552" height="42"/><rect x="1050" y="487" width="550" height="42"/>
+  <rect x="38" y="1511" width="596" height="40"/><rect x="980" y="1581" width="620" height="42"/>
+</g>
 
-  <!-- the Tree of Light: two intertwined currents climb from root flare into the stars -->
-  <g fill="none" stroke-linecap="round" filter="url(#glow)">
-    <path d="M748 1910
-             C650 1800 657 1688 760 1588
-             C892 1460 910 1350 790 1235
-             C670 1122 684 1000 824 884
-             C954 776 948 665 805 552
-             C690 460 704 350 832 242
-             C895 188 930 132 946 74"
-          stroke="url(#lightRise)" stroke-width="13" opacity=".78"/>
-    <path d="M860 1910
-             C958 1800 948 1682 838 1583
-             C706 1464 695 1348 812 1238
-             C930 1127 914 1002 775 892
-             C646 790 652 668 794 555
-             C914 460 900 344 777 246
-             C718 198 684 143 668 86"
-          stroke="url(#lightTwin)" stroke-width="10" opacity=".62"/>
-    <path d="M800 1920 C802 1650 800 1370 803 1080 C806 795 804 510 805 185"
-          stroke="#fff3ca" stroke-width="4" stroke-opacity=".46"/>
-  </g>
+<!-- distant floating garden shelves -->
+<g>
+  <path d="M70 760h286v38h-34v34h-54v28H124v-28H92v-34H70z" fill="#304e54"/>
+  <path d="M90 748h246v26H90z" fill="#80b76e"/>
+  <rect x="142" y="704" width="20" height="44" fill="#785239"/>
+  <rect x="132" y="676" width="42" height="28" fill="#7ed46c"/>
+  <rect x="196" y="716" width="14" height="32" fill="#6f4b36"/>
+  <rect x="188" y="694" width="32" height="24" fill="#a0e57c"/>
+  <path d="M1240 690h300v36h-28v38h-62v32h-142v-32h-48v-38h-20z" fill="#304e54"/>
+  <path d="M1260 676h250v24h-250z" fill="#88bf70"/>
+  <rect x="1386" y="616" width="20" height="60" fill="#6a4935"/>
+  <rect x="1368" y="584" width="56" height="34" fill="#99e36f"/>
+</g>
 
-  <!-- diffuse aura makes the luminous trunk read as radiance rather than neon -->
-  <g fill="none" stroke-linecap="round" filter="url(#wideGlow)">
-    <path d="M760 1900 C680 1760 688 1635 785 1530 C888 1418 890 1305 800 1205 C706 1100 710 985 812 875 C910 768 910 650 804 535 C734 458 735 350 804 250"
-          stroke="#f8e9b5" stroke-width="44" stroke-opacity=".10"/>
-  </g>
+<!-- huge blocky crown: dark silhouette behind bright leaves -->
+<g fill="#103f36">
+  <path d="M60 790h116v-96h112v-106h130v-94h154v-96h172v-84h176v86h172v94h154v94h128v106h110v96h76v286h-152v78h-214v74h-934v-74H188v-78H60z"/>
+</g>
+<g fill="#1c6c43">
+  <rect x="126" y="714" width="218" height="182"/><rect x="250" y="548" width="238" height="208"/>
+  <rect x="418" y="430" width="244" height="224"/><rect x="602" y="330" width="266" height="232"/>
+  <rect x="812" y="368" width="270" height="230"/><rect x="1034" y="486" width="244" height="220"/>
+  <rect x="1220" y="632" width="232" height="208"/><rect x="410" y="708" width="826" height="292"/>
+</g>
+<g fill="#43b94f">
+  <rect x="168" y="662" width="132" height="102"/><rect x="320" y="514" width="130" height="112"/>
+  <rect x="494" y="414" width="142" height="116"/><rect x="650" y="338" width="162" height="116"/>
+  <rect x="848" y="398" width="160" height="116"/><rect x="1050" y="514" width="144" height="116"/>
+  <rect x="1240" y="650" width="136" height="110"/><rect x="520" y="680" width="190" height="128"/>
+  <rect x="744" y="622" width="196" height="128"/><rect x="974" y="700" width="176" height="114"/>
+</g>
+<g fill="#8eea62">
+  <rect x="210" y="630" width="46" height="38"/><rect x="354" y="492" width="52" height="42"/>
+  <rect x="536" y="390" width="54" height="42"/><rect x="692" y="316" width="62" height="42"/>
+  <rect x="882" y="372" width="62" height="42"/><rect x="1090" y="486" width="58" height="42"/>
+  <rect x="1284" y="620" width="54" height="42"/><rect x="616" y="646" width="64" height="44"/>
+  <rect x="822" y="592" width="64" height="42"/><rect x="1018" y="670" width="56" height="40"/>
+</g>
+<g fill="#d7ff92">
+  <rect x="228" y="638" width="22" height="18"/><rect x="374" y="498" width="24" height="18"/>
+  <rect x="554" y="396" width="24" height="18"/><rect x="714" y="322" width="28" height="18"/>
+  <rect x="900" y="378" width="28" height="18"/><rect x="1108" y="492" width="26" height="18"/>
+  <rect x="1300" y="626" width="24" height="18"/>
+</g>
 
-  <!-- luminous branch veins disperse from the spiral into canopy and sky -->
-  <g fill="none" stroke="#edf4dc" stroke-linecap="round" filter="url(#glow)">
-    <path d="M808 930 C690 812 548 710 352 638" stroke-width="6" stroke-opacity=".24"/>
-    <path d="M808 930 C930 814 1078 705 1278 632" stroke-width="6" stroke-opacity=".24"/>
-    <path d="M798 698 C690 592 570 510 426 458" stroke-width="4" stroke-opacity=".18"/>
-    <path d="M808 698 C920 586 1040 510 1182 452" stroke-width="4" stroke-opacity=".18"/>
-    <path d="M802 514 C740 430 710 348 712 270" stroke-width="3" stroke-opacity=".16"/>
-    <path d="M808 514 C872 430 902 348 894 268" stroke-width="3" stroke-opacity=".16"/>
-  </g>
+<!-- trunk and branch mass -->
+<g fill="#4b2a25">
+  <path d="M668 1015h120v-176h44v176h118v290h104v452h-76v470H626v-470h-82v-452h124z"/>
+  <path d="M690 1148L332 936l-34 72 348 238z"/>
+  <path d="M910 1148l352-220 42 70-350 248z"/>
+  <path d="M700 1280L410 1160l-30 72 300 144z"/>
+  <path d="M900 1272l316-118 28 74-316 146z"/>
+</g>
+<g fill="#815036">
+  <rect x="684" y="1016" width="92" height="1110"/><rect x="824" y="1008" width="86" height="1118"/>
+  <rect x="650" y="1310" width="52" height="748"/><rect x="900" y="1302" width="54" height="756"/>
+</g>
+<g fill="#b97845">
+  <rect x="716" y="1040" width="26" height="1060"/><rect x="852" y="1032" width="24" height="1080"/>
+  <rect x="674" y="1420" width="18" height="550"/><rect x="916" y="1410" width="18" height="568"/>
+</g>
+<g fill="#e8a455">
+  <rect x="742" y="1100" width="14" height="950"/><rect x="836" y="1080" width="12" height="980"/>
+</g>
 
-  <!-- ground arrives late; it should be discovered, not announced -->
-  <path d="M0 1870 C290 1835 500 1892 790 1860 C1080 1828 1300 1889 1600 1852 L1600 1930 C1285 1968 1060 1912 790 1942 C500 1976 272 1918 0 1950 Z" fill="#6f563d" opacity=".10"/>
-  <path d="M0 1912 C305 1882 525 1937 792 1907 C1086 1874 1312 1930 1600 1896" fill="none" stroke="#d4b879" stroke-opacity=".16" stroke-width="5"/>
+<!-- trunk bark pixels -->
+<g fill="#321d1d">
+  <rect x="704" y="1240" width="24" height="76"/><rect x="860" y="1320" width="22" height="94"/>
+  <rect x="754" y="1510" width="20" height="122"/><rect x="826" y="1675" width="20" height="142"/>
+  <rect x="690" y="1844" width="22" height="118"/><rect x="888" y="1920" width="22" height="126"/>
+</g>
 
-  <!-- physical roots fan toward the reader -->
-  <g fill="none" stroke="url(#root)" stroke-linecap="round">
-    <path d="M760 1870 C690 1980 560 2090 320 2255 C220 2324 126 2394 40 2508" stroke-width="62"/>
-    <path d="M840 1870 C930 1980 1065 2098 1284 2250 C1392 2325 1483 2398 1566 2518" stroke-width="66"/>
-    <path d="M785 1880 C752 2040 688 2195 585 2392 C550 2456 520 2516 500 2575" stroke-width="42"/>
-    <path d="M822 1880 C862 2038 930 2192 1035 2390 C1070 2455 1103 2512 1128 2578" stroke-width="44"/>
-    <path d="M798 1890 C800 2080 798 2300 800 2595" stroke-width="34"/>
-  </g>
+<!-- spiral / light rising from broad roots -->
+<g fill="none" stroke-linecap="square">
+  <path d="M756 2218h-72v-72h-54v-90h72v-78h92v-76h-70v-86h70v-86h-62v-82h62v-96h-52v-82h52v-104h-42v-84h42v-146"
+        stroke="#ffe28a" stroke-width="16" opacity=".82"/>
+  <path d="M846 2218h70v-72h54v-90h-72v-78h-92v-76h70v-86h-70v-86h62v-82h-62v-96h52v-82h-52v-104h42v-84h-42v-146"
+        stroke="#bde8ff" stroke-width="11" opacity=".62"/>
+</g>
 
-  <!-- light is gathered from the ground/root network into the ascending spiral -->
-  <g fill="none" stroke-linecap="round" filter="url(#glow)">
-    <path d="M88 2512 C260 2350 474 2160 746 1910" stroke="#e7b96f" stroke-width="7" stroke-opacity=".24"/>
-    <path d="M1518 2510 C1350 2345 1132 2155 858 1910" stroke="#f0cf91" stroke-width="7" stroke-opacity=".22"/>
-    <path d="M505 2570 C588 2335 660 2110 748 1910" stroke="#f5d498" stroke-width="5" stroke-opacity=".20"/>
-    <path d="M1120 2572 C1028 2335 950 2110 858 1910" stroke="#e9d9b8" stroke-width="5" stroke-opacity=".18"/>
-  </g>
+<!-- heavenly garden floor, readable as the top of the next world -->
+<path d="M0 2090h220v-34h182v22h182v-44h230v34h210v-30h196v42h180v-26h220v546H0z" fill="#315d43"/>
+<path d="M0 2130h260v-26h206v24h214v-30h254v34h214v-22h220v26h232v464H0z" fill="#5b8c4c"/>
+<g fill="#94cf62">
+  <rect x="88" y="2074" width="124" height="34"/><rect x="302" y="2084" width="116" height="28"/>
+  <rect x="1084" y="2080" width="132" height="32"/><rect x="1322" y="2094" width="128" height="28"/>
+</g>
 
-  <!-- close-ground stones and fine roots -->
-  <g fill="#a79882">
-    <ellipse cx="210" cy="2220" rx="18" ry="10" opacity=".09"/>
-    <ellipse cx="410" cy="2420" rx="13" ry="8" opacity=".08"/>
-    <ellipse cx="1192" cy="2355" rx="16" ry="9" opacity=".08"/>
-    <ellipse cx="1438" cy="2208" rx="19" ry="11" opacity=".09"/>
-  </g>
-  <g fill="none" stroke="#b28a5e" stroke-opacity=".13" stroke-linecap="round">
-    <path d="M318 2258 C260 2310 240 2385 232 2468" stroke-width="7"/>
-    <path d="M1280 2258 C1348 2318 1370 2392 1382 2472" stroke-width="7"/>
-    <path d="M585 2390 C530 2435 490 2500 470 2582" stroke-width="6"/>
-    <path d="M1034 2392 C1088 2442 1124 2502 1143 2585" stroke-width="6"/>
-  </g>
+<!-- tiny shrine / garden village details -->
+<g>
+  <rect x="216" y="2188" width="128" height="102" fill="#6c5548"/>
+  <path d="M194 2188h172l-86-74z" fill="#c66b45"/>
+  <rect x="252" y="2230" width="26" height="60" fill="#2e2930"/><rect x="300" y="2222" width="20" height="20" fill="#ffe09b"/>
+  <rect x="1246" y="2180" width="112" height="94" fill="#6b554a"/>
+  <path d="M1228 2180h148l-74-64z" fill="#bd6947"/>
+  <rect x="1288" y="2220" width="24" height="54" fill="#2d2a31"/><rect x="1330" y="2210" width="18" height="18" fill="#ffe09b"/>
+  <rect x="1052" y="2132" width="34" height="158" fill="#655142"/>
+  <path d="M1024 2132h90l-45-72z" fill="#d7764c"/>
+  <rect x="1062" y="2166" width="14" height="14" fill="#ffe09b"/>
+</g>
+
+<!-- root flare: the tree does not stop at the floor -->
+<g fill="#5d3528">
+  <path d="M626 2030h106v132L422 2420H250l360-338z"/>
+  <path d="M868 2030h106l18 54 358 336h-174L868 2162z"/>
+  <path d="M740 2050h122l-18 550H756z"/>
+</g>
+<g fill="#e3a05b">
+  <rect x="772" y="2092" width="18" height="508"/><rect x="818" y="2080" width="14" height="520"/>
+</g>
+
+<!-- near-floor flowers / lantern pixels -->
+<g fill="#f3cf70">
+  <rect x="118" y="2304" width="10" height="18"/><rect x="109" y="2294" width="28" height="10"/>
+  <rect x="1460" y="2300" width="10" height="18"/><rect x="1451" y="2290" width="28" height="10"/>
+  <rect x="438" y="2244" width="9" height="16"/><rect x="430" y="2236" width="25" height="8"/>
+  <rect x="1130" y="2264" width="9" height="16"/><rect x="1122" y="2256" width="25" height="8"/>
+</g>
 </svg>
