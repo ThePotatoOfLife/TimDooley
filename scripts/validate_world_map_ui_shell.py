@@ -90,7 +90,7 @@ def main() -> int:
             "__potatoAtlasCountryPresentation", "atlas-country-current-answer",
             'data-country-tab="overview"', 'data-country-tab="context"', 'data-country-tab="connections"',
             "atlas-country-tab-panel", "Population ·", "connectionRows", "contextualRows",
-            "data-country-context-enrichments", "potato-atlas-relation-mode-change",
+            "data-country-context-enrichments", "potato-atlas-active-view-change",
             "data-atlas-pin", "data-atlas-statistics",
         ):
             if token not in country_card:
