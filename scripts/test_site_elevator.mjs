@@ -196,6 +196,8 @@ assert.ok(css.includes('.site-elevator-floor-code'),'terminal board needs a numb
 assert.ok(css.includes('[data-elevator-level="heaven"]::before'),'Heaven needs a distinct pixel-biome layer');
 assert.ok(css.includes('html[data-site-floor="heaven"] body:not(.lower-layer-page)'),'resolved Heaven routes should tint the page substrate');
 assert.ok(css.includes('html[data-site-floor="plane"] body:not(.lower-layer-page)'),'resolved Plane routes should tint the page substrate');
+assert.ok(css.includes('linear-gradient(180deg,#183647'),'Plane page atmosphere must visibly rise above the black foundation');
+assert.ok(css.includes('linear-gradient(180deg,#0b1028'),'Heaven page atmosphere must visibly rise above the black foundation');
 assert.ok(css.includes('html[data-site-floor="below"] body:not(.lower-layer-page)'),'resolved Below routes should tint the page substrate without overriding dedicated lower pages');
 assert.ok(css.includes('radial-gradient(ellipse at 8% 108%,rgba(94,133,88,.34)'),'Heaven needs a soft garden horizon beneath the cosmos');
 assert.ok(css.includes('radial-gradient(ellipse at 68% 24%,rgba(103,72,170,.40)'),'Heaven needs purple nebula depth');

@@ -68,37 +68,53 @@
 html[data-site-floor="heaven"] body:not(.lower-layer-page){
   background-color:#080b18;
   background-image:
-    radial-gradient(circle at 84% 9%,rgba(255,217,134,.16) 0 1px,transparent 2px),
-    radial-gradient(circle at 18% 13%,rgba(255,246,210,.12) 0 1px,transparent 1.8px),
-    radial-gradient(circle at 53% 24%,rgba(214,201,255,.11) 0 1px,transparent 1.8px),
-    radial-gradient(circle at 71% 37%,rgba(255,183,199,.08) 0 1px,transparent 2px),
-    radial-gradient(ellipse at 72% 18%,rgba(131,96,190,.14),transparent 34%),
-    radial-gradient(ellipse at 28% 30%,rgba(62,112,177,.14),transparent 40%),
-    radial-gradient(ellipse at 54% 68%,rgba(226,124,160,.07),transparent 42%),
-    radial-gradient(ellipse at 35% 92%,rgba(90,128,82,.09),transparent 38%),
-    linear-gradient(180deg,#080b18 0%,#101530 35%,#171738 62%,#111324 82%,#090b12 100%);
+    /* visible golden stars over the universal black substrate */
+    radial-gradient(circle at 84% 9%,rgba(255,225,151,.50) 0 1px,transparent 2.4px),
+    radial-gradient(circle at 18% 13%,rgba(255,247,220,.34) 0 1px,transparent 2px),
+    radial-gradient(circle at 53% 24%,rgba(220,205,255,.30) 0 1px,transparent 2px),
+    radial-gradient(circle at 71% 37%,rgba(255,183,204,.22) 0 1px,transparent 2.2px),
+    radial-gradient(circle at 31% 8%,rgba(255,201,133,.25) 0 1px,transparent 2px),
+    /* broad cosmic fields */
+    radial-gradient(ellipse at 76% 17%,rgba(126,86,191,.34),transparent 36%),
+    radial-gradient(ellipse at 26% 28%,rgba(61,118,184,.30),transparent 42%),
+    radial-gradient(ellipse at 55% 61%,rgba(227,113,157,.18),transparent 44%),
+    radial-gradient(ellipse at 61% 84%,rgba(225,145,88,.10),transparent 36%),
+    /* heavenly garden / spiritual-tree horizon */
+    radial-gradient(ellipse at 18% 105%,rgba(88,129,82,.28) 0 23%,transparent 48%),
+    radial-gradient(ellipse at 48% 108%,rgba(70,111,91,.23) 0 22%,transparent 46%),
+    radial-gradient(ellipse at 79% 106%,rgba(97,113,81,.24) 0 21%,transparent 45%),
+    linear-gradient(180deg,#0b1028 0%,#171b45 30%,#2a2053 57%,#261a3e 75%,#111729 100%);
   background-attachment:fixed;
 }
 html[data-site-floor="plane"] body:not(.lower-layer-page){
-  background-color:#0b100d;
+  background-color:#0c1513;
   background-image:
-    radial-gradient(circle at 84% 8%,rgba(255,221,143,.12),transparent 9%),
-    radial-gradient(ellipse at 50% 16%,rgba(102,158,194,.14),transparent 48%),
-    linear-gradient(145deg,transparent 0 61%,rgba(50,72,63,.12) 61.5% 68%,transparent 68.5%) 0 180px/42% 360px repeat-x,
-    linear-gradient(35deg,transparent 0 63%,rgba(34,61,47,.10) 63.5% 70%,transparent 70.5%) 16% 220px/37% 330px repeat-x,
-    linear-gradient(180deg,rgba(37,83,105,.17) 0%,rgba(58,105,111,.11) 28%,rgba(78,109,76,.10) 48%,rgba(48,75,49,.11) 65%,rgba(21,30,20,.22) 100%),
-    linear-gradient(180deg,#0b1112 0%,#0b100d 74%,#090b09 100%);
+    /* sky light */
+    radial-gradient(circle at 84% 9%,rgba(255,225,151,.30),transparent 11%),
+    radial-gradient(ellipse at 50% 12%,rgba(124,187,220,.30),transparent 50%),
+    radial-gradient(ellipse at 21% 19%,rgba(182,215,220,.13),transparent 30%),
+    /* distant mountain ranges */
+    linear-gradient(145deg,transparent 0 60%,rgba(55,84,70,.38) 60.5% 69%,transparent 69.5%) 0 160px/44% 360px repeat-x,
+    linear-gradient(35deg,transparent 0 62%,rgba(43,78,58,.34) 62.5% 71%,transparent 71.5%) 15% 205px/39% 340px repeat-x,
+    linear-gradient(148deg,transparent 0 63%,rgba(89,104,77,.22) 63.5% 70%,transparent 70.5%) 8% 225px/52% 320px repeat-x,
+    /* tiny village rhythm at the horizon */
+    repeating-linear-gradient(90deg,rgba(235,207,145,.13) 0 2px,transparent 2px 30px) 0 280px/100% 16px no-repeat,
+    /* green middle plane */
+    linear-gradient(180deg,rgba(55,112,140,.34) 0%,rgba(73,132,146,.24) 30%,rgba(91,128,82,.25) 52%,rgba(55,93,57,.34) 70%,rgba(24,40,26,.46) 100%),
+    linear-gradient(180deg,#183647 0%,#2e6171 32%,#526f66 52%,#3c5c3e 72%,#182619 100%);
   background-attachment:fixed;
 }
 html[data-site-floor="below"] body:not(.lower-layer-page){
   background-color:#080504;
   background-image:
-    radial-gradient(ellipse at 12% 0%,rgba(115,66,39,.16) 0 30px,transparent 34px),
-    radial-gradient(ellipse at 38% 2%,rgba(85,47,30,.14) 0 46px,transparent 50px),
-    radial-gradient(ellipse at 69% 0%,rgba(126,70,40,.14) 0 38px,transparent 42px),
-    radial-gradient(ellipse at 92% 3%,rgba(92,50,31,.13) 0 44px,transparent 48px),
-    repeating-linear-gradient(180deg,transparent 0 92px,rgba(133,72,43,.025) 93px 95px,transparent 96px 184px),
-    linear-gradient(180deg,#1d100c 0%,#130a08 38%,#0b0605 72%,#070504 100%);
+    radial-gradient(ellipse at 12% -1%,rgba(143,76,42,.32) 0 34px,transparent 39px),
+    radial-gradient(ellipse at 38% 1%,rgba(103,51,31,.30) 0 50px,transparent 55px),
+    radial-gradient(ellipse at 69% -1%,rgba(151,76,39,.28) 0 42px,transparent 47px),
+    radial-gradient(ellipse at 92% 2%,rgba(112,53,31,.27) 0 48px,transparent 53px),
+    radial-gradient(ellipse at 24% 30%,rgba(0,0,0,.24) 0 34px,transparent 58px),
+    radial-gradient(ellipse at 76% 46%,rgba(0,0,0,.20) 0 42px,transparent 68px),
+    repeating-linear-gradient(180deg,transparent 0 88px,rgba(158,79,43,.055) 89px 92px,transparent 93px 176px),
+    linear-gradient(180deg,#3a1d14 0%,#28120d 34%,#170b08 68%,#090504 100%);
   background-attachment:fixed;
 }
 .site-elevator[data-elevator-ready="false"]{
