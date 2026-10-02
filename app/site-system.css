@@ -41,6 +41,9 @@
   --site-z-counter: 10049;
   --site-z-access: 10050;
   --site-floating-gap: 8px;
+  --site-reading-glass: rgba(7,8,10,.045);
+  --site-reading-glass-line: rgba(255,255,255,.022);
+  --site-reading-glass-shadow: rgba(0,0,0,.045);
 }
 
 * { box-sizing: border-box; }
@@ -75,6 +78,27 @@ textarea:focus-visible,
   width: min(100%, calc(var(--site-content-standard) + (2 * var(--site-gutter))));
   margin-inline: auto;
   padding: 38px var(--site-gutter) 100px;
+  position: relative;
+  isolation: isolate;
+}
+
+html[data-site-floor] .page::before {
+  content: "";
+  position: absolute;
+  inset: 14px 6px 64px;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: 12px;
+  background:
+    linear-gradient(90deg,
+      transparent 0,
+      var(--site-reading-glass) 5%,
+      var(--site-reading-glass) 95%,
+      transparent 100%);
+  box-shadow:
+    inset 1px 0 0 var(--site-reading-glass-line),
+    inset -1px 0 0 var(--site-reading-glass-line),
+    0 12px 40px var(--site-reading-glass-shadow);
 }
 
 .page--reading {
