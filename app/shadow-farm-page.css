@@ -6,6 +6,5 @@
 .memorial strong{display:block;margin:5px 0 4px;font:400 1.18rem/1.15 var(--site-font-serif)}
 .memorial span{display:block;opacity:.78;font-size:.86rem;line-height:1.45}
 .memorial-note{border-left:2px solid rgba(216,181,107,.42);padding:10px 14px;margin:12px 0 24px;opacity:.9}
-.layer-spine{margin:24px 0 30px;border:1px solid rgba(127,127,127,.28);padding:16px;background:rgba(255,255,255,.015)}
-.layer-spine h2{margin:.1rem 0 .65rem}.layer-steps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin-top:14px}.layer-step{border-top:2px solid rgba(127,127,127,.25);padding:10px 8px;font-size:.82rem;line-height:1.35}.layer-step strong{display:block;margin-bottom:4px}.layer-step.is-here{border-color:#d8b56b;background:rgba(216,181,107,.05)}.layer-step a{color:inherit}.layer-handoff{border-left:3px solid rgba(216,181,107,.42);padding:12px 14px;margin:18px 0;line-height:1.55}
-@media(max-width:760px){.memorials{grid-template-columns:1fr}.layer-steps{grid-template-columns:1fr 1fr}.layer-step:last-child{grid-column:1/-1}}
+.layer-spine h2{margin:.1rem 0 .65rem}.layer-step a{color:inherit}.layer-handoff{padding:12px 14px;margin:18px 0;line-height:1.55}
+@media(max-width:760px){.memorials{grid-template-columns:1fr}}
