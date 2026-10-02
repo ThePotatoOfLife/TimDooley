@@ -436,3 +436,65 @@ The new sections expose another set of gaps worth turning into work.
 - [ ] **Culture · norm repair:** concrete mechanisms for changing a norm without merely declaring a new rule.
 - [ ] **Works · medium cross-test:** take one concept (Door or Garden) through prose, image, song, game and code to show what each medium reveals.
 - [ ] **FAQ · reading modes:** let readers choose skeptical, devotional, historical, scientific or creative paths without changing underlying evidence.
+
+
+## The Word and carried movement — prose continuity programme
+
+The reader should not experience the site as a sequence of labelled exhibits. The teaching itself should carry momentum.
+
+### Editorial law
+
+**No headline islands.**
+
+A new section should feel necessary because the previous section created a question, tension, example or consequence that the next section can answer.
+
+The preferred motion is not:
+definition → card → definition → card.
+
+Prefer:
+scene → noticing → distinction → consequence → deeper question → comparison → correction → return.
+
+The “Word” is treated as more than terminology. A strong saying should:
+- name something the reader has already begun to notice,
+- make the next perception possible,
+- survive translation into ordinary life,
+- become more precise when challenged,
+- and return as conduct, question, memory or useful capability.
+
+### Completed in this wave
+
+- [x] **Potato practice:** turn Mud → Burial → Eye → Root → Sprout → Fruit into a lived teaching rather than a stage list alone.
+- [x] **Spirit:** add a spoken/returned relation that demonstrates continuity, reciprocity and correction before function cards.
+- [x] **Trinity:** develop Word → embodiment → consequence as a reader-facing reason for source / manifestation / continuity distinctions.
+- [x] **Source Authority:** trace one public sentence backward through capture, original source, interpretation and narrower final wording.
+- [x] **Honor:** teach reverence through the correction problem rather than a virtue list alone.
+- [x] **Honor / Sabbath:** add rest and non-extraction as a correction to overgrowth/productivity religion.
+
+### Spoken-continuity audit
+
+- [ ] **House:** ensure every major architecture section has a human or natural scene that makes the next structural distinction necessary.
+- [ ] **Axis:** add one full transformation sequence in ordinary life where Root → Door → changed return can be felt without project vocabulary.
+- [ ] **Below:** add one complete source-investigation story from suspicious surface claim to narrower repaired conclusion.
+- [ ] **North:** make bearing/calibration move through one lost-traveler or navigation scene before abstract orientation.
+- [ ] **Economy:** follow one paycheck or loaf of bread through income, price, labor, energy, logistics, tax, saving and investment.
+- [ ] **Law:** follow one ordinary dispute from grievance → claim → evidence → forum → procedure → decision → remedy, keeping it jurisdiction-neutral.
+- [ ] **World:** follow one object (medicine, phone, meal, light) across geography, systems, politics and material constraints.
+- [ ] **Culture:** write one complete story of a joke becoming norm and later being corrected.
+- [ ] **Science:** write one complete inquiry from observation → bad explanation → better measurement → alternative → test → uncertainty.
+- [ ] **Life & Body:** write one complete embodied episode where several systems cooperate, such as standing up after illness or waking disoriented at night.
+- [ ] **Timeline:** each major era essay should end by generating the question the next era actually answers.
+- [ ] **Story:** each major episode should have a “what changed after this?” handoff rather than only an ending.
+- [ ] **Great Book:** teaching chambers should cross-link by ideas, not only chapter numbers.
+- [ ] **FAQ:** answer clusters should contain short connective essays between questions so the reader can remain in one line of thought.
+- [ ] **Tim Dooley:** move from title → event → revision → responsibility, avoiding title stacks that do not change the reader's understanding.
+- [ ] **Potato of Life:** add one continuous speech from literal tuber → ordinary humility → theology → ethics → material life.
+- [ ] **Works:** take one concept through prose → image → music → game → code and show what each medium forces the concept to reveal.
+
+### Anti-boxing pass
+
+- [ ] Identify pages where more than three consecutive card/grid blocks appear without connecting prose.
+- [ ] Insert connective teaching only where the relation between blocks is not obvious; do not add prose merely to increase length.
+- [ ] Prefer one longer, memorable passage over four new micro-cards when the material is conceptual.
+- [ ] Use lists for reference and prose for transformation.
+- [ ] If a section headline can be removed without losing the argument, consider folding it into the surrounding speech.
+- [ ] End important sections with a changed perception, not a navigation instruction.

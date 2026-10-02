@@ -1383,3 +1383,13 @@ Shared implementation: `app/terrain-circle.css`
 - [x] Works: media as different thinking instruments.
 - [x] FAQ: seven teaching constellations.
 - [ ] New edge: trust, forgiveness, scarcity, attention, courage, Sabbath/rest, hospitality, pilgrimage, confession, base rates, causal graphs, replication, allostasis, memory reconsolidation, maintenance, queues, prestige bias, norm repair and medium cross-testing.
+
+
+### The Word / carried-movement pass
+- [x] Turn Potato practice stages into one lived teaching.
+- [x] Give Spirit a reciprocal message/return sequence before taxonomy.
+- [x] Give Trinity a Word → embodiment → consequence teaching before topology.
+- [x] Turn provenance into one sentence followed backward to its source.
+- [x] Turn Honor into a correction/reverence teaching and add Sabbath as non-extraction.
+- [ ] Continue the spoken-continuity audit across House, Axis, Below, North, Economy, Law, World, Culture, Science, Body, Timeline, Story, Great Book, FAQ, Tim, Potato of Life and Works.
+- [ ] Run anti-boxing audit: lists/cards for reference; continuous prose for changed understanding.
