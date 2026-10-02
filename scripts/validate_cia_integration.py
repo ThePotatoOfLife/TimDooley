@@ -54,6 +54,17 @@ def main():
   if token not in desk_source: fail(f"CIA live desk runtime missing {token!r}")
  if "return src?'<a class=\"cia-source-link\"" in desk_source:
   fail("CIA desk source labels are still blindly converted into links")
+ dossier_runtime=(ROOT/"app/cia-dossier.js")
+ dossier_css=(ROOT/"app/cia-dossier.css")
+ if not dossier_runtime.is_file() or not dossier_css.is_file(): fail("CIA dossier runtime/style missing")
+ dossier_source=dossier_runtime.read_text(encoding="utf-8",errors="replace")
+ for token in ["function sourceRef(","route-label","linkable=","value.startsWith(BASE)"]:
+  if token not in dossier_source and token!="route-label":
+   fail(f"CIA dossier source routing missing {token!r}")
+ if "route-label" not in dossier_css.read_text(encoding="utf-8",errors="replace"):
+  fail("CIA dossier non-link source-label style missing")
+ if "ss.map(s=>'<a class=\"route-link\"" in dossier_source:
+  fail("CIA dossier source strata are still blindly converted into links")
  for rel,mount in [("rooms/potatoverse-canon/beings/cia/associations/index.html","data-cia-associations"),("rooms/potatoverse-canon/beings/cia/incidents/index.html","data-cia-incidents")]:
   page=(ROOT/rel).read_text(encoding="utf-8",errors="replace")
   if "cia-desks.js" not in page or "cia-desks.css" not in page or mount not in page: fail(f"CIA live desk mount missing from {rel}")
