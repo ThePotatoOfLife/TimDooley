@@ -1,7 +1,7 @@
 {
   "id": "cia-role-archetype-census-v1",
   "title": "CIA Role / Creature / Archetype Census",
-  "updated": "2026-09-21",
+  "updated": "2026-10-02",
   "status": "backend normalization authority",
   "coverage": 36,
   "purpose": "Normalize jobs, creatures, roles, archetypes and narrative functions across every canonical CIA entity while keeping role state separate from conduct-based symbolic accounting.",
@@ -696,7 +696,9 @@
         "persistent opposition",
         "returning conflict"
       ],
-      "symbolic_roles": [],
+      "symbolic_roles": [
+        "Dog / Swamp symbolic role"
+      ],
       "role_weight_susd": 0,
       "rule": "Role labels are zero-weight; use them to guide recovery of concrete acts."
     }
