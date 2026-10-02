@@ -1,141 +1,98 @@
 /*
-  Lower Layer / Underground visual system
-  Canonical owner for the Below floor shared by:
-  - /below/                 Field Manual / Observatory
-  - /shadow-farm/           Farm / Sektur
-  - /rooms/archive-sources/ Roots / Evidence
-  - /rooms/research-lab/    Forge / Repair
-
-  The floor is one underground cross-section. Page-specific CSS owns content
-  components; this file owns terrain, depth, route spine, shared surfaces and
-  stage accents. Keep literal claims/content semantics out of this stylesheet.
+  LOWER FLOOR — canonical visual system
+  ------------------------------------
+  One floor, one palette: black earth + roots + stone.
+  Page-specific styles may define content components, but they should not create
+  a second background/theme for the lower floor.
 */
 
 :root{
-  --lower-black:#060605;
-  --lower-void:#090806;
-  --lower-soil:#2a1e14;
-  --lower-soil-mid:#3a2a1b;
-  --lower-soil-light:#5c4228;
-  --lower-root:#8b6941;
+  --lower-black:#050505;
+  --lower-void:#090807;
+  --lower-soil:#241a12;
+  --lower-soil-mid:#342518;
+  --lower-root:#87643f;
   --lower-root-lit:#b08a58;
-  --lower-stone:#6d675c;
-  --lower-moss:#667657;
-  --lower-ember:#a15d3c;
-  --lower-line:rgba(164,132,91,.25);
-  --lower-panel:rgba(12,10,8,.78);
-  --lower-panel-strong:rgba(18,14,10,.9);
-  --lower-text:#eee8db;
-  --lower-muted:#b5ab9b;
-  --lower-accent:#9b8059;
-  --lower-accent-rgb:155,128,89;
+  --lower-stone:#716a5f;
+  --lower-line:rgba(176,138,88,.24);
+  --lower-panel:rgba(10,9,8,.78);
+  --lower-panel-strong:rgba(15,12,9,.9);
+  --lower-text:#eee8dc;
+  --lower-muted:#b8ad9d;
+  --lower-accent:#b08a58;
+  --lower-accent-rgb:176,138,88;
 }
 
-html:has(body.lower-layer-page){
-  background:#050504;
-}
+html:has(body.lower-layer-page){background:var(--lower-black)}
 
 body.lower-layer-page{
+  /* Re-map the shared site tokens so old green styling cannot leak downstairs. */
   --site-bg:var(--lower-black);
   --site-panel:var(--lower-panel);
   --site-panel-strong:var(--lower-panel-strong);
   --site-line:var(--lower-line);
   --site-ink:var(--lower-text);
   --site-muted:var(--lower-muted);
+  --site-green:var(--lower-root-lit);
+  --site-gold:#d6bd91;
+  --site-focus:#d6bd91;
+
   position:relative;
   isolation:isolate;
   min-height:100vh;
   overflow-x:hidden;
   color:var(--lower-text);
-  background-color:var(--lower-black);
-  background-image:
-    /* roof / compacted upper soil */
-    linear-gradient(180deg,rgba(92,61,34,.32) 0,rgba(56,38,24,.25) 86px,rgba(22,16,11,.2) 170px,transparent 310px),
-    /* small pebbles */
-    radial-gradient(circle at 8% 15%,rgba(139,129,111,.19) 0 2px,transparent 2.8px),
-    radial-gradient(circle at 72% 23%,rgba(165,151,126,.12) 0 2.5px,transparent 3.3px),
-    radial-gradient(circle at 34% 31%,rgba(119,110,95,.13) 0 1.7px,transparent 2.5px),
-    /* block/strata seams: side-view underground rather than a flat tint */
-    repeating-linear-gradient(180deg,transparent 0 58px,rgba(137,98,58,.055) 59px 61px,transparent 62px 118px),
-    repeating-linear-gradient(90deg,transparent 0 92px,rgba(124,87,52,.035) 93px 95px,transparent 96px 188px),
-    linear-gradient(180deg,#17110c 0,#0e0c09 35%,#090807 72%,#060605 100%);
-  background-size:
-    100% 100%,
-    240px 220px,
-    310px 260px,
-    190px 210px,
-    100% 100%,
-    100% 100%,
-    100% 100%;
-  background-attachment:scroll;
+  background:
+    /* compacted roof */
+    linear-gradient(180deg,rgba(85,58,34,.29) 0,rgba(48,34,23,.18) 110px,transparent 300px),
+    /* sparse pebbles */
+    radial-gradient(circle at 9% 16%,rgba(150,139,120,.16) 0 2px,transparent 3px) 0 0/250px 230px,
+    radial-gradient(circle at 74% 29%,rgba(126,118,104,.12) 0 3px,transparent 4px) 0 0/330px 290px,
+    /* simple side-view strata */
+    repeating-linear-gradient(180deg,transparent 0 84px,rgba(139,99,58,.045) 85px 87px,transparent 88px 172px),
+    linear-gradient(180deg,#15100c 0,#0c0a08 38%,#080706 72%,var(--lower-black) 100%);
 }
 
-/* Root ceiling: the same living network descends from the top of every lower page. */
+/* Roots descend from the ceiling of the lower floor. */
 body.lower-layer-page::before{
   content:"";
   position:absolute;
   z-index:-2;
   inset:0 0 auto;
-  height:min(1050px,88vh);
+  height:min(980px,88vh);
   pointer-events:none;
-  opacity:.82;
+  opacity:.76;
   background:
-    linear-gradient(96deg,transparent 0 48.7%,rgba(142,103,61,.5) 49.1% 50.7%,transparent 51.1%) 7% -90px/170px 650px no-repeat,
-    linear-gradient(84deg,transparent 0 49%,rgba(119,84,49,.42) 49.35% 50.35%,transparent 50.7%) 28% -145px/220px 770px no-repeat,
-    linear-gradient(101deg,transparent 0 49.1%,rgba(147,103,60,.4) 49.45% 50.5%,transparent 50.85%) 52% -120px/205px 710px no-repeat,
-    linear-gradient(79deg,transparent 0 49.2%,rgba(112,79,47,.4) 49.5% 50.45%,transparent 50.8%) 75% -180px/245px 820px no-repeat,
-    linear-gradient(93deg,transparent 0 49.2%,rgba(160,116,68,.36) 49.5% 50.5%,transparent 50.8%) 94% -80px/160px 610px no-repeat,
-    /* branching forks */
-    linear-gradient(146deg,transparent 0 49%,rgba(119,84,49,.28) 49.4% 50.3%,transparent 50.7%) 13% 230px/180px 280px no-repeat,
-    linear-gradient(35deg,transparent 0 49%,rgba(133,93,54,.27) 49.4% 50.25%,transparent 50.7%) 33% 300px/185px 300px no-repeat,
-    linear-gradient(139deg,transparent 0 49%,rgba(121,84,47,.24) 49.4% 50.2%,transparent 50.65%) 58% 260px/205px 330px no-repeat,
-    linear-gradient(42deg,transparent 0 49%,rgba(140,96,53,.24) 49.4% 50.25%,transparent 50.7%) 81% 340px/170px 290px no-repeat;
-  filter:drop-shadow(0 1px 1px rgba(0,0,0,.65));
-  mask-image:linear-gradient(180deg,#000 0,#000 70%,transparent 100%);
+    linear-gradient(96deg,transparent 0 48.8%,rgba(150,108,65,.52) 49.2% 50.6%,transparent 51%) 5% -100px/180px 680px no-repeat,
+    linear-gradient(84deg,transparent 0 49%,rgba(125,88,52,.46) 49.35% 50.4%,transparent 50.75%) 27% -170px/230px 790px no-repeat,
+    linear-gradient(101deg,transparent 0 49%,rgba(154,108,63,.43) 49.4% 50.45%,transparent 50.85%) 53% -125px/215px 735px no-repeat,
+    linear-gradient(79deg,transparent 0 49.1%,rgba(119,84,50,.43) 49.45% 50.4%,transparent 50.8%) 76% -190px/250px 835px no-repeat,
+    linear-gradient(93deg,transparent 0 49.1%,rgba(158,113,66,.38) 49.5% 50.45%,transparent 50.85%) 95% -85px/170px 635px no-repeat,
+    linear-gradient(145deg,transparent 0 49%,rgba(127,89,52,.26) 49.4% 50.25%,transparent 50.65%) 15% 250px/190px 290px no-repeat,
+    linear-gradient(36deg,transparent 0 49%,rgba(137,95,54,.24) 49.4% 50.2%,transparent 50.65%) 62% 310px/205px 320px no-repeat;
+  filter:drop-shadow(0 1px 1px rgba(0,0,0,.7));
+  mask-image:linear-gradient(180deg,#000 0,#000 72%,transparent 100%);
 }
 
-/* Faint coils/spiral archaeology, plus larger stones deeper down. */
+/* Stone, cavities and faint sediment. No second colour theme. */
 body.lower-layer-page::after{
   content:"";
   position:absolute;
   z-index:-1;
   inset:0;
-  min-height:100%;
   pointer-events:none;
-  opacity:.48;
+  opacity:.34;
   background:
-    conic-gradient(from 185deg at 16% 0%,transparent 0 19deg,rgba(173,134,77,.15) 20deg 22deg,transparent 23deg 55deg,rgba(173,134,77,.08) 56deg 58deg,transparent 59deg 360deg),
-    conic-gradient(from 170deg at 78% 2%,transparent 0 25deg,rgba(119,139,91,.12) 26deg 28deg,transparent 29deg 67deg,rgba(119,139,91,.07) 68deg 70deg,transparent 71deg 360deg),
-    radial-gradient(ellipse at 18% 41%,transparent 0 43px,rgba(137,105,67,.08) 44px 46px,transparent 47px 76px,rgba(137,105,67,.055) 77px 79px,transparent 80px),
-    radial-gradient(ellipse at 82% 57%,transparent 0 56px,rgba(99,114,78,.07) 57px 59px,transparent 60px 94px,rgba(99,114,78,.045) 95px 97px,transparent 98px),
-    radial-gradient(ellipse at 14% 68%,rgba(104,98,86,.14) 0 5px,transparent 5.8px),
-    radial-gradient(ellipse at 62% 74%,rgba(139,126,102,.11) 0 7px,transparent 7.8px),
-    radial-gradient(ellipse at 86% 84%,rgba(94,91,83,.12) 0 4px,transparent 4.8px);
-  background-size:
-    520px 760px,
-    610px 860px,
-    440px 520px,
-    520px 600px,
-    270px 250px,
-    330px 290px,
-    240px 230px;
-  mask-image:linear-gradient(180deg,#000 0,rgba(0,0,0,.92) 58%,rgba(0,0,0,.66) 100%);
+    radial-gradient(ellipse at 15% 38%,rgba(119,112,99,.13) 0 6px,transparent 7px),
+    radial-gradient(ellipse at 83% 52%,rgba(145,132,108,.1) 0 8px,transparent 9px),
+    radial-gradient(ellipse at 27% 76%,rgba(103,99,91,.11) 0 5px,transparent 6px),
+    radial-gradient(ellipse at 78% 88%,rgba(131,120,101,.09) 0 7px,transparent 8px),
+    radial-gradient(ellipse at 12% 64%,transparent 0 48px,rgba(137,105,67,.045) 49px 51px,transparent 52px 80px),
+    repeating-linear-gradient(90deg,transparent 0 92px,rgba(126,89,53,.025) 93px 94px,transparent 95px 188px);
+  background-size:310px 360px,410px 470px,350px 410px,470px 530px,680px 1020px,100% 100%;
 }
 
-body.lower-layer-page--farm{
-  --lower-accent:#7f8c65;
-  --lower-accent-rgb:127,140,101;
-}
-body.lower-layer-page--roots{
-  --lower-accent:#a07b4f;
-  --lower-accent-rgb:160,123,79;
-}
-body.lower-layer-page--forge{
-  --lower-accent:#b36c47;
-  --lower-accent-rgb:179,108,71;
-}
-
-/* Keep the text layer readable without hiding the underground. */
+/* The page itself stays transparent so the floor is continuous behind content. */
 .lower-layer-page .lower-layer-surface,
 .lower-layer-page main.page{
   position:relative;
@@ -143,11 +100,53 @@ body.lower-layer-page--forge{
   background:transparent;
 }
 
+/* Long roots continue through long-form pages instead of ending after the hero. */
+.lower-layer-page .lower-layer-surface::before{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  top:0;
+  bottom:0;
+  left:50%;
+  width:min(1440px,100vw);
+  transform:translateX(-50%);
+  pointer-events:none;
+  opacity:.38;
+  background:
+    linear-gradient(96deg,transparent 0 49.1%,rgba(138,97,56,.24) 49.45% 50.35%,transparent 50.7%) 4% 90px/210px 1050px repeat-y,
+    linear-gradient(83deg,transparent 0 49.2%,rgba(122,84,48,.20) 49.55% 50.3%,transparent 50.65%) 26% 390px/260px 1220px repeat-y,
+    linear-gradient(101deg,transparent 0 49.1%,rgba(152,107,61,.21) 49.5% 50.4%,transparent 50.75%) 54% 190px/230px 1120px repeat-y,
+    linear-gradient(78deg,transparent 0 49.2%,rgba(110,77,46,.19) 49.55% 50.35%,transparent 50.7%) 79% 480px/280px 1280px repeat-y,
+    linear-gradient(94deg,transparent 0 49.1%,rgba(147,103,58,.18) 49.5% 50.4%,transparent 50.75%) 96% 260px/190px 1080px repeat-y,
+    repeating-linear-gradient(180deg,transparent 0 410px,rgba(111,79,49,.055) 411px 413px,transparent 414px 835px);
+  mask-image:linear-gradient(90deg,transparent 0,#000 8%,#000 92%,transparent 100%);
+}
+
+/* A restrained block/stone texture behind all four lower pages. */
+.lower-layer-page .lower-layer-surface::after{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  inset:0 calc(50% - 50vw);
+  pointer-events:none;
+  opacity:.22;
+  background:
+    radial-gradient(ellipse at 10% 14%,rgba(132,124,109,.13) 0 5px,transparent 6px),
+    radial-gradient(ellipse at 90% 29%,rgba(146,132,107,.10) 0 7px,transparent 8px),
+    radial-gradient(ellipse at 18% 61%,rgba(105,101,92,.11) 0 6px,transparent 7px),
+    radial-gradient(ellipse at 82% 79%,rgba(127,117,99,.09) 0 8px,transparent 9px),
+    linear-gradient(90deg,rgba(116,82,49,.025) 1px,transparent 1px) 0 0/82px 82px,
+    linear-gradient(180deg,rgba(116,82,49,.022) 1px,transparent 1px) 0 0/82px 82px;
+  background-size:340px 390px,430px 490px,390px 460px,500px 570px,82px 82px,82px 82px;
+  mask-image:linear-gradient(180deg,transparent 0,#000 110px,#000 97%,transparent 100%);
+}
+
+/* Shared typography/surfaces. */
 .lower-layer-page .page-header{
   position:relative;
-  margin-bottom:44px;
-  padding:26px 0 30px;
-  border-bottom:1px solid rgba(var(--lower-accent-rgb),.28);
+  margin-bottom:42px;
+  padding:24px 0 28px;
+  border-bottom:1px solid var(--lower-line);
 }
 .lower-layer-page .page-header::after{
   content:"";
@@ -156,17 +155,15 @@ body.lower-layer-page--forge{
   bottom:-1px;
   width:min(220px,42vw);
   height:2px;
-  background:linear-gradient(90deg,rgba(var(--lower-accent-rgb),.9),transparent);
+  background:linear-gradient(90deg,rgba(var(--lower-accent-rgb),.85),transparent);
 }
-.lower-layer-page .page-header h1,
-.lower-layer-page h1{
-  text-shadow:0 4px 24px rgba(0,0,0,.68);
-}
-.lower-layer-page .summary{
-  color:#d8d0c2;
-}
+.lower-layer-page h1{ text-shadow:0 4px 24px rgba(0,0,0,.7) }
+.lower-layer-page .summary{color:#d8d0c3}
+.lower-layer-page a{color:var(--lower-root-lit);text-decoration-color:rgba(var(--lower-accent-rgb),.48)}
+.lower-layer-page a:hover,
+.lower-layer-page a:focus-visible{text-decoration-color:rgba(var(--lower-accent-rgb),.95)}
 
-/* One surface vocabulary across the floor. */
+/* One panel vocabulary across Observatory, Farm, Roots and Forge. */
 .lower-layer-page .card,
 .lower-layer-page .desk,
 .lower-layer-page .axis,
@@ -179,31 +176,64 @@ body.lower-layer-page--forge{
 .lower-layer-page .case-path,
 .lower-layer-page .archetype-column,
 .lower-layer-page .frame-test>div{
-  border-color:rgba(var(--lower-accent-rgb),.24);
-  background:linear-gradient(180deg,rgba(25,19,13,.72),rgba(9,8,7,.76));
+  border-color:var(--lower-line);
+  background:linear-gradient(180deg,rgba(22,17,12,.66),rgba(7,7,6,.78));
   box-shadow:inset 0 1px rgba(255,255,255,.018);
 }
-
 .lower-layer-page .boundary,
 .lower-layer-page .note,
 .lower-layer-page .warning,
 .lower-layer-page .case-line,
-.lower-layer-page .layer-handoff{
-  border-color:rgba(var(--lower-accent-rgb),.55);
-}
+.lower-layer-page .layer-handoff{border-color:rgba(var(--lower-accent-rgb),.52)}
 
-/* Canonical route spine: Field Manual → Farm → Roots → Forge → Return. */
+/* Shared lower-room scaffolding: kept here so Roots and Forge do not duplicate it. */
+.lower-layer-page .room-home{max-width:1040px}
+.lower-layer-page .door-grid,
+.lower-layer-page .sub-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:10px;
+  margin:18px 0;
+}
+.lower-layer-page .door-card,
+.lower-layer-page .sub-card{border:1px solid var(--site-line);padding:14px;text-decoration:none;color:inherit}
+.lower-layer-page .door-card strong,
+.lower-layer-page .sub-card strong{display:block;font:400 19px var(--site-font-serif);color:var(--site-gold)}
+.lower-layer-page .door-card span,
+.lower-layer-page .sub-card span{display:block;color:var(--site-muted);font-size:10px;line-height:1.45;margin-top:4px}
+.lower-layer-page .boundary{border-left:2px solid var(--site-line);padding-left:14px;color:var(--site-muted)}
+.lower-layer-page .room-actions{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}
+.lower-layer-page .room-actions a{
+  border:1px solid var(--site-line);
+  border-radius:999px;
+  padding:7px 10px;
+  text-decoration:none;
+  color:var(--site-muted);
+  font-size:10px;
+}
+.lower-layer-page .room-actions a:hover{color:var(--site-gold);border-color:rgba(var(--lower-accent-rgb),.65)}
+.lower-layer-page .dwelling-reader{
+  margin:34px 0;
+  padding:28px 0;
+  border-top:1px solid var(--site-line);
+  border-bottom:1px solid var(--site-line);
+}
+.lower-layer-page .dwelling-reader h2{
+  margin:0 0 12px;
+  color:var(--site-gold);
+  font:400 clamp(30px,4vw,44px)/1.08 var(--site-font-serif);
+}
+.lower-layer-page .dwelling-reader>p{max-width:880px;color:#d0c9bd;line-height:1.75}
+
+/* Canonical route spine: Observe → Reproduce → Root → Forge → Return. */
 .lower-layer-page .layer-spine,
 .lower-layer-page .lower-spine{
   margin:28px 0 36px;
   padding:18px;
-  border:1px solid rgba(var(--lower-accent-rgb),.3);
-  background:
-    linear-gradient(180deg,rgba(var(--lower-accent-rgb),.07),rgba(10,8,6,.74)),
-    repeating-linear-gradient(90deg,transparent 0 48px,rgba(153,112,68,.025) 49px 50px);
+  border:1px solid var(--lower-line);
+  background:linear-gradient(180deg,rgba(var(--lower-accent-rgb),.055),rgba(8,7,6,.76));
   box-shadow:0 18px 60px rgba(0,0,0,.12),inset 0 1px rgba(255,255,255,.018);
 }
-
 .lower-layer-page .layer-steps,
 .lower-layer-page .lower-spine-grid{
   display:grid;
@@ -211,54 +241,45 @@ body.lower-layer-page--forge{
   gap:8px;
   margin-top:14px;
 }
-
 .lower-layer-page .layer-step,
 .lower-layer-page .lower-spine-grid>div{
   min-width:0;
   padding:10px 8px;
-  border-top:2px solid rgba(var(--lower-accent-rgb),.25);
-  background:rgba(6,6,5,.24);
+  border-top:2px solid rgba(var(--lower-accent-rgb),.24);
+  background:rgba(5,5,5,.28);
   font-size:.78rem;
   line-height:1.4;
 }
-
 .lower-layer-page .layer-step strong,
 .lower-layer-page .lower-spine-grid strong{
   display:block;
   margin-bottom:4px;
-  color:#d8c39b;
+  color:var(--site-gold);
   font-size:.82rem;
 }
-
 .lower-layer-page .layer-step span,
-.lower-layer-page .lower-spine-grid span{
-  display:block;
-  color:var(--lower-muted);
-}
-
+.lower-layer-page .lower-spine-grid span{display:block;color:var(--lower-muted)}
 .lower-layer-page .layer-step.is-here,
 .lower-layer-page .lower-spine-grid .is-here{
   border-color:rgba(var(--lower-accent-rgb),.9);
-  background:linear-gradient(180deg,rgba(var(--lower-accent-rgb),.14),rgba(9,8,6,.62));
-  box-shadow:inset 0 0 24px rgba(var(--lower-accent-rgb),.05);
+  background:linear-gradient(180deg,rgba(var(--lower-accent-rgb),.11),rgba(7,7,6,.62));
 }
 
-/* Below's opening field should feel carved into the same substrate. */
+/* Large lower-floor feature panels remain part of the same substrate. */
 .lower-layer-page .lower-orientation,
 .lower-layer-page .archetype-guide,
 .lower-layer-page .forge-return,
 .lower-layer-page .root-cross-section{
-  border-color:rgba(var(--lower-accent-rgb),.28);
+  border-color:var(--lower-line);
   background:
-    linear-gradient(180deg,rgba(var(--lower-accent-rgb),.055),rgba(9,8,7,.78)),
-    repeating-linear-gradient(180deg,transparent 0 43px,rgba(148,104,62,.035) 44px 45px);
+    linear-gradient(180deg,rgba(var(--lower-accent-rgb),.045),rgba(8,7,6,.78)),
+    repeating-linear-gradient(180deg,transparent 0 48px,rgba(148,104,62,.028) 49px 50px);
   box-shadow:inset 0 1px rgba(255,255,255,.018),0 16px 48px rgba(0,0,0,.1);
 }
 
-/* Root/Evidence gets a real descending root drawing without turning the page green. */
+/* Roots / Evidence may draw a root locally, but it uses the same floor colour. */
 .lower-layer-page--roots .root-cross-section::before{
-  background:
-    linear-gradient(180deg,rgba(190,151,96,.58),rgba(113,77,43,.64));
+  background:linear-gradient(180deg,rgba(190,151,96,.58),rgba(113,77,43,.64));
   box-shadow:
     -55px 100px 0 -1px rgba(137,98,59,.28),
     65px 185px 0 -1px rgba(137,98,59,.24),
@@ -266,152 +287,9 @@ body.lower-layer-page--forge{
     118px 330px 0 -1px rgba(119,83,48,.14);
 }
 
-/* Forge: heat is local, not a different floor. */
-.lower-layer-page--forge .forge-return{
-  background:
-    radial-gradient(circle at 50% 108%,rgba(179,91,55,.14),transparent 38%),
-    linear-gradient(180deg,rgba(117,71,42,.06),rgba(9,8,7,.8));
-}
-
-/* Farm: moss/swamp appears as a regime within the same brown-black underground. */
-.lower-layer-page--farm .layer-spine{
-  background:
-    radial-gradient(ellipse at 75% 100%,rgba(92,117,72,.08),transparent 38%),
-    linear-gradient(180deg,rgba(108,91,56,.06),rgba(9,8,7,.8));
-}
-
-.lower-layer-page a{
-  text-decoration-color:rgba(var(--lower-accent-rgb),.5);
-}
-.lower-layer-page a:hover,
-.lower-layer-page a:focus-visible{
-  text-decoration-color:rgba(var(--lower-accent-rgb),.95);
-}
-
-
-/* Salvaged 2026-10-01 visual language:
-   The earlier descending-root motif was correct but trapped inside one Below
-   section. Promote its spatial idea here: roof -> root fork -> buried strata ->
-   pressure/spiral, while keeping Swamp and Forge local regimes rather than
-   painting the entire lower floor as either one. */
-.lower-layer-page .lower-layer-surface::before{
-  content:"";
-  position:absolute;
-  z-index:-1;
-  top:0;
-  bottom:0;
-  left:50%;
-  width:min(1440px,100vw);
-  transform:translateX(-50%);
-  pointer-events:none;
-  opacity:.46;
-  background:
-    /* long roots continue after the opening screen */
-    linear-gradient(96deg,transparent 0 49.1%,rgba(138,97,56,.26) 49.45% 50.35%,transparent 50.7%) 4% 90px/210px 980px repeat-y,
-    linear-gradient(83deg,transparent 0 49.2%,rgba(122,84,48,.22) 49.55% 50.3%,transparent 50.65%) 25% 380px/260px 1180px repeat-y,
-    linear-gradient(101deg,transparent 0 49.1%,rgba(152,107,61,.23) 49.5% 50.4%,transparent 50.75%) 53% 170px/230px 1080px repeat-y,
-    linear-gradient(78deg,transparent 0 49.2%,rgba(110,77,46,.21) 49.55% 50.35%,transparent 50.7%) 78% 470px/280px 1240px repeat-y,
-    linear-gradient(94deg,transparent 0 49.1%,rgba(147,103,58,.2) 49.5% 50.4%,transparent 50.75%) 96% 250px/190px 1040px repeat-y,
-    /* recurring forks: one descent can branch toward Life/repair or Strife/Drain */
-    linear-gradient(142deg,transparent 0 49.15%,rgba(143,99,56,.17) 49.5% 50.25%,transparent 50.6%) 18% 520px/210px 360px repeat-y,
-    linear-gradient(38deg,transparent 0 49.15%,rgba(125,86,49,.16) 49.5% 50.2%,transparent 50.55%) 60% 690px/230px 380px repeat-y,
-    /* broken sediment shelves make the page read as a side-on excavation */
-    repeating-linear-gradient(180deg,transparent 0 386px,rgba(111,79,49,.07) 387px 389px,transparent 390px 815px);
-  background-blend-mode:normal;
-  mask-image:linear-gradient(90deg,transparent 0,#000 8%,#000 92%,transparent 100%);
-}
-
-/* Deep archaeology layer: stones, cavities and slow coils.  This is deliberately
-   irregular rather than a perfect grid so the Minecraft/Terraria cue reads as
-   blocky earth, not graph paper. */
-.lower-layer-page .lower-layer-surface::after{
-  content:"";
-  position:absolute;
-  z-index:-1;
-  inset:0 calc(50% - 50vw);
-  pointer-events:none;
-  opacity:.34;
-  background:
-    radial-gradient(ellipse at 9% 8%,rgba(126,119,105,.16) 0 5px,transparent 6px),
-    radial-gradient(ellipse at 91% 14%,rgba(151,137,112,.12) 0 7px,transparent 8px),
-    radial-gradient(ellipse at 16% 38%,rgba(93,91,83,.14) 0 8px,transparent 9px),
-    radial-gradient(ellipse at 84% 47%,rgba(129,117,96,.11) 0 6px,transparent 7px),
-    radial-gradient(ellipse at 25% 74%,rgba(106,100,89,.13) 0 4px,transparent 5px),
-    radial-gradient(ellipse at 71% 82%,rgba(144,127,101,.1) 0 9px,transparent 10px),
-    /* drain/return coils recur at different depths, never as a moral label */
-    radial-gradient(ellipse at 88% 22%,transparent 0 38px,rgba(114,93,62,.075) 39px 41px,transparent 42px 64px,rgba(114,93,62,.045) 65px 67px,transparent 68px),
-    radial-gradient(ellipse at 12% 62%,transparent 0 50px,rgba(85,105,72,.06) 51px 53px,transparent 54px 82px,rgba(85,105,72,.038) 83px 85px,transparent 86px),
-    /* chunky strata blocks */
-    linear-gradient(90deg,rgba(112,80,49,.035) 1px,transparent 1px) 0 0/76px 76px,
-    linear-gradient(180deg,rgba(112,80,49,.03) 1px,transparent 1px) 0 0/76px 76px;
-  background-size:
-    280px 330px,
-    340px 390px,
-    430px 470px,
-    370px 420px,
-    310px 360px,
-    460px 510px,
-    600px 920px,
-    680px 1040px,
-    76px 76px,
-    76px 76px;
-  mask-image:linear-gradient(180deg,transparent 0,#000 120px,#000 96%,transparent 100%);
-}
-
-/* Observatory keeps the full depth neutral: roots, sediment and the faint
-   basin/drain geometry are visible without declaring the whole page Swamp. */
-.lower-layer-page--observatory .lower-layer-surface::after{
-  opacity:.4;
-}
-
-/* Farm is a local entanglement regime inside the same earth. Add pooled organic
-   pockets and denser recurrence, but do not replace the brown/black substrate. */
-.lower-layer-page--farm .lower-layer-surface::after{
-  opacity:.43;
-  background:
-    radial-gradient(ellipse at 14% 32%,rgba(84,108,70,.12) 0 34px,transparent 35px),
-    radial-gradient(ellipse at 82% 61%,rgba(65,92,65,.13) 0 46px,transparent 47px),
-    radial-gradient(ellipse at 38% 87%,rgba(74,95,65,.09) 0 58px,transparent 59px),
-    radial-gradient(ellipse at 91% 18%,transparent 0 34px,rgba(105,126,82,.09) 35px 37px,transparent 38px 64px,rgba(105,126,82,.05) 65px 67px,transparent 68px),
-    radial-gradient(ellipse at 8% 73%,transparent 0 47px,rgba(86,103,72,.07) 48px 50px,transparent 51px 78px,rgba(86,103,72,.04) 79px 81px,transparent 82px),
-    linear-gradient(90deg,rgba(112,80,49,.032) 1px,transparent 1px) 0 0/76px 76px,
-    linear-gradient(180deg,rgba(112,80,49,.028) 1px,transparent 1px) 0 0/76px 76px;
-  background-size:520px 760px,640px 880px,720px 980px,620px 920px,700px 1040px,76px 76px,76px 76px;
-}
-
-/* Roots / Evidence is the clearest excavation wall: provenance lines cross old
-   sediment instead of turning the room into a green botanical illustration. */
-.lower-layer-page--roots .lower-layer-surface::before{
-  opacity:.58;
-}
-.lower-layer-page--roots .lower-layer-surface::after{
-  opacity:.42;
-  background:
-    repeating-linear-gradient(180deg,transparent 0 214px,rgba(161,119,72,.07) 215px 218px,transparent 219px 438px),
-    radial-gradient(ellipse at 11% 24%,rgba(136,124,101,.15) 0 7px,transparent 8px),
-    radial-gradient(ellipse at 88% 52%,rgba(119,111,96,.14) 0 6px,transparent 7px),
-    radial-gradient(ellipse at 24% 79%,rgba(149,132,105,.11) 0 8px,transparent 9px),
-    linear-gradient(90deg,rgba(124,88,52,.035) 1px,transparent 1px) 0 0/82px 82px;
-  background-size:100% 100%,360px 430px,430px 510px,500px 590px,82px 82px;
-}
-
-/* Forge is heat under pressure, not an orange redesign. Ember seams appear
-   intermittently below the content and cool back into the common substrate. */
-.lower-layer-page--forge .lower-layer-surface::after{
-  opacity:.46;
-  background:
-    radial-gradient(ellipse at 18% 25%,rgba(181,89,49,.12) 0 24px,transparent 58px),
-    radial-gradient(ellipse at 78% 48%,rgba(155,72,43,.11) 0 30px,transparent 72px),
-    radial-gradient(ellipse at 38% 77%,rgba(192,103,55,.095) 0 22px,transparent 64px),
-    linear-gradient(174deg,transparent 0 48.6%,rgba(169,81,45,.08) 49% 50%,transparent 50.4%) 0 0/520px 780px repeat-y,
-    linear-gradient(90deg,rgba(117,79,47,.03) 1px,transparent 1px) 0 0/76px 76px,
-    linear-gradient(180deg,rgba(117,79,47,.026) 1px,transparent 1px) 0 0/76px 76px;
-  background-size:620px 860px,740px 980px,680px 920px,520px 780px,76px 76px,76px 76px;
-}
-
 @media(max-width:760px){
   body.lower-layer-page::before{height:760px;opacity:.62}
-  body.lower-layer-page::after{opacity:.34}
+  body.lower-layer-page::after{opacity:.28}
   .lower-layer-page .layer-steps,
   .lower-layer-page .lower-spine-grid{grid-template-columns:1fr 1fr}
   .lower-layer-page .layer-step:last-child,
