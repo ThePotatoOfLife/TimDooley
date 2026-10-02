@@ -82,10 +82,15 @@ function normalizeManifest(data) {
 }
 async function loadOwner(owner) {
   if (ownerCache.has(owner)) return ownerCache.get(owner);
+  const url = sourceUrl(owner);
+  const shared = window.__potatoAtlasResources;
   const promise = (async () => {
-    const response = await fetch(sourceUrl(owner), { cache:'no-cache' });
-    if (!response.ok) throw new Error(`${response.status} ${owner}`);
-    const data = await response.json();
+    const data = shared?.fetchJson
+      ? await shared.fetchJson(url)
+      : await fetch(url, { cache:'force-cache' }).then(response => {
+          if (!response.ok) throw new Error(`${response.status} ${owner}`);
+          return response.json();
+        });
     if (data?.type !== 'FeatureCollection') throw new Error(`${owner} is not a FeatureCollection`);
     return data;
   })();
