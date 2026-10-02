@@ -76,12 +76,12 @@ def validate(root: Path) -> list[str]:
         errors.append("father-mesopotamia-core-v2 must be a denser sourced reconstruction, not the old coarse envelope")
 
     ui = ui_path.read_text(encoding="utf-8", errors="replace") if ui_path.is_file() else ""
-    for token in (
-        "spatialGeographyView", "Current conflicts", "Mesopotamia", "Tigris–Euphrates",
-        "Eden", "hypothesis",
-    ):
+    for token in ("atlasSpatialOverlayHost", "Map overlays", "renderSpatialPanel"):
         if token not in ui:
-            errors.append(f"spatial geography UI missing first-class map-context marker: {token}")
+            errors.append(f"advanced spatial overlay UI missing marker: {token}")
+    for retired in ("atlasGeographyHost", "spatialGeographyView", "renderGeographyPicker"):
+        if retired in ui:
+            errors.append(f"duplicate public geography surface returned inside Connections: {retired}")
 
     world_bar = world_bar_path.read_text(encoding="utf-8", errors="replace") if world_bar_path.is_file() else ""
     for token in (
