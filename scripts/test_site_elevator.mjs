@@ -162,6 +162,9 @@ import { fileURLToPath } from 'node:url';
 const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const source=fs.readFileSync(path.join(ROOT,'app/site-elevator.js'),'utf8');
 const css=fs.readFileSync(path.join(ROOT,'app/site-elevator.css'),'utf8');
+const lowerCss=fs.readFileSync(path.join(ROOT,'app/lower-layer.css'),'utf8');
+const planeScene=fs.readFileSync(path.join(ROOT,'app/site-plane-organic-field.svg'),'utf8');
+const belowScene=fs.readFileSync(path.join(ROOT,'app/site-below-root-field.svg'),'utf8');
 
 // VISUAL CONTRACT
 for(const marker of [
@@ -201,7 +204,7 @@ assert.ok(css.includes('.site-elevator-floor-code'),'terminal board needs a numb
 assert.ok(css.includes('[data-elevator-level="heaven"]::before'),'Heaven needs a distinct pixel-biome layer');
 assert.ok(css.includes('html[data-site-floor="heaven"]{'),'resolved Heaven routes should own the root page canvas');
 assert.ok(css.includes('html[data-site-floor="plane"]{'),'resolved Plane routes should own the root page canvas');
-assert.ok(css.includes('linear-gradient(180deg,#1f4b63'),'Plane page atmosphere must visibly rise above the black foundation');
+assert.ok(css.includes('linear-gradient(180deg,#244f66'),'Plane page atmosphere must visibly rise above the black foundation');
 assert.ok(css.includes('linear-gradient(180deg,#0b1028'),'Heaven page atmosphere must visibly rise above the black foundation');
 assert.ok(css.includes('background:transparent!important'),'governed page bodies must not paint opaque black over the floor canvas');
 assert.ok(css.includes('--site-panel:rgba(14,16,38,.80)'),'Heaven must tint shared panels, not only the wallpaper');
@@ -299,14 +302,24 @@ assert.ok(source.includes('const crossFloor=target.levelId!==spatial.levelId'),'
 assert.ok(css.includes('background-color:#244f66'),'Plane needs a non-black fallback canvas even if layered gradients fail');
 assert.ok(css.includes('body:not(.lower-layer-page)::before'),'tree atmosphere must mount inside the transparent body stacking context');
 assert.ok(css.includes('isolation:isolate'),'ordinary floor pages must isolate the atmosphere behind their content');
-assert.ok(css.includes('site-tree-perspective.svg'),'shared floor canvas must include the tall perspective tree asset');
-assert.ok(css.includes('@keyframes site-tree-descent'),'tree atmosphere needs a crown-to-roots scroll sequence');
-assert.ok(css.includes('animation-timeline:scroll(root block)'),'tree descent must follow root-page scroll rather than an independent timer');
-assert.ok(css.includes('visual travel is'),'tree CSS should document the slower-than-page parallax contract');
-assert.ok(css.includes('background-position:50% 62%'),'tree parallax must travel only part of the asset while the page scrolls farther');
-assert.ok(css.includes('scale(1.16)'),'tree should grow subtly without moving one-to-one with the page');
-assert.ok(css.includes('site-ground-approach'),'floor colour needs a restrained terrestrial shift during descent');
-assert.ok(css.includes('body:not(.lower-layer-page)'),'lower-floor cut-earth pages must keep their dedicated root environment');
-assert.ok(css.includes('prefers-reduced-motion:reduce'),'scroll-depth atmosphere must respect reduced-motion preferences');
+assert.ok(css.includes('site-tree-perspective.svg'),'Heaven must keep the luminous tree scene plate');
+assert.ok(css.includes('site-plane-organic-field.svg'),'Plane must use one static side-view scene plate');
+assert.ok(css.includes('--site-scene-y'),'scene plates must move through a single compositor transform variable');
+assert.ok(css.includes('translate3d(0,var(--site-scene-y),0)'),'scene parallax must animate transform rather than background-position');
+assert.equal(css.includes('animation-timeline:scroll(root block)'),false,'scene motion should not depend on repaint-heavy scroll-timeline background positioning');
+assert.ok(source.includes('function installSceneParallax'),'runtime must own one small parallax driver');
+assert.ok(source.includes('scrollY*.46'),'scene layer should move at roughly half the document scroll speed');
+assert.ok(source.includes("requestAnimationFrame(update)"),'scroll events must coalesce into one animation-frame transform update');
+assert.equal(source.includes('lerp'),false,'parallax must not add delayed catch-up interpolation');
+assert.ok(source.includes("'--site-depth-progress'"),'runtime must publish normalized depth for floor colour progression');
+assert.ok(planeScene.includes('first village')&&planeScene.includes('second village'),'Plane scene must contain the simple two-village side-view composition');
+assert.ok(planeScene.includes('stepped, pixel-art-like mountain silhouette'),'Plane scene needs the pixel-art-like mountain landmark');
+assert.ok(planeScene.includes('field spirals and loops'),'Plane scene should prefer circles, loops and spirals to ruler-straight terrain');
+assert.ok(lowerCss.includes('site-below-root-field.svg'),'Below must use one static ground-to-depth root scene plate');
+assert.ok(lowerCss.includes('#354a2e 0%')&&lowerCss.includes('#050303 100%'),'Below must descend from touchable green ground into near-black depth');
+assert.ok(belowScene.includes('touchable surface / grass'),'Below scene must visibly begin at grass/topsoil');
+assert.ok(belowScene.includes('crossing / entangling roots'),'Below scene must use crossing curved roots rather than stripe-built tap roots');
+assert.ok(css.includes('#e29458 100%'),'Heaven background must descend into a warm orange sunset base');
+assert.ok(css.includes('prefers-reduced-motion:reduce'),'2.5D atmosphere must respect reduced-motion preferences');
 
 console.log('Site elevator resolver + visual contract passed.');
