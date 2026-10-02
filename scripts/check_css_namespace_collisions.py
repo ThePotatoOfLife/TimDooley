@@ -32,7 +32,8 @@ MIGRATED_LOCAL_STYLE_SOURCES = [
     ROOT / "science" / "science-library.css",
     ROOT / "world" / "index.html",
 ]
-CANONICAL_TOKEN_LITERALS = ("#090b09", "#f4f0e5", "#b8dc82", "#d8b56b", "#30382f")
+CANONICAL_TOKEN_LITERALS = ("#070707", "#f4f0e5", "#d8b56b", "#302d29", "#0d0d0d")
+RETIRED_GREEN_MARKERS = ("--site-green", "var(--site-green", "--green:", "#b8dc82", "#a8ce72")
 
 RISKY_GLOBAL = {
     ".grid": ("grid-template-columns", "position", "top"),
@@ -50,6 +51,21 @@ if not READER.exists() or 'layout-guard.css' not in READER.read_text(encoding='u
     errors.append("app/reader.css must import layout-guard.css")
 
 style = STYLE.read_text(encoding='utf-8') if STYLE.exists() else ""
+
+# One foundation only: site-system.css owns :root and the bare body selector.
+# Floor/room/component styles may scope variables under their own root class.
+for css_path in sorted((ROOT / "app").glob("*.css")):
+    if css_path == SITE_SYSTEM:
+        continue
+    css_text = css_path.read_text(encoding="utf-8", errors="ignore")
+    if re.search(r":root\s*\{", css_text, flags=re.I):
+        errors.append(f"{css_path.relative_to(ROOT)} must not define :root; scope room/floor variables to the component root")
+    if re.search(r"(?m)(^|\})\s*body\s*\{", css_text, flags=re.I):
+        errors.append(f"{css_path.relative_to(ROOT)} must not define bare body styles; site-system.css owns the document foundation")
+    for marker in RETIRED_GREEN_MARKERS:
+        if marker.casefold() in css_text.casefold():
+            errors.append(f"{css_path.relative_to(ROOT)} still contains retired green-theme marker: {marker}")
+
 
 if not SITE_SYSTEM.exists():
     errors.append("app/site-system.css is missing")
@@ -102,7 +118,15 @@ for selector, props in RISKY_GLOBAL.items():
         if any(re.search(rf"\b{re.escape(prop)}\s*:", block) for prop in props):
             warnings.append(f"global {selector} still controls layout; consider namespacing when next touched")
 
-html_files = [p for p in ROOT.rglob("*.html") if ".git" not in p.parts]
+html_files = [
+    p for p in ROOT.rglob("*.html")
+    if ".git" not in p.parts and "archive" not in p.parts and "docs" not in p.parts
+]
+for path in html_files:
+    text = path.read_text(encoding="utf-8", errors="ignore")
+    if "var(--site-green" in text or "--site-green" in text:
+        errors.append(f"{path.relative_to(ROOT)} still references retired --site-green")
+
 for path in html_files:
     text = path.read_text(encoding="utf-8", errors="ignore")
     if "app/style.css" not in text and "../app/style.css" not in text and "../../app/style.css" not in text:
