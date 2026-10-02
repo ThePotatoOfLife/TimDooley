@@ -302,6 +302,36 @@ def main()->int:
             if alias not in aliases:
                 errors.append(f"site access below entry missing alias: {alias}")
 
+    # Shared lower-floor visual contract. Keep the four public stations on one
+    # underground terrain owner so page-local CSS cannot silently fork the floor.
+    lower_css_path=ROOT/"app/lower-layer.css"
+    if not lower_css_path.is_file():
+        errors.append("missing shared lower-layer visual system: app/lower-layer.css")
+    else:
+        lower_css=lower_css_path.read_text(encoding="utf-8",errors="replace")
+        for marker in ("body.lower-layer-page","Root ceiling","spiral","--lower-soil","--lower-root","--lower-stone"):
+            if marker not in lower_css:
+                errors.append(f"lower-layer visual system missing marker: {marker}")
+
+    visual_pages={
+        "below/index.html":("../app/lower-layer.css", "lower-layer-page--observatory", "data-lower-stage=\\\"observe\\\""),
+        "shadow-farm/index.html":("../app/lower-layer.css", "lower-layer-page--farm", "data-lower-stage=\\\"farm\\\""),
+        "rooms/archive-sources/index.html":("../../app/lower-layer.css", "lower-layer-page--roots", "data-lower-stage=\\\"roots\\\""),
+        "rooms/research-lab/index.html":("../../app/lower-layer.css", "lower-layer-page--forge", "data-lower-stage=\\\"forge\\\""),
+    }
+    for path,markers in visual_pages.items():
+        html=read(path)
+        for marker in markers:
+            if marker not in html:
+                errors.append(f"lower-layer visual contract missing from {path}: {marker}")
+        if "lower-layer-surface" not in html:
+            errors.append(f"lower-layer content surface missing from {path}")
+
+    if '<style>' in below:
+        errors.append("Below Observatory must not regress to a monolithic inline stylesheet")
+    if "../app/below-page.css" not in below:
+        errors.append("Below Observatory must load extracted app/below-page.css")
+
     if errors:
         print("LOWER FIELD ORIENTATION: FAIL")
         for error in errors:
