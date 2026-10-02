@@ -1,11 +1,24 @@
 (()=>{'use strict';
 const BASE='/TimDooley/';
 const esc=s=>String(s??'').replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
-let manifest,roleIndex,enhancements,activityIndex,currentDesk;let activeRole='all',scope='all';
+let manifest,roleIndex,roleCensus,enhancements,activityIndex,currentDesk;let activeRole='all',scope='all';
 async function get(path){const r=await fetch(BASE+path);if(!r.ok)throw new Error(path);return r.json()}
 function dossierHref(id){return 'file/?character='+encodeURIComponent(id)}
 function initials(name){return String(name||'?').split(/\s+|\//).filter(Boolean).slice(0,2).map(x=>x[0]?.toUpperCase()||'').join('')||'?'}
 function roleFor(id){const out=[];for(const role of roleIndex?.roles||[])if((role.matches||[]).some(x=>x.entity_id===id))out.push(role.label);return out}
+function roleBoundary(label){
+ const s=String(label||'').toLowerCase();
+ if(s.includes('guardian dog'))return'Constructive Dog form: evidence discipline, proportional warning, protection and a stopping condition.';
+ if(s.includes('dog'))return'Project role for tracking, pursuit, reactive looping or boundary pressure; not a literal species, diagnosis, crime or permanent identity.';
+ if(s.includes('farmer'))return'Project systems-role for cultivation, enclosure, classification, harvest or extraction; the label alone does not establish trafficking, exploitation, crime or occult identity.';
+ if(s.includes('footstool'))return'Project topology/relationship image; not a statement of human worth.';
+ if(s.includes('mud dweller'))return'Reversible project state for unresolved entanglement; not a diagnosis or permanent essence.';
+ return'Scene- and source-bounded archive role. Read the dated event before the label.';
+}
+function accountingFor(role){
+ const rows=roleCensus?.role_accounting_map||[],s=String(role?.label||'').toLowerCase();
+ return rows.find(x=>s.includes(String(x.role_family||'').split('/')[0].trim().toLowerCase()))||null;
+}
 function activityBand(f){
  const row=(activityIndex?.records||[]).find(x=>x.id===f.id);
  if(row)return[row.band,row.band==='recovery'?'recovery active':row.band,row.last||'',row.reason||''];
@@ -42,6 +55,12 @@ function renderCurrentDesk(){
  box.innerHTML=(currentDesk?.items||[]).sort((a,b)=>a.priority-b.priority).map(x=>{const f=byId[x.id]||{};return '<a class="current-card" href="'+dossierHref(x.id)+'"><span>'+esc(x.state)+'</span><b>'+esc(f.name||x.id)+'</b><small>'+esc(x.last||'')+'</small><p>'+esc(x.why||'')+'</p></a>'}).join('');
 }
 function setScope(next){scope=next;document.getElementById('showAll')?.classList.toggle('active',scope==='all');document.getElementById('showCurrent')?.classList.toggle('active',scope==='current');renderFiles()}
+function renderRoleGuide(){
+ const box=document.getElementById('roleGuideGrid');if(!box)return;
+ const ids=['dog','guardian-dog','farmer','mud-dweller','guardian','builder'];
+ box.innerHTML=ids.map(id=>{const r=roleIndex?.roles?.find(x=>x.id===id);if(!r)return'';const a=accountingFor(r),count=(r.matches||[]).length;return'<button type="button" class="role-guide-card" data-guide-role="'+esc(id)+'"><span>'+esc(r.family||'archive role')+' · '+count+' indexed match'+(count===1?'':'es')+'</span><b>'+esc(r.label)+'</b><p>'+esc(r.definition||'')+'</p>'+(a?'<small>'+esc(a.effect||'state-only')+' · '+esc(a.meaning||'')+'</small>':'')+'<em>'+esc(roleBoundary(r.label))+'</em></button>'}).join('');
+ document.querySelectorAll('[data-guide-role]').forEach(b=>b.onclick=()=>{activeRole=b.dataset.guideRole;renderRolebar();renderRoleResults();renderFiles();document.getElementById('roleResults')?.scrollIntoView({behavior:'smooth',block:'nearest'})});
+}
 function renderRolebar(){
  const fav=['all','dog','guardian-dog','farmer','footstool','dweller','mud-dweller','potato','tomato','angel','guardian','builder'];
  document.getElementById('rolebar').innerHTML=fav.map(id=>{const r=id==='all'?{label:'All files'}:roleIndex.roles.find(x=>x.id===id);if(!r)return'';return'<button class="rolebtn '+(id===activeRole?'active':'')+'" data-role="'+id+'">'+esc(r.label)+'</button>'}).join('');
@@ -49,9 +68,9 @@ function renderRolebar(){
 }
 function renderRoleResults(){
  const box=document.getElementById('roleResults');if(activeRole==='all'){box.className='role-results';box.innerHTML='';return}
- const r=roleIndex.roles.find(x=>x.id===activeRole);if(!r)return;const hits=r.matches||[];
- box.className='role-results show';box.innerHTML='<h2>'+esc(r.label)+'</h2><p>'+esc(r.definition||'')+'</p>'+(hits.length?hits.map(m=>{const known=(manifest.characters||[]).some(f=>f.id===m.entity_id),href=known?dossierHref(m.entity_id):(m.route?BASE+m.route:'#');return'<div class="role-hit"><b>'+esc(m.label)+'</b> <small>'+esc(m.date||'')+' · '+esc(m.status||'')+'</small><p>'+esc(m.note||'')+'</p><a href="'+href+'">Open '+(known?'dossier':'source/room')+' →</a></div>'}).join(''):'<p>No named assignment is currently safe enough to show. Open the role owner instead.</p>')+'<p><a href="'+BASE+(r.owner||'knowledge/world/potatoverse-cast-role-ecology.json')+'">Open role owner →</a></p>';
+ const r=roleIndex.roles.find(x=>x.id===activeRole);if(!r)return;const hits=r.matches||[],a=accountingFor(r);
+ box.className='role-results show';box.innerHTML='<div class="role-result-head"><div><p class="eyebrow-lite">Mythic role · evidence-bounded</p><h2>'+esc(r.label)+'</h2></div><span>'+esc(r.family||'role')+'</span></div><p>'+esc(r.definition||'')+'</p><p class="role-result-boundary"><b>What this means here:</b> '+esc(roleBoundary(r.label))+'</p>'+(a?'<p class="role-accounting-note"><b>Archive accounting:</b> '+esc(a.effect||'state-only')+' · '+esc(a.meaning||'')+' · '+esc(a.pricing_gate||'no automatic price')+'</p>':'')+(hits.length?hits.map(m=>{const known=(manifest.characters||[]).some(f=>f.id===m.entity_id),href=known?dossierHref(m.entity_id):(m.route?BASE+m.route:'#');return'<div class="role-hit"><b>'+esc(m.label)+'</b> <small>'+esc(m.date||'')+' · '+esc(m.status||'')+'</small><p>'+esc(m.note||'')+'</p><a href="'+href+'">Open '+(known?'dossier':'source/room')+' →</a></div>'}).join(''):'<p>No named assignment is currently safe enough to show. Open the role owner instead.</p>')+'<p><a href="'+BASE+(r.owner||'knowledge/world/potatoverse-cast-role-ecology.json')+'">Open role owner →</a></p>';
 }
 function shuffle(){const figs=manifest.characters||[];if(!figs.length)return;const f=figs[Math.floor(Math.random()*figs.length)];location.href=dossierHref(f.id)}
-(async()=>{[manifest,roleIndex,enhancements,activityIndex,currentDesk]=await Promise.all([get('knowledge/cia/manifest.json'),get('knowledge/cia/role-index.json'),get('knowledge/cia/enhancements-index.json'),get('knowledge/cia/activity-index.json'),get('knowledge/cia/current-desk.json')]);renderCabinet();renderCurrentDesk();renderRolebar();renderRoleResults();renderFiles();document.getElementById('search').addEventListener('input',renderFiles);document.getElementById('showAll').onclick=()=>setScope('all');document.getElementById('showCurrent').onclick=()=>setScope('current');document.getElementById('shuffle').onclick=shuffle})().catch(()=>{document.getElementById('status').textContent='Cabinet filters could not initialize; direct dossier links remain usable.'});
+(async()=>{[manifest,roleIndex,roleCensus,enhancements,activityIndex,currentDesk]=await Promise.all([get('knowledge/cia/manifest.json'),get('knowledge/cia/role-index.json'),get('knowledge/cia/role-archetype-census.json'),get('knowledge/cia/enhancements-index.json'),get('knowledge/cia/activity-index.json'),get('knowledge/cia/current-desk.json')]);renderCabinet();renderCurrentDesk();renderRoleGuide();renderRolebar();renderRoleResults();renderFiles();document.getElementById('search').addEventListener('input',renderFiles);document.getElementById('showAll').onclick=()=>setScope('all');document.getElementById('showCurrent').onclick=()=>setScope('current');document.getElementById('shuffle').onclick=shuffle})().catch(()=>{document.getElementById('status').textContent='Cabinet filters could not initialize; direct dossier links remain usable.'});
 })();
