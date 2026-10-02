@@ -243,6 +243,7 @@ def main() -> int:
             "exact-wording-only","minimum-strength","bible-book","timeline_event_ids","TIM_LIVED_ACTORS",
             "view==='tim-lived'","childhood-cultivation-gardener-precursor-1992","christian-vocabulary-enters-age12-1999",
             "potato-birth-hidden-life-2020-12-25","emmaus-return-before-recognition-bread","john21-shore-recognition-feeding-after-return",
+            "biblicalSequence","correspondences","maximumClaim","scriptureContextItems","comparison-sequences","Points of contact","Maximum defensible claim",
         ),
         "app/bible-study.js", errors,
     )
@@ -251,6 +252,7 @@ def main() -> int:
         (
             "visible.map(row=>renderRelation","deepMatches(","overlapCount(","deepCandidates","wordScore","refScore","scrollIntoView(",
             "url.searchParams.set('libraryBook'","url.searchParams.set('libraryChapter'","state.focus='view:all'","bible:relation-reference",
+            '<section class="side project-side"><h3>Tim / Son / project</h3></section>',
         ),
         "app/bible-study.js",
         errors,
@@ -278,7 +280,7 @@ def main() -> int:
     )
     forbid(mining_app,("scrollIntoView(",),"app/bible-mining-wave19-loader.js",errors)
 
-    require(css,(".reader-toolbar",".comparison-nav",".results-panel",".relation-details",".active-relation"),"app/bible-study.css",errors)
+    require(css,(".reader-toolbar",".comparison-nav",".results-panel",".relation-details",".active-relation",".comparison-sequences",".comparison-sequence",".contact-points",".maximum-claim",".scripture-context"),"app/bible-study.css",errors)
     require(builder,('class="static-relation"','<details','class="static-index"','assemble_relations','assemble_fragments','load_manifest','What happened / what the project is saying','Why this matters / what it later becomes','project_sequence_html','project_quote','public_wording'),"scripts/build_bible_study.py",errors)
 
     if MANIFEST.exists():
