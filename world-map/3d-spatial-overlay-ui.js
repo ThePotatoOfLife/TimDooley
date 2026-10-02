@@ -82,7 +82,7 @@ if (!host && layersMenu) {
   layersMenu.appendChild(divider);
   host = document.createElement('section');
   host.id = 'atlasSpatialOverlayHost';
-  host.setAttribute('aria-label','Sacred and territorial overlays');
+  host.setAttribute('aria-label','Map overlays');
   layersMenu.appendChild(host);
 }
 
@@ -94,7 +94,7 @@ if (!geographyHost && analyzeMenu) {
   divider.className = 'menu-sep';
   geographyHost = document.createElement('section');
   geographyHost.id = 'atlasGeographyHost';
-  geographyHost.setAttribute('aria-label','Historical textual and interpretive geographies');
+  geographyHost.setAttribute('aria-label','Current conflicts and contextual geographies');
   if (traversalTitle) {
     analyzeMenu.insertBefore(divider, traversalTitle);
     analyzeMenu.insertBefore(geographyHost, traversalTitle);
@@ -231,7 +231,7 @@ function renderControls() {
   if (host) {
     const rows = spatial.entries();
     const groups = GROUP_ORDER.map(family => ({ family, rows:rows.filter(row => row.family === family) })).filter(group => group.rows.length);
-    host.innerHTML = `<div class="menu-title">Sacred / territorial overlays</div>${groups.map(group => `
+    host.innerHTML = `<div class="menu-title">Map overlays</div>${groups.map(group => `
       <div class="spatial-group" data-family="${esc(group.family)}">
         <div class="spatial-group-title">${esc(GROUP_LABELS[group.family] || group.family)}</div>
         ${group.rows.map(row => {
