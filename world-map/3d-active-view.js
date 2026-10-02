@@ -20,6 +20,8 @@ let demography = null;
 let viewProjections = null;
 let current = null;
 let refreshSerial = 0;
+let refreshScheduled = false;
+let pendingReason = 'refresh';
 let timeState = readTimeState();
 
 function fetchJson(url) {
@@ -216,10 +218,23 @@ async function refresh(reason = 'refresh') {
   return current;
 }
 
+function scheduleRefresh(reason = 'refresh') {
+  pendingReason = reason;
+  if (refreshScheduled) return;
+  refreshScheduled = true;
+  queueMicrotask(async () => {
+    refreshScheduled = false;
+    const reasonToRun = pendingReason;
+    pendingReason = 'refresh';
+    await refresh(reasonToRun);
+  });
+}
+
 window.__potatoAtlasActiveView = {
   get current() { return current; },
   forCountry,
   refresh,
+  scheduleRefresh,
   formatObservation,
 };
 
@@ -231,11 +246,11 @@ for (const eventName of [
   'potato-atlas-query-change',
   'potato-atlas-relation-mode-change',
 ]) {
-  window.addEventListener(eventName, () => queueMicrotask(() => refresh(eventName)));
+  window.addEventListener(eventName, () => scheduleRefresh(eventName));
 }
 window.addEventListener('atlas-time-change', event => {
   timeState = event.detail || readTimeState();
-  queueMicrotask(() => refresh('atlas-time-change'));
+  scheduleRefresh('atlas-time-change');
 });
 
 await refresh('ready');
