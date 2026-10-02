@@ -247,6 +247,7 @@ def main() -> int:
             "readerNarrative","readerResonance","Spudlight reading","data-scripture-ref","BibleScriptureReader?.openReference","reading-rail","source-pair","technical-grid",
             "readerScene","chronicle-scene","The scene","source-grounded narrative reconstruction","Under the biblical light",
             "readerSequence","continuous-sequence","Continuous reading","Reading result","sequence-ref",
+            "result-preview","result-tags","hasScene","hasSequence",
         ),
         "app/bible-study.js", errors,
     )
@@ -284,7 +285,7 @@ def main() -> int:
     forbid(mining_app,("scrollIntoView(",),"app/bible-mining-wave19-loader.js",errors)
 
     require(css,(".reader-toolbar",".comparison-nav",".results-panel",".relation-details",".active-relation",".comparison-sequences",".comparison-sequence",".contact-points",".maximum-claim",".scripture-context",".spudlight-reading",".source-pair",".reading-rail",".story-pair",".interpretation-pair",".technical-grid",".scripture-ref-button",".chronicle-scene",".chronicle-beat",".continuous-sequence",".continuous-step",".continuous-sequence-conclusion"),"app/bible-study.css",errors)
-    require(builder,('class="static-relation"','<details','class="static-index"','assemble_relations','assemble_fragments','load_manifest','What happened / what the project is saying','Why this matters / what it later becomes','project_sequence_html','project_quote','public_wording'),"scripts/build_bible_study.py",errors)
+    require(builder,('class="static-relation"','<details','class="static-index"','assemble_relations','assemble_fragments','load_manifest','Archive grounding','Why this matters / what it later becomes','project_sequence_html','reader_scene','reader_sequence','static-chronicle','static-continuous-sequence','project_quote','public_wording'),"scripts/build_bible_study.py",errors)
 
     if MANIFEST.exists():
         try:
