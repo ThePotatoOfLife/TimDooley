@@ -175,6 +175,53 @@ def main() -> int:
         elif source.find('class="room-actions"', first_reader) < 0:
             errors.append(f"{rel} first substantive section no longer exposes concrete subject routes")
 
+    # Nested Room subject-first quality gate.
+    # A Room should teach the subject before it explains House mechanics, and
+    # it should not survive on generic boilerplate that could be pasted elsewhere.
+    maintenance_terms=(
+        "backend","canonical owner","owner / projection","registry","projection surface",
+        "route family","machine-readable","implementation detail",
+    )
+    generic_phrases=(
+        "this room exists to","this room asks","this room studies",
+        "this room contains","this room connects",
+    )
+    subject_markers=(
+        'class="room-essay"', 'data-room-reader-body',
+        'class="room-language"', 'class="room-run"',
+        'class="room-ledger"', 'class="room-reader"',
+    )
+    for route in registered:
+        rel=route.strip("/")+"/index.html"
+        source=(ROOT/rel).read_text(encoding="utf-8",errors="replace")
+        header_end=source.lower().find("</header>")
+        tail=source[header_end+9:] if header_end>=0 else source
+        first_subject=min((tail.find(m) for m in subject_markers if tail.find(m)>=0), default=-1)
+        if first_subject<0:
+            errors.append(f"{rel} missing authored subject-first material")
+            continue
+        first_chunk=plain_text(tail[first_subject:first_subject+4200]).casefold()
+        # Maintenance vocabulary is allowed in House Architecture and Research Programmes,
+        # where architecture/process is itself the subject. Elsewhere it should not lead.
+        if rel not in {"rooms/inside/house-architecture/index.html","rooms/inside/research-programmes/index.html"}:
+            leaked=[term for term in maintenance_terms if term in first_chunk]
+            if leaked:
+                errors.append(f"{rel} first authored material leaks maintenance vocabulary: {', '.join(leaked[:3])}")
+        # Require at least one domain-specific noun signal beyond generic Room boilerplate.
+        body_text=plain_text(tail)
+        if len(body_text)<1800:
+            errors.append(f"{rel} is too thin for an inhabited Room: {len(body_text)} plain-text characters")
+        generic_hits=sum(body_text.casefold().count(p) for p in generic_phrases)
+        if generic_hits>=5:
+            errors.append(f"{rel} overuses generic Room boilerplate ({generic_hits} repeated framing phrases)")
+        # A mature Room should expose orientation + explanation/examples + a deeper route.
+        has_deep=bool(re.search(r'<a\b[^>]+href=["\'][^"\']+(?:knowledge/|explore/|context/|timeline/|works/|science/|religion/|history/)[^"\']*["\']',source,re.I))
+        has_examples=bool(re.search(r'<(?:div|article)\b[^>]*class=["\'][^"\']*(?:room-run|case|card|ledger|grid)[^"\']*["\']',source,re.I))
+        if not has_examples:
+            errors.append(f"{rel} lacks concrete examples/cases/distinctions")
+        if not has_deep:
+            errors.append(f"{rel} lacks a shallow-to-deep continuation into evidence or a specialist reader")
+
     # Nested subject Rooms must not reintroduce a generic local-center splash
     # between the subject header and the authored reader material.
     nested_meta_hits=[]
