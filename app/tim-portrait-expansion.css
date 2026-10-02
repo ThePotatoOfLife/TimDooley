@@ -4,7 +4,7 @@
 .tim-claim-dossier .claim-lead{font:400 22px/1.62 var(--site-font-serif);color:#e3e1d7}
 .claim-stream{font:400 17px/1.82 var(--site-font-serif);color:#d5d8d0;margin:18px 0 8px}
 .claim-bit{display:inline}
-.claim-bit::after{content:"  ·  ";color:#657063}
+.claim-bit::after{content:"  ·  ";color:var(--site-line)}
 .claim-bit:last-child::after{content:""}
 .claim-bit time{font:700 9px/1 var(--site-font-sans);letter-spacing:.07em;text-transform:uppercase;color:var(--site-faint);margin-right:4px;white-space:nowrap}
 .claim-bit q{quotes:"“" "”" "‘" "’"}
