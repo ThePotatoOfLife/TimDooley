@@ -69,6 +69,27 @@ Keep separate files only when separation preserves something important: a primar
 
 Indexes, manifests and projections should point to the canonical material rather than repeat it.
 
+## World Map product direction — 2026-10-02
+
+North-star question: **What is happening where, and how is it connected?**
+
+Public structure: **Countries / Now / Connections / History / Map**. Keep the underlying atlas deep, but make the first screen legible to someone who has never seen the project.
+
+- [x] **MAP-PRODUCT-001 · Purpose-first navigation:** replace registry/taxonomy-first top controls with Countries, Now, Connections, History and Map.
+- [x] **MAP-PRODUCT-002 · Demote cockpit controls:** move Compare, Details, projection, reset and extra modules into Map; move N/W/E/S into Countries as project lenses.
+- [x] **MAP-PRODUCT-003 · Plain-language first screen:** remove D4 / network-traversal / internal-coordinate wording from the ordinary landing experience.
+- [ ] **MAP-PRODUCT-004 · Runtime-weight pass:** profile initial requests/module weight; make anything not required for search, ordinary country browsing, public controls or lightweight current context lazy.
+- [ ] **MAP-PRODUCT-005 · Country completeness:** every country should answer a consistent useful core: people, economy, government/institutions, religion/culture, regions/cities, major resources/infrastructure, current context and important external connections.
+- [ ] **MAP-PRODUCT-006 · Current-world layer family:** expand Now beyond conflicts only when the data earns it—major elections/government change, disasters, displacement, sanctions, closures/outages or other globally useful dated context—with freshness visible.
+- [ ] **MAP-PRODUCT-007 · Conflict hierarchy:** add severity/status/filtering and regional/theatre summaries without live tactical unit tracking; distinguish war, civil war, insurgency, political violence and humanitarian crisis.
+- [ ] **MAP-PRODUCT-008 · Historical geography library:** retain deeper biblical/ancient/project overlays but expose them through search/context and History rather than the permanent first-level UI.
+- [ ] **MAP-PRODUCT-009 · Connection stories:** turn raw relation lines into readable explanations (“why these places are connected”) with trade, finance, institutions, security, energy, infrastructure, research and culture as evidence-backed routes.
+- [ ] **MAP-PRODUCT-010 · Place drill-down:** country → region/state/province → city/place should feel like one continuous exploration rather than separate specialist modes.
+- [ ] **MAP-PRODUCT-011 · Visitor presets:** consider a small set of meaningful one-click views such as “Conflicts now”, “Population”, “Economy”, “Religion”, “Trade & systems”, “History” only if they reduce effort rather than add another toolbar.
+- [ ] **MAP-PRODUCT-012 · URL/shareability:** every meaningful view should be linkable—selected place, active context, time state and useful filters—without exposing internal IDs in visible copy.
+- [ ] **MAP-PRODUCT-013 · Empty-map value:** the default world view should contain enough quiet information to invite exploration without becoming a dashboard wall: countries, capitals at useful scale, current conflict signals and clear hover/click affordance.
+- [ ] **MAP-PRODUCT-014 · Maintenance budget:** prefer a few canonical datasets and derived views over bespoke one-off map modules. New layers need an owner, freshness rule, public purpose and retirement rule.
+
 ## Site-wide bug & enhancement queue — 2026-10-02
 
 - [x] **BUG-DEPLOY-001 · TTS/CSS deploy chain:** version shared TTS CSS/JS assets, align shell validators with cache-busted URLs, and make Shadow Farm source-own its specialist reader.

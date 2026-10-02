@@ -76,26 +76,27 @@ def validate(root: Path) -> list[str]:
         errors.append("father-mesopotamia-core-v2 must be a denser sourced reconstruction, not the old coarse envelope")
 
     ui = ui_path.read_text(encoding="utf-8", errors="replace") if ui_path.is_file() else ""
-    for token in (
-        "spatialGeographyView", "Current conflicts", "Mesopotamia", "Tigris–Euphrates",
-        "Eden", "hypothesis",
-    ):
+    for token in ("atlasSpatialOverlayHost", "Map overlays", "renderSpatialPanel"):
         if token not in ui:
-            errors.append(f"spatial geography UI missing first-class map-context marker: {token}")
+            errors.append(f"advanced spatial overlay UI missing marker: {token}")
+    for retired in ("atlasGeographyHost", "spatialGeographyView", "renderGeographyPicker"):
+        if retired in ui:
+            errors.append(f"duplicate public geography surface returned inside Connections: {retired}")
 
     world_bar = world_bar_path.read_text(encoding="utf-8", errors="replace") if world_bar_path.is_file() else ""
     for token in (
-        "GEOGRAPHIES", "Geography", "data-geography-overlay", "__potatoAtlasSpatialOverlays",
+        "CURRENT_CONTEXT", "HISTORY_CONTEXT", "__potatoAtlasSpatialOverlays",
+        "atlasNowMenu", "atlasHistoryGeographies",
         "conflict.active-theatres", "father.mesopotamia-core",
         "physical.tigris-euphrates-basin", "father.eden-context",
     ):
         if token not in world_bar:
-            errors.append(f"canonical visible World Map bar missing first-class map-context marker: {token}")
+            errors.append(f"canonical World Map navigation missing purpose-first map-context marker: {token}")
     for demoted in ("biblical.genesis-15','Genesis 15", "modern.greater-israel','Greater Israel"):
         if demoted in world_bar:
             errors.append(f"deep interpretive geography must stay out of the lightweight first-class World Bar: {demoted}")
-    if "spatial.toggle(id)" not in world_bar:
-        errors.append("Geography toolbar must use spatial.toggle(id) so a checked geography can be deselected")
+    if "await spatial.toggle(id)" not in world_bar:
+        errors.append("Now/History controls must use spatial.toggle(id) so checked context can be deselected")
 
     guard = guard_path.read_text(encoding="utf-8", errors="replace") if guard_path.is_file() else ""
     for event_name in ("error", "unhandledrejection"):

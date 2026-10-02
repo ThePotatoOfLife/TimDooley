@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>World Map — country relationship graph</title>
-<meta name="description" content="Interactive World Map with countries, relationships, evidence, time, networks, demographics and project-symbolic layers.">
+<title>World Map — countries, conflicts and connections</title>
+<meta name="description" content="Explore countries, current conflicts, connections, statistics and historical context on one interactive world map.">
 <link rel="canonical" href="https://thepotatooflife.github.io/TimDooley/world-map/">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maplibre-gl@6.9.0/dist/maplibre-gl.css">
 <script type="importmap">
@@ -24,7 +24,7 @@ html.potato-atlas-map-moving .mapwrap *{backdrop-filter:none!important;box-shado
 </head>
 <body><div id="atlasApp" class="app panel-collapsed" data-reader-surface="world-map">
 <header class="top">
-  <div class="brand"><b>World Map</b><small>Map first · countries, layers, connections, time and evidence</small></div>
+  <div class="brand"><b>World Map</b><small>What is happening where, and how is it connected?</small></div>
   <input id="search" list="country-list" placeholder="Find country…" aria-label="Find country"><datalist id="country-list"></datalist>
   <div class="quick-actions"><button id="compare">Compare</button><button id="panelToggle" class="panel-toggle" title="Show or hide deeper inspector" aria-label="Show or hide deeper inspector">Inspect</button></div>
   <div id="atlasWorldBarHost" aria-label="World map controls"></div>
@@ -41,30 +41,30 @@ html.potato-atlas-map-moving .mapwrap *{backdrop-filter:none!important;box-shado
     <div class="boundary">Project terminology only. Case markers use broad state centroids, not homes or precise locations.</div>
   </div></details>
 
-  <details class="menu" id="traceMenu"><summary>Analyze</summary><div class="menu-pop">
-    <div class="menu-title">Connections</div>
-    <button id="relations" class="active">Relationship lines</button>
+  <details class="menu" id="traceMenu"><summary>Connections</summary><div class="menu-pop">
+    <div class="menu-title">Show connections</div>
+    <button id="relations" class="active">Connection lines</button>
     <select id="relationType" title="Filter relation type"><option value="all">All relation types</option></select>
     <div class="menu-sep"></div>
-    <div class="menu-title">Network traversal</div>
-    <select id="traceDepth" title="Recursive relationship trace depth"><option value="1">1 hop · immediate</option><option value="2">2 hops</option><option value="3">3 hops</option></select>
-    <button id="fit" title="Fit selected country, comparison, or active trace">Fit active set</button>
+    <div class="menu-title">Follow connections</div>
+    <select id="traceDepth" title="How far to follow connections"><option value="1">1 step · direct</option><option value="2">2 steps</option><option value="3">3 steps</option></select>
+    <button id="fit" title="Fit the selected countries or connection trace">Fit what I’m exploring</button>
   </div></details>
 
-  <details class="menu" id="timeMenu"><summary>Time</summary><div class="menu-pop">
-    <div class="menu-title">Historical state</div>
-    <select id="timeMode" title="Time mode"><option value="current">Current</option><option value="as_of">As of…</option><option value="changed_between">Compare dates…</option></select>
+  <details class="menu" id="timeMenu"><summary>History</summary><div class="menu-pop">
+    <div class="menu-title">Time</div>
+    <select id="timeMode" title="Choose a time view"><option value="current">Now</option><option value="as_of">Go to a date…</option><option value="changed_between">Compare two dates…</option></select>
     <input id="timeDate" type="date" aria-label="Historical date" hidden>
     <input id="timeDate2" type="date" aria-label="Comparison date" hidden>
-    <button id="timeNow">Return to current</button>
+    <button id="timeNow">Return to now</button>
     <div class="boundary">Historical mode is conservative: undated records remain explicitly unknown, and current overlays are not silently treated as historical truth.</div>
   </div></details>
 
-  <details class="menu" id="viewMenu"><summary>View</summary><div class="menu-pop">
-    <div class="menu-title">Geometry</div>
-    <select id="height" title="Polygon extrusion"><option value="flat">Flat countries</option><option value="population">Height · population</option><option value="area">Height · area</option></select>
-    <button id="tilt">Toggle tilt</button><button id="globe">Toggle globe</button><button id="world">Reset world</button>
-    <div class="menu-sep"></div><button id="focusMode">Focus mode · hide overlays</button>
+  <details class="menu" id="viewMenu"><summary>Map</summary><div class="menu-pop">
+    <div class="menu-title">Display</div>
+    <select id="height" title="Country height on the map"><option value="flat">No country height</option><option value="population">Height by population</option><option value="area">Height by area</option></select>
+    <button id="tilt">Tilt map</button><button id="globe">Globe view</button><button id="world">Fit whole world</button>
+    <div class="menu-sep"></div><button id="focusMode">Hide extra overlays</button>
   </div></details>
 
   <a class="top-home" href="../">Home</a>
@@ -75,20 +75,20 @@ html.potato-atlas-map-moving .mapwrap *{backdrop-filter:none!important;box-shado
     <div id="status" class="status" hidden></div>
     <div id="atlasTimeState" class="time-state" hidden>Current state</div>
     <div id="camera" class="camera">drag · zoom · rotate · pitch</div>
-    <div id="hud" class="hud"><b>D4 · World</b> <span class="muted">Click countries to build a working set. Use Layers, Analyze, Time or View when needed.</span></div>
-    <button id="mapInspectorToggle" class="map-ui-toggle" title="Toggle inspector">Inspector</button>
+    <div id="hud" class="hud"><b>Explore the world</b> <span class="muted">Click a country, open Now for current conflicts, or follow Connections between places.</span></div>
+    <button id="mapInspectorToggle" class="map-ui-toggle" title="Show or hide details">Details</button>
   </div>
   <aside id="panel" class="panel">
-    <div class="eyebrow">World · relationship map</div><h1>Explore the world</h1>
-    <p class="muted">Select countries directly on the map. The upper-left country card carries ordinary context; deeper investigation only appears when you ask for it.</p>
-    <section class="map-inquiry" aria-label="Questions this map can investigate">
-      <div class="question-stub"><b>How are countries connected?</b><span>Through trade, finance, security, institutions, infrastructure, energy, culture, research and other typed relationships—not only borders.</span></div>
-      <div class="question-stub"><b>What does one country depend on another for?</b><span>Layer memberships and country records can expose dependencies, capabilities and shared systems while leaving unavailable evidence unknown.</span></div>
-      <div class="question-stub"><b>How do relationships change over time?</b><span>Time belongs to the relation itself. Dated validity, current state and unknown history should not be silently collapsed.</span></div>
-      <div class="question-stub"><b>What is empirical North versus project-symbolic North?</b><span>Observable memberships and country data remain distinct from Potatoverse geopolitical or symbolic classifications.</span></div>
+    <div class="eyebrow">World map</div><h1>What is happening where?</h1>
+    <p class="muted">Start with a country or a current conflict. The map can then show what the place is like, what is happening there, what it connects to, and how that changes through time.</p>
+    <section class="map-inquiry" aria-label="Ways to explore the world map">
+      <div class="question-stub"><b>Pick a country</b><span>See population, economy, religion, institutions, regions and other ordinary country context.</span></div>
+      <div class="question-stub"><b>See what is happening now</b><span>Turn on dated conflict context without pretending the map has live tactical positions.</span></div>
+      <div class="question-stub"><b>Follow connections</b><span>Explore trade, money, institutions, security, infrastructure, research and project relationships between places.</span></div>
+      <div class="question-stub"><b>Move through history</b><span>Use dated views and historical geography while keeping reconstruction, interpretation and present-day borders distinct.</span></div>
     </section>
     <nav class="map-deep" data-projection-surface aria-label="Explore map systems more deeply"><a href="../explore/#branch=north">North systems</a><a href="../explore/#branch=world">World systems</a><a href="../context/source-authority/">Sources</a><a href="../explore/">Full archive</a></nav>
-    <div class="boundary">Geography, graph topology, project hierarchy and time are separate coordinates. Semantic interior hubs are navigation handles, not physical locations.</div>
+    <div class="boundary">Different layers answer different questions. Current events, historical reconstructions, statistics and project interpretations stay labeled so they are not mistaken for one another.</div>
   </aside>
 </div></div>
 <script src="./3d-boot-guard.js?v=6466194"></script>
