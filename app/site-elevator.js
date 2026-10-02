@@ -335,6 +335,7 @@
       const next=stepLevel(selectedLevel,direction);
       if(next===selectedLevel)return;
       selectedLevel=next;
+      document.documentElement.dataset.siteFloor=selectedLevel;
       render(direction);
     };
 
@@ -388,6 +389,7 @@
         }
       }
       selectedLevel=LEVELS.includes(spatial.levelId)?spatial.levelId:'plane';
+      document.documentElement.dataset.siteFloor=selectedLevel;
       if(spatial.roomId)header.dataset.elevatorRoom=spatial.roomId;
       else delete header.dataset.elevatorRoom;
       header.dataset.elevatorReady='true';
