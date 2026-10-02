@@ -1,7 +1,7 @@
 {
   "id": "cia-incidents-index",
   "title": "CIA Incidents — Dated Character Events",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "updated": "2026-10-02",
   "incident_rule": "An incident is a dated or bounded scene that materially changes knowledge of a character, association, role, boundary or project artifact. It is not synonymous with wrongdoing.",
   "incidents": [
@@ -22,7 +22,10 @@
         "game",
         "discussion"
       ],
-      "source": "knowledge/story/social-presence-ledger-2024-2025.json"
+      "source": "knowledge/story/social-presence-ledger-2024-2025.json",
+      "source_mode": "chronicle_retelling",
+      "summary": "Tim spends the day around Tanks/voice-chat social life while the Great Book is actively discussed. Optimistique urges him back into play, Rahu/Tdog supply religious interpretation, and Termite marks group camaraderie.",
+      "boundary": "Chronicle retelling supports the dated social scene; stronger claims about motives, loyalties or permanent roles require closer source material."
     },
     {
       "id": "inc-social-2024-11-03-tanks-pipe-coffee-and-the-first-dense-social-snaps",
@@ -62,7 +65,10 @@
         "theology",
         "debate"
       ],
-      "source": "knowledge/story/social-presence-ledger-2024-2025.json"
+      "source": "knowledge/story/social-presence-ledger-2024-2025.json",
+      "source_mode": "chronicle_retelling",
+      "summary": "Juice challenges Potatoism with creator/First-Mover arguments; Kale answers with cyclic/interconnection language; Termite explores gods-creating-gods; Kibly contributes an epistemic box thought experiment.",
+      "boundary": "This records a dated live-debate scene from the Chronicle; theological positions should not be expanded beyond the recovered wording."
     },
     {
       "id": "inc-social-2024-11-04-potatoism-gets-challenged-from-inside-the-room",
@@ -140,7 +146,10 @@
         "game",
         "group"
       ],
-      "source": "knowledge/story/social-presence-ledger-2024-2025.json"
+      "source": "knowledge/story/social-presence-ledger-2024-2025.json",
+      "source_mode": "chronicle_retelling",
+      "summary": "The Chronicle explicitly places Sammy, Marty, Port Monkey, Optimistique and others together in Discord voice chat and Tanks gameplay, with recurring game play functioning as ordinary social bonding.",
+      "boundary": "Co-presence and gameplay are supported here; friendship rank, alliance, motive or later relationship state are separate questions."
     },
     {
       "id": "inc-social-2024-11-14-the-voice-chat-crew-becomes-visible",
@@ -220,7 +229,10 @@
         "platform",
         "group-formation"
       ],
-      "source": "knowledge/story/social-presence-ledger-2024-2025.json"
+      "source": "knowledge/story/social-presence-ledger-2024-2025.json",
+      "source_mode": "chronicle_retelling",
+      "summary": "Chronicle narration says Monkey and Tachy established a separate Tree server while Termite and Kale remained visible around Tim's space, providing a dated anchor for community fragmentation.",
+      "boundary": "The separate-space event is sourced to Chronicle retelling; motive-language and moral interpretation remain interpretive unless closer records support them."
     },
     {
       "id": "inc-social-2024-12-04-the-tree-becomes-a-separate-social-space",
@@ -256,7 +268,10 @@
         "trust",
         "boundary"
       ],
-      "source": "knowledge/story/social-presence-ledger-2024-2025.json"
+      "source": "knowledge/story/social-presence-ledger-2024-2025.json",
+      "source_mode": "chronicle_retelling",
+      "summary": "Optimistique apologizes and seeks reconciliation in the Chronicle while Termite and others respond cautiously; Juice and Super Susi are also discussed through return, trust and redemption language.",
+      "boundary": "The Chronicle supports an apology/reconciliation scene and cautious responses; it does not establish permanent trust, forgiveness or later relationship state."
     },
     {
       "id": "inc-social-2024-12-07-reconciliation-becomes-a-community-problem",
@@ -295,7 +310,10 @@
         "humor",
         "symbolic-role"
       ],
-      "source": "knowledge/story/social-presence-ledger-2024-2025.json"
+      "source": "knowledge/story/social-presence-ledger-2024-2025.json",
+      "source_mode": "chronicle_retelling",
+      "summary": "Tim and Anacondasin make potato chips in a collaborative stream; Termite jokes about flying her to Denmark, Rahu adopts a tomato-villain role, and a parallel access dispute concerns Tree/Garden boundaries.",
+      "boundary": "Cooking/collaboration and the joking symbolic roles belong to the recovered scene; playful mythology should not be converted into literal identity or conduct claims."
     },
     {
       "id": "inc-social-2024-12-15-cooking-stream-and-the-potato-tomato-joke-war",
@@ -373,7 +391,10 @@
         "care"
       ],
       "source": "knowledge/story/social-presence-ledger-2024-2025.json",
-      "sensitivity": "Keep self-harm details minimized in general-purpose surfaces."
+      "sensitivity": "Keep self-harm details minimized in general-purpose surfaces.",
+      "source_mode": "chronicle_retelling",
+      "summary": "Marty introduces Anja while asserting social leverage; moderation disputes intensify around Literally, and the Chronicle credits Pondo with providing urgent support to a distressed community member.",
+      "boundary": "Keep crisis details minimized and do not infer motive or diagnosis. Raw logs remain a recovery target before publishing more sensitive detail."
     },
     {
       "id": "inc-social-2024-12-21-anja-arrives-inside-a-marty-mediated-boundary-disp",
@@ -427,7 +448,9 @@
         "grief"
       ],
       "source": "knowledge/story/social-presence-ledger-2024-2025.json",
-      "boundary": "Date externally corrected; cause remains separate."
+      "boundary": "Date verified by obituary. Cause is not established by the obituary.",
+      "source_mode": "external_obituary",
+      "summary": "Nicholas 'Nick' Beigler's funeral-home obituary records January 29, 2025 as the date of death."
     },
     {
       "id": "inc-social-2025-01-29-marty-dies",
@@ -578,7 +601,10 @@
         "software",
         "story"
       ],
-      "source": "knowledge/story/turning-corridor-chronicle-recovery-2025.json"
+      "source": "knowledge/story/turning-corridor-chronicle-recovery-2025.json",
+      "source_mode": "chronicle_recovery",
+      "summary": "HTML/TTS experiments, Spudify, Potizer, PKFC, game work and an interactive Great Book are bundled in the recovered Chronicle as a creation wave, alongside a Tim/Tachy whimsical wedding scene.",
+      "boundary": "The Chronicle supplies a dated recovery-level summary; original March files or screenshots are still preferred for artifact-level verification."
     },
     {
       "id": "inc-2026-03-01-rahu-growth",
@@ -592,7 +618,10 @@
         "growth",
         "symbolic-role"
       ],
-      "source": "rooms/potatoverse-canon/beings/rahu/"
+      "source": "rooms/potatoverse-canon/beings/rahu/",
+      "source_mode": "public_room_mixed_literary_conversation",
+      "summary": "Rahu is imagined as a lost soul in a dream/growth story where Tim says it is never too late to grow a potato; a tiny 1/137 growth amount becomes enough to matter.",
+      "boundary": "The March scene is explicitly dream/literary material. Do not collapse it with the May 2026 documentary interlocutor or the older 2024 Rahu character without additional evidence."
     },
     {
       "id": "inc-2026-07-07-txt",
@@ -605,7 +634,10 @@
         "public-conflict",
         "recurrence"
       ],
-      "source": "rooms/potatoverse-canon/beings/txt/"
+      "source": "rooms/potatoverse-canon/beings/txt/",
+      "source_mode": "public_room_public_indexed",
+      "summary": "Tim publicly names TXT and Dim on the same day while discussing following, neighbors, Dogs and who hands whose story to whom, re-establishing TXT as an active public referent in 2026.",
+      "boundary": "The date supports public recurrence of the referent. Serious accusations in the surrounding posts remain attributed to Tim and are not independently established by this incident entry."
     },
     {
       "id": "inc-2026-09-20-matthew-mediomu",
@@ -620,7 +652,10 @@
         "gaming",
         "room-making"
       ],
-      "source": "story-content/2026-09-20-matthew-mediomu.html"
+      "source": "story-content/2026-09-20-matthew-mediomu.html",
+      "source_mode": "documentary_story_scene_user_supplied_chat_capture",
+      "summary": "Matthew reports a new controller and an Elden Ring boss win after more than twenty attempts; Mediomu007 reports rearranging and cleaning the room, preserving an ordinary-day public chat scene.",
+      "boundary": "The source is a user-supplied public YouTube chat capture. Its Top Fans UI is a captured interface state, not a permanent ranking claim."
     },
     {
       "id": "inc-2026-06-20-txt-disputed-narrative",
