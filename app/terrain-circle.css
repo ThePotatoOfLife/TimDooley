@@ -69,7 +69,7 @@
   transform:translateX(-50%);
   pointer-events:none;
   white-space:nowrap;
-  font:700 8px/1 var(--site-font-sans,system-ui,sans-serif);
+  font:700 8px/1 var(--site-font-sans,var(--site-font-sans));
   letter-spacing:.13em;
   text-transform:uppercase;
   text-shadow:0 1px 8px rgba(0,0,0,.8);
@@ -137,7 +137,7 @@
   z-index:5;
   left:50%;
   transform:translateX(-50%);
-  font:700 8px/1 var(--site-font-sans,system-ui,sans-serif);
+  font:700 8px/1 var(--site-font-sans,var(--site-font-sans));
   letter-spacing:.12em;
   text-transform:uppercase;
   text-shadow:0 1px 8px rgba(0,0,0,.85);
