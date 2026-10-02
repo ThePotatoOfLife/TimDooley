@@ -112,4 +112,17 @@
 
 .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
 
-.relation>.parallel{display:none}
+.comparison-sequences{display:grid!important;margin-top:12px}
+.comparison-sequence{margin:0;padding-left:20px;color:#c8d0c4}
+.comparison-sequence li{margin:5px 0;font-size:12px;line-height:1.5}
+.comparison-sequence li::marker{color:#819178}
+.contact-points{margin-top:12px;border:1px solid #344032;border-radius:14px;padding:13px 14px;background:#0c110d}
+.contact-points h3,.scripture-context h4{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin:0 0 8px}
+.contact-points ul{margin:0;padding-left:18px;color:#cbd3c8}
+.contact-points li{margin:4px 0;font-size:12px}
+.maximum-claim{margin-top:10px;border:1px solid #4e4934;border-radius:12px;padding:11px 13px;background:#121009;color:#d7ceb4;font-size:12px}
+.maximum-claim strong{color:#e4cf91}
+.scripture-context{margin-top:12px;padding-top:10px;border-top:1px solid #51472f}
+.scripture-context h4{color:var(--gold)}
+.scripture-context p,.scene-detail{margin:5px 0;color:#bfc7bc;font-size:12px}
+
