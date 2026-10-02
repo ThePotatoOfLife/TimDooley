@@ -433,6 +433,11 @@ def main() -> int:
             errors.append("John 14-15 continuous House/Thomas/Way/Gardener sequence is missing or too thin")
         elif not any(step.get("source_type")=="limit" for step in john_sequence.get("steps",[])):
             errors.append("John 14-15 continuous sequence must retain an explicit non-overclaiming limit")
+        return_sequence=next((row.get("reader_sequence") for row in [*narrative_wave.get("new_relations",[]),*narrative_wave.get("enrichments",[])] if (row.get("id") or row.get("relation_id"))=="emmaus-return-before-recognition-bread"),None)
+        if not return_sequence or len(return_sequence.get("steps",[])) < 10:
+            errors.append("Return/recognition sequence is missing or too thin")
+        elif not any(step.get("source_type")=="limit" for step in return_sequence.get("steps",[])):
+            errors.append("Return/recognition sequence must retain explicit non-overclaiming limits")
 
     if errors:
         print("BIBLE READER VALIDATION FAILED")
