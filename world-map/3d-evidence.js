@@ -114,7 +114,7 @@ async function renderEvidence() {
   renderedCode = code;
   if (!code) {
     box.hidden = false;
-    box.innerHTML = `<div class="evidence-head"><div><div class="eyebrow">Sources & evidence</div><b>Select a country first</b></div><button onclick="closeAtlasEvidence()">×</button></div><p class="muted">Eye inspects how the Atlas knows what it is showing. Select a country, then open Sources again.</p>`;
+    box.innerHTML = `<div class="evidence-head"><div><div class="eyebrow">Sources & evidence</div><b>Select a country first</b></div><button onclick="closeAtlasEvidence()">×</button></div><p class="muted">Sources explains how the Atlas knows what it is showing. Select a country, then open Sources again.</p>`;
     return;
   }
   box.hidden = false;
@@ -200,5 +200,5 @@ window.addEventListener('potato-atlas-panel-rendered', refreshIfSelectionChanged
 window.addEventListener('potato-atlas-country-card-rendered', () => { if (!box.hidden) suspendCountryCard(); });
 
 // Compatibility note for the historical static contract: panel lifecycle
-// observation is centralized in 3d-panel-lifecycle.js; Eye consumes events and
+// observation is centralized in 3d-panel-lifecycle.js; the evidence inspector consumes events and
 // does not create its own DOM watcher.
