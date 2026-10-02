@@ -38,7 +38,9 @@ function diagnosticCount(key, amount = 1) {
 }
 
 async function fetchJson(url) {
-  const response = await fetch(url, { cache: 'no-cache' });
+  const shared = window.__potatoAtlasResources;
+  if (shared?.fetchJson) return shared.fetchJson(url);
+  const response = await fetch(url, { cache:'force-cache' });
   if (!response.ok) throw new Error(`${response.status} ${url}`);
   return response.json();
 }
