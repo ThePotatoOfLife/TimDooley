@@ -47,6 +47,8 @@ def copy_tree() -> None:
 
 
 SHARED_ASSETS = (
+    "app/house-journey.js",
+    "app/house-journey.css",
     "app/site-below-root-field.svg",
     "app/site-plane-organic-field.svg",
     "app/site-tree-perspective.svg",
