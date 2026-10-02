@@ -126,16 +126,16 @@ def main() -> int:
     if runtime.get("projection_contract") != "data/atlas-projection-contract.json": errors.append("3D runtime must point to the shared Atlas projection contract")
     if runtime.get("time_contract") != "data/atlas-time-contract.json": errors.append("3D runtime must point to the Atlas time contract")
     implemented=set(runtime.get("implemented_2026_09_10",[]))
-    for fragment in ("Compare","relation","polygon","URL","recursive","trace","Path","population","Eye","Axis","Time","progressive"):
+    for fragment in ("Compare","relation","polygon","URL","recursive","trace","Path","population","evidence","Axis","Time","progressive"):
         if not any(fragment.lower() in str(item).lower() for item in implemented): errors.append(f"runtime implemented list does not document {fragment} functionality")
     if runtime.get("compare_mode",{}).get("status") not in {"implemented","implemented-basic"}: errors.append("runtime compare_mode is not marked implemented")
     if runtime.get("trace_mode",{}).get("maximum_depth") != 3: errors.append("runtime trace_mode must document maximum depth 3")
     if runtime.get("path_mode",{}).get("status") != "implemented": errors.append("runtime path_mode is not marked implemented")
-    if runtime.get("evidence_mode",{}).get("status") != "implemented-inspector": errors.append("runtime evidence_mode does not document the implemented Eye inspector")
+    if runtime.get("evidence_mode",{}).get("status") != "implemented-inspector": errors.append("runtime evidence_mode does not document the implemented evidence inspector")
     if runtime.get("time_mode",{}).get("status") != "implemented-conservative-foundation": errors.append("runtime time_mode does not document conservative Time foundation")
     if "suppressed" not in str(runtime.get("time_mode",{}).get("current_overlay_guard","")).lower(): errors.append("runtime time mode does not document current-overlay suppression in historical mode")
     architecture=runtime.get("renderer_architecture",{})
-    if "3d-evidence.js" not in str(architecture.get("evidence","")): errors.append("runtime renderer architecture does not assign ownership to Eye")
+    if "3d-evidence.js" not in str(architecture.get("evidence","")): errors.append("runtime renderer architecture does not assign ownership to the evidence inspector")
     if "3d-time.js" not in str(architecture.get("time","")): errors.append("runtime renderer architecture does not assign ownership to Time")
     interface_owner=str(architecture.get("interface_controller",""))
     for owner in ("3d-inspector-visibility.js","3d-ui-layout.js","3d-world-bar.js","3d-inspector-router.js"):
@@ -182,7 +182,7 @@ def main() -> int:
     print("Time contract: Current / As-of / Compare-dates · URL persisted · current-only overlays suppressed historically")
     print("Eye-Time contract: observation years are checked against requested historical view")
     print("Boot contract: local snapshot · core-first · advanced overlays dormant until requested · deployment-versioned module chain")
-    print("Runtime contract: active renderer · projection/time contracts · Path/Trace/Compare/Eye/Axis documented")
+    print("Runtime contract: active renderer · projection/time contracts · Path/Trace/Compare/Sources/Axis documented")
     print(f"Errors: {len(errors)} · Warnings: {len(warnings)}")
     for warning in warnings: print("WARNING:", warning)
     if errors:
