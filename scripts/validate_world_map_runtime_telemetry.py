@@ -33,6 +33,9 @@ def main() -> int:
         "visibleLayerCount",
         "sourceTypes",
         "layerTypes",
+        "modules",
+        "resources",
+        "__potatoAtlasResources",
         "interaction",
         "style",
         "tooltip",
@@ -63,7 +66,7 @@ def main() -> int:
             errors.append(f"runtime telemetry test missing assertion: {token}")
     if "map.on('styledata'" in module or 'map.on("styledata"' in module:
         errors.append("runtime telemetry must consume Style Lifecycle events instead of adding another styledata listener")
-    if "loadAfterPaint('Runtime Telemetry', './3d-runtime-telemetry.js')" not in bootstrap:
+    if "['Runtime Telemetry', './3d-runtime-telemetry.js']" not in bootstrap:
         errors.append("bootstrap must load Runtime Telemetry after the control-plane foundation")
 
     node = shutil.which("node")
@@ -80,6 +83,8 @@ def main() -> int:
     print("World Map runtime telemetry:")
     print("- active source/layer and visible-layer counts")
     print("- source/layer type breakdowns")
+    print("- loaded/loading/failed/dormant module pressure")
+    print("- shared JSON resource-cache pressure")
     print("- Interaction Router registry/dispatch diagnostics")
     print("- Style Lifecycle generation/restore diagnostics")
     print("- live Tooltip generation/invalidation/stale-suppression diagnostics")

@@ -86,33 +86,12 @@ async function loadAfterPaint(label, path) {
   await nextPaint();
   return result;
 }
-async function loadSpecialist(label, path) {
-  const alreadyLoaded = modulePromises.has(label);
-  const result = await loadAfterPaint(label, path);
-  if (!alreadyLoaded && window.__potatoAtlasDiagnostics) {
-    window.__potatoAtlasDiagnostics.specialistLazyLoads = (window.__potatoAtlasDiagnostics.specialistLazyLoads || 0) + 1;
-  }
-  return result;
-}
-async function loadInspectionBasics() {
-  await Promise.all([
-    loadAfterPaint('Demography', './3d-demography.js'),
-    loadAfterPaint('Country Pulse', './3d-country-pulse.js'),
-    loadAfterPaint('Evidence', './3d-evidence.js'),
-  ]);
-}
-async function loadInspectionContext() {
-  await Promise.all([
-    loadSpecialist('System Intelligence', './3d-gateways.js'),
-    loadSpecialist('Functional Chains', './3d-chain-explorer.js'),
-  ]);
-}
-async function loadInspectionDeep() {
-  await Promise.all([
-    loadSpecialist('Infrastructure Context', './3d-infrastructure.js'),
-    loadSpecialist('Impact Trace', './3d-impact-trace.js'),
-  ]);
-  await loadSpecialist('Impact Actions', './3d-impact-actions.js');
+async function loadBatchAfterPaint(entries = []) {
+  if (!entries.length) return [];
+  await nextPaint();
+  const results = await Promise.all(entries.map(([label, path]) => loadOptional(label, path)));
+  await nextPaint();
+  return results;
 }
 
 window.__potatoAtlasEnhancements = { loaded: [], failed: [] };
@@ -120,7 +99,7 @@ window.__potatoAtlasDiagnostics = {
   startedAt:now(), startedAtIso:new Date().toISOString(), deploymentVersion:ATLAS_VERSION || 'unversioned-source',
   coreReadyMs:null, interactiveMs:null, modules:{},
   scalarCompositions:0, scalarFeatureStateBatches:0, countryCardRenders:0, inspectorRenders:0,
-  cardEnhancementPasses:0, inspectorEnhancementPasses:0, specialistLazyLoads:0,
+  cardEnhancementPasses:0, inspectorEnhancementPasses:0,
 };
 window.__potatoAtlasReady = false;
 window.__potatoAtlasLoadModule = loadAfterPaint;
@@ -131,65 +110,60 @@ try {
   await import(versionedModule('./3d-core-interaction-handoff.js'));
   await import(versionedModule('./3d-hover.js'));
   const map = await waitForCore();
-  await nextPaint();
-  await loadAfterPaint('Interaction Router', './3d-interaction-router.js');
-  await loadAfterPaint('URL State', './3d-url-state.js');
-  await loadAfterPaint('Inspector Router', './3d-inspector-router.js');
-  await loadAfterPaint('Inspector URL', './3d-inspector-url.js');
-  await loadAfterPaint('Inspector Visibility', './3d-inspector-visibility.js');
-  await loadAfterPaint('Country selection', './3d-country-selection.js');
-  await loadAfterPaint('Panel lifecycle', './3d-panel-lifecycle.js');
-  await loadAfterPaint('Layer Registry', './3d-layer-registry.js');
+  await loadBatchAfterPaint([
+    ['Interaction Router', './3d-interaction-router.js'],
+    ['URL State', './3d-url-state.js'],
+    ['Inspector Router', './3d-inspector-router.js'],
+    ['Inspector URL', './3d-inspector-url.js'],
+    ['Inspector Visibility', './3d-inspector-visibility.js'],
+  ]);
+  await loadBatchAfterPaint([
+    ['Country selection', './3d-country-selection.js'],
+    ['Layer Registry', './3d-layer-registry.js'],
+  ]);
   await loadAfterPaint('Compositor', './3d-compositor.js');
-  await loadAfterPaint('Spatial Overlays', './3d-spatial-overlays.js');
-  await loadAfterPaint('Spatial Overlay UI', './3d-spatial-overlay-ui.js');
-  await loadAfterPaint('Entity Runtime', './3d-entity-runtime.js');
-  await loadAfterPaint('Active View', './3d-active-view.js');
-  await loadAfterPaint('Country Presentation', './3d-country-presentation.js');
-  await loadAfterPaint('Country Hover Presentation', './3d-country-hover-presentation.js');
-  await loadAfterPaint('World Bar', './3d-world-bar.js');
-  await loadAfterPaint('Country Card', './3d-country-card.js');
-  await loadAfterPaint('Scalar Runtime Bridge', './3d-scalar-runtime-bridge.js');
-  await loadAfterPaint('Investigation Surface', './3d-investigation-surface.js');
-  await loadAfterPaint('Runtime Telemetry', './3d-runtime-telemetry.js');
+  await loadBatchAfterPaint([
+    ['Spatial Overlays', './3d-spatial-overlays.js'],
+    ['Entity Runtime', './3d-entity-runtime.js'],
+    ['Active View', './3d-active-view.js'],
+    ['Investigation Surface', './3d-investigation-surface.js'],
+  ]);
+  await loadBatchAfterPaint([
+    ['Spatial Overlay UI', './3d-spatial-overlay-ui.js'],
+    ['Country Presentation', './3d-country-presentation.js'],
+    ['World Bar', './3d-world-bar.js'],
+    ['Scalar Runtime Bridge', './3d-scalar-runtime-bridge.js'],
+    ['Panel lifecycle', './3d-panel-lifecycle.js'],
+  ]);
+  await loadBatchAfterPaint([
+    ['Country Hover Presentation', './3d-country-hover-presentation.js'],
+    ['Country Card', './3d-country-card.js'],
+    ['Runtime Telemetry', './3d-runtime-telemetry.js'],
+  ]);
 
   setStatus('');
   if (guard()) guard().stage = 'interactive';
   window.__potatoAtlasDiagnostics.interactiveMs = Math.round(now() - window.__potatoAtlasDiagnostics.startedAt);
   window.dispatchEvent(new CustomEvent('potato-atlas-interactive'));
 
-  declareDormant('System Intelligence', './3d-gateways.js', 'first country inspection');
-  declareDormant('Functional Chains', './3d-chain-explorer.js', 'first country inspection');
-  declareDormant('Infrastructure Context', './3d-infrastructure.js', 'first country inspection');
-  declareDormant('Impact Trace', './3d-impact-trace.js', 'first country inspection or explicit Impact action');
-  declareDormant('Impact Actions', './3d-impact-actions.js', 'first country inspection');
-  declareDormant('Path finder', './3d-pathfinder.js', 'contextual investigation');
-  declareDormant('Entity Trace', './3d-entity-trace.js', 'country-card contextual action');
-  declareDormant('Demography', './3d-demography.js', 'first country inspection');
-  declareDormant('Country Pulse', './3d-country-pulse.js', 'first country inspection');
-  declareDormant('Evidence', './3d-evidence.js', 'first country inspection');
+  declareDormant('System Intelligence', './3d-gateways.js', 'Country → Context');
+  declareDormant('Functional Chains', './3d-chain-explorer.js', 'Country → Context');
+  declareDormant('Infrastructure Context', './3d-infrastructure.js', 'Country → Context');
+  declareDormant('Impact Trace', './3d-impact-trace.js', 'Country → Impact');
+  declareDormant('Impact Actions', './3d-impact-actions.js', 'Country → Impact');
+  declareDormant('Path finder', './3d-pathfinder.js', 'Country → Path');
+  declareDormant('Entity Trace', './3d-entity-trace.js', 'Country → Trace');
+  declareDormant('Demography', './3d-demography.js', 'specialist demographic view');
+  declareDormant('Country Pulse', './3d-country-pulse.js', 'Country → Statistics');
+  declareDormant('Evidence', './3d-evidence.js', 'Country → More data');
   declareDormant('Time', './3d-time.js', 'contextual time action');
   declareDormant('Axis depth', './3d-axis-depth.js', 'contextual Axis action');
   declareDormant('Axis operators', './3d-axis-operators.js', 'contextual Axis action');
   declareDormant('North Axis', './3d-axis.js', 'contextual Axis action');
 
-  const promoteInspection = async () => {
-    await loadInspectionBasics();
-    await nextPaint();
-    await loadInspectionContext();
-    await nextPaint();
-    await loadInspectionDeep();
-  };
-  let inspectionPromoted = false;
-  const promoteInspectionOnce = event => {
-    if (inspectionPromoted) return;
-    if (event?.detail && !event.detail.selected) return;
-    inspectionPromoted = true;
-    window.removeEventListener('potato-atlas-working-selection-change', promoteInspectionOnce);
-    void promoteInspection();
-  };
-  window.addEventListener('potato-atlas-working-selection-change', promoteInspectionOnce);
-  if (window.__potatoAtlasSelection?.current?.selected) promoteInspectionOnce({ detail:{ selected:true } });
+  // Specialist country modules are intentionally action-driven.
+  // Selecting a country should remain cheap; Statistics, More data, Context,
+  // Trace, Path and Impact each load only the module they actually need.
   window.__potatoAtlasDiagnostics.bootstrapWiredMs = Math.round(now() - window.__potatoAtlasDiagnostics.startedAt);
   window.dispatchEvent(new CustomEvent('potato-atlas-bootstrap-complete', { detail:window.__potatoAtlasEnhancements }));
 } catch (error) {

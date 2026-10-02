@@ -78,7 +78,7 @@ Public structure: **Countries / Now / Connections / History / Map**. Keep the un
 - [x] **MAP-PRODUCT-001 · Purpose-first navigation:** replace registry/taxonomy-first top controls with Countries, Now, Connections, History and Map.
 - [x] **MAP-PRODUCT-002 · Demote cockpit controls:** move Compare, Details, projection, reset and extra modules into Map; move N/W/E/S into Countries as project lenses.
 - [x] **MAP-PRODUCT-003 · Plain-language first screen:** remove D4 / network-traversal / internal-coordinate wording from the ordinary landing experience.
-- [ ] **MAP-PRODUCT-004 · Runtime-weight pass:** profile initial requests/module weight; make anything not required for search, ordinary country browsing, public controls or lightweight current context lazy.
+- [x] **MAP-PRODUCT-004 · Runtime-weight pass:** removed first-country specialist promotion, stopped panel lifecycle acting as a second bootstrap, made search/places/pins/physical/evidence context-triggered, batched independent core modules, centralized reusable JSON resources, removed global fetch interception, indexed relationships, coalesced derived-state refresh, and exposed runtime resource/module pressure telemetry.
 - [ ] **MAP-PRODUCT-005 · Country completeness:** every country should answer a consistent useful core: people, economy, government/institutions, religion/culture, regions/cities, major resources/infrastructure, current context and important external connections.
 - [ ] **MAP-PRODUCT-006 · Current-world layer family:** expand Now beyond conflicts only when the data earns it—major elections/government change, disasters, displacement, sanctions, closures/outages or other globally useful dated context—with freshness visible.
 - [ ] **MAP-PRODUCT-007 · Conflict hierarchy:** add severity/status/filtering and regional/theatre summaries without live tactical unit tracking; distinguish war, civil war, insurgency, political violence and humanitarian crisis.
@@ -89,6 +89,13 @@ Public structure: **Countries / Now / Connections / History / Map**. Keep the un
 - [ ] **MAP-PRODUCT-012 · URL/shareability:** every meaningful view should be linkable—selected place, active context, time state and useful filters—without exposing internal IDs in visible copy.
 - [ ] **MAP-PRODUCT-013 · Empty-map value:** the default world view should contain enough quiet information to invite exploration without becoming a dashboard wall: countries, capitals at useful scale, current conflict signals and clear hover/click affordance.
 - [ ] **MAP-PRODUCT-014 · Maintenance budget:** prefer a few canonical datasets and derived views over bespoke one-off map modules. New layers need an owner, freshness rule, public purpose and retirement rule.
+- [ ] **MAP-BACKEND-015 · Core-module reduction:** continue measuring whether Entity Runtime, Spatial Overlay UI, Scalar Runtime Bridge, UI Layout, Accessibility, Render Stack and Context Visibility all need ordinary boot residency; move any purely contextual owner behind its first real use.
+- [ ] **MAP-BACKEND-016 · Data-owner convergence:** route remaining repeated country/demography/facts/manifest reads through the shared resource owner and remove module-local caches that duplicate identical canonical data without adding semantics.
+- [ ] **MAP-BACKEND-017 · Render-event budget:** instrument and cap avoidable re-render cascades for card, inspector, context HUD and overlay menus; one semantic state transition should normally yield one derived-state refresh and one affected-surface render.
+- [ ] **MAP-BACKEND-018 · Style/source retirement:** when temporary layers and sources are no longer useful, hide or unload them according to explicit budgets instead of allowing a long session to accumulate dormant MapLibre objects indefinitely.
+- [ ] **MAP-BACKEND-019 · Graceful-degradation matrix:** test local geometry missing, REST runtime missing, optional manifest missing, specialist module failure and stale deep links independently; every case should preserve the broadest usable map state and expose a bounded error.
+- [ ] **MAP-BACKEND-020 · Module ownership audit:** each runtime capability gets one state owner, one URL owner, one renderer owner and one public entry point. Remove remaining compatibility adapters and DOM injection paths that duplicate those responsibilities.
+
 
 ## Site-wide bug & enhancement queue — 2026-10-02
 

@@ -92,39 +92,30 @@ async function reset({silent=false}={}) {
   return true;
 }
 
-function menuHost() { return document.getElementById('atlasWorldBar'); }
+function menuHost() { return document.querySelector('#viewMenu .atlas-world-menu-pop'); }
 function evidenceMenu() {
   const host=menuHost();
   if(!host) return null;
-  let details=document.getElementById('atlasEvidenceMenu');
-  if(details) return details;
-  details=document.createElement('details');
-  details.id='atlasEvidenceMenu';
-  details.className='atlas-world-menu';
-  details.innerHTML='<summary>Evidence</summary><div class="atlas-world-menu-pop"></div>';
-  details.addEventListener('toggle',()=>{
-    if(!details.open) return;
-    document.querySelectorAll('#atlasWorldBar details[open]').forEach(menu=>{ if(menu!==details) menu.removeAttribute('open'); });
-    renderMenu();
-  });
-  details.addEventListener('click',async event=>{
+  let section=document.getElementById('atlasEvidenceMenu');
+  if(section) return section;
+  section=document.createElement('section');
+  section.id='atlasEvidenceMenu';
+  section.className='atlas-world-section';
+  section.innerHTML='<div class="menu-sep"></div><div class="menu-title">Evidence layers</div><div data-evidence-menu-body></div>';
+  section.addEventListener('click',async event=>{
     const button=event.target.closest('[data-evidence-layer]');
     if(!button || button.disabled) return;
     button.disabled=true;
     try { await toggle(button.dataset.evidenceLayer); }
     finally { button.disabled=false; }
   });
-  const geography=document.getElementById('atlasGeographyMenu');
-  const physical=document.getElementById('atlasPhysicalMenu');
-  if(physical?.parentElement===host) physical.insertAdjacentElement('afterend',details);
-  else if(geography?.parentElement===host) geography.insertAdjacentElement('afterend',details);
-  else host.appendChild(details);
-  return details;
+  host.appendChild(section);
+  return section;
 }
 function renderMenu() {
-  const details=evidenceMenu();
-  if(!details || !manifest) return;
-  const pop=details.querySelector('.atlas-world-menu-pop');
+  const section=evidenceMenu();
+  if(!section || !manifest) return;
+  const pop=section.querySelector('[data-evidence-menu-body]');
   if(!pop) return;
   const rows=entries().map(row=>{
     const current=row.availability==='current';
@@ -134,7 +125,7 @@ function renderMenu() {
     return `<button type="button" class="atlas-world-option${on?' active':''}" data-evidence-layer="${esc(row.id)}" aria-pressed="${on?'true':'false'}" ${current?'':'disabled'} title="${esc(note)}"><span>${esc(row.label)}<small>${esc([row.epistemic_type,fresh.label].filter(Boolean).join(' · '))}</small></span></button>`;
   }).join('');
   pop.innerHTML=`<div class="atlas-world-static"><span>Evidence datasets</span><small>${activeIds.size ? `${activeIds.size} active` : 'source-classified · lazy'}</small></div>${rows || '<div class="atlas-world-empty">No evidence layers registered</div>'}<div class="atlas-world-static"><small>Evidence datasets preserve source methodology and snapshot vintage; they do not become generic scores.</small></div>`;
-  details.classList.toggle('active',activeIds.size>0);
+  section.classList.toggle('active',activeIds.size>0);
 }
 
 function scheduleInstall() {
@@ -153,9 +144,13 @@ async function hydrateFromUrl() {
 }
 async function load() {
   try {
-    const response=await fetch(MANIFEST_URL,{cache:'no-cache'});
-    if(!response.ok) throw new Error(`${response.status} ${MANIFEST_URL}`);
-    manifest=await response.json();
+    const shared=window.__potatoAtlasResources;
+    manifest=shared?.fetchJson
+      ? await shared.fetchJson(MANIFEST_URL)
+      : await fetch(MANIFEST_URL,{cache:'force-cache'}).then(response=>{
+          if(!response.ok) throw new Error(`${response.status} ${MANIFEST_URL}`);
+          return response.json();
+        });
     byId.clear();
     for(const row of manifest?.entries || []) byId.set(row.id,Object.freeze({...row}));
     scheduleInstall();

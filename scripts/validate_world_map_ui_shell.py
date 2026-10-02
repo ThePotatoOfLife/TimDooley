@@ -90,7 +90,7 @@ def main() -> int:
             "__potatoAtlasCountryPresentation", "atlas-country-current-answer",
             'data-country-tab="overview"', 'data-country-tab="context"', 'data-country-tab="connections"',
             "atlas-country-tab-panel", "Population ·", "connectionRows", "contextualRows",
-            "data-country-context-enrichments", "potato-atlas-relation-mode-change",
+            "data-country-context-enrichments", "potato-atlas-active-view-change",
             "data-atlas-pin", "data-atlas-statistics",
         ):
             if token not in country_card:
@@ -190,10 +190,12 @@ def main() -> int:
 
     if bootstrap and "declareDormant('Time', './3d-time.js'" not in bootstrap:
         errors.append("Time should remain lazy but explicitly declared in bootstrap diagnostics")
-    if bootstrap and "loadAfterPaint('Country Presentation', './3d-country-presentation.js')" not in bootstrap:
+    if bootstrap and "['Country Presentation', './3d-country-presentation.js']" not in bootstrap:
         errors.append("Country Presentation must be part of the ordinary interactive bootstrap sequence")
-    if bootstrap and "loadAfterPaint('Country Hover Presentation', './3d-country-hover-presentation.js')" not in bootstrap:
-        errors.append("minimal country hover must be explicitly bootstrapped after Country Presentation")
+    if bootstrap and "['Country Hover Presentation', './3d-country-hover-presentation.js']" not in bootstrap:
+        errors.append("minimal country hover must be explicitly bootstrapped")
+    if bootstrap and "const promoteInspection = async () =>" in bootstrap:
+        errors.append("ordinary country selection must not auto-load the specialist inspection stack")
 
     if compositor:
         for token in ("atlas-query-outline", "atlasQueryMatch", "applyQueryHighlight"):

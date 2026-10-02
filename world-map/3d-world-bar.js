@@ -344,7 +344,7 @@
       const compare=document.getElementById('compare'); if (compare) { compare.textContent='Compare countries'; compare.title='Add countries to a comparison'; pop.appendChild(compare); }
       const inspect=document.getElementById('panelToggle'); if (inspect) { inspect.textContent='Details panel'; inspect.title='Show or hide the deeper details panel'; pop.appendChild(inspect); }
       const projectionButton=document.createElement('button'); projectionButton.id='atlasProjectionToggle'; projectionButton.type='button'; projectionButton.addEventListener('click',()=>window.__potatoAtlasProjection.toggle()); pop.appendChild(projectionButton);
-      const reset=document.createElement('button'); reset.id='atlasWorldReset'; reset.type='button'; reset.textContent='Reset map'; reset.title='Clear map layers, selections and investigation state'; reset.addEventListener('click',()=>window.__potatoAtlasCompositor?.reset?.()); pop.appendChild(reset);
+      const reset=document.createElement('button'); reset.id='atlasWorldReset'; reset.type='button'; reset.textContent='Reset map'; reset.title='Clear map layers, selections and investigation state'; reset.setAttribute('aria-label','Reset map layers and investigation state'); reset.addEventListener('click',()=>window.__potatoAtlasCompositor?.reset?.()); pop.appendChild(reset);
     }
     const interior=document.getElementById('interior'); if (interior && mapMenu?.querySelector('.atlas-world-menu-pop')) { interior.textContent='Extra map modules'; mapMenu.querySelector('.atlas-world-menu-pop').prepend(interior); }
     host.appendChild(bar);

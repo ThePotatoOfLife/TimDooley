@@ -6,8 +6,6 @@ const urlState = window.__potatoAtlasUrlState;
 urlState.claim('selection-inspector', ['country','compare','rel','depth']);
 
 const URL = {
-  geo: 'https://cdn.jsdelivr.net/gh/johan/world.geo.json@master/countries.geo.json',
-  rest: 'https://restcountries.com/v3.1/all?fields=name,cca3,population,area,latlng,capital,region,subregion,borders',
   index: '../data/countries/index.json',
   world: '../data/world-relational-map.json'
 };
@@ -21,6 +19,10 @@ if (!geoKernel?.antimeridianAwareBounds) throw new Error('World Map geospatial k
 const motion = window.__potatoAtlasMotion;
 if (!motion?.easeTo || !motion?.fitBounds) throw new Error('World Map motion policy unavailable.');
 
+const resources = window.__potatoAtlasResources;
+const coreData = window.__potatoAtlasCoreData;
+if (!resources?.fetchJson) throw new Error('World Map shared resource cache unavailable.');
+if (!coreData?.geometry || !coreData?.countries) throw new Error('World Map core data service unavailable.');
 const status = $('#status');
 function setStatus(message, kind='info') {
   if (!status) return;
@@ -32,11 +34,12 @@ function setStatus(message, kind='info') {
 let geo, rest, index, worldCfg;
 try {
   setStatus('Loading geography and canonical country data…');
-  [geo, rest, index, worldCfg] = await Promise.all(Object.values(URL).map(async u => {
-    const r = await fetch(u);
-    if (!r.ok) throw new Error(`${r.status} ${u}`);
-    return r.json();
-  }));
+  [geo, rest, index, worldCfg] = await Promise.all([
+    coreData.geometry(),
+    coreData.countries(),
+    resources.fetchJson(URL.index),
+    resources.fetchJson(URL.world),
+  ]);
   setStatus('');
 } catch (error) {
   console.error(error);
@@ -50,6 +53,14 @@ const index3 = Object.fromEntries(countries.map(x => [x.iso3 || x.cca3 || x.code
 const byName = new Map(rest.flatMap(x => [[x.name?.common, x], [x.name?.official, x]].filter(y => y[0])));
 const by3 = Object.fromEntries(rest.filter(x => x.cca3).map(x => [x.cca3, x]));
 const cache = new Map();
+const relationAdjacency = new Map();
+for (const edge of worldCfg.curated_edges || []) {
+  for (const code of [edge.a, edge.b]) {
+    if (!code) continue;
+    if (!relationAdjacency.has(code)) relationAdjacency.set(code, []);
+    relationAdjacency.get(code).push(edge);
+  }
+}
 
 for (const f of geo.features) {
   const r = by3[f.id] || byName.get(f.properties?.name);
@@ -61,7 +72,8 @@ for (const f of geo.features) {
   f.properties.subregion = r?.subregion || '';
 }
 
-const featureByCode = code => geo.features.find(x => x.properties.iso3 === code);
+const featureByIso3 = new Map(geo.features.map(feature => [feature.properties.iso3, feature]).filter(([code]) => code));
+const featureByCode = code => featureByIso3.get(String(code || '').toUpperCase()) || null;
 const map = new maplibregl.Map({
   container: 'map',
   style: {version:8, sources:{osm:{type:'raster',tiles:['https://tile.openstreetmap.org/{z}/{x}/{y}.png'],tileSize:256,attribution:'© OpenStreetMap contributors'}}, layers:[{id:'osm',type:'raster',source:'osm',paint:{'raster-opacity':.25}}]},
@@ -139,8 +151,12 @@ const SCALE_MODE_COPY = Object.freeze({
 function mode() {
   return scale.bandForZoom(map.getZoom());
 }
+function allRelationEdgesFor(code) {
+  return relationAdjacency.get(String(code || '').toUpperCase()) || [];
+}
 function relationEdgesFor(code) {
-  return (worldCfg.curated_edges || []).filter(e => (e.a === code || e.b === code) && (relationType === 'all' || (e.types || []).includes(relationType)));
+  const rows = allRelationEdgesFor(code);
+  return relationType === 'all' ? rows : rows.filter(edge => (edge.types || []).includes(relationType));
 }
 function edgeKey(edge) {
   return [edge.a, edge.b].sort().join('|') + '|' + (edge.types || []).slice().sort().join(',') + '|' + (edge.layer || '');
@@ -360,11 +376,11 @@ function traceRows(code) {
 }
 function renderCountry(){
   if(!selected||!selectedFeature)return;
-  const code=selected,r=by3[code]||{},idx=index3[code],rels=relationEdgesFor(code),allRels=(worldCfg.curated_edges||[]).filter(e=>e.a===code||e.b===code),modules=HUBS.map(h=>({...h,data:getModule(h,currentCanonical,code)})).filter(h=>h.data),trace=traceRows(code);
+  const code=selected,r=by3[code]||{},idx=index3[code],rels=relationEdgesFor(code),allRels=allRelationEdgesFor(code),modules=HUBS.map(h=>({...h,data:getModule(h,currentCanonical,code)})).filter(h=>h.data),trace=traceRows(code);
   $('#panel').innerHTML=`<div class="eyebrow">${idx?'Canonical country':'Territory / map polygon'} · ${esc(code)}</div><h1>${esc(idx?.name||r.name?.common||selectedFeature.properties.name||code)}</h1><div>${axisBadges(code).map(x=>`<span class="pill">${esc(x)}</span>`).join('')}</div><div class="actions"><button onclick="fitCountry()">Focus polygon</button><button onclick="fitTrace()">Fit trace</button><button onclick="addCurrentToCompare()">Add to compare</button></div><div class="grid"><div class="metric"><span>Population</span><b>${fmt(r.population)}</b></div><div class="metric"><span>Area km²</span><b>${fmt(r.area)}</b></div><div class="metric"><span>Interior modules</span><b>${modules.length}</b></div><div class="metric"><span>Trace graph</span><b>${Math.max(0,trace.graph.nodes.length-1)} nodes · ${trace.graph.edges.length} edges</b></div></div><div class="card"><b>Data inside this polygon</b>${modules.map(h=>`<div class="row"><button onclick="openModule('${h.id}')">${esc(h.label)}</button> <span class="pill">${esc(h.plane)}</span></div>`).join('')||'<div class="muted">Canonical country record is still sparse.</div>'}</div><div class="card"><b>Trace outward · ${traceDepth} hop${traceDepth===1?'':'s'}</b><div class="muted">Breadth-first traversal follows the current typed relation filter, prevents cycles, and shows each newly reached country at its shortest discovered hop.</div>${trace.html||'<div class="muted">No curated edges match the current relation filter.</div>'}${trace.graph.truncated?'<div class="boundary">Trace hit its browser safety cap. Narrow the relation type or reduce depth.</div>':''}</div><div class="boundary">Interior dots are semantic navigation handles. Trace lines are typed connections, not claims of collective motive, guilt or causation.</div>${idx?`<div class="card"><b>Canonical owner</b><div class="muted">data/countries/${esc(idx.id)}.json</div></div>`:'<div class="card">This polygon is not one of the canonical country records; territory routing still needs its own registry.</div>'}`;
 }
 async function renderCompare(){
-  const rows=await Promise.all(compareCodes.map(async code=>{const r=by3[code]||{},rec=await loadCanonical(code),modules=HUBS.filter(h=>getModule(h,rec,code)).length,rels=(worldCfg.curated_edges||[]).filter(e=>e.a===code||e.b===code).length;return{code,name:r.name?.common||code,pop:r.population,area:r.area,modules,rels,badges:axisBadges(code)}}));
+  const rows=await Promise.all(compareCodes.map(async code=>{const r=by3[code]||{},rec=await loadCanonical(code),modules=HUBS.filter(h=>getModule(h,rec,code)).length,rels=allRelationEdgesFor(code).length;return{code,name:r.name?.common||code,pop:r.population,area:r.area,modules,rels,badges:axisBadges(code)}}));
   $('#panel').innerHTML=`<div class="eyebrow">Compare mode · ${rows.length}/4</div><h1>Country comparison</h1><p class="muted">Click map countries to add or remove them. Table actions deliberately separate inspection from membership.</p><div class="actions"><button onclick="fitCompare()">Fit comparison</button><button onclick="clearCompare()">Clear</button><button onclick="leaveCompare()">Done</button></div>${rows.length?`<div class="card"><table class="compare-table"><thead><tr><th>Country</th><th>Population</th><th>Area km²</th><th>Modules</th><th>Edges</th></tr></thead><tbody>${rows.map(x=>`<tr><td><b>${esc(x.name)}</b><div><button onclick="inspectComparedCountry('${x.code}')">Inspect</button> <button onclick="removeComparedCountry('${x.code}')">Remove</button></div><div>${x.badges.slice(0,2).map(b=>`<span class="pill">${esc(b)}</span>`).join('')}</div></td><td>${fmt(x.pop)}</td><td>${fmt(x.area)}</td><td>${x.modules}</td><td>${x.rels}</td></tr>`).join('')}</tbody></table></div>`:'<div class="card muted">No countries held yet. Click up to four polygons.</div>'}<div class="boundary">Comparison is descriptive. Population, area, graph degree and project-axis labels encode different quantities; future GDP, debt and energy metrics require harmonized dated sources.</div>`;
 }
 window.openModuleGroup=id=>{if(!selected)return;const group=groupedModules(currentCanonical,selected).find(item=>item.id===id);if(!group)return;$('#panel').innerHTML=`<div class="eyebrow">Country knowledge · ${esc(selected)}</div><h1>${esc(group.label)}</h1><div class="actions"><button onclick="showOverview()">Back to country</button></div><div class="card">${group.modules.map(module=>`<div class="row"><button onclick="openModule('${module.id}')">${esc(module.label)}</button> <span class="pill">${esc(module.plane)}</span></div>`).join('')}</div><div class="boundary">The on-map orbit is grouped navigation only. Detailed modules remain in the inspector so the map does not grow a new node for every future dataset.</div>`};

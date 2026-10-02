@@ -1,14 +1,5 @@
-const $ = s => document.querySelector(s);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 const investigation = window.__potatoAtlasInvestigationSurface;
-
-const toolbar = document.querySelector('.top');
-const anchor = $('#tilt');
-const button = document.createElement('button');
-button.id = 'evidenceEye';
-button.textContent = 'Eye';
-button.title = 'Inspect source provenance, observation dates and epistemic layers for the selected country';
-toolbar.insertBefore(button, anchor);
 
 const style = document.createElement('style');
 style.textContent = `.evidence-eye{position:absolute;left:12px;top:12px;z-index:var(--atlas-z-overlay,8);width:min(470px,calc(100% - 24px));max-height:72%;overflow:auto;background:var(--atlas-surface-overlay-bg,#080c0ced);border:1px solid var(--atlas-surface-border,#344343);border-radius:var(--atlas-surface-radius,11px);padding:11px;box-shadow:var(--atlas-surface-shadow,0 10px 28px #0009);backdrop-filter:var(--atlas-surface-blur,blur(11px))}.evidence-eye[hidden]{display:none}.evidence-head{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}.evidence-section{margin-top:10px;padding-top:8px;border-top:1px solid var(--line)}.evidence-kv{display:grid;grid-template-columns:115px minmax(0,1fr);gap:4px 8px;padding:3px 0;font-size:11px}.evidence-kv span:first-child{color:var(--muted)}.evidence-tag{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:2px 6px;margin:2px 2px 2px 0;font-size:10px}.evidence-observed{border-color:#4f8064}.evidence-project{border-color:#8c7350}.evidence-source{font:10px/1.35 ui-monospace,monospace;overflow-wrap:anywhere}.evidence-time-warning{border-left:3px solid #8c7350;background:#171410;padding:6px 8px;margin:5px 0;font-size:10px;color:#d9cfbd}@media(max-width:900px){.evidence-eye{position:fixed;left:10px;right:10px;top:76px;width:auto;max-height:54vh}}`;
@@ -47,7 +38,9 @@ function restoreCountryCard() {
 }
 
 async function fetchJson(url) {
-  const response = await fetch(url);
+  const shared = window.__potatoAtlasResources;
+  if (shared?.fetchJson) return shared.fetchJson(url);
+  const response = await fetch(url, {cache:'force-cache'});
   if (!response.ok) throw new Error(`${url} returned HTTP ${response.status}`);
   return response.json();
 }
@@ -109,7 +102,6 @@ function metricRow(label, value) {
 
 function closeEvidence(options = {}) {
   box.hidden = true;
-  button.classList.remove('active');
   restoreCountryCard();
   if (!options.coordinated) investigation?.close('evidence');
 }
@@ -122,13 +114,11 @@ async function renderEvidence() {
   renderedCode = code;
   if (!code) {
     box.hidden = false;
-    button.classList.add('active');
-    box.innerHTML = `<div class="evidence-head"><div><div class="eyebrow">Eye · Evidence</div><b>Select a country first</b></div><button onclick="closeAtlasEvidence()">×</button></div><p class="muted">Eye inspects how the Atlas knows what it is showing. Select a country, then reopen Eye.</p>`;
+    box.innerHTML = `<div class="evidence-head"><div><div class="eyebrow">Sources & evidence</div><b>Select a country first</b></div><button onclick="closeAtlasEvidence()">×</button></div><p class="muted">Sources explains how the Atlas knows what it is showing. Select a country, then open Sources again.</p>`;
     return;
   }
   box.hidden = false;
-  button.classList.add('active');
-  box.innerHTML = `<div class="evidence-head"><div><div class="eyebrow">Eye · Evidence</div><b>Loading ${esc(code)}…</b></div><button onclick="closeAtlasEvidence()">×</button></div>`;
+  box.innerHTML = `<div class="evidence-head"><div><div class="eyebrow">Sources & evidence</div><b>Loading ${esc(code)}…</b></div><button onclick="closeAtlasEvidence()">×</button></div>`;
 
   try {
     const {facts, demography, world} = await loadEvidenceData();
@@ -159,7 +149,7 @@ async function renderEvidence() {
     const typeTags = Object.entries(typeCounts).sort((a,b)=>b[1]-a[1]).slice(0,10).map(([name,count]) => `<span class="evidence-tag">${esc(name)} · ${count}</span>`).join('');
 
     box.innerHTML = `
-      <div class="evidence-head"><div><div class="eyebrow">Eye · Evidence</div><b>${esc(fact.name || demo.name || code)} · ${esc(code)}</b><div class="muted">Source provenance and epistemic context${time.mode!=='current'?` · Time: ${esc(time.mode==='as_of'?time.time:`${time.time} → ${time.time2}`)}`:''}</div></div><button onclick="closeAtlasEvidence()">×</button></div>
+      <div class="evidence-head"><div><div class="eyebrow">Sources & evidence</div><b>${esc(fact.name || demo.name || code)} · ${esc(code)}</b><div class="muted">Source provenance and epistemic context${time.mode!=='current'?` · Time: ${esc(time.mode==='as_of'?time.time:`${time.time} → ${time.time2}`)}`:''}</div></div><button onclick="closeAtlasEvidence()">×</button></div>
       <div class="evidence-section"><b>Observed country facts</b>
         ${sourceRow('Identity owner', fact.source_owner)}
         ${metricRow('Capital', fact.capital)}${sourceRow('Capital source', factsSources.capital)}
@@ -184,9 +174,9 @@ async function renderEvidence() {
       </div>
       <div class="evidence-section"><b>Curated relationship evidence</b><div>${layerTags}</div>${typeTags ? `<div style="margin-top:5px">${typeTags}</div>` : ''}<div class="muted" style="margin-top:5px">${edges.length} represented edge${edges.length === 1 ? '' : 's'} touch this country in the current curated world graph.</div></div>
       <div class="evidence-section"><b>Project interpretation</b><div>${projectTags}</div><div class="muted" style="margin-top:5px">These badges are current project-axis classifications. In historical Time mode they remain source context unless a dated project snapshot explicitly supports the selected date.</div></div>
-      <div class="boundary">Eye reports what sources and classifications the Atlas currently uses. Missing coverage means “not represented here yet,” not “false.” Repetition is not corroboration, project interpretation is not empirical evidence, and a source date is not automatically the start date of the phenomenon.</div>`;
+      <div class="boundary">This panel reports what sources and classifications the Atlas currently uses. Missing coverage means “not represented here yet,” not “false.” Repetition is not corroboration, project interpretation is not empirical evidence, and a source date is not automatically the start date of the phenomenon.</div>`;
   } catch (error) {
-    box.innerHTML = `<div class="evidence-head"><div><div class="eyebrow">Eye · Evidence</div><b>Evidence data unavailable</b></div><button onclick="closeAtlasEvidence()">×</button></div><p class="muted">${esc(error.message || error)}</p>`;
+    box.innerHTML = `<div class="evidence-head"><div><div class="eyebrow">Sources & evidence</div><b>Evidence data unavailable</b></div><button onclick="closeAtlasEvidence()">×</button></div><p class="muted">${esc(error.message || error)}</p>`;
   }
 }
 
@@ -195,7 +185,12 @@ function refreshIfSelectionChanged() {
 }
 
 investigation?.register('evidence', { close:() => closeEvidence({ coordinated:true }) });
-button.addEventListener('click', () => box.hidden ? renderEvidence() : closeEvidence());
+window.__potatoAtlasEvidence = Object.freeze({
+  open:renderEvidence,
+  close:closeEvidence,
+  refresh:() => { if (!box.hidden) return renderEvidence(); return false; },
+  get isOpen() { return !box.hidden; },
+});
 window.refreshAtlasEvidence = () => { if (!box.hidden) renderEvidence(); };
 window.addEventListener('popstate', window.refreshAtlasEvidence);
 window.addEventListener('atlas-time-change', window.refreshAtlasEvidence);
@@ -205,5 +200,5 @@ window.addEventListener('potato-atlas-panel-rendered', refreshIfSelectionChanged
 window.addEventListener('potato-atlas-country-card-rendered', () => { if (!box.hidden) suspendCountryCard(); });
 
 // Compatibility note for the historical static contract: panel lifecycle
-// observation is centralized in 3d-panel-lifecycle.js; Eye consumes events and
+// observation is centralized in 3d-panel-lifecycle.js; the evidence inspector consumes events and
 // does not create its own DOM watcher.

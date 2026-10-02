@@ -82,10 +82,15 @@ function normalizeManifest(data) {
 }
 async function loadOwner(owner) {
   if (ownerCache.has(owner)) return ownerCache.get(owner);
+  const url = sourceUrl(owner);
+  const shared = window.__potatoAtlasResources;
   const promise = (async () => {
-    const response = await fetch(sourceUrl(owner), { cache:'no-cache' });
-    if (!response.ok) throw new Error(`${response.status} ${owner}`);
-    const data = await response.json();
+    const data = shared?.fetchJson
+      ? await shared.fetchJson(url)
+      : await fetch(url, { cache:'force-cache' }).then(response => {
+          if (!response.ok) throw new Error(`${response.status} ${owner}`);
+          return response.json();
+        });
     if (data?.type !== 'FeatureCollection') throw new Error(`${owner} is not a FeatureCollection`);
     return data;
   })();
@@ -298,9 +303,26 @@ async function activate(id, { silent=false }={}) {
   if (!silent) { persist(); emit('activate'); }
   return true;
 }
+function unloadRendered(id) {
+  const state = rendered.get(id);
+  if (!state) return false;
+  unbindFallbackInteraction();
+  const stack = window.__potatoAtlasRenderStack;
+  for (const layerId of [...(state.layerIds || [])].reverse()) {
+    try { stack?.unregister?.(layerId); } catch {}
+    try { if (map.getLayer(layerId)) map.removeLayer(layerId); } catch {}
+  }
+  try { if (map.getSource(state.sourceId)) map.removeSource(state.sourceId); } catch {}
+  rendered.delete(id);
+  if (!syncInteractionRegistration()) {
+    const remaining = [...rendered.values()].flatMap(row => row.layerIds || []).filter(layerId => map.getLayer(layerId));
+    if (remaining.length) bindFallbackInteraction(remaining);
+  }
+  return true;
+}
 function deactivate(id, { silent=false }={}) {
   const changed = activeIds.delete(id);
-  if (rendered.has(id)) setVisibility(id, false);
+  if (rendered.has(id)) unloadRendered(id);
   if (changed && !silent) { persist(); emit('deactivate'); }
   return changed;
 }

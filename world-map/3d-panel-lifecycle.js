@@ -81,31 +81,56 @@ async function ensureControlPlane() {
   return controlPlaneReady;
 }
 
-// Coordinate application surfaces before adding more optional visual layers.
-// Shared math/scale/interaction/inspector ownership loads first so later geographic
-// detail modules consume one wrap policy, one camera scale, one hit-test owner and
-// one semantic inspector history.
+// Keep the always-on control plane intentionally small. Specialist systems are
+// activated by the interaction that needs them instead of treating panel lifecycle
+// as a second bootstrap.
 queueMicrotask(async () => {
   try {
     await ensureControlPlane();
   } catch (error) {
     console.warn('World Map control-plane foundation unavailable:', error);
   }
-  await window.__potatoAtlasLoadModule?.('UI Layout', './3d-ui-layout.js');
-  await window.__potatoAtlasLoadModule?.('Accessibility', './3d-accessibility.js');
-  await window.__potatoAtlasLoadModule?.('Render Stack', './3d-render-stack.js');
-  await window.__potatoAtlasLoadModule?.('Map State', './3d-map-state.js');
-  await window.__potatoAtlasLoadModule?.('Context Visibility', './3d-context-visibility.js');
-  await window.__potatoAtlasLoadModule?.('Pinned Context', './3d-pinned-context.js');
-  const placesLoaded = await window.__potatoAtlasLoadModule?.('Places', './3d-places.js');
+  await Promise.all([
+    window.__potatoAtlasLoadModule?.('UI Layout', './3d-ui-layout.js'),
+    window.__potatoAtlasLoadModule?.('Accessibility', './3d-accessibility.js'),
+    window.__potatoAtlasLoadModule?.('Render Stack', './3d-render-stack.js'),
+    window.__potatoAtlasLoadModule?.('Map State', './3d-map-state.js'),
+    window.__potatoAtlasLoadModule?.('Context Visibility', './3d-context-visibility.js'),
+  ]);
+});
+
+let searchModulesRequested = false;
+async function ensureSearchModules() {
+  if (searchModulesRequested) return;
+  searchModulesRequested = true;
+  const [searchLoaded, placesLoaded] = await Promise.all([
+    window.__potatoAtlasLoadModule?.('Search', './3d-search.js'),
+    window.__potatoAtlasLoadModule?.('Places', './3d-places.js'),
+  ]);
   if (!placesLoaded) {
     window.dispatchEvent(new CustomEvent('potato-atlas-places-ready', {
       detail:{ majorCount:0, error:'Places module unavailable', fallback:true }
     }));
   }
-  await window.__potatoAtlasLoadModule?.('Search', './3d-search.js');
-  await window.__potatoAtlasLoadModule?.('Physical World', './3d-physical-layers.js');
-  await window.__potatoAtlasLoadModule?.('Evidence Layers', './3d-evidence-layers.js');
+  return Boolean(searchLoaded);
+}
+const searchInput = document.getElementById('search');
+searchInput?.addEventListener('focus', () => { void ensureSearchModules(); }, { once:true });
+searchInput?.addEventListener('input', () => { void ensureSearchModules(); }, { once:true });
+
+let pinnedContextRequested = false;
+window.addEventListener('potato-atlas-pin-change', event => {
+  const pins = event?.detail?.pinnedCodes || event?.detail?.selectedCodes || [];
+  if (pinnedContextRequested || !pins.length) return;
+  pinnedContextRequested = true;
+  void window.__potatoAtlasLoadModule?.('Pinned Context', './3d-pinned-context.js');
+});
+
+let physicalWorldRequested = false;
+document.getElementById('viewMenu')?.addEventListener('toggle', event => {
+  if (physicalWorldRequested || !event.currentTarget?.open) return;
+  physicalWorldRequested = true;
+  void window.__potatoAtlasLoadModule?.('Physical World', './3d-physical-layers.js');
 });
 
 function selectedCountryCode(detail = null) {
@@ -119,8 +144,7 @@ function selectedCountryCode(detail = null) {
 
 async function maybeLoadSelectedPlaces(detail = null) {
   const map = window.__potatoAtlasMap;
-  const api = window.__potatoAtlasPlaces;
-  if (!map || !api?.loadCountry) return false;
+  if (!map) return false;
   const code = selectedCountryCode(detail);
   if (!/^[A-Z]{3}$/.test(code)) return false;
   const requested = new URL(location.href).searchParams.has('place');
@@ -131,8 +155,12 @@ async function maybeLoadSelectedPlaces(detail = null) {
     placesDetailScaleActive = scale.capabilityActive('places-detail', 'load', map.getZoom(), placesDetailScaleActive);
     if (!placesDetailScaleActive) return false;
   }
+  if (!window.__potatoAtlasPlaces?.loadCountry) {
+    const loaded = await window.__potatoAtlasLoadModule?.('Places', './3d-places.js');
+    if (!loaded || !window.__potatoAtlasPlaces?.loadCountry) return false;
+  }
   try {
-    await api.loadCountry(code);
+    await window.__potatoAtlasPlaces.loadCountry(code);
     return true;
   } catch (error) {
     console.warn(`Places detail unavailable for ${code}:`, error);
@@ -218,6 +246,9 @@ window.addEventListener('potato-atlas-spatial-overlay-change', syncMudBelowLayer
 function hydrateEvidenceLayersFromUrl() {
   const params = new URL(location.href).searchParams;
   const jobs = [];
+  if (params.has('evidenceLayer')) {
+    jobs.push(window.__potatoAtlasLoadModule?.('Evidence Layers', './3d-evidence-layers.js'));
+  }
   if (params.get('evidenceLayer') === 'adl-heat') {
     jobs.push(window.__potatoAtlasLoadModule?.('ADL H.E.A.T.', './3d-adl-heat.js'));
   }

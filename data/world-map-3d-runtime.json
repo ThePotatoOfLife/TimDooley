@@ -1,7 +1,7 @@
 {
   "id": "world-map-3d-runtime",
-  "version": "1.7.0",
-  "updated": "2026-09-11",
+  "version": "1.8.0",
+  "updated": "2026-10-02",
   "status": "active renderer contract",
   "purpose": "Define the active 2.5D/3D World Relational Atlas renderer while preserving the same canonical country, relationship, issue, programme, timeline and provenance model used by the rest of the repository.",
   "projection_contract": "data/atlas-projection-contract.json",
@@ -18,50 +18,54 @@
     "rule": "Navigation changes viewpoint only; it never changes underlying data, timeline or epistemic classification."
   },
   "interface": {
-    "status": "implemented-progressive-disclosure",
-    "principle": "Map first; ordinary country clicks build a persistent working selection, the active country opens a Country Pulse, and deeper Layers, Analyze/Trace, Time, View, Eye and Axis controls remain progressively disclosed.",
+    "status": "implemented-purpose-first-progressive-disclosure",
+    "principle": "The public map answers “What is happening where, and how is it connected?” through Countries / Now / Connections / History / Map. Internal registries, project lenses and specialist tools remain secondary.",
     "persistent": [
       "country search",
-      "working selection strip when non-empty",
-      "Inspector"
-    ],
-    "grouped": [
-      "Layers",
-      "Analyze / legacy Compare and Trace",
-      "Time",
-      "View",
-      "More"
+      "Countries",
+      "Now",
+      "Connections",
+      "History",
+      "Map",
+      "Home"
     ],
     "contextual": [
-      "Country Pulse",
-      "Lens legend",
-      "country inspector",
-      "Eye/evidence",
-      "Axis navigator",
-      "operator HUD",
-      "Time status"
+      "lightweight country card",
+      "Sources inspector",
+      "Statistics inspector",
+      "Path",
+      "Trace",
+      "Impact",
+      "regions/places",
+      "Physical World controls inside Map",
+      "Evidence-layer controls inside Map"
     ],
     "focus_mode": "Temporarily hides informational overlays/HUDs without changing underlying map/data state.",
     "preference_memory": [
-      "inspector open/closed",
+      "details panel open/closed",
       "focus mode",
-      "Axis open/closed"
-    ]
+      "specialist state only where explicitly persisted"
+    ],
+    "rule": "A country click must remain cheap. Specialist systems load from the action or tab that needs them, not from selection itself."
   },
   "renderer_architecture": {
     "shell": "world-map/index.html is the canonical public interface; world-map/3d.html is a noindex compatibility redirect.",
     "application": "world-map/3d-app.js owns MapLibre initialization, canonical country loading, legacy Compare, recursive Trace, semantic modules, golden-angle navigation layout and core URL state",
     "working_selection": "world-map/3d-country-selection.js composes over the core active-country API to own persistent multi-country working selection, active-country state, selection-strip state and bounded automatic relationship context without creating a second renderer",
     "country_pulse": "world-map/3d-country-pulse.js owns the sourced active-country first-screen summary over canonical country records plus optional demography runtime data",
-    "hover_and_resilience": "world-map/3d-hover.js owns resilient data boot, country hover and capital-city overlays",
+    "hover_and_resilience": "world-map/3d-hover.js owns local-first geometry/country fallback and hover/capital presentation through the explicit __potatoAtlasCoreData service; it does not replace global window.fetch.",
     "pathfinder": "world-map/3d-pathfinder.js owns shortest-known-path navigation without creating a second map renderer",
     "demography": "world-map/3d-demography.js owns sourced population/religion presentation",
-    "evidence": "world-map/3d-evidence.js owns the Eye inspector for source provenance, observation dates, represented relation evidence and project-vs-empirical boundaries",
+    "evidence": "world-map/3d-evidence.js owns the API-driven Sources & evidence inspector for provenance, observation dates, represented relation evidence and project-vs-empirical boundaries; it does not inject a permanent toolbar control.",
     "time": "world-map/3d-time.js owns Current / As-of / Compare-dates view state, URL persistence, conservative unknown-date handling and atlas-time-change events",
     "interface_controller": "world-map/3d-inspector-router.js owns semantic inspector routing; world-map/3d-inspector-visibility.js owns inspector open/close state; world-map/3d-ui-layout.js owns screen-zone placement; world-map/3d-world-bar.js owns the primary global control/readout surface; world-map/3d-context-visibility.js derives presentation policy. Retired broad 3d-ui.js is not a live bootstrap owner.",
     "axis": "world-map/3d-axis.js plus operator modules expose project-symbolic vertical navigation without turning it into physical geography",
     "reason_for_split": "Feature modules extend one renderer and shared public APIs rather than duplicating MapLibre state.",
-    "analytical_layers": "world-map/3d-layer-registry.js + world-map/3d-compositor.js own canonical analytical layer state/rendering; legacy Lens adapter retired"
+    "analytical_layers": "world-map/3d-layer-registry.js + world-map/3d-compositor.js own canonical analytical layer state/rendering; legacy Lens adapter retired",
+    "resource_cache": "world-map/3d-resource-cache.js owns deduplicated in-flight/completed JSON resources and retryable failure state shared by core and specialist runtimes.",
+    "lifecycle": "world-map/3d-panel-lifecycle.js owns the single panel MutationObserver and contextual lazy activation for search/places, pins, physical layers, evidence deep links and subnational detail; it is not a second bootstrap.",
+    "active_view": "world-map/3d-active-view.js owns coalesced derived map-question state; country presentation/card consumers reuse that authoritative state rather than independently recomputing every event.",
+    "relationship_indexing": "core app and working selection build adjacency indexes once from curated_edges so country lookup and bounded traversal do not repeatedly scan the full graph."
   },
   "spatial_primitives": {
     "country_shell": "Polygon/MultiPolygon selection surface and spatial context, not the country's complete identity.",
@@ -108,7 +112,7 @@
   },
   "country_pulse_mode": {
     "status": "implemented-foundation",
-    "behavior": "On active-country inspection, Country Pulse summarizes available sourced population, GDP, GDP per capita, growth, inflation, unemployment and correctly defined debt/GDP plus connections, systems, projects, institutions, religion, additional observations, coverage and freshness.",
+    "behavior": "Country Pulse loads from the explicit Statistics action and summarizes available sourced population, GDP, GDP per capita, growth, inflation, unemployment and correctly defined debt/GDP plus deeper country context.",
     "source_resolution": "Reads the canonical country record directly and optionally augments population/religion presentation from the same-origin demography runtime; local enriched fields remain usable where global WDI-shaped observations are sparse.",
     "missing_data_policy": "Unavailable values stay unavailable and display an explicit missing state; zero is never substituted for missing evidence.",
     "boundary": "Country Pulse is a presentation projection over canonical records, not a second country database."
@@ -190,7 +194,7 @@
   },
   "evidence_mode": {
     "status": "implemented-inspector",
-    "behavior": "Eye exposes country fact provenance, population/religion observation dates and sources, represented relation layers/types and project-axis classifications for the selected country.",
+    "behavior": "Sources exposes country fact provenance, population/religion observation dates and sources, represented relation layers/types and project-axis classifications for the selected country.",
     "boundary": "Missing coverage is not falsehood; repetition is not corroboration; project interpretation is not empirical evidence.",
     "next": "Add explicit filtering for epistemic class, confidence, source class, contradictions and freshness without collapsing unlike evidence into one truth score."
   },
@@ -223,12 +227,12 @@
     "flow": "Vortex/curl language remains analogy until directed quantitative edges share a quantity, unit and reference period; graph Hodge decomposition is the preferred future formalism once those gates are met."
   },
   "resilience": {
-    "geometry": "same-origin deployed geometry snapshot is preferred, with provider fallbacks available through the resilient boot layer",
-    "country_metadata": "same-origin generated country facts/demography snapshots are preferred; emergency synthesis/fallback remains available where defined",
+    "geometry": "same-origin deployed geometry is preferred by the explicit core-data service, with external provider fallbacks only when the local snapshot is unavailable.",
+    "country_metadata": "same-origin country runtime/facts/demography are preferred and shared between consumers; external REST fallback is isolated to the core-data service rather than a global fetch shim.",
     "working_selection_coordinates": "automatic relation lines prefer the same-origin deployed REST Countries runtime for representative country anchors and fall back externally only when necessary; selection itself remains usable without that optional coordinate enrichment",
     "pathfinder": "same-origin country facts are preferred before REST Countries",
     "remaining_external_risk": "MapLibre source modules are deployment-vendored, while acquisition/runtime fallbacks may still depend on external providers where the same-origin snapshot is unavailable.",
-    "failure_state": "Required-data failure must produce a visible unavailable/error state rather than a silent empty map; optional Pulse/Lens enrichment failure must leave core geography usable."
+    "failure_state": "Required-data failure produces a visible unavailable/error state; shared JSON failures are retryable and optional specialist failure leaves core geography usable."
   },
   "implemented_2026_09_10": [
     "map-first progressive-disclosure shell with grouped Layers / Trace / Time / View controls",
@@ -247,7 +251,7 @@
     "sourced population and religion presentation",
     "same-origin country-facts hover with capital, area, region and currency",
     "capital city nodes with latest-dated available population hover",
-    "Eye evidence inspector for provenance, observation dates and epistemic boundaries",
+    "Sources & evidence inspector for provenance, observation dates and epistemic boundaries",
     "resilient local-first geometry/country-data boot",
     "North Axis D1-D11 symbolic navigator and executable symbolic operators",
     "URL country, compare, relation, depth, path and time state",
@@ -256,7 +260,15 @@
     "persistent multi-country working selection with active-country state, toggle-by-click semantics, selection chips and selected= URL persistence",
     "automatic bounded immediate relationship context for ordinary selected countries while explicit Trace remains available",
     "Country Pulse first-screen inspector over canonical country records with sourced economic, demographic, network, system, project, institution and freshness context",
-    "single-owner country fill Lenses for project Alignment/Axis, empirical Alliances, descriptive Religion and foundation Population/Area metrics"
+    "single-owner country fill Lenses for project Alignment/Axis, empirical Alliances, descriptive Religion and foundation Population/Area metrics",
+    "purpose-first Countries / Now / Connections / History / Map public navigation",
+    "action-driven specialist loading so ordinary country selection remains lightweight",
+    "shared JSON resource cache with retryable failure diagnostics",
+    "explicit local-first core geometry/country data service without global fetch interception",
+    "prebuilt country relationship adjacency indexes for browse and traversal",
+    "coalesced Active View refresh and single Active View-driven country-card render path",
+    "Physical World and Evidence layer controls nested inside Map",
+    "API-driven Sources & evidence inspector without a permanent Eye toolbar control"
   ],
   "node_record_schema": {
     "required": [
@@ -324,7 +336,7 @@
     ]
   },
   "data_growth_strategy": {
-    "current": "Use country polygons, persistent working selection, Country Pulse, bounded automatic relationship context, one active country-fill Lens, sourced facts/demography, stable semantic modules, curated relationship graph, Path/Trace/legacy Compare, conservative Time, Eye evidence and the project-symbolic Axis view.",
+    "current": "Use one geographic renderer with purpose-first navigation, cheap country selection, action-driven specialists, shared resource/cache ownership, indexed relationships, current conflict context, sourced country facts/demography and explicitly labeled historical/project overlays.",
     "next_foundation": "Generate one harmonized same-origin country metric registry for GDP/labour/health/digital/environment measures and let Lens, Country Pulse and legacy Compare consume the same definitions; add major cities and unified country/city search without loading an unbounded global point cloud.",
     "next_graph": "Generalize country-only graph traversal into normalized country/institution/company/infrastructure/funding/ownership/programme relations and make automatic connections entity-aware only where provenance and screen density remain safe.",
     "next_physical": "Add high-value real spatial nodes: major cities, government institutions, central banks, ports, grids, cables, power plants, companies, projects and research institutions, with a compact capital action window as the national machinery gateway.",
@@ -334,7 +346,7 @@
     "Build the harmonized country-metric runtime so GDP, GDP per capita, growth, inflation, unemployment, labour participation, life expectancy, urbanization, internet, CO2, debt and energy measures can drive Lens/Compare/Pulse from one sourced definition registry.",
     "Add the bounded major-cities runtime and unified country/city search with zoom-aware labels and sourced population/coordinate provenance.",
     "Add the compact capital action window and progressively attach central banks, parliaments, finance institutions, ports, airports, energy assets, projects and research institutions using honest coordinates.",
-    "Extend Eye from inspection into filtering for epistemic class, confidence, source class, contradictions and freshness.",
+    "Extend Sources & evidence from inspection into filtering for epistemic class, confidence, source class, contradictions and freshness.",
     "Expand recursive Trace into entity-aware traversal through data/global-graph-bridge.json and data/relationships.json, honoring Time/Evidence filters.",
     "Upgrade selected empirical/project layers with valid_from/valid_to so historical Time mode can safely render them rather than suppressing current-only snapshots.",
     "Add directional money/trade/debt/energy/project flow styling only after comparable directed edges carry quantity, unit, period and source; red/green then means direction rather than moral good/bad.",
@@ -372,5 +384,13 @@
     "world-map/3d-context-visibility.js",
     "world-map/3d-render-stack.js",
     "world-map/3d-url-state.js"
-  ]
+  ],
+  "performance_contract": {
+    "selection": "Selecting a country must not auto-load Demography, Country Pulse, Evidence, System Intelligence, Functional Chains, Infrastructure, Impact Trace or Impact Actions.",
+    "resources": "Canonical JSON reads share one in-flight/parsed resource where URLs match; one consumer cannot abort the shared request for all others.",
+    "relationships": "Country relation lookup uses prebuilt adjacency indexes rather than full curated-edge scans per visited node.",
+    "derived_state": "Bursts of layer/query/selection/time events are coalesced into one pending Active View refresh.",
+    "ui_ownership": "Physical and evidence dataset controls live inside Map rather than creating new top-level menus.",
+    "telemetry": "Runtime telemetry reports MapLibre source/layer counts plus module and shared-resource pressure."
+  }
 }

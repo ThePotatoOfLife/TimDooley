@@ -67,43 +67,19 @@ def main() -> int:
     if "coordinated:true" not in chain:
         errors.append("Chain must support coordinator-driven close without recursion")
 
-    surface_load = "loadAfterPaint('Investigation Surface', './3d-investigation-surface.js')"
-    staged_specialists = (
-        (
-            "Chain",
-            "loadSpecialist('Functional Chains', './3d-chain-explorer.js')",
-            "await loadInspectionContext();",
-        ),
-        (
-            "Impact",
-            "loadSpecialist('Impact Trace', './3d-impact-trace.js')",
-            "await loadInspectionDeep();",
-        ),
-    )
-    if surface_load not in bootstrap:
+    surface_marker = "['Investigation Surface', './3d-investigation-surface.js']"
+    if surface_marker not in bootstrap:
         errors.append("bootstrap must load the investigation surface coordinator during the interactive core")
-    else:
-        surface_pos = bootstrap.find(surface_load)
-        for label, specialist_marker, stage_call in staged_specialists:
-            if specialist_marker not in bootstrap:
-                errors.append(f"bootstrap must retain contextual {label} loading")
-                continue
-            stage_pos = bootstrap.find(stage_call)
-            if stage_pos < 0:
-                errors.append(f"bootstrap must retain staged {label} promotion")
-            elif surface_pos > stage_pos:
-                errors.append(f"investigation surface coordinator must load before staged {label} promotion")
-
-        promotion_triggers = (
-            "window.addEventListener('potato-atlas-working-selection-change', promoteInspectionOnce)",
-            "if (window.__potatoAtlasSelection?.current?.selected) promoteInspectionOnce({ detail:{ selected:true } });",
-        )
-        for trigger in promotion_triggers:
-            trigger_pos = bootstrap.find(trigger)
-            if trigger_pos < 0:
-                errors.append(f"bootstrap missing investigation promotion trigger: {trigger}")
-            elif surface_pos > trigger_pos:
-                errors.append("investigation surface coordinator must load before investigation promotion is armed")
+    for label, marker in (
+        ("Path", "window.__potatoAtlasLoadModule('Path finder', './3d-pathfinder.js')"),
+        ("Impact", "window.__potatoAtlasLoadModule('Impact Trace', './3d-impact-trace.js')"),
+        ("Chain", "window.__potatoAtlasLoadModule?.('Functional Chains', './3d-chain-explorer.js')"),
+    ):
+        if marker not in card:
+            errors.append(f"country card must load {label} from its explicit action/context trigger")
+    for forbidden in ("promoteInspectionOnce", "loadInspectionContext()", "loadInspectionDeep()"):
+        if forbidden in bootstrap:
+            errors.append(f"bootstrap must not auto-promote investigation specialists: {forbidden}")
 
     forbidden_controls = (
         'data-family="path"', 'data-family="infrastructure"', 'data-family="coverage"', 'data-family="investigation"',

@@ -124,7 +124,10 @@ def main():
     require(MAP_STATE,("__potatoAtlasEvidenceLayers","evidenceLayer","adlYear","adlType"),errors)
     require(CONTEXT,("__potatoAtlasEvidenceLayers","potato-atlas-evidence-layer-change"),errors)
     require(PANEL,("Evidence Layers","./3d-evidence-layers.js","./3d-spatial-overlays.js","__potatoAtlasSpatialOverlays?.toggle?.('project.below.us-cases')","__potatoAtlasSpatialOverlays?.activate?.('project.below.us-cases')"),errors)
-    require(WORLD_BAR,("project.below.us-cases","Below · U.S. cases"),errors)
+    world_bar=require(WORLD_BAR,("Countries","Now","Connections","History","Map"),errors)
+    for retired in ("project.below.us-cases","Below · U.S. cases"):
+        if retired in world_bar:
+            errors.append(f"deep Below project overlay must not return to first-level World Bar: {retired}")
     require(SPATIAL_UI,("project.below","Below / Farm project cases","project.below.us-cases","registerBelowSubdivisionProvider","registerEvidenceProvider('spatial:project.below.us-cases'"),errors)
     require(GATEWAYS,("__potatoAtlasRenderStack","slot:'context-network'","system-intelligence:gateways"),errors)
     require(CHAINS,("__potatoAtlasRenderStack","slot:'selection-emphasis'","investigation:chain"),errors)

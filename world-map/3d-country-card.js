@@ -20,7 +20,7 @@ let activeTab = 'overview';
 const records = new Map();
 
 const esc = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
-async function fetchJson(url) { const response = await fetch(url, { cache:'no-cache' }); if (!response.ok) throw new Error(`${response.status} ${url}`); return response.json(); }
+async function fetchJson(url) { const shared = window.__potatoAtlasResources; if (shared?.fetchJson) return shared.fetchJson(url); const response = await fetch(url, { cache:'force-cache' }); if (!response.ok) throw new Error(`${response.status} ${url}`); return response.json(); }
 async function indexData() { if (!index) index = await fetchJson(INDEX_URL); return index; }
 function runtime() { return window.__potatoAtlasDataRuntime; }
 async function populationObservation(code) { return runtime()?.populationObservation?.(code) || null; }
@@ -204,10 +204,18 @@ function governmentRows(record) {
   return rows.slice(0, 3);
 }
 
+async function ensureContextModules() {
+  await Promise.all([
+    window.__potatoAtlasLoadModule?.('System Intelligence', './3d-gateways.js'),
+    window.__potatoAtlasLoadModule?.('Functional Chains', './3d-chain-explorer.js'),
+    window.__potatoAtlasLoadModule?.('Infrastructure Context', './3d-infrastructure.js'),
+  ]);
+}
 function activateTab(tab) {
   const card = document.getElementById('atlasCountryCard');
   if (!card || !['overview','context','connections'].includes(tab)) return;
   activeTab = tab;
+  if (tab === 'context') void ensureContextModules();
   card.querySelectorAll('[data-country-tab]').forEach(button => {
     const selected = button.dataset.countryTab === tab;
     button.classList.toggle('active', selected);
@@ -217,11 +225,17 @@ function activateTab(tab) {
 }
 
 function openInspector() { document.getElementById('atlasApp')?.classList.remove('panel-collapsed'); }
-async function showDetails() { selection.inspect?.(); openInspector(); }
+async function showDetails() {
+  if (!window.__potatoAtlasEvidence) {
+    await window.__potatoAtlasLoadModule?.('Evidence', './3d-evidence.js');
+  }
+  await window.__potatoAtlasEvidence?.open?.();
+}
 async function showStatistics() {
   const code = selection.current?.activeCode || selection.current?.code;
   if (!code) return;
-  await showDetails();
+  openInspector();
+  selection.inspect?.();
   if (!window.__potatoAtlasCountryPulse) {
     if (window.__potatoAtlasLoadModule) await window.__potatoAtlasLoadModule('Country Pulse', './3d-country-pulse.js');
     else await import('./3d-country-pulse.js').catch(() => false);
@@ -247,7 +261,12 @@ async function showPath() {
 async function showImpact() {
   const code = selection.current?.activeCode || selection.current?.code;
   if (!code) return;
-  if (!window.__potatoAtlasImpactTrace && window.__potatoAtlasLoadModule) await window.__potatoAtlasLoadModule('Impact Trace', './3d-impact-trace.js');
+  if (!window.__potatoAtlasImpactTrace && window.__potatoAtlasLoadModule) {
+    await window.__potatoAtlasLoadModule('Impact Trace', './3d-impact-trace.js');
+  }
+  if (!window.__potatoAtlasImpactActions && window.__potatoAtlasLoadModule) {
+    await window.__potatoAtlasLoadModule('Impact Actions', './3d-impact-actions.js');
+  }
   await window.__potatoAtlasImpactTrace?.showEntity?.(code);
 }
 function syncTraceAction() {
@@ -339,7 +358,7 @@ async function render(code = selection.current?.activeCode || selection.current?
     <section class="atlas-country-tab-panel" data-country-panel="connections" role="tabpanel">
       <div class="atlas-country-section"><small>${esc(RELATION_LABELS[relationMode] || relationMode)} · ${connections.length} represented</small>${connections.length ? connections.map(row => `<div class="atlas-country-connection"><button type="button" data-connection-country="${esc(row.partner)}">${esc(row.name)}</button><span>${esc(row.types)}</span></div>`).join('') : '<div class="atlas-country-empty">No represented relationships match this filter.</div>'}</div>
     </section>
-    <div class="atlas-country-actions">${regionActionHtml}<button type="button" data-atlas-statistics>Statistics</button><button type="button" data-country-action="details">More data</button><button type="button" data-country-action="entity-trace">Trace</button><button type="button" data-country-action="path">Path</button><button type="button" data-country-action="impact">Impact</button></div>
+    <div class="atlas-country-actions">${regionActionHtml}<button type="button" data-atlas-statistics>Statistics</button><button type="button" data-country-action="details">Sources</button><button type="button" data-country-action="entity-trace">Trace</button><button type="button" data-country-action="path">Path</button><button type="button" data-country-action="impact">Impact</button></div>
     <div class="atlas-country-source">${refreshed ? `Country record · ${esc(refreshed)}` : 'Country record'} · missing values remain unavailable</div>`;
   card.hidden = false;
   card.querySelector('.atlas-country-close')?.addEventListener('click', () => {
@@ -353,11 +372,11 @@ async function render(code = selection.current?.activeCode || selection.current?
 }
 
 install();
-window.addEventListener('potato-atlas-working-selection-change', event => render(event?.detail?.activeCode || event?.detail?.code));
-window.addEventListener('potato-atlas-pin-change', () => { if (renderedCode) render(renderedCode); });
-window.addEventListener('potato-atlas-active-view-change', event => { const code = event?.detail?.code; if (!code || code === renderedCode) render(renderedCode); });
-window.addEventListener('potato-atlas-query-change', () => { if (renderedCode) render(renderedCode); });
-window.addEventListener('potato-atlas-relation-mode-change', () => { if (renderedCode) render(renderedCode); });
+window.addEventListener('potato-atlas-active-view-change', event => {
+  const code = String(event?.detail?.code || '').toUpperCase();
+  if (code) render(code);
+  else if (renderedCode) render(renderedCode);
+});
 window.addEventListener('potato-atlas-entity-trace-change', syncTraceAction);
 if (selection.current?.selected) render(selection.current.activeCode || selection.current.code);
 

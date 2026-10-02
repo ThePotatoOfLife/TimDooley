@@ -73,11 +73,11 @@ async function bestGeometryResponse() {
 }
 
 async function fallbackRestCountries() {
-  const [indexResponse, geoResponse] = await Promise.all([
+  const [indexResponse, geo] = await Promise.all([
     fetchJsonResponse('../data/countries/index.json'),
-    bestGeometryResponse()
+    geometryData()
   ]);
-  const [indexPayload, geo] = await Promise.all([indexResponse.json(), geoResponse.json()]);
+  const indexPayload = await indexResponse.json();
   const rows = Array.isArray(indexPayload) ? indexPayload : (indexPayload.countries || indexPayload.items || []);
   const names = new Map((geo.features || []).map(feature => [feature.id, feature]));
   return rows.map(row => {
@@ -100,24 +100,35 @@ async function fallbackRestCountries() {
   }).filter(row => row.cca3);
 }
 
-window.fetch = async function atlasResilientFetch(input, options) {
-  const url = typeof input === 'string' ? input : input?.url || String(input);
-  if (url === GEO_PRIMARY) return bestGeometryResponse();
-  if (url.startsWith(REST_PREFIX)) {
-    try { return await fetchJsonResponse(REST_LOCAL, options); }
+let geometryDataPromise = null;
+let countryRuntimePromise = null;
+
+async function geometryData() {
+  if (!geometryDataPromise) geometryDataPromise = bestGeometryResponse().then(response => response.json());
+  return geometryDataPromise;
+}
+
+async function countryRuntimeData() {
+  if (countryRuntimePromise) return countryRuntimePromise;
+  countryRuntimePromise = (async () => {
+    try { return await fetchJsonResponse(REST_LOCAL).then(response => response.json()); }
     catch (localError) { console.warn('Local country runtime snapshot unavailable.', localError); }
     try {
-      const response = await nativeFetch(input, options);
-      if (response.ok) return response;
-      throw new Error(`REST Countries returned ${response.status}`);
+      const response = await nativeFetch(REST_PREFIX + '?fields=name,cca3,population,area,latlng,capital,region,subregion,borders');
+      if (!response.ok) throw new Error(`REST Countries returned ${response.status}`);
+      return response.json();
     } catch (primaryError) {
       console.warn('REST Countries unavailable; using local minimal country runtime.', primaryError);
-      const data = await fallbackRestCountries();
-      return new Response(JSON.stringify(data), { status: 200, headers: { 'Content-Type': 'application/json', 'X-Atlas-Fallback': 'local-country-runtime' } });
+      return fallbackRestCountries();
     }
-  }
-  return nativeFetch(input, options);
-};
+  })();
+  return countryRuntimePromise;
+}
+
+window.__potatoAtlasCoreData = Object.freeze({
+  geometry:geometryData,
+  countries:countryRuntimeData,
+});
 
 const originalAddControl = maplibregl.Map.prototype.addControl;
 maplibregl.Map.prototype.addControl = function (...args) {
@@ -127,6 +138,7 @@ maplibregl.Map.prototype.addControl = function (...args) {
 
 await import(versionedModule('./3d-geo-kernel.js'));
 await import(versionedModule('./3d-motion.js'));
+await import(versionedModule('./3d-resource-cache.js'));
 try { await import(versionedModule('./3d-app.js')); }
 finally { maplibregl.Map.prototype.addControl = originalAddControl; }
 
@@ -139,8 +151,7 @@ const tooltip = getOrCreateTooltipService(map, { PopupClass:maplibregl.Popup, ev
 if (tooltip !== window.__potatoAtlasTooltip) throw new Error('Shared Tooltip publication mismatch.');
 
 try {
-  const response = await fetchJsonResponse(COUNTRY_FACTS_URL);
-  window.__potatoAtlasCountryFacts = await response.json();
+  window.__potatoAtlasCountryFacts = await window.__potatoAtlasResources.fetchJson(COUNTRY_FACTS_URL);
 } catch (error) {
   window.__potatoAtlasCountryFacts = { countries: {} };
   console.warn('Local country facts snapshot unavailable; hover will use renderer fallbacks.', error);

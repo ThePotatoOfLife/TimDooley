@@ -87,13 +87,13 @@ def main() -> int:
     fail_if_missing(pulse,("Country Pulse","GDP per capita","Inflation","Unemployment","__potatoAtlasCountryPulse","More statistics"),"world-map/3d-country-pulse.js",errors)
     fail_if_missing(time_js,("atlas-time-contract.json","north-axis-membership-history.json","timeMode","changed_between","canonicalUrlState.patch('time'","atlas-time-change","unknownDatePolicy","No exact dated project-field snapshot is safe to apply automatically","Current project Fields and empirical Networks are not automatically rewritten as historical layers","__potatoAtlasInspectorVisibility?.setOpen","__potatoAtlasTime"),"world-map/3d-time.js",errors)
     fail_if_missing(app,("function relationEdgesFor","function edgeKey","function traceGraph","function traceRelationData","function traceHubData","function updateSpatial","function geometryBounds","function fitCodes","function toggleCompareCountry","function deselectCountry","function selectFeature","__potatoAtlasSelection","potato-atlas-selection-change","function renderCompare","function traceRows","window.openModule","window.goCountry","window.fitTrace","window.fitCompare","window.leaveCompare","TRACE_MAX_DEPTH = 3","TRACE_MAX_NODES","TRACE_MAX_EDGES","new Map([[root, 0]])","queue.shift()","visited.has(other)","__potatoAtlasUrlState","urlState.patch('selection-inspector'","compareCodes","relationType","traceDepth","trace-hubs","semantic-hubs","semantic-links","compare-hubs","relations","maplibre-gl@6.9.0","OpenStreetMap contributors","Atlas data failed to load","Breadth-first traversal","A relation line describes a typed connection","Project-canon material is separate from empirical country data","documented physical/public finance"),"world-map/3d-app.js",errors)
-    fail_if_missing(hover,("ATLAS_VERSION = new URL(import.meta.url).searchParams.get('v')","function versionedModule","await import(versionedModule('./3d-app.js'))","GEO_LOCAL","GEO_PRIMARY","GEO_FALLBACK","REST_LOCAL","function bestGeometryResponse","function fallbackRestCountries","atlasResilientFetch","local minimal country runtime","CAPITALS_LOCAL","world-capitals.geo.json","installCapitalsWhenUseful","capital-cities","capital-city-major-labels","capital-city-labels","function countryHtml","function capitalHtml","mousemove","mouseleave"),"world-map/3d-hover.js",errors)
-    fail_if_missing(evidence,("id = 'evidenceEye'","id = 'evidencePanel'","world-country-facts.json","world-country-demography.json","world-relational-map.json","function projectStatuses","function relationsFor","Source provenance and epistemic context","Project interpretation","Repetition is not corroboration","window.refreshAtlasEvidence","function refreshIfSelectionChanged","potato-atlas-panel-rendered","function suspendCountryCard","function restoreCountryCard","selectedCode() !== renderedCode","function timeCompatibility","atlas-time-change"),"world-map/3d-evidence.js",errors)
+    fail_if_missing(hover,("ATLAS_VERSION = new URL(import.meta.url).searchParams.get('v')","function versionedModule","await import(versionedModule('./3d-app.js'))","GEO_LOCAL","GEO_PRIMARY","GEO_FALLBACK","REST_LOCAL","function bestGeometryResponse","function fallbackRestCountries","__potatoAtlasCoreData","function geometryData","function countryRuntimeData","local minimal country runtime","CAPITALS_LOCAL","world-capitals.geo.json","installCapitalsWhenUseful","capital-cities","capital-city-major-labels","capital-city-labels","function countryHtml","function capitalHtml","mousemove","mouseleave"),"world-map/3d-hover.js",errors)
+    fail_if_missing(evidence,("id = 'evidencePanel'","__potatoAtlasEvidence","world-country-facts.json","world-country-demography.json","world-relational-map.json","function projectStatuses","function relationsFor","Source provenance and epistemic context","Project interpretation","Repetition is not corroboration","window.refreshAtlasEvidence","function refreshIfSelectionChanged","potato-atlas-panel-rendered","function suspendCountryCard","function restoreCountryCard","selectedCode() !== renderedCode","function timeCompatibility","atlas-time-change"),"world-map/3d-evidence.js",errors)
 
     if "setTimeout(window.refreshAtlasEvidence" in evidence:
-        errors.append("Eye refresh regressed to click-dependent timeout synchronization")
+        errors.append("Evidence refresh regressed to click-dependent timeout synchronization")
     if "new MutationObserver(" in evidence:
-        errors.append("Eye must consume the canonical panel lifecycle instead of creating a DOM observer")
+        errors.append("Evidence inspector must consume the canonical panel lifecycle instead of creating a DOM observer")
     for retired in RETIRED_UI:
         if retired.exists():
             errors.append(f"retired Progressive/Selection UI must stay deleted: {retired.relative_to(ROOT)}")
@@ -126,16 +126,16 @@ def main() -> int:
     if runtime.get("projection_contract") != "data/atlas-projection-contract.json": errors.append("3D runtime must point to the shared Atlas projection contract")
     if runtime.get("time_contract") != "data/atlas-time-contract.json": errors.append("3D runtime must point to the Atlas time contract")
     implemented=set(runtime.get("implemented_2026_09_10",[]))
-    for fragment in ("Compare","relation","polygon","URL","recursive","trace","Path","population","Eye","Axis","Time","progressive"):
+    for fragment in ("Compare","relation","polygon","URL","recursive","trace","Path","population","evidence","Axis","Time","progressive"):
         if not any(fragment.lower() in str(item).lower() for item in implemented): errors.append(f"runtime implemented list does not document {fragment} functionality")
     if runtime.get("compare_mode",{}).get("status") not in {"implemented","implemented-basic"}: errors.append("runtime compare_mode is not marked implemented")
     if runtime.get("trace_mode",{}).get("maximum_depth") != 3: errors.append("runtime trace_mode must document maximum depth 3")
     if runtime.get("path_mode",{}).get("status") != "implemented": errors.append("runtime path_mode is not marked implemented")
-    if runtime.get("evidence_mode",{}).get("status") != "implemented-inspector": errors.append("runtime evidence_mode does not document the implemented Eye inspector")
+    if runtime.get("evidence_mode",{}).get("status") != "implemented-inspector": errors.append("runtime evidence_mode does not document the implemented evidence inspector")
     if runtime.get("time_mode",{}).get("status") != "implemented-conservative-foundation": errors.append("runtime time_mode does not document conservative Time foundation")
     if "suppressed" not in str(runtime.get("time_mode",{}).get("current_overlay_guard","")).lower(): errors.append("runtime time mode does not document current-overlay suppression in historical mode")
     architecture=runtime.get("renderer_architecture",{})
-    if "3d-evidence.js" not in str(architecture.get("evidence","")): errors.append("runtime renderer architecture does not assign ownership to Eye")
+    if "3d-evidence.js" not in str(architecture.get("evidence","")): errors.append("runtime renderer architecture does not assign ownership to the evidence inspector")
     if "3d-time.js" not in str(architecture.get("time","")): errors.append("runtime renderer architecture does not assign ownership to Time")
     interface_owner=str(architecture.get("interface_controller",""))
     for owner in ("3d-inspector-visibility.js","3d-ui-layout.js","3d-world-bar.js","3d-inspector-router.js"):
@@ -168,8 +168,11 @@ def main() -> int:
     if ".slice(0,4)" not in app: errors.append("could not confirm four-country Compare cap for restored URL state")
     if "Math.min(TRACE_MAX_DEPTH" not in app: errors.append("recursive Trace depth is not clamped to its browser-safe maximum")
     if "visited.has(other)" not in app: errors.append("recursive Trace does not visibly prevent country cycles")
-    if "return bestGeometryResponse()" not in hover: errors.append("external geometry request is not routed through resilient local-first loading")
+    if "window.__potatoAtlasCoreData" not in hover: errors.append("core geography/country fallback must use an explicit shared data service")
+    if "window.fetch = async function" in hover: errors.append("World Map must not globally replace window.fetch for core data fallback")
     if "fetchJsonResponse(REST_LOCAL" not in hover: errors.append("REST Countries enrichment does not prefer same-origin deployed snapshot")
+    if "coreData.geometry()" not in app or "coreData.countries()" not in app:
+        errors.append("3d-app.js must consume the explicit local-first core data service")
 
     print(f"Canonical countries: {len(canonical_codes)}")
     print(f"Curated relation types: {len(relation_types)}")
@@ -179,7 +182,7 @@ def main() -> int:
     print("Time contract: Current / As-of / Compare-dates · URL persisted · current-only overlays suppressed historically")
     print("Eye-Time contract: observation years are checked against requested historical view")
     print("Boot contract: local snapshot · core-first · advanced overlays dormant until requested · deployment-versioned module chain")
-    print("Runtime contract: active renderer · projection/time contracts · Path/Trace/Compare/Eye/Axis documented")
+    print("Runtime contract: active renderer · projection/time contracts · Path/Trace/Compare/Sources/Axis documented")
     print(f"Errors: {len(errors)} · Warnings: {len(warnings)}")
     for warning in warnings: print("WARNING:", warning)
     if errors:
