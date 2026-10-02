@@ -58,14 +58,6 @@ PUBLIC_LABEL_REPLACEMENTS = (
     ("← Potato of Life archive</a>", "← Home</a>"),
 )
 LEGACY_TTS_READERS = {
-    "shadow-farm/index.html": {
-        "id": "shadow-farm",
-        "root": ".page",
-        "label": "The Farm & Trees of Strife",
-        "all_label": "Whole deep reader",
-        "exclude": "#shadow-farm-tts,.nav",
-        "asset_prefix": "../",
-    },
     "rooms/index.html": {
         "id": "rooms",
         "root": ".rooms-page",
