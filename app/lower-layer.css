@@ -39,7 +39,7 @@ body.lower-layer-page{
 body.lower-layer-page::before{
   content:"";
   position:fixed;
-  z-index:-2;
+  z-index:0;
   inset:-8vh 0 auto;
   height:var(--site-scene-box-height,320vh);
   pointer-events:none;
@@ -56,7 +56,7 @@ body.lower-layer-page::before{
 body.lower-layer-page::after{
   content:"";
   position:fixed;
-  z-index:-1;
+  z-index:0;
   inset:0;
   pointer-events:none;
   opacity:calc(.14 + (var(--site-depth-progress,0) * .30));
@@ -70,8 +70,9 @@ body.lower-layer-page::after{
     linear-gradient(180deg,transparent 0 12%,rgba(0,0,0,.06) 38%,rgba(40,8,4,.34) 100%);
 }
 
-/* The reader stays above the atmosphere. These two small fields prevent blank
-   stretches on very long pages without reintroducing a second root wallpaper. */
+/* The reader stays above the atmosphere. Scene/wash are z=0, reader surfaces z=1.
+   These two small fields prevent blank stretches on very long pages without
+   reintroducing a second root wallpaper. */
 .lower-layer-page .lower-layer-surface,
 .lower-layer-page main.page{
   position:relative;
