@@ -246,6 +246,7 @@ def main() -> int:
             "biblicalSequence","correspondences","maximumClaim","scriptureContextItems","comparison-sequences","Points of contact","How far this comparison can go",
             "readerNarrative","readerResonance","Spudlight reading","data-scripture-ref","BibleScriptureReader?.openReference","reading-rail","source-pair","technical-grid",
             "readerScene","chronicle-scene","The scene","source-grounded narrative reconstruction","Under the biblical light",
+            "readerSequence","continuous-sequence","Continuous reading","Reading result","sequence-ref",
         ),
         "app/bible-study.js", errors,
     )
@@ -282,7 +283,7 @@ def main() -> int:
     )
     forbid(mining_app,("scrollIntoView(",),"app/bible-mining-wave19-loader.js",errors)
 
-    require(css,(".reader-toolbar",".comparison-nav",".results-panel",".relation-details",".active-relation",".comparison-sequences",".comparison-sequence",".contact-points",".maximum-claim",".scripture-context",".spudlight-reading",".source-pair",".reading-rail",".story-pair",".interpretation-pair",".technical-grid",".scripture-ref-button",".chronicle-scene",".chronicle-beat"),"app/bible-study.css",errors)
+    require(css,(".reader-toolbar",".comparison-nav",".results-panel",".relation-details",".active-relation",".comparison-sequences",".comparison-sequence",".contact-points",".maximum-claim",".scripture-context",".spudlight-reading",".source-pair",".reading-rail",".story-pair",".interpretation-pair",".technical-grid",".scripture-ref-button",".chronicle-scene",".chronicle-beat",".continuous-sequence",".continuous-step",".continuous-sequence-conclusion"),"app/bible-study.css",errors)
     require(builder,('class="static-relation"','<details','class="static-index"','assemble_relations','assemble_fragments','load_manifest','What happened / what the project is saying','Why this matters / what it later becomes','project_sequence_html','project_quote','public_wording'),"scripts/build_bible_study.py",errors)
 
     if MANIFEST.exists():
@@ -426,6 +427,11 @@ def main() -> int:
         reader_scene_count=sum(1 for row in [*narrative_wave.get("new_relations",[]),*narrative_wave.get("enrichments",[])] if row.get("reader_scene"))
         if reader_scene_count < 20:
             errors.append(f"Tim/Son narrative wave lost chronicle-scene coverage: {reader_scene_count}")
+        john_sequence=next((row.get("reader_sequence") for row in [*narrative_wave.get("new_relations",[]),*narrative_wave.get("enrichments",[])] if (row.get("id") or row.get("relation_id"))=="john14-15-house-thomas-way-gardener-vine-sequence-2026-07-23"),None)
+        if not john_sequence or len(john_sequence.get("steps",[])) < 10:
+            errors.append("John 14-15 continuous House/Thomas/Way/Gardener sequence is missing or too thin")
+        elif not any(step.get("source_type")=="limit" for step in john_sequence.get("steps",[])):
+            errors.append("John 14-15 continuous sequence must retain an explicit non-overclaiming limit")
 
     if errors:
         print("BIBLE READER VALIDATION FAILED")
