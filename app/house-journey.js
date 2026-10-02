@@ -263,7 +263,7 @@
         const route=x.route||'';
         if(!route)return '';
         const href=route.startsWith('/')?base+route.replace(/^\//,''):route;
-        return '<a href="'+esc(href)+'">'+esc(x.title||x.id||'Public surface')+' →</a>';
+        return '<a href="'+esc(href)+'">'+esc(x.title||x.id||'Related reader')+' →</a>';
       }).join('');
       const signal=pulse?.signals||{};
       const pulseText=pulse?[
