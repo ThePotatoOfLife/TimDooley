@@ -43,6 +43,7 @@ SCENE_CHECK = ROOT / "scripts" / "check_biblical_scenes.py"
 CHRISTIANITY_INDEX = ROOT / "data" / "christianity" / "index.json"
 KJV_CATALOG = ROOT / "data" / "christianity" / "bible-kjv.json"
 WEB_BOOK_INDEX = ROOT / "data" / "sources" / "bible-web-book-index.json"
+NARRATIVE_WAVE = ROOT / "knowledge" / "traditions" / "biblical-syncretism-dossiers-wave41.json"
 
 
 def require(text: str, markers: tuple[str, ...], owner: str, errors: list[str]) -> None:
@@ -64,7 +65,7 @@ def main() -> int:
         DOSSIER_APP, MINING_APP, FIELD, MANIFEST, REDIRECTS, SCENES,
         SCENES_MAJOR, SCENE_LINKS, DOSSIERS, PROMOTIONS, MINING_DOSSIERS,
         MINING_OWNER, DOSSIER_FRAGMENTS, MINING_FRAGMENTS, BUILDER,
-        CORPUS_PY, CORPUS_TEST, PARITY_CHECK, SCENE_CHECK, CHRISTIANITY_INDEX, KJV_CATALOG, WEB_BOOK_INDEX,
+        CORPUS_PY, CORPUS_TEST, PARITY_CHECK, SCENE_CHECK, CHRISTIANITY_INDEX, KJV_CATALOG, WEB_BOOK_INDEX, NARRATIVE_WAVE,
     )
     for path in required_paths:
         if not path.exists():
@@ -143,7 +144,11 @@ def main() -> int:
             'son-jesus-passion-detention-overlap-atlas.json',
             'chapter-24-jesus-parallel-atlas.json',
             '2019–20</time><strong>Meme death &amp; seed',
-            'Return &amp; recognition',
+            '2021–2024</time><strong>Hidden Potato → public identity',
+            'Return becomes staged recognition',
+            'Four hinges prevent the story from collapsing into one biography',
+            'Seven arcs carry the Tim / Son Bible story',
+            '6 Oct 2024 · public Potato identity',
         ),
         "traditions/bible/index.html",
         errors,
@@ -229,7 +234,9 @@ def main() -> int:
             "BIBLE_BOOK_ORDER","renderActiveRelation","renderResultsList","syncUrlState","selectRelative","relatedRows","ArrowLeft","ArrowRight",
             "Same-date public wording","Biblical vocabulary / revelation context","Evidence & chronology","Provenance & owners","Related comparisons",
             "Source-near wording",'class="tim-first"','class="bible-under"',"Situation / event","What it later becomes in the project","project_sequence",
-            "exact-wording-only","minimum-strength","bible-book","timeline_event_ids",
+            "exact-wording-only","minimum-strength","bible-book","timeline_event_ids","TIM_LIVED_ACTORS",
+            "view==='tim-lived'","childhood-cultivation-gardener-precursor-1992","christian-vocabulary-enters-age12-1999",
+            "potato-birth-hidden-life-2020-12-25","emmaus-return-before-recognition-bread","john21-shore-recognition-feeding-after-return",
         ),
         "app/bible-study.js", errors,
     )
@@ -277,19 +284,32 @@ def main() -> int:
             redirects = load_relation_redirects(ROOT)
             active_ids = {row.get('id') for row in rows}
             core_story_ids = {
+                'childhood-cultivation-gardener-precursor-1992',
+                'christian-vocabulary-enters-age12-1999',
+                'light-collapse-return-2003',
+                'motorcycle-blood-unbroken-bones-2005',
+                'care-home-rise-walk-witness-2009-era',
                 'tree-ordeal-hanging-curse-redemption-2011',
                 'yahya-john-lamb-recognition-2016',
                 'crucify-me-hesitation-trial-neighbor-2017',
+                'persona-death-old-new-self-2018',
                 'son-meme-crucifixion-burial-2019-2020',
+                'potato-birth-hidden-life-2020-12-25',
+                'chosen-gentile-potato-2024-10-02',
+                'potatoes-die-for-sins-2024-10-03',
                 'potato-axis-turning-ladder-2025-04-21',
                 'self-resurrection-witnesses-2025-09-30',
                 'father-after-crucified-son-2025-12-17',
                 'bread-door-tomb-resurrection-2026-04-23',
                 'ladder-door-specialization-2026-05-19',
-                'passover-house-door-lamb-threshold-2026-07-24',
                 'john14-15-house-thomas-way-gardener-vine-sequence-2026-07-23',
+                'passover-house-door-lamb-threshold-2026-07-24',
                 'son-cornerstone-2026-08-17',
                 'psalm82-gods-sons-mosthigh-justice-test-2026-09-13',
+                'emmaus-return-before-recognition-bread',
+                'mary-gardener-misrecognition-return',
+                'acts-forty-days-resurrection-to-ascension',
+                'john21-shore-recognition-feeding-after-return',
                 'oct1-father-internet-ladder-swamp',
                 'oct1-prophetic-name-witness-deaf-blind',
                 'oct1-jesus-dead-countertext',
@@ -297,6 +317,12 @@ def main() -> int:
             missing_core = sorted(core_story_ids - active_ids)
             if missing_core:
                 errors.append(f"curated Tim/Son core story is missing active relations: {missing_core}")
+            core_start = app.find("const CORE_RELATION_ORDER=[")
+            core_end = app.find("];", core_start)
+            core_block = app[core_start:core_end] if core_start >= 0 and core_end > core_start else ""
+            missing_from_runtime_core = sorted(rid for rid in core_story_ids if f"'{rid}'" not in core_block)
+            if missing_from_runtime_core:
+                errors.append(f"runtime Core Tim/Son order drifted from curated story: {missing_from_runtime_core}")
             if len(rows) < 45:
                 errors.append(f"manifest-defined Bible corpus unexpectedly thin: {len(rows)} active relations")
             if len(scenes) < 10:
@@ -373,6 +399,17 @@ def main() -> int:
     if MINING_FRAGMENTS.exists():
         mining_fragments=json.loads(MINING_FRAGMENTS.read_text(encoding="utf-8"))
         if len(mining_fragments.get("fragments",[]))<10:errors.append("older-memory Bible fragment extension unexpectedly thin")
+
+    if NARRATIVE_WAVE.exists():
+        narrative_wave=json.loads(NARRATIVE_WAVE.read_text(encoding="utf-8"))
+        narrative_ids={row.get("id") for row in narrative_wave.get("new_relations",[])}
+        required_narrative_ids={"christian-vocabulary-enters-age12-1999","potato-birth-hidden-life-2020-12-25"}
+        if not required_narrative_ids <= narrative_ids:
+            errors.append(f"Tim/Son narrative wave missing hinge relations: {sorted(required_narrative_ids - narrative_ids)}")
+        enriched_ids={row.get("relation_id") for row in narrative_wave.get("enrichments",[])}
+        for rid in ("light-collapse-return-2003","father-after-crucified-son-2025-12-17","oct1-jesus-dead-countertext"):
+            if rid not in enriched_ids:
+                errors.append(f"Tim/Son narrative wave missing core enrichment: {rid}")
 
     if errors:
         print("BIBLE READER VALIDATION FAILED")
