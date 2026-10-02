@@ -39,6 +39,8 @@ def main() -> int:
         "Transient HTTP",
         "Transient network error",
         "after {MAX_ATTEMPTS} attempts",
+        "append_observation_history",
+        "observation_changes",
     )
     for marker in required:
         if marker not in text:
