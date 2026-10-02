@@ -78,7 +78,7 @@
 
   function configureAutomaticHost(options={}){
     if(doc.querySelector('[data-tts-longform]'))return false;
-    const main=chooseRoot();if(!main||main.matches('[data-tts-skip]'))return false;
+    const main=chooseRoot()||(options.selectionOnly?doc.body:null);if(!main||main.matches?.('[data-tts-skip]'))return false;
     const id=ensureId(main);
     const host=placeHost(main);
     markSections(main);
