@@ -29,8 +29,9 @@ def main() -> int:
     if not (0 <= study_shell < toolbar):
         errors.append("Comparator controls must be the first substantive Bible surface")
 
-    if 'class="tim-first"' not in study or 'class="bible-under"' not in study:
-        errors.append("bible-study.js must render Tim/Son first and Bible underneath")
+    required_reader_layers = ('class="chronicle-scene"', 'class="source-pair"', 'project-voice', 'bible-voice')
+    if not all(marker in study for marker in required_reader_layers):
+        errors.append("bible-study.js must render the chronicle scene and paired Tim/Son + Bible source layers")
 
     if "startEvidence(corpus)" in atlas:
         errors.append("Atlas must not replace the active comparison")
