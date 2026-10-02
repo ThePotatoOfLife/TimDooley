@@ -655,63 +655,6 @@ html[data-site-floor="below"]{
 }
 
 /* Cross-floor local navigation is an explicit gate, never a silent sibling door. */
-.page-nav a.spatial-exit {
-  color: var(--site-faint);
-}
-.page-nav a.spatial-exit[data-exit-prefix]::before {
-  content: attr(data-exit-prefix) " · ";
-  opacity: .62;
-  font-size: .78em;
-  font-weight: 800;
-  letter-spacing: .08em;
-}
-.door-grid a.spatial-exit {
-  position: relative;
-  border-style: dashed;
-}
-.door-grid a.spatial-exit[data-exit-prefix]::before {
-  content: attr(data-exit-prefix) " EXIT";
-  display: inline-block;
-  margin-bottom: 7px;
-  color: var(--site-faint);
-  font-size: 8px;
-  font-weight: 800;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-}
-
-.room-actions a.spatial-exit,
-.deep a.spatial-exit,
-.dwelling-links a.spatial-exit {
-  border-style: dashed;
-}
-.room-actions a.spatial-exit[data-exit-prefix]::before,
-.deep a.spatial-exit[data-exit-prefix]::before,
-.dwelling-links a.spatial-exit[data-exit-prefix]::before {
-  content: attr(data-exit-prefix) " · ";
-  color: var(--site-faint);
-  font-size: .78em;
-  font-weight: 800;
-  letter-spacing: .08em;
-}
-
-.adj-grid a.spatial-exit,
-.deep-links a.spatial-exit,
-.side-routes a.spatial-exit {
-  border-style: dashed;
-}
-.adj-grid a.spatial-exit[data-exit-prefix]::before,
-.deep-links a.spatial-exit[data-exit-prefix]::before,
-.side-routes a.spatial-exit[data-exit-prefix]::before {
-  content: attr(data-exit-prefix) " · ";
-  display: inline-block;
-  margin-bottom: 5px;
-  color: var(--site-faint);
-  font-size: .76em;
-  font-weight: 800;
-  letter-spacing: .08em;
-}
-
 
 /* 2.5D floor scenes
    ------------------
@@ -728,12 +671,9 @@ html[data-site-floor]{
 }
 html[data-site-floor="heaven"]{
   --site-depth-tree-opacity:.17;
-  --site-depth-ground-rgb:176,91,61;
   --site-depth-max:.22;
 }
 html[data-site-floor="plane"]{
-  --site-depth-tree-opacity:.08;
-  --site-depth-ground-rgb:58,82,51;
   --site-depth-max:.16;
 }
 html[data-site-floor="heaven"] body:not(.lower-layer-page),
