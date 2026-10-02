@@ -288,6 +288,127 @@ body.lower-layer-page--forge{
   text-decoration-color:rgba(var(--lower-accent-rgb),.95);
 }
 
+
+/* Salvaged 2026-10-01 visual language:
+   The earlier descending-root motif was correct but trapped inside one Below
+   section. Promote its spatial idea here: roof -> root fork -> buried strata ->
+   pressure/spiral, while keeping Swamp and Forge local regimes rather than
+   painting the entire lower floor as either one. */
+.lower-layer-page .lower-layer-surface::before{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  top:0;
+  bottom:0;
+  left:50%;
+  width:min(1440px,100vw);
+  transform:translateX(-50%);
+  pointer-events:none;
+  opacity:.46;
+  background:
+    /* long roots continue after the opening screen */
+    linear-gradient(96deg,transparent 0 49.1%,rgba(138,97,56,.26) 49.45% 50.35%,transparent 50.7%) 4% 90px/210px 980px repeat-y,
+    linear-gradient(83deg,transparent 0 49.2%,rgba(122,84,48,.22) 49.55% 50.3%,transparent 50.65%) 25% 380px/260px 1180px repeat-y,
+    linear-gradient(101deg,transparent 0 49.1%,rgba(152,107,61,.23) 49.5% 50.4%,transparent 50.75%) 53% 170px/230px 1080px repeat-y,
+    linear-gradient(78deg,transparent 0 49.2%,rgba(110,77,46,.21) 49.55% 50.35%,transparent 50.7%) 78% 470px/280px 1240px repeat-y,
+    linear-gradient(94deg,transparent 0 49.1%,rgba(147,103,58,.2) 49.5% 50.4%,transparent 50.75%) 96% 250px/190px 1040px repeat-y,
+    /* recurring forks: one descent can branch toward Life/repair or Strife/Drain */
+    linear-gradient(142deg,transparent 0 49.15%,rgba(143,99,56,.17) 49.5% 50.25%,transparent 50.6%) 18% 520px/210px 360px repeat-y,
+    linear-gradient(38deg,transparent 0 49.15%,rgba(125,86,49,.16) 49.5% 50.2%,transparent 50.55%) 60% 690px/230px 380px repeat-y,
+    /* broken sediment shelves make the page read as a side-on excavation */
+    repeating-linear-gradient(180deg,transparent 0 386px,rgba(111,79,49,.07) 387px 389px,transparent 390px 815px);
+  background-blend-mode:normal;
+  mask-image:linear-gradient(90deg,transparent 0,#000 8%,#000 92%,transparent 100%);
+}
+
+/* Deep archaeology layer: stones, cavities and slow coils.  This is deliberately
+   irregular rather than a perfect grid so the Minecraft/Terraria cue reads as
+   blocky earth, not graph paper. */
+.lower-layer-page .lower-layer-surface::after{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  inset:0 calc(50% - 50vw);
+  pointer-events:none;
+  opacity:.34;
+  background:
+    radial-gradient(ellipse at 9% 8%,rgba(126,119,105,.16) 0 5px,transparent 6px),
+    radial-gradient(ellipse at 91% 14%,rgba(151,137,112,.12) 0 7px,transparent 8px),
+    radial-gradient(ellipse at 16% 38%,rgba(93,91,83,.14) 0 8px,transparent 9px),
+    radial-gradient(ellipse at 84% 47%,rgba(129,117,96,.11) 0 6px,transparent 7px),
+    radial-gradient(ellipse at 25% 74%,rgba(106,100,89,.13) 0 4px,transparent 5px),
+    radial-gradient(ellipse at 71% 82%,rgba(144,127,101,.1) 0 9px,transparent 10px),
+    /* drain/return coils recur at different depths, never as a moral label */
+    radial-gradient(ellipse at 88% 22%,transparent 0 38px,rgba(114,93,62,.075) 39px 41px,transparent 42px 64px,rgba(114,93,62,.045) 65px 67px,transparent 68px),
+    radial-gradient(ellipse at 12% 62%,transparent 0 50px,rgba(85,105,72,.06) 51px 53px,transparent 54px 82px,rgba(85,105,72,.038) 83px 85px,transparent 86px),
+    /* chunky strata blocks */
+    linear-gradient(90deg,rgba(112,80,49,.035) 1px,transparent 1px) 0 0/76px 76px,
+    linear-gradient(180deg,rgba(112,80,49,.03) 1px,transparent 1px) 0 0/76px 76px;
+  background-size:
+    280px 330px,
+    340px 390px,
+    430px 470px,
+    370px 420px,
+    310px 360px,
+    460px 510px,
+    600px 920px,
+    680px 1040px,
+    76px 76px,
+    76px 76px;
+  mask-image:linear-gradient(180deg,transparent 0,#000 120px,#000 96%,transparent 100%);
+}
+
+/* Observatory keeps the full depth neutral: roots, sediment and the faint
+   basin/drain geometry are visible without declaring the whole page Swamp. */
+.lower-layer-page--observatory .lower-layer-surface::after{
+  opacity:.4;
+}
+
+/* Farm is a local entanglement regime inside the same earth. Add pooled organic
+   pockets and denser recurrence, but do not replace the brown/black substrate. */
+.lower-layer-page--farm .lower-layer-surface::after{
+  opacity:.43;
+  background:
+    radial-gradient(ellipse at 14% 32%,rgba(84,108,70,.12) 0 34px,transparent 35px),
+    radial-gradient(ellipse at 82% 61%,rgba(65,92,65,.13) 0 46px,transparent 47px),
+    radial-gradient(ellipse at 38% 87%,rgba(74,95,65,.09) 0 58px,transparent 59px),
+    radial-gradient(ellipse at 91% 18%,transparent 0 34px,rgba(105,126,82,.09) 35px 37px,transparent 38px 64px,rgba(105,126,82,.05) 65px 67px,transparent 68px),
+    radial-gradient(ellipse at 8% 73%,transparent 0 47px,rgba(86,103,72,.07) 48px 50px,transparent 51px 78px,rgba(86,103,72,.04) 79px 81px,transparent 82px),
+    linear-gradient(90deg,rgba(112,80,49,.032) 1px,transparent 1px) 0 0/76px 76px,
+    linear-gradient(180deg,rgba(112,80,49,.028) 1px,transparent 1px) 0 0/76px 76px;
+  background-size:520px 760px,640px 880px,720px 980px,620px 920px,700px 1040px,76px 76px,76px 76px;
+}
+
+/* Roots / Evidence is the clearest excavation wall: provenance lines cross old
+   sediment instead of turning the room into a green botanical illustration. */
+.lower-layer-page--roots .lower-layer-surface::before{
+  opacity:.58;
+}
+.lower-layer-page--roots .lower-layer-surface::after{
+  opacity:.42;
+  background:
+    repeating-linear-gradient(180deg,transparent 0 214px,rgba(161,119,72,.07) 215px 218px,transparent 219px 438px),
+    radial-gradient(ellipse at 11% 24%,rgba(136,124,101,.15) 0 7px,transparent 8px),
+    radial-gradient(ellipse at 88% 52%,rgba(119,111,96,.14) 0 6px,transparent 7px),
+    radial-gradient(ellipse at 24% 79%,rgba(149,132,105,.11) 0 8px,transparent 9px),
+    linear-gradient(90deg,rgba(124,88,52,.035) 1px,transparent 1px) 0 0/82px 82px;
+  background-size:100% 100%,360px 430px,430px 510px,500px 590px,82px 82px;
+}
+
+/* Forge is heat under pressure, not an orange redesign. Ember seams appear
+   intermittently below the content and cool back into the common substrate. */
+.lower-layer-page--forge .lower-layer-surface::after{
+  opacity:.46;
+  background:
+    radial-gradient(ellipse at 18% 25%,rgba(181,89,49,.12) 0 24px,transparent 58px),
+    radial-gradient(ellipse at 78% 48%,rgba(155,72,43,.11) 0 30px,transparent 72px),
+    radial-gradient(ellipse at 38% 77%,rgba(192,103,55,.095) 0 22px,transparent 64px),
+    linear-gradient(174deg,transparent 0 48.6%,rgba(169,81,45,.08) 49% 50%,transparent 50.4%) 0 0/520px 780px repeat-y,
+    linear-gradient(90deg,rgba(117,79,47,.03) 1px,transparent 1px) 0 0/76px 76px,
+    linear-gradient(180deg,rgba(117,79,47,.026) 1px,transparent 1px) 0 0/76px 76px;
+  background-size:620px 860px,740px 980px,680px 920px,520px 780px,76px 76px,76px 76px;
+}
+
 @media(max-width:760px){
   body.lower-layer-page::before{height:760px;opacity:.62}
   body.lower-layer-page::after{opacity:.34}
