@@ -77,20 +77,23 @@ def validate(root: Path) -> list[str]:
 
     ui = ui_path.read_text(encoding="utf-8", errors="replace") if ui_path.is_file() else ""
     for token in (
-        "spatialGeographyView", "Geographies", "Mesopotamia", "Genesis 15", "Greater Israel",
-        "Chosen Children’s Land / Greater Israel scenarios",
+        "spatialGeographyView", "Current conflicts", "Mesopotamia", "Tigris–Euphrates",
+        "Eden", "hypothesis",
     ):
         if token not in ui:
-            errors.append(f"spatial geography UI missing geography marker: {token}")
+            errors.append(f"spatial geography UI missing first-class map-context marker: {token}")
 
     world_bar = world_bar_path.read_text(encoding="utf-8", errors="replace") if world_bar_path.is_file() else ""
     for token in (
         "GEOGRAPHIES", "Geography", "data-geography-overlay", "__potatoAtlasSpatialOverlays",
-        "father.mesopotamia-core", "biblical.genesis-15", "modern.greater-israel",
-        "father.lower-mesopotamia-gulf", "biblical.numbers-34", "biblical.genesis-15-nile",
+        "conflict.active-theatres", "father.mesopotamia-core",
+        "physical.tigris-euphrates-basin", "father.eden-context",
     ):
         if token not in world_bar:
-            errors.append(f"canonical visible World Map bar missing first-class geography marker: {token}")
+            errors.append(f"canonical visible World Map bar missing first-class map-context marker: {token}")
+    for demoted in ("biblical.genesis-15','Genesis 15", "modern.greater-israel','Greater Israel"):
+        if demoted in world_bar:
+            errors.append(f"deep interpretive geography must stay out of the lightweight first-class World Bar: {demoted}")
     if "spatial.toggle(id)" not in world_bar:
         errors.append("Geography toolbar must use spatial.toggle(id) so a checked geography can be deselected")
 
