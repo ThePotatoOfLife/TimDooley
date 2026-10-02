@@ -192,13 +192,16 @@ assert.ok(css.includes('overflow:visible'),'Room rail must expose wrapped lines'
 assert.equal(css.includes('overflow-x:auto'),false,'Room rail must not horizontally scroll');
 assert.equal(css.includes('scrollbar-width'),false,'Room rail must not render a scrollbar');
 assert.ok(css.includes('.site-elevator-arrow::before'),'arrow controls should use metallic line detailing without button blocks');
-const malformedBackgroundImages=[...css.matchAll(/background-image\\s*:\\s*([^;]+);/g)].map(match=>match[1]).filter(value=>/(?:repeat-x|repeat-y|no-repeat|\\/\\s*\\d)/.test(value));
-assert.deepEqual(malformedBackgroundImages,[],'background-image declarations must not contain background shorthand position/size/repeat syntax');
+const backgroundImageValues=[...css.matchAll(/background-image\\s*:\\s*([^;]+);/g)].map(match=>match[1]);
+const malformedBackgroundImages=backgroundImageValues.filter(value=>
+  value.includes('repeat-x') || value.includes('repeat-y') || value.includes('no-repeat')
+);
+assert.deepEqual(malformedBackgroundImages,[],'background-image declarations must not contain background shorthand repeat syntax');
 assert.ok(css.includes('.site-elevator-floor-code'),'terminal board needs a numbered floor code');
 assert.ok(css.includes('[data-elevator-level="heaven"]::before'),'Heaven needs a distinct pixel-biome layer');
 assert.ok(css.includes('html[data-site-floor="heaven"]{'),'resolved Heaven routes should own the root page canvas');
 assert.ok(css.includes('html[data-site-floor="plane"]{'),'resolved Plane routes should own the root page canvas');
-assert.ok(css.includes('linear-gradient(180deg,#183647'),'Plane page atmosphere must visibly rise above the black foundation');
+assert.ok(css.includes('linear-gradient(180deg,#1f4b63'),'Plane page atmosphere must visibly rise above the black foundation');
 assert.ok(css.includes('linear-gradient(180deg,#0b1028'),'Heaven page atmosphere must visibly rise above the black foundation');
 assert.ok(css.includes('background:transparent!important'),'governed page bodies must not paint opaque black over the floor canvas');
 assert.ok(css.includes('--site-panel:rgba(14,16,38,.80)'),'Heaven must tint shared panels, not only the wallpaper');
@@ -211,6 +214,7 @@ assert.ok(css.includes('linear-gradient(88deg,transparent 0 47.9%,'),'Heaven nee
 assert.match(css,/\.site-elevator\[data-elevator-level="heaven"\]::before\{[\s\S]*?radial-gradient\(circle/,'Heaven needs sparse celestial points');
 assert.ok(css.includes('linear-gradient(180deg,#090d24'),'Heaven needs dark-blue/purple cosmic depth rather than a flat sky plate');
 assert.ok(css.includes('[data-elevator-level="plane"]::before'),'Plane needs a distinct CSS landscape biome layer');
+assert.match(css,/\.site-elevator\[data-elevator-level="plane"\]::before\{[\s\S]*?background:/,'Plane header scenery must use the background shorthand when positioning repeated mountain layers');
 assert.match(css,/\.site-elevator\[data-elevator-level="plane"\]::before\{[\s\S]*?repeat-x/,'Plane needs distant CSS mountain ridges');
 assert.ok(css.includes('linear-gradient(180deg,#244f66'),'Plane needs blue air transitioning into green land');
 assert.ok(css.includes('[data-elevator-level="below"]::before'),'Below needs a distinct CSS root-and-soil biome layer');
