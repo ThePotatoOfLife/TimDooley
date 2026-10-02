@@ -3,7 +3,7 @@ const urlState = window.__potatoAtlasUrlState;
 urlState.claim('spatial-overlay-ui', ['boundaryView']);
 
 // UI for independent sacred/textual/current spatial overlays.
-// Layers remains the advanced multi-overlay surface; Analyze gets a quick Geography picker.
+// Public Now/History navigation lives in 3d-world-bar.js; this module owns advanced overlay controls + inspection only.
 
 const spatial = window.__potatoAtlasSpatialOverlays;
 function inspectorRouter() { return window.__potatoAtlasInspector; }
@@ -12,7 +12,6 @@ if (!spatial) throw new Error('Spatial overlay UI requires the spatial overlay r
 const app = document.querySelector('#atlasApp');
 const panel = document.querySelector('#panel');
 const layersMenu = document.querySelector('#layersMenu .menu-pop');
-const analyzeMenu = document.querySelector('#traceMenu .menu-pop');
 const MEASUREMENTS_URL = '../data/world-map-spatial-measurements.json';
 const BELOW_OVERLAY_ID = 'project.below.us-cases';
 let belowFeatures = [];
@@ -40,12 +39,6 @@ const EPISTEMIC_LABEL = {
   event_observed:'Observed event context',
   humanitarian_observed:'Humanitarian observed',
 };
-const QUICK_GEOGRAPHIES = [
-  ['father.mesopotamia-core','Mesopotamia · historical region'],
-  ['physical.tigris-euphrates-basin','Tigris–Euphrates basin · physical reference'],
-  ['father.eden-context','Eden · lower-Mesopotamian hypothesis'],
-];
-
 const measurementPromise = fetch(MEASUREMENTS_URL, { cache:'no-cache' })
   .then(response => response.ok ? response.json() : null)
   .catch(error => { console.warn('Spatial measurements unavailable:', error); return null; });
@@ -86,41 +79,21 @@ if (!host && layersMenu) {
   layersMenu.appendChild(host);
 }
 
-let geographyHost = document.querySelector('#atlasGeographyHost');
-if (!geographyHost && analyzeMenu) {
-  const traversalTitle = [...analyzeMenu.querySelectorAll('.menu-title')]
-    .find(node => node.textContent?.trim() === 'Network traversal');
-  const divider = document.createElement('div');
-  divider.className = 'menu-sep';
-  geographyHost = document.createElement('section');
-  geographyHost.id = 'atlasGeographyHost';
-  geographyHost.setAttribute('aria-label','Current conflicts and contextual geographies');
-  if (traversalTitle) {
-    analyzeMenu.insertBefore(divider, traversalTitle);
-    analyzeMenu.insertBefore(geographyHost, traversalTitle);
-  } else {
-    analyzeMenu.appendChild(divider);
-    analyzeMenu.appendChild(geographyHost);
-  }
-}
-
 const style = document.createElement('style');
 style.textContent = `
 #atlasSpatialOverlayHost{border-top:1px solid #283333;margin-top:8px;padding-top:7px}
 #atlasSpatialOverlayHost .spatial-group{margin:7px 0 10px}
-#atlasSpatialOverlayHost .spatial-group-title,#atlasGeographyHost .spatial-group-title{font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:#aab4aa;margin:3px 2px 5px}
+#atlasSpatialOverlayHost .spatial-group-title{font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:#aab4aa;margin:3px 2px 5px}
 #atlasSpatialOverlayHost .spatial-toggle{display:flex;align-items:flex-start;gap:7px;width:100%;text-align:left;margin:3px 0;padding:6px 7px}
 #atlasSpatialOverlayHost .spatial-toggle span{display:block;min-width:0}
 #atlasSpatialOverlayHost .spatial-toggle small{display:block;color:#aab4aa;font-size:9px;line-height:1.25;margin-top:2px}
 #atlasSpatialOverlayHost .spatial-toggle[disabled]{opacity:.48;cursor:not-allowed}
-#atlasSpatialOverlayHost .spatial-status,#atlasGeographyHost .spatial-status{font-size:9px;color:#aab4aa;margin:5px 2px;line-height:1.3}
-#atlasGeographyHost .conflict-launch{display:flex;align-items:center;gap:8px;border-color:#8f5a36;background:#211b12;color:#ffd46a;font-weight:700}
-#atlasGeographyHost .conflict-dot{width:11px;height:11px;border-radius:50%;background:#ffd34f;border:2px solid #b44936;box-shadow:0 0 0 3px #ffd34f2e;flex:0 0 auto}
+#atlasSpatialOverlayHost .spatial-status{font-size:9px;color:#aab4aa;margin:5px 2px;line-height:1.3}
 .atlas-spatial-overlap .conflict-summary{border-left:3px solid #ffd34f;padding-left:9px}
 .atlas-spatial-overlap .conflict-summary b{color:#ffd46a}
 .atlas-spatial-overlap .spatial-links{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
 .atlas-spatial-overlap .spatial-links a{font-size:10px}
-#atlasBoundaryView,#spatialGeographyView{width:100%;margin-top:4px}
+#atlasBoundaryView{width:100%;margin-top:4px}
 .atlas-spatial-overlap .spatial-overlap-card{border:1px solid #344343;border-radius:9px;padding:9px;margin:7px 0;background:#151d1d}
 .atlas-spatial-overlap .spatial-overlap-card h3{font:400 17px Georgia,serif;margin:2px 0 5px}
 .atlas-spatial-overlap .spatial-source{font-size:10px;color:#aab4aa;overflow-wrap:anywhere}
@@ -193,40 +166,6 @@ function activeBoundaryView() {
   return ['atlas','iso','israel','palestine'].includes(value) ? value : 'atlas';
 }
 
-function renderGeographyPicker() {
-  if (!geographyHost) return;
-  const rows = new Map(spatial.entries().map(row => [row.id,row]));
-  const options = QUICK_GEOGRAPHIES
-    .map(([id,label]) => [rows.get(id),label])
-    .filter(([row]) => row?.availability === 'current');
-  const conflict = rows.get('conflict.active-theatres');
-  geographyHost.innerHTML = `
-    <div class="spatial-group-title">What is happening now?</div>
-    ${conflict?.availability === 'current' ? `<button class="conflict-launch" id="spatialConflictView" type="button"><span class="conflict-dot"></span><span>Current conflicts · 2 Oct 2026</span></button>` : ''}
-    <div class="spatial-status">Broad theatre markers only — no live troops, vehicles, aircraft, ships, strike targets or front lines.</div>
-    <div class="spatial-group-title">Historical / textual geography</div>
-    <select id="spatialGeographyView" title="Show and fit a historical, textual or interpretive geography">
-      <option value="">Geographies · choose…</option>
-      ${options.map(([row,label]) => `<option value="${esc(row.id)}">${esc(label)}</option>`).join('')}
-    </select>
-    <div class="spatial-status">These are contextual geographies, not current sovereignty. Mesopotamia is historical; Eden is explicitly a hypothesis field.</div>`;
-  const conflictButton = geographyHost.querySelector('#spatialConflictView');
-  if (conflictButton) conflictButton.onclick = async () => {
-    await spatial.activate('conflict.active-theatres');
-    await spatial.fit('conflict.active-theatres');
-    renderControls();
-  };
-  const picker = geographyHost.querySelector('#spatialGeographyView');
-  if (picker) picker.onchange = async event => {
-    const id = event.target.value;
-    if (!id) return;
-    await spatial.activate(id);
-    await spatial.fit(id);
-    event.target.value = '';
-    renderControls();
-  };
-}
-
 function renderControls() {
   if (host) {
     const rows = spatial.entries();
@@ -267,7 +206,6 @@ function renderControls() {
       };
     }
   }
-  renderGeographyPicker();
 }
 
 async function renderSpatialPanel(features) {
