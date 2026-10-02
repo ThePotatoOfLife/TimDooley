@@ -1,5 +1,5 @@
 {
-  "record_version": "1.0.0",
+  "record_version": "1.1.0",
   "record_type": "country",
   "status": "sourced-enriched",
   "identity": {
@@ -13,13 +13,110 @@
   "coverage": {
     "node_instantiated": true,
     "blueprint_inherited": true,
-    "observations": 0,
+    "observations": 12,
     "relationships": 0,
-    "sources": 0,
+    "sources": 1,
     "research_status": "ready-for-source-enrichment",
-    "deepening_overlay": true
+    "canonicalized": true
   },
-  "observations": {},
+  "observations": {
+    "population": {
+      "value": 14390003,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SP.POP.TOTL",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
+    },
+    "gdp": {
+      "value": 3364713864.08488,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "NY.GDP.MKTP.CD",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
+    },
+    "gdp_per_capita": {
+      "value": 233.823013385395,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "NY.GDP.PCAP.CD",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
+    },
+    "gdp_per_capita_ppp": {
+      "value": 1248.05425025467,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "NY.GDP.PCAP.PP.CD",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
+    },
+    "real_growth": {
+      "value": 4.24010529884178,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "NY.GDP.MKTP.KD.ZG",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
+    },
+    "inflation": {
+      "value": 34.1339985744832,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "FP.CPI.TOTL.ZG",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
+    },
+    "unemployment": {
+      "value": 0.922,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SL.UEM.TOTL.ZS",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
+    },
+    "labour_force_participation": {
+      "value": 78.255,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SL.TLF.CACT.ZS",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
+    },
+    "life_expectancy": {
+      "value": 63.818,
+      "year": 2024,
+      "source": "world-bank",
+      "indicator": "SP.DYN.LE00.IN",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
+    },
+    "fertility": {
+      "value": 4.789,
+      "year": 2024,
+      "source": "world-bank",
+      "indicator": "SP.DYN.TFRT.IN",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
+    },
+    "urbanization": {
+      "value": 25.6870184681663,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SP.URB.TOTL.IN.ZS",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
+    },
+    "internet_penetration": {
+      "value": 8.595999718,
+      "year": 2024,
+      "source": "world-bank",
+      "indicator": "IT.NET.USER.ZS",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
+    }
+  },
   "relationships": [
     [
       "burundi",
@@ -43,11 +140,11 @@
     "instantiated_at": "2026-09-07T12:37:31.426393+00:00",
     "instantiation_method": "canonical country index + country blueprint",
     "observation_policy": "No value is invented merely to fill a field; absent evidence remains missing/stale.",
-    "last_refresh": "2026-09-07T21:59:50.659074+00:00",
+    "last_refresh": "2026-10-02T06:13:14.085634+00:00",
     "source_priority": "international-official",
     "historical_observations_preserved": true,
     "enrichment_merged": true,
-    "enrichment_source": "data/countries/burundi-enrichment.json"
+    "enrichment_layer": "retired overlay merged into canonical country record"
   },
   "data_freshness": {
     "last_refresh_attempt": "2026-09-07T21:59:50.659074+00:00",
@@ -66,5 +163,6 @@
     "Lake Tanganyika access",
     "regional trade links",
     "hydropower potential"
-  ]
+  ],
+  "record_role": "canonical-country-record"
 }

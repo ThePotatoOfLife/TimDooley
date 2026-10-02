@@ -46,6 +46,11 @@
   "status": "sourced-enriched",
   "provenance": {
     "enrichment_merged": true,
-    "enrichment_source": "data/countries/palestine-enrichment.json"
+    "enrichment_layer": "retired overlay merged into canonical country record"
+  },
+  "record_role": "canonical-country-record",
+  "record_version": "1.1.0",
+  "coverage": {
+    "canonicalized": true
   }
 }

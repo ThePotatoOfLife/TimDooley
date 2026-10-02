@@ -1,5 +1,5 @@
 {
-  "record_version": "1.0.0",
+  "record_version": "1.1.0",
   "record_type": "country",
   "status": "sourced-enriched",
   "identity": {
@@ -13,13 +13,94 @@
   "coverage": {
     "node_instantiated": true,
     "blueprint_inherited": true,
-    "observations": 0,
+    "observations": 10,
     "relationships": 0,
-    "sources": 0,
+    "sources": 1,
     "research_status": "ready-for-source-enrichment",
-    "deepening_overlay": true
+    "canonicalized": true
   },
-  "observations": {},
+  "observations": {
+    "population": {
+      "value": 54850648,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SP.POP.TOTL",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
+    },
+    "gdp": {
+      "value": 81665773809.5238,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "NY.GDP.MKTP.CD",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
+    },
+    "gdp_per_capita": {
+      "value": 1488.87527836542,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "NY.GDP.PCAP.CD",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
+    },
+    "gdp_per_capita_ppp": {
+      "value": 6011.53492175516,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "NY.GDP.PCAP.PP.CD",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
+    },
+    "real_growth": {
+      "value": -2.01184475795665,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "NY.GDP.MKTP.KD.ZG",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
+    },
+    "unemployment": {
+      "value": 3.047,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SL.UEM.TOTL.ZS",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
+    },
+    "labour_force_participation": {
+      "value": 55.088,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SL.TLF.CACT.ZS",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
+    },
+    "life_expectancy": {
+      "value": 67.095,
+      "year": 2024,
+      "source": "world-bank",
+      "indicator": "SP.DYN.LE00.IN",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
+    },
+    "fertility": {
+      "value": 2.098,
+      "year": 2024,
+      "source": "world-bank",
+      "indicator": "SP.DYN.TFRT.IN",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
+    },
+    "urbanization": {
+      "value": 30.5836915476767,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SP.URB.TOTL.IN.ZS",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
+    }
+  },
   "relationships": [
     [
       "myanmar",
@@ -49,11 +130,11 @@
     "instantiated_at": "2026-09-07T12:37:31.426393+00:00",
     "instantiation_method": "canonical country index + country blueprint",
     "observation_policy": "No value is invented merely to fill a field; absent evidence remains missing/stale.",
-    "last_refresh": "2026-09-07T21:59:50.659074+00:00",
+    "last_refresh": "2026-10-02T06:13:14.085634+00:00",
     "source_priority": "international-official",
     "historical_observations_preserved": true,
     "enrichment_merged": true,
-    "enrichment_source": "data/countries/myanmar-enrichment.json"
+    "enrichment_layer": "retired overlay merged into canonical country record"
   },
   "data_freshness": {
     "last_refresh_attempt": "2026-09-07T21:59:50.659074+00:00",
@@ -73,5 +154,6 @@
     "agriculture",
     "Bay of Bengal/Andaman Sea position",
     "China-India-ASEAN corridors"
-  ]
+  ],
+  "record_role": "canonical-country-record"
 }

@@ -1,5 +1,5 @@
 {
-  "record_version": "1.0.0",
+  "record_version": "1.1.0",
   "record_type": "country",
   "status": "sourced-enriched",
   "identity": {
@@ -13,13 +13,118 @@
   "coverage": {
     "node_instantiated": true,
     "blueprint_inherited": true,
-    "observations": 0,
+    "observations": 13,
     "relationships": 0,
-    "sources": 0,
+    "sources": 1,
     "research_status": "ready-for-source-enrichment",
-    "deepening_overlay": true
+    "canonicalized": true
   },
-  "observations": {},
+  "observations": {
+    "population": {
+      "value": 35977838,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SP.POP.TOTL",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
+    },
+    "gdp": {
+      "value": 472193128644.597,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "NY.GDP.MKTP.CD",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
+    },
+    "gdp_per_capita": {
+      "value": 13124.5554178269,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "NY.GDP.PCAP.CD",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
+    },
+    "gdp_per_capita_ppp": {
+      "value": 41497.6746089548,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "NY.GDP.PCAP.PP.CD",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
+    },
+    "real_growth": {
+      "value": 5.17127082911057,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "NY.GDP.MKTP.KD.ZG",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
+    },
+    "inflation": {
+      "value": 1.38060872293692,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "FP.CPI.TOTL.ZG",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
+    },
+    "unemployment": {
+      "value": 3.764,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SL.UEM.TOTL.ZS",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
+    },
+    "labour_force_participation": {
+      "value": 66.12,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SL.TLF.CACT.ZS",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
+    },
+    "life_expectancy": {
+      "value": 76.821,
+      "year": 2024,
+      "source": "world-bank",
+      "indicator": "SP.DYN.LE00.IN",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
+    },
+    "fertility": {
+      "value": 1.543,
+      "year": 2024,
+      "source": "world-bank",
+      "indicator": "SP.DYN.TFRT.IN",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
+    },
+    "urbanization": {
+      "value": 77.3948812296229,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SP.URB.TOTL.IN.ZS",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
+    },
+    "poverty": {
+      "value": 5.1,
+      "year": 2023,
+      "source": "world-bank",
+      "indicator": "SI.POV.NAHC",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
+    },
+    "internet_penetration": {
+      "value": 98.0206059,
+      "year": 2024,
+      "source": "world-bank",
+      "indicator": "IT.NET.USER.ZS",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
+    }
+  },
   "relationships": [
     "Singapore",
     "Thailand",
@@ -44,11 +149,11 @@
     "instantiated_at": "2026-09-07T12:37:31.426393+00:00",
     "instantiation_method": "canonical country index + country blueprint",
     "observation_policy": "No value is invented merely to fill a field; absent evidence remains missing/stale.",
-    "last_refresh": "2026-09-07T21:59:50.659074+00:00",
+    "last_refresh": "2026-10-02T06:13:14.085634+00:00",
     "source_priority": "international-official",
     "historical_observations_preserved": true,
     "enrichment_merged": true,
-    "enrichment_source": "data/countries/malaysia-enrichment.json"
+    "enrichment_layer": "retired overlay merged into canonical country record"
   },
   "data_freshness": {
     "last_refresh_attempt": "2026-09-07T21:59:50.659074+00:00",
@@ -73,5 +178,6 @@
     "Johor-Singapore corridor",
     "manufacturing",
     "Strait of Malacca position"
-  ]
+  ],
+  "record_role": "canonical-country-record"
 }

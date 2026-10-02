@@ -1,5 +1,5 @@
 {
-  "record_version": "1.0.0",
+  "record_version": "1.1.0",
   "record_type": "country",
   "status": "sourced-enriched",
   "identity": {
@@ -13,13 +13,110 @@
   "coverage": {
     "node_instantiated": true,
     "blueprint_inherited": true,
-    "observations": 0,
+    "observations": 12,
     "relationships": 0,
-    "sources": 0,
+    "sources": 1,
     "research_status": "ready-for-source-enrichment",
-    "deepening_overlay": true
+    "canonicalized": true
   },
-  "observations": {},
+  "observations": {
+    "population": {
+      "value": 838645,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SP.POP.TOTL",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
+    },
+    "gdp": {
+      "value": 1749572442.95016,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "NY.GDP.MKTP.CD",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
+    },
+    "gdp_per_capita": {
+      "value": 2086.18955928928,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "NY.GDP.PCAP.CD",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
+    },
+    "gdp_per_capita_ppp": {
+      "value": 2787.61656406214,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "NY.GDP.PCAP.PP.CD",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
+    },
+    "real_growth": {
+      "value": 3.61715088072386,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "NY.GDP.MKTP.KD.ZG",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
+    },
+    "inflation": {
+      "value": 3.36462189317825,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "FP.CPI.TOTL.ZG",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
+    },
+    "unemployment": {
+      "value": 1.431,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SL.UEM.TOTL.ZS",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
+    },
+    "labour_force_participation": {
+      "value": 84.296,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SL.TLF.CACT.ZS",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
+    },
+    "life_expectancy": {
+      "value": 70.694,
+      "year": 2024,
+      "source": "world-bank",
+      "indicator": "SP.DYN.LE00.IN",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
+    },
+    "fertility": {
+      "value": 3.513,
+      "year": 2024,
+      "source": "world-bank",
+      "indicator": "SP.DYN.TFRT.IN",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
+    },
+    "urbanization": {
+      "value": 31.3093190325418,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SP.URB.TOTL.IN.ZS",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
+    },
+    "internet_penetration": {
+      "value": 29.04070091,
+      "year": 2024,
+      "source": "world-bank",
+      "indicator": "IT.NET.USER.ZS",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
+    }
+  },
   "relationships": [
     [
       "solomon-islands",
@@ -55,11 +152,11 @@
     "instantiated_at": "2026-09-07T12:37:31.426393+00:00",
     "instantiation_method": "canonical country index + country blueprint",
     "observation_policy": "No value is invented merely to fill a field; absent evidence remains missing/stale.",
-    "last_refresh": "2026-09-07T21:59:50.659074+00:00",
+    "last_refresh": "2026-10-02T06:13:14.085634+00:00",
     "source_priority": "international-official",
     "historical_observations_preserved": true,
     "enrichment_merged": true,
-    "enrichment_source": "data/countries/solomon-islands-enrichment.json"
+    "enrichment_layer": "retired overlay merged into canonical country record"
   },
   "data_freshness": {
     "last_refresh_attempt": "2026-09-07T21:59:50.659074+00:00",
@@ -86,5 +183,6 @@
     "United Nations",
     "World Bank",
     "Government of Solomon Islands"
-  ]
+  ],
+  "record_role": "canonical-country-record"
 }

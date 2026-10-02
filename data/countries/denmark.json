@@ -1,5 +1,5 @@
 {
-  "record_version": "1.0.1",
+  "record_version": "1.1.0",
   "record_type": "country",
   "status": "sourced-enriched",
   "identity": {
@@ -20,20 +20,21 @@
   "coverage": {
     "node_instantiated": true,
     "blueprint_inherited": true,
-    "observations": 12,
+    "observations": 32,
     "relationships": 7,
     "sources": 9,
     "research_status": "sourced-core-enrichment",
-    "deepening_overlay": true,
-    "last_enriched": "2026-09-07"
+    "last_enriched": "2026-09-07",
+    "canonicalized": true
   },
   "observations": {
     "population": {
-      "value": 6031699,
-      "unit": "people",
-      "reference_period": "2026-07",
-      "source": "Statistics Denmark",
-      "source_url": "https://www.dst.dk/en/Statistik/emner/borgere/befolkning/befolkningstal"
+      "value": 6009169,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SP.POP.TOTL",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
     },
     "population_reference_period": "2026-07",
     "gdp_dkk_billion_2025": 3119,
@@ -47,11 +48,12 @@
     "offshore_wind_tender_capacity_gw_2025": 2.8,
     "energy_islands_first_phase_gw": "6-7",
     "gdp": {
-      "value": 3119,
-      "unit": "DKK billion",
-      "reference_period": "2025",
-      "source": "Statistics Denmark",
-      "source_url": "https://www.dst.dk/en/Statistik/emner/oekonomi/nationalregnskab/samlet-nationalregnskab"
+      "value": 462526660468.393,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "NY.GDP.MKTP.CD",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
     },
     "real_gdp_growth": {
       "value": 3.5,
@@ -68,18 +70,20 @@
       "source_url": "https://www.dst.dk/en/Statistik/emner/oekonomi/nationalregnskab/noegletal-for-nationalregnskabet-bnp"
     },
     "inflation": {
-      "value": 1.7,
-      "unit": "percent year-on-year",
-      "reference_period": "2026-07",
-      "source": "Statistics Denmark",
-      "source_url": "https://www.dst.dk/en/"
+      "value": 1.89367372703044,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "FP.CPI.TOTL.ZG",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
     },
     "unemployment": {
-      "value": 3.1,
-      "unit": "percent",
-      "reference_period": "2026-07",
-      "source": "Statistics Denmark",
-      "source_url": "https://www.dst.dk/en/"
+      "value": 5.529,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SL.UEM.TOTL.ZS",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
     },
     "district_heating_household_connection": {
       "value": 69,
@@ -122,6 +126,78 @@
       "reference_period": "long-term planning potential",
       "source": "Danish Energy Agency",
       "source_url": "https://ens.dk/en/energy-sources/offshore-wind-power/denmarks-energy-islands"
+    },
+    "gdp_per_capita": {
+      "value": 76970.1535217919,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "NY.GDP.PCAP.CD",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
+    },
+    "gdp_per_capita_ppp": {
+      "value": 83218.071525634,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "NY.GDP.PCAP.PP.CD",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
+    },
+    "real_growth": {
+      "value": 2.92843280014236,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "NY.GDP.MKTP.KD.ZG",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
+    },
+    "labour_force_participation": {
+      "value": 64.935,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SL.TLF.CACT.ZS",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
+    },
+    "life_expectancy": {
+      "value": 82.2536585365854,
+      "year": 2024,
+      "source": "world-bank",
+      "indicator": "SP.DYN.LE00.IN",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
+    },
+    "fertility": {
+      "value": 1.47,
+      "year": 2024,
+      "source": "world-bank",
+      "indicator": "SP.DYN.TFRT.IN",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
+    },
+    "urbanization": {
+      "value": 88.8458435892689,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SP.URB.TOTL.IN.ZS",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
+    },
+    "poverty": {
+      "value": 12.4,
+      "year": 2021,
+      "source": "world-bank",
+      "indicator": "SI.POV.NAHC",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
+    },
+    "internet_penetration": {
+      "value": 99.76915157,
+      "year": 2024,
+      "source": "world-bank",
+      "indicator": "IT.NET.USER.ZS",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
     }
   },
   "relationships": [
@@ -196,6 +272,56 @@
     "source_urls": [
       "https://www.ft.dk/da/folkestyret/grundloven-og-folkestyret/grundloven-og-det-danske-demokrati",
       "https://www.ft.dk/da/folkestyret/grundloven-og-folkestyret/grundlovens-og-folkestyrets-udvikling"
+    ],
+    "observation_changes": [
+      {
+        "field": "population",
+        "previous": {
+          "value": 6031699,
+          "unit": "people",
+          "reference_period": "2026-07",
+          "source": "Statistics Denmark",
+          "source_url": "https://www.dst.dk/en/Statistik/emner/borgere/befolkning/befolkningstal"
+        },
+        "replaced_at": "2026-10-02T06:13:14.085634+00:00",
+        "reason": "new source observation"
+      },
+      {
+        "field": "gdp",
+        "previous": {
+          "value": 3119,
+          "unit": "DKK billion",
+          "reference_period": "2025",
+          "source": "Statistics Denmark",
+          "source_url": "https://www.dst.dk/en/Statistik/emner/oekonomi/nationalregnskab/samlet-nationalregnskab"
+        },
+        "replaced_at": "2026-10-02T06:13:14.085634+00:00",
+        "reason": "new source observation"
+      },
+      {
+        "field": "inflation",
+        "previous": {
+          "value": 1.7,
+          "unit": "percent year-on-year",
+          "reference_period": "2026-07",
+          "source": "Statistics Denmark",
+          "source_url": "https://www.dst.dk/en/"
+        },
+        "replaced_at": "2026-10-02T06:13:14.085634+00:00",
+        "reason": "new source observation"
+      },
+      {
+        "field": "unemployment",
+        "previous": {
+          "value": 3.1,
+          "unit": "percent",
+          "reference_period": "2026-07",
+          "source": "Statistics Denmark",
+          "source_url": "https://www.dst.dk/en/"
+        },
+        "replaced_at": "2026-10-02T06:13:14.085634+00:00",
+        "reason": "new source observation"
+      }
     ]
   },
   "research_queue": [
@@ -228,12 +354,12 @@
       "https://www.ft.dk/da/folkestyret/grundloven-og-folkestyret/grundlovens-og-folkestyrets-udvikling"
     ],
     "retrieved": "2026-09-07",
-    "last_refresh": "2026-09-07T21:59:50.659074+00:00",
+    "last_refresh": "2026-10-02T06:13:14.085634+00:00",
     "source_priority": "international-official",
     "historical_observations_preserved": true,
     "method": "Official Danish statistical, parliamentary and energy-agency sources; values retain reference periods and are not treated as timeless facts.",
     "enrichment_merged": true,
-    "enrichment_source": "data/countries/denmark-enrichment.json"
+    "enrichment_layer": "retired overlay merged into canonical country record"
   },
   "data_freshness": {
     "last_refresh_attempt": "2026-09-07T21:59:50.659074+00:00",
@@ -345,5 +471,6 @@
       "Kattegat"
     ],
     "territorial_structure": "Kingdom of Denmark includes Denmark, Greenland and Faroe Islands"
-  }
+  },
+  "record_role": "canonical-country-record"
 }

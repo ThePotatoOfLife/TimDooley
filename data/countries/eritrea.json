@@ -1,5 +1,5 @@
 {
-  "record_version": "1.0.0",
+  "record_version": "1.1.0",
   "record_type": "country",
   "status": "sourced-enriched",
   "identity": {
@@ -13,13 +13,62 @@
   "coverage": {
     "node_instantiated": true,
     "blueprint_inherited": true,
-    "observations": 0,
+    "observations": 6,
     "relationships": 0,
-    "sources": 0,
+    "sources": 1,
     "research_status": "ready-for-source-enrichment",
-    "deepening_overlay": true
+    "canonicalized": true
   },
-  "observations": {},
+  "observations": {
+    "population": {
+      "value": 3607003,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SP.POP.TOTL",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
+    },
+    "unemployment": {
+      "value": 5.978,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SL.UEM.TOTL.ZS",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
+    },
+    "labour_force_participation": {
+      "value": 78.348,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SL.TLF.CACT.ZS",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
+    },
+    "life_expectancy": {
+      "value": 68.893,
+      "year": 2024,
+      "source": "world-bank",
+      "indicator": "SP.DYN.LE00.IN",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
+    },
+    "fertility": {
+      "value": 3.68,
+      "year": 2024,
+      "source": "world-bank",
+      "indicator": "SP.DYN.TFRT.IN",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
+    },
+    "urbanization": {
+      "value": 34.5404504255216,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SP.URB.TOTL.IN.ZS",
+      "retrieved_at": "2026-10-02T06:13:14.085634+00:00",
+      "confidence": "international-official"
+    }
+  },
   "relationships": [
     [
       "eritrea",
@@ -49,11 +98,11 @@
     "instantiated_at": "2026-09-07T12:37:31.426393+00:00",
     "instantiation_method": "canonical country index + country blueprint",
     "observation_policy": "No value is invented merely to fill a field; absent evidence remains missing/stale.",
-    "last_refresh": "2026-09-07T21:59:50.659074+00:00",
+    "last_refresh": "2026-10-02T06:13:14.085634+00:00",
     "source_priority": "international-official",
     "historical_observations_preserved": true,
     "enrichment_merged": true,
-    "enrichment_source": "data/countries/eritrea-enrichment.json"
+    "enrichment_layer": "retired overlay merged into canonical country record"
   },
   "data_freshness": {
     "last_refresh_attempt": "2026-09-07T21:59:50.659074+00:00",
@@ -73,5 +122,6 @@
     "mining",
     "fisheries",
     "maritime position"
-  ]
+  ],
+  "record_role": "canonical-country-record"
 }
