@@ -182,11 +182,14 @@
       const maxScroll=Math.max(1,document.documentElement.scrollHeight-window.innerHeight);
       const progress=Math.max(0,Math.min(1,scrollY/maxScroll));
       const viewport=Math.max(1,window.innerHeight);
-      const maxTravel=viewport*1.12;
+      const sceneStyle=getComputedStyle(root);
+      const travelVh=parseFloat(sceneStyle.getPropertyValue('--site-scene-travel-vh'))||112;
+      const targetScale=parseFloat(sceneStyle.getPropertyValue('--site-scene-zoom'))||1.035;
+      const maxTravel=viewport*(travelVh/100);
       const halfSpeedTravel=scrollY*.46;
       const fullPageTravel=progress*maxTravel;
       const parallax=-Math.min(halfSpeedTravel,fullPageTravel);
-      const scale=1+(progress*.035);
+      const scale=1+(progress*(targetScale-1));
       root.style.setProperty('--site-scene-y',parallax.toFixed(2)+'px');
       root.style.setProperty('--site-scene-scale',scale.toFixed(4));
       root.style.setProperty('--site-depth-progress',progress.toFixed(4));
