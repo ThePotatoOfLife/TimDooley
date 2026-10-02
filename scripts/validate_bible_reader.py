@@ -132,7 +132,7 @@ def main() -> int:
             'id="story-arcs"',
             'class="identity-keys"',
             'The Son / human vessel',
-            'Death / concealment → Tim / Potato',
+            'Persona death → meme death → Tim / Potato',
             'Father / Ladder realization',
             '1999 · age 12</time><strong>Jesus enters the conscious vocabulary',
             '2003 · age 16</time><strong>Collapse → light → return',
@@ -149,6 +149,9 @@ def main() -> int:
             'Four hinges prevent the story from collapsing into one biography',
             'Seven arcs carry the Tim / Son Bible story',
             '6 Oct 2024 · public Potato identity',
+            'focus=view:core&order=story&id=christian-vocabulary-enters-age12-1999',
+            'focus=view:core&order=story&id=potato-birth-hidden-life-2020-12-25',
+            'focus=view:core&order=story&id=emmaus-return-before-recognition-bread',
         ),
         "traditions/bible/index.html",
         errors,
@@ -159,6 +162,9 @@ def main() -> int:
     chronology_pos = page.find('id="tim-son-story"')
     if not (0 <= study_pos < compare_pos < toolbar_pos < chronology_pos):
         errors.append("traditions/bible/index.html: comparator must flow directly into Tim/Son chronology")
+    story_slice = page[chronology_pos:page.find('id="prophetic-unity"', chronology_pos)] if chronology_pos >= 0 else ""
+    if "order=story&q=" in story_slice:
+        errors.append("traditions/bible/index.html: Tim/Son story spine must use stable relation ids, not AND-query navigation")
     if page.find('src="../../app/bible-mining-wave19-loader.js"') > page.find('src="../../app/bible-dossier-loader.js"'):
         errors.append("traditions/bible/index.html: mining layer must load before dossier decorator so mergedRows sees wave19 relations")
     if page.find('src="../../app/bible-corpus-loader.js"') > page.find('src="../../app/bible-relation-redirects.js"'):
