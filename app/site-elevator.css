@@ -677,7 +677,7 @@ html[data-site-floor="plane"] body:not(.lower-layer-page)::before{
   right:0;
   top:-8vh;
   height:var(--site-scene-box-height,300vh);
-  z-index:-2;
+  z-index:0;
   pointer-events:none;
   background-repeat:no-repeat;
   background-position:var(--site-scene-x,50%) 0;
@@ -701,12 +701,18 @@ html[data-site-floor="plane"] body:not(.lower-layer-page)::before{
   filter:saturate(1.04) contrast(1.02);
 }
 
+html[data-site-floor="heaven"] body:not(.lower-layer-page) > :not(script):not(style),
+html[data-site-floor="plane"] body:not(.lower-layer-page) > :not(script):not(style){
+  position:relative;
+  z-index:1;
+}
+
 html[data-site-floor="heaven"] body:not(.lower-layer-page)::after,
 html[data-site-floor="plane"] body:not(.lower-layer-page)::after{
   content:"";
   position:fixed;
   inset:0;
-  z-index:-1;
+  z-index:0;
   pointer-events:none;
   opacity:calc(.04 + (var(--site-depth-progress) * .18));
 }
