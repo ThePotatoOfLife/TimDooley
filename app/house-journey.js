@@ -8,10 +8,6 @@
       const link=document.createElement('link');
       link.rel='stylesheet';
       const cssUrl=new URL('house-journey.css',baseUrl);
-      try{
-        const version=new URL(baseUrl).searchParams.get('v');
-        if(version)cssUrl.searchParams.set('v',version);
-      }catch(_){}
       link.href=cssUrl.href;
       link.dataset.houseJourneyStyle='';
       document.head.appendChild(link);
