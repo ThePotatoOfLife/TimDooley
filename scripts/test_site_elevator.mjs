@@ -324,6 +324,8 @@ assert.equal(lowerCss.includes('long tap roots'),false,'legacy stripe-built tap-
 assert.equal(lowerCss.includes('thick roots: dark bark edge'),false,'legacy root stripe stack must stay removed');
 assert.ok(lowerCss.includes('site-below-root-field.svg'),'Below must use one static ground-to-depth root scene plate');
 assert.ok(lowerCss.includes('#354a2e 0%')&&lowerCss.includes('#050303 100%'),'Below must descend from touchable green ground into near-black depth');
+assert.ok(lowerCss.includes('--site-depth-start:.14')&&lowerCss.includes('--site-depth-max:.44'),'Below native depth wash must match fallback darkness');
+assert.ok(css.includes('from{opacity:var(--site-depth-start,.04)}'),'native depth wash must use floor-specific start opacity');
 assert.ok(belowScene.includes('touchable surface / grass'),'Below scene must visibly begin at grass/topsoil');
 assert.ok(belowScene.includes('crossing / entangling roots'),'Below scene must use crossing curved roots rather than stripe-built tap roots');
 assert.ok(css.includes('#e29458 100%'),'Heaven background must descend into a warm orange sunset base');
