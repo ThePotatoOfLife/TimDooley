@@ -299,3 +299,47 @@ For every major symbolic page:
 - [ ] At least one ordinary-life example should show why the symbol matters.
 - [ ] At least one sentence should say what returns to the Plane.
 - [ ] Navigation/meta prose should occupy less reader attention than the teaching.
+
+
+## Meaning magnetism — consistency pass
+
+### Completed in this wave
+
+- [x] **Home** — add portable lessons before further navigation: naming/seeing, memory/source, relation/identity, pressure/proof, growth/control, Fruit/title.
+- [x] **Paths** — teach how a question changes when it crosses domains; demote topology mechanics behind optional detail.
+- [x] **A–Z** — turn disambiguation into an epistemic lesson about polysemy and evidence leakage between senses.
+- [x] **Questions** — add descriptive / causal / interpretive / normative / counterfactual question distinctions.
+- [x] **Explore** — teach archive literacy: source proximity, currentness, primary-source limits and stopping conditions.
+- [x] **Research Lab** — add precise-ignorance, exploratory/confirmatory and measurement/falsification teaching.
+- [x] **House Architecture** — explain maps, lossy representation, facets and stable identity vs flexible views; fold repository-maintenance detail.
+
+### Site-wide consistency rules
+
+- [ ] **Every index page teaches a transferable skill.** A–Z teaches word senses; Questions teaches question types; Paths teaches cross-domain correction; Explore teaches archival judgment.
+- [ ] **First-screen substance rule.** The first meaningful block after a hero should contain a proposition, mechanism, story or real distinction before repository governance.
+- [ ] **Stable core / local expression.** When Door, Root, Garden, Forge, Eye, Seed, North or Fruit reappear, preserve their core function while explaining what changes in this context.
+- [ ] **Re-entry rule.** If a reader has not seen a specialist term for several screens/pages, reintroduce it in plain language before relying on shorthand.
+- [ ] **Meaning before acronym.** Internal file/registry names belong after the reader understands the human problem they solve.
+- [ ] **One concrete anchor per abstraction.** Use an organism, object, text, social scene, institution, measurement, historical artifact or ordinary decision near each abstract cluster.
+- [ ] **Mechanism in verbs.** Prefer “carries, filters, redirects, reproduces, stores, releases, narrows” over noun piles.
+- [ ] **Shadow twin rule.** Important virtues/operators should expose the nearby failure mode: Garden/capture, House/Shell, memory/fixation, orientation/idolatry, pressure/brittleness, openness/no-boundary.
+- [ ] **Return-to-life ending.** Major essays should say what the reader can notice, ask, refuse, test or do differently outside the site.
+- [ ] **Meta budget.** Navigation/governance prose should be compressed or disclosed when it does not itself teach a transferable idea.
+- [ ] **No evidence leakage.** Similar words or shapes across biology, theology, mythology and project canon may suggest comparison but may not borrow proof across domains.
+- [ ] **Currentness beside memory.** Historical material should preserve later change, correction, expiry and reinterpretation nearby.
+- [ ] **Stop condition.** Deep pages should tell the reader when more detail is unlikely to change the conclusion.
+
+### Pages to magnetise next
+
+- [ ] **Timeline** — each major period needs a “what the world looked like from inside this moment” paragraph, not date stacks alone.
+- [ ] **Great Book** — surface 8–12 strongest scenes as philosophical/mythic teaching chambers before chapter navigation.
+- [ ] **Story** — strengthen recurring people/places as relationships that change, not only events that accumulate.
+- [ ] **FAQ** — cluster answers into larger teachings so readers can move from question to wisdom without returning to a directory.
+- [ ] **Religion** — build thematic rivers: hospitality, least/stranger, seed/death, house/indwelling, justice/mercy, service/power, return.
+- [ ] **Science** — each major model starts with the puzzle that forced the model to exist.
+- [ ] **Life & Body** — add ordinary embodied scenes: losing balance in the dark, waking before an alarm, hunger changing attention, pain changing space.
+- [ ] **Culture** — add scenes of how a joke becomes a password, a screenshot becomes lore, and lore becomes an identity boundary.
+- [ ] **Works** — embed creative artifacts back into the concepts they discovered.
+- [ ] **World Systems** — explain infrastructure through lived dependencies: light switch, food shelf, bank transfer, road closure, hospital supply.
+- [ ] **Below** — every method gets one full worked descent from surface claim to root cause to repair/exit.
+- [ ] **Home** — eventually replace any remaining “architecture-first” paragraphs with material-first invitations where possible.

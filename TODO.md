@@ -1348,3 +1348,9 @@ Shared implementation: `app/terrain-circle.css`
 - [x] Deepen Eye / embodied orientation through perception, blind spots and multisensory navigation.
 - [x] Deepen Seed / Soil / Holy Soil through viability, dormancy, conditions, decomposition and portable teaching.
 - [ ] Continue with River/Spirit, Mountain, House/Shell, Wells, Crown/Heaven, Drain, Ash and a denser ordinary Plane.
+
+
+### Reader experience · meaning magnetism
+- [x] Make Home, Paths, A–Z, Questions, Explore, Research Lab and House Architecture teach transferable ideas rather than only repository navigation.
+- [ ] Continue the consistency rules in `docs/READER-FIRST-EDITORIAL-OVERHAUL-TODO.md`: first-screen substance, stable core/local expression, concrete anchors, shadow twins, currentness and return-to-life endings.
+- [ ] Next editorial targets: Timeline scenes, Great Book teaching chambers, FAQ teaching clusters, Religion thematic rivers, Culture scene mechanics, ordinary embodied Life/Body examples, infrastructure-as-lived-dependency in World Systems.
