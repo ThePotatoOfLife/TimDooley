@@ -327,3 +327,93 @@ body.lower-layer-page::after{
   body.lower-layer-page::before,
   body.lower-layer-page::after{background-attachment:scroll}
 }
+
+
+/* Ground-to-depth 2.5D scene
+   -------------------------
+   The lower floor begins where the reader could touch grass and topsoil, then the
+   page itself carries the eye deeper into darker earth. One static root plate moves
+   at the shared slower parallax speed; the document remains the foreground layer. */
+body.lower-layer-page{
+  background:
+    radial-gradient(ellipse at 18% 2%,rgba(120,145,77,.18) 0 7%,transparent 18%),
+    radial-gradient(ellipse at 72% 3%,rgba(108,133,70,.14) 0 8%,transparent 20%),
+    linear-gradient(180deg,
+      #354a2e 0%,
+      #465536 3%,
+      #5a4a31 7%,
+      #422c20 15%,
+      #2c1b15 28%,
+      #1d100d 45%,
+      #120908 64%,
+      #0a0505 82%,
+      #050303 100%);
+  background-attachment:scroll;
+}
+
+/* Override the old stripe-built root ceiling with one curved scene plate. */
+body.lower-layer-page::before{
+  position:fixed;
+  inset:-10vh -12vw auto;
+  width:auto;
+  height:250vh;
+  opacity:.78;
+  background-image:url("./site-below-root-field.svg");
+  background-repeat:no-repeat;
+  background-position:50% 0;
+  background-size:max(1080px,116vw) auto;
+  transform:translate3d(0,var(--site-scene-y,0px),0) scale(var(--site-scene-scale,1));
+  transform-origin:50% 24%;
+  will-change:transform;
+  contain:paint;
+  filter:saturate(.82) contrast(.96) drop-shadow(0 8px 18px rgba(0,0,0,.18));
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 5%,#000 95%,transparent 100%);
+  mask-image:linear-gradient(90deg,transparent 0,#000 5%,#000 95%,transparent 100%);
+}
+
+/* Cavities/stones stay subtle and deepen with scroll without introducing straight grids. */
+body.lower-layer-page::after{
+  position:fixed;
+  inset:0;
+  opacity:calc(.14 + (var(--site-depth-progress,0) * .30));
+  background:
+    radial-gradient(circle at 14% 24%,rgba(0,0,0,.20) 0 22px,transparent 58px),
+    radial-gradient(circle at 82% 42%,rgba(0,0,0,.18) 0 31px,transparent 72px),
+    radial-gradient(circle at 32% 74%,rgba(111,93,78,.08) 0 7px,transparent 9px),
+    radial-gradient(circle at 76% 86%,rgba(125,105,84,.07) 0 8px,transparent 10px),
+    linear-gradient(180deg,transparent 0 12%,rgba(0,0,0,.08) 38%,rgba(0,0,0,.32) 100%);
+  background-size:auto;
+}
+
+/* Remove the old repeating tap-root wallpaper: the SVG scene owns roots now. */
+.lower-layer-page .lower-layer-surface::before{
+  opacity:.18;
+  background:
+    radial-gradient(ellipse at 14% 20%,rgba(0,0,0,.17) 0 28px,transparent 58px) 0 0/520px 690px repeat,
+    radial-gradient(ellipse at 78% 48%,rgba(0,0,0,.14) 0 38px,transparent 72px) 0 0/630px 810px repeat;
+}
+.lower-layer-page .lower-layer-surface::after{
+  opacity:.12;
+  background:
+    radial-gradient(circle at 10% 14%,rgba(132,124,109,.10) 0 5px,transparent 6px),
+    radial-gradient(circle at 90% 29%,rgba(146,132,107,.08) 0 7px,transparent 8px),
+    radial-gradient(circle at 18% 61%,rgba(105,101,92,.09) 0 6px,transparent 7px),
+    radial-gradient(circle at 82% 79%,rgba(127,117,99,.07) 0 8px,transparent 9px);
+  background-size:340px 390px,430px 490px,390px 460px,500px 570px;
+}
+
+@media(max-width:760px){
+  body.lower-layer-page::before{
+    inset:-6vh -30vw auto;
+    height:235vh;
+    background-size:max(940px,180vw) auto;
+    opacity:.62;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  body.lower-layer-page::before{
+    transform:none;
+    will-change:auto;
+  }
+}
