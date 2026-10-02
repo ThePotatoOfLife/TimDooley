@@ -99,10 +99,11 @@ async function forCountry(code) {
   code = String(code || '').toUpperCase();
   if (!/^[A-Z]{3}$/.test(code)) return null;
 
+  const currentView = activeView.current?.code === code ? activeView.current : null;
   const [populationCell, areaCell, view] = await Promise.all([
     Promise.resolve(runtime.populationObservation?.(code)).catch(() => null),
     Promise.resolve(runtime.areaObservation?.(code)).catch(() => null),
-    Promise.resolve(activeView.forCountry?.(code)).catch(() => null),
+    currentView ? Promise.resolve(currentView) : Promise.resolve(activeView.forCountry?.(code)).catch(() => null),
   ]);
   const demo = window.__potatoAtlasDemography?.countries?.[code] || null;
   const facts = factsFor(code);
