@@ -186,6 +186,21 @@ def main():
     if not str(project_synthesis.get("reader_family_rule") or "").strip():
         errors.append("project synthesis missing reader_family_rule")
 
+    architecture_page=(ROOT/"rooms/inside/house-architecture/index.html")
+    if not architecture_page.is_file():
+        errors.append("House Architecture reader missing")
+    else:
+        architecture_text=architecture_page.read_text(encoding="utf-8",errors="replace")
+        expected_counts=(
+            f"{len(room_ids)} Dwellings, {len(sub_ids)} nested Rooms, "
+            f"{len(sub_ids)} Room interiors and {len(inhabitants)} registered inhabitants"
+        )
+        if expected_counts not in architecture_text:
+            errors.append(
+                "House Architecture visible count drift: "
+                f"expected {expected_counts!r}"
+            )
+
     counts=health.get("counts",{})
     if counts.get("dwellings")!=len(room_ids):
         errors.append("House health dwelling count drift")
