@@ -725,3 +725,136 @@ html[data-site-floor="below"]{
   font-weight: 800;
   letter-spacing: .08em;
 }
+
+
+/* Scroll-depth world tree
+   -----------------------
+   This is atmosphere, not navigation and not a Tree UI system.
+   On long Heaven/Plane pages the reader begins under the high crown and stars.
+   Root scrolling pans the same tall composition downward while gently enlarging it,
+   so the visual point of view approaches trunk, ground and roots without moving text.
+   Below keeps its dedicated cut-earth/root treatment in lower-layer.css. */
+html[data-site-floor="heaven"],
+html[data-site-floor="plane"]{
+  --site-depth-tree-opacity:.145;
+  --site-depth-ground-rgb:66,52,36;
+  position:relative;
+}
+html[data-site-floor="heaven"]{
+  --site-depth-tree-opacity:.16;
+  --site-depth-ground-rgb:76,55,48;
+}
+html[data-site-floor="plane"]{
+  --site-depth-tree-opacity:.135;
+  --site-depth-ground-rgb:44,62,39;
+}
+
+/* Keep the atmospheric root pseudos behind ordinary page content. */
+html[data-site-floor="heaven"] body:not(.lower-layer-page),
+html[data-site-floor="plane"] body:not(.lower-layer-page){
+  position:relative;
+  z-index:1;
+}
+
+/* One tall under-tree plate. A soft radial mask keeps the reading column quiet
+   while allowing branches and the widening lower tree to remain perceptible. */
+html[data-site-floor="heaven"]::before,
+html[data-site-floor="plane"]::before{
+  content:"";
+  position:fixed;
+  inset:-10vh -9vw;
+  z-index:0;
+  pointer-events:none;
+  background-image:url("./site-tree-perspective.svg");
+  background-repeat:no-repeat;
+  background-position:50% 0%;
+  background-size:max(1040px,124vw) auto;
+  opacity:var(--site-depth-tree-opacity);
+  transform:translate3d(0,0,0) scale(.88);
+  transform-origin:50% 72%;
+  filter:saturate(.82) contrast(.96);
+  -webkit-mask-image:radial-gradient(ellipse at 50% 48%,rgba(0,0,0,.24) 0 28%,rgba(0,0,0,.58) 50%,#000 78%);
+  mask-image:radial-gradient(ellipse at 50% 48%,rgba(0,0,0,.24) 0 28%,rgba(0,0,0,.58) 50%,#000 78%);
+  will-change:transform,background-position,opacity;
+}
+
+/* The page colour does not jump between zones. It slowly grows more terrestrial
+   as the same page moves from crown to ground. */
+html[data-site-floor="heaven"]::after,
+html[data-site-floor="plane"]::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  opacity:.035;
+  background:
+    radial-gradient(ellipse at 50% 112%,rgba(var(--site-depth-ground-rgb),.34) 0 18%,transparent 58%),
+    linear-gradient(180deg,transparent 0 40%,rgba(var(--site-depth-ground-rgb),.06) 67%,rgba(var(--site-depth-ground-rgb),.18) 100%);
+  will-change:opacity,transform;
+}
+
+@keyframes site-tree-descent{
+  0%{
+    background-position:50% 0%;
+    transform:translate3d(0,0,0) scale(.88);
+    opacity:calc(var(--site-depth-tree-opacity) * .72);
+  }
+  48%{
+    background-position:50% 49%;
+    transform:translate3d(0,-1.5vh,0) scale(1.02);
+    opacity:var(--site-depth-tree-opacity);
+  }
+  100%{
+    background-position:50% 100%;
+    transform:translate3d(0,-4vh,0) scale(1.24);
+    opacity:calc(var(--site-depth-tree-opacity) * 1.18);
+  }
+}
+
+@keyframes site-ground-approach{
+  0%{opacity:.02;transform:translate3d(0,1.5vh,0)}
+  56%{opacity:.055;transform:translate3d(0,0,0)}
+  100%{opacity:.18;transform:translate3d(0,-1vh,0)}
+}
+
+/* Scroll-driven animation is progressive enhancement. Unsupported browsers keep
+   the quiet crown view rather than losing the floor background. */
+@supports (animation-timeline:scroll(root block)){
+  html[data-site-floor="heaven"]::before,
+  html[data-site-floor="plane"]::before{
+    animation:site-tree-descent 1s linear both;
+    animation-timeline:scroll(root block);
+  }
+  html[data-site-floor="heaven"]::after,
+  html[data-site-floor="plane"]::after{
+    animation:site-ground-approach 1s linear both;
+    animation-timeline:scroll(root block);
+  }
+}
+
+@media(max-width:700px){
+  html[data-site-floor="heaven"]::before,
+  html[data-site-floor="plane"]::before{
+    inset:-6vh -24vw;
+    background-size:max(920px,178vw) auto;
+    opacity:calc(var(--site-depth-tree-opacity) * .8);
+    -webkit-mask-image:radial-gradient(ellipse at 50% 46%,rgba(0,0,0,.16) 0 24%,rgba(0,0,0,.5) 48%,#000 76%);
+    mask-image:radial-gradient(ellipse at 50% 46%,rgba(0,0,0,.16) 0 24%,rgba(0,0,0,.5) 48%,#000 76%);
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  html[data-site-floor="heaven"]::before,
+  html[data-site-floor="plane"]::before,
+  html[data-site-floor="heaven"]::after,
+  html[data-site-floor="plane"]::after{
+    animation:none!important;
+    will-change:auto;
+  }
+  html[data-site-floor="heaven"]::before,
+  html[data-site-floor="plane"]::before{
+    background-position:50% 18%;
+    transform:none;
+  }
+}
