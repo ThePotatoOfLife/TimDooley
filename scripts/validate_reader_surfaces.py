@@ -236,8 +236,10 @@ def main() -> int:
         errors.append("Bible comparator must flow directly into Tim/Son chronology")
     if 'class="bible-header"' in bible or 'class="tool-intro"' in bible or 'class="comparison-masthead"' in bible:
         errors.append("Bible page must not put a hero/introduction block ahead of the comparator controls")
-    require(bible_js, 'class="tim-first"', "app/bible-study.js", errors)
-    require(bible_js, 'class="bible-under"', "app/bible-study.js", errors)
+    require(bible_js, 'class="chronicle-scene"', "app/bible-study.js", errors)
+    require(bible_js, 'class="source-pair"', "app/bible-study.js", errors)
+    require(bible_js, 'project-voice', "app/bible-study.js", errors)
+    require(bible_js, 'bible-voice', "app/bible-study.js", errors)
     require_absent(bible, 'class="featured-arcs"', "traditions/bible/index.html", errors)
     require_absent(bible, 'class="story-first"', "traditions/bible/index.html", errors)
     require_absent(bible, 'id="shuffle-comparisons"', "traditions/bible/index.html", errors)
