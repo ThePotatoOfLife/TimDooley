@@ -7,10 +7,12 @@
   const clean=value=>String(value??'').replace(/\s+/g,' ').trim();
   function join(parts){return parts.map(clean).filter(Boolean).join(' ')}
   function buildBiblePayload(parts={}){
-    const project=clean(parts.project),scripture=clean(parts.scripture),why=clean(parts.why),mismatch=clean(parts.mismatch),selection=clean(parts.selection);
+    const scene=clean(parts.scene),project=clean(parts.project),scripture=clean(parts.scripture),movement=clean(parts.movement),why=clean(parts.why),mismatch=clean(parts.mismatch),selection=clean(parts.selection);
     const both=join([
-      project&&`Project. ${project}`,
-      scripture&&`Scripture. ${scripture}`,
+      scene&&`Scene. ${scene}`,
+      project&&`Project source. ${project}`,
+      scripture&&`Bible source. ${scripture}`,
+      movement&&`Movement. ${movement}`,
       why&&`Why these connect. ${why}`,
       mismatch,
     ]);
@@ -19,10 +21,12 @@
       id:clean(parts.id),
       label:clean(parts.title)||'Bible comparison',
       sections:[
-        {id:'both',label:'Both',text:both},
-        {id:'project',label:'Project',text:project},
-        {id:'scripture',label:'Scripture',text:scripture},
-        {id:'why',label:'Why',text:whyText},
+        {id:'both',label:'Full reading',text:both},
+        {id:'scene',label:'Scene',text:scene},
+        {id:'project',label:'Project source',text:project},
+        {id:'scripture',label:'Bible source',text:scripture},
+        {id:'movement',label:'Movement',text:movement},
+        {id:'why',label:'Meaning & limits',text:whyText},
         {id:'selection',label:'Selection',text:selection},
       ].filter(section=>section.text),
     };
@@ -41,12 +45,16 @@
     if(!node)return buildBiblePayload({});
     const article=node.matches?.('.relation')?node:node.querySelector?.('.relation');
     if(!article)return buildBiblePayload({});
-    const sides=article.querySelectorAll('.parallel .side');
+    const fallbackSides=article.querySelectorAll('.parallel .side');
+    const projectNode=article.querySelector('.source-voice-card.project-voice')||fallbackSides[0];
+    const scriptureNode=article.querySelector('.source-voice-card.bible-voice')||fallbackSides[1];
     return buildBiblePayload({
       id:article.dataset?.relationId||'',
       title:textOf(article,'.relation-title'),
-      project:clean(sides[0]?.textContent),
-      scripture:clean(sides[1]?.textContent),
+      scene:textOf(article,'.chronicle-scene'),
+      project:clean(projectNode?.textContent),
+      scripture:clean(scriptureNode?.textContent),
+      movement:textOf(article,'.continuous-sequence'),
       why:textOf(article,'.why p'),
       mismatch:textOf(article,'.boundary-callout'),
       selection,
@@ -87,13 +95,19 @@
     function relationPieces(){
       const article=active.querySelector?.('.relation');
       if(!article)return null;
-      const sides=[...article.querySelectorAll('.parallel .side')];
+      const fallbackSides=[...article.querySelectorAll('.parallel .side')];
+      const sceneNode=article.querySelector('.chronicle-scene');
+      const projectNode=article.querySelector('.source-voice-card.project-voice')||fallbackSides[0];
+      const scriptureNode=article.querySelector('.source-voice-card.bible-voice')||fallbackSides[1];
+      const movementNode=article.querySelector('.continuous-sequence');
       const whyNode=article.querySelector('.why p');
       const mismatchNode=article.querySelector('.boundary-callout');
       return {
         article,
-        project:{node:sides[0],text:clean(sides[0]?.textContent)},
-        scripture:{node:sides[1],text:clean(sides[1]?.textContent)},
+        scene:{node:sceneNode,text:clean(sceneNode?.textContent)},
+        project:{node:projectNode,text:clean(projectNode?.textContent)},
+        scripture:{node:scriptureNode,text:clean(scriptureNode?.textContent)},
+        movement:{node:movementNode,text:clean(movementNode?.textContent)},
         why:{node:whyNode,text:clean(whyNode?.textContent)},
         mismatch:{node:mismatchNode,text:clean(mismatchNode?.textContent)},
       };
@@ -123,8 +137,10 @@
       if(!['boundary','followchange'].includes(event.type)||!event.absoluteWord)return;
       const pieces=relationPieces();
       if(!pieces){pageHighlighter.clear();return}
+      if(event.sectionId==='scene'){pageHighlighter.highlight(pieces.scene.node,event.absoluteWord,'',event.followReading);return}
       if(event.sectionId==='project'){pageHighlighter.highlight(pieces.project.node,event.absoluteWord,'',event.followReading);return}
       if(event.sectionId==='scripture'){pageHighlighter.highlight(pieces.scripture.node,event.absoluteWord,'',event.followReading);return}
+      if(event.sectionId==='movement'){pageHighlighter.highlight(pieces.movement.node,event.absoluteWord,'',event.followReading);return}
       if(event.sectionId==='why'){
         highlightMapped(event.absoluteWord,compositeSegments([
           {...pieces.why,prefix:''},
@@ -134,8 +150,10 @@
       }
       if(event.sectionId==='both'){
         highlightMapped(event.absoluteWord,compositeSegments([
-          {...pieces.project,prefix:'Project. '},
-          {...pieces.scripture,prefix:'Scripture. '},
+          {...pieces.scene,prefix:'Scene. '},
+          {...pieces.project,prefix:'Project source. '},
+          {...pieces.scripture,prefix:'Bible source. '},
+          {...pieces.movement,prefix:'Movement. '},
           {...pieces.why,prefix:'Why these connect. '},
           {...pieces.mismatch,prefix:''},
         ]),event.followReading);
