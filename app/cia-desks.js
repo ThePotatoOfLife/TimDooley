@@ -8,7 +8,11 @@ function dossierHref(id){return BASE+'rooms/potatoverse-canon/beings/cia/file/?c
 function dayValue(x){const m=String(x||'').match(/\d{4}-\d{2}-\d{2}/);return m?m[0]:String(x||'')}
 function newestFirst(a,b){return dayValue(b).localeCompare(dayValue(a))}
 function personLink(id,names){const name=names[id]||id;return '<a class="cia-person-link" href="'+dossierHref(id)+'">'+esc(name)+'</a>'}
-function sourceLink(src){return src?'<a class="cia-source-link" href="'+esc(route(src))+'">source</a>':''}
+function sourceLink(src){
+ const value=String(src||'').trim();if(!value)return'';
+ const linkable=/^https?:\/\//i.test(value)||/^(?:\/?(?:data|knowledge|rooms|story-content|docs|context|traditions|world|tim-dooley|religion|philosophy|science|north|axis|below|shadow-farm)\/)/i.test(value)||/\.(?:json|html|md)(?:[#?].*)?$/i.test(value);
+ return linkable?'<a class="cia-source-link" href="'+esc(route(value))+'">source</a>':'<span class="cia-source-label">'+esc(value)+'</span>';
+}
 function setupSearch(input,items,searchText){
  if(!input)return;
  input.addEventListener('input',()=>{const q=input.value.trim().toLowerCase();let n=0;items().forEach(el=>{const show=!q||searchText(el).includes(q);el.hidden=!show;if(show)n++});const out=document.getElementById('deskVisible');if(out)out.textContent=n+' visible'});
