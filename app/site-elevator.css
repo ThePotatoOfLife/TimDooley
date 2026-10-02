@@ -639,7 +639,7 @@ html[data-site-floor]{
   --site-depth-max:.18;
 }
 html[data-site-floor="heaven"]{
-  --site-depth-tree-opacity:.36;
+  --site-depth-tree-opacity:.62;
   --site-scene-box-height:300vh;
   --site-scene-x:50%;
   --site-scene-travel:-190vh;
@@ -691,13 +691,14 @@ html[data-site-floor="plane"] body:not(.lower-layer-page)::before{
 html[data-site-floor="heaven"] body:not(.lower-layer-page)::before{
   background-image:url("./site-tree-perspective.svg");
   opacity:var(--site-depth-tree-opacity);
-  filter:saturate(.98) contrast(1.02);
-  -webkit-mask-image:radial-gradient(ellipse at 50% 45%,rgba(0,0,0,.20) 0 25%,rgba(0,0,0,.62) 50%,#000 80%);
-  mask-image:radial-gradient(ellipse at 50% 45%,rgba(0,0,0,.20) 0 25%,rgba(0,0,0,.62) 50%,#000 80%);
+  filter:saturate(1.06) contrast(1.04);
+  -webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,.92),#000 72%,rgba(0,0,0,.86));
+  mask-image:linear-gradient(180deg,rgba(0,0,0,.92),#000 72%,rgba(0,0,0,.86));
 }
 html[data-site-floor="plane"] body:not(.lower-layer-page)::before{
   background-image:url("./site-plane-organic-field.svg");
-  opacity:.74;
+  opacity:.84;
+  filter:saturate(1.04) contrast(1.02);
 }
 
 html[data-site-floor="heaven"] body:not(.lower-layer-page)::after,
