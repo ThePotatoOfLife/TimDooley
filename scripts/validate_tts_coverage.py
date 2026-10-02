@@ -76,10 +76,11 @@ def validate_built_site(errors: list[str], notes: list[str]) -> None:
         checked += 1
         has_bootstrap = "site-tts.js" in text
         has_full_stack = all(marker in text for marker in ("tts-reader.js","tts-drawer.js","longform-tts-adapter.js"))
+        has_inherited = "house-journey.js" in text
         has_host = "data-tts-longform" in text
-        if not (has_bootstrap or has_full_stack):
+        if not (has_bootstrap or has_full_stack or has_inherited):
             errors.append(f"built page missing usable TTS path: {rel}")
-        if has_host and not (has_bootstrap or has_full_stack):
+        if has_host and not (has_bootstrap or has_full_stack or has_inherited):
             errors.append(f"built declarative TTS host lacks bootstrap/runtime: {rel}")
     notes.append(f"built-site TTS documents checked: {checked}")
 
