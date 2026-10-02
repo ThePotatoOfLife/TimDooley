@@ -81,6 +81,8 @@ html[data-site-floor="heaven"]{
   --site-line:rgba(214,204,236,.24);
   --site-muted:#c3bfd0;
   --site-faint:#918ba1;
+  --site-reading-glass:rgba(16,10,38,.060);
+  --site-reading-glass-line:rgba(245,230,255,.028);
   background-color:#24104c;
   background:
     radial-gradient(circle at 84% 9%,rgba(255,238,177,.62) 0 1px,transparent 2.5px),
@@ -106,6 +108,8 @@ html[data-site-floor="plane"]{
   --site-line:rgba(184,205,185,.22);
   --site-muted:#bdc9bf;
   --site-faint:#87958a;
+  --site-reading-glass:rgba(8,23,27,.052);
+  --site-reading-glass-line:rgba(232,247,239,.025);
   background-color:#244f66;
   background:
     radial-gradient(circle at 84% 10%,rgba(255,225,151,.30),transparent 12%),
@@ -121,6 +125,8 @@ html[data-site-floor="below"]{
   --site-line:rgba(165,95,59,.30);
   --site-muted:#c0a08f;
   --site-faint:#8e6d5d;
+  --site-reading-glass:rgba(22,10,7,.065);
+  --site-reading-glass-line:rgba(255,226,199,.024);
   background-color:#806047;
   background:
     radial-gradient(ellipse at 22% 0%,rgba(158,125,82,.24),transparent 24%),
