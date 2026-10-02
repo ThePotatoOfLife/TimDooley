@@ -307,6 +307,10 @@
     };
 
     const render=(direction='')=>{
+      // The selected elevator floor is a visual browsing state as well as a header state.
+      // Keep the document substrate synchronized so Heaven / Plane / Below atmosphere
+      // follows arrow-key and button floor changes, not only the initial route hydrate.
+      document.documentElement.dataset.siteFloor=selectedLevel;
       header.setAttribute('data-elevator-level',selectedLevel);
       delete header.dataset.elevatorDirection;
       if(direction==='up'||direction==='down'){

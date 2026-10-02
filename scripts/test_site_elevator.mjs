@@ -180,6 +180,7 @@ for(const marker of [
   assert.ok(source.includes(marker),'site elevator visual contract missing '+marker);
 }
 assert.equal(/history\.(?:pushState|replaceState)/.test(source),false,'floor switching must not mutate history');
+assert.ok(source.includes('document.documentElement.dataset.siteFloor=selectedLevel'),'floor switching must synchronize the page atmosphere with the selected floor');
 assert.equal(/location\.(?:assign|replace)|location\.href\s*=/.test(source),false,'floor switching must not navigate the page');
 assert.ok(source.includes("ArrowUp"),'header keyboard contract needs ArrowUp');
 assert.ok(source.includes("ArrowDown"),'header keyboard contract needs ArrowDown');
@@ -198,7 +199,7 @@ assert.ok(css.includes('html[data-site-floor="plane"] body:not(.lower-layer-page
 assert.ok(css.includes('html[data-site-floor="below"] body:not(.lower-layer-page)'),'resolved Below routes should tint the page substrate without overriding dedicated lower pages');
 assert.ok(css.includes('radial-gradient(ellipse at 8% 108%,rgba(94,133,88,.34)'),'Heaven needs a soft garden horizon beneath the cosmos');
 assert.ok(css.includes('radial-gradient(ellipse at 68% 24%,rgba(103,72,170,.40)'),'Heaven needs purple nebula depth');
-assert.ok(css.includes('linear-gradient(88deg,transparent 0 47.9%)'),'Heaven needs a restrained luminous spiritual-tree trunk');
+assert.ok(css.includes('linear-gradient(88deg,transparent 0 47.9%,'),'Heaven needs a restrained luminous spiritual-tree trunk');
 assert.ok(css.includes('radial-gradient(circle at 6% 20%)'),'Heaven needs sparse celestial points');
 assert.ok(css.includes('linear-gradient(180deg,#090d24'),'Heaven needs dark-blue/purple cosmic depth rather than a flat sky plate');
 assert.ok(css.includes('[data-elevator-level="plane"]::before'),'Plane needs a distinct CSS landscape biome layer');
