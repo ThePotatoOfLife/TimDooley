@@ -14,7 +14,7 @@
   --lower-stone:#716a5f;
 }
 
-html:has(body.lower-layer-page){background:var(--lower-black)}
+html:has(body.lower-layer-page){background:var(--site-bg)}
 
 body.lower-layer-page{
   position:relative;
@@ -30,7 +30,7 @@ body.lower-layer-page{
     radial-gradient(circle at 74% 29%,rgba(126,118,104,.12) 0 3px,transparent 4px) 0 0/330px 290px,
     /* simple side-view strata */
     repeating-linear-gradient(180deg,transparent 0 84px,rgba(139,99,58,.045) 85px 87px,transparent 88px 172px),
-    linear-gradient(180deg,#15100c 0,#0c0a08 38%,#080706 72%,var(--lower-black) 100%);
+    linear-gradient(180deg,#15100c 0,#0c0a08 38%,#080706 72%,var(--site-bg) 100%);
 }
 
 /* Roots descend from the ceiling of the lower floor. */
