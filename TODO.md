@@ -69,6 +69,25 @@ Keep separate files only when separation preserves something important: a primar
 
 Indexes, manifests and projections should point to the canonical material rather than repeat it.
 
+## Site-wide bug & enhancement queue — 2026-10-02
+
+- [x] **BUG-DEPLOY-001 · TTS/CSS deploy chain:** version shared TTS CSS/JS assets, align shell validators with cache-busted URLs, and make Shadow Farm source-own its specialist reader.
+- [x] **BUG-TTS-002 · Quiet-route hole:** World Map and other control-heavy routes now receive selection-only TTS even when no `<main>` exists.
+- [x] **BUG-WORLD-003 · Country refresh history crash:** preserve both list-style and structured `history` schemas when refreshing World Bank observations instead of calling `.append()` on a dict.
+- [x] **ENH-AZ-004 · A–Z orientation:** add literal Home navigation and explain person / concept / tradition / evidence entry types before alphabetical routing.
+- [x] **ENH-EXPLORE-005 · Archive object key:** explain reader vs primary source vs synthesis vs tool/dataset so non-expert readers know what kind of object they opened.
+- [x] **ENH-SCI-006 · 11D boundary:** explicitly separate established M-theory/physics, project models, analogies and the promotion threshold on the Axis 11D reader.
+- [ ] **BUG-NAV-007 · Mobile route stress test:** inspect primary navigation, Timeline shortcuts, TTS drawer and Follow escape at narrow widths; repair wrapping/overlap instead of only checking markers.
+- [ ] **BUG-BREADCRUMB-008 · Location awareness:** major and specialist readers should identify the current subject/parent in a consistent way rather than relying on back arrows or metaphor labels.
+- [ ] **ENH-BEINGS-009 · Named-being ownership sweep:** audit `rooms/potatoverse-canon/beings/**` for duplicate biography, project-role overreach, unresolved identity merges and missing provenance; route documentary detail back to CIA/Story where appropriate.
+- [ ] **ENH-DIRECT-010 · Generated copy cleanup:** inspect JS-generated labels/fallbacks for registry/owner/projection language that leaks maintenance architecture into ordinary reading.
+- [ ] **ENH-STALE-011 · Mutable-fact twin audit:** use the directness hard-fact report to group repeated metrics/dates across readers and replace secondary mutable copies with owner links.
+- [ ] **ENH-NOJS-012 · Dynamic-page fallback sweep:** identify public pages where useful meaning still disappears when fetch/JS fails and add concise static subject substance.
+- [ ] **ENH-SCI-013 · Science grammar sweep:** continue separating established physics → measurable models → speculative project formalism → metaphor across older science pages, especially any pages that use physics vocabulary as project-native labels.
+- [ ] **ENH-ROOMS-014 · First-screen substance test:** every active subject reader should answer “what is this / what happened / how does it work?” before routing, ownership or methodology prose.
+- [ ] **BUG-BUILD-015 · Build-only feature ownership:** inventory mature features that exist only because `patch_public_navigation.py` mutates generated HTML; move stable features into source/generator ownership and leave the patcher for true universal projection.
+- [ ] **ENH-TTS-016 · Browser interaction audit:** test real play/pause/selection/follow behavior on Bible, Shadow Farm, Below, World Map, A–Z, Beings, Timeline and mobile layouts—not only static marker contracts.
+
 ## Lower-field conflict integration — 2026-10-01
 
 Rule: **cultural, spiritual and informational conflict may overlap, but the site must never treat them as interchangeable evidence classes.**
