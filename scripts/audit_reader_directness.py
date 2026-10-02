@@ -50,7 +50,7 @@ def norm(txt:str)->str:
 def main():
     data=json.loads(SURFACES.read_text(encoding="utf-8"))
     surfaces=[s for s in data.get("surfaces",[]) if s.get("status")=="active"]
-    report={"generated_by":"scripts/audit_reader_directness.py","terms":TERMS,"surfaces":[],"exact_duplicate_paragraphs":[],"near_duplicate_paragraphs":[],"hard_fact_candidates":[]}
+    report={"generated_by":"scripts/audit_reader_directness.py","terms":TERMS,"surfaces":[],"exact_duplicate_paragraphs":[],"near_duplicate_paragraphs":[],"hard_fact_candidates":[],"hard_fact_regex_version":"2.0-fixed-word-boundaries"}
     dup=defaultdict(list)
 
     for s in surfaces:
@@ -63,7 +63,7 @@ def main():
         low=visible.lower()
         counts={t:low.count(t) for t in TERMS}
         paras=list(paragraphs(html))
-        hard_re=re.compile(r"\\b(?:\\d{1,2}\\s+(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\\s+20\\d{2}|20\\d{2}(?:[-–]\\d{2,4})?|\\d{1,3}(?:,\\d{3})+(?:\\.\\d+)?|\\d+(?:\\.\\d+)?\\s*(?:hours?|commits?|files?|views?|countries|rooms?|dwellings?))\\b",re.I)
+        hard_re=re.compile(r"\b(?:\d{1,2}\s+(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s+20\d{2}|20\d{2}(?:[-–]\d{2,4})?|\d{1,3}(?:,\d{3})+(?:\.\d+)?|\d+(?:\.\d+)?\s*(?:hours?|commits?|files?|views?|countries|rooms?|dwellings?))\b",re.I)
         for ptxt in paras:
             hits=sorted(set(hard_re.findall(ptxt)))
             if hits:
