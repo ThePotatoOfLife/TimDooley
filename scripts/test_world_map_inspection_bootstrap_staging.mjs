@@ -2,31 +2,33 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
 const bootstrap = fs.readFileSync(new URL('../world-map/3d-bootstrap.js', import.meta.url), 'utf8');
+const card = fs.readFileSync(new URL('../world-map/3d-country-card.js', import.meta.url), 'utf8');
 
 for (const marker of [
-  'async function loadInspectionBasics()',
-  'async function loadInspectionContext()',
-  'async function loadInspectionDeep()',
-  "loadAfterPaint('Demography', './3d-demography.js')",
-  "loadAfterPaint('Country Pulse', './3d-country-pulse.js')",
-  "loadAfterPaint('Evidence', './3d-evidence.js')",
-  "loadSpecialist('System Intelligence', './3d-gateways.js')",
-  "loadSpecialist('Functional Chains', './3d-chain-explorer.js')",
-  "loadSpecialist('Infrastructure Context', './3d-infrastructure.js')",
-  "loadSpecialist('Impact Trace', './3d-impact-trace.js')",
-  "await loadSpecialist('Impact Actions', './3d-impact-actions.js')",
-  'await loadInspectionBasics();',
-  'await loadInspectionContext();',
-  'await loadInspectionDeep();',
+  'async function loadBatchAfterPaint',
+  "declareDormant('Country Pulse', './3d-country-pulse.js', 'Country → Statistics')",
+  "declareDormant('Evidence', './3d-evidence.js', 'Country → More data')",
+  "declareDormant('System Intelligence', './3d-gateways.js', 'Country → Context')",
+  "declareDormant('Functional Chains', './3d-chain-explorer.js', 'Country → Context')",
+  "declareDormant('Infrastructure Context', './3d-infrastructure.js', 'Country → Context')",
+  "declareDormant('Impact Trace', './3d-impact-trace.js', 'Country → Impact')",
 ]) assert.ok(bootstrap.includes(marker), `inspection bootstrap missing marker: ${marker}`);
 
-const promoteStart = bootstrap.indexOf('const promoteInspection = async () =>');
-const promoteEnd = bootstrap.indexOf('let inspectionPromoted = false;', promoteStart);
-assert.ok(promoteStart >= 0 && promoteEnd > promoteStart, 'missing promoteInspection body');
-const promote = bootstrap.slice(promoteStart, promoteEnd);
-assert.ok(
-  /await loadInspectionBasics\(\);[\s\S]*await nextPaint\(\);[\s\S]*await loadInspectionContext\(\);[\s\S]*await nextPaint\(\);[\s\S]*await loadInspectionDeep\(\);/.test(promote),
-  'inspection promotion must yield a paint between basics, context and deep stages',
-);
+for (const forbidden of [
+  'const promoteInspection = async () =>',
+  'promoteInspectionOnce',
+  'loadInspectionBasics()',
+  'loadInspectionContext()',
+  'loadInspectionDeep()',
+]) assert.ok(!bootstrap.includes(forbidden), `ordinary country selection must not auto-promote specialist stack: ${forbidden}`);
 
-console.log('WORLD MAP INSPECTION BOOTSTRAP STAGING REGRESSION PASSED');
+for (const marker of [
+  "window.__potatoAtlasLoadModule?.('Country Pulse', './3d-country-pulse.js')",
+  "window.__potatoAtlasLoadModule?.('Evidence', './3d-evidence.js')",
+  "window.__potatoAtlasLoadModule?.('System Intelligence', './3d-gateways.js')",
+  "window.__potatoAtlasLoadModule?.('Functional Chains', './3d-chain-explorer.js')",
+  "window.__potatoAtlasLoadModule?.('Infrastructure Context', './3d-infrastructure.js')",
+  "window.__potatoAtlasLoadModule('Impact Trace', './3d-impact-trace.js')",
+]) assert.ok(card.includes(marker), `country card must own explicit specialist trigger: ${marker}`);
+
+console.log('WORLD MAP ACTION-DRIVEN INSPECTION LOADING REGRESSION PASSED');
