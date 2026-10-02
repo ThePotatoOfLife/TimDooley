@@ -13,15 +13,15 @@
 .claim-stream-note{font-size:11px;color:var(--site-muted);margin:4px 0 0}
 .claim-stream-note strong{color:#cbd2c6}
 .tim-callout-line{font:400 clamp(24px,3.2vw,34px)/1.46 var(--site-font-serif);color:#ece8dc;margin:24px 0}
-.tim-callout-line em{font-style:normal;color:var(--site-green)}
+.tim-callout-line em{font-style:normal;color:var(--site-accent)}
 .tim-long-list{font:400 20px/1.75 var(--site-font-serif);color:#dddcd4}
-.tim-long-list strong{color:var(--site-green);font-weight:400}
+.tim-long-list strong{color:var(--site-accent);font-weight:400}
 .tim-dossier-subsection{padding:26px 0 2px;border-top:1px solid rgba(255,255,255,.055)}
 .tim-dossier-subsection:first-of-type{border-top:0}
 .tim-dossier-subsection h3{margin-top:0}
 .tim-dossier-subsection p{max-width:840px}
 .tim-inline-index{font-size:13px;line-height:1.8;color:var(--site-muted);margin:14px 0}
-.tim-inline-index b{color:var(--site-green);font-weight:500}
+.tim-inline-index b{color:var(--site-accent);font-weight:500}
 .tim-inline-index span::after{content:" · ";color:#596356}
 .tim-inline-index span:last-child::after{content:""}
 .claim-stat{font-size:11px;color:var(--site-faint);letter-spacing:.04em;text-transform:uppercase}
