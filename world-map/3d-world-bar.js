@@ -280,7 +280,7 @@
     }
     const compactIds = ids => ids.slice(0, 2).map(id => String(id).split('.').at(-1).replaceAll('-', ' ')).join(' · ') + (ids.length > 2 ? ` +${ids.length - 2}` : '');
     if (physicalIds.length) lines.push(`<div><span>Physical</span><b>${esc(compactIds(physicalIds))}</b></div>`);
-    if (geographyIds.length) lines.push(`<div><span>Map context</span><b>${esc(compactIds(geographyIds))}</b></div>`);
+    if (geographyIds.length) lines.push(`<div><span>Geography</span><b>${esc(compactIds(geographyIds))}</b></div>`);
     if (evidenceIds.length) lines.push(`<div><span>Evidence</span><b>${esc(compactIds(evidenceIds))}</b></div>`);
     const freshnessRows = window.__potatoAtlasFreshness?.active?.() || [];
     if (freshnessRows.length) {
