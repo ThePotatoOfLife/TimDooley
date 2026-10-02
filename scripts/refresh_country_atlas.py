@@ -151,6 +151,29 @@ def load(path):
         return json.load(file)
 
 
+def append_observation_history(record: dict, event: dict) -> None:
+    """Append a data-refresh change without assuming one history schema."""
+    history = record.get("history")
+    if history is None:
+        record["history"] = [event]
+        return
+    if isinstance(history, list):
+        history.append(event)
+        return
+    if isinstance(history, dict):
+        changes = history.get("observation_changes")
+        if changes is None:
+            history["observation_changes"] = [event]
+            return
+        if isinstance(changes, list):
+            changes.append(event)
+            return
+        history["observation_changes_legacy"] = changes
+        history["observation_changes"] = [event]
+        return
+    record["history"] = {"legacy_value": history, "observation_changes": [event]}
+
+
 def main():
     index = load(INDEX)
     countries = index.get("countries", [])
@@ -213,13 +236,14 @@ def main():
             value["confidence"] = "international-official"
             old = record["observations"].get(field)
             if isinstance(old, dict) and old.get("value") != value.get("value"):
-                record["history"].append(
+                append_observation_history(
+                    record,
                     {
                         "field": field,
                         "previous": old,
                         "replaced_at": now,
                         "reason": "new source observation",
-                    }
+                    },
                 )
             record["observations"][field] = value
             observations_written += 1
