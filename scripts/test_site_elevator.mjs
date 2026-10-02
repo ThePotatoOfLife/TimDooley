@@ -305,6 +305,12 @@ assert.ok(css.includes('isolation:isolate'),'ordinary floor pages must isolate t
 assert.ok(css.includes('site-tree-perspective.svg'),'Heaven must keep the luminous tree scene plate');
 assert.ok(css.includes('site-plane-organic-field.svg'),'Plane must use one static side-view scene plate');
 assert.ok(css.includes('--site-scene-y'),'scene plates must move through a single compositor transform variable');
+assert.ok(css.includes('--site-scene-travel-vh:96'),'Heaven should travel gently from crown toward garden');
+assert.ok(css.includes('--site-scene-travel-vh:108'),'Plane should travel far enough from sky/mountain toward field/soil');
+assert.ok(css.includes('--site-scene-travel-vh:126'),'Below should travel deepest through sediment/swamp/heat');
+assert.ok(css.includes('var(--site-scene-travel,-112vh)'),'native parallax must use the same floor-specific travel contract');
+assert.ok(source.includes("getPropertyValue('--site-scene-travel-vh')"),'fallback parallax must read the floor-specific travel distance');
+assert.ok(source.includes("getPropertyValue('--site-scene-zoom')"),'fallback parallax must read the floor-specific scene zoom');
 assert.ok(css.includes('translate3d(0,var(--site-scene-y),0)'),'scene parallax must animate transform rather than background-position');
 assert.ok(css.includes('animation-timeline:scroll(root block)'),'modern browsers should use native scroll-timeline transform animation');
 assert.ok(source.includes('function installSceneParallax'),'runtime must own one small fallback parallax driver');
