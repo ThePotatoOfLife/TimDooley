@@ -67,7 +67,7 @@
   --site-elevator-ink:#f1f4ef;
   --site-elevator-muted:#b7c0b9;
   --site-elevator-line:rgba(255,255,255,.16);
-  --site-elevator-accent:#b6c3b9;
+  --site-elevator-accent:var(--site-muted);
   --site-elevator-glow:rgba(255,255,255,.12);
 }
 .site-elevator[data-elevator-ready="false"]::before{
