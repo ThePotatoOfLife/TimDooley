@@ -17,18 +17,18 @@ const MEASUREMENTS_URL = '../data/world-map-spatial-measurements.json';
 const BELOW_OVERLAY_ID = 'project.below.us-cases';
 let belowFeatures = [];
 const GROUP_ORDER = [
-  'sacred.father-land',
-  'sacred.chosen-children-land',
-  'current.israel-palestine',
-  'project.below',
   'conflict.context',
+  'sacred.father-land',
+  'current.israel-palestine',
+  'sacred.chosen-children-land',
+  'project.below',
 ];
 const GROUP_LABELS = {
   'sacred.father-land':'Father’s Land / Eden',
   'sacred.chosen-children-land':'Chosen Children’s Land / Greater Israel scenarios',
   'current.israel-palestine':'Israel / Palestine',
   'project.below':'Below / Farm project cases',
-  'conflict.context':'Conflict context',
+  'conflict.context':'Current conflicts',
 };
 const EPISTEMIC_LABEL = {
   current_observed:'Current observed',
@@ -41,12 +41,9 @@ const EPISTEMIC_LABEL = {
   humanitarian_observed:'Humanitarian observed',
 };
 const QUICK_GEOGRAPHIES = [
-  ['father.mesopotamia-core','Mesopotamia · Father’s Land'],
-  ['father.eden-context','Eden · contextual field'],
-  ['biblical.dan-to-beersheba','Dan → Beer-sheba'],
-  ['biblical.genesis-15','Genesis 15 · Wadi el-Arish → Euphrates'],
-  ['modern.greater-israel','Greater Israel · maximal Nile → Euphrates scenario'],
-  ['project.below.us-cases','Below · U.S. project cases'],
+  ['father.mesopotamia-core','Mesopotamia · historical region'],
+  ['physical.tigris-euphrates-basin','Tigris–Euphrates basin · physical reference'],
+  ['father.eden-context','Eden · lower-Mesopotamian hypothesis'],
 ];
 
 const measurementPromise = fetch(MEASUREMENTS_URL, { cache:'no-cache' })
@@ -117,6 +114,12 @@ style.textContent = `
 #atlasSpatialOverlayHost .spatial-toggle small{display:block;color:#aab4aa;font-size:9px;line-height:1.25;margin-top:2px}
 #atlasSpatialOverlayHost .spatial-toggle[disabled]{opacity:.48;cursor:not-allowed}
 #atlasSpatialOverlayHost .spatial-status,#atlasGeographyHost .spatial-status{font-size:9px;color:#aab4aa;margin:5px 2px;line-height:1.3}
+#atlasGeographyHost .conflict-launch{display:flex;align-items:center;gap:8px;border-color:#8f5a36;background:#211b12;color:#ffd46a;font-weight:700}
+#atlasGeographyHost .conflict-dot{width:11px;height:11px;border-radius:50%;background:#ffd34f;border:2px solid #b44936;box-shadow:0 0 0 3px #ffd34f2e;flex:0 0 auto}
+.atlas-spatial-overlap .conflict-summary{border-left:3px solid #ffd34f;padding-left:9px}
+.atlas-spatial-overlap .conflict-summary b{color:#ffd46a}
+.atlas-spatial-overlap .spatial-links{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
+.atlas-spatial-overlap .spatial-links a{font-size:10px}
 #atlasBoundaryView,#spatialGeographyView{width:100%;margin-top:4px}
 .atlas-spatial-overlap .spatial-overlap-card{border:1px solid #344343;border-radius:9px;padding:9px;margin:7px 0;background:#151d1d}
 .atlas-spatial-overlap .spatial-overlap-card h3{font:400 17px Georgia,serif;margin:2px 0 5px}
@@ -196,13 +199,23 @@ function renderGeographyPicker() {
   const options = QUICK_GEOGRAPHIES
     .map(([id,label]) => [rows.get(id),label])
     .filter(([row]) => row?.availability === 'current');
+  const conflict = rows.get('conflict.active-theatres');
   geographyHost.innerHTML = `
-    <div class="spatial-group-title">Geographies</div>
-    <select id="spatialGeographyView" title="Show and fit a historical, textual, sacred or ideological geography">
+    <div class="spatial-group-title">What is happening now?</div>
+    ${conflict?.availability === 'current' ? `<button class="conflict-launch" id="spatialConflictView" type="button"><span class="conflict-dot"></span><span>Current conflicts · 2 Oct 2026</span></button>` : ''}
+    <div class="spatial-status">Broad theatre markers only — no live troops, vehicles, aircraft, ships, strike targets or front lines.</div>
+    <div class="spatial-group-title">Historical / textual geography</div>
+    <select id="spatialGeographyView" title="Show and fit a historical, textual or interpretive geography">
       <option value="">Geographies · choose…</option>
       ${options.map(([row,label]) => `<option value="${esc(row.id)}">${esc(label)}</option>`).join('')}
     </select>
-    <div class="spatial-status">Quick access like a network selector, but these are geographies—not organization memberships or current sovereignty. Selecting one adds it without clearing other active overlays.</div>`;
+    <div class="spatial-status">These are contextual geographies, not current sovereignty. Mesopotamia is historical; Eden is explicitly a hypothesis field.</div>`;
+  const conflictButton = geographyHost.querySelector('#spatialConflictView');
+  if (conflictButton) conflictButton.onclick = async () => {
+    await spatial.activate('conflict.active-theatres');
+    await spatial.fit('conflict.active-theatres');
+    renderControls();
+  };
   const picker = geographyHost.querySelector('#spatialGeographyView');
   if (picker) picker.onchange = async event => {
     const id = event.target.value;
@@ -273,12 +286,23 @@ async function renderSpatialPanel(features) {
         <h3>${esc(feature.label)}</h3>
         <div><span class="pill">${esc(feature.confidence || 'unknown confidence')}</span><span class="pill">${esc(feature.geometry_version || 'geometry')}</span></div>
         <p>${esc(feature.status_note || row.status_note || '')}</p>
+        ${feature.overlay_id === 'conflict.active-theatres' ? `
+          <div class="conflict-summary">
+            <p><b>Started</b><br>${esc(feature.started || 'See source chronology')}</p>
+            <p><b>Current status</b><br>${esc(feature.current_status || 'Active conflict')}</p>
+            <p><b>Type</b><br>${esc(feature.conflict_type || 'Armed conflict')}</p>
+            <p><b>Human toll / displacement</b><br>${esc(feature.human_toll || 'Current comparable figure not available in this snapshot.')}</p>
+            ${feature.countries?.length ? `<p><b>Area</b><br>${esc(feature.countries.join(' · '))}</p>` : ''}
+            <p><b>Snapshot</b><br>${esc(feature.snapshot_date || 'dated snapshot')} · source update ${esc(feature.source_updated || 'varies')}</p>
+          </div>
+        ` : ''}
         ${measurementHtml(feature, measurements)}
         <div class="spatial-source">Overlay: ${esc(feature.overlay_id)}<br>Feature: ${esc(feature.feature_id)}<br>Sources: ${esc((feature.source_ids || []).join(' · ') || 'source metadata pending')}<br>Measurement policy: ${esc(feature.measurement_policy || 'not specified')}</div>
+        ${feature.source_links?.length ? `<div class="spatial-links">${feature.source_links.map((link,index) => `<a href="${esc(link)}" target="_blank" rel="noopener">Source ${index+1}</a>`).join('')}</div>` : ''}
         <div class="actions"><button data-fit-overlay="${esc(feature.overlay_id)}">Fit overlay</button></div>
       </article>`;
     }).join('')}
-    <div class="boundary">Current sovereignty, disputed status, historical reconstruction, scripture, ideological scenarios and Potatoverse sacred geography never share an unlabeled visual meaning.</div>
+    <div class="boundary">Conflict markers are dated theatre-level context, not tactical tracking. Current sovereignty, disputed status, historical reconstruction, scripture and project interpretation remain separate map meanings.</div>
   </div>`;
   for (const button of panel.querySelectorAll('[data-fit-overlay]')) button.onclick = () => spatial.fit(button.dataset.fitOverlay);
 }
