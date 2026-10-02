@@ -222,3 +222,49 @@ html[data-site-floor] .page::before {
 .editorial-visual figcaption a{font-size:10px;white-space:nowrap;text-decoration:none;border-bottom:1px solid #45413b}
 .editorial-visual--wide{width:min(1120px,calc(100vw - 32px));max-width:none;margin-left:50%;transform:translateX(-50%)}
 @media(max-width:700px){.editorial-visual{margin:22px 0 32px}.editorial-visual figcaption{grid-template-columns:1fr}.editorial-visual figcaption a{white-space:normal}.editorial-visual--wide{width:100%;margin-left:0;transform:none}}
+
+/* Reader-first editorial layer: substance before wayfinding. */
+.dwelling-reflection{
+  max-width:860px;
+  margin:44px 0 38px;
+  padding:0 0 0 18px;
+  border-left:1px solid color-mix(in srgb,var(--site-gold) 54%,transparent);
+}
+.dwelling-reflection h2{
+  max-width:790px;
+  margin:4px 0 15px;
+  font:400 clamp(27px,4vw,42px)/1.08 var(--site-font-serif);
+  letter-spacing:-.018em;
+}
+.dwelling-reflection p{
+  max-width:830px;
+  margin:11px 0;
+  color:#d8ded6;
+  font:400 17px/1.72 var(--site-font-serif);
+}
+.dwelling-reflection p strong{color:#f0e1b9;font-weight:600}
+.dwelling-reflection .reflection-turn{
+  color:var(--site-muted);
+  font:400 13px/1.58 var(--site-font-sans);
+}
+.rooms-architecture-details{
+  margin:34px 0;
+  border-top:1px solid var(--site-line);
+  border-bottom:1px solid var(--site-line);
+}
+.rooms-architecture-details>summary{
+  cursor:pointer;
+  list-style:none;
+  padding:13px 0;
+  color:var(--site-muted);
+  font:700 10px var(--site-font-sans);
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.rooms-architecture-details>summary::-webkit-details-marker{display:none}
+.rooms-architecture-details>summary::after{content:" +";color:var(--site-gold)}
+.rooms-architecture-details[open]>summary::after{content:" −"}
+@media(max-width:700px){
+  .dwelling-reflection{margin:34px 0 30px;padding-left:13px}
+  .dwelling-reflection p{font-size:16px}
+}
