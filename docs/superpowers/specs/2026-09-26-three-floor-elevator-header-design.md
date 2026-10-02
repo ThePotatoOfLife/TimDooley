@@ -1,6 +1,6 @@
 # Three-Floor Universal Elevator Header — Design Spec
 
-Status: proposed architecture  
+Status: active architecture + visual-world contract  
 Date: 2026-09-26  
 Scope: universal public-site orientation shell
 
@@ -49,11 +49,12 @@ Meaning, integration, canopy, crown, theology, symbolic synthesis, ideals and fr
 
 Visual language:
 
-- pale sky blue
-- ivory
-- warm gold
-- cool silver
-- luminous pixel/crystal/cloud texture
+- deep violet / indigo starlit crown-space at the highest edge
+- a large low-resolution world-tree canopy, not a generic fantasy wallpaper
+- ivory cloud shelves and small star-pixels behind the crown
+- warm rose / peach / gold increasing toward lower Heaven
+- garden terraces, tiny lights and a continuing trunk/root axis near the Plane handoff
+- low-resolution 16/32-bit RPG vocabulary; sacred and cozy rather than glossy or photoreal
 
 #### Plane
 
@@ -63,10 +64,12 @@ This is the default / fallback orientation and contains the site's ordinary Home
 
 Visual language:
 
-- moss and grass green
-- stone grey
-- muted earth/tan
-- restrained block/grass/stone texture
+- the clearest blue daylight of the three floors
+- stepped mountain silhouettes, snow caps and cloud bands
+- a lived-in village / tower / river / bridge / field / orchard middle world
+- moss and grass green, warm roofs, stone grey and muted earth/tan
+- looping paths and field spirals that retain the project's organic / relational geometry
+- the lower edge visibly becomes grass, soil and first roots so Plane hands off to Below
 
 #### Below
 
@@ -74,11 +77,13 @@ Roots, provenance, archives, raw history, hidden structure, subculture, shadow, 
 
 Visual language:
 
-- charcoal
-- peat brown
-- rust / oxblood red
-- dark root lines
-- soil/ash/block texture
+- begin directly beneath the grass with light topsoil / mud, not an open cavern
+- descend through visible sediment bands, compact earth, pebbles, root curtains and tangled roots
+- wet seams, swamp pockets and occasional small buried voids/chambers may interrupt the soil
+- deeper strata become steamier, hotter and more compressed, with rust / oxblood / ember mineral seams
+- small fire vents / forge pressure appear near the deepest readable zone
+- tiny under-earth inhabitants may appear as incidental silhouettes (rats, goblin-like workers), never as the dominant motif
+- charcoal and near-black belong mainly to the deepest layer; Below should not begin as a black wall
 
 "Deep" remains a region or depth inside Below, not a fourth floor.
 
@@ -182,17 +187,67 @@ When `prefers-reduced-motion: reduce`:
 - floor swaps immediately or with a very short opacity transition
 - all navigation remains fully usable
 
-## Biome texture
+## Three-floor pixel world
 
-Do not use large image assets for the first version.
+The background system is no longer treated as three decorative biome skins. It is one **continuous vertical world** rendered as inexpensive low-resolution scene plates plus CSS atmosphere.
 
-Use CSS-only layered gradients and small repeating block patterns:
+Canonical scene assets:
 
-- Heaven: subtle crystalline / cloud squares and gold edge light
-- Plane: small grass/stone/soil bands
-- Below: dark soil blocks, root-like linear gradients and ember/rust accents
+- `app/site-tree-perspective.svg` — Heaven / crown / garden / descending trunk
+- `app/site-plane-organic-field.svg` — Plane / mountain / village / river / field / soil edge
+- `app/site-below-root-field.svg` — Below / topsoil / sediment / roots / swamp / heat / lower basin
 
-The texture should read as a biome reference, not as literal Minecraft imitation.
+### Continuity rule
+
+The floor boundaries must visually hand material to one another:
+
+```
+violet stars / crown
+        ↓
+world-tree canopy
+        ↓
+peach-gold lower Heaven / garden
+        ↓
+blue daylight / mountain / village / field
+        ↓
+grass edge
+        ↓
+light topsoil / mud
+        ↓
+sediment / pebbles / roots
+        ↓
+wet swamp pockets / steam
+        ↓
+ember seams / fire vents
+        ↓
+near-black depth
+```
+
+The reader should feel that scrolling moves through different depths of one mythic body rather than swapping wallpaper packs.
+
+### Style rule
+
+Use the supplied fantasy-pixel references for **resolution, warmth and old-RPG readability**, not for literal composition. Project cosmology and the existing House / Axis / Tree / Root / Swamp / Forge structure outrank any reference image.
+
+Prefer:
+
+- broad pixel blocks and stepped silhouettes
+- a small number of legible landmarks
+- atmospheric negative space behind prose
+- scene plates that can scale cheaply
+- symbolic details discovered gradually while scrolling
+
+Avoid:
+
+- photorealism
+- modern glossy concept-art rendering
+- a generic open cave as the primary Below composition
+- full-screen decorative noise
+- literal Minecraft imitation
+- unrelated palettes for the three floors
+- turning the page into a game HUD
+
+The backgrounds are environmental storytelling. The document remains the foreground.
 
 ## Data ownership
 
