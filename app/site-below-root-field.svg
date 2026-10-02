@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 2400" role="img" aria-labelledby="title desc">
+<title id="title">Ground-to-depth root scene</title>
+<desc id="desc">A side-view lower world beginning at grass and topsoil, then descending through circles, spirals, tangled roots, stones and darker earth.</desc>
+<defs>
+  <linearGradient id="root" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#d5a36f" stop-opacity=".34"/>
+    <stop offset=".46" stop-color="#a26543" stop-opacity=".32"/>
+    <stop offset="1" stop-color="#673e2d" stop-opacity=".18"/>
+  </linearGradient>
+</defs>
+
+<!-- touchable surface / grass: broken, not a straight ruler -->
+<g fill="#7f925a" fill-opacity=".34">
+  <path d="M0 105 L32 82 L52 111 L88 66 L110 110 L148 76 L172 112 L210 68 L235 108 L270 78 L300 112 L340 62 L364 110 L405 73 L430 112 L470 64 L495 108 L530 80 L560 111 L600 68 L630 110 L665 73 L694 112 L735 65 L760 109 L802 72 L830 112 L868 65 L895 108 L935 77 L962 111 L1000 67 L1025 110 L1064 74 L1090 112 L1130 64 L1160 109 L1195 78 L1220 112 L1260 66 L1288 108 L1330 72 L1358 112 L1400 64 L1425 110 L1465 76 L1490 110 L1530 68 L1560 108 L1600 80 V145 H0 Z"/>
+</g>
+<g fill="#b28c5e" fill-opacity=".18">
+  <ellipse cx="180" cy="160" rx="180" ry="68"/><ellipse cx="520" cy="175" rx="230" ry="85"/>
+  <ellipse cx="930" cy="162" rx="245" ry="78"/><ellipse cx="1390" cy="175" rx="225" ry="82"/>
+</g>
+
+<!-- five major roots -->
+<g fill="none" stroke="url(#root)" stroke-linecap="round">
+  <path d="M150 120 C80 300 285 365 175 560 C85 720 300 840 178 1040 C65 1230 300 1400 160 1650 C65 1825 285 2010 150 2410" stroke-width="40"/>
+  <path d="M455 120 C565 285 360 410 490 585 C602 735 390 900 510 1080 C620 1245 385 1440 485 1660 C570 1850 400 2070 455 2410" stroke-width="31"/>
+  <path d="M790 115 C660 300 930 410 785 600 C650 775 930 930 790 1120 C655 1300 925 1480 790 1710 C670 1910 910 2120 790 2415" stroke-width="47"/>
+  <path d="M1120 120 C1015 310 1245 430 1110 620 C990 790 1230 940 1115 1130 C1000 1320 1238 1495 1110 1718 C995 1915 1220 2115 1120 2410" stroke-width="34"/>
+  <path d="M1450 120 C1555 300 1335 430 1462 615 C1578 785 1350 945 1450 1140 C1540 1325 1355 1500 1460 1720 C1550 1910 1360 2120 1450 2410" stroke-width="40"/>
+</g>
+
+<!-- crossing / entangling roots -->
+<g fill="none" stroke="#c48656" stroke-opacity=".20" stroke-linecap="round">
+  <path d="M-60 470 C170 330 320 610 540 470 C760 330 925 625 1160 460 C1360 320 1510 540 1660 420" stroke-width="15"/>
+  <path d="M-70 850 C145 710 330 980 550 845 C760 710 930 1000 1160 845 C1360 710 1510 920 1670 805" stroke-width="11"/>
+  <path d="M-80 1260 C120 1110 335 1390 545 1250 C755 1110 940 1410 1160 1248 C1370 1095 1520 1340 1680 1210" stroke-width="13"/>
+  <path d="M-70 1740 C130 1590 320 1880 560 1730 C770 1595 940 1900 1160 1730 C1365 1570 1515 1820 1680 1685" stroke-width="10"/>
+</g>
+
+<!-- loops / spirals / stones become denser with depth -->
+<g fill="none" stroke="#d39460" stroke-linecap="round">
+  <path d="M560 620 C635 540 755 580 730 675 C704 768 565 745 580 650 C590 580 700 555 768 630 C842 710 798 830 690 846" stroke-opacity=".24" stroke-width="10"/>
+  <path d="M1030 1000 C1110 910 1235 960 1190 1060 C1150 1150 1025 1115 1048 1028 C1068 950 1170 938 1230 1010 C1280 1070 1250 1175 1175 1220" stroke-opacity=".20" stroke-width="9"/>
+  <path d="M315 1435 C390 1350 505 1400 475 1490 C444 1580 315 1545 335 1460 C350 1395 450 1378 510 1445" stroke-opacity=".18" stroke-width="8"/>
+  <path d="M760 1850 C850 1740 1010 1795 985 1910 C958 2035 785 2005 800 1888 C814 1790 952 1760 1040 1845" stroke-opacity=".15" stroke-width="12"/>
+</g>
+
+<g fill="none" stroke="#9e806d" stroke-opacity=".11">
+  <circle cx="265" cy="730" r="58" stroke-width="9"/><circle cx="905" cy="520" r="71" stroke-width="9"/>
+  <circle cx="1370" cy="1180" r="64" stroke-width="8"/><ellipse cx="650" cy="1570" rx="96" ry="61" stroke-width="8"/>
+  <circle cx="320" cy="2050" r="42" stroke-width="7"/><circle cx="1260" cy="2140" r="52" stroke-width="8"/>
+</g>
+
+<!-- depth voids -->
+<g fill="#000" fill-opacity=".12">
+  <ellipse cx="160" cy="1120" rx="90" ry="54"/><ellipse cx="590" cy="1320" rx="115" ry="68"/>
+  <ellipse cx="1000" cy="1500" rx="125" ry="72"/><ellipse cx="1420" cy="1840" rx="110" ry="70"/>
+  <ellipse cx="760" cy="2200" rx="160" ry="90"/>
+</g>
+</svg>
