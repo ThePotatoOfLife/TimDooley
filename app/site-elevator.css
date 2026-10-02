@@ -193,7 +193,7 @@
   box-shadow:none;
   color:#d5dadd;
   text-shadow:0 1px 0 #101316,0 0 5px rgba(255,255,255,.42);
-  font:900 15px/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font:900 15px/1 var(--site-font-mono);
   cursor:pointer;
   transition:color 110ms ease,text-shadow 110ms ease,transform 110ms ease,opacity 110ms ease;
 }
@@ -202,7 +202,7 @@
   inset:50% auto auto 50%;
   transform:translate(-50%,-50%);
   color:rgba(226,231,234,.42);
-  font:400 var(--elevator-arrow-size)/1 ui-sans-serif,system-ui,sans-serif;
+  font:400 var(--elevator-arrow-size)/1 var(--site-font-sans);
   text-shadow:0 0 4px rgba(255,255,255,.16);
   pointer-events:none;
 }
