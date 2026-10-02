@@ -196,6 +196,11 @@
     if (window.__potatoAtlasTime) return true;
     return Boolean(await window.__potatoAtlasLoadModule?.('Time', './3d-time.js'));
   }
+  async function ensureSpatialOverlays() {
+    if (window.__potatoAtlasSpatialOverlays) return window.__potatoAtlasSpatialOverlays;
+    await window.__potatoAtlasLoadModule?.('Spatial Overlays', './3d-spatial-overlays.js');
+    return window.__potatoAtlasSpatialOverlays || null;
+  }
   function applyProjection() {
     try { map.setProjection({type: projection === 'globe' ? 'globe' : 'mercator'}); }
     catch { projection = 'flat'; try { map.setProjection({type:'mercator'}); } catch {} }
@@ -344,7 +349,13 @@
       const compare=document.getElementById('compare'); if (compare) { compare.textContent='Compare countries'; compare.title='Add countries to a comparison'; pop.appendChild(compare); }
       const inspect=document.getElementById('panelToggle'); if (inspect) { inspect.textContent='Details panel'; inspect.title='Show or hide the deeper details panel'; pop.appendChild(inspect); }
       const projectionButton=document.createElement('button'); projectionButton.id='atlasProjectionToggle'; projectionButton.type='button'; projectionButton.addEventListener('click',()=>window.__potatoAtlasProjection.toggle()); pop.appendChild(projectionButton);
-      const reset=document.createElement('button'); reset.id='atlasWorldReset'; reset.type='button'; reset.textContent='Reset map'; reset.title='Clear map layers, selections and investigation state'; reset.addEventListener('click',()=>window.__potatoAtlasCompositor?.reset?.()); pop.appendChild(reset);
+      const reset=document.createElement('button'); reset.id='atlasWorldReset'; reset.type='button'; reset.textContent='Reset map'; reset.title='Clear map layers, selections and investigation state'; reset.setAttribute('aria-label','Reset map layers and investigation state'); reset.addEventListener('click',()=>window.__potatoAtlasCompositor?.reset?.()); pop.appendChild(reset);
+      const projectDivider=document.createElement('div'); projectDivider.className='menu-sep'; pop.appendChild(projectDivider);
+      const projectTitle=document.createElement('div'); projectTitle.className='menu-title'; projectTitle.textContent='Project context'; pop.appendChild(projectTitle);
+      const belowCases=document.createElement('button'); belowCases.id='atlasBelowCasesToggle'; belowCases.type='button'; belowCases.textContent='Below · U.S. cases'; belowCases.title='Project-interpretive broad state-centroid case context'; belowCases.addEventListener('click',async()=>{const api=await ensureSpatialOverlays();if(!api)return;await api.toggle('project.below.us-cases');belowCases.classList.toggle('active',api.isActive?.('project.below.us-cases')===true);}); pop.appendChild(belowCases);
+      const syncBelowCases=()=>belowCases.classList.toggle('active',window.__potatoAtlasSpatialOverlays?.isActive?.('project.below.us-cases')===true);
+      window.addEventListener('potato-atlas-spatial-overlay-change',syncBelowCases);
+      syncBelowCases();
     }
     const interior=document.getElementById('interior'); if (interior && mapMenu?.querySelector('.atlas-world-menu-pop')) { interior.textContent='Extra map modules'; mapMenu.querySelector('.atlas-world-menu-pop').prepend(interior); }
     host.appendChild(bar);
