@@ -1,7 +1,7 @@
 {
   "id": "culture-sektur-platform-media-political-ecology",
   "version": "1.0.0",
-  "updated": "2026-09-19",
+  "updated": "2026-10-02",
   "status": "canonical empirical + project-analytical ecology",
   "purpose": "Explain how internet subcultures, attention economies, archives, media, politics, classifiers, law enforcement, infrastructure and money can interact over time without presuming one hidden organization.",
   "epistemic_firewall": [
@@ -372,5 +372,175 @@
     "Build current Ofcom/Online Safety Act case as cross-border platform-governance example.",
     "Build neutral MAGA cultural dossier separating campaign, grassroots identity, influencer economy, party organization and anonymous-board overlap.",
     "Add legal matrix: cyberstalking, true threats, swatting, doxxing/privacy, defamation, copyright, Section 230 and cross-border jurisdiction."
-  ]
+  ],
+  "motive_ecology": {
+    "status": "project analytical synthesis grounded in cited research; not mind-reading of named individuals",
+    "thesis": "The troll/farmer/dog ecology is better modeled as overlapping motive systems than as one personality type or secret command structure. A participant can move among motives over time, and one act can satisfy several motives at once.",
+    "motive_systems": [
+      {
+        "id": "reaction-sovereignty",
+        "motive": "Mastery through reaction",
+        "question": "Can I make the other person reveal that I control the emotional frame?",
+        "typical_rewards": [
+          "visible reaction",
+          "humiliation",
+          "proof of access",
+          "audience laughter",
+          "status for provocation"
+        ],
+        "political_translation": "Provocation can become a political tactic when opponent distress is treated as evidence of victory.",
+        "boundary": "Does not imply ideology by itself."
+      },
+      {
+        "id": "spectator-status",
+        "motive": "Prestige inside the scene",
+        "question": "Can I become the person who found, exposed, interpreted or remembered the decisive thing?",
+        "typical_rewards": [
+          "insider status",
+          "recognition",
+          "archive authority",
+          "technical prestige",
+          "proximity to important conflict"
+        ],
+        "research_bridge": "Moral-grandstanding research finds prestige-oriented moral talk associated with polarization and more extreme expressed positions in U.S. samples.",
+        "source": "https://www.sciencedirect.com/science/article/pii/S0092656620300970"
+      },
+      {
+        "id": "vigilante-jurisdiction",
+        "motive": "Acquire moral jurisdiction",
+        "question": "Can I become the actor who decides who is dangerous, what evidence counts, and what punishment is deserved?",
+        "typical_rewards": [
+          "moral certainty",
+          "public exposure",
+          "audience approval",
+          "substitute policing role",
+          "sense of protection or retribution"
+        ],
+        "boundary": "Predator-hunting, anti-fraud, antifascist, anti-cult and other vigilante forms differ substantially; evaluate conduct and evidence separately."
+      },
+      {
+        "id": "archive-sovereignty",
+        "motive": "Control durable memory",
+        "question": "Which version of the person will strangers encounter five years from now?",
+        "typical_rewards": [
+          "canonical chronology",
+          "search dominance",
+          "classification power",
+          "low-cost reactivation of old conflict"
+        ],
+        "boundary": "Archiving can preserve evidence or preserve distortion; provenance and correction rights matter."
+      },
+      {
+        "id": "enemy-dependent-belonging",
+        "motive": "Belonging through a reusable adversary",
+        "question": "Who are we if the opponent stops mattering?",
+        "typical_rewards": [
+          "group cohesion",
+          "shared vocabulary",
+          "ritual conflict",
+          "negative identity",
+          "clear moral boundary"
+        ],
+        "research_bridge": "Affective-polarization research treats partisan animosity as a social-identity process with effects beyond policy disagreement.",
+        "source": "https://www.annualreviews.org/content/journals/10.1146/annurev-polisci-051117-073034"
+      },
+      {
+        "id": "punitive-morality",
+        "motive": "Convert cruelty into deserved punishment",
+        "question": "Can humiliation be redescribed as accountability because the target is morally disqualified?",
+        "typical_rewards": [
+          "permission to escalate",
+          "reduced empathy",
+          "public righteousness",
+          "status for severity"
+        ],
+        "boundary": "A serious allegation can justify scrutiny without justifying unlimited punishment."
+      },
+      {
+        "id": "commercial-conflict",
+        "motive": "Convert antagonism into livelihood or platform value",
+        "question": "Does another round of conflict produce views, subscriptions, donations, ads, memberships or market attention?",
+        "typical_rewards": [
+          "revenue",
+          "audience retention",
+          "content pipeline",
+          "brand identity"
+        ],
+        "boundary": "Economic incentive does not prove a creator fabricated the underlying concern."
+      },
+      {
+        "id": "anti-institutional-vigilantism",
+        "motive": "Act where institutions are believed to have failed",
+        "question": "Why wait for police, courts, journalists, moderators or experts if the crowd can expose the wrongdoer now?",
+        "typical_rewards": [
+          "agency",
+          "speed",
+          "moral clarity",
+          "community recognition"
+        ],
+        "boundary": "Distrust of institutions can be warranted in specific cases; it becomes analytically dangerous when it is treated as evidence that private punishment is automatically accurate."
+      },
+      {
+        "id": "ethnonationalist-order",
+        "motive": "Restore or enforce an inherited hierarchy of belonging",
+        "question": "Who naturally belongs to the nation, territory or social body?",
+        "typical_rewards": [
+          "purity narrative",
+          "hierarchical order",
+          "territorial belonging",
+          "out-group exclusion"
+        ],
+        "historical_boundary": "Use only when explicit racial-nationalist doctrine, symbols or self-description support it. Blood-and-Soil has a specific Nazi and later white-supremacist history and should not be generalized to ordinary conservatism or edgy humor.",
+        "source": "https://www.ushmm.org/confront-antisemitism/origins-of-neo-nazi-and-white-supremacist-terms-and-symbols"
+      },
+      {
+        "id": "ironic-deniability",
+        "motive": "Gain the effects of an idea without fully owning it",
+        "question": "Can I circulate something powerful while retaining the retreat that it was only a joke?",
+        "typical_rewards": [
+          "taboo access",
+          "plausible deniability",
+          "in-group recognition",
+          "reduced reputational cost"
+        ],
+        "boundary": "Irony can be sincere play, strategic ambiguity, or both; infer ideological commitment from repeated context rather than one meme."
+      }
+    ],
+    "synthesis": "The most powerful subcultures are often mixed systems. Troll culture can supply transgression and irony; vigilantism can supply moral permission; archive culture can supply memory; partisan identity can supply durable enemies; extremist ideology can supply a theory of natural hierarchy; livestreaming can supply theater and monetization. Their overlap does not prove common command, but it can produce a coherent-seeming ecology whose parts mutually reinforce one another.",
+    "control_surfaces": [
+      {
+        "surface": "host/moderator",
+        "power": "controls speaking order, visibility and immediate norms"
+      },
+      {
+        "surface": "archivist/wiki",
+        "power": "controls recoverability, chronology and inherited framing"
+      },
+      {
+        "surface": "audience",
+        "power": "controls reward through attention, laughter, donations and repetition"
+      },
+      {
+        "surface": "platform",
+        "power": "controls distribution, monetization and account persistence"
+      },
+      {
+        "surface": "infrastructure provider",
+        "power": "controls technical continuity at hosting/CDN/registrar/payment chokepoints"
+      },
+      {
+        "surface": "classifier/media",
+        "power": "controls public categories and translation to outsiders"
+      },
+      {
+        "surface": "institution/state",
+        "power": "controls formal sanctions, adjudication and legal consequence"
+      }
+    ],
+    "tim_counterposition": {
+      "strongest_form": "Replace permanent enemy ontology with revisable role analysis, current-source testimony, explicit stopping conditions, correction propagation and role expiry.",
+      "self_test": "If Potatoverse labels such as Dog, Farmer, Mud or Sektur become immutable castes that cannot be revised by current evidence, the project reproduces the enclosure it criticizes.",
+      "political_boundary": "This is a project philosophy of agency and accountability, not an endorsement of a party, candidate or movement."
+    }
+  }
 }
