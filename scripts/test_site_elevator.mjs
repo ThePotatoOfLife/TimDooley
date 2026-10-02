@@ -205,17 +205,17 @@ assert.ok(css.includes('[data-elevator-level="heaven"]::before'),'Heaven needs a
 assert.ok(css.includes('html[data-site-floor="heaven"]{'),'resolved Heaven routes should own the root page canvas');
 assert.ok(css.includes('html[data-site-floor="plane"]{'),'resolved Plane routes should own the root page canvas');
 assert.ok(css.includes('linear-gradient(180deg,#244f66'),'Plane page atmosphere must visibly rise above the black foundation');
-assert.ok(css.includes('linear-gradient(180deg,#0b1028'),'Heaven page atmosphere must visibly rise above the black foundation');
+assert.ok(css.includes('linear-gradient(180deg,#24104c'),'Heaven page atmosphere must visibly rise from violet crown-space into the warmer lower sky');
 assert.ok(css.includes('background:transparent!important'),'governed page bodies must not paint opaque black over the floor canvas');
 assert.ok(css.includes('--site-panel:rgba(14,16,38,.80)'),'Heaven must tint shared panels, not only the wallpaper');
 assert.ok(css.includes('--site-panel:rgba(13,29,25,.80)'),'Plane must tint shared panels, not only the wallpaper');
 assert.ok(css.includes('--site-panel:rgba(24,11,8,.84)'),'Below must tint shared panels, not only the wallpaper');
 assert.ok(css.includes('html[data-site-floor="below"]{'),'resolved Below routes should own the root page canvas');
 assert.ok(css.includes('url("./site-tree-perspective.svg") 50% 12%/125% auto no-repeat'),'Heaven elevator header must reuse the canonical tree scene');
-assert.ok(css.includes('#111631'),'Heaven elevator scene needs a stable cosmic fallback colour');
-assert.ok(css.includes('linear-gradient(180deg,rgba(9,13,36,.46),rgba(53,28,63,.30) 68%,rgba(139,72,49,.22))'),'Heaven elevator scene needs a restrained atmosphere overlay');
+assert.ok(css.includes('#24104c'),'Heaven elevator scene needs a stable violet cosmic fallback colour');
+assert.ok(css.includes('linear-gradient(180deg,rgba(36,16,76,.42),rgba(83,53,114,.26) 60%,rgba(196,122,104,.20))'),'Heaven elevator scene needs a restrained violet-to-peach atmosphere overlay');
 assert.match(css,/\.site-elevator\[data-elevator-level="heaven"\]::before\{[\s\S]*?site-tree-perspective\.svg/,'Heaven elevator header must use the canonical tree artwork');
-assert.ok(css.includes('background-color:#0b1028'),'Heaven root canvas needs dark-blue/purple cosmic depth');
+assert.ok(css.includes('background-color:#24104c'),'Heaven root canvas needs violet cosmic depth');
 assert.ok(css.includes('[data-elevator-level="plane"]::before'),'Plane needs a distinct elevator scene layer');
 assert.match(css,/\.site-elevator\[data-elevator-level="plane"\]::before\{[\s\S]*?site-plane-organic-field\.svg/,'Plane elevator header must reuse the canonical Plane scene');
 assert.equal(/\.site-elevator\[data-elevator-level="plane"\]::before\{[\s\S]*?repeat-x/.test(css),false,'Plane elevator header should not rebuild mountains with repeated gradient strips');
@@ -325,12 +325,12 @@ assert.equal((lowerCss.match(/site-below-root-field\.svg/g)||[]).length,1,'Below
 assert.equal(lowerCss.includes('long tap roots'),false,'legacy stripe-built tap-root wallpaper must stay removed');
 assert.equal(lowerCss.includes('thick roots: dark bark edge'),false,'legacy root stripe stack must stay removed');
 assert.ok(lowerCss.includes('site-below-root-field.svg'),'Below must use one static ground-to-depth root scene plate');
-assert.ok(lowerCss.includes('#354a2e 0%')&&lowerCss.includes('#050303 100%'),'Below must descend from touchable green ground into near-black depth');
+assert.ok(lowerCss.includes('#40553a 0%')&&lowerCss.includes('#0b0504 100%'),'Below must descend from touchable green ground through sediment into near-black heated depth');
 assert.ok(lowerCss.includes('--site-depth-start:.14')&&lowerCss.includes('--site-depth-max:.44'),'Below native depth wash must match fallback darkness');
 assert.ok(css.includes('from{opacity:var(--site-depth-start,.04)}'),'native depth wash must use floor-specific start opacity');
 assert.ok(belowScene.includes('touchable surface / grass'),'Below scene must visibly begin at grass/topsoil');
 assert.ok(belowScene.includes('crossing / entangling roots'),'Below scene must use crossing curved roots rather than stripe-built tap roots');
-assert.ok(css.includes('#e29458 100%'),'Heaven background must descend into a warm orange sunset base');
+assert.ok(css.includes('#e4a079 100%'),'Heaven background must descend into a warm peach-gold base');
 assert.ok(css.includes('prefers-reduced-motion:reduce'),'2.5D atmosphere must respect reduced-motion preferences');
 
 console.log('Site elevator resolver + visual contract passed.');
