@@ -119,7 +119,6 @@ try {
     ['Inspector URL', './3d-inspector-url.js'],
     ['Inspector Visibility', './3d-inspector-visibility.js'],
     ['Country selection', './3d-country-selection.js'],
-    ['Panel lifecycle', './3d-panel-lifecycle.js'],
     ['Layer Registry', './3d-layer-registry.js'],
   ]);
   await loadAfterPaint('Compositor', './3d-compositor.js');
@@ -134,6 +133,7 @@ try {
     ['Country Presentation', './3d-country-presentation.js'],
     ['World Bar', './3d-world-bar.js'],
     ['Scalar Runtime Bridge', './3d-scalar-runtime-bridge.js'],
+    ['Panel lifecycle', './3d-panel-lifecycle.js'],
   ]);
   await loadBatchAfterPaint([
     ['Country Hover Presentation', './3d-country-hover-presentation.js'],
