@@ -335,7 +335,6 @@
       const next=stepLevel(selectedLevel,direction);
       if(next===selectedLevel)return;
       selectedLevel=next;
-      document.documentElement.dataset.siteFloor=selectedLevel;
       render(direction);
     };
 
