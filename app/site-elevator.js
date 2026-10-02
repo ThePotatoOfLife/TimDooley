@@ -164,8 +164,6 @@
       CSS.supports('animation-timeline: scroll(root block)');
     if(reduced){
       root.style.setProperty('--site-scene-y','0px');
-      root.style.setProperty('--site-scene-scale','1');
-      root.style.setProperty('--site-depth-progress','.25');
       root.dataset.sceneParallax='reduced';
       return ()=>{};
     }
@@ -176,34 +174,34 @@
 
     root.dataset.sceneParallax='fallback';
     let frame=0;
+    let maxTravel=0;
+    const measure=()=>{
+      const raw=getComputedStyle(root).getPropertyValue('--site-scene-travel').trim();
+      const value=parseFloat(raw)||-112;
+      maxTravel=Math.abs(value)*(window.innerHeight/100);
+    };
     const update=()=>{
       frame=0;
       const scrollY=Math.max(0,window.scrollY||window.pageYOffset||0);
       const maxScroll=Math.max(1,document.documentElement.scrollHeight-window.innerHeight);
       const progress=Math.max(0,Math.min(1,scrollY/maxScroll));
-      const viewport=Math.max(1,window.innerHeight);
-      const sceneStyle=getComputedStyle(root);
-      const travelVh=parseFloat(sceneStyle.getPropertyValue('--site-scene-travel-vh'))||112;
-      const targetScale=parseFloat(sceneStyle.getPropertyValue('--site-scene-zoom'))||1.035;
-      const maxTravel=viewport*(travelVh/100);
-      const halfSpeedTravel=scrollY*.46;
-      const fullPageTravel=progress*maxTravel;
-      const parallax=-Math.min(halfSpeedTravel,fullPageTravel);
-      const scale=1+(progress*(targetScale-1));
-      root.style.setProperty('--site-scene-y',parallax.toFixed(2)+'px');
-      root.style.setProperty('--site-scene-scale',scale.toFixed(4));
-      root.style.setProperty('--site-depth-progress',progress.toFixed(4));
+      root.style.setProperty('--site-scene-y',(-progress*maxTravel).toFixed(2)+'px');
     };
     const request=()=>{
       if(frame)return;
       frame=requestAnimationFrame(update);
     };
+    const onResize=()=>{
+      measure();
+      request();
+    };
+    measure();
     update();
     window.addEventListener('scroll',request,{passive:true});
-    window.addEventListener('resize',request,{passive:true});
+    window.addEventListener('resize',onResize,{passive:true});
     return ()=>{
       window.removeEventListener('scroll',request);
-      window.removeEventListener('resize',request);
+      window.removeEventListener('resize',onResize);
       if(frame)cancelAnimationFrame(frame);
     };
   }
