@@ -14,6 +14,7 @@ BRIDGE = ROOT / "world-map" / "3d-scalar-runtime-bridge.js"
 ACTIVE_VIEW = ROOT / "world-map" / "3d-active-view.js"
 BOOTSTRAP = ROOT / "world-map" / "3d-bootstrap.js"
 BOOT_GUARD = ROOT / "world-map" / "3d-boot-guard.js"
+RESOURCE_CACHE = ROOT / "world-map" / "3d-resource-cache.js"
 BOOTSTRAP_STAGING_TEST = ROOT / "scripts" / "test_world_map_inspection_bootstrap_staging.mjs"
 PANEL_LIFECYCLE = ROOT / "world-map" / "3d-panel-lifecycle.js"
 SUBDIVISIONS = ROOT / "world-map" / "3d-subdivisions.js"
@@ -103,6 +104,7 @@ def main() -> int:
     active_view = read(ACTIVE_VIEW, errors)
     bootstrap = read(BOOTSTRAP, errors)
     boot_guard = read(BOOT_GUARD, errors)
+    resource_cache = read(RESOURCE_CACHE, errors)
     panel_lifecycle = read(PANEL_LIFECYCLE, errors)
     subdivisions = read(SUBDIVISIONS, errors)
     hover = read(HOVER, errors)
@@ -145,6 +147,14 @@ def main() -> int:
     require(bootstrap, "Specialist country modules are intentionally action-driven", "world-map/3d-bootstrap.js", errors)
     reject(bootstrap, "const promoteInspection = async () =>", "world-map/3d-bootstrap.js", errors)
     reject(bootstrap, "promoteInspectionOnce", "world-map/3d-bootstrap.js", errors)
+
+    for token in ("__potatoAtlasResources", "function fetchJson", "records = new Map", "diagnostics"):
+        require(resource_cache, token, "world-map/3d-resource-cache.js", errors)
+    require(hover, "await import(versionedModule('./3d-resource-cache.js'))", "world-map/3d-hover.js", errors)
+    require(selection, "relationAdjacency", "world-map/3d-country-selection.js", errors)
+    reject(selection, "(world.curated_edges || []).filter(edge => (edge.a === root || edge.b === root)", "world-map/3d-country-selection.js", errors)
+    require(compositor, "__potatoAtlasResources", "world-map/3d-compositor.js", errors)
+    require(active_view, "__potatoAtlasResources", "world-map/3d-active-view.js", errors)
 
     # The selected-country card now has one normalized Current Map answer and
     # three bounded tabs. Legacy Map color / Map view copies are intentionally gone.
@@ -256,7 +266,7 @@ def main() -> int:
             continue
         reject(read(path, errors), "new MutationObserver(", str(path.relative_to(ROOT)), errors)
 
-    node_check((SELECTION, CARD, PULSE, BAR, COMPOSITOR, BRIDGE, ACTIVE_VIEW, BOOTSTRAP, BOOT_GUARD, BOOTSTRAP_STAGING_TEST, PANEL_LIFECYCLE, SUBDIVISIONS, HOVER, TOOLTIP, DEMOGRAPHY, DIMENSIONS, EVIDENCE, PROVENANCE), errors)
+    node_check((SELECTION, CARD, PULSE, BAR, COMPOSITOR, BRIDGE, ACTIVE_VIEW, BOOTSTRAP, BOOT_GUARD, RESOURCE_CACHE, BOOTSTRAP_STAGING_TEST, PANEL_LIFECYCLE, SUBDIVISIONS, HOVER, TOOLTIP, DEMOGRAPHY, DIMENSIONS, EVIDENCE, PROVENANCE), errors)
     run_node_regression(TOOLTIP_LIFECYCLE_TEST, errors, "World Map tooltip lifecycle regression")
     run_node_regression(HOVER_ARTIFACT_TEST, errors, "World Map hover artifact regression")
     run_node_regression(POINTER_DRAG_ARTIFACT_TEST, errors, "World Map pointer drag artifact regression")
