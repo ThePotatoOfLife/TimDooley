@@ -1331,6 +1331,28 @@ Shared implementation: `app/terrain-circle.css`
 - [ ] **LOWER-VIS-008 · Root state cues:** test subtle living/dead/cut/cross-root visual distinctions on Roots / Evidence where they reinforce provenance states without becoming decorative labels.
 
 
+## Room vocabulary / reader-aperture programme — 2026-10-02
+
+Rule: **each Room should leave the reader with a new set of distinctions, not merely more facts.** Native vocabulary should arise from the subject and be taught as reusable questions, not decorative glossary chips.
+
+- [x] **VOCAB-001 · Shared Room-language pattern:** added a reusable `.room-language` teaching component that pairs domain terms with the question each term helps the reader ask.
+- [x] **VOCAB-002 · Law & Justice:** standing, jurisdiction, burden, standard, remedy and precedent now form a concrete legal-seeing vocabulary.
+- [x] **VOCAB-003 · Economy & Finance:** stock, flow, liquidity, duration/maturity, exposure and buffer now form a concrete economic-seeing vocabulary.
+- [x] **VOCAB-004 · Provenance & Evidence:** custody, attestation, lineage, lacuna, contamination and independence now form a source-critical vocabulary.
+- [x] **VOCAB-005 · Systems & Dynamics:** state, feedback, observability, controllability, hysteresis and lag now form a dynamical vocabulary.
+- [x] **VOCAB-006 · Practice & Ethics:** agency, reciprocity, stewardship, restitution, boundary and Fruit now form a conduct-and-repair vocabulary.
+- [x] **VOCAB-007 · House Architecture:** invariant, facet, compression, fidelity, canonical owner and interface now form an information-architecture vocabulary.
+- [ ] **VOCAB-008 · Time & History:** develop chronology-native terms such as occurrence time, attestation time, publication time, interpretation time, periodization, anachronism, synchrony/diachrony and revision state.
+- [ ] **VOCAB-009 · Geography & Countries:** develop spatial terms such as scale, region, corridor, hinterland, chokepoint, adjacency, watershed, catchment, enclave/exclave and spatial concentration.
+- [ ] **VOCAB-010 · Infrastructure & Capability:** develop capacity terms such as throughput, redundancy, bottleneck, lead time, maintenance window, spare capacity, dependency, common-mode failure and graceful degradation.
+- [ ] **VOCAB-011 · Life & Body:** teach anatomy/physiology vocabulary that improves symbolic restraint—homeostasis, allostasis, afferent/efferent, compartment, perfusion, innervation, endocrine signaling, clearance and adaptation.
+- [ ] **VOCAB-012 · Music & Sound:** develop musical hearing vocabulary—pulse, meter, groove, timbre, voicing, motif, tension/release, register, resonance, silence and recurrence.
+- [ ] **VOCAB-013 · Visual Art:** develop visual-reading vocabulary—figure/ground, negative space, hierarchy, rhythm, balance, scale, texture, contrast, framing, focal point and visual weight.
+- [ ] **VOCAB-014 · Mythology / Traditions:** teach terms such as cosmogony, theogony, axis mundi, psychopomp, liminality, katabasis, apotheosis, etiological myth, ritual reenactment and syncretism with own-tradition boundaries.
+- [ ] **VOCAB-015 · Open Questions / Research:** teach uncertainty vocabulary—hypothesis, conjecture, prior, likelihood, discriminating test, null result, anomaly, underdetermination, replication and stopping rule.
+- [ ] **VOCAB-016 · Vocabulary collision audit:** find overloaded project words—source, spirit, axis, plane, house, witness, control, proof, prediction, revelation, intelligence—and give readers disambiguation where domain meanings collide.
+- [ ] **VOCAB-017 · Carry-it-out test:** every mature Room vocabulary block should end with one short reusable question-sequence a reader can apply outside the site.
+
 ## Reader-first meaning / inhabited-symbol programme
 
 - [ ] Continue the active programme in `docs/READER-FIRST-EDITORIAL-OVERHAUL-TODO.md`.
