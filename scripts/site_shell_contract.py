@@ -206,19 +206,19 @@ def main() -> int:
                 'data-tts-root=".page"',
                 'data-tts-all-label="Whole deep reader"',
                 'data-tts-exclude="#shadow-farm-tts,.nav"',
-                'href="../app/tts-drawer.css"',
-                'src="../app/tts-reader.js"',
-                'src="../app/tts-drawer.js"',
-                'src="../app/longform-tts-adapter.js"',
+                'href="../app/tts-drawer.css',
+                'src="../app/tts-reader.js',
+                'src="../app/tts-drawer.js',
+                'src="../app/longform-tts-adapter.js',
             ),
             "shadow-farm/index.html",
             errors,
         )
         if shadow.count('id="shadow-farm-tts"') != 1:
             errors.append("shadow-farm/index.html must contain exactly one generated TTS host")
-        reader_pos = shadow.find('src="../app/tts-reader.js"')
-        drawer_pos = shadow.find('src="../app/tts-drawer.js"')
-        adapter_pos = shadow.find('src="../app/longform-tts-adapter.js"')
+        reader_pos = shadow.find('src="../app/tts-reader.js')
+        drawer_pos = shadow.find('src="../app/tts-drawer.js')
+        adapter_pos = shadow.find('src="../app/longform-tts-adapter.js')
         if not (0 <= reader_pos < drawer_pos < adapter_pos):
             errors.append("shadow-farm/index.html TTS dependencies must load engine -> drawer -> longform adapter")
         forbid(shadow, ('data-tts-item=',), "shadow-farm/index.html", errors)
