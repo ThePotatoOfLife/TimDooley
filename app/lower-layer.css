@@ -6,42 +6,22 @@
   a second background/theme for the lower floor.
 */
 
+/* Environmental variables only: no alternate typography or component theme. */
 :root{
-  --lower-black:#050505;
-  --lower-void:#090807;
-  --lower-soil:#241a12;
-  --lower-soil-mid:#342518;
   --lower-root:#87643f;
   --lower-root-lit:#b08a58;
+  --lower-soil:#241a12;
   --lower-stone:#716a5f;
-  --lower-line:rgba(176,138,88,.24);
-  --lower-panel:rgba(10,9,8,.78);
-  --lower-panel-strong:rgba(15,12,9,.9);
-  --lower-text:#eee8dc;
-  --lower-muted:#b8ad9d;
-  --lower-accent:#b08a58;
-  --lower-accent-rgb:176,138,88;
 }
 
 html:has(body.lower-layer-page){background:var(--lower-black)}
 
 body.lower-layer-page{
-  /* Re-map the shared site tokens so old green styling cannot leak downstairs. */
-  --site-bg:var(--lower-black);
-  --site-panel:var(--lower-panel);
-  --site-panel-strong:var(--lower-panel-strong);
-  --site-line:var(--lower-line);
-  --site-ink:var(--lower-text);
-  --site-muted:var(--lower-muted);
-  --site-accent:var(--lower-root-lit);
-  --site-gold:#d6bd91;
-  --site-focus:#d6bd91;
-
   position:relative;
   isolation:isolate;
   min-height:100vh;
   overflow-x:hidden;
-  color:var(--lower-text);
+  color:var(--site-ink);
   background:
     /* compacted roof */
     linear-gradient(180deg,rgba(85,58,34,.29) 0,rgba(48,34,23,.18) 110px,transparent 300px),
@@ -146,7 +126,7 @@ body.lower-layer-page::after{
   position:relative;
   margin-bottom:42px;
   padding:24px 0 28px;
-  border-bottom:1px solid var(--lower-line);
+  border-bottom:1px solid var(--site-line);
 }
 .lower-layer-page .page-header::after{
   content:"";
@@ -155,13 +135,13 @@ body.lower-layer-page::after{
   bottom:-1px;
   width:min(220px,42vw);
   height:2px;
-  background:linear-gradient(90deg,rgba(var(--lower-accent-rgb),.85),transparent);
+  background:linear-gradient(90deg,rgba(216,181,107,.85),transparent);
 }
 .lower-layer-page h1{ text-shadow:0 4px 24px rgba(0,0,0,.7) }
 .lower-layer-page .summary{color:#d8d0c3}
-.lower-layer-page a{color:var(--lower-root-lit);text-decoration-color:rgba(var(--lower-accent-rgb),.48)}
+.lower-layer-page a{color:var(--lower-root-lit);text-decoration-color:rgba(216,181,107,.48)}
 .lower-layer-page a:hover,
-.lower-layer-page a:focus-visible{text-decoration-color:rgba(var(--lower-accent-rgb),.95)}
+.lower-layer-page a:focus-visible{text-decoration-color:rgba(216,181,107,.95)}
 
 /* One panel vocabulary across Observatory, Farm, Roots and Forge. */
 .lower-layer-page .card,
@@ -176,7 +156,7 @@ body.lower-layer-page::after{
 .lower-layer-page .case-path,
 .lower-layer-page .archetype-column,
 .lower-layer-page .frame-test>div{
-  border-color:var(--lower-line);
+  border-color:var(--site-line);
   background:linear-gradient(180deg,rgba(22,17,12,.66),rgba(7,7,6,.78));
   box-shadow:inset 0 1px rgba(255,255,255,.018);
 }
@@ -184,7 +164,7 @@ body.lower-layer-page::after{
 .lower-layer-page .note,
 .lower-layer-page .warning,
 .lower-layer-page .case-line,
-.lower-layer-page .layer-handoff{border-color:rgba(var(--lower-accent-rgb),.52)}
+.lower-layer-page .layer-handoff{border-color:rgba(216,181,107,.52)}
 
 /* Shared lower-room scaffolding: kept here so Roots and Forge do not duplicate it. */
 .lower-layer-page .room-home{max-width:1040px}
@@ -211,7 +191,7 @@ body.lower-layer-page::after{
   color:var(--site-muted);
   font-size:10px;
 }
-.lower-layer-page .room-actions a:hover{color:var(--site-gold);border-color:rgba(var(--lower-accent-rgb),.65)}
+.lower-layer-page .room-actions a:hover{color:var(--site-gold);border-color:rgba(216,181,107,.65)}
 .lower-layer-page .dwelling-reader{
   margin:34px 0;
   padding:28px 0;
@@ -230,8 +210,8 @@ body.lower-layer-page::after{
 .lower-layer-page .lower-spine{
   margin:28px 0 36px;
   padding:18px;
-  border:1px solid var(--lower-line);
-  background:linear-gradient(180deg,rgba(var(--lower-accent-rgb),.055),rgba(8,7,6,.76));
+  border:1px solid var(--site-line);
+  background:linear-gradient(180deg,rgba(216,181,107,.055),rgba(8,7,6,.76));
   box-shadow:0 18px 60px rgba(0,0,0,.12),inset 0 1px rgba(255,255,255,.018);
 }
 .lower-layer-page .layer-steps,
@@ -245,7 +225,7 @@ body.lower-layer-page::after{
 .lower-layer-page .lower-spine-grid>div{
   min-width:0;
   padding:10px 8px;
-  border-top:2px solid rgba(var(--lower-accent-rgb),.24);
+  border-top:2px solid rgba(216,181,107,.24);
   background:rgba(5,5,5,.28);
   font-size:.78rem;
   line-height:1.4;
@@ -258,11 +238,11 @@ body.lower-layer-page::after{
   font-size:.82rem;
 }
 .lower-layer-page .layer-step span,
-.lower-layer-page .lower-spine-grid span{display:block;color:var(--lower-muted)}
+.lower-layer-page .lower-spine-grid span{display:block;color:var(--site-muted)}
 .lower-layer-page .layer-step.is-here,
 .lower-layer-page .lower-spine-grid .is-here{
-  border-color:rgba(var(--lower-accent-rgb),.9);
-  background:linear-gradient(180deg,rgba(var(--lower-accent-rgb),.11),rgba(7,7,6,.62));
+  border-color:rgba(216,181,107,.9);
+  background:linear-gradient(180deg,rgba(216,181,107,.11),rgba(7,7,6,.62));
 }
 
 /* Large lower-floor feature panels remain part of the same substrate. */
@@ -270,9 +250,9 @@ body.lower-layer-page::after{
 .lower-layer-page .archetype-guide,
 .lower-layer-page .forge-return,
 .lower-layer-page .root-cross-section{
-  border-color:var(--lower-line);
+  border-color:var(--site-line);
   background:
-    linear-gradient(180deg,rgba(var(--lower-accent-rgb),.045),rgba(8,7,6,.78)),
+    linear-gradient(180deg,rgba(216,181,107,.045),rgba(8,7,6,.78)),
     repeating-linear-gradient(180deg,transparent 0 48px,rgba(148,104,62,.028) 49px 50px);
   box-shadow:inset 0 1px rgba(255,255,255,.018),0 16px 48px rgba(0,0,0,.1);
 }
