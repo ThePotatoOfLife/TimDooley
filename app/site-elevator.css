@@ -663,7 +663,6 @@ html[data-site-floor="plane"] body:not(.lower-layer-page)::before{
   background-size:max(1040px,120vw) auto;
   transform:translate3d(0,var(--site-scene-y),0) scale(var(--site-scene-scale));
   transform-origin:50% 30%;
-  will-change:transform;
   contain:paint;
   backface-visibility:hidden;
 }
@@ -744,7 +743,6 @@ html[data-site-floor="plane"] body:not(.lower-layer-page)::after{
   html[data-site-floor="heaven"] body:not(.lower-layer-page)::after,
   html[data-site-floor="plane"] body:not(.lower-layer-page)::after{
     animation:none;
-    will-change:auto;
   }
   html[data-site-floor="heaven"] body:not(.lower-layer-page)::before,
   html[data-site-floor="plane"] body:not(.lower-layer-page)::before{transform:none}
