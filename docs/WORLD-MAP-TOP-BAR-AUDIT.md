@@ -1,59 +1,72 @@
-# World Map Top-Bar Audit
+# World Map Interface Contract
 
-**Date:** 2026-09-20  
-**Status:** active UI-density contract  
+**Date:** 2026-10-02  
+**Status:** active public-interface contract  
 **Owner:** `world-map/3d-world-bar.js` + `world-map/index.html`
 
-## Goal
+## Product purpose
 
-Keep the World Map map-first. The top bar should expose only frequent direct actions, distinct map dimensions, and global navigation/reset. Deeper or overlapping capability belongs inside the relevant menu.
+The World Map answers one broad human question:
 
-This audit is intentionally conservative: reduce visual weight and duplication without redesigning the World Map or removing meaningful capability.
+> **What is happening where, and how is it connected?**
 
-## Persistent controls and justification
+A stranger should be able to open it and understand the first move without knowing the repository, Potatoverse vocabulary, graph terminology, or the internal layer architecture.
 
-| Control | Keep visible? | Why it earns persistent space | Density rule |
-| --- | --- | --- | --- |
-| Search | Yes | Primary direct navigation to a country/place target. | Compact input; do not grow with result text. |
-| Compare | Yes | Changes the working comparison set and is a frequent map-level action. | Small text button beside Search. |
-| Inspect | Yes | Opens/closes the deeper semantic inspector; distinct from map selection. | Small text button; no duplicate top-bar inspector action. |
-| N/W/E/S | Yes, grouped | Fast project-axis lenses are intentionally one-tap comparative views. | One compact four-button cluster; full names live in labels/tooltips, not button width. |
-| Groups | Yes | Distinct set-membership layer family. | One menu. |
-| Religion | Yes | Distinct analytical/set family with its own layer inventory. | One menu. |
-| Stats | Yes | Scalar/statistical map family. | One menu. |
-| Geography | Yes | Real/symbolic typed spatial overlays are a distinct map dimension. | One menu. |
-| Analyze | Yes | Owns relationship lines, relation context, trace depth, relation type, and fit. | Relation-context filters live here; no separate Relations menu. |
-| Time | Yes | Independent temporal dimension: current / as-of / changed-between. | One menu; lazy implementation remains behind it. |
-| View | Yes | Camera/cartographic presentation: height, tilt, reset-world, focus mode. | One menu. |
-| Projection | Yes | Flat/globe projection is a global map state used frequently enough for direct access. | Icon-width button only. |
-| ANY/ALL | Conditional | Only meaningful when multiple set layers are active. | Hidden unless required. |
-| Result count | Conditional | Gives compact feedback for active sets/layers. | Fixed compact width; hidden when irrelevant. |
-| Reset | Yes | Global recovery action for map/layer/investigation state. | Icon-width button only. |
-| Home | Yes | Direct global navigation escape from the map. | Small text link; never hidden in a More menu. |
+The map may remain deep. The first screen must remain simple.
 
-## Controls deliberately not given their own persistent slot
+## Public navigation
 
-- **Relations** — merged into **Analyze** because both operate on relationship exploration.
-- **Interior modules** — remains inside **View** rather than becoming another top-level category.
-- **Physical / Evidence specialist controls** — stay under their existing registry/menus and contextual owners rather than multiplying the header.
-- **Region controls** — appear contextually in the country card, not globally.
-- **Place controls** — appear contextually in region/place inspectors, not globally.
-- **Conflict snapshots** — remain a Geography/Time capability, not a permanent top-level war button.
+Persistent controls are intentionally limited to:
 
-## Density limits
+| Control | Public question |
+| --- | --- |
+| Search | Where is the place I care about? |
+| Countries | What is this country like, and how do countries compare? |
+| Now | What important current context is happening where? |
+| Connections | How is this place connected to other places and systems? |
+| History | What was true at another time, or how was this place understood historically? |
+| Map | How should the map itself be displayed or reset? |
+| Home | How do I leave the map? |
 
-1. New persistent controls must satisfy one of three tests:
-   - frequent direct action;
-   - independent map dimension;
-   - global navigation/reset.
-2. A new control that overlaps an existing owner must be nested or merged instead of appended.
-3. N/W/E/S remain a grouped control, not four ordinary-width actions.
-4. Icon-only controls must use compact width.
-5. Result/status text must not change the header footprint unpredictably.
-6. Conditional controls remain hidden until their state makes them meaningful.
-7. Mobile may scroll the toolbar, but desktop should not depend on horizontal scrolling at ordinary widths.
-8. The top bar must remain one level deep; no nested toolbox or fifth “More” menu.
+Everything else belongs **inside** one of those concepts or appears contextually after selection.
 
-## Current judgment
+## Progressive-disclosure rules
 
-The retained controls are justified after the 2026-09-20 density pass. The main redundancy was the standalone Relations menu; removing it and reducing visual weight is sufficient. No drastic redesign is warranted.
+1. **Do not expose internal taxonomy as primary navigation.** Registry families, epistemic enums, project-axis abbreviations, renderer vocabulary and graph jargon can exist in deeper explanation, not as unexplained first-screen controls.
+2. **Features may be numerous; top-level intentions may not.** New functionality must fit Countries, Now, Connections, History or Map before a new persistent control is considered.
+3. **Context before machinery.** A country click should reveal ordinary country meaning before investigation tools. A conflict click should explain the conflict before exposing provenance machinery.
+4. **Project lenses are secondary.** North/West/East/South remain available, but inside Countries as project lenses rather than four unexplained permanent buttons.
+5. **Workspace tools are secondary.** Compare, Details, projection, reset and extra modules live inside Map rather than occupying the permanent header.
+6. **Current events and history are different jobs.** Current conflict context belongs under Now; historical reconstruction and time travel belong under History.
+7. **Conditional logic stays conditional.** ANY/ALL, result counts, evidence controls, region controls and specialist tools appear only when their state makes them meaningful.
+8. **Plain labels beat clever labels.** Prefer Countries, Now, Connections, History and Map over names that require prior explanation.
+9. **Home remains directly visible.** Do not hide the global escape route in another menu.
+10. **Desktop should not require horizontal toolbar scrolling at ordinary widths.** Mobile may scroll if necessary.
+
+## Runtime-weight rule
+
+Hiding a control is not sufficient if its expensive implementation still loads on initial paint.
+
+The core boot should own only what is required to:
+- draw and move the map;
+- search/select a country;
+- render the ordinary country experience;
+- compose the public control shell;
+- activate lightweight current context.
+
+Expensive investigation, evidence, time, deep graph traversal, detailed physical layers, Axis machinery and specialist analysis should remain lazy or become lazy when practical.
+
+## Direction
+
+The map is not a dashboard of every dataset in the repository. It is a **spatial doorway into the world knowledge system**.
+
+A useful feature earns its place when it helps a visitor:
+- locate something;
+- understand a place;
+- understand what is happening there;
+- compare it with somewhere else;
+- follow an important connection;
+- move through time;
+- or reach deeper evidence/research from a geographic starting point.
+
+Capabilities that cannot answer one of those needs should be demoted, consolidated, or removed from the public map.
