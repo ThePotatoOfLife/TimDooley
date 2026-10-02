@@ -9,8 +9,8 @@
 .question-matrix b{color:var(--site-gold)}
 .question-matrix span{color:var(--site-muted);line-height:1.45}
 .route-chain{font-family:var(--site-font-mono);border:1px solid var(--site-line);padding:13px;line-height:1.7;margin:16px 0;color:var(--site-muted)}
-.root-cross-section{position:relative;overflow:hidden;margin:28px 0;padding:24px 20px;border:1px solid var(--site-line);background:linear-gradient(180deg,rgba(103,80,53,.04),rgba(71,53,35,.11)),repeating-linear-gradient(180deg,transparent 0 43px,rgba(134,101,67,.06) 44px 46px)}
-.root-cross-section:before{content:"";position:absolute;left:49%;top:-12px;width:3px;height:115%;background:linear-gradient(180deg,rgba(210,185,134,.25),rgba(133,95,56,.5));transform:rotate(2deg);box-shadow:-55px 100px 0 -1px rgba(137,98,59,.18),65px 185px 0 -1px rgba(137,98,59,.16)}
+.root-cross-section{position:relative;overflow:hidden;margin:28px 0;padding:24px 20px;border:1px solid var(--site-line)}
+.root-cross-section:before{content:"";position:absolute;left:49%;top:-12px;width:3px;height:115%;transform:rotate(2deg)}
 .root-cross-section>*{position:relative;z-index:1}
 .root-cross-section h2{max-width:720px}
 .root-cross-section p{max-width:880px}
