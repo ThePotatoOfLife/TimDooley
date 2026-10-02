@@ -45,6 +45,19 @@
 <p>The design problem is not “maximize redundancy.” Redundancy costs money and attention, and duplicated systems can fail from the same hidden dependency. The question is <strong>which failures are intolerable, how likely they are, how long recovery takes, and which backup actually fails differently from the primary system.</strong></p>
 <p>A resilient system therefore mixes efficiency, modularity, diversity, buffers, monitoring and recovery practice. Optionality is a form of capacity: the ability to choose another route when the preferred route disappears.</p>
 </section>
+<section class="systems-reader" id="queues-and-utilization">
+<p class="eyebrow">Capacity is not the same thing as responsiveness</p>
+<h2>Why a system running at 95% utilization can feel far worse than one running at 80%</h2>
+<p>Consider a simple one-server queue that can process 10 jobs per hour. In the standard M/M/1 queueing model—an intentionally simplified model with random arrivals and service times—the average time a job spends in the system is <code>1 / (service rate − arrival rate)</code>.</p>
+<div class="systems-chain">
+<article><div><h3>50% utilization</h3><p class="q">5 arrivals/hour · 10 service/hour</p></div><div><p>The model gives an average total time of <strong>12 minutes</strong>.</p></div></article>
+<article><div><h3>80% utilization</h3><p class="q">8 arrivals/hour · 10 service/hour</p></div><div><p>Average total time rises to <strong>30 minutes</strong>.</p></div></article>
+<article><div><h3>90% utilization</h3><p class="q">9 arrivals/hour · 10 service/hour</p></div><div><p>Average total time rises to <strong>60 minutes</strong>.</p></div></article>
+<article><div><h3>95% utilization</h3><p class="q">9.5 arrivals/hour · 10 service/hour</p></div><div><p>Average total time reaches <strong>120 minutes</strong>.</p></div></article>
+</div>
+<p>The lesson is not that every hospital, port or help desk follows this exact model. Real systems have multiple servers, priorities, batching, scheduled arrivals and many other complications. The useful point is structural: when arrivals vary, <strong>removing nearly all spare capacity can make waiting explode non-linearly</strong>.</p>
+<p>This is why “idle” capacity is sometimes doing hidden work. Empty beds, spare technicians, reserve transformers, available customer-service staff or slack in a schedule may look inefficient until variability arrives. A system designed only for average load can fail during ordinary peaks without any dramatic external shock.</p>
+</section>
 <section class="systems-reader" id="how-systems-work">
 <p class="eyebrow">Relationship-first analysis</p>
 <h2>A system becomes visible when you follow what depends on what</h2>

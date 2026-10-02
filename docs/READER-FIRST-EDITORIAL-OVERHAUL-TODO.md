@@ -561,3 +561,46 @@ Before adding prose, ask:
 - [ ] **Life & Body:** use bodily immediacy; avoid turning symptoms and organs into spiritual proof.
 - [ ] **Works:** preserve humor, lyricism and absurdity as forms in their own right instead of extracting a doctrine from every artifact.
 - [ ] **Home:** audit whether any introductory copy still sounds like project governance rather than an invitation into meaningful material.
+
+
+## Value gate — crystallize before adding
+
+Before adding a new section, record the reader gain in concrete terms.
+
+A proposed addition should contribute at least one of:
+- **new fact** — something the page did not previously tell the reader;
+- **mechanism** — how one state produces or constrains another;
+- **distinction** — two concepts the page previously blurred;
+- **worked example** — an abstract idea made inspectable with actual steps/numbers;
+- **source / provenance** — stronger grounding or a clearer evidence boundary;
+- **synthesis** — existing facts reorganized so a real implication becomes newly visible.
+
+Do **not** add prose merely because:
+- the metaphor allows it;
+- the section feels short;
+- another page has a similar section;
+- a sentence sounds wise;
+- a new heading would make the layout feel complete.
+
+### Completed high-value examples
+
+- [x] **Science · base rates:** 10,000-person worked example showing how 90 true positives can coexist with 495 false positives when prevalence is 1%.
+- [x] **World Systems · queues:** simple M/M/1 example showing average total time rising from 12 min at 50% utilization to 120 min at 95%.
+- [x] **Life & Body · standing after illness:** connect orthostatic blood shift, baroreflex, autonomic response, skeletal-muscle pump, hydration and balance.
+- [x] **Economy · income / wealth / liquidity:** one hypothetical household separating flow, net worth and immediate payment capacity.
+- [x] **Philosophy · trust:** separate competence, honesty, reliability, benevolence and predictability; show why forgiveness does not automatically restore all trust.
+
+### Next items must be this concrete
+
+- [ ] **Science · causal graphs:** one three-variable confounder example and one collider example, with explicit “conditioning here creates/removes bias” explanation.
+- [ ] **Science · replication:** distinguish re-running code, re-analyzing the same dataset, collecting a new sample and independent conceptual replication.
+- [ ] **World Systems · maintenance:** one infrastructure asset whose failure probability grows when inspection/replacement is deferred; explain preventive vs corrective maintenance.
+- [ ] **World Systems · buffers:** quantify one inventory-buffer example so resilience has a visible cost/benefit tradeoff.
+- [ ] **Life & Body · allostasis:** show one day of acute stress versus weeks of chronic activation; name what adapts and what the adaptation costs.
+- [ ] **Life & Body · memory:** use one ordinary recalled event to explain retrieval + reconsolidation without implying memory is freely editable fiction.
+- [ ] **Economy · interest compounding:** one fixed principal at two interest rates over ten years; make time cost visible.
+- [ ] **Economy · distribution:** construct two populations with the same average income but different distributions.
+- [ ] **Philosophy · forgiveness:** one concrete harm scenario separating vengeance release, pardon, trust restoration and reconciliation.
+- [ ] **Philosophy · scarcity:** one resource-allocation case where abundance rhetoric collides with finite beds/time/energy.
+- [ ] **Culture · prestige bias:** one case where expertise in domain A is incorrectly imported into domain B.
+- [ ] **Culture · norm repair:** one before/after mechanism—private dissent → visible dissent → changed expectation → new norm—without assuming declarations alone change behavior.

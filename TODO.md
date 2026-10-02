@@ -1405,3 +1405,12 @@ Shared implementation: `app/terrain-circle.css`
 - [x] House: hospitality/privacy/exit scene.
 - [x] Science: plain uncertainty / “we do not know yet” passage.
 - [ ] Continue tone-fit audit across Religion, Philosophy, Story, Timeline, Great Book, Below, World Systems, Body and Works.
+
+
+### Crystallization / value gate
+- [x] Add concrete base-rate arithmetic to Science.
+- [x] Add queue-utilization arithmetic to World Systems.
+- [x] Add orthostatic standing episode to Life & Body.
+- [x] Add income/wealth/liquidity household example to Economy.
+- [x] Add domain-specific trust model to Philosophy.
+- [ ] Future prose must add a fact, mechanism, distinction, worked example, source or genuinely new synthesis—not just another wise-sounding paragraph.
