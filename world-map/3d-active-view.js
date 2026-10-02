@@ -23,7 +23,9 @@ let refreshSerial = 0;
 let timeState = readTimeState();
 
 function fetchJson(url) {
-  return fetch(url, { cache:'no-cache' }).then(response => {
+  const shared = window.__potatoAtlasResources;
+  if (shared?.fetchJson) return shared.fetchJson(url);
+  return fetch(url, { cache:'force-cache' }).then(response => {
     if (!response.ok) throw new Error(`${response.status} ${url}`);
     return response.json();
   });
