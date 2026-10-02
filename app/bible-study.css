@@ -126,3 +126,61 @@
 .scripture-context h4{color:var(--gold)}
 .scripture-context p,.scene-detail{margin:5px 0;color:#bfc7bc;font-size:12px}
 
+
+/* Reader flow: source -> spudlight -> story -> parallel -> limits. */
+.relation{padding:20px;background:
+  radial-gradient(circle at 78% 0,rgba(126,108,55,.08),transparent 34%),
+  rgba(13,17,14,.9)}
+.relation-kicker{font:10px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.13em;text-transform:uppercase;color:#8ea27d;margin-bottom:7px}
+.relation-thesis{max-width:820px;margin:9px 0 0;color:#c3cbc0;font:400 15px/1.55 Georgia,serif}
+.primary-meta{margin-top:11px}
+.date-chip{color:#e2d5a9;border-color:#62583a}
+.reading-rail{display:flex;gap:7px;flex-wrap:wrap;margin:15px 0 12px;padding-bottom:10px;border-bottom:1px solid #293128}
+.reading-rail span{font:9px/1 ui-monospace,SFMono-Regular,Menlo,monospace;text-transform:uppercase;letter-spacing:.08em;color:#6f796d}
+.source-pair{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
+.source-voice-card{border:1px solid #2d382c;border-radius:14px;padding:15px;background:#0b0f0c;min-width:0}
+.source-voice-card.bible-voice{border-color:#574b31;background:#141108}
+.voice-label{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#a9be95;margin-bottom:8px}
+.bible-voice .voice-label{color:#d5bd80}
+.scripture-ref-list{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+.scripture-ref-button{border:1px solid #5a4d30;border-radius:999px;background:#171309;color:#e0ca91;padding:5px 8px;font:10px/1.1 ui-monospace,SFMono-Regular,Menlo,monospace;cursor:pointer}
+.scripture-ref-button:hover{border-color:#8a7443;color:#f3dda1}
+.scripture-context{margin-top:10px;border-top:1px solid #51472f;padding-top:8px}
+.scripture-context summary{cursor:pointer;color:#bca978;font-size:10px;text-transform:uppercase;letter-spacing:.08em}
+.spudlight-reading{margin:14px 0;border:1px solid #625538;border-radius:15px;padding:17px 18px;background:
+  radial-gradient(circle at 18% 0,rgba(219,192,120,.09),transparent 40%),
+  linear-gradient(180deg,#151208,#100f0a)}
+.spudlight-label{font:10px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace;text-transform:uppercase;letter-spacing:.12em;color:#e0c887;margin-bottom:9px}
+.spudlight-label span{color:#82765a;letter-spacing:.04em;text-transform:none;margin-left:6px}
+.spudlight-reading p{margin:0;max-width:920px;color:#eee4c9;font:400 clamp(17px,2vw,20px)/1.65 Georgia,serif}
+.story-pair{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.story-pair section{border-top:1px solid #2d382c;padding:12px 2px 0}
+.story-pair h3,.contact-points h3{font-size:9px;letter-spacing:.11em;text-transform:uppercase;color:#9eb28d;margin:0 0 7px}
+.story-pair p{margin:0;color:#c6cec3;font-size:13px;line-height:1.58}
+.story-pair .project-anchor{font:400 16px/1.6 Georgia,serif;color:#e0e5dc}
+.comparison-sequences .side{position:relative;overflow:hidden}
+.comparison-sequences .side:before{content:'';position:absolute;inset:0 auto 0 0;width:2px;background:#607952}
+.comparison-sequences .side.scripture:before{background:#9b7d42}
+.contact-grid{display:flex;gap:7px;flex-wrap:wrap}
+.contact-grid span{border:1px solid #394637;border-radius:999px;padding:5px 8px;color:#c3cec0;font-size:10px;background:#0e140e}
+.interpretation-pair{display:grid;grid-template-columns:1.25fr .75fr;gap:10px;margin-top:12px}
+.interpretation-pair .why,.interpretation-pair .maximum-claim{margin-top:0}
+.maximum-claim strong{display:block;margin-bottom:5px;font-size:10px;letter-spacing:.08em;text-transform:uppercase}
+.maximum-claim p{margin:0;color:#d7ceb4;font-size:12px;line-height:1.55}
+.boundary-callout strong{display:block;margin-bottom:5px;font-size:10px;letter-spacing:.08em;text-transform:uppercase}
+.boundary-callout p{margin:0}
+.technical-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+.technical-grid>div{border-top:1px solid #293128;padding-top:7px;min-width:0}
+.technical-grid .wide{grid-column:1/-1}
+.technical-grid span{display:block;color:#788276;font-size:8px;text-transform:uppercase;letter-spacing:.09em;margin-bottom:3px}
+.technical-grid strong,.technical-grid code{color:#bdc6ba;font-size:10px;overflow-wrap:anywhere}
+.research-gap{border-color:#5d4b38}
+.provenance-grid{margin-top:8px}
+@media(max-width:760px){
+  .source-pair,.story-pair,.interpretation-pair{grid-template-columns:1fr}
+  .reading-rail{gap:5px}
+  .reading-rail span{font-size:8px}
+  .spudlight-reading{padding:15px}
+  .technical-grid{grid-template-columns:1fr}
+  .technical-grid .wide{grid-column:auto}
+}
