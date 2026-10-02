@@ -464,7 +464,7 @@ html[data-site-floor="below"]{
 .site-elevator[data-elevator-level="below"] .site-elevator-room-rail{
   background:rgba(24,14,11,.93);
 }
-.site-elevator-room-rail[hidden]{display:none!important}
+.site-elevator-room-rail[hidden]{display:none}
 .site-elevator-landmark{
   border-style:dashed;
   opacity:.92;
@@ -799,19 +799,19 @@ html[data-site-floor="plane"] body:not(.lower-layer-page)::after{
 
 @keyframes site-tree-descent{
   0%{
-    background-position:50% 0%;
-    transform:translate3d(0,0,0) scale(.88);
-    opacity:calc(var(--site-depth-tree-opacity) * .72);
+    background-position:50% 7%;
+    transform:translate3d(0,0,0) scale(.90);
+    opacity:var(--site-depth-tree-opacity);
   }
-  48%{
-    background-position:50% 49%;
-    transform:translate3d(0,-1.5vh,0) scale(1.02);
+  50%{
+    background-position:50% 34%;
+    transform:translate3d(0,-.7vh,0) scale(1);
     opacity:var(--site-depth-tree-opacity);
   }
   100%{
-    background-position:50% 100%;
-    transform:translate3d(0,-4vh,0) scale(1.24);
-    opacity:calc(var(--site-depth-tree-opacity) * 1.18);
+    background-position:50% 62%;
+    transform:translate3d(0,-1.6vh,0) scale(1.16);
+    opacity:var(--site-depth-tree-opacity);
   }
 }
 
@@ -826,21 +826,21 @@ html[data-site-floor="plane"] body:not(.lower-layer-page)::after{
    while the huge distant tree lags behind it. Unsupported browsers keep the quiet
    crown view rather than losing the floor background. */
 @supports (animation-timeline:scroll(root block)){
-  html[data-site-floor="heaven"]::before,
-  html[data-site-floor="plane"]::before{
+  html[data-site-floor="heaven"] body:not(.lower-layer-page)::before,
+  html[data-site-floor="plane"] body:not(.lower-layer-page)::before{
     animation:site-tree-descent 1s linear both;
     animation-timeline:scroll(root block);
   }
-  html[data-site-floor="heaven"]::after,
-  html[data-site-floor="plane"]::after{
+  html[data-site-floor="heaven"] body:not(.lower-layer-page)::after,
+  html[data-site-floor="plane"] body:not(.lower-layer-page)::after{
     animation:site-ground-approach 1s linear both;
     animation-timeline:scroll(root block);
   }
 }
 
 @media(max-width:700px){
-  html[data-site-floor="heaven"]::before,
-  html[data-site-floor="plane"]::before{
+  html[data-site-floor="heaven"] body:not(.lower-layer-page)::before,
+  html[data-site-floor="plane"] body:not(.lower-layer-page)::before{
     inset:-6vh -24vw;
     background-size:max(920px,178vw) auto;
     opacity:calc(var(--site-depth-tree-opacity) * .8);
@@ -850,15 +850,15 @@ html[data-site-floor="plane"] body:not(.lower-layer-page)::after{
 }
 
 @media(prefers-reduced-motion:reduce){
-  html[data-site-floor="heaven"]::before,
-  html[data-site-floor="plane"]::before,
-  html[data-site-floor="heaven"]::after,
-  html[data-site-floor="plane"]::after{
-    animation:none!important;
+  html[data-site-floor="heaven"] body:not(.lower-layer-page)::before,
+  html[data-site-floor="plane"] body:not(.lower-layer-page)::before,
+  html[data-site-floor="heaven"] body:not(.lower-layer-page)::after,
+  html[data-site-floor="plane"] body:not(.lower-layer-page)::after{
+    animation:none;
     will-change:auto;
   }
-  html[data-site-floor="heaven"]::before,
-  html[data-site-floor="plane"]::before{
+  html[data-site-floor="heaven"] body:not(.lower-layer-page)::before,
+  html[data-site-floor="plane"] body:not(.lower-layer-page)::before{
     background-position:50% 18%;
     transform:none;
   }
