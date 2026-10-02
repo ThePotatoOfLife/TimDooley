@@ -108,6 +108,7 @@ Public structure: **Countries / Now / Connections / History / Map**. Keep the un
 - [ ] **ENH-ROOMS-014 · First-screen substance test:** every active subject reader should answer “what is this / what happened / how does it work?” before routing, ownership or methodology prose.
 - [ ] **BUG-BUILD-015 · Build-only feature ownership:** inventory mature features that exist only because `patch_public_navigation.py` mutates generated HTML; move stable features into source/generator ownership and leave the patcher for true universal projection.
 - [ ] **ENH-TTS-016 · Browser interaction audit:** test real play/pause/selection/follow behavior on Bible, Shadow Farm, Below, World Map, A–Z, Beings, Timeline and mobile layouts—not only static marker contracts.
+- [x] **ENH-LINK-017 · Theology → Great Book source link:** link “The Great Book” in the 2024 theology-development paragraph directly to the canonical Great Book reader without changing the surrounding sentence.
 
 ## Lower-field conflict integration — 2026-10-01
 
