@@ -1,9 +1,5 @@
 @import url("../app/site-system.css");
-*{box-sizing:border-box}
-html{background:var(--site-bg)}
-body{margin:0;background:var(--site-bg);color:var(--site-ink);font:17px/1.72 var(--site-font-sans)}
-a{color:var(--site-ink);text-underline-offset:3px}
-.paper-page{max-width:930px;margin:auto;padding:34px 22px 110px}
+.paper-page{max-width:930px;margin:auto;padding:34px 22px 110px;font-size:17px;line-height:1.72}
 .paper-nav{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:54px;font-size:14px}
 .paper-nav a{color:var(--site-muted);text-decoration:none}
 .paper-nav a:hover,.paper-nav a:focus{color:var(--site-ink)}
