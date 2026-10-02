@@ -450,6 +450,20 @@ def main() -> int:
                 errors.append("Thomas/Twin sequence must retain project-source steps")
             if not any(step.get("source_type")=="limit" for step in thomas_sequence.get("steps",[])):
                 errors.append("Thomas/Twin sequence must retain explicit non-overclaiming limits")
+            if not any(step.get("source_type")=="reception" for step in thomas_sequence.get("steps",[])):
+                errors.append("Thomas/Twin sequence must retain a clearly labeled later reception layer")
+            if not any("Canonical John ends" in step.get("source_label","") for step in thomas_sequence.get("steps",[])):
+                errors.append("Thomas/Twin sequence must visibly separate canonical John from later Thomasine reception")
+            if not any("touch itself is not" in step.get("heading","").lower() for step in thomas_sequence.get("steps",[])):
+                errors.append("Thomas/Twin sequence must preserve the John 20 touch-text precision note")
+        tammuz_sequence=next((row.get("reader_sequence") for row in [*narrative_wave.get("new_relations",[]),*narrative_wave.get("enrichments",[])] if (row.get("id") or row.get("relation_id"))=="tammuz-north-gate-2026-07-31"),None)
+        if not tammuz_sequence or len(tammuz_sequence.get("steps",[])) < 10:
+            errors.append("Thomas/Tammuz/North-Gate source-direction sequence is missing or too thin")
+        else:
+            if not any(step.get("ref")=="Ezekiel 8:14" for step in tammuz_sequence.get("steps",[])):
+                errors.append("Thomas/Tammuz/North-Gate sequence must retain Ezekiel 8:14")
+            if not any(step.get("source_type")=="limit" for step in tammuz_sequence.get("steps",[])):
+                errors.append("Thomas/Tammuz/North-Gate sequence must retain historical/geographical limits")
 
     if errors:
         print("BIBLE READER VALIDATION FAILED")
