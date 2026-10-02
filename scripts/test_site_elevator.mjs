@@ -309,6 +309,8 @@ assert.ok(css.includes('translate3d(0,var(--site-scene-y),0)'),'scene parallax m
 assert.ok(css.includes('animation-timeline:scroll(root block)'),'modern browsers should use native scroll-timeline transform animation');
 assert.ok(source.includes('function installSceneParallax'),'runtime must own one small fallback parallax driver');
 assert.ok(source.includes('nativeScrollTimeline'),'runtime must detect native transform-only scroll timelines');
+assert.ok(source.includes("CSS.supports('animation-timeline: scroll(root block)')"),'feature detection must match the CSS @supports condition exactly');
+assert.equal(source.includes("CSS.supports('animation-timeline: scroll()')"),false,'runtime must not skip fallback for a broader unsupported timeline syntax');
 assert.ok(source.includes("sceneParallax='native'"),'native-capable browsers must skip the JavaScript scroll driver');
 assert.ok(source.includes('scrollY*.46'),'fallback scene layer should move at roughly half the document scroll speed');
 assert.ok(source.includes("requestAnimationFrame(update)"),'fallback scroll events must coalesce into one animation-frame transform update');
