@@ -13,16 +13,10 @@
   const RELATIONS = [['all','All context'],['money','Money'],['systems','Systems'],['institutions','Institutions'],['project','Project'],['other','Other']];
   const spatial = window.__potatoAtlasSpatialOverlays;
   const GEOGRAPHIES = [
-    ['father.mesopotamia-core','Mesopotamia'],
-    ['father.lower-mesopotamia-gulf','Lower Mesopotamia / Gulf'],
-    ['physical.tigris-euphrates-basin','Tigris–Euphrates basin extent'],
-    ['father.eden-context','Eden'],
-    ['biblical.dan-to-beersheba','Dan → Beer-sheba'],
-    ['biblical.numbers-34','Numbers 34'],
-    ['biblical.genesis-15','Genesis 15 · Wadi el-Arish'],
-    ['biblical.genesis-15-nile','Genesis 15 · Nile'],
-    ['modern.greater-israel','Greater Israel'],
-    ['project.below.us-cases','Below · U.S. cases'],
+    ['conflict.active-theatres','Current conflicts · 2 Oct 2026'],
+    ['father.mesopotamia-core','Mesopotamia · historical region'],
+    ['physical.tigris-euphrates-basin','Tigris–Euphrates basin'],
+    ['father.eden-context','Eden · hypothesis marker'],
   ];
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const entries = family => layers.entries(family, {availableOnly:true, ordinaryOnly:true});
@@ -101,7 +95,7 @@
       const kind = String(entry.epistemic_type || '').replaceAll('_',' ');
       return `<button type="button" class="atlas-world-option${active?' active':''}" data-geography-overlay="${esc(id)}"><span>${esc(label)}<small>${esc(kind)}</small></span></button>`;
     }).join('');
-    pop.innerHTML = `<div class="atlas-world-static"><span>Geographies</span><small>stackable overlays</small></div>${rows || '<div class="atlas-world-empty">No current geographies</div>'}`;
+    pop.innerHTML = `<div class="atlas-world-static"><span>Map context</span><small>current conflict + selected geographies</small></div>${rows || '<div class="atlas-world-empty">No current geographies</div>'}`;
     details.classList.toggle('active', GEOGRAPHIES.some(([id]) => spatial.isActive(id)));
   }
   function adoptLegacyMenu(id, label, onOpen) {
