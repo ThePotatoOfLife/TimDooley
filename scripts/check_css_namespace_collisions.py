@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Detect layout-class collisions between shared app CSS and static reader pages.
+"""Detect CSS namespace regressions across the shared site system and archive explorer.
 
-The interactive archive owns .archive-nav. Generic .nav is reserved for local/static
-legacy pages and must never regain global layout behavior in app/style.css.
+Static readers use site-system.css directly. app/style.css is reserved for the
+interactive Explore archive and must not reintroduce generic structural classes.
 """
 from pathlib import Path
 import re
@@ -12,7 +12,6 @@ ROOT = Path(__file__).resolve().parents[1]
 STYLE = ROOT / "app" / "style.css"
 SITE_SYSTEM = ROOT / "app" / "site-system.css"
 READER = ROOT / "app" / "reader.css"
-GUARD = ROOT / "app" / "layout-guard.css"
 HOME = ROOT / "index.html"
 
 MIGRATED_SHELL_REQUIREMENTS = {
@@ -45,10 +44,6 @@ RISKY_GLOBAL = {
 errors = []
 warnings = []
 
-if not GUARD.exists():
-    errors.append("app/layout-guard.css is missing")
-if not READER.exists() or 'layout-guard.css' not in READER.read_text(encoding='utf-8'):
-    errors.append("app/reader.css must import layout-guard.css")
 
 style = STYLE.read_text(encoding='utf-8') if STYLE.exists() else ""
 
@@ -112,11 +107,8 @@ if 'id="archive-explorer"' in home:
 
 for selector, props in RISKY_GLOBAL.items():
     matches = re.findall(re.escape(selector) + r"\s*\{([^}]*)\}", style)
-    if len(matches) > 1:
-        warnings.append(f"{selector} has {len(matches)} global rule blocks in app/style.css")
-    for block in matches:
-        if any(re.search(rf"\b{re.escape(prop)}\s*:", block) for prop in props):
-            warnings.append(f"global {selector} still controls layout; consider namespacing when next touched")
+    if matches:
+        errors.append(f"app/style.css still defines retired generic archive selector {selector}; use archive-* classes")
 
 html_files = [
     p for p in ROOT.rglob("*.html")
