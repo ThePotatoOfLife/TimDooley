@@ -220,5 +220,21 @@
       "recovery_need"
     ],
     "rule": "Works may project this registry as a table, but status and completeness must come from this owner rather than being re-inferred independently on the page."
-  }
+  },
+  "artifacts": [
+    {
+      "artifact_id": "album-21",
+      "title": "Album 21",
+      "date_or_period": "September 2026 onward; in progress as of 2026-10-02",
+      "medium": "music album / Suno-generated song corpus",
+      "origin_class": "TIM_PRIMARY",
+      "source_status": "Tim Dooley directly supplied the album number plus full lyrics, dates, V6-MINI model labels and style directions for three songs; individual Suno generation UUIDs remain unresolved.",
+      "canon_relation": "Creative artifact family. Songs may carry theology, satire, biography, conflict and project motifs without automatically becoming doctrinal or factual evidence.",
+      "current_owner": "knowledge/creative/tim-dooley-suno-music-archive.json",
+      "recovery_need": "Recover exact Suno generation UUIDs/direct song URLs and continue adding tracks as Album 21 develops.",
+      "artifact_status": "published-primary",
+      "recovery_completeness": "three complete song records; album in progress",
+      "public_route": "/rooms/inside/music-sound/#album-21"
+    }
+  ]
 }
