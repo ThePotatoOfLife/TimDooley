@@ -267,12 +267,13 @@
     const speed=el('select','ptts-select ptts-speed');speed.setAttribute('aria-label','Speed');
     [['0.75×','.75'],['0.9×','.9'],['1.0×','1'],['1.1×','1.1'],['1.25×','1.25'],['1.5×','1.5'],['1.75×','1.75'],['2.0×','2']].forEach(([label,value])=>{const o=new Option(label,value);if(value==='1')o.selected=true;speed.add(o)});
     const follow=button('Follow reading','🎯 Follow');follow.classList.add('ptts-follow');follow.setAttribute('aria-pressed','false');
+    const followEscape=button('Turn off follow reading','🎯 Follow ON · turn off');followEscape.classList.add('ptts-follow-escape');followEscape.hidden=true;
     const expand=button('Expand reading view','▣');
     const status=el('span','ptts-status');status.setAttribute('aria-live','polite');
     rail.append(collapse,play,pause,stop,scope,voice,mute,volume,speed,status,follow,expand);
     const viewport=el('div','ptts-viewport');viewport.hidden=true;viewport.setAttribute('aria-live','off');
     const label=el('div','ptts-label');const reading=el('div','ptts-reading');viewport.append(label,reading);
-    panel.append(rail,viewport);host.append(closed,panel);target.append(host);
+    panel.append(rail,viewport);host.append(closed,panel,followEscape);target.append(host);
 
     const saved=readSettings();volume.value=String(Number.isFinite(Number(saved.volume))?clamp(Number(saved.volume),0,1):1);speed.value=saved.speed||'1';
     let followReading=saved.followReading===true;
@@ -283,6 +284,9 @@
       follow.setAttribute('aria-label',followReading?'Follow reading is on; click to stop automatic scrolling':'Follow reading is off; click to follow the spoken word');
       follow.title=followReading?'Follow ON · page will move with speech':'Follow OFF · page will stay where you put it';
       follow.textContent=followReading?'🎯 Follow ON':'🎯 Follow';
+      followEscape.hidden=!followReading;
+      followEscape.setAttribute('aria-pressed',String(followReading));
+      followEscape.setAttribute('aria-label',followReading?'Follow reading is on; click to turn off automatic scrolling':'Follow reading is off');
       host.dataset.follow=followReading?'true':'false';
     }
 
@@ -394,16 +398,18 @@
     speed.addEventListener('change',()=>{writeSettings({speed:speed.value});restartLive()});
     volume.addEventListener('input',()=>{const v=Number(volume.value);if(v>0)lastVolume=v;mute.textContent=v===0?'🔇':v<.5?'🔉':'🔊';writeSettings({volume:v});restartLive()});
     mute.addEventListener('click',()=>{if(Number(volume.value)>0){lastVolume=Number(volume.value);volume.value='0'}else volume.value=String(lastVolume||1);volume.dispatchEvent(new Event('input'))});
-    follow.addEventListener('click',()=>{
-      followReading=!followReading;
+    function setFollowReading(next){
+      followReading=Boolean(next);
       updateFollowButton();
       writeSettings({followReading});
       if(currentWord)showWord(currentWord);
       options.onEvent?.({type:'followchange',state:engine?.state||'idle',sectionId,followReading,absoluteWord:currentWord});
-    });
+    }
+    follow.addEventListener('click',()=>setFollowReading(!followReading));
+    followEscape.addEventListener('click',()=>setFollowReading(false));
 
     updateScope();updateFollowButton();updateButtons();
-    return {element:host,setPayload,getPayload:()=>payload,playSection,open:()=>setState('open'),expand:()=>setState('expanded'),close:()=>{cancelPendingStart();engine?.stop();setState('closed')},stop:()=>{cancelPendingStart();engine?.stop()},isFollowing:()=>followReading,engine};
+    return {element:host,setPayload,getPayload:()=>payload,playSection,open:()=>setState('open'),expand:()=>setState('expanded'),close:()=>{cancelPendingStart();engine?.stop();setState('closed')},stop:()=>{cancelPendingStart();engine?.stop()},isFollowing:()=>followReading,setFollowReading,engine};
   }
 
   return {normalizePayload,resolveSection,buildReadingText,playbackPayloadChanged,renderFocusedText,buildNormalizedTextMap,centerDomRange,createPageHighlighter,mountSelectionAction,mount};
