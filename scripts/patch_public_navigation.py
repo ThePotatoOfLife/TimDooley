@@ -310,8 +310,7 @@ def inject_universal_tts(text: str, page: Path) -> str:
     ignored.
     """
     rel = page.relative_to(OUT).as_posix()
-    if any(rel.startswith(prefix) for prefix in UNIVERSAL_TTS_QUIET_PREFIXES):
-        return text
+    quiet = any(rel.startswith(prefix) for prefix in UNIVERSAL_TTS_QUIET_PREFIXES)
     if "site-tts.js" in text or "data-tts-longform" in text or "tts-drawer.js" in text:
         return text
     if not re.search(r"<html\b", text, flags=re.I):
