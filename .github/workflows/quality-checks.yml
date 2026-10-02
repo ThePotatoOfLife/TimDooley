@@ -17,7 +17,7 @@ env:
 # the current main SHA from producing the validated Pages artifact.
 concurrency:
   group: quality-${{ github.sha }}
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   core:
