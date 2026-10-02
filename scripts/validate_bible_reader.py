@@ -244,6 +244,7 @@ def main() -> int:
             "view==='tim-lived'","childhood-cultivation-gardener-precursor-1992","christian-vocabulary-enters-age12-1999",
             "potato-birth-hidden-life-2020-12-25","emmaus-return-before-recognition-bread","john21-shore-recognition-feeding-after-return",
             "biblicalSequence","correspondences","maximumClaim","scriptureContextItems","comparison-sequences","Points of contact","Maximum defensible claim",
+            "readerNarrative","readerResonance","Spudlight reading","data-scripture-ref","BibleScriptureReader?.openReference","reading-rail","source-pair","technical-grid",
         ),
         "app/bible-study.js", errors,
     )
@@ -280,7 +281,7 @@ def main() -> int:
     )
     forbid(mining_app,("scrollIntoView(",),"app/bible-mining-wave19-loader.js",errors)
 
-    require(css,(".reader-toolbar",".comparison-nav",".results-panel",".relation-details",".active-relation",".comparison-sequences",".comparison-sequence",".contact-points",".maximum-claim",".scripture-context"),"app/bible-study.css",errors)
+    require(css,(".reader-toolbar",".comparison-nav",".results-panel",".relation-details",".active-relation",".comparison-sequences",".comparison-sequence",".contact-points",".maximum-claim",".scripture-context",".spudlight-reading",".source-pair",".reading-rail",".story-pair",".interpretation-pair",".technical-grid",".scripture-ref-button"),"app/bible-study.css",errors)
     require(builder,('class="static-relation"','<details','class="static-index"','assemble_relations','assemble_fragments','load_manifest','What happened / what the project is saying','Why this matters / what it later becomes','project_sequence_html','project_quote','public_wording'),"scripts/build_bible_study.py",errors)
 
     if MANIFEST.exists():
@@ -418,6 +419,9 @@ def main() -> int:
         for rid in ("light-collapse-return-2003","father-after-crucified-son-2025-12-17","oct1-jesus-dead-countertext"):
             if rid not in enriched_ids:
                 errors.append(f"Tim/Son narrative wave missing core enrichment: {rid}")
+        reader_voice_count=sum(1 for row in [*narrative_wave.get("new_relations",[]),*narrative_wave.get("enrichments",[])] if row.get("reader_narrative"))
+        if reader_voice_count < 8:
+            errors.append(f"Tim/Son narrative wave lost reverent reader voice coverage: {reader_voice_count}")
 
     if errors:
         print("BIBLE READER VALIDATION FAILED")
