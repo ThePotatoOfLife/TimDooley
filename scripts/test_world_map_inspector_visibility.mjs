@@ -7,13 +7,13 @@ const bootstrap = fs.readFileSync(new URL('world-map/3d-bootstrap.js', root), 'u
 
 assert.ok(fs.existsSync(moduleUrl), 'selected-country inspector visibility controller must exist');
 assert.ok(
-  bootstrap.includes("loadAfterPaint('Inspector Visibility', './3d-inspector-visibility.js')"),
+  bootstrap.includes("['Inspector Visibility', './3d-inspector-visibility.js']"),
   'bootstrap must always load the small inspector visibility controller',
 );
 assert.ok(
-  bootstrap.indexOf("loadAfterPaint('Inspector Visibility', './3d-inspector-visibility.js')") <
-    bootstrap.indexOf("loadAfterPaint('Country selection', './3d-country-selection.js')"),
-  'inspector visibility must be listening before Country selection restores or emits state',
+  bootstrap.indexOf("['Inspector Visibility', './3d-inspector-visibility.js']") <
+    bootstrap.indexOf("['Country selection', './3d-country-selection.js']"),
+  'inspector visibility must be ready before Country selection restores or emits state',
 );
 assert.ok(
   !bootstrap.includes("'./3d-ui.js'"),
@@ -75,7 +75,7 @@ visibility.install();
 assert.equal(visibility.isOpen(), false, 'inspector starts collapsed when no persisted preference exists');
 panelToggle.click();
 assert.equal(visibility.isOpen(), true, 'header Inspect button must open the inspector');
-assert.equal(panelToggle.textContent, 'Close');
+assert.equal(panelToggle.textContent, 'Close details');
 assert.equal(mapInspectorToggle.getAttribute('aria-pressed'), 'true');
 
 visibility.setOpen(false, { persist: false });
@@ -84,9 +84,8 @@ assert.equal(visibility.isOpen(), true, 'map Inspector button must open the insp
 
 visibility.setOpen(false, { persist: false });
 bus.emit('potato-atlas-working-selection-change', { selected: true, activeCode: 'DNK' });
-assert.equal(visibility.isOpen(), true, 'selecting a country must reveal the inspector that already contains its full country overview');
+assert.equal(visibility.isOpen(), false, 'ordinary country selection must remain lightweight and must not force the deep inspector open');
 
-visibility.setOpen(false, { persist: false });
 bus.emit('potato-atlas-working-selection-change', { selected: false, activeCode: null });
 assert.equal(visibility.isOpen(), false, 'clearing selection must not force the inspector open');
 
