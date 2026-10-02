@@ -45,8 +45,8 @@ def main() -> int:
     if meanings != EXPECTED_MEANINGS:
         errors.append(f"geometry_meanings drifted: {sorted(meanings)}")
 
-    if contract.get("status") not in {"active-schema-dormant-data","active-schema-acquisition-ready"}:
-        errors.append("conflict contract status must remain schema-only until reviewed geometry exists")
+    if contract.get("status") not in {"active-schema-dormant-data","active-schema-acquisition-ready","active-theatre-summary-and-acquisition-ready"}:
+        errors.append("conflict contract status is not recognized")
 
     policy = contract.get("activation_policy") or {}
     for key in (
@@ -98,6 +98,32 @@ def main() -> int:
                     if token not in requirements:
                         errors.append(f"{path.name}: promotion requirements missing {token}")
     entries = {row.get("id"): row for row in spatial.get("entries") or []}
+    active_theatres = entries.get("conflict.active-theatres") or {}
+    if active_theatres:
+        if active_theatres.get("family") != "conflict.context":
+            errors.append("active conflict theatres must stay in conflict.context family")
+        if active_theatres.get("epistemic_type") != "event_observed":
+            errors.append("active conflict theatres must remain event_observed")
+        if active_theatres.get("availability") != "current":
+            errors.append("active conflict theatres must be current")
+        if not active_theatres.get("feature_ids"):
+            errors.append("active conflict theatres must own coarse theatre features")
+        if active_theatres.get("geometry_owner") != "data/world-map-spatial/conflict-theatres-2026-10-02.geojson":
+            errors.append("active conflict theatres must point to the dated coarse theatre owner")
+        theatre_path = ROOT / str(active_theatres.get("geometry_owner") or "")
+        if not theatre_path.is_file():
+            errors.append("active conflict theatre GeoJSON missing")
+        else:
+            theatre = json.loads(theatre_path.read_text(encoding="utf-8"))
+            for feature in theatre.get("features") or []:
+                props = feature.get("properties") or {}
+                if (feature.get("geometry") or {}).get("type") != "Point":
+                    errors.append("active conflict theatres must remain coarse Point anchors")
+                for key in ("snapshot_date","started","current_status","conflict_type","human_toll","source_links","not_live","administrative_independence"):
+                    if key not in props:
+                        errors.append(f"conflict theatre {props.get('feature_id','<unknown>')} missing {key}")
+                if props.get("not_live") is not True or props.get("administrative_independence") is not True:
+                    errors.append(f"conflict theatre {props.get('feature_id','<unknown>')} must preserve not-live/admin independence")
     conflict = entries.get("conflict.context") or {}
     if conflict.get("family") != "conflict.context":
         errors.append("spatial manifest lost conflict.context family")
@@ -140,7 +166,7 @@ def main() -> int:
         return 1
 
     print("WORLD MAP CONFLICT SNAPSHOT CONTRACT PASSED")
-    print("Schema + guarded acquisition ready; no live/tactical geometry promoted.")
+    print("Conflict theatre summary + guarded detailed-geometry acquisition contract passed; no live/tactical geometry promoted.")
     return 0
 
 
