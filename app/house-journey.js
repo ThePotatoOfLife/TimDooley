@@ -131,10 +131,10 @@
         const primary=dwelling.primary_level===level;
         const projected=projections.has(level);
         const state=primary?'is-primary':projected?'is-projected':'is-absent';
-        const stateLabel=primary?'Primary floor':projected?'Projects here':'No governed projection';
+        const stateLabel=primary?'Home floor':projected?'Also appears here':'Not used on this floor';
         const note=projected
-          ?(notes[level]||'This Room has a governed projection on this floor.')
-          :'This Room is not currently projected onto this floor, so the elevator leaves it unlit here.';
+          ?(notes[level]||'This Room can also be approached from this floor.')
+          :'This Room is not part of this floor\'s current view, so the elevator leaves it dim here.';
         return '<article class="room-floor-card '+state+'" data-floor="'+level+'">'
           +'<strong>'+levelLabels[level]+'</strong>'
           +'<small>'+stateLabel+'</small>'
@@ -145,9 +145,9 @@
       const section=document.createElement('section');
       section.className='room-floor-projection';
       section.dataset.roomId=roomId;
-      section.innerHTML='<p class="eyebrow">Three-floor projection</p>'
-        +'<h2>How this Room moves through the House</h2>'
-        +'<p>The Room remains one governed owner while the elevator changes the vertical lens. Its primary floor is the default orientation; other listed floors are deliberate projections, not duplicate Rooms.</p>'
+      section.innerHTML='<p class="eyebrow">Where this Room appears</p>'
+        +'<h2>How this subject looks from the three floors</h2>'
+        +'<p>The subject stays the same while the floor changes the angle. Its home floor is the natural starting point; another lit floor means the same Room is useful from that perspective too.</p>'
         +'<div class="room-floor-grid">'+cards+'</div>';
 
       const main=document.querySelector('main');
@@ -196,7 +196,7 @@
           ?(/^(https?:|#)/.test(rawRoute)?rawRoute:base+rawRoute.replace(/^\//,''))
           :'';
         const actions=(objectHref?'<a class="room-inhabitant-open" href="'+esc(objectHref)+'">Open the thing →</a>':'')
-          +'<a class="room-inhabitant-center" href="'+base+'elevator/?'+q.toString()+'">Place in House →</a>';
+          +'<a class="room-inhabitant-center" href="'+base+'elevator/?'+q.toString()+'">Locate in House →</a>';
         return '<article class="room-inhabitant-card"><strong>'+esc(x.label)+'</strong><small>'+esc(x.kind||'object')+'</small>'
           +(x.summary?'<p>'+esc(x.summary)+'</p>':'')
           +'<div class="room-inhabitant-actions">'+actions+'</div></article>';
@@ -208,7 +208,7 @@
       const moreHtml=moreRows.length
         ?'<details class="room-more-objects" '+(featuredRows.length?'':'open')+'><summary>'+(featuredRows.length?'More in this Room · ':'What lives in this Room · ')+moreRows.length+'</summary><div class="room-inhabitant-grid">'+moreRows.map(renderCard).join('')+'</div></details>'
         :'';
-      section.innerHTML='<p class="eyebrow">Inhabitants / cases</p><h2>What lives in this Room</h2><p class="boundary">Open the object itself when you want substance; place it on the center table when you want to inspect its House context.</p>'+startHtml+moreHtml;
+      section.innerHTML='<p class="eyebrow">Inhabitants / cases</p><h2>What lives in this Room</h2><p class="boundary">Open an object for its substance; use Locate in House when you want to see what sits around it.</p>'+startHtml+moreHtml;
       main.appendChild(section);
     }catch(e){}
   }
@@ -254,11 +254,11 @@
         const path=x.path||'';
         const href=base+'explore/#record='+encodeURIComponent(path||x.id||'');
         return '<a class="room-holding" href="'+href+'"'+(path?' data-source-path="'+esc(path)+'"':'')+'><strong>'+esc(titleFor(x.id||path.split('/').pop()?.replace(/\.[^.]+$/,'')))+'</strong><small>'+esc(x.kind||'archive material')+'</small></a>';
-      }).join('')+'</div>':'<p>No featured holdings have been promoted yet; that absence is itself a population task for this Room.</p>';
+      }).join('')+'</div>':'<p>No deeper records are highlighted here yet.</p>';
       const passageHtml=passages.length?passages.map(x=>{
         const other=x.other_room_id||x.to||x.from||'another Room';
         return '<div class="room-passage"><b>'+esc(titleFor(x.type||'interface'))+'</b> <em>↔ '+esc(titleFor(other))+'</em><small>'+esc(x.changes||'')+(x.guard?' Boundary: '+esc(x.guard):'')+'</small></div>';
-      }).join(''):'<p>No governed cross-Room passage has been promoted yet.</p>';
+      }).join(''):'<p>No cross-Room connection is highlighted here yet.</p>';
       const surfaces=publicSurfaces.map(x=>{
         const route=x.route||'';
         if(!route)return '';
@@ -267,23 +267,23 @@
       }).join('');
       const signal=pulse?.signals||{};
       const pulseText=pulse?[
-        signal.primary_holding_count!=null?signal.primary_holding_count+' holdings':null,
-        signal.guarded_interface_count!=null?signal.guarded_interface_count+' guarded interfaces':null,
-        signal.related_structural_instance_count?signal.related_structural_instance_count+' related structural instances':null,
+        signal.primary_holding_count!=null?signal.primary_holding_count+' source records':null,
+        signal.guarded_interface_count!=null?signal.guarded_interface_count+' cross-Room links':null,
+        signal.related_structural_instance_count?signal.related_structural_instance_count+' related items':null,
         signal.data_file_count?signal.data_file_count+' data files':null
       ].filter(Boolean).join(' · '):'';
 
       section.innerHTML=
-        '<p class="eyebrow">Archive depth</p><h2>Go deeper into '+esc(dossier.title||room.title||titleFor(roomId))+'</h2>'
-        +'<p class="room-richness-intro">The reader above is the subject. This optional layer exposes the archive machinery only when you want holdings, interfaces, provenance and unfinished work.</p>'
-        +'<details class="room-richness-details"><summary>Show archive structure</summary>'
-        +'<div class="room-richness-meta">'+esc(String(primaryCount))+' primary holdings · '+esc(String(interfaceCount))+' governed interfaces'+(dataFiles?' · '+esc(String(dataFiles))+' owned data files':'')+(pulseText?' · live pulse: '+esc(pulseText):'')+'</div>'
+        '<p class="eyebrow">More to inspect</p><h2>Go deeper into '+esc(dossier.title||room.title||titleFor(roomId))+'</h2>'
+        +'<p class="room-richness-intro">The reader above gives you the subject. Open this layer when you want source records, provenance, connections to other Rooms or questions that are still unresolved.</p>'
+        +'<details class="room-richness-details"><summary>Show deeper material</summary>'
+        +'<div class="room-richness-meta">'+esc(String(primaryCount))+' source records · '+esc(String(interfaceCount))+' cross-Room links'+(dataFiles?' · '+esc(String(dataFiles))+' supporting data files':'')+(pulseText?' · current index: '+esc(pulseText):'')+'</div>'
         +(belongs.length?'<div class="room-richness-rule"><h3>Scope &amp; boundaries</h3><div class="room-richness-run">'+belongs.map(x=>'<span>'+esc(x)+'</span>').join('')+'</div></div>':'')
-        +'<div class="room-richness-rule"><h3>Further archive material</h3><p>These records sit underneath the reader above. Open them when you want the deeper archive rather than another explanation of the filing system.</p>'+holdingHtml+'</div>'
-        +(passages.length?'<div class="room-richness-rule"><h3>Cross-domain interfaces</h3><p>These governed passages record how this subject changes when it meets another domain.</p>'+passageHtml+'</div>':'')
-        +((receives.length||hands.length)?'<div class="room-richness-rule"><h3>Inputs &amp; handoffs</h3>'+(receives.length?'<p><strong>Receives:</strong> '+receives.map(titleFor).map(esc).join(' · ')+'</p>':'')+(hands.length?'<p><strong>Hands mature work to:</strong> '+hands.map(titleFor).map(esc).join(' · ')+'</p>':'')+'</div>':'')
-        +(next.length?'<div class="room-richness-rule"><h3>Open work</h3><ul class="room-next">'+next.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul></div>':'')
-        +(surfaces?'<div class="room-richness-rule"><h3>Related reader routes</h3><p>Use these when you want a different question or presentation of the same underlying material.</p><div class="room-surface-run">'+surfaces+'</div></div>':'')
+        +'<div class="room-richness-rule"><h3>Source records and deeper material</h3><p>Open these when you want the underlying records or a more detailed view of the subject.</p>'+holdingHtml+'</div>'
+        +(passages.length?'<div class="room-richness-rule"><h3>Where this connects</h3><p>These links show what changes when the subject meets another domain.</p>'+passageHtml+'</div>':'')
+        +((receives.length||hands.length)?'<div class="room-richness-rule"><h3>What feeds this · where it leads</h3>'+(receives.length?'<p><strong>Draws from:</strong> '+receives.map(titleFor).map(esc).join(' · ')+'</p>':'')+(hands.length?'<p><strong>Continues into:</strong> '+hands.map(titleFor).map(esc).join(' · ')+'</p>':'')+'</div>':'')
+        +(next.length?'<div class="room-richness-rule"><h3>Still unresolved</h3><ul class="room-next">'+next.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul></div>':'')
+        +(surfaces?'<div class="room-richness-rule"><h3>Other ways to read this</h3><p>These routes approach the same material from a different question or level of detail.</p><div class="room-surface-run">'+surfaces+'</div></div>':'')
         +'</details>';
 
       const doorSection=[...main.querySelectorAll('section')].find(x=>/Adjacent Rooms/i.test(x.textContent||''));
@@ -431,17 +431,17 @@
       if(!main||main.querySelector('.room-archive-drawers'))return;
       const section=document.createElement('section');
       section.className='room-archive-drawers';
-      section.innerHTML='<div class="room-archive-head"><div><p class="eyebrow">Deep archive drawers</p><h2>The larger body of work behind this Room</h2></div><p>Featured objects are the front table. These drawers expose the wider corpus without pretending every record deserves equal prominence.</p></div>'
+      section.innerHTML='<div class="room-archive-head"><div><p class="eyebrow">More source material</p><h2>The larger body of work behind this Room</h2></div><p>Featured objects are the easiest entry points. These collections let you inspect the wider body of material when you want more depth.</p></div>'
         +rows.map(row=>{
           const landing=String(row.landing_href||'');
           const landingHref=landing?(/^(https?:|#)/.test(landing)?landing:base+landing.replace(/^\//,'')):'';
           const entries=(row.entries||[]).map(entry=>{
             const p=String(entry.path||'');
             const href=p?base+'explore/#record='+encodeURIComponent(p):'';
-            return '<a class="room-archive-entry" href="'+esc(href)+'"><strong>'+esc(entry.title||p)+'</strong><small>'+esc(p)+'</small></a>';
+            return '<a class="room-archive-entry" href="'+esc(href)+'"'+(p?' data-source-path="'+esc(p)+'"':'')+'><strong>'+esc(entry.title||p)+'</strong><small>'+esc(entry.kind||'source record')+'</small></a>';
           }).join('');
           return '<article class="room-archive-drawer">'
-            +'<div class="room-archive-drawer-title"><div><small>'+esc(String(row.record_count||0))+' canonical records</small><h3>'+esc(row.title||'Archive drawer')+'</h3></div>'
+            +'<div class="room-archive-drawer-title"><div><small>'+esc(String(row.record_count||0))+' records</small><h3>'+esc(row.title||'Collection')+'</h3></div>'
             +(landingHref?'<a href="'+esc(landingHref)+'">Open main reader →</a>':'')+'</div>'
             +'<p>'+esc(row.summary||'')+'</p>'
             +'<div class="room-archive-entry-grid">'+entries+'</div>'
@@ -476,9 +476,9 @@
       section.className='page-section house-deep-corpora';
       section.id='deep-corpora';
       section.dataset.depth='structure';
-      section.innerHTML='<p class="eyebrow">Deep corpus index</p>'
-        +'<h2>'+esc(rows.length)+' major bodies of work · '+esc(total)+' drawer-covered records</h2>'
-        +'<p class="topology-note">Room holdings answer “who owns this?” These drawers answer “what large bodies of knowledge are actually here?” <strong>'+esc(totals.current_non_retired_reachable||0)+' / '+esc(totals.current_non_retired_records||0)+'</strong> current canonical knowledge records are reachable through governed Room/House surfaces. '+esc(totals.intentionally_retired_unreachable||0)+' retired FBI records remain intentionally outside the current corpus.</p>'
+      section.innerHTML='<p class="eyebrow">Deeper collections</p>'
+        +'<h2>'+esc(rows.length)+' major collections · '+esc(total)+' records</h2>'
+        +'<p class="topology-note">These collections answer a simple question: what substantial bodies of material can I inspect next? <strong>'+esc(totals.current_non_retired_reachable||0)+' / '+esc(totals.current_non_retired_records||0)+'</strong> current records can be reached through the House. '+esc(totals.intentionally_retired_unreachable||0)+' retired FBI records remain intentionally outside the current collection.</p>'
         +'<div class="house-corpus-grid">'+rows.map(row=>{
           const landing=String(row.landing_href||'');
           const href=landing?(/^(https?:|#)/.test(landing)?landing:base+landing.replace(/^\//,'')):'#';
@@ -512,7 +512,7 @@
       const total=rows.reduce((n,row)=>n+(Number(row.record_count)||0),0);
       const section=document.createElement('section');
       section.className='dwelling-archive-index';
-      section.innerHTML='<div class="dwelling-archive-index-head"><div><p class="eyebrow">Deep archive behind this Dwelling</p><h2>'+esc(rows.length)+' corpora · '+esc(total)+' record-slots</h2></div><p>The featured shelf gives you the front table. These larger corpora show how much research and archival material sits behind the inner Rooms.</p></div>'
+      section.innerHTML='<div class="dwelling-archive-index-head"><div><p class="eyebrow">More to explore in this Dwelling</p><h2>'+esc(rows.length)+' collections · '+esc(total)+' records</h2></div><p>The featured shelf gives you the easiest starting points. These larger collections reveal the research and source material behind the inner Rooms.</p></div>'
         +'<div class="dwelling-archive-index-grid">'+rows.map(row=>{
           const landing=String(row.landing_href||'');
           const href=landing?(/^(https?:|#)/.test(landing)?landing:base+landing.replace(/^\//,'')):'#';
