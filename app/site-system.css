@@ -17,6 +17,15 @@
   --site-text-lead: clamp(20px, 2.3vw, 23px);
   --site-text-title: clamp(54px, 9vw, 104px);
   --site-text-section: clamp(28px, 4vw, 44px);
+  --site-text-subsection: clamp(20px, 2.4vw, 27px);
+  --site-leading-body: 1.64;
+  --site-leading-reading: 1.72;
+  --site-radius: 12px;
+  --site-space-1: 6px;
+  --site-space-2: 10px;
+  --site-space-3: 16px;
+  --site-space-4: 24px;
+  --site-space-5: 38px;
   --site-content-reading: 980px;
   --site-content-standard: 1060px;
   --site-content-wide: 1160px;
@@ -39,7 +48,7 @@ body {
   color: var(--site-ink);
   font-family: var(--site-font-sans);
   font-size: var(--site-text-body);
-  line-height: 1.64;
+  line-height: var(--site-leading-body);
 }
 
 a {
