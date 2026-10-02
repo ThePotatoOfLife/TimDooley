@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1200" role="img" aria-labelledby="title desc">
+<title id="title">Organic Plane field</title>
+<desc id="desc">Soft circular landforms, spirals, entwined living lines and root-like curves for the middle Plane atmosphere.</desc>
+<defs>
+  <linearGradient id="vine" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#d7e7c1" stop-opacity=".10"/>
+    <stop offset=".48" stop-color="#e8dca3" stop-opacity=".30"/>
+    <stop offset="1" stop-color="#7eb0a5" stop-opacity=".08"/>
+  </linearGradient>
+  <linearGradient id="root" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#d8d69d" stop-opacity=".08"/>
+    <stop offset=".48" stop-color="#a3c18f" stop-opacity=".25"/>
+    <stop offset="1" stop-color="#6f8c65" stop-opacity=".07"/>
+  </linearGradient>
+</defs>
+
+<!-- circular / vesica-like landscape forms -->
+<g fill="none" stroke-linecap="round">
+  <ellipse cx="250" cy="760" rx="320" ry="205" stroke="#bbd5b0" stroke-opacity=".11" stroke-width="9"/>
+  <ellipse cx="620" cy="820" rx="420" ry="260" stroke="#d6cea0" stroke-opacity=".085" stroke-width="7"/>
+  <ellipse cx="1080" cy="790" rx="405" ry="245" stroke="#a8c6ae" stroke-opacity=".10" stroke-width="9"/>
+  <ellipse cx="1435" cy="745" rx="290" ry="190" stroke="#d1c995" stroke-opacity=".08" stroke-width="7"/>
+  <circle cx="805" cy="735" r="155" stroke="#e0d9aa" stroke-opacity=".075" stroke-width="5"/>
+  <circle cx="805" cy="735" r="235" stroke="#9fbba3" stroke-opacity=".06" stroke-width="4"/>
+</g>
+
+<!-- mathematically wound spirals -->
+<g fill="none" stroke="url(#vine)" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M300 520 L301.3 521.5 L302.1 523.4 L302.3 525.5 L301.7 527.8 L300.4 530.1 L298.2 532.3 L295.3 534.2 L291.6 535.8 L287.4 536.8 L282.6 537.2 L277.6 536.8 L272.6 535.7 L267.7 533.8 L263.2 531.1 L259.4 527.7 L256.4 523.6 L254.6 519 L254 514.1 L254.8 508.9 L257 503.8 L260.7 498.9 L265.8 494.5 L272.2 490.7 L279.8 487.8 L288.2 485.9 L297.3 485.2 L306.6 485.8 L315.9 487.6 L324.8 490.9 L332.9 495.4 L339.8 501 L345.3 507.7 L349 515.2 L350.7 523.3 L350.2 531.6 L347.5 539.9 L342.6 547.9 L335.5 555.3 L326.4 561.7 L315.5 566.8 L303.3 570.5 L290 572.4 L276.2 572.6 L262.3 570.8 L248.9 567.1 L236.4 561.6 L225.4 554.3 L216.3 545.6 L209.5 535.5 L205.4 524.6 L204.2 513 L206.1 501.4 L211.1 490 L219 479.2 L229.8 469.6 L243.1 461.5 L258.5 455.3 L275.6 451.1 L293.7 449.3 L312.2 450 L330.5 453.2 L347.9 458.9 L363.7 466.9 L377.4 477.1 L388.3 489.1 L396 502.6 L400.2 517 L400.5 532 L396.9 546.9 L389.4 561.3 L378.1 574.6 L363.4 586.3 L345.7 595.9 L325.6 603 L303.7 607.4 L280.8 608.8 L257.6 607.1 L235 602.2 L213.9 594.3 L194.9 583.5 L178.9 570.2 L166.5 554.9 L158.2 538 L154.3 520" stroke-width="8"/>
+  <path d="M1288.1 429.6 L1286.1 431.5 L1283.3 433.2 L1280 434.4 L1276.1 435.2 L1271.9 435.3 L1267.5 434.7 L1263.2 433.4 L1259.1 431.3 L1255.4 428.5 L1252.4 425 L1250.4 421 L1249.3 416.6 L1249.5 411.9 L1250.9 407.1 L1253.6 402.5 L1257.6 398.2 L1262.9 394.5 L1269.2 391.5 L1276.3 389.5 L1284.2 388.5 L1292.3 388.7 L1300.5 390.1 L1308.4 392.8 L1315.7 396.7 L1322 401.8 L1327.1 407.9 L1330.6 414.7 L1332.3 422.1 L1332.1 429.9 L1329.9 437.6 L1325.7 445.1 L1319.5 452 L1311.5 457.9 L1302 462.7 L1291.2 466.1 L1279.5 467.9 L1267.3 468 L1255.1 466.2 L1243.3 462.6 L1232.4 457.3 L1222.9 450.3 L1215.1 442 L1209.5 432.5 L1206.3 422.1 L1205.8 411.3 L1208.1 400.5 L1213.1 389.9 L1220.8 380.2 L1231 371.6 L1243.4 364.5 L1257.5 359.2 L1272.9 356.1 L1289.1 355.2 L1305.5 356.7 L1321.5 360.7 L1336.3 366.9 L1349.6 375.3 L1360.6 385.7 L1369 397.6 L1374.3 410.7 L1376.2 424.5 L1374.6 438.5 L1369.5 452.2 L1361 465.1 L1349.1 476.7 L1334.5 486.5 L1317.4 494.1 L1298.5 499.1 L1278.4 501.4 L1257.9 500.6 L1237.6 496.9 L1218.5 490.3 L1201.1 480.9 L1186.3 469 L1174.6 455 L1166.4 439.4 L1162.3 422.7 L1162.4 405.6 L1166.9 388.6 L1175.6 372.3 L1188.4 357.5 L1204.9 344.6 L1224.4 334.3 L1246.4 326.8 L1270.2 322.7 L1294.8 322 L1319.3 325 L1342.9 331.5 L1364.7 341.3" stroke-width="7"/>
+</g>
+
+<!-- intertwined strings and root-like meanders -->
+<g fill="none" stroke="url(#root)" stroke-linecap="round">
+  <path d="M-80 900 C120 760 220 1010 390 850 C555 695 665 975 810 835 C980 670 1090 1005 1270 830 C1405 700 1510 875 1690 760" stroke-width="14"/>
+  <path d="M-120 990 C95 850 250 1080 435 930 C610 790 705 1060 900 920 C1080 790 1210 1010 1390 900 C1515 820 1600 900 1710 845" stroke-width="7" stroke-opacity=".72"/>
+  <path d="M140 1185 C145 1050 70 1015 120 920 C175 815 295 875 285 770 C275 665 165 690 195 585" stroke-width="9"/>
+  <path d="M1440 1195 C1430 1070 1515 1020 1468 918 C1424 820 1318 875 1324 768 C1330 670 1438 690 1402 570" stroke-width="9"/>
+  <path d="M560 1185 C530 1090 620 1042 580 960 C535 870 430 925 450 825 C470 728 590 760 560 655 C535 570 625 520 680 445" stroke-width="6" stroke-opacity=".68"/>
+  <path d="M1010 1180 C1042 1085 955 1040 997 955 C1042 865 1148 925 1128 820 C1110 725 990 755 1022 650 C1048 565 955 520 902 445" stroke-width="6" stroke-opacity=".68"/>
+</g>
+
+<!-- small looping squiggles; intentionally irregular -->
+<g fill="none" stroke="#e6ddb0" stroke-opacity=".12" stroke-linecap="round">
+  <path d="M395 690 C450 630 520 675 493 728 C468 779 395 752 410 706 C426 658 492 648 528 702" stroke-width="5"/>
+  <path d="M1120 610 C1178 548 1258 592 1224 654 C1196 705 1124 675 1142 630 C1160 586 1227 575 1268 628" stroke-width="5"/>
+  <path d="M728 1025 C770 974 846 986 853 1039 C860 1090 788 1112 760 1071 C731 1027 780 978 833 1002" stroke-width="4"/>
+</g>
+</svg>
