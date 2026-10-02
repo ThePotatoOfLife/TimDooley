@@ -226,7 +226,7 @@ if OUT.exists():
     }
     for rel,budget in first_nav_budgets.items():
         page=read(OUT/rel)
-        nav_match=__import__("re").search(r"<nav\\b[^>]*>(.*?)</nav>",page,flags=__import__("re").I|__import__("re").S)
+        nav_match=__import__("re").search(r"<nav\b[^>]*>(.*?)</nav>",page,flags=__import__("re").I|__import__("re").S)
         if not nav_match:
             errors.append(f"{rel} missing first local navigation row")
         elif nav_match.group(1).count("<a ")>budget:
@@ -238,7 +238,7 @@ if OUT.exists():
     }
     for rel,(parent_href,budget) in specialist_parent_contracts.items():
         page=read(OUT/rel)
-        nav_match=__import__("re").search(r"<nav\\b[^>]*>(.*?)</nav>",page,flags=__import__("re").I|__import__("re").S)
+        nav_match=__import__("re").search(r"<nav\b[^>]*>(.*?)</nav>",page,flags=__import__("re").I|__import__("re").S)
         if not nav_match:
             errors.append(f"{rel} missing specialist continuity navigation")
             continue
