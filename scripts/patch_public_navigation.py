@@ -33,9 +33,14 @@ SHARED_ASSET_NAMES = (
 
 
 def _shared_asset_version(asset: str) -> str:
-    path = ROOT / "app" / asset
+    # During Pages finalization, hash the exact built bytes. Earlier build passes may
+    # rewrite nested asset URLs (for example the tree SVG fingerprint inside
+    # site-elevator.css), so hashing ROOT here could give HTML a stale CSS cache key.
+    built = OUT / "app" / asset
+    source = ROOT / "app" / asset
+    path = built if built.is_file() else source
     if not path.is_file():
-        raise FileNotFoundError(f"shared UI asset missing: {path.relative_to(ROOT)}")
+        raise FileNotFoundError(f"shared UI asset missing: {source.relative_to(ROOT)}")
     return hashlib.sha256(path.read_bytes()).hexdigest()[:12]
 
 
