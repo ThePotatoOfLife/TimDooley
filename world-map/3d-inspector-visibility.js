@@ -1,8 +1,7 @@
 // Stable visibility owner for the World Map deep inspector.
 //
-// The broad Progressive UI is optional/legacy, but the two visible Inspect controls
-// and selected-country inspector visibility are core browsing behavior. Keep that
-// small responsibility here so collapsing the legacy UI cannot strand country data.
+// Ordinary country selection stays in the lightweight country card. The deep
+// inspector opens only when the user explicitly asks for Details / More data.
 
 function createInspectorVisibility({
   app,
@@ -23,7 +22,7 @@ function createInspectorVisibility({
       button?.classList?.toggle?.('active', open);
       button?.setAttribute?.('aria-pressed', String(open));
     }
-    if (panelToggle) panelToggle.textContent = open ? 'Close' : 'Inspect';
+    if (panelToggle) panelToggle.textContent = open ? 'Close details' : 'Details panel';
   }
 
   function publish(open) {
@@ -50,16 +49,11 @@ function createInspectorVisibility({
     return setOpen(!isOpen());
   }
 
-  function onSelection(event) {
-    if (event?.detail?.selected) setOpen(true, { persist:false });
-  }
-
   function install() {
     if (installed) return api;
     installed = true;
     panelToggle?.addEventListener?.('click', toggle);
     mapInspectorToggle?.addEventListener?.('click', toggle);
-    eventTarget?.addEventListener?.('potato-atlas-working-selection-change', onSelection);
     let storedOpen = false;
     try { storedOpen = storage?.getItem?.(storageKey) === '1'; } catch {}
     setOpen(storedOpen, { persist:false });
