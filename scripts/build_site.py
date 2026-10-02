@@ -47,8 +47,8 @@ def copy_tree() -> None:
 
 
 SHARED_ASSETS = (
-    "app/house-journey.js",
     "app/house-journey.css",
+    "app/house-journey.js",
     "app/site-below-root-field.svg",
     "app/site-plane-organic-field.svg",
     "app/site-tree-perspective.svg",
@@ -78,7 +78,7 @@ def fingerprint_shared_assets() -> dict[str, str]:
         basename = Path(rel).name
         pattern = re.compile(rf"({re.escape(basename)})(?:\\?v=[^\"'<>\\s]+)?")
         changed = 0
-        targets = [*OUT.rglob("*.html"), *OUT.rglob("*.css")]
+        targets = [*OUT.rglob("*.html"), *OUT.rglob("*.css"), *OUT.rglob("*.js")]
         for page in targets:
             text = page.read_text(encoding="utf-8", errors="replace")
             updated, count = pattern.subn(
@@ -93,7 +93,7 @@ def fingerprint_shared_assets() -> dict[str, str]:
     # Never ship a literal regex backreference in a URL. This catches failures in
     # the fingerprint rewrite itself before the validated Pages artifact is uploaded.
     bad_backrefs = []
-    for page in [*OUT.rglob("*.html"), *OUT.rglob("*.css")]:
+    for page in [*OUT.rglob("*.html"), *OUT.rglob("*.css"), *OUT.rglob("*.js")]:
         if "\\1?v=" in page.read_text(encoding="utf-8", errors="replace"):
             bad_backrefs.append(page.relative_to(OUT).as_posix())
     if bad_backrefs:
