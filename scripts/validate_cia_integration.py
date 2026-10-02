@@ -50,8 +50,10 @@ def main():
  desk_css=(ROOT/"app/cia-desks.css")
  if not desk_js.is_file() or not desk_css.is_file(): fail("CIA live desk runtime missing")
  desk_source=desk_js.read_text(encoding="utf-8",errors="replace")
- for token in ["data-cia-associations","data-cia-incidents","association_type","boundary","dossierHref"]:
+ for token in ["data-cia-associations","data-cia-incidents","association_type","boundary","dossierHref","cia-source-label","linkable="]:
   if token not in desk_source: fail(f"CIA live desk runtime missing {token!r}")
+ if "return src?'<a class=\"cia-source-link\"" in desk_source:
+  fail("CIA desk source labels are still blindly converted into links")
  for rel,mount in [("rooms/potatoverse-canon/beings/cia/associations/index.html","data-cia-associations"),("rooms/potatoverse-canon/beings/cia/incidents/index.html","data-cia-incidents")]:
   page=(ROOT/rel).read_text(encoding="utf-8",errors="replace")
   if "cia-desks.js" not in page or "cia-desks.css" not in page or mount not in page: fail(f"CIA live desk mount missing from {rel}")
