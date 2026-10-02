@@ -1,7 +1,7 @@
 {
   "id": "under-culture-shadow-network-atlas",
-  "version": "1.0.0",
-  "updated": "2026-09-12",
+  "version": "1.1.0",
+  "updated": "2026-10-02",
   "status": "active-analytical-atlas",
   "purpose": "Map the institutional, financial, informational, technological, subcultural and protection-failure mechanisms beneath visible culture without presuming one hidden master network.",
   "central_question": "What recurring mechanisms convert people, money, information, ideology, technology and institutional power into durable influence, extraction, protection failure or repair?",
@@ -100,90 +100,427 @@
   "mechanism_families": [
     {
       "id": "political-finance",
-      "sequence": ["donor", "committee", "contribution-or-independent-expenditure", "candidate-or-election", "policy-context"],
-      "examples": ["AIPAC PAC", "United Democracy Project"],
+      "sequence": [
+        "donor",
+        "committee",
+        "contribution-or-independent-expenditure",
+        "candidate-or-election",
+        "policy-context"
+      ],
+      "examples": [
+        "AIPAC PAC",
+        "United Democracy Project"
+      ],
       "risk": "Treating spending as proof of control rather than a documented influence mechanism."
     },
     {
       "id": "philanthropic-grant-chain",
-      "sequence": ["funder", "grantee-legal-entity", "program-or-intermediary", "downstream-grantee", "activity"],
-      "examples": ["Vine & Fig Tree Institute I -> Vine & Fig Tree Fund -> downstream grantees"],
+      "sequence": [
+        "funder",
+        "grantee-legal-entity",
+        "program-or-intermediary",
+        "downstream-grantee",
+        "activity"
+      ],
+      "examples": [
+        "Vine & Fig Tree Institute I -> Vine & Fig Tree Fund -> downstream grantees"
+      ],
       "risk": "Collapsing related legal entities or assuming grants create command relationships."
     },
     {
       "id": "religious-ideological-mobilization",
-      "sequence": ["institution", "teaching-or-message", "audience", "advocacy-or-charity", "public-action"],
-      "examples": ["Israel365"],
+      "sequence": [
+        "institution",
+        "teaching-or-message",
+        "audience",
+        "advocacy-or-charity",
+        "public-action"
+      ],
+      "examples": [
+        "Israel365"
+      ],
       "risk": "Confusing shared theology or advocacy with covert political coordination."
     },
     {
       "id": "mass-political-mobilization",
-      "sequence": ["organization", "funding", "chapters-or-audience", "events-content", "candidate-or-issue-mobilization"],
-      "examples": ["Turning Point USA"],
+      "sequence": [
+        "organization",
+        "funding",
+        "chapters-or-audience",
+        "events-content",
+        "candidate-or-issue-mobilization"
+      ],
+      "examples": [
+        "Turning Point USA"
+      ],
       "risk": "Ignoring factional conflict and internal disagreement."
     },
     {
       "id": "state-technology-security",
-      "sequence": ["vendor", "government-customer", "contract-or-partnership", "capability", "deployment"],
-      "examples": ["Palantir -> Israeli Defense Ministry", "Cellebrite -> public-sector customers"],
+      "sequence": [
+        "vendor",
+        "government-customer",
+        "contract-or-partnership",
+        "capability",
+        "deployment"
+      ],
+      "examples": [
+        "Palantir -> Israeli Defense Ministry",
+        "Cellebrite -> public-sector customers"
+      ],
       "risk": "Confusing capability or customer relationship with undocumented misuse."
     },
     {
       "id": "private-intelligence-reputation-protection",
-      "sequence": ["client", "lawyer-or-intermediary", "private-intelligence-firm", "target", "surveillance-deception-or-information-acquisition", "publication-or-litigation-context"],
-      "examples": ["Weinstein -> legal intermediary -> Black Cube -> accusers/reporters"],
+      "sequence": [
+        "client",
+        "lawyer-or-intermediary",
+        "private-intelligence-firm",
+        "target",
+        "surveillance-deception-or-information-acquisition",
+        "publication-or-litigation-context"
+      ],
+      "examples": [
+        "Weinstein -> legal intermediary -> Black Cube -> accusers/reporters"
+      ],
       "risk": "Generalizing one documented case into a universal entertainment/intelligence conspiracy."
     },
     {
       "id": "institutional-protection-failure",
-      "sequence": ["report-or-warning", "institution", "delay-or-process-failure", "continued-risk", "external-exposure", "inquiry-or-reform"],
-      "examples": ["Nassar/FBI", "Savile/policing intelligence-sharing failures"],
+      "sequence": [
+        "report-or-warning",
+        "institution",
+        "delay-or-process-failure",
+        "continued-risk",
+        "external-exposure",
+        "inquiry-or-reform"
+      ],
+      "examples": [
+        "Nassar/FBI",
+        "Savile/policing intelligence-sharing failures"
+      ],
       "risk": "Assuming documented incompetence or institutional failure was intentional interference without evidence."
     },
     {
       "id": "opposition-management",
-      "sequence": ["opposition-group", "external-state-or-funder-or-platform", "infiltration-cooptation-amplification-or-fragmentation-mechanism", "observable-effect"],
-      "examples": ["COINTELPRO as historical anchor"],
+      "sequence": [
+        "opposition-group",
+        "external-state-or-funder-or-platform",
+        "infiltration-cooptation-amplification-or-fragmentation-mechanism",
+        "observable-effect"
+      ],
+      "examples": [
+        "COINTELPRO as historical anchor"
+      ],
       "risk": "Using 'controlled opposition' as a universal unfalsifiable label."
     },
     {
       "id": "attention-archive-capture",
-      "sequence": ["person-or-event", "attention", "documentation", "archive", "secondary-creator", "repetition", "persistent-assigned-identity"],
-      "examples": ["Farm / lolcow / adversarial archive ecosystems"],
+      "sequence": [
+        "person-or-event",
+        "attention",
+        "documentation",
+        "archive",
+        "secondary-creator",
+        "repetition",
+        "persistent-assigned-identity"
+      ],
+      "examples": [
+        "Farm / lolcow / adversarial archive ecosystems"
+      ],
       "risk": "Archive repetition converting allegation into apparent fact."
     },
     {
       "id": "classification-power",
-      "sequence": ["classifier", "methodology", "classification-event", "entity-or-incident", "public-institutional-consequence"],
-      "examples": ["SPLC hate-group methodology", "ADL HEAT incident mapping"],
+      "sequence": [
+        "classifier",
+        "methodology",
+        "classification-event",
+        "entity-or-incident",
+        "public-institutional-consequence"
+      ],
+      "examples": [
+        "SPLC hate-group methodology",
+        "ADL HEAT incident mapping"
+      ],
       "risk": "Treating a classifier's label as an intrinsic universal property."
     },
     {
       "id": "exploitation-and-accountability",
-      "sequence": ["vulnerable-person-or-population", "exploiter", "facilitator-or-institution", "complaint-or-discovery", "investigation", "adjudication-or-reform"],
-      "examples": ["Epstein/Maxwell corpus", "NXIVM criminal case"],
+      "sequence": [
+        "vulnerable-person-or-population",
+        "exploiter",
+        "facilitator-or-institution",
+        "complaint-or-discovery",
+        "investigation",
+        "adjudication-or-reform"
+      ],
+      "examples": [
+        "Epstein/Maxwell corpus",
+        "NXIVM criminal case"
+      ],
       "risk": "Turning victims into spectacle or treating document adjacency as guilt."
+    },
+    {
+      "id": "state-intelligence-to-private-tech",
+      "sequence": [
+        "military-or-intelligence-unit",
+        "training-and-network",
+        "alumni",
+        "private-company-or-startup",
+        "commercial-or-government-client"
+      ],
+      "examples": [
+        "Unit 8200 -> alumni -> Israeli technology sector"
+      ],
+      "insight": "The important edge is institutional skill/network migration. Alumni density can shape a technology ecosystem without proving that alumni firms remain under state command.",
+      "risk": "Treating prior intelligence service as permanent secret direction of later private activity."
+    },
+    {
+      "id": "private-influence-operations",
+      "sequence": [
+        "client-or-prospective-client",
+        "private-intelligence-or-influence-firm",
+        "persona-or-content-operation",
+        "target-audience",
+        "measurement-or-reporting"
+      ],
+      "examples": [
+        "Psy-Group"
+      ],
+      "insight": "Influence capability can be privatized: false personas, targeting, narrative testing and covert campaign design can be offered as services outside formal intelligence agencies.",
+      "risk": "Confusing a proposal, pitch or capability demonstration with a completed operation or proven effect."
+    },
+    {
+      "id": "classifier-research-feedback",
+      "sequence": [
+        "public-online-data",
+        "researcher-or-classifier",
+        "methodology",
+        "report-or-label",
+        "media-government-or-platform-uptake",
+        "changed-public-attention"
+      ],
+      "examples": [
+        "NCRI",
+        "SPLC",
+        "ADL"
+      ],
+      "insight": "Classifiers and research institutes can become actors in the field they study because their categories travel into journalism, platforms, institutions and policy debate.",
+      "risk": "Treating a research or watchdog classification as an intrinsic legal or ontological property."
+    },
+    {
+      "id": "memetic-political-distribution",
+      "sequence": [
+        "ideological-figure-or-movement",
+        "clipper-or-affiliate-network",
+        "platform-distribution",
+        "audience",
+        "reposting-and-reaction",
+        "movement-growth-or-fragmentation"
+      ],
+      "examples": [
+        "Groyper / America First online ecology"
+      ],
+      "insight": "A movement can distribute around platform restrictions through clipping, affiliated accounts, memes and audience replication without requiring one formal membership list.",
+      "risk": "Equating every account sharing a meme, guest appearance or audience with formal membership or identical ideology."
+    },
+    {
+      "id": "information-funnel",
+      "sequence": [
+        "raw-event-or-post",
+        "collector-or-observer",
+        "archive-dataset-or-monitor",
+        "classifier-analyst-or-vendor",
+        "institutional-dashboard-report-or-brief",
+        "policy-media-or-operational-decision",
+        "public-message-or-action",
+        "new-reaction-data"
+      ],
+      "examples": [
+        "forum/archive -> watchdog/research -> media/institution",
+        "sensor/OSINT -> data integrator -> government user",
+        "campaign research -> advocacy message -> public response"
+      ],
+      "insight": "Information moves both upward and downward. At each handoff it can gain corroboration and structure or lose context through selection, deduplication failure, framing, incentives or category compression.",
+      "risk": "Assuming information becomes fake merely because it passes through institutions, or assuming institutional packaging makes it true."
+    },
+    {
+      "id": "elite-access-criminal-network",
+      "sequence": [
+        "central-actor",
+        "social-business-or-financial-access",
+        "associates-or-intermediaries",
+        "victims-or-affected-parties",
+        "documents-travel-contacts-or-transactions",
+        "investigation-and-adjudication"
+      ],
+      "examples": [
+        "Epstein / Maxwell corpus"
+      ],
+      "insight": "Elite-access cases require strict edge typing because social contact, travel, financial relation, allegation, investigation and conviction are radically different evidentiary states.",
+      "risk": "Turning appearance in files or contact records into guilt by association."
     }
   ],
   "seed_entities": [
-    {"id": "aipac-pac", "name": "American Israel Public Affairs Committee Political Action Committee", "type": "pac", "status": "observed"},
-    {"id": "united-democracy-project", "name": "United Democracy Project", "type": "super-pac", "status": "observed"},
-    {"id": "israel365", "name": "Israel365", "type": "religious-or-ministry-organization", "status": "observed-brand-or-institution"},
-    {"id": "teach-for-israel", "name": "Teach For Israel Inc", "type": "nonprofit-501c3", "status": "observed"},
-    {"id": "vine-fig-tree-institute-i", "name": "Vine & Fig Tree Institute I Inc", "type": "nonprofit-501c3", "status": "observed"},
-    {"id": "vine-fig-tree-fund", "name": "Vine & Fig Tree Fund Inc", "type": "nonprofit-501c3", "status": "observed"},
-    {"id": "palantir", "name": "Palantir Technologies", "type": "company", "status": "observed"},
-    {"id": "tpusa", "name": "Turning Point USA Inc", "type": "nonprofit-501c3", "status": "observed"},
-    {"id": "israel-campus-coalition", "name": "Israel On Campus Coalition Inc", "type": "nonprofit-501c3", "status": "observed"},
-    {"id": "standwithus-israel-emergency-alliance", "name": "Israel Emergency Alliance / StandWithUs", "type": "nonprofit-501c3", "status": "observed"},
-    {"id": "maccabee-task-force-foundation", "name": "Maccabee Task Force Foundation", "type": "private-foundation", "status": "observed"},
-    {"id": "tikvah-fund", "name": "The Tikvah Fund", "type": "private-foundation", "status": "observed"},
-    {"id": "black-cube", "name": "Black Cube", "type": "private-intelligence-or-investigation-firm", "status": "observed"},
-    {"id": "nso-group", "name": "NSO Group", "type": "surveillance-or-forensics-vendor", "status": "observed"},
-    {"id": "candiru", "name": "Candiru", "type": "surveillance-or-forensics-vendor", "status": "observed"},
-    {"id": "cellebrite", "name": "Cellebrite", "type": "surveillance-or-forensics-vendor", "status": "observed"},
-    {"id": "splc", "name": "Southern Poverty Law Center", "type": "watchdog-or-classifier", "status": "observed"},
-    {"id": "adl", "name": "Anti-Defamation League", "type": "watchdog-or-classifier", "status": "observed"}
+    {
+      "id": "aipac-pac",
+      "name": "American Israel Public Affairs Committee Political Action Committee",
+      "type": "pac",
+      "status": "observed"
+    },
+    {
+      "id": "united-democracy-project",
+      "name": "United Democracy Project",
+      "type": "super-pac",
+      "status": "observed"
+    },
+    {
+      "id": "israel365",
+      "name": "Israel365",
+      "type": "religious-or-ministry-organization",
+      "status": "observed-brand-or-institution"
+    },
+    {
+      "id": "teach-for-israel",
+      "name": "Teach For Israel Inc",
+      "type": "nonprofit-501c3",
+      "status": "observed"
+    },
+    {
+      "id": "vine-fig-tree-institute-i",
+      "name": "Vine & Fig Tree Institute I Inc",
+      "type": "nonprofit-501c3",
+      "status": "observed"
+    },
+    {
+      "id": "vine-fig-tree-fund",
+      "name": "Vine & Fig Tree Fund Inc",
+      "type": "nonprofit-501c3",
+      "status": "observed"
+    },
+    {
+      "id": "palantir",
+      "name": "Palantir Technologies",
+      "type": "company",
+      "status": "observed"
+    },
+    {
+      "id": "tpusa",
+      "name": "Turning Point USA Inc",
+      "type": "nonprofit-501c3",
+      "status": "observed"
+    },
+    {
+      "id": "israel-campus-coalition",
+      "name": "Israel On Campus Coalition Inc",
+      "type": "nonprofit-501c3",
+      "status": "observed"
+    },
+    {
+      "id": "standwithus-israel-emergency-alliance",
+      "name": "Israel Emergency Alliance / StandWithUs",
+      "type": "nonprofit-501c3",
+      "status": "observed"
+    },
+    {
+      "id": "maccabee-task-force-foundation",
+      "name": "Maccabee Task Force Foundation",
+      "type": "private-foundation",
+      "status": "observed"
+    },
+    {
+      "id": "tikvah-fund",
+      "name": "The Tikvah Fund",
+      "type": "private-foundation",
+      "status": "observed"
+    },
+    {
+      "id": "black-cube",
+      "name": "Black Cube",
+      "type": "private-intelligence-or-investigation-firm",
+      "status": "observed"
+    },
+    {
+      "id": "nso-group",
+      "name": "NSO Group",
+      "type": "surveillance-or-forensics-vendor",
+      "status": "observed"
+    },
+    {
+      "id": "candiru",
+      "name": "Candiru",
+      "type": "surveillance-or-forensics-vendor",
+      "status": "observed"
+    },
+    {
+      "id": "cellebrite",
+      "name": "Cellebrite",
+      "type": "surveillance-or-forensics-vendor",
+      "status": "observed"
+    },
+    {
+      "id": "splc",
+      "name": "Southern Poverty Law Center",
+      "type": "watchdog-or-classifier",
+      "status": "observed"
+    },
+    {
+      "id": "adl",
+      "name": "Anti-Defamation League",
+      "type": "watchdog-or-classifier",
+      "status": "observed"
+    },
+    {
+      "id": "unit-8200",
+      "name": "Unit 8200",
+      "type": "intelligence-or-security-agency",
+      "source_id": "idf-unit-8200-about",
+      "notes": "IDF Military Intelligence collection/cyber unit; alumni pipeline into technology is analytically relevant but does not imply continued command."
+    },
+    {
+      "id": "psy-group",
+      "name": "Psy-Group",
+      "type": "private-intelligence-or-investigation-firm",
+      "source_id": "new-yorker-psy-group-2019",
+      "status": "ceased-operations",
+      "notes": "Private Israeli influence/intelligence firm; separate proposed influence work, completed work, and proven effects."
+    },
+    {
+      "id": "israel365-action",
+      "name": "Israel365 Action",
+      "type": "religious-or-ministry-organization",
+      "source_id": "israel365-action-about-2026",
+      "notes": "Overt religious-political advocacy organization; analyze declared goals, events, messaging and institutional participation rather than treating it as covert."
+    },
+    {
+      "id": "ncri",
+      "name": "Network Contagion Research Institute",
+      "type": "watchdog-or-classifier",
+      "source_id": "rutgers-ncri-partnership-2022",
+      "notes": "Nonprofit research institute studying online contagion, extremism, manipulation and misinformation; methodology, funding and correction pathways matter because reports can travel into media and institutions."
+    },
+    {
+      "id": "groyper-movement",
+      "name": "Groyper / America First online movement",
+      "type": "ideology-or-movement",
+      "source_id": "adl-groyper-instagram-2026",
+      "notes": "Distributed online ideological movement associated with Nick Fuentes; affiliations and ideological labels remain source-attributed."
+    },
+    {
+      "id": "shivat-zion-aliyah",
+      "name": "Shivat Zion Aliyah and Absorption",
+      "type": "nonprofit-501c3",
+      "source_id": "shivat-zion-aliyah-about",
+      "notes": "Aliyah/integration nonprofit; currently a disambiguation case rather than an information-war node."
+    },
+    {
+      "id": "shivat-zion-chesed",
+      "name": "Shivat Zion Chesed Fund",
+      "type": "nonprofit-501c3",
+      "source_id": "shivat-zion-chesed-about",
+      "notes": "Charitable/security-support organization under a similar name; do not merge with other Shivat Zion entities."
+    }
   ],
   "observed_edges": [
     {
@@ -229,6 +566,12 @@
     "Build a current government-contract layer for Palantir and major digital-forensics/surveillance vendors.",
     "Map Hollywood crisis-PR, legal, private-investigation and insurance networks using documented cases.",
     "Build privacy-preserving institutional-failure records for major abuse scandals and inquiry findings.",
-    "Resolve historical Sektur/Killstream provenance from preserved primary/archive material."
+    "Resolve historical Sektur/Killstream provenance from preserved primary/archive material.",
+    "Disambiguate organizations using the name Shivat Zion; no information-war edge is established from name similarity alone.",
+    "Separate Psy-Group capabilities, proposals, completed operations and measurable causal effects.",
+    "Trace Unit 8200 alumni-to-private-sector pathways without treating alumni status as evidence of continuing state command.",
+    "Map NCRI/SPLC/ADL classifier-to-media/platform/institution pathways with methodology and correction edges.",
+    "Map Groyper distribution through clipping, affiliates and platform migration while keeping classifier labels attributed.",
+    "Build an information-funnel model from raw posts/data -> archive/research/vendor -> institution/media -> public message -> reaction feedback."
   ]
 }
