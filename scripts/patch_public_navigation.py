@@ -223,43 +223,43 @@ for _row in _ACTIVE_SUBROOM_ROWS:
     _SUBROOMS_BY_PARENT.setdefault(str(_row["parent_room_id"]), []).append(_row)
 
 _SUBROOM_NAV_LABELS = {
-    "canon-identities": "Identities & Roles",
-    "theology-god-language": "Theology",
-    "symbolic-architecture": "Symbolic Architecture",
+    "canon-identities": "Core Identities & Roles",
+    "theology-god-language": "Theology & God-language",
+    "symbolic-architecture": "Symbolic Architecture & Cosmology",
     "practice-ethics": "Practice & Ethics",
     "provenance-evidence": "Provenance & Evidence",
     "memory-recovery": "Memory & Recovery",
-    "witness-attestation": "Witness",
-    "chronology-events": "Events",
-    "developmental-genealogy": "Genealogy",
-    "prediction-revelation-time": "Prediction & Revelation",
+    "witness-attestation": "Witness & Attestation",
+    "chronology-events": "Events & Development",
+    "developmental-genealogy": "Developmental Genealogy",
+    "prediction-revelation-time": "Prediction & Revelation Time",
     "bible-christianity": "Bible & Christianity",
     "comparative-mythology": "Comparative Mythology",
-    "esoteric-sacred-geometry": "Sacred Geometry",
-    "other-traditions": "Other Traditions",
-    "math-geometry": "Math & Geometry",
+    "esoteric-sacred-geometry": "Esoteric & Sacred Geometry",
+    "other-traditions": "Other Traditions & Philosophies",
+    "math-geometry": "Mathematics & Geometry",
     "physics-cosmology": "Physics & Cosmology",
     "systems-dynamics": "Systems & Dynamics",
-    "model-testing": "Testing",
+    "model-testing": "Testing & Falsifiability",
     "potato-biology": "Potato Biology",
     "neurobiology": "Neurobiology",
-    "whole-body": "Whole Body",
-    "symbolic-body-comparison": "Body Crosswalk",
-    "politics-governance": "Politics",
+    "whole-body": "Whole-body Physiology",
+    "symbolic-body-comparison": "Symbolic Body Crosswalk",
+    "politics-governance": "Politics & Governance",
     "law-justice": "Law & Justice",
     "economy-finance": "Economy & Finance",
-    "infrastructure-capability": "Infrastructure",
+    "infrastructure-capability": "Infrastructure & Capability",
     "geography-countries": "Geography",
     "internet-platforms": "Internet & Platforms",
-    "subculture-group-formation": "Subculture & Groups",
-    "information-ecology": "Information Ecology",
-    "great-book-literature": "Great Book",
+    "subculture-group-formation": "Subculture & Group Formation",
+    "information-ecology": "Information Ecology & Memory",
+    "great-book-literature": "Great Book & Literature",
     "music-sound": "Music & Sound",
-    "visual-art": "Visual Art",
+    "visual-art": "Visual Art & Composition",
     "games-simulations": "Games & Simulations",
     "house-architecture": "House Architecture",
-    "open-questions": "Open Questions",
-    "experiments-formalization": "Experiments",
+    "open-questions": "Open Questions & Hypotheses",
+    "experiments-formalization": "Experiments & Formalization",
     "research-programmes": "Research Programmes",
 }
 _CONTEXT_SUBROOM_IDS = {
@@ -578,30 +578,49 @@ def _is_redundant_architecture_anchor(anchor: str, page: Path) -> bool:
 
 
 def _room_nav_candidates(page: Path) -> list[dict]:
+    """Return the useful Room neighborhood without artificially hiding siblings."""
     rel = page.relative_to(OUT).as_posix()
 
     contextual = _CONTEXT_SUBROOM_IDS.get(rel)
     if contextual:
-        return [row for sid in contextual if (row := _SUBROOM_BY_ID.get(sid))][:4]
+        return [row for sid in contextual if (row := _SUBROOM_BY_ID.get(sid))]
 
     top = re.fullmatch(r"rooms/([^/]+)/index\.html", rel)
     if top and top.group(1) != "inside":
-        return list(_SUBROOMS_BY_PARENT.get(top.group(1), []))[:4]
+        # Dwellings are intentionally small (3–5 Rooms). Show the whole family.
+        return list(_SUBROOMS_BY_PARENT.get(top.group(1), []))
 
     nested = re.fullmatch(r"rooms/inside/([^/]+)/index\.html", rel)
     if not nested:
         return []
+
     current = _SUBROOM_BY_ROUTE.get(nested.group(1))
     if not current:
         return []
-    candidates: list[dict] = []
+
+    current_id = str(current.get("id") or "")
+    parent_id = str(current.get("parent_room_id") or "")
+    siblings = [
+        row for row in _SUBROOMS_BY_PARENT.get(parent_id, [])
+        if str(row.get("id") or "") != current_id
+    ]
+
+    # Add up to two cross-family adjacent Rooms after the complete sibling family.
+    seen = {current_id, *(str(row.get("id") or "") for row in siblings)}
+    cross_adjacent: list[dict] = []
     for adjacent_id in current.get("adjacent_subroom_ids", []):
         row = _SUBROOM_BY_ID.get(str(adjacent_id))
-        if row:
-            candidates.append(row)
-        if len(candidates) >= 3:
+        if not row:
+            continue
+        row_id = str(row.get("id") or "")
+        if row_id in seen:
+            continue
+        seen.add(row_id)
+        cross_adjacent.append(row)
+        if len(cross_adjacent) >= 2:
             break
-    return candidates
+
+    return siblings + cross_adjacent
 
 
 def normalize_page_nav(text: str, page: Path) -> str:
