@@ -191,4 +191,80 @@
   <rect x="602" y="246" width="10" height="4"/><rect x="612" y="242" width="4" height="4"/>
   <rect x="1010" y="288" width="10" height="4"/><rect x="1006" y="284" width="4" height="4"/>
 </g>
+
+<!-- 2026-10-03 refinement: finer crown texture, side colour, center breathing light -->
+<g id="refinement-heaven-20261003">
+  <!-- quiet luminous center: deliberately low-detail behind reading column -->
+  <g opacity=".13" fill="#fff4cc">
+    <rect x="650" y="120" width="300" height="1970"/>
+    <rect x="704" y="96" width="192" height="2010"/>
+  </g>
+
+  <!-- secondary crown pixels: smaller clusters break the toy-block silhouette -->
+  <g fill="#2e8b49">
+    <rect x="112" y="820" width="46" height="34"/><rect x="184" y="566" width="38" height="30"/>
+    <rect x="278" y="472" width="34" height="28"/><rect x="386" y="378" width="42" height="30"/>
+    <rect x="510" y="326" width="34" height="24"/><rect x="1072" y="390" width="42" height="30"/>
+    <rect x="1192" y="472" width="34" height="26"/><rect x="1324" y="560" width="38" height="30"/>
+    <rect x="1434" y="766" width="42" height="34"/>
+  </g>
+  <g fill="#61ce55">
+    <rect x="86" y="742" width="28" height="24"/><rect x="146" y="604" width="24" height="20"/>
+    <rect x="256" y="536" width="26" height="20"/><rect x="364" y="448" width="24" height="18"/>
+    <rect x="456" y="350" width="28" height="20"/><rect x="1118" y="456" width="28" height="20"/>
+    <rect x="1242" y="548" width="26" height="20"/><rect x="1366" y="660" width="28" height="22"/>
+    <rect x="1478" y="832" width="28" height="22"/>
+  </g>
+  <g fill="#b9f47a">
+    <rect x="70" y="704" width="14" height="12"/><rect x="224" y="486" width="14" height="12"/>
+    <rect x="420" y="336" width="14" height="12"/><rect x="1160" y="420" width="14" height="12"/>
+    <rect x="1398" y="620" width="14" height="12"/><rect x="1514" y="790" width="14" height="12"/>
+  </g>
+
+  <!-- jewel/flower accents pushed to the sides, keeping center calm -->
+  <g>
+    <g fill="#ff8daf">
+      <rect x="72" y="1080" width="12" height="12"/><rect x="92" y="1068" width="12" height="12"/>
+      <rect x="1480" y="1110" width="12" height="12"/><rect x="1500" y="1098" width="12" height="12"/>
+      <rect x="166" y="1860" width="12" height="12"/><rect x="1410" y="1902" width="12" height="12"/>
+    </g>
+    <g fill="#78d9ff">
+      <rect x="118" y="1160" width="10" height="18"/><rect x="1450" y="1220" width="10" height="18"/>
+      <rect x="228" y="1740" width="10" height="18"/><rect x="1344" y="1708" width="10" height="18"/>
+    </g>
+    <g fill="#ffd86d">
+      <rect x="42" y="1270" width="14" height="14"/><rect x="1544" y="1330" width="14" height="14"/>
+      <rect x="282" y="2000" width="14" height="14"/><rect x="1298" y="2018" width="14" height="14"/>
+    </g>
+  </g>
+
+  <!-- bark microstructure and branch highlights -->
+  <g fill="#d28b4f" opacity=".78">
+    <rect x="696" y="1188" width="12" height="42"/><rect x="748" y="1340" width="10" height="52"/>
+    <rect x="846" y="1450" width="10" height="54"/><rect x="900" y="1570" width="12" height="46"/>
+    <rect x="716" y="1750" width="10" height="60"/><rect x="862" y="1860" width="10" height="58"/>
+  </g>
+  <g fill="#24171a" opacity=".68">
+    <rect x="730" y="1280" width="8" height="32"/><rect x="888" y="1514" width="8" height="36"/>
+    <rect x="770" y="1694" width="8" height="40"/><rect x="824" y="1930" width="8" height="44"/>
+  </g>
+
+  <!-- garden-side detail: stepping stones, flower beds, little lamps -->
+  <g fill="#405d45">
+    <rect x="34" y="2370" width="210" height="20"/><rect x="1356" y="2350" width="214" height="20"/>
+  </g>
+  <g fill="#d7c08a">
+    <rect x="302" y="2380" width="54" height="20"/><rect x="372" y="2352" width="46" height="18"/>
+    <rect x="1196" y="2386" width="54" height="20"/><rect x="1262" y="2356" width="46" height="18"/>
+  </g>
+  <g fill="#f7bb67">
+    <rect x="54" y="2260" width="8" height="24"/><rect x="38" y="2252" width="40" height="8"/>
+    <rect x="1538" y="2260" width="8" height="24"/><rect x="1522" y="2252" width="40" height="8"/>
+  </g>
+  <g fill="#e87f9b">
+    <rect x="92" y="2410" width="12" height="12"/><rect x="120" y="2424" width="10" height="10"/>
+    <rect x="1470" y="2412" width="12" height="12"/><rect x="1500" y="2394" width="10" height="10"/>
+  </g>
+</g>
+
 </svg>
