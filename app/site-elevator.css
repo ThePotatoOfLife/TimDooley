@@ -62,18 +62,17 @@
   background:repeating-linear-gradient(90deg,var(--site-elevator-accent) 0 12px,rgba(0,0,0,.45) 12px 16px);
 }
 
-/* Floor atmosphere: one shared site foundation, three environmental projections.
-   The root canvas owns the environment. The body is transparent on governed pages,
-   so page-local black backgrounds cannot cover the active floor. */
+/* Canonical floor tokens + final pixel realm art.
+   These are the only Heaven / Plane / Below page-scene definitions.
+   Home is separate because it scrolls through all three realms. */
 html[data-site-floor]{
   min-height:100%;
   color-scheme:dark;
+  --site-realm-art-size:max(100vw,75vh,760px);
+  --site-realm-art-position:50% 50%;
+  --site-realm-fallback:#111;
+  --site-realm-overlay:linear-gradient(180deg,rgba(5,7,9,.14),rgba(5,7,9,.20));
 }
-/* Home spans Heaven → Plane → Below and owns a dedicated multi-realm canvas. */
-html[data-site-floor] body.home-body{min-height:100vh}
-html[data-site-floor] body.home-body::before{content:none;display:none}
-
-/* HEAVEN — cosmic canopy, starlight, spiritual tree and garden horizon. */
 html[data-site-floor="heaven"]{
   --site-panel:rgba(14,16,38,.80);
   --site-panel-strong:rgba(23,21,51,.90);
@@ -82,11 +81,11 @@ html[data-site-floor="heaven"]{
   --site-faint:#918ba1;
   --site-reading-glass:rgba(16,10,38,.060);
   --site-reading-glass-line:rgba(245,230,255,.028);
-  background-color:#24104c;
+  --site-realm-art:url("./home-heaven.avif");
+  --site-realm-art-position:50% 18%;
+  --site-realm-fallback:#24104c;
+  --site-realm-overlay:linear-gradient(180deg,rgba(21,12,45,.08),rgba(35,22,52,.14) 58%,rgba(71,44,39,.18));
 }
-
-/* PLANE — the static side-view scene owns the village/mountain drawing.
-   The root canvas only supplies air, haze and the field colour beneath it. */
 html[data-site-floor="plane"]{
   --site-panel:rgba(13,29,25,.80);
   --site-panel-strong:rgba(20,42,34,.90);
@@ -95,10 +94,11 @@ html[data-site-floor="plane"]{
   --site-faint:#87958a;
   --site-reading-glass:rgba(8,23,27,.052);
   --site-reading-glass-line:rgba(232,247,239,.025);
-  background-color:#244f66;
+  --site-realm-art:url("./home-plane.avif");
+  --site-realm-art-position:50% 47%;
+  --site-realm-fallback:#244f66;
+  --site-realm-overlay:linear-gradient(180deg,rgba(8,24,29,.06),rgba(10,26,20,.13) 62%,rgba(14,19,12,.18));
 }
-
-/* BELOW — fallback floor canvas. Lower reader pages own their richer ground-to-depth scene. */
 html[data-site-floor="below"]{
   --site-panel:rgba(24,11,8,.84);
   --site-panel-strong:rgba(36,16,10,.92);
@@ -107,7 +107,10 @@ html[data-site-floor="below"]{
   --site-faint:#8e6d5d;
   --site-reading-glass:rgba(22,10,7,.065);
   --site-reading-glass-line:rgba(255,226,199,.024);
-  background-color:#806047;
+  --site-realm-art:url("./home-below.avif");
+  --site-realm-art-position:50% 74%;
+  --site-realm-fallback:#1a0906;
+  --site-realm-overlay:linear-gradient(180deg,rgba(28,15,9,.08),rgba(22,9,7,.20) 58%,rgba(8,3,2,.30));
 }
 
 .site-elevator[data-elevator-ready="false"]{
@@ -600,33 +603,8 @@ html[data-site-floor="below"]{
 
 /* Cross-floor local navigation is an explicit gate, never a silent sibling door. */
 
-/* Canonical single-floor pixel realm canvas
-   Home owns its scrolling Heaven → Plane → Below stage.
-   Every other governed page gets one fixed realm selected by data-site-floor. */
-html[data-site-floor]{
-  --site-realm-art-size:max(100vw,75vh,760px);
-  --site-realm-art-position:50% 50%;
-  --site-realm-fallback:#111;
-  --site-realm-overlay:linear-gradient(180deg,rgba(5,7,9,.14),rgba(5,7,9,.20));
-}
-html[data-site-floor="heaven"]{
-  --site-realm-art:url("./home-heaven.avif");
-  --site-realm-art-position:50% 18%;
-  --site-realm-fallback:#24104c;
-  --site-realm-overlay:linear-gradient(180deg,rgba(21,12,45,.08),rgba(35,22,52,.14) 58%,rgba(71,44,39,.18));
-}
-html[data-site-floor="plane"]{
-  --site-realm-art:url("./home-plane.avif");
-  --site-realm-art-position:50% 47%;
-  --site-realm-fallback:#244f66;
-  --site-realm-overlay:linear-gradient(180deg,rgba(8,24,29,.06),rgba(10,26,20,.13) 62%,rgba(14,19,12,.18));
-}
-html[data-site-floor="below"]{
-  --site-realm-art:url("./home-below.avif");
-  --site-realm-art-position:50% 74%;
-  --site-realm-fallback:#1a0906;
-  --site-realm-overlay:linear-gradient(180deg,rgba(28,15,9,.08),rgba(22,9,7,.20) 58%,rgba(8,3,2,.30));
-}
+/* Canonical single-floor realm renderer.
+   Floor-specific palette and art live only in the token blocks above. */
 html[data-site-floor]{
   background:var(--site-realm-fallback);
 }
@@ -654,6 +632,7 @@ html[data-site-floor] body:not(.home-body)::before{
 @media(max-width:700px){
   html[data-site-floor]{--site-realm-art-size:max(118vw,75vh,720px)}
 }
+html[data-site-floor] body.home-body{min-height:100vh}
 html[data-site-floor] body.home-body::before{content:none;display:none}
 
 /* End of canonical elevator + pixel-world stylesheet. Do not append legacy copies below this line. */
