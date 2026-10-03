@@ -42,21 +42,6 @@
     },{rootMargin:`${margin} 0px`});
     observer.observe(target);
   };
-  const loadDeferredTTS=()=>{
-    if(document.querySelector('script[data-home-tts-loader]'))return;
-    const script=document.createElement('script');
-    script.src='app/site-tts.js?v=20261003a';
-    script.defer=true;
-    script.dataset.homeTtsLoader='';
-    document.body.appendChild(script);
-  };
-  const armTTS=()=>{
-    ['pointerdown','keydown','touchstart'].forEach(type=>window.removeEventListener(type,armTTS));
-    loadDeferredTTS();
-  };
-  ['pointerdown','keydown','touchstart'].forEach(type=>window.addEventListener(type,armTTS,{once:true,passive:true}));
-  if('requestIdleCallback' in window)requestIdleCallback(loadDeferredTTS,{timeout:2600});
-  else setTimeout(loadDeferredTTS,1800);
 
   const newsTarget=document.querySelector('[data-news-feed]');
   loadStyleNear(newsTarget,'app/news.css?v=20260920j','1400px');
