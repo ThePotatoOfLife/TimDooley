@@ -82,14 +82,14 @@
   position:relative;
   width:min(100%,340px);
   aspect-ratio:1;
-  border:1px solid rgba(161,180,151,.45);
+  border:1px solid rgba(214,226,201,.68);
   border-radius:50%;
   overflow:hidden;
   isolation:isolate;
   background:
-    radial-gradient(circle at 50% 48%,rgba(255,255,255,.035),transparent 56%),
-    rgba(255,255,255,.012);
-  box-shadow:inset 0 0 54px rgba(0,0,0,.22),0 18px 48px rgba(0,0,0,.16);
+    radial-gradient(circle at 50% 48%,rgba(255,255,255,.07),transparent 56%),
+    rgba(12,16,13,.58);
+  box-shadow:inset 0 0 54px rgba(0,0,0,.34),0 12px 30px rgba(0,0,0,.22);
 }
 .terrain-emblem::before{
   content:"";
@@ -97,8 +97,8 @@
   inset:6% 9% 43%;
   clip-path:polygon(50% 0,100% 100%,74% 86%,61% 100%,49% 82%,36% 100%,23% 85%,0 100%);
   background:
-    linear-gradient(122deg,transparent 0 34%,rgba(255,246,211,.33) 34.5% 41%,transparent 41.5%),
-    linear-gradient(180deg,rgba(220,202,149,.34),rgba(96,120,101,.16));
+    linear-gradient(122deg,transparent 0 34%,rgba(255,248,218,.48) 34.5% 41%,transparent 41.5%),
+    linear-gradient(180deg,rgba(233,214,160,.48),rgba(112,143,119,.26));
 }
 .terrain-emblem::after{
   content:"";
@@ -106,16 +106,16 @@
   inset:50% 7% 6%;
   clip-path:polygon(0 17%,15% 4%,31% 20%,47% 7%,65% 24%,81% 9%,100% 19%,100% 100%,0 100%);
   background:
-    radial-gradient(ellipse at 28% 53%,rgba(120,154,91,.26) 0 8%,transparent 9%),
-    radial-gradient(ellipse at 70% 63%,rgba(92,128,80,.24) 0 9%,transparent 10%),
-    repeating-linear-gradient(88deg,rgba(133,160,98,.11) 0 2px,transparent 2px 14px),
-    linear-gradient(180deg,rgba(62,86,58,.08),rgba(31,58,43,.48));
+    radial-gradient(ellipse at 28% 53%,rgba(139,178,106,.38) 0 8%,transparent 9%),
+    radial-gradient(ellipse at 70% 63%,rgba(109,151,94,.34) 0 9%,transparent 10%),
+    repeating-linear-gradient(88deg,rgba(153,184,112,.18) 0 2px,transparent 2px 14px),
+    linear-gradient(180deg,rgba(76,104,69,.16),rgba(30,64,44,.68));
 }
 .terrain-emblem__axis,.terrain-emblem__plane{
   position:absolute;
   z-index:3;
   pointer-events:none;
-  background:rgba(192,208,184,.5);
+  background:rgba(224,234,216,.72);
 }
 .terrain-emblem__axis{left:50%;top:8%;bottom:8%;width:1px}
 .terrain-emblem__plane{left:8%;right:8%;top:50%;height:1px}
@@ -127,10 +127,10 @@
   transform:translate(-50%,-50%);
   width:29%;
   height:38%;
-  border:1px solid rgba(216,181,107,.58);
+  border:1px solid rgba(240,205,124,.84);
   border-radius:50% / 58%;
-  background:radial-gradient(ellipse at center,rgba(216,181,107,.10),rgba(216,181,107,.03) 58%,transparent 72%);
-  box-shadow:0 0 28px rgba(216,181,107,.07);
+  background:radial-gradient(ellipse at center,rgba(240,205,124,.18),rgba(216,181,107,.06) 58%,transparent 72%);
+  box-shadow:0 0 28px rgba(240,205,124,.15);
 }
 .terrain-emblem__label{
   position:absolute;
@@ -143,8 +143,8 @@
   text-shadow:0 1px 8px rgba(0,0,0,.85);
   white-space:nowrap;
 }
-.terrain-emblem__label--mountain{top:18%;color:rgba(239,219,162,.78)}
-.terrain-emblem__label--swamp{bottom:16%;color:rgba(160,194,141,.75)}
+.terrain-emblem__label--mountain{top:18%;color:rgba(255,233,174,.94)}
+.terrain-emblem__label--swamp{bottom:16%;color:rgba(181,219,158,.92)}
 @media (prefers-reduced-motion:no-preference){
   .terrain-emblem{transition:transform .25s ease,border-color .25s ease}
   .terrain-emblem:hover{transform:translateY(-2px);border-color:rgba(191,211,179,.62)}
