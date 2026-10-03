@@ -43,6 +43,10 @@ def main() -> int:
                 errors.append(f"homepage stylesheet missing core scoped rule: {marker}")
     if not re.search(r'href=["\']app/home-page\.css\?v=[A-Za-z0-9._-]+["\']', home):
         errors.append("homepage does not load a versioned scoped app/home-page.css asset")
+    if "\\n@media" in home_css:
+        errors.append("homepage stylesheet contains a literal escaped newline before a media query")
+    if "!important" in home_css:
+        errors.append("homepage stylesheet must not rely on !important specificity escalation")
     if re.search(r"<style>[\\s\\S]*?\\.home-", home):
         errors.append("homepage-specific CSS drifted back into an inline <style> block")
 
