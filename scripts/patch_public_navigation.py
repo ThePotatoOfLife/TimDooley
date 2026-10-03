@@ -300,6 +300,19 @@ _PHILOSOPHY_ENTRY_CONTEXTS = {
 }
 
 
+_METAPHYSICS_ENTRY_CONTEXTS = {
+    "philosophy/index.html",
+    "potato-of-life/index.html",
+    "religion/index.html",
+    "house/index.html",
+    "rooms/index.html",
+    "rooms/potatoverse-canon/index.html",
+    "rooms/traditions-texts/index.html",
+    "rooms/inside/symbolic-architecture/index.html",
+    "rooms/inside/practice-ethics/index.html",
+    "rooms/inside/other-traditions/index.html",
+}
+
 _CONTEXT_SUBROOM_IDS = {
     "potato-of-life/index.html": ("canon-identities", "theology-god-language", "symbolic-architecture", "practice-ethics"),
     "tim-dooley/index.html": ("canon-identities", "chronology-events", "witness-attestation", "developmental-genealogy"),
@@ -687,6 +700,13 @@ def _philosophy_entry_anchor(page: Path) -> str:
     return f'<a class="page-nav-subject" href="{_relative_asset_prefix(page)}philosophy/">Philosophy</a>'
 
 
+def _metaphysics_entry_anchor(page: Path) -> str:
+    rel = page.relative_to(OUT).as_posix()
+    if rel == "metaphysics/index.html" or rel not in _METAPHYSICS_ENTRY_CONTEXTS:
+        return ""
+    return f'<a class="page-nav-subject" href="{_relative_asset_prefix(page)}metaphysics/">Potato Metaphysics</a>'
+
+
 def _is_philosophy_family_anchor(anchor: str, page: Path) -> bool:
     rel = page.relative_to(OUT).as_posix()
     if rel not in _PHILOSOPHY_CONTEXTS:
@@ -756,13 +776,16 @@ def normalize_page_nav(text: str, page: Path) -> str:
             )
 
         has_philosophy = any(_clean_nav_label(anchor) == "Philosophy" for anchor in anchors)
+        has_metaphysics = any(_clean_nav_label(anchor) == "Potato Metaphysics" for anchor in anchors)
         philosophy_entry = "" if has_philosophy else _philosophy_entry_anchor(page)
+        metaphysics_entry = "" if has_metaphysics else _metaphysics_entry_anchor(page)
         rewritten = (
             _home_anchor(page)
             + _rooms_anchor(page)
             + _dwelling_anchor(page)
             + _current_subroom_anchor(page)
             + philosophy_entry
+            + metaphysics_entry
             + _philosophy_family_anchors(page)
             + "".join(non_home)
             + "".join(room_anchors)
