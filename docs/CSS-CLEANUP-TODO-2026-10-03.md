@@ -86,3 +86,19 @@ A page is clean when it has a named layout owner, no dead compatibility override
 - [x] Replace its old border-top / border-bottom rule language with individual cards so stray 1px lines do not read as visual artifacts.
 - [ ] Audit other homepage nav/list clusters that still rely on divider-only styling over realm art.
 - [ ] Prefer framed groups + card surfaces over isolated rules whenever the background is visible behind interactive text.
+
+
+## Sub-header / page-nav pass
+
+- [x] Keep the sub-header floating and visually subtle rather than converting it into a dock or heavy card.
+- [x] Normalize generated `.page-nav` menus so Home is always the leftmost anchor on non-home pages.
+- [x] Preserve authored local links after Home instead of replacing page-specific navigation.
+- [x] Project up to 3 governed child Rooms on top-level Dwelling pages.
+- [x] Project up to 2 governed adjacent Rooms inside nested Room pages.
+- [x] Use `data/house/subrooms.json` as the Room-link source instead of hard-coding a second navigation ontology.
+- [x] Add CI checks for Home-first order, duplicate targets and Room-link caps.
+- [x] Re-apply the navigation normalizer after special public-page rewrites so exceptions cannot undo the contract.
+- [ ] Audit pages without `.page-nav` and decide which genuinely need the subtle sub-header versus intentionally specialized navigation.
+- [ ] Review Room-link labels for clarity and shorten only where the full governed title is too long for the line.
+- [ ] Audit whether any useful governed backend Room still lacks a public route before projecting it into navigation.
+- [ ] Check mobile wrapping so the sub-header remains a clean compact line/group rather than becoming button soup.
