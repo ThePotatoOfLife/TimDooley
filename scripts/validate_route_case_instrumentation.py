@@ -6,7 +6,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 MATRIX=ROOT/'data/house/route-case-matrix.json'
 SYNTH=ROOT/'data/house/project-synthesis.json'
-HOME=ROOT/'index.html'
+HOME=ROOT/'index.html'\nHOME_PROJECTION=ROOT/'app/home-page-projection.js'
 
 REQUIRED_CASE_FIELDS=(
     'starting_state','proposed_transition','operator','condition_required',
@@ -18,7 +18,7 @@ def load(path:Path):
 
 def main():
     errors=[]
-    for path in (MATRIX,SYNTH,HOME):
+    for path in (MATRIX,SYNTH,HOME,HOME_PROJECTION):
         if not path.is_file():
             errors.append(f'missing route-instrumentation artifact: {path.relative_to(ROOT)}')
     if errors:
@@ -68,7 +68,7 @@ def main():
     if 'data/house/route-case-matrix.json' not in hp.get('runtime_sources',[]):
         errors.append('homepage projection must read route case matrix at runtime')
 
-    text=HOME.read_text(encoding='utf-8',errors='replace')
+    text=HOME.read_text(encoding='utf-8',errors='replace')+'\\n'+HOME_PROJECTION.read_text(encoding='utf-8',errors='replace')
     for marker in (
         'id="route-comparison"',
         'id="homeRouteTabs"',
