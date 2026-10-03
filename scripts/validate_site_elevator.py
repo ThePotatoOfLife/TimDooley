@@ -244,6 +244,11 @@ def main() -> int:
             errors.append(f"{room_id}: canonical Room homepage missing at rooms/{room_id}/index.html")
         else:
             room_html = room_home.read_text(encoding="utf-8", errors="replace")
+            if primary in {"heaven","plane"}:
+                if "app/room-home.css" not in room_html:
+                    errors.append(f"{room_id}: ordinary governed Room must load shared app/room-home.css")
+                if "<style>" in room_html:
+                    errors.append(f"{room_id}: ordinary governed Room must not keep duplicated inline layout CSS")
             if 'class="room-floor-nav"' in room_html or 'class="page-nav room-floor-nav"' in room_html:
                 errors.append(f"{room_id}: retired in-page floor Room rail must not duplicate the universal elevator")
             if '<a href="../">All Rooms</a>' not in room_html or '<a href="../../house/">House</a>' not in room_html:
