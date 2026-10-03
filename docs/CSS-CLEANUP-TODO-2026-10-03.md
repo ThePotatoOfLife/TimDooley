@@ -102,3 +102,12 @@ A page is clean when it has a named layout owner, no dead compatibility override
 - [ ] Review Room-link labels for clarity and shorten only where the full governed title is too long for the line.
 - [ ] Audit whether any useful governed backend Room still lacks a public route before projecting it into navigation.
 - [ ] Check mobile wrapping so the sub-header remains a clean compact line/group rather than becoming button soup.
+
+
+## Orphan / legacy cleanup batch
+
+- [x] Remove all remaining root-level CSS/JS browser assets after reference and DOM-target verification.
+- [x] Add a CI guard preventing new root-level CSS/JS assets from reappearing.
+- [x] Migrate FAQ and Shadow Farm onto the shared `.page-nav` contract while retaining their local `.nav` compatibility class.
+- [ ] Migrate remaining intentional specialist navigation classes only when they already load `site-system.css` and can preserve local behavior.
+- [ ] Continue reducing inline CSS on older public readers such as Vesica without flattening their unique diagrams.
