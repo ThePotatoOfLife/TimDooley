@@ -80,7 +80,7 @@ The five primary public gateways are:
 - `science/`
 - `world/`
 
-Mature reader/discovery surfaces include Story, Timeline, Collection, Works, Questions, A–Z, Explore, Sources and Context. World Map remains a specialist View beneath World.
+Mature reader/discovery surfaces include Living Tim, Story, Timeline, Collection, Works, Questions, A–Z, Explore, Sources and Context. World Map remains a specialist View beneath World.
 
 ## 3. Public architecture
 
