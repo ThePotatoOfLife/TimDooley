@@ -613,7 +613,7 @@ html[data-site-floor] body:not(.home-body){
   isolation:isolate;
   z-index:0;
   min-height:100vh;
-  background:transparent!important;
+  background:transparent;
 }
 html[data-site-floor] body:not(.home-body)::before{
   content:"";
