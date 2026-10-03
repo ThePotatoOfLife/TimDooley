@@ -18,12 +18,7 @@ body.lower-layer-page{
   min-height:100vh;
   overflow-x:hidden;
   color:var(--site-ink);
-  background:linear-gradient(180deg,
-    #6d6b45 0%,
-    #654633 18%,
-    #36241f 50%,
-    #1b0d0b 78%,
-    #0b0504 100%);
+  background:transparent;
 }
 
 /* The universal data-site-floor="below" realm canvas in site-elevator.css owns

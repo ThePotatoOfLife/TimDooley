@@ -83,20 +83,6 @@ html[data-site-floor="heaven"]{
   --site-reading-glass:rgba(16,10,38,.060);
   --site-reading-glass-line:rgba(245,230,255,.028);
   background-color:#24104c;
-  background:
-    radial-gradient(circle at 84% 9%,rgba(255,238,177,.62) 0 1px,transparent 2.5px),
-    radial-gradient(circle at 18% 13%,rgba(255,247,220,.42) 0 1px,transparent 2.1px),
-    radial-gradient(circle at 53% 24%,rgba(220,205,255,.42) 0 1px,transparent 2.1px),
-    radial-gradient(circle at 71% 37%,rgba(255,183,204,.28) 0 1px,transparent 2.3px),
-    radial-gradient(circle at 31% 8%,rgba(255,201,133,.30) 0 1px,transparent 2.1px),
-    radial-gradient(ellipse at 76% 17%,rgba(126,86,191,.46),transparent 36%),
-    radial-gradient(ellipse at 26% 28%,rgba(74,93,177,.28),transparent 42%),
-    radial-gradient(ellipse at 55% 61%,rgba(235,137,166,.24),transparent 44%),
-    radial-gradient(ellipse at 61% 84%,rgba(240,177,117,.20),transparent 36%),
-    radial-gradient(ellipse at 18% 108%,rgba(88,129,82,.30) 0 23%,transparent 48%),
-    radial-gradient(ellipse at 48% 110%,rgba(70,111,91,.26) 0 22%,transparent 46%),
-    radial-gradient(ellipse at 79% 108%,rgba(97,113,81,.26) 0 21%,transparent 45%),
-    linear-gradient(180deg,#24104c 0%,#342064 25%,#594783 48%,#936b94 67%,#c9848e 82%,#e4a079 100%);
 }
 
 /* PLANE — the static side-view scene owns the village/mountain drawing.
@@ -110,11 +96,6 @@ html[data-site-floor="plane"]{
   --site-reading-glass:rgba(8,23,27,.052);
   --site-reading-glass-line:rgba(232,247,239,.025);
   background-color:#244f66;
-  background:
-    radial-gradient(circle at 84% 10%,rgba(255,225,151,.30),transparent 12%),
-    radial-gradient(ellipse at 50% 16%,rgba(139,199,223,.26),transparent 52%),
-    radial-gradient(ellipse at 20% 22%,rgba(205,231,228,.12),transparent 34%),
-    linear-gradient(180deg,#244f66 0%,#4d8091 36%,#87a59b 55%,#667f59 72%,#2d4630 100%);
 }
 
 /* BELOW — fallback floor canvas. Lower reader pages own their richer ground-to-depth scene. */
@@ -127,12 +108,6 @@ html[data-site-floor="below"]{
   --site-reading-glass:rgba(22,10,7,.065);
   --site-reading-glass-line:rgba(255,226,199,.024);
   background-color:#806047;
-  background:
-    radial-gradient(ellipse at 22% 0%,rgba(158,125,82,.24),transparent 24%),
-    radial-gradient(ellipse at 78% 4%,rgba(129,94,62,.20),transparent 28%),
-    radial-gradient(ellipse at 18% 82%,rgba(146,58,31,.10),transparent 26%),
-    radial-gradient(ellipse at 82% 92%,rgba(178,65,30,.10),transparent 24%),
-    linear-gradient(180deg,#806047 0%,#604431 18%,#422c24 40%,#2c1a16 62%,#190c0a 82%,#080404 100%);
 }
 
 .site-elevator[data-elevator-ready="false"]{

@@ -204,8 +204,6 @@ assert.ok(css.includes('.site-elevator-floor-code'),'terminal board needs a numb
 assert.ok(css.includes('[data-elevator-level="heaven"]::before'),'Heaven needs a distinct elevator scene layer');
 assert.ok(css.includes('html[data-site-floor="heaven"]{'),'resolved Heaven routes should own the root page canvas');
 assert.ok(css.includes('html[data-site-floor="plane"]{'),'resolved Plane routes should own the root page canvas');
-assert.ok(css.includes('linear-gradient(180deg,#244f66'),'Plane page atmosphere must visibly rise above the black foundation');
-assert.ok(css.includes('linear-gradient(180deg,#24104c'),'Heaven page atmosphere must visibly rise from violet crown-space into the warmer lower sky');
 assert.ok(css.includes('background:transparent!important'),'governed page bodies must not paint opaque black over the floor canvas');
 assert.ok(css.includes('--site-panel:rgba(14,16,38,.80)'),'Heaven must tint shared panels, not only the wallpaper');
 assert.ok(css.includes('--site-panel:rgba(13,29,25,.80)'),'Plane must tint shared panels, not only the wallpaper');
@@ -223,7 +221,6 @@ assert.ok(css.includes('linear-gradient(180deg,rgba(36,16,76,.42),rgba(83,53,114
 assert.ok(css.includes('background-color:#24104c'),'Heaven root canvas needs violet cosmic depth');
 assert.ok(css.includes('[data-elevator-level="plane"]::before'),'Plane needs a distinct elevator scene layer');
 assert.equal(/\.site-elevator\[data-elevator-level="plane"\]::before\{[\s\S]*?repeat-x/.test(css),false,'Plane elevator header should not rebuild mountains with repeated gradient strips');
-assert.ok(css.includes('linear-gradient(180deg,#244f66'),'Plane needs blue air transitioning into green land');
 assert.ok(css.includes('[data-elevator-level="below"]::before'),'Below needs a distinct elevator scene layer');
 assert.ok(css.includes('border-radius:0'),'terminal Room tiles should not drift back into pill styling');
 assert.ok(css.includes('background:var(--site-elevator-accent)'),'active Room tile needs a compact location beacon');
@@ -338,10 +335,8 @@ assert.equal(css.includes('background-attachment:fixed'),false,'full-page floor 
 assert.ok(lowerCss.length<13000,'lower floor CSS should remain consolidated rather than regrowing duplicate terrain systems');
 assert.equal(lowerCss.includes('long tap roots'),false,'legacy stripe-built tap-root wallpaper must stay removed');
 assert.equal(lowerCss.includes('thick roots: dark bark edge'),false,'legacy root stripe stack must stay removed');
-assert.ok(lowerCss.includes('#6d6b45 0%')&&lowerCss.includes('#0b0504 100%'),'Below fallback gradient must descend from light earth into near-black heated depth');
 assert.equal(lowerCss.includes('--site-depth-start'),false,'Below should not maintain a second animated depth-wash channel');
 assert.equal(css.includes('@keyframes site-depth-wash'),false,'scene SVGs should own atmosphere instead of a second animated wash layer');
-assert.ok(css.includes('#e4a079 100%'),'Heaven background must descend into a warm peach-gold base');
 assert.ok(css.includes('prefers-reduced-motion:reduce'),'2.5D atmosphere must respect reduced-motion preferences');
 
 console.log('Site elevator resolver + visual contract passed.');
