@@ -4,7 +4,7 @@
 .news-header-copy{color:var(--site-muted);font-size:13px;line-height:1.62}
 .news-header-copy strong{color:#dbe2d8;font-weight:500}
 .news-boundary{border-left:2px solid var(--site-gold);padding-left:13px;margin-top:14px;color:#bdc7b9;font-size:11px}
-.news-orientation{display:grid;grid-template-columns:minmax(220px,.62fr) minmax(0,1.38fr);gap:30px;border-top:1px solid var(--site-line);border-bottom:1px solid var(--site-line);padding:30px 0;margin-bottom:24px}
+.news-orientation{display:grid;grid-template-columns:minmax(220px,.62fr) minmax(0,1.38fr);gap:30px;border:1px solid var(--site-pane-line);border-radius:16px;background:var(--site-pane);box-shadow:var(--site-pane-shadow);padding:24px;margin-bottom:24px}
 .news-orientation h2,.news-pulse-head h2,.news-section-intro h2{font:400 clamp(29px,4vw,44px)/1.04 var(--site-font-serif);letter-spacing:-.03em;margin:2px 0 0}
 .news-orientation-copy p{color:#c9d1c6;font-size:13px;line-height:1.62;margin:0 0 12px}
 .news-orientation-copy em{font-family:var(--site-font-serif);color:#e0e5dc;font-style:normal}
