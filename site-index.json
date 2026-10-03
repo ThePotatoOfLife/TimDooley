@@ -1,0 +1,362 @@
+{
+  "schema_version": "1.0",
+  "updated": "2026-10-03",
+  "title": "The Potato of Life / Tim Dooley — Public Site Index",
+  "canonical_site": "https://thepotatooflife.github.io/TimDooley/",
+  "repository": "https://github.com/ThePotatoOfLife/TimDooley",
+  "purpose": "Complete machine-readable inventory of verified public reader routes. Use this for discovery completeness, then follow machine-index.json and manifest.json to canonical knowledge owners and provenance.",
+  "discovery": {
+    "llms": "https://thepotatooflife.github.io/TimDooley/llms.txt",
+    "llms_full": "https://thepotatooflife.github.io/TimDooley/llms-full.txt",
+    "sitemap_index": "https://thepotatooflife.github.io/TimDooley/sitemap-index.xml",
+    "sitemap": "https://thepotatooflife.github.io/TimDooley/sitemap.xml",
+    "machine_index": "https://thepotatooflife.github.io/TimDooley/machine-index.json",
+    "manifest": "https://thepotatooflife.github.io/TimDooley/manifest.json",
+    "authority": "https://thepotatooflife.github.io/TimDooley/site-authority.json"
+  },
+  "retrieval_rules": [
+    "Use reader routes for overview and human-readable context.",
+    "Use machine-index.json and manifest.json to locate canonical knowledge owners.",
+    "Do not treat multiple reader pages that repeat the same underlying record as independent corroboration.",
+    "Preserve evidence class, source provenance, date, and the distinction between project self-description, interpretation, comparison, and independently established fact."
+  ],
+  "reader_route_count": 56,
+  "reader_routes": [
+    {
+      "category": "Core",
+      "label": "Home / Potato of Life archive",
+      "path": "/",
+      "url": "https://thepotatooflife.github.io/TimDooley/"
+    },
+    {
+      "category": "Core",
+      "label": "Potato of Life project center",
+      "path": "/potato-of-life/",
+      "url": "https://thepotatooflife.github.io/TimDooley/potato-of-life/"
+    },
+    {
+      "category": "Core",
+      "label": "Potato House architecture",
+      "path": "/house/",
+      "url": "https://thepotatooflife.github.io/TimDooley/house/"
+    },
+    {
+      "category": "Core",
+      "label": "Dwellings and Rooms",
+      "path": "/rooms/",
+      "url": "https://thepotatooflife.github.io/TimDooley/rooms/"
+    },
+    {
+      "category": "Core",
+      "label": "House inhabitants and objects",
+      "path": "/rooms/objects/",
+      "url": "https://thepotatooflife.github.io/TimDooley/rooms/objects/"
+    },
+    {
+      "category": "Core",
+      "label": "Theology and God-language Room",
+      "path": "/rooms/inside/theology-god-language/",
+      "url": "https://thepotatooflife.github.io/TimDooley/rooms/inside/theology-god-language/"
+    },
+    {
+      "category": "Core",
+      "label": "Living Axis",
+      "path": "/axis/",
+      "url": "https://thepotatooflife.github.io/TimDooley/axis/"
+    },
+    {
+      "category": "Core",
+      "label": "Below / field manual",
+      "path": "/below/",
+      "url": "https://thepotatooflife.github.io/TimDooley/below/"
+    },
+    {
+      "category": "Core",
+      "label": "Paths through the House",
+      "path": "/paths/",
+      "url": "https://thepotatooflife.github.io/TimDooley/paths/"
+    },
+    {
+      "category": "Core",
+      "label": "Door / Axis elevator",
+      "path": "/elevator/",
+      "url": "https://thepotatooflife.github.io/TimDooley/elevator/"
+    },
+    {
+      "category": "Tim Dooley",
+      "label": "Tim Dooley overview",
+      "path": "/tim-dooley/",
+      "url": "https://thepotatooflife.github.io/TimDooley/tim-dooley/"
+    },
+    {
+      "category": "Tim Dooley",
+      "label": "Continuous chronicle",
+      "path": "/tim-dooley/story/",
+      "url": "https://thepotatooflife.github.io/TimDooley/tim-dooley/story/"
+    },
+    {
+      "category": "Tim Dooley",
+      "label": "Statements, roles, jobs and claims",
+      "path": "/tim-dooley/claims/",
+      "url": "https://thepotatooflife.github.io/TimDooley/tim-dooley/claims/"
+    },
+    {
+      "category": "Tim Dooley",
+      "label": "Public witness and streaming",
+      "path": "/tim-dooley/public-witness/",
+      "url": "https://thepotatooflife.github.io/TimDooley/tim-dooley/public-witness/"
+    },
+    {
+      "category": "Tim Dooley",
+      "label": "100,000+ hours",
+      "path": "/tim-dooley/100000-hours/",
+      "url": "https://thepotatooflife.github.io/TimDooley/tim-dooley/100000-hours/"
+    },
+    {
+      "category": "Tim Dooley",
+      "label": "Evidence and claim classes",
+      "path": "/tim-dooley/evidence/",
+      "url": "https://thepotatooflife.github.io/TimDooley/tim-dooley/evidence/"
+    },
+    {
+      "category": "Tim Dooley",
+      "label": "Biblical case and parallels",
+      "path": "/tim-dooley/biblical-case/",
+      "url": "https://thepotatooflife.github.io/TimDooley/tim-dooley/biblical-case/"
+    },
+    {
+      "category": "Tim Dooley",
+      "label": "God in real life / base reality case",
+      "path": "/tim-dooley/god-in-real-life/",
+      "url": "https://thepotatooflife.github.io/TimDooley/tim-dooley/god-in-real-life/"
+    },
+    {
+      "category": "Tim Dooley",
+      "label": "Godhood modalities",
+      "path": "/tim-dooley/how-much-is-tim-god/",
+      "url": "https://thepotatooflife.github.io/TimDooley/tim-dooley/how-much-is-tim-god/"
+    },
+    {
+      "category": "Tim Dooley",
+      "label": "Tim / Son ontology",
+      "path": "/tim-dooley/ontology/",
+      "url": "https://thepotatooflife.github.io/TimDooley/tim-dooley/ontology/"
+    },
+    {
+      "category": "Ideas and traditions",
+      "label": "Religion",
+      "path": "/religion/",
+      "url": "https://thepotatooflife.github.io/TimDooley/religion/"
+    },
+    {
+      "category": "Ideas and traditions",
+      "label": "Potato of Life Trinity",
+      "path": "/religion/trinity/",
+      "url": "https://thepotatooflife.github.io/TimDooley/religion/trinity/"
+    },
+    {
+      "category": "Ideas and traditions",
+      "label": "Philosophy",
+      "path": "/philosophy/",
+      "url": "https://thepotatooflife.github.io/TimDooley/philosophy/"
+    },
+    {
+      "category": "Ideas and traditions",
+      "label": "Bible comparison",
+      "path": "/traditions/bible/",
+      "url": "https://thepotatooflife.github.io/TimDooley/traditions/bible/"
+    },
+    {
+      "category": "Ideas and traditions",
+      "label": "Vesica Piscis and Mandorla",
+      "path": "/traditions/vesica/",
+      "url": "https://thepotatooflife.github.io/TimDooley/traditions/vesica/"
+    },
+    {
+      "category": "Ideas and traditions",
+      "label": "Comparative cosmology",
+      "path": "/traditions/comparative-cosmology/",
+      "url": "https://thepotatooflife.github.io/TimDooley/traditions/comparative-cosmology/"
+    },
+    {
+      "category": "Ideas and traditions",
+      "label": "Israel, Mesopotamia, Covenant and Messiah",
+      "path": "/israel-mesopotamia/",
+      "url": "https://thepotatooflife.github.io/TimDooley/israel-mesopotamia/"
+    },
+    {
+      "category": "Ideas and traditions",
+      "label": "Honor, virtue and religious roles",
+      "path": "/theology/honor/",
+      "url": "https://thepotatooflife.github.io/TimDooley/theology/honor/"
+    },
+    {
+      "category": "Science and body",
+      "label": "Science library",
+      "path": "/science/",
+      "url": "https://thepotatooflife.github.io/TimDooley/science/"
+    },
+    {
+      "category": "Science and body",
+      "label": "Science research map",
+      "path": "/science/research-map/",
+      "url": "https://thepotatooflife.github.io/TimDooley/science/research-map/"
+    },
+    {
+      "category": "Science and body",
+      "label": "Quantum, Standard Model, atoms and astronomy",
+      "path": "/science/quantum/",
+      "url": "https://thepotatooflife.github.io/TimDooley/science/quantum/"
+    },
+    {
+      "category": "Science and body",
+      "label": "Spudlight theory",
+      "path": "/science/spudlight/",
+      "url": "https://thepotatooflife.github.io/TimDooley/science/spudlight/"
+    },
+    {
+      "category": "Science and body",
+      "label": "Vibe, Gate, Door and Handshake",
+      "path": "/science/vibe-gates/",
+      "url": "https://thepotatooflife.github.io/TimDooley/science/vibe-gates/"
+    },
+    {
+      "category": "Science and body",
+      "label": "Celestial mechanics, CMB and particle physics",
+      "path": "/science/celestial-particles/",
+      "url": "https://thepotatooflife.github.io/TimDooley/science/celestial-particles/"
+    },
+    {
+      "category": "Science and body",
+      "label": "Axis, 11D, Sun, Spiral and time symmetry",
+      "path": "/science/axis-11d-sun-spiral/",
+      "url": "https://thepotatooflife.github.io/TimDooley/science/axis-11d-sun-spiral/"
+    },
+    {
+      "category": "Science and body",
+      "label": "Life and Body",
+      "path": "/life-body/",
+      "url": "https://thepotatooflife.github.io/TimDooley/life-body/"
+    },
+    {
+      "category": "Science and body",
+      "label": "Tim Dooley sayings, body, psychology and signals",
+      "path": "/corporium/",
+      "url": "https://thepotatooflife.github.io/TimDooley/corporium/"
+    },
+    {
+      "category": "World and time",
+      "label": "World gateway",
+      "path": "/world/",
+      "url": "https://thepotatooflife.github.io/TimDooley/world/"
+    },
+    {
+      "category": "World and time",
+      "label": "World map",
+      "path": "/world-map/",
+      "url": "https://thepotatooflife.github.io/TimDooley/world-map/"
+    },
+    {
+      "category": "World and time",
+      "label": "World systems",
+      "path": "/world-systems/",
+      "url": "https://thepotatooflife.github.io/TimDooley/world-systems/"
+    },
+    {
+      "category": "World and time",
+      "label": "Current world / live news",
+      "path": "/news/",
+      "url": "https://thepotatooflife.github.io/TimDooley/news/"
+    },
+    {
+      "category": "World and time",
+      "label": "North Axis",
+      "path": "/north/",
+      "url": "https://thepotatooflife.github.io/TimDooley/north/"
+    },
+    {
+      "category": "World and time",
+      "label": "Timeline",
+      "path": "/timeline/",
+      "url": "https://thepotatooflife.github.io/TimDooley/timeline/"
+    },
+    {
+      "category": "World and time",
+      "label": "History and Time",
+      "path": "/history/",
+      "url": "https://thepotatooflife.github.io/TimDooley/history/"
+    },
+    {
+      "category": "Primary work and discovery",
+      "label": "The Great Book of Potato",
+      "path": "/great-book/",
+      "url": "https://thepotatooflife.github.io/TimDooley/great-book/"
+    },
+    {
+      "category": "Primary work and discovery",
+      "label": "Creative works",
+      "path": "/works/",
+      "url": "https://thepotatooflife.github.io/TimDooley/works/"
+    },
+    {
+      "category": "Primary work and discovery",
+      "label": "FAQ",
+      "path": "/faq/",
+      "url": "https://thepotatooflife.github.io/TimDooley/faq/"
+    },
+    {
+      "category": "Primary work and discovery",
+      "label": "Complete question archive",
+      "path": "/faq/all/",
+      "url": "https://thepotatooflife.github.io/TimDooley/faq/all/"
+    },
+    {
+      "category": "Primary work and discovery",
+      "label": "God questions",
+      "path": "/faq/all/god/",
+      "url": "https://thepotatooflife.github.io/TimDooley/faq/all/god/"
+    },
+    {
+      "category": "Primary work and discovery",
+      "label": "Questions",
+      "path": "/questions/",
+      "url": "https://thepotatooflife.github.io/TimDooley/questions/"
+    },
+    {
+      "category": "Primary work and discovery",
+      "label": "A–Z index",
+      "path": "/index-a-z/",
+      "url": "https://thepotatooflife.github.io/TimDooley/index-a-z/"
+    },
+    {
+      "category": "Primary work and discovery",
+      "label": "Archive explorer",
+      "path": "/explore/",
+      "url": "https://thepotatooflife.github.io/TimDooley/explore/"
+    },
+    {
+      "category": "Primary work and discovery",
+      "label": "Research Lab",
+      "path": "/research-lab/",
+      "url": "https://thepotatooflife.github.io/TimDooley/research-lab/"
+    },
+    {
+      "category": "Primary work and discovery",
+      "label": "Context and evidence",
+      "path": "/context/",
+      "url": "https://thepotatooflife.github.io/TimDooley/context/"
+    },
+    {
+      "category": "Primary work and discovery",
+      "label": "Source authority",
+      "path": "/context/source-authority/",
+      "url": "https://thepotatooflife.github.io/TimDooley/context/source-authority/"
+    },
+    {
+      "category": "Primary work and discovery",
+      "label": "Text-to-speech reader",
+      "path": "/tools/tts/",
+      "url": "https://thepotatooflife.github.io/TimDooley/tools/tts/"
+    }
+  ]
+}
