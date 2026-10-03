@@ -290,3 +290,56 @@
     backdrop-filter:none;-webkit-backdrop-filter:none;background:#0b0e0c;
   }
 }
+
+
+/* Homepage three-world art integration — 2026-10-03c */
+/* The homepage is its own vertical world. These scene plates now actually render here,
+   rather than existing only in the floor/elevator system. */
+body:has(.home-page){
+  background-color:#090a0a;
+  background-image:
+    linear-gradient(180deg,
+      rgba(17,10,28,.18) 0%,
+      rgba(18,26,24,.08) 28%,
+      rgba(10,20,19,.05) 46%,
+      rgba(33,22,16,.08) 70%,
+      rgba(13,7,6,.24) 100%),
+    linear-gradient(90deg,
+      rgba(8,8,10,.16) 0%,
+      rgba(8,8,10,.035) 18%,
+      rgba(248,246,231,.025) 48%,
+      rgba(248,246,231,.035) 52%,
+      rgba(8,8,10,.035) 82%,
+      rgba(8,8,10,.16) 100%),
+    url("./site-tree-perspective.svg?v=20261003c"),
+    url("./site-plane-organic-field.svg?v=20261003c"),
+    url("./site-below-root-field.svg?v=20261003c");
+  background-repeat:no-repeat;
+  background-position:center,center,center top,center 48%,center bottom;
+  background-size:100% 100%,100% 100%,max(1120px,100vw) auto,max(1120px,100vw) auto,max(1120px,100vw) auto;
+  background-attachment:scroll;
+}
+.home-page{background:transparent}
+/* Side colour survives; central art is gently de-emphasized by the existing fog corridor. */
+@media(min-width:1400px){
+  body:has(.home-page){
+    background-size:100% 100%,100% 100%,min(1660px,108vw) auto,min(1660px,108vw) auto,min(1660px,108vw) auto;
+  }
+}
+@media(max-width:760px){
+  body:has(.home-page){
+    background-size:100% 100%,100% 100%,1120px auto,1080px auto,1080px auto;
+    background-position:center,center,50% top,50% 48%,50% bottom;
+  }
+}
+@media(prefers-reduced-transparency:reduce){
+  body:has(.home-page){
+    background-image:
+      linear-gradient(180deg,rgba(13,10,17,.76),rgba(9,14,12,.82) 48%,rgba(13,8,6,.88)),
+      url("./site-tree-perspective.svg?v=20261003c"),
+      url("./site-plane-organic-field.svg?v=20261003c"),
+      url("./site-below-root-field.svg?v=20261003c");
+    background-position:center,center top,center 48%,center bottom;
+    background-size:100% 100%,max(1120px,100vw) auto,max(1120px,100vw) auto,max(1120px,100vw) auto;
+  }
+}
