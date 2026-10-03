@@ -69,11 +69,6 @@ html[data-site-floor]{
   min-height:100%;
   color-scheme:dark;
 }
-html[data-site-floor] body:not(.home-body){
-  min-height:100vh;
-  background:transparent!important;
-}
-
 /* Home spans Heaven → Plane → Below and owns a dedicated multi-realm canvas. */
 html[data-site-floor] body.home-body{min-height:100vh}
 html[data-site-floor] body.home-body::before{content:none;display:none}
