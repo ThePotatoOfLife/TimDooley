@@ -343,3 +343,19 @@ body:has(.home-page){
     background-size:100% 100%,max(1120px,100vw) auto,max(1120px,100vw) auto,max(1120px,100vw) auto;
   }
 }
+
+
+/* Homepage owns its world canvas — 2026-10-03d */
+/* Build-time floor wiring labels Home as Plane for navigation, but Home now has its own
+   Heaven → Plane → Below composition. Suppress the generic single-floor canvas here. */
+html[data-site-floor] body:has(.home-page):not(.lower-layer-page)::before,
+html[data-site-floor] body:has(.home-page):not(.lower-layer-page)::after{
+  display:none!important;
+}
+/* Preserve edge richness while keeping the reader corridor pale and quiet. */
+body:has(.home-page){
+  box-shadow:inset 9vw 0 12vw -10vw rgba(92,54,126,.24),inset -9vw 0 12vw -10vw rgba(55,104,91,.23);
+}
+.home-page{
+  text-shadow:0 1px 12px rgba(0,0,0,.13);
+}
