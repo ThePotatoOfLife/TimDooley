@@ -221,15 +221,21 @@ assert.equal(/\.site-elevator\[data-elevator-level="plane"\]::before\{[\s\S]*?re
 assert.ok(css.includes('[data-elevator-level="below"]::before'),'Below needs a distinct elevator scene layer');
 assert.ok(css.includes('border-radius:0'),'terminal Room tiles should not drift back into pill styling');
 assert.ok(css.includes('background:var(--site-elevator-accent)'),'active Room tile needs a compact location beacon');
+for(const floor of ['heaven','plane','below']){
+  assert.ok(css.includes('.site-elevator[data-elevator-level="'+floor+'"]{'),'elevator must expose a '+floor+' accent token');
+  assert.equal(css.includes('.site-elevator[data-elevator-level="'+floor+'"] .site-elevator-room{'),false,'Room tiles must use one neutral material skin across floors');
+}
+assert.equal(css.includes('backdrop-filter:blur(8px)'),false,'elevator must not spend GPU work on floor-specific blur skins');
+assert.equal(css.includes('backdrop-filter:blur(9px)'),false,'elevator reel must not use a separate Heaven blur skin');
 assert.equal(css.includes('.site-elevator-room.is-secondary'),false,'header CSS must not preserve cross-floor Room affordances');
 assert.equal(source.includes('is-secondary'),false,'runtime must not emit cross-floor Room doors');
-assert.ok(css.includes('[data-elevator-level="plane"] .site-elevator-room'),'Plane Room tiles need block-earth material styling');
-assert.ok(css.includes('[data-elevator-level="heaven"] .site-elevator-room'),'Heaven Room tiles need sky material styling');
+
+
 assert.ok(css.includes('rgba(18,49,75,.66)'),'Heaven Room panes must remain readable while revealing more sky');
 assert.ok(!css.includes('backdrop-filter:blur(6px) saturate(116%)'),'Heaven should blur shared panes rather than every Room tile');
 assert.ok(css.includes('@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px)))'),'Heaven glass needs an opaque fallback when blur is unavailable');
 assert.ok(css.includes('@media (prefers-contrast: more)'),'Heaven glass needs an explicit high-contrast mode');
-assert.ok(css.includes('[data-elevator-level="heaven"] .site-elevator-room.is-active'),'Heaven current Room needs a dedicated glass-active state');
+
 assert.ok(css.includes('rgba(15,38,60,.72)'),'Heaven floor board needs readable translucent glass');
 assert.ok(css.includes('backdrop-filter:blur(9px) saturate(122%)'),'Heaven floor board needs a restrained frosted-glass treatment');
 assert.ok(css.includes('rgba(11,33,52,.64)'),'Heaven Room rail needs translucent glass over the sky');
@@ -241,7 +247,7 @@ assert.ok(css.includes('[data-elevator-ready="false"]'),'loading state must have
 assert.ok(css.includes('--elevator-room-min:49px'),'narrow mobile Plane grid must fit enough columns to avoid four Room rows');
 assert.ok(css.includes('--elevator-floor-size:12px'),'floor label must remain immediately readable');
 assert.ok(css.includes('text-shadow:0 1px 0 rgba(0,0,0,.95)'),'floor text needs dark contrast shadow');
-assert.ok(css.includes('[data-elevator-level="below"] .site-elevator-room'),'Below Room tiles need underground material styling');
+
 assert.ok(css.includes('background:transparent'),'arrow controls must float without metallic button blocks');
 assert.match(css,/\.site-elevator\{[\s\S]*?display:block;/,'elevator shell must define its own display mode without specificity escalation');
 assert.ok((css.match(/!important/g)||[]).length<=8,'elevator CSS should keep specificity escalation tightly bounded');
