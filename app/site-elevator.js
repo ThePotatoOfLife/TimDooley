@@ -156,62 +156,11 @@
     return row?.label||({heaven:'Heaven',plane:'Plane',below:'Below'}[levelId]||'Plane');
   }
 
-  function installSceneParallax(){
-    if(typeof window==='undefined'||typeof document==='undefined')return ()=>{};
-    const root=document.documentElement;
-    const reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const nativeScrollTimeline=typeof CSS!=='undefined'&&typeof CSS.supports==='function'&&
-      CSS.supports('animation-timeline: scroll(root block)');
-    if(reduced){
-      root.style.setProperty('--site-scene-y','0px');
-      root.dataset.sceneParallax='reduced';
-      return ()=>{};
-    }
-    if(nativeScrollTimeline){
-      root.dataset.sceneParallax='native';
-      return ()=>{};
-    }
-
-    root.dataset.sceneParallax='fallback';
-    let frame=0;
-    let maxTravel=0;
-    const measure=()=>{
-      const raw=getComputedStyle(root).getPropertyValue('--site-scene-travel').trim();
-      const value=parseFloat(raw)||-112;
-      maxTravel=Math.abs(value)*(window.innerHeight/100);
-    };
-    const update=()=>{
-      frame=0;
-      const scrollY=Math.max(0,window.scrollY||window.pageYOffset||0);
-      const maxScroll=Math.max(1,document.documentElement.scrollHeight-window.innerHeight);
-      const progress=Math.max(0,Math.min(1,scrollY/maxScroll));
-      root.style.setProperty('--site-scene-y',(-progress*maxTravel).toFixed(2)+'px');
-    };
-    const request=()=>{
-      if(frame)return;
-      frame=requestAnimationFrame(update);
-    };
-    const onResize=()=>{
-      measure();
-      request();
-    };
-    measure();
-    update();
-    window.addEventListener('scroll',request,{passive:true});
-    window.addEventListener('resize',onResize,{passive:true});
-    return ()=>{
-      window.removeEventListener('scroll',request);
-      window.removeEventListener('resize',onResize);
-      if(frame)cancelAnimationFrame(frame);
-    };
-  }
-
   function mount(options={}){
     if(typeof document==='undefined'||typeof window==='undefined')return null;
     if(document.querySelector('.site-elevator'))return document.querySelector('.site-elevator');
     const context=browserContext();
     if(!context||!document.body)return null;
-    installSceneParallax();
 
     const header=document.createElement('header');
     header.className='site-elevator';
@@ -470,7 +419,7 @@
     return header;
   }
 
-  const api={LEVELS,normalizeRoute,resolveSpatialContext,roomsForLevel,landmarksForLevel,stepLevel,inheritParentContext,installSceneParallax,mount};
+  const api={LEVELS,normalizeRoute,resolveSpatialContext,roomsForLevel,landmarksForLevel,stepLevel,inheritParentContext,mount};
   if(typeof exports==='object'){
     exports.LEVELS=LEVELS;
     exports.normalizeRoute=normalizeRoute;
@@ -479,7 +428,6 @@
     exports.landmarksForLevel=landmarksForLevel;
     exports.stepLevel=stepLevel;
     exports.inheritParentContext=inheritParentContext;
-    exports.installSceneParallax=installSceneParallax;
     exports.mount=mount;
   }else{
     root.SiteElevator=api;
