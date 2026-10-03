@@ -317,15 +317,16 @@ def main()->int:
             "--lower-root",
             "--lower-stone",
             "Salvaged 2026-10-01 visual language",
-            "site-below-root-field.svg",
-            "transform:translate3d(0,var(--site-scene-y,0px),0)",
-            "animation:site-scene-parallax",
+            "universal data-site-floor=\"below\" realm canvas",
+            "semantic stage styling",
         ):
             if marker not in lower_css:
                 errors.append(f"lower-layer visual system missing marker: {marker}")
         for retired in (
             "lower-layer-surface::before",
             "lower-layer-surface::after",
+            "body.lower-layer-page::before",
+            "site-below-root-field.svg",
             "site-depth-wash",
             "--site-depth-progress",
         ):
