@@ -276,7 +276,9 @@ html[data-site-floor] .page > :where(p.boundary,p.note,p.warning,p.lede,.boundar
 
 /* Reader-first editorial layer: substance before wayfinding. */
 .dwelling-reflection{
-  max-width:860px;
+  width:100%;
+  max-width:none;
+  box-sizing:border-box;
   margin:44px 0 38px;
   padding:0 0 0 18px;
   border-left:1px solid color-mix(in srgb,var(--site-gold) 54%,transparent);
