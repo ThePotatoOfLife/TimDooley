@@ -113,5 +113,18 @@
   }
 
   const start=()=>{void boot()};
-  doc.readyState==='loading'?doc.addEventListener('DOMContentLoaded',start,{once:true}):start();
+  const scheduleStart=()=>{
+    if(!doc.body?.classList.contains('home-body')){start();return}
+    let done=false;
+    const run=()=>{
+      if(done)return;
+      done=true;
+      ['pointerdown','keydown','touchstart'].forEach(type=>root.removeEventListener(type,run));
+      start();
+    };
+    ['pointerdown','keydown','touchstart'].forEach(type=>root.addEventListener(type,run,{once:true,passive:true}));
+    if('requestIdleCallback' in root)root.requestIdleCallback(run,{timeout:2600});
+    else root.setTimeout(run,1800);
+  };
+  doc.readyState==='loading'?doc.addEventListener('DOMContentLoaded',scheduleStart,{once:true}):scheduleStart();
 })(typeof globalThis!=='undefined'?globalThis:window);
