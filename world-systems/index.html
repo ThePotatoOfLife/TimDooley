@@ -60,6 +60,19 @@
 <p>The lesson is not that every hospital, port or help desk follows this exact model. Real systems have multiple servers, priorities, batching, scheduled arrivals and many other complications. The useful point is structural: when arrivals vary, <strong>removing nearly all spare capacity can make waiting explode non-linearly</strong>.</p>
 <p>This is why “idle” capacity is sometimes doing hidden work. Empty beds, spare technicians, reserve transformers, available customer-service staff or slack in a schedule may look inefficient until variability arrives. A system designed only for average load can fail during ordinary peaks without any dramatic external shock.</p>
 </section>
+<section class="systems-reader" id="common-cause-failure">
+<p class="eyebrow">Two backups are not redundant if the same event kills both</p>
+<h2>Common-cause failure can make an apparently resilient system fragile</h2>
+<p>Imagine a hospital has two network connections from different providers. On paper that looks redundant. But both cables enter the building through the same underground conduit. One construction accident cuts the conduit and both connections fail together.</p>
+<p>The same mistake appears in many forms: two generators sharing one fuel supply, two data replicas in the same flood zone, several suppliers relying on the same upstream factory, two teams depending on one irreplaceable specialist, or multiple payment routes using the same identity service.</p>
+<div class="systems-chain">
+<article><div><h3>Nominal redundancy</h3><p class="q">How many backups exist?</p></div><div><p>Count of alternatives. Useful, but incomplete.</p></div></article>
+<article><div><h3>Failure independence</h3><p class="q">What can break them together?</p></div><div><p>Shared geography, power, software, ownership, staff, transport or upstream inputs can collapse several “independent” options at once.</p></div></article>
+<article><div><h3>Recovery diversity</h3><p class="q">Can one failed mode be bypassed differently?</p></div><div><p>Resilience improves when alternatives do not merely duplicate the same dependency graph.</p></div></article>
+</div>
+<p><strong>The systems lesson:</strong> redundancy should be measured by independent paths through the dependency network, not by the number of labels attached to backups.</p>
+</section>
+
 <section class="systems-reader" id="maintenance-before-failure">
 <p class="eyebrow">Maintenance is the work that keeps success boring</p>
 <h2>A pump does not become reliable on the day somebody repairs it after failure</h2>
