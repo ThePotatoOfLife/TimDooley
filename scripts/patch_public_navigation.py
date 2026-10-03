@@ -695,6 +695,17 @@ def _is_philosophy_family_anchor(anchor: str, page: Path) -> bool:
     return label in {label for label, _ in _PHILOSOPHY_FAMILY}
 
 
+def _is_current_subroom_anchor(anchor: str, page: Path) -> bool:
+    rel = page.relative_to(OUT).as_posix()
+    nested = re.fullmatch(r"rooms/inside/([^/]+)/index\.html", rel)
+    if not nested:
+        return False
+    current = _SUBROOM_BY_ROUTE.get(nested.group(1))
+    if not current:
+        return False
+    return _anchor_href(anchor) == _subroom_href(page, current)
+
+
 def normalize_page_nav(text: str, page: Path) -> str:
     """Project a compact discovery spine into the existing subtle sub-header.
 
@@ -721,6 +732,7 @@ def normalize_page_nav(text: str, page: Path) -> str:
                 _is_home_href(href, page)
                 or _is_rooms_anchor(anchor)
                 or _is_redundant_architecture_anchor(anchor, page)
+                or _is_current_subroom_anchor(anchor, page)
                 or _is_philosophy_family_anchor(anchor, page)
             ):
                 continue
