@@ -262,6 +262,26 @@ _SUBROOM_NAV_LABELS = {
     "experiments-formalization": "Experiments & Formalization",
     "research-programmes": "Research Programmes",
 }
+_PHILOSOPHY_FAMILY = (
+    ("Philosophy", "philosophy/"),
+    ("Knowledge & Belief", "philosophy/knowledge-belief.html"),
+    ("Trust & Repair", "philosophy/trust-repair.html"),
+    ("Attention & Agency", "philosophy/attention-agency.html"),
+    ("Interpretive Justice", "philosophy/interpretive-justice.html"),
+)
+
+_PHILOSOPHY_CONTEXTS = {
+    "philosophy/index.html",
+    "philosophy/knowledge-belief.html",
+    "philosophy/trust-repair.html",
+    "philosophy/attention-agency.html",
+    "philosophy/interpretive-justice.html",
+    "rooms/inside/practice-ethics/index.html",
+    "rooms/inside/other-traditions/index.html",
+    "rooms/inside/great-book-literature/index.html",
+    "rooms/inside/symbolic-architecture/index.html",
+}
+
 _CONTEXT_SUBROOM_IDS = {
     "potato-of-life/index.html": ("canon-identities", "theology-god-language", "symbolic-architecture", "practice-ethics"),
     "tim-dooley/index.html": ("canon-identities", "chronology-events", "witness-attestation", "developmental-genealogy"),
@@ -623,6 +643,23 @@ def _room_nav_candidates(page: Path) -> list[dict]:
     return siblings + cross_adjacent
 
 
+def _philosophy_family_anchors(page: Path) -> str:
+    rel = page.relative_to(OUT).as_posix()
+    if rel not in _PHILOSOPHY_CONTEXTS:
+        return ""
+    prefix = _relative_asset_prefix(page)
+    out: list[str] = []
+    for label, target in _PHILOSOPHY_FAMILY:
+        href = prefix + target
+        current = ""
+        if rel == target.rstrip("/"):
+            current = ' aria-current="page" class="page-nav-current"'
+        elif rel == target + "index.html":
+            current = ' aria-current="page" class="page-nav-current"'
+        out.append(f'<a href="{href}"{current}>{html.escape(label)}</a>')
+    return "".join(out)
+
+
 def normalize_page_nav(text: str, page: Path) -> str:
     """Project a compact discovery spine into the existing subtle sub-header.
 
@@ -671,6 +708,7 @@ def normalize_page_nav(text: str, page: Path) -> str:
             + _rooms_anchor(page)
             + _dwelling_anchor(page)
             + _current_subroom_anchor(page)
+            + _philosophy_family_anchors(page)
             + "".join(non_home)
             + "".join(room_anchors)
         )
