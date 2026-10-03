@@ -205,6 +205,57 @@ _ELEVATOR_SUBROOM_PARENT = {
     for row in _ELEVATOR_SUBROOMS.get("subrooms", [])
     if isinstance(row, dict) and row.get("status") == "active" and row.get("id") and row.get("parent_room_id")
 }
+
+_ACTIVE_SUBROOM_ROWS = [
+    row for row in _ELEVATOR_SUBROOMS.get("subrooms", [])
+    if isinstance(row, dict) and row.get("status") == "active" and row.get("id") and row.get("parent_room_id")
+]
+_SUBROOM_BY_ID = {str(row["id"]): row for row in _ACTIVE_SUBROOM_ROWS}
+_SUBROOM_BY_ROUTE = {str(row.get("route_id") or row["id"]): row for row in _ACTIVE_SUBROOM_ROWS}
+_SUBROOMS_BY_PARENT: dict[str, list[dict]] = {}
+for _row in _ACTIVE_SUBROOM_ROWS:
+    _SUBROOMS_BY_PARENT.setdefault(str(_row["parent_room_id"]), []).append(_row)
+
+_SUBROOM_NAV_LABELS = {
+    "canon-identities": "Identities & Roles",
+    "theology-god-language": "Theology",
+    "symbolic-architecture": "Symbolic Architecture",
+    "practice-ethics": "Practice & Ethics",
+    "provenance-evidence": "Provenance & Evidence",
+    "memory-recovery": "Memory & Recovery",
+    "witness-attestation": "Witness",
+    "chronology-events": "Events",
+    "developmental-genealogy": "Genealogy",
+    "prediction-revelation-time": "Prediction & Revelation",
+    "bible-christianity": "Bible & Christianity",
+    "comparative-mythology": "Comparative Mythology",
+    "esoteric-sacred-geometry": "Sacred Geometry",
+    "other-traditions": "Other Traditions",
+    "math-geometry": "Math & Geometry",
+    "physics-cosmology": "Physics & Cosmology",
+    "systems-dynamics": "Systems & Dynamics",
+    "model-testing": "Testing",
+    "potato-biology": "Potato Biology",
+    "neurobiology": "Neurobiology",
+    "whole-body": "Whole Body",
+    "symbolic-body-comparison": "Body Crosswalk",
+    "politics-governance": "Politics",
+    "law-justice": "Law & Justice",
+    "economy-finance": "Economy & Finance",
+    "infrastructure-capability": "Infrastructure",
+    "geography-countries": "Geography",
+    "internet-platforms": "Internet & Platforms",
+    "subculture-group-formation": "Subculture & Groups",
+    "information-ecology": "Information Ecology",
+    "great-book-literature": "Great Book",
+    "music-sound": "Music & Sound",
+    "visual-art": "Visual Art",
+    "games-simulations": "Games & Simulations",
+    "house-architecture": "House Architecture",
+    "open-questions": "Open Questions",
+    "experiments-formalization": "Experiments",
+    "research-programmes": "Research Programmes",
+}
 _ELEVATOR_ROUTE_CONTEXTS = sorted(
     [
         row for row in _ELEVATOR_PROJECTION.get("route_contexts", [])
@@ -397,6 +448,128 @@ def patch_text(path: Path, replacements: tuple[tuple[str, str], ...] = ()) -> bo
     return False
 
 
+
+PAGE_NAV_RE = re.compile(
+    r'''<nav\b(?P<attrs>[^>]*\bclass=["'][^"']*\bpage-nav\b[^"']*["'][^>]*)>(?P<body>.*?)</nav\s*>''',
+    re.I | re.S,
+)
+PAGE_NAV_ANCHOR_RE = re.compile(r'''<a\b[^>]*href=["'][^"']+["'][^>]*>.*?</a\s*>''', re.I | re.S)
+PAGE_NAV_HREF_RE = re.compile(r'''href=["']([^"']+)["']''', re.I)
+PAGE_NAV_CLASS_RE = re.compile(r'''\bclass=["']([^"']*)["']''', re.I)
+
+
+def _subroom_nav_label(row: dict) -> str:
+    subroom_id = str(row.get("id") or "")
+    return _SUBROOM_NAV_LABELS.get(subroom_id, str(row.get("title") or subroom_id))
+
+
+def _subroom_href(page: Path, row: dict) -> str:
+    route_id = str(row.get("route_id") or row.get("id") or "")
+    return f"{_relative_asset_prefix(page)}rooms/inside/{route_id}/"
+
+
+def _anchor_href(anchor: str) -> str:
+    match = PAGE_NAV_HREF_RE.search(anchor)
+    return match.group(1) if match else ""
+
+
+def _is_home_href(href: str, page: Path) -> bool:
+    prefix = _relative_asset_prefix(page)
+    normalized = href.strip()
+    return normalized in {
+        prefix,
+        prefix + "index.html",
+        "/",
+        "https://thepotatooflife.github.io/TimDooley/",
+    }
+
+
+def _home_anchor(page: Path) -> str:
+    return f'<a class="page-nav-home" href="{_relative_asset_prefix(page)}">Home</a>'
+
+
+def _room_nav_candidates(page: Path) -> list[dict]:
+    rel = page.relative_to(OUT).as_posix()
+    top = re.fullmatch(r"rooms/([^/]+)/index\.html", rel)
+    if top and top.group(1) != "inside":
+        return list(_SUBROOMS_BY_PARENT.get(top.group(1), []))[:3]
+
+    nested = re.fullmatch(r"rooms/inside/([^/]+)/index\.html", rel)
+    if not nested:
+        return []
+    current = _SUBROOM_BY_ROUTE.get(nested.group(1))
+    if not current:
+        return []
+    candidates: list[dict] = []
+    for adjacent_id in current.get("adjacent_subroom_ids", []):
+        row = _SUBROOM_BY_ID.get(str(adjacent_id))
+        if row:
+            candidates.append(row)
+        if len(candidates) >= 2:
+            break
+    return candidates
+
+
+def normalize_page_nav(text: str, page: Path) -> str:
+    """Keep the subtle page-nav appearance while making its information order predictable.
+
+    Home is always the left anchor on non-home pages. Existing page-local links keep
+    their authored order. Governed Room pages receive a small registry-backed projection:
+    up to three child Rooms on a Dwelling, or two adjacent Rooms inside a nested Room.
+    """
+
+    if page == OUT / "index.html":
+        return text
+
+    def rewrite(match: re.Match[str]) -> str:
+        attrs = match.group("attrs")
+        body = match.group("body")
+        anchors = PAGE_NAV_ANCHOR_RE.findall(body)
+        if not anchors:
+            return match.group(0)
+
+        non_home: list[str] = []
+        seen_hrefs: set[str] = set()
+        for anchor in anchors:
+            href = _anchor_href(anchor)
+            if _is_home_href(href, page):
+                continue
+            if href and href in seen_hrefs:
+                continue
+            if href:
+                seen_hrefs.add(href)
+            non_home.append(anchor)
+
+        room_anchors: list[str] = []
+        for row in _room_nav_candidates(page):
+            href = _subroom_href(page, row)
+            target = OUT / "rooms" / "inside" / str(row.get("route_id") or row.get("id")) / "index.html"
+            if not target.exists() or href in seen_hrefs:
+                continue
+            seen_hrefs.add(href)
+            label = html.escape(_subroom_nav_label(row))
+            full_title = html.escape(str(row.get("title") or label), quote=True)
+            room_anchors.append(
+                f'<a class="page-nav-room" href="{href}" title="{full_title}">{label}</a>'
+            )
+
+        rewritten = _home_anchor(page) + "".join(non_home) + "".join(room_anchors)
+        return f"<nav{attrs}>{rewritten}</nav>"
+
+    return PAGE_NAV_RE.sub(rewrite, text)
+
+
+def patch_page_navs(out: Path = OUT) -> set[Path]:
+    changed: set[Path] = set()
+    for page in out.rglob("*.html"):
+        text = page.read_text(encoding="utf-8", errors="replace")
+        projected = normalize_page_nav(text, page)
+        if projected != text:
+            page.write_text(projected, encoding="utf-8")
+            changed.add(page)
+    return changed
+
+
 def normalize_public_surface(path: Path) -> bool:
     text = path.read_text(encoding="utf-8", errors="replace")
     original = text
@@ -505,6 +678,7 @@ def main() -> None:
         if normalize_public_surface(page):
             changed.add(page)
 
+    changed.update(patch_page_navs(OUT))
     changed.update(patch_shared_asset_versions(OUT))
     changed.update(patch_legacy_tts_readers(OUT))
     changed.update(patch_site_floors(OUT))
