@@ -140,7 +140,19 @@ html[data-site-floor] .page-nav{
   border-radius:10px;
   background:rgba(8,10,10,.54);
   box-shadow:0 6px 18px rgba(0,0,0,.12);
+  row-gap:4px;
+  column-gap:10px;
 }
+.page-nav a{line-height:1.35}
+.page-nav-directory::after,
+.page-nav-dwelling::after{
+  content:"·";
+  margin-left:10px;
+  color:var(--site-faint);
+  font-weight:400;
+}
+.page-nav-current{white-space:nowrap}
+
 .page-nav-home{
   color:var(--site-ink)!important;
   font-weight:700;
@@ -245,8 +257,9 @@ html[data-site-floor] .page > :where(p.boundary,p.note,p.warning,p.lede,.boundar
 
 @media (max-width:700px){
   .page{padding-top:22px;padding-bottom:calc(64px + var(--site-access-clearance))}
-  .page-nav{margin:0 0 20px;padding:7px 9px;flex-wrap:wrap;gap:4px 10px;overflow:visible;overscroll-behavior:auto;scroll-snap-type:none}
-  .page-nav a{flex:0 1 auto;white-space:normal;padding:3px 0;border:0;border-radius:0;scroll-snap-align:none}
+  .page-nav{margin:0 0 20px;padding:7px 9px;flex-wrap:wrap;gap:3px 9px;overflow:visible;overscroll-behavior:auto;scroll-snap-type:none}
+  .page-nav a{flex:0 1 auto;white-space:normal;padding:2px 0;border:0;border-radius:0;scroll-snap-align:none;font-size:11px}
+  .page-nav-directory::after,.page-nav-dwelling::after{margin-left:9px}
   .page-header{margin-bottom:24px}
   .topology-context-head{display:block}
   .topology-context-house{display:inline-block;margin-top:8px}
