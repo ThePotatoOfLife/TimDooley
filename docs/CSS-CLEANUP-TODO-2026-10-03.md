@@ -30,7 +30,7 @@ Active cleanup queue for the post-unification pass. The goal is one owner per vi
 
 ## P1 — dead CSS and ownership
 
-- [ ] Remove orphan root-level CSS/JS only after repository-wide reference verification.
+- [x] Remove orphan root-level CSS/JS only after repository-wide reference verification.
 - [ ] Generate a stylesheet ownership inventory: foundation, floor, reader, Room, CIA, Bible, map/tool, archive application.
 - [ ] Add a validator that flags stylesheets with zero HTML/JS/build references.
 - [ ] Continue stripping dead width/padding overrides from pages already migrated to `.page--reading` and `.page--wide`.
@@ -60,5 +60,14 @@ A page is clean when it has a named layout owner, no dead compatibility override
 - [ ] Audit pages where a specialized layout should opt out with `.surface-clear` rather than inheriting a generic pane.
 - [ ] Find direct text nodes or wrapperless prose that still escape the default pane selectors.
 - [ ] Review any sections that now become double-paned because both module CSS and the global realm contract add surfaces.
-- [ ] Check whether Home should receive additional pane coverage for remaining floating copy independent of single-floor pages.
+- [x] Give Home major reading sections a faint outer pane while keeping stronger inner panes.
 - [ ] Decide whether future realm assets should be exported above 1086×1448 so 1440p/4K displays can stay truly native-sharp.
+
+
+## Cleanup batch log
+
+- [x] Removed duplicated Room base CSS from Music & Sound, Internet & Platforms, Research Programmes, Information Ecology and Neurobiology.
+- [x] Music & Sound no longer carries any inline stylesheet.
+- [x] Removed orphan legacy `simple.css`, `root.css`, and `portal.css` after zero-reference verification.
+- [ ] Move the remaining page-specific nested-Room blocks into shared module owners when two or more rooms repeat the same component family.
+- [ ] Re-run the inline-style census after GitHub code search catches up with these commits.
