@@ -62,4 +62,10 @@
     'app/news.js?v=20260920j',
     '850px'
   );
+
+  loadScriptNear(
+    document.getElementById('reality-cases')||document.getElementById('route-comparison'),
+    'app/home-page-projection.js?v=20261003j',
+    '1100px'
+  );
 })();
