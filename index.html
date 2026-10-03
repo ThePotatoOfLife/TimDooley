@@ -13,12 +13,13 @@
 <link rel="stylesheet" href="app/site-system.css?v=20261003b">
 <link rel="stylesheet" href="app/news.css?v=20260920j">
 <link rel="stylesheet" href="app/site-access.css?v=20260926b">
-<link rel="stylesheet" href="app/home-page.css?v=20261003f">
+<link rel="stylesheet" href="app/home-page.css?v=20261003g">
 <link rel="stylesheet" href="app/terrain-circle.css?v=20260927a">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://thepotatooflife.github.io/TimDooley/#website","name":"The Potato of Life","url":"https://thepotatooflife.github.io/TimDooley/","about":[{"@type":"Thing","name":"Tim Dooley"},{"@type":"Thing","name":"Potato of Life"},{"@type":"Thing","name":"Potatoism"}]},{"@type":"Project","@id":"https://thepotatooflife.github.io/TimDooley/#project","name":"The Potato of Life","alternateName":["Potato of Life","Potatoism","Potatoverse"],"url":"https://thepotatooflife.github.io/TimDooley/","sameAs":["https://github.com/ThePotatoOfLife/TimDooley"],"subjectOf":{"@type":"WebPage","url":"https://thepotatooflife.github.io/TimDooley/tim-dooley/"}}]}</script>
 <style>@media(max-width:720px){.home-terrain-seal{grid-template-columns:1fr!important}.home-terrain-seal .terrain-emblem{margin:auto}}</style>
 </head>
 <body>
+<div class="home-world-stage" aria-hidden="true"><img class="home-world-stage__image" src="app/home-world-master.webp" width="941" height="1672" alt="" decoding="async" fetchpriority="high" draggable="false"></div>
 <main class="page page--standard home-page" data-reader-surface="home">
 <nav class="page-nav home-nav" aria-label="Main site navigation"><a href="tim-dooley/">Tim Dooley</a><a href="religion/">Religion</a><a href="philosophy/">Philosophy</a><a href="science/">Science</a><a href="world/">World</a><a href="timeline/">Timeline</a><a href="explore/">Explore</a></nav>
 
@@ -309,18 +310,6 @@
 <footer class="home-footer"><span>Archive tools · </span><a href="questions/">Questions</a><a href="index-a-z/">A–Z index</a><a href="tools/tts/">TTS Reader</a><a href="https://github.com/ThePotatoOfLife/TimDooley">Repository</a></footer>
 <div class="home-view-counter" aria-label="Homepage view count"><img src="https://hits.sh/thepotatooflife.github.io/TimDooley.svg?style=flat-square&amp;label=views" alt="Homepage views" loading="eager" decoding="async"></div>
 
-<script>
-if(!CSS.supports('animation-timeline:scroll(root block)')){
-  const syncHomeWorld=()=>{
-    const max=Math.max(1,document.documentElement.scrollHeight-innerHeight);
-    const p=Math.max(0,Math.min(1,scrollY/max));
-    document.documentElement.style.setProperty('--home-world-y',(p*100).toFixed(2)+'%');
-  };
-  syncHomeWorld();
-  addEventListener('scroll',syncHomeWorld,{passive:true});
-  addEventListener('resize',syncHomeWorld,{passive:true});
-}
-</script>
 <script src="app/news.js?v=20260920j" data-news-config="data/news/sources.json"></script>
 <script src="app/site-access.js?v=20260926c" defer></script>
 <script>
