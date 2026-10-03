@@ -133,3 +133,20 @@ A page is clean when it has a named layout owner, no dead compatibility override
 - [x] Remove legacy max-width caps from those specialist reader panes; constrain prose rather than the pane surface.
 - [ ] Continue moving only repeated primitives upward; keep genuinely semantic grids/components with their owning module.
 - [ ] Re-run the nested-Room inline-style census after indexing catches up and choose the next family-level owner from actual remaining duplication.
+
+
+## Pane coverage audit — 2026-10-03
+
+- [x] Convert shared Dwelling Reflection from a transparent left-rule treatment into a full readable pane.
+- [x] Pane shared topology context instead of leaving it between two divider rules.
+- [x] Pane Room Language and specialist Room reader surfaces.
+- [x] Pane major Tim reader sections, riddles, thresholds and raw-call surfaces.
+- [x] Pane History, Economy, Law, Context, North and Timeline long-form reader blocks.
+- [x] Pane World purpose/path surfaces, Potato threshold callouts, Corporium purpose and News orientation.
+- [x] Pane major Rooms-directory architecture sections and replace border-only Dwelling tiles with real cards.
+- [x] Pane comparative-cosmology section rules and modern-comparison cards.
+- [ ] Audit specialist tradition pages for divider-only long-form sections that still sit directly over realm art.
+- [ ] Audit figures/diagrams that technically have a border but insufficient contrast against the realm background.
+- [ ] Audit generated/app surfaces (Bible tools, map panels, search drawers, timeline controls) for transparent text containers that need a local pane owner.
+- [ ] Preserve true structural separators inside tables/timelines; do not convert every 1px rule into a card.
+- [ ] Add visual spot-checks at mobile and desktop widths for double-pane cases and excessive nesting.
