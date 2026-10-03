@@ -60,6 +60,7 @@ SHARED_ASSETS = (
     "app/lower-layer.css",
     "app/house-journey.css",
     "app/house-journey.js",
+    "app/room-home.css",
     "app/room-interior.css",
     "app/bidirectional-spiral-field.css",
     "app/bidirectional-spiral-field.js",
