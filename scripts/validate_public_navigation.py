@@ -17,6 +17,10 @@ ROOT_BRANCH_PATTERNS = (
 NAV = re.compile(r"<nav\b[^>]*>(.*?)</nav>", re.I | re.S)
 DEEP = re.compile(r'<div\b[^>]*class=["\'][^"\']*\bdeep\b[^"\']*["\'][^>]*>(.*?)</div>', re.I | re.S)
 HREF = re.compile(r'''href=["']([^"']+)["']''', re.I)
+
+PAGE_NAV_CLASS = re.compile(r'''<nav\b[^>]*class=["'][^"']*\bpage-nav\b[^"']*["'][^>]*>(.*?)</nav>''', re.I | re.S)
+PAGE_NAV_ANCHOR = re.compile(r'''<a\b(?P<attrs>[^>]*)href=["'](?P<href>[^"']+)["'][^>]*>(?P<label>.*?)</a>''', re.I | re.S)
+PAGE_NAV_ROOM_CLASS = re.compile(r'''\bclass=["'][^"']*\bpage-nav-room\b''', re.I)
 LEGACY_NAV_LABELS = (">Corporium</a>", ">Source authority</a>", ">Tim dossier</a>")
 
 PROJECTED_TTS_PAGES = {
@@ -103,6 +107,22 @@ def main() -> int:
             for label in LEGACY_NAV_LABELS:
                 if label in nav:
                     errors.append(f"legacy visitor label {label[1:-4]!r} inside nav {nav_index} of {rel}")
+
+        for page_nav_index, nav in enumerate(PAGE_NAV_CLASS.findall(text), start=1):
+            anchors = list(PAGE_NAV_ANCHOR.finditer(nav))
+            if rel.as_posix() != "index.html" and anchors:
+                first = anchors[0]
+                first_label = re.sub(r"<[^>]+>", "", first.group("label")).strip()
+                if first_label != "Home":
+                    errors.append(f"page-nav {page_nav_index} of {rel} must begin with Home; found {first_label!r}")
+                if "page-nav-home" not in first.group("attrs"):
+                    errors.append(f"page-nav {page_nav_index} of {rel} first link missing page-nav-home marker")
+            room_link_count = len(PAGE_NAV_ROOM_CLASS.findall(nav))
+            limit = 3 if re.fullmatch(r"rooms/[^/]+/index\.html", rel.as_posix()) else 2
+            if room_link_count > limit:
+                errors.append(
+                    f"page-nav {page_nav_index} of {rel} projects {room_link_count} Room links; cap is {limit}"
+                )
 
         for deep_index, deep in enumerate(DEEP.findall(text), start=1):
             duplicates = duplicate_hrefs(deep)
