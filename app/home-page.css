@@ -311,9 +311,9 @@ body:has(.home-page){
       rgba(248,246,231,.035) 52%,
       rgba(8,8,10,.035) 82%,
       rgba(8,8,10,.16) 100%),
-    url("./site-tree-perspective.svg?v=20261003c"),
-    url("./site-plane-organic-field.svg?v=20261003c"),
-    url("./site-below-root-field.svg?v=20261003c");
+    url("./site-tree-perspective.svg"),
+    url("./site-plane-organic-field.svg"),
+    url("./site-below-root-field.svg");
   background-repeat:no-repeat;
   background-position:center,center,center top,center 48%,center bottom;
   background-size:100% 100%,100% 100%,max(1120px,100vw) auto,max(1120px,100vw) auto,max(1120px,100vw) auto;
@@ -336,9 +336,9 @@ body:has(.home-page){
   body:has(.home-page){
     background-image:
       linear-gradient(180deg,rgba(13,10,17,.76),rgba(9,14,12,.82) 48%,rgba(13,8,6,.88)),
-      url("./site-tree-perspective.svg?v=20261003c"),
-      url("./site-plane-organic-field.svg?v=20261003c"),
-      url("./site-below-root-field.svg?v=20261003c");
+      url("./site-tree-perspective.svg"),
+      url("./site-plane-organic-field.svg"),
+      url("./site-below-root-field.svg");
     background-position:center,center top,center 48%,center bottom;
     background-size:100% 100%,max(1120px,100vw) auto,max(1120px,100vw) auto,max(1120px,100vw) auto;
   }
