@@ -71,3 +71,10 @@ A page is clean when it has a named layout owner, no dead compatibility override
 - [x] Removed orphan legacy `simple.css`, `root.css`, and `portal.css` after zero-reference verification.
 - [ ] Move the remaining page-specific nested-Room blocks into shared module owners when two or more rooms repeat the same component family.
 - [ ] Re-run the inline-style census after GitHub code search catches up with these commits.
+
+
+## Geometry bug fixes
+
+- [x] Fix `.dwelling-reflection` panes being visibly shorter/narrower than neighboring Room panes.
+- [x] Remove old `max-width` caps from top-level `.room-essay` and `.room-ledger` surfaces so pane width follows the Room column.
+- [ ] Audit remaining pane classes for fixed-width/max-width values that constrain the surface rather than only the prose measure.
