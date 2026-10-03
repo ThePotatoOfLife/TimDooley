@@ -35,3 +35,50 @@
 .room-word p{margin:0;color:var(--site-muted);font-size:12px;line-height:1.52}
 .room-language-carry{margin:15px 0 0;color:#d6d1c7;font:400 15px/1.62 var(--site-font-serif)}
 @media(max-width:700px){.room-language-head,.room-language-grid{grid-template-columns:1fr}.room-language{margin:24px 0 30px}}
+
+/* Nested Room readability: long-form prose must never float naked over realm art. */
+.inner-home>.room-essay,
+.inner-home>.room-ledger,
+.inner-home>.room-quote,
+.inner-home>.adj-grid,
+.inner-home>.actions{
+  border:1px solid var(--site-pane-line);
+  border-radius:16px;
+  background:var(--site-pane);
+  box-shadow:var(--site-pane-shadow);
+}
+.inner-home>.room-essay,
+.inner-home>.room-ledger{padding:clamp(18px,2.4vw,26px)}
+.inner-home>.room-quote{padding:22px 24px}
+.inner-home>.adj-grid,
+.inner-home>.actions{padding:14px}
+.room-essay>.room-run,
+.room-essay>.room-ledger,
+.room-essay>.room-quote,
+.room-essay>section,
+.room-essay>article,
+.inner-home .neuro-card,
+.inner-home .artifact-row,
+.inner-home .adj{
+  background:var(--site-pane-soft);
+}
+.room-essay>.room-run,
+.room-essay>.room-ledger,
+.room-essay>section,
+.room-essay>article{
+  margin:14px 0;
+  padding:16px;
+  border:1px solid var(--site-pane-line);
+  border-radius:12px;
+  box-shadow:0 8px 20px rgba(0,0,0,.12);
+}
+.room-essay>.room-quote{
+  margin:18px 0;
+  padding:20px;
+  border:1px solid var(--site-pane-line);
+  border-radius:12px;
+}
+.inner-home .adj{
+  border-radius:12px;
+  background:var(--site-pane-soft);
+}
