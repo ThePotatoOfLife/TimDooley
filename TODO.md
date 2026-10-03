@@ -1567,3 +1567,53 @@ Primary rule: readers should not have to understand the House architecture befor
 - [ ] Add one dedicated visual/diagram of the full circulation if the CSS topology still feels too textual in deployment.
 - [ ] Review whether the project now has a coherent classical field map: epistemology, ethics, metaphysics, agency, interpretation, aesthetics.
 - [ ] Prefer deepening these fields over creating new subject pages unless a real body of knowledge no longer fits the existing fields.
+
+
+## Inhabited House editorial programme — 2026-10-03
+
+North-star: **the House should feel inhabited by teachers, objects, stories, questions and lived intelligence—not by registries wearing prose.**
+
+### A Room earns its space when it contains
+
+- [ ] A human entrance: one question, image, object, scene or paradox that makes the subject worth entering.
+- [ ] A concrete teaching: something the reader could explain later without reopening the page.
+- [ ] A real object/case/source/mechanism that could not be pasted unchanged into another Room.
+- [ ] A memorable distinction or test.
+- [ ] A boundary that keeps metaphor, evidence, history, theology and inference from silently collapsing.
+- [ ] A line of warmth, humor, surprise or ordinary life where the subject permits it.
+- [ ] A reason to continue into a neighboring Room that changes the question rather than merely listing navigation.
+
+### Parent-Dwelling inhabitation completed in this wave
+
+- [x] Works: four actual objects on the table (Great Book rock, song, Couch-Throne, Growth Game).
+- [x] Traditions & Texts: Yggdrasil, Duat and Mount Meru as resistant historical objects rather than generic motif labels.
+- [x] Potatoverse / Canon: Root → Door → Garden → Fruit as a walkable teaching rather than a glossary.
+- [x] Culture & Information: the life of one joke from laugh → password → archive → low-resolution identity.
+- [x] Science & Formal Models: one glass of water showing wonder → definition → mechanism → test.
+- [x] Life & Body: the organism before breakfast as coordinated plurality.
+- [x] Archive & Sources: the shoebox problem—copies, witnesses, derivatives and honest gaps.
+- [x] Time & History: four clocks—occurrence, attestation, recovery, interpretation.
+- [x] World Systems: breakfast as ports, weather, law, labor, energy, flow and trust.
+- [x] Research Lab / Forge: one hot coordination claim cooled into testable alternatives.
+
+### Nested-Room inhabitation completed in this wave
+
+- [x] Games & Simulations: a game as a confession written in rules.
+- [x] House Architecture: a good House helps you find the kitchen without lecturing about floor plans.
+- [x] Research Programmes: a programme as a promise with receipts.
+- [x] Open Questions: questions that need recovery, clarification, testing or companionship.
+- [x] Model Testing: theories earn trust by remembering where they lost.
+- [x] Geography & Countries: a place is not a pin; geometry should match the question.
+
+### Next nested-Room wave
+
+- [ ] Mathematics & Geometry — replace abstract precision rhetoric with one worked object that becomes exact.
+- [ ] Esoteric & Sacred Geometry — give one symbol a dated life across geometry, religion and later occult reception.
+- [ ] Developmental Genealogy — make one identity mutation into a readable before/after story.
+- [ ] Memory & Recovery — make one incomplete artifact walk through confidence states.
+- [ ] Witness & Attestation — give one public statement a source-distance ladder.
+- [ ] Politics & Governance — turn one policy into a lived implementation chain.
+- [ ] Law & Justice — give one ordinary right/duty dispute a procedural path.
+- [ ] Infrastructure & Capability — make one mundane system fail and recover in human terms.
+- [ ] Music & Sound — continue album/material integration while keeping music a way of thinking rather than metadata inventory.
+- [ ] Visual Art — add more actual recovered images/artifacts as they become available; keep remembered specifications explicitly separate.
