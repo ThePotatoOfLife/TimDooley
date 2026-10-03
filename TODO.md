@@ -1447,3 +1447,51 @@ Rule: **each Room should leave the reader with a new set of distinctions, not me
 - [x] Philosophy: forgiveness/reconciliation separation and finite-resource scarcity case.
 - [x] Culture: cross-domain prestige bias and a stepwise norm-repair mechanism.
 - [ ] Next batch is now specified down to mediator bias, multiple comparisons, common-cause failure, sleep-process dynamics, opportunity cost, courage, pluralistic ignorance and archive-correction propagation.
+
+
+## Knowledge-density overhaul — 2026-10-03
+
+North-star rule: **a visible box must earn its space by teaching, showing, comparing, testing, documenting or making a consequence legible. Navigation alone is not sufficient payload.**
+
+### Editorial payoff contract
+
+For every major reader box/section, ask:
+
+- [ ] What concrete thing does the reader know afterward that they did not know before?
+- [ ] Is there at least one named mechanism, distinction, case, object, date, text, organism, institution, experiment or worked example?
+- [ ] Does an abstract claim have a concrete scene or consequence nearby?
+- [ ] If the section uses project symbolism, does it also expose the literal/historical/scientific layer that constrains the metaphor?
+- [ ] Does comparison introduce friction or new information rather than simply confirm the project?
+- [ ] Can the reader carry away one proposition without opening another page?
+- [ ] Is navigation subordinate to substance rather than the main event?
+
+### Site-wide overhaul queue
+
+- [x] Add shared teaching components for proposition / mechanism / example / contrast / boundary.
+- [x] Add Philosophy teaching on perception, judgment, value and responsibility that should not be outsourced.
+- [x] Add Culture worked mechanism: joke → password → norm → boundary → role → archive → inherited story.
+- [x] Add named cultural lenses (Tarde, Goffman, Girard, Ostrom) as analytical tools rather than name-dropping.
+- [x] Add House domestic logic: foundation, Door, window, hearth, guest room and exit.
+- [x] Add Science metaphor → variables → mechanism → measurement → test → result → revision ladder.
+- [ ] Audit every homepage box for informational yield; replace any routing-first box with an object, mechanism, case or teaching.
+- [ ] Audit all 10 Dwelling homepages for boxes that still explain ownership/architecture more than subject matter.
+- [ ] Audit all 38 nested Rooms for at least one concrete case/example/diagram beyond navigation and scope text.
+- [ ] Add primary-text fragments or paraphrased source scenes to theology/tradition pages where context materially improves understanding.
+- [ ] Add worked cases to World/Economy/Law/Politics/Infrastructure rather than relying on abstract vocabulary.
+- [ ] Add organism/experiment diagrams to Life & Body and Science where prose currently carries too much load.
+- [ ] Add artifact images or composition diagrams to Works/Visual Art/Games where the subject is inherently visual.
+- [ ] Add scene-led chronology to Timeline: event → immediate context → what changed → later interpretation.
+- [ ] Reduce repeated “this Room/page/owner/route” language after concrete substance is present.
+- [ ] Replace generic Adjacent Rooms endings with a substantive final question or unresolved tension before links.
+- [ ] Create or deepen subgenres only when they correspond to a real body of knowledge, not to fill navigation symmetry.
+- [ ] Prefer fewer high-value boxes over many equally weighted cards.
+
+### Higher-culture programme
+
+- [ ] Philosophy: deepen pragmatism, virtue ethics, Stoicism, Daoism, Buddhist ethics, phenomenology and epistemology as genuine interlocutors.
+- [ ] Religion: add covenant, mercy/justice, idolatry, service, fruit, least/stranger, seed/death/return, indwelling and ordinary-object teaching.
+- [ ] Comparative religion: use historical traditions in their own vocabulary before functional comparison.
+- [ ] Culture: add social-learning, ritual, prestige, mimetic conflict, institutions, memory and norm-governance scholarship.
+- [ ] World: connect political economy, institutional capacity, geography, infrastructure, logistics, law and finance through worked dependency chains.
+- [ ] Science: make emergence, networks, control, uncertainty, identifiability and falsification legible with simple worked models.
+- [ ] Art/Works: treat visual composition, music, satire, game mechanics and literary form as ways of thinking—not decorative archives.
