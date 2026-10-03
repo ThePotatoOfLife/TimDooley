@@ -78,3 +78,11 @@ A page is clean when it has a named layout owner, no dead compatibility override
 - [x] Fix `.dwelling-reflection` panes being visibly shorter/narrower than neighboring Room panes.
 - [x] Remove old `max-width` caps from top-level `.room-essay` and `.room-ledger` surfaces so pane width follows the Room column.
 - [ ] Audit remaining pane classes for fixed-width/max-width values that constrain the surface rather than only the prose measure.
+
+
+## Homepage naked-component fixes
+
+- [x] Wrap the “Five pieces of the project that can be inspected directly” link cluster in one coherent pane.
+- [x] Replace its old border-top / border-bottom rule language with individual cards so stray 1px lines do not read as visual artifacts.
+- [ ] Audit other homepage nav/list clusters that still rely on divider-only styling over realm art.
+- [ ] Prefer framed groups + card surfaces over isolated rules whenever the background is visible behind interactive text.
