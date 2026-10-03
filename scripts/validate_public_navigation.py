@@ -117,8 +117,19 @@ def main() -> int:
                     errors.append(f"page-nav {page_nav_index} of {rel} must begin with Home; found {first_label!r}")
                 if "page-nav-home" not in first.group("attrs"):
                     errors.append(f"page-nav {page_nav_index} of {rel} first link missing page-nav-home marker")
+                if len(anchors) > 1:
+                    second_label = re.sub(r"<[^>]+>", "", anchors[1].group("label")).strip()
+                    if second_label != "Rooms":
+                        errors.append(f"page-nav {page_nav_index} of {rel} must place Rooms second; found {second_label!r}")
+                    if "page-nav-directory" not in anchors[1].group("attrs"):
+                        errors.append(f"page-nav {page_nav_index} of {rel} second link missing page-nav-directory marker")
             room_link_count = len(PAGE_NAV_ROOM_CLASS.findall(nav))
-            limit = 3 if re.fullmatch(r"rooms/[^/]+/index\.html", rel.as_posix()) else 2
+            if re.fullmatch(r"rooms/[^/]+/index\.html", rel.as_posix()):
+                limit = 4
+            elif re.fullmatch(r"rooms/inside/[^/]+/index\.html", rel.as_posix()):
+                limit = 3
+            else:
+                limit = 4
             if room_link_count > limit:
                 errors.append(
                     f"page-nav {page_nav_index} of {rel} projects {room_link_count} Room links; cap is {limit}"
