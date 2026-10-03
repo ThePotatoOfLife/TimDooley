@@ -311,6 +311,30 @@ body.home-body{
   box-shadow:0 3px 10px rgba(0,0,0,.12),inset 0 1px rgba(255,255,255,.02);
 }
 
+/* Home readability shell: the realm remains visible between sections, but
+   each major reading unit receives a quiet surface so no prose depends on the
+   background being locally dark. Inner cards keep their stronger panes. */
+.home-page > section{
+  position:relative;
+  margin-block:18px;
+  padding:clamp(14px,2vw,22px);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:18px;
+  background:rgba(8,10,10,.46);
+  box-shadow:0 12px 30px rgba(0,0,0,.10),inset 0 1px rgba(255,255,255,.018);
+}
+.home-page > section:nth-of-type(3n+2){background:rgba(244,240,224,.055)}
+.home-page > section:nth-of-type(3n){background:rgba(8,10,10,.54)}
+.home-page > section > :first-child{margin-top:0}
+.home-page > section > :last-child{margin-bottom:0}
+@media(max-width:700px){
+  .home-page > section{
+    margin-block:12px;
+    padding:13px;
+    border-radius:14px;
+  }
+}
+
 /* Hero is content only. The world belongs to the stage behind it. */
 .home-hero::before{content:none}
 .home-hero .home-intro{background:rgba(8,10,10,.70)}
