@@ -21,7 +21,7 @@ def require(text,token,owner):
 html=read("news/index.html")
 js=read("app/news.js")
 css=read("app/news.css")
-home=read("index.html")
+home=read("index.html")\nhome_runtime=read("app/home-page-runtime.js")\nhome_surface=home+"\\n"+home_runtime
 world=read("world/index.html")
 
 try:
