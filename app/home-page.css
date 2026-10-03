@@ -297,15 +297,15 @@
 /* Homepage world-master mural — 2026-10-03f */
 /* One continuous artwork, slowly traversed from Heaven to Plane to Below.
    The viewport is the slice; scroll distance controls how long each realm lasts. */
-body:has(.home-page){
+body.home-body{
   position:relative;
   isolation:isolate;
   overflow-x:hidden;
   background:#09100d;
   box-shadow:none;
 }
-html[data-site-floor] body:has(.home-page):not(.lower-layer-page)::before,
-body:has(.home-page)::before{
+html[data-site-floor] body.home-body:not(.lower-layer-page)::before,
+body.home-body::before{
   content:"";
   display:block!important;
   position:fixed;
@@ -323,7 +323,7 @@ body:has(.home-page)::before{
   transform:translateZ(0);
   backface-visibility:hidden;
 }
-body:has(.home-page)>:not(script):not(style){
+body.home-body>:not(script):not(style){
   position:relative;
   z-index:1;
 }
@@ -335,7 +335,7 @@ body:has(.home-page)>:not(script):not(style){
   100%{background-position:center,center,center 100%}
 }
 @supports (animation-timeline:scroll(root block)){
-  body:has(.home-page)::before{
+  body.home-body::before{
     animation:home-world-descent 1s linear both;
     animation-timeline:scroll(root block);
   }
@@ -384,14 +384,14 @@ body:has(.home-page)>:not(script):not(style){
   text-shadow:0 1px 12px rgba(0,0,0,.14);
 }
 @media(max-width:760px){
-  html[data-site-floor] body:has(.home-page):not(.lower-layer-page)::before,
-  body:has(.home-page)::before{
+  html[data-site-floor] body.home-body:not(.lower-layer-page)::before,
+  body.home-body::before{
     background-size:100% 100%,100% 100%,760px auto;
     filter:saturate(1.02) brightness(1.02);
   }
 }
 @media(prefers-reduced-motion:reduce){
-  body:has(.home-page)::before{
+  body.home-body::before{
     animation:none!important;
     background-position:center,center,center 46%;
   }
@@ -412,13 +412,13 @@ body:has(.home-page)>:not(script):not(style){
   Keep the approved world art at full repository resolution, but move only one raster
   layer with compositor transforms. No viewport-sized filter or backdrop blur is needed.
 */
-html:has(.home-page),
-body:has(.home-page){
+html.home-shell,
+body.home-body{
   background:#09100d;
 }
-html[data-site-floor] body:has(.home-page):not(.lower-layer-page)::before,
-body:has(.home-page)::before,
-body:has(.home-page)::after,
+html[data-site-floor] body.home-body:not(.lower-layer-page)::before,
+body.home-body::before,
+body.home-body::after,
 .home-page::after{
   display:none!important;
 }
@@ -456,10 +456,10 @@ body:has(.home-page)::after,
     radial-gradient(ellipse 32% 100% at 50% 44%,rgba(255,252,237,.23) 0,rgba(250,248,231,.12) 35%,rgba(246,241,222,.04) 57%,transparent 74%),
     linear-gradient(90deg,rgba(4,8,8,.20) 0,rgba(4,8,8,.055) 17%,transparent 32%,transparent 68%,rgba(4,8,8,.055) 83%,rgba(4,8,8,.20) 100%);
 }
-body:has(.home-page) > .home-page,
-body:has(.home-page) > .home-footer,
-body:has(.home-page) > .home-view-counter,
-body:has(.home-page) > .site-access{
+body.home-body > .home-page,
+body.home-body > .home-footer,
+body.home-body > .home-view-counter,
+body.home-body > .site-access{
   position:relative;
   z-index:1;
 }
@@ -543,4 +543,68 @@ body:has(.home-page) > .site-access{
       linear-gradient(90deg,rgba(4,8,8,.12),transparent 24%,transparent 76%,rgba(4,8,8,.12));
   }
   .home-page > section:nth-of-type(n+5){contain-intrinsic-size:auto 700px}
+}
+
+
+/* Homepage fidelity + paint budget — 2026-10-03h */
+/* Avoid relational :has() matching on the long homepage; HTML carries explicit shell classes. */
+html.home-shell,
+body.home-body{background:#09100d}
+
+/* Keep the approved 941px source close to native size. Side atmosphere fills wide monitors. */
+.home-world-stage__image{
+  width:clamp(720px,74vw,1040px);
+}
+.home-world-stage{
+  background:
+    linear-gradient(180deg,
+      #b8e3ff 0%,
+      #d8edf0 29%,
+      #55755f 48%,
+      #4a3827 62%,
+      #6a2419 79%,
+      #160806 100%);
+}
+.home-world-stage::after{
+  background:
+    radial-gradient(ellipse 31% 100% at 50% 44%,rgba(255,252,237,.17) 0,rgba(250,248,231,.075) 36%,rgba(246,241,222,.025) 57%,transparent 73%),
+    linear-gradient(90deg,rgba(4,8,8,.15) 0,rgba(4,8,8,.035) 18%,transparent 32%,transparent 68%,rgba(4,8,8,.035) 82%,rgba(4,8,8,.15) 100%);
+}
+
+/* Text no longer pays for a page-wide inherited shadow. Important headings already own theirs. */
+.home-page{ text-shadow:none }
+.home-hero h1,
+.home-section-head h2,
+.home-fast-head h2,
+.news-preview-head h2,
+.reader-routing h2{
+  text-shadow:0 2px 14px rgba(0,0,0,.34);
+}
+
+/* Repeated cards use borders and tint for depth; large blurred shadows are reserved for major reading panels. */
+.motion-card,.home-fast-door,.field-level,.foundation-room-card,.reality-card,
+.direction-step,.sections>a,.home-media-strip figure,.home-visual-card,
+.field-routes article,.route-panel,.foundation-pattern-panel,.pulse-card,
+.capability-card,.public-doors{
+  box-shadow:0 2px 9px rgba(0,0,0,.12),inset 0 1px rgba(255,255,255,.022);
+}
+
+/* Let the browser skip deep homepage sections until they approach the viewport. */
+.home-page > section{
+  content-visibility:auto;
+  contain-intrinsic-size:auto 780px;
+}
+.home-page > section:nth-of-type(-n+2){
+  content-visibility:visible;
+  contain-intrinsic-size:none;
+}
+
+@media(max-width:760px){
+  .home-world-stage__image{width:720px}
+  .home-world-stage::after{
+    background:
+      radial-gradient(ellipse 54% 100% at 50% 44%,rgba(255,252,237,.14),rgba(250,248,231,.045) 43%,transparent 72%),
+      linear-gradient(90deg,rgba(4,8,8,.09),transparent 24%,transparent 76%,rgba(4,8,8,.09));
+  }
+  .home-page > section{contain-intrinsic-size:auto 680px}
 }
