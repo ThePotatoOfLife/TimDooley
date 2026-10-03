@@ -204,7 +204,7 @@ All reader and specialist surfaces route back toward canonical owners rather tha
 
 The current public surface registry is intentionally grouped into seven families, enforced by House governance:
 
-1. **Tim · life · making** — Tim portrait, Story, Collection and Works.
+1. **Tim · life · making** — Tim portrait, Living Tim voice/encounter, Story, Collection and Works.
 2. **Timeline · history** — chronology, foundations and the History interpretation/revision lens.
 3. **Sources · context** — evidence authority and contextual interpretation.
 4. **Explore · retrieval** — Explore, Questions, A–Z and Paths.
