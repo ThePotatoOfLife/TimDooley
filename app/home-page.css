@@ -129,7 +129,9 @@ body.home-body{
   position:absolute;
   left:50%;
   top:0;
-  width:max(100vw,1120px);
+  /* 1086:1448 portrait art must remain at least 2× viewport height when
+     translated by ~50%, so no flat-colour gap can open during a realm pan. */
+  width:max(100vw,150vh,1120px);
   height:auto;
   max-width:none;
   min-height:100vh;
@@ -371,10 +373,8 @@ body.home-body{
 @media(max-width:820px){
   .home-intro,.home-section-head,.home-fast-head,.news-preview-head,.reader-routing,.substance-prose{padding:14px}
   .home-hero{grid-template-columns:1fr;gap:24px;padding:12px 0 30px}
-  .home-world-realm img{width:1180px}
 }
 @media(max-width:560px){
-  .home-world-realm img{width:1040px}
   .home-page::after{
     background:
       linear-gradient(90deg,
