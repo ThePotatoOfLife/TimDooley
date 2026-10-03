@@ -87,3 +87,41 @@
   border-radius:12px;
   background:var(--site-pane-soft);
 }
+
+/* Compact cross-Room synthesis: use near the end of specialist readers to
+   explain contribution, boundary and next handoff without repeating the page. */
+.room-synthesis{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:10px;
+  margin:26px 0;
+}
+.room-synthesis article{
+  padding:16px;
+  border:1px solid var(--site-pane-line);
+  border-radius:12px;
+  background:var(--site-pane-soft);
+}
+.room-synthesis em{
+  display:block;
+  margin-bottom:5px;
+  color:var(--site-faint);
+  font-size:9px;
+  font-style:normal;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.room-synthesis strong{
+  display:block;
+  margin-bottom:6px;
+  color:var(--site-gold);
+  font:400 18px/1.15 var(--site-font-serif);
+}
+.room-synthesis p{
+  margin:0;
+  color:var(--site-muted);
+  font-size:11px;
+  line-height:1.5;
+}
+.room-synthesis a{color:var(--site-ink)}
+@media(max-width:720px){.room-synthesis{grid-template-columns:1fr}}
