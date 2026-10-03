@@ -212,3 +212,81 @@
   .home-intro,.home-section-head,.home-fast-head,.news-preview-head,.reader-routing,.substance-prose,
   .capability-card,.public-doors,.home-nav{background:#0b0e0c;backdrop-filter:none;-webkit-backdrop-filter:none}
 }
+
+
+/* Homepage atmospheric center pass — 2026-10-03b */
+/* Pale atmosphere lives behind the reading surfaces. It is intentionally soft-edged:
+   the center breathes, while the outer thirds keep the richer pixel colour. */
+.home-page::after{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  pointer-events:none;
+  inset:-1.5% 11% 1%;
+  border-radius:42% 42% 34% 34% / 7% 7% 5% 5%;
+  background:
+    radial-gradient(ellipse at 50% 8%,rgba(255,250,226,.18) 0 18%,rgba(244,247,229,.11) 32%,transparent 62%),
+    radial-gradient(ellipse at 50% 38%,rgba(236,244,229,.14),rgba(231,241,226,.075) 38%,transparent 70%),
+    radial-gradient(ellipse at 50% 72%,rgba(231,238,224,.11),rgba(231,238,224,.045) 42%,transparent 72%);
+  filter:blur(18px);
+  opacity:.94;
+}
+/* Let the centre feel milky without turning the interface into grey cards. */
+.home-intro,
+.home-section-head,
+.home-fast-head,
+.news-preview-head,
+.reader-routing,
+.substance-prose{
+  background:
+    linear-gradient(135deg,rgba(255,255,255,.065),transparent 28%),
+    linear-gradient(180deg,rgba(13,17,15,.48),rgba(7,11,10,.64));
+  border-color:rgba(247,234,199,.15);
+  backdrop-filter:blur(3.5px) saturate(.88);
+  -webkit-backdrop-filter:blur(3.5px) saturate(.88);
+}
+.home-terrain-seal>div:last-child{
+  padding:15px 17px;
+  border:1px solid rgba(247,234,199,.12);
+  border-radius:14px;
+  background:linear-gradient(180deg,rgba(11,15,13,.50),rgba(7,10,9,.66));
+  box-shadow:0 10px 34px rgba(0,0,0,.16),inset 0 1px rgba(255,255,255,.03);
+  backdrop-filter:blur(3px);
+  -webkit-backdrop-filter:blur(3px);
+}
+.home-bible-river,
+.home-bible-identity{
+  padding-inline:14px;
+  border-left:1px solid rgba(247,234,199,.10);
+  border-right:1px solid rgba(247,234,199,.10);
+  background:linear-gradient(180deg,rgba(10,14,12,.48),rgba(7,10,9,.62));
+  box-shadow:0 10px 30px rgba(0,0,0,.12);
+  backdrop-filter:blur(2.5px);
+  -webkit-backdrop-filter:blur(2.5px);
+}
+.home-bible-route{
+  width:max-content;
+  max-width:100%;
+  padding:8px 11px;
+  border:1px solid rgba(247,234,199,.10);
+  border-radius:10px;
+  background:rgba(7,10,9,.58);
+  backdrop-filter:blur(2.5px);
+  -webkit-backdrop-filter:blur(2.5px);
+}
+.home-visual-copy{
+  background:
+    linear-gradient(135deg,rgba(255,255,255,.035),transparent 36%),
+    linear-gradient(180deg,rgba(9,13,11,.72),rgba(6,9,8,.82));
+  backdrop-filter:blur(2px);
+  -webkit-backdrop-filter:blur(2px);
+}
+@media(max-width:700px){
+  .home-page::after{inset:-1% 2% 1%;filter:blur(13px);opacity:.8}
+}
+@media(prefers-reduced-transparency:reduce){
+  .home-page::after{display:none}
+  .home-terrain-seal>div:last-child,.home-bible-river,.home-bible-identity,.home-bible-route,.home-visual-copy{
+    backdrop-filter:none;-webkit-backdrop-filter:none;background:#0b0e0c;
+  }
+}
