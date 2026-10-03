@@ -210,24 +210,94 @@
 }
 
 
-
-
-/* Homepage static pixel realms — 2026-10-03k
-   One sharp image source, three visible crops, zero scroll-linked art. */
-html.home-shell,
+/* Homepage realm background — 2026-10-03p
+   The pixel art is atmosphere behind the page, not three poster-sized blocks in the document flow.
+   Keep this as the single homepage realm compositor. */
+html.home-shell{
+  background:#09100d;
+}
 body.home-body{
-  background:linear-gradient(180deg,#0a0f0e 0%,#09100d 48%,#100907 100%);
+  position:relative;
+  overflow-x:hidden;
+  background:
+    linear-gradient(180deg,#11101a 0%,#0b1512 40%,#101411 58%,#170b08 100%);
 }
 .home-page{
+  position:relative;
+  isolation:isolate;
   background:transparent;
   text-shadow:none;
 }
-.home-page::before,
-.home-page::after{
-  display:none!important;
+
+/* One full-page paint layer. Three optimized realm images are placed through the scroll
+   without changing document geometry or creating giant empty image panels. */
+.home-page::before{
+  content:"";
+  display:block!important;
+  position:absolute;
+  inset:-24px calc(50% - 50vw) -80px;
+  z-index:-2;
+  pointer-events:none;
+  border:0;
+  border-radius:0;
+  box-shadow:none;
+  background-color:#09100d;
+  background-image:
+    linear-gradient(180deg,
+      rgba(14,10,24,.10) 0%,
+      rgba(9,17,15,.03) 31%,
+      rgba(9,18,15,.02) 56%,
+      rgba(34,15,9,.12) 100%),
+    linear-gradient(90deg,
+      rgba(4,5,8,.16) 0%,
+      rgba(4,5,8,.035) 19%,
+      transparent 34%,
+      transparent 66%,
+      rgba(4,5,8,.035) 81%,
+      rgba(4,5,8,.16) 100%),
+    url("./home-heaven.avif"),
+    url("./home-plane.avif"),
+    url("./home-below.avif");
+  background-repeat:no-repeat;
+  background-position:
+    center,
+    center,
+    center top,
+    center 47%,
+    center bottom;
+  background-size:
+    100% 100%,
+    100% 100%,
+    clamp(1200px,100vw,1800px) auto,
+    clamp(1200px,100vw,1800px) auto,
+    clamp(1200px,100vw,1800px) auto;
 }
 
-/* Static "glass": tint + border only. No blur, no backdrop sampling. */
+/* Pale reading corridor: brighten the middle while leaving the outer artwork more saturated. */
+.home-page::after{
+  content:"";
+  display:block!important;
+  position:absolute;
+  inset:-12px -18px -50px;
+  z-index:-1;
+  pointer-events:none;
+  border:0;
+  border-radius:0;
+  box-shadow:none;
+  background:
+    linear-gradient(90deg,
+      transparent 0%,
+      rgba(246,249,238,.015) 15%,
+      rgba(248,250,240,.07) 31%,
+      rgba(255,253,239,.15) 45%,
+      rgba(255,253,239,.18) 50%,
+      rgba(255,253,239,.15) 55%,
+      rgba(248,250,240,.07) 69%,
+      rgba(246,249,238,.015) 85%,
+      transparent 100%);
+}
+
+/* Readable surfaces stay translucent so the world is still visible around and between them. */
 .home-intro,
 .home-section-head,
 .home-fast-head,
@@ -242,210 +312,67 @@ body.home-body{
 .home-bible-route,
 .home-visual-copy{
   background:
-    linear-gradient(135deg,rgba(255,255,255,.035),transparent 30%),
-    rgba(7,11,9,.84)!important;
-  border-color:rgba(255,239,204,.16)!important;
-  box-shadow:0 4px 14px rgba(0,0,0,.12),inset 0 1px rgba(255,255,255,.03);
+    linear-gradient(135deg,rgba(255,255,255,.04),transparent 31%),
+    rgba(7,11,9,.76)!important;
+  border-color:rgba(255,239,204,.17)!important;
+  box-shadow:0 6px 18px rgba(0,0,0,.16),inset 0 1px rgba(255,255,255,.035);
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
 }
 .motion-card,.home-fast-door,.field-level,.foundation-room-card,.reality-card,
 .direction-step,.sections>a,.home-media-strip figure,.home-visual-card,
 .field-routes article,.route-panel,.foundation-pattern-panel,.pulse-card,
 .capability-card,.public-doors{
-  background:rgba(7,11,9,.80)!important;
-  box-shadow:0 2px 7px rgba(0,0,0,.09),inset 0 1px rgba(255,255,255,.018);
+  background:rgba(7,11,9,.68)!important;
+  border-color:rgba(255,239,204,.13);
+  box-shadow:0 3px 10px rgba(0,0,0,.12),inset 0 1px rgba(255,255,255,.02);
 }
 
-/* HEAVEN — hero artwork is a real image in normal flow, not a background compositor. */
+/* Hero returns to content, not artwork geometry. */
 .home-hero{
   position:relative;
-  isolation:isolate;
-  overflow:hidden;
-  min-height:clamp(570px,74vh,790px);
-  margin:0 0 42px;
-  padding:clamp(30px,6vh,72px) clamp(18px,4vw,50px) clamp(30px,5vh,60px);
-  border:1px solid rgba(255,244,214,.17);
-  border-radius:22px;
+  width:auto;
+  aspect-ratio:auto;
+  min-height:0;
+  overflow:visible;
+  isolation:auto;
+  margin:0 0 30px;
+  padding:18px 0 38px;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
   align-items:end;
-  background:#9ed6ef;
-  box-shadow:0 9px 26px rgba(0,0,0,.14);
 }
-.home-realm-art--heaven{
-  position:absolute;
-  inset:0;
-  z-index:0;
-  display:block;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  object-position:center 8%;
-  image-rendering:auto;
-  pointer-events:none;
-}
-.home-hero::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  z-index:1;
-  pointer-events:none;
-  background:
-    radial-gradient(ellipse 25% 100% at 50% 46%,
-      rgba(255,253,239,.34) 0%,
-      rgba(255,253,239,.19) 34%,
-      rgba(255,253,239,.07) 58%,
-      transparent 76%),
-    linear-gradient(180deg,transparent 38%,rgba(5,10,8,.08) 62%,rgba(5,9,8,.55) 100%);
-}
-.home-hero > :not(.home-realm-art--heaven){
-  position:relative;
-  z-index:2;
-}
+.home-hero::before{display:none!important}
 .home-hero h1{
   color:#fffaf0;
-  text-shadow:0 3px 16px rgba(0,0,0,.38);
+  text-shadow:0 3px 18px rgba(0,0,0,.48);
 }
 .home-hero .home-intro{
-  background:rgba(6,11,9,.78)!important;
-  border-color:rgba(255,244,214,.18)!important;
-}
-
-/* PLANE + BELOW — visible art panels, same decoded image, different sharp crops. */
-.home-realm-scene{
-  position:relative;
-  width:min(100%,1040px);
-  margin:36px auto 46px;
-  overflow:hidden;
-  border:1px solid rgba(255,241,208,.16);
-  border-radius:20px;
-  background:#172219;
-  box-shadow:0 7px 22px rgba(0,0,0,.13);
-  content-visibility:auto;
-  contain-intrinsic-size:1040px 640px;
-}
-.home-realm-scene img{
-  display:block;
-  width:100%;
-  height:clamp(440px,59vw,660px);
-  object-fit:cover;
-  image-rendering:auto;
-  pointer-events:none;
-}
-.home-realm-scene--plane img{object-position:center 52%}
-.home-realm-scene--below img{
-  height:clamp(500px,68vw,740px);
-  object-position:center 100%;
-}
-
-/* Light shaft: cheap translucent gradients only. The pixels themselves remain untouched. */
-.home-realm-scene::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  z-index:1;
-  pointer-events:none;
   background:
-    radial-gradient(ellipse 24% 110% at 50% 48%,
-      rgba(255,250,229,.29) 0%,
-      rgba(255,250,229,.15) 35%,
-      rgba(255,250,229,.045) 58%,
-      transparent 76%);
-}
-.home-realm-scene::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  z-index:2;
-  pointer-events:none;
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.02);
+    linear-gradient(135deg,rgba(245,251,255,.055),transparent 32%),
+    rgba(7,14,17,.75)!important;
 }
 
-/* Deep page sections don't paint until they get close. */
-.home-page > section{
-  content-visibility:auto;
-  contain-intrinsic-size:auto 760px;
+/* These were temporary poster containers. Keep them inert if stale markup is ever encountered. */
+.home-realm-art--heaven,
+.home-realm-scene{
+  display:none!important;
 }
-.home-page > section:nth-of-type(-n+3){
+
+/* Reliability over speculative paint placeholders on the reader-facing homepage. */
+.home-page > section{
   content-visibility:visible;
   contain-intrinsic-size:none;
 }
 
-@media(max-width:820px){
-  .home-hero{
-    min-height:650px;
-    grid-template-columns:1fr;
-    align-content:end;
-    gap:18px;
-    padding:28px 18px;
-  }
-  .home-realm-art--heaven{object-position:center 12%}
-  .home-realm-scene img{height:500px}
-  .home-realm-scene--below img{height:570px}
-}
-@media(max-width:560px){
-  .home-hero{min-height:600px;border-radius:16px}
-  .home-realm-scene{margin:28px auto 36px;border-radius:14px}
-  .home-realm-scene img{height:450px}
-  .home-realm-scene--below img{height:520px}
-}
-
-
-/* Realm clarity calibration — 2026-10-03l */
-/* Keep raster detail close to native size. Wide screens get atmospheric breathing room,
-   not enlarged pixels. */
-.home-hero{
-  width:min(100%,900px);
-  margin-inline:auto;
-}
-.home-realm-scene{
-  width:min(100%,800px);
-}
-
-/* Heaven and Plane: light passes through the center without touching pixel sharpness. */
-.home-hero::before{
-  background:
-    radial-gradient(ellipse 23% 108% at 50% 45%,
-      rgba(255,254,242,.30) 0%,
-      rgba(255,252,235,.17) 34%,
-      rgba(255,250,231,.055) 58%,
-      transparent 76%),
-    linear-gradient(180deg,transparent 37%,rgba(5,10,8,.07) 64%,rgba(5,9,8,.52) 100%);
-}
-.home-realm-scene--plane::before{
-  background:
-    radial-gradient(ellipse 23% 108% at 50% 48%,
-      rgba(255,252,232,.27) 0%,
-      rgba(255,250,226,.14) 35%,
-      rgba(255,247,220,.04) 58%,
-      transparent 76%);
-}
-
-/* Below deliberately reverses the rule:
-   the central root/drain spine is quieter and darker; infernal rooms stay vivid at the edges. */
-.home-realm-scene--below::before{
-  background:
-    radial-gradient(ellipse 27% 112% at 50% 48%,
-      rgba(3,4,3,.62) 0%,
-      rgba(7,6,5,.43) 34%,
-      rgba(11,7,5,.17) 57%,
-      transparent 76%),
-    linear-gradient(90deg,
-      rgba(118,20,8,.08) 0%,
-      transparent 24%,
-      transparent 76%,
-      rgba(118,20,8,.08) 100%);
-}
-
-/* Realm-aware static panes: perceived glass from tint and edge light, never blur. */
-.home-hero .home-intro{
-  background:
-    linear-gradient(135deg,rgba(245,251,255,.055),transparent 32%),
-    rgba(7,14,17,.80)!important;
-}
 #living-field .home-section-head,
 .home-fast .home-fast-head,
 .news-preview .news-preview-head{
   background:
-    linear-gradient(135deg,rgba(236,255,226,.035),transparent 32%),
-    rgba(7,14,10,.82)!important;
+    linear-gradient(135deg,rgba(236,255,226,.04),transparent 32%),
+    rgba(7,14,10,.74)!important;
 }
 .home-bible-bridge .home-section-head,
 #culture-in-motion .home-section-head,
@@ -453,62 +380,12 @@ body.home-body{
 #foundation-landscape .home-section-head,
 #foundation-rooms .home-section-head{
   background:
-    linear-gradient(135deg,rgba(255,205,164,.035),transparent 32%),
-    rgba(18,8,6,.84)!important;
-  border-color:rgba(246,160,108,.15)!important;
+    linear-gradient(135deg,rgba(255,205,164,.04),transparent 32%),
+    rgba(18,8,6,.77)!important;
+  border-color:rgba(246,160,108,.16)!important;
 }
 
-/* Realm artwork final integration — 2026-10-03m */
-.home-realm-scene--plane{background:#79b8c8}
-.home-realm-scene--below{background:#24100b}
-
-
-/* Vertical realm proportions — 2026-10-03n
-   The approved art was composed for scrolling; preserve its full portrait frame. */
-.home-hero{
-  width:min(100%,860px);
-  aspect-ratio:1086 / 1448;
-  min-height:0;
-  align-content:end;
-}
-.home-realm-art--heaven{
-  object-fit:cover;
-  object-position:center center;
-}
-.home-realm-scene{
-  width:min(100%,800px);
-  aspect-ratio:1086 / 1448;
-}
-.home-realm-scene img,
-.home-realm-scene--below img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  object-position:center center;
-}
-@media(max-width:820px){
-  .home-hero{
-    min-height:0;
-    aspect-ratio:1086 / 1448;
-  }
-  .home-realm-scene,
-  .home-realm-scene--below{
-    aspect-ratio:1086 / 1448;
-  }
-  .home-realm-scene img,
-  .home-realm-scene--below img{
-    height:100%;
-  }
-}
-@media(max-width:560px){
-  .home-hero{min-height:0}
-  .home-realm-scene img,
-  .home-realm-scene--below img{height:100%}
-}
-
-
-/* Homepage fixed-control performance — 2026-10-03o
-   Fixed access chrome must not resample the page while the realm art scrolls underneath. */
+/* Fixed access chrome must not continuously resample the painted page. */
 .home-body .site-access-dock,
 .home-body .site-access-local-shortcuts,
 .home-body .site-access-panel{
@@ -521,4 +398,60 @@ body.home-body{
 }
 .home-body .site-access-panel{
   background:rgb(9,12,9)!important;
+}
+
+@media(max-width:820px){
+  .home-hero{
+    grid-template-columns:1fr;
+    gap:24px;
+    padding:12px 0 30px;
+  }
+  .home-page::before{
+    background-size:
+      100% 100%,
+      100% 100%,
+      1200px auto,
+      1180px auto,
+      1180px auto;
+    background-position:center,center,center top,center 47%,center bottom;
+  }
+  .home-page::after{inset:-8px -10px -40px}
+}
+@media(max-width:560px){
+  .home-page::before{
+    background-size:
+      100% 100%,
+      100% 100%,
+      1040px auto,
+      1020px auto,
+      1020px auto;
+  }
+  .home-page::after{
+    background:
+      linear-gradient(90deg,
+        transparent 0%,
+        rgba(250,250,239,.04) 12%,
+        rgba(255,253,239,.13) 35%,
+        rgba(255,253,239,.17) 50%,
+        rgba(255,253,239,.13) 65%,
+        rgba(250,250,239,.04) 88%,
+        transparent 100%);
+  }
+}
+@media(prefers-reduced-transparency:reduce){
+  .home-intro,
+  .home-section-head,
+  .home-fast-head,
+  .news-preview-head,
+  .reader-routing,
+  .substance-prose,
+  .reality-method-note,
+  .boundary-card,
+  .home-terrain-seal>div:last-child,
+  .home-bible-river,
+  .home-bible-identity,
+  .home-bible-route,
+  .home-visual-copy{
+    background:rgba(9,12,9,.94)!important;
+  }
 }
