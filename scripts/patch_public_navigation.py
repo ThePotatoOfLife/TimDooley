@@ -726,6 +726,10 @@ def main() -> None:
     ):
         changed.add(vesica)
 
+    # Special public-page rewrites above may touch page-nav markup. Re-apply the
+    # canonical subheader contract last so Home-first order cannot drift.
+    changed.update(patch_page_navs(OUT))
+
     print(f"Applied public navigation cleanup to {len(changed)} generated page(s).")
 
 
