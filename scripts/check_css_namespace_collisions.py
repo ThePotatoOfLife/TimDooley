@@ -44,6 +44,13 @@ errors = []
 warnings = []
 
 
+# Root-level browser assets are retired. Active CSS/JS must live under a scoped owner.
+for stray in sorted(ROOT.iterdir()):
+    if stray.is_file() and stray.suffix.lower() in {".css", ".js"}:
+        errors.append(
+            f"root-level browser asset is not allowed: {stray.name}; move it under its owning module"
+        )
+
 style = STYLE.read_text(encoding='utf-8') if STYLE.exists() else ""
 
 # One foundation only: site-system.css owns :root and the bare body selector.
