@@ -99,18 +99,127 @@
 @media(max-width:900px){.home-bible-river{grid-template-columns:repeat(3,minmax(0,1fr))}.home-bible-river a:nth-child(3){border-right:0}.home-bible-river a:nth-child(-n+3){border-bottom:1px solid var(--site-line)}}
 @media(max-width:620px){.home-bible-river{grid-template-columns:1fr}.home-bible-river a,.home-bible-river a:not(:first-child){padding:13px 0;border-right:0;border-bottom:1px solid var(--site-line)}.home-bible-river a:last-child{border-bottom:0}.home-bible-identity{grid-template-columns:1fr}.home-bible-identity div,.home-bible-identity div+div{padding:12px 0;border-left:0;border-bottom:1px solid var(--site-line)}.home-bible-identity div:last-child{border-bottom:0}}
 
-
-/* Homepage realm background — 2026-10-03p
-   The pixel art is atmosphere behind the page, not three poster-sized blocks in the document flow.
-   Keep this as the single homepage realm compositor. */
-html.home-shell{
-  background:#09100d;
-}
+/* Homepage realm stage — 2026-10-03r
+   One fixed visual stage, three optimized portrait scenes.
+   Scroll changes compositor-only opacity/transform; document geometry stays ordinary. */
+html.home-shell{background:#09100d}
 body.home-body{
   position:relative;
   overflow-x:hidden;
-  background:
-    linear-gradient(180deg,#11101a 0%,#0b1512 40%,#101411 58%,#170b08 100%);
+  background:linear-gradient(180deg,#11101a 0%,#0b1512 42%,#11130f 60%,#170b08 100%);
+}
+.home-world-stage{
+  position:fixed;
+  inset:0;
+  z-index:0;
+  overflow:hidden;
+  pointer-events:none;
+  background:#09100d;
+  contain:paint;
+}
+.home-world-realm{
+  position:absolute;
+  inset:0;
+  overflow:hidden;
+  opacity:0;
+  will-change:opacity,transform;
+  backface-visibility:hidden;
+}
+.home-world-realm img{
+  position:absolute;
+  left:50%;
+  top:0;
+  width:max(100vw,1120px);
+  height:auto;
+  max-width:none;
+  min-height:100vh;
+  pointer-events:none;
+  user-select:none;
+  image-rendering:auto;
+  backface-visibility:hidden;
+}
+.home-world-realm--heaven{
+  opacity:1;
+  background:#8bc3dc;
+}
+.home-world-realm--plane{background:#315e52}
+.home-world-realm--below{background:#1a0906}
+
+/* Realm pans use the portrait depth already present in the art.
+   The overlap windows crossfade instead of hard-cutting between floors. */
+@keyframes home-heaven-descent{
+  0%{opacity:1;transform:translateZ(0)}
+  20%{opacity:1;transform:translateZ(0)}
+  33%{opacity:0;transform:translateZ(0)}
+  100%{opacity:0;transform:translateZ(0)}
+}
+@keyframes home-heaven-pan{
+  0%{transform:translate3d(-50%,-2%,0)}
+  33%{transform:translate3d(-50%,-46%,0)}
+  100%{transform:translate3d(-50%,-46%,0)}
+}
+@keyframes home-plane-descent{
+  0%,20%{opacity:0;transform:translateZ(0)}
+  30%{opacity:1;transform:translateZ(0)}
+  57%{opacity:1;transform:translateZ(0)}
+  70%{opacity:0;transform:translateZ(0)}
+  100%{opacity:0;transform:translateZ(0)}
+}
+@keyframes home-plane-pan{
+  0%,20%{transform:translate3d(-50%,-4%,0)}
+  30%{transform:translate3d(-50%,-8%,0)}
+  70%{transform:translate3d(-50%,-48%,0)}
+  100%{transform:translate3d(-50%,-48%,0)}
+}
+@keyframes home-below-descent{
+  0%,58%{opacity:0;transform:translateZ(0)}
+  69%{opacity:1;transform:translateZ(0)}
+  100%{opacity:1;transform:translateZ(0)}
+}
+@keyframes home-below-pan{
+  0%,58%{transform:translate3d(-50%,-4%,0)}
+  69%{transform:translate3d(-50%,-10%,0)}
+  100%{transform:translate3d(-50%,-50%,0)}
+}
+@supports (animation-timeline:scroll(root block)){
+  .home-world-realm--heaven{
+    animation:home-heaven-descent 1s linear both;
+    animation-timeline:scroll(root block);
+  }
+  .home-world-realm--heaven img{
+    animation:home-heaven-pan 1s linear both;
+    animation-timeline:scroll(root block);
+  }
+  .home-world-realm--plane{
+    animation:home-plane-descent 1s linear both;
+    animation-timeline:scroll(root block);
+  }
+  .home-world-realm--plane img{
+    animation:home-plane-pan 1s linear both;
+    animation-timeline:scroll(root block);
+  }
+  .home-world-realm--below{
+    animation:home-below-descent 1s linear both;
+    animation-timeline:scroll(root block);
+  }
+  .home-world-realm--below img{
+    animation:home-below-pan 1s linear both;
+    animation-timeline:scroll(root block);
+  }
+}
+
+/* If scroll timelines are unavailable, show Plane as the stable neutral world.
+   The site remains fully readable and does not require a scroll listener. */
+@supports not (animation-timeline:scroll(root block)){
+  .home-world-realm--heaven,.home-world-realm--below{display:none}
+  .home-world-realm--plane{opacity:1}
+  .home-world-realm--plane img{transform:translate3d(-50%,-28%,0)}
+}
+
+.home-page,
+.home-footer{
+  position:relative;
+  z-index:1;
 }
 .home-page{
   --site-panel:rgba(8,11,10,.78);
@@ -118,10 +227,31 @@ body.home-body{
   --site-muted:#cfd3cc;
   --site-faint:#a6aca3;
   --home-glass-line:rgba(243,225,177,.14);
-  position:relative;
   isolation:isolate;
   background:transparent;
   text-shadow:none;
+}
+.home-page::before{content:none}
+
+/* A pale central reading shaft sits above the artwork and below all reader surfaces.
+   It does not blur or recolor the pixel art itself. */
+.home-page::after{
+  content:"";
+  position:absolute;
+  inset:-12px -18px -50px;
+  z-index:-1;
+  pointer-events:none;
+  background:
+    linear-gradient(90deg,
+      transparent 0%,
+      rgba(246,249,238,.018) 14%,
+      rgba(248,250,240,.075) 31%,
+      rgba(255,253,239,.15) 44%,
+      rgba(255,253,239,.18) 50%,
+      rgba(255,253,239,.15) 56%,
+      rgba(248,250,240,.075) 69%,
+      rgba(246,249,238,.018) 86%,
+      transparent 100%);
 }
 .home-nav{
   padding:7px;
@@ -148,75 +278,6 @@ body.home-body{
 .reader-routing-links small{color:#c5cbc3}
 .home-page strong,.home-page h3{text-shadow:0 1px 10px rgba(0,0,0,.22)}
 
-/* One full-page paint layer. Three optimized realm images are placed through the scroll
-   without changing document geometry or creating giant empty image panels. */
-.home-page::before{
-  content:"";
-  display:block!important;
-  position:absolute;
-  inset:-24px calc(50% - 50vw) -80px;
-  z-index:-2;
-  pointer-events:none;
-  border:0;
-  border-radius:0;
-  box-shadow:none;
-  background-color:#09100d;
-  background-image:
-    linear-gradient(180deg,
-      rgba(14,10,24,.10) 0%,
-      rgba(9,17,15,.03) 31%,
-      rgba(9,18,15,.02) 56%,
-      rgba(34,15,9,.12) 100%),
-    linear-gradient(90deg,
-      rgba(4,5,8,.16) 0%,
-      rgba(4,5,8,.035) 19%,
-      transparent 34%,
-      transparent 66%,
-      rgba(4,5,8,.035) 81%,
-      rgba(4,5,8,.16) 100%),
-    url("./home-heaven.avif"),
-    url("./home-plane.avif"),
-    url("./home-below.avif");
-  background-repeat:no-repeat;
-  background-position:
-    center,
-    center,
-    center top,
-    center 47%,
-    center bottom;
-  background-size:
-    100% 100%,
-    100% 100%,
-    clamp(1200px,100vw,1800px) auto,
-    clamp(1200px,100vw,1800px) auto,
-    clamp(1200px,100vw,1800px) auto;
-}
-
-/* Pale reading corridor: brighten the middle while leaving the outer artwork more saturated. */
-.home-page::after{
-  content:"";
-  display:block!important;
-  position:absolute;
-  inset:-12px -18px -50px;
-  z-index:-1;
-  pointer-events:none;
-  border:0;
-  border-radius:0;
-  box-shadow:none;
-  background:
-    linear-gradient(90deg,
-      transparent 0%,
-      rgba(246,249,238,.015) 15%,
-      rgba(248,250,240,.07) 31%,
-      rgba(255,253,239,.15) 45%,
-      rgba(255,253,239,.18) 50%,
-      rgba(255,253,239,.15) 55%,
-      rgba(248,250,240,.07) 69%,
-      rgba(246,249,238,.015) 85%,
-      transparent 100%);
-}
-
-/* Readable surfaces stay translucent so the world is still visible around and between them. */
 .home-intro,
 .home-section-head,
 .home-fast-head,
@@ -250,7 +311,7 @@ body.home-body{
   box-shadow:0 3px 10px rgba(0,0,0,.12),inset 0 1px rgba(255,255,255,.02);
 }
 
-/* Hero returns to content, not artwork geometry. */
+/* Hero is content only. The world belongs to the stage behind it. */
 .home-hero{
   position:relative;
   width:auto;
@@ -266,7 +327,7 @@ body.home-body{
   box-shadow:none;
   align-items:end;
 }
-.home-hero::before{display:none!important}
+.home-hero::before{content:none}
 .home-hero h1{
   color:#fffaf0;
   text-shadow:0 3px 18px rgba(0,0,0,.48);
@@ -277,17 +338,8 @@ body.home-body{
     rgba(7,14,17,.75)!important;
 }
 
-/* These were temporary poster containers. Keep them inert if stale markup is ever encountered. */
-.home-realm-art--heaven,
-.home-realm-scene{
-  display:none!important;
-}
-
 /* Reliability over speculative paint placeholders on the reader-facing homepage. */
-.home-page > section{
-  content-visibility:visible;
-  contain-intrinsic-size:none;
-}
+.home-page > section{content-visibility:visible;contain-intrinsic-size:none}
 
 #living-field .home-section-head,
 .home-fast .home-fast-head,
@@ -306,8 +358,6 @@ body.home-body{
     rgba(18,8,6,.77)!important;
   border-color:rgba(246,160,108,.16)!important;
 }
-
-/* Fixed access chrome must not continuously resample the painted page. */
 .home-body .site-access-dock,
 .home-body .site-access-local-shortcuts,
 .home-body .site-access-panel{
@@ -315,40 +365,16 @@ body.home-body{
   -webkit-backdrop-filter:none!important;
 }
 .home-body .site-access-dock,
-.home-body .site-access-local-shortcuts{
-  background:rgba(9,12,9,.985)!important;
-}
-.home-body .site-access-panel{
-  background:rgb(9,12,9)!important;
-}
+.home-body .site-access-local-shortcuts{background:rgba(9,12,9,.985)!important}
+.home-body .site-access-panel{background:rgb(9,12,9)!important}
 
 @media(max-width:820px){
   .home-intro,.home-section-head,.home-fast-head,.news-preview-head,.reader-routing,.substance-prose{padding:14px}
-  .home-hero{
-    grid-template-columns:1fr;
-    gap:24px;
-    padding:12px 0 30px;
-  }
-  .home-page::before{
-    background-size:
-      100% 100%,
-      100% 100%,
-      1200px auto,
-      1180px auto,
-      1180px auto;
-    background-position:center,center,center top,center 47%,center bottom;
-  }
-  .home-page::after{inset:-8px -10px -40px}
+  .home-hero{grid-template-columns:1fr;gap:24px;padding:12px 0 30px}
+  .home-world-realm img{width:1180px}
 }
 @media(max-width:560px){
-  .home-page::before{
-    background-size:
-      100% 100%,
-      100% 100%,
-      1040px auto,
-      1020px auto,
-      1020px auto;
-  }
+  .home-world-realm img{width:1040px}
   .home-page::after{
     background:
       linear-gradient(90deg,
@@ -360,6 +386,11 @@ body.home-body{
         rgba(250,250,239,.04) 88%,
         transparent 100%);
   }
+}
+@media(prefers-reduced-motion:reduce){
+  .home-world-realm--heaven,.home-world-realm--below{display:none}
+  .home-world-realm--plane{opacity:1;animation:none}
+  .home-world-realm--plane img{animation:none;transform:translate3d(-50%,-28%,0)}
 }
 @media(prefers-reduced-transparency:reduce){
   .home-intro,
@@ -374,7 +405,5 @@ body.home-body{
   .home-bible-river,
   .home-bible-identity,
   .home-bible-route,
-  .home-visual-copy{
-    background:rgba(9,12,9,.94)!important;
-  }
+  .home-visual-copy{background:rgba(9,12,9,.94)!important}
 }
