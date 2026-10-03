@@ -194,7 +194,7 @@ jobs:
             fetch_live "${base}${route}" ".live-smoke/${safe_name}.html"
           done
 
-          for asset in             "app/site-elevator.js"             "app/site-elevator.css"             "app/house-journey.js"             "app/house-journey.css"             "app/site-tree-perspective.svg"             "app/site-plane-organic-field.svg"             "app/site-below-root-field.svg"             "app/lower-layer.css"             "data/house/elevator-spatial-projection.json" \
+          for asset in             "app/site-elevator.js"             "app/site-elevator.css"             "app/house-journey.js"             "app/house-journey.css"             "app/home-heaven.avif"             "app/home-plane.avif"             "app/home-below.avif"             "app/lower-layer.css"             "data/house/elevator-spatial-projection.json" \
             "knowledge/core/spudlight-field-manual.json" \
             "knowledge/core/lower-field-orientation.json" \
             "knowledge/world/lower-field-population-severity-estimate.json" \
@@ -207,23 +207,17 @@ jobs:
           python - <<'PY'
           from pathlib import Path
           elevator_css=Path(".live-smoke/app_site-elevator.css").read_text(encoding="utf-8",errors="replace")
-          tree_svg=Path(".live-smoke/app_site-tree-perspective.svg").read_text(encoding="utf-8",errors="replace")
-          plane_scene=Path(".live-smoke/app_site-plane-organic-field.svg").read_text(encoding="utf-8",errors="replace")
-          below_scene=Path(".live-smoke/app_site-below-root-field.svg").read_text(encoding="utf-8",errors="replace")
           lower_css=Path(".live-smoke/app_lower-layer.css").read_text(encoding="utf-8",errors="replace")
           journey_js=Path(".live-smoke/app_house-journey.js").read_text(encoding="utf-8",errors="replace")
           journey_css=Path(".live-smoke/app_house-journey.css").read_text(encoding="utf-8",errors="replace")
           assert 'html[data-site-floor="plane"]' in elevator_css, "live elevator CSS missing Plane canvas"
-          assert 'body:not(.lower-layer-page)::before' in elevator_css, "live elevator CSS missing body-mounted tree layer"
-          assert 'site-tree-perspective.svg?v=' in elevator_css, "live elevator CSS missing fingerprinted tree artwork"
-          assert 'purple starlit crown-space' in tree_svg and 'peach-gold descent' in tree_svg, "live Heaven artwork is stale or incomplete"
-          assert 'first village' in plane_scene and 'second village' in plane_scene, "live Plane scene is stale or incomplete"
-          assert 'stepped, pixel-art-like mountain silhouette' in plane_scene, "live Plane scene missing mountain"
-          assert 'touchable surface / grass' in below_scene and 'swamp pockets' in below_scene and 'fire vents / forge pressure' in below_scene, "live Below scene is stale or incomplete"
-          assert 'site-below-root-field.svg?v=' in lower_css, "live lower CSS missing fingerprinted Below scene"
+          assert 'body:not(.home-body)::before' in elevator_css, "live elevator CSS missing universal single-floor realm canvas"
+          for asset in ('home-heaven.avif','home-plane.avif','home-below.avif'):
+              assert f'{asset}?v=' in elevator_css, f"live elevator CSS missing fingerprinted {asset}"
+              assert f'{asset}?v=' in journey_css, f"live House journey CSS missing fingerprinted {asset}"
+          assert 'body.lower-layer-page::before' not in lower_css, "live Below CSS restored a duplicate floor compositor"
+          assert 'site-below-root-field.svg' not in lower_css, "live Below CSS restored retired SVG art"
           assert 'house-journey.css?v=' in journey_js, "live House journey loader missing fingerprinted CSS"
-          assert 'site-plane-organic-field.svg?v=' in journey_css, "live House journey CSS missing fingerprinted Plane scene"
-          assert 'site-tree-perspective.svg?v=' in journey_css, "live House journey CSS missing fingerprinted Heaven scene"
 
           from pathlib import Path
           home=Path(".live-smoke/home.html").read_text(encoding="utf-8",errors="replace")
