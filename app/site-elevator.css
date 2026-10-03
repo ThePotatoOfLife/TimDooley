@@ -71,7 +71,15 @@ html[data-site-floor]{
   --site-realm-art-size:max(100vw,75vh,760px);
   --site-realm-art-position:50% 50%;
   --site-realm-fallback:#090909;
-  --site-realm-overlay:linear-gradient(180deg,rgba(5,7,9,.08),rgba(5,7,9,.16));
+  --site-realm-overlay:
+    linear-gradient(90deg,
+      rgba(0,0,0,.05) 0%,
+      rgba(0,0,0,.12) 22%,
+      rgba(0,0,0,.28) 40%,
+      rgba(0,0,0,.30) 50%,
+      rgba(0,0,0,.28) 60%,
+      rgba(0,0,0,.12) 78%,
+      rgba(0,0,0,.05) 100%);
 }
 html[data-site-floor="heaven"]{
   --site-panel:rgba(14,16,38,.80);
@@ -79,8 +87,6 @@ html[data-site-floor="heaven"]{
   --site-line:rgba(214,204,236,.24);
   --site-muted:#c3bfd0;
   --site-faint:#918ba1;
-  --site-reading-glass:rgba(16,10,38,.060);
-  --site-reading-glass-line:rgba(245,230,255,.028);
   --site-realm-art:url("./home-heaven.avif");
   --site-realm-art-position:50% 18%;
 }
@@ -90,8 +96,6 @@ html[data-site-floor="plane"]{
   --site-line:rgba(184,205,185,.22);
   --site-muted:#bdc9bf;
   --site-faint:#87958a;
-  --site-reading-glass:rgba(8,23,27,.052);
-  --site-reading-glass-line:rgba(232,247,239,.025);
   --site-realm-art:url("./home-plane.avif");
   --site-realm-art-position:50% 47%;
 }
@@ -101,8 +105,6 @@ html[data-site-floor="below"]{
   --site-line:rgba(165,95,59,.30);
   --site-muted:#c0a08f;
   --site-faint:#8e6d5d;
-  --site-reading-glass:rgba(22,10,7,.065);
-  --site-reading-glass-line:rgba(255,226,199,.024);
   --site-realm-art:url("./home-below.avif");
   --site-realm-art-position:50% 74%;
 }
