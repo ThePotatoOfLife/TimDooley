@@ -145,6 +145,17 @@ html[data-site-floor] .page-nav{
   color:var(--site-ink)!important;
   font-weight:700;
 }
+.page-nav-directory{color:var(--site-muted)!important}
+.page-nav-dwelling{
+  color:var(--site-ink)!important;
+  font-weight:650;
+}
+.page-nav-current{
+  color:var(--site-gold)!important;
+  font-weight:750;
+  text-decoration-thickness:1px;
+  text-underline-offset:3px;
+}
 .page-nav-room{
   color:color-mix(in srgb,var(--site-gold) 74%,var(--site-muted))!important;
 }
@@ -234,8 +245,8 @@ html[data-site-floor] .page > :where(p.boundary,p.note,p.warning,p.lede,.boundar
 
 @media (max-width:700px){
   .page{padding-top:22px;padding-bottom:calc(64px + var(--site-access-clearance))}
-  .page-nav{margin:0 0 20px;padding:0;flex-wrap:wrap;gap:6px;overflow:visible;overscroll-behavior:auto;scroll-snap-type:none}
-  .page-nav a{flex:0 1 auto;white-space:normal;padding:6px 9px;border:1px solid var(--site-line);border-radius:9px;scroll-snap-align:none}
+  .page-nav{margin:0 0 20px;padding:7px 9px;flex-wrap:wrap;gap:4px 10px;overflow:visible;overscroll-behavior:auto;scroll-snap-type:none}
+  .page-nav a{flex:0 1 auto;white-space:normal;padding:3px 0;border:0;border-radius:0;scroll-snap-align:none}
   .page-header{margin-bottom:24px}
   .topology-context-head{display:block}
   .topology-context-house{display:inline-block;margin-top:8px}
