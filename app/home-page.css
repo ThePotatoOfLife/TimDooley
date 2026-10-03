@@ -608,3 +608,35 @@ body.home-body{background:#09100d}
   }
   .home-page > section{contain-intrinsic-size:auto 680px}
 }
+
+
+/* Homepage stepped realms — 2026-10-03i */
+/* Stop recompositing the full mural for every scroll tick.
+   The world moves only when the reader crosses a realm boundary. */
+.home-world-stage__image{
+  animation:none!important;
+  transition:none;
+  will-change:auto;
+}
+.home-body[data-home-realm="heaven"] .home-world-stage__image{
+  transform:translate3d(-50%,0,0);
+}
+.home-body[data-home-realm="plane"] .home-world-stage__image{
+  transform:translate3d(-50%,calc((100vh - 100%) * .49),0);
+}
+.home-body[data-home-realm="below"] .home-world-stage__image{
+  transform:translate3d(-50%,calc(100vh - 100%),0);
+}
+.home-body.home-world-moving .home-world-stage__image{
+  transition:transform 680ms cubic-bezier(.22,.7,.2,1);
+  will-change:transform;
+}
+@media(prefers-reduced-motion:reduce){
+  .home-body.home-world-moving .home-world-stage__image{
+    transition:none;
+    will-change:auto;
+  }
+}
+
+/* Realm markers are semantic only; they add no box or paint. */
+[data-home-realm-marker]{scroll-margin-top:90px}
