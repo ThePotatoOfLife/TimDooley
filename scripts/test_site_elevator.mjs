@@ -231,17 +231,10 @@ assert.equal(css.includes('.site-elevator-room.is-secondary'),false,'header CSS 
 assert.equal(source.includes('is-secondary'),false,'runtime must not emit cross-floor Room doors');
 
 
-assert.ok(css.includes('rgba(18,49,75,.66)'),'Heaven Room panes must remain readable while revealing more sky');
-assert.ok(!css.includes('backdrop-filter:blur(6px) saturate(116%)'),'Heaven should blur shared panes rather than every Room tile');
-assert.ok(css.includes('@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px)))'),'Heaven glass needs an opaque fallback when blur is unavailable');
-assert.ok(css.includes('@media (prefers-contrast: more)'),'Heaven glass needs an explicit high-contrast mode');
-
-assert.ok(css.includes('rgba(15,38,60,.72)'),'Heaven floor board needs readable translucent glass');
-assert.ok(css.includes('backdrop-filter:blur(9px) saturate(122%)'),'Heaven floor board needs a restrained frosted-glass treatment');
-assert.ok(css.includes('rgba(11,33,52,.64)'),'Heaven Room rail needs translucent glass over the sky');
-assert.ok(css.includes('backdrop-filter:blur(8px) saturate(118%)'),'Heaven rail needs restrained glass refraction');
-assert.ok(css.includes('background:linear-gradient(180deg,rgba(72,120,132,.28),rgba(24,55,47,.90))'),'Plane floor board needs a blue-green landscape readability plate');
-assert.ok(css.includes('background:rgba(24,14,11,.96)'),'Below floor board needs a dark readability plate');
+assert.ok(css.includes('background:rgba(6,10,8,.42)'),'Room tiles need one neutral readability surface over every realm');
+assert.ok(css.includes('background:var(--site-elevator-panel)'),'floor board must use the shared terminal panel token');
+assert.ok(css.includes('@media (prefers-contrast: more)'),'terminal UI needs one generic high-contrast mode');
+assert.equal(css.includes('backdrop-filter:'),false,'terminal UI must not reintroduce blur-based floor materials');
 assert.ok(css.includes('background:rgba(5,8,8,.72)'),'arrow column needs a stable dark readability plate');
 assert.ok(css.includes('[data-elevator-ready="false"]'),'loading state must have a neutral terminal treatment');
 assert.ok(css.includes('--elevator-room-min:49px'),'narrow mobile Plane grid must fit enough columns to avoid four Room rows');
