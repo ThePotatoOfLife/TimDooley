@@ -1,5 +1,5 @@
 {
-  "version": "2.7.2",
+  "version": "2.7.3",
   "updated": "2026-10-03",
   "authority": "public-route-identity",
   "room_registry": "data/house/rooms.json",
@@ -966,10 +966,11 @@
       ]
     },
     "tim": {
-      "meaning": "Tim Dooley subject owner for biography, story projection, collection and authored/project works.",
-      "child_rule": "Use Tim when the surface is primarily a Tim-centered narrative, corpus or body of work rather than a general religious/philosophical/scientific domain.",
+      "meaning": "Tim Dooley subject owner for biography, living portrait, story projection, collection and authored/project works.",
+      "child_rule": "Use Tim when the surface is primarily a Tim-centered narrative, voice/portrait, corpus or body of work rather than a general religious/philosophical/scientific domain.",
       "allowed_child_ids": [
         "story",
+        "tim-living-portrait",
         "collection",
         "works"
       ]
