@@ -95,19 +95,19 @@ html[data-site-floor="below"]{
 }
 
 .site-elevator[data-elevator-ready="false"]{
-  --site-elevator-bg:#1a211f;
-  --site-elevator-panel:rgba(13,18,17,.96);
-  --site-elevator-ink:#f1f4ef;
-  --site-elevator-muted:#b7c0b9;
-  --site-elevator-line:rgba(255,255,255,.16);
-  --site-elevator-accent:var(--site-muted);
-  --site-elevator-glow:rgba(255,255,255,.12);
+  --site-elevator-bg:#111;
+  --site-elevator-panel:rgba(10,10,10,.92);
+  --site-elevator-ink:#f4f6ef;
+  --site-elevator-muted:#aaa7a0;
+  --site-elevator-line:rgba(255,255,255,.14);
+  --site-elevator-accent:#d8d1c5;
+  --site-elevator-glow:rgba(255,255,255,.10);
 }
 .site-elevator[data-elevator-ready="false"]::before{
-  opacity:.28;
+  opacity:.18;
   background:
-    repeating-linear-gradient(90deg,transparent 0 15px,rgba(255,255,255,.05) 15px 16px),
-    linear-gradient(180deg,#202926,#141a18);
+    repeating-linear-gradient(90deg,transparent 0 15px,rgba(255,255,255,.04) 15px 16px),
+    #111;
 }
 .site-elevator[data-elevator-ready="false"] .site-elevator-controls{
   opacity:.42;
