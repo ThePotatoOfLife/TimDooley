@@ -1,6 +1,6 @@
 {
-  "version": "2.7.1",
-  "updated": "2026-10-01",
+  "version": "2.7.2",
+  "updated": "2026-10-03",
   "authority": "public-route-identity",
   "room_registry": "data/house/rooms.json",
   "primary_gateway_ids": [
@@ -78,6 +78,27 @@
       "visibility": "primary",
       "primary_navigation": true,
       "is_view": false,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "tim-living-portrait",
+      "route": "/tim-dooley/tim-dooley/",
+      "canonical_route": "/tim-dooley/tim-dooley/",
+      "surface_type": "guide",
+      "title": "Elo, I Am Tim",
+      "reader_job": "Let readers encounter Tim Dooley's personality, cadence, humor, spiritual development, God-language, warmth, contradictions and ordinary humanity in a voice-led portrait.",
+      "primary_parent": "tim",
+      "primary_room_ids": [
+        "potatoverse-canon",
+        "time-history",
+        "works",
+        "culture-information"
+      ],
+      "status": "active",
+      "visibility": "specialist",
+      "primary_navigation": false,
+      "is_view": true,
       "knowledge_owner": false,
       "legacy_routes": []
     },
