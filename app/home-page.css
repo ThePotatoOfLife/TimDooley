@@ -138,8 +138,6 @@ body.home-body{
   inset:0;
   overflow:hidden;
   opacity:0;
-  will-change:opacity,transform;
-  backface-visibility:hidden;
 }
 .home-world-realm img{
   position:absolute;
@@ -156,12 +154,9 @@ body.home-body{
   image-rendering:auto;
   backface-visibility:hidden;
 }
-.home-world-realm--heaven{
-  opacity:1;
-  background:#8bc3dc;
-}
-.home-world-realm--plane{background:#315e52}
-.home-world-realm--below{background:#1a0906}
+.home-world-realm--heaven{opacity:1}
+.home-world-realm--plane,
+.home-world-realm--below{background:transparent}
 
 /* Realm pans use the portrait depth already present in the art.
    The overlap windows crossfade instead of hard-cutting between floors. */
