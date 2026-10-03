@@ -111,3 +111,16 @@ A page is clean when it has a named layout owner, no dead compatibility override
 - [x] Migrate FAQ and Shadow Farm onto the shared `.page-nav` contract while retaining their local `.nav` compatibility class.
 - [ ] Migrate remaining intentional specialist navigation classes only when they already load `site-system.css` and can preserve local behavior.
 - [ ] Continue reducing inline CSS on older public readers such as Vesica without flattening their unique diagrams.
+
+
+## Cross-Room harmonization pass
+
+- [x] Consolidate Economy, Law and Politics styling into `app/world-room.css`.
+- [x] Remove their inconsistent 860/880/920px whole-pane caps; keep prose measure inside a full-width pane instead.
+- [x] Consolidate Games and Visual Art specialist styling into `app/works-room.css`.
+- [x] Replace divider-only specialist registries with pane-backed shared components.
+- [x] Add a reusable `.room-synthesis` component for contribution / boundary / next-handoff summaries.
+- [x] Add House synthesis to Games, Visual Art, Economy and Whole-body Physiology where the local page was strong but the larger contribution was implicit.
+- [ ] Apply `.room-synthesis` only to specialist Rooms where it adds a real cross-domain handoff; do not stamp it mechanically onto every page.
+- [ ] Continue grouping inline CSS by semantic family rather than page-by-page cleanup.
+- [ ] Review remaining rich specialist Rooms for “good local essay, weak House handoff” rather than adding generic closing prose.
