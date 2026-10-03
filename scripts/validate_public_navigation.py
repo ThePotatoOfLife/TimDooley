@@ -130,15 +130,12 @@ def main() -> int:
                 if label in REDUNDANT_PAGE_NAV_LABELS:
                     errors.append(f"page-nav {page_nav_index} of {rel} leaked redundant architecture label {label!r}")
             room_link_count = len(PAGE_NAV_ROOM_CLASS.findall(nav))
-            if re.fullmatch(r"rooms/[^/]+/index\.html", rel.as_posix()):
-                limit = 4
-            elif re.fullmatch(r"rooms/inside/[^/]+/index\.html", rel.as_posix()):
-                limit = 3
-            else:
-                limit = 4
-            if room_link_count > limit:
+            # Room families are intentionally visible now. Dwellings contain only
+            # 3–5 governed child Rooms; nested Rooms may add up to two cross-family
+            # adjacent doors after their siblings. Guard only against runaway output.
+            if room_link_count > 8:
                 errors.append(
-                    f"page-nav {page_nav_index} of {rel} projects {room_link_count} Room links; cap is {limit}"
+                    f"page-nav {page_nav_index} of {rel} projects {room_link_count} Room links; expected a compact governed neighborhood"
                 )
 
         for deep_index, deep in enumerate(DEEP.findall(text), start=1):
