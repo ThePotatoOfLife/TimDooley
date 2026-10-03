@@ -46,6 +46,34 @@ def main() -> int:
     if re.search(r"<style>[\\s\\S]*?\\.home-", home):
         errors.append("homepage-specific CSS drifted back into an inline <style> block")
 
+    # Pixel-world contract: Home owns one fixed multi-realm compositor.
+    for marker in (
+        'class="home-world-stage"',
+        'home-world-realm--heaven',
+        'home-world-realm--plane',
+        'home-world-realm--below',
+        'src="app/home-heaven.avif"',
+        'src="app/home-plane.avif"',
+        'src="app/home-below.avif"',
+    ):
+        if marker not in home:
+            errors.append(f"homepage pixel-world stage missing marker: {marker}")
+    for retired in ('home-realm-scene', 'home-realm-art--heaven', 'home-world-master.webp'):
+        if retired in home:
+            errors.append(f"homepage reintroduced retired realm compositor markup: {retired}")
+    if "data-site-floor=" in home:
+        errors.append("homepage must remain multi-realm and must not carry a single-floor canvas")
+    for marker in (
+        ".home-world-stage{",
+        "@keyframes home-heaven-descent",
+        "@keyframes home-plane-descent",
+        "@keyframes home-below-descent",
+        "animation-timeline:scroll(root block)",
+        "width:max(100vw,150vh,1120px)",
+    ):
+        if marker not in home_css:
+            errors.append(f"homepage pixel-world CSS missing invariant: {marker}")
+
     # Keep homepage teaching jobs distinct. Route and Foundation sections already own
     # transition/reproduction detail, so a generic lifecycle section is duplication.
     if 'id="project-motion"' in home or 'data-cycle="knowledge"' in home or 'data-cycle="generative"' in home:
