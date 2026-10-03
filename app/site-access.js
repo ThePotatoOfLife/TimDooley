@@ -271,5 +271,5 @@
   });
   document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!panel.hidden){setOpen(false);returnFocus?.focus?.()}});
   document.addEventListener('pointerdown',e=>{if(!panel.hidden&&!wrapper.contains(e.target))setOpen(false)});
-  void renderDefault();
+  if(!document.body.classList.contains('home-body'))void renderDefault();
 })();
