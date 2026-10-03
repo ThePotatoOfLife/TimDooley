@@ -1495,3 +1495,22 @@ For every major reader box/section, ask:
 - [ ] World: connect political economy, institutional capacity, geography, infrastructure, logistics, law and finance through worked dependency chains.
 - [ ] Science: make emergence, networks, control, uncertainty, identifiability and falsification legible with simple worked models.
 - [ ] Art/Works: treat visual composition, music, satire, game mechanics and literary form as ways of thinking—not decorative archives.
+
+
+## Navigation simplification — 2026-10-03
+
+Primary rule: readers should not have to understand the House architecture before they can find the House's knowledge.
+
+- [x] Make the sub-header the discovery spine: Home → Rooms → local/context links → useful governed Rooms.
+- [x] Add Rooms as the stable second item after Home on generated page sub-headers.
+- [x] Project useful Room links onto major hubs such as Religion, Science, Culture, Works, World, Timeline, House and Philosophy.
+- [x] Increase governed Room projection modestly where useful while keeping the bar compact.
+- [x] Remove the persistent site-wide “Your path” journey ribbon from ordinary reading pages.
+- [x] Keep journey/history as an Elevator-local feature where spatial replay has a real purpose.
+- [x] Keep the global Home / News / Map / Find / Places dock as utility navigation rather than hierarchy.
+- [x] Pane the Elevator reader, example, fallback, breadcrumbs and explanatory cards.
+- [x] Enlarge and strengthen the Elevator object table so object text does not feel naked or cramped.
+- [ ] Audit which authored links in sub-headers become redundant now that Rooms is always present.
+- [ ] Prefer subject Rooms over architecture/meta links when space is tight.
+- [ ] Add a clear current-room state to the sub-header without turning it into a breadcrumb essay.
+- [ ] Ensure deep content pages expose at least one useful way back into their parent Room family.
