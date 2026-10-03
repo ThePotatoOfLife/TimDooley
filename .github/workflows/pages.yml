@@ -232,8 +232,11 @@ jobs:
           below=Path(".live-smoke/below_.html").read_text(encoding="utf-8",errors="replace")
           shadow=Path(".live-smoke/shadow-farm_.html").read_text(encoding="utf-8",errors="replace")
           culture=Path(".live-smoke/context_culture_.html").read_text(encoding="utf-8",errors="replace")
+          assert "data-site-floor=" not in home, "live Home must remain multi-realm instead of inheriting one floor canvas"
+          assert "home-page.css?v=" in home, "live Home missing fingerprinted homepage CSS"
+          assert "site-elevator.css?v=" in home, "live Home missing fingerprinted elevator CSS"
+          assert "site-elevator.js?v=" in home, "live Home missing fingerprinted elevator JS"
           for label, html, floor in (
-              ("home", home, "plane"),
               ("religion", religion, "heaven"),
               ("science", science, "plane"),
               ("below", below, "below"),
