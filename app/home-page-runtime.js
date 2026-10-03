@@ -1,4 +1,4 @@
-// Lightweight homepage lazy loader. Artwork is static; no scroll-linked rendering.
+// Lightweight homepage runtime. Realm motion is CSS scroll-timeline only; JS lazy-loads optional modules.
 (()=>{
   if(!document.body?.classList.contains('home-body'))return;
   const loadStyleNear=(target,href,margin='1200px')=>{
