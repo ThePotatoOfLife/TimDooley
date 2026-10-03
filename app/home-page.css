@@ -405,3 +405,142 @@ body:has(.home-page)>:not(script):not(style){
     background:rgba(8,10,9,.90);
   }
 }
+
+
+/* Homepage performance compositor — 2026-10-03g */
+/*
+  Keep the approved world art at full repository resolution, but move only one raster
+  layer with compositor transforms. No viewport-sized filter or backdrop blur is needed.
+*/
+html:has(.home-page),
+body:has(.home-page){
+  background:#09100d;
+}
+html[data-site-floor] body:has(.home-page):not(.lower-layer-page)::before,
+body:has(.home-page)::before,
+body:has(.home-page)::after,
+.home-page::after{
+  display:none!important;
+}
+.home-world-stage{
+  position:fixed;
+  inset:0;
+  z-index:0;
+  overflow:hidden;
+  pointer-events:none;
+  contain:strict;
+  isolation:isolate;
+  background:
+    linear-gradient(180deg,#bce7ff 0%,#d7eff2 34%,#345443 59%,#3b1711 79%,#100705 100%);
+}
+.home-world-stage__image{
+  position:absolute;
+  left:50%;
+  top:0;
+  width:clamp(760px,92vw,1400px);
+  height:auto;
+  max-width:none;
+  transform:translate3d(-50%,0,0);
+  transform-origin:50% 0;
+  backface-visibility:hidden;
+  image-rendering:auto;
+  will-change:transform;
+}
+.home-world-stage::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  background:
+    radial-gradient(ellipse 32% 100% at 50% 44%,rgba(255,252,237,.23) 0,rgba(250,248,231,.12) 35%,rgba(246,241,222,.04) 57%,transparent 74%),
+    linear-gradient(90deg,rgba(4,8,8,.20) 0,rgba(4,8,8,.055) 17%,transparent 32%,transparent 68%,rgba(4,8,8,.055) 83%,rgba(4,8,8,.20) 100%);
+}
+body:has(.home-page) > .home-page,
+body:has(.home-page) > .home-footer,
+body:has(.home-page) > .home-view-counter,
+body:has(.home-page) > .site-access{
+  position:relative;
+  z-index:1;
+}
+
+@keyframes home-world-compositor-descent{
+  0%,14%{transform:translate3d(-50%,0,0)}
+  34%{transform:translate3d(-50%,calc((100vh - 100%) * .28),0)}
+  58%{transform:translate3d(-50%,calc((100vh - 100%) * .54),0)}
+  76%{transform:translate3d(-50%,calc((100vh - 100%) * .73),0)}
+  100%{transform:translate3d(-50%,calc(100vh - 100%),0)}
+}
+@supports (animation-timeline:scroll(root block)){
+  .home-world-stage__image{
+    animation:home-world-compositor-descent 1s linear both;
+    animation-timeline:scroll(root block);
+  }
+}
+@supports not (animation-timeline:scroll(root block)){
+  .home-world-stage__image{
+    top:50%;
+    transform:translate3d(-50%,-50%,0);
+    will-change:auto;
+  }
+}
+
+/* Glass without live backdrop sampling: visually clearer and substantially cheaper. */
+.home-page,
+.home-page *{
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+}
+.home-intro,
+.home-section-head,
+.home-fast-head,
+.news-preview-head,
+.reader-routing,
+.substance-prose,
+.reality-method-note,
+.boundary-card,
+.home-terrain-seal>div:last-child,
+.home-bible-river,
+.home-bible-identity,
+.home-bible-route,
+.home-visual-copy{
+  background:
+    linear-gradient(135deg,rgba(255,255,255,.055),transparent 29%),
+    linear-gradient(180deg,rgba(14,19,16,.80),rgba(6,9,8,.86))!important;
+  border-color:rgba(255,240,205,.16)!important;
+  box-shadow:0 10px 30px rgba(0,0,0,.18),inset 0 1px rgba(255,255,255,.04);
+}
+.motion-card,.home-fast-door,.field-level,.foundation-room-card,.reality-card,
+.direction-step,.sections>a,.home-media-strip figure,.home-visual-card,
+.field-routes article,.route-panel,.foundation-pattern-panel,.pulse-card,
+.capability-card,.public-doors{
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.03),transparent 40%),
+    rgba(6,10,8,.82)!important;
+  box-shadow:0 6px 20px rgba(0,0,0,.14),inset 0 1px rgba(255,255,255,.025);
+}
+
+/* Skip layout/paint for the deep homepage until it is near the viewport. */
+.home-page > section:nth-of-type(n+5){
+  content-visibility:auto;
+  contain-intrinsic-size:auto 820px;
+}
+
+/* Avoid keeping a permanent compositor hint when motion is disabled. */
+@media(prefers-reduced-motion:reduce){
+  .home-world-stage__image{
+    animation:none!important;
+    top:50%;
+    transform:translate3d(-50%,-50%,0);
+    will-change:auto;
+  }
+}
+@media(max-width:760px){
+  .home-world-stage__image{width:760px}
+  .home-world-stage::after{
+    background:
+      radial-gradient(ellipse 54% 100% at 50% 44%,rgba(255,252,237,.20),rgba(250,248,231,.08) 42%,transparent 72%),
+      linear-gradient(90deg,rgba(4,8,8,.12),transparent 24%,transparent 76%,rgba(4,8,8,.12));
+  }
+  .home-page > section:nth-of-type(n+5){contain-intrinsic-size:auto 700px}
+}
