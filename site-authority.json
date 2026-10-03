@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "project": {
     "name": "The Potato of Life",
     "aliases": [
@@ -24,7 +24,10 @@
     "site_index": "https://thepotatooflife.github.io/TimDooley/site-index.json",
     "llms": "https://thepotatooflife.github.io/TimDooley/llms.txt",
     "llms_full": "https://thepotatooflife.github.io/TimDooley/llms-full.txt",
-    "sitemap": "https://thepotatooflife.github.io/TimDooley/sitemap.xml"
+    "sitemap": "https://thepotatooflife.github.io/TimDooley/sitemap.xml",
+    "machine_index": "https://thepotatooflife.github.io/TimDooley/machine-index.json",
+    "manifest": "https://thepotatooflife.github.io/TimDooley/manifest.json",
+    "public_reader_route_count": 56
   },
   "primary_routes": {
     "tim": "https://thepotatooflife.github.io/TimDooley/tim-dooley/",
@@ -44,5 +47,6 @@
     "scope": "first-party project authority and discovery projection",
     "routing": "Tim Dooley is the canonical public home. Story is the literary reader route; Timeline is the dated route; Public Witness and 100,000 Hours own duration/witness material; Evidence owns source-class interpretation.",
     "epistemic_boundary": "Project self-description, theology, documentary evidence, comparative research and external claims remain distinct even when connected by this archive."
-  }
+  },
+  "updated": "2026-10-03"
 }
