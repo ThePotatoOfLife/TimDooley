@@ -277,7 +277,14 @@ html[data-site-floor] .page > :where(p.boundary,p.note,p.warning,p.lede,.boundar
 }
 
 /* Optional House topology context: progressive enhancement only. */
-.topology-context{margin:32px 0;padding:20px 0;border-top:1px solid var(--site-line);border-bottom:1px solid var(--site-line)}
+.topology-context{
+  margin:32px 0;
+  padding:20px;
+  border:1px solid var(--site-pane-line);
+  border-radius:14px;
+  background:var(--site-pane);
+  box-shadow:var(--site-pane-shadow)
+}
 .topology-context-head{display:flex;justify-content:space-between;gap:24px;align-items:end}
 .topology-context-head h2{margin:0;font:400 25px/1.1 var(--site-font-serif);color:var(--site-ink)}
 .topology-context-house{color:var(--site-ink);font-size:12px;text-decoration:none;white-space:nowrap}
@@ -315,8 +322,12 @@ html[data-site-floor] .page > :where(p.boundary,p.note,p.warning,p.lede,.boundar
   max-width:none;
   box-sizing:border-box;
   margin:44px 0 38px;
-  padding:0 0 0 18px;
-  border-left:1px solid color-mix(in srgb,var(--site-gold) 54%,transparent);
+  padding:clamp(18px,2.4vw,26px);
+  border:1px solid var(--site-pane-line);
+  border-left:3px solid color-mix(in srgb,var(--site-gold) 58%,transparent);
+  border-radius:16px;
+  background:var(--site-pane);
+  box-shadow:var(--site-pane-shadow);
 }
 .dwelling-reflection h2{
   max-width:790px;
@@ -337,8 +348,11 @@ html[data-site-floor] .page > :where(p.boundary,p.note,p.warning,p.lede,.boundar
 }
 .rooms-architecture-details{
   margin:34px 0;
-  border-top:1px solid var(--site-line);
-  border-bottom:1px solid var(--site-line);
+  padding:0 16px;
+  border:1px solid var(--site-pane-line);
+  border-radius:14px;
+  background:var(--site-pane-soft);
+  box-shadow:0 8px 22px rgba(0,0,0,.12);
 }
 .rooms-architecture-details>summary{
   cursor:pointer;
@@ -353,7 +367,7 @@ html[data-site-floor] .page > :where(p.boundary,p.note,p.warning,p.lede,.boundar
 .rooms-architecture-details>summary::after{content:" +";color:var(--site-gold)}
 .rooms-architecture-details[open]>summary::after{content:" −"}
 @media(max-width:700px){
-  .dwelling-reflection{margin:34px 0 30px;padding-left:13px}
+  .dwelling-reflection{margin:34px 0 30px;padding:16px}
   .dwelling-reflection p{font-size:16px}
 }
 
