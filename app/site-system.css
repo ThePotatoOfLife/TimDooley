@@ -19,7 +19,7 @@
   --site-text-ui: 14px;
   --site-text-body: 16px;
   --site-text-lead: clamp(20px, 2.3vw, 23px);
-  --site-text-title: clamp(54px, 9vw, 104px);
+  --site-text-title: clamp(48px, 7vw, 88px);
   --site-text-section: clamp(28px, 4vw, 44px);
   --site-text-subsection: clamp(20px, 2.4vw, 27px);
   --site-leading-body: 1.64;
@@ -120,12 +120,14 @@ textarea:focus-visible,
 }
 
 .page-header h1 {
-  margin: 0 0 20px;
+  margin: 0 0 18px;
+  max-width: 16ch;
   font-family: var(--site-font-serif);
   font-size: var(--site-text-title);
   font-weight: 400;
-  letter-spacing: -.06em;
-  line-height: .86;
+  letter-spacing: -.045em;
+  line-height: .94;
+  text-wrap: balance;
 }
 
 .summary {
