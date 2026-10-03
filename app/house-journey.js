@@ -276,7 +276,7 @@
       section.innerHTML=
         '<p class="eyebrow">More to inspect</p><h2>Go deeper into '+esc(dossier.title||room.title||titleFor(roomId))+'</h2>'
         +'<p class="room-richness-intro">The reader above gives you the subject. Open this layer when you want source records, provenance, connections to other Rooms or questions that are still unresolved.</p>'
-        +'<details class="room-richness-details"><summary>Show deeper material</summary>'
+        +'<details class="room-richness-details"><summary><span>Show deeper material</span><small>Show archive structure</small></summary>'
         +'<div class="room-richness-meta">'+esc(String(primaryCount))+' source records · '+esc(String(interfaceCount))+' cross-Room links'+(dataFiles?' · '+esc(String(dataFiles))+' supporting data files':'')+(pulseText?' · current index: '+esc(pulseText):'')+'</div>'
         +(belongs.length?'<div class="room-richness-rule"><h3>Scope &amp; boundaries</h3><div class="room-richness-run">'+belongs.map(x=>'<span>'+esc(x)+'</span>').join('')+'</div></div>':'')
         +'<div class="room-richness-rule"><h3>Source records and deeper material</h3><p>Open these when you want the underlying records or a more detailed view of the subject.</p>'+holdingHtml+'</div>'
