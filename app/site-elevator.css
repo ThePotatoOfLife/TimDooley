@@ -454,17 +454,6 @@ html[data-site-floor="below"]{
   .site-elevator-room-rail{gap:1px;padding:2px}
   .site-elevator-room{min-height:25px;line-height:1.06;padding:2px 3px}
 }
-@media (prefers-reduced-motion: reduce){
-  html[data-site-floor] body:not(.home-body)::before{
-    animation:none;
-    transform:none;
-  }
-  .site-elevator[data-elevator-direction] .site-elevator-floor{
-    animation:none!important;
-    transform:none!important;
-  }
-}
-
 /* Cross-floor local navigation is an explicit gate, never a silent sibling door. */
 
 /* Canonical single-floor realm renderer.
@@ -506,6 +495,16 @@ html[data-site-floor] body:not(.home-body)::before{
 }
 @media(max-width:700px){
   html[data-site-floor]{--site-realm-art-size:max(118vw,75vh,720px)}
+}
+@media (prefers-reduced-motion: reduce){
+  html[data-site-floor] body:not(.home-body)::before{
+    animation:none;
+    transform:none;
+  }
+  .site-elevator[data-elevator-direction] .site-elevator-floor{
+    animation:none!important;
+    transform:none!important;
+  }
 }
 html[data-site-floor] body.home-body{min-height:100vh}
 html[data-site-floor] body.home-body::before{content:none;display:none}
