@@ -48,7 +48,12 @@
   box-shadow:var(--site-pane-shadow);
 }
 .inner-home>.room-essay,
-.inner-home>.room-ledger{padding:clamp(18px,2.4vw,26px)}
+.inner-home>.room-ledger{
+  width:100%;
+  max-width:none;
+  box-sizing:border-box;
+  padding:clamp(18px,2.4vw,26px)
+}
 .inner-home>.room-quote{padding:22px 24px}
 .inner-home>.adj-grid,
 .inner-home>.actions{padding:14px}
