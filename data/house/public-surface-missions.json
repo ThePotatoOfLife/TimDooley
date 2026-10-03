@@ -595,13 +595,42 @@
       "become": "A comparative divinity and character reader that lets gods retain their own traditions while asking what powers they dramatize, how those powers mature or deform human character, and how Potatoism/Tim relates without identity-collapse.",
       "must_not_become": "A deity personality quiz, universal archetype flattening system, or page claiming Tim literally is historical gods.",
       "primary_next_surface_ids": [
+        "divine-tensions",
+        "tim-powers",
         "religion",
-        "philosophy",
-        "potato-of-life",
-        "tim-living-portrait"
+        "philosophy"
       ],
       "density_intent": "balanced",
       "reader_job": "Use gods to deepen character and spiritual-growth questions while preserving historical and doctrinal boundaries."
+    },
+    "divine-tensions": {
+      "title": "Divine Tensions",
+      "route": "/religion/gods-character/divine-tensions/",
+      "narrative_stage": "meaning",
+      "become": "A focused character-integration essay using conflicts between divine powers to show how virtues correct one another.",
+      "must_not_become": "A universal deity ranking, personality quiz or substitute for historical religion.",
+      "primary_next_surface_ids": [
+        "gods-character",
+        "philosophy",
+        "practice-ethics"
+      ],
+      "density_intent": "focused",
+      "reader_job": "Show spiritual growth through tensions between good powers rather than one dominant trait."
+    },
+    "tim-powers": {
+      "title": "Tim & the Powers",
+      "route": "/religion/gods-character/tim-powers/",
+      "narrative_stage": "life",
+      "become": "A demanding Tim-centered character reading that asks which powers his life and God-language require him to integrate.",
+      "must_not_become": "A praise page, diagnosis, or claim that Tim literally is historical gods.",
+      "primary_next_surface_ids": [
+        "gods-character",
+        "tim",
+        "tim-living-portrait",
+        "philosophy"
+      ],
+      "density_intent": "focused",
+      "reader_job": "Apply divine-power and character-integration questions to Tim's documented life and project theology."
     }
   }
 }
