@@ -295,11 +295,11 @@ body.home-body{
 .home-visual-copy{
   background:
     linear-gradient(135deg,rgba(255,255,255,.04),transparent 31%),
-    rgba(7,11,9,.76)!important;
-  border-color:rgba(255,239,204,.17)!important;
+    rgba(7,11,9,.76);
+  border-color:rgba(255,239,204,.17);
   box-shadow:0 6px 18px rgba(0,0,0,.16),inset 0 1px rgba(255,255,255,.035);
-  backdrop-filter:none!important;
-  -webkit-backdrop-filter:none!important;
+  backdrop-filter:none;
+  -webkit-backdrop-filter:none;
 }
 .home-intro,
 .home-section-head,
@@ -320,7 +320,7 @@ body.home-body{
 .direction-step,.sections>a,.home-media-strip figure,.home-visual-card,
 .field-routes article,.route-panel,.foundation-pattern-panel,.pulse-card,
 .capability-card,.public-doors{
-  background:rgba(7,11,9,.68)!important;
+  background:rgba(7,11,9,.68);
   border-color:rgba(255,239,204,.13);
   box-shadow:0 3px 10px rgba(0,0,0,.12),inset 0 1px rgba(255,255,255,.02);
 }
@@ -334,7 +334,7 @@ body.home-body{
 .home-hero .home-intro{
   background:
     linear-gradient(135deg,rgba(245,251,255,.055),transparent 32%),
-    rgba(7,14,17,.75)!important;
+    rgba(7,14,17,.75);
 }
 
 /* Reliability over speculative paint placeholders on the reader-facing homepage. */
@@ -345,7 +345,7 @@ body.home-body{
 .news-preview .news-preview-head{
   background:
     linear-gradient(135deg,rgba(236,255,226,.04),transparent 32%),
-    rgba(7,14,10,.74)!important;
+    rgba(7,14,10,.74);
 }
 .home-bible-bridge .home-section-head,
 #culture-in-motion .home-section-head,
@@ -354,18 +354,18 @@ body.home-body{
 #foundation-rooms .home-section-head{
   background:
     linear-gradient(135deg,rgba(255,205,164,.04),transparent 32%),
-    rgba(18,8,6,.77)!important;
-  border-color:rgba(246,160,108,.16)!important;
+    rgba(18,8,6,.77);
+  border-color:rgba(246,160,108,.16);
 }
 .home-body .site-access-dock,
 .home-body .site-access-local-shortcuts,
 .home-body .site-access-panel{
-  backdrop-filter:none!important;
-  -webkit-backdrop-filter:none!important;
+  backdrop-filter:none;
+  -webkit-backdrop-filter:none;
 }
 .home-body .site-access-dock,
-.home-body .site-access-local-shortcuts{background:rgba(9,12,9,.985)!important}
-.home-body .site-access-panel{background:rgb(9,12,9)!important}
+.home-body .site-access-local-shortcuts{background:rgba(9,12,9,.985)}
+.home-body .site-access-panel{background:rgb(9,12,9)}
 
 .home-page [id]{scroll-margin-top:calc(var(--site-elevator-clearance,56px) + 16px)}
 
@@ -420,5 +420,5 @@ body.home-body{
   .home-bible-river,
   .home-bible-identity,
   .home-bible-route,
-  .home-visual-copy{background:rgba(9,12,9,.94)!important}
+  .home-visual-copy{background:rgba(9,12,9,.94)}
 }
