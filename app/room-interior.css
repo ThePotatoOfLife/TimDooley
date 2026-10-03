@@ -24,7 +24,17 @@
 
 
 /* Room language: each Room should teach a native vocabulary, not only contain facts. */
-.room-language{max-width:860px;margin:30px 0 36px;padding:22px 0;border-top:1px solid var(--site-line);border-bottom:1px solid var(--site-line)}
+.room-language{
+  width:100%;
+  max-width:none;
+  box-sizing:border-box;
+  margin:30px 0 36px;
+  padding:22px;
+  border:1px solid var(--site-pane-line);
+  border-radius:14px;
+  background:var(--site-pane);
+  box-shadow:var(--site-pane-shadow)
+}
 .room-language-head{display:grid;grid-template-columns:minmax(180px,.52fr) minmax(0,1.48fr);gap:22px;align-items:start;margin-bottom:16px}
 .room-language-head h2{margin:2px 0 0;font:400 clamp(27px,4vw,40px)/1.08 var(--site-font-serif);color:var(--site-gold)}
 .room-language-head p{margin:3px 0 0;color:var(--site-muted);line-height:1.6}
@@ -133,6 +143,11 @@
   max-width:none;
   box-sizing:border-box;
   margin:34px 0;
+  padding:clamp(18px,2.4vw,26px);
+  border:1px solid var(--site-pane-line);
+  border-radius:16px;
+  background:var(--site-pane);
+  box-shadow:var(--site-pane-shadow);
 }
 .inner-home .room-reader>.lede{
   max-width:76ch;
