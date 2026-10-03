@@ -68,7 +68,7 @@
 html[data-site-floor]{
   min-height:100%;
   color-scheme:dark;
-  --site-realm-art-size:max(100vw,75vh,760px);
+  --site-realm-art-size:max(100vw,90vh,760px);
   --site-realm-art-position:50% 50%;
   --site-realm-fallback:#090909;
   --site-realm-overlay:
@@ -505,7 +505,7 @@ html[data-site-floor] body:not(.home-body)::before{
   }
 }
 @media(max-width:700px){
-  html[data-site-floor]{--site-realm-art-size:max(118vw,75vh,720px)}
+  html[data-site-floor]{--site-realm-art-size:max(118vw,90vh,720px)}
 }
 @media (prefers-reduced-motion: reduce){
   html[data-site-floor] body:not(.home-body)::before{
