@@ -1,6 +1,14 @@
 /* Governed Room homepage layout.
    Shared by ordinary Heaven/Plane Room homes; Below Rooms use lower-layer.css. */
 .room-home{max-width:1040px}
+.room-home>section{
+  margin:24px 0;
+  padding:22px;
+  border:1px solid var(--site-pane-line);
+  border-radius:14px;
+  background:var(--site-pane-soft);
+  box-shadow:var(--site-pane-shadow)
+}
 .door-grid,.sub-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
@@ -9,10 +17,11 @@
 }
 .door-card,.sub-card{
   border:1px solid var(--site-line);
-  padding:14px;
+  padding:16px;
+  border-radius:12px;
   text-decoration:none;
   color:inherit;
-  background:color-mix(in srgb,var(--site-panel) 74%,transparent)
+  background:rgba(8,10,10,.68)
 }
 .door-card strong,.sub-card strong{
   display:block;
@@ -56,13 +65,15 @@
   border-color:color-mix(in srgb,var(--site-gold) 44%,var(--site-line))
 }
 .dwelling-reader{
-  margin:34px 0;
-  padding:28px 0;
-  border-top:1px solid var(--site-line);
-  border-bottom:1px solid var(--site-line)
+  margin:28px 0;
+  padding:24px;
+  border:1px solid var(--site-pane-line);
+  border-radius:14px;
+  background:var(--site-pane);
+  box-shadow:var(--site-pane-shadow)
 }
 .dwelling-reader h2{
-  font:400 clamp(30px,4vw,44px)/1.08 var(--site-font-serif);
+  font:400 clamp(27px,3.5vw,40px)/1.1 var(--site-font-serif);
   color:var(--site-gold);
   margin:0 0 12px
 }
@@ -73,6 +84,7 @@
 }
 @media(max-width:700px){
   .door-grid,.sub-grid{grid-template-columns:1fr}
-  .dwelling-reader{margin:28px 0;padding:22px 0}
-  .door-card,.sub-card{padding:13px}
+  .room-home>section{margin:18px 0;padding:16px}
+  .dwelling-reader{margin:20px 0;padding:17px}
+  .door-card,.sub-card{padding:14px}
 }

@@ -11,6 +11,10 @@
   --site-gold: #d8b56b;
   --site-panel: #0d0d0d;
   --site-panel-strong: #121212;
+  --site-pane: rgba(8,10,10,.76);
+  --site-pane-soft: rgba(8,10,10,.62);
+  --site-pane-line: rgba(255,255,255,.12);
+  --site-pane-shadow: 0 12px 30px rgba(0,0,0,.18);
   --site-font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --site-font-serif: Georgia, "Times New Roman", serif;
   --site-font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
@@ -41,6 +45,7 @@
   --site-z-counter: 10049;
   --site-z-access: 10050;
   --site-floating-gap: 8px;
+  --site-access-clearance: 58px;
 }
 
 * { box-sizing: border-box; }
@@ -74,7 +79,7 @@ textarea:focus-visible,
 .page {
   width: min(100%, calc(var(--site-content-standard) + (2 * var(--site-gutter))));
   margin-inline: auto;
-  padding: 30px var(--site-gutter) 84px;
+  padding: 30px var(--site-gutter) calc(84px + var(--site-access-clearance));
   position: relative;
   isolation: isolate;
 }
@@ -109,6 +114,15 @@ textarea:focus-visible,
 .page-header {
   margin: 0 0 32px;
 }
+html[data-site-floor] .page-header{
+  padding:clamp(18px,2.5vw,28px);
+  border:1px solid var(--site-pane-line);
+  border-radius:16px;
+  background:var(--site-pane);
+  box-shadow:var(--site-pane-shadow);
+}
+html[data-site-floor] .page-header .summary{max-width:72ch}
+
 
 .eyebrow {
   margin: 0 0 10px;
@@ -152,7 +166,7 @@ textarea:focus-visible,
 }
 
 @media (max-width:700px){
-  .page{padding-top:22px;padding-bottom:64px}
+  .page{padding-top:22px;padding-bottom:calc(64px + var(--site-access-clearance))}
   .page-nav{margin:0 0 20px;padding:0;flex-wrap:wrap;gap:6px;overflow:visible;overscroll-behavior:auto;scroll-snap-type:none}
   .page-nav a{flex:0 1 auto;white-space:normal;padding:6px 9px;border:1px solid var(--site-line);border-radius:9px;scroll-snap-align:none}
   .page-header{margin-bottom:24px}

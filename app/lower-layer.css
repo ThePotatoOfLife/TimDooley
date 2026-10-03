@@ -27,9 +27,12 @@ body.lower-layer-page{
 /* Shared typography/surfaces. */
 .lower-layer-page .page-header{
   position:relative;
-  margin-bottom:30px;
-  padding:24px 0 28px;
-  border-bottom:1px solid var(--site-line);
+  margin-bottom:24px;
+  padding:22px;
+  border:1px solid var(--site-pane-line);
+  border-radius:16px;
+  background:var(--site-pane);
+  box-shadow:var(--site-pane-shadow);
 }
 .lower-layer-page .page-header::after{
   content:"";
@@ -97,16 +100,16 @@ body.lower-layer-page{
 .lower-layer-page .room-actions a:hover{color:var(--site-gold);border-color:rgba(216,181,107,.65)}
 .lower-layer-page .dwelling-reader{
   margin:34px 0;
-  padding:24px 18px;
-  border:1px solid var(--site-line);
+  padding:22px;
+  border:1px solid var(--site-pane-line);
   border-radius:14px;
-  background:color-mix(in srgb,var(--site-panel) 68%,transparent);
-  box-shadow:0 10px 28px rgba(0,0,0,.16),inset 0 1px rgba(255,255,255,.02);
+  background:var(--site-pane);
+  box-shadow:var(--site-pane-shadow);
 }
 .lower-layer-page .dwelling-reader h2{
   margin:0 0 12px;
   color:var(--site-gold);
-  font:400 clamp(30px,4vw,44px)/1.08 var(--site-font-serif);
+  font:400 clamp(27px,3.5vw,40px)/1.1 var(--site-font-serif);
 }
 .lower-layer-page .dwelling-reader>p{max-width:880px;color:#d0c9bd;line-height:1.75}
 
