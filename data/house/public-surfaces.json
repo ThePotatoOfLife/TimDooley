@@ -1,5 +1,5 @@
 {
-  "version": "2.7.4",
+  "version": "2.7.5",
   "updated": "2026-10-03",
   "authority": "public-route-identity",
   "room_registry": "data/house/rooms.json",
@@ -631,6 +631,46 @@
       "legacy_routes": []
     },
     {
+      "id": "tim-powers",
+      "route": "/religion/gods-character/tim-powers/",
+      "canonical_route": "/religion/gods-character/tim-powers/",
+      "surface_type": "guide",
+      "title": "Tim & the Powers",
+      "reader_job": "Read Tim Dooley through character powers and integration tests without claiming literal identity with historical gods.",
+      "primary_parent": "gods-character",
+      "primary_room_ids": [
+        "potatoverse-canon",
+        "traditions-texts",
+        "time-history"
+      ],
+      "status": "active",
+      "visibility": "specialist",
+      "primary_navigation": false,
+      "is_view": true,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "divine-tensions",
+      "route": "/religion/gods-character/divine-tensions/",
+      "canonical_route": "/religion/gods-character/divine-tensions/",
+      "surface_type": "guide",
+      "title": "Divine Tensions",
+      "reader_job": "Use conflicts between divine powers to explore character integration without reducing gods to personality labels.",
+      "primary_parent": "gods-character",
+      "primary_room_ids": [
+        "traditions-texts",
+        "potatoverse-canon",
+        "research-lab"
+      ],
+      "status": "active",
+      "visibility": "specialist",
+      "primary_navigation": false,
+      "is_view": true,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
       "id": "culture",
       "route": "/context/culture/",
       "canonical_route": "/context/culture/",
@@ -1039,6 +1079,14 @@
         "questions",
         "index-a-z",
         "paths"
+      ]
+    },
+    "gods-character": {
+      "meaning": "Comparative divinity and character-integration owner.",
+      "child_rule": "Use Gods, Powers & Character when the surface deepens divine-power tensions or applies them to Timic character without becoming a general religion hub.",
+      "allowed_child_ids": [
+        "divine-tensions",
+        "tim-powers"
       ]
     }
   }
