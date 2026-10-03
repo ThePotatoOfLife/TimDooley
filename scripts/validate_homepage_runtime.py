@@ -10,6 +10,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 HOME = ROOT / "index.html"
 HOME_CSS = ROOT / "app" / "home-page.css"
+HOME_RUNTIME = ROOT / "app" / "home-page-runtime.js"
+HOME_PROJECTION = ROOT / "app" / "home-page-projection.js"
 PROJECT_SYNTHESIS = ROOT / "data" / "house" / "project-synthesis.json"
 
 REQUIRED_DATASETS = (
@@ -27,7 +29,10 @@ def main() -> int:
         print("HOMEPAGE RUNTIME VALIDATION FAILED\n- missing index.html")
         return 1
 
-    home = HOME.read_text(encoding="utf-8", errors="replace")\n    runtime = HOME_RUNTIME.read_text(encoding="utf-8", errors="replace") if HOME_RUNTIME.exists() else ""\n    projection = HOME_PROJECTION.read_text(encoding="utf-8", errors="replace") if HOME_PROJECTION.exists() else ""\n    runtime_surface = "\\n".join((home, runtime, projection))
+    home = HOME.read_text(encoding="utf-8", errors="replace")
+    runtime = HOME_RUNTIME.read_text(encoding="utf-8", errors="replace") if HOME_RUNTIME.exists() else ""
+    projection = HOME_PROJECTION.read_text(encoding="utf-8", errors="replace") if HOME_PROJECTION.exists() else ""
+    runtime_surface = "\n".join((home, runtime, projection))
 
     if not HOME_CSS.exists():
         errors.append("homepage scoped stylesheet missing: app/home-page.css")
