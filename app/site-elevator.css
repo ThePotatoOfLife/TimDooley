@@ -82,29 +82,14 @@ html[data-site-floor]{
       rgba(0,0,0,.05) 100%);
 }
 html[data-site-floor="heaven"]{
-  --site-panel:rgba(14,16,38,.80);
-  --site-panel-strong:rgba(23,21,51,.90);
-  --site-line:rgba(214,204,236,.24);
-  --site-muted:#c3bfd0;
-  --site-faint:#918ba1;
   --site-realm-art:url("./home-heaven.avif");
   --site-realm-art-position:50% 18%;
 }
 html[data-site-floor="plane"]{
-  --site-panel:rgba(13,29,25,.80);
-  --site-panel-strong:rgba(20,42,34,.90);
-  --site-line:rgba(184,205,185,.22);
-  --site-muted:#bdc9bf;
-  --site-faint:#87958a;
   --site-realm-art:url("./home-plane.avif");
   --site-realm-art-position:50% 47%;
 }
 html[data-site-floor="below"]{
-  --site-panel:rgba(24,11,8,.84);
-  --site-panel-strong:rgba(36,16,10,.92);
-  --site-line:rgba(165,95,59,.30);
-  --site-muted:#c0a08f;
-  --site-faint:#8e6d5d;
   --site-realm-art:url("./home-below.avif");
   --site-realm-art-position:50% 74%;
 }
