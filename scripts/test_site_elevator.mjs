@@ -327,6 +327,6 @@ assert.equal(lowerCss.includes('long tap roots'),false,'legacy stripe-built tap-
 assert.equal(lowerCss.includes('thick roots: dark bark edge'),false,'legacy root stripe stack must stay removed');
 assert.equal(lowerCss.includes('--site-depth-start'),false,'Below should not maintain a second animated depth-wash channel');
 assert.equal(css.includes('@keyframes site-depth-wash'),false,'shared pixel realms must remain the only floor atmosphere system');
-assert.ok(css.includes('prefers-reduced-motion:reduce'),'elevator UI must still respect reduced-motion preferences');
+assert.match(css,/prefers-reduced-motion\s*:\s*reduce/,'elevator UI must still respect reduced-motion preferences');
 
 console.log('Site elevator resolver + visual contract passed.');
