@@ -126,6 +126,27 @@ for path in html_files:
             f"{path.relative_to(ROOT)} loads app/style.css; archive application CSS is owned only by explore/index.html"
         )
 
+# Realm readability/fidelity contract: background art may remain expressive, but
+# ordinary text surfaces must not rely on text-shadow alone for legibility.
+site_system_text = SITE_SYSTEM.read_text(encoding="utf-8", errors="ignore") if SITE_SYSTEM.exists() else ""
+elevator_path = ROOT / "app" / "site-elevator.css"
+elevator_text = elevator_path.read_text(encoding="utf-8", errors="ignore") if elevator_path.exists() else ""
+for marker in (
+    "--site-pane-soft:",
+    "--site-pane-paper:",
+    "html[data-site-floor] .page > :where(section,article,aside,details)",
+    ".surface-pane--paper",
+    ".surface-clear",
+):
+    if marker not in site_system_text:
+        errors.append(f"realm readability contract missing from site-system.css: {marker}")
+if "backdrop-filter:" in site_system_text:
+    warnings.append("site-system.css uses backdrop-filter; prefer opaque/translucent panes that preserve realm sharpness")
+if "--site-realm-art-size:max(1086px,100vw)" not in elevator_text.replace(" ", ""):
+    errors.append("site-elevator.css realm scale contract drifted away from native-source floor")
+if "filter:saturate(1.06) contrast(1.045)" not in elevator_text:
+    errors.append("site-elevator.css missing realm edge-separation fidelity filter")
+
 if warnings:
     print("CSS namespace warnings:")
     for w in sorted(set(warnings)):
