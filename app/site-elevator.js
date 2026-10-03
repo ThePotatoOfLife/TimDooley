@@ -312,13 +312,13 @@
         delete document.documentElement.dataset.siteFloor;
         return;
       }
-      document.documentElement.dataset.siteFloor=selectedLevel;
+      // The build-stamped page floor is authoritative until spatial data hydrates.
+      // Browsing another floor in the elevator must never repaint the Room/page itself.
+      if(!projection||!LEVELS.includes(spatial.levelId))return;
+      document.documentElement.dataset.siteFloor=spatial.levelId;
     };
 
     const render=(direction='')=>{
-      // The selected elevator floor is a visual browsing state as well as a header state.
-      // Keep the document substrate synchronized so Heaven / Plane / Below atmosphere
-      // follows arrow-key and button floor changes, not only the initial route hydrate.
       syncFloorCanvas();
       header.setAttribute('data-elevator-level',selectedLevel);
       delete header.dataset.elevatorDirection;

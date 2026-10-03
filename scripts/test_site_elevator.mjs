@@ -182,7 +182,8 @@ for(const marker of [
   assert.ok(source.includes(marker),'site elevator visual contract missing '+marker);
 }
 assert.equal(/history\.(?:pushState|replaceState)/.test(source),false,'floor switching must not mutate history');
-assert.ok(source.includes('document.documentElement.dataset.siteFloor=selectedLevel'),'floor switching must synchronize the page atmosphere with the selected floor');
+assert.ok(source.includes('document.documentElement.dataset.siteFloor=spatial.levelId'),'page atmosphere must remain locked to the canonical spatial floor');
+assert.equal(source.includes('document.documentElement.dataset.siteFloor=selectedLevel'),false,'elevator browsing must not repaint the page floor');
 assert.equal(/location\.(?:assign|replace)|location\.href\s*=/.test(source),false,'floor switching must not navigate the page');
 assert.ok(source.includes("ArrowUp"),'header keyboard contract needs ArrowUp');
 assert.ok(source.includes("ArrowDown"),'header keyboard contract needs ArrowDown');
@@ -291,6 +292,7 @@ assert.ok(source.includes("'ORIENTATION OFFLINE'"),'failed governance hydration 
 assert.ok(source.includes("document.body.classList.contains('home-body')"),'Home must own its multi-realm canvas instead of inheriting one elevator floor');
 assert.ok(source.includes('if(homeOwnsRealmCanvas||!projection||!roomContract)return'),'Home must keep cross-floor navigation visible instead of being filtered as Plane');
 assert.ok(source.includes('delete document.documentElement.dataset.siteFloor'),'Home runtime must clear stale single-floor state');
+assert.ok(source.includes('if(!projection||!LEVELS.includes(spatial.levelId))return'),'pre-hydration render must preserve the build-stamped first-paint floor');
 assert.ok(css.includes('body.home-body::before'),'elevator CSS must defensively suppress stale floor scenery on Home');
 assert.ok(source.includes('const FLOOR_LOCAL_LINK_SELECTOR='),'runtime must own one floor-local link selector for page and secondary navigation');
 assert.ok(source.includes('const enforceFloorLocalNavigation='),'runtime must enforce floor boundaries through one shared pass');
