@@ -1,0 +1,109 @@
+/* Shared nested-Room presentation for the World Systems family.
+   site-system.css owns the shell and panes; room-interior.css owns generic Room
+   structure. This file owns the recurring analytical vocabulary used by
+   Economy, Law and Politics without constraining the pane itself. */
+.world-room .room-reader{
+  width:100%;
+  max-width:none;
+  box-sizing:border-box;
+  margin:34px 0;
+}
+.world-room .room-reader>.lede{
+  max-width:76ch;
+  font:400 clamp(20px,2.6vw,31px)/1.5 var(--site-font-serif);
+  color:var(--site-ink);
+}
+.world-room .room-reader>p{max-width:80ch;color:#cbd1c8;line-height:1.75}
+
+.world-room :is(.distinction-grid,.atlas-grid,.legal-grid,.gov-grid,.mode-grid){
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:9px;
+  margin:18px 0 28px;
+}
+.world-room :is(.distinction,.atlas-card,.legal-grid article,.gov-grid article,.mode-grid article){
+  border:1px solid var(--site-pane-line);
+  border-radius:10px;
+  padding:14px;
+  background:var(--site-pane-soft);
+}
+.world-room :is(.distinction,.atlas-card,.legal-grid article,.gov-grid article,.mode-grid article) b{
+  display:block;
+  margin-bottom:5px;
+  color:var(--site-gold);
+  font:400 18px/1.15 var(--site-font-serif);
+}
+.world-room :is(.distinction,.atlas-card,.legal-grid article,.gov-grid article,.mode-grid article) small{
+  display:block;
+  color:var(--site-muted);
+  line-height:1.5;
+}
+
+.world-room :is(.flowline,.legal-chain,.policy-chain){
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:6px;
+  margin:20px 0 28px;
+}
+.world-room :is(.flowline,.legal-chain,.policy-chain) span{
+  border:1px solid var(--site-line);
+  border-radius:999px;
+  padding:6px 9px;
+  color:var(--site-muted);
+  font-size:10px;
+}
+.world-room :is(.flowline,.legal-chain,.policy-chain) i{
+  color:var(--site-gold);
+  font-style:normal;
+}
+
+.world-room :is(.rule,.economic-law){
+  margin:28px 0;
+  padding:24px 0;
+  border-top:1px solid var(--site-line);
+  border-bottom:1px solid var(--site-line);
+  color:var(--site-gold);
+  font:400 clamp(22px,3vw,34px)/1.38 var(--site-font-serif);
+}
+.world-room .case{
+  padding:18px 0;
+  border-top:1px solid var(--site-line);
+}
+.world-room .case h3{
+  margin:0 0 7px;
+  color:var(--site-gold);
+  font:400 22px/1.15 var(--site-font-serif);
+}
+.world-room .case p{margin:0 0 8px}
+.world-room :is(.case a,.deep-links a){color:var(--site-gold)}
+.world-room .deep-links{
+  display:flex;
+  flex-wrap:wrap;
+  gap:13px;
+  margin:10px 0 24px;
+  font-size:11px;
+}
+.world-room .question-list{
+  display:grid;
+  gap:8px;
+  margin-top:14px;
+}
+.world-room .question-list div{
+  padding:8px 0 8px 14px;
+  border-left:2px solid var(--site-line);
+  color:#cbd1c8;
+}
+.world-room .question-list b{color:var(--site-gold)}
+.world-room .source-note{
+  padding-left:12px;
+  border-left:2px solid var(--site-line);
+  color:var(--site-muted);
+  font-size:11px;
+}
+
+@media(max-width:720px){
+  .world-room :is(.distinction-grid,.atlas-grid,.legal-grid,.gov-grid,.mode-grid){
+    grid-template-columns:1fr;
+  }
+}
