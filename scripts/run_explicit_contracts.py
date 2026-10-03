@@ -24,7 +24,7 @@ CHECKS = [
     "scripts/validate_legacy_fbi_redirects.py",
     "scripts/validate_seo_pipeline.py",
     "scripts/validate_repo_hygiene.py",
-    "scripts/validate_pixel_scene_svgs.py",
+    "scripts/validate_final_realm_assets.py",
     "scripts/validate_tradition_routes.py",
     "scripts/validate_entity_facets.py",
 ]
