@@ -269,3 +269,28 @@ html[data-site-floor] .page::before {
   .dwelling-reflection{margin:34px 0 30px;padding-left:13px}
   .dwelling-reflection p{font-size:16px}
 }
+
+
+/* Floor reading-glass calibration — 2026-10-03 */
+html[data-site-floor="heaven"]{
+  --site-reading-glass:rgba(18,13,28,.24);
+  --site-reading-glass-line:rgba(255,236,197,.08);
+  --site-reading-glass-shadow:rgba(13,5,24,.13);
+}
+html[data-site-floor="plane"]{
+  --site-reading-glass:rgba(7,18,17,.28);
+  --site-reading-glass-line:rgba(235,244,213,.075);
+  --site-reading-glass-shadow:rgba(4,17,15,.14);
+}
+html[data-site-floor="below"]{
+  --site-reading-glass:rgba(11,7,6,.42);
+  --site-reading-glass-line:rgba(238,198,145,.09);
+  --site-reading-glass-shadow:rgba(0,0,0,.19);
+}
+html[data-site-floor] .page::before{
+  backdrop-filter:blur(2px) saturate(.94);
+  -webkit-backdrop-filter:blur(2px) saturate(.94);
+}
+@media(prefers-reduced-transparency:reduce){
+  html[data-site-floor] .page::before{backdrop-filter:none;-webkit-backdrop-filter:none}
+}
