@@ -679,9 +679,19 @@ def _philosophy_family_anchors(page: Path) -> str:
 
 def _philosophy_entry_anchor(page: Path) -> str:
     rel = page.relative_to(OUT).as_posix()
+    if rel in _PHILOSOPHY_CONTEXTS:
+        return ""
     if rel not in _PHILOSOPHY_ENTRY_CONTEXTS:
         return ""
     return f'<a class="page-nav-subject" href="{_relative_asset_prefix(page)}philosophy/">Philosophy</a>'
+
+
+def _is_philosophy_family_anchor(anchor: str, page: Path) -> bool:
+    rel = page.relative_to(OUT).as_posix()
+    if rel not in _PHILOSOPHY_CONTEXTS:
+        return False
+    label = _clean_nav_label(anchor)
+    return label in {label for label, _ in _PHILOSOPHY_FAMILY}
 
 
 def normalize_page_nav(text: str, page: Path) -> str:
@@ -706,7 +716,12 @@ def normalize_page_nav(text: str, page: Path) -> str:
         seen_hrefs: set[str] = set()
         for anchor in anchors:
             href = _anchor_href(anchor)
-            if _is_home_href(href, page) or _is_rooms_anchor(anchor) or _is_redundant_architecture_anchor(anchor, page):
+            if (
+                _is_home_href(href, page)
+                or _is_rooms_anchor(anchor)
+                or _is_redundant_architecture_anchor(anchor, page)
+                or _is_philosophy_family_anchor(anchor, page)
+            ):
                 continue
             if href and href in seen_hrefs:
                 continue
