@@ -175,7 +175,7 @@ def question_page(entry):
     # Human reader: answer the question before exposing archive machinery.
     body = f'<section class="question-answer"><h2>Answer</h2><p>{esc(short or deep)}</p></section>'
     if deep and deep != short:
-        body += f'<section class="question-deep"><h2>What this means</h2><p>{esc(deep)}</p></section>'
+        body += f'<section class="question-deep"><h2>What that means</h2><p>{esc(deep)}</p></section>'
 
     context_bits = []
     if entry.get("dates"):
