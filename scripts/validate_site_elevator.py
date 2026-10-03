@@ -119,11 +119,21 @@ def main() -> int:
             "display:block!important",
             ".site-elevator-room-rail{",
             "margin:0;",
+            "home-heaven.avif",
+            "home-plane.avif",
+            "home-below.avif",
+            "body:not(.home-body)::before",
+            "--site-realm-art-size",
         )
         for token in css_tokens:
             if token not in css:
                 errors.append(f"site elevator CSS missing required marker: {token}")
 
+        for retired_art in ("site-tree-perspective.svg","site-plane-organic-field.svg","site-below-root-field.svg"):
+            if retired_art in css:
+                errors.append(f"site elevator CSS must not reference retired floor art: {retired_art}")
+        if "installSceneParallax" in js or "--site-scene-y" in js:
+            errors.append("site elevator runtime must not restore retired scene parallax")
         if "overflow-x:auto" in css:
             errors.append("site elevator Room rail must wrap instead of horizontally scrolling")
         if "scrollbar-width" in css or "scrollbar-color" in css:
@@ -345,6 +355,24 @@ def main() -> int:
                     f"{rel}: expected exactly one universal elevator CSS + JS asset, "
                     f"got css={elevator_css_count}, js={elevator_js_count}"
                 )
+
+        # Every governed Room and active nested Room must ship with its canonical floor.
+        for room_id,row in sorted(dwelling_by_id.items()):
+            floor=row.get("primary_level") or "plane"
+            path=OUT/"rooms"/room_id/"index.html"
+            if path.exists():
+                built=path.read_text(encoding="utf-8",errors="replace")
+                if f'data-site-floor="{floor}"' not in built:
+                    errors.append(f"rooms/{room_id}/index.html: expected first-paint floor {floor!r}")
+        for subroom in active_subrooms:
+            route_id=subroom.get("route_id") or subroom.get("id")
+            parent=dwelling_by_id.get(subroom.get("parent_room_id")) or {}
+            floor=parent.get("primary_level") or "plane"
+            path=OUT/"rooms"/"inside"/str(route_id)/"index.html"
+            if path.exists():
+                built=path.read_text(encoding="utf-8",errors="replace")
+                if f'data-site-floor="{floor}"' not in built:
+                    errors.append(f"rooms/inside/{route_id}/index.html: expected inherited floor {floor!r}")
 
         representative = [
             "index.html",
