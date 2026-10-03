@@ -643,3 +643,17 @@ Do **not** add prose merely because:
 - [ ] **Information cascade:** sequential choices where later people copy earlier choices despite private contrary signals.
 - [ ] **Archive correction propagation:** one false caption spreads to five reposts; correction reaches only two; show why correction must attach to the durable object, not only the original post.
 - [ ] **Role retirement:** define explicit closure criteria for when a descriptive label should become historical rather than current.
+
+
+## Knowledge-density pass — 2026-10-03
+
+A section is not complete merely because it has orientation, scope and links. The new test is **informational yield**.
+
+- [x] Shared `.teaching-block`, `.teaching-grid`, `.teaching-chain`, `.teaching-contrast` and `.teaching-scene` primitives added to `app/reader.css`.
+- [x] Philosophy now teaches four non-outsourcable capacities: perception, judgment, value and responsibility.
+- [x] Culture now contains a worked transmission chain and named analytical lenses.
+- [x] House now teaches domestic boundary logic rather than only project topology.
+- [x] Science now exposes the promotion ladder from metaphor to empirical result.
+- [ ] Continue page-by-page: every abstract box should gain a mechanism, scene, case, source, diagram or consequence where one is available.
+- [ ] Navigation-only and scope-only boxes should be compressed, demoted or replaced.
+- [ ] “Higher culture” means introducing real traditions, disciplines, thinkers and historical tensions where they sharpen the subject—not ornamental citation.
