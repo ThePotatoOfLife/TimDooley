@@ -1537,3 +1537,19 @@ Primary rule: readers should not have to understand the House architecture befor
 - [x] Use existing Rooms-page visual grammar rather than adding another navigation widget.
 - [ ] Review whether Religion, Tim, Timeline, Sources, Great Book, Culture and Science each need comparable child-family shelves on their hub pages.
 - [ ] Keep Cross-House subject hubs distinct from governed Dwellings: subjects may span multiple owners without pretending to be new ownership roots.
+
+
+## Substance wave — findable Rooms must be worth entering
+
+- [x] Science: add multiple-comparisons arithmetic (20 tests at 5% → ~64.2% chance of at least one false positive under independence).
+- [x] Science: distinguish mediator, confounder and collider so “control for more variables” is not treated as automatically better.
+- [x] World Systems: add common-cause failure and distinguish backup count from failure-path independence.
+- [x] Life & Body: add a two-process sleep explanation (homeostatic sleep pressure + circadian timing) with jet-lag and shift-work cases.
+- [x] Philosophy / Attention & Agency: turn opportunity cost into a worked four-hour choice instead of an abstract definition.
+- [x] Philosophy / Attention & Agency: deepen courage into cost, value, alternatives and proportionality rather than a trait label.
+- [x] Culture: add a quantified pluralistic-ignorance scenario separating private preference from perceived group preference.
+- [x] Information Ecology: add correction-propagation arithmetic showing why repairing a root source is not enough if stale derivatives remain retrievable.
+- [x] Fix canonical URLs on Knowledge & Belief, Trust & Repair, and Attention & Agency.
+- [ ] Next wave: add object-level examples to medium-strength Rooms rather than more high-level summaries.
+- [ ] Next wave candidates: Geography & Countries, Infrastructure & Capability, Politics & Governance, Memory Recovery, Other Traditions, Games & Simulations.
+- [ ] For each candidate, require at least one concrete object/case, one mechanism, one boundary, and one useful cross-Room handoff.
