@@ -282,6 +282,23 @@ _PHILOSOPHY_CONTEXTS = {
     "rooms/inside/symbolic-architecture/index.html",
 }
 
+_PHILOSOPHY_ENTRY_CONTEXTS = {
+    "potato-of-life/index.html",
+    "tim-dooley/index.html",
+    "religion/index.html",
+    "science/index.html",
+    "context/culture/index.html",
+    "great-book/index.html",
+    "works/index.html",
+    "house/index.html",
+    "rooms/potatoverse-canon/index.html",
+    "rooms/traditions-texts/index.html",
+    "rooms/science-formal-models/index.html",
+    "rooms/works/index.html",
+    "rooms/research-lab/index.html",
+}
+
+
 _CONTEXT_SUBROOM_IDS = {
     "potato-of-life/index.html": ("canon-identities", "theology-god-language", "symbolic-architecture", "practice-ethics"),
     "tim-dooley/index.html": ("canon-identities", "chronology-events", "witness-attestation", "developmental-genealogy"),
@@ -660,6 +677,13 @@ def _philosophy_family_anchors(page: Path) -> str:
     return "".join(out)
 
 
+def _philosophy_entry_anchor(page: Path) -> str:
+    rel = page.relative_to(OUT).as_posix()
+    if rel not in _PHILOSOPHY_ENTRY_CONTEXTS:
+        return ""
+    return f'<a class="page-nav-subject" href="{_relative_asset_prefix(page)}philosophy/">Philosophy</a>'
+
+
 def normalize_page_nav(text: str, page: Path) -> str:
     """Project a compact discovery spine into the existing subtle sub-header.
 
@@ -708,6 +732,7 @@ def normalize_page_nav(text: str, page: Path) -> str:
             + _rooms_anchor(page)
             + _dwelling_anchor(page)
             + _current_subroom_anchor(page)
+            + _philosophy_entry_anchor(page)
             + _philosophy_family_anchors(page)
             + "".join(non_home)
             + "".join(room_anchors)
