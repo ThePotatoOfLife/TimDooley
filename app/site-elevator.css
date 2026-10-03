@@ -657,6 +657,9 @@ html[data-site-floor="below"]{
   --site-realm-fallback:#1a0906;
   --site-realm-overlay:linear-gradient(180deg,rgba(28,15,9,.08),rgba(22,9,7,.20) 58%,rgba(8,3,2,.30));
 }
+html[data-site-floor]{
+  background:var(--site-realm-fallback);
+}
 html[data-site-floor] body:not(.home-body){
   position:relative;
   isolation:isolate;
