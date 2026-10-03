@@ -213,8 +213,8 @@ for(const [floor,asset] of [['heaven','home-heaven.avif'],['plane','home-plane.a
   assert.ok(css.slice(headerStart,headerStart+520).includes(asset),'elevator header must use '+asset);
 }
 
-assert.ok(css.includes('#24104c'),'Heaven elevator scene needs a stable violet cosmic fallback colour');
-assert.ok(css.includes('linear-gradient(180deg,rgba(36,16,76,.42),rgba(83,53,114,.26) 60%,rgba(196,122,104,.20))'),'Heaven elevator scene needs a restrained violet-to-peach atmosphere overlay');
+assert.ok(css.includes('#090909'),'elevator scenes need one neutral fallback behind the final realm art');
+assert.ok(css.includes('linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.28))'),'Heaven and Plane header scenes should use a neutral readability shade instead of synthetic realm recoloring');
 assert.ok(css.includes('--site-realm-fallback:#090909'),'all realms should share one neutral fallback base behind the final art');
 assert.ok(css.includes('[data-elevator-level="plane"]::before'),'Plane needs a distinct elevator scene layer');
 assert.equal(/\.site-elevator\[data-elevator-level="plane"\]::before\{[\s\S]*?repeat-x/.test(css),false,'Plane elevator header should not rebuild mountains with repeated gradient strips');
