@@ -26,51 +26,9 @@ body.lower-layer-page{
     #0b0504 100%);
 }
 
-/* The SVG owns sediment, roots, stones, swamp, steam and heat.
-   CSS contributes only the moving plate and the fallback floor gradient. */
-body.lower-layer-page::before{
-  content:"";
-  position:fixed;
-  z-index:0;
-  inset:-8vh 0 auto;
-  height:var(--site-scene-box-height,320vh);
-  pointer-events:none;
-  opacity:.90;
-  background:url("./site-below-root-field.svg") var(--site-scene-x,50%) 0/auto 100% no-repeat;
-  transform:translate3d(0,var(--site-scene-y,0px),0);
-  contain:paint;
-  backface-visibility:hidden;
-  image-rendering:pixelated;
-}
-
-.lower-layer-page .lower-layer-surface,
-.lower-layer-page main.page{
-  position:relative;
-  z-index:1;
-  background:transparent;
-}
-
-@supports (animation-timeline:scroll(root block)){
-  body.lower-layer-page::before{
-    animation:site-scene-parallax 1s linear both;
-    animation-timeline:scroll(root block);
-  }
-}
-
-@media(max-width:760px){
-  body.lower-layer-page::before{
-    inset:-6vh 0 auto;
-    height:var(--site-scene-box-height,295vh);
-    opacity:.80;
-  }
-}
-
-@media(prefers-reduced-motion:reduce){
-  body.lower-layer-page::before{
-    animation:none;
-    transform:none;
-  }
-}
+/* The universal data-site-floor="below" realm canvas in site-elevator.css owns
+   the pixel environment. Lower-layer CSS owns only Below typography, panels and
+   semantic stage styling, so the floor cannot fork into a second background system. */
 
 /* Shared typography/surfaces. */
 .lower-layer-page .page-header{
