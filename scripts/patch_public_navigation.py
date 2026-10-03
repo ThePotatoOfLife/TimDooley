@@ -296,6 +296,7 @@ _PHILOSOPHY_ENTRY_CONTEXTS = {
     "rooms/science-formal-models/index.html",
     "rooms/works/index.html",
     "rooms/research-lab/index.html",
+    "rooms/index.html",
 }
 
 
