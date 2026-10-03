@@ -6,8 +6,20 @@
   padding:22px;
   border:1px solid var(--site-pane-line);
   border-radius:14px;
-  background:var(--site-pane-soft);
+  background:var(--site-pane);
   box-shadow:var(--site-pane-shadow)
+}
+.room-home>section>h2{
+  max-width:28ch;
+  margin:0 0 12px;
+  color:var(--site-gold);
+  font:400 clamp(26px,3.2vw,38px)/1.1 var(--site-font-serif);
+  letter-spacing:-.02em;
+  text-wrap:balance
+}
+.room-home>section>p:not(.boundary){
+  max-width:76ch;
+  line-height:1.72
 }
 .door-grid,.sub-grid{
   display:grid;
