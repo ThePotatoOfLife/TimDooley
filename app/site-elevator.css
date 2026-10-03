@@ -68,7 +68,10 @@
 html[data-site-floor]{
   min-height:100%;
   color-scheme:dark;
-  --site-realm-art-size:max(100vw,90vh,760px);
+  /* Keep the 1086px source near native scale for longer. Very wide displays
+     still fill the viewport, but ordinary desktop pages no longer over-zoom
+     the artwork merely because the screen is tall. */
+  --site-realm-art-size:max(1086px,100vw);
   --site-realm-art-position:50% 50%;
   --site-realm-fallback:#090909;
   --site-realm-overlay:
@@ -492,6 +495,9 @@ html[data-site-floor] body:not(.home-body)::before{
   background-size:100% 100%,var(--site-realm-art-size) auto;
   contain:paint;
   backface-visibility:hidden;
+  /* A small contrast/saturation lift restores edge separation lost to AVIF
+     compression without blurring the scene or adding another art layer. */
+  filter:saturate(1.06) contrast(1.045);
   transform:translate3d(0,0,0);
 }
 @keyframes site-realm-page-pan{
@@ -505,7 +511,7 @@ html[data-site-floor] body:not(.home-body)::before{
   }
 }
 @media(max-width:700px){
-  html[data-site-floor]{--site-realm-art-size:max(118vw,90vh,720px)}
+  html[data-site-floor]{--site-realm-art-size:max(760px,118vw)}
 }
 @media (prefers-reduced-motion: reduce){
   html[data-site-floor] body:not(.home-body)::before{
