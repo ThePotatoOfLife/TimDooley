@@ -36,7 +36,7 @@ body.lower-layer-page::before{
   height:var(--site-scene-box-height,320vh);
   pointer-events:none;
   opacity:.90;
-  background:url("./site-below-root-field.svg") var(--site-scene-x,50%) 0/auto 100% no-repeat;
+  background:url("./site-below-root-field.svg?v=20261003a") var(--site-scene-x,50%) 0/auto 100% no-repeat;
   transform:translate3d(0,var(--site-scene-y,0px),0);
   contain:paint;
   backface-visibility:hidden;
