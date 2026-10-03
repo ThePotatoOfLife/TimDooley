@@ -433,6 +433,17 @@ html[data-site-floor="below"]{
   58%{opacity:.88;transform:translateY(-5%) rotateX(7deg) scale(1)}
   100%{opacity:1;transform:translateY(0) rotateX(0deg) scale(1)}
 }
+@media (prefers-contrast: more){
+  .site-elevator{
+    --site-elevator-bg:#090909;
+    --site-elevator-panel:rgba(6,6,6,.96);
+    --site-elevator-line:rgba(255,255,255,.42);
+    --site-elevator-muted:#e2e2df;
+  }
+  .site-elevator-room{border-color:rgba(255,255,255,.34)}
+  .site-elevator-room.is-active{border-color:var(--site-elevator-accent)}
+}
+
 @media (max-width:620px){
   .site-elevator{
     --elevator-control-width:28px;
