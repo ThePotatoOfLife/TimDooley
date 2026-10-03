@@ -351,11 +351,11 @@ body.home-body{
 }
 .home-realm-scene--below::before{
   background:
-    radial-gradient(ellipse 24% 110% at 50% 46%,
-      rgba(255,220,174,.20) 0%,
-      rgba(255,214,166,.10) 36%,
-      rgba(255,208,155,.035) 58%,
-      transparent 76%);
+    radial-gradient(ellipse 25% 108% at 50% 48%,
+      rgba(7,8,7,.54) 0%,
+      rgba(10,10,9,.38) 34%,
+      rgba(13,11,9,.15) 58%,
+      transparent 78%);
 }
 .home-realm-scene::after{
   content:"";
@@ -486,4 +486,27 @@ body.home-body{
 .home-realm-scene img{
   filter:none!important;
   image-rendering:auto;
+}
+
+
+/* Realm artwork final integration — 2026-10-03l */
+.home-realm-art--heaven,
+.home-realm-scene img{
+  filter:none!important;
+  image-rendering:auto;
+}
+.home-realm-scene--plane{
+  background:#79b8c8;
+}
+.home-realm-scene--below{
+  background:#24100b;
+}
+/* Preserve side saturation; readability comes from the center overlay and local panels. */
+.home-realm-scene--plane::before{
+  background:
+    radial-gradient(ellipse 23% 108% at 50% 47%,
+      rgba(255,252,235,.28) 0%,
+      rgba(255,252,235,.14) 36%,
+      rgba(255,252,235,.04) 60%,
+      transparent 78%);
 }
