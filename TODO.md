@@ -1553,3 +1553,17 @@ Primary rule: readers should not have to understand the House architecture befor
 - [ ] Next wave: add object-level examples to medium-strength Rooms rather than more high-level summaries.
 - [ ] Next wave candidates: Geography & Countries, Infrastructure & Capability, Politics & Governance, Memory Recovery, Other Traditions, Games & Simulations.
 - [ ] For each candidate, require at least one concrete object/case, one mechanism, one boundary, and one useful cross-Room handoff.
+
+
+## Potato Metaphysics — 2026-10-03
+
+- [x] Name the missing cross-House field: **Potato Metaphysics**.
+- [x] Define its method as **spiritual topology**: relations of Root, Tree, Door, Ladder, Mountain, Swamp, Garden, Fruit and return.
+- [x] Keep it adjacent to Philosophy rather than hiding it inside Philosophy or inventing another governed Dwelling.
+- [x] Separate ownership clearly: Philosophy = lived meaning; Religion = theology; Symbolic Architecture = formal grammar; Metaphysics = world-model and movement.
+- [x] Add a full reader on descent, rooting, ascent, return, Mountain/Swamp, Bread/Potato comparison and practical diagnostic use.
+- [x] Surface Metaphysics in Philosophy, Rooms, Potato of Life, Symbolic Architecture and relevant generated subheaders.
+- [x] Extend the Metaphysics door across the Philosophy child family.
+- [ ] Add one dedicated visual/diagram of the full circulation if the CSS topology still feels too textual in deployment.
+- [ ] Review whether the project now has a coherent classical field map: epistemology, ethics, metaphysics, agency, interpretation, aesthetics.
+- [ ] Prefer deepening these fields over creating new subject pages unless a real body of knowledge no longer fits the existing fields.
