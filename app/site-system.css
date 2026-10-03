@@ -150,10 +150,10 @@ textarea:focus-visible,
 }
 
 @media (max-width:700px){
-  .page{padding-top:30px;padding-bottom:76px}
-  .page-nav{margin:0 calc(var(--site-gutter) * -1) 38px;padding:0 var(--site-gutter) 8px;flex-wrap:nowrap;gap:8px;overflow-x:auto;overscroll-behavior-inline:contain;scrollbar-width:thin;scroll-snap-type:x proximity}
-  .page-nav a{flex:0 0 auto;white-space:nowrap;padding:6px 9px;border:1px solid var(--site-line);border-radius:999px;scroll-snap-align:start}
-  .page-header{margin-bottom:30px}
+  .page{padding-top:28px;padding-bottom:72px}
+  .page-nav{margin:0 0 26px;padding:0;flex-wrap:wrap;gap:6px;overflow:visible;overscroll-behavior:auto;scroll-snap-type:none}
+  .page-nav a{flex:0 1 auto;white-space:normal;padding:6px 9px;border:1px solid var(--site-line);border-radius:9px;scroll-snap-align:none}
+  .page-header{margin-bottom:28px}
   .topology-context-head{display:block}
   .topology-context-house{display:inline-block;margin-top:8px}
   .topology-context-relations li{grid-template-columns:1fr;gap:2px}
