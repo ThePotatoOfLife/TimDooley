@@ -730,3 +730,42 @@ html[data-site-floor="plane"] body:not(.lower-layer-page) > :not(script):not(sty
 }
 
 /* End of canonical elevator + pixel-world stylesheet. Do not append legacy copies below this line. */
+
+
+/* Floor atmosphere veil — 2026-10-03b */
+html[data-site-floor="heaven"] body:not(.lower-layer-page)::after,
+html[data-site-floor="plane"] body:not(.lower-layer-page)::after{
+  content:"";
+  position:fixed;
+  z-index:0;
+  pointer-events:none;
+  inset:0;
+  background-repeat:no-repeat;
+}
+html[data-site-floor="heaven"] body:not(.lower-layer-page)::after{
+  background:
+    radial-gradient(ellipse 38% 88% at 50% 44%,rgba(255,251,229,.25) 0,rgba(248,241,220,.16) 32%,rgba(225,232,229,.07) 57%,transparent 76%),
+    linear-gradient(90deg,rgba(88,44,133,.10),transparent 24%,transparent 76%,rgba(88,44,133,.10));
+  backdrop-filter:blur(1.4px) saturate(.94);
+  -webkit-backdrop-filter:blur(1.4px) saturate(.94);
+}
+html[data-site-floor="plane"] body:not(.lower-layer-page)::after{
+  background:
+    radial-gradient(ellipse 36% 92% at 50% 45%,rgba(246,249,224,.24) 0,rgba(228,241,224,.15) 34%,rgba(215,237,229,.065) 58%,transparent 77%),
+    linear-gradient(90deg,rgba(21,106,91,.08),transparent 23%,transparent 77%,rgba(35,103,119,.09));
+  backdrop-filter:blur(1.2px) saturate(.96);
+  -webkit-backdrop-filter:blur(1.2px) saturate(.96);
+}
+@media(max-width:700px){
+  html[data-site-floor="heaven"] body:not(.lower-layer-page)::after,
+  html[data-site-floor="plane"] body:not(.lower-layer-page)::after{
+    background-size:150% 100%,100% 100%;
+    background-position:center;
+  }
+}
+@media(prefers-reduced-transparency:reduce){
+  html[data-site-floor="heaven"] body:not(.lower-layer-page)::after,
+  html[data-site-floor="plane"] body:not(.lower-layer-page)::after{
+    backdrop-filter:none;-webkit-backdrop-filter:none;
+  }
+}
