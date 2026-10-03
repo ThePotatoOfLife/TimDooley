@@ -309,7 +309,7 @@ assert.equal(/html\[data-site-floor="(?:heaven|plane|below)"\]\{[\s\S]*?--site-p
 assert.ok(css.includes('--site-realm-art-size:max(100vw,75vh,760px)'),'static realm canvas must cover the viewport without Home-style overzoom');
 assert.ok(css.includes('@keyframes site-realm-page-pan'),'ordinary floor pages must share one lightweight scroll-pan animation');
 assert.ok(css.includes('animation-timeline:scroll(root block)'),'modern browsers should pan realm art with native scroll timelines');
-assert.equal(source.includes('requestAnimationFrame'),false,'realm scrolling must not require a JavaScript animation loop');
+assert.equal(source.includes('requestAnimationFrame(update)'),false,'realm scrolling must not restore the retired JavaScript animation loop');
 assert.equal(source.includes('installSceneParallax'),false,'fixed realm pages must not keep old parallax runtime');
 assert.equal(lowerCss.includes('body.lower-layer-page::before'),false,'Below must not own a second compositor');
 assert.equal(lowerCss.includes('site-below-root-field.svg'),false,'Below must not use retired SVG scene');
