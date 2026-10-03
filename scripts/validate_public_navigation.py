@@ -2,6 +2,7 @@
 """Guard the small public navigation and deployed reader capability contract."""
 from __future__ import annotations
 
+import html
 import re
 import subprocess
 from collections import Counter
