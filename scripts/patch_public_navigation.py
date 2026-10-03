@@ -253,19 +253,19 @@ def inject_site_floor(text: str, page: Path) -> str:
     Home is deliberately exempt: it is the vertical Heaven → Plane → Below journey
     and owns a dedicated multi-realm compositor instead of one floor wallpaper.
     """
-    if not re.search(r"<html\\b", text, flags=re.I):
+    if not re.search(r"<html\b", text, flags=re.I):
         return text
     route = _public_route_for_page(page)
-    html_open = re.search(r"<html\\b[^>]*>", text, flags=re.I)
+    html_open = re.search(r"<html\b[^>]*>", text, flags=re.I)
     if not html_open:
         return text
     tag = html_open.group(0)
     if route == "/":
-        tag = re.sub(r'\\s+data-site-floor\\s*=\\s*["\\'][^"\\']*["\\']', "", tag, count=1, flags=re.I)
+        tag = re.sub(r"\s+data-site-floor\s*=\s*[\"'][^\"']*[\"']", "", tag, count=1, flags=re.I)
         return text[:html_open.start()] + tag + text[html_open.end():]
     floor = _site_floor_for_route(route)
-    if re.search(r"\\bdata-site-floor\\s*=", tag, flags=re.I):
-        tag = re.sub(r'\\bdata-site-floor\\s*=\\s*["\\'][^"\\']*["\\']', f'data-site-floor="{floor}"', tag, count=1, flags=re.I)
+    if re.search(r"\bdata-site-floor\s*=", tag, flags=re.I):
+        tag = re.sub(r"\bdata-site-floor\s*=\s*[\"'][^\"']*[\"']", f'data-site-floor="{floor}"', tag, count=1, flags=re.I)
     else:
         tag = tag[:-1] + f' data-site-floor="{floor}">'
     return text[:html_open.start()] + tag + text[html_open.end():]
