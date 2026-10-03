@@ -459,12 +459,6 @@ html[data-site-floor="below"]{
     animation:none;
     transform:none;
   }
-  .site-elevator *, .site-elevator *::before, .site-elevator *::after{
-    scroll-behavior:auto!important;
-    animation-duration:1ms!important;
-    animation-iteration-count:1!important;
-    transition-duration:1ms!important;
-  }
   .site-elevator[data-elevator-direction] .site-elevator-floor{
     animation:none!important;
     transform:none!important;
