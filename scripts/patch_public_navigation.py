@@ -743,12 +743,14 @@ def normalize_page_nav(text: str, page: Path) -> str:
                 f'<a class="page-nav-room" href="{href}" title="{full_title}">{label}</a>'
             )
 
+        has_philosophy = any(_clean_nav_label(anchor) == "Philosophy" for anchor in anchors)
+        philosophy_entry = "" if has_philosophy else _philosophy_entry_anchor(page)
         rewritten = (
             _home_anchor(page)
             + _rooms_anchor(page)
             + _dwelling_anchor(page)
             + _current_subroom_anchor(page)
-            + _philosophy_entry_anchor(page)
+            + philosophy_entry
             + _philosophy_family_anchors(page)
             + "".join(non_home)
             + "".join(room_anchors)
