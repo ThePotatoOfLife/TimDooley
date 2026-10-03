@@ -542,6 +542,19 @@ def _dwelling_anchor(page: Path) -> str:
     return f'<a class="page-nav-dwelling" href="{href}">{title}</a>'
 
 
+def _current_subroom_anchor(page: Path) -> str:
+    rel = page.relative_to(OUT).as_posix()
+    nested = re.fullmatch(r"rooms/inside/([^/]+)/index\.html", rel)
+    if not nested:
+        return ""
+    row = _SUBROOM_BY_ROUTE.get(nested.group(1))
+    if not row:
+        return ""
+    label = html.escape(_subroom_nav_label(row))
+    href = _subroom_href(page, row)
+    return f'<a class="page-nav-current" href="{href}" aria-current="page">{label}</a>'
+
+
 def _anchor_label(anchor: str) -> str:
     return html.unescape(re.sub(r"<[^>]+>", "", anchor)).strip()
 
@@ -638,6 +651,7 @@ def normalize_page_nav(text: str, page: Path) -> str:
             _home_anchor(page)
             + _rooms_anchor(page)
             + _dwelling_anchor(page)
+            + _current_subroom_anchor(page)
             + "".join(non_home)
             + "".join(room_anchors)
         )
