@@ -69,10 +69,14 @@ html[data-site-floor]{
   min-height:100%;
   color-scheme:dark;
 }
-html[data-site-floor] body:not(.lower-layer-page){
+html[data-site-floor] body:not(.lower-layer-page):not(.home-body){
   min-height:100vh;
   background:transparent!important;
 }
+
+/* Home spans Heaven → Plane → Below and owns a dedicated multi-realm canvas. */
+html[data-site-floor] body.home-body{min-height:100vh}
+html[data-site-floor] body.home-body::before{content:none!important;display:none!important}
 
 /* HEAVEN — cosmic canopy, starlight, spiritual tree and garden horizon. */
 html[data-site-floor="heaven"]{

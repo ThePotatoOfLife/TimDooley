@@ -248,16 +248,24 @@ def _site_floor_for_route(route: str) -> str:
     return "plane"
 
 def inject_site_floor(text: str, page: Path) -> str:
-    """Stamp the canonical floor into built HTML so scenery exists at first paint."""
-    if not re.search(r"<html\b", text, flags=re.I):
+    """Stamp a canonical floor into single-floor pages for first paint.
+
+    Home is deliberately exempt: it is the vertical Heaven → Plane → Below journey
+    and owns a dedicated multi-realm compositor instead of one floor wallpaper.
+    """
+    if not re.search(r"<html\\b", text, flags=re.I):
         return text
-    floor = _site_floor_for_route(_public_route_for_page(page))
-    html_open = re.search(r"<html\b[^>]*>", text, flags=re.I)
+    route = _public_route_for_page(page)
+    html_open = re.search(r"<html\\b[^>]*>", text, flags=re.I)
     if not html_open:
         return text
     tag = html_open.group(0)
-    if re.search(r"\bdata-site-floor\s*=", tag, flags=re.I):
-        tag = re.sub(r'\bdata-site-floor\s*=\s*["\'][^"\']*["\']', f'data-site-floor="{floor}"', tag, count=1, flags=re.I)
+    if route == "/":
+        tag = re.sub(r'\\s+data-site-floor\\s*=\\s*["\\'][^"\\']*["\\']', "", tag, count=1, flags=re.I)
+        return text[:html_open.start()] + tag + text[html_open.end():]
+    floor = _site_floor_for_route(route)
+    if re.search(r"\\bdata-site-floor\\s*=", tag, flags=re.I):
+        tag = re.sub(r'\\bdata-site-floor\\s*=\\s*["\\'][^"\\']*["\\']', f'data-site-floor="{floor}"', tag, count=1, flags=re.I)
     else:
         tag = tag[:-1] + f' data-site-floor="{floor}">'
     return text[:html_open.start()] + tag + text[html_open.end():]

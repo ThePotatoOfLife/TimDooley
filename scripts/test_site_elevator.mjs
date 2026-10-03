@@ -287,6 +287,9 @@ assert.ok(source.includes('role="group" aria-label="Change House floor"'),'floor
 assert.ok(source.includes("'Move to '+levelLabel(upTarget"),'up control should announce its destination floor');
 assert.ok(source.includes("'Move to '+levelLabel(downTarget"),'down control should announce its destination floor');
 assert.ok(source.includes("'ORIENTATION OFFLINE'"),'failed governance hydration needs a visible fallback state');
+assert.ok(source.includes("document.body.classList.contains('home-body')"),'Home must own its multi-realm canvas instead of inheriting one elevator floor');
+assert.ok(source.includes('delete document.documentElement.dataset.siteFloor'),'Home runtime must clear stale single-floor state');
+assert.ok(css.includes('body.home-body::before'),'elevator CSS must defensively suppress stale floor scenery on Home');
 assert.ok(source.includes('const FLOOR_LOCAL_LINK_SELECTOR='),'runtime must own one floor-local link selector for page and secondary navigation');
 assert.ok(source.includes('const enforceFloorLocalNavigation='),'runtime must enforce floor boundaries through one shared pass');
 assert.ok(source.includes("'main > nav.page-nav a[href]'"),'page navigation must participate in floor-boundary enforcement');

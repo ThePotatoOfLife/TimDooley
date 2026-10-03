@@ -372,9 +372,13 @@ def main() -> int:
             if "site-access.css" not in text or "site-access.js" not in text:
                 errors.append(f"{rel}: elevator rollout must preserve the bottom site-access dock")
             route = "/" if rel == "index.html" else "/" + rel.removesuffix("index.html")
-            expected_floor = REPRESENTATIVE_CONTEXTS.get(route, ("plane", None))[0]
-            if f'data-site-floor="{expected_floor}"' not in text:
-                errors.append(f"{rel}: built HTML must carry first-paint floor {expected_floor!r}")
+            if route == "/":
+                if "data-site-floor=" in text:
+                    errors.append("index.html: Home spans all three realms and must not carry a single-floor canvas")
+            else:
+                expected_floor = REPRESENTATIVE_CONTEXTS.get(route, ("plane", None))[0]
+                if f'data-site-floor="{expected_floor}"' not in text:
+                    errors.append(f"{rel}: built HTML must carry first-paint floor {expected_floor!r}")
 
     if errors:
         print(f"SITE ELEVATOR DATA VALIDATION FAILED: {len(errors)} issue(s)")
