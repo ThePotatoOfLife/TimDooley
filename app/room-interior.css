@@ -125,3 +125,48 @@
 }
 .room-synthesis a{color:var(--site-ink)}
 @media(max-width:720px){.room-synthesis{grid-template-columns:1fr}}
+
+/* Shared specialist-reader primitives.
+   Keep the pane full-width; constrain prose rather than the surface. */
+.inner-home .room-reader{
+  width:100%;
+  max-width:none;
+  box-sizing:border-box;
+  margin:34px 0;
+}
+.inner-home .room-reader>.lede{
+  max-width:76ch;
+  color:var(--site-ink);
+  font:400 clamp(21px,2.6vw,31px)/1.5 var(--site-font-serif);
+}
+.inner-home .room-reader>p{
+  max-width:80ch;
+  color:#cbd1c8;
+  line-height:1.75;
+}
+.inner-home .rule{
+  margin:28px 0;
+  padding:24px 0;
+  border-top:1px solid var(--site-line);
+  border-bottom:1px solid var(--site-line);
+  color:var(--site-gold);
+  font:400 clamp(22px,3vw,33px)/1.4 var(--site-font-serif);
+}
+.inner-home .case{
+  padding:18px 0;
+  border-top:1px solid var(--site-line);
+}
+.inner-home .case h3{
+  margin:0 0 7px;
+  color:var(--site-gold);
+  font:400 22px/1.15 var(--site-font-serif);
+}
+.inner-home .case p{margin:0 0 8px}
+.inner-home .deep-links{
+  display:flex;
+  flex-wrap:wrap;
+  gap:13px;
+  margin:10px 0 24px;
+  font-size:11px;
+}
+.inner-home .deep-links a{color:var(--site-gold)}
