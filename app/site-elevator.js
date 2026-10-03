@@ -352,12 +352,12 @@
       '.side-routes a[href]'
     ].join(', ');
 
+    const homeOwnsRealmCanvas=Boolean(document.body&&document.body.classList.contains('home-body'));
+
     const enforceFloorLocalNavigation=()=>{
-      if(!projection||!roomContract)return;
+      if(homeOwnsRealmCanvas||!projection||!roomContract)return;
       enforceFloorLocalLinks(FLOOR_LOCAL_LINK_SELECTOR);
     };
-
-    const homeOwnsRealmCanvas=Boolean(document.body&&document.body.classList.contains('home-body'));
     const syncFloorCanvas=()=>{
       if(homeOwnsRealmCanvas){
         delete document.documentElement.dataset.siteFloor;
