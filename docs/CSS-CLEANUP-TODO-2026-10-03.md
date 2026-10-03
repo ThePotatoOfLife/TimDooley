@@ -47,3 +47,18 @@ Active cleanup queue for the post-unification pass. The goal is one owner per vi
 ## Definition of clean
 
 A page is clean when it has a named layout owner, no dead compatibility override, no duplicate environment compositor, no unexplained inline structural CSS, no supported-width overflow, and a validator protecting the architectural rule most likely to regress.
+
+
+## P0 — realm readability pass (added after room audit)
+
+- [x] Give realm-backed public pages a default pane surface for direct child sections/articles/asides/details.
+- [x] Give top-level boundary/note/warning/lede blocks a readable pane instead of floating them over realm art.
+- [x] Pane nested Room long-form blocks and their repeated room-run sections.
+- [x] Add soft, mist and paper pane tokens so contrast can vary without inventing new page-local palettes.
+- [x] Reduce default realm over-zoom by keeping the 1086px source closer to native scale.
+- [x] Add a mild saturation/contrast lift to restore edge separation without blur or a duplicate art layer.
+- [ ] Audit pages where a specialized layout should opt out with `.surface-clear` rather than inheriting a generic pane.
+- [ ] Find direct text nodes or wrapperless prose that still escape the default pane selectors.
+- [ ] Review any sections that now become double-paned because both module CSS and the global realm contract add surfaces.
+- [ ] Check whether Home should receive additional pane coverage for remaining floating copy independent of single-floor pages.
+- [ ] Decide whether future realm assets should be exported above 1086×1448 so 1440p/4K displays can stay truly native-sharp.
