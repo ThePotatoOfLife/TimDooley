@@ -212,7 +212,9 @@ assert.ok(css.includes('--site-panel:rgba(24,11,8,.84)'),'Below must tint shared
 assert.ok(css.includes('html[data-site-floor="below"]{'),'resolved Below routes should own the root page canvas');
 for(const [floor,asset] of [['heaven','home-heaven.avif'],['plane','home-plane.avif'],['below','home-below.avif']]){
   assert.ok(css.includes('url("./'+asset+'")'),'shared floor renderer must reference '+asset);
-  assert.match(css,new RegExp('\\.site-elevator\\[data-elevator-level="'+floor+'"\\]::before\\{[\\s\\S]*?'+asset.replace('.','\\.')'),'elevator header must use '+asset);
+  const headerStart=css.indexOf('.site-elevator[data-elevator-level="'+floor+'"]::before{');
+  assert.ok(headerStart>=0,'elevator header must define '+floor+' scene');
+  assert.ok(css.slice(headerStart,headerStart+520).includes(asset),'elevator header must use '+asset);
 }
 
 assert.ok(css.includes('#24104c'),'Heaven elevator scene needs a stable violet cosmic fallback colour');
