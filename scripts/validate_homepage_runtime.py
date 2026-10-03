@@ -27,7 +27,7 @@ def main() -> int:
         print("HOMEPAGE RUNTIME VALIDATION FAILED\n- missing index.html")
         return 1
 
-    home = HOME.read_text(encoding="utf-8", errors="replace")
+    home = HOME.read_text(encoding="utf-8", errors="replace")\n    runtime = HOME_RUNTIME.read_text(encoding="utf-8", errors="replace") if HOME_RUNTIME.exists() else ""\n    projection = HOME_PROJECTION.read_text(encoding="utf-8", errors="replace") if HOME_PROJECTION.exists() else ""\n    runtime_surface = "\\n".join((home, runtime, projection))
 
     if not HOME_CSS.exists():
         errors.append("homepage scoped stylesheet missing: app/home-page.css")
@@ -89,10 +89,10 @@ def main() -> int:
         "document.documentElement.dataset.homeProjection=unavailable.size?'partial':'live';",
     )
     for marker in required_markers:
-        if marker not in home:
+        if marker not in runtime_surface:
             errors.append(f"homepage runtime missing resilience marker: {marker}")
 
-    if "home projection data unavailable" in home:
+    if "home projection data unavailable" in runtime_surface:
         errors.append("homepage runtime still contains the retired all-or-nothing projection failure")
     if re.search(r"\.every\(r=>r\.ok\).*home projection", home, flags=re.S):
         errors.append("homepage runtime still gates all projection data behind one response-ok check")
@@ -103,13 +103,13 @@ def main() -> int:
         "data/house/foundations-wave-003.json",
     )
     for path in retired_home_inputs:
-        if f"loadJson('{path}')" in home:
+        if f"loadJson('{path}')" in runtime_surface:
             errors.append(f"homepage still loads retired wave input: {path}")
 
     for path in REQUIRED_DATASETS:
-        if f"loadJson('{path}')" not in home:
+        if f"loadJson('{path}')" not in runtime_surface:
             errors.append(f"homepage dataset is not isolated through loadJson: {path}")
-        if f"fetch('{path}')" in home:
+        if f"fetch('{path}')" in runtime_surface:
             errors.append(f"homepage dataset bypasses isolated loader with raw fetch: {path}")
 
     if 'class="home-guide"' in home or 'aria-label="Homepage section shortcuts"' in home:
@@ -160,7 +160,7 @@ def main() -> int:
         "if(foundationRoomSummary&&foundationRooms)",
     )
     for marker in guarded_updates:
-        if marker not in home:
+        if marker not in runtime_surface:
             errors.append(f"homepage dynamic overwrite is not source-guarded: {marker}")
 
     if errors:
