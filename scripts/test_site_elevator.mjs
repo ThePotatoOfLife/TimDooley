@@ -204,7 +204,7 @@ assert.ok(css.includes('.site-elevator-floor-code'),'terminal board needs a numb
 assert.ok(css.includes('[data-elevator-level="heaven"]::before'),'Heaven needs a distinct elevator scene layer');
 assert.ok(css.includes('html[data-site-floor="heaven"]{'),'resolved Heaven routes should own the root page canvas');
 assert.ok(css.includes('html[data-site-floor="plane"]{'),'resolved Plane routes should own the root page canvas');
-assert.ok(css.includes('background:transparent!important'),'governed page bodies must not paint opaque black over the floor canvas');
+assert.match(css,/body:not\(\.home-body\)\{[\s\S]*?background:transparent;/,'governed page bodies must remain transparent above the realm canvas');
 assert.ok(css.includes('html[data-site-floor="below"]{'),'resolved Below routes should own the root page canvas');
 for(const [floor,asset] of [['heaven','home-heaven.avif'],['plane','home-plane.avif'],['below','home-below.avif']]){
   assert.ok(css.includes('url("./'+asset+'")'),'shared floor renderer must reference '+asset);
