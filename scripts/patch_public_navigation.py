@@ -478,6 +478,7 @@ def _is_home_href(href: str, page: Path) -> bool:
     normalized = href.strip()
     return normalized in {
         prefix,
+        "./" if not prefix else prefix,
         prefix + "index.html",
         "/",
         "https://thepotatooflife.github.io/TimDooley/",
@@ -485,7 +486,9 @@ def _is_home_href(href: str, page: Path) -> bool:
 
 
 def _home_anchor(page: Path) -> str:
-    return f'<a class="page-nav-home" href="{_relative_asset_prefix(page)}">Home</a>'
+    prefix = _relative_asset_prefix(page)
+    href = prefix if prefix else "./"
+    return f'<a class="page-nav-home" href="{href}">Home</a>'
 
 
 def _room_nav_candidates(page: Path) -> list[dict]:
