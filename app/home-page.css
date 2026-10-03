@@ -26,7 +26,7 @@
 .home-fast{margin:0 0 24px;padding:16px 0 18px;border-top:1px solid var(--site-line);border-bottom:1px solid var(--site-line)}
 .home-fast-head{display:flex;justify-content:space-between;gap:18px;align-items:end;margin-bottom:10px}.home-fast-head h2{font:400 clamp(20px,2.6vw,28px)/1.05 var(--site-font-serif);margin:2px 0 0}.home-fast-head p{margin:0;color:var(--site-muted);font-size:10px;max-width:520px;text-align:right}
 .home-fast-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.home-fast-door{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:end;min-height:94px;padding:13px;border:1px solid var(--site-line);border-radius:11px;background:var(--site-panel);text-decoration:none;color:inherit}.home-fast-door:hover,.home-fast-door:focus-visible{border-color:var(--site-line);outline:none}.home-fast-door em{display:block;font-style:normal;color:var(--site-gold);font-size:8px;font-weight:800;letter-spacing:.09em;text-transform:uppercase}.home-fast-door strong{display:block;font:400 19px/1.06 var(--site-font-serif);color:var(--site-gold);margin-top:5px}.home-fast-door span{display:block;color:var(--site-muted);font-size:9px;line-height:1.35;margin-top:5px}.home-fast-door i{font-style:normal;color:var(--site-faint);font-size:17px}.home-fast-door:hover strong,.home-fast-door:focus-visible strong,.home-fast-door:hover i,.home-fast-door:focus-visible i{color:var(--site-gold)}
-.sections{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:7px;margin:14px 0}.sections>a{display:block;border:1px solid var(--site-line);border-radius:11px;padding:10px;text-decoration:none;color:inherit;background:var(--site-panel)}.sections strong{display:block;font:400 16px var(--site-font-serif);color:var(--site-gold);margin-bottom:5px}.sections .question-preview{display:block;color:var(--site-muted);font-size:8px;line-height:1.35;margin-top:3px}.secondary-threads{display:contents}@media(max-width:760px){.sections,.home-visual-window,.home-visual-window--reverse{grid-template-columns:1fr}.home-visual-window--reverse .home-visual-copy{order:2}.home-visual-window--reverse img{order:1}.home-visual-window img{min-height:210px;max-height:340px}.home-visual-pair{grid-template-columns:1fr}}
+.sections{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:7px;margin:14px 0}.sections>a{display:block;border:1px solid var(--site-line);border-radius:11px;padding:10px;text-decoration:none;color:inherit;background:var(--site-panel)}.sections strong{display:block;font:400 16px var(--site-font-serif);color:var(--site-gold);margin-bottom:5px}.sections .question-preview{display:block;color:var(--site-muted);font-size:8px;line-height:1.35;margin-top:3px}.secondary-threads{display:contents}
 .project-purpose{max-width:760px;font:400 clamp(20px,2.25vw,24px)/1.48 var(--site-font-serif);color:#d8ddd4;margin:0}
 .substance-prose{max-width:900px}.substance-prose p{font:400 clamp(16px,1.7vw,19px)/1.68 var(--site-font-serif);color:#d3d9cf;margin:0 0 18px}.substance-prose p:last-child{margin-bottom:0}.substance-prose strong{color:var(--site-gold);font-weight:400}.substance-prose a{color:var(--site-muted);text-decoration-color:#465044;text-underline-offset:3px}.substance-prose .substance-thread{font:400 13px/1.62 var(--site-font-sans);color:var(--site-muted);border-left:2px solid var(--site-line);padding-left:14px;margin-top:22px}
 .evidence-note{max-width:760px;color:var(--site-muted);font-size:12px;line-height:1.55;margin:14px 0 0}.evidence-note a{color:var(--site-muted)}
@@ -77,6 +77,13 @@
 .home-visual-card div{padding:11px 12px}.home-visual-card b{display:block;font:400 17px var(--site-font-serif);color:var(--site-gold)}
 .home-visual-card span{display:block;color:var(--site-muted);font-size:9px;line-height:1.4;margin-top:3px}.home-visual-card small{display:block;color:var(--site-faint);font-size:8px;line-height:1.35;margin-top:6px}
 .home-visual-card:hover{border-color:var(--site-line)}.home-visual-card:hover b{color:var(--site-gold)}
+@media(max-width:760px){
+  .sections,.home-visual-window,.home-visual-window--reverse{grid-template-columns:1fr}
+  .home-visual-window--reverse .home-visual-copy{order:2}
+  .home-visual-window--reverse img{order:1}
+  .home-visual-window img{min-height:210px;max-height:340px}
+  .home-visual-pair{grid-template-columns:1fr}
+}
 
 .home-bible-bridge{position:relative}
 .home-bible-river{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));margin:20px 0 18px;border-top:1px solid var(--site-line);border-bottom:1px solid var(--site-line)}
