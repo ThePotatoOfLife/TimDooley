@@ -1527,3 +1527,13 @@ Primary rule: readers should not have to understand the House architecture befor
 - [ ] Review whether any deeply nested non-governed page family deserves its own equivalent subject shelf.
 - [ ] On high-density pages, consider demoting generic authored links that duplicate visible Room subjects.
 - [ ] Audit mobile line wrapping after deployment; preserve one subtle floating shelf rather than pills or multiple stacked nav bars.
+
+
+## Cross-House subject discoverability — 2026-10-03
+
+- [x] Add Philosophy as a real multi-page family: Philosophy, Knowledge & Belief, Trust & Repair, Attention & Agency, Interpretive Justice.
+- [x] Expose the Philosophy family in relevant subheaders and expose Philosophy itself from neighboring major hubs.
+- [x] Add a Cross-House subject shelf near the top of the Rooms directory so important subjects are not buried inside ownership topology.
+- [x] Use existing Rooms-page visual grammar rather than adding another navigation widget.
+- [ ] Review whether Religion, Tim, Timeline, Sources, Great Book, Culture and Science each need comparable child-family shelves on their hub pages.
+- [ ] Keep Cross-House subject hubs distinct from governed Dwellings: subjects may span multiple owners without pretending to be new ownership roots.
