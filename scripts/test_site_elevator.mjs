@@ -205,9 +205,6 @@ assert.ok(css.includes('[data-elevator-level="heaven"]::before'),'Heaven needs a
 assert.ok(css.includes('html[data-site-floor="heaven"]{'),'resolved Heaven routes should own the root page canvas');
 assert.ok(css.includes('html[data-site-floor="plane"]{'),'resolved Plane routes should own the root page canvas');
 assert.ok(css.includes('background:transparent!important'),'governed page bodies must not paint opaque black over the floor canvas');
-assert.ok(css.includes('--site-panel:rgba(14,16,38,.80)'),'Heaven must tint shared panels, not only the wallpaper');
-assert.ok(css.includes('--site-panel:rgba(13,29,25,.80)'),'Plane must tint shared panels, not only the wallpaper');
-assert.ok(css.includes('--site-panel:rgba(24,11,8,.84)'),'Below must tint shared panels, not only the wallpaper');
 assert.ok(css.includes('html[data-site-floor="below"]{'),'resolved Below routes should own the root page canvas');
 for(const [floor,asset] of [['heaven','home-heaven.avif'],['plane','home-plane.avif'],['below','home-below.avif']]){
   assert.ok(css.includes('url("./'+asset+'")'),'shared floor renderer must reference '+asset);
@@ -308,6 +305,7 @@ assert.ok(css.includes('body:not(.home-body)::before'),'single-floor pages need 
 assert.ok(css.includes('--site-realm-art:url("./home-heaven.avif")'),'Heaven pages must use final Heaven art');
 assert.ok(css.includes('--site-realm-art:url("./home-plane.avif")'),'Plane pages must use final Plane art');
 assert.ok(css.includes('--site-realm-art:url("./home-below.avif")'),'Below pages must use final Below art');
+assert.equal(/html\[data-site-floor="(?:heaven|plane|below)"\]\{[\s\S]*?--site-panel:/.test(css),false,'floor identity must come from realm art, not global panel recoloring');
 assert.ok(css.includes('--site-realm-art-size:max(100vw,75vh,760px)'),'static realm canvas must cover the viewport without Home-style overzoom');
 assert.ok(css.includes('@keyframes site-realm-page-pan'),'ordinary floor pages must share one lightweight scroll-pan animation');
 assert.ok(css.includes('animation-timeline:scroll(root block)'),'modern browsers should pan realm art with native scroll timelines');
