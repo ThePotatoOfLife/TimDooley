@@ -116,7 +116,6 @@ def main() -> int:
             '[data-elevator-level="below"]::before',
             "border-radius:0",
             "background:transparent",
-            "display:block!important",
             ".site-elevator-room-rail{",
             "margin:0;",
             "home-heaven.avif",
