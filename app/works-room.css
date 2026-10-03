@@ -1,0 +1,102 @@
+/* Shared nested-Room presentation for Works specialists.
+   These styles keep artifact/model registries visually coherent while leaving
+   the generic Room shell to site-system.css and room-interior.css. */
+.works-room :is(.game-registry,.artifact-status){
+  margin:30px 0;
+  padding:22px;
+  border:1px solid var(--site-pane-line);
+  border-radius:14px;
+  background:var(--site-pane-soft);
+  box-shadow:0 8px 22px rgba(0,0,0,.12);
+}
+.works-room :is(.game-registry,.artifact-status) h2{
+  margin:4px 0 10px;
+  color:var(--site-gold);
+  font:400 clamp(28px,4vw,42px)/1.08 var(--site-font-serif);
+}
+.works-room .game-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:10px;
+  margin-top:16px;
+}
+.works-room .game-card{
+  border:1px solid var(--site-pane-line);
+  border-radius:11px;
+  padding:14px;
+  background:var(--site-pane);
+}
+.works-room .game-card em,
+.works-room .artifact-row em{
+  color:var(--site-gold);
+  font-size:8px;
+  font-style:normal;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.works-room .game-card h3{
+  margin:4px 0 6px;
+  color:var(--site-gold);
+  font:400 19px/1.15 var(--site-font-serif);
+}
+.works-room .game-card p{
+  margin:0 0 7px;
+  color:var(--site-muted);
+  font-size:10px;
+  line-height:1.5;
+}
+.works-room .game-card ul{margin:7px 0;padding-left:17px}
+.works-room .game-card li{
+  margin:3px 0;
+  color:var(--site-muted);
+  font-size:9px;
+  line-height:1.45;
+}
+.works-room .game-test{
+  margin-top:8px;
+  padding-top:7px;
+  border-top:1px solid var(--site-line);
+  color:#cbd1c8;
+  font-size:9px;
+}
+.works-room :is(.game-links,.artifact-links){
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+  margin-top:14px;
+}
+.works-room :is(.game-links,.artifact-links) a{
+  border-bottom:1px solid var(--site-line);
+  color:var(--site-gold);
+  font-size:10px;
+  text-decoration:none;
+}
+.works-room .artifact-table{
+  display:grid;
+  gap:7px;
+  margin-top:16px;
+}
+.works-room .artifact-row{
+  display:grid;
+  grid-template-columns:170px 130px minmax(0,1fr);
+  gap:14px;
+  padding:12px;
+  border:1px solid var(--site-pane-line);
+  border-radius:10px;
+  background:var(--site-pane);
+}
+.works-room .artifact-row b{
+  color:var(--site-gold);
+  font:400 15px var(--site-font-serif);
+}
+.works-room .artifact-row span{
+  color:var(--site-muted);
+  font-size:10px;
+  line-height:1.5;
+}
+
+@media(max-width:720px){
+  .works-room .game-grid,
+  .works-room .artifact-row{grid-template-columns:1fr}
+  .works-room :is(.game-registry,.artifact-status){padding:16px}
+}
