@@ -305,7 +305,9 @@ assert.ok(css.includes('--site-realm-art:url("./home-heaven.avif")'),'Heaven pag
 assert.ok(css.includes('--site-realm-art:url("./home-plane.avif")'),'Plane pages must use final Plane art');
 assert.ok(css.includes('--site-realm-art:url("./home-below.avif")'),'Below pages must use final Below art');
 assert.equal(/html\[data-site-floor="(?:heaven|plane|below)"\]\{[\s\S]*?--site-panel:/.test(css),false,'floor identity must come from realm art, not global panel recoloring');
-assert.ok(css.includes('--site-realm-art-size:max(100vw,90vh,760px)'),'scrolling realm art must cover the oversized 116vh canvas without blank bands');
+assert.ok(css.includes('--site-realm-art-size:max(1086px,100vw)'),'ordinary realm art should stay at or above native source width without the retired viewport-height overzoom');
+assert.ok(css.includes('inset:-8vh 0'),'realm canvas must retain overscan for the shared page pan');
+assert.ok(css.includes('background-color:var(--site-realm-fallback)'),'realm overscan must retain a nonblank fallback behind the image');
 assert.ok(css.includes('@keyframes site-realm-page-pan'),'ordinary floor pages must share one lightweight scroll-pan animation');
 assert.ok(css.includes('animation-timeline:scroll(root block)'),'modern browsers should pan realm art with native scroll timelines');
 assert.equal(source.includes('requestAnimationFrame(update)'),false,'realm scrolling must not restore the retired JavaScript animation loop');
