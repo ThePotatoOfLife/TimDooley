@@ -641,7 +641,7 @@ html[data-site-floor] body:not(.home-body)::before{
   content:"";
   position:fixed;
   inset:0;
-  z-index:0;
+  z-index:-1;
   pointer-events:none;
   background-color:var(--site-realm-fallback);
   background-image:var(--site-realm-overlay),var(--site-realm-art);
@@ -650,10 +650,6 @@ html[data-site-floor] body:not(.home-body)::before{
   background-size:100% 100%,var(--site-realm-art-size) auto;
   contain:paint;
   backface-visibility:hidden;
-}
-html[data-site-floor] body:not(.home-body) > :not(script):not(style){
-  position:relative;
-  z-index:1;
 }
 @media(max-width:700px){
   html[data-site-floor]{--site-realm-art-size:max(118vw,75vh,720px)}

@@ -315,6 +315,8 @@ assert.equal(lowerCss.includes('site-below-root-field.svg'),false,'Below must no
 for(const asset of ['home-heaven.avif','home-plane.avif','home-below.avif'])assert.ok(journeyCss.includes(asset),'Room preview missing '+asset);
 
 assert.ok(css.includes('isolation:isolate'),'ordinary floor pages must isolate the realm canvas behind their content');
+assert.ok(css.includes('z-index:-1'),'realm canvas must sit behind document content inside the isolated body');
+assert.equal(css.includes('body:not(.home-body) > :not(script):not(style)'),false,'realm layering must not rewrite direct-body child positioning');
 assert.equal(css.includes('body:not(.lower-layer-page)::after'),false,'shared floor renderer must not add a second atmosphere compositor');
 assert.equal(lowerCss.includes('body.lower-layer-page::after'),false,'Below must not add a second full-screen depth compositor');
 assert.equal(lowerCss.includes('.lower-layer-surface::before'),false,'Below content must not rebuild duplicate terrain textures');
