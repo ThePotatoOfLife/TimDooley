@@ -311,7 +311,7 @@ assert.ok(css.includes('body:not(.home-body)::before'),'single-floor pages need 
 assert.ok(css.includes('--site-realm-art:url("./home-heaven.avif")'),'Heaven pages must use final Heaven art');
 assert.ok(css.includes('--site-realm-art:url("./home-plane.avif")'),'Plane pages must use final Plane art');
 assert.ok(css.includes('--site-realm-art:url("./home-below.avif")'),'Below pages must use final Below art');
-assert.ok(css.includes('--site-realm-art-size:max(100vw,150vh,1120px)'),'realm canvas must preserve portrait coverage');
+assert.ok(css.includes('--site-realm-art-size:max(100vw,75vh,760px)'),'static realm canvas must cover the viewport without Home-style overzoom');
 assert.equal(source.includes('installSceneParallax'),false,'fixed realm pages must not keep old parallax runtime');
 assert.equal(lowerCss.includes('body.lower-layer-page::before'),false,'Below must not own a second compositor');
 assert.equal(lowerCss.includes('site-below-root-field.svg'),false,'Below must not use retired SVG scene');

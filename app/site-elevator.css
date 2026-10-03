@@ -629,7 +629,7 @@ html[data-site-floor="below"]{
    Home owns its scrolling Heaven → Plane → Below stage.
    Every other governed page gets one fixed realm selected by data-site-floor. */
 html[data-site-floor]{
-  --site-realm-art-size:max(100vw,150vh,1120px);
+  --site-realm-art-size:max(100vw,75vh,760px);
   --site-realm-art-position:50% 50%;
   --site-realm-fallback:#111;
   --site-realm-overlay:linear-gradient(180deg,rgba(5,7,9,.14),rgba(5,7,9,.20));
@@ -681,7 +681,7 @@ html[data-site-floor] body:not(.home-body) > :not(script):not(style){
   z-index:1;
 }
 @media(max-width:700px){
-  html[data-site-floor]{--site-realm-art-size:max(118vw,150vh,980px)}
+  html[data-site-floor]{--site-realm-art-size:max(118vw,75vh,720px)}
 }
 html[data-site-floor] body.home-body::before{content:none;display:none}
 
