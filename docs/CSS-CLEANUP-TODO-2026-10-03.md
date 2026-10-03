@@ -124,3 +124,12 @@ A page is clean when it has a named layout owner, no dead compatibility override
 - [ ] Apply `.room-synthesis` only to specialist Rooms where it adds a real cross-domain handoff; do not stamp it mechanically onto every page.
 - [ ] Continue grouping inline CSS by semantic family rather than page-by-page cleanup.
 - [ ] Review remaining rich specialist Rooms for “good local essay, weak House handoff” rather than adding generic closing prose.
+
+
+## Specialist Room primitive cleanup
+
+- [x] Centralize shared `.room-reader`, `.rule`, `.case` and `.deep-links` behavior in `app/room-interior.css`.
+- [x] Remove duplicated copies from Math & Geometry, Timeline Events, Other Traditions, Practice & Ethics, Canon Identities and Bible & Christianity.
+- [x] Remove legacy max-width caps from those specialist reader panes; constrain prose rather than the pane surface.
+- [ ] Continue moving only repeated primitives upward; keep genuinely semantic grids/components with their owning module.
+- [ ] Re-run the nested-Room inline-style census after indexing catches up and choose the next family-level owner from actual remaining duplication.
