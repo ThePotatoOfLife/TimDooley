@@ -195,6 +195,12 @@ SITE_ELEVATOR_QUIET_PREFIXES = (
 
 _ELEVATOR_PROJECTION = json.loads((ROOT / "data" / "house" / "elevator-spatial-projection.json").read_text(encoding="utf-8"))
 _ELEVATOR_SUBROOMS = json.loads((ROOT / "data" / "house" / "subrooms.json").read_text(encoding="utf-8"))
+_HOUSE_ROOMS = json.loads((ROOT / "data" / "house" / "rooms.json").read_text(encoding="utf-8"))
+_ROOM_TITLE_BY_ID = {
+    str(row.get("id")): str(row.get("title") or row.get("id"))
+    for row in _HOUSE_ROOMS.get("rooms", [])
+    if isinstance(row, dict) and row.get("status") == "active" and row.get("id")
+}
 _ELEVATOR_DWELLING_LEVEL = {
     str(row.get("id")): str(row.get("primary_level") or "plane")
     for row in _ELEVATOR_PROJECTION.get("dwellings", [])
@@ -256,6 +262,25 @@ _SUBROOM_NAV_LABELS = {
     "experiments-formalization": "Experiments",
     "research-programmes": "Research Programmes",
 }
+_CONTEXT_SUBROOM_IDS = {
+    "potato-of-life/index.html": ("canon-identities", "theology-god-language", "symbolic-architecture", "practice-ethics"),
+    "tim-dooley/index.html": ("canon-identities", "chronology-events", "witness-attestation", "developmental-genealogy"),
+    "religion/index.html": ("theology-god-language", "bible-christianity", "comparative-mythology", "other-traditions"),
+    "philosophy/index.html": ("practice-ethics", "symbolic-architecture", "other-traditions"),
+    "science/index.html": ("math-geometry", "physics-cosmology", "systems-dynamics", "model-testing"),
+    "life-body/index.html": ("potato-biology", "neurobiology", "whole-body", "symbolic-body-comparison"),
+    "world/index.html": ("geography-countries", "infrastructure-capability", "economy-finance", "politics-governance"),
+    "politics/index.html": ("politics-governance", "law-justice", "economy-finance"),
+    "economy/index.html": ("economy-finance", "infrastructure-capability", "geography-countries"),
+    "law/index.html": ("law-justice", "politics-governance", "provenance-evidence"),
+    "context/culture/index.html": ("internet-platforms", "subculture-group-formation", "information-ecology"),
+    "timeline/index.html": ("chronology-events", "developmental-genealogy", "prediction-revelation-time"),
+    "works/index.html": ("great-book-literature", "music-sound", "visual-art", "games-simulations"),
+    "great-book/index.html": ("great-book-literature", "developmental-genealogy", "symbolic-architecture"),
+    "house/index.html": ("house-architecture", "open-questions", "experiments-formalization", "research-programmes"),
+    "context/source-authority/index.html": ("provenance-evidence", "memory-recovery", "witness-attestation"),
+}
+
 _ELEVATOR_ROUTE_CONTEXTS = sorted(
     [
         row for row in _ELEVATOR_PROJECTION.get("route_contexts", [])
@@ -491,11 +516,64 @@ def _home_anchor(page: Path) -> str:
     return f'<a class="page-nav-home" href="{href}">Home</a>'
 
 
+def _rooms_anchor(page: Path) -> str:
+    return f'<a class="page-nav-directory" href="{_relative_asset_prefix(page)}rooms/">Rooms</a>'
+
+
+def _dwelling_context(page: Path) -> str | None:
+    rel = page.relative_to(OUT).as_posix()
+    nested = re.fullmatch(r"rooms/inside/([^/]+)/index\.html", rel)
+    if nested:
+        row = _SUBROOM_BY_ROUTE.get(nested.group(1))
+        return str(row.get("parent_room_id")) if row else None
+
+    parts = rel.split("/")
+    if len(parts) >= 3 and parts[0] == "rooms" and parts[1] in _ROOM_TITLE_BY_ID:
+        return parts[1]
+    return None
+
+
+def _dwelling_anchor(page: Path) -> str:
+    dwelling_id = _dwelling_context(page)
+    if not dwelling_id:
+        return ""
+    title = html.escape(_ROOM_TITLE_BY_ID.get(dwelling_id, dwelling_id))
+    href = f"{_relative_asset_prefix(page)}rooms/{dwelling_id}/"
+    return f'<a class="page-nav-dwelling" href="{href}">{title}</a>'
+
+
+def _anchor_label(anchor: str) -> str:
+    return html.unescape(re.sub(r"<[^>]+>", "", anchor)).strip()
+
+
+def _clean_nav_label(anchor: str) -> str:
+    return _anchor_label(anchor).lstrip("←").strip()
+
+
+def _is_rooms_anchor(anchor: str) -> bool:
+    return _clean_nav_label(anchor) in {"Rooms", "All Rooms"}
+
+
+def _is_redundant_architecture_anchor(anchor: str, page: Path) -> bool:
+    label = _clean_nav_label(anchor)
+    if label in {"All Rooms", "Rooms", "Spatial Room", "Parent Dwelling"}:
+        return True
+    dwelling_id = _dwelling_context(page)
+    if dwelling_id and label == _ROOM_TITLE_BY_ID.get(dwelling_id):
+        return True
+    return False
+
+
 def _room_nav_candidates(page: Path) -> list[dict]:
     rel = page.relative_to(OUT).as_posix()
+
+    contextual = _CONTEXT_SUBROOM_IDS.get(rel)
+    if contextual:
+        return [row for sid in contextual if (row := _SUBROOM_BY_ID.get(sid))][:4]
+
     top = re.fullmatch(r"rooms/([^/]+)/index\.html", rel)
     if top and top.group(1) != "inside":
-        return list(_SUBROOMS_BY_PARENT.get(top.group(1), []))[:3]
+        return list(_SUBROOMS_BY_PARENT.get(top.group(1), []))[:4]
 
     nested = re.fullmatch(r"rooms/inside/([^/]+)/index\.html", rel)
     if not nested:
@@ -508,17 +586,17 @@ def _room_nav_candidates(page: Path) -> list[dict]:
         row = _SUBROOM_BY_ID.get(str(adjacent_id))
         if row:
             candidates.append(row)
-        if len(candidates) >= 2:
+        if len(candidates) >= 3:
             break
     return candidates
 
 
 def normalize_page_nav(text: str, page: Path) -> str:
-    """Keep the subtle page-nav appearance while making its information order predictable.
+    """Project a compact discovery spine into the existing subtle sub-header.
 
-    Home is always the left anchor on non-home pages. Existing page-local links keep
-    their authored order. Governed Room pages receive a small registry-backed projection:
-    up to three child Rooms on a Dwelling, or two adjacent Rooms inside a nested Room.
+    Home and Rooms are stable anchors. An actual parent Dwelling replaces abstract
+    labels such as "Parent Dwelling" or "Spatial Room". Existing useful local links
+    remain, and a small set of governed subject Rooms is projected where helpful.
     """
 
     if page == OUT / "index.html":
@@ -535,7 +613,7 @@ def normalize_page_nav(text: str, page: Path) -> str:
         seen_hrefs: set[str] = set()
         for anchor in anchors:
             href = _anchor_href(anchor)
-            if _is_home_href(href, page):
+            if _is_home_href(href, page) or _is_rooms_anchor(anchor) or _is_redundant_architecture_anchor(anchor, page):
                 continue
             if href and href in seen_hrefs:
                 continue
@@ -556,7 +634,13 @@ def normalize_page_nav(text: str, page: Path) -> str:
                 f'<a class="page-nav-room" href="{href}" title="{full_title}">{label}</a>'
             )
 
-        rewritten = _home_anchor(page) + "".join(non_home) + "".join(room_anchors)
+        rewritten = (
+            _home_anchor(page)
+            + _rooms_anchor(page)
+            + _dwelling_anchor(page)
+            + "".join(non_home)
+            + "".join(room_anchors)
+        )
         return f"<nav{attrs}>{rewritten}</nav>"
 
     return PAGE_NAV_RE.sub(rewrite, text)
