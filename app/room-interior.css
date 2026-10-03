@@ -29,7 +29,7 @@
 .room-language-head h2{margin:2px 0 0;font:400 clamp(27px,4vw,40px)/1.08 var(--site-font-serif);color:var(--site-gold)}
 .room-language-head p{margin:3px 0 0;color:var(--site-muted);line-height:1.6}
 .room-language-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
-.room-word{padding:13px 14px;border:1px solid var(--site-line);border-radius:10px;background:color-mix(in srgb,var(--site-panel) 82%,transparent)}
+.room-word{padding:13px 14px;border:1px solid var(--site-line);border-radius:10px;background:color-mix(in srgb,var(--site-panel) 70%,transparent)}
 .room-word b{display:block;color:var(--site-ink);font:400 18px/1.18 var(--site-font-serif);margin-bottom:4px}
 .room-word em{display:block;color:var(--site-gold);font:700 9px/1.35 var(--site-font-sans);letter-spacing:.08em;text-transform:uppercase;margin-bottom:5px}
 .room-word p{margin:0;color:var(--site-muted);font-size:12px;line-height:1.52}
