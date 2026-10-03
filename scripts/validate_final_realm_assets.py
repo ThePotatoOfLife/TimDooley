@@ -14,7 +14,7 @@ FINAL_REALMS = {
 
 LIVE_FILES = [
     ROOT / "app/site-elevator.css",
-    ROOT / "app/home-page.css",
+    ROOT / "index.html",
     ROOT / "app/house-journey.css",
     ROOT / "app/site-elevator.js",
     ROOT / "scripts/build_site.py",
@@ -49,7 +49,7 @@ def main() -> int:
         texts[path] = path.read_text(encoding="utf-8", errors="replace")
 
     elevator = texts.get(ROOT / "app/site-elevator.css", "")
-    home = texts.get(ROOT / "app/home-page.css", "")
+    home = texts.get(ROOT / "index.html", "")
     journey = texts.get(ROOT / "app/house-journey.css", "")
     build = texts.get(ROOT / "scripts/build_site.py", "")
 
