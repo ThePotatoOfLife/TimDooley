@@ -473,3 +473,17 @@ body.home-body{
   filter:none!important;
   transition:none!important;
 }
+
+
+/* Homepage no-blur contract — 2026-10-03m
+   Pixel art stays sharp; panes use tint and edge-light only. */
+.home-page,
+.home-page *{
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+}
+.home-realm-art--heaven,
+.home-realm-scene img{
+  filter:none!important;
+  image-rendering:auto;
+}
