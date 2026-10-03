@@ -1514,3 +1514,16 @@ Primary rule: readers should not have to understand the House architecture befor
 - [ ] Prefer subject Rooms over architecture/meta links when space is tight.
 - [ ] Add a clear current-room state to the sub-header without turning it into a breadcrumb essay.
 - [ ] Ensure deep content pages expose at least one useful way back into their parent Room family.
+
+
+## Room discoverability expansion — 2026-10-03
+
+- [x] Stop hiding most governed child Rooms behind a short-list algorithm.
+- [x] Show all child Rooms on each Dwelling sub-header (current families are only 3–5 Rooms).
+- [x] Inside a nested Room, show the current Room, all sibling Rooms in its Dwelling, and up to two cross-family adjacent Rooms.
+- [x] Replace generic short labels such as “Testing,” “Events,” “Witness” and “Infrastructure” with fuller subject names.
+- [x] Keep Home and Rooms as stable left anchors while letting the subject family dominate the rest of the line.
+- [x] Remove validator caps that artificially forced Room families back down to 2–4 links.
+- [ ] Review whether any deeply nested non-governed page family deserves its own equivalent subject shelf.
+- [ ] On high-density pages, consider demoting generic authored links that duplicate visible Room subjects.
+- [ ] Audit mobile line wrapping after deployment; preserve one subtle floating shelf rather than pills or multiple stacked nav bars.
