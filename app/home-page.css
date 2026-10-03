@@ -292,70 +292,116 @@
 }
 
 
-/* Homepage three-world art integration — 2026-10-03c */
-/* The homepage is its own vertical world. These scene plates now actually render here,
-   rather than existing only in the floor/elevator system. */
+
+
+/* Homepage world-master mural — 2026-10-03f */
+/* One continuous artwork, slowly traversed from Heaven to Plane to Below.
+   The viewport is the slice; scroll distance controls how long each realm lasts. */
 body:has(.home-page){
-  background-color:#090a0a;
-  background-image:
-    linear-gradient(180deg,
-      rgba(17,10,28,.18) 0%,
-      rgba(18,26,24,.08) 28%,
-      rgba(10,20,19,.05) 46%,
-      rgba(33,22,16,.08) 70%,
-      rgba(13,7,6,.24) 100%),
-    linear-gradient(90deg,
-      rgba(8,8,10,.16) 0%,
-      rgba(8,8,10,.035) 18%,
-      rgba(248,246,231,.025) 48%,
-      rgba(248,246,231,.035) 52%,
-      rgba(8,8,10,.035) 82%,
-      rgba(8,8,10,.16) 100%),
-    url("./site-tree-perspective.svg"),
-    url("./site-plane-organic-field.svg"),
-    url("./site-below-root-field.svg");
-  background-repeat:no-repeat;
-  background-position:center,center,center top,center 48%,center bottom;
-  background-size:100% 100%,100% 100%,max(1120px,100vw) auto,max(1120px,100vw) auto,max(1120px,100vw) auto;
-  background-attachment:scroll;
+  position:relative;
+  isolation:isolate;
+  overflow-x:hidden;
+  background:#09100d;
+  box-shadow:none;
 }
-.home-page{background:transparent}
-/* Side colour survives; central art is gently de-emphasized by the existing fog corridor. */
-@media(min-width:1400px){
-  body:has(.home-page){
-    background-size:100% 100%,100% 100%,min(1660px,108vw) auto,min(1660px,108vw) auto,min(1660px,108vw) auto;
+html[data-site-floor] body:has(.home-page):not(.lower-layer-page)::before,
+body:has(.home-page)::before{
+  content:"";
+  display:block!important;
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  background-image:
+    radial-gradient(ellipse 34% 100% at 50% 45%,rgba(255,250,230,.24) 0,rgba(244,247,226,.12) 33%,rgba(235,241,224,.045) 55%,transparent 73%),
+    linear-gradient(90deg,rgba(8,7,11,.18) 0,rgba(8,7,11,.035) 19%,transparent 35%,transparent 65%,rgba(8,7,11,.035) 81%,rgba(8,7,11,.18) 100%),
+    url("./home-world-master.webp");
+  background-repeat:no-repeat;
+  background-size:100% 100%,100% 100%,max(100vw,760px) auto;
+  background-position:center,center,center var(--home-world-y,0%);
+  filter:saturate(1.04) contrast(1.015) brightness(1.025);
+  transform:translateZ(0);
+  backface-visibility:hidden;
+}
+body:has(.home-page)>:not(script):not(style){
+  position:relative;
+  z-index:1;
+}
+@keyframes home-world-descent{
+  0%,16%{background-position:center,center,center 0%}
+  34%{background-position:center,center,center 24%}
+  56%{background-position:center,center,center 48%}
+  72%{background-position:center,center,center 64%}
+  100%{background-position:center,center,center 100%}
+}
+@supports (animation-timeline:scroll(root block)){
+  body:has(.home-page)::before{
+    animation:home-world-descent 1s linear both;
+    animation-timeline:scroll(root block);
   }
 }
+/* The content column is readable glass, but the side world stays visible and colorful. */
+.home-intro,
+.home-section-head,
+.home-fast-head,
+.news-preview-head,
+.reader-routing,
+.substance-prose,
+.reality-method-note,
+.boundary-card,
+.route-case-panel,
+.foundation-room-summary,
+.project-pulse,
+.secondary-threads{
+  border-color:rgba(255,241,207,.17);
+  box-shadow:0 14px 42px rgba(0,0,0,.20),inset 0 1px rgba(255,255,255,.045);
+}
+.home-intro,
+.home-section-head,
+.home-fast-head,
+.news-preview-head,
+.reader-routing,
+.substance-prose,
+.reality-method-note,
+.boundary-card{
+  background:
+    linear-gradient(135deg,rgba(255,255,255,.075),transparent 31%),
+    linear-gradient(180deg,rgba(17,22,18,.58),rgba(7,10,9,.70));
+  backdrop-filter:blur(4px) saturate(.86);
+  -webkit-backdrop-filter:blur(4px) saturate(.86);
+}
+.motion-card,.home-fast-door,.field-level,.foundation-room-card,.reality-card,
+.direction-step,.sections>a,.home-media-strip figure,.home-visual-card,
+.field-routes article,.route-panel,.foundation-pattern-panel,.pulse-card{
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.045),transparent 42%),
+    rgba(7,10,9,.72);
+  backdrop-filter:blur(2.5px) saturate(.9);
+  -webkit-backdrop-filter:blur(2.5px) saturate(.9);
+}
+.home-page{
+  background:transparent;
+  text-shadow:0 1px 12px rgba(0,0,0,.14);
+}
 @media(max-width:760px){
-  body:has(.home-page){
-    background-size:100% 100%,100% 100%,1120px auto,1080px auto,1080px auto;
-    background-position:center,center,50% top,50% 48%,50% bottom;
+  html[data-site-floor] body:has(.home-page):not(.lower-layer-page)::before,
+  body:has(.home-page)::before{
+    background-size:100% 100%,100% 100%,760px auto;
+    filter:saturate(1.02) brightness(1.02);
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  body:has(.home-page)::before{
+    animation:none!important;
+    background-position:center,center,center 46%;
   }
 }
 @media(prefers-reduced-transparency:reduce){
-  body:has(.home-page){
-    background-image:
-      linear-gradient(180deg,rgba(13,10,17,.76),rgba(9,14,12,.82) 48%,rgba(13,8,6,.88)),
-      url("./site-tree-perspective.svg"),
-      url("./site-plane-organic-field.svg"),
-      url("./site-below-root-field.svg");
-    background-position:center,center top,center 48%,center bottom;
-    background-size:100% 100%,max(1120px,100vw) auto,max(1120px,100vw) auto,max(1120px,100vw) auto;
+  .home-intro,.home-section-head,.home-fast-head,.news-preview-head,.reader-routing,.substance-prose,
+  .reality-method-note,.boundary-card,.motion-card,.home-fast-door,.field-level,.foundation-room-card,
+  .reality-card,.direction-step,.sections>a,.home-media-strip figure,.home-visual-card,.field-routes article,
+  .route-panel,.foundation-pattern-panel,.pulse-card{
+    backdrop-filter:none;-webkit-backdrop-filter:none;
+    background:rgba(8,10,9,.90);
   }
-}
-
-
-/* Homepage owns its world canvas — 2026-10-03d */
-/* Build-time floor wiring labels Home as Plane for navigation, but Home now has its own
-   Heaven → Plane → Below composition. Suppress the generic single-floor canvas here. */
-html[data-site-floor] body:has(.home-page):not(.lower-layer-page)::before,
-html[data-site-floor] body:has(.home-page):not(.lower-layer-page)::after{
-  display:none!important;
-}
-/* Preserve edge richness while keeping the reader corridor pale and quiet. */
-body:has(.home-page){
-  box-shadow:inset 9vw 0 12vw -10vw rgba(92,54,126,.24),inset -9vw 0 12vw -10vw rgba(55,104,91,.23);
-}
-.home-page{
-  text-shadow:0 1px 12px rgba(0,0,0,.13);
 }
