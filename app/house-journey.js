@@ -528,7 +528,9 @@
     }catch(e){}
   }
 
-  installRibbon();
+  // Journey history is stored for Elevator replay, but no longer rendered as a
+  // persistent site-wide navigation ribbon. The page sub-header owns discovery;
+  // the global access dock owns utilities.
   installHouseDeepCorpusIndex();
   installRoomArchiveDrawers();
   annotateAdjacentRoomDoors();
