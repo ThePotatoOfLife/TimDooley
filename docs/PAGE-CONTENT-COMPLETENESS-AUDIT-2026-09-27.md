@@ -63,7 +63,7 @@ Current: one of the strongest pages; it already contains biology, development, r
 
 - [ ] SURF-POTATO-001 — Add a source-backed first-attestation table for Potato, Potato of Life, Father, Axis, Ladder, Gardener, Door and North, including unknown/uncertain entries.
 - [ ] SURF-POTATO-002 — Add 5–10 explicit places where 2024 Great Book language differs from, anticipates or conflicts with later 2025–26 canon.
-- [ ] SURF-POTATO-003 — Add a "practice in ordinary life" casebook: work, conflict, teaching, repair, creativity and stewardship, each showing what Potatoism would ask a person to do.
+- [x] SURF-POTATO-003 — Added a six-case "practice in ordinary life" casebook covering work, conflict, teaching, repair, creativity and stewardship, each showing the Potatoist turn and its practical test.
 - [ ] SURF-POTATO-004 — Add primary botany references for tuber/stolon/eye/dormancy claims and keep the biological source class visible beside symbolic interpretation.
 - [ ] SURF-POTATO-005 — Add one failed or rejected Potato analogy to demonstrate that not every potato feature is canonically meaningful.
 
@@ -82,10 +82,10 @@ Current: extensive identity and public-language portrait with many dated phases.
 
 Current: strong Potatoism development and biblical grounding; less complete as a genuinely comparative religion hub.
 
-- [ ] SURF-REL-001 — Add a tradition map explaining what Judaism, Christianity, Islam, Norse material, Buddhism, Daoism, Shinto and esoteric traditions contribute before comparison.
+- [x] SURF-REL-001 — Added a compact pre-comparison tradition map for Judaism, Christianity, Islam, Norse material, Buddhism, Daoism, Shinto and esoteric traditions, emphasizing each tradition’s own questions before Potatoverse comparison.
 - [ ] SURF-REL-002 — Add dated primary-text anchors for the main recurring operators: Father, House, Door, Ladder, Garden, Tree, Seed, Spirit, Mountain and return.
 - [ ] SURF-REL-003 — Add a history-of-doctrine subsection showing when Potatoist Trinity/Father/Axis language emerged versus when older religious source texts were written or canonized.
-- [ ] SURF-REL-004 — Add counter-comparisons where a tradition resists the Potatoverse mapping, not only places where a parallel works.
+- [x] SURF-REL-004 — Added six explicit counter-comparisons: Father non-universality, Trinity specificity, Tree plurality, different repair ends, throne/humility tension and revelation/authority limits on personal synthesis.
 - [ ] SURF-REL-005 — Add lived-practice material: prayer, ritual, ethics, community, study, repentance/repair and ordinary sacred practice, clearly distinguishing project practice from established traditions.
 - [ ] SURF-REL-006 — Add a "comparative claim type" label to major comparisons: textual allusion, typology, structural analogy, historical transmission, later reception or project synthesis.
 
@@ -93,11 +93,11 @@ Current: strong Potatoism development and biblical grounding; less complete as a
 
 Current: long spiral of principles and ordinary-language arguments.
 
-- [ ] SURF-PHIL-001 — Convert several principles into full worked dilemmas with competing choices, tradeoffs and reasons one interpretation wins or remains unresolved.
-- [ ] SURF-PHIL-002 — Add objections/counterexamples to core concepts such as Garden, Door, Fruit, burden, simplicity, relation and interpretive justice.
+- [x] SURF-PHIL-001 — Added six worked pressure-test dilemmas covering care/autonomy, truth/mercy, boundary/forgiveness, simplicity/complexity, Fruit/delay and interpretive justice/naming harm, with explicit tradeoffs and unresolved edges.
+- [~] SURF-PHIL-002 — Pressure-test dilemmas now include explicit objections/counterexamples for Garden/care, Fruit, simplicity, boundaries and interpretive justice. Expand later with dedicated Door, burden and relation counterexamples.
 - [ ] SURF-PHIL-003 — Add a compact intellectual-neighbor map: pragmatism, virtue ethics, process philosophy, phenomenology, systems thinking, Taoist useful emptiness and restorative justice, without claiming identity.
 - [ ] SURF-PHIL-004 — Add provenance for which principles are direct Tim formulations, Great Book formulations, later archive synthesis or comparative framing.
-- [ ] SURF-PHIL-005 — Add a "decision procedure" section showing how the philosophy handles one real choice from evidence → values → action → consequence → revision.
+- [~] SURF-PHIL-005 — Added a compact six-step decision procedure (See → Soil → Values → Door → Fruit → Spiral). Remaining: add one fully worked single real-world choice through all six steps.
 
 ## /science/ — Science
 
