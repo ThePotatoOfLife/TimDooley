@@ -1,5 +1,5 @@
 {
-  "version": "2.7.3",
+  "version": "2.7.4",
   "updated": "2026-10-03",
   "authority": "public-route-identity",
   "room_registry": "data/house/rooms.json",
@@ -611,6 +611,26 @@
       "legacy_routes": []
     },
     {
+      "id": "gods-character",
+      "route": "/religion/gods-character/",
+      "canonical_route": "/religion/gods-character/",
+      "surface_type": "guide",
+      "title": "Gods, Powers & Character",
+      "reader_job": "Compare divine figures as tradition-bound powers and character mirrors while preserving historical differences and routing Potatoist interpretation afterward.",
+      "primary_parent": "religion",
+      "primary_room_ids": [
+        "traditions-texts",
+        "potatoverse-canon",
+        "research-lab"
+      ],
+      "status": "active",
+      "visibility": "specialist",
+      "primary_navigation": false,
+      "is_view": true,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
       "id": "culture",
       "route": "/context/culture/",
       "canonical_route": "/context/culture/",
@@ -976,11 +996,12 @@
       ]
     },
     "religion": {
-      "meaning": "Religious framework and tradition-comparison owner.",
-      "child_rule": "Use Religion when the surface's primary task is theology, scripture or comparative religious interpretation.",
+      "meaning": "Religious framework, tradition-comparison and comparative-divinity owner.",
+      "child_rule": "Use Religion when the surface's primary task is theology, scripture, comparative religious interpretation or tradition-bounded divine-role comparison.",
       "allowed_child_ids": [
         "bible",
-        "trinity"
+        "trinity",
+        "gods-character"
       ]
     },
     "philosophy": {
