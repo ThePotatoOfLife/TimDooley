@@ -53,7 +53,6 @@ SHARED_ASSETS = (
     "app/home-heaven.avif",
     "app/home-plane.avif",
     "app/home-below.avif",
-    "app/home-world-master.webp",
     "app/site-below-root-field.svg",
     "app/site-plane-organic-field.svg",
     "app/site-tree-perspective.svg",
