@@ -69,7 +69,7 @@ html[data-site-floor]{
   min-height:100%;
   color-scheme:dark;
 }
-html[data-site-floor] body:not(.lower-layer-page):not(.home-body){
+html[data-site-floor] body:not(.home-body){
   min-height:100vh;
   background:transparent!important;
 }
@@ -173,7 +173,7 @@ html[data-site-floor="below"]{
   opacity:.94;
   background:
     linear-gradient(180deg,rgba(36,16,76,.42),rgba(83,53,114,.26) 60%,rgba(196,122,104,.20)),
-    url("./site-tree-perspective.svg") 50% 12%/125% auto no-repeat,
+    url("./home-heaven.avif") 50% 22%/cover no-repeat,
     #24104c;
 }
 
@@ -191,7 +191,7 @@ html[data-site-floor="below"]{
   opacity:.94;
   background:
     linear-gradient(180deg,rgba(28,70,85,.22),rgba(43,75,52,.32)),
-    url("./site-plane-organic-field.svg") 50% 22%/118% auto no-repeat,
+    url("./home-plane.avif") 50% 48%/cover no-repeat,
     #244f66;
 }
 
@@ -209,7 +209,7 @@ html[data-site-floor="below"]{
   opacity:.96;
   background:
     linear-gradient(180deg,rgba(122,91,62,.18),rgba(56,31,24,.34) 46%,rgba(35,9,6,.60)),
-    url("./site-below-root-field.svg") 50% 2%/122% auto no-repeat,
+    url("./home-below.avif") 50% 76%/cover no-repeat,
     #4f3426;
 }
 
@@ -630,110 +630,61 @@ html[data-site-floor="below"]{
 
 /* Cross-floor local navigation is an explicit gate, never a silent sibling door. */
 
-/* Pixel-world floor scenes
-   ------------------------
-   One floor canvas + one tall SVG scene plate + ordinary document content.
-   The SVG owns atmosphere and landmarks. CSS only positions the plate.
-   Native scroll timelines move one compositor transform; JS is fallback only. */
+/* Canonical single-floor pixel realm canvas
+   Home owns its scrolling Heaven → Plane → Below stage.
+   Every other governed page gets one fixed realm selected by data-site-floor. */
 html[data-site-floor]{
-  --site-scene-y:0px;
-  --site-scene-box-height:300vh;
-  --site-scene-x:50%;
-  --site-scene-travel:-190vh;
+  --site-realm-art-size:max(100vw,150vh,1120px);
+  --site-realm-art-position:50% 50%;
+  --site-realm-fallback:#111;
+  --site-realm-overlay:linear-gradient(180deg,rgba(5,7,9,.14),rgba(5,7,9,.20));
 }
 html[data-site-floor="heaven"]{
-  --site-depth-tree-opacity:.66;
-  --site-scene-box-height:300vh;
-  --site-scene-x:50%;
-  --site-scene-travel:-190vh;
+  --site-realm-art:url("./home-heaven.avif");
+  --site-realm-art-position:50% 18%;
+  --site-realm-fallback:#24104c;
+  --site-realm-overlay:linear-gradient(180deg,rgba(21,12,45,.08),rgba(35,22,52,.14) 58%,rgba(71,44,39,.18));
 }
 html[data-site-floor="plane"]{
-  --site-scene-box-height:290vh;
-  --site-scene-x:48%;
-  --site-scene-travel:-180vh;
+  --site-realm-art:url("./home-plane.avif");
+  --site-realm-art-position:50% 47%;
+  --site-realm-fallback:#244f66;
+  --site-realm-overlay:linear-gradient(180deg,rgba(8,24,29,.06),rgba(10,26,20,.13) 62%,rgba(14,19,12,.18));
 }
 html[data-site-floor="below"]{
-  --site-scene-box-height:320vh;
-  --site-scene-x:50%;
-  --site-scene-travel:-210vh;
+  --site-realm-art:url("./home-below.avif");
+  --site-realm-art-position:50% 74%;
+  --site-realm-fallback:#1a0906;
+  --site-realm-overlay:linear-gradient(180deg,rgba(28,15,9,.08),rgba(22,9,7,.20) 58%,rgba(8,3,2,.30));
 }
-html[data-site-floor="heaven"] body:not(.lower-layer-page),
-html[data-site-floor="plane"] body:not(.lower-layer-page){
+html[data-site-floor] body:not(.home-body){
   position:relative;
   isolation:isolate;
   z-index:0;
+  min-height:100vh;
+  background:transparent!important;
 }
-html[data-site-floor="heaven"] body:not(.lower-layer-page)::before,
-html[data-site-floor="plane"] body:not(.lower-layer-page)::before{
+html[data-site-floor] body:not(.home-body)::before{
   content:"";
   position:fixed;
-  left:0;
-  right:0;
-  top:-8vh;
-  height:var(--site-scene-box-height,300vh);
+  inset:0;
   z-index:0;
   pointer-events:none;
+  background-color:var(--site-realm-fallback);
+  background-image:var(--site-realm-overlay),var(--site-realm-art);
   background-repeat:no-repeat;
-  background-position:var(--site-scene-x,50%) 0;
-  background-size:auto 100%;
-  transform:translate3d(0,var(--site-scene-y),0);
+  background-position:50% 50%,var(--site-realm-art-position);
+  background-size:100% 100%,var(--site-realm-art-size) auto;
   contain:paint;
   backface-visibility:hidden;
-  image-rendering:pixelated;
 }
-html[data-site-floor="heaven"] body:not(.lower-layer-page)::before{
-  background-image:url("./site-tree-perspective.svg");
-  opacity:var(--site-depth-tree-opacity);
-}
-html[data-site-floor="plane"] body:not(.lower-layer-page)::before{
-  background-image:url("./site-plane-organic-field.svg");
-  opacity:.86;
-}
-html[data-site-floor="heaven"] body:not(.lower-layer-page) > :not(script):not(style),
-html[data-site-floor="plane"] body:not(.lower-layer-page) > :not(script):not(style){
+html[data-site-floor] body:not(.home-body) > :not(script):not(style){
   position:relative;
   z-index:1;
 }
-
-@keyframes site-scene-parallax{
-  from{transform:translate3d(0,0,0)}
-  to{transform:translate3d(0,var(--site-scene-travel,-112vh),0)}
-}
-
-@supports (animation-timeline:scroll(root block)){
-  html[data-site-floor="heaven"] body:not(.lower-layer-page)::before,
-  html[data-site-floor="plane"] body:not(.lower-layer-page)::before{
-    animation:site-scene-parallax 1s linear both;
-    animation-timeline:scroll(root block);
-  }
-}
-
 @media(max-width:700px){
-  html[data-site-floor="heaven"]{
-    --site-scene-box-height:280vh;
-    --site-scene-travel:-170vh;
-  }
-  html[data-site-floor="plane"]{
-    --site-scene-box-height:275vh;
-    --site-scene-x:45%;
-    --site-scene-travel:-165vh;
-  }
-  html[data-site-floor="below"]{
-    --site-scene-box-height:295vh;
-    --site-scene-travel:-185vh;
-  }
+  html[data-site-floor]{--site-realm-art-size:max(118vw,150vh,980px)}
 }
-
-@media(prefers-reduced-motion:reduce){
-  html[data-site-floor]{--site-scene-y:0px}
-  html[data-site-floor="heaven"] body:not(.lower-layer-page)::before,
-  html[data-site-floor="plane"] body:not(.lower-layer-page)::before{
-    animation:none;
-    transform:none;
-  }
-}
-
-/* Home is the multi-realm exception to the single-floor scene plate. */
 html[data-site-floor] body.home-body::before{content:none;display:none}
 
 /* End of canonical elevator + pixel-world stylesheet. Do not append legacy copies below this line. */
