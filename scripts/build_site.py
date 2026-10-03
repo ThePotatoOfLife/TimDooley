@@ -50,9 +50,11 @@ SHARED_ASSETS = (
     # Dependency order matters: leaf artwork first, then CSS that references it,
     # then JavaScript loaders that reference the CSS. Each hash therefore reflects
     # the exact bytes that will actually be deployed.
+    "app/home-world-master.webp",
     "app/site-below-root-field.svg",
     "app/site-plane-organic-field.svg",
     "app/site-tree-perspective.svg",
+    "app/home-page.css",
     "app/lower-layer.css",
     "app/house-journey.css",
     "app/house-journey.js",
