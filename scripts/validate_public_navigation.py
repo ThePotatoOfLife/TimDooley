@@ -22,6 +22,7 @@ PAGE_NAV_CLASS = re.compile(r'''<nav\b[^>]*class=["'][^"']*\bpage-nav\b[^"']*["'
 PAGE_NAV_ANCHOR = re.compile(r'''<a\b(?P<attrs>[^>]*)href=["'](?P<href>[^"']+)["'][^>]*>(?P<label>.*?)</a>''', re.I | re.S)
 PAGE_NAV_ROOM_CLASS = re.compile(r'''\bclass=["'][^"']*\bpage-nav-room\b''', re.I)
 LEGACY_NAV_LABELS = (">Corporium</a>", ">Source authority</a>", ">Tim dossier</a>")
+REDUNDANT_PAGE_NAV_LABELS = {"All Rooms", "Spatial Room", "Parent Dwelling"}
 
 PROJECTED_TTS_PAGES = {
     "rooms/index.html": "rooms",
@@ -123,6 +124,10 @@ def main() -> int:
                         errors.append(f"page-nav {page_nav_index} of {rel} must place Rooms second; found {second_label!r}")
                     if "page-nav-directory" not in anchors[1].group("attrs"):
                         errors.append(f"page-nav {page_nav_index} of {rel} second link missing page-nav-directory marker")
+            for anchor in anchors:
+                label = html.unescape(re.sub(r"<[^>]+>", "", anchor.group("label"))).lstrip("←").strip()
+                if label in REDUNDANT_PAGE_NAV_LABELS:
+                    errors.append(f"page-nav {page_nav_index} of {rel} leaked redundant architecture label {label!r}")
             room_link_count = len(PAGE_NAV_ROOM_CLASS.findall(nav))
             if re.fullmatch(r"rooms/[^/]+/index\.html", rel.as_posix()):
                 limit = 4
