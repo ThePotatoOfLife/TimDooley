@@ -236,6 +236,8 @@ jobs:
       - name: Enforce SEO gate
         if: steps.seo.outcome == 'failure'
         run: exit 1
+      - name: Finalize navigation projection before navigation validation
+        run: python scripts/patch_public_navigation.py
       - name: Validate public navigation
         run: python scripts/validate_public_navigation.py
       - name: Audit machine discoverability
