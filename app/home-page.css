@@ -394,3 +394,82 @@ body.home-body{
   .home-realm-scene img{height:450px}
   .home-realm-scene--below img{height:520px}
 }
+
+
+/* Realm clarity calibration — 2026-10-03l */
+/* Keep raster detail close to native size. Wide screens get atmospheric breathing room,
+   not enlarged pixels. */
+.home-hero{
+  width:min(100%,900px);
+  margin-inline:auto;
+}
+.home-realm-scene{
+  width:min(100%,800px);
+}
+
+/* Heaven and Plane: light passes through the center without touching pixel sharpness. */
+.home-hero::before{
+  background:
+    radial-gradient(ellipse 23% 108% at 50% 45%,
+      rgba(255,254,242,.30) 0%,
+      rgba(255,252,235,.17) 34%,
+      rgba(255,250,231,.055) 58%,
+      transparent 76%),
+    linear-gradient(180deg,transparent 37%,rgba(5,10,8,.07) 64%,rgba(5,9,8,.52) 100%);
+}
+.home-realm-scene--plane::before{
+  background:
+    radial-gradient(ellipse 23% 108% at 50% 48%,
+      rgba(255,252,232,.27) 0%,
+      rgba(255,250,226,.14) 35%,
+      rgba(255,247,220,.04) 58%,
+      transparent 76%);
+}
+
+/* Below deliberately reverses the rule:
+   the central root/drain spine is quieter and darker; infernal rooms stay vivid at the edges. */
+.home-realm-scene--below::before{
+  background:
+    radial-gradient(ellipse 27% 112% at 50% 48%,
+      rgba(3,4,3,.62) 0%,
+      rgba(7,6,5,.43) 34%,
+      rgba(11,7,5,.17) 57%,
+      transparent 76%),
+    linear-gradient(90deg,
+      rgba(118,20,8,.08) 0%,
+      transparent 24%,
+      transparent 76%,
+      rgba(118,20,8,.08) 100%);
+}
+
+/* Realm-aware static panes: perceived glass from tint and edge light, never blur. */
+.home-hero .home-intro{
+  background:
+    linear-gradient(135deg,rgba(245,251,255,.055),transparent 32%),
+    rgba(7,14,17,.80)!important;
+}
+#living-field .home-section-head,
+.home-fast .home-fast-head,
+.news-preview .news-preview-head{
+  background:
+    linear-gradient(135deg,rgba(236,255,226,.035),transparent 32%),
+    rgba(7,14,10,.82)!important;
+}
+.home-bible-bridge .home-section-head,
+#culture-in-motion .home-section-head,
+#route-comparison .home-section-head,
+#foundation-landscape .home-section-head,
+#foundation-rooms .home-section-head{
+  background:
+    linear-gradient(135deg,rgba(255,205,164,.035),transparent 32%),
+    rgba(18,8,6,.84)!important;
+  border-color:rgba(246,160,108,.15)!important;
+}
+
+/* The content itself should remain the dominant scroll work. */
+.home-realm-art--heaven,
+.home-realm-scene img{
+  transform:none!important;
+  filter:none!important;
+  transition:none!important;
+}
