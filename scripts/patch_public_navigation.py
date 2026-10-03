@@ -302,6 +302,10 @@ _PHILOSOPHY_ENTRY_CONTEXTS = {
 
 _METAPHYSICS_ENTRY_CONTEXTS = {
     "philosophy/index.html",
+    "philosophy/knowledge-belief.html",
+    "philosophy/trust-repair.html",
+    "philosophy/attention-agency.html",
+    "philosophy/interpretive-justice.html",
     "potato-of-life/index.html",
     "religion/index.html",
     "house/index.html",
