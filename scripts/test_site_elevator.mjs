@@ -218,7 +218,7 @@ for(const [floor,asset] of [['heaven','home-heaven.avif'],['plane','home-plane.a
 
 assert.ok(css.includes('#24104c'),'Heaven elevator scene needs a stable violet cosmic fallback colour');
 assert.ok(css.includes('linear-gradient(180deg,rgba(36,16,76,.42),rgba(83,53,114,.26) 60%,rgba(196,122,104,.20))'),'Heaven elevator scene needs a restrained violet-to-peach atmosphere overlay');
-assert.ok(css.includes('--site-realm-fallback:#24104c'),'Heaven needs a minimal fallback token behind the final AVIF realm art');
+assert.ok(css.includes('--site-realm-fallback:#090909'),'all realms should share one neutral fallback base behind the final art');
 assert.ok(css.includes('[data-elevator-level="plane"]::before'),'Plane needs a distinct elevator scene layer');
 assert.equal(/\.site-elevator\[data-elevator-level="plane"\]::before\{[\s\S]*?repeat-x/.test(css),false,'Plane elevator header should not rebuild mountains with repeated gradient strips');
 assert.ok(css.includes('[data-elevator-level="below"]::before'),'Below needs a distinct elevator scene layer');
@@ -303,12 +303,15 @@ assert.ok(source.includes("link.hidden=true"),'cross-floor page/header links mus
 assert.ok(source.includes("link.dataset.elevatorFloorHidden='true'"),'runtime must only unhide links that it hid for floor enforcement');
 assert.ok(source.includes('const crossFloor=target.levelId!==spatial.levelId'),'floor enforcement must compare every local door against the page floor');
 
-assert.ok(css.includes('background-color:#244f66'),'Plane needs a non-black fallback canvas even if layered gradients fail');
+assert.ok(css.includes('background-color:var(--site-realm-fallback)'),'realm canvas must use the shared neutral fallback token');
 assert.ok(css.includes('body:not(.home-body)::before'),'single-floor pages need one universal realm canvas');
 assert.ok(css.includes('--site-realm-art:url("./home-heaven.avif")'),'Heaven pages must use final Heaven art');
 assert.ok(css.includes('--site-realm-art:url("./home-plane.avif")'),'Plane pages must use final Plane art');
 assert.ok(css.includes('--site-realm-art:url("./home-below.avif")'),'Below pages must use final Below art');
 assert.ok(css.includes('--site-realm-art-size:max(100vw,75vh,760px)'),'static realm canvas must cover the viewport without Home-style overzoom');
+assert.ok(css.includes('@keyframes site-realm-page-pan'),'ordinary floor pages must share one lightweight scroll-pan animation');
+assert.ok(css.includes('animation-timeline:scroll(root block)'),'modern browsers should pan realm art with native scroll timelines');
+assert.equal(source.includes('requestAnimationFrame'),false,'realm scrolling must not require a JavaScript animation loop');
 assert.equal(source.includes('installSceneParallax'),false,'fixed realm pages must not keep old parallax runtime');
 assert.equal(lowerCss.includes('body.lower-layer-page::before'),false,'Below must not own a second compositor');
 assert.equal(lowerCss.includes('site-below-root-field.svg'),false,'Below must not use retired SVG scene');

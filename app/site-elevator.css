@@ -70,8 +70,8 @@ html[data-site-floor]{
   color-scheme:dark;
   --site-realm-art-size:max(100vw,75vh,760px);
   --site-realm-art-position:50% 50%;
-  --site-realm-fallback:#111;
-  --site-realm-overlay:linear-gradient(180deg,rgba(5,7,9,.14),rgba(5,7,9,.20));
+  --site-realm-fallback:#090909;
+  --site-realm-overlay:linear-gradient(180deg,rgba(5,7,9,.08),rgba(5,7,9,.16));
 }
 html[data-site-floor="heaven"]{
   --site-panel:rgba(14,16,38,.80);
@@ -83,8 +83,6 @@ html[data-site-floor="heaven"]{
   --site-reading-glass-line:rgba(245,230,255,.028);
   --site-realm-art:url("./home-heaven.avif");
   --site-realm-art-position:50% 18%;
-  --site-realm-fallback:#24104c;
-  --site-realm-overlay:linear-gradient(180deg,rgba(21,12,45,.08),rgba(35,22,52,.14) 58%,rgba(71,44,39,.18));
 }
 html[data-site-floor="plane"]{
   --site-panel:rgba(13,29,25,.80);
@@ -96,8 +94,6 @@ html[data-site-floor="plane"]{
   --site-reading-glass-line:rgba(232,247,239,.025);
   --site-realm-art:url("./home-plane.avif");
   --site-realm-art-position:50% 47%;
-  --site-realm-fallback:#244f66;
-  --site-realm-overlay:linear-gradient(180deg,rgba(8,24,29,.06),rgba(10,26,20,.13) 62%,rgba(14,19,12,.18));
 }
 html[data-site-floor="below"]{
   --site-panel:rgba(24,11,8,.84);
@@ -109,8 +105,6 @@ html[data-site-floor="below"]{
   --site-reading-glass-line:rgba(255,226,199,.024);
   --site-realm-art:url("./home-below.avif");
   --site-realm-art-position:50% 74%;
-  --site-realm-fallback:#1a0906;
-  --site-realm-overlay:linear-gradient(180deg,rgba(28,15,9,.08),rgba(22,9,7,.20) 58%,rgba(8,3,2,.30));
 }
 
 .site-elevator[data-elevator-ready="false"]{
@@ -589,6 +583,10 @@ html[data-site-floor="below"]{
   .site-elevator-room{min-height:25px;line-height:1.06;padding:2px 3px}
 }
 @media (prefers-reduced-motion: reduce){
+  html[data-site-floor] body:not(.home-body)::before{
+    animation:none;
+    transform:none;
+  }
   .site-elevator *, .site-elevator *::before, .site-elevator *::after{
     scroll-behavior:auto!important;
     animation-duration:1ms!important;
@@ -618,7 +616,7 @@ html[data-site-floor] body:not(.home-body){
 html[data-site-floor] body:not(.home-body)::before{
   content:"";
   position:fixed;
-  inset:0;
+  inset:-8vh 0;
   z-index:-1;
   pointer-events:none;
   background-color:var(--site-realm-fallback);
@@ -628,6 +626,17 @@ html[data-site-floor] body:not(.home-body)::before{
   background-size:100% 100%,var(--site-realm-art-size) auto;
   contain:paint;
   backface-visibility:hidden;
+  transform:translate3d(0,0,0);
+}
+@keyframes site-realm-page-pan{
+  from{transform:translate3d(0,0,0)}
+  to{transform:translate3d(0,-8vh,0)}
+}
+@supports (animation-timeline:scroll(root block)){
+  html[data-site-floor] body:not(.home-body)::before{
+    animation:site-realm-page-pan 1s linear both;
+    animation-timeline:scroll(root block);
+  }
 }
 @media(max-width:700px){
   html[data-site-floor]{--site-realm-art-size:max(118vw,75vh,720px)}
