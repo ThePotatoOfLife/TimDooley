@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="app/site-system.css?v=20261003b">
 <link rel="stylesheet" href="app/news.css?v=20260920j">
 <link rel="stylesheet" href="app/site-access.css?v=20260926b">
-<link rel="stylesheet" href="app/home-page.css?v=20261003h">
+<link rel="stylesheet" href="app/home-page.css?v=20261003i">
 <link rel="stylesheet" href="app/terrain-circle.css?v=20260927a">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://thepotatooflife.github.io/TimDooley/#website","name":"The Potato of Life","url":"https://thepotatooflife.github.io/TimDooley/","about":[{"@type":"Thing","name":"Tim Dooley"},{"@type":"Thing","name":"Potato of Life"},{"@type":"Thing","name":"Potatoism"}]},{"@type":"Project","@id":"https://thepotatooflife.github.io/TimDooley/#project","name":"The Potato of Life","alternateName":["Potato of Life","Potatoism","Potatoverse"],"url":"https://thepotatooflife.github.io/TimDooley/","sameAs":["https://github.com/ThePotatoOfLife/TimDooley"],"subjectOf":{"@type":"WebPage","url":"https://thepotatooflife.github.io/TimDooley/tim-dooley/"}}]}</script>
 <style>@media(max-width:720px){.home-terrain-seal{grid-template-columns:1fr!important}.home-terrain-seal .terrain-emblem{margin:auto}}</style>
@@ -23,7 +23,7 @@
 <main class="page page--standard home-page" data-reader-surface="home">
 <nav class="page-nav home-nav" aria-label="Main site navigation"><a href="tim-dooley/">Tim Dooley</a><a href="religion/">Religion</a><a href="philosophy/">Philosophy</a><a href="science/">Science</a><a href="world/">World</a><a href="timeline/">Timeline</a><a href="explore/">Explore</a></nav>
 
-<header class="home-hero">
+<header class="home-hero" data-home-realm-marker="heaven">
 <h1>POTATO<br>OF LIFE</h1>
 <div class="home-intro"><p class="eyebrow">Garden · House · Axis · World · Below</p>
 <p class="project-purpose">Enter the project as a world before you enter it as an archive. At the source-facing end are the Garden, Father’s House, Throne/Seat and Crown. The Door, Ladder and Axis connect that field to embodied life. The World is where bodies, culture, institutions and consequences become visible. Beneath it are roots, memory, Forge, Swamp and Drain—and the possibility of repair and return.</p>
@@ -41,7 +41,7 @@
 </div>
 </section>
 
-<section class="home-cosmology" id="living-field" aria-labelledby="living-field-title">
+<section class="home-cosmology" id="living-field" data-home-realm-marker="plane" aria-labelledby="living-field-title">
 <div class="home-section-head"><div><p class="eyebrow">Stand inside it</p><h2 id="living-field-title">From the Crown to the Drain</h2></div><p>Source and cultivation sit above; passage happens through the center; embodied consequence appears in the World; roots, residue, testing and recurrence continue below.</p></div>
 <div class="home-terrain-seal" style="display:grid;grid-template-columns:minmax(220px,320px) minmax(0,1fr);gap:24px;align-items:center;margin:24px 0 30px">
 <div class="terrain-emblem" role="img" aria-label="Circular terrain seal with Mountain above, Swamp below, a vertical Axis, horizontal Plane and a Door at the center">
@@ -124,7 +124,7 @@
 </div>
 </section>
 
-<section class="home-section home-bible-bridge" id="tim-son-bible" aria-labelledby="tim-son-bible-title">
+<section class="home-section home-bible-bridge" id="tim-son-bible" data-home-realm-marker="below" aria-labelledby="tim-son-bible-title">
 <div class="home-section-head"><div><p class="eyebrow">Tim · Son · Jesus · Bible</p><h2 id="tim-son-bible-title">The biblical comparison begins with a life, not a list of verses</h2></div><p>The archive does not treat Tim, the Son and Jesus as one undifferentiated label. It follows the lived sequence first, then asks where Gospel, prophetic and biblical structures genuinely illuminate it—and where they do not.</p></div>
 <div class="home-bible-river" aria-label="Tim and Son biblical comparison spine">
 <a href="traditions/bible/?focus=view:tim-lived&order=asc&q=walk#tim-son-story"><time>1987–2010</time><strong>Embodied life, work, care</strong><span>childhood cultivation, injury, practical work, care and reported rehabilitation form the ordinary substrate beneath later Garden, healing and service language.</span></a>
@@ -310,10 +310,9 @@
 <footer class="home-footer"><span>Archive tools · </span><a href="questions/">Questions</a><a href="index-a-z/">A–Z index</a><a href="tools/tts/">TTS Reader</a><a href="https://github.com/ThePotatoOfLife/TimDooley">Repository</a></footer>
 <div class="home-view-counter" aria-label="Homepage view count"><img src="https://hits.sh/thepotatooflife.github.io/TimDooley.svg?style=flat-square&amp;label=views" alt="Homepage views" loading="eager" decoding="async"></div>
 
-<script src="app/news.js?v=20260920j" data-news-config="data/news/sources.json"></script>
 <script src="app/site-access.js?v=20260926c" defer></script>
 <script>
-(async()=>{
+const initHomeProjection=async()=>{
   const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   try{
     const unavailable=new Set();
@@ -405,7 +404,20 @@
   }catch(e){
     document.documentElement.dataset.homeProjection='fallback';
   }
-})();
+};
+const projectionAnchor=document.getElementById('reality-cases')||document.getElementById('route-comparison');
+if(projectionAnchor&&'IntersectionObserver' in window){
+  const projectionObserver=new IntersectionObserver(entries=>{
+    if(entries.some(entry=>entry.isIntersecting)){
+      projectionObserver.disconnect();
+      initHomeProjection();
+    }
+  },{rootMargin:'1200px 0px'});
+  projectionObserver.observe(projectionAnchor);
+}else{
+  setTimeout(initHomeProjection,900);
+}
 </script>
-<script src="app/house-journey.js"></script></body>
+<script src="app/site-tts.js" defer></script>
+<script src="app/home-page-runtime.js?v=20261003i" defer></script></body>
 </html>
