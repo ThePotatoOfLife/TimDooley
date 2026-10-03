@@ -11,10 +11,14 @@
   --site-gold: #d8b56b;
   --site-panel: #0d0d0d;
   --site-panel-strong: #121212;
-  --site-pane: rgba(8,10,10,.76);
-  --site-pane-soft: rgba(8,10,10,.62);
-  --site-pane-line: rgba(255,255,255,.12);
-  --site-pane-shadow: 0 12px 30px rgba(0,0,0,.18);
+  --site-pane: rgba(8,10,10,.80);
+  --site-pane-soft: rgba(8,10,10,.68);
+  --site-pane-mist: rgba(239,238,229,.10);
+  --site-pane-mist-strong: rgba(239,238,229,.15);
+  --site-pane-paper: rgba(242,238,224,.92);
+  --site-pane-paper-ink: #181714;
+  --site-pane-line: rgba(255,255,255,.14);
+  --site-pane-shadow: 0 12px 30px rgba(0,0,0,.22);
   --site-font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --site-font-serif: Georgia, "Times New Roman", serif;
   --site-font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
@@ -123,6 +127,58 @@ html[data-site-floor] .page-header{
 }
 html[data-site-floor] .page-header .summary{max-width:72ch}
 
+/* Realm readability contract.
+   Pixel art is atmosphere; reader-facing text receives a surface by default.
+   Page/module CSS may override these low-specificity defaults when a specialized
+   geometry owns the surface. No backdrop blur: the artwork stays crisp and the
+   compositing cost stays predictable. */
+html[data-site-floor] .page-nav{
+  width:fit-content;
+  max-width:100%;
+  padding:8px 10px;
+  border:1px solid var(--site-pane-line);
+  border-radius:12px;
+  background:var(--site-pane-soft);
+  box-shadow:0 8px 22px rgba(0,0,0,.16);
+}
+html[data-site-floor] .page > :where(section,article,aside,details):not(.surface-clear){
+  padding:clamp(18px,2.4vw,26px);
+  border:1px solid var(--site-pane-line);
+  border-radius:16px;
+  background:var(--site-pane);
+  box-shadow:var(--site-pane-shadow);
+}
+html[data-site-floor] .page > :where(section,article,aside,details):not(.surface-clear):nth-of-type(3n+2){
+  background:var(--site-pane-soft);
+}
+html[data-site-floor] .page > :where(section,article,aside,details):not(.surface-clear):nth-of-type(3n){
+  background:color-mix(in srgb,var(--site-pane) 88%,var(--site-pane-mist));
+}
+html[data-site-floor] .page > :where(p.boundary,p.note,p.warning,p.lede,.boundary,.note,.warning):not(.surface-clear){
+  padding:14px 16px;
+  border:1px solid var(--site-pane-line);
+  border-radius:12px;
+  background:var(--site-pane-soft);
+  box-shadow:0 8px 22px rgba(0,0,0,.14);
+}
+.surface-pane{
+  padding:clamp(18px,2.4vw,26px);
+  border:1px solid var(--site-pane-line);
+  border-radius:16px;
+  background:var(--site-pane);
+  box-shadow:var(--site-pane-shadow);
+}
+.surface-pane--soft{background:var(--site-pane-soft)}
+.surface-pane--mist{background:var(--site-pane-mist-strong)}
+.surface-pane--paper{
+  color:var(--site-pane-paper-ink);
+  background:var(--site-pane-paper);
+  border-color:rgba(35,31,25,.16);
+  box-shadow:0 12px 30px rgba(0,0,0,.18);
+}
+.surface-pane--paper :is(h1,h2,h3,h4,h5,h6,strong,a){color:#211d17}
+.surface-pane--paper :is(p,li,small,span){color:#39342c}
+.surface-clear{background:transparent!important;border-color:transparent!important;box-shadow:none!important}
 
 .eyebrow {
   margin: 0 0 10px;
