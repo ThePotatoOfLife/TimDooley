@@ -107,6 +107,29 @@
 <p><strong>The practical lesson:</strong> “we controlled for more variables” is not automatically a strength. You need a causal reason for why the variable belongs in the adjustment set.</p>
 </section>
 
+<section class="science-worked" id="multiple-comparisons">
+<p class="eyebrow">More tests create more chances to fool yourself</p>
+<h2>If you try twenty independent 5% tests, at least one false alarm is no longer surprising</h2>
+<p class="lead">A significance threshold controls the false-positive rate for one test under its assumptions. It does not magically control the chance of finding something somewhere after many opportunities.</p>
+<p>Suppose twenty independent null hypotheses are all actually true and each test uses a 5% false-positive threshold. The chance that none produces a false positive is <code>0.95^20</code>, about <strong>35.8%</strong>. That means the chance of seeing <strong>at least one</strong> nominally significant result is about <strong>64.2%</strong>.</p>
+<p>This is why exploratory analysis needs bookkeeping. Searching many dates, variables, subgroups, equations or symbolic correspondences and reporting only the strongest-looking match can make chance look like discovery.</p>
+<div class="science-method">
+<article><b>Pre-specify</b><p>State the main hypothesis and analysis before seeing the outcome when possible.</p></article>
+<article><b>Correct</b><p>Use procedures appropriate to the family of tests when many hypotheses are evaluated.</p></article>
+<article><b>Replicate</b><p>A surprising exploratory result becomes more credible when it survives a new dataset or genuinely new opportunity to fail.</p></article>
+<article><b>Report the search</b><p>Readers should know whether one test was planned or one result was selected from dozens.</p></article>
+</div>
+<p class="boundary">The 64.2% figure assumes independent tests. Real analyses can contain dependence, which changes the exact probability but not the general multiple-comparisons problem.</p>
+</section>
+
+<section class="science-worked" id="mediators">
+<p class="eyebrow">A variable can sit on the pathway instead of merely confusing it</p>
+<h2>Do not automatically “control away” the mechanism you are trying to understand</h2>
+<p>Imagine exercise improves cardiovascular fitness partly because repeated activity increases training adaptations. If the question is the <strong>total effect</strong> of exercise, adjusting for a variable that lies on the causal pathway can remove part of the very effect being estimated.</p>
+<p>A <strong>confounder</strong> is a common cause that can create a misleading association. A <strong>mediator</strong> is an intermediate step through which part of an effect operates. A <strong>collider</strong> is a common effect that can create bias when conditioned on. Those three roles can require opposite analytical choices.</p>
+<p><strong>The practical rule is causal before statistical:</strong> first ask what role the variable plausibly plays in the process; then decide whether adjustment answers the question you actually care about.</p>
+</section>
+
 <section class="science-worked" id="replication-ladder">
 <p class="eyebrow">Four things that are often called “replication” but prove different things</p>
 <h2>Running the same analysis again is useful—but it is not independent confirmation</h2>
