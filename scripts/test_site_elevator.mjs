@@ -255,6 +255,7 @@ assert.equal(css.includes('backdrop-filter:'),false,'terminal UI must not reintr
 assert.ok(css.includes('background:#090d11'),'arrow column needs a stable dark readability plate');
 assert.ok(css.includes('[data-elevator-ready="false"]'),'loading state must have a neutral terminal treatment');
 assert.match(css,/--elevator-room-height:\s*\d+(?:\.\d+)?px/,'desktop Room buttons need one shared fixed height token');
+assert.ok(css.includes('height:var(--elevator-room-height)'),'Room controls must consume the shared height token rather than expanding per floor');
 assert.match(css,/--elevator-floor-size:\s*\d+(?:\.\d+)?px/,'floor label needs one shared readable size token');
 assert.ok(css.includes('text-shadow:0 1px 0 rgba(0,0,0,.95)'),'floor text needs dark contrast shadow');
 
