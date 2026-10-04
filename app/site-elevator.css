@@ -11,15 +11,15 @@
   --site-elevator-shadow:rgba(0,0,0,.56);
   --site-header-art-position:50% 46%;
   --site-header-shade:rgba(7,10,13,.48);
-  --elevator-control-width:38px;
-  --elevator-board-width:196px;
-  --elevator-shell-height:64px;
+  --elevator-control-width:42px;
+  --elevator-board-width:204px;
+  --elevator-shell-height:96px;
   --elevator-room-min:112px;
-  --elevator-room-height:32px;
+  --elevator-room-height:34px;
   --elevator-room-gap:6px;
   --elevator-slot-count:5;
   --elevator-arrow-size:20px;
-  --elevator-floor-size:14px;
+  --elevator-floor-size:15px;
   --elevator-floor-spacing:.11em;
   --elevator-room-text:10px;
   position:sticky;
@@ -246,11 +246,12 @@ html[data-site-floor="below"]{
   height:var(--elevator-shell-height);
   display:grid;
   grid-template-columns:32px minmax(0,1fr);
-  grid-template-rows:1fr 1fr;
-  grid-template-areas:"code floor" "code room";
+  grid-template-rows:1fr auto auto 1fr;
+  grid-template-areas:". ." "code floor" "code room" ". .";
   align-items:center;
   column-gap:10px;
-  padding:7px 14px 7px 8px;
+  row-gap:3px;
+  padding:8px 14px 8px 8px;
   box-sizing:border-box;
   transform-origin:50% 50%;
   backface-visibility:hidden;
@@ -281,7 +282,7 @@ html[data-site-floor="below"]{
   top:4px;
   left:50%;
   width:8px;
-  height:3px;
+  height:4px;
   transform:translateX(-50%);
   opacity:.78;
   background:var(--site-elevator-accent);
@@ -291,9 +292,7 @@ html[data-site-floor="below"]{
   clip-path:polygon(50% 0,100% 100%,0 100%);
 }
 .site-elevator[data-elevator-level="plane"] .site-elevator-floor-code::before{
-  height:2px;
-  top:5px;
-  clip-path:none;
+  clip-path:polygon(0 38%,100% 38%,100% 62%,0 62%);
 }
 .site-elevator[data-elevator-level="below"] .site-elevator-floor-code::before{
   clip-path:polygon(0 0,100% 0,50% 100%);
@@ -386,7 +385,7 @@ html[data-site-floor="below"]{
   min-height:var(--elevator-shell-height);
   height:100%;
   margin:0;
-  padding:25px 8px 6px;
+  padding:54px 8px 8px;
   border:0;
   list-style:none;
   overflow:visible;
@@ -532,9 +531,9 @@ html[data-site-floor="below"]{
 
 @media (max-width:760px){
   .site-elevator{
-    --elevator-control-width:32px;
-    --elevator-board-width:116px;
-    --elevator-shell-height:52px;
+    --elevator-control-width:34px;
+    --elevator-board-width:122px;
+    --elevator-shell-height:68px;
     --elevator-room-height:30px;
     --elevator-room-gap:3px;
     --elevator-floor-size:11px;
@@ -557,7 +556,7 @@ html[data-site-floor="below"]{
     grid-template-columns:repeat(auto-fit,minmax(72px,1fr));
     grid-auto-rows:var(--elevator-room-height);
     min-height:var(--elevator-shell-height);
-    padding:17px 5px 5px;
+    padding:32px 5px 5px;
     gap:3px;
   }
   .site-elevator-room{
