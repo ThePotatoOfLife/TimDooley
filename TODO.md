@@ -1685,11 +1685,11 @@ North-star: **the House should feel inhabited by teachers, objects, stories, que
 - [x] Potato Biology — let literal potato biology surprise the symbolism; metaphor comes second.
 - [x] Practice & Ethics — add an ordinary-conflict decision path: observe → relation → agency → intervention → fruit.
 - [x] Prediction / Revelation / Time — visible scorecard containing hits, misses, ambiguous cases and post-event reinterpretations.
-- [ ] Provenance & Evidence — show one sentence becoming weaker or stronger across screenshot, repost, summary, archive and primary recovery.
+- [x] Provenance & Evidence — show one sentence becoming weaker or stronger across screenshot, repost, summary, archive and primary recovery.
 - [x] Research Programmes — add ship / stop / split criteria to every active programme.
-- [ ] Subculture & Group Formation — use a neutral group case to teach norms, permeability, conflict incentives and exit.
-- [ ] Symbolic Architecture — one complete Source → Door → World → Roots → return journey with every operator earning its place.
-- [ ] Systems Dynamics — one runnable toy system where feedback, delay, queue or contagion defeats intuition.
+- [x] Subculture & Group Formation — use a neutral group case to teach norms, permeability, conflict incentives and exit.
+- [x] Symbolic Architecture — one complete Source → Door → World → Roots → return journey with every operator earning its place.
+- [x] Systems Dynamics — one runnable toy system where feedback, delay, queue or contagion defeats intuition.
 - [ ] Theology & God-language — surface unresolved tensions rather than forcing every relation into a tidy chart.
 - [ ] Timeline Events — make one hinge month readable as a sourced scene, not just chronology.
 - [ ] Whole-body Physiology — take one embodied event through nervous, endocrine, circulatory, immune and fluid loops.
