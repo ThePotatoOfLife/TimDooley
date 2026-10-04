@@ -1,3 +1,26 @@
+
+/* Canonical Hall reading primitives — source-owned here, not inline in HTML. */
+.dogs-hall-page .hall{max-width:1040px}
+.dogs-hall-page .hall p,.dogs-hall-page .hall li{line-height:1.72}
+.dogs-hall-page .hall h2{margin-top:44px}
+.dogs-hall-page .lede{font:400 clamp(20px,2.6vw,30px)/1.52 var(--site-font-serif);max-width:900px}
+.dogs-hall-page .factbar,.dogs-hall-page .sealbar{display:flex;gap:8px 14px;flex-wrap:wrap;margin:18px 0 28px;padding:12px 0;border-top:1px solid var(--site-line);border-bottom:1px solid var(--site-line);font-size:10px;color:var(--site-muted)}
+.dogs-hall-page .factbar b{color:var(--site-gold)}
+.dogs-hall-page .sealbar span{border:1px solid var(--site-line);border-radius:999px;padding:5px 8px}
+.dogs-hall-page .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:9px}
+.dogs-hall-page .tile{padding:15px;border:1px solid var(--site-line);background:rgba(255,255,255,.012)}
+.dogs-hall-page .tile h3{font:400 20px/1.2 var(--site-font-serif);color:#d3a17b;margin:0 0 7px}
+.dogs-hall-page .loop{font:700 12px/1.9 ui-monospace,monospace;border:1px solid var(--site-line);padding:14px;white-space:normal}
+.dogs-hall-page .milestone{border-left:2px solid #6e4738;padding:4px 0 4px 16px;margin:16px 0}
+.dogs-hall-page .milestone time{display:block;font:700 10px ui-monospace,monospace;color:#d3a17b;margin-bottom:4px}
+.dogs-hall-page .warning{border:1px solid #6e4738;padding:16px;background:rgba(80,35,20,.07)}
+.dogs-hall-page .verse{margin:14px 0;padding:11px 15px;border-left:2px solid #6e4738;background:rgba(80,35,20,.06);font:400 17px/1.5 var(--site-font-serif)}
+.dogs-hall-page .recognition{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.dogs-hall-page .recognition div{padding:12px;border-top:1px solid var(--site-line)}
+.dogs-hall-page .links{display:flex;gap:10px;flex-wrap:wrap;margin:28px 0}
+.dogs-hall-page .links a{color:var(--site-gold)}
+@media(max-width:650px){.dogs-hall-page .recognition{grid-template-columns:1fr}}
+
 /* Dogs Hall — a distinct Below destination, not a skin shared with Potatoes/Angels. */
 body.dogs-hall-page{
   --dog-rust:#a76b49;--dog-rust-hot:#d49568;--dog-soot:#0b0d0c;--dog-asphalt:#151918;
