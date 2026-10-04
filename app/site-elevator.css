@@ -36,7 +36,6 @@
   color:var(--site-elevator-ink);
   background:var(--site-elevator-bg);
   border:0;
-  border-bottom:2px solid var(--site-elevator-accent);
   border-radius:0;
   box-shadow:0 6px 18px var(--site-elevator-shadow);
   text-align:left;
@@ -59,7 +58,7 @@
   position:absolute;
   left:0;
   right:0;
-  bottom:-2px;
+  bottom:0;
   height:2px;
   pointer-events:none;
   background:repeating-linear-gradient(90deg,var(--site-elevator-accent) 0 14px,rgba(0,0,0,.6) 14px 18px);
@@ -137,7 +136,9 @@ html[data-site-floor="below"]{
   display:grid;
   grid-template-columns:var(--elevator-control-width) minmax(150px,var(--elevator-board-width)) minmax(0,1fr);
   align-items:stretch;
+  height:var(--elevator-shell-height);
   min-height:var(--elevator-shell-height);
+  max-height:var(--elevator-shell-height);
   margin:0;
   padding:0;
   border:0;

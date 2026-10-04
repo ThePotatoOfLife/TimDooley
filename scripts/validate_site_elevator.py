@@ -174,6 +174,19 @@ def main() -> int:
                     f"site elevator CSS missing shared geometry token: {shared_geometry_token}"
                 )
 
+        main_shell = re.search(r"\.site-elevator-main\s*\{([^}]*)\}", css, re.S)
+        if not main_shell:
+            errors.append("site elevator CSS missing .site-elevator-main geometry owner")
+        else:
+            shell_block = main_shell.group(1)
+            for token in (
+                "height:var(--elevator-shell-height)",
+                "min-height:var(--elevator-shell-height)",
+                "max-height:var(--elevator-shell-height)",
+            ):
+                if token not in re.sub(r"\s+", "", shell_block):
+                    errors.append(f"site elevator main shell must use exact shared height: {token}")
+
         for retired_art in ("site-tree-perspective.svg","site-plane-organic-field.svg","site-below-root-field.svg"):
             if retired_art in css:
                 errors.append(f"site elevator CSS must not reference retired floor art: {retired_art}")
