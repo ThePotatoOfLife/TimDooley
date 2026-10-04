@@ -174,8 +174,8 @@
     header.innerHTML=
       '<div class="site-elevator-main">'+
         '<div class="site-elevator-controls" role="group" aria-label="Change House floor">'+
-          '<button class="site-elevator-arrow site-elevator-up" type="button" aria-label="Move elevator up" disabled>↑</button>'+
-          '<button class="site-elevator-arrow site-elevator-down" type="button" aria-label="Move elevator down" disabled>↓</button>'+
+          '<button class="site-elevator-arrow site-elevator-up" type="button" aria-label="Move elevator up" disabled></button>'+
+          '<button class="site-elevator-arrow site-elevator-down" type="button" aria-label="Move elevator down" disabled></button>'+
         '</div>'+
         '<div class="site-elevator-reel" aria-label="Current House floor">'+
           '<div class="site-elevator-floor" aria-live="polite">'+
