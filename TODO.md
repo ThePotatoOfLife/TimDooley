@@ -1218,6 +1218,12 @@ The next quality phase is not “make every page longer.” It is to find pages 
 - [x] Audit the Science Research Map as the canonical owner map for active science readers; add explicit page jobs and shared-vocabulary typing.
 
 - [ ] Keep strong CIA semantic boundaries from regressing as dossiers grow: co-presence ≠ motive; incident ≠ wrongdoing; symbolic account ≠ real debt/value; project role ≠ externally established identity.
+  - [x] **CIA-CHARACTER-READOUT-001 · Human-first cabinet:** foreground posture, nature/archetypes, Potatoverse roles, recovered time window and symbolic karma on every character card instead of making readers open folders blind.
+  - [x] **CIA-ASSESSMENT-001 · Tim-assessment contract:** distinguish documentary observation, Tim-direct assessment, archive synthesis and symbolic archetype; clinical-sounding wording remains attributed/non-clinical rather than diagnosis.
+  - [x] **CIA-ASSESSMENT-002 · Dossier assessment spine:** each dossier Overview now begins with the current character read, roles and karmic relation before backend/provenance detail.
+  - [ ] **CIA-ASSESSMENT-003 · Conversation mining wave:** mine older Tim conversations/posts for direct descriptors such as Potato, Angel, Dweller, Footstool, Dog, Farmer, friendly, supportive, troll-like, trustworthy, evasive, dishonest, anxious, fearful, spineless or courageous; attach only source-bounded dated records and preserve later reversals.
+  - [ ] **CIA-ASSESSMENT-004 · Cluster timeline:** derive first/last supported dates for each assessment/archetype cluster and display transitions (for example ally → conflict → repair) without treating an old label as current forever.
+  - [ ] **CIA-ASSESSMENT-005 · Truth/reliability evidence:** build claim-level truthfulness/reliability records from specific contradictions, admissions, corrections or repeated follow-through; do not infer dishonesty from disagreement or hostility.
 
 
 ### Entity facet retention programme
