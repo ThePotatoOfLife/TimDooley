@@ -37,7 +37,7 @@ def main():
         literal_home = route=="/" or bool(nav and re.search(r">\s*(?:←\s*)?Home\s*</a>",nav,re.I))
         link_count=len(re.findall(r"<a\b",nav or "",re.I))
         rows.append({"id":s.get("id"),"route":route,"path":str(p.relative_to(ROOT)),"h1":h1,"nav_links":link_count,"home_route_detected":home_ok,"literal_home_label":literal_home})
-        if route in {"/tim-dooley/","/religion/","/philosophy/","/science/","/world/","/timeline/","/works/","/context/source-authority/"}:
+        if route in {"/tim-dooley/","/potatoism/","/religion/","/philosophy/","/science/","/world/","/timeline/","/works/","/context/source-authority/"}:
             if not literal_home:
                 hard_errors.append(f"{route} lacks literal Home in primary nav")
             if link_count < 3:
