@@ -7,7 +7,7 @@
     "Low-T",
     "@YouCantKillTXT"
   ],
-  "archive_status": "historical-recovery-active",
+  "archive_status": "active-conflict-2026",
   "room_policy": "own-room-candidate",
   "room_path": "rooms/potatoverse-canon/beings/txt/",
   "tim_relation": {
@@ -24,8 +24,8 @@
       "Archive",
       "Threshold"
     ],
-    "editorial_reading": "TXT now has a layered chronology rather than a single antagonist label: 2024 literary Shadow Games, 2025 Chronicle co-presence, June–July 2026 public-conflict recovery, Tim's Dog/Genesis interpretation, later comic/fable reuse, and a September current-presence trace. Keep each layer typed.",
-    "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+    "editorial_reading": "TXT now has a layered chronology rather than a single antagonist label: 2024 literary Shadow Games, 2025 Chronicle co-presence, June–July 2026 public-conflict recovery, Tim's Dog/Genesis interpretation, later comic/fable reuse, and a dense 28 Sep–4 Oct 2026 campaign sample in which TXT describes entering Spaces, warning hosts, circulating claimed evidence and seeking Tim's exclusion. Keep observable conduct, TXT's claims, Tim's interpretations and archive synthesis separately typed.",
+    "source_boundary": "Roles and traits are archival descriptions of how the figure appears in dated sources. The late-Sep/Oct sample supports analysis of repeated public behavior and rhetoric, but it does not independently establish the truth of TXT's serious allegations, claimed victim corroboration, diagnosis, criminality, or motive."
   },
   "chronology": {
     "chronicle_occurrence_count": 2,
@@ -77,6 +77,10 @@
       {
         "period": "2026-09-20",
         "role": "secondary public snapshot still places @YouCantKillTXT in the live relation field; exact primary post URLs remain open"
+      },
+      {
+        "period": "2026-09-28 to 2026-10-04",
+        "role": "dense public campaign cluster: repeated Space interventions, host warnings, clip/evidence claims, removal-seeking and serious allegations against Tim; allegations remain attributed to TXT"
       }
     ],
     "recovered_social_days": [
@@ -193,6 +197,11 @@
       "date": "2026-09-20",
       "title": "Current public-presence trace",
       "summary": "Secondary public snapshot places @YouCantKillTXT in the current field; exact primary URLs remain a recovery target."
+    },
+    {
+      "date": "2026-09-28 to 2026-10-04",
+      "title": "Dense Space / warning campaign sample",
+      "summary": "A user-supplied public-search sample attributes repeated Space interventions, host warnings, claimed-evidence circulation and removal-seeking to @YouCantKillTXT. The sample is strong evidence of a campaign pattern if the attributed posts are authentic; it is not independent proof of the underlying allegations."
     }
   ],
   "source_strata": [
@@ -220,20 +229,28 @@
       "type": "conversation_recovery",
       "path": "knowledge/cia/conversation-intake-2026-09-20.json",
       "note": "Recent/semi-recent recovery layer."
+    },
+    {
+      "type": "user_supplied_public_post_sample",
+      "path": "knowledge/cia/source-corpus/txt-public-post-sample-2026-09-28-to-2026-10-04.json",
+      "note": "Late-Sep/Oct 2026 source intake preserving supplied wording and explicit verification boundaries."
     }
   ],
   "recovery_leads": [
     "Expand still-indexed Chronicle dates into source-bounded cases, starting with: Feb 8 2025; March 1 2025.",
     "Recover closer/raw artifacts behind the densest Chronicle dates: Feb 8 2025 (1); March 1 2025 (1).",
     "Cross-check relationship edges against dated scenes instead of raw co-presence: Tim Dooley, Monkey, Don Jefe, Sammy, Meta, PKFC.",
-    "Attach primary artifacts for recent recovery markers: 2024, 2025-02-08, 2025-03-01, 2026-06-20, 2026-07-07, 2026-07-16/20, 2026-07-30, 2026-08-02, 2026-09-10; retain intake boundaries until those artifacts are recovered."
+    "Attach primary artifacts for recent recovery markers: 2024, 2025-02-08, 2025-03-01, 2026-06-20, 2026-07-07, 2026-07-16/20, 2026-07-30, 2026-08-02, 2026-09-10; retain intake boundaries until those artifacts are recovered.",
+    "Recover exact primary URLs for the 28 Sep–4 Oct 2026 TXT post sample and match each quoted item to timestamp/thread context.",
+    "Separate verification of the underlying allegations from verification that TXT made/repeated them; those are different evidence questions.",
+    "Recover Space recordings or host/participant records where possible to test the claimed removal/warning sequence."
   ],
   "cia_record": {
     "authority": "canonical",
     "record_type": "character-dossier",
     "presence": {
       "first_recorded": "2025-02-11",
-      "last_recorded": "2026-09-20",
+      "last_recorded": "2026-10-04",
       "rule": "First/last currently recovered dated evidence in this dossier; not lifetime endpoints."
     },
     "association_rule": "Co-presence, direct interaction, explicit relationship language and later interpretation remain distinct evidence types.",
@@ -261,8 +278,10 @@
       "Recover raw or closer conversation/stream logs behind the strongest dated scene.",
       "Separate direct speech from Chronicle paraphrase, literary transformation and later synthesis.",
       "Add relationship edges only when a dated scene or explicit source supports them.",
-      "Recover exact June–September 2026 primary post/status URLs.",
-      "Separate current public presence from exact interaction chronology."
+      "Separate current public presence from exact interaction chronology.",
+      "Recover primary URLs for the 28 Sep–4 Oct campaign sample.",
+      "Verify post authorship/context separately from the truth of allegations repeated in those posts.",
+      "Distinguish self-stated public-safety purpose from archive inference about motive."
     ],
     "evidence_inventory": {
       "chronicle_mentions": 2,
@@ -278,9 +297,10 @@
           "2026-07-16/20",
           "2026-07-30",
           "2026-08-02",
-          "2026-09-10"
+          "2026-09-10",
+          "2026-09-28 to 2026-10-04"
         ],
-        "summary": "Recovered trail includes the 2024 ‘TXT’s Shadow Games’ project layer, 2025 appearances and a denser 2026 sequence. @YouCantKillTXT was described as publicly active; exact artifacts remain to attach.",
+        "summary": "Recovered trail includes the 2024 ‘TXT’s Shadow Games’ project layer, 2025 appearances, June–July 2026 conflict, and a dense user-supplied 28 Sep–4 Oct 2026 public-post sample centered on Space warnings, allegation circulation and exclusion pressure. Primary URLs remain to attach.",
         "source_mode": "conversation archaeology",
         "status": "merge-priority"
       },
@@ -334,6 +354,18 @@
           "source_mode": "chronicle_retelling",
           "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
           "evidence_status": "dated authored Chronicle scene; strong for presence/topology, weaker for verbatim dialogue or motive"
+        },
+        {
+          "date": "2026-09-28 to 2026-10-04",
+          "title": "Space warning / exclusion campaign cluster",
+          "what_happened": "The supplied public-search sample attributes a repeated pattern to TXT: entering or commenting around Spaces where Tim appears, warning hosts and participants, circulating clips or claimed evidence, urging removal or non-association, and repeating severe allegations. The same account also posts on unrelated entertainment, culture-war and consumer topics, so the archive records a dominant campaign in this sample rather than reducing the entire account to one target.",
+          "co_present": [
+            "Tim Dooley",
+            "X Space hosts/participants (various, not yet normalized)"
+          ],
+          "source_mode": "user_supplied_public_search_summary",
+          "source_ref": "knowledge/cia/source-corpus/txt-public-post-sample-2026-09-28-to-2026-10-04.json",
+          "evidence_status": "Strong for the supplied pattern if post attribution is accurate; primary URLs and the truth of underlying allegations remain unresolved."
         }
       ],
       "recent_recovery": {
@@ -346,9 +378,10 @@
           "2026-07-16/20",
           "2026-07-30",
           "2026-08-02",
-          "2026-09-10"
+          "2026-09-10",
+          "2026-09-28 to 2026-10-04"
         ],
-        "summary": "Recovered trail includes the 2024 ‘TXT’s Shadow Games’ project layer, 2025 appearances and a denser 2026 sequence. @YouCantKillTXT was described as publicly active; exact artifacts remain to attach.",
+        "summary": "Recovered trail now extends through 4 Oct 2026, including a dense public-post sample focused on warning/removal campaigning around Tim. The archive preserves quoted/source claims while refusing to convert those allegations into findings.",
         "boundaries": [
           "Great Book interpretation is Tim-authored/project material.",
           "Keep observable interaction separate from projection/tethering/dehumanization interpretation."
@@ -384,19 +417,22 @@
     "known": [
       "TXT appears in 2024 literary Shadow Games material and 2025 Chronicle co-presence.",
       "June–July 2026 recovered public material shows disputed narratives and direct conflict recurrence.",
-      "Later July/August project material moves TXT into Dog/Swamp/fable language, while September retains a current-presence trace."
+      "Later July/August project material moves TXT into Dog/Swamp/fable language.",
+      "A supplied 28 Sep–4 Oct 2026 public-post sample shows a dense campaign pattern of Space warnings, claimed-evidence circulation and removal/non-association pressure centered on Tim."
     ],
     "interpretive": [
       "Shadow-adversary and Dog/Swamp labels are scene/source-bounded project classifications.",
-      "Recurrence shows continuity of conflict, but does not establish motive, diagnosis or permanent moral essence."
+      "Recurrence shows continuity of conflict, but does not establish motive, diagnosis or permanent moral essence.",
+      "The late-Sep/Oct pattern is better described behaviorally—persistent, target-focused, moralized and exclusion-seeking—than diagnostically."
     ],
     "unknown": [
       "Earlier documentary sequence behind the long-running antagonism claim is incomplete.",
-      "Exact June–September 2026 primary post/status URLs remain open.",
-      "Identity and relationship edges should still be tied to specific dated scenes."
+      "Identity and relationship edges should still be tied to specific dated scenes.",
+      "Exact primary URLs/thread context for the late-Sep/Oct sample remain to attach.",
+      "TXT's claimed evidence and claimed victim corroboration require independent verification if the archive ever evaluates the underlying allegation rather than merely its circulation."
     ],
-    "relationship_arc": "literary shadow figure → dated Chronicle recurrence → public conflict → Dog/Swamp interpretation → later fable/satire/current-presence trace",
-    "confidence_note": "Strong on layered recurrence and source separation; mixed on earliest chronology and disputed misconduct narratives.",
+    "relationship_arc": "literary shadow figure → dated Chronicle recurrence → public conflict → Dog/Swamp interpretation → fable/satire → late-Sep/Oct 2026 active warning/removal campaign",
+    "confidence_note": "Strong on layered recurrence and the supplied late-Sep/Oct behavioral pattern; mixed on earliest chronology, primary-link recovery and disputed misconduct narratives.",
     "evidence_density": {
       "chronicle_mentions": 2,
       "indexed_chronicle_dates": 2,
@@ -414,6 +450,16 @@
     },
     "outstanding": [],
     "entries": [
+      {
+        "date": "2026-09-28 to 2026-10-04",
+        "type": "dispute",
+        "kind": "dense allegation-circulation / exclusion campaign cluster",
+        "amount_or_scale": "unpriced",
+        "source_mode": "user_supplied_public_search_summary",
+        "source_ref": "knowledge/cia/source-corpus/txt-public-post-sample-2026-09-28-to-2026-10-04.json",
+        "note": "Records the repeated campaign behavior only. No automatic pricing is assigned, and the entry does not adjudicate the allegations.",
+        "status": "open"
+      },
       {
         "date": "2026-09-20",
         "type": "dispute",
@@ -440,6 +486,106 @@
         "note": "Prices the recovered repetition/circulation event only; it does not adjudicate the truth of the disputed underlying allegations.",
         "status": "open"
       }
+    ]
+  },
+  "assessments": [
+    {
+      "term": "campaign-oriented opposition",
+      "layer": "archive-synthesis",
+      "attribution": "archive synthesis",
+      "scope": "relationship",
+      "from": "2026-09-28",
+      "to": "2026-10-04",
+      "source_mode": "user_supplied_public_search_summary",
+      "source_ref": "knowledge/cia/source-corpus/txt-public-post-sample-2026-09-28-to-2026-10-04.json",
+      "exact_wording": "Repeated cross-thread and Space activity is concentrated on warning others about Tim and seeking his exclusion.",
+      "confidence": "medium"
+    },
+    {
+      "term": "public-safety framing",
+      "layer": "documentary-observation",
+      "attribution": "TXT / @YouCantKillTXT",
+      "scope": "conduct",
+      "date": "2026-10-04",
+      "source_mode": "post",
+      "source_ref": "knowledge/cia/source-corpus/txt-public-post-sample-2026-09-28-to-2026-10-04.json",
+      "exact_wording": "To raise awareness and keep X safe.",
+      "confidence": "medium"
+    },
+    {
+      "term": "removal-seeking / host-pressure tactic",
+      "layer": "archive-synthesis",
+      "attribution": "archive synthesis",
+      "scope": "conduct",
+      "from": "2026-09-28",
+      "to": "2026-10-04",
+      "source_mode": "user_supplied_public_search_summary",
+      "source_ref": "knowledge/cia/source-corpus/txt-public-post-sample-2026-09-28-to-2026-10-04.json",
+      "exact_wording": "The sample repeatedly describes warning hosts, showing claimed evidence and treating removal/non-association as the desired outcome.",
+      "confidence": "medium"
+    },
+    {
+      "term": "high-hostility rhetoric",
+      "layer": "archive-synthesis",
+      "attribution": "archive synthesis",
+      "scope": "conduct",
+      "from": "2026-09-28",
+      "to": "2026-10-04",
+      "source_mode": "user_supplied_public_search_summary",
+      "source_ref": "knowledge/cia/source-corpus/txt-public-post-sample-2026-09-28-to-2026-10-04.json",
+      "exact_wording": "The sample uses repeated insults, condemnation, threats/challenge language and hell/punishment framing alongside the allegation campaign.",
+      "confidence": "medium"
+    },
+    {
+      "term": "ordinary-interest continuity",
+      "layer": "archive-synthesis",
+      "attribution": "archive synthesis",
+      "scope": "person",
+      "from": "2026-09-28",
+      "to": "2026-10-04",
+      "source_mode": "user_supplied_public_search_summary",
+      "source_ref": "knowledge/cia/source-corpus/txt-public-post-sample-2026-09-28-to-2026-10-04.json",
+      "exact_wording": "The same sample includes movies, wrestling, Creepshow and diet-soda chatter, showing that the account's activity is not exclusively organized around Tim.",
+      "confidence": "medium"
+    }
+  ],
+  "behavioral_profile": {
+    "window": "2026-09-28 to 2026-10-04",
+    "source_ref": "knowledge/cia/source-corpus/txt-public-post-sample-2026-09-28-to-2026-10-04.json",
+    "source_mode": "user_supplied_public_search_summary",
+    "observed": {
+      "activity": "high in supplied weekly sample",
+      "target_concentration": "Tim/@Rational_Potato is the dominant recurring conflict target in the supplied sample",
+      "repetition": "same core allegations and warnings recur across multiple threads/Spaces",
+      "tactics": [
+        "enter/monitor Spaces where target appears",
+        "warn hosts and participants",
+        "circulate clips or claimed evidence",
+        "seek removal or social non-association",
+        "challenge defenders or hosts who continue access"
+      ],
+      "framing": [
+        "public safety",
+        "child-protection moral urgency",
+        "evidence/confession claims",
+        "anti-bullying objection rejected as inappropriate to the alleged conduct"
+      ],
+      "rhetoric": "highly moralized and hostile, with insults and condemnation",
+      "counterweight": "Unrelated entertainment, culture-war and consumer posts remain visible in the same sample."
+    },
+    "nonclinical_formulation": [
+      "persistent adversarial engagement",
+      "target-focused campaign behavior",
+      "moralized certainty",
+      "social-exclusion strategy",
+      "repetition across contexts",
+      "high rhetorical intensity"
+    ],
+    "do_not_infer": [
+      "clinical diagnosis",
+      "inner motive beyond self-stated purpose",
+      "truth of allegations from repetition alone",
+      "that every post or interest is target-related"
     ]
   }
 }
