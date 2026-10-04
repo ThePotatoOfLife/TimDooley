@@ -1,0 +1,77 @@
+/* Potato Angels Hall — upper-born sky/Heaven destination. */
+body.angels-hall-page{
+  --angel-gold:#d8bd73;--angel-ivory:#f1ead4;--angel-sky:#506e8f;--angel-night:#101a2a;
+  background:
+    radial-gradient(circle at 50% -12%,rgba(246,231,174,.28),transparent 26%),
+    linear-gradient(180deg,#15243a 0%,#1b304b 30%,#17253a 62%,#111927 100%);
+}
+.angels-hall-page .being-page{position:relative;isolation:isolate}
+.angels-hall-page .being-page:before,
+.angels-hall-page .being-page:after{
+  content:"";position:absolute;z-index:-1;top:118px;width:58px;height:74%;
+  border:1px solid rgba(231,214,163,.24);
+  background:
+    linear-gradient(90deg,rgba(239,229,196,.09),rgba(255,255,255,.16),rgba(216,194,130,.08)),
+    repeating-linear-gradient(90deg,transparent 0 9px,rgba(255,255,255,.055) 9px 11px);
+  box-shadow:0 0 44px rgba(218,194,119,.05);
+}
+.angels-hall-page .being-page:before{left:-80px}
+.angels-hall-page .being-page:after{right:-80px}
+.angels-hall-page .page-header{
+  position:relative;overflow:hidden;margin-top:18px;padding:48px 34px 42px;
+  border:1px solid rgba(224,204,145,.34);border-bottom:3px solid rgba(216,189,112,.55);
+  background:
+    radial-gradient(ellipse at 50% 100%,rgba(255,255,255,.11),transparent 52%),
+    radial-gradient(circle at 50% -10%,rgba(250,224,145,.22),transparent 34%),
+    linear-gradient(145deg,rgba(22,39,61,.93),rgba(39,61,84,.88) 52%,rgba(25,38,59,.94));
+  box-shadow:0 25px 80px rgba(3,8,18,.25),inset 0 0 80px rgba(235,215,151,.04);
+}
+.angels-hall-page .page-header:before{
+  content:"";position:absolute;left:-5%;right:-5%;bottom:-44px;height:105px;opacity:.68;
+  background:
+    radial-gradient(ellipse at 10% 72%,rgba(245,245,239,.24),transparent 42%),
+    radial-gradient(ellipse at 34% 74%,rgba(255,255,255,.22),transparent 40%),
+    radial-gradient(ellipse at 63% 68%,rgba(246,247,244,.19),transparent 44%),
+    radial-gradient(ellipse at 88% 78%,rgba(255,255,255,.22),transparent 42%);
+}
+.angels-hall-page .page-header:after{
+  content:"HALL OF SERVICE · UPPER FIELD";position:absolute;right:20px;top:18px;
+  color:rgba(230,207,139,.60);font:700 9px ui-monospace,monospace;letter-spacing:.16em;
+}
+.angels-hall-page .eyebrow{color:#d9c17a}
+.angels-hall-page h1{color:#f4ead0;text-shadow:0 0 28px rgba(227,200,119,.16)}
+.angels-hall-page .summary,.angels-hall-page .lede{color:#e5e4dc}
+.angels-hall-page h2{color:#eee5cb}
+.angels-hall-page .fact-run{border-color:rgba(221,205,153,.26);color:#b9c7d4}
+.angels-hall-page .fact-run b{color:#dfc77d}
+.angels-hall-page .facet-block,.angels-hall-page .callout{
+  border-color:rgba(220,201,143,.28);
+  background:linear-gradient(180deg,rgba(234,223,188,.055),rgba(255,255,255,.018));
+  box-shadow:inset 0 1px rgba(255,255,255,.04);
+}
+.angels-hall-page .facet-chip{
+  border-color:rgba(219,200,143,.30);background:rgba(232,219,178,.05);color:#c7d0d7;
+}
+.angels-hall-page .facet-chip b,.angels-hall-page .facet-item b{color:#dfc779}
+.angels-hall-page .facet-item{border-top-color:rgba(222,205,153,.22)}
+.angels-hall-page .storyline{border-left-color:#c2a759}
+.angels-hall-page .storyline time{color:#dfc77d}
+.angels-hall-page .ascent-map{
+  margin:24px 0;padding:20px;border:1px solid rgba(223,204,145,.31);
+  background:linear-gradient(180deg,rgba(27,46,68,.74),rgba(24,36,55,.74));
+  box-shadow:inset 0 0 40px rgba(227,206,142,.025);
+}
+.angels-hall-page .ascent-map .route{
+  display:flex;flex-wrap:wrap;align-items:center;gap:8px;font:700 11px/1.5 ui-monospace,monospace;color:#dce3e8;
+}
+.angels-hall-page .ascent-map .route b{color:#e4cc82}
+.angels-hall-page .ascent-map .route i{font-style:normal;color:#8ea1b4}
+.angels-hall-page .upper-birth{
+  margin:20px 0;padding:18px 20px;border-left:3px solid #d5b966;
+  background:linear-gradient(90deg,rgba(225,201,127,.075),transparent);
+}
+.angels-hall-page a{color:#e0c87e}
+@media(max-width:1120px){
+ .angels-hall-page .being-page:before,.angels-hall-page .being-page:after{display:none}
+}
+@media(max-width:680px){.angels-hall-page .page-header{padding:48px 20px 40px}}
