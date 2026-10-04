@@ -97,7 +97,7 @@ jobs:
           python - <<'PY'
           import json, os
           from pathlib import Path
-          primary_routes=['tim-dooley/','religion/','philosophy/','science/','world/']
+          primary_routes=['tim-dooley/','potatoism/','religion/','philosophy/','science/','world/']
           for route in primary_routes:
               assert Path("_site", route, "index.html").is_file(), route
           p=Path("_site/build-provenance.json")
