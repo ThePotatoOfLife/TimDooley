@@ -1047,3 +1047,33 @@ body.potatoes-hall-page::after{
     gap:10px;
   }
 }
+
+
+/* Hall browser compatibility polish. */
+body.potatoes-hall-page{
+  overflow-x:hidden;
+  overflow-x:clip;
+}
+.potatoes-hall-page .hall-scene__caption{
+  -webkit-backdrop-filter:blur(5px);
+}
+.potatoes-hall-page .hall-threshold,
+.potatoes-hall-page .great-table,
+.potatoes-hall-page .shame-village,
+.potatoes-hall-page .honor-register,
+.potatoes-hall-page .notoriety-ledger,
+.potatoes-hall-page .hall-source-desk,
+.potatoes-hall-page .hall-exits{
+  -webkit-backdrop-filter:blur(8px) saturate(.94);
+}
+@media(max-width:760px){
+  .potatoes-hall-page .hall-threshold,
+  .potatoes-hall-page .great-table,
+  .potatoes-hall-page .shame-village,
+  .potatoes-hall-page .honor-register,
+  .potatoes-hall-page .notoriety-ledger,
+  .potatoes-hall-page .hall-source-desk,
+  .potatoes-hall-page .hall-exits{
+    -webkit-backdrop-filter:none;
+  }
+}
