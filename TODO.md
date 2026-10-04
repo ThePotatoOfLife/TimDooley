@@ -1617,3 +1617,76 @@ North-star: **the House should feel inhabited by teachers, objects, stories, que
 - [ ] Infrastructure & Capability — make one mundane system fail and recover in human terms.
 - [ ] Music & Sound — continue album/material integration while keeping music a way of thinking rather than metadata inventory.
 - [ ] Visual Art — add more actual recovered images/artifacts as they become available; keep remembered specifications explicitly separate.
+
+
+## Content purpose overhaul — 2026-10-04
+
+### Reader contract
+- [x] Audit all 38 active nested Rooms as a critical reader: what question the Room answers, what the reader learns, what can fail, and why the Room exists in the larger House.
+- [x] Establish the overhaul rule: every renewed Room should teach a way of seeing, expose a boundary/failure test, and make its next handoff consequential.
+- [x] Great Book & Literature — add literary, historical, genealogical and adversarial reading passes.
+- [x] Visual Art — teach composition through position, scale, threshold and dated recurrence.
+- [x] Games & Simulations — require state, rule, intervention and observation.
+- [x] Geography & Countries — teach distance, scale, topology and temporal state.
+- [x] Infrastructure & Capability — distinguish existence, conversion, coordination and recovery.
+- [x] Memory & Recovery — distinguish remembered clue, recovered source, chronology and later meaning.
+- [x] Neurobiology — require input, transformation, output and feedback before body symbolism.
+- [x] Symbolic Body Crosswalk — make narrowed, formalizable, rejected and poetic explicit outcomes.
+
+### Wave 2 — parent Rooms become experiences, not indexes
+- [ ] Rooms landing — replace taxonomy-first orientation with curiosity-led journeys built around human questions.
+- [ ] Archive & Sources — walk one disputed claim from remembered clue to artifact, provenance chain and bounded conclusion.
+- [ ] Potatoverse / Canon — show one concept becoming stable canon, including discarded alternatives and superseded mappings.
+- [ ] Culture & Information — follow one cultural object through creation, repetition, platform mediation, mutation and forgetting.
+- [ ] Life & Body — add one whole-organism case where several systems cooperate under stress.
+- [ ] Science & Formal Models — take one attractive metaphor through variable definition, null model, measurement and a possible negative result.
+- [ ] Time & History — turn the four-clock method into one complete event dossier.
+- [ ] Traditions & Texts — begin one comparison fully inside another tradition before Potatoverse language is permitted.
+- [ ] Works — show one idea changing when it becomes prose, music, image and interactive rule.
+- [ ] World Systems — make one everyday object reveal the institutions and dependencies behind ordinary life.
+- [ ] Research Lab / Forge — publish a visible ledger of rejected, narrowed, promoted and unresolved ideas.
+
+### Wave 3 — nested Rooms get a concrete intellectual centerpiece
+- [ ] Bible & Christianity — one full passage walk: text, context, Christian interpretive range, Tim-side comparison, countertext and stopping point.
+- [ ] Core Identities & Roles — one role-collision case showing why Tim / Father / Son / Potato of Life cannot be treated as interchangeable labels.
+- [ ] Comparative Mythology — one source-first comparison from primary mythic material to function, similarity and decisive difference.
+- [ ] Developmental Genealogy — one lineage from precursor through mutation, supersession and mature role.
+- [ ] Economy & Finance — follow one obligation through households, banks, government and markets.
+- [ ] Esoteric & Sacred Geometry — one dated symbol lineage showing how the same shape acquires different meanings in different communities.
+- [ ] Experiments & Formalization — one end-to-end experiment card with claim, operationalization, measurement, falsifier and interpretation.
+- [ ] House Architecture — let the reader solve one real routing/ownership problem instead of only reading architecture rules.
+- [ ] Information Ecology — follow one artifact through live, cached, copied, transformed, orphaned, recovered and canonical states.
+- [ ] Internet & Platforms — follow one stream/post through upload, recommendation, clipping, deletion/moderation, recovery and citation.
+- [ ] Law & Justice — one jurisdiction → rule → evidence → procedure → remedy → appeal chain.
+- [ ] Mathematics & Geometry — pair one exact construction with one seductive but invalid metaphysical inference.
+- [ ] Model Testing — build a small failure museum: one rejected model, one narrowed model and one unresolved model.
+- [ ] Music & Sound — add album/theme/period listening journeys so the discography reads as development rather than inventory.
+- [ ] Open Questions — top live questions get next artifact, owner, closure condition and “what would count as no?”.
+- [ ] Other Traditions & Philosophies — foreign-first deep readings for Daoist, Buddhist and Norse material before crosswalks.
+- [ ] Physics & Cosmology — promote one analogy through comparator → model → observable → falsifier, even if it stops early.
+- [ ] Politics & Governance — take one proposal through authority, implementation capacity, opposition, measurement and revision.
+- [ ] Potato Biology — let literal potato biology surprise the symbolism; metaphor comes second.
+- [ ] Practice & Ethics — add an ordinary-conflict decision path: observe → relation → agency → intervention → fruit.
+- [ ] Prediction / Revelation / Time — visible scorecard containing hits, misses, ambiguous cases and post-event reinterpretations.
+- [ ] Provenance & Evidence — show one sentence becoming weaker or stronger across screenshot, repost, summary, archive and primary recovery.
+- [ ] Research Programmes — add ship / stop / split criteria to every active programme.
+- [ ] Subculture & Group Formation — use a neutral group case to teach norms, permeability, conflict incentives and exit.
+- [ ] Symbolic Architecture — one complete Source → Door → World → Roots → return journey with every operator earning its place.
+- [ ] Systems Dynamics — one runnable toy system where feedback, delay, queue or contagion defeats intuition.
+- [ ] Theology & God-language — surface unresolved tensions rather than forcing every relation into a tidy chart.
+- [ ] Timeline Events — make one hinge month readable as a sourced scene, not just chronology.
+- [ ] Whole-body Physiology — take one embodied event through nervous, endocrine, circulatory, immune and fluid loops.
+- [ ] Witness & Attestation — publish one exemplary packet with artifact, date, authorship, derivation, uncertainty and exact evidentiary scope.
+
+### Wave 4 — cross-site editorial cleanup
+- [ ] Replace generic “Adjacent Rooms” endings with a consequential next question wherever possible.
+- [ ] Remove repeated epistemic boilerplate when a local worked example can teach the boundary better.
+- [ ] Reduce backend/database language (“owns”, “contains”, “routes”) in primary reader prose when it describes implementation rather than understanding.
+- [ ] Prefer one inspectable worked example over several abstract summary cards on factual pages.
+- [ ] Give every Room at least one genuine intellectual tension, surprise or unresolved question.
+- [ ] Audit all parent/child handoffs for “noun click → thing” behavior rather than filing-system navigation.
+- [ ] Audit pages for copy that explains the site instead of explaining the subject; move implementation notes out of the reading flow.
+- [ ] Audit child Rooms for duplicated introductions that can be replaced with a sharper local thesis.
+- [ ] Audit long card grids for cases where prose, diagrams, timelines or worked chains would teach better.
+- [ ] Audit all Room summaries: each should promise a reader outcome, not merely name the category.
+- [ ] Keep quality, build, navigation, SEO, machine-discovery, TTS and site-shell gates green after every overhaul wave.
