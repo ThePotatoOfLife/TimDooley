@@ -1,6 +1,6 @@
 {
-  "version": "1.1.0",
-  "updated": "2026-10-03",
+  "version": "1.1.1",
+  "updated": "2026-10-04",
   "authority": "public-surface-editorial-mission",
   "registry": "data/house/public-surfaces.json",
   "principle": "Every active public surface must know what it is trying to become, what it must not become, where a reader should go next, and how much first-party substance it should carry. Mission contracts guide architecture; they do not replace canonical knowledge owners.",
@@ -28,18 +28,18 @@
       "title": "Home",
       "route": "/",
       "narrative_stage": "orientation",
-      "become": "A calm five-minute orientation to the project, Tim, the Potato of Life semantic center, and the five canonical gateways.",
+      "become": "A calm five-minute orientation to Tim, the Potato of Life, Potatoism and the six broad public territories, with substantial first reads before archive tools.",
       "must_not_become": "A compressed duplicate of House, Tim, Potatoism, World and Shadow.",
       "primary_next_surface_ids": [
-        "potato-of-life",
         "tim",
-        "religion",
-        "philosophy",
+        "potatoism",
         "science",
-        "world"
+        "world",
+        "religion",
+        "philosophy"
       ],
       "density_intent": "compact",
-      "reader_job": "Orient a new reader quickly, state what the project is, introduce Potato of Life as the semantic center, and open the five canonical gateways without becoming a directory."
+      "reader_job": "Orient a new reader quickly, state what the project is, distinguish Tim / Potato of Life / Potatoism, and open the current broad gateways without becoming a directory."
     },
     "potato-of-life": {
       "title": "Potato of Life",
@@ -647,6 +647,36 @@
       ],
       "density_intent": "balanced",
       "reader_job": "Show recurring divine functions while preserving the historical identity and religious context of the figures carrying them."
+    },
+    "potatoism": {
+      "title": "Potatoism",
+      "route": "/potatoism/",
+      "narrative_stage": "meaning",
+      "become": "The whole-system reader for Potatoism as philosophy, religion, practice and culture, with clear handoffs to each branch.",
+      "must_not_become": "A duplicate of Religion, Philosophy, Grow, Potato of Life, Science or World.",
+      "primary_next_surface_ids": [
+        "potato-of-life",
+        "potatoism-practice",
+        "religion",
+        "philosophy"
+      ],
+      "density_intent": "deep-but-tiered",
+      "reader_job": "Explain Potatoism as the whole developing philosophy, religion, practice and culture, then route each branch to its specialist public owner."
+    },
+    "potatoism-practice": {
+      "title": "How to Become a Potato",
+      "route": "/potatoism/grow/",
+      "narrative_stage": "return",
+      "become": "A practical field guide that turns Potatoism into small repeatable choices in work, relationships, conflict, rest, community and responsibility.",
+      "must_not_become": "A prestige ladder, personality test, Hall of Heroes ranking or substitute for the broader Potatoism reader.",
+      "primary_next_surface_ids": [
+        "potatoism",
+        "potato-of-life",
+        "philosophy",
+        "religion"
+      ],
+      "density_intent": "balanced",
+      "reader_job": "Translate Potatoism into lived daily practice across growth, work, conflict, relationships, rest, community and Angelic responsibility."
     }
   }
 }
