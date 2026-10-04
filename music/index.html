@@ -53,8 +53,17 @@ const fmtDate=s=>{if(!s)return '—';const d=new Date(s);if(Number.isNaN(+d))ret
 const dateOnly=s=>s?fmtDate(s).replace(/,? \d{2}:\d{2}$/,''):'undated';
 Promise.all([fetch('../data/works/music-discography.json').then(r=>{if(!r.ok)throw new Error('master catalogue '+r.status);return r.json()}),fetch('../data/works/music-archive-dated.json').then(r=>{if(!r.ok)throw new Error('dated archive '+r.status);return r.json()})]).then(([master,dated])=>{
  const albums=new Map();
+ const key=s=>String(s||'').toLowerCase().replace(/[’']/g,'').replace(/alternate version/g,'1').replace(/[^a-z0-9]+/g,' ').trim();
  (master.albums||[]).forEach(a=>albums.set(Number(a.number),{...a,source_kind:'master-sequence',tracks:(a.tracks||[]).map(t=>({...t,source_order:t.position,created_local:null,media_archived_separately:true}))}));
- (dated.albums||[]).forEach(a=>albums.set(Number(a.number),{...a,source_kind:'dated-folder-manifest'}));
+ (dated.albums||[]).forEach(a=>{
+   const n=Number(a.number);
+   if(albums.has(n)){
+     const base=albums.get(n), byTitle=new Map((a.tracks||[]).map(t=>[key(t.title),t]));
+     base.date_span=a.date_span;
+     base.source_kind='master-sequence + dated-folder-manifest';
+     base.tracks=(base.tracks||[]).map(t=>{const d=byTitle.get(key(t.title));return d?{...t,created_local:d.created_local,filename:d.filename||t.filename,format:d.format||t.format,size_display:d.size_display||t.size_display}:{...t}});
+   } else albums.set(n,{...a,source_kind:'dated-folder-manifest'});
+ });
  const albumList=[...albums.values()].sort((a,b)=>a.number-b.number);
  $('#statAlbums').textContent=dated.summary.album_count; $('#statTracks').textContent=dated.summary.track_count; $('#statDated').textContent=dated.summary.dated_manifest_album_numbers.length;
  const grid=$('#albumGrid'), filter=$('#albumFilter');
