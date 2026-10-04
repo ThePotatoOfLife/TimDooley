@@ -197,6 +197,24 @@ def main() -> int:
                     "floor-specific site-elevator CSS must not change geometry; "
                     "Heaven, Plane and Below share one header measurement system"
                 )
+
+        header_art_viewboxes = {}
+        for art_name in ("header-heaven.svg", "header-plane.svg", "header-below.svg"):
+            art_path = ROOT / "app" / art_name
+            if not art_path.exists():
+                errors.append(f"missing dedicated header panorama: {art_name}")
+                continue
+            art_text = art_path.read_text(encoding="utf-8", errors="replace")
+            match = re.search(r'viewBox=["\']([^"\']+)["\']', art_text)
+            if not match:
+                errors.append(f"header panorama missing viewBox: {art_name}")
+                continue
+            header_art_viewboxes[art_name] = match.group(1).strip()
+        if header_art_viewboxes and len(set(header_art_viewboxes.values())) != 1:
+            errors.append(
+                "Heaven, Plane and Below header panoramas must share one viewBox "
+                f"for uniform composition: {header_art_viewboxes}"
+            )
         if "installSceneParallax" in js or "--site-scene-y" in js:
             errors.append("site elevator runtime must not restore retired scene parallax")
         if "overflow-x:auto" in css:
