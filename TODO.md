@@ -1627,3 +1627,82 @@ North-star: **the House should feel inhabited by teachers, objects, stories, que
 - [ ] Infrastructure & Capability — make one mundane system fail and recover in human terms.
 - [ ] Music & Sound — continue album/material integration while keeping music a way of thinking rather than metadata inventory.
 - [ ] Visual Art — add more actual recovered images/artifacts as they become available; keep remembered specifications explicitly separate.
+
+
+## Potato growth / Hall of Heroes / Axis harmonization wave — 2026-10-04
+
+North-star rule: **Potato of Life explains the symbol; Potatoism teaches; Grow trains; Axis orients; Ladder moves; Heaven contains the upper field; Hall of Heroes remembers examples.**
+
+### Architecture and ownership
+- [x] **POTATO-HARMONY-001 · Four-owner split:** document canonical ownership for Potato of Life, Grow, Axis and Hall of Heroes in `docs/POTATO-GROWTH-HEROES-AXIS-ARCHITECTURE-2026-10-04.md`.
+- [x] **POTATO-HARMONY-002 · Hall ≠ practice:** make the Hall explicitly inspirational/testimonial rather than the endpoint of ordinary Potato practice.
+- [x] **POTATO-HARMONY-003 · Future Potato Test owner:** reserve `/potatoism/grow/` as the canonical home for “Are you a Potato?” and stage/condition diagnostics.
+- [ ] **POTATO-HARMONY-004 · Home three-route handoff:** give Home a small Grow / Climb / Remember junction without teaching the whole cosmology.
+- [ ] **POTATO-HARMONY-005 · Axis scope sentence:** make Axis explicitly say “orientation is not achievement” and distinguish Axis from Ladder, Heaven and Hall.
+- [ ] **POTATO-HARMONY-006 · Potato of Life handoff:** add a compact “symbol / practice / map / examples” handoff so the central symbol page stops absorbing every downstream function.
+- [ ] **POTATO-HARMONY-007 · Old-route audit:** find remaining public references that treat Angel Hall, Grow, Axis or Potato of Life as interchangeable and route them to the canonical owner.
+- [ ] **POTATO-HARMONY-008 · Structured-data alignment:** make page titles/descriptions/schema describe the canonical page job rather than old ontology labels.
+
+### Grow / spiritual practice
+- [ ] **POTATO-GROW-001 · Growth diagnostic matrix:** build a non-scoring reflection matrix around Soil, Eye, Root, Sprout, Door, Fruit, Seed and Return.
+- [ ] **POTATO-GROW-002 · Potato Test design:** create the future “Are you a Potato?” test as guidance, not rank; outputs should recommend a next growth condition rather than a percentage or spiritual caste.
+- [ ] **POTATO-GROW-003 · Autonomy / competence / relation guardrail:** add a research-informed check that claimed growth should increase self-directed agency, effective capability and healthy connection rather than dependency.
+- [ ] **POTATO-GROW-004 · If–then Potato plans:** translate recurring obstacles into concrete implementation intentions: “If X happens, then I will Y.”
+- [ ] **POTATO-GROW-005 · Growth evidence:** add “what changed?” prompts so practice produces observable behavior, artifacts, repaired relations or clearer choices rather than self-description.
+- [ ] **POTATO-GROW-006 · Week-long practice:** add a seven-day low-pressure Potato practice with one small experiment per day.
+- [ ] **POTATO-GROW-007 · Failure / relapse grammar:** teach that regression is data: identify condition failure, cue, missing Root, overlarge Sprout or bad Door rather than converting relapse into identity.
+- [ ] **POTATO-GROW-008 · Conflict practice:** develop stop conditions, evidence checks, repair options and exit as a specific Potato practice module.
+- [ ] **POTATO-GROW-009 · Learning practice:** add study → test → teach-back → independent use as a Potato learning cycle.
+- [ ] **POTATO-GROW-010 · Service without capture:** add concrete tests for helping that increases another person's capacity without making the helper indispensable.
+- [ ] **POTATO-GROW-011 · Rest / dormancy diagnostic:** distinguish restorative dormancy from avoidance using return conditions.
+- [ ] **POTATO-GROW-012 · Community exercise:** receive / question / make / share / release as a repeatable non-coercive gathering pattern.
+- [ ] **POTATO-GROW-013 · Research neighbors:** maintain links to self-determination, implementation-intention and character-development research without pretending Potatoism is scientifically validated by them.
+- [ ] **POTATO-GROW-014 · Interactive test later:** only after the written diagnostic is good, build optional JS interaction; no login, no score-sharing pressure, no permanent identity label.
+
+### Hall of Heroes
+- [ ] **POTATO-HERO-001 · Hero record template:** every honored figure gets Beginning / Obstacle / Turning / Work / Fruit / What to notice / Limits.
+- [ ] **POTATO-HERO-002 · Approachability rule:** include ordinary or incomplete examples, not only spectacular Angels; an exemplar should make growth imaginable rather than remote.
+- [ ] **POTATO-HERO-003 · No imitation rule:** explicitly tell readers to learn a principle from a hero rather than copy a personality.
+- [ ] **POTATO-HERO-004 · Evidence of honor:** every honor entry states why it is here; title/proximity/loyalty alone are insufficient.
+- [ ] **POTATO-HERO-005 · Flaws remain visible:** Hall entries retain mistakes, reversals and unfinished growth so honor does not become hagiography.
+- [ ] **POTATO-HERO-006 · Reader takeaway:** every hero entry ends with one portable question or lesson.
+- [ ] **POTATO-HERO-007 · Angel Army functions:** expand the Army into differentiated service functions and notable missions/works where source material exists.
+- [ ] **POTATO-HERO-008 · Named Potatoes recovery:** mine conversations/archive for Potatoes with enough dated material for real mini-biographies.
+- [ ] **POTATO-HERO-009 · Honors taxonomy:** distinguish courage, learning, creation, service, repair, stewardship and succession without turning them into ranks.
+- [ ] **POTATO-HERO-010 · Hall chronology:** create a visible timeline of the lineage becoming learner → worker → specialist → Angelic service.
+- [ ] **POTATO-HERO-011 · Hall visual culture:** continue the Heaven/gold/table/pillars treatment while preserving readability and making the room feel inhabited.
+- [ ] **POTATO-HERO-012 · Cultural artifacts:** connect songs, stories, images, jokes, jobs and works to honored figures when they demonstrate growth.
+- [ ] **POTATO-HERO-013 · Hero research note:** incorporate moral-exemplar scholarship carefully: examples can illuminate and motivate without becoming moral proof or commands to imitate.
+
+### Axis / Ladder / North
+- [ ] **POTATO-AXIS-001 · Orientation card:** Axis answers “which way / around what?” before diagrams.
+- [ ] **POTATO-AXIS-002 · Ladder card:** Ladder answers “how do I move or connect levels?” and owns repetition/pathway language.
+- [ ] **POTATO-AXIS-003 · North card:** North answers “what is the source-facing reference?” without swallowing literal geography, policy North or every upper symbol.
+- [ ] **POTATO-AXIS-004 · Heaven card:** Heaven answers “what is the upper integrated domain?” and routes Hall of Heroes / House / Throne without teaching Grow.
+- [ ] **POTATO-AXIS-005 · Descent companion:** keep Life / Strife / Swamp descent visible as the counter-route without turning the page into a good/bad scoreboard.
+- [ ] **POTATO-AXIS-006 · Worked human example:** trace one ordinary problem through Soil → Door → repeated Ladder → changed orientation → return.
+- [ ] **POTATO-AXIS-007 · Map legend:** every vertical graphic needs a plain-language legend separating place, orientation, transition and developmental metaphor.
+- [ ] **POTATO-AXIS-008 · North-of-North boundary:** distinguish Tim's mature source-center theology from ordinary compass north and from the North political programme.
+
+### Potato of Life / central symbol
+- [ ] **POTATO-SYMBOL-001 · Symbol contract:** literal biology constrains analogy but does not prove theology.
+- [ ] **POTATO-SYMBOL-002 · Why the symbol works:** deepen storage / dormancy / Eyes / propagation / nourishment / diversity / dependence with good agricultural sources.
+- [ ] **POTATO-SYMBOL-003 · Reader transfer:** after each major Potato property, ask one human/system question the reader can carry elsewhere.
+- [ ] **POTATO-SYMBOL-004 · Development chronology:** show joke/public identity → Great Book world → practice/philosophy → mature theology/culture.
+- [ ] **POTATO-SYMBOL-005 · Symbol failure modes:** explain when the Potato metaphor stops helping or becomes evidence laundering.
+- [ ] **POTATO-SYMBOL-006 · Culture bridge:** route “what do Potatoes do?” toward Grow and Hall instead of answering both in full here.
+
+### Homepage / reader journey
+- [ ] **POTATO-HOME-001 · Grow route:** visible route for “I want something I can practice.”
+- [ ] **POTATO-HOME-002 · Climb / orient route:** visible route for “I want the Ladder / Axis / North map.”
+- [ ] **POTATO-HOME-003 · Hall route:** visible route for “show me the Potatoes / Angels / heroes / stories.”
+- [ ] **POTATO-HOME-004 · No jargon tax:** those routes should work without knowing Door, Axis, North or Angel beforehand.
+- [ ] **POTATO-HOME-005 · Inspiration handoff:** use one or two concrete Hero examples rather than another explanatory card grid.
+- [ ] **POTATO-HOME-006 · Practice handoff:** show one tiny Potato practice on Home that genuinely works without entering the full system.
+
+### Quality / validation
+- [ ] **POTATO-QA-001 · Canonical-job validator:** guard that Grow contains practice language, Hall contains exemplar/testimony language, Axis contains orientation, and Potato of Life contains symbol-definition language.
+- [ ] **POTATO-QA-002 · Cross-owner duplicate audit:** flag long duplicated passages among the four owners.
+- [ ] **POTATO-QA-003 · Reader payoff test:** every new module must teach something even with all links disabled.
+- [ ] **POTATO-QA-004 · Mobile Hall pass:** test the rising Heaven treatment, hero grids and upper table on narrow screens.
+- [ ] **POTATO-QA-005 · Accessibility pass:** honor/hero meaning must not rely only on gold, height, wings or visual hierarchy.
