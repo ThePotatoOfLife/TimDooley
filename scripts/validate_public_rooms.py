@@ -12,6 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 EXPECTED_PRIMARY = [
     "tim-dooley/",
+    "potatoism/",
     "religion/",
     "philosophy/",
     "science/",
