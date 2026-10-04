@@ -8,6 +8,7 @@ project's own canonical site from becoming ambiguous to crawlers or AI search.
 from __future__ import annotations
 
 import ast
+import html
 import json
 from pathlib import Path
 
@@ -62,7 +63,7 @@ def main() -> int:
     builder = read("scripts/build_site_authority.py", errors)
     manifest = read("site-authority.json", errors)
     readme = read("README.md", errors)
-    home = read("index.html", errors)
+    home = html.unescape(read("index.html", errors))
     tim = read("tim-dooley/index.html", errors)
 
     if builder:
