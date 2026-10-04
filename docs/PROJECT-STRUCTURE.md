@@ -158,15 +158,18 @@ Older static pages may still use local `.nav` or `.grid`, but they no longer loa
 
 The public experience is deliberately layered rather than flat.
 
-### 1. Five stable subject gateways
+### 1. Six stable subject gateways
 
-The homepage keeps exactly five primary doors:
+The homepage keeps six primary doors:
 
 1. **Tim Dooley** — `/tim-dooley/`
-2. **Religion** — `/religion/`
-3. **Philosophy** — `/philosophy/`
-4. **Science** — `/science/`
-5. **World** — `/world/`
+2. **Potatoism** — `/potatoism/`
+3. **Religion** — `/religion/`
+4. **Philosophy** — `/philosophy/`
+5. **Science** — `/science/`
+6. **World** — `/world/`
+
+Potatoism is the whole-system reader for philosophy, religion, practice and culture. Religion and Philosophy remain specialist branches so their disciplines can deepen without competing to define the whole.
 
 These are the high-level subject orientation layer, not a complete taxonomy of the repository.
 
@@ -179,7 +182,7 @@ Mature reader forms provide different ways into the same underlying House withou
 - **Collection** — sayings, voice and recurring formulations;
 - **Works** — games, music, writing, comedy, visual art and experiments.
 
-The homepage may expose these as a subordinate Ways-in corridor while keeping them visually below the five gateways.
+The homepage may expose these as a subordinate Ways-in corridor while keeping them visually below the six gateways.
 
 ### 3. Explore / retrieval family
 
@@ -196,7 +199,7 @@ These surfaces are reading/retrieval modes over existing owners, not new knowled
 
 ### 4. Specialist Views
 
-World Map, Politics, North, World Systems, Bible comparison and other task-specific tools remain specialist Views beneath the appropriate subject/context. In particular, **World Map is not gateway five; World is**.
+World Map, Politics, North, World Systems, Bible comparison and other task-specific tools remain specialist Views beneath the appropriate subject/context. In particular, **World Map is not a primary gateway; World is**.
 
 All reader and specialist surfaces route back toward canonical owners rather than becoming parallel truth stores. `/works/`, for example, is a curated projection over the creative archive, and `/timeline/` is a reader over canonical events/source registries.
 
