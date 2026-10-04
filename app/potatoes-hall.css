@@ -49,3 +49,139 @@ body.potatoes-hall-page{
 .potatoes-hall-page .growth-map .route i{font-style:normal;color:#817a5e}
 .potatoes-hall-page .links a{color:#bdc984}
 @media(max-width:680px){.potatoes-hall-page .page-header{padding:40px 20px 38px}}
+
+
+/* One Hall, rising in altitude: grounded lineage below, ceremonial Angel court above. */
+.potatoes-hall-page .upper-hall{
+  position:relative;
+  margin:70px calc(50% - 50vw) 0;
+  padding:82px max(24px,calc((100vw - 1040px)/2)) 70px;
+  background:
+    radial-gradient(ellipse at 20% 8%,rgba(255,255,255,.18),transparent 30%),
+    radial-gradient(ellipse at 78% 12%,rgba(255,255,255,.16),transparent 32%),
+    radial-gradient(circle at 50% 0,rgba(240,214,137,.23),transparent 28%),
+    linear-gradient(180deg,#334c65 0%,#263d56 24%,#1c2f46 58%,#152437 100%);
+  border-top:1px solid rgba(225,209,156,.35);
+  overflow:hidden;
+}
+.potatoes-hall-page .upper-hall:before,
+.potatoes-hall-page .upper-hall:after{
+  content:"";
+  position:absolute;
+  top:110px;
+  width:66px;
+  height:72%;
+  border:1px solid rgba(237,225,183,.28);
+  background:
+    linear-gradient(90deg,rgba(234,224,191,.08),rgba(255,255,255,.18),rgba(217,194,127,.08)),
+    repeating-linear-gradient(90deg,transparent 0 10px,rgba(255,255,255,.055) 10px 12px);
+  box-shadow:0 0 44px rgba(227,204,130,.06);
+  pointer-events:none;
+}
+.potatoes-hall-page .upper-hall:before{left:max(12px,calc((100vw - 1190px)/2))}
+.potatoes-hall-page .upper-hall:after{right:max(12px,calc((100vw - 1190px)/2))}
+.potatoes-hall-page .upper-hall-crown{
+  position:relative;
+  max-width:860px;
+  margin:0 auto 28px;
+  text-align:center;
+  padding:28px 24px 54px;
+}
+.potatoes-hall-page .upper-hall-crown:after{
+  content:"";
+  position:absolute;
+  left:-10%;
+  right:-10%;
+  bottom:-15px;
+  height:90px;
+  background:
+    radial-gradient(ellipse at 15% 75%,rgba(255,255,255,.25),transparent 42%),
+    radial-gradient(ellipse at 40% 72%,rgba(255,255,255,.21),transparent 42%),
+    radial-gradient(ellipse at 68% 73%,rgba(255,255,255,.20),transparent 43%),
+    radial-gradient(ellipse at 88% 78%,rgba(255,255,255,.23),transparent 42%);
+  opacity:.72;
+  pointer-events:none;
+}
+.potatoes-hall-page .upper-hall-crown h2{
+  margin:0 0 12px;
+  color:#f3e7c6;
+  font-size:clamp(38px,6vw,72px);
+  text-shadow:0 0 28px rgba(231,201,118,.16);
+}
+.potatoes-hall-page .upper-hall-crown p{color:#e3e5e2}
+.potatoes-hall-page .upper-hall .eyebrow{color:#e0c879}
+.potatoes-hall-page .angel-route{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  justify-content:center;
+  align-items:center;
+  margin:14px auto 34px;
+  padding:14px 18px;
+  max-width:900px;
+  border-top:1px solid rgba(229,210,151,.28);
+  border-bottom:1px solid rgba(229,210,151,.28);
+  color:#edf0ee;
+  font:700 11px ui-monospace,monospace;
+}
+.potatoes-hall-page .angel-route i{font-style:normal;color:#93a8bb}
+.potatoes-hall-page .upper-panel{
+  position:relative;
+  max-width:1040px;
+  margin:0 auto 26px;
+  padding:24px;
+  border:1px solid rgba(225,207,148,.28);
+  background:linear-gradient(180deg,rgba(246,235,201,.065),rgba(255,255,255,.018));
+  box-shadow:inset 0 1px rgba(255,255,255,.045),0 14px 42px rgba(3,8,16,.14);
+}
+.potatoes-hall-page .upper-panel h3{
+  color:#f0e5c6;
+  font-size:clamp(25px,3vw,37px);
+  margin:3px 0 15px;
+}
+.potatoes-hall-page .upper-hall .tile{
+  border-color:rgba(222,203,145,.26);
+  background:linear-gradient(180deg,rgba(235,225,192,.065),rgba(22,39,58,.72));
+  border-radius:10px;
+}
+.potatoes-hall-page .upper-hall .tile h3{color:#e1c879;font-size:20px}
+.potatoes-hall-page .upper-hall .tile p,
+.potatoes-hall-page .upper-panel p{color:#d3dce3}
+.potatoes-hall-page .angel-army{
+  background:
+    linear-gradient(135deg,rgba(231,204,124,.11),rgba(26,42,61,.82)),
+    repeating-linear-gradient(90deg,transparent 0 65px,rgba(255,255,255,.018) 65px 67px);
+}
+.potatoes-hall-page .army-call{
+  margin-top:18px;
+  padding:14px 16px;
+  border-left:3px solid #d7bb67;
+  background:rgba(228,205,138,.07);
+  color:#eee6cf;
+}
+.potatoes-hall-page .honor-table{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+}
+.potatoes-hall-page .honor-table div{
+  padding:15px;
+  border-top:1px solid rgba(224,206,149,.27);
+  background:rgba(255,255,255,.018);
+}
+.potatoes-hall-page .honor-table strong{
+  display:block;
+  color:#dfc879;
+  font:400 19px var(--site-font-serif);
+  margin-bottom:5px;
+}
+.potatoes-hall-page .honor-table span{color:#cdd7df;line-height:1.55}
+.potatoes-hall-page .upper-hall .milestone{border-left-color:#d0b65f}
+.potatoes-hall-page .upper-hall .milestone time{color:#dfc77d}
+.potatoes-hall-page .upper-hall .recognition div{border-top-color:rgba(220,202,145,.25)}
+.potatoes-hall-page .upper-hall .recognition strong{color:#e1c97b}
+@media(max-width:760px){
+  .potatoes-hall-page .upper-hall{padding-left:20px;padding-right:20px}
+  .potatoes-hall-page .upper-hall:before,.potatoes-hall-page .upper-hall:after{display:none}
+  .potatoes-hall-page .honor-table{grid-template-columns:1fr}
+}
