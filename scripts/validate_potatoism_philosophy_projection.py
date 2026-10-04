@@ -202,7 +202,7 @@ def main() -> int:
 
     required_philosophy = (
         "So you want to be a potato",
-        "Do you think you have what it takes?",
+        "What kind of person is Potatoism trying to grow?",
         "How to read this spiral",
         "Be simple. Grow toward light.",
         "Religion remains the primary public owner",
