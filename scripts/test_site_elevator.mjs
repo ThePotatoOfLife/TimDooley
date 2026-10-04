@@ -274,6 +274,7 @@ assert.ok((css.match(/!important/g)||[]).length<=8,'elevator CSS should keep spe
 assert.match(css,/\.site-elevator-room-rail\{[\s\S]*?\bmargin:0;/,'Room rail must reset page-level nav spacing without specificity escalation');
 assert.ok(css.includes('margin:0;'),'elevator shell must reset page-level header/nav margins');
 assert.ok(css.includes('min-height:var(--elevator-shell-height)'),'desktop elevator console and scenic window must consume the shared shell-height token');
+assert.match(css,/\.site-elevator-main\{[\s\S]*?height:var\(--elevator-shell-height\);[\s\S]*?max-height:var\(--elevator-shell-height\);/,'header shell must consume the shared height exactly instead of growing by content or borders');
 assert.ok(css.includes('grid-template-rows:1fr 1fr'),'up/down controls must split the same console height evenly');
 assert.ok(!/--([\\w-]+):var\\(--\\1\\)/.test(css),'elevator CSS custom properties must not self-reference');
 
