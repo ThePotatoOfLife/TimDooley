@@ -174,8 +174,8 @@
     header.innerHTML=
       '<div class="site-elevator-main">'+
         '<div class="site-elevator-controls" role="group" aria-label="Change House floor">'+
-          '<button class="site-elevator-arrow site-elevator-up" type="button" aria-label="Move elevator up" disabled>↑</button>'+
-          '<button class="site-elevator-arrow site-elevator-down" type="button" aria-label="Move elevator down" disabled>↓</button>'+
+          '<button class="site-elevator-arrow site-elevator-up" type="button" aria-label="Move elevator up" disabled></button>'+
+          '<button class="site-elevator-arrow site-elevator-down" type="button" aria-label="Move elevator down" disabled></button>'+
         '</div>'+
         '<div class="site-elevator-reel" aria-label="Current House floor">'+
           '<div class="site-elevator-floor" aria-live="polite">'+
@@ -330,10 +330,13 @@
         header.dataset.elevatorDirection=direction;
       }
       floorCode.textContent=({heaven:'03',plane:'02',below:'01'}[selectedLevel]||'02');
-      floorLabel.textContent=levelLabel(selectedLevel,projection).replace(/\s*\/.*$/,'').toUpperCase();
+      const selectedFloorLabel=levelLabel(selectedLevel,projection).replace(/\s*\/.*$/,'');
+      floorLabel.textContent=selectedFloorLabel.toUpperCase();
+      stage.setAttribute('aria-label',selectedFloorLabel+' Rooms');
+      roomRail.setAttribute('aria-label','Rooms on '+selectedFloorLabel);
       const currentRoom=spatial.room;
       roomLabel.textContent=currentRoom&&selectedLevel===spatial.levelId
-        ?'HERE'
+        ?String(currentRoom.title||currentRoom.label||currentRoom.id||'CURRENT ROOM').toUpperCase()
         :(selectedLevel===spatial.levelId?'HOUSE ORIENTATION':'BROWSING FLOOR');
       up.disabled=selectedLevel==='heaven'||!projection;
       down.disabled=selectedLevel==='below'||!projection;

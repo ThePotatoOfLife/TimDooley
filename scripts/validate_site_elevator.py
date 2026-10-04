@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -15,6 +16,8 @@ ELEVATOR_JS = ROOT / "app" / "site-elevator.js"
 PATCHER = ROOT / "scripts" / "patch_public_navigation.py"
 OUT = ROOT / "_site"
 WORLD_MAP_SOURCE = ROOT / "world-map" / "index.html"
+SITE_SYSTEM_CSS = ROOT / "app" / "site-system.css"
+COMPARATIVE_COSMOLOGY = ROOT / "traditions" / "comparative-cosmology" / "index.html"
 DEDICATED_ELEVATOR = ROOT / "elevator" / "index.html"
 HOUSE_JOURNEY_JS = ROOT / "app" / "house-journey.js"
 
@@ -60,6 +63,8 @@ def main() -> int:
     js = ELEVATOR_JS.read_text(encoding="utf-8", errors="replace") if ELEVATOR_JS.exists() else ""
     patcher = PATCHER.read_text(encoding="utf-8", errors="replace") if PATCHER.exists() else ""
     world_map_source = WORLD_MAP_SOURCE.read_text(encoding="utf-8", errors="replace") if WORLD_MAP_SOURCE.exists() else ""
+    site_system_css = SITE_SYSTEM_CSS.read_text(encoding="utf-8", errors="replace") if SITE_SYSTEM_CSS.exists() else ""
+    comparative_cosmology = COMPARATIVE_COSMOLOGY.read_text(encoding="utf-8", errors="replace") if COMPARATIVE_COSMOLOGY.exists() else ""
     dedicated_elevator = DEDICATED_ELEVATOR.read_text(encoding="utf-8", errors="replace") if DEDICATED_ELEVATOR.exists() else ""
     house_journey_js = HOUSE_JOURNEY_JS.read_text(encoding="utf-8", errors="replace") if HOUSE_JOURNEY_JS.exists() else ""
     room_contract = load_json(ROOMS, errors)
@@ -76,9 +81,7 @@ def main() -> int:
     else:
         for token in (
             "publishClearance",
-            "--site-elevator-clearance",
             "ResizeObserver",
-            "site-elevator-stage",
             "site-elevator-stage",
         ):
             if token not in js:
@@ -86,6 +89,21 @@ def main() -> int:
 
     if ".app{height:calc(100%-var(--site-elevator-clearance,0px))" not in world_map_source.replace(" ",""):
         errors.append("World Map full-screen app must reserve measured site-elevator top clearance")
+
+    compact_world = re.sub(r"\s+", "", world_map_source)
+    for token in (
+        "top:calc(var(--site-elevator-clearance,0px)+8px)",
+        "max-height:calc(100dvh-var(--site-elevator-clearance,0px)-var(--site-access-clearance,0px)-16px)",
+    ):
+        if token not in compact_world:
+            errors.append(f"World Map fixed overlays must honor measured elevator clearance: {token}")
+
+    if ".page [id]" not in site_system_css or "--site-elevator-clearance" not in site_system_css:
+        errors.append("shared page deep links must reserve measured elevator clearance")
+
+    compact_comparative = re.sub(r"\s+", "", comparative_cosmology)
+    if ".cross-head{position:sticky;top:var(--site-elevator-clearance,0px)" not in compact_comparative:
+        errors.append("Comparative Cosmology sticky matrix header must stay below measured elevator clearance")
 
     for token in (
         "inject_site_floor",
@@ -105,7 +123,8 @@ def main() -> int:
         css_tokens = (
             ".site-elevator",
             ".site-elevator-controls",
-            "stable console + scenic Room window",
+            ".site-elevator-main",
+            ".site-elevator-reel",
             ".site-elevator-stage",
             '[data-elevator-level="heaven"]',
             '[data-elevator-level="plane"]',
@@ -114,13 +133,11 @@ def main() -> int:
             "420ms",
             "cubic-bezier(.2,.8,.2,1)",
             "@media (prefers-reduced-motion: reduce)",
-            "--site-elevator-clearance",
-            "--elevator-shell-height:60px",
-            "--elevator-room-height:40px",
             ".site-elevator-room.is-active",
             "--elevator-slot-count:5",
             "flex:0 0 calc((100% - (var(--elevator-room-gap) * (var(--elevator-slot-count) - 1))) / var(--elevator-slot-count))",
-            "grid-template-columns:repeat(auto-fit,minmax(72px,1fr))",
+            "@media (max-width:760px)",
+            "display:flex;",
             "overflow:visible",
             ".site-elevator-floor-code",
             '[data-elevator-level="heaven"] .site-elevator-stage::before',
@@ -143,9 +160,61 @@ def main() -> int:
             if token not in css:
                 errors.append(f"site elevator CSS missing required marker: {token}")
 
+        # Geometry values may evolve; the invariant is shared ownership.
+        for shared_geometry_token in (
+            "--elevator-shell-height:",
+            "--elevator-control-width:",
+            "--elevator-board-width:",
+            "--elevator-room-height:",
+            "--elevator-room-gap:",
+            "--elevator-slot-count:",
+        ):
+            if shared_geometry_token not in css:
+                errors.append(
+                    f"site elevator CSS missing shared geometry token: {shared_geometry_token}"
+                )
+
         for retired_art in ("site-tree-perspective.svg","site-plane-organic-field.svg","site-below-root-field.svg"):
             if retired_art in css:
                 errors.append(f"site elevator CSS must not reference retired floor art: {retired_art}")
+
+        # Uniform-header contract: floor-specific rules may change only skin/art.
+        # Geometry belongs to the shared elevator component and must be identical
+        # across Heaven, Plane and Below.
+        floor_geometry_pattern = re.compile(
+            r'\.site-elevator\[data-elevator-level="(?:heaven|plane|below)"\][^{]*\{([^}]*)\}',
+            re.S,
+        )
+        forbidden_geometry = re.compile(
+            r'\b(?:width|height|min-height|max-height|padding|margin|gap|'
+            r'grid-template-columns|grid-template-rows|flex|flex-basis|'
+            r'inset|left|right|top|bottom)\s*:',
+            re.I,
+        )
+        for block in floor_geometry_pattern.findall(css):
+            if forbidden_geometry.search(block):
+                errors.append(
+                    "floor-specific site-elevator CSS must not change geometry; "
+                    "Heaven, Plane and Below share one header measurement system"
+                )
+
+        header_art_viewboxes = {}
+        for art_name in ("header-heaven.svg", "header-plane.svg", "header-below.svg"):
+            art_path = ROOT / "app" / art_name
+            if not art_path.exists():
+                errors.append(f"missing dedicated header panorama: {art_name}")
+                continue
+            art_text = art_path.read_text(encoding="utf-8", errors="replace")
+            match = re.search(r'viewBox=["\']([^"\']+)["\']', art_text)
+            if not match:
+                errors.append(f"header panorama missing viewBox: {art_name}")
+                continue
+            header_art_viewboxes[art_name] = match.group(1).strip()
+        if header_art_viewboxes and len(set(header_art_viewboxes.values())) != 1:
+            errors.append(
+                "Heaven, Plane and Below header panoramas must share one viewBox "
+                f"for uniform composition: {header_art_viewboxes}"
+            )
         if "installSceneParallax" in js or "--site-scene-y" in js:
             errors.append("site elevator runtime must not restore retired scene parallax")
         if "overflow-x:auto" in css:

@@ -59,7 +59,8 @@ def main() -> int:
             ".map-ui-toggle{position:absolute;right:12px;bottom:calc(var(--site-access-clearance,0px)+12px)",
             ".maplibregl-ctrl-bottom-left,.maplibregl-ctrl-bottom-right{bottom:var(--site-access-clearance,0px)}",
             "padding-bottom:calc(16px+var(--site-access-clearance,0px))",
-            "max-height:calc(100dvh-68px-var(--site-access-clearance,0px))",
+            "top:calc(var(--site-elevator-clearance,0px)+8px)",
+            "max-height:calc(100dvh-var(--site-elevator-clearance,0px)-var(--site-access-clearance,0px)-16px)",
         ):
             if token not in compact_html:
                 errors.append(f"World Map must honor shared fixed-access clearance: {token}")

@@ -88,6 +88,10 @@ textarea:focus-visible,
   isolation: isolate;
 }
 
+.page [id] {
+  scroll-margin-top: calc(var(--site-elevator-clearance, 56px) + 18px);
+}
+
 .page--reading {
   width: min(100%, calc(var(--site-content-reading) + (2 * var(--site-gutter))));
 }
