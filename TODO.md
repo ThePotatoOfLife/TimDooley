@@ -19,7 +19,9 @@ The project keeps its existing missions and bodies of inquiry, but the working u
 - [x] **HALL-NOW-004 · Reader transformation:** add explicit input/output thresholds, internal stations and conditional exit Doors to both Halls.
 - [x] **HALL-NOW-005 · Repair path:** expand CONTINUE? into a six-step source → time → proportion → repair → guard/exit route.
 - [x] **HALL-NOW-006 · Hall CSS:** style Great Table, village landmarks, arcade boards, repair route and station navigation as distinct room architecture.
-- [x] **HALL-NOW-007 · Background-art integration:** approved Hall of Heroes banquet and Hall of Shame swamp-village artworks are committed as AVIF assets, mounted in visible scene windows, echoed subtly behind the room, and included in deterministic build fingerprinting.
+- [~] **HALL-NOW-007 · Background-art integration:** approved Hall scenes are mounted and fingerprinted with valid 800×450 AVIF delivery assets so the rooms can deploy cleanly. Remaining fidelity step: replace these fallback derivatives with larger responsive masters (`picture`/`srcset`) after the Hall layout is stable; do not block the current room release on oversized binary transfer.
+- [x] **HALL-CSS-009 · Pane hierarchy cleanup:** remove competing artwork generations and normalize the two Halls into scene → major chamber → inset passage → plain reading field → arcade object → special realm → exit. Restore deliberate vertical breathing room, quiet inner cards, reset framed-section heading margins and simplify glass/radii on mobile so panes no longer read as one glued stack.
+- [ ] **HALL-CSS-010 · Rendered spacing audit:** after the exact Hall-art head deploys, inspect desktop + narrow layouts for any remaining border collisions, over-dark panes, awkward scene crops, ledger overflow or sections that still visually overstate their importance.
 - [ ] **HALL-NOW-008 · Content polish:** continue tightening testimony, gods/angels table context, Dog notoriety examples and cross-links without turning either Hall into a generic encyclopedia.
 
 ### LATER / TOMORROW · other floor and plane pixel art
