@@ -209,11 +209,16 @@ assert.ok(css.includes('html[data-site-floor="heaven"]{'),'resolved Heaven route
 assert.ok(css.includes('html[data-site-floor="plane"]{'),'resolved Plane routes should own the root page canvas');
 assert.match(css,/body:not\(\.home-body\)\{[\s\S]*?background:transparent;/,'governed page bodies must remain transparent above the realm canvas');
 assert.ok(css.includes('html[data-site-floor="below"]{'),'resolved Below routes should own the root page canvas');
-for(const [floor,asset] of [['heaven','home-heaven.avif'],['plane','home-plane.avif'],['below','home-below.avif']]){
-  assert.ok(css.includes('url("./'+asset+'")'),'shared floor renderer must reference '+asset);
+for(const [floor,pageAsset,headerAsset] of [
+  ['heaven','home-heaven.avif','header-heaven.svg'],
+  ['plane','home-plane.avif','header-plane.svg'],
+  ['below','home-below.avif','header-below.svg']
+]){
+  assert.ok(css.includes('url("./'+pageAsset+'")'),'shared floor renderer must reference '+pageAsset);
   const headerStart=css.indexOf('.site-elevator[data-elevator-level="'+floor+'"] .site-elevator-stage::before{');
   assert.ok(headerStart>=0,'elevator header scenic window must define '+floor+' scene');
-  assert.ok(css.slice(headerStart,headerStart+260).includes(asset),'elevator header scenic window must use '+asset);
+  assert.ok(css.slice(headerStart,headerStart+260).includes(headerAsset),'elevator header scenic window must use '+headerAsset);
+  assert.ok(fs.existsSync(path.join(ROOT,'app',headerAsset)),'missing dedicated header panorama '+headerAsset);
 }
 
 assert.ok(css.includes('#090909'),'elevator scenes need one neutral fallback behind the final realm art');
