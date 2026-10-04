@@ -325,3 +325,78 @@ body.dogs-hall-page{
   color:#d6c4b6!important;
 }
 @media(max-width:760px){.dogs-hall-page .worked-run-grid{grid-template-columns:1fr}}
+
+
+/* Notoriety Ledger board — inspectable pattern register at the ruined village edge. */
+.dogs-hall-page .notoriety-ledger{
+  margin:34px 0 44px;
+  padding:clamp(18px,2.5vw,26px);
+  border:1px solid rgba(127,78,53,.42);
+  background:
+    linear-gradient(180deg,rgba(28,27,23,.92),rgba(15,17,16,.97)),
+    repeating-linear-gradient(90deg,transparent 0 58px,rgba(255,255,255,.01) 58px 59px);
+  box-shadow:0 16px 36px rgba(0,0,0,.26),inset 0 0 40px rgba(111,61,38,.04);
+}
+.dogs-hall-page .notoriety-ledger h2{margin:3px 0 11px;color:#dfc6b2}
+.dogs-hall-page .notoriety-table{
+  margin:20px 0 14px;
+  border-top:2px solid rgba(157,95,61,.5);
+  border-bottom:2px solid rgba(157,95,61,.5);
+  font-family:ui-monospace,SFMono-Regular,Consolas,monospace;
+}
+.dogs-hall-page .notoriety-row{
+  display:grid;
+  grid-template-columns:1.05fr .65fr 1.25fr 1.15fr 1.05fr;
+  gap:10px;
+  padding:12px 8px;
+  border-bottom:1px solid rgba(157,95,61,.16);
+  color:#c7beb6;
+  font-size:10px;
+  line-height:1.45;
+}
+.dogs-hall-page .notoriety-row:last-child{border-bottom:0}
+.dogs-hall-page .notoriety-head{
+  color:#8f7769;
+  font-size:8px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  background:rgba(99,54,35,.12);
+}
+.dogs-hall-page .notoriety-row b{
+  display:block;
+  color:#9f6547;
+  font-size:8px;
+  letter-spacing:.08em;
+}
+.dogs-hall-page .notoriety-row strong{
+  display:block;
+  margin-top:3px;
+  color:#dda07b;
+  font:400 15px/1.2 var(--site-font-serif);
+}
+.dogs-hall-page .notoriety-row small{color:#8f8178}
+.dogs-hall-page .ledger-key{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:8px;
+  margin:12px 0 18px;
+}
+.dogs-hall-page .ledger-key span{
+  padding:10px;
+  border:1px solid rgba(127,78,53,.24);
+  background:rgba(74,45,31,.08);
+  color:#9f958d;
+  font-size:9px;
+  line-height:1.45;
+}
+.dogs-hall-page .ledger-key b{color:#c18667}
+@media(max-width:900px){
+  .dogs-hall-page .notoriety-row{grid-template-columns:1fr 1fr}
+  .dogs-hall-page .notoriety-head{display:none}
+  .dogs-hall-page .notoriety-row span:first-child{grid-column:1/-1}
+}
+@media(max-width:620px){
+  .dogs-hall-page .notoriety-row{grid-template-columns:1fr}
+  .dogs-hall-page .notoriety-row span:first-child{grid-column:auto}
+  .dogs-hall-page .ledger-key{grid-template-columns:1fr}
+}
