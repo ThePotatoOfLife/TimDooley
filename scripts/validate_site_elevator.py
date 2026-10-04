@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -115,8 +116,6 @@ def main() -> int:
             "cubic-bezier(.2,.8,.2,1)",
             "@media (prefers-reduced-motion: reduce)",
             "--site-elevator-clearance",
-            "--elevator-shell-height:96px",
-            "--elevator-room-height:34px",
             ".site-elevator-room.is-active",
             "--elevator-slot-count:5",
             "flex:0 0 calc((100% - (var(--elevator-room-gap) * (var(--elevator-slot-count) - 1))) / var(--elevator-slot-count))",
@@ -142,6 +141,20 @@ def main() -> int:
         for token in css_tokens:
             if token not in css:
                 errors.append(f"site elevator CSS missing required marker: {token}")
+
+        # Geometry values may evolve; the invariant is shared ownership.
+        for shared_geometry_token in (
+            "--elevator-shell-height:",
+            "--elevator-control-width:",
+            "--elevator-board-width:",
+            "--elevator-room-height:",
+            "--elevator-room-gap:",
+            "--elevator-slot-count:",
+        ):
+            if shared_geometry_token not in css:
+                errors.append(
+                    f"site elevator CSS missing shared geometry token: {shared_geometry_token}"
+                )
 
         for retired_art in ("site-tree-perspective.svg","site-plane-organic-field.svg","site-below-root-field.svg"):
             if retired_art in css:
