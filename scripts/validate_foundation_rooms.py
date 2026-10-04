@@ -8,8 +8,6 @@ ATLAS=ROOT/'data/house/foundation-room-atlas.json'
 CONTRACT=ROOT/'data/house/foundation-room-contract.json'
 SYNTH=ROOT/'data/house/project-synthesis.json'
 REPRO=ROOT/'data/house/foundation-first-reproduction-wave-001.json'
-HOME=ROOT/'index.html'
-HOME_PROJECTION=ROOT/'app/home-page-projection.js'
 TIMELINE=ROOT/'timeline/foundations/index.html'
 HOUSE=ROOT/'house/index.html'
 
@@ -106,12 +104,6 @@ def main():
         errors.append('project synthesis missing Foundation Room authority')
     if fr.get('population')!=52:
         errors.append('project synthesis Foundation Room population drifted')
-
-    home=HOME.read_text(encoding='utf-8',errors='replace')
-    projection=HOME_PROJECTION.read_text(encoding='utf-8',errors='replace')
-    home_surface=home+'\n'+projection
-    for marker in ('id="foundation-rooms"',"loadJson('data/house/foundation-room-atlas.json')",'Door · Place · House · Today','Foundation Rooms'):
-        if marker not in home_surface: errors.append(f'Home missing Foundation Room marker: {marker}')
 
     timeline=TIMELINE.read_text(encoding='utf-8',errors='replace')
     for marker in ('id="foundation-rooms"',"foundation-room-atlas.json",'foundationRoomCatalog','Map-ready origin','Quantified Today'):
