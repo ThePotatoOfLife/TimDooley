@@ -94,6 +94,7 @@
       .filter(dwelling=>(dwelling.primary_level||'plane')===levelId&&roomById[dwelling.id])
       .map((dwelling,index)=>({
         ...roomById[dwelling.id],
+        fullTitle:roomById[dwelling.id].title||dwelling.label||dwelling.id,
         title:dwelling.header_label||roomById[dwelling.id].title,
         homepage:dwelling.homepage||('/rooms/'+dwelling.id+'/'),
         primaryLevel:dwelling.primary_level||'plane',
@@ -244,6 +245,11 @@
         link.className='site-elevator-room is-primary';
         link.href=siteHref(room.homepage||('/rooms/'+room.id+'/'),context.siteBase);
         link.textContent=room.title||room.id;
+        const fullRoomTitle=room.fullTitle||room.title||room.id;
+        if(fullRoomTitle!==link.textContent){
+          link.title=fullRoomTitle;
+          link.setAttribute('aria-label',fullRoomTitle);
+        }
         link.dataset.roomId=room.id;
         if(spatial.roomId===room.id&&selectedLevel===spatial.levelId){
           link.setAttribute('aria-current','location');
