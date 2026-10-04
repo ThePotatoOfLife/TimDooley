@@ -133,6 +133,9 @@ def main() -> int:
             "home-heaven.avif",
             "home-plane.avif",
             "home-below.avif",
+            "header-heaven.svg",
+            "header-plane.svg",
+            "header-below.svg",
             "body:not(.home-body)::before",
             "--site-realm-art-size",
         )
