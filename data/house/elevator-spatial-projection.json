@@ -1,6 +1,6 @@
 {
-  "version": "1.5.3",
-  "updated": "2026-10-01",
+  "version": "1.5.4",
+  "updated": "2026-10-04",
   "authority": "elevator-spatial-projection",
   "title": "Door / Axis Elevator — Three-Floor House Projection",
   "purpose": "Project the governed Potato House graph as a navigable three-floor orientation system (Heaven / Plane / Below) with one canonical floor per governed Dwelling. Existing HTML routes remain canonical public surfaces; this projection provides spatial wayfinding without duplicating a Room across floors.",
@@ -388,6 +388,11 @@
       "match": "/taoism.html",
       "level_id": "heaven",
       "room_id": "traditions-texts"
+    },
+    {
+      "match": "/potatoism/",
+      "level_id": "heaven",
+      "room_id": "potatoverse-canon"
     },
     {
       "match": "/potatoism/grow/",
