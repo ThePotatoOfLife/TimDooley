@@ -11,6 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 EXPECTED_DOORS = {
     "tim": "tim-dooley/",
+    "potatoism": "potatoism/",
     "religion": "religion/",
     "philosophy": "philosophy/",
     "science": "science/",
