@@ -74,9 +74,15 @@ def main() -> int:
     if not js:
         errors.append("missing app/site-elevator.js")
     else:
-        for token in ("publishClearance", "--site-elevator-clearance", "ResizeObserver"):
+        for token in (
+            "publishClearance",
+            "--site-elevator-clearance",
+            "ResizeObserver",
+            "site-elevator-stage",
+            "stage.style.setProperty('--elevator-room-count'",
+        ):
             if token not in js:
-                errors.append(f"site elevator JS missing clearance marker: {token}")
+                errors.append(f"site elevator JS missing clearance/header marker: {token}")
 
     if ".app{height:calc(100%-var(--site-elevator-clearance,0px))" not in world_map_source.replace(" ",""):
         errors.append("World Map full-screen app must reserve measured site-elevator top clearance")
@@ -99,7 +105,8 @@ def main() -> int:
         css_tokens = (
             ".site-elevator",
             ".site-elevator-controls",
-            "compact wrapped elevator layout",
+            "stable console + scenic Room window",
+            ".site-elevator-stage",
             '[data-elevator-level="heaven"]',
             '[data-elevator-level="plane"]',
             '[data-elevator-level="below"]',
@@ -108,13 +115,16 @@ def main() -> int:
             "cubic-bezier(.2,.8,.2,1)",
             "@media (prefers-reduced-motion: reduce)",
             "--site-elevator-clearance",
+            "--elevator-shell-height:60px",
+            "--elevator-room-height:40px",
             ".site-elevator-room.is-active",
-            "grid-template-columns:repeat(auto-fit,minmax(",
+            "grid-template-columns:repeat(var(--elevator-room-count),minmax(0,1fr))",
+            "grid-template-columns:repeat(auto-fit,minmax(72px,1fr))",
             "overflow:visible",
             ".site-elevator-floor-code",
-            '[data-elevator-level="heaven"]::before',
-            '[data-elevator-level="plane"]::before',
-            '[data-elevator-level="below"]::before',
+            '[data-elevator-level="heaven"] .site-elevator-stage::before',
+            '[data-elevator-level="plane"] .site-elevator-stage::before',
+            '[data-elevator-level="below"] .site-elevator-stage::before',
             "border-radius:0",
             "background:transparent",
             ".site-elevator-room-rail{",
