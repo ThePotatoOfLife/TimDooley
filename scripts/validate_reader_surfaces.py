@@ -15,6 +15,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 PRIMARY = (
     ("tim-dooley/", "Tim Dooley"),
+    ("potatoism/", "Potatoism"),
     ("religion/", "Religion"),
     ("philosophy/", "Philosophy"),
     ("science/", "Science"),
@@ -108,7 +109,7 @@ def main() -> int:
     north = read("north/index.html", errors)
     world = read("world-map/index.html", errors)
 
-    # Home: exactly five primary doors, each carrying two questions.
+    # Home: six primary doors, each carrying a meaningful reader description.
     require(home, 'data-reader-surface="home"', "index.html", errors)
     require(home, 'class="project-purpose"', "index.html", errors)
     require(home, 'class="secondary-threads"', "index.html", errors)
@@ -119,7 +120,7 @@ def main() -> int:
         hrefs = re.findall(r'href=["\']([^"\']+)["\']', nav.group(1))
         expected = [href for href, _ in PRIMARY]
         if hrefs != expected:
-            errors.append(f"homepage primary navigation must contain exactly five doors in order; found {hrefs}")
+            errors.append(f"homepage primary navigation must contain exactly six doors in order; found {hrefs}")
         for href, label in PRIMARY:
             match = re.search(rf'<a\b[^>]*href=["\']{re.escape(href)}["\'][^>]*>(.*?)</a>', nav.group(1), flags=re.I | re.S)
             if not match:
