@@ -638,145 +638,39 @@ body.dogs-hall-page{
 @media(max-width:560px){.dogs-hall-page .bell-grid{grid-template-columns:1fr}}
 
 
-/* Hall scene window — approved artwork mounted 2026-10-04. */
-.dogs-hall-page .hall-scene{
-  position:relative;
-  width:100%;
-  aspect-ratio:16/9;
-  min-height:300px;
-  max-height:610px;
-  margin:14px 0 30px;
-  overflow:hidden;
-  border:1px solid color-mix(in srgb, #d68f68 42%, transparent);
-  border-radius:14px;
-  background:
-    linear-gradient(180deg,rgba(0,0,0,.04) 0%,rgba(0,0,0,.10) 42%,rgba(0,0,0,.76) 100%),
-    url("./hall-of-shame.avif") 50% 56%/cover no-repeat,
-    #090909;
-  box-shadow:0 22px 52px rgba(0,0,0,.30),inset 0 1px rgba(255,255,255,.05);
-  isolation:isolate;
-}
-.dogs-hall-page .hall-scene::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  z-index:0;
-  pointer-events:none;
-  background:
-    linear-gradient(90deg,rgba(0,0,0,.22),transparent 25%,transparent 75%,rgba(0,0,0,.22)),
-    linear-gradient(180deg,transparent 54%,rgba(0,0,0,.20));
-}
-.dogs-hall-page .hall-scene__hud{
-  position:absolute;
-  z-index:2;
-  left:14px;
-  right:14px;
-  top:13px;
-  display:flex;
-  justify-content:space-between;
-  gap:12px;
-  color:#d68f68;
-  text-shadow:0 2px 5px #000;
-  font:800 9px/1.2 ui-monospace,SFMono-Regular,Consolas,monospace;
-  letter-spacing:.10em;
-}
-.dogs-hall-page .hall-scene__caption{
-  position:absolute;
-  z-index:2;
-  left:14px;
-  bottom:14px;
-  max-width:min(520px,calc(100% - 28px));
-  padding:11px 13px;
-  border:1px solid color-mix(in srgb, #d68f68 34%, transparent);
-  border-radius:8px;
-  background:rgba(18,14,12,.82);
-  backdrop-filter:blur(4px);
-}
-.dogs-hall-page .hall-scene__caption strong{
-  display:block;
-  color:#d68f68;
-  font:700 12px/1.2 ui-monospace,SFMono-Regular,Consolas,monospace;
-  letter-spacing:.08em;
-}
-.dogs-hall-page .hall-scene__caption span{
-  display:block;
-  margin-top:4px;
-  color:#e1ddd3;
-  font-size:10px;
-  letter-spacing:.035em;
-}
-.dogs-hall-page main.hall{
-  position:relative;
-}
-.dogs-hall-page main.hall::before{
-  content:"";
-  position:absolute;
-  z-index:-1;
-  left:-4vw;
-  right:-4vw;
-  top:180px;
-  height:min(78vh,760px);
-  opacity:.10;
-  pointer-events:none;
-  background:
-    linear-gradient(180deg,transparent 0%,rgba(16,14,12,.78) 70%,transparent 100%),
-    url("./hall-of-shame.avif") 50% 56%/cover no-repeat;
-  filter:saturate(.86);
-  mask-image:linear-gradient(180deg,transparent 0%,#000 16%,#000 74%,transparent 100%);
-}
-@media(max-width:720px){
-  .dogs-hall-page .hall-scene{
-    min-height:260px;
-    aspect-ratio:4/5;
-    background-position:50% 50%;
-  }
-  .dogs-hall-page .hall-scene__hud{
-    font-size:8px;
-  }
-  .dogs-hall-page .hall-scene__hud span:last-child{
-    display:none;
-  }
-  .dogs-hall-page .hall-scene__caption{
-    backdrop-filter:none;
-  }
-  .dogs-hall-page main.hall::before{
-    top:130px;
-    opacity:.07;
-  }
-}
-@media(prefers-reduced-transparency:reduce){
-  .dogs-hall-page .hall-scene__caption{background:#0d0f0d}
-}
 
 
-/* Mounted Hall artwork — visible arrival scene plus soft room-wide bleed. */
+/* Canonical Hall layout cleanup — one scene system, one pane hierarchy, one vertical rhythm. */
 body.dogs-hall-page{
   position:relative;
+  overflow-x:clip;
 }
 body.dogs-hall-page::after{
   content:"";
   position:fixed;
   inset:var(--site-elevator-clearance,56px) 0 0;
-  z-index:-3;
+  z-index:-4;
   pointer-events:none;
   background:
-    linear-gradient(180deg,rgba(7,9,8,.30),rgba(7,9,8,.78) 46%,rgba(7,9,8,.92) 100%),
+    linear-gradient(180deg,rgba(7,9,8,.38),rgba(7,9,8,.82) 46%,rgba(7,9,8,.94) 100%),
     url("./hall-of-shame.avif") 50% 72%/cover no-repeat;
-  opacity:.72;
+  opacity:.38;
 }
-.dogs-hall-page .hall{
-  position:relative;
-}
+
+/* Arrival scene: the only full artwork window. */
 .dogs-hall-page .hall-scene{
   position:relative;
   width:min(1180px,calc(100vw - 24px));
-  margin:18px 50% 34px;
+  aspect-ratio:16/9;
+  margin:18px 50% 36px;
   transform:translateX(-50%);
   overflow:hidden;
-  border:1px solid color-mix(in srgb, #cf8964 40%, transparent);
-  border-radius:16px;
-  background:#0a0d0b;
-  box-shadow:0 18px 56px rgba(0,0,0,.36),inset 0 0 0 1px rgba(255,255,255,.025);
+  border:1px solid color-mix(in srgb, #cf8964 42%, transparent);
+  border-radius:14px;
+  background:
+    linear-gradient(180deg,rgba(4,6,5,.02),rgba(4,6,5,.22) 66%,rgba(4,6,5,.68) 100%),
+    url("./hall-of-shame.avif") 50% 72%/cover no-repeat;
+  box-shadow:0 18px 50px rgba(0,0,0,.28);
 }
 .dogs-hall-page .hall-scene::after{
   content:"";
@@ -784,85 +678,197 @@ body.dogs-hall-page::after{
   inset:0;
   pointer-events:none;
   background:
-    linear-gradient(180deg,rgba(0,0,0,.00) 0 60%,rgba(0,0,0,.34) 82%,rgba(0,0,0,.62) 100%),
-    linear-gradient(90deg,rgba(0,0,0,.12),transparent 18% 82%,rgba(0,0,0,.12));
+    linear-gradient(180deg,transparent 0 58%,rgba(0,0,0,.20) 76%,rgba(0,0,0,.58) 100%),
+    linear-gradient(90deg,rgba(0,0,0,.10),transparent 18% 82%,rgba(0,0,0,.10));
 }
-.dogs-hall-page .hall-scene img{
-  display:block;
-  width:100%;
-  height:auto;
-  aspect-ratio:1672/941;
-  object-fit:cover;
-  object-position:50% 72%;
-  image-rendering:auto;
-}
-.dogs-hall-page .hall-scene figcaption{
+.dogs-hall-page .hall-scene__hud{
   position:absolute;
-  left:14px;
-  bottom:10px;
-  z-index:1;
-  max-width:calc(100% - 28px);
-  padding:6px 9px;
-  border:1px solid color-mix(in srgb, #cf8964 36%, transparent);
-  background:rgba(8,10,9,.74);
+  z-index:2;
+  top:10px;
+  left:12px;
+  right:12px;
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
   color:#cf8964;
-  font:700 9px/1.3 ui-monospace,SFMono-Regular,Consolas,monospace;
+  font:700 9px/1.25 ui-monospace,SFMono-Regular,Consolas,monospace;
   letter-spacing:.09em;
   text-transform:uppercase;
-  backdrop-filter:blur(4px);
+  text-shadow:0 1px 8px rgba(0,0,0,.88);
 }
+.dogs-hall-page .hall-scene__caption{
+  position:absolute;
+  z-index:2;
+  left:12px;
+  bottom:10px;
+  max-width:min(560px,calc(100% - 24px));
+  padding:7px 10px;
+  border:1px solid color-mix(in srgb, #cf8964 36%, transparent);
+  border-radius:7px;
+  background:rgba(8,10,9,.72);
+  backdrop-filter:blur(5px);
+}
+.dogs-hall-page .hall-scene__caption strong{
+  display:block;
+  color:#cf8964;
+  font:700 10px/1.25 ui-monospace,SFMono-Regular,Consolas,monospace;
+  letter-spacing:.08em;
+}
+.dogs-hall-page .hall-scene__caption span{
+  display:block;
+  margin-top:3px;
+  color:#d0d3cc;
+  font-size:9px;
+  line-height:1.35;
+}
+
+/* Vertical rhythm: sections should feel like rooms/stations, not one fused card stack. */
+.dogs-hall-page main.hall > section{
+  margin-block:clamp(46px,6vw,66px);
+}
+.dogs-hall-page main.hall > section > h2,
+.dogs-hall-page main.hall > section > .great-table-head > h2{
+  margin-top:0;
+}
+.dogs-hall-page .page-header{
+  margin-bottom:28px;
+}
+
+/* Major chambers: real panes, but fewer and cleaner. */
 .dogs-hall-page .hall-threshold,
-.dogs-hall-page .hall-law,
-.dogs-hall-page .great-table,
 .dogs-hall-page .shame-village,
-.dogs-hall-page .arcade-marquee,
-.dogs-hall-page .honor-register,
 .dogs-hall-page .notoriety-ledger,
+.dogs-hall-page .hall-source-desk,
+.dogs-hall-page .hall-exits{
+  padding:clamp(20px,2.7vw,30px);
+  border:1px solid color-mix(in srgb, #cf8964 30%, transparent);
+  border-radius:14px;
+  box-shadow:0 12px 34px rgba(0,0,0,.14);
+  backdrop-filter:blur(8px) saturate(.94);
+}
+
+/* Insets: stop boxing every idea. These read as passages within the Hall. */
+.dogs-hall-page .hall-law,
+.dogs-hall-page .village-bell,
 .dogs-hall-page .worked-runs,
 .dogs-hall-page .repair-route,
-.dogs-hall-page .hall-source-desk,
-.dogs-hall-page .hall-takeaway,
-.dogs-hall-page .hall-exits,
-.dogs-hall-page .table-conversation,
-.dogs-hall-page .village-bell{
-  backdrop-filter:blur(10px) saturate(.92);
+.dogs-hall-page .hall-takeaway{
+  margin-block:clamp(40px,5vw,54px);
+  padding:22px 4px;
+  border:0;
+  border-top:1px solid color-mix(in srgb, #cf8964 26%, transparent);
+  border-bottom:1px solid color-mix(in srgb, #cf8964 20%, transparent);
+  border-radius:0;
+  box-shadow:none;
+  background:linear-gradient(90deg,transparent,rgba(0,0,0,.07) 16% 84%,transparent);
+  backdrop-filter:none;
 }
+
+/* Plain reading fields stay plain; the content itself provides the structure. */
+.dogs-hall-page main.hall > section:not(.upper-hall):not(.arcade-marquee):not(.continue-screen):not(.hall-threshold):not(.great-table):not(.honor-register):not(.notoriety-ledger):not(.hall-source-desk):not(.hall-exits):not(.hall-law):not(.table-conversation):not(.table-reading-key):not(.village-bell):not(.worked-runs):not(.repair-route):not(.hall-takeaway):not(.shame-village){
+  padding-inline:2px;
+}
+
+/* Inner cards: consistent spacing and quieter borders prevent card-inside-card clutter. */
+.dogs-hall-page .hall-input-output article,
+.dogs-hall-page .shame-landmarks article,
+.dogs-hall-page .repair-steps article,
+.dogs-hall-page .source-desk-grid article,
+.dogs-hall-page .takeaway-grid article,
+.dogs-hall-page .worked-run-grid article,
+.dogs-hall-page .bell-grid article{
+  border-radius:8px;
+  box-shadow:none;
+  background:rgba(255,255,255,.018);
+}
+.dogs-hall-page .hall-input-output,
+.dogs-hall-page .table-seats,
+.dogs-hall-page .source-desk-grid,
+.dogs-hall-page .takeaway-grid,
+.dogs-hall-page .table-question-grid,
+.dogs-hall-page .worked-run-grid,
+.dogs-hall-page .bell-grid,
+.dogs-hall-page .shame-landmarks,
+.dogs-hall-page .repair-steps{
+  gap:12px;
+}
+
+/* Arcade objects remain special and separated from ordinary panes. */
+.dogs-hall-page .arcade-marquee,
+.dogs-hall-page .continue-screen{
+  margin-block:clamp(50px,6vw,68px);
+}
+.dogs-hall-page .hall-carry{
+  margin-top:22px;
+  border-radius:0 8px 8px 0;
+}
+.dogs-hall-page .upper-hall{
+  margin-top:clamp(68px,8vw,92px);
+}
+
+/* Avoid a glued-pane look where adjacent designed blocks meet. */
+.dogs-hall-page .hall-threshold + .hall-law,
+.dogs-hall-page .hall-law + .great-table,
+.dogs-hall-page .hall-law + .shame-village,
+.dogs-hall-page .great-table + .table-conversation,
+.dogs-hall-page .shame-village + .village-bell,
+.dogs-hall-page .honor-register + .hall-source-desk,
+.dogs-hall-page .notoriety-ledger + .hall-source-desk,
+.dogs-hall-page .hall-takeaway + .hall-exits{
+  margin-top:clamp(52px,6vw,72px);
+}
+
+/* Mobile: keep the scene strong, but simplify the glass and spacing. */
 @media(max-width:760px){
   body.dogs-hall-page::after{
-    background-position:58% 74%;
-    opacity:.58;
+    opacity:.25;
+    background-position:50% 72%;
   }
   .dogs-hall-page .hall-scene{
     width:calc(100vw - 12px);
     margin-top:12px;
-    border-radius:10px;
+    margin-bottom:30px;
+    border-radius:9px;
   }
-  .dogs-hall-page .hall-scene img{
-    min-height:54vw;
-    max-height:62vh;
-    object-fit:cover;
-  }
-  .dogs-hall-page .hall-scene figcaption{
+  .dogs-hall-page .hall-scene__hud{
+    top:7px;
     left:8px;
     right:8px;
+    font-size:7px;
+  }
+  .dogs-hall-page .hall-scene__caption{
+    left:8px;
     bottom:7px;
-    max-width:none;
-    font-size:8px;
+    max-width:calc(100% - 16px);
+    padding:6px 8px;
+  }
+  .dogs-hall-page main.hall > section{
+    margin-block:42px;
+  }
+  .dogs-hall-page .hall-threshold,
+.dogs-hall-page .shame-village,
+.dogs-hall-page .notoriety-ledger,
+.dogs-hall-page .hall-source-desk,
+.dogs-hall-page .hall-exits{
+    padding:18px 16px;
+    border-radius:10px;
+    backdrop-filter:none;
+  }
+  .dogs-hall-page .hall-law,
+.dogs-hall-page .village-bell,
+.dogs-hall-page .worked-runs,
+.dogs-hall-page .repair-route,
+.dogs-hall-page .hall-takeaway{
+    margin-block:36px;
+    padding:18px 2px;
   }
 }
 @media(prefers-reduced-transparency:reduce){
+  body.dogs-hall-page::after{opacity:.18}
   .dogs-hall-page .hall-threshold,
-  .dogs-hall-page .hall-law,
-  .dogs-hall-page .great-table,
-  .dogs-hall-page .shame-village,
-  .dogs-hall-page .arcade-marquee,
-  .dogs-hall-page .honor-register,
-  .dogs-hall-page .notoriety-ledger,
-  .dogs-hall-page .worked-runs,
-  .dogs-hall-page .repair-route,
-  .dogs-hall-page .hall-source-desk,
-  .dogs-hall-page .hall-takeaway,
-  .dogs-hall-page .hall-exits,
-  .dogs-hall-page .table-conversation,
-  .dogs-hall-page .village-bell{backdrop-filter:none}
+.dogs-hall-page .shame-village,
+.dogs-hall-page .notoriety-ledger,
+.dogs-hall-page .hall-source-desk,
+.dogs-hall-page .hall-exits{backdrop-filter:none}
+  .dogs-hall-page .hall-scene__caption{backdrop-filter:none}
 }
