@@ -52,8 +52,8 @@ TOPOLOGY_CONTEXT_PAGES={
     ROOT/'science/index.html':('plane','axis','cross','spiral'),
 }
 ROOM_IDS=('potatoverse-canon','archive-sources','time-history','traditions-texts','science-formal-models','life-body','world-systems','culture-information','works','research-lab')
-GATEWAYS=('tim','religion','philosophy','science','world')
-GATEWAY_ROUTES=('/tim-dooley/','/religion/','/philosophy/','/science/','/world/')
+GATEWAYS=('tim','potatoism','religion','philosophy','science','world')
+GATEWAY_ROUTES=('/tim-dooley/','/potatoism/','/religion/','/philosophy/','/science/','/world/')
 REQUIRED_SURFACES={
     'story':'/tim-dooley/story/',
     'collection':'/corporium/',
@@ -77,6 +77,7 @@ HOME_SPINE=(
     'id="working-capabilities"',
     'class="public-doors"',
     'href="tim-dooley/"',
+    'href="potatoism/"',
     'href="religion/"',
     'href="philosophy/"',
     'href="science/"',
