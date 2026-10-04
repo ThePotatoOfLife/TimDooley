@@ -1,5 +1,5 @@
 {
-  "version": "2.8.1",
+  "version": "2.8.2",
   "updated": "2026-10-04",
   "authority": "public-route-identity",
   "room_registry": "data/house/rooms.json",
@@ -1035,13 +1035,11 @@
   },
   "parent_semantics": {
     "home": {
-      "meaning": "Global orientation root for the five canonical gateways and a small set of genuinely cross-project utilities/readers.",
-      "child_rule": "Use Home only when the child spans multiple domains or is itself a canonical gateway/global utility. Domain specialists should belong under their strongest subject parent instead.",
+      "meaning": "Global orientation root for the current top-level reader entrances and genuinely cross-project utilities.",
+      "child_rule": "Use Home only when the child is a current top-level gateway/global utility. Potatoism owns its Religion, Philosophy, Potato of Life and Grow branches; domain specialists belong under their strongest subject parent.",
       "allowed_child_ids": [
-        "potato-of-life",
         "tim",
-        "religion",
-        "philosophy",
+        "potatoism",
         "science",
         "world",
         "timeline",
@@ -1152,6 +1150,16 @@
         "divine-functions",
         "divine-tensions",
         "tim-powers"
+      ]
+    },
+    "potatoism": {
+      "meaning": "Whole-system owner for Potatoism and its philosophy, religion, central Potato symbol and lived practice.",
+      "child_rule": "Use Potatoism for branches whose primary job is to explain, practice or deepen the developing Potatoist system; keep Science and World independent where external evidence or systems are primary.",
+      "allowed_child_ids": [
+        "potato-of-life",
+        "potatoism-practice",
+        "religion",
+        "philosophy"
       ]
     }
   }
