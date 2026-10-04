@@ -379,9 +379,12 @@ def main() -> int:
             quiet = rel.startswith("tools/tts/") or rel == "elevator/index.html"
             elevator_css_count = text.count("site-elevator.css")
             elevator_js_count = text.count("site-elevator.js")
-            if quiet:
+            if rel == "elevator/index.html":
+                if elevator_css_count != 1 or elevator_js_count:
+                    errors.append(f"{rel}: dedicated Elevator must reuse realm CSS but not mount the universal elevator runtime")
+            elif quiet:
                 if elevator_css_count or elevator_js_count:
-                    errors.append(f"{rel}: dedicated/quiet surface must not receive the universal elevator")
+                    errors.append(f"{rel}: quiet tool must not receive the universal elevator")
             elif elevator_css_count != 1 or elevator_js_count != 1:
                 errors.append(
                     f"{rel}: expected exactly one universal elevator CSS + JS asset, "
