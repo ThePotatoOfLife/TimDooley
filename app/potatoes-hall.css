@@ -644,3 +644,55 @@ body.potatoes-hall-page{
 @media(max-width:760px){
   .potatoes-hall-page .source-desk-grid{grid-template-columns:1fr}
 }
+
+
+/* Two-Hall accumulation law. */
+.potatoes-hall-page .hall-law{
+  margin:30px 0 40px;
+  padding:clamp(18px,2.5vw,26px);
+  border-left:3px solid #e3ca78;
+  background:rgba(225,203,123,.05);
+}
+.potatoes-hall-page .hall-law h2{
+  margin:3px 0 12px;
+  color:#e3ca78;
+}
+.potatoes-hall-page .hall-law-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:9px;
+  margin:18px 0;
+}
+.potatoes-hall-page .hall-law-grid article{
+  padding:14px;
+  border:1px solid color-mix(in srgb, #e3ca78 28%, transparent);
+  background:rgba(0,0,0,.06);
+}
+.potatoes-hall-page .hall-law-grid em{
+  display:block;
+  margin-bottom:5px;
+  color:color-mix(in srgb, #e3ca78 78%, #fff 22%);
+  font:700 9px/1.3 ui-monospace,SFMono-Regular,Consolas,monospace;
+  font-style:normal;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.potatoes-hall-page .hall-law-grid strong{
+  display:block;
+  margin-bottom:6px;
+  color:#e3ca78;
+  font:400 19px/1.2 var(--site-font-serif);
+}
+.potatoes-hall-page .hall-law-grid p{
+  margin:0;
+  color:var(--site-muted);
+  font-size:11px;
+  line-height:1.5;
+}
+.potatoes-hall-page .hall-law>a,
+.potatoes-hall-page .hall-law>p>a{
+  color:#e3ca78;
+}
+@media(max-width:720px){
+  .potatoes-hall-page .hall-law-grid{grid-template-columns:1fr}
+}
