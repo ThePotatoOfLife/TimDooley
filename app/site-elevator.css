@@ -500,6 +500,26 @@ html[data-site-floor] body:not(.home-body)::before{
   filter:saturate(1.06) contrast(1.045);
   transform:translate3d(0,0,0);
 }
+
+/* Hall pages still use the canonical renderer; only the scene asset changes.
+   This prevents a generic realm wallpaper and a second fixed Hall wallpaper
+   from being composited on top of one another. */
+html[data-site-floor] body.potatoes-hall-page::before{
+  background-image:
+    linear-gradient(180deg,rgba(7,9,8,.38),rgba(7,9,8,.82) 46%,rgba(7,9,8,.94) 100%),
+    url("./hall-of-heroes.avif");
+  background-position:50% 50%,50% 18%;
+  background-size:100% 100%,cover;
+  filter:saturate(1.03) contrast(1.035);
+}
+html[data-site-floor] body.dogs-hall-page::before{
+  background-image:
+    linear-gradient(180deg,rgba(7,9,8,.40),rgba(7,9,8,.84) 46%,rgba(7,9,8,.95) 100%),
+    url("./hall-of-shame.avif");
+  background-position:50% 50%,50% 72%;
+  background-size:100% 100%,cover;
+  filter:saturate(1.03) contrast(1.035);
+}
 @keyframes site-realm-page-pan{
   from{transform:translate3d(0,0,0)}
   to{transform:translate3d(0,-8vh,0)}
