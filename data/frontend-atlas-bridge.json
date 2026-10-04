@@ -1,7 +1,7 @@
 {
-  "version": "5.2.0",
-  "updated": "2026-09-20",
-  "purpose": "Canonical backend-to-frontend projection contract. Canonical data stays modular and keeps its existing owners; this bridge maps major archive branches and backend families into exactly five simple public doors plus a visible secondary Rooms layer and quieter global/deep surfaces.",
+  "version": "5.3.0",
+  "updated": "2026-10-04",
+  "purpose": "Canonical backend-to-frontend projection contract. Canonical data stays modular and keeps its existing owners; this bridge maps major archive branches and backend families into six simple public doors plus a visible secondary Rooms layer and quieter global/deep surfaces.",
   "data_roots": [
     "data/",
     "knowledge/"
@@ -21,6 +21,7 @@
   ],
   "public_doors": {
     "tim": "tim-dooley/",
+    "potatoism": "potatoism/",
     "religion": "religion/",
     "philosophy": "philosophy/",
     "science": "science/",
@@ -356,9 +357,9 @@
     "empty_description": "show record identity plus available relationships and evidence rather than a blank page"
   },
   "integrity_requirements": [
-    "The homepage exposes exactly five primary public doors",
+    "The homepage exposes exactly six primary public doors",
     "Rooms are secondary subject corridors and never additional primary Doors",
-    "World is the fifth public domain; World Map, Politics, North and World Systems are specialist sibling routes beneath it",
+    "World remains a primary public domain; World Map, Politics, North and World Systems are specialist sibling routes beneath it",
     "Every major manifest branch has one explicit primary_door, global_route or backend_only projection state",
     "Canonical ownership remains in source/canonical records; this bridge owns routing intent only",
     "Mature public readers own their human-facing routes while Explore remains the deep archive browser",
@@ -367,8 +368,8 @@
     "Backend-only or research-heavy records remain discoverable without becoming homepage clutter",
     "Canonical IDs remain stable while aliases may expand",
     "Requested record paths are fetched only after resolving through an approved registry/manifest allowlist",
-    "Living Axis is a secondary cross-domain guide and never becomes a sixth primary Door",
-    "House is the public structural guide above Rooms and Views; it is not a sixth primary Door",
+    "Living Axis remains a secondary cross-domain guide and never becomes an additional primary Door",
+    "House is the public structural guide above Rooms and Views; it is not an additional primary Door",
     "Life & Body and Research Lab remain canonical top-level bounded contexts, publicly projected as Dwellings, with explicit routes",
     "The ten canonical top-level bounded contexts remain owners; publicly they are Dwellings, while nested Rooms delegate scope within them",
     "House topology is typed and multi-axis; URL nesting or visual proximity never determines truth rank or ownership"
