@@ -115,8 +115,8 @@ def main() -> int:
             "cubic-bezier(.2,.8,.2,1)",
             "@media (prefers-reduced-motion: reduce)",
             "--site-elevator-clearance",
-            "--elevator-shell-height:64px",
-            "--elevator-room-height:32px",
+            "--elevator-shell-height:96px",
+            "--elevator-room-height:34px",
             ".site-elevator-room.is-active",
             "--elevator-slot-count:5",
             "flex:0 0 calc((100% - (var(--elevator-room-gap) * (var(--elevator-slot-count) - 1))) / var(--elevator-slot-count))",
@@ -146,6 +146,26 @@ def main() -> int:
         for retired_art in ("site-tree-perspective.svg","site-plane-organic-field.svg","site-below-root-field.svg"):
             if retired_art in css:
                 errors.append(f"site elevator CSS must not reference retired floor art: {retired_art}")
+
+        # Uniform-header contract: floor-specific rules may change only skin/art.
+        # Geometry belongs to the shared elevator component and must be identical
+        # across Heaven, Plane and Below.
+        floor_geometry_pattern = re.compile(
+            r'\.site-elevator\[data-elevator-level="(?:heaven|plane|below)"\][^{]*\{([^}]*)\}',
+            re.S,
+        )
+        forbidden_geometry = re.compile(
+            r'\b(?:width|height|min-height|max-height|padding|margin|gap|'
+            r'grid-template-columns|grid-template-rows|flex|flex-basis|'
+            r'inset|left|right|top|bottom)\s*:',
+            re.I,
+        )
+        for block in floor_geometry_pattern.findall(css):
+            if forbidden_geometry.search(block):
+                errors.append(
+                    "floor-specific site-elevator CSS must not change geometry; "
+                    "Heaven, Plane and Below share one header measurement system"
+                )
         if "installSceneParallax" in js or "--site-scene-y" in js:
             errors.append("site elevator runtime must not restore retired scene parallax")
         if "overflow-x:auto" in css:
