@@ -157,8 +157,8 @@ try:
         if not entrypoints.get(key):
             errors.append(f"discovery.json missing entrypoints.{key}")
     doors = discovery.get("reader_architecture", {}).get("doors", [])
-    if len(doors) != 5:
-        errors.append("discovery.json must expose exactly five primary reader doors")
+    if len(doors) != 6:
+        errors.append("discovery.json must expose exactly six primary reader doors")
     else:
         door_ids = [row.get("id") for row in doors if isinstance(row, dict)]
         if door_ids != ["tim", "religion", "philosophy", "science", "world"]:
@@ -175,7 +175,7 @@ try:
     if SITE != ROOT and urls != indexable:
         errors.append("site-index.json must equal the final indexable canonical page set")
     if len(site_index.get("primary_doors", [])) != 5:
-        errors.append("site-index.json must identify the five primary doors")
+        errors.append("site-index.json must identify the six primary doors")
 except Exception as exc:
     errors.append(f"invalid site-index.json: {exc}")
 
