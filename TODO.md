@@ -1679,10 +1679,10 @@ North-star: **the House should feel inhabited by teachers, objects, stories, que
 - [x] Model Testing — build a small failure museum: one rejected model, one narrowed model and one unresolved model.
 - [ ] Music & Sound — add album/theme/period listening journeys so the discography reads as development rather than inventory.
 - [x] Open Questions — top live questions get next artifact, owner, closure condition and “what would count as no?”.
-- [ ] Other Traditions & Philosophies — foreign-first deep readings for Daoist, Buddhist and Norse material before crosswalks.
-- [ ] Physics & Cosmology — promote one analogy through comparator → model → observable → falsifier, even if it stops early.
-- [ ] Politics & Governance — take one proposal through authority, implementation capacity, opposition, measurement and revision.
-- [ ] Potato Biology — let literal potato biology surprise the symbolism; metaphor comes second.
+- [x] Other Traditions & Philosophies — foreign-first deep readings for Daoist, Buddhist and Norse material before crosswalks.
+- [x] Physics & Cosmology — promote one analogy through comparator → model → observable → falsifier, even if it stops early.
+- [x] Politics & Governance — take one proposal through authority, implementation capacity, opposition, measurement and revision.
+- [x] Potato Biology — let literal potato biology surprise the symbolism; metaphor comes second.
 - [x] Practice & Ethics — add an ordinary-conflict decision path: observe → relation → agency → intervention → fruit.
 - [x] Prediction / Revelation / Time — visible scorecard containing hits, misses, ambiguous cases and post-event reinterpretations.
 - [ ] Provenance & Evidence — show one sentence becoming weaker or stronger across screenshot, repost, summary, archive and primary recovery.
