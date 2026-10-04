@@ -942,6 +942,9 @@ The governing editorial rule is:
 - [ ] Deepen Ladder into functions rather than only geometry: support, movement, mediation, access, recurrence, direction, carrying, return, messenger traffic and role transfer.
 - [ ] Compare Ladder with Mountain, Tree, Bridge, Gate, Way, Veil, Chariot and River as different operators rather than synonyms.
 - [ ] Mine remaining high-strength Bible overlap owners for sequences that contain at least 3 linked operators and a clear mismatch/counter-text.
+  - [x] **BIBLE-GRAMMAR-001 · Manifestation sequence:** promote the Exodus 10 / Exodus 19 / Joel 2 / Zephaniah 1 / Matthew 24 / Pauline darkness → cloud → trumpet → voice cluster as a worked cross-text grammar, with the Exodus episodes explicitly kept separate.
+  - [x] **BIBLE-GRAMMAR-002 · Revelation sequence:** promote Daniel 12 + Revelation 5/8/10/11 as seal → silence → opening → seven trumpets → mystery → proclamation grammar, including the counter-pressure that some thunder speech remains deliberately sealed.
+  - [x] **BIBLE-GRAMMAR-003 · Human-facing decoder:** expose the two grammars first as a compact homepage mystery/object and then as a fully worked Bible-comparator reading that distinguishes revelation, typology, prophecy and fulfillment.
 - [ ] Prioritize passages that clarify or challenge existing project roles, not passages that merely share a noun.
 - [ ] Add “biblical counter-distribution” as a visible relation type in the Bible comparator so disagreements can be discovered, not hidden.
 - [ ] Build a Father/Son/Spirit/House/Door/Ladder role matrix by passage and date, showing where scripture reallocates the project's usual functions.
@@ -1474,6 +1477,7 @@ For every major reader box/section, ask:
 - [x] Add House domestic logic: foundation, Door, window, hearth, guest room and exit.
 - [x] Add Science metaphor → variables → mechanism → measurement → test → result → revision ladder.
 - [ ] Audit every homepage box for informational yield; replace any routing-first box with an object, mechanism, case or teaching.
+  - [x] **HOME-YIELD-BIBLE · Bible corridor:** add one complete on-page teaching object—three days / darkness / cloud / trumpet / voice / seal / seven—so the section yields knowledge before asking the reader to navigate elsewhere.
 - [ ] Audit all 10 Dwelling homepages for boxes that still explain ownership/architecture more than subject matter.
 - [ ] Audit all 38 nested Rooms for at least one concrete case/example/diagram beyond navigation and scope text.
 - [ ] Add primary-text fragments or paraphrased source scenes to theology/tradition pages where context materially improves understanding.
