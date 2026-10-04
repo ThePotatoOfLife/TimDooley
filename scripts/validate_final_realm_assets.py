@@ -12,6 +12,22 @@ FINAL_REALMS = {
     "below": ROOT / "app/home-below.avif",
 }
 
+HALL_ART = {
+    "heroes": ROOT / "app/hall-of-heroes.avif",
+    "shame": ROOT / "app/hall-of-shame.avif",
+}
+
+HALL_SURFACES = {
+    "heroes": (
+        ROOT / "rooms/potatoverse-canon/beings/potatoes/index.html",
+        ROOT / "app/potatoes-hall.css",
+    ),
+    "shame": (
+        ROOT / "below/dogs/index.html",
+        ROOT / "app/dogs-hall.css",
+    ),
+}
+
 LIVE_FILES = [
     ROOT / "app/site-elevator.css",
     ROOT / "index.html",
@@ -41,6 +57,16 @@ def main() -> int:
         if size > 500_000:
             errors.append(f"{floor}: realm asset exceeds lightweight background budget ({size} bytes)")
 
+    for hall, path in HALL_ART.items():
+        if not path.is_file():
+            errors.append(f"{hall}: missing Hall artwork {path.relative_to(ROOT)}")
+            continue
+        size = path.stat().st_size
+        if size < 20_000:
+            errors.append(f"{hall}: Hall artwork looks unexpectedly small ({size} bytes)")
+        if size > 250_000:
+            errors.append(f"{hall}: Hall artwork exceeds page-background budget ({size} bytes)")
+
     texts: dict[Path, str] = {}
     for path in LIVE_FILES:
         if not path.is_file():
@@ -63,6 +89,26 @@ def main() -> int:
             errors.append(f"Room preview system missing {asset}")
         if asset not in build:
             errors.append(f"build fingerprint graph missing {asset}")
+
+    for hall, asset_path in HALL_ART.items():
+        asset = asset_path.name
+        html_path, css_path = HALL_SURFACES[hall]
+        if not html_path.is_file():
+            errors.append(f"{hall}: missing Hall source page {html_path.relative_to(ROOT)}")
+            continue
+        if not css_path.is_file():
+            errors.append(f"{hall}: missing Hall stylesheet {css_path.relative_to(ROOT)}")
+            continue
+        html_text = html_path.read_text(encoding="utf-8", errors="replace")
+        css_text = css_path.read_text(encoding="utf-8", errors="replace")
+        if asset not in html_text:
+            errors.append(f"{hall}: Hall source page does not mount {asset}")
+        if asset not in css_text:
+            errors.append(f"{hall}: Hall stylesheet does not use {asset}")
+        if "hall-scene" not in html_text:
+            errors.append(f"{hall}: Hall source page missing visible arrival scene")
+        if asset not in build:
+            errors.append(f"{hall}: build fingerprint graph missing {asset}")
 
     for retired in RETIRED_SCENES:
         for path, text in texts.items():
@@ -92,6 +138,8 @@ def main() -> int:
     print("FINAL REALM ASSET VALIDATION PASSED")
     for floor, path in FINAL_REALMS.items():
         print(f"- {floor}: {path.relative_to(ROOT)} ({path.stat().st_size} bytes)")
+    for hall, path in HALL_ART.items():
+        print(f"- {hall}: {path.relative_to(ROOT)} ({path.stat().st_size} bytes)")
     return 0
 
 
