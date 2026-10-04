@@ -1,5 +1,5 @@
 {
-  "version": "3.10.3",
+  "version": "3.10.4",
   "updated": "2026-10-04",
   "authority": "project-synthesis",
   "purpose": "Bind the current project center, operators, living metabolisms, Rooms, tests, outputs and public composition into one center-out synthesis without replacing canonical owners. Development history is referenced, not embedded as current-state weight.",
@@ -1889,6 +1889,7 @@
       "start-in-a-minute",
       "home-seedbed",
       "three-potato-paths",
+      "two-halls",
       "home-relearning",
       "what-we-are-doing",
       "home-growth-rings",
@@ -1925,6 +1926,14 @@
           "potatoism/grow/index.html",
           "axis/index.html",
           "rooms/potatoverse-canon/beings/potatoes/index.html"
+        ]
+      },
+      {
+        "id": "two-halls",
+        "purpose": "Surface Hall of Heroes and Hall of Shame as a paired reader destination: accumulated Fruit/service versus accumulated recurrence/failure.",
+        "owners": [
+          "rooms/potatoverse-canon/beings/potatoes/index.html",
+          "below/dogs/index.html"
         ]
       },
       {
@@ -2038,7 +2047,8 @@
       "materialized-now": "Owns a few stable scale indicators, not a live dashboard.",
       "reader-routing": "Owns subject / time / verify / connect / test task routing.",
       "follow-tim": "Owns current external public-presence routes.",
-      "rule": "Do not add a homepage section that recreates a specialist reader or former dashboard module."
+      "rule": "Do not add a homepage section that recreates a specialist reader or former dashboard module.",
+      "two-halls": "Owns the paired Home handoff into Hall of Heroes / Hall of Shame; it should not reteach either Hall in full."
     },
     "runtime_input_contract": {
       "rule": "The current homepage is intentionally mostly static. Optional current-news behavior may load independently; no specialist House projection is required for the front door to function.",
