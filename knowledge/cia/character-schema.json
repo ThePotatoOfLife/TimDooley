@@ -1,7 +1,7 @@
 {
   "id": "cia-character-schema-v1",
   "title": "CIA Character Record Schema",
-  "updated": "2026-09-20",
+  "updated": "2026-10-04",
   "namespace": "potatoverse-character-archive",
   "fields": {
     "identity": [
@@ -94,6 +94,20 @@
       "unknown",
       "relationship_arc",
       "confidence_note"
+    ],
+    "assessments": [
+      "term",
+      "layer",
+      "attribution",
+      "scope",
+      "date",
+      "from",
+      "to",
+      "source_mode",
+      "source_ref",
+      "exact_wording",
+      "confidence",
+      "superseded_by"
     ]
   },
   "rules": [
@@ -108,10 +122,15 @@
     "Portraits/evidence images require an explicit dossier-owned source reference; never guess a real person's identity from an unsourced image.",
     "Shared symbolic proxy images must be labeled as non-likeness role illustrations and may not be presented as portraits or documentary evidence.",
     "Every mature dossier should explain why it matters and separate known material, interpretation and unknowns before adding more labels.",
-    "Thin dossiers may become more meaningful by preserving exact presence windows and explicit missing context rather than inventing incidents."
+    "Thin dossiers may become more meaningful by preserving exact presence windows and explicit missing context rather than inventing incidents.",
+    "Tim's character assessments must remain explicitly attributed to Tim or another named source; archive synthesis must be labeled as synthesis rather than direct quotation.",
+    "Clinical-sounding terms such as narcissistic or delusional may be preserved only as attributed non-clinical characterizations unless an independent qualified diagnosis is actually sourced.",
+    "Truthful/dishonest and trustworthy/untrustworthy labels require a dated statement, contradiction, admission or repeated reliability pattern; disagreement alone is not enough.",
+    "Preserve changing assessments over time rather than overwriting an earlier role or character judgment."
   ],
   "contracts": {
     "symbolic_account": "knowledge/cia/symbolic-account-contract.json",
-    "symbolic_images": "knowledge/cia/symbolic-image-pool.json"
+    "symbolic_images": "knowledge/cia/symbolic-image-pool.json",
+    "tim_assessments": "knowledge/cia/tim-assessment-contract.json"
   }
 }
