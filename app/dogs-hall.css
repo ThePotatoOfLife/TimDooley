@@ -950,3 +950,33 @@ body.dogs-hall-page::after{
     gap:10px;
   }
 }
+
+
+/* Hall browser compatibility polish. */
+body.dogs-hall-page{
+  overflow-x:hidden;
+  overflow-x:clip;
+}
+.dogs-hall-page .hall-scene__caption{
+  -webkit-backdrop-filter:blur(5px);
+}
+.dogs-hall-page .hall-threshold,
+.dogs-hall-page .great-table,
+.dogs-hall-page .shame-village,
+.dogs-hall-page .honor-register,
+.dogs-hall-page .notoriety-ledger,
+.dogs-hall-page .hall-source-desk,
+.dogs-hall-page .hall-exits{
+  -webkit-backdrop-filter:blur(8px) saturate(.94);
+}
+@media(max-width:760px){
+  .dogs-hall-page .hall-threshold,
+  .dogs-hall-page .great-table,
+  .dogs-hall-page .shame-village,
+  .dogs-hall-page .honor-register,
+  .dogs-hall-page .notoriety-ledger,
+  .dogs-hall-page .hall-source-desk,
+  .dogs-hall-page .hall-exits{
+    -webkit-backdrop-filter:none;
+  }
+}
