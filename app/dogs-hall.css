@@ -440,3 +440,46 @@ body.dogs-hall-page{
 @media(max-width:760px){
   .dogs-hall-page .takeaway-grid{grid-template-columns:1fr}
 }
+
+
+/* Hall deep-link and keyboard polish. */
+.dogs-hall-page [id]{
+  scroll-margin-top:calc(var(--site-elevator-clearance,56px) + 18px);
+}
+.dogs-hall-page .hall-door-strip{
+  position:relative;
+  padding-top:22px;
+}
+.dogs-hall-page .hall-door-strip::before{
+  content:"ROOM MAP";
+  position:absolute;
+  top:2px;
+  left:1px;
+  color:#d18d68;
+  opacity:.72;
+  font:700 8px/1 ui-monospace,SFMono-Regular,Consolas,monospace;
+  letter-spacing:.13em;
+}
+.dogs-hall-page a:focus-visible,
+.dogs-hall-page button:focus-visible{
+  outline:2px solid #d18d68;
+  outline-offset:3px;
+}
+.dogs-hall-page .hall-door-strip a,
+.dogs-hall-page .hall-door-grid a,
+.dogs-hall-page .hero-plaque a,
+.dogs-hall-page .table-seats a{
+  transition:border-color .16s ease,background .16s ease,color .16s ease,transform .16s ease;
+}
+.dogs-hall-page .hall-door-strip a:hover,
+.dogs-hall-page .hall-door-grid a:hover{
+  transform:translateY(-1px);
+}
+@media (prefers-reduced-motion: reduce){
+  .dogs-hall-page .hall-door-strip a,
+  .dogs-hall-page .hall-door-grid a,
+  .dogs-hall-page .hero-plaque a,
+  .dogs-hall-page .table-seats a{transition:none}
+  .dogs-hall-page .hall-door-strip a:hover,
+  .dogs-hall-page .hall-door-grid a:hover{transform:none}
+}
