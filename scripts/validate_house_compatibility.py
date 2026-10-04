@@ -8,7 +8,7 @@ SURFACES=ROOT/'data/house/public-surfaces.json'
 BRIDGE=ROOT/'data/frontend-atlas-bridge.json'
 COVERAGE=ROOT/'data/backend-coverage-map.json'
 ATLAS=ROOT/'data/atlas-manifest.json'
-EXPECTED=('tim','religion','philosophy','science','world')
+EXPECTED=('tim','potatoism','religion','philosophy','science','world')
 
 def load(path): return json.loads(path.read_text(encoding='utf-8'))
 
@@ -39,8 +39,8 @@ def main():
     if atlas.get('frontend_projection')!='data/frontend-atlas-bridge.json':
         errors.append('atlas manifest frontend_projection must remain data/frontend-atlas-bridge.json')
     requirements=' '.join(bridge.get('integrity_requirements',[]))
-    if 'World is the fifth public domain' not in requirements:
-        errors.append('frontend bridge must preserve World-as-fifth-domain integrity requirement')
+    if 'six primary public doors' not in requirements:
+        errors.append('frontend bridge must preserve the current six-door integrity requirement')
     if errors:
         print('POTATO HOUSE COMPATIBILITY VALIDATION FAILED')
         for error in errors: print('-',error)
