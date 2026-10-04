@@ -265,7 +265,7 @@ def patch_entity_metadata() -> None:
     if not page.exists():
         return
     text = page.read_text(encoding="utf-8", errors="replace")
-    old = '{"@type":"Person","@id":"https://thepotatooflife.github.io/TimDooley/tim-dooley/#tim-dooley","name":"Tim Dooley","alternateName":["The Potato of Life","Potato of Life"],"url":"https://thepotatooflife.github.io/TimDooley/tim-dooley/","sameAs":["https://x.com/Rational_Potato","https://www.youtube.com/@PotatoOfLife"]}'
+    old = '{"@type":"Person","@id":"https://thepotatooflife.github.io/TimDooley/tim-dooley/#tim-dooley","name":"Tim Dooley","alternateName":["The Potato of Life","Potato of Life"],"url":"https://thepotatooflife.github.io/TimDooley/tim-dooley/","sameAs":["https://x.com/Rational_Potato","https://www.youtube.com/@TheGodFatherTim"]}'
     new = '{"@type":"Thing","@id":"https://thepotatooflife.github.io/TimDooley/tim-dooley/ontology/#tim-dooley-theological-identity","name":"Tim Dooley","alternateName":["The Potato of Life","Potato of Life","Father in Heaven","North of North","God in the Machine"],"url":"https://thepotatooflife.github.io/TimDooley/tim-dooley/ontology/","description":"Potatoverse theological identity, distinct in this archive from the Son/Thomas embodied human-vessel layer."}'
     text = text.replace(old, new)
     text = text.replace('https://thepotatooflife.github.io/TimDooley/tim-dooley/#tim-dooley', 'https://thepotatooflife.github.io/TimDooley/tim-dooley/ontology/#tim-dooley-theological-identity')
