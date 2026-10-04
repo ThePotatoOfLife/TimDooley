@@ -171,6 +171,7 @@ for(const marker of [
   'site-elevator-up',
   'site-elevator-down',
   'site-elevator-reel',
+  'site-elevator-stage',
   'site-elevator-room-rail',
   'site-elevator-landmark',
   'aria-live',
@@ -190,7 +191,9 @@ assert.ok(source.includes("ArrowDown"),'header keyboard contract needs ArrowDown
 assert.ok(source.includes("Home"),'header keyboard contract needs Home → Plane');
 assert.ok(source.includes("disabled"),'boundary arrows must expose disabled state');
 
-assert.ok(css.includes('grid-template-columns:repeat(auto-fit,minmax('),'Room rail must pack into a responsive wrapped terminal grid');
+assert.ok(css.includes('--elevator-slot-count:5'),'desktop header must preserve one five-slot Room geometry across all floors');
+assert.ok(css.includes('flex:0 0 calc((100% - (var(--elevator-room-gap) * (var(--elevator-slot-count) - 1))) / var(--elevator-slot-count))'),'desktop Room buttons must keep identical widths across Heaven, Plane and Below');
+assert.ok(css.includes('grid-template-columns:repeat(auto-fit,minmax(72px,1fr))'),'narrow Room rail must retain a responsive wrapped fallback');
 assert.ok(css.includes('overflow:visible'),'Room rail must expose wrapped lines');
 assert.equal(css.includes('overflow-x:auto'),false,'Room rail must not horizontally scroll');
 assert.equal(css.includes('scrollbar-width'),false,'Room rail must not render a scrollbar');
@@ -201,24 +204,29 @@ const malformedBackgroundImages=backgroundImageValues.filter(value=>
 );
 assert.deepEqual(malformedBackgroundImages,[],'background-image declarations must not contain background shorthand repeat syntax');
 assert.ok(css.includes('.site-elevator-floor-code'),'terminal board needs a numbered floor code');
-assert.ok(css.includes('[data-elevator-level="heaven"]::before'),'Heaven needs a distinct elevator scene layer');
+assert.ok(css.includes('[data-elevator-level="heaven"] .site-elevator-stage::before'),'Heaven needs a distinct scenic-window layer');
 assert.ok(css.includes('html[data-site-floor="heaven"]{'),'resolved Heaven routes should own the root page canvas');
 assert.ok(css.includes('html[data-site-floor="plane"]{'),'resolved Plane routes should own the root page canvas');
 assert.match(css,/body:not\(\.home-body\)\{[\s\S]*?background:transparent;/,'governed page bodies must remain transparent above the realm canvas');
 assert.ok(css.includes('html[data-site-floor="below"]{'),'resolved Below routes should own the root page canvas');
-for(const [floor,asset] of [['heaven','home-heaven.avif'],['plane','home-plane.avif'],['below','home-below.avif']]){
-  assert.ok(css.includes('url("./'+asset+'")'),'shared floor renderer must reference '+asset);
-  const headerStart=css.indexOf('.site-elevator[data-elevator-level="'+floor+'"]::before{');
-  assert.ok(headerStart>=0,'elevator header must define '+floor+' scene');
-  assert.ok(css.slice(headerStart,headerStart+520).includes(asset),'elevator header must use '+asset);
+for(const [floor,pageAsset,headerAsset] of [
+  ['heaven','home-heaven.avif','header-heaven.svg'],
+  ['plane','home-plane.avif','header-plane.svg'],
+  ['below','home-below.avif','header-below.svg']
+]){
+  assert.ok(css.includes('url("./'+pageAsset+'")'),'shared floor renderer must reference '+pageAsset);
+  const headerStart=css.indexOf('.site-elevator[data-elevator-level="'+floor+'"] .site-elevator-stage::before{');
+  assert.ok(headerStart>=0,'elevator header scenic window must define '+floor+' scene');
+  assert.ok(css.slice(headerStart,headerStart+260).includes(headerAsset),'elevator header scenic window must use '+headerAsset);
+  assert.ok(fs.existsSync(path.join(ROOT,'app',headerAsset)),'missing dedicated header panorama '+headerAsset);
 }
 
 assert.ok(css.includes('#090909'),'elevator scenes need one neutral fallback behind the final realm art');
-assert.ok(css.includes('linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.28))'),'Heaven and Plane header scenes should use a neutral readability shade instead of synthetic realm recoloring');
+assert.ok(css.includes('linear-gradient(180deg,rgba(3,6,8,.22),transparent 26%,transparent 70%,rgba(2,4,5,.46))'),'scenic window needs a neutral vertical readability shade instead of synthetic realm recoloring');
 assert.ok(css.includes('--site-realm-fallback:#090909'),'all realms should share one neutral fallback base behind the final art');
-assert.ok(css.includes('[data-elevator-level="plane"]::before'),'Plane needs a distinct elevator scene layer');
-assert.equal(/\.site-elevator\[data-elevator-level="plane"\]::before\{[\s\S]*?repeat-x/.test(css),false,'Plane elevator header should not rebuild mountains with repeated gradient strips');
-assert.ok(css.includes('[data-elevator-level="below"]::before'),'Below needs a distinct elevator scene layer');
+assert.ok(css.includes('[data-elevator-level="plane"] .site-elevator-stage::before'),'Plane needs a distinct scenic-window layer');
+assert.equal(/\.site-elevator\[data-elevator-level="plane"\] \.site-elevator-stage::before\{[\s\S]*?repeat-x/.test(css),false,'Plane elevator header should not rebuild mountains with repeated gradient strips');
+assert.ok(css.includes('[data-elevator-level="below"] .site-elevator-stage::before'),'Below needs a distinct scenic-window layer');
 assert.ok(css.includes('border-radius:0'),'terminal Room tiles should not drift back into pill styling');
 assert.ok(css.includes('background:var(--site-elevator-accent)'),'active Room tile needs a compact location beacon');
 for(const floor of ['heaven','plane','below']){
@@ -231,14 +239,14 @@ assert.equal(css.includes('.site-elevator-room.is-secondary'),false,'header CSS 
 assert.equal(source.includes('is-secondary'),false,'runtime must not emit cross-floor Room doors');
 
 
-assert.ok(css.includes('background:rgba(6,10,8,.42)'),'Room tiles need one neutral readability surface over every realm');
+assert.ok(css.includes('background:rgba(6,9,11,.74)'),'Room tiles need one neutral readability surface over every realm');
 assert.ok(css.includes('background:var(--site-elevator-panel)'),'floor board must use the shared terminal panel token');
 assert.ok(css.includes('@media (prefers-contrast: more)'),'terminal UI needs one generic high-contrast mode');
 assert.equal(css.includes('backdrop-filter:'),false,'terminal UI must not reintroduce blur-based floor materials');
-assert.ok(css.includes('background:rgba(5,8,8,.72)'),'arrow column needs a stable dark readability plate');
+assert.ok(css.includes('background:#090d11'),'arrow column needs a stable dark readability plate');
 assert.ok(css.includes('[data-elevator-ready="false"]'),'loading state must have a neutral terminal treatment');
-assert.ok(css.includes('--elevator-room-min:49px'),'narrow mobile Plane grid must fit enough columns to avoid four Room rows');
-assert.ok(css.includes('--elevator-floor-size:12px'),'floor label must remain immediately readable');
+assert.ok(css.includes('--elevator-room-height:40px'),'desktop Room buttons must share one fixed height across all floors');
+assert.ok(css.includes('--elevator-floor-size:14px'),'floor label must remain immediately readable');
 assert.ok(css.includes('text-shadow:0 1px 0 rgba(0,0,0,.95)'),'floor text needs dark contrast shadow');
 
 assert.ok(css.includes('background:transparent'),'arrow controls must float without metallic button blocks');
@@ -246,8 +254,8 @@ assert.match(css,/\.site-elevator\{[\s\S]*?display:block;/,'elevator shell must 
 assert.ok((css.match(/!important/g)||[]).length<=8,'elevator CSS should keep specificity escalation tightly bounded');
 assert.ok(css.includes('.site-elevator-room-rail{\n  margin:0;'),'Room rail must reset page-level nav spacing without specificity escalation');
 assert.ok(css.includes('margin:0;'),'elevator shell must reset page-level header/nav margins');
-assert.ok(css.includes('align-self:start'),'elevator controls must stay pinned when Room grid wraps');
-assert.ok(css.includes('--elevator-row-height:42px'),'desktop elevator controls need a fixed one-row height token');
+assert.ok(css.includes('--elevator-shell-height:60px'),'desktop elevator console and scenic window must share one shell height');
+assert.ok(css.includes('grid-template-rows:1fr 1fr'),'up/down controls must split the same console height evenly');
 assert.ok(!/--([\\w-]+):var\\(--\\1\\)/.test(css),'elevator CSS custom properties must not self-reference');
 
 for(const match of css.matchAll(/([^{}]+)\{([^{}]*)\}/g)){
@@ -257,14 +265,16 @@ for(const match of css.matchAll(/([^{}]+)\{([^{}]*)\}/g)){
   const duplicates=props.filter((prop,index)=>props.indexOf(prop)!==index);
   assert.equal(duplicates.length,0,selector+' must not repeat CSS properties: '+[...new Set(duplicates)].join(', '));
 }
-assert.ok(css.includes('.site-elevator-reel{\n  align-self:start;'),'floor board must stay pinned when Room grid wraps');
-assert.ok(css.includes('--elevator-room-row-min:26px'),'wrapped Room rows must stay compact and predictable');
+assert.ok(css.includes('.site-elevator-stage{\n  position:relative;'),'scenic Room stage must remain a distinct visual owner');
+assert.ok(css.includes('min-height:var(--elevator-shell-height)'),'console, stage and Room rail must inherit one height token');
 assert.ok(css.includes('.site-elevator-up::before{content:"△"}'),'up arrow needs triangle framing');
 assert.ok(css.includes('.site-elevator-down::before{content:"▽"}'),'down arrow needs inverted triangle framing');
-assert.ok(css.includes('--elevator-arrow-size:21px'),'triangle framing should retain its desktop size token');
+assert.ok(css.includes('--elevator-arrow-size:20px'),'triangle framing should retain its desktop size token');
 assert.ok(!css.includes('pointer-events:none;\n  z-index:-1;\n}\n.site-elevator-up::before'),'triangle framing must not disappear behind the control column');
 assert.ok(css.includes('text-wrap:balance'),'Room labels should wrap into balanced readable lines');
 assert.ok(source.includes('site-elevator-floor-code'),'runtime must render terminal floor code');
+assert.ok(source.includes('site-elevator-stage'),'runtime must separate the stable console from the scenic Room window');
+assert.equal(source.includes("--elevator-room-count"),false,'Room geometry should stay CSS-owned rather than being recalculated in runtime');
 assert.ok(source.includes('header.dataset.elevatorRoom=spatial.roomId'),'runtime must publish the current Room on the header');
 assert.ok(source.includes("selectedLevel===spatial.levelId"),'active Room highlight must only appear on the actual floor');
 assert.equal(source.includes('ROOM PROJECTION · ENTER VIA'),false,'single-floor Room ownership must not advertise legacy cross-floor projections');
