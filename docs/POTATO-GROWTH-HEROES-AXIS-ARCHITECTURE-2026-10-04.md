@@ -126,7 +126,7 @@ The reader is the witness / learner.
 The Hall teaches indirectly:
 Look at what happened here. What can you learn from it?
 
-It should be inspirational without becoming a leaderboard or court of favorites.
+It should be inspirational without becoming a literal ranking of human worth or a court of favorites. Visually, the Hall may borrow the celebratory language of an old arcade high-score board—slots, high marks, initials, bonus stages, achievements and CONTINUE energy—so long as the 'score' remains the sourced transformation, Fruit and service rather than an invented moral number.
 
 ## Hall of Heroes design principle
 
@@ -295,3 +295,14 @@ Those are:
 - Hall of Heroes.
 
 They connect strongly. They should not collapse.
+
+
+## Hall of Shame design principle
+
+The Dogs hall may function as the inverse arcade cabinet: **GAME OVER / failed run / loop / consequence / CONTINUE?** The purpose is to make failure memorable without creating a permanent caste of condemned people.
+
+- Rank **failure modes**, not souls.
+- A real person belongs in CIA when chronology and evidence matter.
+- Hall of Shame language may describe a sourced role or pattern, but should always preserve an exit condition.
+- The strongest dramatic contrast is Heroes = what became possible because growth happened; Shame = what kept reproducing because the loop did not change.
+- A Dog who verifies, stops, repairs or changes function can leave the losing board. The mythology should make return visible.
