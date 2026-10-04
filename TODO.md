@@ -1664,19 +1664,19 @@ North-star: **the House should feel inhabited by teachers, objects, stories, que
 - [ ] Cross-page vocabulary pressure test — terms such as Root, Door, Garden, Fruit, Forge and Mud should do local analytical work each time rather than functioning as ambient branding.
 
 ### Wave 3 — nested Rooms get a concrete intellectual centerpiece
-- [ ] Bible & Christianity — one full passage walk: text, context, Christian interpretive range, Tim-side comparison, countertext and stopping point.
-- [ ] Core Identities & Roles — one role-collision case showing why Tim / Father / Son / Potato of Life cannot be treated as interchangeable labels.
-- [ ] Comparative Mythology — one source-first comparison from primary mythic material to function, similarity and decisive difference.
-- [ ] Developmental Genealogy — one lineage from precursor through mutation, supersession and mature role.
-- [ ] Economy & Finance — follow one obligation through households, banks, government and markets.
+- [x] Bible & Christianity — one full passage walk: text, context, Christian interpretive range, Tim-side comparison, countertext and stopping point.
+- [x] Core Identities & Roles — one role-collision case showing why Tim / Father / Son / Potato of Life cannot be treated as interchangeable labels.
+- [x] Comparative Mythology — one source-first comparison from primary mythic material to function, similarity and decisive difference.
+- [x] Developmental Genealogy — one lineage from precursor through mutation, supersession and mature role.
+- [x] Economy & Finance — follow one obligation through households, banks, government and markets.
 - [ ] Esoteric & Sacred Geometry — one dated symbol lineage showing how the same shape acquires different meanings in different communities.
-- [ ] Experiments & Formalization — one end-to-end experiment card with claim, operationalization, measurement, falsifier and interpretation.
-- [ ] House Architecture — let the reader solve one real routing/ownership problem instead of only reading architecture rules.
-- [ ] Information Ecology — follow one artifact through live, cached, copied, transformed, orphaned, recovered and canonical states.
-- [ ] Internet & Platforms — follow one stream/post through upload, recommendation, clipping, deletion/moderation, recovery and citation.
-- [ ] Law & Justice — one jurisdiction → rule → evidence → procedure → remedy → appeal chain.
-- [ ] Mathematics & Geometry — pair one exact construction with one seductive but invalid metaphysical inference.
-- [ ] Model Testing — build a small failure museum: one rejected model, one narrowed model and one unresolved model.
+- [x] Experiments & Formalization — one end-to-end experiment card with claim, operationalization, measurement, falsifier and interpretation.
+- [x] House Architecture — let the reader solve one real routing/ownership problem instead of only reading architecture rules.
+- [x] Information Ecology — follow one artifact through live, cached, copied, transformed, orphaned, recovered and canonical states.
+- [x] Internet & Platforms — follow one stream/post through upload, recommendation, clipping, deletion/moderation, recovery and citation.
+- [x] Law & Justice — one jurisdiction → rule → evidence → procedure → remedy → appeal chain.
+- [x] Mathematics & Geometry — pair one exact construction with one seductive but invalid metaphysical inference.
+- [x] Model Testing — build a small failure museum: one rejected model, one narrowed model and one unresolved model.
 - [ ] Music & Sound — add album/theme/period listening journeys so the discography reads as development rather than inventory.
 - [ ] Open Questions — top live questions get next artifact, owner, closure condition and “what would count as no?”.
 - [ ] Other Traditions & Philosophies — foreign-first deep readings for Daoist, Buddhist and Norse material before crosswalks.
