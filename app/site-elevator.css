@@ -314,18 +314,18 @@ html[data-site-floor="below"]{
   background-image:var(--site-realm-art);
   background-repeat:no-repeat;
   background-position:var(--site-header-art-position);
-  background-size:max(1086px,100vw) auto;
+  background-size:cover;
   filter:saturate(.95) contrast(1.05);
   transform:translateZ(0);
 }
 .site-elevator[data-elevator-level="heaven"] .site-elevator-stage::before{
-  background-image:url("./home-heaven.avif");
+  background-image:url("./header-heaven.svg");
 }
 .site-elevator[data-elevator-level="plane"] .site-elevator-stage::before{
-  background-image:url("./home-plane.avif");
+  background-image:url("./header-plane.svg");
 }
 .site-elevator[data-elevator-level="below"] .site-elevator-stage::before{
-  background-image:url("./home-below.avif");
+  background-image:url("./header-below.svg");
 }
 .site-elevator-stage::after{
   content:"";
