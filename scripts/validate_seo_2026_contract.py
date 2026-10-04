@@ -174,6 +174,28 @@ def test_machine_surface_graph_contract() -> None:
             fail(f"machine discovery must expose public-surface semantics: {marker}")
 
 
+
+def test_tim_entity_answer_contract() -> None:
+    """Protect the answer-first authority surface for the site's primary subject."""
+    page = (ROOT / "tim-dooley" / "index.html").read_text(encoding="utf-8", errors="replace")
+    required = (
+        "Who is Tim Dooley?",
+        "Tim Dooley is a Danish writer, livestreamer, storyteller, archive-builder and creator of the Potato of Life project.",
+        "official project-owned first-party archive",
+        '"@type":"ProfilePage"',
+        '"@type":"Person"',
+        "https://x.com/Rational_Potato",
+        "https://www.youtube.com/@PotatoOfLife",
+    )
+    for marker in required:
+        if marker not in page:
+            fail(f"Tim Dooley authority page missing answer-first/entity marker: {marker}")
+
+    living = (ROOT / "tim-dooley" / "tim-dooley" / "index.html").read_text(encoding="utf-8", errors="replace")
+    if "Who is Tim Dooley in his own words?" not in living:
+        fail("Living Tim page must declare its first-person search intent before extended voice material")
+
+
 def test_homepage_authority_contract() -> None:
     home = (ROOT / "index.html").read_text(encoding="utf-8", errors="replace")
     sitemap = f'<link rel="sitemap" type="application/xml" href="{BASE_URL}/sitemap-index.xml">'
@@ -201,6 +223,7 @@ def main() -> int:
         test_discovery_owner_contract,
         test_generated_question_schema_contract,
         test_machine_surface_graph_contract,
+        test_tim_entity_answer_contract,
         test_homepage_authority_contract,
     )
     failures: list[str] = []
