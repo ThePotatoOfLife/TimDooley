@@ -23,6 +23,7 @@ REPRESENTATIVE_CONTEXTS = {
     "/": ("plane", None),
     "/tim-dooley/": ("plane", None),
     "/potato-of-life/": ("heaven", "potatoverse-canon"),
+    "/potatoism/": ("heaven", "potatoverse-canon"),
     "/religion/": ("heaven", "traditions-texts"),
     "/science/": ("plane", "science-formal-models"),
     "/politics/": ("plane", "world-systems"),
