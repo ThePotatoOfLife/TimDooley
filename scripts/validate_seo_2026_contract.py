@@ -185,7 +185,7 @@ def test_tim_entity_answer_contract() -> None:
         '"@type":"ProfilePage"',
         '"@type":"Person"',
         "https://x.com/Rational_Potato",
-        "https://www.youtube.com/@PotatoOfLife",
+        "https://www.youtube.com/@TheGodFatherTim",
     )
     for marker in required:
         if marker not in page:
