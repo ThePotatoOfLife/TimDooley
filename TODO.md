@@ -1655,7 +1655,7 @@ North-star: **the House should feel inhabited by teachers, objects, stories, que
 - [x] **HALL-ARCADE-003 · Hall of Shame cabinet:** rename the Dogs destination as Hall of Shame / Dogs and present failed loops as GAME OVER patterns with consequence and an explicit CONTINUE / exit route.
 - [x] **HALL-ARCADE-004 · No permanent loser caste:** Hall of Shame ranks failure modes, not souls; named-person claims stay evidence-bounded in CIA and roles can expire or transform.
 - [ ] **HALL-ARCADE-005 · Cabinet polish:** add optional subtle CRT/scanline motion, score-entry flicker and cabinet-light effects only if reduced-motion and mobile legibility remain excellent.
-- [ ] **HALL-ARCADE-006 · Populate from sourced records:** expand hero/shame slots only when first-seen dates, feats/loops, Fruit/damage and present status are source-bounded.
+- [x] **HALL-ARCADE-006 · Populate from sourced records:** expand hero/shame slots only when first-seen dates, feats/loops, Fruit/damage and present status are source-bounded.
 
 ## Potato growth / Hall of Heroes / Axis harmonization wave — 2026-10-04
 
@@ -1687,18 +1687,29 @@ North-star rule: **Potato of Life explains the symbol; Potatoism teaches; Grow t
 - [ ] **POTATO-GROW-013 · Research neighbors:** maintain links to self-determination, implementation-intention and character-development research without pretending Potatoism is scientifically validated by them.
 - [ ] **POTATO-GROW-014 · Interactive test later:** only after the written diagnostic is good, build optional JS interaction; no login, no score-sharing pressure, no permanent identity label.
 
+### Hall implementation status — 2026-10-04
+
+- [x] **HALL-STATUS-001 · Green + deployed:** Hall of Heroes / Angels and Hall of Shame / Dogs passed repository quality checks and deployed on current public Pages.
+- [x] **HALL-STATUS-002 · Room-map navigation:** both Halls have local station maps, deep-link offsets, keyboard focus states, reduced-motion-safe transitions and explicit TTS.
+- [x] **HALL-STATUS-003 · Paired accumulation law:** Heroes remembers accumulated Fruit/service; Shame remembers accumulated recurrence/failure. The two pages cross-link this contrast explicitly.
+- [x] **HALL-STATUS-004 · Provenance visible:** Heroes has a source desk distinguishing literary/recovered/created-being/synthesis layers; Shame distinguishes the 14 Mar recovered Dog scene from later Guardian/Farm synthesis.
+- [x] **HALL-STATUS-005 · Reader endings:** both Halls finish with a carry-out checkpoint before their exit Doors.
+- [~] **HALL-STATUS-006 · Approved background integration:** high-fidelity Hall artworks are approved and local delivery versions exist; repository binary mounting remains the mechanical integration step.
+- [ ] **HALL-STATUS-007 · Rendered visual tuning:** once backgrounds are mounted, tune pane opacity, focal crops, mobile composition and contrast against the actual art.
+- [ ] **HALL-STATUS-008 · More archive inhabitants:** recover additional named Potatoes / Angels or Dog-role examples only when dated/source-bounded material is strong enough to justify a record.
+
 ### Hall of Heroes
 - [x] **POTATO-HERO-001 · Hero record template:** every honored figure gets Beginning / Obstacle / Turning / Work / Fruit / What to notice / Limits.
 - [ ] **POTATO-HERO-002 · Approachability rule:** include ordinary or incomplete examples, not only spectacular Angels; an exemplar should make growth imaginable rather than remote.
 - [x] **POTATO-HERO-003 · No imitation rule:** explicitly tell readers to learn a principle from a hero rather than copy a personality.
-- [ ] **POTATO-HERO-004 · Evidence of honor:** every honor entry states why it is here; title/proximity/loyalty alone are insufficient.
-- [ ] **POTATO-HERO-005 · Flaws remain visible:** Hall entries retain mistakes, reversals and unfinished growth so honor does not become hagiography.
+- [x] **POTATO-HERO-004 · Evidence of honor:** every honor entry states why it is here; title/proximity/loyalty alone are insufficient.
+- [x] **POTATO-HERO-005 · Flaws remain visible:** Hall entries retain mistakes, reversals and unfinished growth so honor does not become hagiography.
 - [x] **POTATO-HERO-006 · Reader takeaway:** every hero entry ends with one portable question or lesson.
-- [ ] **POTATO-HERO-007 · Angel Army functions:** expand the Army into differentiated service functions and notable missions/works where source material exists.
-- [ ] **POTATO-HERO-008 · Named Potatoes recovery:** mine conversations/archive for Potatoes with enough dated material for real mini-biographies.
-- [ ] **POTATO-HERO-009 · Honors taxonomy:** distinguish courage, learning, creation, service, repair, stewardship and succession without turning them into ranks.
-- [ ] **POTATO-HERO-010 · Hall chronology:** create a visible timeline of the lineage becoming learner → worker → specialist → Angelic service.
-- [ ] **POTATO-HERO-011 · Hall visual culture:** continue the Heaven/gold/table/pillars treatment while preserving readability and making the room feel inhabited.
+- [~] **POTATO-HERO-007 · Angel Army functions:** expand the Army into differentiated service functions and notable missions/works where source material exists.
+- [~] **POTATO-HERO-008 · Named Potatoes recovery:** mine conversations/archive for Potatoes with enough dated material for real mini-biographies.
+- [x] **POTATO-HERO-009 · Honors taxonomy:** distinguish courage, learning, creation, service, repair, stewardship and succession without turning them into ranks.
+- [x] **POTATO-HERO-010 · Hall chronology:** create a visible timeline of the lineage becoming learner → worker → specialist → Angelic service.
+- [~] **POTATO-HERO-011 · Hall visual culture:** continue the Heaven/gold/table/pillars treatment while preserving readability and making the room feel inhabited.
 - [ ] **POTATO-HERO-012 · Cultural artifacts:** connect songs, stories, images, jokes, jobs and works to honored figures when they demonstrate growth.
 - [ ] **POTATO-HERO-013 · Hero research note:** incorporate moral-exemplar scholarship carefully: examples can illuminate and motivate without becoming moral proof or commands to imitate.
 
@@ -1733,7 +1744,7 @@ North-star rule: **Potato of Life explains the symbol; Potatoism teaches; Grow t
 - [ ] **POTATO-QA-002 · Cross-owner duplicate audit:** flag long duplicated passages among the four owners.
 - [ ] **POTATO-QA-003 · Reader payoff test:** every new module must teach something even with all links disabled.
 - [ ] **POTATO-QA-004 · Mobile Hall pass:** test the rising Heaven treatment, hero grids and upper table on narrow screens.
-- [ ] **POTATO-QA-005 · Accessibility pass:** honor/hero meaning must not rely only on gold, height, wings or visual hierarchy.
+- [x] **POTATO-QA-005 · Accessibility pass:** honor/hero meaning must not rely only on gold, height, wings or visual hierarchy.
 
 
 ### Newly surfaced second-wave gaps — 2026-10-04
@@ -1746,7 +1757,7 @@ North-star rule: **Potato of Life explains the symbol; Potatoism teaches; Grow t
 - [ ] **POTATO-HERO-014 · Hero gallery ordering:** order entries by lesson/virtue or chronology rather than fame.
 - [ ] **POTATO-HERO-015 · Ordinary hero quota:** ensure the Hall contains quiet examples of learning, repair, work and persistence alongside spectacular Angels.
 - [ ] **POTATO-HERO-016 · Regression / return examples:** include at least one story where a figure loses ground, repairs and grows again.
-- [ ] **POTATO-HERO-017 · Hall provenance drawer:** each testimony should expose source class and date without cluttering the first reading layer.
+- [x] **POTATO-HERO-017 · Hall provenance drawer:** each testimony should expose source class and date without cluttering the first reading layer.
 - [ ] **POTATO-HERO-018 · Hall visual inhabitants:** add subtle upper-hall figures / table / banners / clouds without sacrificing text contrast.
 - [ ] **POTATO-HERO-019 · Hall opening scene:** write the arrival into Heaven as a short scene before the first testimony.
 - [ ] **POTATO-AXIS-009 · Orientation vs morality:** make explicit that “up” is symbolic orientation and does not automatically make every upper-positioned thing morally superior.
