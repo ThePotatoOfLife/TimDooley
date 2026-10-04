@@ -33,3 +33,19 @@
 .role-accounting-note{border-left-color:var(--site-gold)}
 @media(max-width:900px){.role-guide-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.role-guide-head{grid-template-columns:1fr}}
 @media(max-width:760px){.role-guide-grid{grid-template-columns:1fr}}
+
+/* Human-first CIA character atlas — 2026-10-04 */
+.cia-reader-disclaimer{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(320px,.75fr);gap:22px;margin:22px 0;padding:20px;border:1px solid var(--site-line);background:rgba(255,255,255,.018)}
+.cia-reader-disclaimer h2{margin:3px 0 8px;font:400 clamp(22px,3vw,34px)/1.06 var(--site-font-serif);color:var(--site-ink)}
+.cia-reader-disclaimer p{color:var(--site-muted);line-height:1.58}.cia-guide-tests{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.cia-guide-tests p{margin:0;padding:10px;border-top:1px solid var(--site-line)}.cia-guide-tests b,.cia-guide-tests span{display:block}.cia-guide-tests b{color:var(--site-gold);font-size:10px;text-transform:uppercase;letter-spacing:.06em}.cia-guide-tests span{margin-top:4px;font-size:10px}
+.cia-clinical-boundary{grid-column:1/-1;margin:0!important;padding-top:12px;border-top:1px solid var(--site-line);font-size:10px}
+.cia-character-lens{margin:22px 0 4px}.cia-character-lens>p{max-width:940px;color:var(--site-muted);line-height:1.62}
+.cia-methodology{margin:14px 0 22px;border:1px solid var(--site-line);background:rgba(255,255,255,.012)}.cia-methodology summary{cursor:pointer;padding:13px 15px;color:var(--site-gold);font:700 10px var(--site-font-mono);letter-spacing:.08em;text-transform:uppercase}.cia-methodology[open] summary{border-bottom:1px solid var(--site-line)}
+.cia-methodology-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0}.cia-methodology-grid>div{padding:14px;border-right:1px solid var(--site-line)}.cia-methodology-grid>div:last-child{border-right:0}.cia-methodology-grid b{color:var(--site-ink)}.cia-methodology-grid p,.cia-methodology>p{color:var(--site-muted);font-size:10px;line-height:1.5}.cia-methodology>p{padding:0 15px 14px}
+.files{grid-template-columns:repeat(auto-fill,minmax(285px,1fr))}
+.file.character-card{min-height:275px;padding:18px 15px 14px}.file.character-card:before{width:96px}
+.character-card-top{display:flex;justify-content:space-between;gap:8px;align-items:flex-start;min-height:22px}.character-card .activity-label{position:static}.character-posture{font:700 8px var(--site-font-mono);letter-spacing:.08em;text-transform:uppercase;color:#f0dfb5;text-align:right;max-width:56%}
+.character-card b{margin-top:9px;font-size:22px}.character-facts{margin:12px 46px 10px 0;border-top:1px solid rgba(255,255,255,.2)}.character-facts p{display:grid;grid-template-columns:48px minmax(0,1fr);gap:7px;margin:0;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.14)}.character-facts strong{font:700 8px var(--site-font-mono);text-transform:uppercase;letter-spacing:.06em;color:#f4e6c8}.character-facts span{font-size:9px;line-height:1.4;color:#ded3bd}.character-card>small{font-size:8px;line-height:1.4;color:#e2d6be}
+@media(max-width:760px){.cia-reader-disclaimer{grid-template-columns:1fr}.cia-guide-tests{grid-template-columns:1fr 1fr}.cia-methodology-grid{grid-template-columns:1fr 1fr}.cia-methodology-grid>div:nth-child(2){border-right:0}.cia-methodology-grid>div:nth-child(-n+2){border-bottom:1px solid var(--site-line)}}
+@media(max-width:520px){.cia-guide-tests,.cia-methodology-grid{grid-template-columns:1fr}.cia-methodology-grid>div{border-right:0;border-bottom:1px solid var(--site-line)}.cia-methodology-grid>div:last-child{border-bottom:0}}
