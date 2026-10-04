@@ -123,7 +123,8 @@ def main() -> int:
         css_tokens = (
             ".site-elevator",
             ".site-elevator-controls",
-            "stable console + scenic Room window",
+            ".site-elevator-main",
+            ".site-elevator-reel",
             ".site-elevator-stage",
             '[data-elevator-level="heaven"]',
             '[data-elevator-level="plane"]',
@@ -132,7 +133,6 @@ def main() -> int:
             "420ms",
             "cubic-bezier(.2,.8,.2,1)",
             "@media (prefers-reduced-motion: reduce)",
-            "--site-elevator-clearance",
             ".site-elevator-room.is-active",
             "--elevator-slot-count:5",
             "flex:0 0 calc((100% - (var(--elevator-room-gap) * (var(--elevator-slot-count) - 1))) / var(--elevator-slot-count))",
