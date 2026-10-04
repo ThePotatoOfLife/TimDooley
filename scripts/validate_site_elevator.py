@@ -81,7 +81,6 @@ def main() -> int:
     else:
         for token in (
             "publishClearance",
-            "--site-elevator-clearance",
             "ResizeObserver",
             "site-elevator-stage",
         ):
