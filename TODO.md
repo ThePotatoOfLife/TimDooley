@@ -1629,6 +1629,15 @@ North-star: **the House should feel inhabited by teachers, objects, stories, que
 - [ ] Visual Art — add more actual recovered images/artifacts as they become available; keep remembered specifications explicitly separate.
 
 
+## Arcade Hall visual language — 2026-10-04
+
+- [x] **HALL-ARCADE-001 · Heroes attract screen:** give Hall of Heroes old-arcade high-score energy using named slots, high marks, achievement plates and bonus-stage language without numeric moral scoring.
+- [x] **HALL-ARCADE-002 · Angel bonus stage:** render Angel functions as unlocked responsibilities—Witness, Messenger, Guardian, Cultivator—rather than cosmetic prestige.
+- [x] **HALL-ARCADE-003 · Hall of Shame cabinet:** rename the Dogs destination as Hall of Shame / Dogs and present failed loops as GAME OVER patterns with consequence and an explicit CONTINUE / exit route.
+- [x] **HALL-ARCADE-004 · No permanent loser caste:** Hall of Shame ranks failure modes, not souls; named-person claims stay evidence-bounded in CIA and roles can expire or transform.
+- [ ] **HALL-ARCADE-005 · Cabinet polish:** add optional subtle CRT/scanline motion, score-entry flicker and cabinet-light effects only if reduced-motion and mobile legibility remain excellent.
+- [ ] **HALL-ARCADE-006 · Populate from sourced records:** expand hero/shame slots only when first-seen dates, feats/loops, Fruit/damage and present status are source-bounded.
+
 ## Potato growth / Hall of Heroes / Axis harmonization wave — 2026-10-04
 
 North-star rule: **Potato of Life explains the symbol; Potatoism teaches; Grow trains; Axis orients; Ladder moves; Heaven contains the upper field; Hall of Heroes remembers examples.**
