@@ -1,7 +1,7 @@
 {
   "id": "dim-txt-relational-dossier",
   "title": "DIM / TXT Relational Dossier",
-  "updated": "2026-09-20",
+  "updated": "2026-10-04",
   "status": "living relation dossier",
   "purpose": "Preserve dated interactions, story layers, role dynamics, uncertainty, and cross-links for DIM and TXT inside the Below / Shadow Farm system.",
   "rules": [
@@ -130,6 +130,16 @@
       "title": "TXT remains in the live public relation field",
       "summary": "A current secondary public snapshot shows @YouCantKillTXT still active and intersecting with @Rational_Potato. Exact primary-post URLs remain a recovery target.",
       "source": "secondary-web-snapshot"
+    },
+    {
+      "date": "2026-09-28 to 2026-10-04",
+      "people": [
+        "txt"
+      ],
+      "layer": "public-interaction / source-intake",
+      "title": "Dense Space warning and exclusion campaign sample",
+      "summary": "A user-supplied public-search sample attributes repeated Space warnings, claimed-evidence circulation, removal pressure and severe allegations against Tim to @YouCantKillTXT. The archive treats the posts as evidence of the attributed campaign pattern, not as proof of the allegations.",
+      "source": "../../knowledge/cia/source-corpus/txt-public-post-sample-2026-09-28-to-2026-10-04.json"
     }
   ],
   "role_crosswalk": {
@@ -183,5 +193,20 @@
     "Search @DimTooley43 spelling variants for first and last attested appearances.",
     "Recover full authored text for Dimmus Maximus / TXT fiction and August dog/bridge fables.",
     "Replace secondary current-web snapshots with primary posts where possible."
-  ]
+  ],
+  "behavioral_notes": {
+    "txt_2026_09_28_to_10_04": {
+      "source": "../../knowledge/cia/source-corpus/txt-public-post-sample-2026-09-28-to-2026-10-04.json",
+      "observed": [
+        "repeated warning behavior around Spaces",
+        "claims of showing evidence/clips",
+        "removal or non-association pressure",
+        "repetition of a stable severe-allegation package",
+        "host/defender confrontation",
+        "ordinary unrelated posting remains present"
+      ],
+      "archive_formulation": "persistent adversarial campaign behavior with moralized public-safety framing and social-exclusion tactics",
+      "boundary": "Non-clinical interaction analysis only. Do not infer diagnosis or treat repeated allegations as established facts."
+    }
+  }
 }
