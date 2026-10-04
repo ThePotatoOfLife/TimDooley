@@ -1678,15 +1678,15 @@ North-star: **the House should feel inhabited by teachers, objects, stories, que
 - [x] Mathematics & Geometry — pair one exact construction with one seductive but invalid metaphysical inference.
 - [x] Model Testing — build a small failure museum: one rejected model, one narrowed model and one unresolved model.
 - [ ] Music & Sound — add album/theme/period listening journeys so the discography reads as development rather than inventory.
-- [ ] Open Questions — top live questions get next artifact, owner, closure condition and “what would count as no?”.
+- [x] Open Questions — top live questions get next artifact, owner, closure condition and “what would count as no?”.
 - [ ] Other Traditions & Philosophies — foreign-first deep readings for Daoist, Buddhist and Norse material before crosswalks.
 - [ ] Physics & Cosmology — promote one analogy through comparator → model → observable → falsifier, even if it stops early.
 - [ ] Politics & Governance — take one proposal through authority, implementation capacity, opposition, measurement and revision.
 - [ ] Potato Biology — let literal potato biology surprise the symbolism; metaphor comes second.
-- [ ] Practice & Ethics — add an ordinary-conflict decision path: observe → relation → agency → intervention → fruit.
-- [ ] Prediction / Revelation / Time — visible scorecard containing hits, misses, ambiguous cases and post-event reinterpretations.
+- [x] Practice & Ethics — add an ordinary-conflict decision path: observe → relation → agency → intervention → fruit.
+- [x] Prediction / Revelation / Time — visible scorecard containing hits, misses, ambiguous cases and post-event reinterpretations.
 - [ ] Provenance & Evidence — show one sentence becoming weaker or stronger across screenshot, repost, summary, archive and primary recovery.
-- [ ] Research Programmes — add ship / stop / split criteria to every active programme.
+- [x] Research Programmes — add ship / stop / split criteria to every active programme.
 - [ ] Subculture & Group Formation — use a neutral group case to teach norms, permeability, conflict incentives and exit.
 - [ ] Symbolic Architecture — one complete Source → Door → World → Roots → return journey with every operator earning its place.
 - [ ] Systems Dynamics — one runnable toy system where feedback, delay, queue or contagion defeats intuition.
