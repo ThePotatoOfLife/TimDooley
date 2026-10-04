@@ -6,8 +6,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 MATRIX=ROOT/'data/house/route-case-matrix.json'
 SYNTH=ROOT/'data/house/project-synthesis.json'
-HOME=ROOT/'index.html'
-HOME_PROJECTION=ROOT/'app/home-page-projection.js'
+AXIS=ROOT/'axis/index.html'
 
 REQUIRED_CASE_FIELDS=(
     'starting_state','proposed_transition','operator','condition_required',
@@ -19,7 +18,7 @@ def load(path:Path):
 
 def main():
     errors=[]
-    for path in (MATRIX,SYNTH,HOME,HOME_PROJECTION):
+    for path in (MATRIX,SYNTH,AXIS):
         if not path.is_file():
             errors.append(f'missing route-instrumentation artifact: {path.relative_to(ROOT)}')
     if errors:
@@ -65,21 +64,18 @@ def main():
     ri=synth.get('route_instrumentation',{})
     if ri.get('authority')!='data/house/route-case-matrix.json':
         errors.append('project synthesis missing route instrumentation authority')
-    hp=synth.get('homepage_projection',{})
-    if 'data/house/route-case-matrix.json' not in hp.get('runtime_sources',[]):
-        errors.append('homepage projection must read route case matrix at runtime')
-
-    text=HOME.read_text(encoding='utf-8',errors='replace')+'\n'+HOME_PROJECTION.read_text(encoding='utf-8',errors='replace')
+    axis=AXIS.read_text(encoding='utf-8',errors='replace')
     for marker in (
-        'id="route-comparison"',
-        'id="homeRouteTabs"',
-        'id="homeRouteCases"',
-        "loadJson('data/house/route-case-matrix.json')",
-        'Same root, different route',
-        'A route is a testable change in what the relation reproduces',
+        'route-case-matrix.json',
+        'data-route-case',
+        'routeCase',
     ):
-        if marker not in text:
-            errors.append(f'homepage missing route teaching marker: {marker}')
+        if marker not in axis:
+            errors.append(f'Axis missing route-case instrumentation marker: {marker}')
+    hp=synth.get('homepage_projection',{})
+    retired=set(hp.get('runtime_input_contract',{}).get('retired_homepage_runtime_inputs',[]))
+    if 'data/house/route-case-matrix.json' not in retired:
+        errors.append('homepage contract must retire route-case matrix projection after moving route teaching to Axis')
 
     if errors:
         print('ROUTE CASE INSTRUMENTATION VALIDATION FAILED')
