@@ -872,3 +872,58 @@ body.dogs-hall-page::after{
 .dogs-hall-page .hall-exits{backdrop-filter:none}
   .dogs-hall-page .hall-scene__caption{backdrop-filter:none}
 }
+
+
+/* Small-surface spacing polish — prevent controls and tiles from visually fusing. */
+.dogs-hall-page .page-header{
+  border-radius:12px;
+  box-shadow:0 14px 38px rgba(0,0,0,.16);
+}
+.dogs-hall-page .hall-door-strip{
+  gap:11px;
+}
+.dogs-hall-page .hall-door-strip a{
+  border-radius:7px;
+}
+.dogs-hall-page .nature-grid,
+.dogs-hall-page .honor-grid,
+.dogs-hall-page .milestone-grid,
+.dogs-hall-page .grid,
+.dogs-hall-page .recognition{
+  gap:14px;
+}
+.dogs-hall-page .tile{
+  padding:16px;
+  border-radius:8px;
+  box-shadow:none;
+}
+.dogs-hall-page .recognition div{
+  padding:14px 12px;
+}
+.dogs-hall-page .source-desk-grid article,
+.dogs-hall-page .takeaway-grid article,
+.dogs-hall-page .table-question-grid article,
+.dogs-hall-page .worked-run-grid article,
+.dogs-hall-page .bell-grid article{
+  min-width:0;
+}
+.dogs-hall-page .hall-door-grid a,
+.dogs-hall-page .hall-door-strip a{
+  min-width:0;
+  overflow-wrap:anywhere;
+}
+@media(max-width:760px){
+  .dogs-hall-page .page-header{
+    border-radius:9px;
+  }
+  .dogs-hall-page .hall-door-strip{
+    gap:8px;
+  }
+  .dogs-hall-page .nature-grid,
+  .dogs-hall-page .honor-grid,
+  .dogs-hall-page .milestone-grid,
+  .dogs-hall-page .grid,
+  .dogs-hall-page .recognition{
+    gap:10px;
+  }
+}
