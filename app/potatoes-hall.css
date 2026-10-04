@@ -696,3 +696,43 @@ body.potatoes-hall-page{
 @media(max-width:720px){
   .potatoes-hall-page .hall-law-grid{grid-template-columns:1fr}
 }
+
+
+/* Great Table conversation — guests interrogate one another rather than decorate the room. */
+.potatoes-hall-page .table-conversation{
+  margin:30px 0 38px;
+  padding:clamp(18px,2.5vw,26px);
+  border:1px solid rgba(226,200,120,.28);
+  background:
+    radial-gradient(circle at 50% 0,rgba(244,219,145,.08),transparent 32%),
+    rgba(25,31,23,.5);
+}
+.potatoes-hall-page .table-conversation h2{margin:3px 0 12px;color:#e2c878}
+.potatoes-hall-page .table-question-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:9px;
+  margin:18px 0;
+}
+.potatoes-hall-page .table-question-grid article{
+  padding:14px;
+  border:1px solid rgba(224,200,126,.25);
+  background:rgba(0,0,0,.07);
+}
+.potatoes-hall-page .table-question-grid em{
+  display:block;
+  margin-bottom:5px;
+  color:#aebc87;
+  font:700 9px/1.3 ui-monospace,SFMono-Regular,Consolas,monospace;
+  font-style:normal;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+.potatoes-hall-page .table-question-grid strong{
+  display:block;
+  margin-bottom:6px;
+  color:#edd991;
+  font:400 18px/1.2 var(--site-font-serif);
+}
+.potatoes-hall-page .table-question-grid p{margin:0;color:#c3c9bc;font-size:11px;line-height:1.5}
+@media(max-width:720px){.potatoes-hall-page .table-question-grid{grid-template-columns:1fr}}
