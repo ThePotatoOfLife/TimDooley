@@ -69,10 +69,10 @@
   box-shadow:0 0 8px var(--site-elevator-glow);
 }
 
-/* Canonical floor tokens + final pixel realm art.
-   The page canvas and the header scenic window use the same three realm sources,
-   but the header crops them deliberately instead of painting wallpaper behind
-   the elevator console. */
+/* Canonical page-floor tokens.
+   Full-page realm canvases use the home-*.avif sources below. The universal
+   header is intentionally independent and uses dedicated header-*.svg
+   panoramas, so navigation scenery can stay quiet without weakening page art. */
 html[data-site-floor]{
   min-height:100%;
   color-scheme:dark;
