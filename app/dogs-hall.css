@@ -597,3 +597,42 @@ body.dogs-hall-page{
 @media(max-width:720px){
   .dogs-hall-page .hall-law-grid{grid-template-columns:1fr}
 }
+
+
+/* Village bell test — a warning protocol before the arcade cabinet starts rewarding the chase. */
+.dogs-hall-page .village-bell{
+  margin:30px 0 38px;
+  padding:clamp(18px,2.5vw,26px);
+  border:1px solid rgba(151,90,60,.36);
+  background:
+    linear-gradient(180deg,rgba(55,42,31,.24),rgba(20,21,19,.58));
+}
+.dogs-hall-page .village-bell h2{margin:3px 0 12px;color:#cf8964}
+.dogs-hall-page .bell-grid{
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:7px;
+  margin:18px 0;
+}
+.dogs-hall-page .bell-grid article{
+  position:relative;
+  min-height:132px;
+  padding:14px;
+  border:1px solid rgba(151,90,60,.27);
+  background:rgba(0,0,0,.08);
+}
+.dogs-hall-page .bell-grid b{
+  display:block;
+  margin-bottom:7px;
+  color:#865741;
+  font:700 18px/1 ui-monospace,SFMono-Regular,Consolas,monospace;
+}
+.dogs-hall-page .bell-grid strong{
+  display:block;
+  margin-bottom:6px;
+  color:#d99d79;
+  font:400 17px/1.2 var(--site-font-serif);
+}
+.dogs-hall-page .bell-grid p{margin:0;color:#bdb4ac;font-size:10px;line-height:1.5}
+@media(max-width:920px){.dogs-hall-page .bell-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.dogs-hall-page .bell-grid{grid-template-columns:1fr}}
