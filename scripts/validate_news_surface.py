@@ -21,9 +21,6 @@ def require(text,token,owner):
 html=read("news/index.html")
 js=read("app/news.js")
 css=read("app/news.css")
-home=read("index.html")
-home_runtime=read("app/home-page-runtime.js")
-home_surface=home+"\n"+home_runtime
 world=read("world/index.html")
 
 try:
@@ -159,10 +156,8 @@ for token in (
 ):
     require(css,token,"app/news.css")
 
-for token in ('data-news-mode="preview"','publisher-rss'):
-    require(home,token,"index.html")
-for token in ('app/news.css?v=20260920j','app/news.js?v=20260920j'):
-    require(home_surface,token,"homepage lazy news wiring")
+# Current World is intentionally owned by /news/ beneath World.
+# Home should not be required to carry a live-news preview or news runtime.
 require(world,'href="../news/"',"world/index.html")
 
 providers={row.get("id") for row in cfg.get("providers",[]) if isinstance(row,dict)}
@@ -249,4 +244,4 @@ if errors:
         print(" -",error)
     raise SystemExit(1)
 
-print("Current World news validation passed: simple reader-first hierarchy, source contract, House projection and epistemic boundaries are aligned.")
+print("Current World news validation passed: standalone World-owned reader, source contract, House projection and epistemic boundaries are aligned.")
