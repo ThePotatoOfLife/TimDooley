@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Validate the site-wide SEO and machine-discovery build contract.
 
-SEO remains a projection concern: curated reader copy and the five-door public
+SEO remains a projection concern: curated reader copy and the six-door public
 hierarchy stay authoritative, while the build derives canonical crawler,
 search, social, semantic and LLM surfaces from the final deployable artifact.
 """
@@ -133,7 +133,7 @@ def main() -> int:
     require(
         surface_resolver,
         (
-            'EXPECTED_PRIMARY_GATEWAY_IDS = ("tim", "religion", "philosophy", "science", "world")',
+            'EXPECTED_PRIMARY_GATEWAY_IDS = ("tim", "potatoism", "religion", "philosophy", "science", "world")',
             'data" / "house" / "public-surfaces.json',
             "def primary_gateway_rows(",
         ),
