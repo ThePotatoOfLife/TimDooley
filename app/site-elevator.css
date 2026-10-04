@@ -534,13 +534,13 @@ html[data-site-floor="below"]{
 @media (max-width:760px){
   .site-elevator{
     --elevator-control-width:34px;
-    --elevator-board-width:122px;
-    --elevator-shell-height:68px;
-    --elevator-room-height:30px;
+    --elevator-board-width:118px;
+    --elevator-shell-height:82px;
+    --elevator-room-height:38px;
     --elevator-room-gap:3px;
     --elevator-floor-size:11px;
     --elevator-floor-spacing:.07em;
-    --elevator-room-text:8px;
+    --elevator-room-text:7.5px;
     --elevator-arrow-size:18px;
   }
   .site-elevator-main{
@@ -554,27 +554,30 @@ html[data-site-floor="below"]{
   .site-elevator-floor-code{font-size:8px}
   .site-elevator-room-label{font-size:6.5px;letter-spacing:.02em}
   .site-elevator-room-rail{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(72px,1fr));
-    grid-auto-rows:var(--elevator-room-height);
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
     min-height:var(--elevator-shell-height);
-    padding:32px 5px 5px;
-    gap:3px;
+    padding:37px 4px 7px;
+    gap:var(--elevator-room-gap);
   }
   .site-elevator-room{
-    flex:none;
-    width:auto;
-    max-width:none;
+    flex:0 0 calc((100% - (var(--elevator-room-gap) * (var(--elevator-slot-count) - 1))) / var(--elevator-slot-count));
+    width:calc((100% - (var(--elevator-room-gap) * (var(--elevator-slot-count) - 1))) / var(--elevator-slot-count));
+    max-width:calc((100% - (var(--elevator-room-gap) * (var(--elevator-slot-count) - 1))) / var(--elevator-slot-count));
     height:var(--elevator-room-height);
     min-height:var(--elevator-room-height);
     max-height:var(--elevator-room-height);
-    padding:4px 5px;
+    padding:4px 3px;
   }
 }
 @media (max-width:480px){
   .site-elevator{
-    --elevator-board-width:100px;
-    --elevator-room-text:7px;
+    --elevator-control-width:30px;
+    --elevator-board-width:92px;
+    --elevator-shell-height:82px;
+    --elevator-room-height:38px;
+    --elevator-room-text:6.5px;
   }
   .site-elevator-floor{
     grid-template-columns:18px minmax(0,1fr);
@@ -583,8 +586,9 @@ html[data-site-floor="below"]{
   }
   .site-elevator-floor-code{font-size:7px}
   .site-elevator-room-label{display:none}
-  .site-elevator-room-rail{
-    grid-template-columns:repeat(auto-fit,minmax(60px,1fr));
+  .site-elevator-room{
+    padding-inline:2px;
+    line-height:1.02;
   }
 }
 @media (prefers-reduced-motion: reduce){
