@@ -58,9 +58,12 @@
 .amp-clock{display:grid;place-items:center;color:var(--amp-lamp);font:700 11px "Lucida Console",Consolas,monospace;font-variant-numeric:tabular-nums;letter-spacing:.02em}
 .amp-scale{position:relative;height:14px;margin:4px 0 1px;background:repeating-linear-gradient(90deg,var(--amp-mid) 0 1px,transparent 1px 2.5%),linear-gradient(transparent 6px,var(--amp-mid) 6px 7px,transparent 7px)}
 .amp-scale:before,.amp-scale:after{position:absolute;top:0;color:var(--amp-muted);font:7px "Lucida Console",monospace}.amp-scale:before{content:"00";left:0}.amp-scale:after{content:"END";right:0}
-.amp-seek{display:block;width:100%;height:11px;margin:0;accent-color:var(--amp-lamp);background:transparent}
-.amp-seek::-webkit-slider-runnable-track{height:3px;background:var(--amp-well);border:1px solid var(--amp-mid)}
-.amp-seek::-webkit-slider-thumb{-webkit-appearance:none;width:9px;height:9px;margin-top:-4px;border-radius:0;background:var(--amp-text);border:1px solid #000;box-shadow:inset 0 0 0 1px var(--amp-line)}
+#timamp input[type=range]{appearance:none;-webkit-appearance:none;border-radius:0;background:transparent;outline:none}
+#timamp input[type=range]::-webkit-slider-runnable-track{height:4px;background:linear-gradient(#050606,#111414);border:1px solid #000;box-shadow:inset 0 0 0 1px var(--amp-mid)}
+#timamp input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:9px;height:14px;margin-top:-6px;border-radius:0;background:linear-gradient(90deg,#1b1d1d,#d0d1cb 45%,#686d6c 55%,#171919);border:1px solid #000;box-shadow:inset 0 0 0 1px rgba(255,255,255,.18),1px 1px 0 #000}
+#timamp input[type=range]::-moz-range-track{height:4px;background:linear-gradient(#050606,#111414);border:1px solid #000;box-shadow:inset 0 0 0 1px var(--amp-mid)}
+#timamp input[type=range]::-moz-range-thumb{width:9px;height:14px;border-radius:0;background:linear-gradient(90deg,#1b1d1d,#d0d1cb 45%,#686d6c 55%,#171919);border:1px solid #000}
+.amp-seek{display:block;width:100%;height:14px;margin:0;background:transparent}
 .amp-transport{display:grid;grid-template-columns:54px minmax(76px,1fr) 54px 54px 54px;gap:2px;margin-top:6px}
 .amp-key,.amp-file,.amp-select{
  min-height:24px;border:1px solid;border-color:var(--amp-line) var(--amp-dark) var(--amp-dark) var(--amp-line);
@@ -80,20 +83,31 @@
 .amp-bars{position:relative;height:100%;display:flex;align-items:flex-end;gap:2px;z-index:1}
 .amp-bars i{display:block;flex:1;min-width:2px;height:4%;background:repeating-linear-gradient(to top,var(--amp-lamp) 0 2px,transparent 2px 4px);filter:drop-shadow(0 0 1px var(--amp-lamp2))}
 .amp-freq-axis{position:absolute;left:28px;right:7px;bottom:3px;display:flex;justify-content:space-between;color:var(--amp-muted);font:6px "Lucida Console",monospace}
-.amp-meter-bank{display:grid;grid-template-columns:30px 1fr 36px;gap:5px;align-items:center;margin-top:5px}
-.amp-meter-label{color:var(--amp-muted);font:7px "Lucida Console",monospace}.amp-meter-readout{color:var(--amp-lamp);font:7px "Lucida Console",monospace;text-align:right}
-.amp-meter{height:7px;border:1px solid #000;background:repeating-linear-gradient(90deg,#111 0 5px,#050505 5px 6px);box-shadow:inset 0 0 0 1px var(--amp-mid)}
-.amp-meter>i{display:block;height:100%;width:0;background:repeating-linear-gradient(90deg,var(--amp-lamp) 0 4px,transparent 4px 6px);transition:width .05s linear}
-.amp-eq-shell{display:grid;grid-template-columns:64px minmax(0,1fr);gap:7px}
+.amp-meter-panel{margin-top:5px;border:1px solid #000;background:rgba(0,0,0,.17);padding:5px 6px 4px}
+.amp-meter-scale{display:grid;grid-template-columns:32px 1fr 42px;gap:5px;align-items:end;margin-bottom:2px}
+.amp-meter-scale div{display:flex;justify-content:space-between;color:var(--amp-muted);font:6px "Lucida Console",monospace}
+.amp-meter-row{display:grid;grid-template-columns:32px 1fr 42px;gap:5px;align-items:center;margin:3px 0}
+.amp-meter-label{display:flex;align-items:center;gap:4px;color:var(--amp-muted);font:7px "Lucida Console",monospace}
+.amp-meter-readout{color:var(--amp-lamp);font:7px "Lucida Console",monospace;text-align:right}
+.amp-clip{width:5px;height:5px;border:1px solid #000;background:#28130f;box-shadow:inset 0 0 0 1px #4a2a20}.amp-clip.on{background:var(--amp-danger);box-shadow:0 0 5px var(--amp-danger)}
+.amp-meter{position:relative;height:8px;border:1px solid #000;background:repeating-linear-gradient(90deg,#111 0 5px,#040505 5px 7px);box-shadow:inset 0 0 0 1px var(--amp-mid);overflow:hidden}
+.amp-meter>i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--amp-lamp) 0 78%,#d1b75f 78% 90%,var(--amp-danger) 90%);clip-path:polygon(0 0,100% 0,100% 100%,0 100%);transition:width .035s linear}
+.amp-signal-strip{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));margin-top:5px;border:1px solid #000;background:#060808;box-shadow:inset 0 0 0 1px var(--amp-mid)}
+.amp-signal-cell{padding:4px 5px;border-right:1px solid var(--amp-mid);min-width:0}.amp-signal-cell:last-child{border-right:0}.amp-signal-cell span{display:block;color:var(--amp-muted);font:6px "Lucida Console",monospace}.amp-signal-cell b{display:block;margin-top:2px;color:var(--amp-lamp);font:7px "Lucida Console",monospace;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.amp-eq-shell{display:grid;grid-template-columns:74px minmax(0,1fr);gap:7px}
 .amp-eq-master{border:1px solid #000;background:rgba(0,0,0,.18);padding:6px;display:flex;flex-direction:column;justify-content:space-between}
 .amp-knob-label{color:var(--amp-muted);font:7px "Lucida Console",monospace;letter-spacing:.08em}.amp-readout{display:block;margin-top:3px;color:var(--amp-lamp);font:8px "Lucida Console",monospace}
-.amp-eq-grid{display:grid;grid-template-columns:repeat(10,minmax(25px,1fr));gap:2px;border:1px solid #000;background:linear-gradient(#0b0d0d,#050606);padding:5px 5px 3px}
+.amp-eq-grid{display:grid;grid-template-columns:24px repeat(10,minmax(25px,1fr));gap:2px;border:1px solid #000;background:linear-gradient(#0b0d0d,#050606);padding:5px 5px 3px}
+.amp-eq-db{display:grid;grid-template-rows:12px 88px 12px;align-items:center;color:var(--amp-muted);font:6px "Lucida Console",monospace}
+.amp-eq-db div{height:88px;display:flex;flex-direction:column;justify-content:space-between;text-align:right;padding:2px 1px 2px 0}
 .amp-eq-band{position:relative;display:grid;grid-template-rows:12px 88px 12px;justify-items:center;align-items:center;min-width:0}
-.amp-eq-band:before{content:"";position:absolute;top:15px;bottom:15px;width:17px;background:repeating-linear-gradient(to bottom,var(--amp-mid) 0 1px,transparent 1px 8px);opacity:.8}
+.amp-eq-band:before{content:"";position:absolute;top:15px;bottom:15px;width:19px;background:linear-gradient(90deg,transparent 8px,#080909 8px 11px,transparent 11px),repeating-linear-gradient(to bottom,var(--amp-mid) 0 1px,transparent 1px 7px);opacity:.9}
 .amp-eq-band output{position:relative;z-index:2;color:var(--amp-muted);font:6px "Lucida Console",monospace}
-.amp-eq-band input[type=range]{position:relative;z-index:2;width:74px;height:14px;transform:rotate(-90deg);accent-color:var(--amp-lamp);background:transparent}
+.amp-eq-band input[type=range]{position:relative;z-index:2;width:76px;height:16px;transform:rotate(-90deg);background:transparent}
 .amp-eq-band span{position:relative;z-index:2;color:var(--amp-muted);font:6px "Lucida Console",monospace;white-space:nowrap}
-.amp-eq-zero{position:absolute;left:2px;right:2px;top:58px;border-top:1px solid rgba(255,255,255,.12)}
+.amp-eq-zero{position:absolute;left:1px;right:1px;top:58px;border-top:1px solid rgba(255,255,255,.18)}
+.amp-preset-bank{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;margin-top:5px}.amp-preset-bank .amp-key{min-height:20px;padding:2px 3px;font-size:7px}
+.amp-eq-state{display:grid;grid-template-columns:1fr auto;gap:4px;align-items:center;margin-top:5px;padding-top:4px;border-top:1px solid var(--amp-mid);color:var(--amp-muted);font:6px "Lucida Console",monospace}.amp-eq-state b{color:var(--amp-lamp);font-weight:400}
 .amp-output-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:6px}.amp-control-block{border:1px solid #000;background:rgba(0,0,0,.16);padding:6px}
 .amp-control-block label{display:flex;justify-content:space-between;color:var(--amp-muted);font:7px "Lucida Console",monospace;margin-bottom:4px}.amp-control-block output{color:var(--amp-lamp)}
 .amp-control-block input[type=range]{width:100%;height:12px;accent-color:var(--amp-lamp)}
@@ -106,10 +120,9 @@
 .amp-skin-grid{display:grid;grid-template-columns:repeat(8,1fr);gap:2px;margin-top:3px}.amp-skin{min-height:26px;border:1px solid var(--amp-mid);background:linear-gradient(var(--amp-rack),var(--amp-rack2));color:var(--amp-muted);text-align:center;padding:4px 3px;font:700 7px Tahoma,Verdana,sans-serif;letter-spacing:.04em;border-radius:0}.amp-skin.active{border-color:var(--amp-lamp);color:var(--amp-lamp);box-shadow:inset 0 -2px var(--amp-lamp2)}
 .amp-custom{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-top:4px}.amp-custom label{border:1px solid var(--amp-mid);padding:4px;background:rgba(0,0,0,.12);color:var(--amp-muted);font:7px "Lucida Console",monospace}.amp-custom input[type=color]{display:block;width:100%;height:18px;padding:0;border:1px solid #000;margin-top:3px;background:none;border-radius:0}
 .amp-status{font:7px "Lucida Console",Consolas,monospace;color:var(--amp-muted);margin-top:4px;letter-spacing:.03em}.amp-status strong{color:var(--amp-lamp);font-weight:400}
-.amp-cal-row{display:grid;grid-template-columns:repeat(9,1fr);gap:0;margin-top:2px;color:var(--amp-muted);font:6px "Lucida Console",monospace;text-align:center}
-.amp-cal-row span{border-left:1px solid var(--amp-mid);padding-top:2px}.amp-cal-row span:last-child{border-right:1px solid var(--amp-mid)}
+.amp-model-plate{display:flex;justify-content:space-between;gap:8px;padding:4px 7px;margin:3px;border:1px solid #000;background:#090b0b;color:var(--amp-muted);font:6px "Lucida Console",monospace;letter-spacing:.06em;text-transform:uppercase}.amp-model-plate b{color:var(--amp-text);font-weight:400}
 @media(max-width:900px){.album-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.music-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.music-stat:nth-child(2){border-right:0}.music-stat:nth-child(-n+2){border-bottom:1px solid var(--site-line)}.amp-skin-grid{grid-template-columns:repeat(4,1fr)}}
-@media(max-width:720px){.music-controls,.archive-note,.amp-panel-grid,.amp-signal-layout,.amp-eq-shell,.amp-output-grid{grid-template-columns:1fr}.album-grid{grid-template-columns:1fr}.music-stats{grid-template-columns:1fr}.music-stat{border-right:0;border-bottom:1px solid var(--site-line)}.music-stat:last-child{border-bottom:0}.amp-transport{grid-template-columns:repeat(5,minmax(44px,1fr))}.amp-eq-grid{overflow-x:auto;grid-template-columns:repeat(10,34px)}.amp-skin-grid{grid-template-columns:repeat(2,1fr)}.amp-custom{grid-template-columns:1fr 1fr}.amp-scene,.amp-spectrum-shell{height:112px}}
+@media(max-width:720px){.music-controls,.archive-note,.amp-panel-grid,.amp-signal-layout,.amp-eq-shell,.amp-output-grid{grid-template-columns:1fr}.album-grid{grid-template-columns:1fr}.music-stats{grid-template-columns:1fr}.music-stat{border-right:0;border-bottom:1px solid var(--site-line)}.music-stat:last-child{border-bottom:0}.amp-transport{grid-template-columns:repeat(5,minmax(44px,1fr))}.amp-eq-grid{overflow-x:auto;grid-template-columns:24px repeat(10,34px)}.amp-skin-grid{grid-template-columns:repeat(2,1fr)}.amp-custom{grid-template-columns:1fr 1fr}.amp-scene,.amp-spectrum-shell{height:112px}.amp-signal-strip{grid-template-columns:repeat(2,1fr)}.amp-signal-cell:nth-child(2n){border-right:0}}
 </style>
 </head>
 <body><main class="page music-page">
