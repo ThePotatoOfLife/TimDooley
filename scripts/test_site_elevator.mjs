@@ -191,7 +191,8 @@ assert.ok(source.includes("ArrowDown"),'header keyboard contract needs ArrowDown
 assert.ok(source.includes("Home"),'header keyboard contract needs Home → Plane');
 assert.ok(source.includes("disabled"),'boundary arrows must expose disabled state');
 
-assert.ok(css.includes('grid-template-columns:repeat(var(--elevator-room-count),minmax(0,1fr))'),'desktop Room rail must use the runtime Room count so each floor fills one uniform row');
+assert.ok(css.includes('--elevator-slot-count:5'),'desktop header must preserve one five-slot Room geometry across all floors');
+assert.ok(css.includes('flex:0 0 calc((100% - (var(--elevator-room-gap) * (var(--elevator-slot-count) - 1))) / var(--elevator-slot-count))'),'desktop Room buttons must keep identical widths across Heaven, Plane and Below');
 assert.ok(css.includes('grid-template-columns:repeat(auto-fit,minmax(72px,1fr))'),'narrow Room rail must retain a responsive wrapped fallback');
 assert.ok(css.includes('overflow:visible'),'Room rail must expose wrapped lines');
 assert.equal(css.includes('overflow-x:auto'),false,'Room rail must not horizontally scroll');
@@ -259,7 +260,7 @@ for(const match of css.matchAll(/([^{}]+)\{([^{}]*)\}/g)){
   const duplicates=props.filter((prop,index)=>props.indexOf(prop)!==index);
   assert.equal(duplicates.length,0,selector+' must not repeat CSS properties: '+[...new Set(duplicates)].join(', '));
 }
-assert.ok(css.includes('.site-elevator-stage{\n  --elevator-room-count:1;'),'scenic Room stage must own the runtime Room-count geometry');
+assert.ok(css.includes('.site-elevator-stage{\n  position:relative;'),'scenic Room stage must remain a distinct visual owner');
 assert.ok(css.includes('min-height:var(--elevator-shell-height)'),'console, stage and Room rail must inherit one height token');
 assert.ok(css.includes('.site-elevator-up::before{content:"△"}'),'up arrow needs triangle framing');
 assert.ok(css.includes('.site-elevator-down::before{content:"▽"}'),'down arrow needs inverted triangle framing');
@@ -268,7 +269,7 @@ assert.ok(!css.includes('pointer-events:none;\n  z-index:-1;\n}\n.site-elevator-
 assert.ok(css.includes('text-wrap:balance'),'Room labels should wrap into balanced readable lines');
 assert.ok(source.includes('site-elevator-floor-code'),'runtime must render terminal floor code');
 assert.ok(source.includes('site-elevator-stage'),'runtime must separate the stable console from the scenic Room window');
-assert.ok(source.includes("stage.style.setProperty('--elevator-room-count'"),'runtime must publish the visible Room count for uniform desktop slots');
+assert.equal(source.includes("--elevator-room-count"),false,'Room geometry should stay CSS-owned rather than being recalculated in runtime');
 assert.ok(source.includes('header.dataset.elevatorRoom=spatial.roomId'),'runtime must publish the current Room on the header');
 assert.ok(source.includes("selectedLevel===spatial.levelId"),'active Room highlight must only appear on the actual floor');
 assert.equal(source.includes('ROOM PROJECTION · ENTER VIA'),false,'single-floor Room ownership must not advertise legacy cross-floor projections');
