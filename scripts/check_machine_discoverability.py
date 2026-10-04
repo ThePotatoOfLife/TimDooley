@@ -107,6 +107,7 @@ for path in sorted(SITE.rglob("index.html")):
 key_pages = [
     "index.html",
     "tim-dooley/index.html",
+    "potatoism/index.html",
     "religion/index.html",
     "philosophy/index.html",
     "science/index.html",
@@ -142,7 +143,7 @@ if SITE != ROOT:
         errors.append(f"sitemaps contain non-indexable page: {url}")
 
 llms = (SITE / "llms.txt").read_text(encoding="utf-8", errors="ignore") if (SITE / "llms.txt").exists() else ""
-for token in ["Tim Dooley", "Religion", "Philosophy", "Science", "World", "site-index.json", "machine-index.json", "llms-full.txt", "sitemap-index.xml"]:
+for token in ["Tim Dooley", "Potatoism", "Religion", "Philosophy", "Science", "World", "site-index.json", "machine-index.json", "llms-full.txt", "sitemap-index.xml"]:
     if token not in llms:
         errors.append(f"llms.txt missing current discovery route/door: {token}")
 full = (SITE / "llms-full.txt").read_text(encoding="utf-8", errors="ignore") if (SITE / "llms-full.txt").exists() else ""
@@ -153,7 +154,7 @@ for token in ["site-index.json", "machine-index.json", "source-index.json", "tim
 try:
     discovery = json.loads((SITE / "discovery.json").read_text(encoding="utf-8"))
     entrypoints = discovery.get("entrypoints", {})
-    for key in ["tim", "religion", "philosophy", "science", "world", "world_map", "site_index", "sitemap_index"]:
+    for key in ["tim", "potatoism", "religion", "philosophy", "science", "world", "world_map", "site_index", "sitemap_index"]:
         if not entrypoints.get(key):
             errors.append(f"discovery.json missing entrypoints.{key}")
     doors = discovery.get("reader_architecture", {}).get("doors", [])
@@ -161,7 +162,7 @@ try:
         errors.append("discovery.json must expose exactly six primary reader doors")
     else:
         door_ids = [row.get("id") for row in doors if isinstance(row, dict)]
-        if door_ids != ["tim", "religion", "philosophy", "science", "world"]:
+        if door_ids != ["tim", "potatoism", "religion", "philosophy", "science", "world"]:
             errors.append(f"discovery.json primary doors must end in World, not World Map; got {door_ids}")
 except Exception as exc:
     errors.append(f"invalid discovery.json: {exc}")
@@ -174,7 +175,7 @@ try:
         errors.append("site-index.json count does not match pages array")
     if SITE != ROOT and urls != indexable:
         errors.append("site-index.json must equal the final indexable canonical page set")
-    if len(site_index.get("primary_doors", [])) != 5:
+    if len(site_index.get("primary_doors", [])) != 6:
         errors.append("site-index.json must identify the six primary doors")
 except Exception as exc:
     errors.append(f"invalid site-index.json: {exc}")
