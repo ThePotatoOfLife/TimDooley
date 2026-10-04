@@ -245,7 +245,7 @@ assert.ok(css.includes('@media (prefers-contrast: more)'),'terminal UI needs one
 assert.equal(css.includes('backdrop-filter:'),false,'terminal UI must not reintroduce blur-based floor materials');
 assert.ok(css.includes('background:#090d11'),'arrow column needs a stable dark readability plate');
 assert.ok(css.includes('[data-elevator-ready="false"]'),'loading state must have a neutral terminal treatment');
-assert.ok(css.includes('--elevator-room-height:40px'),'desktop Room buttons must share one fixed height across all floors');
+assert.ok(css.includes('--elevator-room-height:32px'),'desktop Room buttons must share one fixed height across all floors');
 assert.ok(css.includes('--elevator-floor-size:14px'),'floor label must remain immediately readable');
 assert.ok(css.includes('text-shadow:0 1px 0 rgba(0,0,0,.95)'),'floor text needs dark contrast shadow');
 
@@ -254,7 +254,7 @@ assert.match(css,/\.site-elevator\{[\s\S]*?display:block;/,'elevator shell must 
 assert.ok((css.match(/!important/g)||[]).length<=8,'elevator CSS should keep specificity escalation tightly bounded');
 assert.ok(css.includes('.site-elevator-room-rail{\n  margin:0;'),'Room rail must reset page-level nav spacing without specificity escalation');
 assert.ok(css.includes('margin:0;'),'elevator shell must reset page-level header/nav margins');
-assert.ok(css.includes('--elevator-shell-height:60px'),'desktop elevator console and scenic window must share one shell height');
+assert.ok(css.includes('--elevator-shell-height:64px'),'desktop elevator console and scenic window must share one shell height');
 assert.ok(css.includes('grid-template-rows:1fr 1fr'),'up/down controls must split the same console height evenly');
 assert.ok(!/--([\\w-]+):var\\(--\\1\\)/.test(css),'elevator CSS custom properties must not self-reference');
 
