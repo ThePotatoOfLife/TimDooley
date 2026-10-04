@@ -42,9 +42,9 @@ def main() -> int:
         errors.append("validate_site_shell.py: validator entrypoint must not repair World routing")
 
     pages = (ROOT / ".github/workflows/pages.yml").read_text(encoding="utf-8")
-    expected = "['tim-dooley/','religion/','philosophy/','science/','world/']"
+    expected = "['tim-dooley/','potatoism/','religion/','philosophy/','science/','world/']"
     if expected not in pages:
-        errors.append("pages.yml: deploy smoke test must expect World as fifth primary route")
+        errors.append("pages.yml: deploy smoke test must expect World as sixth primary route")
     if "test -f _site/world/index.html" not in pages:
         errors.append("pages.yml: deploy smoke test must assert _site/world/index.html exists")
 
