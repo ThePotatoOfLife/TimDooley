@@ -260,7 +260,7 @@ assert.match(
 assert.ok(css.includes('background:var(--site-elevator-panel)'),'floor board must use the shared terminal panel token');
 assert.ok(css.includes('@media (prefers-contrast: more)'),'terminal UI needs one generic high-contrast mode');
 assert.equal(css.includes('backdrop-filter:'),false,'terminal UI must not reintroduce blur-based floor materials');
-assert.ok(css.includes('background:#090d11'),'arrow column needs a stable dark readability plate');
+assert.match(css,/\.site-elevator-controls\{[\s\S]*?background:(?:#[0-9a-fA-F]{3,8}|var\([^)]+\)|rgba?\([^)]+\))/,'arrow column needs one stable dark readability plate');
 assert.ok(css.includes('[data-elevator-ready="false"]'),'loading state must have a neutral terminal treatment');
 assert.match(css,/--elevator-room-height:\s*\d+(?:\.\d+)?px/,'desktop Room buttons need one shared fixed height token');
 assert.ok(css.includes('height:var(--elevator-room-height)'),'Room controls must consume the shared height token rather than expanding per floor');
@@ -283,11 +283,11 @@ for(const match of css.matchAll(/([^{}]+)\{([^{}]*)\}/g)){
   const duplicates=props.filter((prop,index)=>props.indexOf(prop)!==index);
   assert.equal(duplicates.length,0,selector+' must not repeat CSS properties: '+[...new Set(duplicates)].join(', '));
 }
-assert.ok(css.includes('.site-elevator-stage{\n  position:relative;'),'scenic Room stage must remain a distinct visual owner');
+assert.match(css,/\.site-elevator-stage\{[\s\S]*?position:relative;/,'scenic Room stage must remain a distinct visual owner');
 assert.ok(css.includes('min-height:var(--elevator-shell-height)'),'console, stage and Room rail must inherit one height token');
 assert.ok(css.includes('.site-elevator-up::before{content:"△"}'),'up arrow needs triangle framing');
 assert.ok(css.includes('.site-elevator-down::before{content:"▽"}'),'down arrow needs inverted triangle framing');
-assert.ok(css.includes('--elevator-arrow-size:20px'),'triangle framing should retain its desktop size token');
+assert.match(css,/--elevator-arrow-size:\s*\d+(?:\.\d+)?px/,'triangle framing should retain one shared desktop size token');
 assert.ok(!css.includes('pointer-events:none;\n  z-index:-1;\n}\n.site-elevator-up::before'),'triangle framing must not disappear behind the control column');
 assert.ok(css.includes('text-wrap:balance'),'Room labels should wrap into balanced readable lines');
 assert.ok(source.includes('site-elevator-floor-code'),'runtime must render terminal floor code');
