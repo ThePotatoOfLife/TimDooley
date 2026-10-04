@@ -539,3 +539,46 @@ body.potatoes-hall-page{
 @media(max-width:760px){
   .potatoes-hall-page .takeaway-grid{grid-template-columns:1fr}
 }
+
+
+/* Hall deep-link and keyboard polish. */
+.potatoes-hall-page [id]{
+  scroll-margin-top:calc(var(--site-elevator-clearance,56px) + 18px);
+}
+.potatoes-hall-page .hall-door-strip{
+  position:relative;
+  padding-top:22px;
+}
+.potatoes-hall-page .hall-door-strip::before{
+  content:"ROOM MAP";
+  position:absolute;
+  top:2px;
+  left:1px;
+  color:#e6cf7d;
+  opacity:.72;
+  font:700 8px/1 ui-monospace,SFMono-Regular,Consolas,monospace;
+  letter-spacing:.13em;
+}
+.potatoes-hall-page a:focus-visible,
+.potatoes-hall-page button:focus-visible{
+  outline:2px solid #e6cf7d;
+  outline-offset:3px;
+}
+.potatoes-hall-page .hall-door-strip a,
+.potatoes-hall-page .hall-door-grid a,
+.potatoes-hall-page .hero-plaque a,
+.potatoes-hall-page .table-seats a{
+  transition:border-color .16s ease,background .16s ease,color .16s ease,transform .16s ease;
+}
+.potatoes-hall-page .hall-door-strip a:hover,
+.potatoes-hall-page .hall-door-grid a:hover{
+  transform:translateY(-1px);
+}
+@media (prefers-reduced-motion: reduce){
+  .potatoes-hall-page .hall-door-strip a,
+  .potatoes-hall-page .hall-door-grid a,
+  .potatoes-hall-page .hero-plaque a,
+  .potatoes-hall-page .table-seats a{transition:none}
+  .potatoes-hall-page .hall-door-strip a:hover,
+  .potatoes-hall-page .hall-door-grid a:hover{transform:none}
+}
