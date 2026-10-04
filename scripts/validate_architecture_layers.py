@@ -41,7 +41,7 @@ def main():
         if not(ROOT/rel).exists():ERRORS.append(f"Missing synchronized architecture path: {rel}")
 
     if surfaces.get("authority")!="public-route-identity":ERRORS.append("House public surfaces must own public route identity")
-    if surfaces.get("primary_gateway_ids")!=["tim","religion","philosophy","science","world"]:ERRORS.append("House public gateway registry must preserve the five canonical doors")
+    if surfaces.get("primary_gateway_ids")!=["tim","potatoism","religion","philosophy","science","world"]:ERRORS.append("House public gateway registry must preserve the six canonical doors")
     if public.get("root",{}).get("id")!="potato-of-life":ERRORS.append("Archive manifest root must be potato-of-life")
     if atlas.get("public_route_registry")!="data/house/public-surfaces.json":ERRORS.append("Atlas manifest must delegate stable route identity to data/house/public-surfaces.json")
     if atlas.get("public_manifest")!="manifest.json":ERRORS.append("Atlas manifest must delegate archive branch/pathway navigation to manifest.json")
