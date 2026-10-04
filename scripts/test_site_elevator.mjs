@@ -252,7 +252,7 @@ assert.ok(css.includes('text-shadow:0 1px 0 rgba(0,0,0,.95)'),'floor text needs 
 assert.ok(css.includes('background:transparent'),'arrow controls must float without metallic button blocks');
 assert.match(css,/\.site-elevator\{[\s\S]*?display:block;/,'elevator shell must define its own display mode without specificity escalation');
 assert.ok((css.match(/!important/g)||[]).length<=8,'elevator CSS should keep specificity escalation tightly bounded');
-assert.ok(css.includes('.site-elevator-room-rail{\n  margin:0;'),'Room rail must reset page-level nav spacing without specificity escalation');
+assert.match(css,/\.site-elevator-room-rail\{[\s\S]*?\bmargin:0;/,'Room rail must reset page-level nav spacing without specificity escalation');
 assert.ok(css.includes('margin:0;'),'elevator shell must reset page-level header/nav margins');
 assert.ok(css.includes('--elevator-shell-height:64px'),'desktop elevator console and scenic window must share one shell height');
 assert.ok(css.includes('grid-template-rows:1fr 1fr'),'up/down controls must split the same console height evenly');
