@@ -1,7 +1,7 @@
 {
   "title": "Biblical Overlap Atlas",
-  "version": "1.1.0",
-  "updated": "2026-10-01",
+  "version": "1.2.0",
+  "updated": "2026-10-04",
   "status": "comparative-scriptural-research",
   "purpose": "Map dense structural overlaps between biblical texts and the Potato of Life corpus while distinguishing quotation, historical text, project canon, typology, synchronism and speculative fulfillment.",
   "method": {
@@ -163,6 +163,66 @@
       ],
       "classification": "cross-text-typology",
       "strength": 4
+    },
+    {
+      "id": "darkness-cloud-trumpet-voice-grammar",
+      "biblical_text": [
+        "Exodus 10:21-23",
+        "Exodus 19:10-19",
+        "Joel 2:1-2",
+        "Zephaniah 1:14-16",
+        "Matthew 24:29-31",
+        "1 Thessalonians 4:16-17",
+        "1 Corinthians 15:51-52"
+      ],
+      "short_text_fragments": [
+        "darkness ... three days",
+        "on the third day",
+        "a thick cloud",
+        "voice of the trumpet",
+        "day of darkness and gloom",
+        "coming on the clouds",
+        "last trumpet"
+      ],
+      "potatoverse_motif": "three days of darkness / concealment -> presence -> trumpet -> voice / announcement",
+      "overlap": "The Bible contains both a literal three-day darkness episode and, separately, a third-day Sinai manifestation with cloud, trumpet and divine voice. Joel and Zephaniah directly cluster trumpet, darkness and cloud in prophetic Day-of-the-Lord language; Matthew and Paul later reuse cloud/trumpet imagery around gathering and transformation. Read together, these texts form a recurring symbolic vocabulary without becoming one continuous hidden sentence.",
+      "difference": "Exodus 10 and Exodus 19 are different episodes; the prophetic books have distinct historical/literary settings; New Testament cloud/trumpet texts develop their own eschatological claims. The sequence is therefore a comparative grammar, not proof that every modern use of 'three days of darkness' predicts the same event.",
+      "possible_meaning": [
+        "A bounded interval can make absence or concealment narratively real before a reversal or manifestation.",
+        "Cloud can signify presence-with-veiling while trumpet and voice shift the scene from hiddenness toward summons and disclosure.",
+        "A modern phrase can activate this older vocabulary typologically even when no one-to-one fulfillment can be established."
+      ],
+      "classification": "cross-text-prophetic-grammar",
+      "strength": 5
+    },
+    {
+      "id": "seal-silence-trumpet-mystery-grammar",
+      "biblical_text": [
+        "Daniel 12:4,9",
+        "Revelation 5:1-9",
+        "Revelation 8:1-6",
+        "Revelation 10:4-7",
+        "Revelation 11:15-19"
+      ],
+      "short_text_fragments": [
+        "seal the book",
+        "open the scroll",
+        "silence in heaven",
+        "seven trumpets",
+        "seal up what the seven thunders have said",
+        "mystery of God",
+        "seventh angel sounded"
+      ],
+      "potatoverse_motif": "sealed meaning / waiting silence / opening / sevenfold announcement / mystery becoming readable",
+      "overlap": "Daniel and Revelation repeatedly distinguish hidden or sealed meaning from later opening. Revelation's seventh seal leads into silence and then the seven trumpets; Revelation 10 preserves another deliberately sealed utterance while locating the completion of 'the mystery of God' in the seventh-trumpet horizon; Revelation 11 turns the seventh trumpet into public kingdom proclamation.",
+      "difference": "Not everything sealed in the texts is later disclosed to the reader: Revelation 10 explicitly keeps the seven thunders unwritten. The archive should therefore resist treating 'revelation' as permission to decode every ambiguity or to number modern events as literal Revelation seals/trumpets.",
+      "possible_meaning": [
+        "Revelation can be modeled as a transition from inaccessible relation to legible relation rather than merely as spectacular prediction.",
+        "Silence can function as part of disclosure grammar: pause and withholding may precede a new sequence of speech or action.",
+        "The useful modern test is chronological: did the relevant wording exist before the event, or did the event make an older symbol newly intelligible afterward?"
+      ],
+      "classification": "revelation-method-typology",
+      "strength": 5
     },
     {
       "id": "needle-eye-threshold",
