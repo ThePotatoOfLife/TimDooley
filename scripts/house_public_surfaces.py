@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-EXPECTED_PRIMARY_GATEWAY_IDS = ("tim", "religion", "philosophy", "science", "world")
+EXPECTED_PRIMARY_GATEWAY_IDS = ("tim", "potatoism", "religion", "philosophy", "science", "world")
 
 
 def load_public_surfaces(root: Path) -> dict:
