@@ -46,6 +46,18 @@
 
 <div class="room-ledger"><h3>Minimal variable ledger</h3><p><strong>Queue:</strong> λ = arrival/throughput rate, W = average time in system, L = average number present. <strong>Contagion:</strong> S/I/R = compartment populations, β = effective contact/transmission rate, γ = recovery/removal rate. <strong>Control:</strong> cwnd = sender congestion state, ACK/loss = feedback signals. <strong>Resilience:</strong> required capability, disturbance, degraded state, redundancy/diversity, and recovery time must be named rather than replaced by the word “resilient.”</p></div>
 
+<section id="queue-toy">
+<p class="eyebrow">Runnable toy · the queue that survives the outage</p>
+<h2>Recovery can be slow even after capacity is restored</h2>
+<p>Suppose requests arrive at <strong>9 per minute</strong> and a service can process <strong>10 per minute</strong>. Under ordinary conditions there is spare capacity of 1 request per minute. Now capacity drops to <strong>8.5 per minute</strong> for one hour.</p>
+<div class="room-run"><strong>During the disturbance.</strong><p>Arrivals exceed service by 0.5 per minute, so the backlog grows by <strong>30 requests</strong> over 60 minutes.</p></div>
+<div class="room-run"><strong>Capacity returns.</strong><p>Service is back at 10 per minute, but arrivals are still 9. The system can clear only 1 extra request per minute.</p></div>
+<div class="room-run"><strong>Hidden recovery time.</strong><p>The outage ended instantly; the consequences do not. The 30-request backlog needs another <strong>30 minutes</strong> to clear if arrivals and capacity stay unchanged.</p></div>
+<div class="room-run"><strong>Intuition trap.</strong><p>“Capacity is restored” sounds like “the system is recovered.” Queue dynamics show why those statements are different. State has memory.</p></div>
+<div class="room-run"><strong>Project translation.</strong><p>This is a clean structural neighbor for backlog, unresolved correction or accumulated maintenance—but only if the project can name the arrival rate, processing capacity and stored queue rather than using “Swamp” as a mood.</p></div>
+<p class="reflection-turn">Systems thinking becomes useful when it explains why the present can remain constrained by a disturbance that is already over.</p>
+</section>
+
 <h2>Translate the cases into project operators carefully</h2>
 <p><strong>Swamp</strong> can borrow from hysteresis only at the structural level: a state may persist after the original forcing weakens. <strong>Drain</strong> can borrow from reinforcing feedback: repeated movement narrows reachable alternatives. <strong>Door</strong> can represent a threshold only if the state really changes across it. <strong>Forge</strong> can represent intervention only if the intervention changes the governing feedback, not merely the story told about it.</p>
 <p class="room-quote">A system has changed when its reachable states, feedbacks or constraints change—not when the label on the same trajectory changes.</p>

@@ -1627,3 +1627,86 @@ North-star: **the House should feel inhabited by teachers, objects, stories, que
 - [ ] Infrastructure & Capability — make one mundane system fail and recover in human terms.
 - [ ] Music & Sound — continue album/material integration while keeping music a way of thinking rather than metadata inventory.
 - [ ] Visual Art — add more actual recovered images/artifacts as they become available; keep remembered specifications explicitly separate.
+
+## Content purpose overhaul — 2026-10-04
+
+### Reader contract
+- [x] Audit all 38 active nested Rooms as a critical reader: what question the Room answers, what the reader learns, what can fail, and why the Room exists in the larger House.
+- [x] Establish the overhaul rule: every renewed Room should teach a way of seeing, expose a boundary/failure test, and make its next handoff consequential.
+- [x] Great Book & Literature — add literary, historical, genealogical and adversarial reading passes.
+- [x] Visual Art — teach composition through position, scale, threshold and dated recurrence.
+- [x] Games & Simulations — require state, rule, intervention and observation.
+- [x] Geography & Countries — teach distance, scale, topology and temporal state.
+- [x] Infrastructure & Capability — distinguish existence, conversion, coordination and recovery.
+- [x] Memory & Recovery — distinguish remembered clue, recovered source, chronology and later meaning.
+- [x] Neurobiology — require input, transformation, output and feedback before body symbolism.
+- [x] Symbolic Body Crosswalk — make narrowed, formalizable, rejected and poetic explicit outcomes.
+
+### Wave 2 — parent Rooms become experiences, not indexes
+- [x] Rooms landing — replace taxonomy-first orientation with curiosity-led journeys built around human questions.
+- [x] Archive & Sources — walk one disputed claim from remembered clue to artifact, provenance chain and bounded conclusion.
+- [x] Potatoverse / Canon — show one concept becoming stable canon, including discarded alternatives and superseded mappings.
+- [x] Culture & Information — follow one cultural object through creation, repetition, platform mediation, mutation and forgetting.
+- [x] Life & Body — add one whole-organism case where several systems cooperate under stress.
+- [x] Science & Formal Models — take one attractive metaphor through variable definition, null model, measurement and a possible negative result.
+- [x] Time & History — turn the four-clock method into one complete event dossier.
+- [x] Traditions & Texts — begin one comparison fully inside another tradition before Potatoverse language is permitted.
+- [x] Works — show one idea changing when it becomes prose, music, image and interactive rule.
+- [x] World Systems — make one everyday object reveal the institutions and dependencies behind ordinary life.
+- [x] Research Lab / Forge — publish a visible ledger of rejected, narrowed, promoted and unresolved ideas.
+
+### Newly promoted from the Wave 2 audit
+- [ ] Parent Room ending pass — several Dwellings still conclude with “Same-floor doors and cross-floor gates”; replace the heading when a real next question can carry the handoff.
+- [ ] Parent Room architecture-language pass — keep governance terms in boundaries and technical notes, but remove “owner / projection / route” language where the reader should be learning the subject itself.
+- [ ] Rooms landing second-half audit — the entrance is already curiosity-first, but the lower holdings/placement machinery may still become architecture-heavy after the strong opening.
+- [ ] Parent Room example density — every parent now has at least one worked intellectual exercise; next compare whether older abstract card sections can be shortened around those examples.
+- [ ] Section-order audit — where a concrete case now exists, consider moving it above abstract framework sections so readers meet phenomena before taxonomy.
+- [ ] Cross-page vocabulary pressure test — terms such as Root, Door, Garden, Fruit, Forge and Mud should do local analytical work each time rather than functioning as ambient branding.
+
+### Wave 3 — nested Rooms get a concrete intellectual centerpiece
+- [x] Bible & Christianity — one full passage walk: text, context, Christian interpretive range, Tim-side comparison, countertext and stopping point.
+- [x] Core Identities & Roles — one role-collision case showing why Tim / Father / Son / Potato of Life cannot be treated as interchangeable labels.
+- [x] Comparative Mythology — one source-first comparison from primary mythic material to function, similarity and decisive difference.
+- [x] Developmental Genealogy — one lineage from precursor through mutation, supersession and mature role.
+- [x] Economy & Finance — follow one obligation through households, banks, government and markets.
+- [x] Esoteric & Sacred Geometry — one dated symbol lineage showing how the same shape acquires different meanings in different communities.
+- [x] Experiments & Formalization — one end-to-end experiment card with claim, operationalization, measurement, falsifier and interpretation.
+- [x] House Architecture — let the reader solve one real routing/ownership problem instead of only reading architecture rules.
+- [x] Information Ecology — follow one artifact through live, cached, copied, transformed, orphaned, recovered and canonical states.
+- [x] Internet & Platforms — follow one stream/post through upload, recommendation, clipping, deletion/moderation, recovery and citation.
+- [x] Law & Justice — one jurisdiction → rule → evidence → procedure → remedy → appeal chain.
+- [x] Mathematics & Geometry — pair one exact construction with one seductive but invalid metaphysical inference.
+- [x] Model Testing — build a small failure museum: one rejected model, one narrowed model and one unresolved model.
+- [x] Music & Sound — add album/theme/period listening journeys so the discography reads as development rather than inventory.
+- [x] Open Questions — top live questions get next artifact, owner, closure condition and “what would count as no?”.
+- [x] Other Traditions & Philosophies — foreign-first deep readings for Daoist, Buddhist and Norse material before crosswalks.
+- [x] Physics & Cosmology — promote one analogy through comparator → model → observable → falsifier, even if it stops early.
+- [x] Politics & Governance — take one proposal through authority, implementation capacity, opposition, measurement and revision.
+- [x] Potato Biology — let literal potato biology surprise the symbolism; metaphor comes second.
+- [x] Practice & Ethics — add an ordinary-conflict decision path: observe → relation → agency → intervention → fruit.
+- [x] Prediction / Revelation / Time — visible scorecard containing hits, misses, ambiguous cases and post-event reinterpretations.
+- [x] Provenance & Evidence — show one sentence becoming weaker or stronger across screenshot, repost, summary, archive and primary recovery.
+- [x] Research Programmes — add ship / stop / split criteria to every active programme.
+- [x] Subculture & Group Formation — use a neutral group case to teach norms, permeability, conflict incentives and exit.
+- [x] Symbolic Architecture — one complete Source → Door → World → Roots → return journey with every operator earning its place.
+- [x] Systems Dynamics — one runnable toy system where feedback, delay, queue or contagion defeats intuition.
+- [x] Theology & God-language — surface unresolved tensions rather than forcing every relation into a tidy chart.
+- [x] Timeline Events — make one hinge month readable as a sourced scene, not just chronology.
+- [x] Whole-body Physiology — take one embodied event through nervous, endocrine, circulatory, immune and fluid loops.
+- [x] Witness & Attestation — publish one exemplary packet with artifact, date, authorship, derivation, uncertainty and exact evidentiary scope.
+
+### Wave 3 status
+- [x] All nested-Room centerpiece tasks in this wave are complete; future work should now critique quality/order/redundancy rather than adding centerpieces mechanically.
+
+### Wave 4 — cross-site editorial cleanup
+- [ ] Replace generic “Adjacent Rooms” endings with a consequential next question wherever possible.
+- [ ] Remove repeated epistemic boilerplate when a local worked example can teach the boundary better.
+- [ ] Reduce backend/database language (“owns”, “contains”, “routes”) in primary reader prose when it describes implementation rather than understanding.
+- [ ] Prefer one inspectable worked example over several abstract summary cards on factual pages.
+- [ ] Give every Room at least one genuine intellectual tension, surprise or unresolved question.
+- [ ] Audit all parent/child handoffs for “noun click → thing” behavior rather than filing-system navigation.
+- [ ] Audit pages for copy that explains the site instead of explaining the subject; move implementation notes out of the reading flow.
+- [ ] Audit child Rooms for duplicated introductions that can be replaced with a sharper local thesis.
+- [ ] Audit long card grids for cases where prose, diagrams, timelines or worked chains would teach better.
+- [ ] Audit all Room summaries: each should promise a reader outcome, not merely name the category.
+- [ ] Keep quality, build, navigation, SEO, machine-discovery, TTS and site-shell gates green after every overhaul wave.
