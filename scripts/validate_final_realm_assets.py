@@ -44,6 +44,24 @@ RETIRED_SCENES = (
 )
 
 
+
+def avif_dimensions(path: Path) -> tuple[int, int] | None:
+    """Read AVIF primary image dimensions from the ISO-BMFF ispe box."""
+    try:
+        data = path.read_bytes()
+    except OSError:
+        return None
+    if len(data) < 32 or data[4:8] != b"ftyp" or b"avif" not in data[:32]:
+        return None
+    offset = data.find(b"ispe")
+    if offset < 0 or offset + 16 > len(data):
+        return None
+    width = int.from_bytes(data[offset + 8:offset + 12], "big")
+    height = int.from_bytes(data[offset + 12:offset + 16], "big")
+    if width <= 0 or height <= 0:
+        return None
+    return width, height
+
 def main() -> int:
     errors: list[str] = []
 
@@ -62,10 +80,18 @@ def main() -> int:
             errors.append(f"{hall}: missing Hall artwork {path.relative_to(ROOT)}")
             continue
         size = path.stat().st_size
-        if size < 20_000:
+        dims = avif_dimensions(path)
+        if size < 8_000:
             errors.append(f"{hall}: Hall artwork looks unexpectedly small ({size} bytes)")
         if size > 250_000:
             errors.append(f"{hall}: Hall artwork exceeds page-background budget ({size} bytes)")
+        if dims is None:
+            errors.append(f"{hall}: Hall artwork is not a valid AVIF with readable dimensions")
+        elif dims[0] < 800 or dims[1] < 450:
+            errors.append(
+                f"{hall}: Hall artwork below delivery resolution "
+                f"({dims[0]}x{dims[1]}; require at least 800x450)"
+            )
 
     texts: dict[Path, str] = {}
     for path in LIVE_FILES:
@@ -139,7 +165,9 @@ def main() -> int:
     for floor, path in FINAL_REALMS.items():
         print(f"- {floor}: {path.relative_to(ROOT)} ({path.stat().st_size} bytes)")
     for hall, path in HALL_ART.items():
-        print(f"- {hall}: {path.relative_to(ROOT)} ({path.stat().st_size} bytes)")
+        dims = avif_dimensions(path)
+        dim_text = f"{dims[0]}x{dims[1]}" if dims else "unknown dimensions"
+        print(f"- {hall}: {path.relative_to(ROOT)} ({path.stat().st_size} bytes · {dim_text})")
     return 0
 
 
