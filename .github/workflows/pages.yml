@@ -188,13 +188,13 @@ jobs:
           print("Live provenance verified:",actual)
           PY
 
-          for route in "" "tim-dooley/" "religion/" "science/" "world/" "traditions/bible/" "context/culture/" "below/" "shadow-farm/" "rooms/archive-sources/" "rooms/research-lab/"; do
+          for route in "" "elevator/" "tim-dooley/" "religion/" "science/" "world/" "traditions/bible/" "context/culture/" "below/" "shadow-farm/" "rooms/archive-sources/" "rooms/research-lab/"; do
             safe_name="${route//\//_}"
             [ -n "$safe_name" ] || safe_name="home"
             fetch_live "${base}${route}" ".live-smoke/${safe_name}.html"
           done
 
-          for asset in             "app/site-elevator.js"             "app/site-elevator.css"             "app/header-heaven.svg"             "app/header-plane.svg"             "app/header-below.svg"             "app/house-journey.js"             "app/house-journey.css"             "app/home-heaven.avif"             "app/home-plane.avif"             "app/home-below.avif"             "app/lower-layer.css"             "data/house/elevator-spatial-projection.json" \
+          for asset in             "app/site-elevator.js"             "app/site-elevator.css"             "app/elevator-page.js"             "app/elevator-page.css"             "app/header-heaven.svg"             "app/header-plane.svg"             "app/header-below.svg"             "app/house-journey.js"             "app/house-journey.css"             "app/home-heaven.avif"             "app/home-plane.avif"             "app/home-below.avif"             "app/lower-layer.css"             "data/house/elevator-spatial-projection.json" \
             "knowledge/core/spudlight-field-manual.json" \
             "knowledge/core/lower-field-orientation.json" \
             "knowledge/world/lower-field-population-severity-estimate.json" \
@@ -231,6 +231,9 @@ jobs:
 
           from pathlib import Path
           home=Path(".live-smoke/home.html").read_text(encoding="utf-8",errors="replace")
+          elevator_page=Path(".live-smoke/elevator_.html").read_text(encoding="utf-8",errors="replace")
+          dedicated_elevator_js=Path(".live-smoke/app_elevator-page.js").read_text(encoding="utf-8",errors="replace")
+          dedicated_elevator_css=Path(".live-smoke/app_elevator-page.css").read_text(encoding="utf-8",errors="replace")
           religion=Path(".live-smoke/religion_.html").read_text(encoding="utf-8",errors="replace")
           science=Path(".live-smoke/science_.html").read_text(encoding="utf-8",errors="replace")
           below=Path(".live-smoke/below_.html").read_text(encoding="utf-8",errors="replace")
@@ -240,6 +243,14 @@ jobs:
           assert "home-page.css?v=" in home, "live Home missing fingerprinted homepage CSS"
           assert "site-elevator.css?v=" in home, "live Home missing fingerprinted elevator CSS"
           assert "site-elevator.js?v=" in home, "live Home missing fingerprinted elevator JS"
+          assert 'class="elevator-page-shell"' in elevator_page, "live dedicated Elevator missing its page shell"
+          assert "elevator-page.css" in elevator_page, "live dedicated Elevator missing dedicated CSS"
+          assert "elevator-page.js" in elevator_page, "live dedicated Elevator missing dedicated runtime"
+          assert "site-elevator.css?v=" in elevator_page, "live dedicated Elevator must reuse the canonical realm canvas CSS"
+          assert "site-elevator.js" not in elevator_page, "live dedicated Elevator must not mount the universal mini-elevator runtime"
+          assert "centerBtn.disabled=atCenter" in dedicated_elevator_js, "live dedicated Elevator lost dead-control protection"
+          assert "journeyReplay.disabled=journey.length<2" in dedicated_elevator_js, "live dedicated Elevator lost journey-control state"
+          assert "body.elevator-page-shell" in dedicated_elevator_css, "live dedicated Elevator stylesheet missing page owner"
           for label, html, floor in (
               ("religion", religion, "heaven"),
               ("science", science, "plane"),
