@@ -154,6 +154,35 @@ if "--site-realm-art-size:max(1086px,100vw)" not in elevator_text.replace(" ", "
 if "filter:saturate(1.06) contrast(1.045)" not in elevator_text:
     errors.append("site-elevator.css missing realm edge-separation fidelity filter")
 
+# Shared sub-header interaction contract: semantic role colors must not outrank
+# the universal hover/focus state through !important specificity escalation.
+for selector in (
+    ".page-nav-home",
+    ".page-nav-directory",
+    ".page-nav-dwelling",
+    ".page-nav-current",
+    ".page-nav-room",
+):
+    for block in re.findall(re.escape(selector) + r"\s*\{([^}]*)\}", site_system_text):
+        if "!important" in block:
+            errors.append(f"site-system.css {selector} must not use !important; shared page-nav hover/focus owns interaction state")
+if ".page-nav > a:hover" not in site_system_text or ".page-nav > a:focus-visible" not in site_system_text:
+    errors.append("site-system.css missing canonical page-nav hover/focus interaction state")
+
+# Hall pages are floor-aware pages, not second page compositors. Their full-page
+# artwork must be supplied by the canonical body::before renderer only.
+for hall_css_name, hall_class in (
+    ("potatoes-hall.css", "potatoes-hall-page"),
+    ("dogs-hall.css", "dogs-hall-page"),
+):
+    hall_path = ROOT / "app" / hall_css_name
+    hall_text = hall_path.read_text(encoding="utf-8", errors="ignore") if hall_path.exists() else ""
+    if re.search(rf"body\.{re.escape(hall_class)}::after\s*\{{", hall_text):
+        errors.append(f"{hall_css_name} reintroduced a duplicate fixed Hall page compositor")
+    renderer_marker = f"body.{hall_class}::before"
+    if renderer_marker not in elevator_text:
+        errors.append(f"site-elevator.css missing canonical Hall renderer override: {renderer_marker}")
+
 if warnings:
     print("CSS namespace warnings:")
     for w in sorted(set(warnings)):

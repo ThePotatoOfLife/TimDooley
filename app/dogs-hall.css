@@ -668,17 +668,6 @@ body.dogs-hall-page{
   position:relative;
   overflow-x:clip;
 }
-body.dogs-hall-page::after{
-  content:"";
-  position:fixed;
-  inset:var(--site-elevator-clearance,56px) 0 0;
-  z-index:-4;
-  pointer-events:none;
-  background:
-    linear-gradient(180deg,rgba(7,9,8,.38),rgba(7,9,8,.82) 46%,rgba(7,9,8,.94) 100%),
-    url("./hall-of-shame.avif") 50% 72%/cover no-repeat;
-  opacity:.38;
-}
 
 /* Arrival scene: the only full artwork window. */
 .dogs-hall-page .hall-scene{
@@ -849,10 +838,6 @@ body.dogs-hall-page::after{
 
 /* Mobile: keep the scene strong, but simplify the glass and spacing. */
 @media(max-width:760px){
-  body.dogs-hall-page::after{
-    opacity:.25;
-    background-position:50% 72%;
-  }
   .dogs-hall-page .hall-scene{
     width:calc(100vw - 12px);
     margin-top:12px;
@@ -893,7 +878,6 @@ body.dogs-hall-page::after{
   }
 }
 @media(prefers-reduced-transparency:reduce){
-  body.dogs-hall-page::after{opacity:.18}
   .dogs-hall-page .hall-threshold,
 .dogs-hall-page .shame-village,
 .dogs-hall-page .notoriety-ledger,

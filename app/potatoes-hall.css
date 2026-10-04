@@ -769,17 +769,6 @@ body.potatoes-hall-page{
   position:relative;
   overflow-x:clip;
 }
-body.potatoes-hall-page::after{
-  content:"";
-  position:fixed;
-  inset:var(--site-elevator-clearance,56px) 0 0;
-  z-index:-4;
-  pointer-events:none;
-  background:
-    linear-gradient(180deg,rgba(7,9,8,.38),rgba(7,9,8,.82) 46%,rgba(7,9,8,.94) 100%),
-    url("./hall-of-heroes.avif") 50% 18%/cover no-repeat;
-  opacity:.38;
-}
 
 /* Arrival scene: the only full artwork window. */
 .potatoes-hall-page .hall-scene{
@@ -947,10 +936,6 @@ body.potatoes-hall-page::after{
 
 /* Mobile: keep the scene strong, but simplify the glass and spacing. */
 @media(max-width:760px){
-  body.potatoes-hall-page::after{
-    opacity:.25;
-    background-position:50% 18%;
-  }
   .potatoes-hall-page .hall-scene{
     width:calc(100vw - 12px);
     margin-top:12px;
@@ -990,7 +975,6 @@ body.potatoes-hall-page::after{
   }
 }
 @media(prefers-reduced-transparency:reduce){
-  body.potatoes-hall-page::after{opacity:.18}
   .potatoes-hall-page .hall-threshold,
 .potatoes-hall-page .great-table,
 .potatoes-hall-page .honor-register,
