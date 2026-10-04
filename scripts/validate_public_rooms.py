@@ -231,8 +231,8 @@ def main() -> int:
         if row.get("knowledge_owner") is not False:
             errors.append(f"Rooms guide {surface_id} must not become a knowledge owner")
 
-    if tuple(bridge.get("public_doors", {})) != ("tim", "religion", "philosophy", "science", "world"):
-        errors.append("frontend bridge must retain exactly the five canonical public Doors")
+    if tuple(bridge.get("public_doors", {})) != ("tim", "potatoism", "religion", "philosophy", "science", "world"):
+        errors.append("frontend bridge must retain exactly the six canonical public Doors")
     if bridge.get("public_rooms") != EXPECTED_PUBLIC_ROOMS:
         errors.append(f"frontend bridge public_rooms must equal {EXPECTED_PUBLIC_ROOMS!r}")
 
@@ -252,7 +252,7 @@ def main() -> int:
             print(f"- {error}")
         return 1
 
-    print("PUBLIC ROOMS VALIDATION PASSED: five Doors preserved; Home uses one compact task router while subject discovery remains owned by Rooms/World.")
+    print("PUBLIC ROOMS VALIDATION PASSED: six Doors preserved; Home uses one compact task router while subject discovery remains owned by Rooms/World.")
     return 0
 
 
