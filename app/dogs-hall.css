@@ -155,3 +155,129 @@ body.dogs-hall-page{
   .dogs-hall-page .arcade-score-row .arcade-class,
   .dogs-hall-page .arcade-score-row .arcade-highmark{grid-column:2}
 }
+
+
+/* Hall of Shame room carve: village edge, loop anatomy and repair exits. */
+.dogs-hall-page .hall-threshold,
+.dogs-hall-page .shame-village,
+.dogs-hall-page .repair-route,
+.dogs-hall-page .hall-exits{
+  margin:28px 0 38px;
+  padding:clamp(18px,2.6vw,28px);
+  border:1px solid rgba(146,91,62,.42);
+  border-radius:8px;
+  background:
+    linear-gradient(180deg,rgba(29,28,24,.9),rgba(19,21,19,.95)),
+    repeating-linear-gradient(90deg,transparent 0 47px,rgba(255,255,255,.012) 47px 48px);
+  box-shadow:0 18px 46px rgba(0,0,0,.25),inset 0 1px rgba(255,255,255,.018);
+}
+.dogs-hall-page .hall-threshold h2,
+.dogs-hall-page .shame-village h2,
+.dogs-hall-page .repair-route h2,
+.dogs-hall-page .hall-exits h2{margin:3px 0 12px;color:#e8d4c3}
+.dogs-hall-page .hall-input-output,
+.dogs-hall-page .shame-landmarks,
+.dogs-hall-page .repair-steps,
+.dogs-hall-page .hall-door-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+  margin-top:16px;
+}
+.dogs-hall-page .hall-input-output article,
+.dogs-hall-page .shame-landmarks article,
+.dogs-hall-page .repair-steps article{
+  padding:15px;
+  border:1px solid rgba(141,91,64,.3);
+  background:
+    linear-gradient(180deg,rgba(61,45,34,.2),rgba(15,18,17,.58));
+}
+.dogs-hall-page .hall-input-output em,
+.dogs-hall-page .shame-landmarks em,
+.dogs-hall-page .hall-door-grid em{
+  display:block;
+  margin-bottom:5px;
+  color:#b47e61;
+  font:700 9px/1.35 ui-monospace,monospace;
+  font-style:normal;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+}
+.dogs-hall-page .hall-input-output strong,
+.dogs-hall-page .shame-landmarks strong,
+.dogs-hall-page .repair-steps strong{
+  display:block;
+  color:#e0b294;
+  font:400 18px/1.22 var(--site-font-serif);
+  margin-bottom:6px;
+}
+.dogs-hall-page .hall-input-output p,
+.dogs-hall-page .shame-landmarks p,
+.dogs-hall-page .repair-steps p{margin:0;color:#c3bbb2;font-size:12px;line-height:1.6}
+.dogs-hall-page .hall-door-strip{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:7px;
+  margin-top:18px;
+}
+.dogs-hall-page .hall-door-strip a{
+  padding:10px 11px;
+  border:1px solid rgba(149,90,59,.34);
+  background:rgba(12,14,13,.54);
+  color:inherit;
+  text-decoration:none;
+}
+.dogs-hall-page .hall-door-strip strong{display:block;color:#d58f68;font:700 10px ui-monospace,monospace;letter-spacing:.06em}
+.dogs-hall-page .hall-door-strip span{display:block;margin-top:4px;color:#9e958d;font-size:10px;line-height:1.35}
+.dogs-hall-page .shame-village{
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(ellipse at 74% 100%,rgba(94,77,44,.24),transparent 45%),
+    linear-gradient(180deg,rgba(38,39,35,.94),rgba(29,25,20,.96) 48%,rgba(35,27,20,.98));
+}
+.dogs-hall-page .shame-village:after{
+  content:"";
+  position:absolute;
+  left:-6%;right:-6%;bottom:0;height:70px;
+  background:
+    radial-gradient(ellipse at 15% 100%,rgba(78,83,47,.3),transparent 58%),
+    radial-gradient(ellipse at 48% 100%,rgba(80,67,39,.38),transparent 60%),
+    radial-gradient(ellipse at 82% 100%,rgba(66,75,43,.28),transparent 58%);
+  pointer-events:none;
+}
+.dogs-hall-page .repair-steps article{position:relative;padding-left:54px}
+.dogs-hall-page .repair-steps b{
+  position:absolute;
+  left:14px;top:14px;
+  color:#8f6048;
+  font:700 18px ui-monospace,monospace;
+}
+.dogs-hall-page .hall-carry{
+  margin:18px 0 0;
+  padding:15px 17px;
+  border-left:3px solid #9f674b;
+  background:rgba(114,70,46,.08);
+  color:#d0c7be;
+}
+.dogs-hall-page .hall-door-grid a{
+  display:block;
+  padding:15px;
+  border:1px solid rgba(142,89,62,.34);
+  background:rgba(28,24,21,.66);
+  color:inherit;
+  text-decoration:none;
+}
+.dogs-hall-page .hall-door-grid strong{display:block;color:#dda17d;font:400 19px var(--site-font-serif);margin-bottom:5px}
+.dogs-hall-page .hall-door-grid span{display:block;color:#aaa198;font-size:11px;line-height:1.5}
+.dogs-hall-page .hall-door-grid a:hover,
+.dogs-hall-page .hall-door-grid a:focus-visible,
+.dogs-hall-page .hall-door-strip a:hover,
+.dogs-hall-page .hall-door-strip a:focus-visible{border-color:#b97552;background:rgba(105,57,36,.14)}
+@media(max-width:760px){
+  .dogs-hall-page .hall-input-output,
+  .dogs-hall-page .shame-landmarks,
+  .dogs-hall-page .repair-steps,
+  .dogs-hall-page .hall-door-grid{grid-template-columns:1fr}
+  .dogs-hall-page .hall-door-strip{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
