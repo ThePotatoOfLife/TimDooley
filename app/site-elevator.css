@@ -17,6 +17,7 @@
   --elevator-room-min:112px;
   --elevator-room-height:40px;
   --elevator-room-gap:6px;
+  --elevator-slot-count:5;
   --elevator-arrow-size:20px;
   --elevator-floor-size:14px;
   --elevator-floor-spacing:.11em;
@@ -341,11 +342,9 @@ html[data-site-floor="below"]{
 .site-elevator-room-rail{
   position:relative;
   z-index:1;
-  display:grid;
-  grid-template-columns:repeat(var(--elevator-room-count),minmax(0,1fr));
-  grid-auto-rows:var(--elevator-room-height);
-  align-items:stretch;
-  align-content:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   gap:var(--elevator-room-gap);
   min-width:0;
   min-height:var(--elevator-shell-height);
@@ -362,6 +361,9 @@ html[data-site-floor="below"]{
 
 .site-elevator-room{
   position:relative;
+  flex:0 0 calc((100% - (var(--elevator-room-gap) * (var(--elevator-slot-count) - 1))) / var(--elevator-slot-count));
+  width:calc((100% - (var(--elevator-room-gap) * (var(--elevator-slot-count) - 1))) / var(--elevator-slot-count));
+  max-width:calc((100% - (var(--elevator-room-gap) * (var(--elevator-slot-count) - 1))) / var(--elevator-slot-count));
   display:flex;
   align-items:center;
   justify-content:center;
@@ -515,6 +517,7 @@ html[data-site-floor="below"]{
   .site-elevator-floor-code{font-size:8px}
   .site-elevator-room-label{font-size:6.5px;letter-spacing:.02em}
   .site-elevator-room-rail{
+    display:grid;
     grid-template-columns:repeat(auto-fit,minmax(72px,1fr));
     grid-auto-rows:var(--elevator-room-height);
     min-height:var(--elevator-shell-height);
@@ -522,6 +525,9 @@ html[data-site-floor="below"]{
     gap:3px;
   }
   .site-elevator-room{
+    flex:none;
+    width:auto;
+    max-width:none;
     min-height:var(--elevator-room-height);
     padding:4px 5px;
   }
