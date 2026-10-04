@@ -252,7 +252,11 @@ assert.equal(css.includes('.site-elevator-room.is-secondary'),false,'header CSS 
 assert.equal(source.includes('is-secondary'),false,'runtime must not emit cross-floor Room doors');
 
 
-assert.ok(css.includes('background:rgba(6,9,11,.74)'),'Room tiles need one neutral readability surface over every realm');
+assert.match(
+  css,
+  /\.site-elevator-room\{[\s\S]*?background:rgba\(6,9,11,[^)]+\)/,
+  'Room tiles need one shared neutral readability surface over every realm'
+);
 assert.ok(css.includes('background:var(--site-elevator-panel)'),'floor board must use the shared terminal panel token');
 assert.ok(css.includes('@media (prefers-contrast: more)'),'terminal UI needs one generic high-contrast mode');
 assert.equal(css.includes('backdrop-filter:'),false,'terminal UI must not reintroduce blur-based floor materials');
