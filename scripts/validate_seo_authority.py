@@ -48,7 +48,7 @@ def validate_manifest(text: str, errors: list[str]) -> None:
         errors.append("site-authority.json primary subject must be Tim Dooley")
     if subject.get("relationship_to_project") != "primary subject and project self-description":
         errors.append("site-authority.json must preserve the project self-description boundary")
-    expected_routes = {"tim", "religion", "philosophy", "science", "world"}
+    expected_routes = {"tim", "potatoism", "religion", "philosophy", "science", "world"}
     if set(routes) != expected_routes:
         errors.append(f"site-authority.json primary routes must be exactly {sorted(expected_routes)}")
     for key, value in routes.items():
