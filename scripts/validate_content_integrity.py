@@ -120,7 +120,7 @@ def main():
         if room_id and not any(room_id in (surface.get("primary_room_ids") or []) for surface in surface_rows):
             ERRORS.append(f"Canonical Room has no public surface coverage: {room_id}")
     primary_gateways=surfaces.get("primary_gateway_ids",[])
-    if primary_gateways!=["tim","religion","philosophy","science","world"]:
+    if primary_gateways!=["tim","potatoism","religion","philosophy","science","world"]:
         ERRORS.append(f"Primary gateway contract drifted: {primary_gateways}")
     ent=load("data/entanglement.json"); required_ent={"source","target","relationship","distance","directionality","strength","dependency","coupling","correlation","causal_status","temporal_order","path_dependence","feedback","topology","boundary","trajectory","phase","counterfactual_sensitivity","evidence","confidence"}
     if not required_ent.issubset(set(ent.get("relational_dimensions",[]))):ERRORS.append("Entanglement schema is missing required relational dimensions")
