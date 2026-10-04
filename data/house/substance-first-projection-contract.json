@@ -1,8 +1,8 @@
 {
   "id": "substance-first-projection-contract",
   "title": "Substance-First Public Projection Contract",
-  "version": "1.3.0",
-  "updated": "2026-10-01",
+  "version": "1.4.0",
+  "updated": "2026-10-04",
   "status": "binding presentation/materialization contract",
   "purpose": "Make reader-facing substance the first-class public experience while preserving quiet, typed, machine-readable bonds to canonical owners, Rooms, provenance and evidence boundaries underneath the prose.",
   "paradox_resolution": {
@@ -51,84 +51,84 @@
       "rooms": [
         "potatoverse-canon",
         "archive-sources",
+        "works",
         "research-lab"
       ],
       "anchors": [
         {
-          "section_id": "project-substance",
+          "section_id": "start-in-a-minute",
           "owner_paths": [
             "knowledge/core/tim-dooley.json",
             "data/potatoism-canonical-corpus.json",
-            "data/tim-dooley-public-theology-timeline-2025-2026.json",
             "data/house/project-synthesis.json"
           ],
           "relation_types": [
-            "biography",
-            "canon-development",
-            "public-record",
-            "project-synthesis"
+            "person",
+            "central-symbol",
+            "whole-system-orientation"
           ],
           "evidence_classes": [
             "project-canon",
-            "public-record",
-            "interpretation",
+            "biography",
+            "project-synthesis"
+          ]
+        },
+        {
+          "section_id": "best-first-reads",
+          "owner_paths": [
+            "data/house/public-surfaces.json",
+            "data/house/project-synthesis.json",
+            "knowledge/culture/creative-systems-archive.json"
+          ],
+          "relation_types": [
+            "reader-entry",
+            "primary-work",
+            "practice",
+            "public-witness",
+            "creative-work"
+          ],
+          "evidence_classes": [
+            "project-governance",
+            "creative-work",
+            "public-record"
+          ]
+        },
+        {
+          "section_id": "world-glimpse",
+          "owner_paths": [
+            "data/house/project-synthesis.json",
+            "data/house/public-surfaces.json",
+            "knowledge/core/repair-forge-protocol.json"
+          ],
+          "relation_types": [
+            "orientation",
+            "topology-handoff",
+            "repair"
+          ],
+          "evidence_classes": [
+            "project-model",
             "project-governance"
           ]
         },
         {
-          "section_id": "culture-in-motion",
+          "section_id": "why-this-archive",
           "owner_paths": [
-            "knowledge/world/culture-sektur-platform-media-political-ecology.json",
-            "knowledge/world/farm-sektur-attention-extraction-ecology.json",
+            "knowledge/core/tim-dooley.json",
+            "data/house/history-canon-revision-protocol.json",
+            "data/house/works-fruit-contract.json",
             "data/house/project-synthesis.json"
           ],
           "relation_types": [
-            "formation",
-            "reproduction",
-            "attention-economy",
-            "institutional-interface"
+            "development",
+            "provenance",
+            "independent-reader-use",
+            "creative-output"
           ],
           "evidence_classes": [
-            "cultural-analysis",
-            "project-model",
-            "external-research"
-          ]
-        },
-        {
-          "section_id": "reality-cases",
-          "owner_paths": [
-            "data/house/entity-dossiers.json",
-            "data/house/route-case-matrix.json"
-          ],
-          "relation_types": [
-            "entity-case",
-            "longitudinal-indicator",
-            "operator-test",
-            "evidence-boundary"
-          ],
-          "evidence_classes": [
-            "external-fact",
-            "official-source",
-            "project-synthesis"
-          ]
-        },
-        {
-          "section_id": "working-capabilities",
-          "owner_paths": [
-            "data/house/foundation-integration-contract.json",
-            "knowledge/core/repair-forge-protocol.json",
-            "data/house/history-canon-revision-protocol.json",
-            "data/house/works-fruit-contract.json"
-          ],
-          "relation_types": [
-            "capability",
-            "revision",
-            "repair",
-            "consequence"
-          ],
-          "evidence_classes": [
+            "biography",
+            "public-record",
             "project-governance",
-            "project-model"
+            "creative-work"
           ]
         }
       ]
