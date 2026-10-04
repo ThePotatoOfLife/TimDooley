@@ -1643,17 +1643,25 @@ North-star: **the House should feel inhabited by teachers, objects, stories, que
 - [x] Symbolic Body Crosswalk — make narrowed, formalizable, rejected and poetic explicit outcomes.
 
 ### Wave 2 — parent Rooms become experiences, not indexes
-- [ ] Rooms landing — replace taxonomy-first orientation with curiosity-led journeys built around human questions.
-- [ ] Archive & Sources — walk one disputed claim from remembered clue to artifact, provenance chain and bounded conclusion.
-- [ ] Potatoverse / Canon — show one concept becoming stable canon, including discarded alternatives and superseded mappings.
-- [ ] Culture & Information — follow one cultural object through creation, repetition, platform mediation, mutation and forgetting.
-- [ ] Life & Body — add one whole-organism case where several systems cooperate under stress.
-- [ ] Science & Formal Models — take one attractive metaphor through variable definition, null model, measurement and a possible negative result.
-- [ ] Time & History — turn the four-clock method into one complete event dossier.
-- [ ] Traditions & Texts — begin one comparison fully inside another tradition before Potatoverse language is permitted.
-- [ ] Works — show one idea changing when it becomes prose, music, image and interactive rule.
-- [ ] World Systems — make one everyday object reveal the institutions and dependencies behind ordinary life.
-- [ ] Research Lab / Forge — publish a visible ledger of rejected, narrowed, promoted and unresolved ideas.
+- [x] Rooms landing — replace taxonomy-first orientation with curiosity-led journeys built around human questions.
+- [x] Archive & Sources — walk one disputed claim from remembered clue to artifact, provenance chain and bounded conclusion.
+- [x] Potatoverse / Canon — show one concept becoming stable canon, including discarded alternatives and superseded mappings.
+- [x] Culture & Information — follow one cultural object through creation, repetition, platform mediation, mutation and forgetting.
+- [x] Life & Body — add one whole-organism case where several systems cooperate under stress.
+- [x] Science & Formal Models — take one attractive metaphor through variable definition, null model, measurement and a possible negative result.
+- [x] Time & History — turn the four-clock method into one complete event dossier.
+- [x] Traditions & Texts — begin one comparison fully inside another tradition before Potatoverse language is permitted.
+- [x] Works — show one idea changing when it becomes prose, music, image and interactive rule.
+- [x] World Systems — make one everyday object reveal the institutions and dependencies behind ordinary life.
+- [x] Research Lab / Forge — publish a visible ledger of rejected, narrowed, promoted and unresolved ideas.
+
+### Newly promoted from the Wave 2 audit
+- [ ] Parent Room ending pass — several Dwellings still conclude with “Same-floor doors and cross-floor gates”; replace the heading when a real next question can carry the handoff.
+- [ ] Parent Room architecture-language pass — keep governance terms in boundaries and technical notes, but remove “owner / projection / route” language where the reader should be learning the subject itself.
+- [ ] Rooms landing second-half audit — the entrance is already curiosity-first, but the lower holdings/placement machinery may still become architecture-heavy after the strong opening.
+- [ ] Parent Room example density — every parent now has at least one worked intellectual exercise; next compare whether older abstract card sections can be shortened around those examples.
+- [ ] Section-order audit — where a concrete case now exists, consider moving it above abstract framework sections so readers meet phenomena before taxonomy.
+- [ ] Cross-page vocabulary pressure test — terms such as Root, Door, Garden, Fruit, Forge and Mud should do local analytical work each time rather than functioning as ambient branding.
 
 ### Wave 3 — nested Rooms get a concrete intellectual centerpiece
 - [ ] Bible & Christianity — one full passage walk: text, context, Christian interpretive range, Tim-side comparison, countertext and stopping point.
