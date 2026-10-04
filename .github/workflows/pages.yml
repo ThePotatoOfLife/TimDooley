@@ -188,13 +188,13 @@ jobs:
           print("Live provenance verified:",actual)
           PY
 
-          for route in "" "tim-dooley/" "religion/" "science/" "world/" "traditions/bible/" "context/culture/" "below/" "shadow-farm/" "rooms/archive-sources/" "rooms/research-lab/"; do
+          for route in "" "elevator/" "tim-dooley/" "religion/" "science/" "world/" "traditions/bible/" "context/culture/" "below/" "shadow-farm/" "rooms/archive-sources/" "rooms/research-lab/"; do
             safe_name="${route//\//_}"
             [ -n "$safe_name" ] || safe_name="home"
             fetch_live "${base}${route}" ".live-smoke/${safe_name}.html"
           done
 
-          for asset in             "app/site-elevator.js"             "app/site-elevator.css"             "app/house-journey.js"             "app/house-journey.css"             "app/home-heaven.avif"             "app/home-plane.avif"             "app/home-below.avif"             "app/lower-layer.css"             "data/house/elevator-spatial-projection.json" \
+          for asset in             "app/site-elevator.js"             "app/site-elevator.css"             "app/elevator-page.js"             "app/elevator-page.css"             "app/header-heaven.svg"             "app/header-plane.svg"             "app/header-below.svg"             "app/house-journey.js"             "app/house-journey.css"             "app/home-heaven.avif"             "app/home-plane.avif"             "app/home-below.avif"             "app/lower-layer.css"             "data/house/elevator-spatial-projection.json" \
             "knowledge/core/spudlight-field-manual.json" \
             "knowledge/core/lower-field-orientation.json" \
             "knowledge/world/lower-field-population-severity-estimate.json" \
@@ -207,11 +207,21 @@ jobs:
           python - <<'PY'
           from pathlib import Path
           elevator_css=Path(".live-smoke/app_site-elevator.css").read_text(encoding="utf-8",errors="replace")
+          elevator_js=Path(".live-smoke/app_site-elevator.js").read_text(encoding="utf-8",errors="replace")
           lower_css=Path(".live-smoke/app_lower-layer.css").read_text(encoding="utf-8",errors="replace")
           journey_js=Path(".live-smoke/app_house-journey.js").read_text(encoding="utf-8",errors="replace")
           journey_css=Path(".live-smoke/app_house-journey.css").read_text(encoding="utf-8",errors="replace")
           assert 'html[data-site-floor="plane"]' in elevator_css, "live elevator CSS missing Plane canvas"
           assert 'body:not(.home-body)::before' in elevator_css, "live elevator CSS missing universal single-floor realm canvas"
+          assert '--elevator-shell-height:96px' in elevator_css, "live elevator CSS missing 96px desktop shell"
+          assert '--elevator-slot-count:5' in elevator_css, "live elevator CSS missing uniform five-slot Room geometry"
+          assert '.site-elevator-stage' in elevator_css, "live elevator CSS missing scenic Room stage"
+          assert 'site-elevator-stage' in elevator_js, "live elevator runtime missing scenic Room stage"
+          assert "selectedFloorLabel+' Rooms'" in elevator_js, "live elevator runtime missing selected-floor accessibility sync"
+          for asset in ('header-heaven.svg','header-plane.svg','header-below.svg'):
+              assert f'url("./{asset}")' in elevator_css, f"live elevator CSS missing dedicated {asset}"
+              payload=Path(".live-smoke/app_"+asset).read_text(encoding="utf-8",errors="replace")
+              assert 'viewBox="0 0 1600 120"' in payload, f"live {asset} lost canonical header composition canvas"
           for asset in ('home-heaven.avif','home-plane.avif','home-below.avif'):
               assert f'{asset}?v=' in elevator_css, f"live elevator CSS missing fingerprinted {asset}"
               assert f'{asset}?v=' in journey_css, f"live House journey CSS missing fingerprinted {asset}"
@@ -221,6 +231,9 @@ jobs:
 
           from pathlib import Path
           home=Path(".live-smoke/home.html").read_text(encoding="utf-8",errors="replace")
+          elevator_page=Path(".live-smoke/elevator_.html").read_text(encoding="utf-8",errors="replace")
+          dedicated_elevator_js=Path(".live-smoke/app_elevator-page.js").read_text(encoding="utf-8",errors="replace")
+          dedicated_elevator_css=Path(".live-smoke/app_elevator-page.css").read_text(encoding="utf-8",errors="replace")
           religion=Path(".live-smoke/religion_.html").read_text(encoding="utf-8",errors="replace")
           science=Path(".live-smoke/science_.html").read_text(encoding="utf-8",errors="replace")
           below=Path(".live-smoke/below_.html").read_text(encoding="utf-8",errors="replace")
@@ -230,6 +243,14 @@ jobs:
           assert "home-page.css?v=" in home, "live Home missing fingerprinted homepage CSS"
           assert "site-elevator.css?v=" in home, "live Home missing fingerprinted elevator CSS"
           assert "site-elevator.js?v=" in home, "live Home missing fingerprinted elevator JS"
+          assert 'class="elevator-page-shell"' in elevator_page, "live dedicated Elevator missing its page shell"
+          assert "elevator-page.css" in elevator_page, "live dedicated Elevator missing dedicated CSS"
+          assert "elevator-page.js" in elevator_page, "live dedicated Elevator missing dedicated runtime"
+          assert "site-elevator.css?v=" in elevator_page, "live dedicated Elevator must reuse the canonical realm canvas CSS"
+          assert "site-elevator.js" not in elevator_page, "live dedicated Elevator must not mount the universal mini-elevator runtime"
+          assert "centerBtn.disabled=atCenter" in dedicated_elevator_js, "live dedicated Elevator lost dead-control protection"
+          assert "journeyReplay.disabled=journey.length<2" in dedicated_elevator_js, "live dedicated Elevator lost journey-control state"
+          assert "body.elevator-page-shell" in dedicated_elevator_css, "live dedicated Elevator stylesheet missing page owner"
           for label, html, floor in (
               ("religion", religion, "heaven"),
               ("science", science, "plane"),
