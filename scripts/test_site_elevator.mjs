@@ -202,7 +202,8 @@ for(const match of css.matchAll(/\.site-elevator\[data-elevator-level="(?:heaven
   );
 }
 assert.ok(css.includes('flex:0 0 calc((100% - (var(--elevator-room-gap) * (var(--elevator-slot-count) - 1))) / var(--elevator-slot-count))'),'desktop Room buttons must keep identical widths across Heaven, Plane and Below');
-assert.ok(css.includes('grid-template-columns:repeat(auto-fit,minmax(72px,1fr))'),'narrow Room rail must retain a responsive wrapped fallback');
+assert.equal(css.includes('grid-template-columns:repeat(auto-fit,minmax(72px,1fr))'),false,'narrow Room rail must not resize controls by floor count');
+assert.match(css,/@media \(max-width:760px\)\{[\s\S]*?\.site-elevator-room-rail\{[\s\S]*?display:flex;/,'narrow Room rail must preserve the same five-slot flex geometry');
 assert.ok(css.includes('overflow:visible'),'Room rail must expose wrapped lines');
 assert.equal(css.includes('overflow-x:auto'),false,'Room rail must not horizontally scroll');
 assert.equal(css.includes('scrollbar-width'),false,'Room rail must not render a scrollbar');
