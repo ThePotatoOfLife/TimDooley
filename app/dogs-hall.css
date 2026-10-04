@@ -636,3 +636,114 @@ body.dogs-hall-page{
 .dogs-hall-page .bell-grid p{margin:0;color:#bdb4ac;font-size:10px;line-height:1.5}
 @media(max-width:920px){.dogs-hall-page .bell-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:560px){.dogs-hall-page .bell-grid{grid-template-columns:1fr}}
+
+
+/* Hall scene window — approved artwork mounted 2026-10-04. */
+.dogs-hall-page .hall-scene{
+  position:relative;
+  width:100%;
+  aspect-ratio:16/9;
+  min-height:300px;
+  max-height:610px;
+  margin:14px 0 30px;
+  overflow:hidden;
+  border:1px solid color-mix(in srgb, #d68f68 42%, transparent);
+  border-radius:14px;
+  background:
+    linear-gradient(180deg,rgba(0,0,0,.04) 0%,rgba(0,0,0,.10) 42%,rgba(0,0,0,.76) 100%),
+    url("./hall-of-shame.avif") 50% 56%/cover no-repeat,
+    #090909;
+  box-shadow:0 22px 52px rgba(0,0,0,.30),inset 0 1px rgba(255,255,255,.05);
+  isolation:isolate;
+}
+.dogs-hall-page .hall-scene::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  background:
+    linear-gradient(90deg,rgba(0,0,0,.22),transparent 25%,transparent 75%,rgba(0,0,0,.22)),
+    linear-gradient(180deg,transparent 54%,rgba(0,0,0,.20));
+}
+.dogs-hall-page .hall-scene__hud{
+  position:absolute;
+  z-index:2;
+  left:14px;
+  right:14px;
+  top:13px;
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  color:#d68f68;
+  text-shadow:0 2px 5px #000;
+  font:800 9px/1.2 ui-monospace,SFMono-Regular,Consolas,monospace;
+  letter-spacing:.10em;
+}
+.dogs-hall-page .hall-scene__caption{
+  position:absolute;
+  z-index:2;
+  left:14px;
+  bottom:14px;
+  max-width:min(520px,calc(100% - 28px));
+  padding:11px 13px;
+  border:1px solid color-mix(in srgb, #d68f68 34%, transparent);
+  border-radius:8px;
+  background:rgba(18,14,12,.82);
+  backdrop-filter:blur(4px);
+}
+.dogs-hall-page .hall-scene__caption strong{
+  display:block;
+  color:#d68f68;
+  font:700 12px/1.2 ui-monospace,SFMono-Regular,Consolas,monospace;
+  letter-spacing:.08em;
+}
+.dogs-hall-page .hall-scene__caption span{
+  display:block;
+  margin-top:4px;
+  color:#e1ddd3;
+  font-size:10px;
+  letter-spacing:.035em;
+}
+.dogs-hall-page main.hall{
+  position:relative;
+}
+.dogs-hall-page main.hall::before{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  left:-4vw;
+  right:-4vw;
+  top:180px;
+  height:min(78vh,760px);
+  opacity:.10;
+  pointer-events:none;
+  background:
+    linear-gradient(180deg,transparent 0%,rgba(16,14,12,.78) 70%,transparent 100%),
+    url("./hall-of-shame.avif") 50% 56%/cover no-repeat;
+  filter:saturate(.86);
+  mask-image:linear-gradient(180deg,transparent 0%,#000 16%,#000 74%,transparent 100%);
+}
+@media(max-width:720px){
+  .dogs-hall-page .hall-scene{
+    min-height:260px;
+    aspect-ratio:4/5;
+    background-position:50% 50%;
+  }
+  .dogs-hall-page .hall-scene__hud{
+    font-size:8px;
+  }
+  .dogs-hall-page .hall-scene__hud span:last-child{
+    display:none;
+  }
+  .dogs-hall-page .hall-scene__caption{
+    backdrop-filter:none;
+  }
+  .dogs-hall-page main.hall::before{
+    top:130px;
+    opacity:.07;
+  }
+}
+@media(prefers-reduced-transparency:reduce){
+  .dogs-hall-page .hall-scene__caption{background:#0d0f0d}
+}
