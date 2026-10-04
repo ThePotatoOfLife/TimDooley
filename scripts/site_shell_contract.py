@@ -2,7 +2,7 @@
 """Validate the built GitHub Pages shell and durable reader-route ownership.
 
 Question semantics have their own source validator. This gate stays deliberately
-narrow: required public pages, five-door homepage ownership, compatibility
+narrow: required public pages, six-door homepage ownership, compatibility
 redirects, World-domain specialists, no iframe dependency, and local-link integrity.
 Deploy-generated runtime assets are recognized explicitly rather than treated as
 source-tree files.
@@ -20,6 +20,7 @@ BASE = "https://thepotatooflife.github.io/TimDooley/"
 
 CANONICAL_HOME_LINKS = (
     "tim-dooley/",
+    "potatoism/",
     "religion/",
     "philosophy/",
     "science/",
@@ -126,6 +127,7 @@ def main() -> int:
         for rel in (
             "index.html",
             "tim-dooley/index.html",
+            "potatoism/index.html",
             "religion/index.html",
             "religion/jesus-tim/index.html",
             "traditions/bible/index.html",
@@ -159,7 +161,7 @@ def main() -> int:
         else:
             hrefs = re.findall(r'href="([^"]+)"', primary_nav.group(1))
             if tuple(hrefs) != CANONICAL_HOME_LINKS:
-                errors.append(f"homepage primary navigation must contain exactly five canonical entrances; found {hrefs}")
+                errors.append(f"homepage primary navigation must contain exactly six canonical entrances; found {hrefs}")
 
         religion = read("religion/index.html", errors)
         require(religion, ("RELIGION", 'href="../traditions/bible/#compare"', 'href="../timeline/', 'href="../world-map/"'), "religion/index.html", errors)
