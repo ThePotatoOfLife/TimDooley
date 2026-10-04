@@ -79,7 +79,7 @@ def main() -> int:
             "--site-elevator-clearance",
             "ResizeObserver",
             "site-elevator-stage",
-            "stage.style.setProperty('--elevator-room-count'",
+            "site-elevator-stage",
         ):
             if token not in js:
                 errors.append(f"site elevator JS missing clearance/header marker: {token}")
@@ -118,7 +118,8 @@ def main() -> int:
             "--elevator-shell-height:60px",
             "--elevator-room-height:40px",
             ".site-elevator-room.is-active",
-            "grid-template-columns:repeat(var(--elevator-room-count),minmax(0,1fr))",
+            "--elevator-slot-count:5",
+            "flex:0 0 calc((100% - (var(--elevator-room-gap) * (var(--elevator-slot-count) - 1))) / var(--elevator-slot-count))",
             "grid-template-columns:repeat(auto-fit,minmax(72px,1fr))",
             "overflow:visible",
             ".site-elevator-floor-code",
