@@ -968,3 +968,58 @@ body.potatoes-hall-page::after{
 .potatoes-hall-page .hall-exits{backdrop-filter:none}
   .potatoes-hall-page .hall-scene__caption{backdrop-filter:none}
 }
+
+
+/* Small-surface spacing polish — prevent controls and tiles from visually fusing. */
+.potatoes-hall-page .page-header{
+  border-radius:12px;
+  box-shadow:0 14px 38px rgba(0,0,0,.16);
+}
+.potatoes-hall-page .hall-door-strip{
+  gap:11px;
+}
+.potatoes-hall-page .hall-door-strip a{
+  border-radius:7px;
+}
+.potatoes-hall-page .nature-grid,
+.potatoes-hall-page .honor-grid,
+.potatoes-hall-page .milestone-grid,
+.potatoes-hall-page .grid,
+.potatoes-hall-page .recognition{
+  gap:14px;
+}
+.potatoes-hall-page .tile{
+  padding:16px;
+  border-radius:8px;
+  box-shadow:none;
+}
+.potatoes-hall-page .recognition div{
+  padding:14px 12px;
+}
+.potatoes-hall-page .source-desk-grid article,
+.potatoes-hall-page .takeaway-grid article,
+.potatoes-hall-page .table-question-grid article,
+.potatoes-hall-page .worked-run-grid article,
+.potatoes-hall-page .bell-grid article{
+  min-width:0;
+}
+.potatoes-hall-page .hall-door-grid a,
+.potatoes-hall-page .hall-door-strip a{
+  min-width:0;
+  overflow-wrap:anywhere;
+}
+@media(max-width:760px){
+  .potatoes-hall-page .page-header{
+    border-radius:9px;
+  }
+  .potatoes-hall-page .hall-door-strip{
+    gap:8px;
+  }
+  .potatoes-hall-page .nature-grid,
+  .potatoes-hall-page .honor-grid,
+  .potatoes-hall-page .milestone-grid,
+  .potatoes-hall-page .grid,
+  .potatoes-hall-page .recognition{
+    gap:10px;
+  }
+}
