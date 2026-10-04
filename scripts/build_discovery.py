@@ -2,7 +2,7 @@
 """Build the public search, crawler and LLM discovery layer.
 
 This pass creates useful visible question pages plus machine-readable indexes.
-It mirrors the five-door reader architecture instead of inventing a parallel
+It mirrors the six-door reader architecture instead of inventing a parallel
 SEO hierarchy. Final canonical sitemap coverage is rebuilt later by
 ``scripts/optimize_seo.py`` from the deployable artifact.
 """
@@ -334,9 +334,9 @@ def build_machine_files(entries, families):
         "source_authority": SOURCE_AUTHORITY,
         "authority_manifest": AUTHORITY_MANIFEST,
         "tim_canonical": TIM_CANONICAL,
-        "reader_architecture": {"principle": "five major doors; deeper material is routed beneath them rather than competing with them", "doors": [{"id": key, "name": label, "url": BASE_URL + path} for key, label, path in PRIMARY_DOORS], "public_surfaces": public_surface_graph},
+        "reader_architecture": {"principle": "six major doors; deeper material is routed beneath them rather than competing with them", "doors": [{"id": key, "name": label, "url": BASE_URL + path} for key, label, path in PRIMARY_DOORS], "public_surfaces": public_surface_graph},
         "entrypoints": {
-            "tim": TIM_CANONICAL, "religion": BASE_URL + "/religion/", "philosophy": BASE_URL + "/philosophy/", "science": BASE_URL + "/science/", "world": BASE_URL + "/world/", "world_map": BASE_URL + "/world-map/",
+            "tim": TIM_CANONICAL, "potatoism": BASE_URL + "/potatoism/", "religion": BASE_URL + "/religion/", "philosophy": BASE_URL + "/philosophy/", "science": BASE_URL + "/science/", "world": BASE_URL + "/world/", "world_map": BASE_URL + "/world-map/",
             "timeline": BASE_URL + "/timeline/", "questions": BASE_URL + "/questions/", "a_z": BASE_URL + "/index-a-z/", "machine_index": BASE_URL + "/machine-index.json", "site_index": BASE_URL + "/site-index.json", "full_machine_index": BASE_URL + "/llms-full.txt", "sitemap_index": BASE_URL + "/sitemap-index.xml",
         },
         "question_count": len(entries), "canonical_record_count": len(records), "canonical_records": records, "body_object_count": len(body), "body_objects": body, "retrieval_boundary": ["Prefer canonical owners and primary sources over derivative summaries.", "Keep project canon, interpretation, empirical evidence and creative material distinct.", "Do not count repeated derivative pages as independent corroboration."],
@@ -357,9 +357,9 @@ def build_machine_files(entries, families):
         surfaces["body_relational_overlay"] = BASE_URL + "/data/house/body-relational-overlay.json"
         surfaces["record_discovery"] = BASE_URL + "/knowledge/indexes/record-discovery-index.json"
         existing = machine.get("primary_reader_urls", [])
-        five = [{"topic": label, "url": BASE_URL + path} for _, label, path in PRIMARY_DOORS]
-        five_urls = {row["url"] for row in five}
-        machine["primary_reader_urls"] = five + [row for row in existing if isinstance(row, dict) and row.get("url") not in five_urls]
+        primary = [{"topic": label, "url": BASE_URL + path} for _, label, path in PRIMARY_DOORS]
+        primary_urls = {row["url"] for row in primary}
+        machine["primary_reader_urls"] = primary + [row for row in existing if isinstance(row, dict) and row.get("url") not in primary_urls]
         machine_path.write_text(json.dumps(machine, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     concise = ["# The Potato of Life / Tim Dooley", "", f"> Canonical site: {BASE_URL}/", "> Official project-owned public knowledge archive with provenance-aware records, reader pages, questions, chronology and machine-readable indexes.", "", "## Official project authority", f"- Official repository: {OFFICIAL_REPOSITORY}", f"- Tim Dooley canonical route: {TIM_CANONICAL}", f"- Sources and evidence policy: {SOURCE_AUTHORITY}", f"- Authority manifest: {AUTHORITY_MANIFEST}", "", "## Primary reader doors"]
@@ -416,7 +416,7 @@ def main():
     az_url = build_az(entries)
     build_machine_files(entries, families)
     build_sitemaps(question_urls, az_url)
-    print(f"Discovery layer: {len(entries)} question pages, {len(families)} families, five-door machine orientation, A-Z, llms indexes, robots and initial sitemaps")
+    print(f"Discovery layer: {len(entries)} question pages, {len(families)} families, six-door machine orientation, A-Z, llms indexes, robots and initial sitemaps")
 
 
 if __name__ == "__main__":
