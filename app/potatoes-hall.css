@@ -1093,3 +1093,15 @@ body.potatoes-hall-page{
   background:transparent;
   box-shadow:none;
 }
+
+
+/* Hall header specificity guard — outrank the generic floor-pane header contract. */
+html[data-site-floor] body.potatoes-hall-page .page-header{
+  padding:40px 32px 34px;border:1px solid rgba(164,139,88,.34);border-bottom:3px solid rgba(117,139,78,.55);border-radius:12px;background:radial-gradient(circle at 72% 0,rgba(183,200,121,.12),transparent 34%),linear-gradient(135deg,rgba(18,27,18,.95),rgba(31,35,22,.92) 56%,rgba(52,40,25,.91));box-shadow:0 14px 38px rgba(0,0,0,.16);
+}
+@media(max-width:680px){
+  html[data-site-floor] body.potatoes-hall-page .page-header{
+    padding:40px 20px 38px;
+    border-radius:9px;
+  }
+}
