@@ -17,6 +17,7 @@ CURRENT_HOME_IDS = (
     "start-in-a-minute",
     "home-seedbed",
     "three-potato-paths",
+    "two-halls",
     "home-relearning",
     "what-we-are-doing",
     "home-growth-rings",
@@ -104,6 +105,8 @@ def main() -> int:
         errors.append("homepage missing broad public Doors")
     if 'id="best-first-reads"' not in home:
         errors.append("homepage missing substantial first-read corridor")
+    if 'id="two-halls"' not in home or 'href="rooms/potatoverse-canon/beings/potatoes/"' not in home or 'href="below/dogs/"' not in home:
+        errors.append("homepage missing paired Hall destinations")
     if 'id="world-glimpse"' not in home:
         errors.append("homepage missing compact world/structure glimpse")
     if 'id="reader-routing"' not in home:
