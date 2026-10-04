@@ -191,6 +191,7 @@ def patch_site_access(out: Path = OUT) -> set[Path]:
 
 SITE_ELEVATOR_QUIET_PREFIXES = (
     "tools/tts/",
+    "elevator/",
 )
 
 _ELEVATOR_PROJECTION = json.loads((ROOT / "data" / "house" / "elevator-spatial-projection.json").read_text(encoding="utf-8"))

@@ -153,6 +153,20 @@ def main() -> int:
         errors.append("missing dedicated elevator/index.html")
     else:
         dedicated_tokens = (
+            "app/elevator-page.css",
+            "app/elevator-page.js",
+            "page-nav elevator-nav",
+            "elevator-console",
+            "viewport-shell",
+        )
+        for token in dedicated_tokens:
+            if token not in dedicated_elevator:
+                errors.append(f"dedicated elevator missing floor-boundary marker: {token}")
+        if "projections.includes(level)" in dedicated_elevator:
+            errors.append("dedicated elevator must not expose cross-floor projected Rooms as local doors")
+        dedicated_runtime = (ROOT / "app" / "elevator-page.js").read_text(encoding="utf-8", errors="replace") if (ROOT / "app" / "elevator-page.js").exists() else ""
+        dedicated_style = (ROOT / "app" / "elevator-page.css").read_text(encoding="utf-8", errors="replace") if (ROOT / "app" / "elevator-page.css").exists() else ""
+        for token in (
             "params.get('level')||'plane'",
             "validLevelIds",
             "initialDwelling?.primary_level",
@@ -161,14 +175,6 @@ def main() -> int:
             "function stepFloor(direction)",
             "moveFloor('up')",
             "moveFloor('down')",
-            "level='plane'",
-        )
-        for token in dedicated_tokens:
-            if token not in dedicated_elevator:
-                errors.append(f"dedicated elevator missing floor-boundary marker: {token}")
-        if "projections.includes(level)" in dedicated_elevator:
-            errors.append("dedicated elevator must not expose cross-floor projected Rooms as local doors")
-        for token in (
             "if(destination?.primary_level)level=destination.primary_level",
             "'wormhole-elevator'",
             "moved the elevator to the destination Room",
@@ -176,9 +182,30 @@ def main() -> int:
             "Spatial orientation unavailable",
             "Reduced detail",
             "Core floor/Room navigation is available",
+            "document.documentElement.dataset.siteFloor=level",
+            "journeyReplay.disabled=journey.length<2",
+            "centerBtn.disabled=atCenter",
         ):
-            if token not in dedicated_elevator:
-                errors.append(f"dedicated elevator missing cross-floor/resilience marker: {token}")
+            if token not in dedicated_runtime:
+                errors.append(f"dedicated elevator runtime missing marker: {token}")
+        for token in (
+            "body.elevator-page-shell",
+            ".elevator-console",
+            ".viewport-shell",
+            ".door-center",
+            ".journey > summary",
+            "[data-elevator-level=\"heaven\"]",
+            "[data-elevator-level=\"plane\"]",
+            "[data-elevator-level=\"below\"]",
+        ):
+            if token not in dedicated_style:
+                errors.append(f"dedicated elevator stylesheet missing marker: {token}")
+        if "<style>" in dedicated_elevator or "(async()=>{" in dedicated_elevator:
+            errors.append("dedicated elevator must keep structural CSS/runtime out of inline HTML")
+        if "elevator-shaft" in dedicated_elevator:
+            errors.append("dedicated elevator must not duplicate floor controls inside the viewport")
+        if "else{level='plane'}" in dedicated_runtime:
+            errors.append("Return to center must not silently change the active floor to Plane")
         if "public-surfaces.json" in dedicated_elevator:
             errors.append("dedicated elevator must not depend on unused public-surfaces data")
         if "if(!eRes.ok||!sRes.ok" in dedicated_elevator:
@@ -349,12 +376,15 @@ def main() -> int:
             standalone_pages.append((path, text))
         for path, text in standalone_pages:
             rel = path.relative_to(OUT).as_posix()
-            quiet = rel.startswith("tools/tts/")
+            quiet = rel.startswith("tools/tts/") or rel == "elevator/index.html"
             elevator_css_count = text.count("site-elevator.css")
             elevator_js_count = text.count("site-elevator.js")
-            if quiet:
+            if rel == "elevator/index.html":
+                if elevator_css_count != 1 or elevator_js_count:
+                    errors.append(f"{rel}: dedicated Elevator must reuse realm CSS but not mount the universal elevator runtime")
+            elif quiet:
                 if elevator_css_count or elevator_js_count:
-                    errors.append(f"{rel}: quiet TTS tool must not receive the universal elevator")
+                    errors.append(f"{rel}: quiet tool must not receive the universal elevator")
             elif elevator_css_count != 1 or elevator_js_count != 1:
                 errors.append(
                     f"{rel}: expected exactly one universal elevator CSS + JS asset, "
