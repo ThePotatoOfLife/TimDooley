@@ -220,14 +220,10 @@
       if(!projection||!roomContract){
         roomRail.hidden=true;
         roomRail.replaceChildren();
-        stage.style.setProperty('--elevator-room-count','1');
         return;
       }
       const landmarks=landmarksForLevel(selectedLevel,projection);
       const rows=roomsForLevel(selectedLevel,projection,roomContract);
-      const roomCount=Math.max(1,landmarks.length+rows.length);
-      stage.style.setProperty('--elevator-room-count',String(roomCount));
-      stage.dataset.roomCount=String(roomCount);
       const fragment=document.createDocumentFragment();
       const currentRoute=normalizeRoute(location.pathname,new URL(context.siteBase).pathname);
       for(const landmark of landmarks){
