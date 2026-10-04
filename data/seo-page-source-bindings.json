@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "updated": "2026-09-30",
+  "updated": "2026-10-04",
   "purpose": "Declare source files whose substantive changes should count toward public-page lastmod when the page is a composite/runtime projection. This is an SEO freshness projection, not a content-ownership map.",
   "rule": "Bind only files whose changes materially alter rendered or crawlable page content. Do not bind generic CSS, unrelated registries, generated diagnostics, or broad backend families merely because they are adjacent.",
   "routes": {
@@ -20,7 +20,9 @@
     "works": [
       "works/index.html",
       "knowledge/creative/artifact-history-registry.json",
-      "knowledge/creative/tim-dooley-suno-music-archive.json"
+      "knowledge/creative/tim-dooley-suno-music-archive.json",
+      "data/works/music-discography.json",
+      "data/works/music-archive-dated.json"
     ],
     "explore": [
       "explore/index.html",
@@ -31,6 +33,12 @@
       "knowledge/indexes/faq-answer-atlas.json",
       "knowledge/indexes/faq-question-bank.json",
       "knowledge/reader/tim-dooley-question-index.json"
+    ],
+    "music": [
+      "music/index.html",
+      "data/works/music-discography.json",
+      "data/works/music-archive-dated.json",
+      "knowledge/creative/tim-dooley-suno-music-archive.json"
     ]
   }
 }
