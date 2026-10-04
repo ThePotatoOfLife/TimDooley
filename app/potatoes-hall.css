@@ -738,145 +738,39 @@ body.potatoes-hall-page{
 @media(max-width:720px){.potatoes-hall-page .table-question-grid{grid-template-columns:1fr}}
 
 
-/* Hall scene window — approved artwork mounted 2026-10-04. */
-.potatoes-hall-page .hall-scene{
-  position:relative;
-  width:100%;
-  aspect-ratio:16/9;
-  min-height:300px;
-  max-height:610px;
-  margin:14px 0 30px;
-  overflow:hidden;
-  border:1px solid color-mix(in srgb, #e5cc7a 42%, transparent);
-  border-radius:14px;
-  background:
-    linear-gradient(180deg,rgba(0,0,0,.04) 0%,rgba(0,0,0,.10) 42%,rgba(0,0,0,.76) 100%),
-    url("./hall-of-heroes.avif") 50% 42%/cover no-repeat,
-    #090909;
-  box-shadow:0 22px 52px rgba(0,0,0,.30),inset 0 1px rgba(255,255,255,.05);
-  isolation:isolate;
-}
-.potatoes-hall-page .hall-scene::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  z-index:0;
-  pointer-events:none;
-  background:
-    linear-gradient(90deg,rgba(0,0,0,.22),transparent 25%,transparent 75%,rgba(0,0,0,.22)),
-    linear-gradient(180deg,transparent 54%,rgba(0,0,0,.20));
-}
-.potatoes-hall-page .hall-scene__hud{
-  position:absolute;
-  z-index:2;
-  left:14px;
-  right:14px;
-  top:13px;
-  display:flex;
-  justify-content:space-between;
-  gap:12px;
-  color:#e5cc7a;
-  text-shadow:0 2px 5px #000;
-  font:800 9px/1.2 ui-monospace,SFMono-Regular,Consolas,monospace;
-  letter-spacing:.10em;
-}
-.potatoes-hall-page .hall-scene__caption{
-  position:absolute;
-  z-index:2;
-  left:14px;
-  bottom:14px;
-  max-width:min(520px,calc(100% - 28px));
-  padding:11px 13px;
-  border:1px solid color-mix(in srgb, #e5cc7a 34%, transparent);
-  border-radius:8px;
-  background:rgba(12,17,13,.78);
-  backdrop-filter:blur(4px);
-}
-.potatoes-hall-page .hall-scene__caption strong{
-  display:block;
-  color:#e5cc7a;
-  font:700 12px/1.2 ui-monospace,SFMono-Regular,Consolas,monospace;
-  letter-spacing:.08em;
-}
-.potatoes-hall-page .hall-scene__caption span{
-  display:block;
-  margin-top:4px;
-  color:#e1ddd3;
-  font-size:10px;
-  letter-spacing:.035em;
-}
-.potatoes-hall-page main.hall{
-  position:relative;
-}
-.potatoes-hall-page main.hall::before{
-  content:"";
-  position:absolute;
-  z-index:-1;
-  left:-4vw;
-  right:-4vw;
-  top:180px;
-  height:min(78vh,760px);
-  opacity:.10;
-  pointer-events:none;
-  background:
-    linear-gradient(180deg,transparent 0%,rgba(10,15,12,.72) 70%,transparent 100%),
-    url("./hall-of-heroes.avif") 50% 42%/cover no-repeat;
-  filter:saturate(.86);
-  mask-image:linear-gradient(180deg,transparent 0%,#000 16%,#000 74%,transparent 100%);
-}
-@media(max-width:720px){
-  .potatoes-hall-page .hall-scene{
-    min-height:260px;
-    aspect-ratio:4/5;
-    background-position:50% 50%;
-  }
-  .potatoes-hall-page .hall-scene__hud{
-    font-size:8px;
-  }
-  .potatoes-hall-page .hall-scene__hud span:last-child{
-    display:none;
-  }
-  .potatoes-hall-page .hall-scene__caption{
-    backdrop-filter:none;
-  }
-  .potatoes-hall-page main.hall::before{
-    top:130px;
-    opacity:.07;
-  }
-}
-@media(prefers-reduced-transparency:reduce){
-  .potatoes-hall-page .hall-scene__caption{background:#0d0f0d}
-}
 
 
-/* Mounted Hall artwork — visible arrival scene plus soft room-wide bleed. */
+/* Canonical Hall layout cleanup — one scene system, one pane hierarchy, one vertical rhythm. */
 body.potatoes-hall-page{
   position:relative;
+  overflow-x:clip;
 }
 body.potatoes-hall-page::after{
   content:"";
   position:fixed;
   inset:var(--site-elevator-clearance,56px) 0 0;
-  z-index:-3;
+  z-index:-4;
   pointer-events:none;
   background:
-    linear-gradient(180deg,rgba(7,9,8,.30),rgba(7,9,8,.78) 46%,rgba(7,9,8,.92) 100%),
+    linear-gradient(180deg,rgba(7,9,8,.38),rgba(7,9,8,.82) 46%,rgba(7,9,8,.94) 100%),
     url("./hall-of-heroes.avif") 50% 18%/cover no-repeat;
-  opacity:.72;
+  opacity:.38;
 }
-.potatoes-hall-page .hall{
-  position:relative;
-}
+
+/* Arrival scene: the only full artwork window. */
 .potatoes-hall-page .hall-scene{
   position:relative;
   width:min(1180px,calc(100vw - 24px));
-  margin:18px 50% 34px;
+  aspect-ratio:16/9;
+  margin:18px 50% 36px;
   transform:translateX(-50%);
   overflow:hidden;
-  border:1px solid color-mix(in srgb, #e6cf7d 40%, transparent);
-  border-radius:16px;
-  background:#0a0d0b;
-  box-shadow:0 18px 56px rgba(0,0,0,.36),inset 0 0 0 1px rgba(255,255,255,.025);
+  border:1px solid color-mix(in srgb, #e6cf7d 42%, transparent);
+  border-radius:14px;
+  background:
+    linear-gradient(180deg,rgba(4,6,5,.02),rgba(4,6,5,.22) 66%,rgba(4,6,5,.68) 100%),
+    url("./hall-of-heroes.avif") 50% 18%/cover no-repeat;
+  box-shadow:0 18px 50px rgba(0,0,0,.28);
 }
 .potatoes-hall-page .hall-scene::after{
   content:"";
@@ -884,85 +778,193 @@ body.potatoes-hall-page::after{
   inset:0;
   pointer-events:none;
   background:
-    linear-gradient(180deg,rgba(0,0,0,.00) 0 60%,rgba(0,0,0,.34) 82%,rgba(0,0,0,.62) 100%),
-    linear-gradient(90deg,rgba(0,0,0,.12),transparent 18% 82%,rgba(0,0,0,.12));
+    linear-gradient(180deg,transparent 0 58%,rgba(0,0,0,.20) 76%,rgba(0,0,0,.58) 100%),
+    linear-gradient(90deg,rgba(0,0,0,.10),transparent 18% 82%,rgba(0,0,0,.10));
 }
-.potatoes-hall-page .hall-scene img{
-  display:block;
-  width:100%;
-  height:auto;
-  aspect-ratio:1672/941;
-  object-fit:cover;
-  object-position:50% 18%;
-  image-rendering:auto;
-}
-.potatoes-hall-page .hall-scene figcaption{
+.potatoes-hall-page .hall-scene__hud{
   position:absolute;
-  left:14px;
-  bottom:10px;
-  z-index:1;
-  max-width:calc(100% - 28px);
-  padding:6px 9px;
-  border:1px solid color-mix(in srgb, #e6cf7d 36%, transparent);
-  background:rgba(8,10,9,.74);
+  z-index:2;
+  top:10px;
+  left:12px;
+  right:12px;
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
   color:#e6cf7d;
-  font:700 9px/1.3 ui-monospace,SFMono-Regular,Consolas,monospace;
+  font:700 9px/1.25 ui-monospace,SFMono-Regular,Consolas,monospace;
   letter-spacing:.09em;
   text-transform:uppercase;
-  backdrop-filter:blur(4px);
+  text-shadow:0 1px 8px rgba(0,0,0,.88);
 }
+.potatoes-hall-page .hall-scene__caption{
+  position:absolute;
+  z-index:2;
+  left:12px;
+  bottom:10px;
+  max-width:min(560px,calc(100% - 24px));
+  padding:7px 10px;
+  border:1px solid color-mix(in srgb, #e6cf7d 36%, transparent);
+  border-radius:7px;
+  background:rgba(8,10,9,.72);
+  backdrop-filter:blur(5px);
+}
+.potatoes-hall-page .hall-scene__caption strong{
+  display:block;
+  color:#e6cf7d;
+  font:700 10px/1.25 ui-monospace,SFMono-Regular,Consolas,monospace;
+  letter-spacing:.08em;
+}
+.potatoes-hall-page .hall-scene__caption span{
+  display:block;
+  margin-top:3px;
+  color:#d0d3cc;
+  font-size:9px;
+  line-height:1.35;
+}
+
+/* Vertical rhythm: sections should feel like rooms/stations, not one fused card stack. */
+.potatoes-hall-page main.hall > section{
+  margin-block:clamp(46px,6vw,66px);
+}
+.potatoes-hall-page main.hall > section > h2,
+.potatoes-hall-page main.hall > section > .great-table-head > h2{
+  margin-top:0;
+}
+.potatoes-hall-page .page-header{
+  margin-bottom:28px;
+}
+
+/* Major chambers: real panes, but fewer and cleaner. */
 .potatoes-hall-page .hall-threshold,
-.potatoes-hall-page .hall-law,
 .potatoes-hall-page .great-table,
-.potatoes-hall-page .shame-village,
-.potatoes-hall-page .arcade-marquee,
 .potatoes-hall-page .honor-register,
-.potatoes-hall-page .notoriety-ledger,
-.potatoes-hall-page .worked-runs,
-.potatoes-hall-page .repair-route,
 .potatoes-hall-page .hall-source-desk,
-.potatoes-hall-page .hall-takeaway,
-.potatoes-hall-page .hall-exits,
-.potatoes-hall-page .table-conversation,
-.potatoes-hall-page .village-bell{
-  backdrop-filter:blur(10px) saturate(.92);
+.potatoes-hall-page .hall-exits{
+  padding:clamp(20px,2.7vw,30px);
+  border:1px solid color-mix(in srgb, #e6cf7d 30%, transparent);
+  border-radius:14px;
+  box-shadow:0 12px 34px rgba(0,0,0,.14);
+  backdrop-filter:blur(8px) saturate(.94);
 }
+
+/* Insets: stop boxing every idea. These read as passages within the Hall. */
+.potatoes-hall-page .hall-law,
+.potatoes-hall-page .table-conversation,
+.potatoes-hall-page .table-reading-key,
+.potatoes-hall-page .hall-takeaway{
+  margin-block:clamp(40px,5vw,54px);
+  padding:22px 4px;
+  border:0;
+  border-top:1px solid color-mix(in srgb, #e6cf7d 26%, transparent);
+  border-bottom:1px solid color-mix(in srgb, #e6cf7d 20%, transparent);
+  border-radius:0;
+  box-shadow:none;
+  background:linear-gradient(90deg,transparent,rgba(0,0,0,.07) 16% 84%,transparent);
+  backdrop-filter:none;
+}
+
+/* Plain reading fields stay plain; the content itself provides the structure. */
+.potatoes-hall-page main.hall > section:not(.upper-hall):not(.arcade-marquee):not(.continue-screen):not(.hall-threshold):not(.great-table):not(.honor-register):not(.notoriety-ledger):not(.hall-source-desk):not(.hall-exits):not(.hall-law):not(.table-conversation):not(.table-reading-key):not(.village-bell):not(.worked-runs):not(.repair-route):not(.hall-takeaway):not(.shame-village){
+  padding-inline:2px;
+}
+
+/* Inner cards: consistent spacing and quieter borders prevent card-inside-card clutter. */
+.potatoes-hall-page .hall-input-output article,
+.potatoes-hall-page .table-seats article,
+.potatoes-hall-page .source-desk-grid article,
+.potatoes-hall-page .takeaway-grid article,
+.potatoes-hall-page .table-question-grid article{
+  border-radius:8px;
+  box-shadow:none;
+  background:rgba(255,255,255,.018);
+}
+.potatoes-hall-page .hall-input-output,
+.potatoes-hall-page .table-seats,
+.potatoes-hall-page .source-desk-grid,
+.potatoes-hall-page .takeaway-grid,
+.potatoes-hall-page .table-question-grid,
+.potatoes-hall-page .worked-run-grid,
+.potatoes-hall-page .bell-grid,
+.potatoes-hall-page .shame-landmarks,
+.potatoes-hall-page .repair-steps{
+  gap:12px;
+}
+
+/* Arcade objects remain special and separated from ordinary panes. */
+.potatoes-hall-page .arcade-marquee,
+.potatoes-hall-page .continue-screen{
+  margin-block:clamp(50px,6vw,68px);
+}
+.potatoes-hall-page .hall-carry{
+  margin-top:22px;
+  border-radius:0 8px 8px 0;
+}
+.potatoes-hall-page .upper-hall{
+  margin-top:clamp(68px,8vw,92px);
+}
+
+/* Avoid a glued-pane look where adjacent designed blocks meet. */
+.potatoes-hall-page .hall-threshold + .hall-law,
+.potatoes-hall-page .hall-law + .great-table,
+.potatoes-hall-page .hall-law + .shame-village,
+.potatoes-hall-page .great-table + .table-conversation,
+.potatoes-hall-page .shame-village + .village-bell,
+.potatoes-hall-page .honor-register + .hall-source-desk,
+.potatoes-hall-page .notoriety-ledger + .hall-source-desk,
+.potatoes-hall-page .hall-takeaway + .hall-exits{
+  margin-top:clamp(52px,6vw,72px);
+}
+
+/* Mobile: keep the scene strong, but simplify the glass and spacing. */
 @media(max-width:760px){
   body.potatoes-hall-page::after{
+    opacity:.25;
     background-position:50% 18%;
-    opacity:.58;
   }
   .potatoes-hall-page .hall-scene{
     width:calc(100vw - 12px);
     margin-top:12px;
-    border-radius:10px;
+    margin-bottom:30px;
+    border-radius:9px;
   }
-  .potatoes-hall-page .hall-scene img{
-    min-height:54vw;
-    max-height:62vh;
-    object-fit:cover;
-  }
-  .potatoes-hall-page .hall-scene figcaption{
+  .potatoes-hall-page .hall-scene__hud{
+    top:7px;
     left:8px;
     right:8px;
+    font-size:7px;
+  }
+  .potatoes-hall-page .hall-scene__caption{
+    left:8px;
     bottom:7px;
-    max-width:none;
-    font-size:8px;
+    max-width:calc(100% - 16px);
+    padding:6px 8px;
+  }
+  .potatoes-hall-page main.hall > section{
+    margin-block:42px;
+  }
+  .potatoes-hall-page .hall-threshold,
+.potatoes-hall-page .great-table,
+.potatoes-hall-page .honor-register,
+.potatoes-hall-page .hall-source-desk,
+.potatoes-hall-page .hall-exits{
+    padding:18px 16px;
+    border-radius:10px;
+    backdrop-filter:none;
+  }
+  .potatoes-hall-page .hall-law,
+.potatoes-hall-page .table-conversation,
+.potatoes-hall-page .table-reading-key,
+.potatoes-hall-page .hall-takeaway{
+    margin-block:36px;
+    padding:18px 2px;
   }
 }
 @media(prefers-reduced-transparency:reduce){
+  body.potatoes-hall-page::after{opacity:.18}
   .potatoes-hall-page .hall-threshold,
-  .potatoes-hall-page .hall-law,
-  .potatoes-hall-page .great-table,
-  .potatoes-hall-page .shame-village,
-  .potatoes-hall-page .arcade-marquee,
-  .potatoes-hall-page .honor-register,
-  .potatoes-hall-page .notoriety-ledger,
-  .potatoes-hall-page .worked-runs,
-  .potatoes-hall-page .repair-route,
-  .potatoes-hall-page .hall-source-desk,
-  .potatoes-hall-page .hall-takeaway,
-  .potatoes-hall-page .hall-exits,
-  .potatoes-hall-page .table-conversation,
-  .potatoes-hall-page .village-bell{backdrop-filter:none}
+.potatoes-hall-page .great-table,
+.potatoes-hall-page .honor-register,
+.potatoes-hall-page .hall-source-desk,
+.potatoes-hall-page .hall-exits{backdrop-filter:none}
+  .potatoes-hall-page .hall-scene__caption{backdrop-filter:none}
 }
