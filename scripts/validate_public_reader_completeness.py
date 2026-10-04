@@ -21,7 +21,7 @@ def main()->int:
         errors.append("unexpected public reader completeness contract version")
 
     checks=[
-      (ROOT/"index.html",["START HERE · THE FRONT DOOR","start-in-a-minute","best-first-reads","why-this-archive"]),
+      (ROOT/"index.html",["WELCOME TO THE PATCH","start-in-a-minute","what-we-are-doing","best-first-reads","why-this-archive"]),
       (ROOT/"rooms/index.html",["Dwellings & Rooms"]),
       (ROOT/"house/index.html",["holdings-grid","interface-list"]),
       (ROOT/"explore/index.html",["Do not start with the archive. Start with a question.","Example journeys through the archive"]),
