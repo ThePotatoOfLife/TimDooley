@@ -400,3 +400,43 @@ body.dogs-hall-page{
   .dogs-hall-page .notoriety-row span:first-child{grid-column:auto}
   .dogs-hall-page .ledger-key{grid-template-columns:1fr}
 }
+
+
+/* Final Hall takeaway checkpoint. */
+.dogs-hall-page .hall-takeaway{
+  margin:38px 0 30px;
+  padding:clamp(18px,2.5vw,26px);
+  border-top:1px solid rgba(149,91,60,.38);
+  border-bottom:1px solid rgba(149,91,60,.38);
+  background:rgba(91,52,34,.09);
+}
+.dogs-hall-page .hall-takeaway h2{
+  margin:3px 0 12px;
+  color:#dfc5b1;
+}
+.dogs-hall-page .takeaway-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:8px;
+  margin:18px 0;
+}
+.dogs-hall-page .takeaway-grid article{
+  padding:13px;
+  border:1px solid rgba(149,91,60,.38);
+  background:rgba(0,0,0,.08);
+}
+.dogs-hall-page .takeaway-grid strong{
+  display:block;
+  margin-bottom:5px;
+  color:#d79a75;
+  font:400 17px/1.2 var(--site-font-serif);
+}
+.dogs-hall-page .takeaway-grid p{
+  margin:0;
+  color:#bdb4ac;
+  font-size:11px;
+  line-height:1.5;
+}
+@media(max-width:760px){
+  .dogs-hall-page .takeaway-grid{grid-template-columns:1fr}
+}
