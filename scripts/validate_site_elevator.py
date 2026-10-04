@@ -16,6 +16,8 @@ ELEVATOR_JS = ROOT / "app" / "site-elevator.js"
 PATCHER = ROOT / "scripts" / "patch_public_navigation.py"
 OUT = ROOT / "_site"
 WORLD_MAP_SOURCE = ROOT / "world-map" / "index.html"
+SITE_SYSTEM_CSS = ROOT / "app" / "site-system.css"
+COMPARATIVE_COSMOLOGY = ROOT / "traditions" / "comparative-cosmology" / "index.html"
 DEDICATED_ELEVATOR = ROOT / "elevator" / "index.html"
 HOUSE_JOURNEY_JS = ROOT / "app" / "house-journey.js"
 
@@ -61,6 +63,8 @@ def main() -> int:
     js = ELEVATOR_JS.read_text(encoding="utf-8", errors="replace") if ELEVATOR_JS.exists() else ""
     patcher = PATCHER.read_text(encoding="utf-8", errors="replace") if PATCHER.exists() else ""
     world_map_source = WORLD_MAP_SOURCE.read_text(encoding="utf-8", errors="replace") if WORLD_MAP_SOURCE.exists() else ""
+    site_system_css = SITE_SYSTEM_CSS.read_text(encoding="utf-8", errors="replace") if SITE_SYSTEM_CSS.exists() else ""
+    comparative_cosmology = COMPARATIVE_COSMOLOGY.read_text(encoding="utf-8", errors="replace") if COMPARATIVE_COSMOLOGY.exists() else ""
     dedicated_elevator = DEDICATED_ELEVATOR.read_text(encoding="utf-8", errors="replace") if DEDICATED_ELEVATOR.exists() else ""
     house_journey_js = HOUSE_JOURNEY_JS.read_text(encoding="utf-8", errors="replace") if HOUSE_JOURNEY_JS.exists() else ""
     room_contract = load_json(ROOMS, errors)
@@ -80,13 +84,27 @@ def main() -> int:
             "--site-elevator-clearance",
             "ResizeObserver",
             "site-elevator-stage",
-            "site-elevator-stage",
         ):
             if token not in js:
                 errors.append(f"site elevator JS missing clearance/header marker: {token}")
 
     if ".app{height:calc(100%-var(--site-elevator-clearance,0px))" not in world_map_source.replace(" ",""):
         errors.append("World Map full-screen app must reserve measured site-elevator top clearance")
+
+    compact_world = re.sub(r"\s+", "", world_map_source)
+    for token in (
+        "top:calc(var(--site-elevator-clearance,0px)+8px)",
+        "max-height:calc(100dvh-var(--site-elevator-clearance,0px)-var(--site-access-clearance,0px)-16px)",
+    ):
+        if token not in compact_world:
+            errors.append(f"World Map fixed overlays must honor measured elevator clearance: {token}")
+
+    if ".page [id]" not in site_system_css or "--site-elevator-clearance" not in site_system_css:
+        errors.append("shared page deep links must reserve measured elevator clearance")
+
+    compact_comparative = re.sub(r"\s+", "", comparative_cosmology)
+    if ".cross-head{position:sticky;top:var(--site-elevator-clearance,0px)" not in compact_comparative:
+        errors.append("Comparative Cosmology sticky matrix header must stay below measured elevator clearance")
 
     for token in (
         "inject_site_floor",
