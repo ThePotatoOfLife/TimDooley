@@ -16,6 +16,7 @@ import sys
 from collections import Counter, defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
+from urllib.parse import urldefrag, urljoin
 
 from seo_strategy import classify_route, metadata_for, related_routes, schema_profile
 
@@ -30,6 +31,7 @@ LINK_RE = re.compile(r"<link\b[^>]*>", re.I)
 ATTR_RE = re.compile(r"([:\w-]+)\s*=\s*([\"'])(.*?)\2", re.I | re.S)
 TAG_RE = re.compile(r"<[^>]+>")
 LD_SCRIPT_RE = re.compile(r'<script\b[^>]*type=["\']application/ld\+json["\'][^>]*>(.*?)</script>', re.I | re.S)
+ANCHOR_HREF_RE = re.compile(r'<a\b[^>]*\bhref=["\']([^"\']+)["\']', re.I)
 
 
 def attrs(tag: str) -> dict[str, str]:
@@ -164,6 +166,23 @@ def related_block(route: str) -> str:
 def inject_related_context(text: str, route: str) -> tuple[str, bool]:
     if 'class="related-context"' in text:
         return text, False
+
+    targets = [target for target in related_routes(route) if target != route and target_exists(target)]
+    if not targets:
+        return text, False
+
+    # Do not append SEO navigation when the authored page already exposes the
+    # same canonical destinations. This keeps helper metadata from becoming
+    # visible reader clutter on specialist surfaces such as the Elevator.
+    existing_urls = {
+        urldefrag(urljoin(page_url(route), html.unescape(href)))[0].rstrip("/")
+        for href in ANCHOR_HREF_RE.findall(text)
+        if href and not href.startswith(("#", "mailto:", "tel:", "javascript:"))
+    }
+    target_urls = {page_url(target).rstrip("/") for target in targets}
+    if target_urls and target_urls.issubset(existing_urls):
+        return text, False
+
     block = related_block(route)
     if not block:
         return text, False

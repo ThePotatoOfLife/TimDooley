@@ -381,3 +381,53 @@ html[data-site-floor] .page > :where(p.boundary,p.note,p.warning,p.lede,.boundar
   .dwelling-reflection p{font-size:16px}
 }
 
+/* Generated related-context navigation is a real component, not loose SEO text. */
+.related-context{
+  display:grid;
+  grid-template-columns:minmax(0,auto) minmax(0,1fr);
+  gap:10px 18px;
+  align-items:center;
+  margin:clamp(30px,5vw,54px) 0 0;
+  padding:14px 16px;
+  border:1px solid var(--site-pane-line);
+  border-radius:10px;
+  background:var(--site-pane-soft);
+  box-shadow:0 10px 28px rgba(0,0,0,.12);
+}
+.related-context > strong{
+  color:var(--site-muted);
+  font:700 9px/1.25 var(--site-font-sans);
+  letter-spacing:.07em;
+  text-transform:uppercase;
+}
+.related-context > nav{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+  gap:6px;
+  min-width:0;
+}
+.related-context > nav a{
+  display:inline-flex;
+  align-items:center;
+  min-height:29px;
+  padding:5px 8px;
+  border:1px solid var(--site-line);
+  border-radius:6px;
+  background:rgba(255,255,255,.015);
+  color:var(--site-muted);
+  text-decoration:none;
+  font-size:10px;
+  line-height:1.2;
+}
+.related-context > nav a:hover,
+.related-context > nav a:focus-visible{
+  color:var(--site-gold);
+  border-color:color-mix(in srgb,var(--site-gold) 34%,var(--site-line));
+  background:color-mix(in srgb,var(--site-gold) 7%,transparent);
+}
+@media(max-width:620px){
+  .related-context{grid-template-columns:1fr;gap:9px}
+  .related-context > nav{justify-content:flex-start}
+}
+
