@@ -409,3 +409,30 @@ body.potatoes-hall-page{
   .potatoes-hall-page .hall-door-grid{grid-template-columns:1fr}
   .potatoes-hall-page .hall-door-strip{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
+
+
+/* Great Table deep-link polish. */
+.potatoes-hall-page .table-seats a{
+  display:inline-block;
+  margin-top:10px;
+  color:#e2ca79;
+  font:700 10px/1.3 ui-monospace,monospace;
+  text-decoration:none;
+  letter-spacing:.04em;
+}
+.potatoes-hall-page .table-seats a:hover,
+.potatoes-hall-page .table-seats a:focus-visible{color:#fff0b2;text-decoration:underline}
+.potatoes-hall-page .table-reading-key{
+  margin:24px 0 38px;
+  padding:22px;
+  border-top:1px solid rgba(217,195,124,.32);
+  border-bottom:1px solid rgba(217,195,124,.32);
+  background:rgba(233,210,136,.035);
+}
+.potatoes-hall-page .table-reading-key h2{margin:3px 0 14px;color:#ead89d}
+.potatoes-hall-page #angel-in-ordinary-life{
+  border-color:rgba(232,211,148,.42);
+  background:
+    linear-gradient(135deg,rgba(236,219,160,.1),rgba(24,43,62,.84)),
+    repeating-linear-gradient(90deg,transparent 0 72px,rgba(255,255,255,.018) 72px 74px);
+}
