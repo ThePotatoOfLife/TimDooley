@@ -284,3 +284,128 @@ body.potatoes-hall-page{
   .potatoes-hall-page .arcade-score-row .arcade-class,
   .potatoes-hall-page .arcade-score-row .arcade-highmark{grid-column:2}
 }
+
+
+/* Hall of Heroes room carve: threshold, Great Table and purposeful exits. */
+.potatoes-hall-page .hall-threshold,
+.potatoes-hall-page .great-table,
+.potatoes-hall-page .hall-exits{
+  margin:28px 0 38px;
+  padding:clamp(18px,2.6vw,28px);
+  border:1px solid rgba(216,193,119,.34);
+  border-radius:16px;
+  background:
+    linear-gradient(180deg,rgba(42,51,32,.78),rgba(24,30,22,.88)),
+    repeating-linear-gradient(90deg,transparent 0 63px,rgba(255,255,255,.018) 63px 64px);
+  box-shadow:0 18px 42px rgba(0,0,0,.18),inset 0 1px rgba(255,255,255,.035);
+}
+.potatoes-hall-page .hall-threshold h2,
+.potatoes-hall-page .great-table h2,
+.potatoes-hall-page .hall-exits h2{margin:3px 0 12px;color:#f0dfaa}
+.potatoes-hall-page .hall-input-output,
+.potatoes-hall-page .table-seats,
+.potatoes-hall-page .hall-door-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+  margin-top:16px;
+}
+.potatoes-hall-page .hall-input-output article,
+.potatoes-hall-page .table-seats article{
+  padding:15px;
+  border:1px solid rgba(206,185,117,.25);
+  border-radius:10px;
+  background:rgba(255,255,255,.025);
+}
+.potatoes-hall-page .hall-input-output em,
+.potatoes-hall-page .table-seats em,
+.potatoes-hall-page .hall-door-grid em{
+  display:block;
+  margin-bottom:5px;
+  color:#aebc86;
+  font:700 9px/1.35 ui-monospace,monospace;
+  font-style:normal;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+}
+.potatoes-hall-page .hall-input-output strong,
+.potatoes-hall-page .table-seats strong{
+  display:block;
+  color:#f0dfaa;
+  font:400 18px/1.22 var(--site-font-serif);
+  margin-bottom:6px;
+}
+.potatoes-hall-page .hall-input-output p,
+.potatoes-hall-page .table-seats p{margin:0;color:#c9cec1;font-size:12px;line-height:1.6}
+.potatoes-hall-page .hall-door-strip{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:7px;
+  margin-top:18px;
+}
+.potatoes-hall-page .hall-door-strip a{
+  padding:10px 11px;
+  border:1px solid rgba(213,192,119,.26);
+  background:rgba(14,20,14,.42);
+  color:inherit;
+  text-decoration:none;
+}
+.potatoes-hall-page .hall-door-strip strong{display:block;color:#e7d181;font:700 10px ui-monospace,monospace;letter-spacing:.06em}
+.potatoes-hall-page .hall-door-strip span{display:block;margin-top:4px;color:#aeb6a9;font-size:10px;line-height:1.35}
+.potatoes-hall-page .great-table{
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 50% -10%,rgba(255,231,155,.17),transparent 34%),
+    linear-gradient(180deg,rgba(49,62,40,.86),rgba(31,35,26,.92));
+}
+.potatoes-hall-page .great-table:before{
+  content:"";
+  position:absolute;
+  left:5%;right:5%;top:78px;height:2px;
+  background:linear-gradient(90deg,transparent,#d6bd69,transparent);
+  opacity:.38;
+}
+.potatoes-hall-page .great-table-head{max-width:860px}
+.potatoes-hall-page .table-feast{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin:17px 0 0;
+}
+.potatoes-hall-page .table-feast span{
+  padding:7px 9px;
+  border:1px solid rgba(217,193,115,.25);
+  border-radius:999px;
+  background:rgba(232,210,138,.05);
+  color:#d9d5c4;
+  font-size:10px;
+}
+.potatoes-hall-page .hall-carry{
+  margin:18px 0 0;
+  padding:15px 17px;
+  border-left:3px solid #d6bd69;
+  background:rgba(224,200,119,.055);
+  color:#ddd8c7;
+}
+.potatoes-hall-page .hall-door-grid a{
+  display:block;
+  padding:15px;
+  border:1px solid rgba(206,185,117,.28);
+  border-radius:10px;
+  background:rgba(255,255,255,.022);
+  color:inherit;
+  text-decoration:none;
+}
+.potatoes-hall-page .hall-door-grid strong{display:block;color:#ecd689;font:400 19px var(--site-font-serif);margin-bottom:5px}
+.potatoes-hall-page .hall-door-grid span{display:block;color:#bfc6b8;font-size:11px;line-height:1.5}
+.potatoes-hall-page .hall-door-grid a:hover,
+.potatoes-hall-page .hall-door-grid a:focus-visible,
+.potatoes-hall-page .hall-door-strip a:hover,
+.potatoes-hall-page .hall-door-strip a:focus-visible{border-color:#d6bd69;background:rgba(230,204,122,.07)}
+@media(max-width:760px){
+  .potatoes-hall-page .hall-input-output,
+  .potatoes-hall-page .table-seats,
+  .potatoes-hall-page .hall-door-grid{grid-template-columns:1fr}
+  .potatoes-hall-page .hall-door-strip{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
