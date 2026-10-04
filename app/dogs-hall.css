@@ -80,3 +80,78 @@ body.dogs-hall-page{
  .dogs-hall-page .page-header{padding:52px 20px 28px}
  .dogs-hall-page .page-header:before{right:-40px;top:18px;font-size:8px}
 }
+
+
+/* Hall of Shame arcade layer — failed loops, not permanent human rankings. */
+.dogs-hall-page{
+  --shame-neon:#e18f61;
+  --shame-dim:#8b7567;
+  --shame-screen:#090c0b;
+  --shame-line:rgba(226,143,97,.07);
+}
+.dogs-hall-page .arcade-marquee{
+  position:relative;
+  margin:24px 0 34px;
+  padding:14px 18px;
+  border:2px solid rgba(197,103,66,.55);
+  border-radius:3px;
+  background:
+    linear-gradient(180deg,rgba(74,31,20,.24),rgba(8,11,10,.96)),
+    repeating-linear-gradient(0deg,transparent 0 3px,var(--shame-line) 3px 4px);
+  box-shadow:0 0 0 3px rgba(42,29,23,.7),0 0 36px rgba(158,70,39,.09),inset 0 0 34px rgba(0,0,0,.58);
+  font-family:ui-monospace,SFMono-Regular,Consolas,monospace;
+}
+.dogs-hall-page .arcade-marquee:before{
+  content:"GAME OVER  ·  HALL OF SHAME  ·  CONTINUE?";
+  display:block;
+  color:var(--shame-neon);
+  font-size:10px;
+  letter-spacing:.15em;
+  text-align:center;
+  margin-bottom:12px;
+}
+.dogs-hall-page .arcade-scoreboard{display:grid;gap:2px;border-top:1px solid rgba(212,132,91,.23)}
+.dogs-hall-page .arcade-score-row{
+  display:grid;
+  grid-template-columns:44px minmax(150px,1fr) minmax(130px,.8fr) minmax(170px,1.2fr);
+  gap:10px;
+  align-items:center;
+  padding:10px 8px;
+  border-bottom:1px solid rgba(212,132,91,.10);
+  color:#d8d1c8;
+}
+.dogs-hall-page .arcade-score-row:first-child{
+  color:#88796e;
+  font-size:9px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+.dogs-hall-page .arcade-rank{color:#b96546;font-weight:800;text-align:center}
+.dogs-hall-page .arcade-player strong{color:#e1b39a}
+.dogs-hall-page .arcade-class{color:#b3907e;font-size:11px}
+.dogs-hall-page .arcade-highmark{color:#bdb2a8;font-size:11px}
+.dogs-hall-page .arcade-note{margin:12px 2px 0;color:#9d9187;font-size:10px;line-height:1.55}
+.dogs-hall-page .shame-stamp{
+  display:inline-block;
+  margin:3px 5px 3px 0;
+  padding:5px 8px;
+  border:1px solid rgba(201,106,69,.36);
+  color:#c58d70;
+  background:rgba(108,49,31,.09);
+  font:700 9px ui-monospace,monospace;
+  letter-spacing:.08em;
+  transform:rotate(-.4deg);
+}
+.dogs-hall-page .continue-screen{
+  margin:20px 0;
+  padding:16px 18px;
+  border-left:3px solid #9e704e;
+  background:rgba(91,61,43,.13);
+  color:#d9cec2;
+}
+.dogs-hall-page .continue-screen strong{color:#e0a47e}
+@media(max-width:720px){
+  .dogs-hall-page .arcade-score-row{grid-template-columns:34px 1fr;gap:4px 8px}
+  .dogs-hall-page .arcade-score-row .arcade-class,
+  .dogs-hall-page .arcade-score-row .arcade-highmark{grid-column:2}
+}
