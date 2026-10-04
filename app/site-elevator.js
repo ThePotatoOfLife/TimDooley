@@ -333,7 +333,7 @@
       floorLabel.textContent=levelLabel(selectedLevel,projection).replace(/\s*\/.*$/,'').toUpperCase();
       const currentRoom=spatial.room;
       roomLabel.textContent=currentRoom&&selectedLevel===spatial.levelId
-        ?'HERE'
+        ?String(currentRoom.title||currentRoom.label||currentRoom.id||'CURRENT ROOM').toUpperCase()
         :(selectedLevel===spatial.levelId?'HOUSE ORIENTATION':'BROWSING FLOOR');
       up.disabled=selectedLevel==='heaven'||!projection;
       down.disabled=selectedLevel==='below'||!projection;
