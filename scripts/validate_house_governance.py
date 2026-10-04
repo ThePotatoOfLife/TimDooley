@@ -72,9 +72,14 @@ WORKS_MARKERS=(
 )
 HOME_FILE=ROOT/'index.html'
 HOME_SPINE=(
-    'id="project-substance"',
-    'id="reality-cases"',
-    'id="working-capabilities"',
+    'id="start-in-a-minute"',
+    'id="home-seedbed"',
+    'id="three-potato-paths"',
+    'id="best-first-reads"',
+    'id="world-glimpse"',
+    'id="materialized-now"',
+    'id="reader-routing"',
+    'id="follow-tim"',
     'class="public-doors"',
     'href="tim-dooley/"',
     'href="potatoism/"',
@@ -887,8 +892,8 @@ def validate_project_synthesis(errors):
         errors.append('structural Axis movement rule must preserve non-moral direction')
     if 'learn-the-structure' in hp.get('hierarchy',[]):
         errors.append('homepage must not host the retired full structural teaching layer')
-    if not any(x.get('id')=='structure-handoff' for x in hp.get('sections',[]) if isinstance(x,dict)):
-        errors.append('homepage projection missing compact structure handoff')
+    if not any(x.get('id')=='world-glimpse' for x in hp.get('sections',[]) if isinstance(x,dict)):
+        errors.append('homepage projection missing compact world/structure glimpse')
 
 
 def validate_root_architecture_docs(errors):
