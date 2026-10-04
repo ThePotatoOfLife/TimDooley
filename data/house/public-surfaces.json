@@ -1,5 +1,5 @@
 {
-  "version": "2.8.0",
+  "version": "2.8.1",
   "updated": "2026-10-04",
   "authority": "public-route-identity",
   "room_registry": "data/house/rooms.json",
@@ -46,7 +46,7 @@
       "surface_type": "guide",
       "title": "Potato of Life",
       "reader_job": "Explain Potato of Life as the semantic center and route deeper canon, body, tradition, and research views.",
-      "primary_parent": "home",
+      "primary_parent": "potatoism",
       "primary_room_ids": [
         "potatoverse-canon",
         "life-body",
@@ -101,6 +101,27 @@
       "visibility": "primary",
       "primary_navigation": true,
       "is_view": false,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "potatoism-practice",
+      "route": "/potatoism/grow/",
+      "canonical_route": "/potatoism/grow/",
+      "surface_type": "guide",
+      "title": "How to Become a Potato",
+      "reader_job": "Translate Potatoism into lived daily practice across growth, work, conflict, relationships, rest, community and Angelic responsibility.",
+      "primary_parent": "potatoism",
+      "primary_room_ids": [
+        "potatoverse-canon",
+        "life-body",
+        "culture-information",
+        "research-lab"
+      ],
+      "status": "active",
+      "visibility": "secondary",
+      "primary_navigation": false,
+      "is_view": true,
       "knowledge_owner": false,
       "legacy_routes": []
     },
