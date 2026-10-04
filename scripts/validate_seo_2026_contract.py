@@ -52,7 +52,7 @@ def test_breadcrumb_contract() -> None:
 
 
 def test_primary_gateway_contract() -> None:
-    expected = (("tim-dooley", "Tim Dooley"), ("religion", "Religion"), ("philosophy", "Philosophy"), ("science", "Science"), ("world", "World"))
+    expected = (("tim-dooley", "Tim Dooley"), ("potatoism", "Potatoism"), ("religion", "Religion"), ("philosophy", "Philosophy"), ("science", "Science"), ("world", "World"))
     if optimize.PRIMARY_DOORS != expected:
         fail(f"SEO primary gateways must come from canonical public-surface authority; got {optimize.PRIMARY_DOORS!r}")
     website = json.loads(optimize.site_graph_schema(optimize.OUT / "science" / "index.html", "Science"))
@@ -181,7 +181,7 @@ def test_tim_entity_answer_contract() -> None:
     required = (
         "Who is Tim Dooley?",
         "Tim Dooley is a Danish writer, livestreamer, storyteller, archive-builder and creator of the Potato of Life project.",
-        "official project-owned first-party archive",
+        "official project-owned archive",
         '"@type":"ProfilePage"',
         '"@type":"Person"',
         "https://x.com/Rational_Potato",
