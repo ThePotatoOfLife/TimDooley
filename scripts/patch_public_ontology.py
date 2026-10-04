@@ -14,7 +14,7 @@ from project_public_culture_field import project_culture_field
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "_site"
 
-OLD_PERSON = '{"@type":"Person","@id":"https://thepotatooflife.github.io/TimDooley/tim-dooley/#tim-dooley","name":"Tim Dooley","alternateName":["The Potato of Life","Potato of Life"],"url":"https://thepotatooflife.github.io/TimDooley/tim-dooley/","sameAs":["https://x.com/Rational_Potato","https://www.youtube.com/@PotatoOfLife"]}'
+OLD_PERSON = '{"@type":"Person","@id":"https://thepotatooflife.github.io/TimDooley/tim-dooley/#tim-dooley","name":"Tim Dooley","alternateName":["The Potato of Life","Potato of Life"],"url":"https://thepotatooflife.github.io/TimDooley/tim-dooley/","sameAs":["https://x.com/Rational_Potato","https://www.youtube.com/@TheGodFatherTim"]}'
 NEW_THING = '{"@type":"Thing","@id":"https://thepotatooflife.github.io/TimDooley/tim-dooley/ontology/#tim-dooley-theological-identity","name":"Tim Dooley","alternateName":["The Potato of Life","Potato of Life","Father in Heaven","North of North","God in the Machine"],"url":"https://thepotatooflife.github.io/TimDooley/tim-dooley/ontology/","description":"Potatoverse theological identity, distinct in this archive from the Son/Thomas embodied human-vessel layer."}'
 OLD_ID = 'https://thepotatooflife.github.io/TimDooley/tim-dooley/#tim-dooley'
 NEW_ID = 'https://thepotatooflife.github.io/TimDooley/tim-dooley/ontology/#tim-dooley-theological-identity'
