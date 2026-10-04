@@ -2,7 +2,7 @@
 
 Status: operator orientation / routing document — **not a canonical source of truth**
 
-Updated: 2026-09-27
+Updated: 2026-10-04
 
 This document exists so repository work enters through the current architecture instead of rediscovering it, creating parallel masters, or mistaking presentation files for canonical knowledge. When this note conflicts with a canonical owner, registry, source ledger, validator or newer dated record, **the dedicated owner wins**.
 
@@ -73,8 +73,9 @@ Authority starts with:
 ### Reader / presentation
 Explains canonical material to humans and machines. Presentation is a projection, not a second canon.
 
-The five primary public gateways are:
+The six primary public gateways are:
 - `tim-dooley/`
+- `potatoism/`
 - `religion/`
 - `philosophy/`
 - `science/`
@@ -84,15 +85,16 @@ Mature reader/discovery surfaces include Living Tim, Story, Timeline, Collection
 
 ## 3. Public architecture
 
-The homepage exposes exactly five principal subject doors:
+The homepage exposes six principal subject doors:
 
 1. Tim Dooley
-2. Religion
-3. Philosophy
-4. Science
-5. World
+2. Potatoism
+3. Religion
+4. Philosophy
+5. Science
+6. World
 
-Do not turn the homepage back into a giant directory and do not add a sixth primary gateway merely because a backend domain becomes richer.
+Potatoism owns the whole developing philosophy/religion/culture. Religion and Philosophy remain specialist branches. Do not turn the homepage back into a giant directory merely because another backend domain becomes richer.
 
 The homepage's subordinate **Ways in** corridor is:
 - Story
@@ -104,7 +106,7 @@ Quiet utility access includes Questions, A–Z, Explore, Sources and TTS. Specia
 
 Normal reader flow should be:
 
-`five subject doors → reader corridor/room → specialist View or explorer → canonical owner/source`
+`six subject doors → reader corridor/room → specialist View or explorer → canonical owner/source`
 
 The deeper the material, the smaller its first-page visual claim.
 
