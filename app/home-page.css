@@ -574,13 +574,13 @@ body.home-body{
 
 
 /* Seedbed / living-center homepage expression */
-.home-seedbed{
+.home-page > section.home-seedbed{
   position:relative;
   overflow:hidden;
-  padding:clamp(20px,3vw,34px)!important;
+  padding:clamp(20px,3vw,34px);
   background:
     radial-gradient(circle at 50% 46%,rgba(238,222,164,.08),transparent 30%),
-    linear-gradient(180deg,rgba(14,18,16,.30),rgba(8,10,9,.55) 55%,rgba(14,9,7,.62))!important;
+    linear-gradient(180deg,rgba(14,18,16,.30),rgba(8,10,9,.55) 55%,rgba(14,9,7,.62));
 }
 .home-seedbed::before{
   content:"";
