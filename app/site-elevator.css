@@ -403,7 +403,9 @@ html[data-site-floor="below"]{
   align-items:center;
   justify-content:center;
   min-width:0;
+  height:var(--elevator-room-height);
   min-height:var(--elevator-room-height);
+  max-height:var(--elevator-room-height);
   margin:0;
   padding:5px 10px;
   box-sizing:border-box;
@@ -563,7 +565,9 @@ html[data-site-floor="below"]{
     flex:none;
     width:auto;
     max-width:none;
+    height:var(--elevator-room-height);
     min-height:var(--elevator-room-height);
+    max-height:var(--elevator-room-height);
     padding:4px 5px;
   }
 }
