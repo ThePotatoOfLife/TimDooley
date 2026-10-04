@@ -63,7 +63,7 @@ def main():
     if surfaces.get("authority") != "public-route-identity":
         errors.append("House public surfaces must remain the public-route-identity authority")
     primary_gateway_ids = surfaces.get("primary_gateway_ids", [])
-    if primary_gateway_ids != ["tim", "religion", "philosophy", "science", "world"]:
+    if primary_gateway_ids != ["tim", "potatoism", "religion", "philosophy", "science", "world"]:
         errors.append(f"House primary gateways are not canonical: {primary_gateway_ids}")
 
     manifest = load("manifest.json")
