@@ -231,7 +231,11 @@ for(const [floor,pageAsset,headerAsset] of [
 }
 
 assert.ok(css.includes('#090909'),'elevator scenes need one neutral fallback behind the final realm art');
-assert.ok(css.includes('linear-gradient(180deg,rgba(3,6,8,.22),transparent 26%,transparent 70%,rgba(2,4,5,.46))'),'scenic window needs a neutral vertical readability shade instead of synthetic realm recoloring');
+assert.match(
+  css,
+  /\.site-elevator-stage::after\{[\s\S]*?linear-gradient\(180deg,rgba\(3,6,8,[^)]+\),transparent[^;]+var\(--site-header-shade\)/,
+  'scenic window needs a neutral vertical readability shade plus the shared floor shade token'
+);
 assert.ok(css.includes('--site-realm-fallback:#090909'),'all realms should share one neutral fallback base behind the final art');
 assert.ok(css.includes('[data-elevator-level="plane"] .site-elevator-stage::before'),'Plane needs a distinct scenic-window layer');
 assert.equal(/\.site-elevator\[data-elevator-level="plane"\] \.site-elevator-stage::before\{[\s\S]*?repeat-x/.test(css),false,'Plane elevator header should not rebuild mountains with repeated gradient strips');
