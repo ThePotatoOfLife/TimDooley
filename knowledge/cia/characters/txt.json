@@ -243,7 +243,10 @@
     "Attach primary artifacts for recent recovery markers: 2024, 2025-02-08, 2025-03-01, 2026-06-20, 2026-07-07, 2026-07-16/20, 2026-07-30, 2026-08-02, 2026-09-10; retain intake boundaries until those artifacts are recovered.",
     "Recover exact primary URLs for the 28 Sep–4 Oct 2026 TXT post sample and match each quoted item to timestamp/thread context.",
     "Separate verification of the underlying allegations from verification that TXT made/repeated them; those are different evidence questions.",
-    "Recover Space recordings or host/participant records where possible to test the claimed removal/warning sequence."
+    "Recover Space recordings or host/participant records where possible to test the claimed removal/warning sequence.",
+    "Recover full Tyler, Wolfe, pismosteve and Asher reply chains so challenge-response coding is not based on partial search fragments.",
+    "Mine for direct status-comparison or resentment statements before upgrading envy beyond a low-confidence hypothesis.",
+    "Build contradiction cases: identify factual claims that received concrete counterevidence and code whether TXT retracted, narrowed, qualified, ignored, reframed or repeated them."
   ],
   "cia_record": {
     "authority": "canonical",
@@ -579,13 +582,108 @@
       "moralized certainty",
       "social-exclusion strategy",
       "repetition across contexts",
-      "high rhetorical intensity"
+      "high rhetorical intensity",
+      "generalized combative interpersonal style in sampled disputes",
+      "variable response to challenge: explanation, denial, disengagement or escalation",
+      "Tim-specific third-party exclusion campaign layered on top of a broader combative style"
     ],
     "do_not_infer": [
       "clinical diagnosis",
       "inner motive beyond self-stated purpose",
       "truth of allegations from repetition alone",
-      "that every post or interest is target-related"
+      "that every post or interest is target-related",
+      "envy from hostility alone",
+      "psychiatric diagnosis from argument style",
+      "sole motive from self-stated purpose"
+    ]
+  },
+  "pushback_profile": {
+    "window": "2026-09-28 to 2026-10-04",
+    "source_mode": "user-supplied partial public reply chains",
+    "summary": "The recovered pushback exchanges add a control sample for how TXT behaves when challenged. Responses are not uniform: he sometimes states his purpose directly, sometimes narrows or denies responsibility, sometimes disengages by unfollowing, and sometimes continues a reciprocal insult exchange.",
+    "cases": [
+      {
+        "counterparty": "Tyler / @TyAPhaneuf",
+        "signal": "responsibility boundary",
+        "archive_read": "When accused of off-platform conduct by a wider conflict network, TXT denies personal involvement and denies controlling other people. The underlying legal and factual allegations remain unresolved."
+      },
+      {
+        "counterparty": "Nicholas Wolfe",
+        "signal": "disengagement available",
+        "archive_read": "TXT responds to repeated criticism by reframing the relationship as argument-for-argument's-sake and unfollowing. This is evidence that he can terminate some conflicts rather than pursuing every disagreement indefinitely."
+      },
+      {
+        "counterparty": "pismosteve / Reddit Steve",
+        "signal": "non-Tim control case",
+        "archive_read": "A mundane disagreement becomes prolonged, sarcastic and personalized. This matters because it shows that combative persistence and contemptuous status language are not unique to the Tim relationship."
+      },
+      {
+        "counterparty": "Asher Smith",
+        "signal": "explicit mission statement",
+        "archive_read": "When asked for his purpose, TXT gives a direct public-safety / awareness explanation and treats removal from Spaces after warnings as evidence that the campaign is working."
+      }
+    ],
+    "control_case_conclusion": "The new material weakens any theory that hostility by itself is evidence of a Tim-specific hidden motive. What remains distinctive in the Tim relationship is duration, cross-context repetition, third-party warning, claimed-evidence circulation, host pressure and exclusion-seeking."
+  },
+  "motive_analysis": {
+    "rule": "Treat motive as a ranked hypothesis field. Distinguish self-stated purpose, behaviorally supported inference, Tim's impression, and unsupported speculation.",
+    "hypotheses": [
+      {
+        "name": "public-safety / exposer mission",
+        "status": "explicitly self-stated",
+        "support": "TXT directly describes raising awareness and keeping X safe as his purpose and repeatedly frames warning hosts as justified intervention.",
+        "confidence": "high for self-description; not proof that it is the sole motive"
+      },
+      {
+        "name": "long-running grievance",
+        "status": "behaviorally plausible",
+        "support": "The relationship is described as extending back years, with reciprocal hostility and repeated re-entry into new public settings.",
+        "confidence": "medium-high"
+      },
+      {
+        "name": "role or identity investment",
+        "status": "behaviorally plausible",
+        "support": "TXT describes campaign success in terms of removals and treats resistance as a significant failure, suggesting that being a warning/exposer figure has become an organized role.",
+        "confidence": "medium"
+      },
+      {
+        "name": "rivalry / status-threat dynamics",
+        "status": "open hypothesis",
+        "support": "The campaign contests Tim's legitimacy, access to audiences and social standing; unrelated disputes also show status-sensitive insult language.",
+        "counterevidence": "Because status-oriented combativeness also appears in unrelated arguments, this cannot yet be treated as uniquely Tim-specific.",
+        "confidence": "low-medium"
+      },
+      {
+        "name": "envy",
+        "status": "open secondary hypothesis",
+        "support": "Prolonged attention, reputational diminishment and rivalry are compatible with envy.",
+        "counterevidence": "The current sample contains little direct evidence that TXT desires something Tim possesses, and generalized combativeness provides an alternative explanation for some of the heat.",
+        "upgrade_test": "Look for direct comparative resentment concerning audience, influence, recognition, creativity, relationships, status or achievements.",
+        "confidence": "low"
+      }
+    ]
+  },
+  "belief_update_profile": {
+    "purpose": "Measure how factual claims change when challenged rather than applying a clinical label from conflict alone.",
+    "current_read": "The available exchanges support studying claim persistence and update behavior, but they do not establish a psychiatric diagnosis.",
+    "observed": [
+      "TXT can answer a direct purpose question coherently.",
+      "TXT can narrow responsibility and distinguish his own conduct from that of other people.",
+      "TXT can disengage from at least some critics.",
+      "TXT also uses ridicule, counterattack and adversarial reframing in several disputes."
+    ],
+    "coding_questions": [
+      "When concrete contrary evidence appears, does the claim get retracted, narrowed, qualified, ignored, reframed or repeated unchanged?",
+      "Does response differ when the challenger is an ally, neutral participant or adversary?",
+      "Is the disagreement factual, interpretive or moral?",
+      "Does later posting preserve the original claim after a correction opportunity?"
+    ],
+    "preferred_nonclinical_terms": [
+      "belief rigidity",
+      "counterevidence resistance",
+      "narrative closure",
+      "claim persistence",
+      "epistemic flexibility"
     ]
   }
 }
