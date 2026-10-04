@@ -436,3 +436,66 @@ body.potatoes-hall-page{
     linear-gradient(135deg,rgba(236,219,160,.1),rgba(24,43,62,.84)),
     repeating-linear-gradient(90deg,transparent 0 72px,rgba(255,255,255,.018) 72px 74px);
 }
+
+
+/* Honor Register plaques — ceremonial cabinet plates, not moral scorecards. */
+.potatoes-hall-page .honor-register{
+  margin:34px 0 42px;
+  padding:clamp(18px,2.5vw,28px);
+  border-top:1px solid rgba(226,204,132,.34);
+  border-bottom:1px solid rgba(226,204,132,.34);
+  background:
+    radial-gradient(circle at 50% 0,rgba(248,223,145,.07),transparent 30%),
+    rgba(24,30,22,.52);
+}
+.potatoes-hall-page .honor-register h2{margin:3px 0 11px;color:#ead89f}
+.potatoes-hall-page .plaque-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+  margin:20px 0;
+}
+.potatoes-hall-page .hero-plaque{
+  position:relative;
+  padding:17px;
+  border:1px solid rgba(226,199,111,.4);
+  border-radius:7px;
+  background:
+    linear-gradient(145deg,rgba(236,213,141,.09),rgba(16,24,18,.84)),
+    repeating-linear-gradient(0deg,transparent 0 3px,rgba(255,255,255,.02) 3px 4px);
+  box-shadow:inset 0 0 0 3px rgba(87,72,38,.18),0 12px 28px rgba(0,0,0,.18);
+}
+.potatoes-hall-page .hero-plaque:after{
+  content:"";
+  position:absolute;
+  inset:6px;
+  border:1px solid rgba(242,222,158,.12);
+  pointer-events:none;
+}
+.potatoes-hall-page .plaque-top{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom:9px;
+  color:#bfc98e;
+  font:700 9px/1.2 ui-monospace,monospace;
+  letter-spacing:.08em;
+}
+.potatoes-hall-page .hero-plaque h3{margin:0 0 12px;color:#f2df9c;font:400 23px/1.15 var(--site-font-serif)}
+.potatoes-hall-page .hero-plaque dl{
+  display:grid;
+  grid-template-columns:70px 1fr;
+  gap:5px 10px;
+  margin:0;
+}
+.potatoes-hall-page .hero-plaque dt{color:#8f9c72;font:700 9px ui-monospace,monospace;text-transform:uppercase}
+.potatoes-hall-page .hero-plaque dd{margin:0;color:#ccd2c3;font-size:11px;line-height:1.45}
+.potatoes-hall-page .hero-plaque a{
+  display:inline-block;
+  margin-top:12px;
+  color:#e1c871;
+  font:700 10px ui-monospace,monospace;
+  text-decoration:none;
+}
+.potatoes-hall-page .hero-plaque--open{border-style:dashed;opacity:.83}
+@media(max-width:720px){.potatoes-hall-page .plaque-grid{grid-template-columns:1fr}}
