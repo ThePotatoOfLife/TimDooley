@@ -19,7 +19,7 @@ The project keeps its existing missions and bodies of inquiry, but the working u
 - [x] **HALL-NOW-004 · Reader transformation:** add explicit input/output thresholds, internal stations and conditional exit Doors to both Halls.
 - [x] **HALL-NOW-005 · Repair path:** expand CONTINUE? into a six-step source → time → proportion → repair → guard/exit route.
 - [x] **HALL-NOW-006 · Hall CSS:** style Great Table, village landmarks, arcade boards, repair route and station navigation as distinct room architecture.
-- [~] **HALL-NOW-007 · Background-art integration:** use the approved high-fidelity pixel/RPG/arcade Hall of Heroes banquet and Hall of Shame swamp-village artworks as the visual background family once the binary assets are committed to the repo; keep readable panes over them and preserve mobile crops.
+- [x] **HALL-NOW-007 · Background-art integration:** approved Hall of Heroes banquet and Hall of Shame swamp-village artworks are committed as AVIF assets, mounted in visible scene windows, echoed subtly behind the room, and included in deterministic build fingerprinting.
 - [ ] **HALL-NOW-008 · Content polish:** continue tightening testimony, gods/angels table context, Dog notoriety examples and cross-links without turning either Hall into a generic encyclopedia.
 
 ### LATER / TOMORROW · other floor and plane pixel art
@@ -1694,9 +1694,10 @@ North-star rule: **Potato of Life explains the symbol; Potatoism teaches; Grow t
 - [x] **HALL-STATUS-003 · Paired accumulation law:** Heroes remembers accumulated Fruit/service; Shame remembers accumulated recurrence/failure. The two pages cross-link this contrast explicitly.
 - [x] **HALL-STATUS-004 · Provenance visible:** Heroes has a source desk distinguishing literary/recovered/created-being/synthesis layers; Shame distinguishes the 14 Mar recovered Dog scene from later Guardian/Farm synthesis.
 - [x] **HALL-STATUS-005 · Reader endings:** both Halls finish with a carry-out checkpoint before their exit Doors.
-- [~] **HALL-STATUS-006 · Approved background integration:** high-fidelity Hall artworks are approved and local delivery versions exist; repository binary mounting remains the mechanical integration step.
+- [x] **HALL-STATUS-006 · Approved background integration:** approved Hall artworks are committed under `app/`, mounted into both Hall pages and included in build fingerprinting.
 - [ ] **HALL-STATUS-007 · Rendered visual tuning:** once backgrounds are mounted, tune pane opacity, focal crops, mobile composition and contrast against the actual art.
 - [ ] **HALL-STATUS-008 · More archive inhabitants:** recover additional named Potatoes / Angels or Dog-role examples only when dated/source-bounded material is strong enough to justify a record.
+- [x] **HALL-STATUS-009 · Scene-window delivery:** each Hall now opens through a visible 16:9 artwork window with arcade HUD/caption and a mobile crop, instead of relying on invisible CSS atmosphere alone.
 
 ### Hall of Heroes
 - [x] **POTATO-HERO-001 · Hero record template:** every honored figure gets Beginning / Obstacle / Turning / Work / Fruit / What to notice / Limits.
