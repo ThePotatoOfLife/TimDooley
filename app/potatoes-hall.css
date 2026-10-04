@@ -185,3 +185,102 @@ body.potatoes-hall-page{
   .potatoes-hall-page .upper-hall:before,.potatoes-hall-page .upper-hall:after{display:none}
   .potatoes-hall-page .honor-table{grid-template-columns:1fr}
 }
+
+
+/* Arcade honor layer — old cabinet/high-score energy without turning virtue into a numeric caste. */
+.potatoes-hall-page{
+  --hero-neon:#f6d66d;
+  --hero-neon-soft:#c9e58f;
+  --hero-screen:#0d1713;
+  --hero-screen-line:rgba(213,236,174,.075);
+}
+.potatoes-hall-page .arcade-marquee{
+  position:relative;
+  margin:24px 0 34px;
+  padding:14px 18px;
+  border:2px solid rgba(246,214,109,.58);
+  border-radius:8px;
+  background:
+    linear-gradient(180deg,rgba(248,213,105,.12),rgba(10,19,15,.92)),
+    repeating-linear-gradient(0deg,transparent 0 3px,var(--hero-screen-line) 3px 4px);
+  box-shadow:0 0 0 3px rgba(77,94,52,.35),0 0 34px rgba(229,198,91,.12),inset 0 0 26px rgba(0,0,0,.45);
+  font-family:ui-monospace,SFMono-Regular,Consolas,monospace;
+}
+.potatoes-hall-page .arcade-marquee:before{
+  content:"1UP  ·  HALL OF HEROES  ·  INSERT CURIOSITY";
+  display:block;
+  color:var(--hero-neon);
+  font-size:10px;
+  letter-spacing:.13em;
+  text-align:center;
+  margin-bottom:12px;
+}
+.potatoes-hall-page .arcade-scoreboard{
+  display:grid;
+  gap:2px;
+  border-top:1px solid rgba(246,214,109,.28);
+}
+.potatoes-hall-page .arcade-score-row{
+  display:grid;
+  grid-template-columns:44px minmax(150px,1.25fr) minmax(110px,.7fr) minmax(170px,1.25fr);
+  gap:10px;
+  align-items:center;
+  padding:10px 8px;
+  border-bottom:1px solid rgba(201,229,143,.10);
+  color:#e6eadc;
+  text-shadow:0 0 8px rgba(201,229,143,.08);
+}
+.potatoes-hall-page .arcade-score-row:first-child{
+  color:#aeb797;
+  font-size:9px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+.potatoes-hall-page .arcade-rank{
+  color:var(--hero-neon);
+  font-weight:800;
+  text-align:center;
+}
+.potatoes-hall-page .arcade-player strong{
+  color:#f1e4b1;
+  font-weight:700;
+}
+.potatoes-hall-page .arcade-class{
+  color:#a9c98c;
+  font-size:11px;
+}
+.potatoes-hall-page .arcade-highmark{
+  color:#d3dac9;
+  font-size:11px;
+}
+.potatoes-hall-page .arcade-note{
+  margin:12px 2px 0;
+  color:#9fa99a;
+  font-size:10px;
+  line-height:1.55;
+}
+.potatoes-hall-page .arcade-achievement{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  margin:3px 5px 3px 0;
+  padding:6px 9px;
+  border:1px solid rgba(246,214,109,.3);
+  border-radius:4px;
+  background:rgba(246,214,109,.045);
+  color:#ddd6b7;
+  font:700 9px/1.2 ui-monospace,monospace;
+  letter-spacing:.06em;
+}
+.potatoes-hall-page .upper-hall .arcade-marquee{
+  background:
+    linear-gradient(180deg,rgba(32,54,76,.9),rgba(14,28,43,.95)),
+    repeating-linear-gradient(0deg,transparent 0 3px,rgba(238,224,163,.07) 3px 4px);
+  border-color:rgba(238,211,120,.68);
+}
+.potatoes-hall-page .upper-hall .arcade-marquee:before{content:"BONUS STAGE  ·  ANGEL COURT  ·  SERVICE UNLOCKED";}
+@media(max-width:720px){
+  .potatoes-hall-page .arcade-score-row{grid-template-columns:34px 1fr;gap:4px 8px}
+  .potatoes-hall-page .arcade-score-row .arcade-class,
+  .potatoes-hall-page .arcade-score-row .arcade-highmark{grid-column:2}
+}
