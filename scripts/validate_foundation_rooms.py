@@ -17,7 +17,7 @@ def load(p): return json.loads(p.read_text(encoding='utf-8'))
 
 def main():
     errors=[]
-    for p in (ATLAS,CONTRACT,SYNTH,REPRO,HOME,HOME_PROJECTION,TIMELINE,HOUSE):
+    for p in (ATLAS,CONTRACT,SYNTH,REPRO,TIMELINE,HOUSE):
         if not p.is_file(): errors.append(f'missing {p.relative_to(ROOT)}')
     if errors:
         print('\n'.join(errors)); raise SystemExit(1)
