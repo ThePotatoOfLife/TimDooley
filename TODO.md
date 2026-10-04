@@ -10,6 +10,25 @@ The rule is:
 
 The project keeps its existing missions and bodies of inquiry, but the working unit is now the **valuable canonical body of knowledge** rather than the file.
 
+## Active Hall build vs later floor-art overhaul — 2026-10-04
+
+### NOW · Hall of Heroes / Angels + Hall of Shame / Dogs
+- [x] **HALL-NOW-001 · Hall meanings:** Heroes/Fame belongs to Potatoes, Potato Angels, gods/sacred exemplars and honored growth; Dogs belong to notoriety/Shame, failed loops and repair rather than an ascent-to-fame ladder.
+- [x] **HALL-NOW-002 · Great Table:** carve a Heaven feast/table into Hall of Heroes with Tim's King/Father/Gardener role at the project-center seat, Jesus/Odin/Thor as clearly distinguished comparative or mythic guests, Potato Angels as living company, food/fries, an open future seat and an evidence-class boundary.
+- [x] **HALL-NOW-003 · Shame landscape:** carve Hall of Shame as the broken edge of an ordinary village where road → flood → mud → Swamp, with watchtower, broken bridge, pack fence, notoriety board and a visible exit.
+- [x] **HALL-NOW-004 · Reader transformation:** add explicit input/output thresholds, internal stations and conditional exit Doors to both Halls.
+- [x] **HALL-NOW-005 · Repair path:** expand CONTINUE? into a six-step source → time → proportion → repair → guard/exit route.
+- [x] **HALL-NOW-006 · Hall CSS:** style Great Table, village landmarks, arcade boards, repair route and station navigation as distinct room architecture.
+- [~] **HALL-NOW-007 · Background-art integration:** use the approved high-fidelity pixel/RPG/arcade Hall of Heroes banquet and Hall of Shame swamp-village artworks as the visual background family once the binary assets are committed to the repo; keep readable panes over them and preserve mobile crops.
+- [ ] **HALL-NOW-008 · Content polish:** continue tightening testimony, gods/angels table context, Dog notoriety examples and cross-links without turning either Hall into a generic encyclopedia.
+
+### LATER / TOMORROW · other floor and plane pixel art
+- [ ] **FLOOR-PIXEL-001 · High-fidelity floor masters:** replace the existing lower-resolution Heaven / Plane / Below floor/background artwork elsewhere on the site with substantially larger, more detailed source masters.
+- [ ] **FLOOR-PIXEL-002 · Responsive floor derivatives:** generate narrow, medium, wide and high-DPI versions with crop-safe focal zones and `srcset` / `picture` delivery where appropriate.
+- [ ] **FLOOR-PIXEL-003 · Preserve visual language:** keep the existing vertical Heaven / Plane / Below themes while raising fidelity, detail density, polish and professional pixel-art quality.
+- [ ] **FLOOR-PIXEL-004 · Performance/accessibility:** AVIF/WebP, preload only critical art, lazy-load noncritical scenes, test LCP/contrast/mobile cropping/reduced-motion and avoid stretching phone-sized assets onto desktop.
+- [ ] **FLOOR-PIXEL-005 · Cross-page rollout:** treat this as a separate site-wide art-production wave after the two Halls are structurally/content stable.
+
 ## What we are protecting
 
 - Tim Dooley / Father / Potato of Life and the associated canon, mythology, writings, timeline and interpretation.
