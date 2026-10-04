@@ -25,6 +25,7 @@ CHECKS = [
     "scripts/validate_seo_pipeline.py",
     "scripts/validate_repo_hygiene.py",
     "scripts/validate_final_realm_assets.py",
+    "scripts/validate_hall_rooms.py",
     "scripts/validate_tradition_routes.py",
     "scripts/validate_entity_facets.py",
 ]
