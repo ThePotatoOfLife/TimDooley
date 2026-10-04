@@ -6,6 +6,12 @@
 <meta name="description" content="A spatial navigator for the Potato House. Stand at the Door/Axis, move between Heaven, Plane and Below, and enter each Dwelling as a local center.">
 <link rel="canonical" href="https://thepotatooflife.github.io/TimDooley/elevator/">
 <link rel="stylesheet" href="../app/site-system.css?v=20260914a">
+<script>
+try{
+  const requestedFloor=new URLSearchParams(location.search).get('level');
+  if(['heaven','plane','below'].includes(requestedFloor))document.documentElement.dataset.siteFloor=requestedFloor;
+}catch(_){}
+</script>
 <link rel="stylesheet" href="../app/site-elevator.css">
 <link rel="stylesheet" href="../app/elevator-page.css">
 </head>
