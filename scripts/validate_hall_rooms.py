@@ -16,6 +16,24 @@ BUILD = ROOT / "scripts/build_site.py"
 def text(path: Path) -> str:
     return path.read_text(encoding="utf-8", errors="replace") if path.exists() else ""
 
+
+def avif_dimensions(path: Path) -> tuple[int, int] | None:
+    """Read AVIF primary image dimensions from the ISO-BMFF ispe box."""
+    try:
+        data = path.read_bytes()
+    except OSError:
+        return None
+    if len(data) < 32 or data[4:8] != b"ftyp" or b"avif" not in data[:32]:
+        return None
+    offset = data.find(b"ispe")
+    if offset < 0 or offset + 16 > len(data):
+        return None
+    width = int.from_bytes(data[offset + 8:offset + 12], "big")
+    height = int.from_bytes(data[offset + 12:offset + 16], "big")
+    if width <= 0 or height <= 0:
+        return None
+    return width, height
+
 def main() -> int:
     errors: list[str] = []
     for path in (HERO_PAGE, SHAME_PAGE, HERO_CSS, SHAME_CSS, HERO_ART, SHAME_ART):
@@ -65,10 +83,22 @@ def main() -> int:
         if rel not in build:
             errors.append(f"build fingerprint chain missing {rel}")
 
-    # These are wide scene masters, not tiny phone-only decorative images.
+    # Delivery AVIFs are aggressively compressed; validate structure and dimensions,
+    # not an arbitrary byte count that punishes efficient encoding.
     for path in (HERO_ART, SHAME_ART):
-        if path.exists() and path.stat().st_size < 20_000:
-            errors.append(f"Hall artwork suspiciously small: {path.relative_to(ROOT)}")
+        if not path.exists():
+            continue
+        size = path.stat().st_size
+        dims = avif_dimensions(path)
+        if size < 8_000:
+            errors.append(f"Hall artwork suspiciously small: {path.relative_to(ROOT)} ({size} bytes)")
+        if dims is None:
+            errors.append(f"Hall artwork is not a valid AVIF with readable dimensions: {path.relative_to(ROOT)}")
+        elif dims[0] < 800 or dims[1] < 450:
+            errors.append(
+                f"Hall artwork below delivery resolution: {path.relative_to(ROOT)} "
+                f"({dims[0]}x{dims[1]}; require at least 800x450)"
+            )
 
     if errors:
         print("HALL ROOMS VALIDATION FAILED")
