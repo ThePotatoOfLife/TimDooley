@@ -1669,7 +1669,7 @@ North-star: **the House should feel inhabited by teachers, objects, stories, que
 - [x] Comparative Mythology — one source-first comparison from primary mythic material to function, similarity and decisive difference.
 - [x] Developmental Genealogy — one lineage from precursor through mutation, supersession and mature role.
 - [x] Economy & Finance — follow one obligation through households, banks, government and markets.
-- [ ] Esoteric & Sacred Geometry — one dated symbol lineage showing how the same shape acquires different meanings in different communities.
+- [x] Esoteric & Sacred Geometry — one dated symbol lineage showing how the same shape acquires different meanings in different communities.
 - [x] Experiments & Formalization — one end-to-end experiment card with claim, operationalization, measurement, falsifier and interpretation.
 - [x] House Architecture — let the reader solve one real routing/ownership problem instead of only reading architecture rules.
 - [x] Information Ecology — follow one artifact through live, cached, copied, transformed, orphaned, recovered and canonical states.
@@ -1677,7 +1677,7 @@ North-star: **the House should feel inhabited by teachers, objects, stories, que
 - [x] Law & Justice — one jurisdiction → rule → evidence → procedure → remedy → appeal chain.
 - [x] Mathematics & Geometry — pair one exact construction with one seductive but invalid metaphysical inference.
 - [x] Model Testing — build a small failure museum: one rejected model, one narrowed model and one unresolved model.
-- [ ] Music & Sound — add album/theme/period listening journeys so the discography reads as development rather than inventory.
+- [x] Music & Sound — add album/theme/period listening journeys so the discography reads as development rather than inventory.
 - [x] Open Questions — top live questions get next artifact, owner, closure condition and “what would count as no?”.
 - [x] Other Traditions & Philosophies — foreign-first deep readings for Daoist, Buddhist and Norse material before crosswalks.
 - [x] Physics & Cosmology — promote one analogy through comparator → model → observable → falsifier, even if it stops early.
@@ -1690,10 +1690,13 @@ North-star: **the House should feel inhabited by teachers, objects, stories, que
 - [x] Subculture & Group Formation — use a neutral group case to teach norms, permeability, conflict incentives and exit.
 - [x] Symbolic Architecture — one complete Source → Door → World → Roots → return journey with every operator earning its place.
 - [x] Systems Dynamics — one runnable toy system where feedback, delay, queue or contagion defeats intuition.
-- [ ] Theology & God-language — surface unresolved tensions rather than forcing every relation into a tidy chart.
-- [ ] Timeline Events — make one hinge month readable as a sourced scene, not just chronology.
-- [ ] Whole-body Physiology — take one embodied event through nervous, endocrine, circulatory, immune and fluid loops.
-- [ ] Witness & Attestation — publish one exemplary packet with artifact, date, authorship, derivation, uncertainty and exact evidentiary scope.
+- [x] Theology & God-language — surface unresolved tensions rather than forcing every relation into a tidy chart.
+- [x] Timeline Events — make one hinge month readable as a sourced scene, not just chronology.
+- [x] Whole-body Physiology — take one embodied event through nervous, endocrine, circulatory, immune and fluid loops.
+- [x] Witness & Attestation — publish one exemplary packet with artifact, date, authorship, derivation, uncertainty and exact evidentiary scope.
+
+### Wave 3 status
+- [x] All nested-Room centerpiece tasks in this wave are complete; future work should now critique quality/order/redundancy rather than adding centerpieces mechanically.
 
 ### Wave 4 — cross-site editorial cleanup
 - [ ] Replace generic “Adjacent Rooms” endings with a consequential next question wherever possible.
