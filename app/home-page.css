@@ -887,3 +887,43 @@ body.home-body{
   .home-relearning-grid article:last-child{border-bottom:0}
   .home-growth-ringline a{border-right:0}
 }
+
+
+/* Homepage paired Halls — make Fame and Notoriety visible as a deliberate pair. */
+.home-hall-pair{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+}
+.home-hall-card{
+  position:relative;
+  overflow:hidden;
+}
+.home-hall-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  opacity:.18;
+}
+.home-hall-card--heroes{
+  border-color:rgba(227,202,120,.34);
+  background:
+    radial-gradient(circle at 75% 0,rgba(237,214,143,.09),transparent 34%),
+    var(--site-pane-soft);
+}
+.home-hall-card--heroes::before{
+  background:linear-gradient(135deg,rgba(227,202,120,.16),transparent 48%);
+}
+.home-hall-card--shame{
+  border-color:rgba(184,108,72,.34);
+  background:
+    radial-gradient(circle at 78% 100%,rgba(118,78,45,.11),transparent 38%),
+    var(--site-pane-soft);
+}
+.home-hall-card--shame::before{
+  background:linear-gradient(135deg,rgba(145,78,50,.13),transparent 48%);
+}
+.home-hall-card h3,
+.home-hall-card p,
+.home-hall-card a{position:relative;z-index:1}
+.home-hall-card--shame a{color:#d69a76}
+@media(max-width:700px){.home-hall-pair{grid-template-columns:1fr}}
