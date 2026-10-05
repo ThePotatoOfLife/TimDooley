@@ -7,6 +7,7 @@ ROOT=Path(__file__).resolve().parents[1]
 SCHEMA=ROOT/'data/house/entity-dossier-schema.json'
 DATA=ROOT/'data/house/entity-dossiers.json'
 HOUSE=ROOT/'house/index.html'
+HOUSE_RUNTIME=ROOT/'app/house-page.js'
 AUDIT=ROOT/'knowledge/research/element-materialization-audit-2026-09-18.json'
 
 REQUIRED_INSTRUMENTS=(
@@ -21,7 +22,7 @@ def load(path:Path):
 
 def main():
     errors=[]
-    for path in (SCHEMA,DATA,HOUSE,AUDIT):
+    for path in (SCHEMA,DATA,HOUSE,HOUSE_RUNTIME,AUDIT):
         if not path.is_file():
             errors.append(f'missing entity instrumentation artifact: {path.relative_to(ROOT)}')
     if errors:
@@ -78,7 +79,7 @@ def main():
             if any(term in reading for term in ('caused by','proves that','therefore caused')):
                 errors.append(f'{did}/{mid} uses causal language in descriptive longitudinal reading')
 
-    text=HOUSE.read_text(encoding='utf-8',errors='replace')
+    text=HOUSE.read_text(encoding='utf-8',errors='replace')+'\n'+HOUSE_RUNTIME.read_text(encoding='utf-8',errors='replace')
     for marker in ('Observed change over time','Reproduction & correction','Visibility & access','Scope boundary'):
         if marker not in text:
             errors.append(f'House entity-case UI missing instrumentation marker: {marker}')
