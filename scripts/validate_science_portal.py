@@ -63,6 +63,33 @@ def require_markers(text: str, markers: tuple[str, ...], owner: str, errors: lis
             errors.append(f"{owner}: missing {marker!r}")
 
 
+def validate_paper_figure_assets(errors: list[str]) -> None:
+    science_dir = ROOT / "knowledge" / "science"
+    for source in science_dir.rglob("*.json"):
+        try:
+            data = json.loads(source.read_text(encoding="utf-8"))
+        except Exception:
+            continue
+        figures = data.get("paper_figures")
+        if not isinstance(figures, list):
+            continue
+        for index, figure in enumerate(figures, 1):
+            if not isinstance(figure, dict):
+                errors.append(f"{source.relative_to(ROOT)}: paper_figures[{index}] must be an object")
+                continue
+            asset = str(figure.get("asset") or "").strip().lstrip("/")
+            if not asset:
+                errors.append(f"{source.relative_to(ROOT)}: paper_figures[{index}] missing asset")
+                continue
+            asset_path = ROOT / asset
+            if not asset_path.is_file():
+                errors.append(f"{source.relative_to(ROOT)}: missing paper figure asset {asset}")
+            if not str(figure.get("alt") or "").strip():
+                errors.append(f"{source.relative_to(ROOT)}: paper figure {asset} missing alt text")
+            if not str(figure.get("caption") or "").strip():
+                errors.append(f"{source.relative_to(ROOT)}: paper figure {asset} missing caption")
+
+
 def github_error(path: str, title: str, message: str) -> None:
     """Emit a GitHub Actions annotation while remaining harmless outside CI."""
     safe_path = str(path).replace("\r", " ").replace("\n", " ")
@@ -95,6 +122,8 @@ def write_report(errors: list[str], semantic: dict, payload: dict | None) -> Non
 def main() -> int:
     errors: list[str] = []
     payload: dict | None = None
+
+    validate_paper_figure_assets(errors)
 
     semantic = audit_tree()
     if semantic.get("hard_failure_count"):
@@ -162,6 +191,7 @@ def main() -> int:
                     "Core paper series",
                     "<details class=\"papers-shelf\"",
                     "science-papers.css",
+                    'class="page-nav papers-nav"',
                     "advanced-retarded-door-handshake-recovery",
                     "unified-potato-theory-2025-recovery",
                     "eleven-dimensional-axis-door-dual-spiral-recovery",
@@ -225,7 +255,7 @@ def main() -> int:
                         text = paper_page.read_text(encoding="utf-8", errors="replace")
                         require_markers(
                             text,
-                            ("Abstract", "Download source JSON", "View source on GitHub", "knowledge/science/"),
+                            ("Abstract", 'class="page-nav paper-nav"', "Download source JSON", "View source on GitHub", "knowledge/science/"),
                             f"science/papers/{first['slug']}/index.html",
                             errors,
                         )
