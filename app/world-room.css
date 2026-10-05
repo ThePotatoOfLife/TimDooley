@@ -13,7 +13,7 @@
   font:400 clamp(20px,2.6vw,31px)/1.5 var(--site-font-serif);
   color:var(--site-ink);
 }
-.world-room .room-reader>p{max-width:80ch;color:#cbd1c8;line-height:1.75}
+.world-room .room-reader>p{max-width:80ch;color:var(--site-copy);line-height:1.75}
 
 .world-room :is(.distinction-grid,.atlas-grid,.legal-grid,.gov-grid,.mode-grid){
   display:grid;
@@ -92,7 +92,7 @@
 .world-room .question-list div{
   padding:8px 0 8px 14px;
   border-left:2px solid var(--site-line);
-  color:#cbd1c8;
+  color:var(--site-copy);
 }
 .world-room .question-list b{color:var(--site-gold)}
 .world-room .source-note{
