@@ -241,7 +241,7 @@
     content.innerHTML=rows.length?rows.map(e=>'<a class="site-access-result" href="'+esc(href(e.route))+'"><span><b>'+esc(e.label)+'</b><small>'+esc(e.note||'')+'</small>'+(e.context?'<small class="site-access-context">'+esc(e.context)+'</small>':'')+'</span><em>'+esc(e.kind||'result')+'</em></a>').join(''):'<div class="site-access-empty">No quick result. Try a broader word or open A–Z / Explore.</div>';
   };
   const attachTTS=detail=>{
-    const drawer=detail?.drawer||root?.__potatoActiveTTSDrawer||window.__potatoActiveTTSDrawer;
+    const drawer=detail?.drawer||window.__potatoActiveTTSDrawer;
     const host=detail?.element||drawer?.element;
     if(!drawer||!host||!ttsMount)return false;
     ttsDrawer=drawer;
