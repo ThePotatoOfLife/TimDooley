@@ -72,6 +72,8 @@ SHARED_ASSETS = (
     "app/bible-study.css",
     "app/bible-library.css",
     "app/bible-atlas-navigation.css",
+    "app/music-page.css",
+    "app/music-page.js",
     "app/potatoes-hall.css",
     "app/dogs-hall.css",
     "app/home-page.css",
