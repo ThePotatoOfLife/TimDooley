@@ -66,6 +66,8 @@ SHARED_ASSETS = (
     "app/generated-knowledge.css",
     "app/faq-reader.css",
     "app/discovery-reader.css",
+    "app/longform-reader.css",
+    "app/politics-page.css",
     "app/lower-layer.css",
     "app/house-journey.css",
     "app/house-journey.js",
