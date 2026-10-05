@@ -1,6 +1,5 @@
 .elevator-page{--door-w:min(210px,32vw);--door-h:min(300px,44vw)}
 *{box-sizing:border-box}.elevator-page{min-height:100vh;overflow-x:hidden}.elevator-wrap{max-width:1220px;margin:auto;padding:22px 18px 70px}
-.elevator-nav{display:flex;gap:10px;flex-wrap:wrap;font-size:11px;margin-bottom:18px}.elevator-nav a{color:var(--site-muted);text-decoration:none}
 .elevator-head{display:grid;grid-template-columns:1fr auto;gap:22px;align-items:end;margin-bottom:18px}.elevator-head h1{font:400 clamp(42px,7vw,88px)/.9 var(--site-font-serif);letter-spacing:-.05em;margin:4px 0 10px}.elevator-head p{max-width:760px;color:var(--site-muted)}
 .level-controls{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}.level-controls button,.local-controls button{appearance:none;border:1px solid var(--site-line);background:transparent;color:var(--site-muted);border-radius:999px;padding:7px 10px;font:700 9px var(--site-font-sans);letter-spacing:.07em;text-transform:uppercase;cursor:pointer}.level-controls button[aria-pressed="true"],.level-controls button:hover,.local-controls button:hover{color:var(--site-gold);border-color:var(--elevator-accent);background:color-mix(in srgb,var(--elevator-accent) 10%,#090b0a)}
 .viewport{position:relative;height:min(74vh,760px);min-height:560px;border:1px solid var(--site-line);border-radius:24px;overflow:hidden;background:
