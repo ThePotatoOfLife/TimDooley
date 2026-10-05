@@ -267,6 +267,7 @@ def main() -> int:
         builder,
         (
             "def asset_version(",
+            'ROOT / "_site" / relative_path',
             'asset_version("science/science-paper.css")',
             'asset_version("science/science-papers.css")',
             'asset_version("science/science-papers.js")',

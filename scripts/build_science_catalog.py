@@ -98,8 +98,10 @@ URL_RE = re.compile(r"^https?://", re.I)
 
 
 def asset_version(relative_path: str) -> str:
-    """Return a deterministic short content hash for a generated-reader asset."""
-    path = ROOT / relative_path
+    """Hash the final built asset when available, otherwise the source asset."""
+    built = ROOT / "_site" / relative_path
+    source = ROOT / relative_path
+    path = built if built.is_file() else source
     if not path.is_file():
         return "missing"
     return hashlib.sha256(path.read_bytes()).hexdigest()[:12]
