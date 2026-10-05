@@ -1,6 +1,6 @@
 {
   "version": "1.8.1",
-  "updated": "2026-10-01",
+  "updated": "2026-10-05",
   "authority": "house-holdings",
   "room_registry": "data/house/subrooms.json",
   "principle": "Every substantive knowledge file has at most one primary Room owner. Cross-Room meaning travels through interfaces, collections and references rather than duplicate ownership. Curated navigation/reader/story/corporium material is classified separately.",
@@ -243,11 +243,44 @@
       "status": "active"
     },
     {
+      "room_id": "garden",
+      "title": "Garden",
+      "dwelling_id": "potatoverse-canon",
+      "purpose": "Own project-native Garden mechanics, Garden/Mud orientation, cultivation, sorting and boundary behavior while routing biblical and broader symbolic claims back to their established owners.",
+      "primary_file_count": 2,
+      "featured_holdings": [
+        {
+          "path": "knowledge/core/garden-regime-mechanics.json",
+          "id": "garden-regime-mechanics",
+          "kind": "Garden generative-regime mechanics",
+          "basis": "Garden Room exact-owner migration"
+        },
+        {
+          "path": "knowledge/core/garden-mud-orientation.json",
+          "id": "garden-mud-orientation",
+          "kind": "Garden / Mud orientation and boundary mechanics",
+          "basis": "Garden Room exact-owner migration"
+        }
+      ],
+      "public_surface_ids": [
+        "garden"
+      ],
+      "interface_ids": [
+        "if-garden-theology",
+        "if-garden-symbolic",
+        "if-garden-practice",
+        "if-garden-bible"
+      ],
+      "related_collection_ids": [],
+      "boundary": "Project Garden mechanics remain distinguishable from Genesis history, comparative theology and claims about real people.",
+      "status": "active"
+    },
+    {
       "room_id": "practice-ethics",
       "title": "Practice & Ethics",
       "dwelling_id": "potatoverse-canon",
       "purpose": "Translate the philosophy into conduct, cultivation, responsibility, boundaries, repair and repeatable practice.",
-      "primary_file_count": 30,
+      "primary_file_count": 28,
       "featured_holdings": [
         {
           "path": "knowledge/core/knowledge-fork-discernment-atlas.json",
@@ -262,12 +295,6 @@
           "basis": "P2 depth programme"
         },
         {
-          "path": "knowledge/core/garden-regime-mechanics.json",
-          "id": "garden-regime-mechanics",
-          "kind": "Garden generative-regime mechanics",
-          "basis": "P2 depth programme"
-        },
-        {
           "path": "knowledge/core/fruit-consequence-evaluation-atlas.json",
           "id": "fruit-consequence-evaluation-atlas",
           "kind": "project-native consequence evaluation atlas",
@@ -276,12 +303,6 @@
         {
           "path": "knowledge/core/dormancy-hidden-years-and-practical-theology.json",
           "id": "dormancy-hidden-years-and-practical-theology",
-          "kind": "room holding",
-          "basis": "core-topic"
-        },
-        {
-          "path": "knowledge/core/garden-mud-orientation.json",
-          "id": "garden-mud-orientation",
           "kind": "room holding",
           "basis": "core-topic"
         },
@@ -3358,8 +3379,8 @@
     },
     {
       "path": "knowledge/core/garden-mud-orientation.json",
-      "primary_owner_room_id": "practice-ethics",
-      "basis": "core-topic"
+      "primary_owner_room_id": "garden",
+      "basis": "Garden Room exact-owner migration"
     },
     {
       "path": "knowledge/core/gaze-ethic-observer-to-stewardship.json",
@@ -6083,8 +6104,8 @@
     },
     {
       "path": "knowledge/core/garden-regime-mechanics.json",
-      "primary_owner_room_id": "practice-ethics",
-      "basis": "P2 depth programme"
+      "primary_owner_room_id": "garden",
+      "basis": "Garden Room exact-owner migration"
     },
     {
       "path": "knowledge/core/repair-forge-protocol.json",
