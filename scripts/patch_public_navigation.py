@@ -630,6 +630,7 @@ _CONTEXT_NAV_FAMILIES = (
         (
             ("Science", "science/"),
             ("Papers", "science/papers/"),
+            ("Guide", "science/papers/science-project-meaning-and-equation-guide-2026-09-12/"),
             ("Physics", "science/papers/#physics-cosmos"),
             ("Life & Mind", "science/papers/#life-mind"),
             ("Systems", "science/papers/#systems-information"),
