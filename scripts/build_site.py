@@ -56,6 +56,8 @@ SHARED_ASSETS = (
     "app/hall-of-heroes.avif",
     "app/hall-of-shame.avif",
     "app/site-system.css",
+    "app/house-page.css",
+    "app/house-page.js",
     "app/potatoes-hall.css",
     "app/dogs-hall.css",
     "app/home-page.css",
