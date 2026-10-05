@@ -355,8 +355,6 @@ html[data-site-floor="below"]{
   background-repeat:no-repeat;
   background-position:var(--site-header-art-position);
   background-size:cover;
-  filter:saturate(.95) contrast(1.05);
-  transform:translateZ(0);
 }
 .site-elevator[data-elevator-direction="up"] .site-elevator-stage::before{
   animation:site-elevator-stage-up 260ms cubic-bezier(.2,.8,.2,1);
@@ -625,7 +623,7 @@ html[data-site-floor] body:not(.home-body){
 html[data-site-floor] body:not(.home-body)::before{
   content:"";
   position:fixed;
-  inset:-8vh 0;
+  inset:0;
   z-index:-1;
   pointer-events:none;
   background-color:var(--site-realm-fallback);
@@ -634,11 +632,6 @@ html[data-site-floor] body:not(.home-body)::before{
   background-position:50% 50%,var(--site-realm-art-position);
   background-size:100% 100%,var(--site-realm-art-size) auto;
   contain:paint;
-  backface-visibility:hidden;
-  /* A small contrast/saturation lift restores edge separation lost to AVIF
-     compression without blurring the scene or adding another art layer. */
-  filter:saturate(1.06) contrast(1.045);
-  transform:translate3d(0,0,0);
 }
 
 /* Hall pages still use the canonical renderer; only the scene asset changes.
@@ -650,7 +643,6 @@ html[data-site-floor] body.potatoes-hall-page::before{
     url("./hall-of-heroes.avif");
   background-position:50% 50%,50% 18%;
   background-size:100% 100%,cover;
-  filter:saturate(1.03) contrast(1.035);
 }
 html[data-site-floor] body.dogs-hall-page::before{
   background-image:
@@ -658,17 +650,6 @@ html[data-site-floor] body.dogs-hall-page::before{
     url("./hall-of-shame.avif");
   background-position:50% 50%,50% 72%;
   background-size:100% 100%,cover;
-  filter:saturate(1.03) contrast(1.035);
-}
-@keyframes site-realm-page-pan{
-  from{transform:translate3d(0,0,0)}
-  to{transform:translate3d(0,-8vh,0)}
-}
-@supports (animation-timeline:scroll(root block)){
-  html[data-site-floor] body:not(.home-body)::before{
-    animation:site-realm-page-pan 1s linear both;
-    animation-timeline:scroll(root block);
-  }
 }
 @media(max-width:700px){
   html[data-site-floor]{--site-realm-art-size:max(760px,118vw)}
