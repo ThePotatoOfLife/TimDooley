@@ -196,6 +196,8 @@ def validate_paper_figure_assets(errors: list[str]) -> None:
                 errors.append(f"{source.relative_to(ROOT)}: paper figure {asset} missing alt text")
             if not str(figure.get("caption") or "").strip():
                 errors.append(f"{source.relative_to(ROOT)}: paper figure {asset} missing caption")
+            if not str(figure.get("source_note") or "").strip():
+                errors.append(f"{source.relative_to(ROOT)}: paper figure {asset} missing source/status note")
 
 
 def github_error(path: str, title: str, message: str) -> None:
