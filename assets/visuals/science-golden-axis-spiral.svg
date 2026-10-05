@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+<title id="title">Golden-ratio logarithmic Potato Axis spiral</title>
+<desc id="desc">A mathematical illustration of r equals a times exponential b theta, with b equal to two log phi over pi, showing that each quarter turn increases radius by the golden ratio.</desc>
+<style>
+text{font-family:system-ui,-apple-system,Segoe UI,sans-serif;fill:#1d1b18}.muted{fill:#6f685d}.accent{fill:#6b512f}.grid{stroke:#cfc6b7;stroke-width:1}.axis{stroke:#8a8174;stroke-width:1.5}.spiral{stroke:#6b512f;stroke-width:5;fill:none}.ray{stroke:#7c8b96;stroke-width:2;stroke-dasharray:7 7}.point{fill:#4d667d}.small{font-size:19px}.body{font-size:25px}.head{font-size:38px;font-weight:650}</style>
+<rect width="1200" height="800" fill="#eee9dc"/>
+<text x="600" y="58" text-anchor="middle" class="head">Potato Axis spiral · recovered 21 April 2025</text>
+<text x="600" y="96" text-anchor="middle" class="accent body">r(θ)=a eᵇᶿ    with    b = ln(φ)/(π/2) ≈ 0.30635</text>
+
+<g transform="translate(405 440)">
+<circle r="70" fill="none" class="grid"/><circle r="140" fill="none" class="grid"/><circle r="210" fill="none" class="grid"/><circle r="280" fill="none" class="grid"/>
+<line x1="-315" y1="0" x2="315" y2="0" class="axis"/><line x1="0" y1="-315" x2="0" y2="315" class="axis"/>
+<path d="M 32 0
+C 33 -22 51 -38 73 -38
+C 113 -38 145 -4 145 38
+C 145 108 88 165 17 165
+C -101 165 -196 69 -196 -49
+C -196 -244 6 -343 178 -247
+C 276 -192 320 -79 300 31" class="spiral"/>
+<line x1="0" y1="0" x2="32" y2="0" class="ray"/>
+<line x1="0" y1="0" x2="0" y2="-52" class="ray"/>
+<line x1="0" y1="0" x2="-84" y2="0" class="ray"/>
+<line x1="0" y1="0" x2="0" y2="136" class="ray"/>
+<circle cx="32" cy="0" r="7" class="point"/><circle cx="0" cy="-52" r="7" class="point"/><circle cx="-84" cy="0" r="7" class="point"/><circle cx="0" cy="136" r="7" class="point"/>
+<text x="42" y="-12" class="small">a</text><text x="10" y="-58" class="small">φa</text><text x="-125" y="-12" class="small">φ²a</text><text x="10" y="158" class="small">φ³a</text>
+</g>
+
+<rect x="770" y="210" width="350" height="340" rx="12" fill="#f7f2e8" stroke="#81786a" stroke-width="2"/>
+<text x="945" y="255" text-anchor="middle" class="accent body">Exact properties</text>
+<text x="810" y="310" class="small">Quarter turn:</text><text x="810" y="342" class="body">r(θ+π/2) = φ r(θ)</text>
+<text x="810" y="397" class="small">Half turn:</text><text x="810" y="429" class="body">r(θ+π) = φ² r(θ)</text>
+<text x="810" y="484" class="small">Differential form:</text><text x="810" y="516" class="body">dr/dθ = b r</text>
+
+<text x="600" y="700" text-anchor="middle" class="muted small">The geometry is exact. What r, θ and a physically represent is a separate empirical question.</text>
+<text x="600" y="736" text-anchor="middle" class="accent small">A spiral is more than recurrence: the system returns in angle while changing scale.</text>
+</svg>
