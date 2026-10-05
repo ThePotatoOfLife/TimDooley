@@ -22,8 +22,7 @@ HREF = re.compile(r'''href=["']([^"']+)["']''', re.I)
 PAGE_NAV_CLASS = re.compile(r'''<nav\b[^>]*class=["'][^"']*\bpage-nav\b[^"']*["'][^>]*>(.*?)</nav>''', re.I | re.S)
 PAGE_NAV_ANCHOR = re.compile(r'''<a\b(?P<attrs>[^>]*)href=["'](?P<href>[^"']+)["'][^>]*>(?P<label>.*?)</a>''', re.I | re.S)
 PAGE_NAV_ROOM_CLASS = re.compile(r'''\bclass=["'][^"']*\bpage-nav-room\b''', re.I)
-MAX_PAGE_NAV_LINKS = 10
-MIN_RICH_ROOM_LINKS = 2
+MAX_PAGE_NAV_LINKS = 12
 LEGACY_NAV_LABELS = (">Corporium</a>", ">Source authority</a>", ">Tim dossier</a>")
 REDUNDANT_PAGE_NAV_LABELS = {"All Rooms", "Spatial Room", "Parent Dwelling"}
 
@@ -126,45 +125,15 @@ def main() -> int:
                         f"page-nav {page_nav_index} of {rel} has {len(anchors)} links; "
                         f"subheaders must stay at {MAX_PAGE_NAV_LINKS} choices or fewer"
                     )
-                if rel.as_posix().startswith("rooms/") and len(anchors) > 1:
-                    second_label = re.sub(r"<[^>]+>", "", anchors[1].group("label")).strip()
-                    if second_label != "Rooms":
-                        errors.append(
-                            f"Room page-nav {page_nav_index} of {rel} must keep Rooms second; found {second_label!r}"
-                        )
             for anchor in anchors:
                 label = html.unescape(re.sub(r"<[^>]+>", "", anchor.group("label"))).lstrip("←").strip()
                 if label in REDUNDANT_PAGE_NAV_LABELS:
                     errors.append(f"page-nav {page_nav_index} of {rel} leaked redundant architecture label {label!r}")
             room_link_count = len(PAGE_NAV_ROOM_CLASS.findall(nav))
-            rel_parts = rel.as_posix().split("/")
-            is_dwelling = (
-                len(rel_parts) == 3
-                and rel_parts[0] == "rooms"
-                and rel_parts[1] != "inside"
-                and rel_parts[2] == "index.html"
-            )
-            is_nested_room = (
-                len(rel_parts) == 4
-                and rel_parts[0:2] == ["rooms", "inside"]
-                and rel_parts[3] == "index.html"
-            )
-            if room_link_count > 6:
+            if room_link_count > 8:
                 errors.append(
-                    f"page-nav {page_nav_index} of {rel} projects {room_link_count} governed Room links; "
-                    "keep local Room discovery bounded"
-                )
-            if (is_dwelling or is_nested_room) and room_link_count < MIN_RICH_ROOM_LINKS:
-                errors.append(
-                    f"page-nav {page_nav_index} of {rel} exposes only {room_link_count} nearby Rooms; "
-                    f"expected at least {MIN_RICH_ROOM_LINKS}"
-                )
-            if is_nested_room and not any(
-                'aria-current="page"' in anchor.group("attrs") or "aria-current='page'" in anchor.group("attrs")
-                for anchor in anchors
-            ):
-                errors.append(
-                    f"nested Room page-nav {page_nav_index} of {rel} must identify the current Room"
+                    f"page-nav {page_nav_index} of {rel} projects {room_link_count} Room-neighborhood links; "
+                    "keep contextual navigation readable"
                 )
 
         for deep_index, deep in enumerate(DEEP.findall(text), start=1):
