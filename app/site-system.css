@@ -22,8 +22,11 @@
   --site-font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --site-font-serif: Georgia, "Times New Roman", serif;
   --site-font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  --site-text-micro: 9px;
   --site-text-xs: 10px;
+  --site-text-caption: 11px;
   --site-text-sm: 12px;
+  --site-text-meta: 13px;
   --site-text-ui: 14px;
   --site-text-body: 16px;
   --site-text-lead: clamp(20px, 2.3vw, 23px);
@@ -32,7 +35,11 @@
   --site-text-subsection: clamp(20px, 2.4vw, 27px);
   --site-leading-body: 1.64;
   --site-leading-reading: 1.72;
+  --site-radius-sm: 10px;
   --site-radius: 12px;
+  --site-radius-lg: 16px;
+  --site-radius-xl: 18px;
+  --site-radius-pill: 999px;
   --site-space-1: 6px;
   --site-space-2: 10px;
   --site-space-3: 16px;
