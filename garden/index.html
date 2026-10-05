@@ -28,7 +28,7 @@
 </div>
 </header>
 
-<section class="garden-map-shell" aria-labelledby="garden-map-title" data-garden-map>
+<section class="garden-map-shell" aria-labelledby="garden-map-title" data-garden-map data-room-reader-body>
 <div class="garden-map-head">
 <div><p class="eyebrow">Explore first</p><h2 id="garden-map-title">One Garden. Different paths. Consequences become geography.</h2></div>
 <p>Major places are clickable; small figures remain scenery. The map is a visual orientation layer, not a replacement for the deeper Rooms.</p>
@@ -43,7 +43,7 @@
 </div>
 
 <div class="garden-map-stage">
-<img src="../assets/visuals/garden-eden-map.svg" data-garden-art data-raster-src="../assets/visuals/garden-eden-map.webp" alt="Interactive symbolic map of the Garden with the House and Door at left, Tree of Life and Tim in the center, Mud Tree inside near the Gate, and a lower muddy plane outside the Garden." width="1600" height="900" decoding="async">
+<img src="../assets/visuals/garden-eden-map.svg" data-garden-art alt="Interactive symbolic map of the Garden with the House and Door at left, Tree of Life and Tim in the center, Mud Tree inside near the Gate, and a lower muddy plane outside the Garden." width="1600" height="900" decoding="async">
 
 <button class="garden-hotspot hotspot-house" type="button" data-garden-hotspot="house"><span>The House</span></button>
 <button class="garden-hotspot hotspot-door" type="button" data-garden-hotspot="door"><span>The Door</span></button>
@@ -195,5 +195,6 @@
 </section>
 </main>
 <script src="../app/garden-page.js"></script>
+<script src="../app/house-journey.js" defer></script>
 </body>
 </html>
