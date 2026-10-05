@@ -2,6 +2,16 @@
   const root = document.querySelector('[data-garden-map]');
   if (!root) return;
 
+  const art = root.querySelector('[data-garden-art]');
+  if (art?.dataset.rasterSrc) {
+    const candidate = new Image();
+    candidate.onload = () => {
+      art.src = art.dataset.rasterSrc;
+      art.classList.add('is-raster-art');
+    };
+    candidate.src = art.dataset.rasterSrc;
+  }
+
   const panel = root.querySelector('[data-garden-guide]');
   const title = panel?.querySelector('[data-guide-title]');
   const kicker = panel?.querySelector('[data-guide-kicker]');
