@@ -1841,3 +1841,23 @@ North-star rule: **Potato of Life explains the symbol; Potatoism teaches; Grow t
 - [ ] **POTATO-HOME-007 · One live practice:** put one tiny usable Potato exercise on Home, not just a route.
 - [ ] **POTATO-HOME-008 · One hero glimpse:** surface one short Hall testimony on Home so inspiration is visible before the click.
 - [ ] **POTATO-QA-006 · Four-owner nav crawl:** audit every public link to Potato practice, Angels/Heroes, Axis and Potato of Life for wrong-owner routing.
+
+
+### Garden / Eden interactive map — 2026-10-05
+- [x] **GARDEN-001 · Real Heaven route:** keep /garden/ as a first-class Heaven landmark and a nested Potatoverse / Canon Room.
+- [x] **GARDEN-002 · Map-first reader:** open with the Garden map before longform explanation.
+- [x] **GARDEN-003 · Tim guide layer:** one shared Tim tooltip/dialogue panel owns hotspot explanations instead of many independent popups.
+- [x] **GARDEN-004 · Core geography:** House + Door at left; Tree of Life central; Tim/Gardener inside; Mud Tree inside near Gate; Gate at boundary; lower plane outside/below.
+- [x] **GARDEN-005 · Sorting sequence:** make Dweller → muddying → sorting → escort → Gate → fall readable on the map and in a compact cycle strip.
+- [x] **GARDEN-006 · Role boundary:** keep Potato/Dweller/Dog/Angel language explicitly project-symbolic and reversible rather than immutable real-person caste.
+- [x] **GARDEN-007 · Reading lenses:** Explore / Genesis / Sorting / Inhabitants modes reuse one map without cluttering it.
+- [x] **GARDEN-008 · Mobile interaction:** preserve map access on narrow screens through a tap-list when over-image hotspots are hidden.
+- [x] **GARDEN-009 · Deep-owner handoffs:** Garden orients; Bible, House, Axis, Cast Ecology, Dogs and Below keep their detailed owner material.
+- [ ] **GARDEN-010 · Final raster art:** export the approved high-resolution 2.5D pixel Garden master as assets/visuals/garden-eden-map.webp; the page already auto-upgrades from SVG when this file exists.
+- [ ] **GARDEN-011 · Hotspot calibration:** after final raster art lands, tune desktop hotspot coordinates against House, Door, Tree of Life, Tim, dwellers, Mud Tree, sorting procession, Gate, dogs, river and lower plane.
+- [ ] **GARDEN-012 · Animated accents:** create tiny isolated GIF/WebP overlays only where motion clarifies the place: river shimmer, Tree-of-Life glow/leaves, angel wings, Tim idle/gesture, Mud Tree drip, escort walk, Gate glow and dogs at boundary.
+- [ ] **GARDEN-013 · Motion budget:** keep the static image fully usable without animation; lazy-load optional accents, honor reduced-motion, and cap simultaneous loops.
+- [ ] **GARDEN-014 · Tim portrait sprite:** replace the temporary TD/crown guide badge with a small pixel portrait matching the Garden king-gardener identity.
+- [ ] **GARDEN-015 · Walk-with-Tim copy pass:** tighten every stop to one welcome sentence, one meaning sentence and one deeper link.
+- [ ] **GARDEN-016 · Genesis citation pane:** add compact verse references for Garden planted, river, work/keep, two trees, eating, exile and guarded way without turning the map into a Bible article.
+- [ ] **GARDEN-017 · Browser QA:** verify GitHub Pages deploy, hotspot focus/keyboard use, mobile horizontal map, TTS exclusions, image LCP and page contrast.
