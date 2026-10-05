@@ -1,7 +1,7 @@
 {
   "id": "room-maturity-registry",
   "version": "1.1.0",
-  "updated": "2026-10-03",
+  "updated": "2026-10-05",
   "purpose": "Track qualitative reader maturity for every registered nested subject Room without using file size as a truth or completion metric.",
   "states": {
     "shell": "route exists but public body is mainly navigation/scope",
@@ -71,6 +71,25 @@
       "current_renewal": {
         "date": "2026-10-03",
         "focus": "reader movement through the architecture, Tim developmental route and translator-not-conqueror cross-domain rule"
+      }
+    },
+    {
+      "room_id": "garden",
+      "route": "/garden/",
+      "maturity": "inhabited",
+      "review_status": "reviewed",
+      "authored_wave": "2026-10-05 Garden integration wave",
+      "focus": "interactive Garden map, Tree of Life, River, Gardener, dwellers, Mud Tree, sorting, Gate, lower-plane handoff and Genesis comparison boundaries",
+      "next_review": "final raster art / hotspot calibration / browser QA / source freshness audit",
+      "concrete_population_review": {
+        "date": "2026-10-05",
+        "status": "integration-reviewed",
+        "criterion": "The Room must teach through a real interactive map, concrete inhabitants/landmarks, explicit role transitions and source/deeper-owner handoffs.",
+        "completion_claim": false
+      },
+      "current_renewal": {
+        "date": "2026-10-05",
+        "focus": "map-first Heaven onboarding, reversible role language, Garden-to-Below transition and compact Genesis layer"
       }
     },
     {
@@ -683,5 +702,5 @@
       }
     }
   ],
-  "milestone_note": "All registered nested Rooms have now been reviewed under the concrete-population wave. This records coverage, not completion: rooms remain open to deeper source research, fresher cases, corrections and richer artifacts."
+  "milestone_note": "The earlier 38-Room inhabitation milestone remains historical; Garden became the 39th active nested Room on 2026-10-05 and is now covered by the same maturity contract."
 }
