@@ -226,6 +226,12 @@ def validate_science_paper_schema_strategy(errors: list[str]) -> None:
             errors.append(f"optimize_seo.py missing Science paper schema marker: {marker}")
 
 
+def test_science_paper_schema_strategy_contract() -> None:
+    errors: list[str] = []
+    validate_science_paper_schema_strategy(errors)
+    assert not errors, "; ".join(errors)
+
+
 def main() -> int:
     checks = (
         test_breadcrumb_contract,
@@ -239,6 +245,7 @@ def main() -> int:
         test_machine_surface_graph_contract,
         test_tim_entity_answer_contract,
         test_homepage_authority_contract,
+        test_science_paper_schema_strategy_contract,
     )
     failures: list[str] = []
     for check in checks:
