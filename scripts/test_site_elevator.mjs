@@ -306,6 +306,12 @@ assert.ok(css.includes('.site-elevator-room-rail::before'),'Room rail needs an i
 assert.ok(css.includes('.site-elevator-room-rail::after'),'Room rail needs a visible repeating seam/rivet line');
 assert.match(css,/\.site-elevator-stage\{[\s\S]*?outline:1px solid rgba\(191,141,68,\.18\)/,'scenic stage needs an inset ornamental frame');
 assert.match(css,/\.site-elevator-room::after\{[\s\S]*?width:10px;[\s\S]*?height:10px;/,'adjacent Room plates need a substantial connector joint');
+assert.ok(css.includes('linear-gradient(135deg,#a87938 0 3px,transparent 3px) top left/10px 10px no-repeat'),'control column needs a built-in upper chassis bracket');
+assert.ok(css.includes('linear-gradient(225deg,#c49149 0 4px,transparent 4px) top right/12px 12px no-repeat'),'floor console needs a chassis joint where it meets the scenic stage');
+assert.ok(css.includes('linear-gradient(135deg,#bc8540 0 4px,transparent 4px) top left/12px 12px no-repeat'),'scenic stage needs visible corner hardware');
+assert.equal(/\.site-elevator-room:hover,[\s\S]*?background:linear-gradient\(180deg,rgba\(48,43,30/.test(css),false,'generic hover must not override floor-specific plate materials');
+assert.ok(css.includes('var(--room-hardware-bright) 16%'),'inner Room seam must inherit the floor hardware palette');
+assert.match(css,/\.site-elevator-room\.is-active::after\{[\s\S]*?width:12px;[\s\S]*?height:12px;/,'active Room needs a visibly engaged connector joint');
 assert.ok(source.includes("roomRail.dataset.roomCount=String(visibleCount)"),'runtime must expose actual floor door count for illustrated layout');
 assert.ok(css.includes('grid-template-columns:repeat(var(--elevator-visible-count),minmax(0,1fr))'),'desktop illustrated rail must size Heaven, Plane and Below by their actual door count');
 assert.ok(source.includes('site-elevator-stage'),'runtime must separate the stable console from the scenic Room window');
