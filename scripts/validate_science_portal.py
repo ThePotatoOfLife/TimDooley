@@ -64,6 +64,67 @@ def require_markers(text: str, markers: tuple[str, ...], owner: str, errors: lis
             errors.append(f"{owner}: missing {marker!r}")
 
 
+def validate_major_science_contract(errors: list[str]) -> None:
+    """The project guide's major science families must remain reader-complete."""
+    guide_path = ROOT / "knowledge" / "science" / "science-project-meaning-and-equation-guide-2026-09-12.json"
+    if not guide_path.is_file():
+        errors.append("missing major Science guide: knowledge/science/science-project-meaning-and-equation-guide-2026-09-12.json")
+        return
+    try:
+        guide = json.loads(guide_path.read_text(encoding="utf-8"))
+    except Exception as exc:
+        errors.append(f"could not parse major Science guide: {exc}")
+        return
+    guides = guide.get("project_guides")
+    if not isinstance(guides, list) or not guides:
+        errors.append("major Science guide has no project_guides")
+        return
+    seen = 0
+    for item in guides:
+        if not isinstance(item, dict):
+            continue
+        project = str(item.get("project") or "Unnamed project")
+        owner = str(item.get("owner") or "").strip()
+        if not owner:
+            errors.append(f"{project}: project guide missing owner")
+            continue
+        path = ROOT / owner
+        if not path.is_file():
+            errors.append(f"{project}: missing owner record {owner}")
+            continue
+        try:
+            data = json.loads(path.read_text(encoding="utf-8"))
+        except Exception as exc:
+            errors.append(f"{project}: could not parse {owner}: {exc}")
+            continue
+        seen += 1
+        if not isinstance(data.get("equation_context"), dict) or not data["equation_context"]:
+            errors.append(f"{project}: missing equation_context")
+        if not isinstance(data.get("term_map"), dict) or not data["term_map"]:
+            errors.append(f"{project}: missing term_map")
+        if not isinstance(data.get("paper_figures"), list) or not data["paper_figures"]:
+            errors.append(f"{project}: missing paper_figures")
+        has_failure = any(data.get(key) not in (None, "", [], {}) for key in (
+            "failure_conditions",
+            "falsification_and_failure_conditions",
+            "hard_boundaries",
+            "limitations",
+        ))
+        if not has_failure:
+            errors.append(f"{project}: missing failure/boundary conditions")
+        context = data.get("equation_context") if isinstance(data.get("equation_context"), dict) else {}
+        has_observable = any(data.get(key) not in (None, "", [], {}) for key in (
+            "observables",
+            "observable_program",
+            "testing_program",
+            "experimental_ladder",
+        )) or bool(context.get("observable_consequence"))
+        if not has_observable:
+            errors.append(f"{project}: missing observable consequence/testing path")
+    if seen < 17:
+        errors.append(f"major Science contract covered only {seen} project records; expected at least 17")
+
+
 def validate_science_svg_assets(errors: list[str]) -> None:
     """Ensure paper diagrams remain accessible, scalable publication figures."""
     seen: set[str] = set()
@@ -157,6 +218,7 @@ def main() -> int:
 
     validate_paper_figure_assets(errors)
     validate_science_svg_assets(errors)
+    validate_major_science_contract(errors)
 
     semantic = audit_tree()
     if semantic.get("hard_failure_count"):
