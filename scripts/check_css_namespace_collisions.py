@@ -501,6 +501,16 @@ for expensive_realm_marker in (
 if 'html[data-site-floor] .page-header{\n  max-width:none;' not in site_system_text:
     errors.append("realm page headers must share the full Room container width")
 
+if re.search(r'@media\s*\(min-width:761px\)[\s\S]*?--site-header-art:url\("\./home-(?:heaven|plane|below)\.avif"\)', elevator_text):
+    errors.append("desktop HUD must use dedicated header-*.svg panoramas, not full realm AVIF backgrounds")
+for hall_css_name in ("dogs-hall.css","potatoes-hall.css"):
+    hall_path = ROOT / "app" / hall_css_name
+    hall_text = hall_path.read_text(encoding="utf-8", errors="ignore") if hall_path.exists() else ""
+    if "backdrop-filter" in hall_text:
+        errors.append(f"app/{hall_css_name} must not restore blur compositing on Hall surfaces")
+    if "Hall header specificity guard" in hall_text:
+        errors.append(f"app/{hall_css_name} must not restore duplicate Hall header specificity blocks")
+
 # Shared sub-header interaction contract: semantic role colors must not outrank
 # the universal hover/focus state through !important specificity escalation.
 for selector in (
