@@ -201,6 +201,15 @@ for rel, stylesheet, marker in (
     if marker not in page_text:
         errors.append(f"{rel} missing scoped reader marker {marker}")
 
+corporium_page = ROOT / "corporium" / "index.html"
+corporium_text = corporium_page.read_text(encoding="utf-8", errors="ignore") if corporium_page.exists() else ""
+if re.search(r"<style\b", corporium_text, flags=re.I):
+    errors.append("corporium/index.html must keep structural styling in app/corporium-page.css, not inline")
+if "app/corporium-page.css" not in corporium_text and "../app/corporium-page.css" not in corporium_text:
+    errors.append("corporium/index.html must load app/corporium-page.css")
+if "corporium-page" not in corporium_text:
+    errors.append("corporium/index.html missing scoped corporium-page marker")
+
 for rel, stylesheet, marker in (
     ("world/index.html", "app/world-page.css", "world-page"),
     ("context/culture/index.html", "app/culture-page.css", "culture-page"),
