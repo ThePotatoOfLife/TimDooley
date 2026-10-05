@@ -80,7 +80,17 @@
       const roomId=ctx.room_id||null;
       const dwelling=roomId?dwellingById[roomId]:null;
       const room=roomId&&roomById[roomId]?{...roomById[roomId],homepage:dwelling?.homepage||('/rooms/'+roomId+'/')}:null;
-      return {levelId:ctx.level_id,roomId,room,source:'route-context'};
+      const subrooms=(subroomContract&&Array.isArray(subroomContract.subrooms)?subroomContract.subrooms:[])
+        .filter(row=>row&&row.status==='active'&&row.id&&row.parent_room_id);
+      const subroom=ctx.subroom_id?subrooms.find(row=>row.id===ctx.subroom_id):null;
+      return {
+        levelId:ctx.level_id,
+        roomId,
+        room,
+        subroomId:subroom?.id||null,
+        subroom:subroom||null,
+        source:subroom?'subroom-context':'route-context'
+      };
     }
 
     return {levelId:'plane',roomId:null,room:null,source:'fallback'};
