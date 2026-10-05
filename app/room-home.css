@@ -1,5 +1,6 @@
 /* Governed Room homepage layout.
-   Shared by ordinary Heaven/Plane Room homes; Below Rooms use lower-layer.css. */
+   Shared by Heaven, Plane and governed Below Room homes. Floor CSS may skin the
+   component, but geometry and reusable Room-home structure live here. */
 .room-home{max-width:1040px}
 .room-home>section{
   margin:24px 0;
