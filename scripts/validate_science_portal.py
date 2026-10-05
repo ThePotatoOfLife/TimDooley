@@ -11,6 +11,7 @@ from audit_science_quality import audit_tree
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE_PAGE = ROOT / "science" / "index.html"
 LIBRARY_CSS = ROOT / "science" / "science-library.css"
+PAPER_CSS = ROOT / "science" / "science-paper.css"
 BUILDER = ROOT / "scripts" / "build_science_catalog.py"
 SITE = ROOT / "_site"
 BUILT_PAGE = SITE / "science" / "index.html"
@@ -32,6 +33,7 @@ BUILDER_MARKERS = (
     "classify_document_type",
     "qualifies_for_library",
     "render_paper_page",
+    "render_paper_figures",
     "PAPERS_DIR",
     "Download source JSON",
     "View source on GitHub",
@@ -46,11 +48,11 @@ BUILT_MARKERS = (
 )
 
 # These markers are checked against a whitespace-free CSS representation below.
-COMPACT_CSS_MARKERS = (
-    ".science-abstract{display:none}",
-    ".science-equation-preview{display:none}",
-    ".science-record-tags{display:none}",
-    ".science-record-actions.science-source{display:none}",
+LIBRARY_CSS_MARKERS = (
+    ".science-abstract{display:-webkit-box}",
+    ".science-equation-preview{display:block}",
+    ".science-featured-grid{display:grid}",
+    ".science-record-actions.science-source{display:block}",
 )
 
 
@@ -112,7 +114,7 @@ def main() -> int:
                     message,
                 )
 
-    for path in (SOURCE_PAGE, LIBRARY_CSS, BUILDER):
+    for path in (SOURCE_PAGE, LIBRARY_CSS, PAPER_CSS, BUILDER):
         if not path.exists():
             errors.append(f"missing required Science component: {path.relative_to(ROOT)}")
 
@@ -122,7 +124,14 @@ def main() -> int:
     require_markers(source, SOURCE_MARKERS, "science/index.html", errors)
     require_markers(builder, BUILDER_MARKERS, "scripts/build_science_catalog.py", errors)
     compact_css = "".join(css.split())
-    require_markers(compact_css, COMPACT_CSS_MARKERS, "science/science-library.css", errors)
+    require_markers(compact_css, LIBRARY_CSS_MARKERS, "science/science-library.css", errors)
+    paper_css = PAPER_CSS.read_text(encoding="utf-8", errors="replace") if PAPER_CSS.exists() else ""
+    require_markers(
+        "".join(paper_css.split()),
+        (".paper-page{", ".paper-figure{", ".paper-equation{", "@mediaprint{"),
+        "science/science-paper.css",
+        errors,
+    )
 
     if SITE.exists():
         if not BUILT_PAGE.exists():
@@ -160,6 +169,24 @@ def main() -> int:
                         paper_page = SITE / "science" / "papers" / str(slug) / "index.html"
                         if not paper_page.exists():
                             errors.append(f"generated Science document missing: science/papers/{slug}/index.html")
+
+                featured_slug = "advanced-retarded-door-handshake-recovery"
+                featured_page = SITE / "science" / "papers" / featured_slug / "index.html"
+                if not featured_page.exists():
+                    errors.append(f"featured Science paper missing: science/papers/{featured_slug}/index.html")
+                else:
+                    featured_text = featured_page.read_text(encoding="utf-8", errors="replace")
+                    require_markers(
+                        featured_text,
+                        (
+                            "science-time-door-handshake.svg",
+                            "science-advanced-retarded-lightcone.svg",
+                            "science-time-symmetry-neighbors.svg",
+                            "Wheeler-Feynman absorber theory",
+                        ),
+                        f"science/papers/{featured_slug}/index.html",
+                        errors,
+                    )
 
                 first = next((p for p in papers if isinstance(p, dict) and p.get("slug")), None)
                 if first:
