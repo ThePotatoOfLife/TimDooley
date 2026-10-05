@@ -105,7 +105,8 @@ const storyTtsPos=story.indexOf('id="story-tts"');
 const storyStatusPos=story.indexOf('id="stream-status"');
 assert.ok(storyHeaderEnd>=0&&storyTtsPos>storyHeaderEnd&&storyTtsPos<storyStatusPos,'Story primary reader must be the first reading control immediately after the page header');
 assert.ok(story.includes('class="story-reader-kicker"'),'Story primary reader should carry a visible Story reader label');
-assert.ok(story.includes('.story .page-header{max-width:850px;padding-bottom:18px}'),'Story header should tighten the gap above the primary reader');
+const storyCss=fs.readFileSync(new URL('../app/story-page.css',import.meta.url),'utf8');
+assert.ok(storyCss.includes('.story .page-header{max-width:850px;padding-bottom:18px}'),'Story header should tighten the gap above the primary reader');
 
 const philosophy = fs.readFileSync(new URL('../philosophy/index.html', import.meta.url),'utf8');
 assertLongformPage(philosophy,{name:'philosophy',host:'id="philosophy-tts"',css:'href="../app/tts-drawer.css"',reader:'src="../app/tts-reader.js"',drawer:'src="../app/tts-drawer.js"',adapter:'src="../app/longform-tts-adapter.js"',root:'data-tts-root=".journey"',item:'data-tts-item=".movement"',allLabel:'data-tts-all-label="Whole journey"',currentLabel:'data-tts-current-label="Current movement"'});
