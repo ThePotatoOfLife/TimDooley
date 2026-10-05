@@ -331,3 +331,18 @@ body{
   text-transform:uppercase;
   letter-spacing:.06em;
 }
+
+.papers-find{
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,.75fr);gap:22px;align-items:end;
+  margin:26px 0 0;padding:18px 0 20px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)
+}
+.papers-find-kicker{margin:0 0 5px;color:var(--accent);font:750 9px/1.2 var(--site-font-sans);text-transform:uppercase;letter-spacing:.09em}
+.papers-find h2{margin:0 0 6px;color:var(--ink);font:600 23px/1.16 Georgia,"Times New Roman",serif}
+.papers-find p{margin:0;color:var(--muted);font-size:11px;line-height:1.5}
+.papers-find label{display:grid;gap:5px}
+.papers-find label span{color:var(--faint);font:700 8px/1.2 var(--site-font-sans);text-transform:uppercase;letter-spacing:.06em}
+.papers-find input{width:100%;box-sizing:border-box;border:1px solid var(--line);border-radius:0;padding:9px 10px;background:rgba(255,255,255,.24);color:var(--ink);font:500 12px/1.3 var(--site-font-sans);outline:none}
+.papers-find input:focus{border-color:rgba(107,81,47,.55);box-shadow:0 0 0 2px rgba(107,81,47,.08)}
+.papers-find-status{grid-column:1/-1!important;color:var(--faint)!important;font:650 9px/1.3 var(--site-font-sans)!important}
+.paper-entry[hidden],.papers-shelf[hidden]{display:none!important}
+@media(max-width:760px){.papers-find{grid-template-columns:1fr}}

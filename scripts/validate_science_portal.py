@@ -13,6 +13,7 @@ SOURCE_PAGE = ROOT / "science" / "index.html"
 LIBRARY_CSS = ROOT / "science" / "science-library.css"
 PAPER_CSS = ROOT / "science" / "science-paper.css"
 PAPERS_READER_CSS = ROOT / "science" / "science-papers.css"
+PAPERS_READER_JS = ROOT / "science" / "science-papers.js"
 BUILDER = ROOT / "scripts" / "build_science_catalog.py"
 SITE = ROOT / "_site"
 BUILT_PAGE = SITE / "science" / "index.html"
@@ -144,7 +145,7 @@ def main() -> int:
                     message,
                 )
 
-    for path in (SOURCE_PAGE, LIBRARY_CSS, PAPER_CSS, PAPERS_READER_CSS, BUILDER):
+    for path in (SOURCE_PAGE, LIBRARY_CSS, PAPER_CSS, PAPERS_READER_CSS, PAPERS_READER_JS, BUILDER):
         if not path.exists():
             errors.append(f"missing required Science component: {path.relative_to(ROOT)}")
 
@@ -165,8 +166,16 @@ def main() -> int:
     papers_reader_css = PAPERS_READER_CSS.read_text(encoding="utf-8", errors="replace") if PAPERS_READER_CSS.exists() else ""
     require_markers(
         "".join(papers_reader_css.split()),
-        (".papers-reader{", ".core-list{", ".paper-entry{", ".papers-shelf{", ".papers-index{"),
+        (".papers-reader{", ".core-list{", ".paper-entry{", ".papers-shelf{", ".papers-index{", ".papers-find{"),
         "science/science-papers.css",
+        errors,
+    )
+
+    papers_reader_js = PAPERS_READER_JS.read_text(encoding="utf-8", errors="replace") if PAPERS_READER_JS.exists() else ""
+    require_markers(
+        papers_reader_js,
+        ('papers-find', 'data-paper-entry', 'matching papers'),
+        "science/science-papers.js",
         errors,
     )
 
@@ -191,6 +200,8 @@ def main() -> int:
                     "Core paper series",
                     "<details class=\"papers-shelf\"",
                     "science-papers.css",
+                    "science-papers.js",
+                    'id="papers-find"',
                     'class="page-nav papers-nav"',
                     "advanced-retarded-door-handshake-recovery",
                     "unified-potato-theory-2025-recovery",
@@ -255,7 +266,7 @@ def main() -> int:
                         text = paper_page.read_text(encoding="utf-8", errors="replace")
                         require_markers(
                             text,
-                            ("Abstract", 'class="page-nav paper-nav"', 'class="paper-toc"', "Download source JSON", "View source on GitHub", "knowledge/science/"),
+                            ("Abstract", 'class="page-nav paper-nav"', 'class="paper-toc"', 'class="paper-related"', "Download source JSON", "View source on GitHub", "knowledge/science/"),
                             f"science/papers/{first['slug']}/index.html",
                             errors,
                         )

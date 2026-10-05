@@ -549,7 +549,50 @@ def render_paper_toc(data: dict) -> str:
     return '<nav class="paper-toc" aria-label="On this paper"><strong>On this paper</strong>' + "".join(entries) + '</nav>'
 
 
-def render_paper_page(record: dict, data: dict) -> str:
+def related_papers(record: dict, records: list[dict], limit: int = 3) -> list[dict]:
+    """Choose nearby papers using explicit field/keyword overlap."""
+    own_fields = set(record.get("fields") or [])
+    own_keywords = {str(item).casefold() for item in (record.get("keywords") or []) if str(item).strip()}
+    ranked = []
+    for other in records:
+        if other.get("slug") == record.get("slug"):
+            continue
+        other_fields = set(other.get("fields") or [])
+        other_keywords = {str(item).casefold() for item in (other.get("keywords") or []) if str(item).strip()}
+        field_overlap = own_fields.intersection(other_fields)
+        keyword_overlap = own_keywords.intersection(other_keywords)
+        score = len(field_overlap) * 5 + len(keyword_overlap) * 2
+        if record.get("document_type") == other.get("document_type"):
+            score += 1
+        if not field_overlap and not keyword_overlap:
+            continue
+        ranked.append((score, other.get("title", "").casefold(), other))
+    ranked.sort(key=lambda item: (-item[0], item[1]))
+    return [item[2] for item in ranked[:limit]]
+
+
+def render_related_papers(items: list[dict]) -> str:
+    if not items:
+        return ""
+    cards = []
+    for item in items:
+        fields = " · ".join(item.get("fields") or [])
+        cards.append(
+            '<article class="paper-related-card">'
+            f'<small>{esc(item.get("document_type") or "Science document")}</small>'
+            f'<h3><a href="../{esc(item["slug"])}/">{esc(item["title"])}</a></h3>'
+            f'<p>{esc(item.get("abstract") or "")}</p>'
+            f'{f"<span>{esc(fields)}</span>" if fields else ""}'
+            '</article>'
+        )
+    return (
+        '<aside class="paper-related" id="paper-related" aria-labelledby="paper-related-title">'
+        '<div class="paper-related-head"><p>Continue reading</p><h2 id="paper-related-title">Related papers</h2></div>'
+        '<div class="paper-related-grid">' + "".join(cards) + '</div></aside>'
+    )
+
+
+def render_paper_page(record: dict, data: dict, related: list[dict] | None = None) -> str:
     relative_file = record["file"]
     source_href = "../../../knowledge/science/" + relative_file
     github_href = GITHUB_BLOB_BASE + quote(relative_file, safe="/-_.")
@@ -584,6 +627,7 @@ def render_paper_page(record: dict, data: dict) -> str:
     )
     body = render_semantic_sections(data)
     toc_html = render_paper_toc(data)
+    related_html = render_related_papers(related or [])
     source_path = "knowledge/science/" + relative_file
     return f'''<!doctype html>
 <html lang="en">
@@ -610,6 +654,7 @@ def render_paper_page(record: dict, data: dict) -> str:
 </header>
 {toc_html}
 <article class="paper-content">{body}</article>
+{related_html}
 <footer class="paper-source">
 <h2>Source & provenance</h2>
 <p>This readable document is generated from the canonical structured record. Formatting does not change the scientific status recorded above.</p>
@@ -709,7 +754,7 @@ def render_papers_reader(records: list[dict]) -> str:
             fields = " · ".join(record.get("fields") or [])
             kind = record.get("document_type") or "Science document"
             entries.append(
-                '<article class="paper-entry">'
+                f'<article class="paper-entry" data-paper-entry data-search="{esc((" ".join([record["title"], record["abstract"], kind, fields, " ".join(record.get("keywords") or [])])).casefold())}">'
                 f'<div class="paper-entry-meta">{esc(kind)}<br>{esc(fields)}'
                 + ('<span class="paper-entry-figure-mark">Figure</span>' if record.get("figure") else '')
                 + '</div>'
@@ -741,7 +786,8 @@ def render_papers_reader(records: list[dict]) -> str:
 <meta name="description" content="A gathered reader for Tim Dooley and Potato of Life science papers, formal models, research notes, audits and theory-recovery documents.">
 <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
 <link rel="canonical" href="https://thepotatooflife.github.io/TimDooley/science/papers/">
-<link rel="stylesheet" href="../science-papers.css?v=20261005a">
+<link rel="stylesheet" href="../science-papers.css?v=20261005b">
+<script src="../science-papers.js?v=20261005b" defer></script>
 </head>
 <body>
 <main class="papers-reader" data-reader-surface="science-papers">
@@ -757,6 +803,11 @@ def render_papers_reader(records: list[dict]) -> str:
 <h2 id="core-papers-title">Core paper series</h2>
 <p class="papers-section-note">Six useful entrances into the scientific side of the project. These are not the only documents; they are the clearest starting points for the recurring theory families.</p>
 <div class="core-list">{''.join(core_html)}</div>
+</section>
+<section class="papers-find" aria-labelledby="papers-find-title">
+<div><p class="papers-find-kicker">Find a paper</p><h2 id="papers-find-title">Search the reading table</h2><p>Search titles, abstracts, fields and keywords. Matching shelves open automatically.</p></div>
+<label><span>Search papers</span><input id="papers-find" type="search" autocomplete="off" placeholder="e.g. spiral, quantum, Door, biology"></label>
+<p class="papers-find-status" id="papers-find-status" aria-live="polite">{len(records)} papers available</p>
 </section>
 <nav class="papers-index" aria-label="Paper shelves">
 <a href="#physics-cosmos">Physics &amp; Cosmos</a>
@@ -898,7 +949,7 @@ def main() -> None:
     for record, data in papers_with_data:
         target = PAPERS_DIR / record["slug"] / "index.html"
         target.parent.mkdir(parents=True, exist_ok=True)
-        target.write_text(render_paper_page(record, data), encoding="utf-8")
+        target.write_text(render_paper_page(record, data, related_papers(record, papers)), encoding="utf-8")
 
     (PAPERS_DIR / "index.html").write_text(render_papers_reader(papers), encoding="utf-8")
 
