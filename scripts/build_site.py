@@ -59,6 +59,7 @@ SHARED_ASSETS = (
     "app/dogs-hall.css",
     "app/home-page.css",
     "app/tim-dooley.css",
+    "app/works-page.css",
     "app/lower-layer.css",
     "app/house-journey.css",
     "app/house-journey.js",
