@@ -705,6 +705,7 @@ html[data-site-floor] body.home-body::before{content:none;display:none}
     --site-elevator-muted:#c9c1ae;
     --site-elevator-shadow:rgba(0,0,0,.72);
     --elevator-room-gap:8px;
+    --elevator-room-height:43px;
     background:#080b0d;
     box-shadow:
       0 2px 0 #080807,
@@ -902,9 +903,9 @@ html[data-site-floor] body.home-body::before{content:none;display:none}
     gap:var(--elevator-room-gap);
   }
   .site-elevator-room{
-    height:43px;
-    min-height:43px;
-    max-height:43px;
+    height:var(--elevator-room-height);
+    min-height:var(--elevator-room-height);
+    max-height:var(--elevator-room-height);
     padding:5px 12px;
     overflow:visible;
     color:#eee6d8;
