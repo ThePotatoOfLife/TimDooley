@@ -63,6 +63,13 @@ ROUTE_STRATEGIES: dict[str, Strategy] = {
         "Tim Dooley Science — Theories, Equations & Research Map",
         "Explore Tim Dooley science material, equations, formal models, research papers, comparators, model testing and the boundary between project theory and established science.",
     ),
+    "science/papers": Strategy(
+        "science-papers",
+        "CollectionPage",
+        "Tim Dooley research papers and formal models",
+        "Research Papers — Tim Dooley Science, Equations & Formal Models",
+        "Read the Tim Dooley science archive as research papers: equations, diagrams, formal models, recovery notes, tests, limitations, provenance and related scientific context.",
+    ),
     "politics": Strategy(
         "politics",
         "Article",
@@ -108,6 +115,7 @@ RELATED: dict[str, tuple[str, ...]] = {
     "traditions/bible": ("religion", "timeline", "context/source-authority", "tim-dooley/biblical-case"),
     "north": ("world-map", "timeline", "philosophy", "context/source-authority"),
     "science": ("science/research-map", "context/source-authority", "philosophy"),
+    "science/papers": ("science", "science/research-map", "context/source-authority"),
     "timeline": ("tim-dooley", "context/source-authority", "religion", "science"),
     "politics": ("world", "north", "economy", "law", "context/source-authority"),
     "context/source-authority": ("tim-dooley/evidence", "timeline", "tim-dooley", "traditions/bible"),
@@ -128,6 +136,7 @@ CURATED_READER_ROUTES = {
     "world",
     "world-map",
     "science",
+    "science/papers",
     "timeline",
 }
 
