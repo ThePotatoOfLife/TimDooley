@@ -11,7 +11,7 @@
 .world-domain-page .card{
   padding:22px;
   border:1px solid var(--site-pane-line);
-  border-radius:12px;
+  border-radius:var(--site-radius);
   background:var(--site-pane-soft);
 }
 .world-domain-page .card h2{
@@ -27,14 +27,14 @@
   gap:16px;
   flex-wrap:wrap;
   margin-top:28px;
-  font-size:13px;
+  font-size:var(--site-text-meta);
 }
 
 .world-domain-page :is(.law-reader,.econ-reader){
   margin:38px 0;
   padding:26px;
   border:1px solid var(--site-pane-line);
-  border-radius:16px;
+  border-radius:var(--site-radius-lg);
   background:var(--site-pane);
   box-shadow:var(--site-pane-shadow);
 }
@@ -57,10 +57,10 @@
 }
 .world-domain-page :is(.legal-flow,.econ-flow) span{
   border:1px solid var(--site-line);
-  border-radius:999px;
+  border-radius:var(--site-radius-pill);
   padding:6px 9px;
   color:var(--site-muted);
-  font-size:10px;
+  font-size:var(--site-text-xs);
 }
 .world-domain-page :is(.legal-flow,.econ-flow) i{
   color:var(--site-gold);
@@ -79,9 +79,9 @@
   color:var(--site-gold);
   font:400 22px/1.12 var(--site-font-serif);
 }
-.world-domain-page :is(.law-case,.econ-case) .q{color:var(--site-gold);font-size:11px}
+.world-domain-page :is(.law-case,.econ-case) .q{color:var(--site-gold);font-size:var(--site-text-caption)}
 .world-domain-page :is(.law-case,.econ-case) p{margin:0 0 8px;color:#cbd1c8}
-.world-domain-page :is(.law-case,.econ-case) a{color:var(--site-gold);font-size:11px}
+.world-domain-page :is(.law-case,.econ-case) a{color:var(--site-gold);font-size:var(--site-text-caption)}
 .world-domain-page :is(.law-checks,.econ-checks){
   display:grid;
   grid-template-columns:repeat(2,minmax(0,1fr));
@@ -90,7 +90,7 @@
 }
 .world-domain-page :is(.law-checks,.econ-checks) article{
   border:1px solid var(--site-line);
-  border-radius:10px;
+  border-radius:var(--site-radius-sm);
   padding:13px;
   background:var(--site-panel);
 }
@@ -103,7 +103,7 @@
 .world-domain-page :is(.law-checks,.econ-checks) p{
   margin:0;
   color:var(--site-muted);
-  font-size:11px;
+  font-size:var(--site-text-caption);
 }
 
 @media(max-width:760px){
