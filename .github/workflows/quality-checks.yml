@@ -13,10 +13,10 @@ permissions:
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
-# Validate commits independently. A cancelled/stuck older run must never block
-# the current main SHA from producing the validated Pages artifact.
+# Only the newest revision of a branch needs the expensive full-site validation.
+# Rapid editing can otherwise queue dozens of obsolete SHAs ahead of current main.
 concurrency:
-  group: quality-${{ github.sha }}
+  group: quality-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
