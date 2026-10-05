@@ -506,7 +506,7 @@ def render_paper_page(record: dict, data: dict) -> str:
 <link rel="stylesheet" href="../../science-paper.css?v=20260911a">
 </head>
 <body><main class="paper-page">
-<nav class="paper-nav"><a href="../../">← Science</a><a href="../../../">Home</a></nav>
+<nav class="paper-nav"><a href="../">← Papers</a><a href="../../">Science</a><a href="../../../">Home</a></nav>
 <header class="paper-header">
 <p class="paper-kicker">{esc(meta)}</p>
 <h1>{esc(record['title'])}</h1>
@@ -526,6 +526,125 @@ def render_paper_page(record: dict, data: dict) -> str:
 <p class="paper-source-path"><code>{esc(source_path)}</code></p>
 </footer>
 </main></body></html>'''
+
+
+
+CORE_PAPER_SLUGS = (
+    ("advanced-retarded-door-handshake-recovery", "Time symmetry · Door"),
+    ("unified-potato-theory-2025-recovery", "Unification · field theory"),
+    ("eleven-dimensional-axis-door-dual-spiral-recovery", "Dimensions · Axis · spiral"),
+    ("door-handshake-nonlocal-propagation-model", "Networks · hybrid systems"),
+    ("microtubule-tubulin-consciousness-recovery", "Biophysics · consciousness"),
+)
+
+
+def paper_shelf(record: dict) -> str:
+    fields = set(record.get("fields") or [])
+    if fields.intersection({"Physics", "Cosmology & Astronomy", "Quantum Science"}):
+        return "Physics & Cosmos"
+    if fields.intersection({"Neuroscience", "Biology", "Chemistry", "Psychology"}):
+        return "Life & Mind"
+    if "Information Science" in fields:
+        return "Systems & Information"
+    if "Mathematics & Formal Systems" in fields:
+        return "Mathematics & Methods"
+    return "Research & Recovery"
+
+
+def render_papers_reader(records: list[dict]) -> str:
+    by_slug = {record["slug"]: record for record in records}
+    core_html = []
+    for index, (slug, label) in enumerate(CORE_PAPER_SLUGS, 1):
+        record = by_slug.get(slug)
+        if not record:
+            continue
+        core_html.append(
+            '<article class="core-paper">'
+            f'<span class="core-number">{index:02d}</span>'
+            '<div>'
+            f'<small>{esc(label)}</small>'
+            f'<h3>{esc(record["title"])}</h3>'
+            f'<p>{esc(record["abstract"])}</p>'
+            f'<a href="./{esc(slug)}/">Open paper →</a>'
+            '</div>'
+            '</article>'
+        )
+
+    shelf_order = (
+        "Physics & Cosmos",
+        "Life & Mind",
+        "Systems & Information",
+        "Mathematics & Methods",
+        "Research & Recovery",
+    )
+    shelves = {name: [] for name in shelf_order}
+    for record in records:
+        shelves[paper_shelf(record)].append(record)
+
+    shelf_html = []
+    for shelf in shelf_order:
+        members = sorted(shelves[shelf], key=lambda record: record["title"].casefold())
+        if not members:
+            continue
+        entries = []
+        for record in members:
+            fields = " · ".join(record.get("fields") or [])
+            kind = record.get("document_type") or "Science document"
+            entries.append(
+                '<article class="paper-entry">'
+                f'<div class="paper-entry-meta">{esc(kind)}<br>{esc(fields)}</div>'
+                '<div>'
+                f'<h3>{esc(record["title"])}</h3>'
+                f'<p>{esc(record["abstract"])}</p>'
+                '</div>'
+                f'<a href="./{esc(record["slug"])}/">Read →</a>'
+                '</article>'
+            )
+        shelf_html.append(
+            '<section class="papers-shelf">'
+            '<div class="papers-shelf-head">'
+            f'<h2>{esc(shelf)}</h2>'
+            f'<span class="papers-shelf-count">{len(members)} documents</span>'
+            '</div>'
+            + "".join(entries)
+            + '</section>'
+        )
+
+    return f'''<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Science Papers — Tim Dooley & Potato of Life</title>
+<meta name="description" content="A gathered reader for Tim Dooley and Potato of Life science papers, formal models, research notes, audits and theory-recovery documents.">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<link rel="canonical" href="https://thepotatooflife.github.io/TimDooley/science/papers/">
+<link rel="stylesheet" href="../science-papers.css?v=20261005a">
+</head>
+<body>
+<main class="papers-reader" data-reader-surface="science-papers">
+<nav class="papers-nav" aria-label="Science papers navigation"><a href="../">← Science</a><a href="../../">Home</a></nav>
+<header class="papers-header">
+<p class="papers-kicker">Science reader · {len(records)} readable documents</p>
+<h1>SCIENCE PAPERS</h1>
+<p class="papers-lede">The scientific work gathered onto one reading table: theories, formal notes, research programmes, audits and recovered model lineages. Open a title and the record becomes a paper—black ink on a warm sheet, with equations, figures, status and provenance kept visible.</p>
+<p class="papers-rule"><strong>Reader rule:</strong> the paper treatment is a reading format, not a scientific endorsement. Recovered Tim material, later formalization, established external science and speculative extension remain distinct inside the documents.</p>
+</header>
+<section class="papers-core" aria-labelledby="core-papers-title">
+<h2 id="core-papers-title">Core paper series</h2>
+<p class="papers-section-note">Five useful entrances into the scientific side of the project. These are not the only documents; they are the clearest starting points for the recurring theory families.</p>
+<div class="core-list">{''.join(core_html)}</div>
+</section>
+<section class="papers-library" aria-labelledby="complete-library-title">
+<div class="papers-library-head">
+<div><h2 id="complete-library-title">Complete reading library</h2><p>Grouped by the question the paper mostly helps answer rather than by where its JSON happened to live. Multi-disciplinary papers appear once, under their strongest reader-facing shelf.</p></div>
+<span class="papers-count">{len(records)} total documents</span>
+</div>
+{''.join(shelf_html)}
+</section>
+<footer class="papers-footer">Canonical structured sources remain under <code>knowledge/science/</code>. This reader is the human-facing projection of that archive.</footer>
+</main>
+</body>
+</html>'''
 
 
 def short_status(value: str, limit: int = 150) -> str:
@@ -649,6 +768,8 @@ def main() -> None:
         target = PAPERS_DIR / record["slug"] / "index.html"
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(render_paper_page(record, data), encoding="utf-8")
+
+    (PAPERS_DIR / "index.html").write_text(render_papers_reader(papers), encoding="utf-8")
 
     fields = sorted({field for record in papers for field in record["fields"]})
     types = sorted({record["document_type"] for record in papers})
