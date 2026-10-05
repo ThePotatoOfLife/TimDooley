@@ -181,6 +181,7 @@
         '<div class="site-elevator-reel" aria-label="Current House floor">'+
           '<div class="site-elevator-floor" aria-live="polite">'+
             '<span class="site-elevator-floor-code" aria-hidden="true">--</span>'+
+            '<span class="site-elevator-floor-emblem" aria-hidden="true"></span>'+
             '<strong class="site-elevator-floor-label">HOUSE</strong>'+
             '<small class="site-elevator-room-label">Finding your Room…</small>'+
           '</div>'+
