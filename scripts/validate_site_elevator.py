@@ -197,7 +197,7 @@ def main() -> int:
         # Geometry belongs to the shared elevator component and must be identical
         # across Heaven, Plane and Below.
         floor_geometry_pattern = re.compile(
-            r'\.site-elevator\[data-elevator-level="(?:heaven|plane|below)"\][^{]*\{([^}]*)\}',
+            r'\.site-elevator\[data-elevator-level="(?:heaven|plane|below)"\]\s*\{([^}]*)\}',
             re.S,
         )
         forbidden_geometry = re.compile(
@@ -209,7 +209,7 @@ def main() -> int:
         for block in floor_geometry_pattern.findall(css):
             if forbidden_geometry.search(block):
                 errors.append(
-                    "floor-specific site-elevator CSS must not change geometry; "
+                    "floor root site-elevator CSS must not change shell geometry; "
                     "Heaven, Plane and Below share one header measurement system"
                 )
 
