@@ -644,19 +644,6 @@ _CONTEXT_NAV_FAMILIES = (
         ),
     ),
     (
-        ("context/",),
-        (
-            ("Context", "context/"),
-            ("Sources", "context/source-authority/"),
-            ("Culture", "context/culture/"),
-            ("Timeline", "timeline/"),
-            ("History", "history/"),
-            ("Research Lab", "research-lab/"),
-            ("Explore", "explore/"),
-            ("A–Z", "index-a-z/"),
-        ),
-    ),
-    (
         ("context/source-authority/",),
         (
             ("Sources", "context/source-authority/"),
@@ -680,6 +667,19 @@ _CONTEXT_NAV_FAMILIES = (
             ("Religion", "religion/"),
             ("Sources", "context/source-authority/"),
             ("Research Lab", "research-lab/"),
+        ),
+    ),
+    (
+        ("context/",),
+        (
+            ("Context", "context/"),
+            ("Sources", "context/source-authority/"),
+            ("Culture", "context/culture/"),
+            ("Timeline", "timeline/"),
+            ("History", "history/"),
+            ("Research Lab", "research-lab/"),
+            ("Explore", "explore/"),
+            ("A–Z", "index-a-z/"),
         ),
     ),
     (
