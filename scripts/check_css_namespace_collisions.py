@@ -167,6 +167,13 @@ if re.search(r"<style\b", religion_page_text, flags=re.I):
 if "app/religion-page.css" not in religion_page_text and "../app/religion-page.css" not in religion_page_text:
     errors.append("religion/index.html must load its owned app/religion-page.css stylesheet")
 
+law_page = ROOT / "law" / "index.html"
+law_page_text = law_page.read_text(encoding="utf-8", errors="ignore") if law_page.exists() else ""
+if re.search(r"<style\b", law_page_text, flags=re.I):
+    errors.append("law/index.html must keep structural styling in app/law-page.css, not an inline <style> block")
+if "app/law-page.css" not in law_page_text and "../app/law-page.css" not in law_page_text:
+    errors.append("law/index.html must load its owned app/law-page.css stylesheet")
+
 for rel, root_selector in (
     ("app/tim-dooley.css", ".tim-page"),
     ("app/works-page.css", ".works-page"),
