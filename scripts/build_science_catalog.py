@@ -459,7 +459,7 @@ def render_paper_figures(value) -> str:
         )
     if not figures:
         return ""
-    return '<section class="paper-section paper-figures"><h2>Figures</h2>' + "".join(figures) + '</section>'
+    return '<section class="paper-section paper-figures" id="paper-figures"><h2>Figures</h2>' + "".join(figures) + '</section>'
 
 
 def render_semantic_sections(data: dict) -> str:
@@ -476,7 +476,7 @@ def render_semantic_sections(data: dict) -> str:
             if value not in (None, "", [], {}):
                 section_class = "paper-section paper-section-" + slugify(key)
                 rendered.append(
-                    f'<section class="{section_class}"><h2>{esc(humanize_key(key))}</h2>{render_value(value, 0, key)}</section>'
+                    f'<section class="{section_class}" id="paper-section-{esc(slugify(key))}"><h2>{esc(humanize_key(key))}</h2>{render_value(value, 0, key)}</section>'
                 )
                 preferred_rendered += 1
                 if figure_html and not figures_inserted and (key == "reader_takeaway" or preferred_rendered == 1):
@@ -494,6 +494,52 @@ def render_semantic_sections(data: dict) -> str:
         )
         used.add(key)
     return "".join(rendered)
+
+
+def render_paper_toc(data: dict) -> str:
+    """Return a compact reader index for major paper landmarks only."""
+    candidates = (
+        ("reader_takeaway", "Takeaway"),
+        ("paper_figures", "Figures"),
+        ("research_question", "Question"),
+        ("core_thesis", "Thesis"),
+        ("conceptual_model", "Model"),
+        ("formal_model", "Model"),
+        ("formalism", "Formalism"),
+        ("formal_core", "Formal core"),
+        ("equations", "Equations"),
+        ("methods", "Methods"),
+        ("method", "Method"),
+        ("findings", "Findings"),
+        ("results", "Results"),
+        ("observables", "Observables"),
+        ("testing_program", "Tests"),
+        ("experimental_ladder", "Tests"),
+        ("falsification_and_failure_conditions", "Failure tests"),
+        ("failure_conditions", "Failure tests"),
+        ("hard_boundaries", "Boundaries"),
+        ("limitations", "Limitations"),
+        ("external_references", "References"),
+        ("references", "References"),
+        ("sources", "Sources"),
+        ("paper", "Paper"),
+    )
+    entries = []
+    seen_labels = set()
+    for key, label in candidates:
+        value = data.get(key)
+        if value in (None, "", [], {}):
+            continue
+        if label in seen_labels:
+            continue
+        seen_labels.add(label)
+        target = "paper-figures" if key == "paper_figures" else "paper-section-" + slugify(key)
+        entries.append(f'<a href="#{esc(target)}">{esc(label)}</a>')
+        if len(entries) >= 10:
+            break
+    if len(entries) < 2:
+        return ""
+    return '<nav class="paper-toc" aria-label="On this paper"><strong>On this paper</strong>' + "".join(entries) + '</nav>'
 
 
 def render_paper_page(record: dict, data: dict) -> str:
@@ -530,6 +576,7 @@ def render_paper_page(record: dict, data: dict) -> str:
         if keywords else ""
     )
     body = render_semantic_sections(data)
+    toc_html = render_paper_toc(data)
     source_path = "knowledge/science/" + relative_file
     return f'''<!doctype html>
 <html lang="en">
@@ -554,6 +601,7 @@ def render_paper_page(record: dict, data: dict) -> str:
 {keywords_html}
 {status_html}
 </header>
+{toc_html}
 <article class="paper-content">{body}</article>
 <footer class="paper-source">
 <h2>Source & provenance</h2>
