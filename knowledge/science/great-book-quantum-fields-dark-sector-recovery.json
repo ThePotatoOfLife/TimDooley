@@ -206,5 +206,26 @@
     "A shared Soil name does not establish a shared field, particle or mechanism.",
     "The safest descendant keeps separate sectors; stronger unification forks require explicit couplings, perturbations, stability and data comparison.",
     "A successful background-expansion fit alone is insufficient; structure growth and lensing must also be reproduced."
-  ]
+  ],
+  "equation_context": {
+    "role": "Dark-sector model-comparison framework separating the historical Infinite Soil metaphor from standard ΛCDM, scalar dark-energy, interacting-sector and unified-fluid descendants.",
+    "variables": {
+      "ρ_c": "Cold-dark-matter energy density.",
+      "H": "Hubble expansion rate.",
+      "Q": "Explicit interaction/energy-transfer term between sectors in interacting models.",
+      "φ": "Candidate scalar field in a dynamical dark-energy model.",
+      "p,ρ": "Pressure and energy density of a proposed unified fluid when that fork is used."
+    },
+    "units_and_types": "ρ and p are energy densities/pressures in the chosen cosmological convention. H has inverse-time units. Q has energy-density-per-time units if used in a continuity equation. φ normalization is model-dependent.",
+    "observable_consequence": "Any descendant must reproduce expansion history and structure-growth/lensing observables, then improve model evidence or produce a distinguishing signal beyond ΛCDM.",
+    "boundary": "Dark matter and dark energy are empirically distinct sectors in ΛCDM. A shared Soil metaphor does not by itself establish shared microphysics."
+  },
+  "term_map": {
+    "ρ_c": "dark-matter density",
+    "H": "Hubble rate",
+    "Q": "sector-interaction term",
+    "φ": "dark-energy scalar candidate",
+    "p": "pressure",
+    "ρ": "energy density"
+  }
 }

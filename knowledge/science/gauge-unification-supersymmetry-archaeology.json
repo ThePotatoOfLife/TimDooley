@@ -238,5 +238,26 @@
     "Representations, anomaly cancellation and symmetry-breaking fields are part of the physics, not optional bookkeeping.",
     "Coupling convergence is evidence only after normalization, thresholds and uncertainty are specified.",
     "A unification proposal must recover low-energy particle content and earn at least one quantitative prediction."
-  ]
+  ],
+  "equation_context": {
+    "role": "Model-building chain from a proposed unified gauge group through representations and symmetry breaking to Standard Model recovery and quantitative observables.",
+    "variables": {
+      "G": "Proposed unified gauge group.",
+      "H": "Unbroken subgroup after a symmetry-breaking step.",
+      "Φ": "Symmetry-breaking field whose vacuum expectation value selects the subgroup.",
+      "g_i(μ)": "Running gauge couplings at renormalization scale μ.",
+      "M_GUT": "Characteristic unification/breaking scale in a GUT-like model."
+    },
+    "units_and_types": "Gauge couplings are dimensionless in four-dimensional renormalizable conventions. μ and M_GUT are energy scales. Representations are algebraic objects, not numerical fit parameters.",
+    "observable_consequence": "A viable model must recover low-energy charges/spectrum, satisfy anomaly constraints, match coupling evolution including thresholds, and yield a quantitative observable such as proton decay, new states or neutrino/Higgs-sector structure.",
+    "boundary": "Writing SU(5), Spin(10), Pati–Salam, SUSY or 11D labels next to one another is not itself a unified theory."
+  },
+  "term_map": {
+    "G": "unified gauge group",
+    "H": "unbroken subgroup",
+    "Φ": "breaking field",
+    "g_i(μ)": "running gauge coupling",
+    "μ": "renormalization scale",
+    "M_GUT": "breaking/unification scale"
+  }
 }

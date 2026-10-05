@@ -106,5 +106,23 @@
     "The project polarity p is a symbolic dimensionless coordinate and should remain typed separately from Standard Model observables.",
     "Real proton and neutron charge arithmetic is useful evidence for particle physics, not for symbolic or moral polarity.",
     "Any future Potato–quark physics must start from an explicit field representation and symmetry-allowed operator."
-  ]
+  ],
+  "equation_context": {
+    "role": "Type-safety audit separating Standard Model up/down quark quantum numbers from a project-specific symbolic polarity coordinate.",
+    "variables": {
+      "Q_u": "Electric charge of an up-type quark, +2e/3.",
+      "Q_d": "Electric charge of a down-type quark, −e/3.",
+      "p": "Project symbolic polarity coordinate, typically dimensionless.",
+      "F_p": "Chosen dynamical rule for the symbolic polarity coordinate if one is modeled."
+    },
+    "units_and_types": "Q_u and Q_d are electric charges. p is a symbolic/model coordinate and must not inherit electric-charge, mass, flavor or gravitational units.",
+    "observable_consequence": "A genuine physical bridge would require a Lorentz- and gauge-invariant operator coupling a declared new field to quark operators, followed by a derived measurable effect.",
+    "boundary": "Shared words like up/down do not transfer the physical meaning of quark flavor or electric charge into symbolic ascent/grounding."
+  },
+  "term_map": {
+    "Q_u": "up-quark electric charge",
+    "Q_d": "down-quark electric charge",
+    "p": "symbolic polarity coordinate",
+    "F_p": "polarity dynamics"
+  }
 }

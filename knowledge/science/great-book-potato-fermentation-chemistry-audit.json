@@ -97,5 +97,25 @@
     "Potato-derived carbon and externally added fermentable sugar must be tracked separately if potato-derived yield is the scientific question.",
     "Stoichiometric ceilings and stock-flow balances make missing carbon or unmeasured side products visible.",
     "Downstream separation concentrates components already present; it does not chemically create ethanol."
-  ]
+  ],
+  "equation_context": {
+    "role": "Stoichiometric and stock-flow accounting for starch hydrolysis, fermentable sugar and fermentation products. The equations are used to close the carbon ledger, not as an operating production recipe.",
+    "variables": {
+      "n": "Polymerization count in the starch repeat unit (C6H10O5)_n.",
+      "C6H12O6": "Glucose-equivalent fermentable sugar comparator.",
+      "C2H5OH": "Ethanol product in the idealized fermentation stoichiometry.",
+      "CO2": "Carbon-dioxide product in the idealized fermentation stoichiometry.",
+      "J_added": "Externally added fermentable-sugar input when present."
+    },
+    "units_and_types": "Masses or molar amounts must be tracked consistently. Stoichiometric equations are mole-ratio statements; practical yields require measured conversion efficiency, biomass/side products and losses.",
+    "observable_consequence": "A valid staged model should close the measured carbon balance within uncertainty and predict stocks/fluxes better than a one-step or untracked-sugar account.",
+    "boundary": "Downstream separation changes mixture composition but does not chemically create ethanol; this paper is a conceptual audit rather than an operating protocol."
+  },
+  "term_map": {
+    "n": "starch polymerization count",
+    "C6H12O6": "fermentable sugar comparator",
+    "C2H5OH": "ethanol",
+    "CO2": "carbon dioxide",
+    "J_added": "added-sugar input"
+  }
 }

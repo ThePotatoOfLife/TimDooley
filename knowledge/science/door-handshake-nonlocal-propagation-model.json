@@ -210,5 +210,27 @@
     "Observed similarity between connected people can come from influence, homophily, shared environment or common exposure; causal identification is therefore part of the model.",
     "Long-range graph adjacency is a legitimate kind of network nonlocality but is not quantum nonlocality.",
     "The richer model earns its complexity only if it predicts transitions or cascades better than simpler exposure, similarity and topology baselines."
-  ]
+  ],
+  "equation_context": {
+    "role": "Hybrid network model in which node state, compatibility gates, discrete Door transitions and Handshake edge formation are separated from subsequent propagation.",
+    "variables": {
+      "X_i": "Measured or latent state vector for node/person i.",
+      "G_k(X_i)": "Compatibility/guard statistic for Gate k.",
+      "τ_k": "Threshold for the relevant Gate or Door event.",
+      "D_k": "Discrete state-transition/reset map associated with Door k.",
+      "e_ij": "Network edge between nodes i and j.",
+      "Z_ij": "Declared covariates used in the edge-formation model."
+    },
+    "units_and_types": "State-vector components may mix continuous and categorical variables but must be typed individually. Thresholds must match the scale of their guard statistics. Edge variables are discrete unless a weighted-network model is declared.",
+    "observable_consequence": "The model should improve held-out prediction of transitions, edge formation or cascades relative to simpler topology, exposure, homophily and shared-environment baselines.",
+    "boundary": "Long-range graph adjacency or communication is not Bell-type quantum nonlocality."
+  },
+  "term_map": {
+    "X_i": "node state",
+    "G_k": "gate statistic",
+    "τ_k": "threshold",
+    "D_k": "Door transition",
+    "e_ij": "network edge",
+    "Z_ij": "edge covariates"
+  }
 }

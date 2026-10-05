@@ -173,5 +173,29 @@
     "A serious cross-scale claim must provide measurable maps from molecular state to polymer, cell, circuit and behavior rather than skipping levels by analogy.",
     "Classical mechanics, transport, damping and stochastic dynamics are the baseline that any quantum model has to outperform.",
     "Quantum promotion requires a quantum-sensitive observable, a timescale, a readout/coupling path and evidence that classical alternatives fail."
-  ]
+  ],
+  "equation_context": {
+    "role": "Multiscale causal framework from molecular and polymer dynamics to neuronal, circuit and behavioral observables. Quantum terms are optional hypotheses layered on top of established cell biology.",
+    "variables": {
+      "q": "Chosen collective microtubule or tubulin coordinate in a classical baseline model.",
+      "M": "Effective inertia/mass matrix for the chosen collective coordinates.",
+      "Γ": "Damping/friction operator.",
+      "K": "Stiffness/restoring operator.",
+      "ξ(t)": "Stochastic/environmental forcing.",
+      "H": "Quantum Hamiltonian only in an explicitly defined quantum model.",
+      "ρ": "Quantum state/density operator when such a model is used."
+    },
+    "units_and_types": "Classical coordinates, damping and stiffness must use mutually consistent mechanical units. Quantum variables require a declared Hilbert space and observable map. Biology and quantum notation should not be mixed without a cross-scale coupling.",
+    "observable_consequence": "A promoted model must predict a specifically quantum-sensitive observable, survive decoherence on the relevant timescale, couple downstream to neural computation, and outperform classical stochastic/mechanical explanations.",
+    "boundary": "Microtubules are established biology. A quantum-consciousness mechanism is a separate hypothesis and is not implied by the existence of quantum mechanics at molecular scales."
+  },
+  "term_map": {
+    "q": "collective microtubule coordinate",
+    "M": "effective inertia",
+    "Γ": "damping",
+    "K": "stiffness",
+    "ξ": "stochastic forcing",
+    "H": "quantum Hamiltonian",
+    "ρ": "quantum state"
+  }
 }

@@ -143,5 +143,29 @@
     "Shape claims require a frozen object definition, smoothing/segmentation rule and uncertainty treatment before classification.",
     "Axis ratios, planarity, filamentarity, topology and roughness can distinguish compact irregular objects from cosmic-web filaments and walls.",
     "Cross-scale universality requires a common dimensionless descriptor or generative mechanism, not visual analogy."
-  ]
+  ],
+  "equation_context": {
+    "role": "Quantitative morphology/model-selection framework for testing whether a cosmic structure is better described as compact/tuber-like, filamentary, planar or by a generic baseline shape.",
+    "variables": {
+      "a,b,c": "Ordered principal-axis lengths of the reconstructed 3D object.",
+      "q=b/a": "Intermediate-to-major axis ratio.",
+      "s=c/a": "Minor-to-major axis ratio.",
+      "P": "Planarity descriptor under the declared morphology convention.",
+      "F": "Filamentarity descriptor under the declared morphology convention.",
+      "χ": "Euler characteristic or related topological summary where used."
+    },
+    "units_and_types": "Axis ratios and many shape descriptors are dimensionless. Raw axes inherit the spatial units of the reconstruction. Topological summaries are dimensionless and depend on threshold/segmentation choices.",
+    "observable_consequence": "A preregistered descriptor set should classify held-out or simulated structures and show the tuber-like hypothesis outperforming filament, sheet and generic ellipsoid baselines under uncertainty.",
+    "boundary": "Visual resemblance in a 2D image is not enough. The scientific claim concerns a frozen 3D segmentation, explicit descriptors and model comparison."
+  },
+  "term_map": {
+    "a": "major axis",
+    "b": "intermediate axis",
+    "c": "minor axis",
+    "q": "b/a axis ratio",
+    "s": "c/a axis ratio",
+    "P": "planarity",
+    "F": "filamentarity",
+    "χ": "topological descriptor"
+  }
 }
