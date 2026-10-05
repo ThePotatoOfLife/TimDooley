@@ -58,6 +58,7 @@ SHARED_ASSETS = (
     "app/site-system.css",
     "app/house-page.css",
     "app/house-page.js",
+    "app/potato-of-life-page.css",
     "app/potatoes-hall.css",
     "app/dogs-hall.css",
     "app/home-page.css",
