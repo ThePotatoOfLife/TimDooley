@@ -5,6 +5,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 INDEX = ROOT / "great-book" / "index.html"
+CSS = ROOT / "great-book" / "great-book.css"
+READER = ROOT / "app" / "great-book-reader.js"
 
 
 class GreatBookPublicReaderTests(unittest.TestCase):
@@ -28,6 +30,25 @@ class GreatBookPublicReaderTests(unittest.TestCase):
         self.assertIn('href="../philosophy/"', html)
         self.assertIn('href="../tim-dooley/story/"', html)
         self.assertIn('href="../explore/"', html)
+
+    def test_reader_uses_open_book_stage_and_preloads_visual_assets(self):
+        html = INDEX.read_text(encoding="utf-8")
+        css = CSS.read_text(encoding="utf-8")
+
+        self.assertIn('class="longform-layout gb-book-stage"', html)
+        self.assertIn('class="page-nav"', html)
+        self.assertIn('great-book-open-stage.webp" fetchpriority="high"', html)
+        self.assertIn(".gb-book-stage", css)
+        self.assertIn("great-book-open-stage.webp", css)
+        self.assertNotIn("content-visibility:auto", css)
+
+    def test_reader_prefetches_chapters_ahead_without_rewriting_the_whole_toc(self):
+        source = READER.read_text(encoding="utf-8")
+
+        self.assertIn("rootMargin:'2600px 0px'", source)
+        self.assertIn("requestIdleCallback", source)
+        self.assertIn("setCurrentLink(activeCurrentId)", source)
+        self.assertNotIn("toc.querySelectorAll('a').forEach(a=>a.setAttribute('aria-current'", source)
 
     def test_reader_has_shared_tts_controls(self):
         html = INDEX.read_text(encoding="utf-8")
