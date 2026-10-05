@@ -9,13 +9,15 @@ CONTRACT=ROOT/'data/house/foundation-room-contract.json'
 SYNTH=ROOT/'data/house/project-synthesis.json'
 REPRO=ROOT/'data/house/foundation-first-reproduction-wave-001.json'
 TIMELINE=ROOT/'timeline/foundations/index.html'
+TIMELINE_RUNTIME=ROOT/'app/foundation-timeline-page.js'
 HOUSE=ROOT/'house/index.html'
+HOUSE_RUNTIME=ROOT/'app/house-page.js'
 
 def load(p): return json.loads(p.read_text(encoding='utf-8'))
 
 def main():
     errors=[]
-    for p in (ATLAS,CONTRACT,SYNTH,REPRO,TIMELINE,HOUSE):
+    for p in (ATLAS,CONTRACT,SYNTH,REPRO,TIMELINE,TIMELINE_RUNTIME,HOUSE,HOUSE_RUNTIME):
         if not p.is_file(): errors.append(f'missing {p.relative_to(ROOT)}')
     if errors:
         print('\n'.join(errors)); raise SystemExit(1)
@@ -105,11 +107,11 @@ def main():
     if fr.get('population')!=52:
         errors.append('project synthesis Foundation Room population drifted')
 
-    timeline=TIMELINE.read_text(encoding='utf-8',errors='replace')
+    timeline=TIMELINE.read_text(encoding='utf-8',errors='replace')+'\n'+TIMELINE_RUNTIME.read_text(encoding='utf-8',errors='replace')
     for marker in ('id="foundation-rooms"',"foundation-room-atlas.json",'foundationRoomCatalog','Map-ready origin','Quantified Today'):
         if marker not in timeline: errors.append(f'Foundation Timeline missing Room marker: {marker}')
 
-    house=HOUSE.read_text(encoding='utf-8',errors='replace')
+    house=HOUSE.read_text(encoding='utf-8',errors='replace')+'\n'+HOUSE_RUNTIME.read_text(encoding='utf-8',errors='replace')
     if "foundations-wave-003.json" not in house:
         errors.append('House reader is not loading Foundation wave 003')
 
