@@ -321,9 +321,9 @@ body{
   .papers-orientation-figure img{max-height:260px}
 }
 
-.paper-entry-figure-mark{
+.paper-entry-marks{display:flex;flex-wrap:wrap;gap:3px;margin-top:7px}
+.paper-entry-marks span{
   display:inline-block;
-  margin-top:6px;
   padding:2px 5px;
   border:1px solid var(--line);
   color:var(--accent);

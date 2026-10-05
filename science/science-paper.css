@@ -515,3 +515,35 @@ body{margin:0;background:
   a{color:inherit!important;text-decoration:none!important}
   p,li{orphans:3;widows:3}
 }
+
+/* Final reader edge-case polish */
+.paper-content a,.paper-source a,.paper-related-card a{overflow-wrap:anywhere}
+.paper-content img,.paper-source img{max-width:100%}
+.paper-content code:not(.paper-equation code){
+  padding:.08em .28em;
+  background:rgba(107,81,47,.07);
+  font:0.88em/1.45 var(--site-font-mono);
+  overflow-wrap:anywhere;
+}
+.paper-content blockquote{
+  margin:20px 0;
+  padding:4px 0 4px 18px;
+  border-left:2px solid rgba(107,81,47,.32);
+  color:var(--paper-muted);
+}
+.paper-content hr{border:0;border-top:1px solid var(--paper-line);margin:30px 0}
+.paper-source-path{word-break:break-word}
+.paper-section h2{scroll-margin-top:96px}
+@media(max-width:650px){
+  .paper-page .page-nav.paper-nav{margin-bottom:32px}
+  .paper-header{margin-bottom:26px;padding-bottom:24px}
+  .paper-toc{margin-bottom:26px}
+  .paper-section h2,.paper-source h2{font-size:24px}
+  .paper-block h3{font-size:19px}
+  .paper-content>.paper-section{margin-bottom:30px;padding-bottom:25px}
+}
+@media print{
+  .paper-related{break-before:auto}
+  .paper-source{break-before:auto}
+  .paper-source-path{font-size:7.5pt!important}
+}

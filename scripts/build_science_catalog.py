@@ -327,6 +327,9 @@ def record_from(path: Path) -> tuple[dict, dict]:
         "keywords": extract_keywords(data),
         "fields": classify_fields(path, data),
         "document_type": classify_document_type(path, data),
+        "has_equation_context": isinstance(data.get("equation_context"), dict) and bool(data.get("equation_context")),
+        "has_term_map": isinstance(data.get("term_map"), dict) and bool(data.get("term_map")),
+        "equation_count": len(equations),
         "figure": (
             str(data.get("paper_figures")[0].get("asset") or "")
             if isinstance(data.get("paper_figures"), list)
@@ -828,8 +831,11 @@ def render_papers_reader(records: list[dict]) -> str:
             entries.append(
                 f'<article class="paper-entry" data-paper-entry data-search="{esc((" ".join([record["title"], record["abstract"], kind, fields, " ".join(record.get("keywords") or [])])).casefold())}">'
                 f'<div class="paper-entry-meta">{esc(kind)}<br>{esc(fields)}'
-                + ('<span class="paper-entry-figure-mark">Figure</span>' if record.get("figure") else '')
-                + '</div>'
+                + '<span class="paper-entry-marks">'
+                + ('<span>Figure</span>' if record.get("figure") else '')
+                + ('<span>Equations</span>' if record.get("equation_count") else '')
+                + ('<span>Guide</span>' if record.get("has_equation_context") else '')
+                + '</span></div>'
                 '<div>'
                 f'<h3>{esc(record["title"])}</h3>'
                 f'<p>{esc(record["abstract"])}</p>'
