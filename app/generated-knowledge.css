@@ -40,10 +40,10 @@
 }
 .generated-knowledge .chip{
   border:1px solid var(--site-line);
-  border-radius:999px;
+  border-radius:var(--site-radius-pill);
   padding:5px 9px;
   color:#c8cec1;
-  font-size:12px;
+  font-size:var(--site-text-sm);
 }
 .generated-knowledge code{
   color:var(--site-gold);
