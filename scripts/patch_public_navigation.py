@@ -587,7 +587,7 @@ _CONTEXT_NAV_FAMILIES = (
             ("Islam", "traditions/islam/"),
             ("Comparative Cosmology", "traditions/comparative-cosmology/"),
             ("Trinity", "religion/trinity/"),
-            ("Jesus & Tim", "religion/jesus-tim/"),
+            ("Jesus & Tim", "traditions/bible/#compare"),
             ("God's Character", "religion/gods-character/"),
             ("Timeline", "timeline/"),
             ("Sources", "context/source-authority/"),
