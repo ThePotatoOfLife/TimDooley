@@ -1,7 +1,7 @@
 {
   "id": "unified-potato-theory-2025-recovery",
   "title": "Unified Potato Theory (UPT) — April 18, 2025 Recovery",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "updated": "2026-10-05",
   "status": "high-priority conversation archaeology; user-originated physical-unification proposal with later mathematical repair; not a validated physical theory",
   "first_known_date": "2025-04-18",
@@ -51,48 +51,40 @@
     "g_P P psi_bar psi",
     "lambda_P P^2 H"
   ],
-  "term_map": [
-    {
-      "term": "sqrt(-g) R/(16 pi G)",
+  "term_map": {
+    "sqrt(-g) R/(16 pi G)": {
       "intended_role": "gravity / Einstein-Hilbert sector",
       "rigor_note": "Established GR term under the usual conventions."
     },
-    {
-      "term": "(1/2) P Box^alpha (1 + ell^2/Box) P",
+    "(1/2) P Box^alpha (1 + ell^2/Box) P": {
       "intended_role": "fractional and nonlocal Potato-field kinetic sector",
       "rigor_note": "Requires operator definition, normalization, propagator analysis, stability/unitarity audit and a declared validity regime."
     },
-    {
-      "term": "V(P,r)",
+    "V(P,r)": {
       "intended_role": "Potato-field potential, possibly scale/radius dependent",
       "rigor_note": "If r is an external coordinate, explicit coordinate dependence can break symmetries; if r is a field/scale variable it must be defined dynamically."
     },
-    {
-      "term": "-(1/4) F_P^2",
+    "-(1/4) F_P^2": {
       "intended_role": "Potato gauge-field-strength sector associated with U(1)_potato; exact field definition unrecovered",
       "rigor_note": "Only coherent once an independent gauge potential and charge assignments are specified."
     },
-    {
-      "term": "L_SM",
+    "L_SM": {
       "intended_role": "Standard Model sector",
       "rigor_note": "Use the established gauge-invariant Standard Model Lagrangian rather than a symbolic placeholder when calculations begin."
     },
-    {
-      "term": "L_int",
+    "L_int": {
       "intended_role": "couplings between P and ordinary matter/Higgs sectors",
       "rigor_note": "Every operator must respect SM gauge invariance and the declared Potato-sector symmetry."
     },
-    {
-      "term": "L_GB",
+    "L_GB": {
       "intended_role": "Gauss-Bonnet/higher-curvature contribution",
       "rigor_note": "In 4D a constant-coefficient Gauss-Bonnet term is topological; nontrivial local dynamics generally require coupling to another field or an effective/higher-dimensional setting."
     },
-    {
-      "term": "L_CDT",
+    "L_CDT": {
       "intended_role": "schematic causal-dynamical-triangulation/quantum-gravity contribution; exact mathematical meaning unresolved",
       "rigor_note": "CDT is a quantization/discretization framework rather than ordinarily an additive local Lagrangian density; keep this as a research-direction placeholder until a precise construction exists."
     }
-  ],
+  },
   "minimal_consistent_submodels": [
     {
       "id": "UPT-A-neutral-scalar-EFT",
