@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 760" role="img" aria-labelledby="title desc">
+<title id="title">Door handshake network dynamics</title>
+<desc id="desc">A network-model diagram showing measured node states, gate compatibility, a threshold Door event, handshake edge formation, propagation across the network, and the main causal confounds that must be separated from influence.</desc>
+<style>
+text{font-family:system-ui,-apple-system,Segoe UI,sans-serif;fill:#1d1b18}.muted{fill:#6f685d}.accent{fill:#6b512f}.blue{fill:#4d667d}.green{fill:#526d59}.warn{fill:#8d5e50}.box{fill:#f7f2e8;stroke:#81786a;stroke-width:2}.gate{fill:#f1e9d9;stroke:#8b6f43;stroke-width:2.5}.net{fill:#e8edf0;stroke:#7c8b96;stroke-width:2}.line{stroke:#716a60;stroke-width:2.5;fill:none}.dash{stroke:#8a8174;stroke-width:2;stroke-dasharray:9 9;fill:none}.small{font-size:19px}.body{font-size:24px}.head{font-size:38px;font-weight:650}</style>
+<rect width="1280" height="760" fill="#eee9dc"/>
+<text x="640" y="58" text-anchor="middle" class="head">Door / Handshake as a hybrid network model</text>
+<text x="640" y="94" text-anchor="middle" class="muted small">State compatibility → threshold event → edge formation → propagation. Similarity alone does not prove influence.</text>
+
+<rect x="60" y="180" width="220" height="150" rx="12" class="box"/>
+<text x="170" y="220" text-anchor="middle" class="accent body">Measured node state</text>
+<text x="90" y="264" class="small">Xᵢ = (vᵢ,bᵢ,mᵢ,aᵢ,qᵢ)</text>
+<text x="90" y="296" class="muted small">affect · body · belief · action · label</text>
+
+<rect x="350" y="180" width="220" height="150" rx="12" class="gate"/>
+<text x="460" y="220" text-anchor="middle" class="accent body">Gate</text>
+<text x="380" y="262" class="small">Gₖ(Xᵢ) &gt; τₖ ?</text>
+<text x="380" y="296" class="muted small">compatibility / guard condition</text>
+
+<rect x="640" y="180" width="220" height="150" rx="12" class="gate"/>
+<text x="750" y="220" text-anchor="middle" class="accent body">Door event</text>
+<text x="670" y="262" class="small">X⁺ = Dₖ(X⁻;u,r,c)</text>
+<text x="670" y="296" class="muted small">state transition / reset map</text>
+
+<rect x="930" y="180" width="220" height="150" rx="12" class="box"/>
+<text x="1040" y="220" text-anchor="middle" class="accent body">Handshake</text>
+<text x="960" y="262" class="small">P(eᵢⱼ=1|Zᵢⱼ)</text>
+<text x="960" y="296" class="muted small">edge forms or strengthens</text>
+
+<path d="M280 255 H338" class="line"/><path d="M326 245 l16 10 -16 10" fill="none" stroke="#716a60" stroke-width="2.5"/>
+<path d="M570 255 H628" class="line"/><path d="M616 245 l16 10 -16 10" fill="none" stroke="#716a60" stroke-width="2.5"/>
+<path d="M860 255 H918" class="line"/><path d="M906 245 l16 10 -16 10" fill="none" stroke="#716a60" stroke-width="2.5"/>
+
+<rect x="170" y="430" width="500" height="220" rx="14" class="net"/>
+<text x="420" y="472" text-anchor="middle" class="blue body">Propagation after coupling</text>
+<circle cx="250" cy="540" r="24" fill="#d8e3ea" stroke="#6d8292" stroke-width="2"/><circle cx="360" cy="505" r="24" fill="#d8e3ea" stroke="#6d8292" stroke-width="2"/><circle cx="470" cy="555" r="24" fill="#e6ddd6" stroke="#8e776d" stroke-width="2"/><circle cx="580" cy="510" r="24" fill="#dce8de" stroke="#708676" stroke-width="2"/>
+<line x1="272" y1="532" x2="338" y2="512" class="line"/><line x1="383" y1="514" x2="447" y2="545" class="line"/><line x1="494" y1="545" x2="556" y2="519" class="line"/>
+<path d="M250 590 C360 655 485 650 580 590" class="dash"/>
+<text x="420" y="622" text-anchor="middle" class="muted small">threshold contagion · signed influence · synchronization · long-range graph edges</text>
+
+<rect x="760" y="430" width="350" height="220" rx="14" class="box"/>
+<text x="935" y="472" text-anchor="middle" class="warn body">Causal alternatives</text>
+<text x="800" y="520" class="small">• homophily / selection</text>
+<text x="800" y="554" class="small">• shared environment</text>
+<text x="800" y="588" class="small">• common media exposure</text>
+<text x="800" y="622" class="small">• recommendation / external shock</text>
+
+<text x="640" y="714" text-anchor="middle" class="accent small">“Nonlocal” here means graph distance or long-range communication—not Bell-type quantum nonlocality.</text>
+</svg>
