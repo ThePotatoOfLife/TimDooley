@@ -145,6 +145,13 @@ if re.search(r"<style\b", tim_profile_text, flags=re.I):
     errors.append("tim-dooley/index.html must keep structural styling in app/tim-dooley.css, not an inline <style> block")
 if "app/tim-dooley.css" not in tim_profile_text and "../app/tim-dooley.css" not in tim_profile_text:
     errors.append("tim-dooley/index.html must load its owned app/tim-dooley.css stylesheet")
+
+works_page = ROOT / "works" / "index.html"
+works_page_text = works_page.read_text(encoding="utf-8", errors="ignore") if works_page.exists() else ""
+if re.search(r"<style\b", works_page_text, flags=re.I):
+    errors.append("works/index.html must keep structural styling in app/works-page.css, not an inline <style> block")
+if "app/works-page.css" not in works_page_text and "../app/works-page.css" not in works_page_text:
+    errors.append("works/index.html must load its owned app/works-page.css stylesheet")
 if 'id="archive-explorer"' in home:
     if 'class="archive-nav"' not in home:
         errors.append("homepage archive explorer must use class=\"archive-nav\"")
