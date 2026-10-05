@@ -259,7 +259,10 @@
         fragment.appendChild(link);
       }
       roomRail.replaceChildren(fragment);
-      roomRail.hidden=!(landmarks.length||rows.length);
+      const visibleCount=landmarks.length+rows.length;
+      roomRail.dataset.roomCount=String(visibleCount);
+      roomRail.style.setProperty('--elevator-visible-count',String(Math.max(1,visibleCount)));
+      roomRail.hidden=!visibleCount;
     };
 
     const linkSpatialTarget=link=>{
