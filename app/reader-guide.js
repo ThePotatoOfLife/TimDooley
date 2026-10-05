@@ -23,7 +23,6 @@
 
   function ensureTimeline(){
     ensureStyle('timeline.css','timeline');
-    ensureStyle('timeline-enhancements.css','timeline-v2');
     if(document.querySelector('script[data-potato-timeline]'))return;
     const timeline=document.createElement('script');
     timeline.src=new URL('timeline.js',scriptBase).href;
