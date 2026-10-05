@@ -222,12 +222,6 @@ html[data-site-floor] .page > :where(section,article,aside,details):not(.surface
   background:var(--site-pane);
   box-shadow:var(--site-pane-shadow);
 }
-html[data-site-floor] .page > :where(section,article,aside,details):not(.surface-clear):nth-of-type(3n+2){
-  background:var(--site-pane-soft);
-}
-html[data-site-floor] .page > :where(section,article,aside,details):not(.surface-clear):nth-of-type(3n){
-  background:color-mix(in srgb,var(--site-pane) 88%,var(--site-pane-mist));
-}
 html[data-site-floor] .page > :where(p.boundary,p.note,p.warning,p.lede,.boundary,.note,.warning):not(.surface-clear){
   padding:14px 16px;
   border:1px solid var(--site-pane-line);
