@@ -616,6 +616,19 @@ _CONTEXT_NAV_FAMILIES = (
         ),
     ),
     (
+        ("news/",),
+        (
+            ("News", "news/"),
+            ("World", "world/"),
+            ("World Map", "world-map/"),
+            ("Politics", "politics/"),
+            ("Economy", "economy/"),
+            ("North", "north/"),
+            ("Culture", "context/culture/"),
+            ("Sources", "context/source-authority/"),
+        ),
+    ),
+    (
         ("world/", "world-map/", "politics/", "economy/", "law/", "north/", "world-systems/", "israel-mesopotamia/"),
         (
             ("World", "world/"),
@@ -628,6 +641,19 @@ _CONTEXT_NAV_FAMILIES = (
             ("Israel / Mesopotamia", "israel-mesopotamia/"),
             ("Culture", "context/culture/"),
             ("Sources", "context/source-authority/"),
+        ),
+    ),
+    (
+        ("context/",),
+        (
+            ("Context", "context/"),
+            ("Sources", "context/source-authority/"),
+            ("Culture", "context/culture/"),
+            ("Timeline", "timeline/"),
+            ("History", "history/"),
+            ("Research Lab", "research-lab/"),
+            ("Explore", "explore/"),
+            ("A–Z", "index-a-z/"),
         ),
     ),
     (
@@ -657,6 +683,19 @@ _CONTEXT_NAV_FAMILIES = (
         ),
     ),
     (
+        ("corporium/",),
+        (
+            ("Collection", "corporium/"),
+            ("Tim Dooley", "tim-dooley/"),
+            ("Potatoism", "potatoism/"),
+            ("Philosophy", "philosophy/"),
+            ("Life & Body", "life-body/"),
+            ("Research Lab", "research-lab/"),
+            ("Sources", "context/source-authority/"),
+            ("Timeline", "timeline/"),
+        ),
+    ),
+    (
         ("works/", "great-book/", "music/"),
         (
             ("Works", "works/"),
@@ -683,6 +722,19 @@ _CONTEXT_NAV_FAMILIES = (
         ),
     ),
     (
+        ("house/", "elevator/"),
+        (
+            ("House", "house/"),
+            ("Elevator", "elevator/"),
+            ("Rooms", "rooms/"),
+            ("Explore", "explore/"),
+            ("Axis", "axis/"),
+            ("Potatoism", "potatoism/"),
+            ("Timeline", "timeline/"),
+            ("Sources", "context/source-authority/"),
+        ),
+    ),
+    (
         ("below/", "shadow-farm/"),
         (
             ("Below", "below/"),
@@ -692,6 +744,19 @@ _CONTEXT_NAV_FAMILIES = (
             ("Culture", "context/culture/"),
             ("Sources", "context/source-authority/"),
             ("Hall of Heroes", "rooms/potatoverse-canon/beings/potatoes/"),
+        ),
+    ),
+    (
+        ("paths/",),
+        (
+            ("Paths", "paths/"),
+            ("Explore", "explore/"),
+            ("Questions", "questions/"),
+            ("A–Z", "index-a-z/"),
+            ("Story", "tim-dooley/story/"),
+            ("Timeline", "timeline/"),
+            ("Sources", "context/source-authority/"),
+            ("Research Lab", "research-lab/"),
         ),
     ),
     (
