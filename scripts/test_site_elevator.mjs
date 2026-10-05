@@ -295,6 +295,11 @@ assert.ok(!css.includes('pointer-events:none;\n  z-index:-1;\n}\n.site-elevator-
 assert.ok(css.includes('text-wrap:balance'),'Room labels should wrap into balanced readable lines');
 assert.ok(source.includes('site-elevator-floor-code'),'runtime must render terminal floor code');
 assert.ok(source.includes('site-elevator-floor-emblem'),'runtime must render a distinct realm emblem beside the floor number');
+assert.ok(css.includes('.site-elevator[data-elevator-level="heaven"] .site-elevator-floor-emblem::before'),'Heaven needs its own drawn floor emblem');
+assert.ok(css.includes('.site-elevator[data-elevator-level="plane"] .site-elevator-floor-emblem::before'),'Plane needs its own drawn floor emblem');
+assert.ok(css.includes('.site-elevator[data-elevator-level="below"] .site-elevator-floor-emblem::before'),'Below needs its own drawn floor emblem');
+assert.equal(/\.site-elevator\[data-elevator-level="(?:heaven|plane|below)"\] \.site-elevator-floor-emblem::before\{content:"[^"]+"/.test(css),false,'floor emblems must not regress to font glyph placeholders');
+assert.ok(css.includes('@media (max-width:1180px)'),'illustrated desktop header needs a laptop-width pressure valve before the mobile breakpoint');
 assert.ok(source.includes("roomRail.dataset.roomCount=String(visibleCount)"),'runtime must expose actual floor door count for illustrated layout');
 assert.ok(css.includes('grid-template-columns:repeat(var(--elevator-visible-count),minmax(0,1fr))'),'desktop illustrated rail must size Heaven, Plane and Below by their actual door count');
 assert.ok(source.includes('site-elevator-stage'),'runtime must separate the stable console from the scenic Room window');
