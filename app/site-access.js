@@ -99,7 +99,7 @@
     '<button type="button" data-site-access-menu aria-expanded="false">Places</button>'+
     '</nav>'+
     '<section class="site-access-tts-console" data-site-access-tts hidden aria-label="Read aloud controls">'+
-      '<div class="site-access-tts-head"><div><small>Reader console</small><strong>Listen to this page</strong></div><button type="button" class="site-access-tts-close" aria-label="Hide reader controls">×</button></div>'+
+      '<div class="site-access-tts-head"><strong>Read aloud</strong><button type="button" class="site-access-tts-close" aria-label="Hide reader controls">×</button></div>'+
       '<div data-site-access-tts-mount></div>'+
     '</section>'+
     '<section class="site-access-panel" data-site-access-panel hidden aria-label="Site menu">'+
