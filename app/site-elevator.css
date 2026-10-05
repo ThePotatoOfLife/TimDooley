@@ -630,27 +630,12 @@ html[data-site-floor] body:not(.home-body)::before{
   background-image:var(--site-realm-overlay),var(--site-realm-art);
   background-repeat:no-repeat;
   background-position:50% 50%,var(--site-realm-art-position);
-  background-size:100% 100%,var(--site-realm-art-size) auto;
+  background-size:100% 100%,var(--site-realm-art-render-size,var(--site-realm-art-size) auto);
   contain:paint;
 }
 
-/* Hall pages still use the canonical renderer; only the scene asset changes.
-   This prevents a generic realm wallpaper and a second fixed Hall wallpaper
-   from being composited on top of one another. */
-html[data-site-floor] body.potatoes-hall-page::before{
-  background-image:
-    linear-gradient(180deg,rgba(7,9,8,.18),rgba(7,9,8,.42) 52%,rgba(7,9,8,.62) 100%),
-    url("./hall-of-heroes.avif");
-  background-position:50% 50%,50% 42%;
-  background-size:100% 100%,cover;
-}
-html[data-site-floor] body.dogs-hall-page::before{
-  background-image:
-    linear-gradient(180deg,rgba(7,9,8,.16),rgba(7,9,8,.38) 52%,rgba(7,9,8,.60) 100%),
-    url("./hall-of-shame.avif");
-  background-position:50% 50%,50% 50%;
-  background-size:100% 100%,cover;
-}
+/* Page families may override --site-realm-art, --site-realm-overlay,
+   --site-realm-art-position and --site-realm-art-render-size locally. */
 @media(max-width:700px){
   html[data-site-floor]{--site-realm-art-size:max(760px,118vw)}
 }
