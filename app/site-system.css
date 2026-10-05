@@ -296,7 +296,7 @@ html[data-site-floor] .page > :where(p.boundary,p.note,p.warning,p.lede,.boundar
 
 @media (max-width:700px){
   .page{padding-top:22px;padding-bottom:calc(64px + var(--site-access-clearance))}
-  .page-nav{margin:0 0 20px;min-height:44px;padding:5px 6px;flex-wrap:nowrap;gap:2px;overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain;scroll-snap-type:x proximity;border-radius:13px;scrollbar-width:none}
+  .page-nav{margin:0 0 20px;min-height:44px;padding:5px 6px;flex-wrap:nowrap;gap:2px;overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain;scroll-snap-type:x proximity;border-radius:var(--site-radius);scrollbar-width:none}
   .page-nav::-webkit-scrollbar{display:none}
   .page-nav > a{flex:0 0 auto;min-height:32px;white-space:nowrap;padding:6px 9px;border:0;border-radius:8px;scroll-snap-align:start;font-size:var(--site-text-caption)}
   .page-header{margin-bottom:24px}
@@ -320,7 +320,7 @@ html[data-site-floor] .page > :where(p.boundary,p.note,p.warning,p.lede,.boundar
   margin:32px 0;
   padding:20px;
   border:1px solid var(--site-pane-line);
-  border-radius:14px;
+  border-radius:var(--site-radius-lg);
   background:var(--site-pane);
   box-shadow:var(--site-pane-shadow)
 }
@@ -389,7 +389,7 @@ html[data-site-floor] .page > :where(p.boundary,p.note,p.warning,p.lede,.boundar
   margin:34px 0;
   padding:0 16px;
   border:1px solid var(--site-pane-line);
-  border-radius:14px;
+  border-radius:var(--site-radius-lg);
   background:var(--site-pane-soft);
   box-shadow:0 8px 22px rgba(0,0,0,.12);
 }
