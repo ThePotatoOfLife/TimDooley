@@ -1,6 +1,22 @@
 /* Politics reader-specific composition.
    Universal shell, navigation, typography tokens and base surfaces come from
    site-system.css; long-form layout comes from longform-reader.css. */
+.skip-link{
+  position:fixed;
+  left:12px;
+  top:-80px;
+  z-index:10060;
+  padding:8px 12px;
+  border:1px solid var(--site-line);
+  border-radius:var(--site-radius-sm);
+  background:var(--site-panel-strong);
+  color:var(--site-ink);
+  text-decoration:none;
+}
+.skip-link:focus{
+  top:calc(var(--site-elevator-clearance,56px) + 8px);
+}
+
 .politics-page .politics-frame{margin:26px 0 34px;padding:24px 0;border-top:1px solid rgba(127,127,127,.25);border-bottom:1px solid rgba(127,127,127,.25)}
 .politics-page .politics-frame h2{font:400 clamp(28px,4vw,42px)/1.06 var(--site-font-serif);margin:0 0 10px}
 .politics-page .politics-frame>.lead2{font:400 19px/1.55 var(--site-font-serif);color:var(--site-copy);max-width:850px}
