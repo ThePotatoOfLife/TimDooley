@@ -152,6 +152,13 @@ if re.search(r"<style\b", works_page_text, flags=re.I):
     errors.append("works/index.html must keep structural styling in app/works-page.css, not an inline <style> block")
 if "app/works-page.css" not in works_page_text and "../app/works-page.css" not in works_page_text:
     errors.append("works/index.html must load its owned app/works-page.css stylesheet")
+
+timeline_page = ROOT / "timeline" / "index.html"
+timeline_page_text = timeline_page.read_text(encoding="utf-8", errors="ignore") if timeline_page.exists() else ""
+if re.search(r"<style\b", timeline_page_text, flags=re.I):
+    errors.append("timeline/index.html must keep structural styling in app/timeline-page.css, not an inline <style> block")
+if "app/timeline-page.css" not in timeline_page_text and "../app/timeline-page.css" not in timeline_page_text:
+    errors.append("timeline/index.html must load its owned app/timeline-page.css stylesheet")
 if 'id="archive-explorer"' in home:
     if 'class="archive-nav"' not in home:
         errors.append("homepage archive explorer must use class=\"archive-nav\"")
