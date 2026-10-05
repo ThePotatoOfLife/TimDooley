@@ -140,6 +140,8 @@ def main() -> int:
             "display:flex;",
             "overflow:visible",
             ".site-elevator-floor-code",
+            ".site-elevator-floor-emblem",
+            "grid-template-columns:repeat(var(--elevator-visible-count),minmax(0,1fr))",
             '[data-elevator-level="heaven"] .site-elevator-stage::before',
             '[data-elevator-level="plane"] .site-elevator-stage::before',
             '[data-elevator-level="below"] .site-elevator-stage::before',
