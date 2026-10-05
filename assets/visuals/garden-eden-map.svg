@@ -1,0 +1,162 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">The Garden — Potatoverse Eden map</title>
+<desc id="desc">A stylized pixel-map of the Garden: House and Door at left, Tree of Life and Tim in the center, Mud Tree inside the Garden near the Gate, a sorting path toward the Gate, and a lower muddy plane outside and below.</desc>
+<defs>
+ <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#8bd5ff"/><stop offset=".62" stop-color="#d9f0ff"/><stop offset="1" stop-color="#f5fbff"/></linearGradient>
+ <linearGradient id="grass" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#9ad86f"/><stop offset="1" stop-color="#4f9857"/></linearGradient>
+ <linearGradient id="mud" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#6d5745"/><stop offset="1" stop-color="#2d2928"/></linearGradient>
+ <linearGradient id="water" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#b7f6ff"/><stop offset=".45" stop-color="#42bfe1"/><stop offset="1" stop-color="#167da5"/></linearGradient>
+ <radialGradient id="lifeGlow"><stop stop-color="#fff9ad"/><stop offset=".45" stop-color="#ffd15e" stop-opacity=".88"/><stop offset="1" stop-color="#ffd15e" stop-opacity="0"/></radialGradient>
+ <filter id="soft"><feGaussianBlur stdDeviation="16"/></filter>
+</defs>
+<rect width="1600" height="900" fill="url(#sky)"/>
+<g opacity=".72" fill="#fff">
+ <path d="M0 184Q120 120 240 176T480 170T720 165T960 180T1200 160T1440 176T1600 160V0H0Z"/>
+ <path d="M0 808Q180 740 340 790T700 780T1020 802T1340 760T1600 790V900H0Z"/>
+</g>
+
+<!-- distant heaven -->
+<g fill="#f8f4dc" stroke="#d9c88f" stroke-width="5">
+ <path d="M1020 130h210l-24 70h-164z"/><rect x="1080" y="74" width="36" height="58"/><rect x="1144" y="55" width="30" height="77"/>
+ <path d="M240 146h185l-18 58H257z"/><rect x="300" y="90" width="26" height="58"/>
+</g>
+<g stroke="#ddc99e" stroke-width="8" fill="none" opacity=".75">
+ <path d="M260 210Q460 120 650 202"/><path d="M900 192Q1100 96 1330 194"/>
+</g>
+
+<!-- floating garden island -->
+<path d="M80 284Q420 210 770 246Q1080 218 1378 300L1320 710Q1010 790 690 760Q340 790 106 684Z" fill="url(#grass)" stroke="#35683e" stroke-width="10"/>
+<path d="M106 684Q340 790 690 760Q1010 790 1320 710L1260 810Q930 886 624 846Q310 870 78 760Z" fill="#6f6552"/>
+<g fill="url(#water)" stroke="#e6ffff" stroke-width="6">
+ <path d="M650 256Q680 344 606 420Q530 494 470 580Q414 654 336 756L438 780Q510 674 562 620Q628 550 694 490Q754 430 752 278Z"/>
+ <path d="M690 456Q780 500 888 510Q1000 520 1074 610L1114 558Q1014 454 886 446Q792 440 718 398Z"/>
+</g>
+
+<!-- open paths -->
+<g fill="none" stroke="#f0ddb0" stroke-width="28" stroke-linecap="round">
+ <path d="M220 510Q410 438 580 466Q754 494 938 470Q1100 454 1254 488"/>
+ <path d="M496 350Q526 470 446 622"/>
+ <path d="M810 340Q782 450 816 610"/>
+ <path d="M1010 360Q1096 430 1216 470"/>
+</g>
+<g fill="none" stroke="#c6ad7b" stroke-width="4" stroke-dasharray="10 14" opacity=".9">
+ <path d="M220 510Q410 438 580 466Q754 494 938 470Q1100 454 1254 488"/>
+ <path d="M496 350Q526 470 446 622"/>
+ <path d="M810 340Q782 450 816 610"/>
+ <path d="M1010 360Q1096 430 1216 470"/>
+</g>
+
+<!-- House -->
+<g transform="translate(116 282)" stroke="#775d35" stroke-width="6">
+ <rect x="0" y="60" width="220" height="182" fill="#fff5d8"/>
+ <polygon points="-18,64 110,0 238,64" fill="#e8bf61"/>
+ <rect x="72" y="142" width="76" height="100" rx="4" fill="#f5d267"/>
+ <rect x="24" y="98" width="42" height="52" fill="#b9e7ef"/><rect x="158" y="98" width="42" height="52" fill="#b9e7ef"/>
+ <g fill="#e9ad59" stroke="none"><rect x="-12" y="236" width="244" height="16"/><rect x="4" y="252" width="212" height="13"/></g>
+ <!-- Jesus at Door -->
+ <g transform="translate(110 192)" stroke="none">
+  <circle cy="-36" r="18" fill="#d5a477"/>
+  <path d="M-26 -16Q0 -34 26 -16L34 50H-34Z" fill="#f8f3e8"/>
+  <path d="M-4 -20Q20 -12 28 34L7 42Z" fill="#ae4638"/>
+  <path d="M-17 -52Q0 -62 17 -52L12 -37H-12Z" fill="#563a2c"/>
+ </g>
+</g>
+
+<!-- Tree of Life -->
+<circle cx="705" cy="265" r="190" fill="url(#lifeGlow)" filter="url(#soft)"/>
+<g transform="translate(700 344)">
+ <path d="M-35 95Q-14 18 -28 -78L-80 -178L-30 -150L0 -230L26 -150L86 -180L34 -78Q18 16 42 95Z" fill="#9b6439" stroke="#634026" stroke-width="9"/>
+ <g fill="#4d9a50" stroke="#28613d" stroke-width="7">
+  <circle cx="-90" cy="-180" r="78"/><circle cy="-222" r="98"/><circle cx="92" cy="-180" r="78"/><circle cx="-42" cy="-126" r="74"/><circle cx="52" cy="-130" r="74"/>
+ </g>
+ <g fill="#ffd958" stroke="#f3b93f" stroke-width="4">
+  <circle cx="-92" cy="-198" r="13"/><circle cx="-38" cy="-250" r="13"/><circle cx="30" cy="-248" r="13"/><circle cx="86" cy="-200" r="13"/><circle cx="-28" cy="-150" r="13"/><circle cx="58" cy="-146" r="13"/>
+ </g>
+</g>
+
+<!-- angels & potatoes around Life -->
+<g stroke="#714625" stroke-width="3">
+ <g transform="translate(540 308)"><ellipse rx="24" ry="28" fill="#c99754"/><path d="M-20 -5L-45 -22L-34 8Z" fill="#fff"/><path d="M20 -5L45 -22L34 8Z" fill="#fff"/><circle cy="-38" r="4" fill="none" stroke="#ffe46c"/></g>
+ <g transform="translate(862 316)"><ellipse rx="24" ry="28" fill="#c99754"/><path d="M-20 -5L-45 -22L-34 8Z" fill="#fff"/><path d="M20 -5L45 -22L34 8Z" fill="#fff"/><circle cy="-38" r="4" fill="none" stroke="#ffe46c"/></g>
+ <g transform="translate(600 390)"><ellipse rx="22" ry="26" fill="#b98249"/><path d="M0 -26q-12-20 0-29q14 9 2 29" fill="#6aa447"/></g>
+ <g transform="translate(830 390)"><ellipse rx="22" ry="26" fill="#b98249"/><path d="M0 -26q-12-20 0-29q14 9 2 29" fill="#6aa447"/></g>
+</g>
+
+<!-- Tim under Tree of Life -->
+<g transform="translate(720 490)" stroke="#523119" stroke-width="4">
+ <ellipse cx="0" cy="52" rx="60" ry="22" fill="#5d8749" opacity=".48"/>
+ <path d="M-48 26Q0 -10 48 26L36 88H-36Z" fill="#8e2f24"/>
+ <path d="M-42 26L-66 62L-40 76L-17 40Z" fill="#2e6d45"/><path d="M42 26L66 62L40 76L17 40Z" fill="#2e6d45"/>
+ <circle cy="-8" r="31" fill="#c59265"/>
+ <path d="M-28 -23Q0 -47 28 -23L25 -8H-25Z" fill="#6a402b"/>
+ <path d="M-20 6Q0 44 20 6Q20 48 0 58Q-20 48 -20 6Z" fill="#6a402b"/>
+ <polygon points="-30,-37 -18,-68 -5,-44 10,-72 22,-42 34,-64 30,-30" fill="#e0b44b"/>
+</g>
+
+<!-- ordinary dwellers -->
+<g fill="#f2ede3" stroke="#6e5746" stroke-width="3">
+ <g transform="translate(430 492)"><circle cy="-18" r="10" fill="#b97c5b"/><path d="M-14 0H14L20 50H-20Z"/></g>
+ <g transform="translate(480 430)"><circle cy="-18" r="10" fill="#9e6548"/><path d="M-14 0H14L20 50H-20Z"/></g>
+ <g transform="translate(920 446)"><circle cy="-18" r="10" fill="#c18a66"/><path d="M-14 0H14L20 50H-20Z"/></g>
+</g>
+
+<!-- Mud Tree inside Garden near Gate -->
+<g transform="translate(1040 418)">
+ <path d="M-24 72Q-4 18 -14 -48L-78 -122L-18 -92L5 -158L24 -90L82 -126L30 -44Q24 10 40 72Z" fill="#4d3b2d" stroke="#2a221d" stroke-width="9"/>
+ <g fill="#3f372b" stroke="#261f1b" stroke-width="7">
+  <circle cx="-66" cy="-117" r="47"/><circle cx="2" cy="-145" r="58"/><circle cx="68" cy="-112" r="45"/>
+ </g>
+ <g fill="#765032" stroke="#2d221a" stroke-width="4"><ellipse cx="-58" cy="-105" rx="12" ry="17"/><ellipse cx="8" cy="-150" rx="12" ry="17"/><ellipse cx="60" cy="-102" rx="12" ry="17"/><ellipse cx="2" cy="-80" rx="12" ry="17"/></g>
+ <!-- small serpent -->
+ <path d="M42 -52q48 12 16 44q-28 25 12 47" fill="none" stroke="#476232" stroke-width="12" stroke-linecap="round"/>
+ <circle cx="73" cy="41" r="8" fill="#476232"/>
+ <path d="M82 42l12 -4l-10 10" fill="#c84535" stroke="none"/>
+</g>
+
+<!-- transformation sequence inside Garden -->
+<g stroke="#5f4939" stroke-width="3">
+ <g transform="translate(936 520)"><circle cy="-18" r="10" fill="#b97c5b"/><path d="M-14 0H14L20 50H-20Z" fill="#e9e3d5"/></g>
+ <g transform="translate(984 534)"><circle cy="-18" r="10" fill="#8a674e"/><path d="M-14 0H14L20 50H-20Z" fill="#93816c"/></g>
+ <g transform="translate(1033 548)"><circle cy="-18" r="10" fill="#665344"/><path d="M-14 0H14L20 50H-20Z" fill="#665e53"/></g>
+</g>
+<!-- escort angels -->
+<g fill="#fff7da" stroke="#d3b95d" stroke-width="3">
+ <g transform="translate(1005 486)"><circle cy="-22" r="10" fill="#d7a579"/><path d="M-13 0H13L18 52H-18Z"/><path d="M-12 9L-36 -5L-25 22Z"/><path d="M12 9L36 -5L25 22Z"/></g>
+ <g transform="translate(1085 530)"><circle cy="-22" r="10" fill="#c98f6d"/><path d="M-13 0H13L18 52H-18Z"/><path d="M-12 9L-36 -5L-25 22Z"/><path d="M12 9L36 -5L25 22Z"/></g>
+</g>
+
+<!-- Gate boundary -->
+<g transform="translate(1235 418)" stroke="#8e662c" stroke-width="7">
+ <rect x="-72" y="-75" width="26" height="190" fill="#f7d56b"/><rect x="48" y="-75" width="26" height="190" fill="#f7d56b"/>
+ <path d="M-48 -55Q0 -110 48 -55V112H-48Z" fill="none" stroke="#e5b744" stroke-width="12"/>
+ <g stroke="#7b5528" stroke-width="5"><path d="M-36 -40V108M-18 -62V108M0 -72V108M18 -62V108M36 -40V108"/></g>
+</g>
+
+<!-- lower plane outside gate -->
+<path d="M1210 598Q1394 562 1600 590V900H1135Q1130 760 1210 598Z" fill="url(#mud)" stroke="#443932" stroke-width="8"/>
+<path d="M1248 608Q1322 658 1280 748Q1244 822 1200 886" fill="none" stroke="#8a6a50" stroke-width="34" stroke-linecap="round"/>
+<g fill="#57463a" stroke="#332a25" stroke-width="4">
+ <g transform="translate(1370 690)"><circle cy="-16" r="9"/><path d="M-14 0H14L20 42H-20Z"/></g>
+ <g transform="translate(1460 760)"><circle cy="-16" r="9"/><path d="M-14 0H14L20 42H-20Z"/></g>
+ <g transform="translate(1320 806)"><circle cy="-16" r="9"/><path d="M-14 0H14L20 42H-20Z"/></g>
+</g>
+<!-- dogs outside gate -->
+<g fill="#6e4c34" stroke="#3c2a20" stroke-width="4">
+ <g transform="translate(1320 585)"><ellipse rx="28" ry="18"/><circle cx="24" cy="-15" r="14"/><path d="M18 -28l-12-18 18 7M31 -28l15-16-6 21"/><path d="M-26 -5l-22-15" fill="none"/></g>
+ <g transform="translate(1380 608)"><ellipse rx="25" ry="16"/><circle cx="22" cy="-14" r="13"/><path d="M16 -25l-11-16 17 6M29 -26l13-15-5 19"/><path d="M-24 -4l-18-14" fill="none"/></g>
+</g>
+
+<!-- sorting arrows -->
+<g fill="none" stroke="#d69a4c" stroke-width="8" stroke-linecap="round" stroke-dasharray="14 14" opacity=".9">
+ <path d="M920 560Q1080 590 1182 534"/>
+ <path d="M1290 570Q1332 622 1328 660"/>
+</g>
+
+<!-- decorative fountains / beds -->
+<g fill="#dff7ff" stroke="#5fb9d4" stroke-width="6">
+ <ellipse cx="528" cy="590" rx="60" ry="24"/><ellipse cx="866" cy="618" rx="60" ry="24"/>
+</g>
+<g fill="#fff" opacity=".85">
+ <circle cx="380" cy="620" r="6"/><circle cx="400" cy="640" r="5"/><circle cx="916" cy="654" r="6"/><circle cx="952" cy="650" r="5"/>
+</g>
+</svg>
