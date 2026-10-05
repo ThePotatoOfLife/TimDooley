@@ -138,6 +138,13 @@ for block in re.findall(r"\.home-nav\s*\{([^}]*)\}", home_page_text, flags=re.I 
         errors.append("app/home-page.css must not fork the shared page-nav shell; Home may only add local spacing/placement")
 
 home = HOME.read_text(encoding='utf-8', errors='ignore') if HOME.exists() else ""
+
+tim_profile = ROOT / "tim-dooley" / "index.html"
+tim_profile_text = tim_profile.read_text(encoding="utf-8", errors="ignore") if tim_profile.exists() else ""
+if re.search(r"<style\b", tim_profile_text, flags=re.I):
+    errors.append("tim-dooley/index.html must keep structural styling in app/tim-dooley.css, not an inline <style> block")
+if "app/tim-dooley.css" not in tim_profile_text and "../app/tim-dooley.css" not in tim_profile_text:
+    errors.append("tim-dooley/index.html must load its owned app/tim-dooley.css stylesheet")
 if 'id="archive-explorer"' in home:
     if 'class="archive-nav"' not in home:
         errors.append("homepage archive explorer must use class=\"archive-nav\"")
