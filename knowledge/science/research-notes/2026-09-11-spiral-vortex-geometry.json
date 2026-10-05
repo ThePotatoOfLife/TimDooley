@@ -74,7 +74,11 @@
         "residual_i = ln r_i - (ln a_hat+b_hat theta_i)"
       ],
       "finding": "Any claim that an observed path follows this spiral can be tested with a straight-line fit in (theta, ln r) coordinates. This makes the spiral falsifiable as geometry.",
-      "comparison_models": ["Archimedean r=a+c theta", "power spiral r=a theta^n", "generic spline"],
+      "comparison_models": [
+        "Archimedean r=a+c theta",
+        "power spiral r=a theta^n",
+        "generic spline"
+      ],
       "test_rule": "Compare held-out error or information criteria rather than choosing the logarithmic spiral after seeing the pattern."
     },
     {
@@ -99,5 +103,23 @@
     "starting_equation": "A/B depending source instance",
     "mathematical_deductions": "C established mathematics, newly derived for the project parameter",
     "dual_spiral_dynamics": "B/E project extension"
-  }
+  },
+  "updated": "2026-10-05",
+  "document_type": "Mathematical Research Note",
+  "paper_subtitle": "Exact deductions from the recovered golden-ratio logarithmic spiral, including discrete scale ladder, constant pitch, curvature, arc length, area and falsifiable model-comparison tests.",
+  "paper_figures": [
+    {
+      "title": "Figure 1 · Golden-ratio spiral geometry",
+      "asset": "assets/visuals/science-golden-axis-spiral.svg",
+      "alt": "A logarithmic spiral showing golden-ratio quarter-turn scaling and exact radius relationships.",
+      "caption": "The recovered equation has exact consequences beyond visual resemblance. The research note derives pitch, curvature, arc-length and area laws and separates static spiral geometry from actual vortex dynamics.",
+      "source_note": "Uses the same primary recovered spiral figure as the parent April 21, 2025 paper."
+    }
+  ],
+  "reader_takeaway": [
+    "The recovered spiral has exact scale and curvature laws, not merely a golden-looking shape.",
+    "A logarithmic spiral can be tested by linearity in theta versus log radius and compared against Archimedean, power-law and spline alternatives.",
+    "A drawn spiral is not yet a vortex; vortex language requires time-dependent phase or velocity and circulation/vorticity.",
+    "This is one of the strongest project mathematics cases because the deductions follow from an already recovered equation."
+  ]
 }
