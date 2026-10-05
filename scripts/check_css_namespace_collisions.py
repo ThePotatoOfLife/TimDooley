@@ -187,6 +187,21 @@ for css_path in sorted((ROOT / "app").glob("*.css")):
                 "consume the site-system token or introduce a module-scoped variable"
             )
 
+longform_path = ROOT / "app" / "longform-reader.css"
+longform_text = longform_path.read_text(encoding="utf-8", errors="ignore") if longform_path.exists() else ""
+if "style.css" in longform_text or "@import" in longform_text:
+    errors.append("app/longform-reader.css must consume site-system.css directly and must not import Explore/application CSS")
+
+politics_page = ROOT / "politics" / "index.html"
+politics_text = politics_page.read_text(encoding="utf-8", errors="ignore") if politics_page.exists() else ""
+if re.search(r"<style\b", politics_text, flags=re.I):
+    errors.append("politics/index.html must keep page styling in app/politics-page.css, not inline")
+for marker in ("app/site-system.css","app/longform-reader.css","app/politics-page.css","page page--wide politics-page","page-nav world-family","page-header longform-hero"):
+    if marker not in politics_text:
+        errors.append(f"politics/index.html missing shared-shell marker: {marker}")
+if 'class="top"' in politics_text:
+    errors.append("politics/index.html must not restore the legacy Explore top bar")
+
 reader_path = ROOT / "app" / "reader.css"
 reader_text = reader_path.read_text(encoding="utf-8", errors="ignore") if reader_path.exists() else ""
 if re.search(r"\.page-nav\s+a\s*\{", reader_text) or re.search(r"\.page\s+a\s*,", reader_text):
