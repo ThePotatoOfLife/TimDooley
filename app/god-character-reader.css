@@ -26,7 +26,7 @@
   min-width:0;
   padding:18px;
   border:1px solid var(--site-pane-line);
-  border-radius:13px;
+  border-radius:var(--site-radius);
   background:var(--site-pane-soft);
   box-shadow:0 8px 22px rgba(0,0,0,.10);
 }
