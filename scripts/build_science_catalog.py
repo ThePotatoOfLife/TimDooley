@@ -535,7 +535,8 @@ def render_paper_page(record: dict, data: dict) -> str:
 CORE_PAPER_SLUGS = (
     ("advanced-retarded-door-handshake-recovery", "Time symmetry · Door"),
     ("unified-potato-theory-2025-recovery", "Unification · field theory"),
-    ("eleven-dimensional-axis-door-dual-spiral-recovery", "Dimensions · Axis · spiral"),
+    ("eleven-dimensional-axis-door-dual-spiral-recovery", "Dimensions · Axis · dual spiral"),
+    ("april-21-2025-potato-axis-spiral-primary-recovery", "Primary equation · golden spiral"),
     ("door-handshake-nonlocal-propagation-model", "Networks · hybrid systems"),
     ("microtubule-tubulin-consciousness-recovery", "Biophysics · consciousness"),
 )
