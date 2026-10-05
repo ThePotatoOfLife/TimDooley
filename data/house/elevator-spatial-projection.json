@@ -1,6 +1,6 @@
 {
-  "version": "1.5.4",
-  "updated": "2026-10-04",
+  "version": "1.5.5",
+  "updated": "2026-10-05",
   "authority": "elevator-spatial-projection",
   "title": "Door / Axis Elevator — Three-Floor House Projection",
   "purpose": "Project the governed Potato House graph as a navigable three-floor orientation system (Heaven / Plane / Below) with one canonical floor per governed Dwelling. Existing HTML routes remain canonical public surfaces; this projection provides spatial wayfinding without duplicating a Room across floors.",
@@ -28,6 +28,13 @@
       "elevator_direction": "up",
       "description": "Integration, Garden, Crown, fruit, return and source-facing orientation.",
       "landmarks": [
+        {
+          "id": "garden",
+          "label": "Garden / Eden",
+          "route": "/garden/",
+          "show_in_header": true,
+          "header_label": "Garden"
+        },
         {
           "id": "north",
           "label": "North / Crown",
@@ -382,6 +389,11 @@
     "data/house/below-basin-spatial-contract.json"
   ],
   "route_contexts": [
+    {
+      "match": "/garden/",
+      "level_id": "heaven",
+      "room_id": "potatoverse-canon"
+    },
     {
       "match": "/traditions/vesica/",
       "level_id": "heaven",
