@@ -557,19 +557,29 @@ for selector in (
 if ".page-nav > a:hover" not in site_system_text or ".page-nav > a:focus-visible" not in site_system_text:
     errors.append("site-system.css missing canonical page-nav hover/focus interaction state")
 
-# Hall pages are floor-aware pages, not second page compositors. Their full-page
-# artwork must be supplied by the canonical body::before renderer only.
-for hall_css_name, hall_class in (
-    ("potatoes-hall.css", "potatoes-hall-page"),
-    ("dogs-hall.css", "dogs-hall-page"),
+# Hall pages are floor-aware pages, not second page compositors. The generic
+# body::before renderer lives in site-elevator.css; each Hall stylesheet owns
+# only the variables that select/crop/tint its artwork.
+if "--site-realm-art-render-size" not in elevator_text:
+    errors.append("site-elevator.css missing generic realm render-size hook for page-owned artwork")
+for hall_css_name, hall_class, hall_asset in (
+    ("potatoes-hall.css", "potatoes-hall-page", "hall-of-heroes.avif"),
+    ("dogs-hall.css", "dogs-hall-page", "hall-of-shame.avif"),
 ):
     hall_path = ROOT / "app" / hall_css_name
     hall_text = hall_path.read_text(encoding="utf-8", errors="ignore") if hall_path.exists() else ""
     if re.search(rf"body\.{re.escape(hall_class)}::after\s*\{{", hall_text):
         errors.append(f"{hall_css_name} reintroduced a duplicate fixed Hall page compositor")
-    renderer_marker = f"body.{hall_class}::before"
-    if renderer_marker not in elevator_text:
-        errors.append(f"site-elevator.css missing canonical Hall renderer override: {renderer_marker}")
+    if re.search(rf"body\.{re.escape(hall_class)}::before\s*\{{", hall_text):
+        errors.append(f"{hall_css_name} must not create its own full-page Hall compositor")
+    for marker in (
+        f'--site-realm-art:url("./{hall_asset}")',
+        "--site-realm-art-position:",
+        "--site-realm-art-render-size:cover",
+        "--site-realm-overlay:",
+    ):
+        if marker not in hall_text:
+            errors.append(f"{hall_css_name} missing Hall realm ownership marker: {marker}")
 
 if warnings:
     print("CSS namespace warnings:")
