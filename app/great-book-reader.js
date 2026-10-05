@@ -3,7 +3,7 @@ const $=s=>document.querySelector(s),doc=$('#gb-document'),toc=$('#gb-toc'),sear
 if(!doc||!toc)return;
 const loaderApi=globalThis.PotatoGreatBookLoader;
 if(!loaderApi?.createChapterLoader){(status||doc).textContent='Reader error: chapter loader unavailable';return}
-let manifest=null,activeCurrentId='';
+let manifest=null,activeCurrentId='',activeTocLink=null,tocLinksByHash=new Map();
 const esc=s=>String(s).replace(/[&<>\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const safeChapterToken=value=>String(value||'').replace(/\./g,'-');
 const safeChapterPath=path=>String(path||'').replace(/chapter-(\d+(?:\.\d+)+)/g,(_,number)=>`chapter-${safeChapterToken(number)}`);
@@ -33,7 +33,17 @@ function slotFor(entry,kind='chapter'){
 function renderToc(filter=''){
   if(!manifest)return;const q=filter.trim().toLowerCase(),entries=manifest.chapters.filter(c=>!q||c.number.toLowerCase().includes(q)||c.title.toLowerCase().includes(q)||(c.legacy_title||'').toLowerCase().includes(q));
   toc.innerHTML=`<a href="#front-matter">Front matter</a>`+entries.map(c=>`<a href="#chapter-${safeChapterToken(c.number)}"><strong>${esc(c.number)}</strong> ${esc(c.title)}${c.status==='index-only'?' <span class="gb-index-only-badge">index only</span>':''}</a>`).join('');
-  toc.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>loadSlot(document.getElementById(a.hash.slice(1))).catch(()=>{})));
+  tocLinksByHash=new Map();
+  toc.querySelectorAll('a').forEach(a=>{tocLinksByHash.set(a.hash,a);a.addEventListener('click',()=>loadSlot(document.getElementById(a.hash.slice(1))).catch(()=>{}))});
+  activeTocLink=tocLinksByHash.get('#'+activeCurrentId)||null;
+  if(activeTocLink)activeTocLink.setAttribute('aria-current','true');
+}
+function setCurrentLink(id){
+  const next=tocLinksByHash.get('#'+id)||null;
+  if(next===activeTocLink)return;
+  activeTocLink?.removeAttribute('aria-current');
+  next?.setAttribute('aria-current','true');
+  activeTocLink=next;
 }
 function publishCurrent(slot){
   if(!slot||slot.dataset.loaded!=='true')return;
@@ -41,7 +51,7 @@ function publishCurrent(slot){
 }
 function observe(){
   const lazy=new IntersectionObserver(xs=>xs.forEach(x=>{if(x.isIntersecting)loadSlot(x.target).catch(()=>{})}),{rootMargin:'2600px 0px'});
-  const active=new IntersectionObserver(xs=>xs.forEach(x=>{if(!x.isIntersecting)return;activeCurrentId=x.target.id;toc.querySelectorAll('a').forEach(a=>a.setAttribute('aria-current',String(a.hash==='#'+x.target.id)));publishCurrent(x.target)}),{rootMargin:'-20% 0px -70%'});
+  const active=new IntersectionObserver(xs=>xs.forEach(x=>{if(!x.isIntersecting)return;activeCurrentId=x.target.id;setCurrentLink(activeCurrentId);publishCurrent(x.target)}),{rootMargin:'-20% 0px -70%'});
   doc.querySelectorAll('.gb-slot').forEach(s=>{lazy.observe(s);active.observe(s)});
 }
 async function init(){
