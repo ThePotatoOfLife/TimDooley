@@ -162,7 +162,7 @@ for token in (
     if token not in journey_css and token not in journey_ui:
         errors.append(f"House journey compact-lane contract missing: {token}")
 
-if "@media(max-width:680px)" not in css or ".site-access-panel{bottom:52px;width:calc(100vw - 12px)" not in css:
+if "@media(max-width:680px)" not in css or ".site-access-panel{bottom:45px;width:calc(100vw - 10px)" not in css:
     errors.append("site-access narrow-screen panel contract missing")
 for token in (
     ".site-access-tts-console",
@@ -172,7 +172,7 @@ for token in (
 ):
     if token not in css:
         errors.append(f"site-access TTS console missing style marker: {token}")
-for token in ("data-site-access-listen","setTTSOpen","ttsDrawer.expand?.()","ttsDrawer.hideUI?.()"):
+for token in ("data-site-access-listen","setTTSOpen","ttsDrawer.open?.()","ttsDrawer.hideUI?.()"):
     if token not in js:
         errors.append(f"site-access TTS dock missing behavior marker: {token}")
 
