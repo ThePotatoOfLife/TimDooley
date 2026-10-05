@@ -24,6 +24,10 @@
 
 /* Potatoes Hall — Garden/ground lineage. Distinct from upper Angel Hall and Below Dogs. */
 body.potatoes-hall-page{
+  --site-realm-art:url("./hall-of-heroes.avif");
+  --site-realm-art-position:50% 42%;
+  --site-realm-art-render-size:cover;
+  --site-realm-overlay:linear-gradient(180deg,rgba(7,9,8,.18),rgba(7,9,8,.42) 52%,rgba(7,9,8,.62) 100%);
   --potato-soil:#332719;--potato-leaf:#6e7e50;--potato-sprout:#9fb671;--potato-skin:#b88755;
   background:
     radial-gradient(circle at 50% -8%,rgba(211,211,158,.15),transparent 28%),
