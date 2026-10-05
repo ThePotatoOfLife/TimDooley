@@ -107,18 +107,6 @@
     -8px 12px 20px rgba(0,0,0,.18);
   scrollbar-color:#936b2f rgba(82,48,19,.12);
 }
-.gb-book-stage .longform-toc::after{
-  content:"";
-  position:absolute;
-  right:-7px;
-  top:18px;
-  bottom:18px;
-  width:13px;
-  border-radius:50%;
-  background:linear-gradient(90deg,rgba(87,48,18,.35),rgba(255,240,194,.24),rgba(75,39,13,.32));
-  box-shadow:0 0 16px rgba(53,26,10,.28);
-  pointer-events:none;
-}
 .gb-book-stage .longform-toc summary{
   color:#785019;
   font-family:"Palatino Linotype","Book Antiqua",Palatino,Georgia,serif;
@@ -170,17 +158,6 @@
     inset -12px 0 22px rgba(91,52,16,.10),
     inset 0 0 0 1px rgba(255,250,224,.45),
     10px 12px 22px rgba(0,0,0,.19);
-}
-.gb-book-stage .gb-document::before{
-  content:"";
-  position:absolute;
-  left:0;
-  top:18px;
-  bottom:18px;
-  width:14px;
-  border-radius:50%;
-  background:linear-gradient(90deg,rgba(61,31,9,.32),rgba(255,238,189,.22),rgba(83,47,15,.10));
-  pointer-events:none;
 }
 .gb-book-stage .gb-document :is(h1,h2,h3,h4,strong){
   color:#4b2d18;
@@ -271,8 +248,6 @@
     border-radius:18px;
     padding:18px;
   }
-  .gb-book-stage .longform-toc::after,
-  .gb-book-stage .gb-document::before{display:none}
   .gb-book-stage .gb-document{
     min-height:0;
     border:1px solid #b2863d;
@@ -390,10 +365,6 @@
     inset -8px 0 18px rgba(91,52,16,.08),
     inset 0 0 0 1px rgba(255,250,224,.34),
     8px 10px 18px rgba(0,0,0,.16);
-}
-.gb-book-stage .longform-toc::after,
-.gb-book-stage .gb-document::before{
-  border-radius:0;
 }
 .gb-book-stage .longform-toc a{
   border-radius:2px;
