@@ -41,7 +41,7 @@
     radial-gradient(circle at 50% 12%,rgba(247,205,100,.25),transparent 26%),
     linear-gradient(180deg,#6f2324 0%,var(--gb-leather) 30%,var(--gb-leather-deep) 100%);
   box-shadow:
-    0 34px 80px rgba(0,0,0,.44),
+    0 24px 48px rgba(0,0,0,.38),
     0 0 0 5px #2d0b0c,
     0 0 0 7px rgba(213,167,73,.7),
     inset 0 1px rgba(255,235,169,.2),
@@ -56,8 +56,8 @@
   background:
     linear-gradient(180deg,rgba(35,13,10,.08),rgba(35,13,10,.28)),
     url("../assets/visuals/great-book-open-stage.webp") center / cover no-repeat;
-  opacity:.48;
-  filter:saturate(.9) contrast(1.05) brightness(.76);
+  opacity:.42;
+  background-blend-mode:multiply,normal;
   pointer-events:none;
 }
 .gb-book-stage::after{
@@ -99,7 +99,7 @@
     inset 16px 0 26px rgba(100,62,24,.10),
     inset -10px 0 18px rgba(99,59,18,.14),
     inset 0 0 0 1px rgba(255,250,223,.4),
-    -12px 14px 28px rgba(0,0,0,.22);
+    -8px 12px 20px rgba(0,0,0,.18);
   scrollbar-color:#936b2f rgba(82,48,19,.12);
 }
 .gb-book-stage .longform-toc::after{
@@ -164,7 +164,7 @@
     inset 16px 0 24px rgba(86,48,15,.13),
     inset -12px 0 22px rgba(91,52,16,.10),
     inset 0 0 0 1px rgba(255,250,224,.45),
-    16px 14px 30px rgba(0,0,0,.23);
+    10px 12px 22px rgba(0,0,0,.19);
 }
 .gb-book-stage .gb-document::before{
   content:"";
@@ -175,7 +175,6 @@
   width:14px;
   border-radius:50%;
   background:linear-gradient(90deg,rgba(61,31,9,.32),rgba(255,238,189,.22),rgba(83,47,15,.10));
-  filter:blur(.2px);
   pointer-events:none;
 }
 .gb-book-stage .gb-document :is(h1,h2,h3,h4,strong){
@@ -339,4 +338,13 @@
   .great-book-page .gb-toolbar::after{display:none}
   .gb-book-stage .longform-toc::before,
   .gb-book-stage .gb-document::after{display:none}
+}
+
+.gb-book-stage .gb-slot[data-loaded="true"]{
+  content-visibility:auto;
+  contain-intrinsic-size:760px;
+}
+.gb-book-stage .gb-slot[data-loaded="false"],
+.gb-book-stage .gb-slot[data-loaded="loading"]{
+  contain:layout paint;
 }
