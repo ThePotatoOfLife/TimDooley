@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 import re
 import sys
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 from audit_science_quality import audit_tree
@@ -147,8 +148,21 @@ def validate_science_svg_assets(errors: list[str]) -> None:
                 continue
             text = path.read_text(encoding="utf-8", errors="replace")
             compact = "".join(text.split())
-            if "<svg" not in text or "viewBox=" not in text:
+            try:
+                root = ET.fromstring(text)
+            except ET.ParseError as exc:
+                errors.append(f"{asset}: malformed SVG XML: {exc}")
+                continue
+            view_box = root.attrib.get("viewBox") or root.attrib.get("viewbox")
+            if not view_box:
                 errors.append(f"{asset}: SVG paper figure missing scalable viewBox")
+            else:
+                try:
+                    parts = [float(part) for part in view_box.replace(",", " ").split()]
+                    if len(parts) != 4 or parts[2] <= 0 or parts[3] <= 0:
+                        raise ValueError
+                except ValueError:
+                    errors.append(f"{asset}: invalid SVG viewBox {view_box!r}")
             if "<title" not in text or "</title>" not in text:
                 errors.append(f"{asset}: SVG paper figure missing <title>")
             if "<desc" not in text or "</desc>" not in text:
@@ -312,6 +326,8 @@ def main() -> int:
             errors.append("built Science Papers reader missing: _site/science/papers/index.html")
         else:
             reader_text = papers_reader.read_text(encoding="utf-8", errors="replace")
+            if "?v=missing" in reader_text:
+                errors.append("_site/science/papers/index.html: generated Science asset hash resolved to missing")
             require_markers(
                 reader_text,
                 (
@@ -346,6 +362,11 @@ def main() -> int:
             if not isinstance(papers, list) or not papers:
                 errors.append("science catalog missing public papers list")
             else:
+                valid_paper_slugs = {
+                    str(paper.get("slug"))
+                    for paper in papers
+                    if isinstance(paper, dict) and paper.get("slug")
+                }
                 for paper in papers:
                     if not isinstance(paper, dict):
                         errors.append("science catalog paper metadata must be an object")
@@ -361,6 +382,17 @@ def main() -> int:
                         paper_page = SITE / "science" / "papers" / str(slug) / "index.html"
                         if not paper_page.exists():
                             errors.append(f"generated Science document missing: science/papers/{slug}/index.html")
+                        else:
+                            paper_text = paper_page.read_text(encoding="utf-8", errors="replace")
+                            if "?v=missing" in paper_text:
+                                errors.append(f"science/papers/{slug}/index.html: generated Science asset hash resolved to missing")
+                            if "science-paper.css?v=" not in paper_text:
+                                errors.append(f"science/papers/{slug}/index.html: missing content-versioned paper stylesheet")
+                            for related_slug in re.findall(r'href="\.\./([^"/]+)/"', paper_text):
+                                if related_slug not in valid_paper_slugs:
+                                    errors.append(
+                                        f"science/papers/{slug}/index.html: related paper target does not exist: {related_slug}"
+                                    )
 
                 featured_slug = "advanced-retarded-door-handshake-recovery"
                 featured_page = SITE / "science" / "papers" / featured_slug / "index.html"
