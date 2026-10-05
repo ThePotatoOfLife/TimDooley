@@ -156,6 +156,13 @@ def main() -> int:
             "header-below.svg",
             "body:not(.home-body)::before",
             "--site-realm-art-size",
+            "--room-hardware-bright:",
+            "--room-hardware-dim:",
+            ".site-elevator-room-rail::before",
+            ".site-elevator-room-rail::after",
+            "outline:1px solid rgba(191,141,68,.18)",
+            "linear-gradient(135deg,#a87938 0 3px,transparent 3px) top left/10px 10px no-repeat",
+            "linear-gradient(135deg,#bc8540 0 4px,transparent 4px) top left/12px 12px no-repeat",
         )
         for token in css_tokens:
             if token not in css:
