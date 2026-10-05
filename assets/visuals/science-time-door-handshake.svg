@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-labelledby="title desc">
+<title id="title">Past and future conditioned states meet at a present Door</title>
+<desc id="desc">A schematic showing past-conditioned state flowing forward to the present Door and a future goal or boundary constraining the present from the right. The diagram explicitly states that goal conditioning does not require backward physical signalling.</desc>
+<style>
+text{font-family:system-ui,-apple-system,Segoe UI,sans-serif;fill:#e8e3d8}.muted{fill:#a6a49e}.gold{fill:#d8b56b}.line{stroke:#b7b3aa;stroke-width:3;fill:none}.dash{stroke:#77746d;stroke-width:2;stroke-dasharray:10 10;fill:none}.box{fill:#151514;stroke:#4e4a43;stroke-width:2}.door{fill:#1d1a15;stroke:#d8b56b;stroke-width:4}.small{font-size:22px}.body{font-size:27px}.head{font-size:38px;font-weight:650}
+</style>
+<rect width="1200" height="620" fill="#0b0b0b"/>
+<text x="600" y="65" text-anchor="middle" class="head">Two-boundary Door model</text>
+<text x="600" y="105" text-anchor="middle" class="muted small">A mathematical architecture first; physical retrocausality is a separate hypothesis.</text>
+<rect x="70" y="205" width="290" height="160" rx="12" class="box"/>
+<text x="215" y="255" text-anchor="middle" class="gold body">Past-conditioned state</text>
+<text x="215" y="298" text-anchor="middle" class="small">memory · prior · initial data</text>
+<text x="215" y="332" text-anchor="middle" class="muted small">x₋(t)</text>
+<rect x="470" y="170" width="260" height="230" rx="18" class="door"/>
+<text x="600" y="245" text-anchor="middle" class="gold head">DOOR</text>
+<text x="600" y="292" text-anchor="middle" class="body">present integration</text>
+<text x="600" y="334" text-anchor="middle" class="muted small">Hₜ(x₋, x₊) → xpresent</text>
+<rect x="840" y="205" width="290" height="160" rx="12" class="box"/>
+<text x="985" y="255" text-anchor="middle" class="gold body">Future / goal condition</text>
+<text x="985" y="298" text-anchor="middle" class="small">target · terminal cost · later data</text>
+<text x="985" y="332" text-anchor="middle" class="muted small">x₊(t)</text>
+<path d="M360 285 H458" class="line"/><path d="M445 274 l18 11 -18 11" fill="none" stroke="#b7b3aa" stroke-width="3"/>
+<path d="M840 285 H742" class="dash"/><path d="M755 274 l-18 11 18 11" fill="none" stroke="#77746d" stroke-width="2"/>
+<text x="410" y="260" text-anchor="middle" class="muted small">forward propagation</text>
+<text x="790" y="260" text-anchor="middle" class="muted small">conditioning / constraint</text>
+<path d="M600 402 V485" class="line"/><path d="M589 470 l11 18 11-18" fill="none" stroke="#b7b3aa" stroke-width="3"/>
+<text x="600" y="535" text-anchor="middle" class="body">Present action or estimate</text>
+<text x="600" y="570" text-anchor="middle" class="muted small">This structure appears in smoothing and optimal control without messages travelling into the past.</text>
+</svg>
