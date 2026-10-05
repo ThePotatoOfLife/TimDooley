@@ -129,6 +129,21 @@ def main() -> int:
                 label = html.unescape(re.sub(r"<[^>]+>", "", anchor.group("label"))).lstrip("←").strip()
                 if label in REDUNDANT_PAGE_NAV_LABELS:
                     errors.append(f"page-nav {page_nav_index} of {rel} leaked redundant architecture label {label!r}")
+            current_count = sum(
+                1 for anchor in anchors
+                if re.search(r'''\baria-current=["']page["']''', anchor.group("attrs"), flags=re.I)
+            )
+            if current_count > 1:
+                errors.append(
+                    f"page-nav {page_nav_index} of {rel} marks {current_count} links current; "
+                    "only the most-specific destination may use aria-current=page"
+                )
+            if rel.as_posix() == "explore/index.html":
+                for anchor in anchors:
+                    if anchor.group("href").startswith("../"):
+                        errors.append(
+                            "Explore page-nav must respect <base href=\"../\"> and use base-rooted relative links"
+                        )
             room_link_count = len(PAGE_NAV_ROOM_CLASS.findall(nav))
             if room_link_count > 8:
                 errors.append(
