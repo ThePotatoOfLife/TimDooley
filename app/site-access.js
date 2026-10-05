@@ -245,10 +245,11 @@
     const speech=ttsDrawer.engine?.state||ttsDrawer.element?.dataset?.speech||'idle';
     const active=speech==='speaking'||speech==='paused';
     listenBtn.hidden=false;
-    listenBtn.textContent=speech==='speaking'?'Listening':speech==='paused'?'Paused':'Listen';
+    listenBtn.textContent='Listen';
     listenBtn.dataset.readerState=speech;
     listenBtn.setAttribute('aria-pressed',String(active));
-    listenBtn.title=speech==='speaking'?'Reader is active · open controls':speech==='paused'?'Reader is paused · open controls':'Open read-aloud controls';
+    listenBtn.setAttribute('aria-label',speech==='speaking'?'Reader is speaking. Open read-aloud controls':speech==='paused'?'Reader is paused. Open read-aloud controls':'Open read-aloud controls');
+    listenBtn.title=speech==='speaking'?'Reader is speaking · open controls':speech==='paused'?'Reader is paused · open controls':'Open read-aloud controls';
     if(ttsConsole)ttsConsole.dataset.readerState=speech;
   };
   const attachTTS=detail=>{
