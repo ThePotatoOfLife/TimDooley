@@ -1,0 +1,167 @@
+/* Discovery readers: Questions and A–Z.
+   Shared page shell stays in site-system.css. This file owns discovery-card
+   patterns plus page-specific question and disambiguation structures. */
+
+.discovery-page .lede{
+  font:400 clamp(20px,2.6vw,30px)/1.55 var(--site-font-serif);
+}
+.discovery-page .grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(225px,1fr));
+  gap:10px;
+}
+.discovery-page .card{
+  border:1px solid var(--site-line);
+  padding:15px;
+  color:inherit;
+}
+.discovery-page .card strong{
+  display:block;
+  color:var(--site-gold);
+  font:400 20px var(--site-font-serif);
+}
+.discovery-page .card span{
+  display:block;
+  margin-top:4px;
+  color:var(--site-muted);
+  font-size:10px;
+  line-height:1.55;
+}
+.discovery-page .card[href]{
+  display:block;
+  text-decoration:none;
+}
+.discovery-page .card[href]:hover,
+.discovery-page .card[href]:focus-visible{
+  border-color:var(--site-gold);
+}
+
+/* Questions */
+.questions-page{max-width:980px}
+.questions-page p,
+.questions-page li{line-height:1.72}
+.questions-page .grid{
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:11px;
+}
+.questions-page .card{padding:16px}
+.questions-page .card strong{font-size:21px}
+.questions-page .card span{margin-top:5px;font-size:11px}
+.questions-page .intent-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:8px;
+  margin:16px 0 0;
+}
+.questions-page .answer-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+  margin:18px 0;
+}
+.questions-page .answer-card{
+  padding:15px;
+  border:1px solid var(--site-line);
+  border-radius:10px;
+  background:var(--site-panel);
+}
+.questions-page .answer-card h3{
+  margin:0 0 7px;
+  color:var(--site-gold);
+  font:400 19px/1.3 var(--site-font-serif);
+}
+.questions-page .answer-card p{margin:0 0 8px;color:#cbd1c8}
+.questions-page .answer-card a{color:var(--site-gold);font-size:10px}
+.questions-page .open-question-list{
+  display:grid;
+  gap:8px;
+  margin-top:14px;
+}
+.questions-page .open-question,
+.questions-page .intent{
+  border-left:2px solid #60715b;
+}
+.questions-page .open-question{padding:10px 13px}
+.questions-page .open-question b,
+.questions-page .open-question span,
+.questions-page .intent b,
+.questions-page .intent span,
+.questions-page .intent em{display:block}
+.questions-page .open-question span{
+  margin-top:3px;
+  color:var(--site-muted);
+  font-size:11px;
+  line-height:1.45;
+}
+.questions-page .intent{
+  padding:12px 13px;
+  background:var(--site-panel);
+  color:inherit;
+  text-decoration:none;
+}
+.questions-page .intent b{
+  color:#e5e0cf;
+  font:400 17px/1.3 var(--site-font-serif);
+}
+.questions-page .intent span{
+  margin-top:4px;
+  color:var(--site-muted);
+  font-size:10px;
+  line-height:1.45;
+}
+.questions-page .intent em{
+  margin-top:6px;
+  color:var(--site-gold);
+  font-size:9px;
+  font-style:normal;
+  letter-spacing:.07em;
+  text-transform:uppercase;
+}
+
+/* A–Z */
+.az-page{max-width:1000px}
+.az-page p{line-height:1.7}
+.az-page .letters{
+  display:flex;
+  gap:7px;
+  flex-wrap:wrap;
+  margin:20px 0;
+}
+.az-page .letters a{
+  border:1px solid var(--site-line);
+  padding:6px 9px;
+  text-decoration:none;
+}
+.az-page .disambig{
+  margin:30px 0;
+  padding:25px 0;
+  border-top:1px solid var(--site-line);
+  border-bottom:1px solid var(--site-line);
+}
+.az-page .disambig-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:9px;
+}
+.az-page .disambig-card{
+  border:1px solid var(--site-line);
+  padding:13px;
+}
+.az-page .disambig-card b{
+  display:block;
+  color:var(--site-gold);
+  font:400 18px var(--site-font-serif);
+}
+.az-page .disambig-card span{
+  display:block;
+  margin-top:4px;
+  color:var(--site-muted);
+  font-size:11px;
+  line-height:1.45;
+}
+.az-page .disambig-card a{color:var(--site-gold);font-size:10px}
+
+@media(max-width:760px){
+  .questions-page .answer-grid,
+  .az-page .disambig-grid{grid-template-columns:1fr}
+}
