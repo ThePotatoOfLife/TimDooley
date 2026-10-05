@@ -45,7 +45,7 @@
 }
 .world-domain-page :is(.law-reader,.econ-reader)>.lead{
   max-width:860px;
-  color:#cbd1c8;
+  color:var(--site-copy);
   font:400 20px/1.55 var(--site-font-serif);
 }
 .world-domain-page :is(.legal-flow,.econ-flow){
@@ -80,7 +80,7 @@
   font:400 22px/1.12 var(--site-font-serif);
 }
 .world-domain-page :is(.law-case,.econ-case) .q{color:var(--site-gold);font-size:var(--site-text-caption)}
-.world-domain-page :is(.law-case,.econ-case) p{margin:0 0 8px;color:#cbd1c8}
+.world-domain-page :is(.law-case,.econ-case) p{margin:0 0 8px;color:var(--site-copy)}
 .world-domain-page :is(.law-case,.econ-case) a{color:var(--site-gold);font-size:var(--site-text-caption)}
 .world-domain-page :is(.law-checks,.econ-checks){
   display:grid;
