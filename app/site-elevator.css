@@ -955,7 +955,7 @@ html[data-site-floor] body.home-body::before{content:none;display:none}
   }
   .site-elevator-floor-label{
     color:#fff4de;
-    font:600 22px/1 Georgia,"Times New Roman",serif;
+    font:600 22px/1 var(--site-font-serif);
     letter-spacing:.065em;
     text-shadow:0 2px 0 #050505,0 0 10px rgba(224,183,94,.18);
   }
@@ -1077,7 +1077,7 @@ html[data-site-floor] body.home-body::before{content:none;display:none}
       inset 0 3px 0 rgba(255,234,184,.045),
       inset 0 -3px 0 rgba(0,0,0,.30),
       0 2px 5px rgba(0,0,0,.42);
-    font:600 14px/1.08 Georgia,"Times New Roman",serif;
+    font:600 14px/1.08 var(--site-font-serif);
     letter-spacing:.01em;
     text-shadow:0 2px 2px #000;
   }
