@@ -671,7 +671,7 @@ body.dogs-hall-page{
   image-rendering:auto;
   background:
     linear-gradient(180deg,rgba(4,6,5,.00),rgba(4,6,5,.08) 66%,rgba(4,6,5,.30) 100%),
-    url("./hall-of-shame.avif") 50% 50%/cover no-repeat;
+    var(--site-realm-art) 50% 50%/cover no-repeat;
   box-shadow:0 18px 50px rgba(0,0,0,.28);
 }
 .dogs-hall-page .hall-scene::after{
