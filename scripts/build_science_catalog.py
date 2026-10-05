@@ -428,7 +428,7 @@ PREFERRED_SECTION_KEYS = (
 )
 PAPER_METADATA_KEYS = {
     "id", "title", "name", "version", "updated", "date", "first_known_date", "status", "maturity",
-    "abstract", "document_type", "paper_subtitle",
+    "abstract", "document_type", "paper_subtitle", "subtitle", "authors", "author", "discipline", "keywords",
 }
 
 
@@ -502,8 +502,27 @@ def render_paper_page(record: dict, data: dict) -> str:
     meta = " · ".join(str(bit) for bit in status_bits if bit)
     status = str(record.get("status") or "").strip()
     status_html = f'<p class="paper-status"><strong>Status:</strong> {esc(status)}</p>' if status else ""
-    subtitle = str(data.get("paper_subtitle") or "").strip()
+    subtitle = str(data.get("paper_subtitle") or data.get("subtitle") or "").strip()
     subtitle_html = f'<p class="paper-subtitle">{esc(subtitle)}</p>' if subtitle else ""
+    author_value = data.get("authors") or data.get("author") or []
+    if isinstance(author_value, str):
+        authors = [author_value] if author_value.strip() else []
+    elif isinstance(author_value, list):
+        authors = [str(item).strip() for item in author_value if str(item).strip()]
+    else:
+        authors = []
+    authors_html = f'<p class="paper-authors">{" · ".join(esc(author) for author in authors)}</p>' if authors else ""
+    keyword_value = data.get("keywords") or []
+    if isinstance(keyword_value, str):
+        keywords = [keyword_value] if keyword_value.strip() else []
+    elif isinstance(keyword_value, list):
+        keywords = [str(item).strip() for item in keyword_value if str(item).strip()][:10]
+    else:
+        keywords = []
+    keywords_html = (
+        '<p class="paper-keywords"><strong>Keywords:</strong> ' + " · ".join(esc(keyword) for keyword in keywords) + '</p>'
+        if keywords else ""
+    )
     body = render_semantic_sections(data)
     source_path = "knowledge/science/" + relative_file
     return f'''<!doctype html>
@@ -522,9 +541,11 @@ def render_paper_page(record: dict, data: dict) -> str:
 <p class="paper-kicker">{esc(meta)}</p>
 <h1>{esc(record['title'])}</h1>
 {subtitle_html}
+{authors_html}
 <div class="paper-chips">{fields}</div>
 <h2 class="paper-abstract-label">Abstract</h2>
 <p class="paper-abstract">{esc(record['abstract'])}</p>
+{keywords_html}
 {status_html}
 </header>
 <article class="paper-content">{body}</article>
