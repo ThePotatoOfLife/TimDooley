@@ -94,10 +94,15 @@ def main() -> int:
             errors.append(f"Hall artwork suspiciously small: {path.relative_to(ROOT)} ({size} bytes)")
         if dims is None:
             errors.append(f"Hall artwork is not a valid AVIF with readable dimensions: {path.relative_to(ROOT)}")
-        elif dims[0] < 800 or dims[1] < 450:
+        elif path == SHAME_ART and (dims[0] < 1920 or dims[1] < 1080):
             errors.append(
-                f"Hall artwork below delivery resolution: {path.relative_to(ROOT)} "
-                f"({dims[0]}x{dims[1]}; require at least 800x450)"
+                f"Hall of Shame artwork below desktop delivery standard: "
+                f"{dims[0]}x{dims[1]}; require at least 1920x1080"
+            )
+        elif path == HERO_ART and (dims[0] < 1000 or dims[1] < 560):
+            errors.append(
+                f"Hall of Heroes artwork below current delivery floor: "
+                f"{dims[0]}x{dims[1]}; require at least 1000x560 until the HQ replacement lands"
             )
 
     if errors:
