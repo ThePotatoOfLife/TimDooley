@@ -501,9 +501,7 @@ html[data-site-floor] body.dogs-hall-page .page-header{
 }
 @media (prefers-reduced-motion: reduce){
   .dogs-hall-page .hall-door-strip a,
-  .dogs-hall-page .hall-door-grid a,
-  .dogs-hall-page .hero-plaque a,
-  .dogs-hall-page .table-seats a{transition:none}
+  .dogs-hall-page .hall-door-grid a{transition:none}
   .dogs-hall-page .hall-door-strip a:hover,
   .dogs-hall-page .hall-door-grid a:hover{transform:none}
 }
