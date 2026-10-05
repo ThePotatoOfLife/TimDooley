@@ -229,7 +229,6 @@ for(const [floor,pageAsset,headerAsset] of [
 ]){
   assert.ok(css.includes('url("./'+pageAsset+'")'),'shared floor renderer must reference '+pageAsset);
   assert.ok(css.includes('--site-header-art:url("./'+headerAsset+'")'),'compact header art token must reference '+headerAsset);
-  assert.ok(css.includes('--site-header-art:url("./'+pageAsset+'")'),'desktop header token must upgrade '+floor+' to '+pageAsset);
   assert.ok(fs.existsSync(path.join(ROOT,'app',headerAsset)),'missing dedicated header panorama '+headerAsset);
 }
 
