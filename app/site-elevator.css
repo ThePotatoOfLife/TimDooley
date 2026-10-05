@@ -1120,24 +1120,31 @@ html[data-site-floor] body.home-body::before{content:none;display:none}
   .site-elevator-room:last-child::after{display:none}
   .site-elevator-room:hover,
   .site-elevator-room:focus-visible{
+    --room-plate-top:rgba(48,43,30,.96);
+    --room-plate-bottom:rgba(14,13,10,.97);
     color:#fff5df;
     border-color:#c4964f;
-    background:linear-gradient(180deg,rgba(48,43,30,.95),rgba(14,13,10,.96));
     box-shadow:
       inset 0 0 0 1px #080706,
       inset 0 0 0 2px rgba(237,190,101,.24),
+      inset 0 3px 0 rgba(255,232,177,.06),
+      inset 0 -3px 0 rgba(0,0,0,.34),
       0 0 11px rgba(206,155,73,.24);
     transform:translateY(-1px);
   }
   .site-elevator-room.is-active{
+    --room-plate-top:color-mix(in srgb,var(--room-hardware-bright) 22%,#2b2115);
+    --room-plate-bottom:color-mix(in srgb,var(--room-hardware-dim) 20%,#100b07);
+    --room-hardware:color-mix(in srgb,var(--site-elevator-accent) 78%,#b47b36);
+    --room-hardware-bright:color-mix(in srgb,var(--site-elevator-accent) 72%,#ffe1a0);
     border-color:#d7a957;
     color:#fff7e8;
-    background:
-      linear-gradient(180deg,rgba(65,48,24,.96),rgba(20,14,8,.97));
     box-shadow:
       inset 0 0 0 1px #090705,
-      inset 0 3px 0 #e3b45b,
-      0 0 13px rgba(225,173,79,.25);
+      inset 0 0 0 2px color-mix(in srgb,var(--site-elevator-accent) 28%,transparent),
+      inset 0 3px 0 var(--room-hardware-bright),
+      inset 0 -3px 0 rgba(0,0,0,.38),
+      0 0 13px var(--site-elevator-glow);
   }
   .site-elevator-room.is-active::before{
     left:10px;
@@ -1231,7 +1238,6 @@ html[data-site-floor] body.home-body::before{content:none;display:none}
       padding:8px 12px 8px 8px;
     }
     .site-elevator-floor-emblem{height:58px}
-    .site-elevator-floor-emblem::before{font-size:31px}
     .site-elevator-floor-label{font-size:18px}
     .site-elevator-room-label{font-size:7.5px}
     .site-elevator-room-rail{padding:49px 9px 7px}
