@@ -30,6 +30,10 @@ MIGRATED_LOCAL_STYLE_SOURCES = [
     ROOT / "science" / "science-library.css",
     ROOT / "world" / "index.html",
 ]
+PILLAR_READER_PAGES = [
+    ROOT / name / "index.html"
+    for name in ("history", "life-body", "world-systems", "context")
+]
 TRADITION_READER_PAGES = [
     ROOT / "traditions" / name / "index.html"
     for name in (
@@ -148,6 +152,34 @@ for path in html_files:
             f"{path.relative_to(ROOT)} loads app/style.css; archive application CSS is owned only by explore/index.html"
         )
 
+
+
+# Top-level pillar readers share cards, chains and pane rhythm through one scoped
+# stylesheet; specialized components remain namespaced beneath .pillar-reader.
+pillar_css = ROOT / "app" / "pillar-reader.css"
+if not pillar_css.exists():
+    errors.append("app/pillar-reader.css is missing")
+else:
+    pillar_text = pillar_css.read_text(encoding="utf-8", errors="ignore")
+    for marker in (
+        ".pillar-reader :is(.grid,.cards)",
+        ".pillar-reader .card",
+        ".pillar-reader .boundary",
+        ".pillar-reader .explorer-shell",
+        ".pillar-reader .systems-reader",
+        ".pillar-reader .context-purpose",
+    ):
+        if marker not in pillar_text:
+            errors.append(f"pillar-reader.css missing shared family marker: {marker}")
+
+for page in PILLAR_READER_PAGES:
+    text = page.read_text(encoding="utf-8", errors="ignore") if page.exists() else ""
+    if "pillar-reader.css" not in text:
+        errors.append(f"{page.relative_to(ROOT)} missing shared pillar-reader.css")
+    if "pillar-reader" not in text:
+        errors.append(f"{page.relative_to(ROOT)} missing pillar-reader scope class")
+    if re.search(r"<style\b", text, flags=re.I):
+        errors.append(f"{page.relative_to(ROOT)} drifted back to inline structural CSS")
 
 # Shared tradition-reader family: these pages intentionally share one component
 # stylesheet and must not drift back into copied inline layout CSS.
