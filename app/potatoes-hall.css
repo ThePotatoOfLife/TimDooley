@@ -228,7 +228,7 @@ body.potatoes-hall-page{
     linear-gradient(180deg,rgba(248,213,105,.12),rgba(10,19,15,.92)),
     repeating-linear-gradient(0deg,transparent 0 3px,var(--hero-screen-line) 3px 4px);
   box-shadow:0 0 0 3px rgba(77,94,52,.35),0 0 34px rgba(229,198,91,.12),inset 0 0 26px rgba(0,0,0,.45);
-  font-family:ui-monospace,SFMono-Regular,Consolas,monospace;
+  font-family:var(--site-font-mono);
 }
 .potatoes-hall-page .arcade-marquee:before{
   content:"1UP  ·  HALL OF HEROES  ·  INSERT CURIOSITY";
