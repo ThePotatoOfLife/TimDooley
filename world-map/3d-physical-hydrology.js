@@ -95,7 +95,7 @@ function ensureStatus() {
     status = document.createElement('div');
     status.id = STATUS_ID;
     status.hidden = true;
-    status.style.cssText = 'background:#080b0be8;border:1px solid #344343;border-radius:999px;padding:5px 9px;color:#b9dce8;font:700 9px/1.2 system-ui;letter-spacing:.04em;backdrop-filter:blur(8px)';
+    status.style.cssText = 'background:#080b0be8;border:1px solid #344343;border-radius:999px;padding:5px 9px;color:#b9dce8;font:700 9px/1.2 system-ui;letter-spacing:.04em;';
     document.querySelector('.mapwrap')?.appendChild(status);
   }
   const layout = window.__potatoAtlasUILayout;
