@@ -468,6 +468,10 @@ UNIVERSAL_TTS_QUIET_PREFIXES = (
 
 def _relative_asset_prefix(page: Path) -> str:
     rel = page.relative_to(OUT)
+    # Explore is the one live page with <base href="../">. Its authored and
+    # injected relative URLs therefore resolve from the site root already.
+    if rel.as_posix() == "explore/index.html":
+        return ""
     depth = max(0, len(rel.parts) - 1)
     return "../" * depth
 
