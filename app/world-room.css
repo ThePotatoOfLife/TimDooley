@@ -23,7 +23,7 @@
 }
 .world-room :is(.distinction,.atlas-card,.legal-grid article,.gov-grid article,.mode-grid article){
   border:1px solid var(--site-pane-line);
-  border-radius:10px;
+  border-radius:var(--site-radius-sm);
   padding:14px;
   background:var(--site-pane-soft);
 }
@@ -48,10 +48,10 @@
 }
 .world-room :is(.flowline,.legal-chain,.policy-chain) span{
   border:1px solid var(--site-line);
-  border-radius:999px;
+  border-radius:var(--site-radius-pill);
   padding:6px 9px;
   color:var(--site-muted);
-  font-size:10px;
+  font-size:var(--site-text-xs);
 }
 .world-room :is(.flowline,.legal-chain,.policy-chain) i{
   color:var(--site-gold);
@@ -82,7 +82,7 @@
   flex-wrap:wrap;
   gap:13px;
   margin:10px 0 24px;
-  font-size:11px;
+  font-size:var(--site-text-caption);
 }
 .world-room .question-list{
   display:grid;
@@ -99,7 +99,7 @@
   padding-left:12px;
   border-left:2px solid var(--site-line);
   color:var(--site-muted);
-  font-size:11px;
+  font-size:var(--site-text-caption);
 }
 
 @media(max-width:720px){
