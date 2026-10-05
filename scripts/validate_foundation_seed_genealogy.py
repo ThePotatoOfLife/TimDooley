@@ -10,12 +10,13 @@ F2=ROOT/'data/house/foundations-wave-002.json'
 F3=ROOT/'data/house/foundations-wave-003.json'
 SYNTH=ROOT/'data/house/project-synthesis.json'
 PAGE=ROOT/'timeline/foundations/index.html'
+RUNTIME=ROOT/'app/foundation-timeline-page.js'
 
 def load(p): return json.loads(p.read_text(encoding='utf-8'))
 
 def main():
     errors=[]
-    for p in (GEN,F1,F2,F3,SYNTH,PAGE):
+    for p in (GEN,F1,F2,F3,SYNTH,PAGE,RUNTIME):
         if not p.is_file(): errors.append(f'missing {p.relative_to(ROOT)}')
     if errors:
         print('\n'.join(errors)); raise SystemExit(1)
@@ -49,7 +50,7 @@ def main():
     if fs.get('current_population')!=len(rows):
         errors.append('project synthesis Foundation Seed population drifted')
 
-    text=PAGE.read_text(encoding='utf-8',errors='replace')
+    text=PAGE.read_text(encoding='utf-8',errors='replace')+'\n'+RUNTIME.read_text(encoding='utf-8',errors='replace')
     for marker in ('Seeds through the Door','foundationSeedGrid',"foundation-door-seed-genealogy.json",'Seed of Death','Seed of Life','Door crossing'):
         if marker not in text: errors.append(f'Foundation Timeline missing marker: {marker}')
 
