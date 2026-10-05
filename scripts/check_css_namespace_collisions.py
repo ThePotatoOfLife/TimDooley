@@ -268,6 +268,22 @@ for selector, props in RISKY_GLOBAL.items():
     if matches:
         errors.append(f"app/style.css still defines retired generic archive selector {selector}; use archive-* classes")
 
+retired_live_assets = (
+    "timeline-enhancements.css",
+    "law-page.css",
+)
+live_text_paths = [
+    *ROOT.glob("app/*.js"),
+    *ROOT.glob("app/*.css"),
+    *ROOT.glob("scripts/*.py"),
+    *ROOT.glob("scripts/*.mjs"),
+]
+for path in live_text_paths:
+    text = path.read_text(encoding="utf-8", errors="ignore")
+    for retired in retired_live_assets:
+        if retired in text:
+            errors.append(f"{path.relative_to(ROOT)} still references retired live asset {retired}")
+
 html_files = [
     p for p in ROOT.rglob("*.html")
     if ".git" not in p.parts and "archive" not in p.parts and "docs" not in p.parts
