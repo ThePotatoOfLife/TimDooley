@@ -94,9 +94,14 @@
     '<a data-site-access-route="/" href="'+esc(href('/'))+'">Home</a>'+
     '<a class="site-access-news" data-site-access-route="/news/" href="'+esc(href('/news/'))+'">News</a>'+
     '<a data-site-access-route="/world-map/" href="'+esc(href('/world-map/'))+'">Map</a>'+
+    '<button type="button" data-site-access-listen aria-expanded="false" hidden>Listen</button>'+
     '<button type="button" data-site-access-find aria-expanded="false">Find</button>'+
     '<button type="button" data-site-access-menu aria-expanded="false">Places</button>'+
     '</nav>'+
+    '<section class="site-access-tts-console" data-site-access-tts hidden aria-label="Read aloud controls">'+
+      '<div class="site-access-tts-head"><div><small>Reader console</small><strong>Listen to this page</strong></div><button type="button" class="site-access-tts-close" aria-label="Hide reader controls">×</button></div>'+
+      '<div data-site-access-tts-mount></div>'+
+    '</section>'+
     '<section class="site-access-panel" data-site-access-panel hidden aria-label="Site menu">'+
       '<div class="site-access-head"><div><small>Quick access · you are in</small><strong>'+esc(pageTitle)+'</strong></div><button class="site-access-close" type="button" aria-label="Close quick access">×</button></div>'+
       '<form class="site-access-search" role="search"><input type="search" autocomplete="off" placeholder="Find Character Archive, CIA/FBI, Tim, debt, a Room…" aria-label="Find in the project"><button type="submit">Find</button></form>'+
@@ -120,7 +125,12 @@
   const content=wrapper.querySelector('[data-site-access-content]');
   const menuBtn=wrapper.querySelector('[data-site-access-menu]');
   const findBtn=wrapper.querySelector('[data-site-access-find]');
+  const listenBtn=wrapper.querySelector('[data-site-access-listen]');
+  const ttsConsole=wrapper.querySelector('[data-site-access-tts]');
+  const ttsMount=wrapper.querySelector('[data-site-access-tts-mount]');
+  const ttsCloseBtn=wrapper.querySelector('.site-access-tts-close');
   const closeBtn=wrapper.querySelector('.site-access-close');
+  let ttsDrawer=null;
   let returnFocus=menuBtn;
   wrapper.querySelectorAll('[data-site-access-route]').forEach(a=>{
     const r=a.getAttribute('data-site-access-route');
@@ -230,6 +240,31 @@
     content.className='site-access-results';
     content.innerHTML=rows.length?rows.map(e=>'<a class="site-access-result" href="'+esc(href(e.route))+'"><span><b>'+esc(e.label)+'</b><small>'+esc(e.note||'')+'</small>'+(e.context?'<small class="site-access-context">'+esc(e.context)+'</small>':'')+'</span><em>'+esc(e.kind||'result')+'</em></a>').join(''):'<div class="site-access-empty">No quick result. Try a broader word or open A–Z / Explore.</div>';
   };
+  const attachTTS=detail=>{
+    const drawer=detail?.drawer||root?.__potatoActiveTTSDrawer||window.__potatoActiveTTSDrawer;
+    const host=detail?.element||drawer?.element;
+    if(!drawer||!host||!ttsMount)return false;
+    ttsDrawer=drawer;
+    if(host.parentElement!==ttsMount)ttsMount.appendChild(host);
+    host.classList.add('ptts-docked');
+    listenBtn.hidden=false;
+    listenBtn.textContent=drawer.engine?.state==='speaking'?'Listening':'Listen';
+    return true;
+  };
+  const setTTSOpen=open=>{
+    if(!ttsDrawer&&window.__potatoActiveTTSDrawer)attachTTS({drawer:window.__potatoActiveTTSDrawer,element:window.__potatoActiveTTSDrawer.element});
+    if(!ttsDrawer)return false;
+    if(open&& !panel.hidden)setOpen(false);
+    ttsConsole.hidden=!open;
+    listenBtn.setAttribute('aria-expanded',String(open));
+    if(open)ttsDrawer.expand?.();
+    else ttsDrawer.hideUI?.();
+    publishClearance();
+    return true;
+  };
+  document.addEventListener('potato:tts-mounted',event=>attachTTS(event.detail||{}));
+  if(window.__potatoActiveTTSDrawer)attachTTS({drawer:window.__potatoActiveTTSDrawer,element:window.__potatoActiveTTSDrawer.element});
+
   const setOpen=(open,focusSearch=false,trigger=null)=>{
     if(open&&trigger)returnFocus=trigger;
     panel.hidden=!open;
@@ -237,10 +272,15 @@
     findBtn.setAttribute('aria-expanded',String(open));
     if(open){if(!input.value)void renderDefault();if(focusSearch)setTimeout(()=>input.focus(),0)}
   };
-  menuBtn.addEventListener('click',()=>setOpen(panel.hidden,false,menuBtn));
-  findBtn.addEventListener('click',()=>setOpen(true,true,findBtn));
+  menuBtn.addEventListener('click',()=>{if(!ttsConsole.hidden)setTTSOpen(false);setOpen(panel.hidden,false,menuBtn)});
+  findBtn.addEventListener('click',()=>{if(!ttsConsole.hidden)setTTSOpen(false);setOpen(true,true,findBtn)});
+  listenBtn.addEventListener('click',()=>{setOpen(false);setTTSOpen(ttsConsole.hidden)});
+  ttsCloseBtn.addEventListener('click',()=>{setTTSOpen(false);listenBtn.focus()});
   closeBtn.addEventListener('click',()=>{setOpen(false);returnFocus?.focus?.()});
   input.addEventListener('input',renderSearch);
+  document.addEventListener('keydown',event=>{
+    if(event.key==='Escape'&&!ttsConsole.hidden){setTTSOpen(false);listenBtn.focus()}
+  });
   const resultLinks=()=>[...content.querySelectorAll('.site-access-result')];
   const focusResult=(index)=>{
     const rows=resultLinks();if(!rows.length)return false;
