@@ -248,7 +248,7 @@ assert.ok(css.includes('border-radius:0'),'terminal Room tiles should not drift 
 assert.ok(css.includes('background:var(--site-elevator-accent)'),'active Room tile needs a compact location beacon');
 for(const floor of ['heaven','plane','below']){
   assert.ok(css.includes('.site-elevator[data-elevator-level="'+floor+'"]{'),'elevator must expose a '+floor+' accent token');
-  assert.equal(css.includes('.site-elevator[data-elevator-level="'+floor+'"] .site-elevator-room{'),false,'Room tiles must use one neutral material skin across floors');
+  assert.ok(css.includes('.site-elevator[data-elevator-level="'+floor+'"] .site-elevator-room{'),'illustrated desktop Rooms may carry '+floor+'-specific presentation while sharing the same outer header shell');
 }
 assert.equal(css.includes('backdrop-filter:blur(8px)'),false,'elevator must not spend GPU work on floor-specific blur skins');
 assert.equal(css.includes('backdrop-filter:blur(9px)'),false,'elevator reel must not use a separate Heaven blur skin');
@@ -259,7 +259,7 @@ assert.equal(source.includes('is-secondary'),false,'runtime must not emit cross-
 assert.match(
   css,
   /\.site-elevator-room\{[\s\S]*?background:rgba\(6,9,11,[^)]+\)/,
-  'Room tiles need one shared neutral readability surface over every realm'
+  'Room tiles need a shared neutral readability base beneath realm-specific illustrated presentation'
 );
 assert.ok(css.includes('background:var(--site-elevator-panel)'),'floor board must use the shared terminal panel token');
 assert.ok(css.includes('@media (prefers-contrast: more)'),'terminal UI needs one generic high-contrast mode');
