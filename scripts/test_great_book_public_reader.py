@@ -59,6 +59,7 @@ class GreatBookPublicReaderTests(unittest.TestCase):
         self.assertIn('data-tts-longform', html)
         self.assertIn('data-tts-root="#gb-document"', html)
         self.assertIn('data-tts-item=".gb-slot[data-loaded=\'true\']"', html)
+        self.assertIn('data-tts-default="current"', html)
         self.assertIn('src="../app/tts-reader.js"', html)
         self.assertIn('src="../app/tts-drawer.js"', html)
         self.assertIn('src="../app/longform-tts-adapter.js"', html)
