@@ -334,6 +334,13 @@ def record_from(path: Path) -> tuple[dict, dict]:
             and isinstance(data.get("paper_figures")[0], dict)
             else ""
         ),
+        "figure_alt": (
+            str(data.get("paper_figures")[0].get("alt") or "")
+            if isinstance(data.get("paper_figures"), list)
+            and data.get("paper_figures")
+            and isinstance(data.get("paper_figures")[0], dict)
+            else ""
+        ),
     }
     record["qualifies"] = qualifies_for_library(path, data, record)
     return record, data
@@ -654,7 +661,7 @@ def render_papers_reader(records: list[dict]) -> str:
             f'<h3>{esc(record["title"])}</h3>'
             f'<p>{esc(record["abstract"])}</p>'
             + (
-                f'<figure class="core-paper-figure"><img src="../../{esc(record.get("figure"))}" alt="" loading="lazy" decoding="async"></figure>'
+                f'<figure class="core-paper-figure"><img src="../../{esc(record.get("figure"))}" alt="{esc(record.get("figure_alt") or record["title"])}" loading="lazy" decoding="async"></figure>'
                 if record.get("figure") else ""
             )
             + f'<a href="./{esc(slug)}/">Open paper →</a>'
@@ -666,7 +673,7 @@ def render_papers_reader(records: list[dict]) -> str:
     orientation_html = ""
     if orientation:
         figure_html = (
-            f'<figure class="papers-orientation-figure"><img src="../../{esc(orientation.get("figure"))}" alt="" loading="eager" decoding="async"></figure>'
+            f'<figure class="papers-orientation-figure"><img src="../../{esc(orientation.get("figure"))}" alt="{esc(orientation.get("figure_alt") or orientation["title"])}" loading="eager" decoding="async"></figure>'
             if orientation.get("figure") else ""
         )
         orientation_html = (
@@ -703,7 +710,9 @@ def render_papers_reader(records: list[dict]) -> str:
             kind = record.get("document_type") or "Science document"
             entries.append(
                 '<article class="paper-entry">'
-                f'<div class="paper-entry-meta">{esc(kind)}<br>{esc(fields)}</div>'
+                f'<div class="paper-entry-meta">{esc(kind)}<br>{esc(fields)}'
+                + ('<span class="paper-entry-figure-mark">Figure</span>' if record.get("figure") else '')
+                + '</div>'
                 '<div>'
                 f'<h3>{esc(record["title"])}</h3>'
                 f'<p>{esc(record["abstract"])}</p>'
