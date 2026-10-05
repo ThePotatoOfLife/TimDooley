@@ -425,9 +425,44 @@ PAPER_METADATA_KEYS = {
 }
 
 
+def render_paper_figures(value) -> str:
+    """Render optional authored figure metadata without making figures canonical science claims."""
+    if not isinstance(value, list):
+        return ""
+    figures = []
+    for index, item in enumerate(value, 1):
+        if not isinstance(item, dict):
+            continue
+        asset = str(item.get("asset") or "").strip().lstrip("/")
+        if not asset:
+            continue
+        alt = str(item.get("alt") or item.get("title") or "Science figure").strip()
+        title = str(item.get("title") or f"Figure {index}").strip()
+        caption = str(item.get("caption") or "").strip()
+        source = str(item.get("source_note") or "").strip()
+        figures.append(
+            '<figure class="paper-figure">'
+            f'<img src="../../../{esc(asset)}" alt="{esc(alt)}" loading="lazy" decoding="async">'
+            '<figcaption>'
+            f'<strong>{esc(title)}</strong>'
+            f'{f"<span>{esc(caption)}</span>" if caption else ""}'
+            f'{f"<small>{esc(source)}</small>" if source else ""}'
+            '</figcaption>'
+            '</figure>'
+        )
+    if not figures:
+        return ""
+    return '<section class="paper-section paper-figures"><h2>Figures</h2>' + "".join(figures) + '</section>'
+
+
 def render_semantic_sections(data: dict) -> str:
     rendered: list[str] = []
     used: set[str] = set(PAPER_METADATA_KEYS)
+    if data.get("paper_figures"):
+        figure_html = render_paper_figures(data.get("paper_figures"))
+        if figure_html:
+            rendered.append(figure_html)
+        used.add("paper_figures")
     for key in PREFERRED_SECTION_KEYS:
         if key in data and key not in used:
             value = data[key]
