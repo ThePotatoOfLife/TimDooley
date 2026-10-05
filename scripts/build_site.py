@@ -69,6 +69,7 @@ SHARED_ASSETS = (
     "app/longform-reader.css",
     "app/politics-page.css",
     "app/science-page.css",
+    "app/story-page.css",
     "app/potatoism-page.css",
     "app/north-page.css",
     "app/lower-layer.css",
