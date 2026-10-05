@@ -1,7 +1,7 @@
 {
   "id": "spudlight-plant-carbon-storage-benchmark",
   "title": "Spudlight / Starchforce — Plant Carbon Storage Benchmark",
-  "updated": "2026-09-14",
+  "updated": "2026-10-05",
   "status": "archive-generated biological benchmark instantiating the existing storage/release model; not a new force",
   "document_type": "Theory / Paper",
   "maturity": "T2 mathematical toy model",
@@ -99,5 +99,21 @@
     "integrated-scientific-architecture",
     "science-model-registry",
     "model-testing-protocol"
+  ],
+  "paper_subtitle": "A measurable plant-carbon stock-flow benchmark for Spudlight/Starchforce language, treating storage and release as ordinary physiology rather than a new force.",
+  "paper_figures": [
+    {
+      "title": "Figure 1 · Plant carbon storage and release",
+      "asset": "assets/visuals/science-spudlight-stock-flow.svg",
+      "alt": "A stock-flow diagram with input flux entering a measurable starch or carbon pool and linear or saturating mobilization leaving it.",
+      "caption": "The scientifically usable descendant is a stock-flow model. The question is whether measured storage and release are predicted better than persistence and simpler physiological baselines.",
+      "source_note": "Archive-generated biological benchmark; project vocabulary is retained without treating it as a fundamental force."
+    }
+  ],
+  "reader_takeaway": [
+    "Spudlight/Starchforce can be tested scientifically when translated into measurable storage and release variables.",
+    "The minimal model is ordinary stock-flow physiology: input raises a carbon or starch pool and mobilization/turnover lowers it.",
+    "A saturating release law only earns its extra parameters if it improves held-out prediction.",
+    "A successful fit would support the storage-release model for that biological system, not establish a new fundamental force."
   ]
 }
