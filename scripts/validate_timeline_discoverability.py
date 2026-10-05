@@ -15,6 +15,7 @@ def read(rel):
 
 home=read("index.html")
 timeline=read("timeline/index.html")
+timeline_css=read("app/timeline-page.css")
 
 if 'href="timeline/">Timeline</a>' not in home:
     errors.append('Home main navigation must expose literal "Timeline" label')
@@ -41,7 +42,7 @@ event_count=len(re.findall(r'class="static-event(?:\s+hinge)?"',timeline))
 if event_count < 25:
     errors.append(f"Timeline static chronology unexpectedly thin: {event_count} events")
 
-if 'class="static-events"' not in timeline or '.static-events:before' not in timeline:
+if 'class="static-events"' not in timeline or '.static-events:before' not in timeline_css:
     errors.append("Timeline static chronology must retain visible vertical-rail styling")
 
 
