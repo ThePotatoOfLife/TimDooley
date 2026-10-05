@@ -188,13 +188,13 @@ jobs:
           print("Live provenance verified:",actual)
           PY
 
-          for route in "" "elevator/" "tim-dooley/" "religion/" "science/" "world/" "traditions/bible/" "context/culture/" "below/" "shadow-farm/" "rooms/archive-sources/" "rooms/research-lab/"; do
+          for route in "" "elevator/" "tim-dooley/" "religion/" "science/" "world/" "traditions/bible/" "context/culture/" "below/" "below/dogs/" "rooms/potatoverse-canon/beings/potatoes/" "shadow-farm/" "rooms/archive-sources/" "rooms/research-lab/"; do
             safe_name="${route//\//_}"
             [ -n "$safe_name" ] || safe_name="home"
             fetch_live "${base}${route}" ".live-smoke/${safe_name}.html"
           done
 
-          for asset in             "app/site-elevator.js"             "app/site-elevator.css"             "app/elevator-page.js"             "app/elevator-page.css"             "app/header-heaven.svg"             "app/header-plane.svg"             "app/header-below.svg"             "app/house-journey.js"             "app/house-journey.css"             "app/home-heaven.avif"             "app/home-plane.avif"             "app/home-below.avif"             "app/lower-layer.css"             "data/house/elevator-spatial-projection.json" \
+          for asset in             "app/site-elevator.js"             "app/site-elevator.css"             "app/elevator-page.js"             "app/elevator-page.css"             "app/header-heaven.svg"             "app/header-plane.svg"             "app/header-below.svg"             "app/house-journey.js"             "app/house-journey.css"             "app/home-heaven.avif"             "app/home-plane.avif"             "app/home-below.avif"             "app/hall-of-shame.avif"             "app/hall-of-heroes.avif"             "app/dogs-hall.css"             "app/potatoes-hall.css"             "app/lower-layer.css"             "data/house/elevator-spatial-projection.json" \
             "knowledge/core/spudlight-field-manual.json" \
             "knowledge/core/lower-field-orientation.json" \
             "knowledge/world/lower-field-population-severity-estimate.json" \
@@ -319,7 +319,19 @@ jobs:
           roots=Path(".live-smoke/rooms_archive-sources_.html").read_text(encoding="utf-8",errors="replace")
           forge=Path(".live-smoke/rooms_research-lab_.html").read_text(encoding="utf-8",errors="replace")
           assert 'id="field-manual-bridge"' in roots, "live Roots missing Field Manual bridge"
-          assert 'id="teaching-programme"' in forge, "live Forge missing teaching programme"
+          shame=Path(".live-smoke/below_dogs_.html").read_text(encoding="utf-8",errors="replace")
+          heroes=Path(".live-smoke/rooms_potatoverse-canon_beings_potatoes_.html").read_text(encoding="utf-8",errors="replace")
+          assert 'class="hall-scene hall-scene--shame"' in shame, "live Hall of Shame missing arrival scene"
+          assert 'class="hall-scene hall-scene--heroes"' in heroes, "live Hall of Heroes missing arrival scene"
+          assert "hall-of-shame.avif?v=" in shame or "hall-of-shame.avif" in shame, "live Hall of Shame missing artwork"
+          assert "hall-of-heroes.avif?v=" in heroes or "hall-of-heroes.avif" in heroes, "live Hall of Heroes missing artwork"
+          shame_art=Path(".live-smoke/app_hall-of-shame.avif").read_bytes()
+          pos=shame_art.find(b"ispe")
+          assert pos >= 0 and pos + 16 <= len(shame_art), "live Hall of Shame AVIF missing ispe dimensions"
+          shame_w=int.from_bytes(shame_art[pos+8:pos+12],"big")
+          shame_h=int.from_bytes(shame_art[pos+12:pos+16],"big")
+          assert shame_w >= 1920 and shame_h >= 1080, f"live Hall of Shame too small: {shame_w}x{shame_h}"
+                    assert 'id="teaching-programme"' in forge, "live Forge missing teaching programme"
           assert 'id="epistemic-delegation-programme"' in forge, "live Forge missing epistemic delegation programme"
           assert 'id="exploitation-language-forge"' in forge, "live Forge missing exploitation-language programme"
           for marker in required_below:
