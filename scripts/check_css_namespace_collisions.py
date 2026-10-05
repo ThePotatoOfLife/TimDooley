@@ -152,6 +152,41 @@ for block in re.findall(r"\.nav\s*\{([^}]*)\}", style):
 if '.archive-nav{' not in style and '.archive-nav {' not in style:
     errors.append("app/style.css must own archive sidebar layout through .archive-nav")
 
+canonical_visual_tokens = (
+    "--site-ink",
+    "--site-copy",
+    "--site-copy-strong",
+    "--site-muted",
+    "--site-faint",
+    "--site-line",
+    "--site-gold",
+    "--site-font-sans",
+    "--site-font-serif",
+    "--site-font-mono",
+    "--site-text-micro",
+    "--site-text-xs",
+    "--site-text-caption",
+    "--site-text-sm",
+    "--site-text-meta",
+    "--site-text-ui",
+    "--site-text-body",
+    "--site-radius-sm",
+    "--site-radius",
+    "--site-radius-lg",
+    "--site-radius-xl",
+    "--site-radius-pill",
+)
+for css_path in sorted((ROOT / "app").glob("*.css")):
+    if css_path.name == "site-system.css":
+        continue
+    css_text = css_path.read_text(encoding="utf-8", errors="ignore")
+    for token in canonical_visual_tokens:
+        if re.search(rf"{re.escape(token)}\s*:", css_text):
+            errors.append(
+                f"{css_path.relative_to(ROOT)} redefines canonical visual token {token}; "
+                "consume the site-system token or introduce a module-scoped variable"
+            )
+
 reader_path = ROOT / "app" / "reader.css"
 reader_text = reader_path.read_text(encoding="utf-8", errors="ignore") if reader_path.exists() else ""
 if re.search(r"\.page-nav\s+a\s*\{", reader_text) or re.search(r"\.page\s+a\s*,", reader_text):
