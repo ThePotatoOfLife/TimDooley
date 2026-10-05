@@ -956,3 +956,30 @@ body.dogs-hall-page{
   background:transparent;
   box-shadow:none;
 }
+
+
+/* Hall artwork integration standard — one visible page backdrop + one arrival window. */
+body.dogs-hall-page{
+  background:transparent;
+}
+.dogs-hall-page .hall-scene{
+  width:min(1720px,calc(100vw - 32px));
+  max-width:none;
+  border-radius:var(--site-radius-lg);
+  image-rendering:auto;
+  background:
+    linear-gradient(180deg,rgba(4,6,5,.00),rgba(4,6,5,.08) 66%,rgba(4,6,5,.30) 100%),
+    url("./hall-of-shame.avif") 50% 50%/cover no-repeat;
+}
+.dogs-hall-page .hall-scene::after{
+  background:
+    linear-gradient(180deg,transparent 0 66%,rgba(0,0,0,.10) 82%,rgba(0,0,0,.34) 100%),
+    linear-gradient(90deg,rgba(0,0,0,.05),transparent 16% 84%,rgba(0,0,0,.05));
+}
+@media(max-width:760px){
+  .dogs-hall-page .hall-scene{
+    width:calc(100vw - 18px);
+    margin-top:10px;
+    border-radius:var(--site-radius);
+  }
+}
