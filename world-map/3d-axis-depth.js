@@ -129,7 +129,7 @@ function installNavigator(map, data) {
   const levels = [...(data.levels || [])].sort((a,b)=>b.dimension-a.dimension);
   const root = document.createElement('div');
   root.id = ROOT_ID;
-  root.style.cssText = 'position:absolute;right:12px;top:62px;width:170px;height:476px;z-index:3;background:#080b0be0;border:1px solid #344343;border-radius:14px;padding:10px 8px;backdrop-filter:blur(8px);box-shadow:0 8px 30px rgba(0,0,0,.28)';
+  root.style.cssText = 'position:absolute;right:12px;top:62px;width:170px;height:476px;z-index:3;background:#080b0be0;border:1px solid #344343;border-radius:14px;padding:10px 8px;box-shadow:0 8px 30px rgba(0,0,0,.28)';
   root.innerHTML = '<div style="font:700 10px system-ui;letter-spacing:.14em;text-transform:uppercase;color:#9fe8ff;text-align:center;margin-bottom:3px">Axis · D1–D11</div><div style="font-size:9px;color:#aab4aa;text-align:center;line-height:1.25">↑ narrower · 7 upper stages<br>D5 Door · D4 Earth<br>↓ wider · roots / Swamp</div>';
   const track = document.createElement('div');
   track.style.cssText = 'position:relative;height:398px;margin-top:4px';
