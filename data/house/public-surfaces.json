@@ -1,5 +1,5 @@
 {
-  "version": "2.8.3",
+  "version": "2.8.4",
   "updated": "2026-10-05",
   "authority": "public-route-identity",
   "room_registry": "data/house/rooms.json",
@@ -224,6 +224,26 @@
       "visibility": "primary",
       "primary_navigation": true,
       "is_view": false,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "science-papers",
+      "route": "/science/papers/",
+      "canonical_route": "/science/papers/",
+      "surface_type": "reader",
+      "title": "Research Papers",
+      "reader_job": "Gather the Science branch's generated papers, equations, figures, formal notes, audits and recovery documents into one readable paper library.",
+      "primary_parent": "science",
+      "primary_room_ids": [
+        "science-formal-models",
+        "research-lab",
+        "archive-sources"
+      ],
+      "status": "active",
+      "visibility": "specialist",
+      "primary_navigation": false,
+      "is_view": true,
       "knowledge_owner": false,
       "legacy_routes": []
     },
@@ -1137,6 +1157,7 @@
       "meaning": "Scientific, formal-model and body-research owner.",
       "child_rule": "Use Science when empirical/formal explanation is primary and project analogy is explicitly secondary.",
       "allowed_child_ids": [
+        "science-papers",
         "life-body"
       ]
     },
