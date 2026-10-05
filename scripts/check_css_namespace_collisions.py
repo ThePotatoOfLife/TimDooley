@@ -187,6 +187,20 @@ for css_path in sorted((ROOT / "app").glob("*.css")):
                 "consume the site-system token or introduce a module-scoped variable"
             )
 
+for rel, stylesheet, marker in (
+    ("north/index.html", "app/north-page.css", "north-page"),
+    ("potatoism/index.html", "app/potatoism-page.css", "potatoism-page"),
+    ("science/index.html", "app/science-page.css", "science-page"),
+):
+    page_path = ROOT / rel
+    page_text = page_path.read_text(encoding="utf-8", errors="ignore") if page_path.exists() else ""
+    if re.search(r"<style\b", page_text, flags=re.I):
+        errors.append(f"{rel} must keep structural styling in {stylesheet}, not inline")
+    if stylesheet not in page_text and ("../" + stylesheet) not in page_text:
+        errors.append(f"{rel} must load {stylesheet}")
+    if marker not in page_text:
+        errors.append(f"{rel} missing scoped reader marker {marker}")
+
 longform_path = ROOT / "app" / "longform-reader.css"
 longform_text = longform_path.read_text(encoding="utf-8", errors="ignore") if longform_path.exists() else ""
 if "style.css" in longform_text or "@import" in longform_text:
