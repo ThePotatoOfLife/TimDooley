@@ -38,6 +38,12 @@
       loadJson('../data/house/interfaces.json',null,true),
       loadJson('../data/house/projections.json',null,true)
     ]);
+    // The Overview is mostly authored HTML. Let it and the critical topology paint
+    // before pulling the much heavier research/dossier bundle (~850 KB today).
+    await new Promise(resolve=>{
+      if('requestIdleCallback' in window) requestIdleCallback(()=>resolve(),{timeout:1200});
+      else setTimeout(resolve,0);
+    });
     const [conceptLoad,holdLoad,collLoad,dataHoldLoad,dossierLoad,societyLoad,entityLoad,foundationLoad,foundation2Load,foundation3Load]=await Promise.all([
       loadJson('../data/house/concept-topology.json',{concepts:[],relation_types:[],relations:[]}),
       loadJson('../data/house/holdings.json',{holdings:[]}),
