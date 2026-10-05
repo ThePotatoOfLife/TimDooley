@@ -1,6 +1,6 @@
 {
-  "version": "1.3.0",
-  "updated": "2026-09-26",
+  "version": "1.3.1",
+  "updated": "2026-10-05",
   "authority": "house-interface-governance",
   "subroom_registry": "data/house/subrooms.json",
   "principle": "Adjacency becomes architecturally meaningful when the passage states what is translated, what must remain invariant, what guard applies, and whether the crossing can be reversed or reviewed.",
@@ -757,6 +757,66 @@
       "guard": "Creative language may exaggerate, compress or fictionalize; it must not be treated as doctrinal or biographical fact without independent support.",
       "reversible": "yes",
       "public_use": "works / history"
+    },
+    {
+      "id": "if-garden-theology",
+      "from": "garden",
+      "to": "theology-god-language",
+      "type": "cultivation-theology",
+      "changes": "Garden roles are interpreted through Father/Gardener, Spirit, judgment and stewardship language.",
+      "preserves": [
+        "project Garden status",
+        "theological boundary",
+        "uncertainty"
+      ],
+      "guard": "Project theology must remain distinct from historical doctrine and empirical proof.",
+      "reversible": "yes",
+      "public_use": "garden / religion"
+    },
+    {
+      "id": "if-garden-symbolic",
+      "from": "garden",
+      "to": "symbolic-architecture",
+      "type": "spatial-translation",
+      "changes": "Garden places Tree, River, Gate, House, Door and vertical movement into the wider symbolic architecture.",
+      "preserves": [
+        "Garden role meanings",
+        "map boundaries",
+        "symbolic status"
+      ],
+      "guard": "Map geometry remains a symbolic relation unless separately formalized or tested.",
+      "reversible": "yes",
+      "public_use": "garden / axis / house"
+    },
+    {
+      "id": "if-garden-practice",
+      "from": "garden",
+      "to": "practice-ethics",
+      "type": "cultivation-to-practice",
+      "changes": "Garden Fruit, sorting and stewardship are translated into conduct, repair, boundaries and cultivation practice.",
+      "preserves": [
+        "role reversibility",
+        "human worth",
+        "project-practice status"
+      ],
+      "guard": "Project practice language does not override professional, legal or medical standards.",
+      "reversible": "yes",
+      "public_use": "garden / philosophy"
+    },
+    {
+      "id": "if-garden-bible",
+      "from": "garden",
+      "to": "bible-christianity",
+      "type": "comparative-translation",
+      "changes": "Garden imagery is compared with Genesis and Christian texts while preserving source identity.",
+      "preserves": [
+        "scriptural source identity",
+        "project status",
+        "historical difference"
+      ],
+      "guard": "Resemblance must not become historical identity, fulfillment or proof without evidence.",
+      "reversible": "yes",
+      "public_use": "garden / bible / religion"
     }
   ],
   "formal_grammar_ref": "data/project-formal-grammar.json",
