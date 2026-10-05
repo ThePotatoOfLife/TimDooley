@@ -37,7 +37,7 @@
   color:var(--site-gold);
   font:400 24px/1.15 var(--site-font-serif);
 }
-.god-character-reader :is(.card,.power) p{color:#cbd1c8}
+.god-character-reader :is(.card,.power) p{color:var(--site-copy)}
 .god-character-reader .card p:last-child,
 .god-character-reader .power p:last-child{margin-bottom:0}
 
