@@ -235,3 +235,34 @@ body{
   .papers-reader{max-width:none;margin:0;padding:0;border:0;background:#fff;box-shadow:none}
   .papers-nav{display:none}
 }
+
+.papers-reader .page-nav.papers-nav{
+  width:auto;
+  max-width:none;
+  min-height:0;
+  margin:0 0 48px;
+  padding:0 0 12px;
+  border:0;
+  border-bottom:1px solid var(--line);
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+  overflow-x:auto;
+}
+.papers-reader .page-nav.papers-nav a{
+  height:auto;
+  min-height:0;
+  padding:4px 0;
+  border-radius:0;
+  color:var(--muted);
+  background:transparent;
+  box-shadow:none;
+}
+.papers-reader .page-nav.papers-nav a+a{margin-left:16px}
+.papers-reader .page-nav.papers-nav a:hover,
+.papers-reader .page-nav.papers-nav a:focus-visible,
+.papers-reader .page-nav.papers-nav a[aria-current="page"]{
+  color:var(--accent);
+  background:transparent;
+  box-shadow:none;
+}
