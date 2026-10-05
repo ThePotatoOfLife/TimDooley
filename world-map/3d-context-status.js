@@ -31,7 +31,7 @@ function ensureNode() {
   const style = document.createElement('style');
   style.id = 'atlasContextStatusStyle';
   style.textContent = `
-    #atlasContextStatus{display:flex;align-items:center;gap:5px;max-width:min(760px,calc(100% - 20px));padding:6px 9px;border:1px solid #33413f;border-radius:12px;background:#0b1212e8;box-shadow:0 5px 16px #0005;color:#c7d0cd;font-size:10px;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;backdrop-filter:blur(10px)}
+    #atlasContextStatus{display:flex;align-items:center;gap:5px;max-width:min(760px,calc(100% - 20px));padding:6px 9px;border:1px solid #33413f;border-radius:12px;background:#0b1212e8;box-shadow:0 5px 16px #0005;color:#c7d0cd;font-size:10px;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
     #atlasContextStatus .atlas-context-status-label{color:var(--muted)}
     #atlasContextStatus .atlas-context-status-country{color:#eef3ef;font-weight:650}
     #atlasContextStatus .atlas-context-status-population{color:#d8e3dc}
