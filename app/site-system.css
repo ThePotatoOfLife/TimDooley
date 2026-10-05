@@ -27,7 +27,7 @@
   --site-text-ui: 14px;
   --site-text-body: 16px;
   --site-text-lead: clamp(20px, 2.3vw, 23px);
-  --site-text-title: clamp(48px, 7vw, 88px);
+  --site-text-title: clamp(52px, 8vw, 96px);
   --site-text-section: clamp(28px, 4vw, 44px);
   --site-text-subsection: clamp(20px, 2.4vw, 27px);
   --site-leading-body: 1.64;
@@ -140,7 +140,9 @@ textarea:focus-visible,
 }
 
 .page-header {
-  margin: 0 0 32px;
+  width:100%;
+  max-width:900px;
+  margin:0 0 32px;
 }
 html[data-site-floor] .page-header{
   padding:clamp(18px,2.5vw,28px);
@@ -150,6 +152,7 @@ html[data-site-floor] .page-header{
   box-shadow:var(--site-pane-shadow);
 }
 html[data-site-floor] .page-header .summary{max-width:72ch}
+html[data-site-floor] .page-header > :last-child{margin-bottom:0}
 
 /* Realm readability contract.
    Pixel art is atmosphere; reader-facing text receives a surface by default.
