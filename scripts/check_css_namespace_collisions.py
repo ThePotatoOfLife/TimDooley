@@ -131,6 +131,12 @@ reader_text = reader_path.read_text(encoding="utf-8", errors="ignore") if reader
 if re.search(r"\.page-nav\s+a\s*\{", reader_text) or re.search(r"\.page\s+a\s*,", reader_text):
     errors.append("app/reader.css must not override shared page-nav link color; site-system.css owns the sub-header")
 
+home_page_css = ROOT / "app" / "home-page.css"
+home_page_text = home_page_css.read_text(encoding="utf-8", errors="ignore") if home_page_css.exists() else ""
+for block in re.findall(r"\.home-nav\s*\{([^}]*)\}", home_page_text, flags=re.I | re.S):
+    if re.search(r"\b(background|border|border-radius|box-shadow|padding|min-height|font-size)\s*:", block):
+        errors.append("app/home-page.css must not fork the shared page-nav shell; Home may only add local spacing/placement")
+
 home = HOME.read_text(encoding='utf-8', errors='ignore') if HOME.exists() else ""
 if 'id="archive-explorer"' in home:
     if 'class="archive-nav"' not in home:
