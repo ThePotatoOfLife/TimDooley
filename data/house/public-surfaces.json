@@ -1,6 +1,6 @@
 {
-  "version": "2.8.2",
-  "updated": "2026-10-04",
+  "version": "2.8.3",
+  "updated": "2026-10-05",
   "authority": "public-route-identity",
   "room_registry": "data/house/rooms.json",
   "primary_gateway_ids": [
@@ -164,6 +164,25 @@
       "visibility": "primary",
       "primary_navigation": true,
       "is_view": false,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "garden",
+      "route": "/garden/",
+      "canonical_route": "/garden/",
+      "surface_type": "guide",
+      "title": "The Garden",
+      "reader_job": "Let readers enter the Genesis/Garden cluster as an inhabitable story-space: River, two trees, work/keeping, Father/Gardener, boundary, guarded return and explicit doors into Bible, House, Axis and Potatoverse canon.",
+      "primary_parent": "religion",
+      "primary_room_ids": [
+        "potatoverse-canon",
+        "traditions-texts"
+      ],
+      "status": "active",
+      "visibility": "secondary",
+      "primary_navigation": false,
+      "is_view": true,
       "knowledge_owner": false,
       "legacy_routes": []
     },
@@ -1103,7 +1122,8 @@
       "allowed_child_ids": [
         "bible",
         "trinity",
-        "gods-character"
+        "gods-character",
+        "garden"
       ]
     },
     "philosophy": {
