@@ -14,7 +14,7 @@
   min-width:0;
   padding:18px;
   border:1px solid var(--site-pane-line);
-  border-radius:12px;
+  border-radius:var(--site-radius);
   background:var(--site-pane-soft);
   box-shadow:0 8px 22px rgba(0,0,0,.10);
 }
@@ -25,7 +25,7 @@
 }
 .pillar-reader .card :is(p,li){
   color:var(--site-muted);
-  font-size:12px;
+  font-size:var(--site-text-sm);
   line-height:1.58;
 }
 .pillar-reader .card a{color:var(--site-gold)}
@@ -40,9 +40,9 @@
 .pillar-reader :is(.chain,.systems-loop,.context-chain) span{
   padding:6px 9px;
   border:1px solid var(--site-line);
-  border-radius:999px;
+  border-radius:var(--site-radius-pill);
   color:var(--site-muted);
-  font-size:10px;
+  font-size:var(--site-text-xs);
 }
 .pillar-reader :is(.chain,.systems-loop,.context-chain) i{
   color:var(--site-gold);
@@ -54,10 +54,10 @@
   margin:14px 0 30px;
   padding:13px 15px;
   border:1px solid var(--site-pane-line);
-  border-radius:12px;
+  border-radius:var(--site-radius);
   background:var(--site-pane-soft);
   color:var(--site-muted);
-  font-size:12px;
+  font-size:var(--site-text-sm);
   line-height:1.58;
 }
 
@@ -66,7 +66,7 @@
   margin:30px 0;
   padding:24px;
   border:1px solid var(--site-pane-line);
-  border-radius:16px;
+  border-radius:var(--site-radius-lg);
   background:var(--site-pane);
   box-shadow:var(--site-pane-shadow);
 }
@@ -97,7 +97,7 @@
   font:400 18px/1.2 var(--site-font-serif);
 }
 .pillar-reader .history-step p{margin:0 0 7px;color:#cbd1c8}
-.pillar-reader .history-step a{color:var(--site-gold);font-size:11px}
+.pillar-reader .history-step a{color:var(--site-gold);font-size:var(--site-text-caption)}
 
 /* Life & Body explorer */
 .pillar-reader .explorer-shell{
@@ -109,7 +109,7 @@
 .pillar-reader .explorer-nav,
 .pillar-reader .explorer-detail{
   border:1px solid var(--site-pane-line);
-  border-radius:12px;
+  border-radius:var(--site-radius);
   background:var(--site-pane);
   box-shadow:0 8px 22px rgba(0,0,0,.10);
 }
@@ -144,11 +144,11 @@
 .pillar-reader .explorer-detail h4{
   margin:18px 0 6px;
   color:var(--site-gold);
-  font-size:12px;
+  font-size:var(--site-text-sm);
   letter-spacing:.08em;
   text-transform:uppercase;
 }
-.pillar-reader .explorer-detail :is(p,li){color:var(--site-muted);font-size:12px}
+.pillar-reader .explorer-detail :is(p,li){color:var(--site-muted);font-size:var(--site-text-sm)}
 .pillar-reader .explorer-detail ul{padding-left:18px}
 .pillar-reader .explorer-toolbar{
   display:flex;
@@ -160,10 +160,10 @@
 .pillar-reader .room-meta span{
   padding:6px 10px;
   border:1px solid var(--site-line);
-  border-radius:999px;
+  border-radius:var(--site-radius-pill);
   background:transparent;
   color:var(--site-muted);
-  font-size:10px;
+  font-size:var(--site-text-xs);
 }
 .pillar-reader .explorer-toolbar button{cursor:pointer}
 .pillar-reader .explorer-toolbar button.is-active{
@@ -171,11 +171,11 @@
   border-color:var(--site-gold);
 }
 .pillar-reader .room-meta{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
-.pillar-reader .room-meta span{padding:4px 7px;font-size:9px}
+.pillar-reader .room-meta span{padding:4px 7px;font-size:var(--site-text-micro)}
 .pillar-reader .body-finder-box{display:grid;gap:6px;margin:14px 0}
 .pillar-reader .body-finder-box span{
   color:var(--site-muted);
-  font-size:10px;
+  font-size:var(--site-text-xs);
   letter-spacing:.07em;
   text-transform:uppercase;
 }
@@ -183,7 +183,7 @@
   width:100%;
   padding:11px 12px;
   border:1px solid var(--site-line);
-  border-radius:10px;
+  border-radius:var(--site-radius-sm);
   background:var(--site-panel);
   color:inherit;
   font:inherit;
@@ -198,7 +198,7 @@
   display:block;
   padding:11px;
   border:1px solid var(--site-pane-line);
-  border-radius:10px;
+  border-radius:var(--site-radius-sm);
   background:var(--site-pane-soft);
   color:inherit;
   text-decoration:none;
@@ -220,14 +220,14 @@
 .pillar-reader .body-finder-hit span{
   display:block;
   color:var(--site-muted);
-  font-size:9px;
+  font-size:var(--site-text-micro);
   line-height:1.4;
 }
 .pillar-reader .body-cases{
   margin:32px 0;
   padding:24px;
   border:1px solid var(--site-pane-line);
-  border-radius:16px;
+  border-radius:var(--site-radius-lg);
   background:var(--site-pane);
   box-shadow:var(--site-pane-shadow);
 }
@@ -243,9 +243,9 @@
   color:var(--site-gold);
   font:400 21px/1.1 var(--site-font-serif);
 }
-.pillar-reader .body-case .lesson{color:var(--site-gold);font-size:11px}
+.pillar-reader .body-case .lesson{color:var(--site-gold);font-size:var(--site-text-caption)}
 .pillar-reader .body-case p{margin:0 0 7px;color:#cbd1c8}
-.pillar-reader .body-case a{color:var(--site-gold);font-size:11px}
+.pillar-reader .body-case a{color:var(--site-gold);font-size:var(--site-text-caption)}
 
 /* World Systems */
 .pillar-reader .deep{
@@ -253,14 +253,14 @@
   flex-wrap:wrap;
   gap:16px;
   margin-top:30px;
-  font-size:13px;
+  font-size:var(--site-text-meta);
 }
 .pillar-reader .deep a{color:var(--site-muted)}
 .pillar-reader .systems-reader{
   margin:38px 0;
   padding:26px;
   border:1px solid var(--site-pane-line);
-  border-radius:16px;
+  border-radius:var(--site-radius-lg);
   background:var(--site-pane);
   box-shadow:var(--site-pane-shadow);
 }
@@ -277,9 +277,9 @@
   color:var(--site-gold);
   font:400 22px/1.12 var(--site-font-serif);
 }
-.pillar-reader .systems-chain .q{color:var(--site-gold);font-size:11px}
+.pillar-reader .systems-chain .q{color:var(--site-gold);font-size:var(--site-text-caption)}
 .pillar-reader .systems-chain p{margin:0 0 8px;color:#cbd1c8}
-.pillar-reader .systems-chain a{color:var(--site-gold);font-size:11px}
+.pillar-reader .systems-chain a{color:var(--site-gold);font-size:var(--site-text-caption)}
 
 /* Context */
 .pillar-reader .legend{
@@ -291,14 +291,14 @@
   padding:10px 12px;
   border:1px solid var(--site-pane-line);
   border-left:3px solid currentColor;
-  border-radius:10px;
+  border-radius:var(--site-radius-sm);
   background:var(--site-pane-soft);
 }
 .pillar-reader .context-purpose{
   margin:30px 0;
   padding:24px;
   border:1px solid var(--site-pane-line);
-  border-radius:16px;
+  border-radius:var(--site-radius-lg);
   background:var(--site-pane);
   box-shadow:var(--site-pane-shadow);
 }
