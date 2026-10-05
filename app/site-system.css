@@ -113,28 +113,30 @@ textarea:focus-visible,
   display:flex;
   flex-wrap:wrap;
   align-items:center;
-  gap:3px;
+  align-content:center;
+  gap:4px;
   width:100%;
   max-width:100%;
-  min-height:52px;
-  margin:0 0 26px;
-  padding:7px 9px;
+  min-height:44px;
+  margin:0 0 24px;
+  padding:6px 8px;
   border:1px solid rgba(255,255,255,.10);
   border-radius:var(--site-radius-lg);
   background:rgba(13,16,15,.72);
   box-shadow:0 9px 24px rgba(0,0,0,.18),inset 0 1px rgba(255,255,255,.025);
-  font-size:var(--site-text-meta);
+  font-size:var(--site-text-caption);
   line-height:1.2;
 }
 
 .page-nav > a {
   display:inline-flex;
   align-items:center;
-  min-height:36px;
-  padding:7px 11px;
-  border-radius:9px;
+  min-height:30px;
+  padding:6px 9px;
+  border-radius:8px;
   color:#d9ddd6;
   text-decoration:none;
+  white-space:nowrap;
   transition:color 140ms ease,background-color 140ms ease,box-shadow 140ms ease,transform 140ms ease;
 }
 
@@ -209,10 +211,12 @@ html[data-site-floor="below"] .page-nav{
   text-decoration-thickness:1px;
   text-underline-offset:3px;
 }
-.page-nav-room{
+.page-nav-room,
+.page-nav-subject{
   color:color-mix(in srgb,var(--site-gold) 74%,var(--site-muted));
 }
-.page-nav > :is(.page-nav-home,.page-nav-directory,.page-nav-dwelling,.page-nav-current,.page-nav-room):is(:hover,:focus-visible){
+.page-nav-subject{font-weight:650}
+.page-nav > :is(.page-nav-home,.page-nav-directory,.page-nav-dwelling,.page-nav-current,.page-nav-room,.page-nav-subject):is(:hover,:focus-visible){
   color:var(--site-gold);
 }
 html[data-site-floor] .page > :where(section,article,aside,details):not(.surface-clear){
@@ -293,7 +297,7 @@ html[data-site-floor] .page > :where(p.boundary,p.note,p.warning,p.lede,.boundar
   .page{padding-top:22px;padding-bottom:calc(64px + var(--site-access-clearance))}
   .page-nav{margin:0 0 20px;min-height:44px;padding:5px 6px;flex-wrap:nowrap;gap:2px;overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain;scroll-snap-type:x proximity;border-radius:var(--site-radius);scrollbar-width:none}
   .page-nav::-webkit-scrollbar{display:none}
-  .page-nav > a{flex:0 0 auto;min-height:32px;white-space:nowrap;padding:6px 9px;border:0;border-radius:8px;scroll-snap-align:start;font-size:var(--site-text-caption)}
+  .page-nav > a{flex:0 0 auto;min-height:30px;white-space:nowrap;padding:5px 8px;border:0;border-radius:8px;scroll-snap-align:start;font-size:var(--site-text-xs)}
   .page-header{margin-bottom:24px}
   .topology-context-head{display:block}
   .topology-context-house{display:inline-block;margin-top:8px}
