@@ -831,6 +831,12 @@ body.dogs-hall-page{
     right:8px;
     font-size:7px;
   }
+  .dogs-hall-page .hall-scene__hud span{
+    min-width:0;
+  }
+  .dogs-hall-page .hall-scene__hud span:last-child{
+    text-align:right;
+  }
   .dogs-hall-page .hall-scene__caption{
     left:8px;
     bottom:7px;
