@@ -86,5 +86,41 @@
     "The 5D Door is scientifically cleaner as a guard surface or interface than as a claim that the fifth physical dimension contains all timelines.",
     "Eleven-dimensional supergravity, branes and compactification are established research structures; Potatoverse role assignments are separate project semantics.",
     "A serious physical bridge would require geometry, fields, units, dynamics and observables that do not come merely from matching the number eleven."
+  ],
+  "equation_context": {
+    "role": "Graded-state / hybrid-system formalization of the recovered project scaffold. The mathematics describes ordered project states, branch direction and a threshold/reset interface; it does not identify the numbered project levels with literal spacetime dimensions.",
+    "variables": {
+      "X": "State vector containing whichever project or measured coordinates are declared for a concrete application.",
+      "s": "Evolution, ordering or path parameter used to follow a trajectory through the graded state space.",
+      "l": "Ordered project-level coordinate. In the current scaffold it is an ordinal/graded label, not a measured physical dimension.",
+      "A(X,g)": "Candidate Axis-flow generator for continuous motion through state space.",
+      "g(X)": "Door guard function; g(X)=0 defines the threshold/interface surface.",
+      "D": "Door transition/reset map, X⁺=D(X⁻), applied when the guard condition is crossed.",
+      "q(X)": "Branch/order statistic used to distinguish ascending versus descending trajectory classes."
+    },
+    "units_and_types": "The recovered dimensional labels 1D–11D are presently symbolic/ordinal project categories. l and q are therefore dimensionless or categorical unless a later empirical mapping defines otherwise. X may contain typed physical or behavioral measurements only when those variables and units are separately declared.",
+    "observable_consequence": "A scientific descendant must define a measurable encoding from observations into X, l or q and show that the proposed Door/branch structure predicts transition class, crossing time or trajectory evolution better than simpler ordinal, continuous-flow or single-threshold baselines.",
+    "boundary": "Sharing the number eleven with M-theory is not a physical identification. A literal higher-dimensional theory would additionally require geometry, fields, compactification/boundary conditions, dynamics and a derived observable spectrum."
+  },
+  "term_map": {
+    "X": "state vector",
+    "s": "trajectory/evolution parameter",
+    "l": "graded project level",
+    "A": "Axis-flow generator",
+    "g(X)": "Door guard",
+    "D": "Door transition/reset map",
+    "q(X)": "ascending/descending branch statistic"
+  },
+  "testing_program": [
+    "Define a concrete dataset and a reproducible map from observations into the state coordinates X and ordered level l.",
+    "Compare a continuous-flow baseline, a single-threshold model and the proposed guarded/reset hybrid model on held-out transitions.",
+    "Test whether an ascending/descending branch statistic q predicts trajectory direction beyond information already contained in the raw state variables.",
+    "Keep any comparison with 11D supergravity or M-theory separate unless an explicit physical geometry and observable mapping are supplied."
+  ],
+  "failure_conditions": [
+    "The ordered level taxonomy cannot be assigned reproducibly from observations or depends mainly on retrospective interpretation.",
+    "A simpler continuous or ordinal model predicts transitions as well as the Door/reset model.",
+    "The ascending versus descending branch variable adds no held-out predictive information.",
+    "A claimed physical 5D/11D interpretation supplies no independent geometry, fields, units or observable prediction beyond the symbolic numbering."
   ]
 }
