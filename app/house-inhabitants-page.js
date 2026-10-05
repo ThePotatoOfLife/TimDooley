@@ -1,12 +1,13 @@
 (async()=>{
  const esc=v=>String(v??'').replace(/[&<>"]/g,s=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[s]));
+ const houseDataRoot=new URL('../data/house/',import.meta.url);
  let ir;
- try{ir=await fetch('../../data/house/room-inhabitants.json',{cache:'no-cache'})}catch(_){ir=null}
+ try{ir=await fetch(new URL('room-inhabitants.json',houseDataRoot),{cache:'no-cache'})}catch(_){ir=null}
  if(!ir?.ok){document.getElementById('summary').textContent='The explanatory layer is available, but the live object list could not be loaded.';document.getElementById('results').innerHTML='<p class="loading">The live object list is unavailable. The page above still explains how inhabitants, cases and Room lenses relate.</p>';return}
  const data=await ir.json();
  let sub={subrooms:[]},subroomsAvailable=false;
  try{
-   const sr=await fetch('../../data/house/subrooms.json',{cache:'no-cache'});
+   const sr=await fetch(new URL('subrooms.json',houseDataRoot),{cache:'no-cache'});
    if(sr.ok){sub=await sr.json();subroomsAvailable=true}
  }catch(_){}
  const subBy=Object.fromEntries((sub.subrooms||[]).map(x=>[x.id,x]));
