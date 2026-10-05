@@ -49,6 +49,12 @@ TRADITION_READER_PAGES = [
         "zoroastrianism",
     )
 ]
+GOD_CHARACTER_READER_PAGES = [
+    ROOT / "religion" / "gods-character" / "index.html",
+    ROOT / "religion" / "gods-character" / "tim-powers" / "index.html",
+    ROOT / "religion" / "gods-character" / "divine-tensions" / "index.html",
+    ROOT / "religion" / "gods-character" / "divine-functions" / "index.html",
+]
 CANONICAL_TOKEN_LITERALS = ("#070707", "#f4f0e5", "#d8b56b", "#302d29", "#0d0d0d")
 RETIRED_GREEN_MARKERS = ("--site-green", "var(--site-green", "--green:", "#b8dc82", "#a8ce72")
 
@@ -205,6 +211,35 @@ for page in TRADITION_READER_PAGES:
         errors.append(f"{page.relative_to(ROOT)} missing shared tradition-reader.css")
     if "tradition-reader" not in text:
         errors.append(f"{page.relative_to(ROOT)} missing tradition-reader scope class")
+    if re.search(r"<style\b", text, flags=re.I):
+        errors.append(f"{page.relative_to(ROOT)} drifted back to inline structural CSS")
+
+
+# Gods / Character reader family: one shared visual owner prevents four closely
+# related pages from drifting through copied grid/card/rule CSS.
+god_character_css = ROOT / "app" / "god-character-reader.css"
+if not god_character_css.exists():
+    errors.append("app/god-character-reader.css is missing")
+else:
+    god_character_text = god_character_css.read_text(encoding="utf-8", errors="ignore")
+    for marker in (
+        ".god-character-reader .grid",
+        ".god-character-reader .card",
+        ".god-character-reader .rule",
+        ".god-character-reader .power-grid",
+        ".god-character-reader .character-grid",
+    ):
+        if marker not in god_character_text:
+            errors.append(f"god-character-reader.css missing family marker: {marker}")
+
+for page in GOD_CHARACTER_READER_PAGES:
+    text = page.read_text(encoding="utf-8", errors="ignore") if page.exists() else ""
+    if "god-character-reader.css" not in text:
+        errors.append(f"{page.relative_to(ROOT)} missing shared god-character-reader.css")
+    if "god-character-reader" not in text:
+        errors.append(f"{page.relative_to(ROOT)} missing god-character-reader scope class")
+    if 'class="page-header"' not in text:
+        errors.append(f"{page.relative_to(ROOT)} missing shared page-header")
     if re.search(r"<style\b", text, flags=re.I):
         errors.append(f"{page.relative_to(ROOT)} drifted back to inline structural CSS")
 
