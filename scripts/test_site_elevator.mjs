@@ -300,6 +300,12 @@ assert.ok(css.includes('.site-elevator[data-elevator-level="plane"] .site-elevat
 assert.ok(css.includes('.site-elevator[data-elevator-level="below"] .site-elevator-floor-emblem::before'),'Below needs its own drawn floor emblem');
 assert.equal(/\.site-elevator\[data-elevator-level="(?:heaven|plane|below)"\] \.site-elevator-floor-emblem::before\{content:"[^"]+"/.test(css),false,'floor emblems must not regress to font glyph placeholders');
 assert.ok(css.includes('@media (max-width:1180px)'),'illustrated desktop header needs a laptop-width pressure valve before the mobile breakpoint');
+assert.ok(css.includes('--room-hardware-bright:'),'Room plates need an explicit bright hardware rail token');
+assert.ok(css.includes('--room-hardware-dim:'),'Room plates need a recessed hardware rail token');
+assert.ok(css.includes('.site-elevator-room-rail::before'),'Room rail needs an integrated bottom hardware beam');
+assert.ok(css.includes('.site-elevator-room-rail::after'),'Room rail needs a visible repeating seam/rivet line');
+assert.match(css,/\.site-elevator-stage\{[\s\S]*?outline:1px solid rgba\(191,141,68,\.18\)/,'scenic stage needs an inset ornamental frame');
+assert.match(css,/\.site-elevator-room::after\{[\s\S]*?width:10px;[\s\S]*?height:10px;/,'adjacent Room plates need a substantial connector joint');
 assert.ok(source.includes("roomRail.dataset.roomCount=String(visibleCount)"),'runtime must expose actual floor door count for illustrated layout');
 assert.ok(css.includes('grid-template-columns:repeat(var(--elevator-visible-count),minmax(0,1fr))'),'desktop illustrated rail must size Heaven, Plane and Below by their actual door count');
 assert.ok(source.includes('site-elevator-stage'),'runtime must separate the stable console from the scenic Room window');
