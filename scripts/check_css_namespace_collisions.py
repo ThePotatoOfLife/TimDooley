@@ -206,6 +206,9 @@ reader_path = ROOT / "app" / "reader.css"
 reader_text = reader_path.read_text(encoding="utf-8", errors="ignore") if reader_path.exists() else ""
 if re.search(r"\.page-nav\s+a\s*\{", reader_text) or re.search(r"\.page\s+a\s*,", reader_text):
     errors.append("app/reader.css must not override shared page-nav link color; site-system.css owns the sub-header")
+for retired_reader_shell in ("a:focus-visible","prefers-reduced-motion",".page .card"):
+    if retired_reader_shell in reader_text:
+        errors.append(f"app/reader.css must not duplicate universal shell behavior: {retired_reader_shell}")
 
 home_page_css = ROOT / "app" / "home-page.css"
 home_page_text = home_page_css.read_text(encoding="utf-8", errors="ignore") if home_page_css.exists() else ""
@@ -262,6 +265,7 @@ if "world-domain-page" not in law_page_text or "world-domain-page" not in econom
 for rel, modifier in (
     ("questions/index.html", "questions-page"),
     ("index-a-z/index.html", "az-page"),
+    ("paths/index.html", "paths-page"),
 ):
     page_path = ROOT / rel
     page_text = page_path.read_text(encoding="utf-8", errors="ignore") if page_path.exists() else ""
