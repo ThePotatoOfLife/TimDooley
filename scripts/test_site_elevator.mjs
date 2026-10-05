@@ -73,10 +73,12 @@ for(const dwelling of projection.dwellings){
 // nested Room inheritance contract
 const primaryByRoom=Object.fromEntries(projection.dwellings.map(row=>[row.id,row.primary_level]));
 for(const subroom of subroomContract.subrooms.filter(row=>row.status==='active')){
-  const ctx=elevator.resolveSpatialContext('/rooms/inside/'+subroom.id+'/',projection,roomContract,subroomContract);
+  const explicit=projection.route_contexts.find(row=>row.subroom_id===subroom.id);
+  const route=explicit?.match||('/rooms/inside/'+(subroom.route_id||subroom.id)+'/');
+  const ctx=elevator.resolveSpatialContext(route,projection,roomContract,subroomContract);
   assert.equal(ctx.roomId,subroom.parent_room_id, subroom.id+' must light its parent Room');
   assert.equal(ctx.levelId,primaryByRoom[subroom.parent_room_id], subroom.id+' must inherit the parent Room primary floor');
-  assert.equal(ctx.source,'subroom-route', subroom.id+' must resolve through nested Room ownership');
+  assert.ok(['subroom-route','subroom-context'].includes(ctx.source), subroom.id+' must resolve through nested Room ownership');
   assert.equal(ctx.subroomId,subroom.id, subroom.id+' must preserve nested Room identity');
 }
 
