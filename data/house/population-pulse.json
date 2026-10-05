@@ -1,6 +1,6 @@
 {
   "version": "1.3.0",
-  "updated": "2026-09-18",
+  "updated": "2026-10-05",
   "authority": "house-population-pulse",
   "purpose": "Observable structural-population signals for nested Rooms. This is a maintenance diagnostic, not an importance/truth ranking.",
   "rule": "Counts reveal connective tissue, exposure, source-rooting and holdings population only. Low counts do not imply low value; high counts do not imply truth, maturity or priority.",
@@ -73,6 +73,24 @@
         "active-frontier-nearby"
       ],
       "guidance": "No structural split implied; continue population through existing owner."
+    },
+    {
+      "room_id": "garden",
+      "title": "Garden",
+      "parent_room_id": "potatoverse-canon",
+      "signals": {
+        "durable_root_count": 4,
+        "guarded_interface_count": 4,
+        "declared_adjacency_count": 4,
+        "dedicated_public_surface_count": 1,
+        "related_structural_instance_count": 1,
+        "primary_holding_count": 2,
+        "data_bundle_count": 0,
+        "data_file_count": 0
+      },
+      "frontiers": [],
+      "flags": [],
+      "guidance": "No structural split implied; deepen the interactive reader and route specialist claims through established owners."
     },
     {
       "room_id": "practice-ethics",
@@ -923,7 +941,7 @@
     }
   ],
   "summary": {
-    "nested_rooms": 38,
+    "nested_rooms": 39,
     "no_guarded_interface": 0,
     "sparse_roots": 0,
     "no_public_surface": 0,
