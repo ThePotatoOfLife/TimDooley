@@ -113,6 +113,14 @@ build_script = ROOT / "scripts" / "build_site.py"
 build_script_text = build_script.read_text(encoding="utf-8", errors="ignore") if build_script.exists() else ""
 if "<style>:root" in build_script_text:
     errors.append("build_site.py must not inline a private generated-reader CSS shell")
+
+try:
+    generated_pos = build_script_text.index("generate_machine_index(manifest, core_index, contexts)")
+    fingerprint_pos = build_script_text.index("asset_versions = fingerprint_shared_assets()")
+    if fingerprint_pos < generated_pos:
+        errors.append("build_site.py must fingerprint shared assets after generated pages exist")
+except ValueError:
+    errors.append("build_site.py missing generated-page/fingerprint build-order markers")
 for marker in (
     "app/generated-knowledge.css",
     'class="page page--reading generated-knowledge"',
