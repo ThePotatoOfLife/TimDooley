@@ -587,6 +587,25 @@ def render_papers_reader(records: list[dict]) -> str:
             '</article>'
         )
 
+    orientation = by_slug.get("science-project-meaning-and-equation-guide-2026-09-12")
+    orientation_html = ""
+    if orientation:
+        figure_html = (
+            f'<figure class="papers-orientation-figure"><img src="../../{esc(orientation.get("figure"))}" alt="" loading="eager" decoding="async"></figure>'
+            if orientation.get("figure") else ""
+        )
+        orientation_html = (
+            '<section class="papers-orientation" aria-labelledby="papers-orientation-title">'
+            '<div class="papers-orientation-copy">'
+            '<p class="papers-orientation-kicker">How to read the science</p>'
+            f'<h2 id="papers-orientation-title">{esc(orientation["title"])}</h2>'
+            '<p>Before treating an equation, analogy or recovered phrase as a physical claim, ask what its variables mean, what baseline it competes with, and what result would make it lose territory.</p>'
+            f'<a href="./{esc(orientation["slug"])}/">Open the reading guide →</a>'
+            '</div>'
+            + figure_html +
+            '</section>'
+        )
+
     shelf_order = (
         "Physics & Cosmos",
         "Life & Mind",
@@ -649,9 +668,10 @@ def render_papers_reader(records: list[dict]) -> str:
 <p class="papers-lede">The scientific work gathered onto one reading table: theories, formal notes, research programmes, audits and recovered model lineages. Open a title and the record becomes a paper—black ink on a warm sheet, with equations, figures, status and provenance kept visible.</p>
 <p class="papers-rule"><strong>Reader rule:</strong> the paper treatment is a reading format, not a scientific endorsement. Recovered Tim material, later formalization, established external science and speculative extension remain distinct inside the documents.</p>
 </header>
+{orientation_html}
 <section class="papers-core" aria-labelledby="core-papers-title">
 <h2 id="core-papers-title">Core paper series</h2>
-<p class="papers-section-note">Five useful entrances into the scientific side of the project. These are not the only documents; they are the clearest starting points for the recurring theory families.</p>
+<p class="papers-section-note">Six useful entrances into the scientific side of the project. These are not the only documents; they are the clearest starting points for the recurring theory families.</p>
 <div class="core-list">{''.join(core_html)}</div>
 </section>
 <nav class="papers-index" aria-label="Paper shelves">
