@@ -140,6 +140,8 @@ def main() -> int:
             "display:flex;",
             "overflow:visible",
             ".site-elevator-floor-code",
+            ".site-elevator-floor-emblem",
+            "grid-template-columns:repeat(var(--elevator-visible-count),minmax(0,1fr))",
             '[data-elevator-level="heaven"] .site-elevator-stage::before',
             '[data-elevator-level="plane"] .site-elevator-stage::before',
             '[data-elevator-level="below"] .site-elevator-stage::before',
@@ -195,7 +197,7 @@ def main() -> int:
         # Geometry belongs to the shared elevator component and must be identical
         # across Heaven, Plane and Below.
         floor_geometry_pattern = re.compile(
-            r'\.site-elevator\[data-elevator-level="(?:heaven|plane|below)"\][^{]*\{([^}]*)\}',
+            r'\.site-elevator\[data-elevator-level="(?:heaven|plane|below)"\]\s*\{([^}]*)\}',
             re.S,
         )
         forbidden_geometry = re.compile(
@@ -207,7 +209,7 @@ def main() -> int:
         for block in floor_geometry_pattern.findall(css):
             if forbidden_geometry.search(block):
                 errors.append(
-                    "floor-specific site-elevator CSS must not change geometry; "
+                    "floor root site-elevator CSS must not change shell geometry; "
                     "Heaven, Plane and Below share one header measurement system"
                 )
 

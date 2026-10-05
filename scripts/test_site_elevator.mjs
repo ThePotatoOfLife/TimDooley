@@ -196,12 +196,12 @@ assert.ok(source.includes("disabled"),'boundary arrows must expose disabled stat
 
 assert.ok(css.includes('--elevator-slot-count:5'),'desktop header must preserve one five-slot Room geometry across all floors');
 assert.match(css,/--elevator-shell-height:\s*\d+(?:\.\d+)?px/,'desktop Heaven, Plane and Below must share one shell-height token');
-for(const match of css.matchAll(/\.site-elevator\[data-elevator-level="(?:heaven|plane|below)"\][^{]*\{([^}]*)\}/g)){
+for(const match of css.matchAll(/\.site-elevator\[data-elevator-level="(?:heaven|plane|below)"\]\s*\{([^}]*)\}/g)){
   const block=match[1];
   assert.equal(
     /\b(?:width|height|min-height|max-height|padding|margin|gap|grid-template-columns|grid-template-rows|flex|flex-basis|inset|left|right|top|bottom)\s*:/.test(block),
     false,
-    'floor-specific header selectors may change skin/art only, never geometry'
+    'floor root selectors may change skin/art only, never shell geometry'
   );
 }
 assert.ok(css.includes('flex:0 0 calc((100% - (var(--elevator-room-gap) * (var(--elevator-slot-count) - 1))) / var(--elevator-slot-count))'),'desktop Room buttons must keep identical widths across Heaven, Plane and Below');
@@ -296,6 +296,9 @@ assert.match(css,/--elevator-arrow-size:\s*\d+(?:\.\d+)?px/,'triangle framing sh
 assert.ok(!css.includes('pointer-events:none;\n  z-index:-1;\n}\n.site-elevator-up::before'),'triangle framing must not disappear behind the control column');
 assert.ok(css.includes('text-wrap:balance'),'Room labels should wrap into balanced readable lines');
 assert.ok(source.includes('site-elevator-floor-code'),'runtime must render terminal floor code');
+assert.ok(source.includes('site-elevator-floor-emblem'),'runtime must render a distinct realm emblem beside the floor number');
+assert.ok(source.includes("roomRail.dataset.roomCount=String(visibleCount)"),'runtime must expose actual floor door count for illustrated layout');
+assert.ok(css.includes('grid-template-columns:repeat(var(--elevator-visible-count),minmax(0,1fr))'),'desktop illustrated rail must size Heaven, Plane and Below by their actual door count');
 assert.ok(source.includes('site-elevator-stage'),'runtime must separate the stable console from the scenic Room window');
 assert.equal(source.includes("--elevator-room-count"),false,'Room geometry should stay CSS-owned rather than being recalculated in runtime');
 assert.ok(source.includes('header.dataset.elevatorRoom=spatial.roomId'),'runtime must publish the current Room on the header');

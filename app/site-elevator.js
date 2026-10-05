@@ -181,6 +181,7 @@
         '<div class="site-elevator-reel" aria-label="Current House floor">'+
           '<div class="site-elevator-floor" aria-live="polite">'+
             '<span class="site-elevator-floor-code" aria-hidden="true">--</span>'+
+            '<span class="site-elevator-floor-emblem" aria-hidden="true"></span>'+
             '<strong class="site-elevator-floor-label">HOUSE</strong>'+
             '<small class="site-elevator-room-label">Finding your Room…</small>'+
           '</div>'+
@@ -258,7 +259,10 @@
         fragment.appendChild(link);
       }
       roomRail.replaceChildren(fragment);
-      roomRail.hidden=!(landmarks.length||rows.length);
+      const visibleCount=landmarks.length+rows.length;
+      roomRail.dataset.roomCount=String(visibleCount);
+      roomRail.style.setProperty('--elevator-visible-count',String(Math.max(1,visibleCount)));
+      roomRail.hidden=!visibleCount;
     };
 
     const linkSpatialTarget=link=>{
