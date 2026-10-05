@@ -232,6 +232,12 @@ if "app/story-page.css" not in story_text and "../../app/story-page.css" not in 
 if '<p class="story-note"><a href="../../timeline/?mode=project">' in story_text:
     errors.append("Story must not restore the redundant loose Life/project Timeline handoff above the hero")
 
+great_book_page = ROOT / "great-book" / "index.html"
+great_book_text = great_book_page.read_text(encoding="utf-8", errors="ignore") if great_book_page.exists() else ""
+for marker in ("app/site-system.css","app/longform-reader.css","great-book.css","page page--wide great-book-page longform-shell","page-header longform-hero"):
+    if marker not in great_book_text:
+        errors.append(f"great-book/index.html missing shared long-form shell marker: {marker}")
+
 longform_path = ROOT / "app" / "longform-reader.css"
 longform_text = longform_path.read_text(encoding="utf-8", errors="ignore") if longform_path.exists() else ""
 if "style.css" in longform_text or "@import" in longform_text:
