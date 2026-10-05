@@ -490,7 +490,7 @@ def render_semantic_sections(data: dict) -> str:
             continue
         section_class = "paper-section paper-section-" + slugify(key)
         rendered.append(
-            f'<section class="{section_class}"><h2>{esc(humanize_key(key))}</h2>{render_value(value, 0, key)}</section>'
+            f'<section class="{section_class}" id="paper-section-{esc(slugify(key))}"><h2>{esc(humanize_key(key))}</h2>{render_value(value, 0, key)}</section>'
         )
         used.add(key)
     return "".join(rendered)
