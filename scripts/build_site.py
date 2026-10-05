@@ -485,7 +485,6 @@ def build() -> None:
     if missing:
         raise SystemExit(f"Required manifest-driven archive files are missing from _site: {missing}")
     patch_entity_metadata()
-    asset_versions = fingerprint_shared_assets()
     manifest = load_json(ROOT / "manifest.json", {}) or {}
     core_index = load_json(ROOT / "knowledge" / "indexes" / "core-index.json", {}) or {}
     contexts = load_json(ROOT / "knowledge" / "indexes" / "context-graph.json", {}) or {}
@@ -496,6 +495,7 @@ def build() -> None:
     urls.extend(generate_record_pages(core_index, manifest, bridge))
     generate_sitemap(urls)
     generate_machine_index(manifest, core_index, contexts)
+    asset_versions = fingerprint_shared_assets()
     pages = sorted(OUT.rglob("*.html"))
     if not pages:
         raise SystemExit("No HTML pages were built into _site")
