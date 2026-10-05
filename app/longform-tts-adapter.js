@@ -124,6 +124,7 @@
       itemSelector:data.ttsItem||'',
       excludeSelector:data.ttsExclude||'',
       selectionOnly:data.ttsSelectionOnly==='true',
+      defaultSection:data.ttsDefault||'',
     };
   }
 
@@ -197,6 +198,7 @@
       triggerLabel:config.triggerLabel||'',
       prepareSection:prepareForPlayback,
       settingsKey:config.settingsKey||'potato-tts-settings',
+      defaultSection:config.defaultSection||'',
       onEvent:event=>{
         if(event.type==='start')currentGuard.setActive(event.sectionId==='current');
         if(event.sectionId==='current'&&['chunkstart','boundary'].includes(event.type))setReadingActive(true);
