@@ -312,6 +312,11 @@ assert.ok(css.includes('linear-gradient(135deg,#bc8540 0 4px,transparent 4px) to
 assert.equal(/\.site-elevator-room:hover,[\s\S]*?background:linear-gradient\(180deg,rgba\(48,43,30/.test(css),false,'generic hover must not override floor-specific plate materials');
 assert.ok(css.includes('var(--room-hardware-bright) 16%'),'inner Room seam must inherit the floor hardware palette');
 assert.match(css,/\.site-elevator-room\.is-active::after\{[\s\S]*?width:12px;[\s\S]*?height:12px;/,'active Room needs a visibly engaged connector joint');
+const floorSkinIndex=css.indexOf('.site-elevator[data-elevator-level="below"] .site-elevator-room{');
+const activeSkinIndex=css.indexOf('.site-elevator[data-elevator-level] .site-elevator-room.is-active{');
+assert.ok(activeSkinIndex>floorSkinIndex,'active Room material state must be declared after floor skins so the cascade cannot partially mask it');
+assert.ok(css.includes('linear-gradient(135deg,#d09a4f 0 4px,transparent 4px) top left/12px 12px no-repeat'),'foreground scenic overlay needs visible upper-left chassis hardware');
+
 assert.ok(source.includes("roomRail.dataset.roomCount=String(visibleCount)"),'runtime must expose actual floor door count for illustrated layout');
 assert.ok(css.includes('grid-template-columns:repeat(var(--elevator-visible-count),minmax(0,1fr))'),'desktop illustrated rail must size Heaven, Plane and Below by their actual door count');
 assert.ok(source.includes('site-elevator-stage'),'runtime must separate the stable console from the scenic Room window');
