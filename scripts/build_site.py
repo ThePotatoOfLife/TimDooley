@@ -64,6 +64,7 @@ SHARED_ASSETS = (
     "app/religion-page.css",
     "app/world-domain-page.css",
     "app/generated-knowledge.css",
+    "app/faq-reader.css",
     "app/lower-layer.css",
     "app/house-journey.css",
     "app/house-journey.js",
