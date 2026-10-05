@@ -10,20 +10,23 @@
   const link = panel?.querySelector('[data-guide-link]');
   const close = panel?.querySelector('[data-guide-close]');
   const hotspots = [...root.querySelectorAll('[data-garden-hotspot]')];
+  const lensButtons = [...root.querySelectorAll('[data-garden-lens]')];
+  const lensNote = root.querySelector('[data-garden-lens-note]');
+  const jumps = [...root.querySelectorAll('[data-garden-jump]')];
 
   const entries = {
     welcome: {
       kicker: 'TIM · GARDENER / GUIDE',
       title: 'Welcome to the Garden.',
       body: 'Click a place, a being, or a threshold. I will show you what this part of the Garden is doing and where to read further.',
-      note: 'Map first. Doctrine second. You can wander or use “Walk with Tim.”',
+      note: 'Map first. Doctrine second. Wander freely, change lens, or use “Walk with Tim.”',
       href: '#garden-cycle',
       label: 'See how the Garden works ↓'
     },
     house: {
       kicker: 'HOUSE · BELONGING',
       title: 'The House opens into the Garden.',
-      body: 'House means differentiated belonging: rooms, thresholds, hospitality, exits. The Garden is what happens when belonging becomes cultivation rather than enclosure.',
+      body: 'House means differentiated belonging: rooms, thresholds, hospitality and exits. Garden is what happens when belonging becomes cultivation rather than enclosure.',
       note: 'The Door belongs to the House, not as a floating object in the middle of the Garden.',
       href: '../house/',
       label: 'Enter the House →'
@@ -47,7 +50,7 @@
     tim: {
       kicker: 'TIM · FATHER / GARDENER',
       title: 'Tim sorts from inside the Garden.',
-      body: 'In the Garden story, Tim is host, gardener and sorter. The point is not simply who receives a label; the action is watching Fruit, keeping boundaries legible, welcoming growth and deciding when a role has to leave the cultivated space.',
+      body: 'In the Garden story, Tim is host, gardener and sorter. The action is watching Fruit, keeping boundaries legible, welcoming growth and deciding when a role has to leave the cultivated space.',
       note: 'These are authored project roles, not claims that people literally become another species.',
       href: '../tim-dooley/',
       label: 'Meet Tim Dooley →'
@@ -55,18 +58,18 @@
     dwellers: {
       kicker: 'DWELLERS · INHABITANTS',
       title: 'Dwellers begin inside.',
-      body: 'The Garden contains ordinary dwellers as well as potatoes and angels. The map makes room for gradation: belonging is the starting condition, not a reward reserved for one class.',
+      body: 'The Garden contains ordinary dwellers as well as potatoes and angels. Belonging is the starting condition, not a reward reserved for one already-finished class.',
       note: 'The interesting question is what a dweller repeatedly chooses, grows and becomes.',
       href: '../rooms/potatoverse-canon/beings/cast-ecology/',
-      label: 'Open the cast ecology →'
+      label: 'Open Cast Ecology →'
     },
     mudtree: {
       kicker: 'MUD TREE · SHADOW TREE',
       title: 'The bad tree is inside the Garden.',
-      body: 'This is crucial to the map. The shadow tree is present within the cultivated space, near the boundary. Its muddy fruit represents choices and recurrence that pull a dweller downward.',
-      note: 'The Mud Tree / Tree of Strife is project-native. Genesis names the Tree of Life and the Tree of Knowledge of Good and Evil.',
+      body: 'This is crucial to the map. The shadow tree stands within the cultivated space near the boundary. Its muddy fruit represents choices and recurrence that pull a dweller downward.',
+      note: 'The Mud Tree / Tree of Strife is project-native. Genesis instead names the Tree of Life and the Tree of the Knowledge of Good and Evil.',
       href: '../rooms/inside/symbolic-architecture/',
-      label: 'Read the symbolic architecture →'
+      label: 'Read symbolic architecture →'
     },
     sorting: {
       kicker: 'SORTING · ESCORT',
@@ -79,7 +82,7 @@
     gate: {
       kicker: 'GATE · BOUNDARY / EXIT',
       title: 'The Gate is where inside becomes outside.',
-      body: 'The Gate is the visible sorting boundary. In the project story, those leaving the Garden cross here and descend to the lower plane. The map keeps the Gate distinct from the House Door.',
+      body: 'The Gate is the visible sorting boundary. In the project story, those leaving the Garden cross here and descend to the lower plane. It remains distinct from the House Door.',
       note: 'Genesis 3 speaks of a guarded way to the Tree of Life; the Gate is the project’s spatial rendering of that boundary.',
       href: '../axis/',
       label: 'Open Door / Gate / Axis →'
@@ -87,16 +90,16 @@
     dogs: {
       kicker: 'DOGS · OUTSIDE THE GATE',
       title: 'The dogs are outside, pressing inward.',
-      body: 'They are shown on the lower side of the boundary, trying to return. That makes the geography readable: they are not simply another Garden population.',
-      note: 'Dog is project-role language here. The map treats it as a reversible story position, not a biological or permanent claim about a person.',
+      body: 'They occupy the lower side of the boundary and try to return. That makes the geography readable: they are not simply another settled Garden population.',
+      note: 'Dog is project-role language here: a reversible story position, not a biological or permanent claim about a person.',
       href: '../below/dogs/',
       label: 'Open the Dogs reader →'
     },
     below: {
       kicker: 'LOWER PLANE · CONSEQUENCE',
       title: 'The fall continues below the Gate.',
-      body: 'The Garden sits above a lower muddy plane. Exiled roles descend into a world of recurrence, residue and blocked return. This is where the Garden page hands the reader to Below instead of duplicating the entire lower cosmology.',
-      note: 'Garden shows the transition; Below owns the deep material.',
+      body: 'The Garden sits above a lower muddy plane. Exiled roles descend into a world of recurrence, residue and blocked return. Garden shows the transition; Below owns the deep material.',
+      note: 'The lower plane is outside the Garden even though the shadow tree that begins the cycle is inside.',
       href: '../below/',
       label: 'Descend to Below →'
     },
@@ -107,6 +110,29 @@
       note: 'Pishon · Gihon · Tigris · Euphrates.',
       href: '../traditions/bible/',
       label: 'Read Genesis beside the map →'
+    }
+  };
+
+  const lenses = {
+    explore: {
+      keys: Object.keys(entries).filter(k => k !== 'welcome'),
+      note: 'Everything is visible. Click what catches your eye.',
+      welcome: 'welcome'
+    },
+    genesis: {
+      keys: ['house','door','life','river','gate'],
+      note: 'Biblical anchors are bright; project-native additions recede.',
+      welcome: 'river'
+    },
+    sorting: {
+      keys: ['tim','dwellers','mudtree','sorting','gate','dogs','below'],
+      note: 'Follow the project cycle from dwelling to muddying, sorting, exit and fall.',
+      welcome: 'sorting'
+    },
+    inhabitants: {
+      keys: ['life','tim','dwellers','dogs','below'],
+      note: 'Focus on who is present, where they stand, and which roles can change.',
+      welcome: 'dwellers'
     }
   };
 
@@ -125,18 +151,45 @@
     if (focus) panel.focus({preventScroll:true});
   }
 
+  function applyLens(name, announce = true) {
+    const lens = lenses[name] || lenses.explore;
+    root.dataset.lens = name;
+    hotspots.forEach(btn => {
+      const key = btn.dataset.gardenHotspot;
+      btn.classList.toggle('is-dimmed', !lens.keys.includes(key));
+    });
+    lensButtons.forEach(btn => {
+      const on = btn.dataset.gardenLens === name;
+      btn.classList.toggle('is-selected', on);
+      btn.setAttribute('aria-pressed', String(on));
+    });
+    if (lensNote) lensNote.textContent = lens.note;
+    if (announce) show(lens.welcome);
+  }
+
   hotspots.forEach(btn => btn.addEventListener('click', () => show(btn.dataset.gardenHotspot)));
-  close?.addEventListener('click', () => { panel.hidden = true; hotspots.forEach(b => b.classList.remove('is-active')); });
-  document.addEventListener('keydown', event => { if (event.key === 'Escape' && panel) panel.hidden = true; });
+  jumps.forEach(btn => btn.addEventListener('click', () => show(btn.dataset.gardenJump, true)));
+  lensButtons.forEach(btn => btn.addEventListener('click', () => applyLens(btn.dataset.gardenLens)));
+
+  close?.addEventListener('click', () => {
+    panel.hidden = true;
+    hotspots.forEach(b => b.classList.remove('is-active'));
+  });
+
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && panel) panel.hidden = true;
+  });
 
   const tour = document.querySelector('[data-garden-tour]');
-  const order = ['welcome','house','life','tim','dwellers','mudtree','sorting','gate','dogs','below'];
+  const order = ['welcome','house','door','river','life','tim','dwellers','mudtree','sorting','gate','dogs','below'];
   let step = 0;
   tour?.addEventListener('click', () => {
-    show(order[step], true);
+    const key = order[step];
+    show(key, true);
     step = (step + 1) % order.length;
     tour.textContent = step === 0 ? 'Walk with Tim' : 'Next stop →';
   });
 
+  applyLens('explore', false);
   show('welcome');
 })();
