@@ -1,6 +1,6 @@
 {
   "version": "1.2.0",
-  "updated": "2026-09-20",
+  "updated": "2026-10-05",
   "authority": "nested-room-interior-registry",
   "purpose": "Bind every registered nested Room to a stable spatial-home route without changing its canonical knowledge ownership.",
   "route_pattern": "/rooms/inside/<public-route-slug>/",
@@ -29,6 +29,15 @@
       "route": "/rooms/inside/theology-god-language/",
       "status": "active",
       "local_role": "theological interpretation",
+      "adjacency_count": 4
+    },
+    {
+      "subroom_id": "garden",
+      "title": "Garden",
+      "parent_room_id": "potatoverse-canon",
+      "route": "/garden/",
+      "status": "active",
+      "local_role": "source-facing cultivation and stewardship",
       "adjacency_count": 4
     },
     {
