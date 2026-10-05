@@ -538,6 +538,8 @@ def render_paper_figures(value) -> str:
         title = str(item.get("title") or f"Figure {index}").strip()
         caption = str(item.get("caption") or "").strip()
         source = str(item.get("source_note") or "").strip()
+        figure_version = asset_version(asset)
+        figure_href = f'../../../{esc(asset)}?v={esc(figure_version)}'
         caption_html = f'<span class="paper-figure-caption">{esc(caption)}</span>' if caption else ""
         source_html = (
             f'<small class="paper-figure-source"><b>Source / status:</b> {esc(source)}</small>'
@@ -545,14 +547,14 @@ def render_paper_figures(value) -> str:
         )
         figures.append(
             '<figure class="paper-figure">'
-            f'<a class="paper-figure-image-link" href="../../../{esc(asset)}" target="_blank" rel="noopener" aria-label="Open full figure: {esc(title)}">'
-            f'<img src="../../../{esc(asset)}" alt="{esc(alt)}" loading="lazy" decoding="async">'
+            f'<a class="paper-figure-image-link" href="{figure_href}" target="_blank" rel="noopener" aria-label="Open full figure: {esc(title)}">'
+            f'<img src="{figure_href}" alt="{esc(alt)}" loading="lazy" decoding="async">'
             '</a>'
             '<figcaption>'
             f'<strong>{esc(title)}</strong>'
             f'{caption_html}'
             f'{source_html}'
-            f'<a class="paper-figure-open" href="../../../{esc(asset)}" target="_blank" rel="noopener">Open full figure ↗</a>'
+            f'<a class="paper-figure-open" href="{figure_href}" target="_blank" rel="noopener">Open full figure ↗</a>'
             '</figcaption>'
             '</figure>'
         )
@@ -801,7 +803,7 @@ def render_papers_reader(records: list[dict]) -> str:
             f'<h3>{esc(record["title"])}</h3>'
             f'<p>{esc(record["abstract"])}</p>'
             + (
-                f'<figure class="core-paper-figure"><img src="../../{esc(record.get("figure"))}" alt="{esc(record.get("figure_alt") or record["title"])}" loading="lazy" decoding="async"></figure>'
+                f'<figure class="core-paper-figure"><img src="../../{esc(record.get("figure"))}?v={asset_version(str(record.get("figure")))}" alt="{esc(record.get("figure_alt") or record["title"])}" loading="lazy" decoding="async"></figure>'
                 if record.get("figure") else ""
             )
             + f'<a href="./{esc(slug)}/">Open paper →</a>'
@@ -813,7 +815,7 @@ def render_papers_reader(records: list[dict]) -> str:
     orientation_html = ""
     if orientation:
         figure_html = (
-            f'<figure class="papers-orientation-figure"><img src="../../{esc(orientation.get("figure"))}" alt="{esc(orientation.get("figure_alt") or orientation["title"])}" loading="eager" decoding="async"></figure>'
+            f'<figure class="papers-orientation-figure"><img src="../../{esc(orientation.get("figure"))}?v={asset_version(str(orientation.get("figure")))}" alt="{esc(orientation.get("figure_alt") or orientation["title"])}" loading="eager" decoding="async"></figure>'
             if orientation.get("figure") else ""
         )
         orientation_html = (

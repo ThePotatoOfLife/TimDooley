@@ -271,6 +271,7 @@ def main() -> int:
             'asset_version("science/science-paper.css")',
             'asset_version("science/science-papers.css")',
             'asset_version("science/science-papers.js")',
+            "figure_version = asset_version(asset)",
             '"Scientific Atlas"',
             '"Methods / Validation"',
             '"Mathematical Research Note"',
@@ -401,6 +402,8 @@ def main() -> int:
                     errors.append(f"featured Science paper missing: science/papers/{featured_slug}/index.html")
                 else:
                     featured_text = featured_page.read_text(encoding="utf-8", errors="replace")
+                    if "science-time-door-handshake.svg?v=" not in featured_text:
+                        errors.append("featured Science figure URL is not content-versioned")
                     require_markers(
                         featured_text,
                         (
