@@ -24,13 +24,58 @@
 </head>
 <body>
 <main class="page page--wide science-page" data-reader-surface="science">
-  <nav class="page-nav" aria-label="Science navigation"><a href="../">Home</a><a href="../philosophy/">Philosophy</a><a href="../world/">World</a><a href="../timeline/#tim-project-timeline">Timeline</a><a href="#worked-science">Worked examples</a><a href="research-map/">Research map</a></nav>
+  <nav class="page-nav" aria-label="Science navigation"><a href="../">Home</a><a href="#science-papers">Papers</a><a href="#worked-science">Worked examples</a><a href="research-map/">Research map</a><a href="../philosophy/">Philosophy</a><a href="../world/">World</a><a href="../timeline/#tim-project-timeline">Timeline</a></nav>
 
   <header class="page-header science-hero">
     <p class="eyebrow science-kicker">Research library</p>
     <h1>SCIENCE</h1>
     <p class="summary science-lede">The scientific side of the project asks what can be made precise, what can be measured, and where a symbolic idea stops being a scientific claim.</p>
   </header>
+<section class="science-library" id="science-papers" aria-label="Science document library">
+    <div class="science-shelf-intro">
+      <p class="eyebrow">Science papers</p>
+      <h2>Read the models as papers, not database records</h2>
+      <p>The structured research archive is rendered here as human-readable papers, formal notes, audits and recovery documents. Each paper keeps its scientific status visible: recovered Tim material, later formalization, established external science and speculative extension are not silently merged.</p>
+      <article class="science-featured-paper">
+        <div>
+          <small>Featured paper · time symmetry / Door</small>
+          <strong>Advanced / Retarded Wave + Present Door Handshake</strong>
+          <p>Tim's recovered advanced/retarded vocabulary, the two-boundary Door model, Wheeler–Feynman absorber theory, Aharonov/Vaidman and Cramer as carefully separated external comparators, plus figures and falsification conditions.</p>
+        </div>
+        <a href="./papers/advanced-retarded-door-handshake-recovery/">Read the paper →</a>
+      </article>
+    </div>
+    <div class="science-controls">
+      <label class="science-control science-search-control" for="science-search">
+        <span>Search</span>
+        <input id="science-search" type="search" autocomplete="off" placeholder="Search titles, abstracts, equations, concepts…">
+      </label>
+      <label class="science-control" for="science-field">
+        <span>Field</span>
+        <select id="science-field">
+          <option value="all">All fields</option>
+        </select>
+      </label>
+      <label class="science-control" for="science-type">
+        <span>Document type</span>
+        <select id="science-type">
+          <option value="all">All document types</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="science-library-status">
+      <strong id="science-count" aria-live="polite">Loading science library…</strong>
+      <span>Every result opens the complete document.</span>
+    </div>
+
+    <section class="science-results" id="science-results" aria-label="Science documents">
+      <!-- SCIENCE_CATALOG_STATIC -->
+    </section>
+
+    <p class="science-empty" id="science-empty" hidden>No documents match those filters.</p>
+  </section>
+
 <section class="teaching-block" id="metaphor-model-test">
 <p class="eyebrow">Scientific promotion ladder</p>
 <h2>A metaphor earns scientific weight one expensive step at a time</h2>
@@ -239,38 +284,6 @@
   </section>
 
   <section class="topology-context" data-house-topology-context data-house-concepts="plane,axis,cross,spiral" data-topology-src="../data/house/concept-topology.json" data-house-base="../house/"><p><a href="../house/#operators">Open the House topology behind Plane, Axis, Cross and Spiral →</a></p></section>
-
-<section class="science-library" aria-label="Science document library">
-    <div class="science-controls">
-      <label class="science-control science-search-control" for="science-search">
-        <span>Search</span>
-        <input id="science-search" type="search" autocomplete="off" placeholder="Search titles, abstracts, equations, concepts…">
-      </label>
-      <label class="science-control" for="science-field">
-        <span>Field</span>
-        <select id="science-field">
-          <option value="all">All fields</option>
-        </select>
-      </label>
-      <label class="science-control" for="science-type">
-        <span>Document type</span>
-        <select id="science-type">
-          <option value="all">All document types</option>
-        </select>
-      </label>
-    </div>
-
-    <div class="science-library-status">
-      <strong id="science-count" aria-live="polite">Loading science library…</strong>
-      <span>Every result opens the complete document.</span>
-    </div>
-
-    <section class="science-results" id="science-results" aria-label="Science documents">
-      <!-- SCIENCE_CATALOG_STATIC -->
-    </section>
-
-    <p class="science-empty" id="science-empty" hidden>No documents match those filters.</p>
-  </section>
 
   <nav class="science-deep" data-projection-surface aria-label="Explore science more deeply">
     <a href="../explore/#branch=science">Science archive</a>
