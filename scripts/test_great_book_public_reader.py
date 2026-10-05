@@ -45,7 +45,9 @@ class GreatBookPublicReaderTests(unittest.TestCase):
     def test_reader_prefetches_chapters_ahead_without_rewriting_the_whole_toc(self):
         source = READER.read_text(encoding="utf-8")
 
-        self.assertIn("rootMargin:'2600px 0px'", source)
+        self.assertIn("rootMargin:'5200px 0px'", source)
+        self.assertIn("rootMargin:'2200px 0px'", source)
+        self.assertIn("prefetchSlot", source)
         self.assertIn("requestIdleCallback", source)
         self.assertIn("setCurrentLink(activeCurrentId)", source)
         self.assertNotIn("toc.querySelectorAll('a').forEach(a=>a.setAttribute('aria-current'", source)
