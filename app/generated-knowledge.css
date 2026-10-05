@@ -2,9 +2,6 @@
    The universal page shell, typography tokens, navigation and floor atmosphere
    come from site-system.css. This file owns only generated-record presentation. */
 
-.generated-knowledge{
-  max-width:900px;
-}
 .generated-knowledge .parent-link{
   color:var(--site-muted);
   text-decoration:none;
@@ -13,15 +10,8 @@
 .generated-knowledge .parent-link:focus-visible{
   color:var(--site-gold);
 }
-.generated-knowledge .page-header{
-  max-width:860px;
-}
-.generated-knowledge .page-header h1{
-  font-size:clamp(42px,7vw,76px);
-}
 .generated-knowledge .summary{
-  font-size:20px;
-  line-height:1.6;
+  max-width:72ch;
 }
 .generated-knowledge h2{
   margin-top:34px;
@@ -53,7 +43,4 @@
   margin-top:28px;
   padding-top:20px;
   border-top:1px solid var(--site-line);
-}
-@media(max-width:700px){
-  .generated-knowledge .page-header h1{font-size:clamp(38px,13vw,58px)}
 }
