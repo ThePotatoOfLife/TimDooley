@@ -129,14 +129,14 @@ def main() -> int:
     paper_css = PAPER_CSS.read_text(encoding="utf-8", errors="replace") if PAPER_CSS.exists() else ""
     require_markers(
         "".join(paper_css.split()),
-        (".paper-page{", ".paper-figure{", ".paper-equation{", "@mediaprint{"),
+        (".paper-page{", ".paper-subtitle{", ".paper-figure{", ".paper-equation{", "@mediaprint{"),
         "science/science-paper.css",
         errors,
     )
     papers_reader_css = PAPERS_READER_CSS.read_text(encoding="utf-8", errors="replace") if PAPERS_READER_CSS.exists() else ""
     require_markers(
         "".join(papers_reader_css.split()),
-        (".papers-reader{", ".core-list{", ".paper-entry{", ".papers-shelf{"),
+        (".papers-reader{", ".core-list{", ".paper-entry{", ".papers-shelf{", ".papers-index{"),
         "science/science-papers.css",
         errors,
     )
@@ -159,6 +159,8 @@ def main() -> int:
                     "SCIENCE PAPERS",
                     "Core paper series",
                     "Complete reading library",
+                    "Core paper series",
+                    "<details class=\"papers-shelf\"",
                     "science-papers.css",
                     "advanced-retarded-door-handshake-recovery",
                     "unified-potato-theory-2025-recovery",
