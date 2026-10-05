@@ -234,26 +234,6 @@ body{margin:0;background:
   .paper-figure{break-inside:avoid}
 }
 
-.paper-content>.paper-section:first-child{
-  margin-top:2px;
-  padding:18px 20px 20px;
-  border:1px solid rgba(107,81,47,.22);
-  background:rgba(107,81,47,.055);
-}
-.paper-content>.paper-section:first-child h2{
-  margin-bottom:10px;
-  font:750 10px/1.2 var(--site-font-sans);
-  text-transform:uppercase;
-  letter-spacing:.09em;
-}
-.paper-content>.paper-section:first-child ul{
-  margin:0;
-  padding-left:20px;
-}
-.paper-content>.paper-section:first-child li{
-  margin:7px 0;
-  color:var(--paper-ink);
-}
 
 .paper-page .page-nav.paper-nav{
   width:auto;
@@ -285,3 +265,60 @@ body{margin:0;background:
   background:transparent;
   box-shadow:none;
 }
+
+.paper-section-reader-takeaway{
+  margin-top:2px!important;
+  padding:18px 20px 20px!important;
+  border:1px solid rgba(107,81,47,.22)!important;
+  background:rgba(107,81,47,.055);
+}
+.paper-section-reader-takeaway h2{
+  margin-bottom:10px;
+  font:750 10px/1.2 var(--site-font-sans);
+  text-transform:uppercase;
+  letter-spacing:.09em;
+}
+.paper-section-reader-takeaway ul{margin:0;padding-left:20px}
+.paper-section-reader-takeaway li{margin:7px 0;color:var(--paper-ink)}
+.paper-section-limitations,
+.paper-section-hard-boundaries,
+.paper-section-falsification-and-failure-conditions,
+.paper-section-failure-conditions{
+  padding:18px 20px 20px!important;
+  border:1px solid rgba(142,91,74,.22)!important;
+  background:rgba(142,91,74,.045);
+}
+.paper-section-limitations h2,
+.paper-section-hard-boundaries h2,
+.paper-section-falsification-and-failure-conditions h2,
+.paper-section-failure-conditions h2{color:#765044}
+.paper-section-external-references,
+.paper-section-sources,
+.paper-section-sources-checked,
+.paper-section-lineage,
+.paper-section-connections{
+  font-size:13px;
+}
+.paper-section-external-references h2,
+.paper-section-sources h2,
+.paper-section-sources-checked h2,
+.paper-section-lineage h2,
+.paper-section-connections h2{
+  font-size:21px;
+  color:var(--paper-muted);
+}
+.paper-section-recovered-master-lagrangian .paper-equation,
+.paper-section-equations .paper-equation,
+.paper-section-formalism .paper-equation,
+.paper-section-formal-core .paper-equation{
+  margin-left:0;
+  margin-right:0;
+}
+.paper-content>.paper-figures{
+  margin-top:2px;
+  padding-top:2px;
+}
+.paper-content>.paper-figures h2{
+  margin-bottom:12px;
+}
+.paper-figure img{max-height:760px;object-fit:contain}
