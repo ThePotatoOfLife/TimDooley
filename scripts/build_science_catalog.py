@@ -467,15 +467,17 @@ def render_semantic_sections(data: dict) -> str:
         if key in data and key not in used:
             value = data[key]
             if value not in (None, "", [], {}):
+                section_class = "paper-section paper-section-" + slugify(key)
                 rendered.append(
-                    f'<section class="paper-section"><h2>{esc(humanize_key(key))}</h2>{render_value(value, 0, key)}</section>'
+                    f'<section class="{section_class}"><h2>{esc(humanize_key(key))}</h2>{render_value(value, 0, key)}</section>'
                 )
             used.add(key)
     for key, value in data.items():
         if key in used or value in (None, "", [], {}):
             continue
+        section_class = "paper-section paper-section-" + slugify(key)
         rendered.append(
-            f'<section class="paper-section"><h2>{esc(humanize_key(key))}</h2>{render_value(value, 0, key)}</section>'
+            f'<section class="{section_class}"><h2>{esc(humanize_key(key))}</h2>{render_value(value, 0, key)}</section>'
         )
         used.add(key)
     return "".join(rendered)
