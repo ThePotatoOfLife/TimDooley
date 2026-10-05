@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -246,6 +247,22 @@ def main() -> int:
     source = SOURCE_PAGE.read_text(encoding="utf-8", errors="replace") if SOURCE_PAGE.exists() else ""
     css = LIBRARY_CSS.read_text(encoding="utf-8", errors="replace") if LIBRARY_CSS.exists() else ""
     builder = BUILDER.read_text(encoding="utf-8", errors="replace") if BUILDER.exists() else ""
+    if re.search(r"science-(?:paper|papers)\.(?:css|js)\?v=20\d{6}", builder):
+        errors.append("scripts/build_science_catalog.py: hard-coded Science reader cache versions must use content hashes")
+    require_markers(
+        builder,
+        (
+            "def asset_version(",
+            'asset_version("science/science-paper.css")',
+            'asset_version("science/science-papers.css")',
+            'asset_version("science/science-papers.js")',
+            '"Scientific Atlas"',
+            '"Methods / Validation"',
+            '"Mathematical Research Note"',
+        ),
+        "scripts/build_science_catalog.py",
+        errors,
+    )
     require_markers(source, SOURCE_MARKERS, "science/index.html", errors)
     require_markers(builder, BUILDER_MARKERS, "scripts/build_science_catalog.py", errors)
     compact_css = "".join(css.split())

@@ -2,6 +2,7 @@
 """Compile canonical science records into the public Science library and full documents."""
 from __future__ import annotations
 
+import hashlib
 import html
 import json
 import re
@@ -45,6 +46,9 @@ VALID_DOCUMENT_TYPES = (
     "Research Programme",
     "Formal Note / Framework",
     "Scientific Audit",
+    "Scientific Atlas",
+    "Methods / Validation",
+    "Mathematical Research Note",
     "Recovery / Archaeology",
     "Research Record",
 )
@@ -91,6 +95,14 @@ FIELD_RULES = {
 }
 MATH_HINT = re.compile(r"(=|→|↔|∂|∇|Σ|∫|√|ℒ|□|μ|ν|θ|φ|ψ|α|β|γ|lambda|alpha|beta|gamma|SU\(|SO\(|Spin\(|U\(1\)|d[A-Za-z_].*/d)")
 URL_RE = re.compile(r"^https?://", re.I)
+
+
+def asset_version(relative_path: str) -> str:
+    """Return a deterministic short content hash for a generated-reader asset."""
+    path = ROOT / relative_path
+    if not path.is_file():
+        return "missing"
+    return hashlib.sha256(path.read_bytes()).hexdigest()[:12]
 
 
 def esc(value) -> str:
@@ -712,7 +724,7 @@ def render_paper_page(record: dict, data: dict, related: list[dict] | None = Non
 <meta name="description" content="{esc(record['abstract'][:300])}">
 <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
 <link rel="canonical" href="{esc(canonical)}">
-<link rel="stylesheet" href="../../science-paper.css?v=20260911a">
+<link rel="stylesheet" href="../../science-paper.css?v={asset_version("science/science-paper.css")}">
 </head>
 <body><main class="paper-page">
 <nav class="page-nav paper-nav" aria-label="Science paper navigation"><a href="../">← Research Papers</a><a href="../../">Science</a><a href="../../../">Home</a></nav>
@@ -864,8 +876,8 @@ def render_papers_reader(records: list[dict]) -> str:
 <meta name="description" content="A gathered reader for Tim Dooley and Potato of Life research papers, formal models, research notes, audits and theory-recovery documents.">
 <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
 <link rel="canonical" href="https://thepotatooflife.github.io/TimDooley/science/papers/">
-<link rel="stylesheet" href="../science-papers.css?v=20261005b">
-<script src="../science-papers.js?v=20261005b" defer></script>
+<link rel="stylesheet" href="../science-papers.css?v={asset_version("science/science-papers.css")}">
+<script src="../science-papers.js?v={asset_version("science/science-papers.js")}" defer></script>
 </head>
 <body>
 <main class="papers-reader" data-reader-surface="science-papers">
