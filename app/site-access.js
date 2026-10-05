@@ -272,7 +272,7 @@
     if(open&& !panel.hidden)setOpen(false);
     ttsConsole.hidden=!open;
     listenBtn.setAttribute('aria-expanded',String(open));
-    if(open)ttsDrawer.expand?.();
+    if(open)ttsDrawer.open?.();
     else ttsDrawer.hideUI?.();
     wrapper.dataset.readerOpen=open?'true':'false';
     syncTTSState();
