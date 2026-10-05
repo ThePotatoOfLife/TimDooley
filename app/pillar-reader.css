@@ -81,7 +81,7 @@
 .pillar-reader :is(.worked-history,.body-cases,.systems-reader,.context-purpose)>.lead,
 .pillar-reader .context-purpose>.lead2{
   max-width:860px;
-  color:#cbd1c8;
+  color:var(--site-copy);
   font:400 20px/1.58 var(--site-font-serif);
 }
 .pillar-reader .history-steps{margin-top:16px;border-top:1px solid var(--site-line)}
@@ -96,7 +96,7 @@
   color:var(--site-gold);
   font:400 18px/1.2 var(--site-font-serif);
 }
-.pillar-reader .history-step p{margin:0 0 7px;color:#cbd1c8}
+.pillar-reader .history-step p{margin:0 0 7px;color:var(--site-copy)}
 .pillar-reader .history-step a{color:var(--site-gold);font-size:var(--site-text-caption)}
 
 /* Life & Body explorer */
@@ -244,7 +244,7 @@
   font:400 21px/1.1 var(--site-font-serif);
 }
 .pillar-reader .body-case .lesson{color:var(--site-gold);font-size:var(--site-text-caption)}
-.pillar-reader .body-case p{margin:0 0 7px;color:#cbd1c8}
+.pillar-reader .body-case p{margin:0 0 7px;color:var(--site-copy)}
 .pillar-reader .body-case a{color:var(--site-gold);font-size:var(--site-text-caption)}
 
 /* World Systems */
@@ -278,7 +278,7 @@
   font:400 22px/1.12 var(--site-font-serif);
 }
 .pillar-reader .systems-chain .q{color:var(--site-gold);font-size:var(--site-text-caption)}
-.pillar-reader .systems-chain p{margin:0 0 8px;color:#cbd1c8}
+.pillar-reader .systems-chain p{margin:0 0 8px;color:var(--site-copy)}
 .pillar-reader .systems-chain a{color:var(--site-gold);font-size:var(--site-text-caption)}
 
 /* Context */
