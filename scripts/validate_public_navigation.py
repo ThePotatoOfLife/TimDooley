@@ -119,23 +119,26 @@ def main() -> int:
                     errors.append(f"page-nav {page_nav_index} of {rel} must begin with Home; found {first_label!r}")
                 if "page-nav-home" not in first.group("attrs"):
                     errors.append(f"page-nav {page_nav_index} of {rel} first link missing page-nav-home marker")
-                if len(anchors) > 1:
+                if len(anchors) > 6:
+                    errors.append(
+                        f"page-nav {page_nav_index} of {rel} has {len(anchors)} links; "
+                        "subheaders must stay at six choices or fewer"
+                    )
+                if rel.as_posix().startswith("rooms/") and len(anchors) > 1:
                     second_label = re.sub(r"<[^>]+>", "", anchors[1].group("label")).strip()
                     if second_label != "Rooms":
-                        errors.append(f"page-nav {page_nav_index} of {rel} must place Rooms second; found {second_label!r}")
-                    if "page-nav-directory" not in anchors[1].group("attrs"):
-                        errors.append(f"page-nav {page_nav_index} of {rel} second link missing page-nav-directory marker")
+                        errors.append(
+                            f"Room page-nav {page_nav_index} of {rel} must keep Rooms second; found {second_label!r}"
+                        )
             for anchor in anchors:
                 label = html.unescape(re.sub(r"<[^>]+>", "", anchor.group("label"))).lstrip("←").strip()
                 if label in REDUNDANT_PAGE_NAV_LABELS:
                     errors.append(f"page-nav {page_nav_index} of {rel} leaked redundant architecture label {label!r}")
             room_link_count = len(PAGE_NAV_ROOM_CLASS.findall(nav))
-            # Room families are intentionally visible now. Dwellings contain only
-            # 3–5 governed child Rooms; nested Rooms may add up to two cross-family
-            # adjacent doors after their siblings. Guard only against runaway output.
-            if room_link_count > 8:
+            if room_link_count > 1:
                 errors.append(
-                    f"page-nav {page_nav_index} of {rel} projects {room_link_count} Room links; expected a compact governed neighborhood"
+                    f"page-nav {page_nav_index} of {rel} projects {room_link_count} governed Room links; "
+                    "the elevator owns broad Room discovery"
                 )
 
         for deep_index, deep in enumerate(DEEP.findall(text), start=1):
