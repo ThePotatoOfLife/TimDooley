@@ -332,11 +332,11 @@ html[data-site-floor] body.dogs-hall-page .page-header{
   font:400 21px/1.2 var(--site-font-serif);
 }
 .dogs-hall-page .worked-run-grid p{margin:7px 0;color:#c5bdb5;font-size:var(--site-text-sm);line-height:1.55}
-.dogs-hall-page .run-verdict{
-  margin-top:12px!important;
+.dogs-hall-page .worked-run-grid .run-verdict{
+  margin-top:12px;
   padding-top:10px;
   border-top:1px solid rgba(147,91,61,.27);
-  color:#d6c4b6!important;
+  color:#d6c4b6;
 }
 @media(max-width:760px){.dogs-hall-page .worked-run-grid{grid-template-columns:1fr}}
 
