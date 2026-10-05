@@ -1,6 +1,6 @@
 {
-  "version": "1.1.1",
-  "updated": "2026-10-04",
+  "version": "1.1.2",
+  "updated": "2026-10-05",
   "authority": "public-surface-editorial-mission",
   "registry": "data/house/public-surfaces.json",
   "principle": "Every active public surface must know what it is trying to become, what it must not become, where a reader should go next, and how much first-party substance it should carry. Mission contracts guide architecture; they do not replace canonical knowledge owners.",
@@ -677,6 +677,21 @@
       ],
       "density_intent": "balanced",
       "reader_job": "Translate Potatoism into lived daily practice across growth, work, conflict, relationships, rest, community and Angelic responsibility."
+    },
+    "garden": {
+      "title": "The Garden",
+      "route": "/garden/",
+      "narrative_stage": "meaning",
+      "become": "An inhabitable Heaven-facing reader room where Genesis 1–3, Father/Gardener canon, River, two trees, Fruit, work, keeping, boundary, exile and return can be followed as one coherent walk with clear tradition/project boundaries.",
+      "must_not_become": "A proof page for literal divine identity, a generic Genesis encyclopedia, or an excuse to classify living people as disposable good/bad seed.",
+      "primary_next_surface_ids": [
+        "bible",
+        "religion",
+        "axis",
+        "potato-of-life"
+      ],
+      "density_intent": "balanced",
+      "reader_job": "Let readers enter the Genesis/Garden cluster as an inhabitable story-space: River, two trees, work/keeping, Father/Gardener, boundary, guarded return and explicit doors into Bible, House, Axis and Potatoverse canon."
     }
   }
 }
