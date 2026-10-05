@@ -178,6 +178,8 @@ for page in PILLAR_READER_PAGES:
         errors.append(f"{page.relative_to(ROOT)} missing shared pillar-reader.css")
     if "pillar-reader" not in text:
         errors.append(f"{page.relative_to(ROOT)} missing pillar-reader scope class")
+    if 'class="page-header"' not in text:
+        errors.append(f"{page.relative_to(ROOT)} missing shared page-header")
     if re.search(r"<style\b", text, flags=re.I):
         errors.append(f"{page.relative_to(ROOT)} drifted back to inline structural CSS")
 
