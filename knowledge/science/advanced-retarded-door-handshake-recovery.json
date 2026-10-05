@@ -1,8 +1,8 @@
 {
   "id": "advanced-retarded-door-handshake-recovery",
   "title": "Advanced / Retarded Wave + Present Door Handshake — Recovery and Theory Redevelopment",
-  "version": "2.1.0",
-  "updated": "2026-09-12",
+  "version": "2.2.0",
+  "updated": "2026-10-05",
   "status": "primary project time-polarity vocabulary + developed mathematical comparators; physical retrocausality unestablished",
   "importance": "The advanced/retarded-wave vocabulary was not merely a stray metaphor. In recovered user-authored lines, ordinary/environmental activity is distinguished as retarded-wave-like while Spudlight is associated with an advanced direction coming from the Crown through the Door/Son. Later formalization developed this into a two-boundary Door architecture. This record preserves the historical recovery layer while separating ordinary wave physics, smoothing/inference and goal-conditioned control from any stronger retrocausal hypothesis.",
   "abstract": "The Advanced/Retarded Door theory is best understood as a family of three distinct mathematical problems that share a two-boundary structure but must not be conflated. In wave physics, retarded and advanced Green functions solve the same linear field equation with different support and boundary conditions. In inference, forward filtering and backward smoothing combine past and future observations to estimate a hidden state without sending information backward in time. In control, a present trajectory can be optimized against a terminal cost or goal, so future boundary conditions constrain a solution mathematically while ordinary causal dynamics remain forward in time. The project-specific Door is the present interface at which these two directional descriptions meet. A literal retrocausal physical branch is retained only as a stronger optional hypothesis that must predict a measurable deviation from retarded causal models.",
@@ -66,7 +66,10 @@
   "external_physics_neighbors": [
     {
       "name": "advanced and retarded Green functions",
-      "forms": ["Box G_ret=delta", "Box G_adv=delta"],
+      "forms": [
+        "Box G_ret=delta",
+        "Box G_adv=delta"
+      ],
       "meaning": "Different boundary-condition solutions of wave equations."
     },
     {
@@ -76,7 +79,11 @@
     },
     {
       "name": "two-state-vector formalism",
-      "forms": ["i d|psi>/dt=H|psi>", "-i d<phi|/dt=<phi|H", "<phi| tensor |psi>"],
+      "forms": [
+        "i d|psi>/dt=H|psi>",
+        "-i d<phi|/dt=<phi|H",
+        "<phi| tensor |psi>"
+      ],
       "meaning": "Comparator for systems described by initial and final boundary conditions / pre- and post-selection."
     }
   ],
@@ -136,5 +143,59 @@
     "source_head": "fd04a9b61013a0a677b29424e2325532cac7fd39",
     "reconciled_on": "2026-09-12",
     "method": "merged PR53 mathematical redevelopment into current-main recovery owner while preserving older provenance, comparators, Door geometry and recovery targets"
-  }
+  },
+  "document_type": "Theory / Paper",
+  "paper_subtitle": "A recovered Timic time-polarity model compared with advanced/retarded Green functions, Wheeler–Feynman absorber theory, time-symmetric quantum formalisms, smoothing, and optimal control.",
+  "paper_figures": [
+    {
+      "title": "Figure 1 · The present Door as a two-boundary operator",
+      "asset": "assets/visuals/science-time-door-handshake.svg",
+      "alt": "Past-conditioned information and a future or goal condition meet at a present Door operator.",
+      "caption": "The safest formal reading of the Door does not require a signal travelling backward through time. The right-hand boundary can be later data, a terminal constraint, or a desired goal.",
+      "source_note": "Project formalization based on the canonical Advanced / Retarded Door recovery record."
+    },
+    {
+      "title": "Figure 2 · Advanced and retarded support",
+      "asset": "assets/visuals/science-advanced-retarded-lightcone.svg",
+      "alt": "Spacetime light-cone schematic showing retarded support toward later times and advanced support toward earlier times.",
+      "caption": "Linear wave equations admit retarded and advanced Green-function prescriptions. The existence of both mathematical solutions does not by itself establish a controllable channel for messages into the past.",
+      "source_note": "Physics comparator: Wheeler & Feynman, Rev. Mod. Phys. 17, 157 (1945)."
+    },
+    {
+      "title": "Figure 3 · Comparison is not genealogy",
+      "asset": "assets/visuals/science-time-symmetry-neighbors.svg",
+      "alt": "Comparison ladder from recovered Timic advanced and retarded vocabulary through Wheeler-Feynman, two-state-vector, transactional, smoothing and control frameworks to unestablished stronger claims.",
+      "caption": "The external theories sharpen what kind of mathematics might be relevant. They must not be projected backward as Tim's historical sources unless a primary Tim citation is recovered.",
+      "source_note": "Archive comparison map; historical-source status remains explicitly unresolved."
+    }
+  ],
+  "external_references": [
+    {
+      "title": "Wheeler & Feynman · Interaction with the Absorber as the Mechanism of Radiation",
+      "year": 1945,
+      "kind": "published physics comparator",
+      "url": "https://journals.aps.org/rmp/abstract/10.1103/RevModPhys.17.157",
+      "relevance": "Time-symmetric direct-action electrodynamics using advanced and retarded solutions under absorber assumptions. It is a later comparator, not a recovered historical source for Tim."
+    },
+    {
+      "title": "Aharonov & Vaidman · The Two-State Vector Formalism of Quantum Mechanics",
+      "year": 2001,
+      "kind": "published quantum-formalism comparator",
+      "url": "https://arxiv.org/abs/quant-ph/0105101",
+      "relevance": "Time-symmetrized description of pre- and post-selected quantum systems. Useful as a mathematical neighbor for initial/final boundary descriptions; not evidence that Tim's model was derived from TSVF."
+    },
+    {
+      "title": "Cramer · The Transactional Interpretation of Quantum Mechanics",
+      "year": 1986,
+      "kind": "published interpretation comparator",
+      "url": "https://journals.aps.org/rmp/abstract/10.1103/RevModPhys.58.647",
+      "relevance": "Uses advanced and retarded wave language in a transactional interpretation of quantum events. It sharpens comparison but does not establish ordinary backward-time signalling or Timic genealogy."
+    }
+  ],
+  "reader_takeaway": [
+    "A future boundary can constrain a mathematical solution without a physical message travelling from the future.",
+    "Retarded and advanced Green functions are real mathematical objects; the physical interpretation depends on the theory and boundary conditions.",
+    "Tim's recovered advanced/retarded vocabulary predates the archive's Wheeler–Feynman comparison, but no primary Tim citation to Wheeler, Feynman, Aharonov, Vaidman or Cramer has yet been recovered.",
+    "The strongest current Timic model is therefore a two-boundary Door architecture. A literal retrocausal branch remains optional and experimentally unestablished."
+  ]
 }
