@@ -669,18 +669,6 @@ html[data-site-floor] body.home-body::before{content:none;display:none}
 
 /* Desktop illustrated header skin. Shared geometry remains above; this section only upgrades presentation. */
 @media (min-width:761px){
-  .site-elevator[data-elevator-level="heaven"]{
-    --site-header-art:url("./home-heaven.avif");
-    --site-header-art-position:50% 19%;
-  }
-  .site-elevator[data-elevator-level="plane"]{
-    --site-header-art:url("./home-plane.avif");
-    --site-header-art-position:50% 48%;
-  }
-  .site-elevator[data-elevator-level="below"]{
-    --site-header-art:url("./home-below.avif");
-    --site-header-art-position:50% 76%;
-  }
   .site-elevator{
     --elevator-control-width:74px;
     --elevator-board-width:374px;
