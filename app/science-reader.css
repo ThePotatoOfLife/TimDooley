@@ -1,0 +1,80 @@
+/* Shared visual system for specialist science readers.
+   Literal science, project formalisms and comparisons keep their own content,
+   while equations, evidence notes, cards and headings share one reading rhythm. */
+
+.science-reader .grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:12px;
+  margin:18px 0 30px;
+}
+
+.science-reader .card{
+  min-width:0;
+  padding:18px;
+  border:1px solid var(--site-pane-line);
+  border-radius:12px;
+  background:var(--site-pane-soft);
+  box-shadow:0 8px 22px rgba(0,0,0,.10);
+}
+
+.science-reader .card :is(h2,h3,strong):first-child{
+  color:var(--site-gold);
+}
+
+.science-reader .card p{
+  color:var(--site-muted);
+  line-height:1.58;
+}
+
+.science-reader .eq{
+  margin:12px 0;
+  padding:14px 16px;
+  overflow:auto;
+  border:1px solid var(--site-pane-line);
+  border-radius:12px;
+  background:var(--site-pane);
+  color:#e3e0d8;
+  font-family:var(--site-font-mono);
+  font-size:13px;
+  line-height:1.55;
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+}
+
+.science-reader .note{
+  margin:16px 0;
+  padding:14px 16px;
+  border:1px solid var(--site-pane-line);
+  border-left:3px solid var(--site-gold);
+  border-radius:0 12px 12px 0;
+  background:var(--site-pane-soft);
+  color:var(--site-muted);
+  line-height:1.58;
+}
+
+.science-reader h2{
+  margin:2.4rem 0 .8rem;
+  color:var(--site-gold);
+  font:400 var(--site-text-section)/1.1 var(--site-font-serif);
+  text-wrap:balance;
+}
+
+.science-reader h3{
+  margin:1.7rem 0 .65rem;
+  font:400 var(--site-text-subsection)/1.2 var(--site-font-serif);
+}
+
+.science-reader .tag{
+  color:var(--site-faint);
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.07em;
+  text-transform:uppercase;
+}
+
+@media(max-width:700px){
+  .science-reader .grid{grid-template-columns:1fr;gap:9px}
+  .science-reader .card{padding:15px}
+  .science-reader .eq{padding:12px;font-size:12px}
+}
