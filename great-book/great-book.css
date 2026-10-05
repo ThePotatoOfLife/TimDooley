@@ -279,3 +279,64 @@
 @media(prefers-reduced-motion:reduce){
   .gb-book-stage::after{text-shadow:0 0 12px rgba(255,215,111,.7)}
 }
+
+
+/* Object-level book detailing: gold corners, deeper hinge and attached search rail. */
+.gb-book-stage{
+  background:
+    radial-gradient(circle at 22px 22px,#f0d07a 0 5px,#b98025 6px 10px,transparent 11px),
+    radial-gradient(circle at calc(100% - 22px) 22px,#f0d07a 0 5px,#b98025 6px 10px,transparent 11px),
+    radial-gradient(circle at 22px calc(100% - 22px),#f0d07a 0 5px,#b98025 6px 10px,transparent 11px),
+    radial-gradient(circle at calc(100% - 22px) calc(100% - 22px),#f0d07a 0 5px,#b98025 6px 10px,transparent 11px),
+    linear-gradient(180deg,rgba(255,220,128,.08),transparent 14%),
+    linear-gradient(180deg,#6f2324 0%,var(--gb-leather) 30%,var(--gb-leather-deep) 100%);
+}
+.gb-book-stage .longform-toc{
+  border-right:1px solid rgba(95,55,16,.34);
+}
+.gb-book-stage .gb-document{
+  border-left:1px solid rgba(95,55,16,.28);
+}
+.gb-book-stage .longform-toc::before,
+.gb-book-stage .gb-document::after{
+  content:"";
+  position:absolute;
+  top:26px;
+  bottom:26px;
+  width:1px;
+  pointer-events:none;
+}
+.gb-book-stage .longform-toc::before{
+  right:2px;
+  background:linear-gradient(180deg,transparent,rgba(79,42,12,.44) 8%,rgba(79,42,12,.44) 92%,transparent);
+}
+.gb-book-stage .gb-document::after{
+  left:2px;
+  background:linear-gradient(180deg,transparent,rgba(255,245,210,.32) 8%,rgba(255,245,210,.18) 92%,transparent);
+}
+.great-book-page .gb-toolbar{
+  position:relative;
+  margin-bottom:-2px;
+  border-bottom-left-radius:8px;
+  border-bottom-right-radius:8px;
+  z-index:4;
+}
+.great-book-page .gb-toolbar::after{
+  content:"";
+  position:absolute;
+  left:48px;
+  right:48px;
+  bottom:-7px;
+  height:8px;
+  border-radius:0 0 10px 10px;
+  background:linear-gradient(90deg,#7e4d16,#e0bb62 18%,#7e4d16 50%,#e0bb62 82%,#7e4d16);
+  opacity:.72;
+  box-shadow:0 5px 12px rgba(0,0,0,.28);
+  pointer-events:none;
+}
+@media(max-width:900px){
+  .great-book-page .gb-toolbar{margin-bottom:12px;border-radius:var(--site-radius-lg)}
+  .great-book-page .gb-toolbar::after{display:none}
+  .gb-book-stage .longform-toc::before,
+  .gb-book-stage .gb-document::after{display:none}
+}
