@@ -44,6 +44,26 @@ The project keeps its existing missions and bodies of inquiry, but the working u
 
 These missions remain. **What changes is how we store them: fewer, thicker, clearer bodies of knowledge.**
 
+## Repository smoothness & integration wave — 2026-10-05
+
+### Completed in this wave
+- [x] **SMOOTH-001 · HUD cascade correctness:** fix floor-specific room materials being partially masked by older generic hover/active declarations; protect the active-state cascade with regression tests.
+- [x] **SMOOTH-002 · HUD hardware integration:** move stage joints to the visible foreground frame and integrate room seams, connector joints, chassis brackets and rail hardware into the shared elevator contract.
+- [x] **SMOOTH-003 · Core reader style ownership:** extract structural inline CSS from Tim Dooley, Works, Timeline, Religion and Law into named `app/*-page.css` owners; fingerprint and guard them.
+- [x] **SMOOTH-004 · Selector isolation:** scope migrated reader selectors such as `.lead`, `.quiet` and `.boundary` so specialist CSS cannot leak into the universal shell.
+- [x] **SMOOTH-005 · Timeline CSS consolidation:** merge the archive Timeline override sheet into one canonical `app/timeline.css`, remove the duplicate payload and delete the redundant `timeline-enhancements.css`.
+- [x] **SMOOTH-006 · Generated-reader shell integration:** stop repeating a private inline stylesheet in every generated knowledge page; use `site-system.css` plus one shared `generated-knowledge.css`, standard `.page`, `.page-nav` and `.page-header`, deterministic versioning and a regression guard.
+
+### Next cleanup targets
+- [ ] **SMOOTH-007 · Inline-style classification:** classify remaining public `<style>` blocks as legitimate specialist geometry vs migration debt; migrate Economy, North, Paths, FAQ, Potatoism and other mature prose readers first.
+- [ ] **SMOOTH-008 · CSS family consolidation:** inspect CIA, Bible, world/Room and lower-field stylesheet families for repeated panel/card/layout rules; merge only where ownership is genuinely the same.
+- [ ] **SMOOTH-009 · Dead asset/reference audit:** identify unreferenced CSS/JS/images after dynamic-loader awareness; delete only assets proven unreachable from source, build, runtime loader and validation paths.
+- [ ] **SMOOTH-010 · Build-patcher ownership:** continue moving mature behavior out of `patch_public_navigation.py` when it belongs in source/generator ownership; keep the patcher for truly universal projection only.
+- [ ] **SMOOTH-011 · Shared-shell adoption:** audit public subject readers that still use bespoke `.nav`/wrapper shells and migrate suitable pages to `.page`, `.page-nav`, `.page-header` without flattening specialist tools.
+- [ ] **SMOOTH-012 · Duplicate payload detector:** add a lightweight audit for repeated large CSS/HTML payloads and exact duplicate blocks so interrupted migrations cannot silently append the same rules twice.
+- [ ] **SMOOTH-013 · Responsive render audit:** browser-check the shared HUD/subheader and major migrated readers at narrow mobile, laptop pressure width and wide desktop; fix clipping, sticky-header clearance and overflow.
+- [ ] **SMOOTH-014 · Cache/version consistency:** ensure every newly shared runtime stylesheet/script is in the same deterministic fingerprint path and no hand-maintained stale query strings remain on mature public readers.
+
 ## The cleanup pass
 
 1. Inventory the repository before changing it.
