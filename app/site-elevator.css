@@ -890,6 +890,11 @@ html[data-site-floor] body.home-body::before{content:none;display:none}
     color:currentColor;
     filter:drop-shadow(0 0 4px var(--site-elevator-glow));
   }
+  .site-elevator-floor-emblem::before{
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+  }
   .site-elevator-floor-emblem{position:relative;overflow:hidden}
   .site-elevator[data-elevator-level="heaven"] .site-elevator-floor-emblem::before{
     width:44px;
