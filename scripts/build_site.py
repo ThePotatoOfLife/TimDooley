@@ -55,6 +55,8 @@ SHARED_ASSETS = (
     "app/home-below.avif",
     "app/hall-of-heroes.avif",
     "app/hall-of-shame.avif",
+    "assets/visuals/great-book-open-stage.webp",
+    "great-book/great-book.css",
     "app/site-system.css",
     "app/style.css",
     "app/reader.css",
