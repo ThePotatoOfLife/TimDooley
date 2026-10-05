@@ -37,6 +37,8 @@ SHARED_ASSET_NAMES = (
     "bible-atlas-navigation.css",
     "music-page.css",
     "music-page.js",
+    "rooms-page.css",
+    "rooms-page.js",
     "generated-knowledge.css",
     "site-access.css",
     "site-access.js",
