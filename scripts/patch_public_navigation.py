@@ -537,9 +537,205 @@ PAGE_NAV_RE = re.compile(
 )
 PAGE_NAV_ANCHOR_RE = re.compile(r'''<a\b[^>]*href=["'][^"']+["'][^>]*>.*?</a\s*>''', re.I | re.S)
 PAGE_NAV_HREF_RE = re.compile(r'''href=["']([^"']+)["']''', re.I)
-MAX_PAGE_NAV_LINKS = 10
+MAX_PAGE_NAV_LINKS = 12
 
 PAGE_NAV_CLASS_RE = re.compile(r'''\bclass=["']([^"']*)["']''', re.I)
+
+# The visual shell is universal; the destinations are not.  These families are
+# deliberately visitor-facing and use the nouns a reader actually sees on pages.
+_CONTEXT_NAV_FAMILIES = (
+    (
+        ("tim-dooley/",),
+        (
+            ("Tim Dooley", "tim-dooley/"),
+            ("Story", "tim-dooley/story/"),
+            ("Timeline", "timeline/"),
+            ("Public Witness", "tim-dooley/public-witness/"),
+            ("Claims", "tim-dooley/claims/"),
+            ("Evidence", "tim-dooley/evidence/"),
+            ("100,000 Hours", "tim-dooley/100000-hours/"),
+            ("Works", "works/"),
+        ),
+    ),
+    (
+        ("potatoism/", "potato-of-life/", "axis/", "metaphysics/"),
+        (
+            ("Potatoism", "potatoism/"),
+            ("Potato of Life", "potato-of-life/"),
+            ("Grow", "potatoism/grow/"),
+            ("Philosophy", "philosophy/"),
+            ("Metaphysics", "metaphysics/"),
+            ("Religion", "religion/"),
+            ("Great Book", "great-book/"),
+            ("Axis", "axis/"),
+            ("FAQ", "faq/"),
+        ),
+    ),
+    (
+        ("religion/", "traditions/", "theology/"),
+        (
+            ("Religion", "religion/"),
+            ("Bible", "traditions/bible/"),
+            ("Christianity", "traditions/christianity/"),
+            ("Judaism", "traditions/judaism/"),
+            ("Islam", "traditions/islam/"),
+            ("Comparative Cosmology", "traditions/comparative-cosmology/"),
+            ("Trinity", "religion/trinity/"),
+            ("Jesus & Tim", "religion/jesus-tim/"),
+            ("God's Character", "religion/gods-character/"),
+            ("Timeline", "timeline/"),
+            ("Sources", "context/source-authority/"),
+        ),
+    ),
+    (
+        ("philosophy/",),
+        (
+            ("Philosophy", "philosophy/"),
+            ("Knowledge & Belief", "philosophy/knowledge-belief.html"),
+            ("Trust & Repair", "philosophy/trust-repair.html"),
+            ("Attention & Agency", "philosophy/attention-agency.html"),
+            ("Interpretive Justice", "philosophy/interpretive-justice.html"),
+            ("Metaphysics", "metaphysics/"),
+            ("Potatoism", "potatoism/"),
+            ("Religion", "religion/"),
+            ("Science", "science/"),
+        ),
+    ),
+    (
+        ("science/", "life-body/", "research-lab/"),
+        (
+            ("Science", "science/"),
+            ("Research Map", "science/research-map/"),
+            ("Spudlight", "science/spudlight/"),
+            ("Quantum", "science/quantum/"),
+            ("Celestial Particles", "science/celestial-particles/"),
+            ("Vibe Gates", "science/vibe-gates/"),
+            ("Life & Body", "life-body/"),
+            ("Research Lab", "research-lab/"),
+            ("Sources", "context/source-authority/"),
+        ),
+    ),
+    (
+        ("world/", "world-map/", "politics/", "economy/", "law/", "north/", "world-systems/", "israel-mesopotamia/"),
+        (
+            ("World", "world/"),
+            ("World Map", "world-map/"),
+            ("Politics", "politics/"),
+            ("Economy", "economy/"),
+            ("Law", "law/"),
+            ("North", "north/"),
+            ("World Systems", "world-systems/"),
+            ("Israel / Mesopotamia", "israel-mesopotamia/"),
+            ("Culture", "context/culture/"),
+            ("Sources", "context/source-authority/"),
+        ),
+    ),
+    (
+        ("context/culture/", "context/"),
+        (
+            ("Culture", "context/culture/"),
+            ("Turbles", "context/culture/turbles/"),
+            ("World", "world/"),
+            ("Politics", "politics/"),
+            ("Philosophy", "philosophy/"),
+            ("Religion", "religion/"),
+            ("Sources", "context/source-authority/"),
+            ("Research Lab", "research-lab/"),
+        ),
+    ),
+    (
+        ("works/", "great-book/", "music/"),
+        (
+            ("Works", "works/"),
+            ("Great Book", "great-book/"),
+            ("Music", "music/"),
+            ("Story", "tim-dooley/story/"),
+            ("Timeline", "timeline/"),
+            ("Tim Dooley", "tim-dooley/"),
+            ("Visual Art", "rooms/inside/visual-art/"),
+            ("Games", "rooms/inside/games-simulations/"),
+        ),
+    ),
+    (
+        ("timeline/", "chronology/", "history/"),
+        (
+            ("Timeline", "timeline/"),
+            ("Story", "tim-dooley/story/"),
+            ("History", "history/"),
+            ("Chronology", "chronology/"),
+            ("Foundations", "timeline/foundations/"),
+            ("Tim Dooley", "tim-dooley/"),
+            ("Religion", "religion/"),
+            ("Sources", "context/source-authority/"),
+        ),
+    ),
+    (
+        ("below/", "shadow-farm/"),
+        (
+            ("Below", "below/"),
+            ("Hall of Shame", "below/dogs/"),
+            ("Shadow Farm", "shadow-farm/"),
+            ("TXT", "shadow-farm/txt/"),
+            ("Culture", "context/culture/"),
+            ("Sources", "context/source-authority/"),
+            ("Hall of Heroes", "rooms/potatoverse-canon/beings/potatoes/"),
+        ),
+    ),
+    (
+        ("faq/", "learn/", "questions/", "explore/", "index-a-z/"),
+        (
+            ("Explore", "explore/"),
+            ("FAQ", "faq/"),
+            ("Learn", "learn/"),
+            ("Questions", "questions/"),
+            ("A–Z", "index-a-z/"),
+            ("Tim Dooley", "tim-dooley/"),
+            ("Potatoism", "potatoism/"),
+            ("Religion", "religion/"),
+            ("Science", "science/"),
+            ("World", "world/"),
+        ),
+    ),
+)
+
+_ROOM_PUBLIC_HUBS = {
+    "potatoverse-canon": ("Potatoism", "potatoism/"),
+    "archive-sources": ("Sources", "context/source-authority/"),
+    "time-history": ("Timeline", "timeline/"),
+    "traditions-texts": ("Religion", "religion/"),
+    "science-formal-models": ("Science", "science/"),
+    "life-body": ("Life & Body", "life-body/"),
+    "world-systems": ("World", "world/"),
+    "culture-information": ("Culture", "context/culture/"),
+    "works": ("Works", "works/"),
+    "research-lab": ("Research Lab", "research-lab/"),
+}
+
+
+def _nav_anchor(page: Path, label: str, target: str, *, current: bool = False, cls: str = "") -> str:
+    href = f"{_relative_asset_prefix(page)}{target}"
+    classes = " ".join(part for part in (cls, "page-nav-current" if current else "") if part)
+    class_attr = f' class="{classes}"' if classes else ""
+    current_attr = ' aria-current="page"' if current else ""
+    return f'<a{class_attr}{current_attr} href="{href}">{html.escape(label)}</a>'
+
+
+def _route_matches(rel: str, target: str) -> bool:
+    if target.endswith("/"):
+        return rel == target + "index.html" or rel.startswith(target)
+    return rel == target
+
+
+def _contextual_nav_anchors(page: Path) -> list[str]:
+    rel = page.relative_to(OUT).as_posix()
+    for prefixes, entries in _CONTEXT_NAV_FAMILIES:
+        if any(rel.startswith(prefix) for prefix in prefixes):
+            return [
+                _nav_anchor(page, label, target, current=_route_matches(rel, target), cls="page-nav-subject")
+                for label, target in entries
+            ]
+    return []
+
 
 
 def _subroom_nav_label(row: dict) -> str:
@@ -741,42 +937,75 @@ def _is_current_subroom_anchor(anchor: str, page: Path) -> bool:
 
 
 def normalize_page_nav(text: str, page: Path) -> str:
-    """Build one compact but useful sub-header from the House topology.
+    """Normalize only the first, top-of-page sub-header.
 
-    The elevator answers "which floor am I on?" while this bar answers the more
-    practical question "where can I go from here?". Home and Rooms stay stable;
-    Dwelling/Room context, sibling Rooms, adjacent Rooms and subject-family links
-    are projected deterministically from the existing House registries.
+    Geometry and interaction are universal; destinations are contextual.  The
+    sub-header should reveal the subject neighborhood a reader can actually use,
+    while House topology stays inside House/Room pages instead of colonizing the
+    whole site.
     """
 
     if page == OUT / "index.html":
         return text
 
     rel = page.relative_to(OUT).as_posix()
-    is_room_page = rel.startswith("rooms/")
-    is_nested_room = re.fullmatch(r"rooms/inside/([^/]+)/index\.html", rel) is not None
 
     def rewrite(match: re.Match[str]) -> str:
         attrs = match.group("attrs")
         body = match.group("body")
-        anchors = PAGE_NAV_ANCHOR_RE.findall(body)
-        if not anchors:
-            return match.group(0)
+        authored = PAGE_NAV_ANCHOR_RE.findall(body)
+        pieces: list[str] = []
+        seen_hrefs: set[str] = set()
+        seen_labels: set[str] = set()
 
-        # Generated structural links are regenerated on every pass. The public
-        # build intentionally runs this normalizer twice, so do not re-ingest them
-        # as authored links.
-        authored: list[str] = []
-        for anchor in anchors:
+        def add(anchor: str) -> None:
+            if not anchor or len(pieces) >= MAX_PAGE_NAV_LINKS:
+                return
             href = _anchor_href(anchor)
-            class_match = PAGE_NAV_CLASS_RE.search(anchor)
-            classes = set(class_match.group(1).split()) if class_match else set()
+            label = _clean_nav_label(anchor)
+            if not href or href in seen_hrefs or label in seen_labels:
+                return
+            seen_hrefs.add(href)
+            seen_labels.add(label)
+            pieces.append(anchor)
+
+        add(_home_anchor(page))
+
+        nested = re.fullmatch(r"rooms/inside/([^/]+)/index\.html", rel)
+        dwelling = re.fullmatch(r"rooms/([^/]+)/index\.html", rel)
+
+        if nested:
+            current = _SUBROOM_BY_ROUTE.get(nested.group(1))
+            if current:
+                parent_id = str(current.get("parent_room_id") or "")
+                hub = _ROOM_PUBLIC_HUBS.get(parent_id)
+                if hub:
+                    add(_nav_anchor(page, hub[0], hub[1], cls="page-nav-subject"))
+                add(_dwelling_anchor(page))
+                for row in _room_nav_candidates(page):
+                    add(_room_candidate_anchor(page, row))
+        elif dwelling and dwelling.group(1) != "inside":
+            room_id = dwelling.group(1)
+            hub = _ROOM_PUBLIC_HUBS.get(room_id)
+            if hub:
+                add(_nav_anchor(page, hub[0], hub[1], cls="page-nav-subject"))
+            for row in _room_nav_candidates(page):
+                add(_room_candidate_anchor(page, row))
+        else:
+            for anchor in _contextual_nav_anchors(page):
+                add(anchor)
+
+        # Authored local links are useful when they describe this exact page. Keep
+        # them after the contextual family, but discard old generated architecture.
+        for anchor in authored:
+            href = _anchor_href(anchor)
+            classes_match = PAGE_NAV_CLASS_RE.search(anchor)
+            classes = set(classes_match.group(1).split()) if classes_match else set()
+            label = _clean_nav_label(anchor)
             if (
                 _is_home_href(href, page)
                 or _is_rooms_anchor(anchor)
                 or _is_redundant_architecture_anchor(anchor, page)
-                or _is_current_subroom_anchor(anchor, page)
-                or _is_philosophy_family_anchor(anchor, page)
                 or classes.intersection({
                     "page-nav-home",
                     "page-nav-directory",
@@ -785,51 +1014,16 @@ def normalize_page_nav(text: str, page: Path) -> str:
                     "page-nav-room",
                     "page-nav-subject",
                 })
-                or re.search(r'\baria-current=["\']page["\']', anchor, flags=re.I)
+                or label in {"House", "All Rooms", "Parent Dwelling", "Spatial Room"}
             ):
                 continue
-            authored.append(anchor)
-
-        pieces: list[str] = []
-        seen_hrefs: set[str] = set()
-
-        def add(anchor: str) -> None:
-            if not anchor or len(pieces) >= MAX_PAGE_NAV_LINKS:
-                return
-            href = _anchor_href(anchor)
-            if not href or href in seen_hrefs:
-                return
-            seen_hrefs.add(href)
-            pieces.append(anchor)
-
-        add(_home_anchor(page))
-        if is_room_page:
-            add(_rooms_anchor(page))
-
-        if is_nested_room:
-            add(_dwelling_anchor(page))
-            add(_current_subroom_anchor(page))
-
-        # Dwellings expose their complete 3–5 Room family. Nested Rooms expose
-        # siblings plus at most two governed cross-family adjacencies.
-        for row in _room_nav_candidates(page):
-            add(_room_candidate_anchor(page, row))
-
-        # Philosophy already has a curated family map; render it rather than
-        # leaving the existing family helpers dormant.
-        for anchor in PAGE_NAV_ANCHOR_RE.findall(_philosophy_family_anchors(page)):
-            add(anchor)
-
-        add(_philosophy_entry_anchor(page))
-        add(_metaphysics_entry_anchor(page))
-
-        # Preserve hand-authored local or section links after structural context.
-        for anchor in authored:
             add(anchor)
 
         return f"<nav{attrs}>{''.join(pieces)}</nav>"
 
-    return PAGE_NAV_RE.sub(rewrite, text)
+    # Pages sometimes reuse .page-nav for source trails farther down. Only the
+    # first instance is the actual site sub-header.
+    return PAGE_NAV_RE.sub(rewrite, text, count=1)
 
 
 def patch_page_navs(out: Path = OUT) -> set[Path]:
