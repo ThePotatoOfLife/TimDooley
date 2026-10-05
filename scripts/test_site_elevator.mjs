@@ -217,7 +217,7 @@ const malformedBackgroundImages=backgroundImageValues.filter(value=>
 );
 assert.deepEqual(malformedBackgroundImages,[],'background-image declarations must not contain background shorthand repeat syntax');
 assert.ok(css.includes('.site-elevator-floor-code'),'terminal board needs a numbered floor code');
-assert.ok(css.includes('[data-elevator-level="heaven"] .site-elevator-stage::before'),'Heaven needs a distinct scenic-window layer');
+assert.ok(css.includes('--site-header-art:url("./header-heaven.svg")'),'Heaven needs a compact header-art token');
 assert.ok(css.includes('html[data-site-floor="heaven"]{'),'resolved Heaven routes should own the root page canvas');
 assert.ok(css.includes('html[data-site-floor="plane"]{'),'resolved Plane routes should own the root page canvas');
 assert.match(css,/body:not\(\.home-body\)\{[\s\S]*?background:transparent;/,'governed page bodies must remain transparent above the realm canvas');
@@ -228,9 +228,8 @@ for(const [floor,pageAsset,headerAsset] of [
   ['below','home-below.avif','header-below.svg']
 ]){
   assert.ok(css.includes('url("./'+pageAsset+'")'),'shared floor renderer must reference '+pageAsset);
-  const headerStart=css.indexOf('.site-elevator[data-elevator-level="'+floor+'"] .site-elevator-stage::before{');
-  assert.ok(headerStart>=0,'elevator header scenic window must define '+floor+' scene');
-  assert.ok(css.slice(headerStart,headerStart+260).includes(headerAsset),'elevator header scenic window must use '+headerAsset);
+  assert.ok(css.includes('--site-header-art:url("./'+headerAsset+'")'),'compact header art token must reference '+headerAsset);
+  assert.ok(css.includes('--site-header-art:url("./'+pageAsset+'")'),'desktop header token must upgrade '+floor+' to '+pageAsset);
   assert.ok(fs.existsSync(path.join(ROOT,'app',headerAsset)),'missing dedicated header panorama '+headerAsset);
 }
 
@@ -241,9 +240,8 @@ assert.match(
   'scenic window needs a neutral vertical readability shade plus the shared floor shade token'
 );
 assert.ok(css.includes('--site-realm-fallback:#090909'),'all realms should share one neutral fallback base behind the final art');
-assert.ok(css.includes('[data-elevator-level="plane"] .site-elevator-stage::before'),'Plane needs a distinct scenic-window layer');
-assert.equal(/\.site-elevator\[data-elevator-level="plane"\] \.site-elevator-stage::before\{[\s\S]*?repeat-x/.test(css),false,'Plane elevator header should not rebuild mountains with repeated gradient strips');
-assert.ok(css.includes('[data-elevator-level="below"] .site-elevator-stage::before'),'Below needs a distinct scenic-window layer');
+assert.ok(css.includes('background-image:var(--site-header-art,var(--site-realm-art))'),'header scenes must flow through one responsive art renderer');
+assert.equal(/--site-header-art:[^;]*(?:repeat-x|repeat-y)/.test(css),false,'header-art tokens must not rebuild scenery with repeating gradient strips');
 assert.ok(css.includes('border-radius:0'),'terminal Room tiles should not drift back into pill styling');
 assert.ok(css.includes('background:var(--site-elevator-accent)'),'active Room tile needs a compact location beacon');
 for(const floor of ['heaven','plane','below']){
