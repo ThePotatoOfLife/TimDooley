@@ -536,6 +536,11 @@ def render_paper_figures(value) -> str:
         title = str(item.get("title") or f"Figure {index}").strip()
         caption = str(item.get("caption") or "").strip()
         source = str(item.get("source_note") or "").strip()
+        caption_html = f'<span class="paper-figure-caption">{esc(caption)}</span>' if caption else ""
+        source_html = (
+            f'<small class="paper-figure-source"><b>Source / status:</b> {esc(source)}</small>'
+            if source else ""
+        )
         figures.append(
             '<figure class="paper-figure">'
             f'<a class="paper-figure-image-link" href="../../../{esc(asset)}" target="_blank" rel="noopener" aria-label="Open full figure: {esc(title)}">'
@@ -543,8 +548,8 @@ def render_paper_figures(value) -> str:
             '</a>'
             '<figcaption>'
             f'<strong>{esc(title)}</strong>'
-            f'{f"<span class=\"paper-figure-caption\">{esc(caption)}</span>" if caption else ""}'
-            f'{f"<small class=\"paper-figure-source\"><b>Source / status:</b> {esc(source)}</small>" if source else ""}'
+            f'{caption_html}'
+            f'{source_html}'
             f'<a class="paper-figure-open" href="../../../{esc(asset)}" target="_blank" rel="noopener">Open full figure ↗</a>'
             '</figcaption>'
             '</figure>'
@@ -664,12 +669,13 @@ def render_related_papers(items: list[dict]) -> str:
     cards = []
     for item in items:
         fields = " · ".join(item.get("fields") or [])
+        fields_html = f'<span>{esc(fields)}</span>' if fields else ""
         cards.append(
             '<article class="paper-related-card">'
             f'<small>{esc(item.get("document_type") or "Science document")}</small>'
             f'<h3><a href="../{esc(item["slug"])}/">{esc(item["title"])}</a></h3>'
             f'<p>{esc(item.get("abstract") or "")}</p>'
-            f'{f"<span>{esc(fields)}</span>" if fields else ""}'
+            f'{fields_html}'
             '</article>'
         )
     return (
