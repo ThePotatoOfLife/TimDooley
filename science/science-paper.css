@@ -57,6 +57,12 @@ body{margin:0;background:
   letter-spacing:-.035em;
   margin:0 0 18px;
 }
+.paper-subtitle{
+  max-width:800px;
+  margin:-4px 0 18px;
+  color:var(--paper-muted);
+  font:400 16px/1.5 Georgia,"Times New Roman",serif;
+}
 .paper-chips{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 24px}
 .paper-chip{
   border:1px solid var(--paper-line);
@@ -226,4 +232,25 @@ body{margin:0;background:
   .paper-page{max-width:none;margin:0;padding:0;background:#fff;box-shadow:none;border:0}
   .paper-nav,.paper-source-actions{display:none}
   .paper-figure{break-inside:avoid}
+}
+
+.paper-content>.paper-section:first-child{
+  margin-top:2px;
+  padding:18px 20px 20px;
+  border:1px solid rgba(107,81,47,.22);
+  background:rgba(107,81,47,.055);
+}
+.paper-content>.paper-section:first-child h2{
+  margin-bottom:10px;
+  font:750 10px/1.2 var(--site-font-sans);
+  text-transform:uppercase;
+  letter-spacing:.09em;
+}
+.paper-content>.paper-section:first-child ul{
+  margin:0;
+  padding-left:20px;
+}
+.paper-content>.paper-section:first-child li{
+  margin:7px 0;
+  color:var(--paper-ink);
 }
