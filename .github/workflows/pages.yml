@@ -2,12 +2,12 @@ name: Deploy Potato of Life
 
 on:
   workflow_run:
-    workflows: ["Repository quality checks"]
+    workflows: ["Repository quality checks v2"]
     types: [completed]
   workflow_dispatch:
     inputs:
       quality_run_id:
-        description: "Successful Repository quality checks run ID whose validated-pages-site artifact should be deployed"
+        description: "Successful Repository quality checks v2 run ID whose validated-pages-site artifact should be deployed"
         required: true
         type: string
 
