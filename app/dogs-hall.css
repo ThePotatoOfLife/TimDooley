@@ -23,6 +23,10 @@
 
 /* Dogs Hall — a distinct Below destination, not a skin shared with Potatoes/Angels. */
 body.dogs-hall-page{
+  --site-realm-art:url("./hall-of-shame.avif");
+  --site-realm-art-position:50% 50%;
+  --site-realm-art-render-size:cover;
+  --site-realm-overlay:linear-gradient(180deg,rgba(7,9,8,.16),rgba(7,9,8,.38) 52%,rgba(7,9,8,.60) 100%);
   --dog-rust:#a76b49;--dog-rust-hot:#d49568;--dog-soot:#0b0d0c;--dog-asphalt:#151918;
   --dog-mud:#332b20;--dog-fog:#747468;--dog-wire:#57574f;
   background:
