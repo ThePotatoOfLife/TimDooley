@@ -1,5 +1,5 @@
 /* Roots / Evidence: page-specific content only.
-   Shared room structure and underground environment live in lower-layer.css. */
+   Shared Room geometry lives in room-home.css; lower-layer.css owns Below skin. */
 .flow-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:18px 0}
 .flow-card{border:1px solid var(--site-pane-line);border-radius:12px;padding:14px 16px;background:rgba(8,10,10,.68)}
 .flow-card b{display:block;color:var(--site-gold);font:400 19px var(--site-font-serif)}
