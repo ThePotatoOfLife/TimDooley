@@ -50,13 +50,16 @@
 .gb-book-stage::before{
   content:"";
   position:absolute;
-  inset:8px;
+  left:8px;
+  right:8px;
+  top:8px;
+  height:min(720px,78vh);
   z-index:0;
-  border-radius:23px 23px 39px 39px;
+  border-radius:23px 23px 38px 38px;
   background:
-    linear-gradient(180deg,rgba(35,13,10,.08),rgba(35,13,10,.28)),
-    url("../assets/visuals/great-book-open-stage.webp") center / cover no-repeat;
-  opacity:.42;
+    linear-gradient(180deg,rgba(35,13,10,.06) 0%,rgba(35,13,10,.16) 58%,var(--gb-leather-deep) 100%),
+    url("../assets/visuals/great-book-open-stage.webp") center top / cover no-repeat;
+  opacity:.44;
   background-blend-mode:multiply,normal;
   pointer-events:none;
 }
@@ -85,6 +88,8 @@
   align-self:start;
   max-height:calc(100dvh - var(--site-elevator-clearance,56px) - 32px);
   overflow:auto;
+  overscroll-behavior:contain;
+  scrollbar-gutter:stable;
   margin:0;
   padding:28px 24px 32px;
   border:1px solid #ad7e32;
@@ -340,3 +345,8 @@
   .gb-book-stage .gb-document::after{display:none}
 }
 
+
+.gb-book-stage .longform-toc::-webkit-scrollbar{width:9px}
+.gb-book-stage .longform-toc::-webkit-scrollbar-track{background:rgba(92,54,18,.10);border-radius:999px}
+.gb-book-stage .longform-toc::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#c89a3e,#8f6228);border:2px solid rgba(238,217,169,.55);border-radius:999px}
+.gb-book-stage .longform-toc::-webkit-scrollbar-thumb:hover{background:linear-gradient(180deg,#ddb85f,#a97a32)}
