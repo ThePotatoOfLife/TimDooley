@@ -669,21 +669,24 @@ html[data-site-floor] body.dogs-hall-page .page-header{
 body.dogs-hall-page{
   position:relative;
   overflow-x:clip;
+  background:transparent;
 }
 
 /* Arrival scene: the only full artwork window. */
 .dogs-hall-page .hall-scene{
   position:relative;
-  width:min(1180px,calc(100vw - 24px));
+  width:min(1720px,calc(100vw - 32px));
+  max-width:none;
   aspect-ratio:16/9;
   margin:18px 50% 36px;
   transform:translateX(-50%);
   overflow:hidden;
   border:1px solid color-mix(in srgb, #cf8964 42%, transparent);
-  border-radius:14px;
+  border-radius:var(--site-radius-lg);
+  image-rendering:auto;
   background:
-    linear-gradient(180deg,rgba(4,6,5,.02),rgba(4,6,5,.22) 66%,rgba(4,6,5,.68) 100%),
-    url("./hall-of-shame.avif") 50% 72%/cover no-repeat;
+    linear-gradient(180deg,rgba(4,6,5,.00),rgba(4,6,5,.08) 66%,rgba(4,6,5,.30) 100%),
+    url("./hall-of-shame.avif") 50% 50%/cover no-repeat;
   box-shadow:0 18px 50px rgba(0,0,0,.28);
 }
 .dogs-hall-page .hall-scene::after{
@@ -692,8 +695,8 @@ body.dogs-hall-page{
   inset:0;
   pointer-events:none;
   background:
-    linear-gradient(180deg,transparent 0 58%,rgba(0,0,0,.20) 76%,rgba(0,0,0,.58) 100%),
-    linear-gradient(90deg,rgba(0,0,0,.10),transparent 18% 82%,rgba(0,0,0,.10));
+    linear-gradient(180deg,transparent 0 66%,rgba(0,0,0,.10) 82%,rgba(0,0,0,.34) 100%),
+    linear-gradient(90deg,rgba(0,0,0,.05),transparent 16% 84%,rgba(0,0,0,.05));
 }
 .dogs-hall-page .hall-scene__hud{
   position:absolute;
@@ -841,10 +844,10 @@ body.dogs-hall-page{
 /* Mobile: keep the scene strong, but simplify the glass and spacing. */
 @media(max-width:760px){
   .dogs-hall-page .hall-scene{
-    width:calc(100vw - 12px);
-    margin-top:12px;
+    width:calc(100vw - 18px);
+    margin-top:10px;
     margin-bottom:30px;
-    border-radius:9px;
+    border-radius:var(--site-radius);
   }
   .dogs-hall-page .hall-scene__hud{
     top:7px;
@@ -879,10 +882,7 @@ body.dogs-hall-page{
     padding:18px 2px;
   }
 }
-@media(prefers-reduced-transparency:reduce){
-  
-  
-}
+
 
 
 /* Small-surface spacing polish — prevent controls and tiles from visually fusing. */
@@ -943,9 +943,7 @@ body.dogs-hall-page{
 }
 
 
-@media(max-width:760px){
-  
-}
+
 
 
 /* Hall lede stays in the reading field instead of inheriting the global floor-pane skin. */
@@ -955,33 +953,6 @@ body.dogs-hall-page{
   border-radius:0;
   background:transparent;
   box-shadow:none;
-}
-
-
-/* Hall artwork integration standard — one visible page backdrop + one arrival window. */
-body.dogs-hall-page{
-  background:transparent;
-}
-.dogs-hall-page .hall-scene{
-  width:min(1720px,calc(100vw - 32px));
-  max-width:none;
-  border-radius:var(--site-radius-lg);
-  image-rendering:auto;
-  background:
-    linear-gradient(180deg,rgba(4,6,5,.00),rgba(4,6,5,.08) 66%,rgba(4,6,5,.30) 100%),
-    url("./hall-of-shame.avif") 50% 50%/cover no-repeat;
-}
-.dogs-hall-page .hall-scene::after{
-  background:
-    linear-gradient(180deg,transparent 0 66%,rgba(0,0,0,.10) 82%,rgba(0,0,0,.34) 100%),
-    linear-gradient(90deg,rgba(0,0,0,.05),transparent 16% 84%,rgba(0,0,0,.05));
-}
-@media(max-width:760px){
-  .dogs-hall-page .hall-scene{
-    width:calc(100vw - 18px);
-    margin-top:10px;
-    border-radius:var(--site-radius);
-  }
 }
 
 .dogs-hall-page .arcade-marquee>h2{margin:0 0 10px}
