@@ -165,6 +165,18 @@ html[data-site-floor] .page-nav{
   background:rgba(10,13,12,.74);
   border-color:rgba(255,255,255,.11);
 }
+html[data-site-floor="heaven"] .page-nav{
+  background:linear-gradient(180deg,rgba(19,29,39,.78),rgba(8,12,17,.76));
+  border-color:rgba(222,190,112,.20);
+}
+html[data-site-floor="plane"] .page-nav{
+  background:linear-gradient(180deg,rgba(20,30,28,.78),rgba(8,13,12,.76));
+  border-color:rgba(183,176,109,.18);
+}
+html[data-site-floor="below"] .page-nav{
+  background:linear-gradient(180deg,rgba(34,19,14,.82),rgba(12,8,7,.80));
+  border-color:rgba(207,116,70,.22);
+}
 .page-nav a{line-height:1.35}
 .page-nav-directory::after,
 .page-nav-dwelling::after{
