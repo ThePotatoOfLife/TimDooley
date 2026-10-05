@@ -409,10 +409,23 @@ def main() -> int:
         if route_id in seen_subroom_routes:
             errors.append(f"duplicate nested Room route id: {route_id}")
         seen_subroom_routes.add(route_id)
-        subroom_home = ROOT / "rooms" / "inside" / route_id / "index.html"
+        explicit_context = next(
+            (
+                row for row in projection.get("route_contexts", [])
+                if isinstance(row, dict) and row.get("subroom_id") == subroom_id and isinstance(row.get("match"), str)
+            ),
+            None,
+        )
+        if explicit_context:
+            clean_route = explicit_context["match"].strip("/")
+            subroom_home = ROOT / clean_route / "index.html"
+            expected_route_label = explicit_context["match"]
+        else:
+            subroom_home = ROOT / "rooms" / "inside" / route_id / "index.html"
+            expected_route_label = f"/rooms/inside/{route_id}/"
         if not subroom_home.exists():
             errors.append(
-                f"{subroom_id}: nested Room page missing at rooms/inside/{route_id}/index.html"
+                f"{subroom_id}: nested Room page missing at {expected_route_label}"
             )
 
     contexts = [row for row in projection.get("route_contexts", []) if isinstance(row, dict)]
@@ -518,7 +531,7 @@ def main() -> int:
             if path.exists():
                 built=path.read_text(encoding="utf-8",errors="replace")
                 if f'data-site-floor="{floor}"' not in built:
-                    errors.append(f"rooms/inside/{route_id}/index.html: expected inherited floor {floor!r}")
+                    errors.append(f"{route_label}/index.html: expected inherited floor {floor!r}")
 
         representative = [
             "index.html",
