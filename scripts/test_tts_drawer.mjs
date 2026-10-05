@@ -43,6 +43,10 @@ assert.ok(source.includes('playSection,'), 'drawer public API must return playSe
 assert.ok(source.includes("const triggerLabel=clean(options.triggerLabel)||'Listen'"), 'collapsed shared player must default to the Listen label');
 assert.ok(source.includes("'🔊 '+triggerLabel"), 'collapsed shared player must visibly render the active trigger label');
 assert.ok(source.includes("button('Follow reading','🎯 Follow')"), 'shared player must expose a visibly labeled follow-reading toggle');
+assert.ok(source.includes("button('Center spoken word','◎ Center')"), 'shared player must expose one-shot center-on-word control');
+assert.ok(source.includes("ptts-control-group ptts-settings"), 'shared player must group voice/scope/speed controls');
+assert.ok(source.includes("ptts-control-group ptts-reading-tools"), 'shared player must group follow/center/text controls');
+assert.ok(source.includes("hideUI:"), 'drawer must expose a UI-only hide action that does not stop playback');
 assert.ok(source.includes("ptts-follow-escape"), 'Follow ON must expose a fixed always-visible turn-off control');
 assert.ok(source.includes("Follow ON · turn off"), 'fixed follow escape must state exactly what it does');
 assert.ok(source.includes("followEscape.addEventListener('click',()=>setFollowReading(false))"), 'fixed follow escape must force Follow OFF');
@@ -66,6 +70,7 @@ assert.ok(source.includes('preparationController?.abort?.()'), 'drawer stop/coll
 
 const longformSource = fs.readFileSync(new URL('../app/longform-tts-adapter.js', import.meta.url),'utf8');
 assert.ok(longformSource.includes("ttsSuppressed='duplicate-primary'"), 'longform adapter must suppress competing primary TTS drawers on the same page');
+assert.ok(longformSource.includes("event.type==='centerrequest'"), 'longform adapter must support one-shot center-on-word requests');
 
 const css = fs.readFileSync(new URL('../app/tts-drawer.css', import.meta.url),'utf8');
 assert.match(css,/\.ptts-button\[aria-pressed="true"\]/,'active follow-reading toggle needs a visible pressed state');
