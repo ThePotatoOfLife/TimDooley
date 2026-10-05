@@ -241,6 +241,11 @@ assert.match(
 );
 assert.ok(css.includes('--site-realm-fallback:#090909'),'all realms should share one neutral fallback base behind the final art');
 assert.ok(css.includes('background-image:var(--site-header-art,var(--site-realm-art))'),'header scenes must flow through one responsive art renderer');
+for(const [floor,asset] of [['heaven','header-heaven.svg'],['plane','header-plane.svg'],['below','header-below.svg']]){
+  assert.ok(css.includes(`.site-elevator[data-elevator-level="${floor}"]{`),'header must define '+floor+' floor token block');
+  assert.ok(css.includes(`--site-header-art:url("./${asset}")`),'header must use lightweight dedicated '+floor+' panorama');
+}
+assert.equal(/@media \(min-width:761px\)[\s\S]*?--site-header-art:url\("\.\/home-(?:heaven|plane|below)\.avif"\)/.test(css),false,'desktop HUD must not replace dedicated panoramas with full realm AVIFs');
 assert.equal(/--site-header-art:[^;]*(?:repeat-x|repeat-y)/.test(css),false,'header-art tokens must not rebuild scenery with repeating gradient strips');
 assert.ok(css.includes('border-radius:0'),'terminal Room tiles should not drift back into pill styling');
 assert.ok(css.includes('background:var(--site-elevator-accent)'),'active Room tile needs a compact location beacon');
