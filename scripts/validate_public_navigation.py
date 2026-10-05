@@ -183,8 +183,14 @@ def main() -> int:
         if "science/papers/" not in science_text and './papers/' not in science_text:
             errors.append("Science hub missing Science Papers entry")
         science_nav = PAGE_NAV_CLASS.search(science_text)
-        if science_nav and "Research Papers" not in science_nav.group(1):
-            errors.append("Science page-nav missing Research Papers destination after navigation projection")
+        if science_nav:
+            science_nav_text = html.unescape(re.sub(r"<[^>]+>", " ", science_nav.group(1)))
+            science_nav_labels = [part.strip() for part in re.split(r"\s{2,}|\n", science_nav_text) if part.strip()]
+            compact_nav = re.sub(r"\s+", " ", science_nav_text).strip()
+            if "Research Papers" not in compact_nav:
+                errors.append("Science page-nav missing Research Papers destination after navigation projection")
+            if not re.search(r"\bScience\b\s+Research Papers\b", compact_nav):
+                errors.append("Science page-nav must place Research Papers immediately after Science")
 
     papers_path = SITE / "science" / "papers" / "index.html"
     if not papers_path.exists():
