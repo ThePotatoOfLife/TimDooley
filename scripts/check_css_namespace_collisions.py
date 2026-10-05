@@ -201,6 +201,19 @@ for rel, stylesheet, marker in (
     if marker not in page_text:
         errors.append(f"{rel} missing scoped reader marker {marker}")
 
+for rel, stylesheet, marker in (
+    ("world/index.html", "app/world-page.css", "world-page"),
+    ("context/culture/index.html", "app/culture-page.css", "culture-page"),
+):
+    page_path = ROOT / rel
+    page_text = page_path.read_text(encoding="utf-8", errors="ignore") if page_path.exists() else ""
+    if re.search(r"<style\b", page_text, flags=re.I):
+        errors.append(f"{rel} must keep structural styling in {stylesheet}, not inline")
+    if stylesheet not in page_text and ("../" + stylesheet) not in page_text and ("../../" + stylesheet) not in page_text:
+        errors.append(f"{rel} must load {stylesheet}")
+    if marker not in page_text:
+        errors.append(f"{rel} missing scoped reader marker {marker}")
+
 story_page = ROOT / "tim-dooley" / "story" / "index.html"
 story_text = story_page.read_text(encoding="utf-8", errors="ignore") if story_page.exists() else ""
 if re.search(r"<style\b", story_text, flags=re.I):
