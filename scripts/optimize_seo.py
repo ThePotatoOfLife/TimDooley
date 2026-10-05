@@ -409,7 +409,7 @@ def source_date_for_url(url: str, dates: dict[str, str], record_routes: dict[str
     if rel == "index-a-z":
         available = [dates[path] for path in faq_owners if path in dates]
         return max(available) if available else None
-    if rel.startswith("science/papers/"):
+    if rel == "science/papers" or rel.startswith("science/papers/"):
         science_dates = [date for path, date in dates.items() if path.startswith(("docs/", "knowledge/science/"))]
         return max(science_dates) if science_dates else dates.get("science/index.html")
     return None
@@ -501,7 +501,7 @@ def rebuild_sitemaps(pages: list[dict]) -> dict[str, int]:
             groups["sitemap-questions.xml"].append(item)
         elif item["type"] == "record":
             groups["sitemap-records.xml"].append(item)
-        elif item["type"] == "science-paper":
+        elif item["type"] in {"science-paper", "science-collection"}:
             groups["sitemap-science.xml"].append(item)
         else:
             groups["sitemap.xml"].append(item)
