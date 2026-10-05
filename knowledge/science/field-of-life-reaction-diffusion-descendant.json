@@ -1,7 +1,7 @@
 {
   "id": "field-of-life-reaction-diffusion-descendant",
   "title": "Field of Life — Reaction-Diffusion Scientific Descendant",
-  "updated": "2026-09-14",
+  "updated": "2026-10-05",
   "status": "archive-generated scientific descendant of a historical project metaphor; not evidence for a fundamental life field",
   "document_type": "Theory / Paper",
   "maturity": "T2 mathematical toy model",
@@ -103,5 +103,21 @@
     "science-model-registry",
     "model-testing-protocol",
     "potato-dynamics"
+  ],
+  "paper_subtitle": "A reaction–diffusion descendant of the historical Field of Life metaphor, restricted to measurable spatial biological or ecological variables.",
+  "paper_figures": [
+    {
+      "title": "Figure 1 · Measurable field, transport and local dynamics",
+      "asset": "assets/visuals/science-field-life-reaction-diffusion.svg",
+      "alt": "A reaction-diffusion diagram showing a measurable spatial field phi with diffusion, local reaction and external source terms, compared against simpler baselines.",
+      "caption": "The field representation is scientifically useful only when φ(x,t) is measurable and spatial coupling improves prediction beyond local-only or graph-spread models.",
+      "source_note": "Later scientific descendant using standard reaction–diffusion mathematics; not recovered Tim-authored fundamental physics."
+    }
+  ],
+  "reader_takeaway": [
+    "A field becomes scientific when its state variable, domain, units, dynamics and measurement map are declared.",
+    "Reaction–diffusion is an established mathematical family and does not by itself validate a metaphysical Field of Life.",
+    "The important test is whether spatial coupling adds predictive value over local-only, diffusion-only or graph-based alternatives.",
+    "If it does not, the field representation is unnecessary for that application."
   ]
 }
