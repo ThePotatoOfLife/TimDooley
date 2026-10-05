@@ -201,6 +201,17 @@ if "app/world-domain-page.css" not in economy_page_text and "../app/world-domain
 if "world-domain-page" not in law_page_text or "world-domain-page" not in economy_page_text:
     errors.append("Law and Economy must both opt into the shared world-domain-page scope")
 
+for rel in (
+    "traditions/islam/index.html",
+    "traditions/judaism/index.html",
+):
+    page_path = ROOT / rel
+    page_text = page_path.read_text(encoding="utf-8", errors="ignore") if page_path.exists() else ""
+    if re.search(r"<style\b", page_text, flags=re.I):
+        errors.append(f"{rel} must use shared app/tradition-reader.css instead of inline structural CSS")
+    if "app/tradition-reader.css" not in page_text or "tradition-reader" not in page_text:
+        errors.append(f"{rel} missing shared tradition-reader ownership")
+
 for rel, root_selector in (
     ("app/tim-dooley.css", ".tim-page"),
     ("app/works-page.css", ".works-page"),
