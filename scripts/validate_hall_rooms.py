@@ -2,6 +2,7 @@
 """Protect the paired Hall of Heroes / Hall of Shame reader-room implementation."""
 
 from pathlib import Path
+import re
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -73,6 +74,10 @@ def main() -> int:
         errors.append("Hall of Shame must declare Below first-paint floor ownership")
     if 'data-site-floor="heaven"' not in hero:
         errors.append("Hall of Heroes must declare Heaven first-paint floor ownership")
+
+    for label, page_text in (("Hall of Heroes", hero), ("Hall of Shame", shame)):
+        if re.search(r'\sstyle="', page_text, flags=re.I):
+            errors.append(f"{label} must keep presentation in Hall stylesheets, not inline style attributes")
 
     if 'url("./hall-of-heroes.avif")' not in hero_css:
         errors.append("Hall of Heroes CSS missing approved artwork reference")
