@@ -329,10 +329,10 @@ def main() -> int:
             continue
         header_label = str(row.get("header_label") or "").strip()
         if not header_label:
-            errors.append(f"{room_id}: missing concise header_label for universal five-slot rail")
-        elif len(header_label) > 18:
+            errors.append(f"{room_id}: missing reader-facing header_label for universal Room rail")
+        elif len(header_label) > 28:
             errors.append(
-                f"{room_id}: header_label too long for universal five-slot rail: {header_label!r}"
+                f"{room_id}: header_label too long for illustrated universal rail: {header_label!r}"
             )
         primary = row.get("primary_level")
         projections = row.get("projections")

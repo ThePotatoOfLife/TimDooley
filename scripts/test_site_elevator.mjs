@@ -133,8 +133,8 @@ assert.deepEqual(
   'Below governed Rooms should use concise reader-facing labels'
 );
 const scienceHeader=elevator.roomsForLevel('plane',projection,roomContract).find(room=>room.id==='science-formal-models');
-assert.equal(scienceHeader.title,'Science','header rail should use the concise Science label');
-assert.equal(scienceHeader.fullTitle,'Science & Formal Models','compact header labels must preserve the canonical Room title');
+assert.equal(scienceHeader.title,'Science & Formal Models','header rail should preserve the finished illustrated Room title');
+assert.equal(scienceHeader.fullTitle,'Science & Formal Models','illustrated header labels must preserve the canonical Room title');
 const cultureBelow=elevator.roomsForLevel('below',projection,roomContract).map(room=>room.id);
 assert.equal(cultureBelow.includes('culture-information'),false,'Below rail must not expose Plane-owned Culture as a door');
 const culturePlane=elevator.roomsForLevel('plane',projection,roomContract).map(room=>room.id);
