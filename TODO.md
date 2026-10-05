@@ -97,7 +97,7 @@ These missions remain. **What changes is how we store them: fewer, thicker, clea
 ### Next small-bug targets
 - [ ] **PAPER-016 · House runtime decomposition:** now that House JavaScript has a dedicated owner, split the 23 KB runtime into coherent data-loading, topology rendering and interaction modules only if that improves testability without adding loader chatter.
 - [ ] **PAPER-017 · Potato of Life inline CSS extraction:** move the remaining ~8 KB page-local style block into a dedicated scoped stylesheet and register it for deterministic fingerprinting.
-- [ ] **PAPER-019 · Quantum reader shell migration:** migrate `science/quantum/` from the bespoke `.q` wrapper + loose paragraph navigation into the shared `.page / .page-nav / .page-header` contract while preserving its physics/formalism distinctions.
+- [x] **PAPER-019 · Quantum reader shell migration:** `science/quantum/` now uses the shared `.page / .page-nav / .page-header` contract, keeps its physics/formalism distinctions, and owns only scoped page-specific styles in `app/quantum-page.css`.
 - [ ] **PAPER-020 · Axis extracted-owner follow-up:** now that Axis CSS/runtime live in `app/axis-page.css` and `app/axis-page.js`, add focused tests for path-tab URL state, route-case loading and vertical-field fallback rather than relying on one large page integration.
 - [ ] **PAPER-018 · TODO archive rotation:** TODO.md is now ~250 KB; move completed historical waves into a dated archive/changelog while keeping active and recently completed work visible in the main queue.
 - [ ] **PAPER-005 · Prefix-order validator:** add a regression that rejects a broad contextual-nav prefix appearing before a more-specific child prefix and rejects ambiguous first-match ownership.
