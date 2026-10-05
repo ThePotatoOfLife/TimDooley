@@ -263,6 +263,16 @@ def main() -> int:
         "scripts/build_science_catalog.py",
         errors,
     )
+    if re.search(r"science-library\.(?:css|js)\?v=20\d{6}", source):
+        errors.append("science/index.html: Science homepage assets must use build fingerprints, not dated cache keys")
+    build_site_path = ROOT / "scripts" / "build_site.py"
+    build_site_text = build_site_path.read_text(encoding="utf-8", errors="replace") if build_site_path.exists() else ""
+    require_markers(
+        build_site_text,
+        ('"science/science-library.css"', '"science/science-library.js"'),
+        "scripts/build_site.py",
+        errors,
+    )
     require_markers(source, SOURCE_MARKERS, "science/index.html", errors)
     require_markers(builder, BUILDER_MARKERS, "scripts/build_science_catalog.py", errors)
     compact_css = "".join(css.split())
