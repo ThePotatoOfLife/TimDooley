@@ -276,6 +276,14 @@ def main()->int:
         if marker not in roots:
             errors.append(f"Roots / Evidence hub missing marker: {marker}")
 
+    for path in ("rooms/archive-sources/index.html","rooms/research-lab/index.html"):
+        room_text=read(path)
+        if "app/room-home.css" not in room_text and "../../app/room-home.css" not in room_text:
+            errors.append(f"{path} must consume canonical room-home.css geometry")
+    lower_css_text=read("app/lower-layer.css")
+    if ".lower-layer-page .room-home{max-width:" in lower_css_text:
+        errors.append("lower-layer.css must not duplicate canonical Room-home geometry")
+
     forge=read("rooms/research-lab/index.html")
     for marker in ('<h1>Forge / Repair</h1>','id="epistemic-delegation-programme"','id="exploitation-language-forge"','id="lower-field-forge"','id="field-assessment"','id="son-narrative-contest"','id="tim-method-in-forge"','id="ritual-coordination-test"','id="interpretive-justice-gates"','id="forge-output"',"Who, since when, how active, how harmful, what goal?"):
         if marker not in forge:
