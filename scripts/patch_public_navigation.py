@@ -537,7 +537,7 @@ PAGE_NAV_RE = re.compile(
 )
 PAGE_NAV_ANCHOR_RE = re.compile(r'''<a\b[^>]*href=["'][^"']+["'][^>]*>.*?</a\s*>''', re.I | re.S)
 PAGE_NAV_HREF_RE = re.compile(r'''href=["']([^"']+)["']''', re.I)
-MAX_PAGE_NAV_LINKS = 6
+MAX_PAGE_NAV_LINKS = 10
 
 PAGE_NAV_CLASS_RE = re.compile(r'''\bclass=["']([^"']*)["']''', re.I)
 
@@ -612,6 +612,12 @@ def _current_subroom_anchor(page: Path) -> str:
     label = html.escape(_subroom_nav_label(row))
     href = _subroom_href(page, row)
     return f'<a class="page-nav-current" href="{href}" aria-current="page">{label}</a>'
+
+
+def _room_candidate_anchor(page: Path, row: dict) -> str:
+    label = html.escape(_subroom_nav_label(row))
+    href = _subroom_href(page, row)
+    return f'<a class="page-nav-room" href="{href}">{label}</a>'
 
 
 def _anchor_label(anchor: str) -> str:
@@ -735,11 +741,12 @@ def _is_current_subroom_anchor(anchor: str, page: Path) -> bool:
 
 
 def normalize_page_nav(text: str, page: Path) -> str:
-    """Keep the public sub-header compact and Tim-page-like.
+    """Build one compact but useful sub-header from the House topology.
 
-    The universal elevator owns broad spatial navigation. The page sub-header only
-    needs local orientation: Home first, then authored nearby routes. Room pages
-    additionally retain the Rooms directory and parent Dwelling where useful.
+    The elevator answers "which floor am I on?" while this bar answers the more
+    practical question "where can I go from here?". Home and Rooms stay stable;
+    Dwelling/Room context, sibling Rooms, adjacent Rooms and subject-family links
+    are projected deterministically from the existing House registries.
     """
 
     if page == OUT / "index.html":
@@ -747,6 +754,7 @@ def normalize_page_nav(text: str, page: Path) -> str:
 
     rel = page.relative_to(OUT).as_posix()
     is_room_page = rel.startswith("rooms/")
+    is_nested_room = re.fullmatch(r"rooms/inside/([^/]+)/index\.html", rel) is not None
 
     def rewrite(match: re.Match[str]) -> str:
         attrs = match.group("attrs")
@@ -755,41 +763,74 @@ def normalize_page_nav(text: str, page: Path) -> str:
         if not anchors:
             return match.group(0)
 
+        # Generated structural links are regenerated on every pass. The public
+        # build intentionally runs this normalizer twice, so do not re-ingest them
+        # as authored links.
         authored: list[str] = []
-        seen_hrefs: set[str] = set()
         for anchor in anchors:
             href = _anchor_href(anchor)
+            class_match = PAGE_NAV_CLASS_RE.search(anchor)
+            classes = set(class_match.group(1).split()) if class_match else set()
             if (
                 _is_home_href(href, page)
                 or _is_rooms_anchor(anchor)
                 or _is_redundant_architecture_anchor(anchor, page)
                 or _is_current_subroom_anchor(anchor, page)
+                or _is_philosophy_family_anchor(anchor, page)
+                or classes.intersection({
+                    "page-nav-home",
+                    "page-nav-directory",
+                    "page-nav-dwelling",
+                    "page-nav-current",
+                    "page-nav-room",
+                    "page-nav-subject",
+                })
                 or re.search(r'\baria-current=["\']page["\']', anchor, flags=re.I)
             ):
                 continue
-            if href and href in seen_hrefs:
-                continue
-            if href:
-                seen_hrefs.add(href)
             authored.append(anchor)
 
-        pieces: list[str] = [_home_anchor(page)]
+        pieces: list[str] = []
+        seen_hrefs: set[str] = set()
 
-        if is_room_page:
-            pieces.append(_rooms_anchor(page))
-            dwelling = _dwelling_anchor(page)
-            if dwelling and not re.fullmatch(r"rooms/[^/]+/index\.html", rel):
-                pieces.append(dwelling)
-
-        for anchor in authored:
-            if len(pieces) >= MAX_PAGE_NAV_LINKS:
-                break
+        def add(anchor: str) -> None:
+            if not anchor or len(pieces) >= MAX_PAGE_NAV_LINKS:
+                return
+            href = _anchor_href(anchor)
+            if not href or href in seen_hrefs:
+                return
+            seen_hrefs.add(href)
             pieces.append(anchor)
 
-        rewritten = "".join(pieces[:MAX_PAGE_NAV_LINKS])
-        return f"<nav{attrs}>{rewritten}</nav>"
+        add(_home_anchor(page))
+        if is_room_page:
+            add(_rooms_anchor(page))
+
+        if is_nested_room:
+            add(_dwelling_anchor(page))
+            add(_current_subroom_anchor(page))
+
+        # Dwellings expose their complete 3–5 Room family. Nested Rooms expose
+        # siblings plus at most two governed cross-family adjacencies.
+        for row in _room_nav_candidates(page):
+            add(_room_candidate_anchor(page, row))
+
+        # Philosophy already has a curated family map; render it rather than
+        # leaving the existing family helpers dormant.
+        for anchor in PAGE_NAV_ANCHOR_RE.findall(_philosophy_family_anchors(page)):
+            add(anchor)
+
+        add(_philosophy_entry_anchor(page))
+        add(_metaphysics_entry_anchor(page))
+
+        # Preserve hand-authored local or section links after structural context.
+        for anchor in authored:
+            add(anchor)
+
+        return f"<nav{attrs}>{''.join(pieces)}</nav>"
 
     return PAGE_NAV_RE.sub(rewrite, text)
+
 
 def patch_page_navs(out: Path = OUT) -> set[Path]:
     changed: set[Path] = set()
