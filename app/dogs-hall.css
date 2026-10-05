@@ -17,8 +17,6 @@
 .dogs-hall-page .verse{margin:14px 0;padding:11px 15px;border-left:2px solid #6e4738;background:rgba(80,35,20,.06);font:400 17px/1.5 var(--site-font-serif)}
 .dogs-hall-page .recognition{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
 .dogs-hall-page .recognition div{padding:12px;border-top:1px solid var(--site-line)}
-.dogs-hall-page .links{display:flex;gap:10px;flex-wrap:wrap;margin:28px 0}
-.dogs-hall-page .links a{color:var(--site-gold)}
 @media(max-width:650px){.dogs-hall-page .recognition{grid-template-columns:1fr}}
 
 /* Dogs Hall — a distinct Below destination, not a skin shared with Potatoes/Angels. */
@@ -103,7 +101,6 @@ html[data-site-floor] body.dogs-hall-page .page-header{
 .dogs-hall-page .descent-map .route b{color:#dda079}
 .dogs-hall-page .descent-map .route i{font-style:normal;color:#7e6b58}
 .dogs-hall-page .birth-note{margin-top:10px;color:#bdb4aa}
-.dogs-hall-page .links a{color:#d59a72}
 @media(max-width:680px){
  .dogs-hall-page .page-header,
  html[data-site-floor] body.dogs-hall-page .page-header{padding:52px 20px 28px;border-radius:9px}
@@ -495,9 +492,7 @@ html[data-site-floor] body.dogs-hall-page .page-header{
   outline-offset:3px;
 }
 .dogs-hall-page .hall-door-strip a,
-.dogs-hall-page .hall-door-grid a,
-.dogs-hall-page .hero-plaque a,
-.dogs-hall-page .table-seats a{
+.dogs-hall-page .hall-door-grid a{
   transition:border-color .16s ease,background .16s ease,color .16s ease,transform .16s ease;
 }
 .dogs-hall-page .hall-door-strip a:hover,
@@ -747,8 +742,7 @@ body.dogs-hall-page{
 .dogs-hall-page main.hall > section{
   margin-block:clamp(46px,6vw,66px);
 }
-.dogs-hall-page main.hall > section > h2,
-.dogs-hall-page main.hall > section > .great-table-head > h2{
+.dogs-hall-page main.hall > section > h2{
   margin-top:0;
 }
 .dogs-hall-page .page-header{
@@ -786,7 +780,7 @@ body.dogs-hall-page{
 }
 
 /* Plain reading fields stay plain; the content itself provides the structure. */
-.dogs-hall-page main.hall > section:not(.upper-hall):not(.arcade-marquee):not(.continue-screen):not(.hall-threshold):not(.great-table):not(.honor-register):not(.notoriety-ledger):not(.hall-source-desk):not(.hall-exits):not(.hall-law):not(.table-conversation):not(.table-reading-key):not(.village-bell):not(.worked-runs):not(.repair-route):not(.hall-takeaway):not(.shame-village){
+.dogs-hall-page main.hall > section:not(.arcade-marquee):not(.continue-screen):not(.hall-threshold):not(.notoriety-ledger):not(.hall-source-desk):not(.hall-exits):not(.hall-law):not(.village-bell):not(.worked-runs):not(.repair-route):not(.hall-takeaway):not(.shame-village){
   padding:0 2px;
   border:0;
   border-radius:0;
@@ -809,10 +803,8 @@ body.dogs-hall-page{
   background:rgba(255,255,255,.018);
 }
 .dogs-hall-page .hall-input-output,
-.dogs-hall-page .table-seats,
 .dogs-hall-page .source-desk-grid,
 .dogs-hall-page .takeaway-grid,
-.dogs-hall-page .table-question-grid,
 .dogs-hall-page .worked-run-grid,
 .dogs-hall-page .bell-grid,
 .dogs-hall-page .shame-landmarks,
@@ -829,17 +821,11 @@ body.dogs-hall-page{
   margin-top:22px;
   border-radius:0 8px 8px 0;
 }
-.dogs-hall-page .upper-hall{
-  margin-top:clamp(68px,8vw,92px);
-}
 
 /* Avoid a glued-pane look where adjacent designed blocks meet. */
 .dogs-hall-page .hall-threshold + .hall-law,
-.dogs-hall-page .hall-law + .great-table,
 .dogs-hall-page .hall-law + .shame-village,
-.dogs-hall-page .great-table + .table-conversation,
 .dogs-hall-page .shame-village + .village-bell,
-.dogs-hall-page .honor-register + .hall-source-desk,
 .dogs-hall-page .notoriety-ledger + .hall-source-desk,
 .dogs-hall-page .hall-takeaway + .hall-exits{
   margin-top:clamp(52px,6vw,72px);
@@ -896,9 +882,6 @@ body.dogs-hall-page{
 .dogs-hall-page .hall-door-strip a{
   border-radius:7px;
 }
-.dogs-hall-page .nature-grid,
-.dogs-hall-page .honor-grid,
-.dogs-hall-page .milestone-grid,
 .dogs-hall-page .grid,
 .dogs-hall-page .recognition{
   gap:14px;
@@ -913,7 +896,6 @@ body.dogs-hall-page{
 }
 .dogs-hall-page .source-desk-grid article,
 .dogs-hall-page .takeaway-grid article,
-.dogs-hall-page .table-question-grid article,
 .dogs-hall-page .worked-run-grid article,
 .dogs-hall-page .bell-grid article{
   min-width:0;
@@ -930,10 +912,7 @@ body.dogs-hall-page{
   .dogs-hall-page .hall-door-strip{
     gap:8px;
   }
-  .dogs-hall-page .nature-grid,
-  .dogs-hall-page .honor-grid,
-  .dogs-hall-page .milestone-grid,
-  .dogs-hall-page .grid,
+        .dogs-hall-page .grid,
   .dogs-hall-page .recognition{
     gap:10px;
   }
