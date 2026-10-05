@@ -114,12 +114,10 @@ def main()->int:
         internal=[resolve_href(link_base,h) for h in hrefs]; internal=[x for x in internal if x]
         for target in internal:
             if target in legacy_routes:
-                warnings.append({
-                    "code":"live-link-to-legacy-route",
-                    "surface":sid,
-                    "target":target,
-                    "canonical_surface":legacy_routes[target],
-                })
+                errors.append(
+                    f"{sid} links to compatibility-only route {target}; "
+                    f"link directly to canonical surface {legacy_routes[target]}"
+                )
         cta_rows=[]
         for href,label_html in ANCHOR_FULL.findall(visible):
             label=re.sub(r"\s+"," ",TAG.sub(" ",label_html)).strip()
