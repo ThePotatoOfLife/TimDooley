@@ -165,3 +165,81 @@
   .questions-page .answer-grid,
   .az-page .disambig-grid{grid-template-columns:1fr}
 }
+
+/* Paths */
+.paths-page .path-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+  margin-top:24px;
+}
+.paths-page .path-card{
+  padding:18px;
+  border:1px solid var(--site-line);
+  border-radius:var(--site-radius);
+  background:var(--site-panel);
+  color:inherit;
+  text-decoration:none;
+}
+.paths-page .path-card strong{
+  display:block;
+  margin-bottom:7px;
+  color:var(--site-gold);
+  font:400 24px var(--site-font-serif);
+}
+.paths-page .path-card span{
+  display:block;
+  color:var(--site-muted);
+  font-size:var(--site-text-meta);
+}
+.paths-page .trail{
+  margin-top:10px;
+  color:var(--site-copy);
+  font-size:var(--site-text-caption);
+}
+.paths-page .rule{
+  padding-left:16px;
+  border-left:2px solid var(--site-gold);
+  font:400 21px/1.5 var(--site-font-serif);
+}
+.paths-page .worked-paths{
+  margin:36px 0;
+  padding:28px 0;
+  border-top:1px solid var(--site-line);
+  border-bottom:1px solid var(--site-line);
+}
+.paths-page .worked-paths h2{
+  margin:0 0 10px;
+  color:var(--site-gold);
+  font:400 var(--site-text-section)/1.08 var(--site-font-serif);
+}
+.paths-page .worked-paths>.lead{
+  max-width:860px;
+  color:var(--site-copy);
+  font:400 20px/1.55 var(--site-font-serif);
+}
+.paths-page .worked-path{
+  display:grid;
+  grid-template-columns:170px minmax(0,1fr);
+  gap:24px;
+  padding:19px 0;
+  border-top:1px solid rgba(255,255,255,.055);
+}
+.paths-page .worked-path h3{
+  margin:0 0 6px;
+  color:var(--site-gold);
+  font:400 22px/1.12 var(--site-font-serif);
+}
+.paths-page .worked-path .trail2{
+  margin-bottom:7px;
+  color:var(--site-gold);
+  font-size:var(--site-text-caption);
+}
+.paths-page .worked-path p{margin:0 0 8px;color:var(--site-copy)}
+.paths-page .worked-path a{color:var(--site-gold);font-size:var(--site-text-caption)}
+
+@media(max-width:760px){
+  .paths-page .path-grid,
+  .paths-page .worked-path{grid-template-columns:1fr}
+  .paths-page .worked-path{gap:4px}
+}
