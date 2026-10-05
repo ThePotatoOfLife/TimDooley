@@ -158,7 +158,7 @@ def main() -> int:
     paper_css = PAPER_CSS.read_text(encoding="utf-8", errors="replace") if PAPER_CSS.exists() else ""
     require_markers(
         "".join(paper_css.split()),
-        (".paper-page{", ".paper-subtitle{", ".paper-figure{", ".paper-equation{", "@mediaprint{"),
+        (".paper-page{", ".paper-subtitle{", ".paper-toc{", ".paper-figure{", ".paper-equation{", "@mediaprint{"),
         "science/science-paper.css",
         errors,
     )
@@ -255,7 +255,7 @@ def main() -> int:
                         text = paper_page.read_text(encoding="utf-8", errors="replace")
                         require_markers(
                             text,
-                            ("Abstract", 'class="page-nav paper-nav"', "Download source JSON", "View source on GitHub", "knowledge/science/"),
+                            ("Abstract", 'class="page-nav paper-nav"', 'class="paper-toc"', "Download source JSON", "View source on GitHub", "knowledge/science/"),
                             f"science/papers/{first['slug']}/index.html",
                             errors,
                         )
