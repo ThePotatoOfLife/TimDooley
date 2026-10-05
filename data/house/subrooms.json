@@ -1,11 +1,53 @@
 {
-  "version": "1.8.0",
-  "updated": "2026-09-20",
+  "version": "1.8.1",
+  "updated": "2026-10-05",
   "authority": "nested-bounded-context-governance",
   "parent_room_registry": "data/house/rooms.json",
   "principle": "The ten canonical top-level bounded contexts remain the stable owners. Publicly they are projected as Dwellings; nested Rooms delegate scope inside a parent Dwelling and do not create a second owner for the same fact family.",
   "admission_rule": "A nested Room should have a distinct task/vocabulary or specialist representation, enough internal material to navigate, and clear interfaces. If it cannot state its boundary, keep it a Path, View, Programme, Field, Collection or topic instead.",
   "subrooms": [
+    {
+      "id": "garden",
+      "title": "Garden",
+      "parent_room_id": "potatoverse-canon",
+      "kind": "nested-room",
+      "ownership_mode": "delegated-scope",
+      "local_role": "source-facing cultivation and stewardship",
+      "purpose": "Develop the Garden as a reader-facing Potatoverse Room joining Father/Gardener, cultivation, River, Tree of Life, Tree of Knowledge, Fruit, boundary, work, keeping, exile/return and Genesis comparison without collapsing project canon into biblical history.",
+      "knowledge_roots": [
+        "knowledge/core/heaven-spirit-father.json",
+        "knowledge/core/root-system.json",
+        "knowledge/traditions/biblical-adam-seed-garden-farm-atlas.json",
+        "data/house/architectural-vocabulary.json"
+      ],
+      "public_surface_ids": [
+        "garden"
+      ],
+      "adjacent_subroom_ids": [
+        "theology-god-language",
+        "symbolic-architecture",
+        "practice-ethics",
+        "bible-christianity"
+      ],
+      "epistemic_boundary": "Genesis and Hebrew-language material remain historical/scriptural comparators; the Room may explain Potatoverse correspondences but does not turn Timic Father/Gardener language into independent proof of biblical identity.",
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "core",
+        "primary_coordinates": [
+          "within",
+          "up",
+          "through",
+          "across"
+        ],
+        "crosscutting_roles": [],
+        "interface_kinds": [
+          "meaning-translation",
+          "practice-translation"
+        ],
+        "embedding_rule": "Relational profile only; the Garden is a nested reader Room inside Potatoverse / Canon and does not create a new top-level fact owner."
+      },
+      "route_id": "garden"
+    },
     {
       "id": "canon-identities",
       "title": "Core Identities & Roles",
