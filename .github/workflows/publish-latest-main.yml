@@ -1,0 +1,130 @@
+name: Publish latest main to Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+concurrency:
+  group: pages-latest-main
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout latest main
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.x'
+
+      - name: Build source registries
+        run: |
+          python scripts/build_canonical_record_registry.py
+          python scripts/build_repository_index.py
+          python scripts/audit_source_of_truth.py
+
+      - name: Build public site
+        run: python scripts/build_site.py
+
+      - name: Remove internal archive
+        run: rm -rf _site/archive && test ! -e _site/archive
+
+      - name: Build Bible comparator
+        run: |
+          python scripts/build_bible_study.py
+          python scripts/check_bible_static_dynamic_parity.py
+          python scripts/build_bible_comparator_quality.py
+          python scripts/audit_bible_tim_side_quality.py
+
+      - name: Build Science Research Papers
+        run: |
+          python scripts/build_science_catalog.py
+          python scripts/validate_science_portal.py
+
+      - name: Build discovery and ontology layers
+        run: |
+          python scripts/build_discovery.py
+          python scripts/patch_home_discovery.py
+          python scripts/patch_public_ontology.py
+          python scripts/enrich_weak_descriptions.py
+
+      - name: Optimize SEO
+        run: |
+          python scripts/optimize_seo.py
+          python scripts/finalize_public_home.py
+
+      - name: Project shared navigation and TTS
+        run: |
+          python scripts/patch_public_navigation.py
+          python scripts/validate_public_navigation.py
+          python scripts/validate_site_shell.py
+          python scripts/validate_tts_coverage.py
+
+      - name: Assert Research Papers entry and reader
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f _site/science/index.html
+          test -f _site/science/papers/index.html
+          test -f _site/science/papers/advanced-retarded-door-handshake-recovery/index.html
+          test -f _site/science/science-papers.css
+          test -f _site/science/science-paper.css
+          test -f _site/science/science-papers.js
+          grep -q "Research Papers" _site/science/index.html
+          grep -q "RESEARCH PAPERS" _site/science/papers/index.html
+          grep -q 'class="page-nav' _site/science/papers/index.html
+          grep -q 'class="paper-page"' _site/science/papers/advanced-retarded-door-handshake-recovery/index.html
+          grep -q "science-time-door-handshake.svg" _site/science/papers/advanced-retarded-door-handshake-recovery/index.html
+
+      - name: Stamp direct Pages provenance
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          payload={
+              "schema_version":"1.0.0",
+              "source_sha":os.environ["GITHUB_SHA"],
+              "quality_run_id":os.environ["GITHUB_RUN_ID"],
+              "quality_run_attempt":os.environ["GITHUB_RUN_ATTEMPT"],
+              "repository":os.environ["GITHUB_REPOSITORY"],
+              "artifact":"validated-pages-site",
+              "publisher":"latest-main-direct",
+          }
+          Path("_site/build-provenance.json").write_text(json.dumps(payload,indent=2)+"\n",encoding="utf-8")
+          PY
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy current main
+        id: deployment
+        uses: actions/deploy-pages@v5
