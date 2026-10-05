@@ -508,7 +508,7 @@ def render_paper_page(record: dict, data: dict) -> str:
 <link rel="stylesheet" href="../../science-paper.css?v=20260911a">
 </head>
 <body><main class="paper-page">
-<nav class="paper-nav"><a href="../">← Papers</a><a href="../../">Science</a><a href="../../../">Home</a></nav>
+<nav class="page-nav paper-nav" aria-label="Science paper navigation"><a href="../">← Papers</a><a href="../../">Science</a><a href="../../../">Home</a></nav>
 <header class="paper-header">
 <p class="paper-kicker">{esc(meta)}</p>
 <h1>{esc(record['title'])}</h1>
@@ -628,7 +628,7 @@ def render_papers_reader(records: list[dict]) -> str:
 </head>
 <body>
 <main class="papers-reader" data-reader-surface="science-papers">
-<nav class="papers-nav" aria-label="Science papers navigation"><a href="../">← Science</a><a href="../../">Home</a></nav>
+<nav class="page-nav papers-nav" aria-label="Science papers navigation"><a href="../">← Science</a><a href="../../">Home</a></nav>
 <header class="papers-header">
 <p class="papers-kicker">Science reader · {len(records)} readable documents</p>
 <h1>SCIENCE PAPERS</h1>
