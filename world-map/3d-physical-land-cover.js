@@ -63,7 +63,7 @@ function ensureStyle() {
   const style = document.createElement('style');
   style.id = 'atlasLandCoverStyle';
   style.textContent = `
-    #${LEGEND_ID}{background:#080b0be8;border:1px solid #344343;border-radius:10px;padding:7px 9px;color:#dce5e5;font:11px/1.25 system-ui;max-width:280px;backdrop-filter:blur(8px)}
+    #${LEGEND_ID}{background:#080b0be8;border:1px solid #344343;border-radius:10px;padding:7px 9px;color:#dce5e5;font:11px/1.25 system-ui;max-width:280px;}
     #${LEGEND_ID} summary{cursor:pointer;font-weight:750;color:#e5f4f4;list-style:none}
     #${LEGEND_ID} summary::-webkit-details-marker{display:none}
     #${LEGEND_ID} .atlas-lc-note{margin:5px 0;color:#9caeae;font-size:9px;line-height:1.3}
