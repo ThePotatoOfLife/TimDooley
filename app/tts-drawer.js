@@ -243,7 +243,8 @@
 
     let payload=normalizePayload(getPayload()||{});
     let state='closed';
-    let sectionId=payload.sections.find(x=>x.id==='both')?.id||payload.sections[0]?.id||'';
+    const preferredSection=clean(options.defaultSection);
+    let sectionId=payload.sections.find(x=>x.id===preferredSection)?.id||payload.sections.find(x=>x.id==='both')?.id||payload.sections[0]?.id||'';
     let activeText='';
     let currentWord=null;
     let voices=[];
@@ -276,6 +277,10 @@
     const settings=el('div','ptts-control-group ptts-settings');
     const audio=el('div','ptts-control-group ptts-audio');
     const readingTools=el('div','ptts-control-group ptts-reading-tools');
+    transport.dataset.label='Playback';
+    settings.dataset.label='Voice & pace';
+    audio.dataset.label='Sound';
+    readingTools.dataset.label='Reading';
     transport.append(play,pause,stop);
     settings.append(scope,voice,speed);
     audio.append(mute,volume);
