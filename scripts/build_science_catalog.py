@@ -351,6 +351,66 @@ def is_equation_key(key: str) -> bool:
     return any(token in low for token in EQUATION_KEYS)
 
 
+def render_equation_block(value, key: str = "", index: int | None = None) -> str:
+    """Render formula text as a readable publication object without changing its mathematics."""
+    text = str(value or "").strip()
+    if not text:
+        return ""
+    label = humanize_key(key) if key else "Equation"
+    if index is not None:
+        label = f"{label} {index}" if key else f"Equation {index}"
+    return (
+        '<figure class="paper-equation-block">'
+        f'<figcaption>{esc(label)}</figcaption>'
+        f'<pre class="paper-equation" tabindex="0" aria-label="{esc(label)}"><code>{esc(text)}</code></pre>'
+        '</figure>'
+    )
+
+
+def render_science_table(rows: list[dict], key: str = "") -> str:
+    """Render small homogeneous scalar dictionaries as an actual table."""
+    if not (2 <= len(rows) <= 18):
+        return ""
+    if not all(isinstance(row, dict) and row for row in rows):
+        return ""
+    ordered: list[str] = []
+    for row in rows:
+        for child_key in row:
+            if child_key not in ordered:
+                ordered.append(child_key)
+    if not (2 <= len(ordered) <= 7):
+        return ""
+    scalar = (str, int, float, bool)
+    if any(any(value is not None and not isinstance(value, scalar) for value in row.values()) for row in rows):
+        return ""
+    # Require enough shared structure that unrelated objects do not collapse into a misleading table.
+    shared = set(rows[0])
+    for row in rows[1:]:
+        shared.intersection_update(row)
+    if len(shared) < 2:
+        return ""
+    head = "".join(f"<th scope=\"col\">{esc(humanize_key(col))}</th>" for col in ordered)
+    body_rows = []
+    for row in rows:
+        cells = []
+        for col in ordered:
+            value = row.get(col)
+            text = "" if value is None else str(value)
+            if URL_RE.match(text):
+                cell = f'<a href="{esc(text)}" rel="noopener">{esc(text)}</a>'
+            else:
+                cell = esc(text)
+            cells.append(f"<td>{cell}</td>")
+        body_rows.append("<tr>" + "".join(cells) + "</tr>")
+    caption = humanize_key(key) if key else "Scientific data"
+    return (
+        '<div class="paper-table-wrap" tabindex="0">'
+        f'<table class="paper-table"><caption>{esc(caption)}</caption>'
+        f'<thead><tr>{head}</tr></thead><tbody>{"".join(body_rows)}</tbody></table>'
+        '</div>'
+    )
+
+
 def render_scalar(value, key: str = "") -> str:
     if isinstance(value, bool):
         return f"<p>{'Yes' if value else 'No'}</p>"
@@ -362,7 +422,7 @@ def render_scalar(value, key: str = "") -> str:
     if URL_RE.match(text):
         return f'<p><a href="{esc(text)}" rel="noopener">{esc(text)}</a></p>'
     if is_equation_key(key) and MATH_HINT.search(text):
-        return f'<pre class="paper-equation"><code>{esc(text)}</code></pre>'
+        return render_equation_block(text, key)
     return f"<p>{esc(text)}</p>"
 
 
@@ -372,10 +432,17 @@ def render_value(value, depth: int = 0, key: str = "") -> str:
     if isinstance(value, (str, int, float, bool)):
         return render_scalar(value, key)
     if isinstance(value, list):
+        if value and all(isinstance(item, dict) for item in value):
+            table = render_science_table(value, key)
+            if table:
+                return table
         if all(isinstance(item, (str, int, float, bool)) for item in value):
             if is_equation_key(key):
-                items = "".join(f'<pre class="paper-equation"><code>{esc(item)}</code></pre>' for item in value if str(item).strip())
-                return items
+                return "".join(
+                    render_equation_block(item, key, index)
+                    for index, item in enumerate(value, 1)
+                    if str(item).strip()
+                )
             return "<ul>" + "".join(f"<li>{esc(item)}</li>" for item in value) + "</ul>"
         rendered = []
         for index, item in enumerate(value, 1):
@@ -456,11 +523,14 @@ def render_paper_figures(value) -> str:
         source = str(item.get("source_note") or "").strip()
         figures.append(
             '<figure class="paper-figure">'
+            f'<a class="paper-figure-image-link" href="../../../{esc(asset)}" target="_blank" rel="noopener" aria-label="Open full figure: {esc(title)}">'
             f'<img src="../../../{esc(asset)}" alt="{esc(alt)}" loading="lazy" decoding="async">'
+            '</a>'
             '<figcaption>'
             f'<strong>{esc(title)}</strong>'
-            f'{f"<span>{esc(caption)}</span>" if caption else ""}'
-            f'{f"<small>{esc(source)}</small>" if source else ""}'
+            f'{f"<span class=\"paper-figure-caption\">{esc(caption)}</span>" if caption else ""}'
+            f'{f"<small class=\"paper-figure-source\"><b>Source / status:</b> {esc(source)}</small>" if source else ""}'
+            f'<a class="paper-figure-open" href="../../../{esc(asset)}" target="_blank" rel="noopener">Open full figure ↗</a>'
             '</figcaption>'
             '</figure>'
         )

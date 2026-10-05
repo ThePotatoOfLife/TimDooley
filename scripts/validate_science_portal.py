@@ -64,6 +64,37 @@ def require_markers(text: str, markers: tuple[str, ...], owner: str, errors: lis
             errors.append(f"{owner}: missing {marker!r}")
 
 
+def validate_science_svg_assets(errors: list[str]) -> None:
+    """Ensure paper diagrams remain accessible, scalable publication figures."""
+    seen: set[str] = set()
+    science_dir = ROOT / "knowledge" / "science"
+    for source in science_dir.rglob("*.json"):
+        try:
+            data = json.loads(source.read_text(encoding="utf-8"))
+        except Exception:
+            continue
+        for figure in data.get("paper_figures") or []:
+            if not isinstance(figure, dict):
+                continue
+            asset = str(figure.get("asset") or "").strip().lstrip("/")
+            if not asset.endswith(".svg") or asset in seen:
+                continue
+            seen.add(asset)
+            path = ROOT / asset
+            if not path.is_file():
+                continue
+            text = path.read_text(encoding="utf-8", errors="replace")
+            compact = "".join(text.split())
+            if "<svg" not in text or "viewBox=" not in text:
+                errors.append(f"{asset}: SVG paper figure missing scalable viewBox")
+            if "<title" not in text or "</title>" not in text:
+                errors.append(f"{asset}: SVG paper figure missing <title>")
+            if "<desc" not in text or "</desc>" not in text:
+                errors.append(f"{asset}: SVG paper figure missing <desc>")
+            if 'role="img"' not in compact and "role='img'" not in compact:
+                errors.append(f"{asset}: SVG paper figure missing role=img")
+
+
 def validate_paper_figure_assets(errors: list[str]) -> None:
     science_dir = ROOT / "knowledge" / "science"
     for source in science_dir.rglob("*.json"):
@@ -125,6 +156,7 @@ def main() -> int:
     payload: dict | None = None
 
     validate_paper_figure_assets(errors)
+    validate_science_svg_assets(errors)
 
     semantic = audit_tree()
     if semantic.get("hard_failure_count"):
@@ -159,7 +191,7 @@ def main() -> int:
     paper_css = PAPER_CSS.read_text(encoding="utf-8", errors="replace") if PAPER_CSS.exists() else ""
     require_markers(
         "".join(paper_css.split()),
-        (".paper-page{", ".paper-subtitle{", ".paper-toc{", ".paper-figure{", ".paper-equation{", "@mediaprint{"),
+        (".paper-page{", ".paper-subtitle{", ".paper-toc{", ".paper-figure{", ".paper-equation-block{", ".paper-table{", ".paper-figure-open{", "@mediaprint{"),
         "science/science-paper.css",
         errors,
     )
