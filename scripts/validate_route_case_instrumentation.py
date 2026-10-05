@@ -7,6 +7,7 @@ ROOT=Path(__file__).resolve().parents[1]
 MATRIX=ROOT/'data/house/route-case-matrix.json'
 SYNTH=ROOT/'data/house/project-synthesis.json'
 AXIS=ROOT/'axis/index.html'
+AXIS_RUNTIME=ROOT/'app/axis-page.js'
 
 REQUIRED_CASE_FIELDS=(
     'starting_state','proposed_transition','operator','condition_required',
@@ -18,7 +19,7 @@ def load(path:Path):
 
 def main():
     errors=[]
-    for path in (MATRIX,SYNTH,AXIS):
+    for path in (MATRIX,SYNTH,AXIS,AXIS_RUNTIME):
         if not path.is_file():
             errors.append(f'missing route-instrumentation artifact: {path.relative_to(ROOT)}')
     if errors:
@@ -64,7 +65,7 @@ def main():
     ri=synth.get('route_instrumentation',{})
     if ri.get('authority')!='data/house/route-case-matrix.json':
         errors.append('project synthesis missing route instrumentation authority')
-    axis=AXIS.read_text(encoding='utf-8',errors='replace')
+    axis=AXIS.read_text(encoding='utf-8',errors='replace')+'\n'+AXIS_RUNTIME.read_text(encoding='utf-8',errors='replace')
     for marker in (
         'route-case-matrix.json',
         'data-route-case',
