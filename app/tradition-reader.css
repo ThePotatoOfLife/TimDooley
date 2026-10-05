@@ -22,7 +22,7 @@
 .tradition-reader :is(.event,.node,.layer){
   padding:14px 16px;
   border:1px solid var(--site-pane-line);
-  border-radius:12px;
+  border-radius:var(--site-radius);
   background:var(--site-pane-soft);
 }
 
@@ -54,7 +54,7 @@
 .tradition-reader :is(.event,.node,.layer) p{
   margin:0;
   color:var(--site-muted);
-  font-size:12px;
+  font-size:var(--site-text-sm);
   line-height:1.58;
 }
 
@@ -68,7 +68,7 @@
   flex:1 1 220px;
   padding:14px;
   border:1px solid var(--site-pane-line);
-  border-radius:12px;
+  border-radius:var(--site-radius);
   background:var(--site-pane-soft);
 }
 
@@ -96,7 +96,7 @@
   min-width:0;
   padding:15px;
   border:1px solid var(--site-pane-line);
-  border-radius:12px;
+  border-radius:var(--site-radius);
   background:var(--site-pane-soft);
 }
 
@@ -110,7 +110,7 @@
   display:block;
   margin:5px 0 0;
   color:var(--site-muted);
-  font-size:11px;
+  font-size:var(--site-text-caption);
   line-height:1.52;
 }
 
@@ -119,7 +119,7 @@
   margin-top:7px;
   padding:3px 7px;
   border:1px solid var(--site-line);
-  border-radius:999px;
+  border-radius:var(--site-radius-pill);
   color:var(--site-faint);
   font-size:8px;
   font-weight:700;
