@@ -40,7 +40,8 @@ function publishCurrent(slot){
   doc.dispatchEvent(new CustomEvent('potato:tts-current',{bubbles:false,detail:{item:slot}}));
 }
 function observe(){
-  const lazy=new IntersectionObserver(xs=>xs.forEach(x=>{if(x.isIntersecting)loadSlot(x.target).catch(()=>{})}),{rootMargin:'900px 0px'}),active=new IntersectionObserver(xs=>xs.forEach(x=>{if(!x.isIntersecting)return;activeCurrentId=x.target.id;toc.querySelectorAll('a').forEach(a=>a.setAttribute('aria-current',String(a.hash==='#'+x.target.id)));publishCurrent(x.target)}),{rootMargin:'-20% 0px -70%'});
+  const lazy=new IntersectionObserver(xs=>xs.forEach(x=>{if(x.isIntersecting)loadSlot(x.target).catch(()=>{})}),{rootMargin:'2600px 0px'});
+  const active=new IntersectionObserver(xs=>xs.forEach(x=>{if(!x.isIntersecting)return;activeCurrentId=x.target.id;toc.querySelectorAll('a').forEach(a=>a.setAttribute('aria-current',String(a.hash==='#'+x.target.id)));publishCurrent(x.target)}),{rootMargin:'-20% 0px -70%'});
   doc.querySelectorAll('.gb-slot').forEach(s=>{lazy.observe(s);active.observe(s)});
 }
 async function init(){
@@ -49,7 +50,11 @@ async function init(){
   const hash=safeChapterToken(decodeURIComponent(location.hash.slice(1))).replace(/^chapter-/,'chapter-'),target=document.getElementById(hash||'front-matter');
   activeCurrentId=target?.id||'';
   try{await loadSlot(target)}catch(error){if(status)status.textContent=`Could not load chapter: ${error.message}`}
-  publishCurrent(target);if(hash)requestAnimationFrame(()=>target?.scrollIntoView({block:'start'}));
+  publishCurrent(target);
+  const nearby=[...doc.querySelectorAll('.gb-slot')].slice(0,6).filter(slot=>slot!==target);
+  const warm=()=>chapterLoader.loadSlots(nearby,{concurrency:2}).catch(()=>{});
+  if('requestIdleCallback' in window)requestIdleCallback(warm,{timeout:1400});else setTimeout(warm,80);
+  if(hash)requestAnimationFrame(()=>target?.scrollIntoView({block:'start'}));
 }
 doc.addEventListener('potato:tts-prepare',event=>{
   const detail=event.detail;
