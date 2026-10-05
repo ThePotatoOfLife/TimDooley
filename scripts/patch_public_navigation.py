@@ -240,6 +240,11 @@ _ACTIVE_SUBROOM_ROWS = [
 ]
 _SUBROOM_BY_ID = {str(row["id"]): row for row in _ACTIVE_SUBROOM_ROWS}
 _SUBROOM_BY_ROUTE = {str(row.get("route_id") or row["id"]): row for row in _ACTIVE_SUBROOM_ROWS}
+_SUBROOM_SPECIAL_ROUTE = {
+    str(row.get("subroom_id")): str(row.get("match"))
+    for row in _ELEVATOR_PROJECTION.get("route_contexts", [])
+    if isinstance(row, dict) and row.get("subroom_id") and isinstance(row.get("match"), str)
+}
 _SUBROOMS_BY_PARENT: dict[str, list[dict]] = {}
 for _row in _ACTIVE_SUBROOM_ROWS:
     _SUBROOMS_BY_PARENT.setdefault(str(_row["parent_room_id"]), []).append(_row)
@@ -871,7 +876,11 @@ def _subroom_nav_label(row: dict) -> str:
 
 
 def _subroom_href(page: Path, row: dict) -> str:
-    route_id = str(row.get("route_id") or row.get("id") or "")
+    subroom_id = str(row.get("id") or "")
+    explicit_route = _SUBROOM_SPECIAL_ROUTE.get(subroom_id)
+    if explicit_route:
+        return f"{_relative_asset_prefix(page)}{explicit_route.lstrip('/')}"
+    route_id = str(row.get("route_id") or subroom_id)
     return f"{_relative_asset_prefix(page)}rooms/inside/{route_id}/"
 
 
