@@ -201,6 +201,15 @@ for rel, stylesheet, marker in (
     if marker not in page_text:
         errors.append(f"{rel} missing scoped reader marker {marker}")
 
+story_page = ROOT / "tim-dooley" / "story" / "index.html"
+story_text = story_page.read_text(encoding="utf-8", errors="ignore") if story_page.exists() else ""
+if re.search(r"<style\b", story_text, flags=re.I):
+    errors.append("tim-dooley/story/index.html must keep structural styling in app/story-page.css, not inline")
+if "app/story-page.css" not in story_text and "../../app/story-page.css" not in story_text:
+    errors.append("tim-dooley/story/index.html must load app/story-page.css")
+if '<p class="story-note"><a href="../../timeline/?mode=project">' in story_text:
+    errors.append("Story must not restore the redundant loose Life/project Timeline handoff above the hero")
+
 longform_path = ROOT / "app" / "longform-reader.css"
 longform_text = longform_path.read_text(encoding="utf-8", errors="ignore") if longform_path.exists() else ""
 if "style.css" in longform_text or "@import" in longform_text:
