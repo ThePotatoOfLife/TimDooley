@@ -8,6 +8,7 @@ WAVE=ROOT/'data/house/foundations-wave-003.json'
 PLACEMENT=ROOT/'data/house/foundation-placement-wave-003.json'
 CONTRACT=ROOT/'data/house/foundation-axis-placement-contract.json'
 TIMELINE=ROOT/'timeline/foundations/index.html'
+TIMELINE_RUNTIME=ROOT/'app/foundation-timeline-page.js'
 SYNTH=ROOT/'data/house/project-synthesis.json'
 LANDSCAPE=ROOT/'data/house/foundation-landscape-synthesis.json'
 
@@ -15,7 +16,7 @@ def load(p): return json.loads(p.read_text(encoding='utf-8'))
 
 def main():
     errors=[]
-    for p in (WAVE,PLACEMENT,CONTRACT,TIMELINE,SYNTH,LANDSCAPE):
+    for p in (WAVE,PLACEMENT,CONTRACT,TIMELINE,TIMELINE_RUNTIME,SYNTH,LANDSCAPE):
         if not p.is_file(): errors.append(f'missing {p.relative_to(ROOT)}')
     if errors:
         print('\n'.join(errors)); raise SystemExit(1)
@@ -54,7 +55,7 @@ def main():
     if archetypes!=expected_archetypes:
         errors.append('Foundation landscape trajectory archetypes drifted')
 
-    text=TIMELINE.read_text(encoding='utf-8',errors='replace')
+    text=TIMELINE.read_text(encoding='utf-8',errors='replace')+'\n'+TIMELINE_RUNTIME.read_text(encoding='utf-8',errors='replace')
     for marker in ('foundation-placement-wave-003.json','stage-path','status-chip'):
         if marker not in text: errors.append(f'Foundation Timeline missing placement marker: {marker}')
 
