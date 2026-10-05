@@ -30,6 +30,21 @@ MIGRATED_LOCAL_STYLE_SOURCES = [
     ROOT / "science" / "science-library.css",
     ROOT / "world" / "index.html",
 ]
+TRADITION_READER_PAGES = [
+    ROOT / "traditions" / name / "index.html"
+    for name in (
+        "bahai",
+        "buddhism",
+        "chinese-religion",
+        "confucianism",
+        "daoism",
+        "hindu",
+        "jainism",
+        "shinto",
+        "sikhism",
+        "zoroastrianism",
+    )
+]
 CANONICAL_TOKEN_LITERALS = ("#070707", "#f4f0e5", "#d8b56b", "#302d29", "#0d0d0d")
 RETIRED_GREEN_MARKERS = ("--site-green", "var(--site-green", "--green:", "#b8dc82", "#a8ce72")
 
@@ -132,6 +147,32 @@ for path in html_files:
         errors.append(
             f"{path.relative_to(ROOT)} loads app/style.css; archive application CSS is owned only by explore/index.html"
         )
+
+
+# Shared tradition-reader family: these pages intentionally share one component
+# stylesheet and must not drift back into copied inline layout CSS.
+tradition_css = ROOT / "app" / "tradition-reader.css"
+if not tradition_css.exists():
+    errors.append("app/tradition-reader.css is missing")
+else:
+    tradition_text = tradition_css.read_text(encoding="utf-8", errors="ignore")
+    for marker in (
+        ".tradition-reader>.lede",
+        ".tradition-reader .grid",
+        ".tradition-reader .card",
+        ".tradition-reader :is(.timeline,.rail,.stack,.layers,.map)",
+    ):
+        if marker not in tradition_text:
+            errors.append(f"tradition-reader.css missing shared family marker: {marker}")
+
+for page in TRADITION_READER_PAGES:
+    text = page.read_text(encoding="utf-8", errors="ignore") if page.exists() else ""
+    if "tradition-reader.css" not in text:
+        errors.append(f"{page.relative_to(ROOT)} missing shared tradition-reader.css")
+    if "tradition-reader" not in text:
+        errors.append(f"{page.relative_to(ROOT)} missing tradition-reader scope class")
+    if re.search(r"<style\b", text, flags=re.I):
+        errors.append(f"{page.relative_to(ROOT)} drifted back to inline structural CSS")
 
 # Realm readability/fidelity contract: background art may remain expressive, but
 # ordinary text surfaces must not rely on text-shadow alone for legibility.
