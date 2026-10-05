@@ -2,7 +2,7 @@
   "id": "model-discrimination-calibration-atlas",
   "title": "Model Discrimination & Calibration Atlas — What Would Make One Explanation Better Than Another?",
   "version": "1.0.0",
-  "updated": "2026-09-18",
+  "updated": "2026-10-05",
   "owner_room": "model-testing",
   "purpose": "Move project testing beyond 'can mathematics be attached?' toward discriminating predictions, calibration, uncertainty, negative controls, competing models and explicit failure conditions.",
   "claim_ladder": [
@@ -133,5 +133,22 @@
     "provenance-evidence",
     "potato-biology",
     "research-programmes"
+  ],
+  "document_type": "Methods / Validation",
+  "paper_subtitle": "A practical testing ladder from reproducible description to calibrated model, discriminating prediction, replication and causal support.",
+  "paper_figures": [
+    {
+      "title": "Figure 1 · The model-discrimination ladder",
+      "asset": "assets/visuals/science-model-discrimination-ladder.svg",
+      "alt": "A seven-level testing ladder from description through pattern, formal model, calibration, discrimination, replication and causal support.",
+      "caption": "A model earns promotion by surviving stronger forms of comparison. Mathematical fit alone sits below calibration, discriminating prediction, replication and mechanism-specific evidence.",
+      "source_note": "Project-wide validation framework."
+    }
+  ],
+  "reader_takeaway": [
+    "A formal model is not yet a validated explanation.",
+    "Every rich model should compete against a simple baseline and at least one plausible non-project alternative.",
+    "Uncertainty includes measurement, sampling, parameter, structural, provenance and interpretive uncertainty.",
+    "Failure should narrow or demote the claim instead of being absorbed as confirmation."
   ]
 }
