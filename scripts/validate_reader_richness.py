@@ -110,8 +110,10 @@ def main() -> int:
 
     registered=[]
     for row in interiors.get("interiors") or interiors.get("rooms") or []:
+        if not isinstance(row,dict) or row.get("status")!="active":
+            continue
         route=row.get("route") or ""
-        if route.startswith("/rooms/inside/"):
+        if route:
             registered.append(route)
     if len(registered)<30:
         errors.append(f"expected broad nested-Room registry coverage; found {len(registered)} routes")
