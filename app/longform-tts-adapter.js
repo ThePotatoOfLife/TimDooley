@@ -202,6 +202,10 @@
         if(event.sectionId==='current'&&['chunkstart','boundary'].includes(event.type))setReadingActive(true);
         if(event.type==='boundary'&&event.absoluteWord)highlightEvent(event);
         if(event.type==='followchange'&&event.absoluteWord)highlightEvent(event);
+        if(event.type==='centerrequest'&&event.absoluteWord){
+          const target=highlightTargetForSection(event.sectionId,currentItem,container);
+          if(target)pageHighlighter.highlight(target,event.absoluteWord,config.excludeSelector||'',true);
+        }
         if(['complete','stop','error'].includes(event.type)){
           currentGuard.setActive(false);
           setReadingActive(false);
