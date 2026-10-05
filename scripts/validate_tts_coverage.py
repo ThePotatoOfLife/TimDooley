@@ -9,7 +9,7 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 SURFACES = ROOT / "data/house/public-surfaces.json"
 
-GENERATED = {"questions", "index-a-z"}
+GENERATED = {"questions", "index-a-z", "science-papers"}
 QUIET = {"world-map", "inhabitants"}
 SPECIALIST = {"tim", "story", "religion", "philosophy", "axis", "north", "bible"}
 LONGFORM_REQUIRED = {"tim", "story", "religion", "philosophy", "axis", "north"}
