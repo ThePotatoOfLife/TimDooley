@@ -60,6 +60,20 @@ setTimeout(()=>abortController.abort(),10);
 await assert.rejects(abortPromise,error=>error?.name==='AbortError');
 assert.ok(started<6,`abort should stop queueing new chapters, but started ${started}`);
 
+let prefetchRequests = 0;
+const prefetchLoader = loaderApi.createChapterLoader({
+  fetchImpl: async path => {
+    prefetchRequests += 1;
+    return {ok:true,status:200,text:async()=>`<p>${path}</p>`};
+  },
+});
+const prefetchedSlot = makeSlot('prefetch','chapter-prefetch.html');
+await prefetchLoader.prefetchSlot(prefetchedSlot);
+assert.equal(prefetchedSlot.dataset.loaded,'false','prefetch must not mutate visible slot state');
+await prefetchLoader.loadSlot(prefetchedSlot);
+assert.equal(prefetchRequests,1,'prefetched chapter must reuse cached markup during visible insertion');
+assert.equal(prefetchedSlot.innerHTML,'<p>chapter-prefetch.html</p>');
+
 const scrolls=[];
 const fakeWin={innerHeight:800,scrollY:300,scrollTo:opts=>scrolls.push(opts),matchMedia:()=>({matches:false})};
 const fakeDoc={documentElement:{clientHeight:800}};
