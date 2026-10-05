@@ -49,10 +49,10 @@ BUILT_MARKERS = (
 
 # These markers are checked against a whitespace-free CSS representation below.
 LIBRARY_CSS_MARKERS = (
-    ".science-abstract{display:-webkit-box}",
-    ".science-equation-preview{display:block}",
-    ".science-featured-grid{display:grid}",
-    ".science-record-actions.science-source{display:block}",
+    ".science-abstract{display:-webkit-box;",
+    ".science-equation-preview{display:block;",
+    ".science-featured-grid{display:grid;",
+    ".science-record-actions.science-source{display:block;",
 )
 
 
