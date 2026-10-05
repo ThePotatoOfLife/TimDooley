@@ -598,3 +598,11 @@ body.elevator-page-shell[data-elevator-level="below"]{
 @media(prefers-reduced-motion:reduce){
   .rotunda,.door,.level-controls button,.local-controls button,.journey-actions button{transition:none}
 }
+
+.elevator-heaven-feature{display:none;grid-template-columns:minmax(0,1fr) auto;gap:22px;align-items:end;margin:0 0 16px;padding:20px 22px;border:1px solid rgba(225,203,127,.28);background:radial-gradient(circle at 15% 0,rgba(229,201,112,.13),transparent 34%),linear-gradient(135deg,rgba(28,44,29,.9),rgba(10,22,16,.94))}
+body[data-elevator-level="heaven"] .elevator-heaven-feature{display:grid}
+.elevator-heaven-feature h2{margin:.15em 0 .35em;font:400 clamp(1.8rem,4vw,3rem)/1 var(--site-font-serif);color:var(--site-gold)}
+.elevator-heaven-feature p{max-width:72ch;line-height:1.6;color:var(--site-muted)}
+.elevator-heaven-feature__actions{display:flex;flex-direction:column;gap:8px;align-items:stretch;min-width:205px}
+.elevator-heaven-feature__actions a{display:block;padding:10px 12px;border:1px solid rgba(225,203,127,.26);text-decoration:none;color:var(--site-gold);background:rgba(0,0,0,.16)}
+@media(max-width:720px){.elevator-heaven-feature{grid-template-columns:1fr}.elevator-heaven-feature__actions{min-width:0}}
