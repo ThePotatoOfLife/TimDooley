@@ -6,7 +6,7 @@
   margin:24px 0;
   padding:22px;
   border:1px solid var(--site-pane-line);
-  border-radius:14px;
+  border-radius:var(--site-radius-lg);
   background:var(--site-pane);
   box-shadow:var(--site-pane-shadow)
 }
@@ -81,7 +81,7 @@
   margin:28px 0;
   padding:24px;
   border:1px solid var(--site-pane-line);
-  border-radius:14px;
+  border-radius:var(--site-radius-lg);
   background:var(--site-pane);
   box-shadow:var(--site-pane-shadow)
 }
