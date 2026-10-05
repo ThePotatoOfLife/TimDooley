@@ -16,6 +16,32 @@
     const sanitizePath=typeof options.sanitizePath==='function'?options.sanitizePath:value=>String(value||'');
     const onError=typeof options.onError==='function'?options.onError:()=>{};
     const inFlight=new Map();
+    const fetchInFlight=new Map();
+    const markupCache=new Map();
+
+    async function prefetchPath(path,loadOptions={}){
+      if(!path)return '';
+      if(markupCache.has(path))return markupCache.get(path);
+      if(loadOptions.signal?.aborted)throw abortError();
+      if(fetchInFlight.has(path))return fetchInFlight.get(path);
+      const task=(async()=>{
+        const response=await fetchImpl(path,{signal:loadOptions.signal});
+        if(!response?.ok)throw new Error(`${path} ${response?.status??'failed'}`);
+        const markup=await response.text();
+        if(loadOptions.signal?.aborted)throw abortError();
+        markupCache.set(path,markup);
+        return markup;
+      })().finally(()=>fetchInFlight.delete(path));
+      fetchInFlight.set(path,task);
+      return task;
+    }
+
+    async function prefetchSlot(slot,loadOptions={}){
+      if(!slot)return null;
+      const path=sanitizePath(slot.dataset?.path);
+      await prefetchPath(path,loadOptions);
+      return slot;
+    }
 
     async function loadSlot(slot,loadOptions={}){
       if(!slot)return null;
@@ -28,9 +54,7 @@
       const path=sanitizePath(slot.dataset?.path);
       const task=(async()=>{
         try{
-          const response=await fetchImpl(path,{signal:loadOptions.signal});
-          if(!response?.ok)throw new Error(`${path} ${response?.status??'failed'}`);
-          const markup=await response.text();
+          const markup=await prefetchPath(path,loadOptions);
           if(loadOptions.signal?.aborted)throw abortError();
           slot.innerHTML=markup;
           if(slot.dataset)slot.dataset.loaded='true';
@@ -77,7 +101,7 @@
       return {loaded,failed};
     }
 
-    return {loadSlot,loadSlots};
+    return {loadSlot,loadSlots,prefetchSlot};
   }
 
   return {createChapterLoader};
