@@ -159,6 +159,13 @@ if re.search(r"<style\b", timeline_page_text, flags=re.I):
     errors.append("timeline/index.html must keep structural styling in app/timeline-page.css, not an inline <style> block")
 if "app/timeline-page.css" not in timeline_page_text and "../app/timeline-page.css" not in timeline_page_text:
     errors.append("timeline/index.html must load its owned app/timeline-page.css stylesheet")
+
+religion_page = ROOT / "religion" / "index.html"
+religion_page_text = religion_page.read_text(encoding="utf-8", errors="ignore") if religion_page.exists() else ""
+if re.search(r"<style\b", religion_page_text, flags=re.I):
+    errors.append("religion/index.html must keep structural styling in app/religion-page.css, not an inline <style> block")
+if "app/religion-page.css" not in religion_page_text and "../app/religion-page.css" not in religion_page_text:
+    errors.append("religion/index.html must load its owned app/religion-page.css stylesheet")
 if 'id="archive-explorer"' in home:
     if 'class="archive-nav"' not in home:
         errors.append("homepage archive explorer must use class=\"archive-nav\"")
