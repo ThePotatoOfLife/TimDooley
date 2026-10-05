@@ -212,5 +212,27 @@
     "The same arrows can describe light, plant carbon or information while the variables, units and governing laws remain domain-specific.",
     "Storage introduces memory and timescale; release/reflection must be measured separately from input.",
     "A cross-domain unification claim requires more than visual similarity—it needs a derived common law or invariant."
-  ]
+  ],
+  "equation_context": {
+    "role": "Typed transfer/storage framework. The same source→channel→storage→release architecture can be instantiated in optics, plant carbon or information, but the equations and units stay domain-specific.",
+    "variables": {
+      "S(t)": "Declared source or input signal.",
+      "T": "Channel/transfer operator or stochastic channel.",
+      "J_in(t)": "Measured uptake/input flux into a receiver or storage pool.",
+      "K(t)": "Stored state or reservoir.",
+      "J_out(t)": "Release/output flux.",
+      "η": "Linear mobilization/release-rate parameter when that baseline is used."
+    },
+    "units_and_types": "Optical power, carbon mass/flux and information measures are not interchangeable. Each domain must declare its own units and conservation/accounting rules.",
+    "observable_consequence": "The model should predict storage and release trajectories, transfer loss, or task-relevant information better than persistence and simpler domain baselines.",
+    "boundary": "A repeated source-channel-storage diagram across domains is structural analogy, not evidence for a universal Spudlight force."
+  },
+  "term_map": {
+    "S(t)": "source/input",
+    "T": "channel/transfer",
+    "J_in": "input flux",
+    "K": "storage state",
+    "J_out": "output/release flux",
+    "η": "linear release-rate parameter"
+  }
 }

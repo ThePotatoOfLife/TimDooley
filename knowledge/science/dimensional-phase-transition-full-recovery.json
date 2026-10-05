@@ -220,5 +220,25 @@
     "A Door can be modeled rigorously as a threshold or bifurcation before making any claim about literal extra dimensions.",
     "A real 5D theory requires its own geometry, action, compactification/boundary conditions and reduction back to observed 4D physics.",
     "Scientific promotion requires a stable new branch and an observable that cannot be absorbed by simpler modified-gravity models."
-  ]
+  ],
+  "equation_context": {
+    "role": "Threshold/bifurcation framework for a strong-gravity transition. The central distinction is between an order parameter, an operational dimension measure and an actual extra spacetime coordinate.",
+    "variables": {
+      "φ": "Order parameter labelling the state or phase of the effective theory.",
+      "Ξ": "Control parameter that moves the system toward or across a critical regime.",
+      "V_eff(φ;Ξ)": "Effective potential used to study local stability and competing branches.",
+      "D_s": "Operational or spectral dimension inferred from a diffusion/return-probability construction.",
+      "y": "A genuine fifth coordinate only in the explicit 5D completion."
+    },
+    "units_and_types": "φ and Ξ are model-dependent and require declared dimensions/normalization. D_s is dimensionless. y has coordinate dimension only in a true higher-dimensional geometry.",
+    "observable_consequence": "A successful physical model must connect branch formation to an observable discriminant such as mode spectra, lensing/shadow structure, inspiral behavior or another strong-gravity signal.",
+    "boundary": "A phase transition or changing spectral dimension does not by itself prove the existence of a literal fifth spacetime coordinate."
+  },
+  "term_map": {
+    "φ": "order parameter",
+    "Ξ": "control parameter",
+    "V_eff": "effective potential",
+    "D_s": "spectral dimension",
+    "y": "candidate fifth coordinate"
+  }
 }

@@ -69,5 +69,31 @@
     "Its defining project property is scale change on return: a quarter-turn multiplies radius by φ.",
     "This gives a precise distinction between a ring and a spiral—same angle can recur while scale changes.",
     "The geometry alone does not establish a new force, dimension or cosmological axis; physical interpretation requires defined variables, units and observables."
+  ],
+  "equation_context": {
+    "role": "Exact logarithmic-spiral geometry recovered from a primary project post.",
+    "variables": {
+      "r(θ)": "Radius at polar angle θ.",
+      "a": "Reference radius r(0).",
+      "b": "Exponential growth rate per radian.",
+      "θ": "Polar angle in radians.",
+      "φ": "Golden ratio (1+√5)/2."
+    },
+    "units_and_types": "θ and bθ are dimensionless. a and r have the same length/scale unit, whatever physical or abstract unit is chosen for the application.",
+    "observable_consequence": "The recovered parameter choice predicts r(θ+π/2)=φ·r(θ), constant logarithmic pitch, and linearity of ln r versus θ.",
+    "boundary": "The geometry is exact; the physical meaning of r, θ and a is not recovered by the equation alone."
+  },
+  "term_map": {
+    "r(θ)": "radius",
+    "θ": "polar angle",
+    "a": "reference radius",
+    "b": "logarithmic growth constant",
+    "φ": "golden ratio"
+  },
+  "failure_conditions": [
+    "Measured or reconstructed spiral data do not support linear ln(r) versus θ within uncertainty.",
+    "Archimedean, power-law or flexible-spline alternatives predict the data better under a penalized model comparison.",
+    "The quarter-turn radius ratio is inconsistent with φ when that golden-ratio constraint is claimed.",
+    "A physical interpretation is asserted without assigning measurable variables and units to r, θ and a."
   ]
 }

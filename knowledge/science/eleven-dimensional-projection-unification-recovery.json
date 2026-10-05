@@ -259,5 +259,25 @@
     "Many high-dimensional states can share one lower-dimensional image, so reconstruction generally needs priors, constraints or additional observations.",
     "A reduced description can be sufficient for a task while still losing microscopic information.",
     "A literal 11D physical model requires geometry, fields, compactification and a derived 4D spectrum beyond the information architecture."
-  ]
+  ],
+  "equation_context": {
+    "role": "Projection/reconstruction framework. The mathematics asks what information is retained or lost when a high-dimensional state is mapped to a lower-dimensional description.",
+    "variables": {
+      "X": "High-dimensional state in the source space.",
+      "Y": "Reduced or observed representation.",
+      "π": "Projection, coarse-graining, observation or compactification map; the physical interpretation must be declared.",
+      "R": "Reconstruction/decoder map from Y back toward X.",
+      "L_rec": "Expected reconstruction loss under a chosen distance or error functional."
+    },
+    "units_and_types": "X and Y may be geometric, field-theoretic or informational objects depending on the model. L_rec inherits the units/type of the chosen distance. A physical 11D compactification is a stricter construction than an abstract projection.",
+    "observable_consequence": "The reduced representation should be judged by reconstruction error and/or task sufficiency on held-out data or explicit derived spectra.",
+    "boundary": "Lossless-for-task is not the same as globally invertible, and information projection alone is not evidence for physical eleven-dimensional spacetime."
+  },
+  "term_map": {
+    "X": "high-dimensional state",
+    "Y": "reduced description",
+    "π": "projection map",
+    "R": "reconstruction map",
+    "L_rec": "reconstruction loss"
+  }
 }

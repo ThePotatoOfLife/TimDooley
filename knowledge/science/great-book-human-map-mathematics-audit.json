@@ -205,5 +205,29 @@
     "Latent states are inferred from multiple measurements and must remain distinguishable from the labels later assigned to them.",
     "Subject, session, physiology and measurement artifacts are part of the model rather than inconvenient noise to ignore.",
     "A complex Human Map earns scientific value only if it predicts or discriminates outcomes better than simpler single-metric models on held-out data."
+  ],
+  "equation_context": {
+    "role": "Latent-state measurement framework replacing single-number consciousness claims with a multivariate state-space model.",
+    "variables": {
+      "z_t": "Latent cognitive/phenomenological state at time t.",
+      "y_t": "Observed multimodal data at time t.",
+      "p(z_t|z_{t-1},...)": "State-transition model conditioned on prior state and declared covariates.",
+      "p(y_t|z_t,...)": "Observation model linking latent state to EEG/MEG, networks, physiology, behavior or report."
+    },
+    "units_and_types": "z_t is latent and need not have physical units. Components of y_t retain their own measurement units and should not be combined without normalization/model justification.",
+    "observable_consequence": "A useful latent model must improve held-out state discrimination, prediction or intervention relevance compared with simpler spectral-only, questionnaire-only or single-biomarker baselines.",
+    "boundary": "No frequency, fractal dimension or composite score is 'enlightenment' by itself; the target construct must be operationalized and validated."
+  },
+  "term_map": {
+    "z_t": "latent state",
+    "y_t": "multimodal observation",
+    "p(z_t|...)": "transition model",
+    "p(y_t|...)": "measurement model"
+  },
+  "failure_conditions": [
+    "Latent states are not stable or reproducible across held-out sessions or subjects.",
+    "Simpler single-modality or questionnaire baselines perform as well as the multimodal model.",
+    "Apparent state differences disappear after controlling motion, physiology, source leakage or other confounds.",
+    "The inferred states cannot be linked to an independently defined behavioral, phenomenological or intervention outcome."
   ]
 }

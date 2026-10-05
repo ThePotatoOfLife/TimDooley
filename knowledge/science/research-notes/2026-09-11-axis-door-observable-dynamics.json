@@ -114,5 +114,36 @@
     "A Door can remember direction when entry and exit thresholds differ; that is ordinary hysteresis, not mystical irreversibility.",
     "Door events can be measured through first-passage times and dwell intervals.",
     "Hysteresis only earns retention if repeated trajectories predict better than a simpler single-threshold model."
+  ],
+  "equation_context": {
+    "role": "Observable hybrid-dynamics note. Axis is treated as hidden flow, Eye as a measurement operator and Door as a threshold/reset with possible hysteresis.",
+    "variables": {
+      "X": "Hidden system state.",
+      "Φ_s": "Flow map evolving X along parameter s.",
+      "O": "Observation operator.",
+      "y": "Measured output, possibly noisy.",
+      "h(X)": "Door guard or threshold statistic.",
+      "τ_up": "Entry threshold.",
+      "τ_down": "Exit threshold, lower than τ_up when hysteresis is present.",
+      "τ_k": "First crossing/event time for a declared guard."
+    },
+    "units_and_types": "Thresholds and h(X) must share compatible units or be normalized dimensionlessly. Event times inherit the units of the evolution parameter.",
+    "observable_consequence": "Repeated trajectories should show asymmetric entry/exit thresholds or improved transition-time prediction relative to a single-threshold model.",
+    "boundary": "Hysteresis is ordinary path dependence; it should not be interpreted as mystical irreversibility without additional evidence."
+  },
+  "term_map": {
+    "X": "hidden state",
+    "Φ_s": "Axis flow",
+    "O": "Eye/measurement",
+    "h": "Door guard",
+    "τ_up": "entry threshold",
+    "τ_down": "exit threshold",
+    "τ_k": "event time"
+  },
+  "failure_conditions": [
+    "A single-threshold model predicts held-out transitions as well as the hysteretic model.",
+    "Estimated entry and exit thresholds are not distinguishable within uncertainty.",
+    "Transition timing cannot be reproduced across repeated trajectories or sessions.",
+    "The proposed Eye observable is not measurable or does not track the hidden-state distinction the model assumes."
   ]
 }

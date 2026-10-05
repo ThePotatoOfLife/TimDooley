@@ -189,5 +189,26 @@
     "A neutral real scalar and a charged complex U(1) field are different theories, not two descriptions that can be mixed freely.",
     "Higgs-sector mixing becomes an observable question only after the vacuum and mass matrix are defined.",
     "A Potato-sector model earns distinctiveness only if it predicts something beyond generic singlet-scalar or dark-U(1) models."
-  ]
+  ],
+  "equation_context": {
+    "role": "Model-selection and mass-generation framework. The equations describe candidate field content and Higgs-portal couplings after a representation is chosen; they are not a recovered measured law of a new Potato particle.",
+    "variables": {
+      "H": "Standard Model Higgs doublet.",
+      "P": "Candidate neutral real scalar in the singlet fork.",
+      "Φ_P": "Candidate complex scalar in the U(1)_P fork.",
+      "A_P": "Candidate U(1)_P gauge field.",
+      "v": "Electroweak Higgs vacuum expectation value.",
+      "λ_HP": "Portal coupling between the Higgs sector and the chosen Potato-sector scalar."
+    },
+    "units_and_types": "Field dimensions and coupling dimensions follow the chosen relativistic field theory convention. The two forks have different field representations and must not be combined casually.",
+    "observable_consequence": "After vacuum selection and diagonalization, the model must yield masses, mixing angles, decay channels or interaction strengths that can be compared with Higgs and new-particle searches.",
+    "boundary": "A field label or portal term does not establish a new boson. The particle content follows only after a complete Lagrangian, vacuum and mass matrix are defined."
+  },
+  "term_map": {
+    "H": "Higgs doublet",
+    "P": "neutral scalar candidate",
+    "Φ_P": "complex Potato-sector scalar",
+    "A_P": "Potato-sector gauge field",
+    "λ_HP": "Higgs-portal coupling"
+  }
 }

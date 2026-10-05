@@ -239,5 +239,31 @@
     "Axis, Door and Eye become useful when they are assigned different mathematical roles rather than treated as interchangeable metaphors.",
     "A repair or Garden problem becomes a control/viability question only after states, constraints and admissible interventions are declared.",
     "The framework should shrink when a simpler model preserves the same observables."
-  ]
+  ],
+  "equation_context": {
+    "role": "Hybrid open-system grammar. Continuous flows, observations and discrete Door resets are typed as different operations so that project metaphors become model components rather than interchangeable words.",
+    "variables": {
+      "x": "System state vector.",
+      "u": "Admissible control/input.",
+      "t": "Time-like evolution parameter.",
+      "s": "Structural/scale/order parameter when a second flow is needed.",
+      "F": "Continuous time-evolution vector field.",
+      "A": "Secondary flow generator along s.",
+      "O": "Observation operator mapping hidden state to measured output.",
+      "h": "Guard function used to trigger a Door event.",
+      "D": "Reset map applied at a Door transition."
+    },
+    "units_and_types": "Each state coordinate and control must declare its own units or categorical type. t and s are not assumed to be the same kind of variable.",
+    "observable_consequence": "The model should predict measured outputs, transition times, reset effects or viability under controls better than a simpler continuous-only or threshold-only baseline.",
+    "boundary": "Potato Dynamics is a modelling grammar, not evidence that all domains share one physical substance."
+  },
+  "term_map": {
+    "x": "state",
+    "u": "control/input",
+    "F": "time flow",
+    "A": "secondary flow",
+    "O": "Eye/observation operator",
+    "h": "Door guard",
+    "D": "Door reset"
+  }
 }
