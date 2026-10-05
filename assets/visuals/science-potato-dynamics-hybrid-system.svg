@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1320 820" role="img" aria-labelledby="title desc">
+<title id="title">Potato Dynamics hybrid open-system model</title>
+<desc id="desc">A diagram showing continuous state flow, observation through the Eye operator, a guarded Door transition with reset, controls and boundaries, and a viability region representing the Garden.</desc>
+<style>
+text{font-family:system-ui,-apple-system,Segoe UI,sans-serif;fill:#1d1b18}.muted{fill:#6f685d}.accent{fill:#6b512f}.blue{fill:#4d667d}.green{fill:#526d59}.warn{fill:#8d5e50}.box{fill:#f7f2e8;stroke:#81786a;stroke-width:2}.flow{fill:#e8edf0;stroke:#7c8b96;stroke-width:2.5}.safe{fill:#e8efe9;stroke:#718978;stroke-width:2.5}.gate{fill:#f1e9d9;stroke:#8b6f43;stroke-width:2.5}.line{stroke:#716a60;stroke-width:2.5;fill:none}.dash{stroke:#8a8174;stroke-width:2;stroke-dasharray:9 9;fill:none}.small{font-size:18px}.body{font-size:23px}.head{font-size:38px;font-weight:650}</style>
+<rect width="1320" height="820" fill="#eee9dc"/>
+<text x="660" y="58" text-anchor="middle" class="head">Potato Dynamics 2.0 · hybrid open-system grammar</text>
+<text x="660" y="94" text-anchor="middle" class="muted small">Axis = flow · Eye = observation · Door = guarded reset · Garden = viability under constraints.</text>
+
+<rect x="90" y="190" width="340" height="210" rx="14" class="flow"/>
+<text x="260" y="235" text-anchor="middle" class="blue body">Continuous state</text>
+<text x="130" y="282" class="body">dx/dt = F(x,u,t)</text>
+<text x="130" y="322" class="body">dx/ds = A(x,u,s)</text>
+<text x="130" y="360" class="muted small">time flow and structural/scale flow remain distinct</text>
+
+<rect x="500" y="170" width="320" height="250" rx="14" class="gate"/>
+<text x="660" y="215" text-anchor="middle" class="accent body">Door event</text>
+<text x="540" y="262" class="body">guard: h(x) ≥ 0</text>
+<text x="540" y="302" class="body">reset: x⁺ = D(x⁻)</text>
+<text x="540" y="342" class="small">entry / exit thresholds may differ</text>
+<text x="540" y="378" class="muted small">first-passage time becomes an observable</text>
+
+<rect x="890" y="190" width="340" height="210" rx="14" class="box"/>
+<text x="1060" y="235" text-anchor="middle" class="blue body">Eye / observation</text>
+<text x="930" y="282" class="body">y = O(x) + ε</text>
+<text x="930" y="322" class="small">hidden state ≠ measured output</text>
+<text x="930" y="360" class="muted small">observability and identifiability are separate questions</text>
+
+<path d="M430 295 H488" class="line"/><path d="M476 285 l16 10 -16 10" fill="none" stroke="#716a60" stroke-width="2.5"/>
+<path d="M820 295 H878" class="line"/><path d="M866 285 l16 10 -16 10" fill="none" stroke="#716a60" stroke-width="2.5"/>
+
+<rect x="145" y="520" width="430" height="185" rx="14" class="safe"/>
+<text x="360" y="565" text-anchor="middle" class="green body">Garden / viability</text>
+<text x="190" y="610" class="body">Viab(V) = states that can remain feasible</text>
+<text x="190" y="648" class="small">under admissible controls u(t)</text>
+<text x="190" y="680" class="muted small">repair becomes control under real constraints</text>
+
+<rect x="745" y="520" width="430" height="185" rx="14" class="box"/>
+<text x="960" y="565" text-anchor="middle" class="accent body">Model reduction rule</text>
+<text x="790" y="610" class="small">Prefer the smallest model that preserves</text>
+<text x="790" y="642" class="small">the target observable within tolerance.</text>
+<text x="790" y="680" class="muted small">More ontology is not automatically more explanation.</text>
+
+<path d="M660 420 V480 H360 V508" class="dash"/>
+<path d="M660 480 H960 V508" class="dash"/>
+<text x="660" y="765" text-anchor="middle" class="accent small">The framework becomes scientific only inside a declared domain with typed variables, measurements, parameters and competing baselines.</text>
+</svg>
