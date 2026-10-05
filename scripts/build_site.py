@@ -71,6 +71,7 @@ SHARED_ASSETS = (
     "app/science-page.css",
     "app/story-page.css",
     "app/culture-page.css",
+    "app/corporium-page.css",
     "app/world-page.css",
     "app/potatoism-page.css",
     "app/north-page.css",
