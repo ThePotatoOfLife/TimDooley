@@ -42,14 +42,14 @@
 .works-room .game-card p{
   margin:0 0 7px;
   color:var(--site-muted);
-  font-size:10px;
+  font-size:var(--site-text-xs);
   line-height:1.5;
 }
 .works-room .game-card ul{margin:7px 0;padding-left:17px}
 .works-room .game-card li{
   margin:3px 0;
   color:var(--site-muted);
-  font-size:9px;
+  font-size:var(--site-text-micro);
   line-height:1.45;
 }
 .works-room .game-test{
@@ -57,7 +57,7 @@
   padding-top:7px;
   border-top:1px solid var(--site-line);
   color:#cbd1c8;
-  font-size:9px;
+  font-size:var(--site-text-micro);
 }
 .works-room :is(.game-links,.artifact-links){
   display:flex;
@@ -68,7 +68,7 @@
 .works-room :is(.game-links,.artifact-links) a{
   border-bottom:1px solid var(--site-line);
   color:var(--site-gold);
-  font-size:10px;
+  font-size:var(--site-text-xs);
   text-decoration:none;
 }
 .works-room .artifact-table{
@@ -82,7 +82,7 @@
   gap:14px;
   padding:12px;
   border:1px solid var(--site-pane-line);
-  border-radius:10px;
+  border-radius:var(--site-radius-sm);
   background:var(--site-pane);
 }
 .works-room .artifact-row b{
@@ -91,7 +91,7 @@
 }
 .works-room .artifact-row span{
   color:var(--site-muted);
-  font-size:10px;
+  font-size:var(--site-text-xs);
   line-height:1.5;
 }
 
