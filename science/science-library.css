@@ -54,3 +54,14 @@
 .science-reader-door{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:16px 0 0;padding:12px 0;border-top:1px solid var(--site-line)}
 .science-reader-door a{color:var(--site-gold);font:700 11px/1.2 var(--site-font-sans);text-decoration:none;text-transform:uppercase;letter-spacing:.045em}
 .science-reader-door span{color:var(--site-faint);font-size:11px}
+
+.science-library-browser{margin:16px 0 0;border-top:1px solid var(--site-line);border-bottom:1px solid var(--site-line)}
+.science-library-browser>summary{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:baseline;padding:14px 2px;list-style:none;cursor:pointer}
+.science-library-browser>summary::-webkit-details-marker{display:none}
+.science-library-browser>summary span{color:var(--site-ink);font:650 12px/1.2 var(--site-font-sans)}
+.science-library-browser>summary small{color:var(--site-faint);font-size:9px;line-height:1.35;text-align:right}
+.science-library-browser>summary::after{content:"＋";grid-column:2;grid-row:1;color:var(--site-faint);font-size:11px;margin-left:8px}
+.science-library-browser[open]>summary::after{content:"−"}
+.science-library-browser[open]>summary{border-bottom:1px solid var(--site-line)}
+.science-library-browser .science-controls{padding-top:14px}
+@media(max-width:620px){.science-library-browser>summary{grid-template-columns:1fr}.science-library-browser>summary small{text-align:left}.science-library-browser>summary::after{display:none}}
