@@ -188,9 +188,18 @@ if "app/religion-page.css" not in religion_page_text and "../app/religion-page.c
 law_page = ROOT / "law" / "index.html"
 law_page_text = law_page.read_text(encoding="utf-8", errors="ignore") if law_page.exists() else ""
 if re.search(r"<style\b", law_page_text, flags=re.I):
-    errors.append("law/index.html must keep structural styling in app/law-page.css, not an inline <style> block")
-if "app/law-page.css" not in law_page_text and "../app/law-page.css" not in law_page_text:
-    errors.append("law/index.html must load its owned app/law-page.css stylesheet")
+    errors.append("law/index.html must keep structural styling in shared app/world-domain-page.css, not an inline <style> block")
+if "app/world-domain-page.css" not in law_page_text and "../app/world-domain-page.css" not in law_page_text:
+    errors.append("law/index.html must load shared app/world-domain-page.css")
+
+economy_page = ROOT / "economy" / "index.html"
+economy_page_text = economy_page.read_text(encoding="utf-8", errors="ignore") if economy_page.exists() else ""
+if re.search(r"<style\b", economy_page_text, flags=re.I):
+    errors.append("economy/index.html must use shared app/world-domain-page.css, not an inline <style> block")
+if "app/world-domain-page.css" not in economy_page_text and "../app/world-domain-page.css" not in economy_page_text:
+    errors.append("economy/index.html must load shared app/world-domain-page.css")
+if "world-domain-page" not in law_page_text or "world-domain-page" not in economy_page_text:
+    errors.append("Law and Economy must both opt into the shared world-domain-page scope")
 
 for rel, root_selector in (
     ("app/tim-dooley.css", ".tim-page"),
