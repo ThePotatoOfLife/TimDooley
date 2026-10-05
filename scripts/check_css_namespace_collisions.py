@@ -104,6 +104,24 @@ else:
                     f"app/site-system.css must not assign structural layout through generic {selector}; use .page-* or a named component"
                 )
 
+generated_css = ROOT / "app" / "generated-knowledge.css"
+generated_css_text = generated_css.read_text(encoding="utf-8", errors="ignore") if generated_css.exists() else ""
+if not generated_css_text:
+    errors.append("missing app/generated-knowledge.css shared generated-reader owner")
+
+build_script = ROOT / "scripts" / "build_site.py"
+build_script_text = build_script.read_text(encoding="utf-8", errors="ignore") if build_script.exists() else ""
+if "<style>:root" in build_script_text:
+    errors.append("build_site.py must not inline a private generated-reader CSS shell")
+for marker in (
+    "app/generated-knowledge.css",
+    'class="page page--reading generated-knowledge"',
+    'class="page-nav"',
+    'class="page-header"',
+):
+    if marker not in build_script_text:
+        errors.append(f"generated knowledge shell missing shared integration marker: {marker}")
+
 for page, markers in MIGRATED_SHELL_REQUIREMENTS.items():
     text = page.read_text(encoding="utf-8", errors="ignore") if page.exists() else ""
     for marker in markers:
