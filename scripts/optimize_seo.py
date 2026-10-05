@@ -218,11 +218,21 @@ def breadcrumb_items(page: Path, title: str) -> list[dict]:
     return items
 
 
-def basic_webpage_schema(title: str, description: str, canonical: str) -> str:
+def basic_webpage_schema(page: Path, title: str, description: str, canonical: str) -> str:
+    route = page_relative_route(page)
+    kind, _section = classify_page(route)
+    schema_type = "WebPage"
+    schema_id = canonical + "#webpage"
+    if kind == "science-collection":
+        schema_type = "CollectionPage"
+        schema_id = canonical + "#collection"
+    elif kind == "science-paper":
+        schema_type = "ScholarlyArticle"
+        schema_id = canonical + "#article"
     data = {
         "@context": "https://schema.org",
-        "@type": "WebPage",
-        "@id": canonical + "#webpage",
+        "@type": schema_type,
+        "@id": schema_id,
         "url": canonical,
         "name": strip_site_suffix(title),
         "description": clip(description, 300),
@@ -230,6 +240,13 @@ def basic_webpage_schema(title: str, description: str, canonical: str) -> str:
         "isAccessibleForFree": True,
         "isPartOf": {"@type": "WebSite", "@id": BASE_URL + "/#website", "url": BASE_URL + "/", "name": SITE_NAME},
     }
+    if kind == "science-collection":
+        data["about"] = {"@type": "Thing", "name": "Tim Dooley science and formal models"}
+        data["genre"] = "Research paper library"
+    elif kind == "science-paper":
+        data["headline"] = strip_site_suffix(title)
+        data["articleSection"] = "Science"
+        data["genre"] = "Research paper"
     return json.dumps(data, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
 
 
@@ -265,8 +282,9 @@ def inject_metadata(text: str, page: Path) -> tuple[str, int]:
         added.append(f'<link rel="alternate" type="text/plain" href="{BASE_URL}/llms.txt" title="LLM retrieval index">')
     if not has_alternate(text, BASE_URL + "/site-index.json", "application/json"):
         added.append(f'<link rel="alternate" type="application/json" href="{BASE_URL}/site-index.json" title="Canonical page index">')
+    route = page_relative_route(page)
     social = {
-        "og:type": "website" if page == OUT / "index.html" else "article",
+        "og:type": "website" if page == OUT / "index.html" or route == "science/papers" else "article",
         "og:site_name": SITE_NAME,
         "og:locale": "en_US",
         "og:title": display_title,
@@ -280,7 +298,7 @@ def inject_metadata(text: str, page: Path) -> tuple[str, int]:
         if find_meta(text, name=name) is None:
             added.append(f'<meta name="{name}" content="{html.escape(value, quote=True)}">')
     if not SCRIPT_LD_RE.search(text):
-        added.append(f'<script type="application/ld+json">{basic_webpage_schema(title, description, canonical)}</script>')
+        added.append(f'<script type="application/ld+json">{basic_webpage_schema(page, title, description, canonical)}</script>')
     if 'id="site-discovery-schema"' not in text:
         added.append(f'<script id="site-discovery-schema" type="application/ld+json">{site_graph_schema(page, title)}</script>')
     if not re.search(r"<html\b[^>]*\blang=", text, re.I):
@@ -404,6 +422,8 @@ def classify_page(route: str) -> tuple[str, str]:
         return "question", "questions"
     if route.startswith("records/"):
         return "record", "records"
+    if route == "science/papers":
+        return "science-collection", "science"
     if route.startswith("science/papers/"):
         return "science-paper", "science"
     surface = PUBLIC_SURFACE_BY_ROUTE.get(route)

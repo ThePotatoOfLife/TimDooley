@@ -212,6 +212,20 @@ def test_homepage_authority_contract() -> None:
         fail("homepage must expose the authority manifest")
 
 
+def validate_science_paper_schema_strategy(errors: list[str]) -> None:
+    path = ROOT / "scripts" / "optimize_seo.py"
+    text = path.read_text(encoding="utf-8", errors="replace") if path.exists() else ""
+    for marker in (
+        'route == "science/papers"',
+        '"science-collection"',
+        '"ScholarlyArticle"',
+        '"CollectionPage"',
+        'basic_webpage_schema(page, title, description, canonical)',
+    ):
+        if marker not in text:
+            errors.append(f"optimize_seo.py missing Science paper schema marker: {marker}")
+
+
 def main() -> int:
     checks = (
         test_breadcrumb_contract,
