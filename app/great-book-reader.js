@@ -50,9 +50,10 @@ function publishCurrent(slot){
   doc.dispatchEvent(new CustomEvent('potato:tts-current',{bubbles:false,detail:{item:slot}}));
 }
 function observe(){
-  const lazy=new IntersectionObserver(xs=>xs.forEach(x=>{if(x.isIntersecting)loadSlot(x.target).catch(()=>{})}),{rootMargin:'2600px 0px'});
+  const prefetch=new IntersectionObserver(xs=>xs.forEach(x=>{if(x.isIntersecting)chapterLoader.prefetchSlot?.(x.target).catch(()=>{})}),{rootMargin:'5200px 0px'});
+  const lazy=new IntersectionObserver(xs=>xs.forEach(x=>{if(x.isIntersecting)loadSlot(x.target).catch(()=>{})}),{rootMargin:'2200px 0px'});
   const active=new IntersectionObserver(xs=>xs.forEach(x=>{if(!x.isIntersecting)return;activeCurrentId=x.target.id;setCurrentLink(activeCurrentId);publishCurrent(x.target)}),{rootMargin:'-20% 0px -70%'});
-  doc.querySelectorAll('.gb-slot').forEach(s=>{lazy.observe(s);active.observe(s)});
+  doc.querySelectorAll('.gb-slot').forEach(s=>{prefetch.observe(s);lazy.observe(s);active.observe(s)});
 }
 async function init(){
   const spec=await fetch('../great-book/book-index.json').then(r=>{if(!r.ok)throw new Error(`book-index.json ${r.status}`);return r.json()}),parts=await Promise.all(spec.shards.map(p=>fetch(p).then(r=>{if(!r.ok)throw new Error(`${p} ${r.status}`);return r.json()})));
