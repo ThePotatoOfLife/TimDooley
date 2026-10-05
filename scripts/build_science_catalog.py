@@ -327,6 +327,13 @@ def record_from(path: Path) -> tuple[dict, dict]:
         "keywords": extract_keywords(data),
         "fields": classify_fields(path, data),
         "document_type": classify_document_type(path, data),
+        "figure": (
+            str(data.get("paper_figures")[0].get("asset") or "")
+            if isinstance(data.get("paper_figures"), list)
+            and data.get("paper_figures")
+            and isinstance(data.get("paper_figures")[0], dict)
+            else ""
+        ),
     }
     record["qualifies"] = qualifies_for_library(path, data, record)
     return record, data
@@ -571,7 +578,11 @@ def render_papers_reader(records: list[dict]) -> str:
             f'<small>{esc(label)}</small>'
             f'<h3>{esc(record["title"])}</h3>'
             f'<p>{esc(record["abstract"])}</p>'
-            f'<a href="./{esc(slug)}/">Open paper →</a>'
+            + (
+                f'<figure class="core-paper-figure"><img src="../../{esc(record.get("figure"))}" alt="" loading="lazy" decoding="async"></figure>'
+                if record.get("figure") else ""
+            )
+            + f'<a href="./{esc(slug)}/">Open paper →</a>'
             '</div>'
             '</article>'
         )
