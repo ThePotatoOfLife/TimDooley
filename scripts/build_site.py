@@ -61,6 +61,7 @@ SHARED_ASSETS = (
     "app/potato-of-life-page.css",
     "app/axis-page.css",
     "app/axis-page.js",
+    "app/quantum-page.css",
     "app/potatoes-hall.css",
     "app/dogs-hall.css",
     "app/home-page.css",
