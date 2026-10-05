@@ -44,6 +44,28 @@ The project keeps its existing missions and bodies of inquiry, but the working u
 
 These missions remain. **What changes is how we store them: fewer, thicker, clearer bodies of knowledge.**
 
+## Visual standards & performance wave — 2026-10-05
+
+### Completed
+- [x] **VISSTD-001 · Room width contract:** floor/Room `.page-header` now spans the same page container as `.page-nav` and Room sections instead of stopping at the generic 900px header cap.
+- [x] **VISSTD-002 · Story orphan navigation:** remove the loose `Life / project Timeline →` line above the Story hero; the project Timeline handoff now lives in the existing Story nav.
+- [x] **VISSTD-003 · Story CSS ownership:** move ~7 KB of Story structural CSS into `app/story-page.css` and normalize common type/radius/copy values to shared tokens.
+- [x] **VISSTD-004 · Calm Room surfaces:** remove automatic nth-section pane striping; one default Room/floor pane treatment now applies unless a component deliberately requests another surface.
+- [x] **VISSTD-005 · Static realm compositor:** remove full-screen realm filters, forced GPU layers and scroll-linked decorative realm panning from ordinary floor pages.
+- [x] **VISSTD-006 · Lightweight HUD scenery:** desktop sticky HUD uses purpose-built `header-heaven.svg`, `header-plane.svg` and `header-below.svg` instead of re-rendering full realm AVIFs.
+- [x] **VISSTD-007 · Hall compositor cleanup:** remove blur/backdrop-filter layers from both Hall CSS families and preserve legibility with normal dark surfaces.
+- [x] **VISSTD-008 · Hall cascade consolidation:** collapse duplicated Hall header specificity copies into one authoritative responsive header rule per Hall.
+- [x] **VISSTD-009 · Science extraction regression:** repair accidental double `.science-page` scope introduced during stylesheet extraction and guard current shared ownership.
+
+### Next
+- [ ] **VISSTD-010 · World reader cleanup:** extract `/world/` inline CSS, align cards/sections with shared copy/type/radius tokens, and decide which casebook pieces belong in an existing reader family.
+- [ ] **VISSTD-011 · Culture reader cleanup:** move `/context/culture/` out of raw inline/fallback CSS; remove generic `.card/.cards/.chain` leakage, raw Georgia stacks and fallback token syntax.
+- [ ] **VISSTD-012 · Great Book shell audit:** inspect the separate Great Book long-form shell after the Politics cleanup; preserve literary identity while removing redundant width/type/palette systems.
+- [ ] **VISSTD-013 · Corporium family decision:** compare Collection/Corporium purpose-case-chain patterns with Pillar/World-domain reader components before creating another stylesheet.
+- [ ] **VISSTD-014 · Remaining hero-width audit:** inspect specialist Halls, lower-field readers and tool pages for intentional versus accidental local `.page-header` width/padding overrides.
+- [ ] **VISSTD-015 · Render/performance check:** browser-check Story, Science & Formal Models, representative Heaven/Plane/Below Rooms and both Halls at mobile/laptop/wide widths after deployment; watch scroll smoothness, header stickiness, paint/compositor cost and text contrast.
+- [ ] **VISSTD-016 · Specialist blur audit:** keep `backdrop-filter` out of ordinary content readers; reserve it only for interfaces where measured UX benefit justifies compositor cost.
+
 ## Repository smoothness & integration wave — 2026-10-05
 
 ### Completed in this wave
