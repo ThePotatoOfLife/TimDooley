@@ -122,7 +122,7 @@ body.dogs-hall-page{
     linear-gradient(180deg,rgba(74,31,20,.24),rgba(8,11,10,.96)),
     repeating-linear-gradient(0deg,transparent 0 3px,var(--shame-line) 3px 4px);
   box-shadow:0 0 0 3px rgba(42,29,23,.7),0 0 36px rgba(158,70,39,.09),inset 0 0 34px rgba(0,0,0,.58);
-  font-family:ui-monospace,SFMono-Regular,Consolas,monospace;
+  font-family:var(--site-font-mono);
 }
 .dogs-hall-page .arcade-marquee:before{
   content:"GAME OVER  ·  HALL OF SHAME  ·  CONTINUE?";
@@ -365,7 +365,7 @@ body.dogs-hall-page{
   margin:20px 0 14px;
   border-top:2px solid rgba(157,95,61,.5);
   border-bottom:2px solid rgba(157,95,61,.5);
-  font-family:ui-monospace,SFMono-Regular,Consolas,monospace;
+  font-family:var(--site-font-mono);
 }
 .dogs-hall-page .notoriety-row{
   display:grid;
