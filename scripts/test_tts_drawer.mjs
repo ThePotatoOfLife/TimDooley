@@ -47,6 +47,7 @@ assert.ok(source.includes("button('Center spoken word','◎ Center')"), 'shared 
 assert.ok(source.includes("ptts-control-group ptts-settings"), 'shared player must group voice/scope/speed controls');
 assert.ok(source.includes("ptts-control-group ptts-reading-tools"), 'shared player must group follow/center/text controls');
 assert.ok(source.includes("hideUI:"), 'drawer must expose a UI-only hide action that does not stop playback');
+assert.ok(source.includes("preferredSection=clean(options.defaultSection)"), 'drawer must honor an optional preferred reading scope');
 assert.ok(source.includes("ptts-follow-escape"), 'Follow ON must expose a fixed always-visible turn-off control');
 assert.ok(source.includes("Follow ON · turn off"), 'fixed follow escape must state exactly what it does');
 assert.ok(source.includes("followEscape.addEventListener('click',()=>setFollowReading(false))"), 'fixed follow escape must force Follow OFF');
