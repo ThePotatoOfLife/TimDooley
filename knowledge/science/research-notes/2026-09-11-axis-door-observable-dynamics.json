@@ -96,5 +96,23 @@
     "Specify observables and baseline models before fitting.",
     "Keep project theology separate from claims of physical mechanism.",
     "Record parameter estimation and out-of-sample performance."
+  ],
+  "updated": "2026-10-05",
+  "document_type": "Formal Note / Framework",
+  "paper_subtitle": "A research note translating Axis into hidden flow, Eye into observables, and Door into hysteretic threshold events with measurable crossing times.",
+  "paper_figures": [
+    {
+      "title": "Figure 1 · Axis, Eye and hysteretic Door",
+      "asset": "assets/visuals/science-axis-eye-door-hysteresis.svg",
+      "alt": "A dynamics diagram showing hidden Axis flow, Eye observations, a Door with separate entry and exit thresholds, and measurable event timing.",
+      "caption": "The model becomes testable when the Eye sees only declared observables, the Door has asymmetric entry/exit thresholds where path dependence is expected, and transition times can be compared against simpler threshold models.",
+      "source_note": "Project research extension using hybrid systems, Koopman-observable and hysteresis mathematics."
+    }
+  ],
+  "reader_takeaway": [
+    "The Eye is more rigorous as an observation operator than as access to the complete hidden state.",
+    "A Door can remember direction when entry and exit thresholds differ; that is ordinary hysteresis, not mystical irreversibility.",
+    "Door events can be measured through first-passage times and dwell intervals.",
+    "Hysteresis only earns retention if repeated trajectories predict better than a simpler single-threshold model."
   ]
 }
