@@ -22,6 +22,8 @@ SHARED_ASSET_NAMES = (
     "house-page.css",
     "house-page.js",
     "potato-of-life-page.css",
+    "axis-page.css",
+    "axis-page.js",
     "generated-knowledge.css",
     "site-access.css",
     "site-access.js",
