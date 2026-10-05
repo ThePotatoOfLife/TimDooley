@@ -1,6 +1,6 @@
 {
   "version": "3.5.4",
-  "updated": "2026-10-01",
+  "updated": "2026-10-05",
   "authority": "house-room-dossiers",
   "principle": "A Room dossier is a composed entrance: ownership + holdings + boundaries + center contribution + living-system role + handoffs. It does not create new ownership. Every Room also exposes a scoped local center that organizes attention without competing with the Potato/Axis global centers.",
   "dossiers": [
@@ -792,6 +792,166 @@
       }
     },
     {
+      "room_id": "garden",
+      "title": "Garden",
+      "dwelling_id": "potatoverse-canon",
+      "entrance": "Enter the Garden as a cultivated Heaven-facing story-space: life, river, fruit, choice, sorting, boundary, exile and return.",
+      "belongs_here": [
+        "project-native Garden mechanics and cultivation",
+        "Garden / Mud orientation, sorting and boundary behavior",
+        "Tree, Fruit, River, Gate and Gardener relations as Potatoverse operators",
+        "reader-facing synthesis that routes biblical and specialist claims to their proper owners"
+      ],
+      "stays_out": [
+        "Genesis comparison presented as historical proof of Potatoverse identity",
+        "fixed caste or biological claims about real people",
+        "material whose primary owner remains Bible, Theology, Symbolic Architecture or Practice & Ethics",
+        "claims promoted beyond their evidence class"
+      ],
+      "epistemic_boundary": "The Garden is a Potatoverse Room and public guide. Genesis remains a scriptural comparator; role language remains project-symbolic and reversible.",
+      "knowledge_holdings": {
+        "primary_file_count": 2,
+        "featured": [
+          {
+            "path": "knowledge/core/garden-regime-mechanics.json",
+            "id": "garden-regime-mechanics",
+            "kind": "Garden generative-regime mechanics",
+            "basis": "Garden Room exact-owner migration"
+          },
+          {
+            "path": "knowledge/core/garden-mud-orientation.json",
+            "id": "garden-mud-orientation",
+            "kind": "Garden / Mud orientation and boundary mechanics",
+            "basis": "Garden Room exact-owner migration"
+          }
+        ]
+      },
+      "data_holdings": {
+        "owned_bundle_count": 0,
+        "owned_file_count": 0,
+        "owned_bundles": [],
+        "consumed_bundles": []
+      },
+      "passages": [
+        {
+          "id": "if-garden-theology",
+          "direction": "out",
+          "other_room_id": "theology-god-language",
+          "type": "cultivation-theology",
+          "changes": "Garden roles are interpreted through Father/Gardener, Spirit, judgment and stewardship language.",
+          "guard": "Project theology must remain distinct from historical doctrine and empirical proof."
+        },
+        {
+          "id": "if-garden-symbolic",
+          "direction": "out",
+          "other_room_id": "symbolic-architecture",
+          "type": "spatial-translation",
+          "changes": "Garden places Tree, River, Gate, House, Door and downward/upward movement into the wider symbolic architecture.",
+          "guard": "Map geometry remains a symbolic relation unless separately formalized or tested."
+        },
+        {
+          "id": "if-garden-practice",
+          "direction": "out",
+          "other_room_id": "practice-ethics",
+          "type": "cultivation-to-practice",
+          "changes": "Garden Fruit, sorting and stewardship are translated into conduct, repair, boundaries and cultivation practice.",
+          "guard": "Project practice language does not override professional, legal or medical standards."
+        },
+        {
+          "id": "if-garden-bible",
+          "direction": "out",
+          "other_room_id": "bible-christianity",
+          "type": "comparative-translation",
+          "changes": "Garden imagery is compared with Genesis and Christian texts while preserving source identity.",
+          "guard": "Resemblance must not become historical identity, fulfillment or proof without evidence."
+        }
+      ],
+      "collections": [],
+      "public_surfaces": [
+        {
+          "id": "garden",
+          "title": "The Garden",
+          "route": "/garden/",
+          "surface_type": "guide"
+        }
+      ],
+      "next_work": [
+        "Finish the final pixel-art Garden master and calibrate interactive hotspots against the approved scene.",
+        "Keep biblical anchors compact and source-led while deeper Bible material stays with the Bible owner.",
+        "Use the Garden as an orientation Room: map first, explanation second, specialist owners deeper."
+      ],
+      "center_pairing": {
+        "contribution": "Makes cultivation, Fruit, sorting, boundary and return spatially legible while keeping Life at the center and consequence at the edge.",
+        "center_nodes": [
+          "garden",
+          "tree-of-life",
+          "river",
+          "fruit",
+          "door",
+          "gate",
+          "mud"
+        ],
+        "living_systems": [
+          "spirit-relation"
+        ],
+        "lenses": [
+          "practice-path",
+          "polarity"
+        ],
+        "shared_tests": [
+          "garden-test",
+          "fruit-test",
+          "door-test"
+        ],
+        "receives_from": [
+          "theology-god-language",
+          "bible-christianity"
+        ],
+        "hands_to": [
+          "practice-ethics",
+          "symbolic-architecture"
+        ]
+      },
+      "local_center": {
+        "local_center_id": "room:garden",
+        "scope_type": "room",
+        "scope_id": "garden",
+        "parent_center": "potato-of-life",
+        "function": "Makes cultivation, Fruit, sorting, boundary and return spatially legible while keeping Life at the center and consequence at the edge.",
+        "owner": "garden",
+        "entry_routes": [
+          "theology-god-language",
+          "bible-christianity"
+        ],
+        "exit_routes": [
+          "practice-ethics",
+          "symbolic-architecture"
+        ],
+        "center_nodes": [
+          "garden",
+          "tree-of-life",
+          "river",
+          "fruit",
+          "door",
+          "gate",
+          "mud"
+        ],
+        "handoff_targets": [
+          "practice-ethics",
+          "symbolic-architecture"
+        ],
+        "active_lenses": [
+          "practice-path",
+          "polarity"
+        ],
+        "shared_tests": [
+          "garden-test",
+          "fruit-test",
+          "door-test"
+        ]
+      }
+    },
+    {
       "room_id": "practice-ethics",
       "title": "Practice & Ethics",
       "dwelling_id": "potatoverse-canon",
@@ -811,7 +971,7 @@
       ],
       "epistemic_boundary": "Practice principles do not override medical, legal or domain-specific professional standards.",
       "knowledge_holdings": {
-        "primary_file_count": 30,
+        "primary_file_count": 28,
         "featured": [
           {
             "path": "knowledge/core/knowledge-fork-discernment-atlas.json",
@@ -826,12 +986,6 @@
             "basis": "P2 depth programme"
           },
           {
-            "path": "knowledge/core/garden-regime-mechanics.json",
-            "id": "garden-regime-mechanics",
-            "kind": "Garden generative-regime mechanics",
-            "basis": "P2 depth programme"
-          },
-          {
             "path": "knowledge/core/fruit-consequence-evaluation-atlas.json",
             "id": "fruit-consequence-evaluation-atlas",
             "kind": "project-native consequence evaluation atlas",
@@ -840,12 +994,6 @@
           {
             "path": "knowledge/core/dormancy-hidden-years-and-practical-theology.json",
             "id": "dormancy-hidden-years-and-practical-theology",
-            "kind": "room holding",
-            "basis": "core-topic"
-          },
-          {
-            "path": "knowledge/core/garden-mud-orientation.json",
-            "id": "garden-mud-orientation",
             "kind": "room holding",
             "basis": "core-topic"
           },
