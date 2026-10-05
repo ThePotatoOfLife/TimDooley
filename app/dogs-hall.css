@@ -44,13 +44,14 @@ body.dogs-hall-page{
     linear-gradient(176deg,transparent 0 28%,rgba(79,64,45,.16) 29% 31%,transparent 32%),
     radial-gradient(ellipse at 48% 100%,rgba(68,55,39,.42),transparent 63%);
 }
-.dogs-hall-page .page-header{
+.dogs-hall-page .page-header,
+html[data-site-floor] body.dogs-hall-page .page-header{
   position:relative;overflow:hidden;margin-top:18px;padding:42px 34px 34px;
   border:1px solid rgba(155,117,84,.38);border-bottom:4px solid #5b4030;
   background:
     linear-gradient(112deg,rgba(9,11,10,.94),rgba(21,23,20,.90) 55%,rgba(49,39,29,.86)),
     repeating-linear-gradient(100deg,transparent 0 86px,rgba(255,255,255,.025) 86px 88px);
-  box-shadow:0 28px 70px rgba(0,0,0,.34),inset 0 0 80px rgba(125,81,52,.05);
+  border-radius:var(--site-radius);box-shadow:0 14px 38px rgba(0,0,0,.20),inset 0 0 80px rgba(125,81,52,.05);
 }
 .dogs-hall-page .page-header:before{
   content:"NOTORIOUS LOWER ROAD";position:absolute;right:-22px;top:24px;transform:rotate(3deg);
@@ -100,7 +101,8 @@ body.dogs-hall-page{
 .dogs-hall-page .birth-note{margin-top:10px;color:#bdb4aa}
 .dogs-hall-page .links a{color:#d59a72}
 @media(max-width:680px){
- .dogs-hall-page .page-header{padding:52px 20px 28px}
+ .dogs-hall-page .page-header,
+ html[data-site-floor] body.dogs-hall-page .page-header{padding:52px 20px 28px;border-radius:9px}
  .dogs-hall-page .page-header:before{right:-40px;top:18px;font-size:8px}
 }
 
@@ -884,10 +886,6 @@ body.dogs-hall-page{
 
 
 /* Small-surface spacing polish — prevent controls and tiles from visually fusing. */
-.dogs-hall-page .page-header{
-  border-radius:12px;
-  box-shadow:0 14px 38px rgba(0,0,0,.16);
-}
 .dogs-hall-page .hall-door-strip{
   gap:11px;
 }
@@ -957,16 +955,4 @@ body.dogs-hall-page{
   border-radius:0;
   background:transparent;
   box-shadow:none;
-}
-
-
-/* Hall header specificity guard — outrank the generic floor-pane header contract. */
-html[data-site-floor] body.dogs-hall-page .page-header{
-  padding:42px 34px 34px;border:1px solid rgba(155,117,84,.38);border-bottom:4px solid #5b4030;border-radius:12px;background:linear-gradient(112deg,rgba(9,11,10,.94),rgba(21,23,20,.90) 55%,rgba(49,39,29,.86)),repeating-linear-gradient(100deg,transparent 0 86px,rgba(255,255,255,.025) 86px 88px);box-shadow:0 14px 38px rgba(0,0,0,.20),inset 0 0 80px rgba(125,81,52,.05);
-}
-@media(max-width:680px){
-  html[data-site-floor] body.dogs-hall-page .page-header{
-    padding:52px 20px 28px;
-    border-radius:9px;
-  }
 }
