@@ -24,6 +24,7 @@ SHARED_ASSET_NAMES = (
     "potato-of-life-page.css",
     "axis-page.css",
     "axis-page.js",
+    "quantum-page.css",
     "generated-knowledge.css",
     "site-access.css",
     "site-access.js",
