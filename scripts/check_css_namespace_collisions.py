@@ -480,8 +480,17 @@ if "backdrop-filter:" in site_system_text:
     warnings.append("site-system.css uses backdrop-filter; prefer opaque/translucent panes that preserve realm sharpness")
 if "--site-realm-art-size:max(1086px,100vw)" not in elevator_text.replace(" ", ""):
     errors.append("site-elevator.css realm scale contract drifted away from native-source floor")
-if "filter:saturate(1.06) contrast(1.045)" not in elevator_text:
-    errors.append("site-elevator.css missing realm edge-separation fidelity filter")
+for expensive_realm_marker in (
+    "site-realm-page-pan",
+    "animation-timeline:scroll(root block)",
+    "filter:saturate(1.06) contrast(1.045)",
+    "filter:saturate(.95) contrast(1.05)",
+    "transform:translateZ(0)",
+):
+    if expensive_realm_marker in elevator_text:
+        errors.append(f"site-elevator.css reintroduced continuous realm/header compositor work: {expensive_realm_marker}")
+if 'html[data-site-floor] .page-header{\n  max-width:none;' not in site_system_text:
+    errors.append("realm page headers must share the full Room container width")
 
 # Shared sub-header interaction contract: semantic role colors must not outrank
 # the universal hover/focus state through !important specificity escalation.
