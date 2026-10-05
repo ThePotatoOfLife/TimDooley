@@ -83,3 +83,26 @@
   text-transform:uppercase;
 }
 .site-access-tts-console .ptts-settings::before{align-self:center}
+
+/* Reader state in the shared bottom dock. */
+.site-access-dock [data-site-access-listen][data-reader-state="speaking"],
+.site-access-dock [data-site-access-listen][data-reader-state="paused"]{
+  color:var(--site-gold);
+  background:rgba(216,181,107,.08);
+  box-shadow:inset 0 0 0 1px rgba(216,181,107,.15);
+}
+.site-access-dock [data-site-access-listen][data-reader-state="speaking"]::before{
+  content:"";
+  display:inline-block;
+  width:5px;
+  height:5px;
+  margin-right:5px;
+  border-radius:50%;
+  vertical-align:1px;
+  background:var(--site-gold);
+  box-shadow:0 0 9px rgba(216,181,107,.7);
+}
+.site-access[data-reader-open="true"] .site-access-dock [data-site-access-listen]{
+  color:#fff5dd;
+  background:rgba(216,181,107,.11);
+}
