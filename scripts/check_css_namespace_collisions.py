@@ -380,7 +380,10 @@ retired_live_assets = (
 live_text_paths = [
     *ROOT.glob("app/*.js"),
     *ROOT.glob("app/*.css"),
-    *ROOT.glob("scripts/*.py"),
+    *[
+        path for path in ROOT.glob("scripts/*.py")
+        if path.name != "check_css_namespace_collisions.py"
+    ],
     *ROOT.glob("scripts/*.mjs"),
 ]
 for path in live_text_paths:
