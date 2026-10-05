@@ -126,6 +126,11 @@ for block in re.findall(r"\.nav\s*\{([^}]*)\}", style):
 if '.archive-nav{' not in style and '.archive-nav {' not in style:
     errors.append("app/style.css must own archive sidebar layout through .archive-nav")
 
+reader_path = ROOT / "app" / "reader.css"
+reader_text = reader_path.read_text(encoding="utf-8", errors="ignore") if reader_path.exists() else ""
+if re.search(r"\.page-nav\s+a\s*\{", reader_text) or re.search(r"\.page\s+a\s*,", reader_text):
+    errors.append("app/reader.css must not override shared page-nav link color; site-system.css owns the sub-header")
+
 home = HOME.read_text(encoding='utf-8', errors='ignore') if HOME.exists() else ""
 if 'id="archive-explorer"' in home:
     if 'class="archive-nav"' not in home:
