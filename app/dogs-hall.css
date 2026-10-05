@@ -4,15 +4,15 @@
 .dogs-hall-page .hall p,.dogs-hall-page .hall li{line-height:1.72}
 .dogs-hall-page .hall h2{margin-top:44px}
 .dogs-hall-page .lede{font:400 clamp(20px,2.6vw,30px)/1.52 var(--site-font-serif);max-width:900px}
-.dogs-hall-page .factbar,.dogs-hall-page .sealbar{display:flex;gap:8px 14px;flex-wrap:wrap;margin:18px 0 28px;padding:12px 0;border-top:1px solid var(--site-line);border-bottom:1px solid var(--site-line);font-size:10px;color:var(--site-muted)}
+.dogs-hall-page .factbar,.dogs-hall-page .sealbar{display:flex;gap:8px 14px;flex-wrap:wrap;margin:18px 0 28px;padding:12px 0;border-top:1px solid var(--site-line);border-bottom:1px solid var(--site-line);font-size:var(--site-text-xs);color:var(--site-muted)}
 .dogs-hall-page .factbar b{color:var(--site-gold)}
-.dogs-hall-page .sealbar span{border:1px solid var(--site-line);border-radius:999px;padding:5px 8px}
+.dogs-hall-page .sealbar span{border:1px solid var(--site-line);border-radius:var(--site-radius-pill);padding:5px 8px}
 .dogs-hall-page .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:9px}
 .dogs-hall-page .tile{padding:15px;border:1px solid var(--site-line);background:rgba(255,255,255,.012)}
 .dogs-hall-page .tile h3{font:400 20px/1.2 var(--site-font-serif);color:#d3a17b;margin:0 0 7px}
-.dogs-hall-page .loop{font:700 12px/1.9 ui-monospace,monospace;border:1px solid var(--site-line);padding:14px;white-space:normal}
+.dogs-hall-page .loop{font:700 12px/1.9 var(--site-font-mono);border:1px solid var(--site-line);padding:14px;white-space:normal}
 .dogs-hall-page .milestone{border-left:2px solid #6e4738;padding:4px 0 4px 16px;margin:16px 0}
-.dogs-hall-page .milestone time{display:block;font:700 10px ui-monospace,monospace;color:#d3a17b;margin-bottom:4px}
+.dogs-hall-page .milestone time{display:block;font:700 10px var(--site-font-mono);color:#d3a17b;margin-bottom:4px}
 .dogs-hall-page .warning{border:1px solid #6e4738;padding:16px;background:rgba(80,35,20,.07)}
 .dogs-hall-page .verse{margin:14px 0;padding:11px 15px;border-left:2px solid #6e4738;background:rgba(80,35,20,.06);font:400 17px/1.5 var(--site-font-serif)}
 .dogs-hall-page .recognition{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
@@ -58,7 +58,7 @@ html[data-site-floor] body.dogs-hall-page .page-header{
 .dogs-hall-page .page-header:before{
   content:"NOTORIOUS LOWER ROAD";position:absolute;right:-22px;top:24px;transform:rotate(3deg);
   padding:8px 30px;border:2px solid rgba(213,149,104,.48);color:rgba(225,169,127,.64);
-  font:700 10px/1 ui-monospace,monospace;letter-spacing:.18em;
+  font:700 10px/1 var(--site-font-mono);letter-spacing:.18em;
 }
 .dogs-hall-page .page-header:after{
   content:"";position:absolute;left:-4%;right:-4%;bottom:10px;height:2px;opacity:.45;
@@ -96,7 +96,7 @@ html[data-site-floor] body.dogs-hall-page .page-header{
   background:linear-gradient(180deg,rgba(27,29,26,.82),rgba(38,30,23,.74));
 }
 .dogs-hall-page .descent-map .route{
-  display:flex;flex-wrap:wrap;align-items:center;gap:8px;font:700 11px/1.5 ui-monospace,monospace;color:#d7c6b8;
+  display:flex;flex-wrap:wrap;align-items:center;gap:8px;font:700 11px/1.5 var(--site-font-mono);color:#d7c6b8;
 }
 .dogs-hall-page .descent-map .route b{color:#dda079}
 .dogs-hall-page .descent-map .route i{font-style:normal;color:#7e6b58}
@@ -131,7 +131,7 @@ html[data-site-floor] body.dogs-hall-page .page-header{
   content:"GAME OVER  ·  HALL OF SHAME  ·  CONTINUE?";
   display:block;
   color:var(--shame-neon);
-  font-size:10px;
+  font-size:var(--site-text-xs);
   letter-spacing:.15em;
   text-align:center;
   margin-bottom:12px;
@@ -148,15 +148,15 @@ html[data-site-floor] body.dogs-hall-page .page-header{
 }
 .dogs-hall-page .arcade-score-row:first-child{
   color:#88796e;
-  font-size:9px;
+  font-size:var(--site-text-micro);
   letter-spacing:.12em;
   text-transform:uppercase;
 }
 .dogs-hall-page .arcade-rank{color:#b96546;font-weight:800;text-align:center}
 .dogs-hall-page .arcade-player strong{color:#e1b39a}
-.dogs-hall-page .arcade-class{color:#b3907e;font-size:11px}
-.dogs-hall-page .arcade-highmark{color:#bdb2a8;font-size:11px}
-.dogs-hall-page .arcade-note{margin:12px 2px 0;color:#9d9187;font-size:10px;line-height:1.55}
+.dogs-hall-page .arcade-class{color:#b3907e;font-size:var(--site-text-caption)}
+.dogs-hall-page .arcade-highmark{color:#bdb2a8;font-size:var(--site-text-caption)}
+.dogs-hall-page .arcade-note{margin:12px 2px 0;color:#9d9187;font-size:var(--site-text-xs);line-height:1.55}
 .dogs-hall-page .shame-stamp{
   display:inline-block;
   margin:3px 5px 3px 0;
@@ -164,7 +164,7 @@ html[data-site-floor] body.dogs-hall-page .page-header{
   border:1px solid rgba(201,106,69,.36);
   color:#c58d70;
   background:rgba(108,49,31,.09);
-  font:700 9px ui-monospace,monospace;
+  font:700 9px var(--site-font-mono);
   letter-spacing:.08em;
   transform:rotate(-.4deg);
 }
@@ -224,7 +224,7 @@ html[data-site-floor] body.dogs-hall-page .page-header{
   display:block;
   margin-bottom:5px;
   color:#b47e61;
-  font:700 9px/1.35 ui-monospace,monospace;
+  font:700 9px/1.35 var(--site-font-mono);
   font-style:normal;
   letter-spacing:.09em;
   text-transform:uppercase;
@@ -239,7 +239,7 @@ html[data-site-floor] body.dogs-hall-page .page-header{
 }
 .dogs-hall-page .hall-input-output p,
 .dogs-hall-page .shame-landmarks p,
-.dogs-hall-page .repair-steps p{margin:0;color:#c3bbb2;font-size:12px;line-height:1.6}
+.dogs-hall-page .repair-steps p{margin:0;color:#c3bbb2;font-size:var(--site-text-sm);line-height:1.6}
 .dogs-hall-page .hall-door-strip{
   display:grid;
   grid-template-columns:repeat(4,minmax(0,1fr));
@@ -253,8 +253,8 @@ html[data-site-floor] body.dogs-hall-page .page-header{
   color:inherit;
   text-decoration:none;
 }
-.dogs-hall-page .hall-door-strip strong{display:block;color:#d58f68;font:700 10px ui-monospace,monospace;letter-spacing:.06em}
-.dogs-hall-page .hall-door-strip span{display:block;margin-top:4px;color:#9e958d;font-size:10px;line-height:1.35}
+.dogs-hall-page .hall-door-strip strong{display:block;color:#d58f68;font:700 10px var(--site-font-mono);letter-spacing:.06em}
+.dogs-hall-page .hall-door-strip span{display:block;margin-top:4px;color:#9e958d;font-size:var(--site-text-xs);line-height:1.35}
 .dogs-hall-page .shame-village{
   position:relative;
   overflow:hidden;
@@ -277,7 +277,7 @@ html[data-site-floor] body.dogs-hall-page .page-header{
   position:absolute;
   left:14px;top:14px;
   color:#8f6048;
-  font:700 18px ui-monospace,monospace;
+  font:700 18px var(--site-font-mono);
 }
 .dogs-hall-page .hall-carry{
   margin:18px 0 0;
@@ -295,7 +295,7 @@ html[data-site-floor] body.dogs-hall-page .page-header{
   text-decoration:none;
 }
 .dogs-hall-page .hall-door-grid strong{display:block;color:#dda17d;font:400 19px var(--site-font-serif);margin-bottom:5px}
-.dogs-hall-page .hall-door-grid span{display:block;color:#aaa198;font-size:11px;line-height:1.5}
+.dogs-hall-page .hall-door-grid span{display:block;color:#aaa198;font-size:var(--site-text-caption);line-height:1.5}
 .dogs-hall-page .hall-door-grid a:hover,
 .dogs-hall-page .hall-door-grid a:focus-visible,
 .dogs-hall-page .hall-door-strip a:hover,
@@ -334,7 +334,7 @@ html[data-site-floor] body.dogs-hall-page .page-header{
   display:block;
   margin-bottom:7px;
   color:#a96e51;
-  font:700 9px/1.3 ui-monospace,monospace;
+  font:700 9px/1.3 var(--site-font-mono);
   font-style:normal;
   letter-spacing:.09em;
 }
@@ -343,7 +343,7 @@ html[data-site-floor] body.dogs-hall-page .page-header{
   color:#dda17d;
   font:400 21px/1.2 var(--site-font-serif);
 }
-.dogs-hall-page .worked-run-grid p{margin:7px 0;color:#c5bdb5;font-size:12px;line-height:1.55}
+.dogs-hall-page .worked-run-grid p{margin:7px 0;color:#c5bdb5;font-size:var(--site-text-sm);line-height:1.55}
 .dogs-hall-page .run-verdict{
   margin-top:12px!important;
   padding-top:10px;
@@ -377,7 +377,7 @@ html[data-site-floor] body.dogs-hall-page .page-header{
   padding:12px 8px;
   border-bottom:1px solid rgba(157,95,61,.16);
   color:#c7beb6;
-  font-size:10px;
+  font-size:var(--site-text-xs);
   line-height:1.45;
 }
 .dogs-hall-page .notoriety-row:last-child{border-bottom:0}
@@ -412,7 +412,7 @@ html[data-site-floor] body.dogs-hall-page .page-header{
   border:1px solid rgba(127,78,53,.24);
   background:rgba(74,45,31,.08);
   color:#9f958d;
-  font-size:9px;
+  font-size:var(--site-text-micro);
   line-height:1.45;
 }
 .dogs-hall-page .ledger-key b{color:#c18667}
@@ -460,7 +460,7 @@ html[data-site-floor] body.dogs-hall-page .page-header{
 .dogs-hall-page .takeaway-grid p{
   margin:0;
   color:#bdb4ac;
-  font-size:11px;
+  font-size:var(--site-text-caption);
   line-height:1.5;
 }
 @media(max-width:760px){
@@ -483,7 +483,7 @@ html[data-site-floor] body.dogs-hall-page .page-header{
   left:1px;
   color:#d18d68;
   opacity:.72;
-  font:700 8px/1 ui-monospace,SFMono-Regular,Consolas,monospace;
+  font:700 8px/1 var(--site-font-mono);
   letter-spacing:.13em;
 }
 .dogs-hall-page a:focus-visible,
@@ -533,7 +533,7 @@ html[data-site-floor] body.dogs-hall-page .page-header{
   display:block;
   margin-bottom:5px;
   color:#c98661;
-  font:700 9px/1.3 ui-monospace,SFMono-Regular,Consolas,monospace;
+  font:700 9px/1.3 var(--site-font-mono);
   font-style:normal;
   letter-spacing:.08em;
   text-transform:uppercase;
@@ -547,7 +547,7 @@ html[data-site-floor] body.dogs-hall-page .page-header{
 .dogs-hall-page .source-desk-grid p{
   margin:0;
   color:var(--site-muted);
-  font-size:11px;
+  font-size:var(--site-text-caption);
   line-height:1.55;
 }
 .dogs-hall-page .source-desk-grid a,
@@ -555,7 +555,7 @@ html[data-site-floor] body.dogs-hall-page .page-header{
   display:inline-block;
   margin-top:9px;
   color:#c98661;
-  font:700 10px/1.35 ui-monospace,SFMono-Regular,Consolas,monospace;
+  font:700 10px/1.35 var(--site-font-mono);
   text-decoration:none;
 }
 .dogs-hall-page .source-desk-links{
@@ -595,7 +595,7 @@ html[data-site-floor] body.dogs-hall-page .page-header{
   display:block;
   margin-bottom:5px;
   color:color-mix(in srgb, #d08a65 78%, #fff 22%);
-  font:700 9px/1.3 ui-monospace,SFMono-Regular,Consolas,monospace;
+  font:700 9px/1.3 var(--site-font-mono);
   font-style:normal;
   letter-spacing:.08em;
   text-transform:uppercase;
@@ -609,7 +609,7 @@ html[data-site-floor] body.dogs-hall-page .page-header{
 .dogs-hall-page .hall-law-grid p{
   margin:0;
   color:var(--site-muted);
-  font-size:11px;
+  font-size:var(--site-text-caption);
   line-height:1.5;
 }
 .dogs-hall-page .hall-law>a,
@@ -647,7 +647,7 @@ html[data-site-floor] body.dogs-hall-page .page-header{
   display:block;
   margin-bottom:7px;
   color:#865741;
-  font:700 18px/1 ui-monospace,SFMono-Regular,Consolas,monospace;
+  font:700 18px/1 var(--site-font-mono);
 }
 .dogs-hall-page .bell-grid strong{
   display:block;
@@ -655,7 +655,7 @@ html[data-site-floor] body.dogs-hall-page .page-header{
   color:#d99d79;
   font:400 17px/1.2 var(--site-font-serif);
 }
-.dogs-hall-page .bell-grid p{margin:0;color:#bdb4ac;font-size:10px;line-height:1.5}
+.dogs-hall-page .bell-grid p{margin:0;color:#bdb4ac;font-size:var(--site-text-xs);line-height:1.5}
 @media(max-width:920px){.dogs-hall-page .bell-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:560px){.dogs-hall-page .bell-grid{grid-template-columns:1fr}}
 
@@ -705,7 +705,7 @@ body.dogs-hall-page{
   justify-content:space-between;
   gap:12px;
   color:#cf8964;
-  font:700 9px/1.25 ui-monospace,SFMono-Regular,Consolas,monospace;
+  font:700 9px/1.25 var(--site-font-mono);
   letter-spacing:.09em;
   text-transform:uppercase;
   text-shadow:0 1px 8px rgba(0,0,0,.88);
@@ -725,14 +725,14 @@ body.dogs-hall-page{
 .dogs-hall-page .hall-scene__caption strong{
   display:block;
   color:#cf8964;
-  font:700 10px/1.25 ui-monospace,SFMono-Regular,Consolas,monospace;
+  font:700 10px/1.25 var(--site-font-mono);
   letter-spacing:.08em;
 }
 .dogs-hall-page .hall-scene__caption span{
   display:block;
   margin-top:3px;
   color:#d0d3cc;
-  font-size:9px;
+  font-size:var(--site-text-micro);
   line-height:1.35;
 }
 
@@ -755,7 +755,7 @@ body.dogs-hall-page{
 .dogs-hall-page .hall-exits{
   padding:clamp(20px,2.7vw,30px);
   border:1px solid color-mix(in srgb, #cf8964 30%, transparent);
-  border-radius:14px;
+  border-radius:var(--site-radius-lg);
   box-shadow:0 12px 34px rgba(0,0,0,.14);
   
 }
@@ -858,7 +858,7 @@ body.dogs-hall-page{
 .dogs-hall-page .hall-source-desk,
 .dogs-hall-page .hall-exits{
     padding:18px 16px;
-    border-radius:10px;
+    border-radius:var(--site-radius-sm);
     
   }
   .dogs-hall-page .hall-law,
