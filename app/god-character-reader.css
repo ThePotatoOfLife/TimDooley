@@ -47,7 +47,7 @@
   padding:17px 18px;
   border:1px solid var(--site-pane-line);
   border-left:3px solid color-mix(in srgb,var(--site-gold) 62%,transparent);
-  border-radius:12px;
+  border-radius:var(--site-radius);
   background:var(--site-pane-soft);
   color:#e6e1d6;
   font:400 clamp(18px,2.2vw,24px)/1.5 var(--site-font-serif);
@@ -74,18 +74,18 @@
   padding-top:9px;
   border-top:1px solid var(--site-line);
   color:var(--site-muted);
-  font-size:11px;
+  font-size:var(--site-text-caption);
   line-height:1.5;
 }
 .god-character-reader .figures{
   margin-top:8px;
   color:var(--site-faint);
-  font-size:11px;
+  font-size:var(--site-text-caption);
 }
 .god-character-reader .sources,
 .god-character-reader .source-note{
   color:var(--site-faint);
-  font-size:10px;
+  font-size:var(--site-text-xs);
   line-height:1.6;
 }
 .god-character-reader :is(.sources,.source-note) a{color:var(--site-muted)}
@@ -97,7 +97,7 @@
 .god-character-reader .power .tradition{
   margin-bottom:10px;
   color:var(--site-faint);
-  font-size:9px;
+  font-size:var(--site-text-micro);
   letter-spacing:.08em;
   text-transform:uppercase;
 }
@@ -108,21 +108,21 @@
 .god-character-reader .power dt{
   margin-top:10px;
   color:var(--site-gold);
-  font-size:10px;
+  font-size:var(--site-text-xs);
   letter-spacing:.06em;
   text-transform:uppercase;
 }
 .god-character-reader .power dd{
   margin:3px 0 0;
   color:var(--site-muted);
-  font-size:12px;
+  font-size:var(--site-text-sm);
   line-height:1.52;
 }
 .god-character-reader .section{
   margin:42px 0;
   padding:24px;
   border:1px solid var(--site-pane-line);
-  border-radius:16px;
+  border-radius:var(--site-radius-lg);
   background:var(--site-pane);
   box-shadow:var(--site-pane-shadow);
 }
@@ -149,14 +149,14 @@
 .god-character-reader .char p{
   margin:0;
   color:var(--site-muted);
-  font-size:12px;
+  font-size:var(--site-text-sm);
 }
 .god-character-reader blockquote{
   margin:28px 0;
   padding:18px 20px;
   border:1px solid var(--site-pane-line);
   border-left:3px solid var(--site-gold);
-  border-radius:12px;
+  border-radius:var(--site-radius);
   background:var(--site-pane-soft);
   color:#e6e1d6;
   font:400 clamp(24px,3vw,34px)/1.45 var(--site-font-serif);
