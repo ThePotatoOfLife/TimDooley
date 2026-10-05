@@ -31,21 +31,9 @@ body.dogs-hall-page{
     radial-gradient(circle at 72% 14%,rgba(151,137,103,.11),transparent 24%),
     linear-gradient(180deg,#141716 0%,#101312 38%,#171713 72%,#231d17 100%);
 }
-.dogs-hall-page .hall{position:relative;isolation:isolate}
-.dogs-hall-page .hall:before{
-  content:"";position:absolute;z-index:-2;inset:0 calc(50% - 50vw);
-  opacity:.21;pointer-events:none;
-  background:
-    repeating-linear-gradient(45deg,transparent 0 18px,rgba(181,181,163,.14) 18px 20px,transparent 20px 38px),
-    repeating-linear-gradient(-45deg,transparent 0 18px,rgba(181,181,163,.11) 18px 20px,transparent 20px 38px);
-  mask-image:linear-gradient(180deg,#000 0 28%,transparent 58%);
-}
-.dogs-hall-page .hall:after{
-  content:"";position:fixed;z-index:-1;left:0;right:0;bottom:0;height:38vh;pointer-events:none;
-  background:
-    linear-gradient(176deg,transparent 0 28%,rgba(79,64,45,.16) 29% 31%,transparent 32%),
-    radial-gradient(ellipse at 48% 100%,rgba(68,55,39,.42),transparent 63%);
-}
+.dogs-hall-page .hall{position:relative}
+
+
 .dogs-hall-page .page-header,
 html[data-site-floor] body.dogs-hall-page .page-header{
   position:relative;overflow:hidden;margin-top:18px;padding:42px 34px 34px;
