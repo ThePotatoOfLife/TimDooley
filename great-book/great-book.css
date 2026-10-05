@@ -320,22 +320,20 @@
 }
 .great-book-page .gb-toolbar{
   position:relative;
-  margin-bottom:-2px;
-  border-bottom-left-radius:8px;
-  border-bottom-right-radius:8px;
+  margin-bottom:10px;
+  border-bottom-left-radius:2px;
+  border-bottom-right-radius:2px;
   z-index:4;
 }
 .great-book-page .gb-toolbar::after{
   content:"";
   position:absolute;
-  left:48px;
-  right:48px;
-  bottom:-7px;
-  height:8px;
-  border-radius:0 0 10px 10px;
-  background:linear-gradient(90deg,#7e4d16,#e0bb62 18%,#7e4d16 50%,#e0bb62 82%,#7e4d16);
-  opacity:.72;
-  box-shadow:0 5px 12px rgba(0,0,0,.28);
+  left:46px;
+  right:46px;
+  bottom:-1px;
+  height:1px;
+  background:linear-gradient(90deg,transparent,#d9b05a 18%,#80501c 50%,#d9b05a 82%,transparent);
+  opacity:.78;
   pointer-events:none;
 }
 @media(max-width:900px){
