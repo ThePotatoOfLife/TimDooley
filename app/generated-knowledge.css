@@ -1,0 +1,59 @@
+/* Generated knowledge readers.
+   The universal page shell, typography tokens, navigation and floor atmosphere
+   come from site-system.css. This file owns only generated-record presentation. */
+
+.generated-knowledge{
+  max-width:900px;
+}
+.generated-knowledge .parent-link{
+  color:var(--site-muted);
+  text-decoration:none;
+}
+.generated-knowledge .parent-link:hover,
+.generated-knowledge .parent-link:focus-visible{
+  color:var(--site-gold);
+}
+.generated-knowledge .page-header{
+  max-width:860px;
+}
+.generated-knowledge .page-header h1{
+  font-size:clamp(42px,7vw,76px);
+}
+.generated-knowledge .summary{
+  font-size:20px;
+  line-height:1.6;
+}
+.generated-knowledge h2{
+  margin-top:34px;
+  font:400 28px/1.2 var(--site-font-serif);
+  color:var(--site-gold);
+}
+.generated-knowledge p,
+.generated-knowledge li{
+  color:#d7d9d2;
+}
+.generated-knowledge .chips{
+  display:flex;
+  gap:7px;
+  flex-wrap:wrap;
+  margin:18px 0;
+}
+.generated-knowledge .chip{
+  border:1px solid var(--site-line);
+  border-radius:999px;
+  padding:5px 9px;
+  color:#c8cec1;
+  font-size:12px;
+}
+.generated-knowledge code{
+  color:var(--site-gold);
+  overflow-wrap:anywhere;
+}
+.generated-knowledge .generated-reader-routes{
+  margin-top:28px;
+  padding-top:20px;
+  border-top:1px solid var(--site-line);
+}
+@media(max-width:700px){
+  .generated-knowledge .page-header h1{font-size:clamp(38px,13vw,58px)}
+}
