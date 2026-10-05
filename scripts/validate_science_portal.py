@@ -389,7 +389,19 @@ def main() -> int:
                                 errors.append(f"science/papers/{slug}/index.html: generated Science asset hash resolved to missing")
                             if "science-paper.css?v=" not in paper_text:
                                 errors.append(f"science/papers/{slug}/index.html: missing content-versioned paper stylesheet")
-                            for related_slug in re.findall(r'href="\.\./([^"/]+)/"', paper_text):
+                            related_cards = re.findall(
+                                r'<article\b[^>]*class="[^"]*\bpaper-related-card\b[^"]*"[^>]*>[\s\S]*?</article>',
+                                paper_text,
+                                flags=re.I,
+                            )
+                            for card in related_cards:
+                                match = re.search(r'href="\.\./([^"/]+)/"', card)
+                                if not match:
+                                    errors.append(
+                                        f"science/papers/{slug}/index.html: related paper card missing paper target"
+                                    )
+                                    continue
+                                related_slug = match.group(1)
                                 if related_slug not in valid_paper_slugs:
                                     errors.append(
                                         f"science/papers/{slug}/index.html: related paper target does not exist: {related_slug}"
