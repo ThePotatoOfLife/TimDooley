@@ -465,11 +465,11 @@ def render_paper_figures(value) -> str:
 def render_semantic_sections(data: dict) -> str:
     rendered: list[str] = []
     used: set[str] = set(PAPER_METADATA_KEYS)
+    figure_html = render_paper_figures(data.get("paper_figures")) if data.get("paper_figures") else ""
     if data.get("paper_figures"):
-        figure_html = render_paper_figures(data.get("paper_figures"))
-        if figure_html:
-            rendered.append(figure_html)
         used.add("paper_figures")
+    figures_inserted = False
+    preferred_rendered = 0
     for key in PREFERRED_SECTION_KEYS:
         if key in data and key not in used:
             value = data[key]
@@ -478,7 +478,13 @@ def render_semantic_sections(data: dict) -> str:
                 rendered.append(
                     f'<section class="{section_class}"><h2>{esc(humanize_key(key))}</h2>{render_value(value, 0, key)}</section>'
                 )
+                preferred_rendered += 1
+                if figure_html and not figures_inserted and (key == "reader_takeaway" or preferred_rendered == 1):
+                    rendered.append(figure_html)
+                    figures_inserted = True
             used.add(key)
+    if figure_html and not figures_inserted:
+        rendered.append(figure_html)
     for key, value in data.items():
         if key in used or value in (None, "", [], {}):
             continue
