@@ -12,6 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SOURCE_PAGE = ROOT / "science" / "index.html"
 LIBRARY_CSS = ROOT / "science" / "science-library.css"
 PAPER_CSS = ROOT / "science" / "science-paper.css"
+PAPERS_READER_CSS = ROOT / "science" / "science-papers.css"
 BUILDER = ROOT / "scripts" / "build_science_catalog.py"
 SITE = ROOT / "_site"
 BUILT_PAGE = SITE / "science" / "index.html"
@@ -114,7 +115,7 @@ def main() -> int:
                     message,
                 )
 
-    for path in (SOURCE_PAGE, LIBRARY_CSS, PAPER_CSS, BUILDER):
+    for path in (SOURCE_PAGE, LIBRARY_CSS, PAPER_CSS, PAPERS_READER_CSS, BUILDER):
         if not path.exists():
             errors.append(f"missing required Science component: {path.relative_to(ROOT)}")
 
@@ -132,6 +133,13 @@ def main() -> int:
         "science/science-paper.css",
         errors,
     )
+    papers_reader_css = PAPERS_READER_CSS.read_text(encoding="utf-8", errors="replace") if PAPERS_READER_CSS.exists() else ""
+    require_markers(
+        "".join(papers_reader_css.split()),
+        (".papers-reader{", ".core-list{", ".paper-entry{", ".papers-shelf{"),
+        "science/science-papers.css",
+        errors,
+    )
 
     if SITE.exists():
         if not BUILT_PAGE.exists():
@@ -139,6 +147,26 @@ def main() -> int:
         else:
             built = BUILT_PAGE.read_text(encoding="utf-8", errors="replace")
             require_markers(built, BUILT_MARKERS, "_site/science/index.html", errors)
+
+        papers_reader = SITE / "science" / "papers" / "index.html"
+        if not papers_reader.exists():
+            errors.append("built Science Papers reader missing: _site/science/papers/index.html")
+        else:
+            reader_text = papers_reader.read_text(encoding="utf-8", errors="replace")
+            require_markers(
+                reader_text,
+                (
+                    "SCIENCE PAPERS",
+                    "Core paper series",
+                    "Complete reading library",
+                    "science-papers.css",
+                    "advanced-retarded-door-handshake-recovery",
+                    "unified-potato-theory-2025-recovery",
+                    "eleven-dimensional-axis-door-dual-spiral-recovery",
+                ),
+                "_site/science/papers/index.html",
+                errors,
+            )
 
         if CATALOG.exists():
             try:
