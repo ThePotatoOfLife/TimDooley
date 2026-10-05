@@ -331,7 +331,7 @@ jobs:
           shame_w=int.from_bytes(shame_art[pos+8:pos+12],"big")
           shame_h=int.from_bytes(shame_art[pos+12:pos+16],"big")
           assert shame_w >= 1920 and shame_h >= 1080, f"live Hall of Shame too small: {shame_w}x{shame_h}"
-                    assert 'id="teaching-programme"' in forge, "live Forge missing teaching programme"
+          assert 'id="teaching-programme"' in forge, "live Forge missing teaching programme"
           assert 'id="epistemic-delegation-programme"' in forge, "live Forge missing epistemic delegation programme"
           assert 'id="exploitation-language-forge"' in forge, "live Forge missing exploitation-language programme"
           for marker in required_below:
