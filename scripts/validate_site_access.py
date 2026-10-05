@@ -38,7 +38,8 @@ for token in (
     "Current World","World Map","Potatoverse CIA · Character Archive","U.S. CIA · Central Intelligence Agency","World Spiritual Bank / Mud Bank","People & Cases",
     "Project landmarks","data-site-access-menu","site-access-local-shortcuts",
     "data/house/site-access.json","data/house/public-surfaces.json","data/house/room-inhabitants.json","data/house/rooms.json",
-    "site-access-dock","site-access-panel",
+    "site-access-dock","site-access-panel","data-site-access-listen","site-access-tts-console",
+    "potato:tts-mounted","__potatoActiveTTSDrawer",
 ):
     if token not in js and token not in css:
         errors.append(f"quick-access assets missing required marker: {token}")
@@ -163,6 +164,18 @@ for token in (
 
 if "@media(max-width:680px)" not in css or ".site-access-panel{bottom:52px;width:calc(100vw - 12px)" not in css:
     errors.append("site-access narrow-screen panel contract missing")
+for token in (
+    ".site-access-tts-console",
+    ".site-access-dock [data-site-access-listen]",
+    ".site-access-tts-console .ptts-settings",
+    ".site-access-tts-console .ptts-reading",
+):
+    if token not in css:
+        errors.append(f"site-access TTS console missing style marker: {token}")
+for token in ("data-site-access-listen","setTTSOpen","ttsDrawer.expand?.()","ttsDrawer.hideUI?.()"):
+    if token not in js:
+        errors.append(f"site-access TTS dock missing behavior marker: {token}")
+
 if css.count("@media(max-width:680px)") != 1 or css.count("@media(max-width:420px)") != 1:
     errors.append("site-access responsive breakpoints must be consolidated into single blocks")
 if journey_css.count("@media(max-width:720px)") != 1:
