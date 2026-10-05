@@ -410,7 +410,7 @@ def render_mapping(data: dict, depth: int = 0, skip_keys: tuple[str, ...] = ()) 
 
 
 PREFERRED_SECTION_KEYS = (
-    "research_question", "purpose", "importance", "scope", "background", "core_thesis",
+    "reader_takeaway", "research_question", "purpose", "importance", "scope", "background", "core_thesis",
     "state_space_and_fields", "model", "model_family", "formal_model", "formalism", "formal_core",
     "recovered_master_lagrangian", "equation_context", "equations", "term_map", "mechanism",
     "methods", "method", "derivation", "derivations", "findings", "results", "strongest_result",
@@ -421,7 +421,7 @@ PREFERRED_SECTION_KEYS = (
 )
 PAPER_METADATA_KEYS = {
     "id", "title", "name", "version", "updated", "date", "first_known_date", "status", "maturity",
-    "abstract", "document_type",
+    "abstract", "document_type", "paper_subtitle",
 }
 
 
@@ -493,6 +493,8 @@ def render_paper_page(record: dict, data: dict) -> str:
     meta = " · ".join(str(bit) for bit in status_bits if bit)
     status = str(record.get("status") or "").strip()
     status_html = f'<p class="paper-status"><strong>Status:</strong> {esc(status)}</p>' if status else ""
+    subtitle = str(data.get("paper_subtitle") or "").strip()
+    subtitle_html = f'<p class="paper-subtitle">{esc(subtitle)}</p>' if subtitle else ""
     body = render_semantic_sections(data)
     source_path = "knowledge/science/" + relative_file
     return f'''<!doctype html>
@@ -510,6 +512,7 @@ def render_paper_page(record: dict, data: dict) -> str:
 <header class="paper-header">
 <p class="paper-kicker">{esc(meta)}</p>
 <h1>{esc(record['title'])}</h1>
+{subtitle_html}
 <div class="paper-chips">{fields}</div>
 <h2 class="paper-abstract-label">Abstract</h2>
 <p class="paper-abstract">{esc(record['abstract'])}</p>
@@ -540,11 +543,11 @@ CORE_PAPER_SLUGS = (
 
 def paper_shelf(record: dict) -> str:
     fields = set(record.get("fields") or [])
+    if fields.intersection({"Neuroscience", "Biology", "Chemistry"}):
+        return "Life & Mind"
     if fields.intersection({"Physics", "Cosmology & Astronomy", "Quantum Science"}):
         return "Physics & Cosmos"
-    if fields.intersection({"Neuroscience", "Biology", "Chemistry", "Psychology"}):
-        return "Life & Mind"
-    if "Information Science" in fields:
+    if fields.intersection({"Information Science", "Psychology"}):
         return "Systems & Information"
     if "Mathematics & Formal Systems" in fields:
         return "Mathematics & Methods"
@@ -600,14 +603,17 @@ def render_papers_reader(records: list[dict]) -> str:
                 f'<a href="./{esc(record["slug"])}/">Read →</a>'
                 '</article>'
             )
+        shelf_id = slugify(shelf)
+        open_attr = " open" if shelf == "Physics & Cosmos" else ""
         shelf_html.append(
-            '<section class="papers-shelf">'
-            '<div class="papers-shelf-head">'
+            f'<details class="papers-shelf" id="{esc(shelf_id)}"{open_attr}>'
+            '<summary class="papers-shelf-head">'
             f'<h2>{esc(shelf)}</h2>'
             f'<span class="papers-shelf-count">{len(members)} documents</span>'
-            '</div>'
+            '</summary>'
+            '<div class="papers-shelf-pages">'
             + "".join(entries)
-            + '</section>'
+            + '</div></details>'
         )
 
     return f'''<!doctype html>
@@ -634,6 +640,13 @@ def render_papers_reader(records: list[dict]) -> str:
 <p class="papers-section-note">Five useful entrances into the scientific side of the project. These are not the only documents; they are the clearest starting points for the recurring theory families.</p>
 <div class="core-list">{''.join(core_html)}</div>
 </section>
+<nav class="papers-index" aria-label="Paper shelves">
+<a href="#physics-cosmos">Physics &amp; Cosmos</a>
+<a href="#life-mind">Life &amp; Mind</a>
+<a href="#systems-information">Systems &amp; Information</a>
+<a href="#mathematics-methods">Mathematics &amp; Methods</a>
+<a href="#research-recovery">Research &amp; Recovery</a>
+</nav>
 <section class="papers-library" aria-labelledby="complete-library-title">
 <div class="papers-library-head">
 <div><h2 id="complete-library-title">Complete reading library</h2><p>Grouped by the question the paper mostly helps answer rather than by where its JSON happened to live. Multi-disciplinary papers appear once, under their strongest reader-facing shelf.</p></div>
