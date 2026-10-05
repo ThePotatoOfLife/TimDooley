@@ -118,18 +118,21 @@ html[data-site-floor="below"]{
 }
 
 .site-elevator[data-elevator-level="heaven"]{
+  --site-header-art:url("./header-heaven.svg");
   --site-elevator-accent:#e7cb78;
   --site-elevator-glow:rgba(231,203,120,.26);
   --site-header-art-position:50% 16%;
   --site-header-shade:rgba(8,12,20,.42);
 }
 .site-elevator[data-elevator-level="plane"]{
+  --site-header-art:url("./header-plane.svg");
   --site-elevator-accent:#9fbfcf;
   --site-elevator-glow:rgba(159,191,207,.24);
   --site-header-art-position:50% 31%;
   --site-header-shade:rgba(7,12,15,.46);
 }
 .site-elevator[data-elevator-level="below"]{
+  --site-header-art:url("./header-below.svg");
   --site-elevator-accent:#cf7446;
   --site-elevator-glow:rgba(207,116,70,.30);
   --site-header-art-position:50% 74%;
@@ -348,21 +351,12 @@ html[data-site-floor="below"]{
   z-index:-2;
   pointer-events:none;
   opacity:.94;
-  background-image:var(--site-realm-art);
+  background-image:var(--site-header-art,var(--site-realm-art));
   background-repeat:no-repeat;
   background-position:var(--site-header-art-position);
   background-size:cover;
   filter:saturate(.95) contrast(1.05);
   transform:translateZ(0);
-}
-.site-elevator[data-elevator-level="heaven"] .site-elevator-stage::before{
-  background-image:url("./header-heaven.svg");
-}
-.site-elevator[data-elevator-level="plane"] .site-elevator-stage::before{
-  background-image:url("./header-plane.svg");
-}
-.site-elevator[data-elevator-level="below"] .site-elevator-stage::before{
-  background-image:url("./header-below.svg");
 }
 .site-elevator[data-elevator-direction="up"] .site-elevator-stage::before{
   animation:site-elevator-stage-up 260ms cubic-bezier(.2,.8,.2,1);
@@ -692,13 +686,20 @@ html[data-site-floor] body.dogs-hall-page::before{
 html[data-site-floor] body.home-body{min-height:100vh}
 html[data-site-floor] body.home-body::before{content:none;display:none}
 
-/* End of canonical elevator + pixel-world stylesheet. Do not append legacy copies below this line. */
-
-
-
-
-/* Ornate illustrated desktop header — matches the finished realm-strip direction. */
+/* Desktop illustrated header skin. Shared geometry remains above; this section only upgrades presentation. */
 @media (min-width:761px){
+  .site-elevator[data-elevator-level="heaven"]{
+    --site-header-art:url("./home-heaven.avif");
+    --site-header-art-position:50% 19%;
+  }
+  .site-elevator[data-elevator-level="plane"]{
+    --site-header-art:url("./home-plane.avif");
+    --site-header-art-position:50% 48%;
+  }
+  .site-elevator[data-elevator-level="below"]{
+    --site-header-art:url("./home-below.avif");
+    --site-header-art-position:50% 76%;
+  }
   .site-elevator{
     --elevator-control-width:62px;
     --elevator-board-width:360px;
@@ -900,18 +901,6 @@ html[data-site-floor] body.home-body::before{content:none;display:none}
     background-repeat:no-repeat;
     background-size:cover;
     filter:saturate(1.07) contrast(1.09) brightness(.92);
-  }
-  .site-elevator[data-elevator-level="heaven"] .site-elevator-stage::before{
-    background-image:url("./home-heaven.avif");
-    background-position:50% 19%;
-  }
-  .site-elevator[data-elevator-level="plane"] .site-elevator-stage::before{
-    background-image:url("./home-plane.avif");
-    background-position:50% 48%;
-  }
-  .site-elevator[data-elevator-level="below"] .site-elevator-stage::before{
-    background-image:url("./home-below.avif");
-    background-position:50% 76%;
   }
   .site-elevator-stage::after{
     background:
