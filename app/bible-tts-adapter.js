@@ -134,18 +134,18 @@
     }
 
     function highlightBibleBoundary(event){
-      if(!['boundary','followchange'].includes(event.type)||!event.absoluteWord)return;
+      if(!['boundary','followchange','centerrequest'].includes(event.type)||!event.absoluteWord)return;
       const pieces=relationPieces();
       if(!pieces){pageHighlighter.clear();return}
-      if(event.sectionId==='scene'){pageHighlighter.highlight(pieces.scene.node,event.absoluteWord,'',event.followReading);return}
-      if(event.sectionId==='project'){pageHighlighter.highlight(pieces.project.node,event.absoluteWord,'',event.followReading);return}
-      if(event.sectionId==='scripture'){pageHighlighter.highlight(pieces.scripture.node,event.absoluteWord,'',event.followReading);return}
-      if(event.sectionId==='movement'){pageHighlighter.highlight(pieces.movement.node,event.absoluteWord,'',event.followReading);return}
+      if(event.sectionId==='scene'){pageHighlighter.highlight(pieces.scene.node,event.absoluteWord,'',(event.type==='centerrequest'?true:event.followReading));return}
+      if(event.sectionId==='project'){pageHighlighter.highlight(pieces.project.node,event.absoluteWord,'',(event.type==='centerrequest'?true:event.followReading));return}
+      if(event.sectionId==='scripture'){pageHighlighter.highlight(pieces.scripture.node,event.absoluteWord,'',(event.type==='centerrequest'?true:event.followReading));return}
+      if(event.sectionId==='movement'){pageHighlighter.highlight(pieces.movement.node,event.absoluteWord,'',(event.type==='centerrequest'?true:event.followReading));return}
       if(event.sectionId==='why'){
         highlightMapped(event.absoluteWord,compositeSegments([
           {...pieces.why,prefix:''},
           {...pieces.mismatch,prefix:''},
-        ]),event.followReading);
+        ]),event.type==='centerrequest'?true:event.followReading);
         return;
       }
       if(event.sectionId==='both'){
@@ -198,7 +198,7 @@
       settingsKey,
       onEvent:event=>{
         if(['chunkstart','boundary'].includes(event.type))setRelationActive(true);
-        if((event.type==='boundary'||event.type==='followchange')&&event.absoluteWord)highlightBibleBoundary(event);
+        if(['boundary','followchange','centerrequest'].includes(event.type)&&event.absoluteWord)highlightBibleBoundary(event);
         if(['complete','stop','error'].includes(event.type)){setRelationActive(false);pageHighlighter.clear()}
         if(event.type==='complete'&&continuing)void continueToNext(event.sectionId,drawer);
         if(event.type==='stop'){continuing=false;continueToggle.checked=false}
