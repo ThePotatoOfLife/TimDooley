@@ -629,7 +629,7 @@ _CONTEXT_NAV_FAMILIES = (
         ("science/papers/",),
         (
             ("Science", "science/"),
-            ("Papers", "science/papers/"),
+            ("Research Papers", "science/papers/"),
             ("Guide", "science/papers/science-project-meaning-and-equation-guide-2026-09-12/"),
             ("Physics", "science/papers/#physics-cosmos"),
             ("Life & Mind", "science/papers/#life-mind"),
@@ -644,7 +644,7 @@ _CONTEXT_NAV_FAMILIES = (
         ("science/", "life-body/", "research-lab/"),
         (
             ("Science", "science/"),
-            ("Papers", "science/papers/"),
+            ("Research Papers", "science/papers/"),
             ("Research Map", "science/research-map/"),
             ("Quantum", "science/quantum/"),
             ("Spudlight", "science/spudlight/"),

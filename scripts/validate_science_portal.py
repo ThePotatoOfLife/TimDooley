@@ -194,7 +194,7 @@ def main() -> int:
             require_markers(
                 reader_text,
                 (
-                    "SCIENCE PAPERS",
+                    "RESEARCH PAPERS",
                     "Core paper series",
                     "Complete reading library",
                     "Core paper series",

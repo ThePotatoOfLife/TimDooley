@@ -183,8 +183,8 @@ def main() -> int:
         if "science/papers/" not in science_text and './papers/' not in science_text:
             errors.append("Science hub missing Science Papers entry")
         science_nav = PAGE_NAV_CLASS.search(science_text)
-        if science_nav and "Papers" not in science_nav.group(1):
-            errors.append("Science page-nav missing Papers destination after navigation projection")
+        if science_nav and "Research Papers" not in science_nav.group(1):
+            errors.append("Science page-nav missing Research Papers destination after navigation projection")
 
     papers_path = SITE / "science" / "papers" / "index.html"
     if not papers_path.exists():
@@ -196,11 +196,11 @@ def main() -> int:
             errors.append("Science Papers reader missing canonical page-nav")
         else:
             nav_text = html.unescape(re.sub(r"<[^>]+>", " ", papers_nav.group(1)))
-            for label in ("Science", "Papers", "Guide", "Physics", "Life & Mind", "Systems", "Mathematics", "Research", "Research Map", "Sources"):
+            for label in ("Science", "Research Papers", "Guide", "Physics", "Life & Mind", "Systems", "Mathematics", "Research", "Research Map", "Sources"):
                 if label not in nav_text:
                     errors.append(f"Science Papers page-nav missing {label!r}")
-        if "SCIENCE PAPERS" not in papers_text:
-            errors.append("Science Papers reader missing reader heading")
+        if "RESEARCH PAPERS" not in papers_text:
+            errors.append("Research Papers reader missing reader heading")
 
     for rel, surface_id in CANONICAL_READER_SURFACES.items():
         path = SITE / rel

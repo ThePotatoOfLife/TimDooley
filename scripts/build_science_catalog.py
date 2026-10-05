@@ -640,7 +640,7 @@ def render_paper_page(record: dict, data: dict, related: list[dict] | None = Non
 <link rel="stylesheet" href="../../science-paper.css?v=20260911a">
 </head>
 <body><main class="paper-page">
-<nav class="page-nav paper-nav" aria-label="Science paper navigation"><a href="../">← Papers</a><a href="../../">Science</a><a href="../../../">Home</a></nav>
+<nav class="page-nav paper-nav" aria-label="Science paper navigation"><a href="../">← Research Papers</a><a href="../../">Science</a><a href="../../../">Home</a></nav>
 <header class="paper-header">
 <p class="paper-kicker">{esc(meta)}</p>
 <h1>{esc(record['title'])}</h1>
@@ -782,8 +782,8 @@ def render_papers_reader(records: list[dict]) -> str:
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Science Papers — Tim Dooley & Potato of Life</title>
-<meta name="description" content="A gathered reader for Tim Dooley and Potato of Life science papers, formal models, research notes, audits and theory-recovery documents.">
+<title>Research Papers — Tim Dooley & Potato of Life</title>
+<meta name="description" content="A gathered reader for Tim Dooley and Potato of Life research papers, formal models, research notes, audits and theory-recovery documents.">
 <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
 <link rel="canonical" href="https://thepotatooflife.github.io/TimDooley/science/papers/">
 <link rel="stylesheet" href="../science-papers.css?v=20261005b">
@@ -794,7 +794,7 @@ def render_papers_reader(records: list[dict]) -> str:
 <nav class="page-nav papers-nav" aria-label="Science papers navigation"><a href="../">← Science</a><a href="../../">Home</a></nav>
 <header class="papers-header">
 <p class="papers-kicker">Science reader · {len(records)} readable documents</p>
-<h1>SCIENCE PAPERS</h1>
+<h1>RESEARCH PAPERS</h1>
 <p class="papers-lede">The scientific work gathered onto one reading table: theories, formal notes, research programmes, audits and recovered model lineages. Open a title and the record becomes a paper—black ink on a warm sheet, with equations, figures, status and provenance kept visible.</p>
 <p class="papers-rule"><strong>Reader rule:</strong> the paper treatment is a reading format, not a scientific endorsement. Recovered Tim material, later formalization, established external science and speculative extension remain distinct inside the documents.</p>
 </header>
