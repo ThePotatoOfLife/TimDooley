@@ -130,7 +130,7 @@
   const ttsMount=wrapper.querySelector('[data-site-access-tts-mount]');
   const ttsCloseBtn=wrapper.querySelector('.site-access-tts-close');
   const closeBtn=wrapper.querySelector('.site-access-close');
-  let ttsDrawer=null;
+  let ttsDrawer=null,ttsObserver=null;
   let returnFocus=menuBtn;
   wrapper.querySelectorAll('[data-site-access-route]').forEach(a=>{
     const r=a.getAttribute('data-site-access-route');
@@ -240,6 +240,17 @@
     content.className='site-access-results';
     content.innerHTML=rows.length?rows.map(e=>'<a class="site-access-result" href="'+esc(href(e.route))+'"><span><b>'+esc(e.label)+'</b><small>'+esc(e.note||'')+'</small>'+(e.context?'<small class="site-access-context">'+esc(e.context)+'</small>':'')+'</span><em>'+esc(e.kind||'result')+'</em></a>').join(''):'<div class="site-access-empty">No quick result. Try a broader word or open A–Z / Explore.</div>';
   };
+  const syncTTSState=()=>{
+    if(!ttsDrawer)return;
+    const speech=ttsDrawer.engine?.state||ttsDrawer.element?.dataset?.speech||'idle';
+    const active=speech==='speaking'||speech==='paused';
+    listenBtn.hidden=false;
+    listenBtn.textContent=speech==='speaking'?'Listening':speech==='paused'?'Paused':'Listen';
+    listenBtn.dataset.readerState=speech;
+    listenBtn.setAttribute('aria-pressed',String(active));
+    listenBtn.title=speech==='speaking'?'Reader is active · open controls':speech==='paused'?'Reader is paused · open controls':'Open read-aloud controls';
+    if(ttsConsole)ttsConsole.dataset.readerState=speech;
+  };
   const attachTTS=detail=>{
     const drawer=detail?.drawer||window.__potatoActiveTTSDrawer;
     const host=detail?.element||drawer?.element;
@@ -247,8 +258,12 @@
     ttsDrawer=drawer;
     if(host.parentElement!==ttsMount)ttsMount.appendChild(host);
     host.classList.add('ptts-docked');
-    listenBtn.hidden=false;
-    listenBtn.textContent=drawer.engine?.state==='speaking'?'Listening':'Listen';
+    ttsObserver?.disconnect?.();
+    if(typeof MutationObserver!=='undefined'){
+      ttsObserver=new MutationObserver(syncTTSState);
+      ttsObserver.observe(host,{attributes:true,attributeFilter:['data-speech','data-state','data-follow']});
+    }
+    syncTTSState();
     return true;
   };
   const setTTSOpen=open=>{
@@ -259,6 +274,8 @@
     listenBtn.setAttribute('aria-expanded',String(open));
     if(open)ttsDrawer.expand?.();
     else ttsDrawer.hideUI?.();
+    wrapper.dataset.readerOpen=open?'true':'false';
+    syncTTSState();
     publishClearance();
     return true;
   };
