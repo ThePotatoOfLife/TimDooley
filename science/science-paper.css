@@ -514,6 +514,9 @@ body{margin:0;background:
   .paper-related-grid{grid-template-columns:1fr 1fr 1fr!important}
   a{color:inherit!important;text-decoration:none!important}
   p,li{orphans:3;widows:3}
+  .paper-related{break-before:auto}
+  .paper-source{break-before:auto}
+  .paper-source-path{font-size:7.5pt!important}
 }
 
 /* Final reader edge-case polish */
@@ -541,9 +544,4 @@ body{margin:0;background:
   .paper-section h2,.paper-source h2{font-size:24px}
   .paper-block h3{font-size:19px}
   .paper-content>.paper-section{margin-bottom:30px;padding-bottom:25px}
-}
-@media print{
-  .paper-related{break-before:auto}
-  .paper-source{break-before:auto}
-  .paper-source-path{font-size:7.5pt!important}
 }

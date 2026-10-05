@@ -605,7 +605,6 @@ def render_paper_toc(data: dict) -> str:
         ("formalism", "Formalism"),
         ("formal_core", "Formal core"),
         ("equation_context", "Equation guide"),
-        ("equations", "Equations"),
         ("term_map", "Symbols"),
         ("methods", "Methods"),
         ("method", "Method"),
@@ -621,6 +620,7 @@ def render_paper_toc(data: dict) -> str:
         ("external_references", "References"),
         ("references", "References"),
         ("sources", "Sources"),
+        ("equations", "Equations"),
         ("paper", "Paper"),
     )
     entries = []
@@ -634,7 +634,7 @@ def render_paper_toc(data: dict) -> str:
         seen_labels.add(label)
         target = "paper-figures" if key == "paper_figures" else "paper-section-" + slugify(key)
         entries.append(f'<a href="#{esc(target)}">{esc(label)}</a>')
-        if len(entries) >= 10:
+        if len(entries) >= 12:
             break
     if len(entries) < 2:
         return ""
