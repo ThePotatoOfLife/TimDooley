@@ -156,6 +156,7 @@ textarea:focus-visible,
   margin:0 0 32px;
 }
 html[data-site-floor] .page-header{
+  max-width:none;
   padding:clamp(18px,2.5vw,28px);
   border:1px solid var(--site-pane-line);
   border-radius:var(--site-radius-lg);
