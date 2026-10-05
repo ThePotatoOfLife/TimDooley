@@ -210,6 +210,17 @@ if "world-domain-page" not in law_page_text or "world-domain-page" not in econom
     errors.append("Law and Economy must both opt into the shared world-domain-page scope")
 
 for rel, modifier in (
+    ("questions/index.html", "questions-page"),
+    ("index-a-z/index.html", "az-page"),
+):
+    page_path = ROOT / rel
+    page_text = page_path.read_text(encoding="utf-8", errors="ignore") if page_path.exists() else ""
+    if re.search(r"<style\b", page_text, flags=re.I):
+        errors.append(f"{rel} must use shared app/discovery-reader.css instead of inline structural CSS")
+    if "app/discovery-reader.css" not in page_text or "discovery-page" not in page_text or modifier not in page_text:
+        errors.append(f"{rel} missing shared discovery reader ownership/modifier")
+
+for rel, modifier in (
     ("faq/index.html", "faq-home"),
     ("faq/all/index.html", "faq-archive"),
     ("faq/all/god/index.html", "faq-god"),
