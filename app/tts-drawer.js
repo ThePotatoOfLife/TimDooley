@@ -258,7 +258,7 @@
     const closed=el('button','ptts-trigger','🔊 '+triggerLabel);closed.type='button';closed.setAttribute('aria-expanded','false');closed.setAttribute('aria-label',triggerLabel);
     const panel=el('div','ptts-panel');panel.hidden=true;
     const rail=el('div','ptts-rail');
-    const collapse=button('Collapse reader','⌃');
+    const collapse=button('Collapse reader','⌃');collapse.classList.add('ptts-collapse');
     const play=button('Play','▶');const pause=button('Pause','Ⅱ');const stop=button('Stop','■');
     const scope=el('select','ptts-select');scope.setAttribute('aria-label','Reading scope');
     const voice=el('select','ptts-select ptts-voice');voice.setAttribute('aria-label','Voice');
@@ -302,7 +302,7 @@
 
     function setState(next){
       state=next;host.dataset.state=state;
-      const open=state!=='closed';closed.hidden=open;panel.hidden=!open;viewport.hidden=state!=='expanded';closed.setAttribute('aria-expanded',String(open));expand.textContent=state==='expanded'?'▤':'▣';expand.setAttribute('aria-label',state==='expanded'?'Compact reading view':'Expand reading view');
+      const open=state!=='closed';closed.hidden=open;panel.hidden=!open;viewport.hidden=state!=='expanded';closed.setAttribute('aria-expanded',String(open));expand.textContent=state==='expanded'?'▤ Compact':'▣ Text';expand.setAttribute('aria-label',state==='expanded'?'Compact reading view':'Expand reading view');
     }
 
     function updateScope(){
