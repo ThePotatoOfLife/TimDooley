@@ -1,0 +1,79 @@
+/* Shared science reader primitives.
+   Science pages share evidence callouts, equation surfaces and card grids while
+   preserving their distinct subject matter and provenance language. */
+
+.science-reader .grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:14px;
+  margin:18px 0 30px;
+}
+
+.science-reader .card{
+  min-width:0;
+  padding:18px;
+  border:1px solid var(--site-pane-line);
+  border-radius:12px;
+  background:var(--site-pane-soft);
+  box-shadow:0 8px 22px rgba(0,0,0,.10);
+}
+
+.science-reader .card :is(h2,h3,strong):first-child{
+  color:var(--site-gold);
+}
+
+.science-reader .card p{
+  color:#cbd1c8;
+  line-height:1.6;
+}
+
+.science-reader .eq{
+  margin:12px 0;
+  padding:14px 16px;
+  overflow:auto;
+  border:1px solid var(--site-pane-line);
+  border-radius:12px;
+  background:var(--site-pane);
+  color:#e7e2d8;
+  font-family:var(--site-font-mono);
+  font-size:13px;
+  line-height:1.55;
+  white-space:pre-wrap;
+}
+
+.science-reader .note{
+  margin:18px 0 24px;
+  padding:14px 16px;
+  border:1px solid var(--site-pane-line);
+  border-left:3px solid var(--site-gold);
+  border-radius:10px;
+  background:var(--site-pane-soft);
+  color:#d4d0c7;
+  line-height:1.58;
+}
+
+.science-reader>h2,
+.science-reader>section>h2{
+  margin-top:2.5rem;
+  color:var(--site-gold);
+  font:400 var(--site-text-section)/1.1 var(--site-font-serif);
+}
+
+.science-reader>h3,
+.science-reader>section>h3{
+  margin-top:1.7rem;
+  font:400 var(--site-text-subsection)/1.2 var(--site-font-serif);
+}
+
+.science-reader .tag{
+  color:var(--site-faint);
+  font-size:.76rem;
+  font-weight:700;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+}
+
+@media(max-width:700px){
+  .science-reader .grid{grid-template-columns:1fr}
+  .science-reader .eq{font-size:12px}
+}
