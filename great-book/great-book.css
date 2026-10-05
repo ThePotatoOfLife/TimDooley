@@ -340,11 +340,3 @@
   .gb-book-stage .gb-document::after{display:none}
 }
 
-.gb-book-stage .gb-slot[data-loaded="true"]{
-  content-visibility:auto;
-  contain-intrinsic-size:760px;
-}
-.gb-book-stage .gb-slot[data-loaded="false"],
-.gb-book-stage .gb-slot[data-loaded="loading"]{
-  contain:layout paint;
-}
