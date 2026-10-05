@@ -631,7 +631,20 @@ _CONTEXT_NAV_FAMILIES = (
         ),
     ),
     (
-        ("context/culture/", "context/"),
+        ("context/source-authority/",),
+        (
+            ("Sources", "context/source-authority/"),
+            ("Tim Evidence", "tim-dooley/evidence/"),
+            ("Public Witness", "tim-dooley/public-witness/"),
+            ("Timeline", "timeline/"),
+            ("Story", "tim-dooley/story/"),
+            ("Research Lab", "research-lab/"),
+            ("FAQ", "faq/"),
+            ("A–Z", "index-a-z/"),
+        ),
+    ),
+    (
+        ("context/culture/",),
         (
             ("Culture", "context/culture/"),
             ("Turbles", "context/culture/turbles/"),
@@ -729,11 +742,22 @@ def _route_matches(rel: str, target: str) -> bool:
 def _contextual_nav_anchors(page: Path) -> list[str]:
     rel = page.relative_to(OUT).as_posix()
     for prefixes, entries in _CONTEXT_NAV_FAMILIES:
-        if any(rel.startswith(prefix) for prefix in prefixes):
-            return [
-                _nav_anchor(page, label, target, current=_route_matches(rel, target), cls="page-nav-subject")
-                for label, target in entries
-            ]
+        if not any(rel.startswith(prefix) for prefix in prefixes):
+            continue
+        matching = [
+            (label, target)
+            for label, target in entries
+            if _route_matches(rel, target)
+        ]
+        current_target = max(
+            (target for _, target in matching),
+            key=len,
+            default=None,
+        )
+        return [
+            _nav_anchor(page, label, target, current=(target == current_target), cls="page-nav-subject")
+            for label, target in entries
+        ]
     return []
 
 
