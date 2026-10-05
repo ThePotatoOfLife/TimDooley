@@ -126,6 +126,7 @@ function installNavigator(map, data) {
   if (document.getElementById(ROOT_ID)) return;
   const wrap = document.querySelector('.mapwrap');
   if (!wrap) return;
+  const coordinatedLayout = Boolean(window.__potatoAtlasUILayout);
   const levels = [...(data.levels || [])].sort((a,b)=>b.dimension-a.dimension);
   const root = document.createElement('div');
   root.id = ROOT_ID;
@@ -156,7 +157,12 @@ function installNavigator(map, data) {
   traffic.style.cssText='font-size:8px;line-height:1.3;text-align:center;color:#aab4aa;border-top:1px solid #273333;padding-top:5px';
   traffic.innerHTML='<span style="color:#dff8ff">↑ convergence · seed · virtue · light</span><br><span style="color:#aa9982">↓ dispersion · debt · ash · strife</span>';
   root.appendChild(traffic);
-  wrap.appendChild(root);
+  if (coordinatedLayout) {
+    root.dataset.layoutHosted = '1';
+    root.hidden = true;
+  } else {
+    wrap.appendChild(root);
+  }
   const tint = createTint();
 
   function updateButtons(dimension) {
@@ -200,7 +206,11 @@ function installNavigator(map, data) {
   const legacy = new URL(location.href).searchParams.get('axisLevel');
   const requested = Number(new URL(location.href).searchParams.get('axisD') || (legacy !== null ? Number(legacy)+4 : DEFAULT_DIMENSION));
   setDimension(levelByDimension(data,requested)?.dimension ?? DEFAULT_DIMENSION,{silentCamera:true,silentInspector:true});
-  window.addEventListener('atlas-axis-open',()=>{root.style.display='block';setDimension(5);focusNorth();});
+  window.addEventListener('atlas-axis-open',()=>{
+    if (!coordinatedLayout) root.style.display='block';
+    setDimension(5);
+    focusNorth();
+  });
 }
 
 async function boot(){
