@@ -17,7 +17,7 @@
 .faq-page .topics a,
 .faq-page .faq-groups a{
   border:1px solid var(--site-line);
-  border-radius:999px;
+  border-radius:var(--site-radius-pill);
   padding:7px 11px;
   color:var(--site-muted);
   text-decoration:none;
@@ -71,7 +71,7 @@
   margin:22px 0;
   padding:16px 18px;
   border:1px solid var(--site-line);
-  border-radius:12px;
+  border-radius:var(--site-radius);
   background:color-mix(in srgb,var(--site-panel) 72%,transparent);
 }
 .faq-home .ontology strong{color:var(--site-gold)}
@@ -95,7 +95,7 @@
 .faq-home .search-answer{
   padding:15px;
   border:1px solid var(--site-line);
-  border-radius:12px;
+  border-radius:var(--site-radius);
   background:color-mix(in srgb,var(--site-panel) 68%,transparent);
 }
 .faq-home .search-answer h3{
