@@ -322,3 +322,19 @@ body{margin:0;background:
   margin-bottom:12px;
 }
 .paper-figure img{max-height:760px;object-fit:contain}
+
+.paper-authors{
+  margin:-7px 0 16px;
+  color:var(--paper-ink);
+  font:600 11px/1.45 var(--site-font-sans);
+  letter-spacing:.025em;
+}
+.paper-keywords{
+  margin:13px 0 0;
+  color:var(--paper-faint);
+  font:500 10px/1.55 var(--site-font-sans);
+}
+.paper-keywords strong{
+  color:var(--paper-muted);
+  font-weight:750;
+}
