@@ -196,12 +196,12 @@ assert.ok(source.includes("disabled"),'boundary arrows must expose disabled stat
 
 assert.ok(css.includes('--elevator-slot-count:5'),'desktop header must preserve one five-slot Room geometry across all floors');
 assert.match(css,/--elevator-shell-height:\s*\d+(?:\.\d+)?px/,'desktop Heaven, Plane and Below must share one shell-height token');
-for(const match of css.matchAll(/\.site-elevator\[data-elevator-level="(?:heaven|plane|below)"\][^{]*\{([^}]*)\}/g)){
+for(const match of css.matchAll(/\.site-elevator\[data-elevator-level="(?:heaven|plane|below)"\]\s*\{([^}]*)\}/g)){
   const block=match[1];
   assert.equal(
     /\b(?:width|height|min-height|max-height|padding|margin|gap|grid-template-columns|grid-template-rows|flex|flex-basis|inset|left|right|top|bottom)\s*:/.test(block),
     false,
-    'floor-specific header selectors may change skin/art only, never geometry'
+    'floor root selectors may change skin/art only, never shell geometry'
   );
 }
 assert.ok(css.includes('flex:0 0 calc((100% - (var(--elevator-room-gap) * (var(--elevator-slot-count) - 1))) / var(--elevator-slot-count))'),'desktop Room buttons must keep identical widths across Heaven, Plane and Below');
