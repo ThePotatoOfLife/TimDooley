@@ -50,3 +50,7 @@
 .science-featured-paper a{white-space:nowrap;color:var(--site-gold);font-size:11px;text-decoration:none}
 @media(max-width:760px){.science-featured-grid{grid-template-columns:1fr}}
 @media(max-width:620px){.science-featured-paper{grid-template-columns:1fr;align-items:start}.science-featured-paper a{justify-self:start}}
+
+.science-reader-door{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:16px 0 0;padding:12px 0;border-top:1px solid var(--site-line)}
+.science-reader-door a{color:var(--site-gold);font:700 11px/1.2 var(--site-font-sans);text-decoration:none;text-transform:uppercase;letter-spacing:.045em}
+.science-reader-door span{color:var(--site-faint);font-size:11px}
