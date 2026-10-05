@@ -188,13 +188,13 @@ jobs:
           print("Live provenance verified:",actual)
           PY
 
-          for route in "" "elevator/" "tim-dooley/" "religion/" "science/" "world/" "traditions/bible/" "context/culture/" "below/" "below/dogs/" "rooms/potatoverse-canon/beings/potatoes/" "shadow-farm/" "rooms/archive-sources/" "rooms/research-lab/"; do
+          for route in "" "elevator/" "tim-dooley/" "religion/" "science/" "science/papers/" "science/papers/advanced-retarded-door-handshake-recovery/" "world/" "traditions/bible/" "context/culture/" "below/" "below/dogs/" "rooms/potatoverse-canon/beings/potatoes/" "shadow-farm/" "rooms/archive-sources/" "rooms/research-lab/"; do
             safe_name="${route//\//_}"
             [ -n "$safe_name" ] || safe_name="home"
             fetch_live "${base}${route}" ".live-smoke/${safe_name}.html"
           done
 
-          for asset in             "app/site-elevator.js"             "app/site-elevator.css"             "app/elevator-page.js"             "app/elevator-page.css"             "app/header-heaven.svg"             "app/header-plane.svg"             "app/header-below.svg"             "app/house-journey.js"             "app/house-journey.css"             "app/home-heaven.avif"             "app/home-plane.avif"             "app/home-below.avif"             "app/hall-of-shame.avif"             "app/hall-of-heroes.avif"             "app/dogs-hall.css"             "app/potatoes-hall.css"             "app/lower-layer.css"             "data/house/elevator-spatial-projection.json" \
+          for asset in             "science/science-papers.css"             "science/science-paper.css"             "assets/visuals/science-time-door-handshake.svg"             "app/site-elevator.js"             "app/site-elevator.css"             "app/elevator-page.js"             "app/elevator-page.css"             "app/header-heaven.svg"             "app/header-plane.svg"             "app/header-below.svg"             "app/house-journey.js"             "app/house-journey.css"             "app/home-heaven.avif"             "app/home-plane.avif"             "app/home-below.avif"             "app/hall-of-shame.avif"             "app/hall-of-heroes.avif"             "app/dogs-hall.css"             "app/potatoes-hall.css"             "app/lower-layer.css"             "data/house/elevator-spatial-projection.json" \
             "knowledge/core/spudlight-field-manual.json" \
             "knowledge/core/lower-field-orientation.json" \
             "knowledge/world/lower-field-population-severity-estimate.json" \
@@ -236,6 +236,8 @@ jobs:
           dedicated_elevator_css=Path(".live-smoke/app_elevator-page.css").read_text(encoding="utf-8",errors="replace")
           religion=Path(".live-smoke/religion_.html").read_text(encoding="utf-8",errors="replace")
           science=Path(".live-smoke/science_.html").read_text(encoding="utf-8",errors="replace")
+          science_papers=Path(".live-smoke/science_papers_.html").read_text(encoding="utf-8",errors="replace")
+          science_paper=Path(".live-smoke/science_papers_advanced-retarded-door-handshake-recovery_.html").read_text(encoding="utf-8",errors="replace")
           below=Path(".live-smoke/below_.html").read_text(encoding="utf-8",errors="replace")
           shadow=Path(".live-smoke/shadow-farm_.html").read_text(encoding="utf-8",errors="replace")
           culture=Path(".live-smoke/context_culture_.html").read_text(encoding="utf-8",errors="replace")
@@ -243,6 +245,16 @@ jobs:
           assert "home-page.css?v=" in home, "live Home missing fingerprinted homepage CSS"
           assert "site-elevator.css?v=" in home, "live Home missing fingerprinted elevator CSS"
           assert "site-elevator.js?v=" in home, "live Home missing fingerprinted elevator JS"
+          assert 'href="./papers/"' in science or 'href="papers/"' in science, "live Science missing Papers reader entrance"
+          assert 'SCIENCE PAPERS' in science_papers, "live Science Papers reader missing heading"
+          assert 'class="page-nav papers-nav"' in science_papers, "live Science Papers reader missing canonical subheader"
+          assert 'Core paper series' in science_papers, "live Science Papers reader missing core series"
+          assert 'Complete reading library' in science_papers, "live Science Papers reader missing complete library"
+          assert 'science-papers.css' in science_papers, "live Science Papers reader missing parchment stylesheet"
+          assert 'class="paper-page"' in science_paper, "live generated Science paper missing paper surface"
+          assert 'class="page-nav paper-nav"' in science_paper, "live generated Science paper missing canonical paper subheader"
+          assert 'science-time-door-handshake.svg' in science_paper, "live featured Science paper missing figure"
+          assert 'class="paper-toc"' in science_paper, "live featured Science paper missing contents navigation"
           assert 'class="elevator-page-shell"' in elevator_page, "live dedicated Elevator missing its page shell"
           assert "elevator-page.css" in elevator_page, "live dedicated Elevator missing dedicated CSS"
           assert "elevator-page.js" in elevator_page, "live dedicated Elevator missing dedicated runtime"
