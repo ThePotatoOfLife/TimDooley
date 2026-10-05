@@ -320,3 +320,14 @@ body{
   .papers-orientation{grid-template-columns:1fr}
   .papers-orientation-figure img{max-height:260px}
 }
+
+.paper-entry-figure-mark{
+  display:inline-block;
+  margin-top:6px;
+  padding:2px 5px;
+  border:1px solid var(--line);
+  color:var(--accent);
+  font:750 7px/1 var(--site-font-sans);
+  text-transform:uppercase;
+  letter-spacing:.06em;
+}
