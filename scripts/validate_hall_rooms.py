@@ -69,6 +69,11 @@ def main() -> int:
         if marker not in shame:
             errors.append(f"Hall of Shame missing marker: {marker}")
 
+    if 'data-site-floor="below"' not in shame:
+        errors.append("Hall of Shame must declare Below first-paint floor ownership")
+    if 'data-site-floor="heaven"' not in hero:
+        errors.append("Hall of Heroes must declare Heaven first-paint floor ownership")
+
     if 'url("./hall-of-heroes.avif")' not in hero_css:
         errors.append("Hall of Heroes CSS missing approved artwork reference")
     if 'url("./hall-of-shame.avif")' not in shame_css:
