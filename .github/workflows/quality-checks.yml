@@ -323,7 +323,7 @@ jobs:
 
   validate:
     name: validate
-    if: always()
+    if: ${{ always() && !cancelled() }}
     needs: [core, world_map, content, build]
     runs-on: ubuntu-latest
     steps:
