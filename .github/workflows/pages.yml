@@ -97,7 +97,7 @@ jobs:
           python - <<'PY'
           import json, os
           from pathlib import Path
-          primary_routes=['tim-dooley/','potatoism/','religion/','philosophy/','science/','world/']
+          primary_routes=['tim-dooley/','potatoism/','religion/','philosophy/','science/','world/','garden/']
           for route in primary_routes:
               assert Path("_site", route, "index.html").is_file(), route
           p=Path("_site/build-provenance.json")
@@ -188,13 +188,13 @@ jobs:
           print("Live provenance verified:",actual)
           PY
 
-          for route in "" "elevator/" "tim-dooley/" "religion/" "science/" "science/papers/" "science/papers/advanced-retarded-door-handshake-recovery/" "world/" "traditions/bible/" "context/culture/" "below/" "below/dogs/" "rooms/potatoverse-canon/beings/potatoes/" "shadow-farm/" "rooms/archive-sources/" "rooms/research-lab/"; do
+          for route in "" "elevator/" "garden/" "tim-dooley/" "religion/" "science/" "science/papers/" "science/papers/advanced-retarded-door-handshake-recovery/" "world/" "traditions/bible/" "context/culture/" "below/" "below/dogs/" "rooms/potatoverse-canon/beings/potatoes/" "shadow-farm/" "rooms/archive-sources/" "rooms/research-lab/"; do
             safe_name="${route//\//_}"
             [ -n "$safe_name" ] || safe_name="home"
             fetch_live "${base}${route}" ".live-smoke/${safe_name}.html"
           done
 
-          for asset in             "science/science-papers.css"             "science/science-paper.css"             "assets/visuals/science-time-door-handshake.svg"             "app/site-elevator.js"             "app/site-elevator.css"             "app/elevator-page.js"             "app/elevator-page.css"             "app/header-heaven.svg"             "app/header-plane.svg"             "app/header-below.svg"             "app/house-journey.js"             "app/house-journey.css"             "app/home-heaven.avif"             "app/home-plane.avif"             "app/home-below.avif"             "app/hall-of-shame.avif"             "app/hall-of-heroes.avif"             "app/dogs-hall.css"             "app/potatoes-hall.css"             "app/lower-layer.css"             "data/house/elevator-spatial-projection.json" \
+          for asset in             "science/science-papers.css"             "science/science-paper.css"             "assets/visuals/science-time-door-handshake.svg"             "app/site-elevator.js"             "app/site-elevator.css"             "app/elevator-page.js"             "app/elevator-page.css"             "app/garden-page.js"             "app/garden-page.css"             "assets/visuals/garden-eden-map.svg"             "app/header-heaven.svg"             "app/header-plane.svg"             "app/header-below.svg"             "app/house-journey.js"             "app/house-journey.css"             "app/home-heaven.avif"             "app/home-plane.avif"             "app/home-below.avif"             "app/hall-of-shame.avif"             "app/hall-of-heroes.avif"             "app/dogs-hall.css"             "app/potatoes-hall.css"             "app/lower-layer.css"             "data/house/elevator-spatial-projection.json" \
             "knowledge/core/spudlight-field-manual.json" \
             "knowledge/core/lower-field-orientation.json" \
             "knowledge/world/lower-field-population-severity-estimate.json" \
@@ -234,6 +234,10 @@ jobs:
           elevator_page=Path(".live-smoke/elevator_.html").read_text(encoding="utf-8",errors="replace")
           dedicated_elevator_js=Path(".live-smoke/app_elevator-page.js").read_text(encoding="utf-8",errors="replace")
           dedicated_elevator_css=Path(".live-smoke/app_elevator-page.css").read_text(encoding="utf-8",errors="replace")
+          garden=Path(".live-smoke/garden_.html").read_text(encoding="utf-8",errors="replace")
+          garden_js=Path(".live-smoke/app_garden-page.js").read_text(encoding="utf-8",errors="replace")
+          garden_css=Path(".live-smoke/app_garden-page.css").read_text(encoding="utf-8",errors="replace")
+          garden_art=Path(".live-smoke/assets_visuals_garden-eden-map.svg").read_text(encoding="utf-8",errors="replace")
           religion=Path(".live-smoke/religion_.html").read_text(encoding="utf-8",errors="replace")
           science=Path(".live-smoke/science_.html").read_text(encoding="utf-8",errors="replace")
           science_papers=Path(".live-smoke/science_papers_.html").read_text(encoding="utf-8",errors="replace")
@@ -261,6 +265,15 @@ jobs:
           assert "elevator-page.js" in elevator_page, "live dedicated Elevator missing dedicated runtime"
           assert "site-elevator.css?v=" in elevator_page, "live dedicated Elevator must reuse the canonical realm canvas CSS"
           assert "site-elevator.js" not in elevator_page, "live dedicated Elevator must not mount the universal mini-elevator runtime"
+          assert 'data-site-floor="heaven"' in garden, "live Garden missing first-paint Heaven floor"
+          assert 'data-garden-map' in garden, "live Garden missing interactive map"
+          assert 'data-garden-hotspot="life"' in garden, "live Garden missing Tree of Life hotspot"
+          assert 'data-garden-hotspot="mudtree"' in garden, "live Garden missing Mud Tree hotspot"
+          assert 'data-garden-hotspot="gate"' in garden, "live Garden missing Gate hotspot"
+          assert "Garden / Eden" in elevator_page, "live dedicated Elevator missing Garden / Eden feature"
+          assert "applyLens" in garden_js, "live Garden runtime missing lens controller"
+          assert ".garden-map-stage" in garden_css and ".garden-guide" in garden_css, "live Garden CSS missing map/guide surfaces"
+          assert "Tree of Life" in garden_art and "Mud Tree" in garden_art, "live Garden art missing core landmarks"
           assert "centerBtn.disabled=atCenter" in dedicated_elevator_js, "live dedicated Elevator lost dead-control protection"
           assert "journeyReplay.disabled=journey.length<2" in dedicated_elevator_js, "live dedicated Elevator lost journey-control state"
           assert "body.elevator-page-shell" in dedicated_elevator_css, "live dedicated Elevator stylesheet missing page owner"
