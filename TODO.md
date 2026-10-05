@@ -55,14 +55,14 @@ These missions remain. **What changes is how we store them: fewer, thicker, clea
 - [x] **SMOOTH-006 · Generated-reader shell integration:** stop repeating a private inline stylesheet in every generated knowledge page; use `site-system.css` plus one shared `generated-knowledge.css`, standard `.page`, `.page-nav` and `.page-header`, deterministic versioning and a regression guard.
 
 ### Next cleanup targets
-- [ ] **SMOOTH-007 · Inline-style classification:** classify remaining public `<style>` blocks as legitimate specialist geometry vs migration debt; migrate Economy, North, Paths, FAQ, Potatoism and other mature prose readers first.
-- [ ] **SMOOTH-008 · CSS family consolidation:** inspect CIA, Bible, world/Room and lower-field stylesheet families for repeated panel/card/layout rules; merge only where ownership is genuinely the same.
-- [ ] **SMOOTH-009 · Dead asset/reference audit:** identify unreferenced CSS/JS/images after dynamic-loader awareness; delete only assets proven unreachable from source, build, runtime loader and validation paths.
-- [ ] **SMOOTH-010 · Build-patcher ownership:** continue moving mature behavior out of `patch_public_navigation.py` when it belongs in source/generator ownership; keep the patcher for truly universal projection only.
+- [~] **SMOOTH-007 · Inline-style classification:** Economy, FAQ family, Questions, A–Z, Islam and Judaism are migrated out of inline structural CSS. Remaining priority: North, Paths, Potatoism and other mature prose readers; preserve specialist geometry where it is genuinely unique.
+- [~] **SMOOTH-008 · CSS family consolidation:** Law + Economy now share `world-domain-page.css`; FAQ pages share `faq-reader.css`; Questions + A–Z share `discovery-reader.css`; Islam + Judaism use `tradition-reader.css`. Continue with CIA, Bible, world/Room and lower-field families only where ownership is genuinely the same.
+- [~] **SMOOTH-009 · Dead asset/reference audit:** removed redundant `timeline-enhancements.css` and `law-page.css`, added live-source guards against retired references. Continue the dynamic-loader-aware audit before deleting any other assets.
+- [~] **SMOOTH-010 · Build-patcher ownership:** generated knowledge pages now own their shared shell directly in `build_site.py` + `generated-knowledge.css`; continue moving mature source-owned behavior out of `patch_public_navigation.py`, leaving true universal projection there.
 - [ ] **SMOOTH-011 · Shared-shell adoption:** audit public subject readers that still use bespoke `.nav`/wrapper shells and migrate suitable pages to `.page`, `.page-nav`, `.page-header` without flattening specialist tools.
-- [ ] **SMOOTH-012 · Duplicate payload detector:** add a lightweight audit for repeated large CSS/HTML payloads and exact duplicate blocks so interrupted migrations cannot silently append the same rules twice.
+- [~] **SMOOTH-012 · Duplicate payload detector:** the Timeline duplicate payload was detected and removed during consolidation; retired-asset guards now catch two known regressions. A generic large-duplicate detector is still needed.
 - [ ] **SMOOTH-013 · Responsive render audit:** browser-check the shared HUD/subheader and major migrated readers at narrow mobile, laptop pressure width and wide desktop; fix clipping, sticky-header clearance and overflow.
-- [ ] **SMOOTH-014 · Cache/version consistency:** ensure every newly shared runtime stylesheet/script is in the same deterministic fingerprint path and no hand-maintained stale query strings remain on mature public readers.
+- [~] **SMOOTH-014 · Cache/version consistency:** new shared reader styles are registered for deterministic fingerprints, and the build now fingerprints after generated pages exist. Remaining: sweep mature readers for hand-maintained stale query strings and assets outside the registry.
 
 ## The cleanup pass
 
