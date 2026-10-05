@@ -976,8 +976,8 @@ html[data-site-floor] body.home-body::before{content:none;display:none}
     font:700 18px/22px Georgia,serif;
     text-shadow:0 0 6px rgba(230,104,47,.32);
   }
-  .site-elevator[data-elevator-level="below"] .site-elevator-room[data-landmark-id="below-basin"]::before{content:"♨"}
-  .site-elevator[data-elevator-level="below"] .site-elevator-room[data-landmark-id="farm-sektur"]::before{content:"♣"}
+  .site-elevator[data-elevator-level="below"] .site-elevator-room[data-landmark-id="below"]::before{content:"♨"}
+  .site-elevator[data-elevator-level="below"] .site-elevator-room[data-landmark-id="shadow-farm"]::before{content:"♣"}
   .site-elevator[data-elevator-level="below"] .site-elevator-room[data-room-id="archive-sources"]::before{content:"Ψ"}
   .site-elevator[data-elevator-level="below"] .site-elevator-room[data-room-id="research-lab"]::before{content:"⚒"}
   .site-elevator-room:last-child::after{display:none}
