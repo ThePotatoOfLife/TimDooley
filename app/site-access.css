@@ -72,3 +72,14 @@
 .site-access-tts-console .ptts-viewport{padding:12px 14px 14px;background:linear-gradient(180deg,rgba(216,181,107,.04),transparent)}
 .site-access-tts-console .ptts-reading{max-height:240px;padding-right:6px;font-size:17px;line-height:1.62}
 .site-access-tts-console .ptts-label{color:var(--site-gold)}
+
+.site-access-tts-console .ptts-control-group::before{
+  content:attr(data-label);
+  flex:0 0 auto;
+  margin-right:2px;
+  color:var(--site-faint);
+  font:800 7px/1 var(--site-font-sans);
+  letter-spacing:.10em;
+  text-transform:uppercase;
+}
+.site-access-tts-console .ptts-settings::before{align-self:center}
