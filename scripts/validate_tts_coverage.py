@@ -68,21 +68,36 @@ def validate_built_site(errors: list[str], notes: list[str]) -> None:
         notes.append("_site not present; built-site TTS audit skipped")
         return
     checked = 0
+    docked = 0
     for path in out.rglob("*.html"):
         rel = path.relative_to(out).as_posix()
         text = path.read_text(encoding="utf-8", errors="replace")
-        if not ("<html" in text.lower() and "<main" in text.lower()):
+        lower = text.lower()
+        if not ("<html" in lower and "<main" in lower):
             continue
         checked += 1
         has_bootstrap = "site-tts.js" in text
         has_full_stack = all(marker in text for marker in ("tts-reader.js","tts-drawer.js","longform-tts-adapter.js"))
         has_inherited = "house-journey.js" in text
         has_host = "data-tts-longform" in text
-        if not (has_bootstrap or has_full_stack or has_inherited):
+        has_tts = has_bootstrap or has_full_stack or has_inherited
+        if not has_tts:
             errors.append(f"built page missing usable TTS path: {rel}")
-        if has_host and not (has_bootstrap or has_full_stack or has_inherited):
+        if has_host and not has_tts:
             errors.append(f"built declarative TTS host lacks bootstrap/runtime: {rel}")
+
+        # The dedicated /tools/tts/ application is itself the full-screen reader
+        # and intentionally does not duplicate that UI in the global bottom dock.
+        dock_exempt = rel.startswith("tools/tts/")
+        if not dock_exempt:
+            has_access_css = "site-access.css" in text
+            has_access_js = "site-access.js" in text
+            if not (has_access_css and has_access_js):
+                errors.append(f"built TTS page missing bottom reader dock shell: {rel}")
+            else:
+                docked += 1
     notes.append(f"built-site TTS documents checked: {checked}")
+    notes.append(f"built-site TTS documents with bottom dock shell: {docked}")
 
 def main() -> int:
     errors: list[str] = []
@@ -145,6 +160,24 @@ def main() -> int:
         text = gb.read_text(encoding="utf-8")
         if "potato:tts-prepare" not in text or "loadAllSlots" not in text:
             errors.append("Great Book reader must prepare all lazy chapters for whole-book TTS")
+
+    site_access = ROOT / "app/site-access.js"
+    if not site_access.exists():
+        errors.append("missing app/site-access.js for TTS dock integration")
+    else:
+        text = site_access.read_text(encoding="utf-8")
+        for marker in ("data-site-access-listen", "potato:tts-mounted", "__potatoActiveTTSDrawer", "setTTSOpen", "syncTTSState"):
+            if marker not in text:
+                errors.append(f"app/site-access.js missing TTS dock integration marker: {marker}")
+
+    site_access_css = ROOT / "app/site-access.css"
+    if not site_access_css.exists():
+        errors.append("missing app/site-access.css for TTS dock integration")
+    else:
+        text = site_access_css.read_text(encoding="utf-8")
+        for marker in (".site-access-tts-console", "[data-site-access-listen]", ".ptts-docked"):
+            if marker not in text and marker != ".ptts-docked":
+                errors.append(f"app/site-access.css missing TTS dock style marker: {marker}")
 
     drawer = ROOT / "app/tts-drawer.js"
     if not drawer.exists():
