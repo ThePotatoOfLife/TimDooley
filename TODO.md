@@ -86,6 +86,27 @@ These missions remain. **What changes is how we store them: fewer, thicker, clea
 - [ ] **SMOOTH-013 · Responsive render audit:** browser-check the shared HUD/subheader and major migrated readers at narrow mobile, laptop pressure width and wide desktop; fix clipping, sticky-header clearance and overflow.
 - [~] **SMOOTH-014 · Cache/version consistency:** new shared reader styles are registered for deterministic fingerprints, and the build now fingerprints after generated pages exist. Remaining: sweep mature readers for hand-maintained stale query strings and assets outside the registry.
 
+## Paper-cut bug & consistency audit — 2026-10-05
+
+### Fixed in this pass
+- [x] **PAPER-001 · Contextual-nav precedence:** broad route families must not shadow more specific children; `context/source-authority/` and `context/culture/` now resolve before the generic `context/` family.
+- [x] **PAPER-002 · Contextual-nav coverage gaps:** News, Paths, Context, House/Elevator and Collection/Corporium now receive subject-appropriate subheader families instead of falling back to sparse legacy nav.
+- [x] **PAPER-003 · Subheader geometry stability:** shared page navigation is one stable row, does not hover-jump, and the Elevator page no longer locally overrides shared nav gap/font/margins.
+- [x] **PAPER-004 · Universal CSS fingerprint parity:** register `site-system.css` in the primary Pages fingerprint pass as well as final shared-UI versioning so the universal shell participates in deterministic cache busting throughout the build.
+
+### Next small-bug targets
+- [ ] **PAPER-005 · Prefix-order validator:** add a regression that rejects a broad contextual-nav prefix appearing before a more-specific child prefix and rejects ambiguous first-match ownership.
+- [ ] **PAPER-006 · Exactly-one-current-link validator:** every generated top subheader should expose at most one `aria-current="page"`; nested routes must select the most-specific matching destination.
+- [ ] **PAPER-007 · Subheader ownership sweep:** find page/module styles that still restyle `.page-nav`, `.page-nav a` or a page-specific alias after `site-system.css`; move geometry/font/hover ownership back to the shared shell unless the page is a true application/tool surface.
+- [ ] **PAPER-008 · Tiny-text legibility audit:** inspect 7–9px labels in Elevator, World Map overlays, Room metadata and specialist controls at 100% and 125–150% browser zoom; raise interactive/read-critical text where it becomes illegible while preserving compact metadata where appropriate.
+- [ ] **PAPER-009 · Hard-coded floater coordinates:** search remaining application modules for independent `top/right/bottom/left` panel ownership that should register with an existing layout coordinator; remove hidden or duplicated DOM surfaces instead of merely hiding collisions with CSS.
+- [ ] **PAPER-010 · Shared-asset fingerprint coverage:** compare all universally injected CSS/JS assets against both the early build fingerprint registry and the final shared-UI registry; document intentional exceptions and add a validator for assets that can escape both.
+- [ ] **PAPER-011 · Source/build drift check:** verify source-authored nav and built contextual nav do not diverge enough to make local development misleading; either keep source nav minimally honest or provide a deterministic preview/build command in contributor docs.
+- [ ] **PAPER-012 · Specialist reader shell sweep:** inspect Ancient Religions, Christianity branch readers, remaining Tradition pages, relation rooms and Beings pages for small inline structural CSS blocks, stale one-off widths and duplicate card primitives before creating any new stylesheet family.
+- [ ] **PAPER-013 · World Map bootstrap dependency graph:** classify the ~20 sequential core startup modules as strict dependencies vs parallel-safe groups; only parallelize groups with explicit ownership tests and preserve first-interaction correctness.
+- [ ] **PAPER-014 · Horizontal-nav affordance:** on narrow widths, verify the single-row subheader gives a visible cue that more links exist offscreen without reintroducing scrollbars or a multi-row link wall.
+- [ ] **PAPER-015 · Responsive sticky-offset audit:** browser-check sticky tables/rails and deep-link anchors against the measured `--site-elevator-clearance` at mobile, 761–1180px pressure widths and wide desktop so no sticky heading lands under the HUD.
+
 ## The cleanup pass
 
 1. Inventory the repository before changing it.
