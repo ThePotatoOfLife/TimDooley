@@ -536,6 +536,8 @@ PAGE_NAV_RE = re.compile(
 )
 PAGE_NAV_ANCHOR_RE = re.compile(r'''<a\b[^>]*href=["'][^"']+["'][^>]*>.*?</a\s*>''', re.I | re.S)
 PAGE_NAV_HREF_RE = re.compile(r'''href=["']([^"']+)["']''', re.I)
+MAX_PAGE_NAV_LINKS = 6
+
 PAGE_NAV_CLASS_RE = re.compile(r'''\bclass=["']([^"']*)["']''', re.I)
 
 
@@ -732,15 +734,18 @@ def _is_current_subroom_anchor(anchor: str, page: Path) -> bool:
 
 
 def normalize_page_nav(text: str, page: Path) -> str:
-    """Project a compact discovery spine into the existing subtle sub-header.
+    """Keep the public sub-header compact and Tim-page-like.
 
-    Home and Rooms are stable anchors. An actual parent Dwelling replaces abstract
-    labels such as "Parent Dwelling" or "Spatial Room". Existing useful local links
-    remain, and a small set of governed subject Rooms is projected where helpful.
+    The universal elevator owns broad spatial navigation. The page sub-header only
+    needs local orientation: Home first, then authored nearby routes. Room pages
+    additionally retain the Rooms directory and parent Dwelling where useful.
     """
 
     if page == OUT / "index.html":
         return text
+
+    rel = page.relative_to(OUT).as_posix()
+    is_room_page = rel.startswith("rooms/")
 
     def rewrite(match: re.Match[str]) -> str:
         attrs = match.group("attrs")
@@ -749,7 +754,7 @@ def normalize_page_nav(text: str, page: Path) -> str:
         if not anchors:
             return match.group(0)
 
-        non_home: list[str] = []
+        authored: list[str] = []
         seen_hrefs: set[str] = set()
         for anchor in anchors:
             href = _anchor_href(anchor)
@@ -758,47 +763,32 @@ def normalize_page_nav(text: str, page: Path) -> str:
                 or _is_rooms_anchor(anchor)
                 or _is_redundant_architecture_anchor(anchor, page)
                 or _is_current_subroom_anchor(anchor, page)
-                or _is_philosophy_family_anchor(anchor, page)
+                or re.search(r'\baria-current=["\']page["\']', anchor, flags=re.I)
             ):
                 continue
             if href and href in seen_hrefs:
                 continue
             if href:
                 seen_hrefs.add(href)
-            non_home.append(anchor)
+            authored.append(anchor)
 
-        room_anchors: list[str] = []
-        for row in _room_nav_candidates(page):
-            href = _subroom_href(page, row)
-            target = OUT / "rooms" / "inside" / str(row.get("route_id") or row.get("id")) / "index.html"
-            if not target.exists() or href in seen_hrefs:
-                continue
-            seen_hrefs.add(href)
-            label = html.escape(_subroom_nav_label(row))
-            full_title = html.escape(str(row.get("title") or label), quote=True)
-            room_anchors.append(
-                f'<a class="page-nav-room" href="{href}" title="{full_title}">{label}</a>'
-            )
+        pieces: list[str] = [_home_anchor(page)]
 
-        has_philosophy = any(_clean_nav_label(anchor) == "Philosophy" for anchor in anchors)
-        has_metaphysics = any(_clean_nav_label(anchor) == "Potato Metaphysics" for anchor in anchors)
-        philosophy_entry = "" if has_philosophy else _philosophy_entry_anchor(page)
-        metaphysics_entry = "" if has_metaphysics else _metaphysics_entry_anchor(page)
-        rewritten = (
-            _home_anchor(page)
-            + _rooms_anchor(page)
-            + _dwelling_anchor(page)
-            + _current_subroom_anchor(page)
-            + philosophy_entry
-            + metaphysics_entry
-            + _philosophy_family_anchors(page)
-            + "".join(non_home)
-            + "".join(room_anchors)
-        )
+        if is_room_page:
+            pieces.append(_rooms_anchor(page))
+            dwelling = _dwelling_anchor(page)
+            if dwelling and not re.fullmatch(r"rooms/[^/]+/index\.html", rel):
+                pieces.append(dwelling)
+
+        for anchor in authored:
+            if len(pieces) >= MAX_PAGE_NAV_LINKS:
+                break
+            pieces.append(anchor)
+
+        rewritten = "".join(pieces[:MAX_PAGE_NAV_LINKS])
         return f"<nav{attrs}>{rewritten}</nav>"
 
     return PAGE_NAV_RE.sub(rewrite, text)
-
 
 def patch_page_navs(out: Path = OUT) -> set[Path]:
     changed: set[Path] = set()

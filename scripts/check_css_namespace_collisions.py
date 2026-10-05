@@ -126,6 +126,11 @@ for block in re.findall(r"\.nav\s*\{([^}]*)\}", style):
 if '.archive-nav{' not in style and '.archive-nav {' not in style:
     errors.append("app/style.css must own archive sidebar layout through .archive-nav")
 
+reader_path = ROOT / "app" / "reader.css"
+reader_text = reader_path.read_text(encoding="utf-8", errors="ignore") if reader_path.exists() else ""
+if re.search(r"\.page-nav\s+a\s*\{", reader_text) or re.search(r"\.page\s+a\s*,", reader_text):
+    errors.append("app/reader.css must not override shared page-nav link color; site-system.css owns the sub-header")
+
 home = HOME.read_text(encoding='utf-8', errors='ignore') if HOME.exists() else ""
 if 'id="archive-explorer"' in home:
     if 'class="archive-nav"' not in home:
@@ -186,6 +191,10 @@ for page in PILLAR_READER_PAGES:
         errors.append(f"{page.relative_to(ROOT)} missing pillar-reader scope class")
     if 'class="page-header"' not in text:
         errors.append(f"{page.relative_to(ROOT)} missing shared page-header")
+    reader_link = re.search(r'href=["\'][^"\']*/reader\.css(?:\?[^"\']*)?["\']', text, flags=re.I)
+    pillar_link = re.search(r'href=["\'][^"\']*/pillar-reader\.css(?:\?[^"\']*)?["\']', text, flags=re.I)
+    if reader_link and pillar_link and reader_link.start() > pillar_link.start():
+        errors.append(f"{page.relative_to(ROOT)} must load reader.css before pillar-reader.css so family styling wins")
     if re.search(r"<style\b", text, flags=re.I):
         errors.append(f"{page.relative_to(ROOT)} drifted back to inline structural CSS")
 
@@ -240,6 +249,10 @@ for page in GOD_CHARACTER_READER_PAGES:
         errors.append(f"{page.relative_to(ROOT)} missing god-character-reader scope class")
     if 'class="page-header"' not in text:
         errors.append(f"{page.relative_to(ROOT)} missing shared page-header")
+    reader_link = re.search(r'href=["\'][^"\']*/reader\.css(?:\?[^"\']*)?["\']', text, flags=re.I)
+    family_link = re.search(r'href=["\'][^"\']*/god-character-reader\.css(?:\?[^"\']*)?["\']', text, flags=re.I)
+    if reader_link and family_link and reader_link.start() > family_link.start():
+        errors.append(f"{page.relative_to(ROOT)} must load reader.css before god-character-reader.css so family styling wins")
     if re.search(r"<style\b", text, flags=re.I):
         errors.append(f"{page.relative_to(ROOT)} drifted back to inline structural CSS")
 
