@@ -186,6 +186,8 @@ for page in PILLAR_READER_PAGES:
         errors.append(f"{page.relative_to(ROOT)} missing pillar-reader scope class")
     if 'class="page-header"' not in text:
         errors.append(f"{page.relative_to(ROOT)} missing shared page-header")
+    if "reader.css" in text and text.find("reader.css") > text.find("pillar-reader.css"):
+        errors.append(f"{page.relative_to(ROOT)} must load reader.css before pillar-reader.css so family styling wins")
     if re.search(r"<style\b", text, flags=re.I):
         errors.append(f"{page.relative_to(ROOT)} drifted back to inline structural CSS")
 
@@ -240,6 +242,8 @@ for page in GOD_CHARACTER_READER_PAGES:
         errors.append(f"{page.relative_to(ROOT)} missing god-character-reader scope class")
     if 'class="page-header"' not in text:
         errors.append(f"{page.relative_to(ROOT)} missing shared page-header")
+    if "reader.css" in text and text.find("reader.css") > text.find("god-character-reader.css"):
+        errors.append(f"{page.relative_to(ROOT)} must load reader.css before god-character-reader.css so family styling wins")
     if re.search(r"<style\b", text, flags=re.I):
         errors.append(f"{page.relative_to(ROOT)} drifted back to inline structural CSS")
 
