@@ -338,3 +338,28 @@ body{margin:0;background:
   color:var(--paper-muted);
   font-weight:750;
 }
+
+.paper-toc{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:baseline;
+  gap:6px 12px;
+  margin:-10px 0 34px;
+  padding:10px 0 12px;
+  border-bottom:1px solid var(--paper-line);
+  color:var(--paper-faint);
+  font:650 9px/1.25 var(--site-font-sans);
+  text-transform:uppercase;
+  letter-spacing:.05em;
+}
+.paper-toc strong{
+  color:var(--paper-muted);
+  margin-right:4px;
+  font-weight:800;
+}
+.paper-toc a{
+  color:var(--paper-faint);
+  text-decoration:none;
+}
+.paper-toc a:hover,.paper-toc a:focus-visible{color:var(--paper-accent)}
+.paper-content>[id]{scroll-margin-top:84px}
