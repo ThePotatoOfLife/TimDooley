@@ -55,6 +55,17 @@ GOD_CHARACTER_READER_PAGES = [
     ROOT / "religion" / "gods-character" / "divine-tensions" / "index.html",
     ROOT / "religion" / "gods-character" / "divine-functions" / "index.html",
 ]
+SCIENCE_READER_PAGES = [
+    ROOT / "science" / name / "index.html"
+    for name in (
+        "quantum",
+        "spudlight",
+        "vibe-gates",
+        "research-map",
+        "celestial-particles",
+        "axis-11d-sun-spiral",
+    )
+]
 CANONICAL_TOKEN_LITERALS = ("#070707", "#f4f0e5", "#d8b56b", "#302d29", "#0d0d0d")
 RETIRED_GREEN_MARKERS = ("--site-green", "var(--site-green", "--green:", "#b8dc82", "#a8ce72")
 
@@ -253,6 +264,41 @@ for page in GOD_CHARACTER_READER_PAGES:
     family_link = re.search(r'href=["\'][^"\']*/god-character-reader\.css(?:\?[^"\']*)?["\']', text, flags=re.I)
     if reader_link and family_link and reader_link.start() > family_link.start():
         errors.append(f"{page.relative_to(ROOT)} must load reader.css before god-character-reader.css so family styling wins")
+    if re.search(r"<style\b", text, flags=re.I):
+        errors.append(f"{page.relative_to(ROOT)} drifted back to inline structural CSS")
+
+
+# Specialist science readers share one visual owner for equations, cards, notes
+# and headings. Quantum also participates in the canonical page shell.
+science_reader_css = ROOT / "app" / "science-reader.css"
+if not science_reader_css.exists():
+    errors.append("app/science-reader.css is missing")
+else:
+    science_reader_text = science_reader_css.read_text(encoding="utf-8", errors="ignore")
+    for marker in (
+        ".science-reader .grid",
+        ".science-reader .card",
+        ".science-reader .eq",
+        ".science-reader .note",
+        ".science-reader h2",
+    ):
+        if marker not in science_reader_text:
+            errors.append(f"science-reader.css missing family marker: {marker}")
+
+for page in SCIENCE_READER_PAGES:
+    text = page.read_text(encoding="utf-8", errors="ignore") if page.exists() else ""
+    if "science-reader.css" not in text:
+        errors.append(f"{page.relative_to(ROOT)} missing shared science-reader.css")
+    if "science-reader" not in text:
+        errors.append(f"{page.relative_to(ROOT)} missing science-reader scope class")
+    if 'class="page-nav"' not in text:
+        errors.append(f"{page.relative_to(ROOT)} missing shared page-nav")
+    if 'class="page-header"' not in text:
+        errors.append(f"{page.relative_to(ROOT)} missing shared page-header")
+    reader_link = re.search(r'href=["\'][^"\']*/reader\.css(?:\?[^"\']*)?["\']', text, flags=re.I)
+    family_link = re.search(r'href=["\'][^"\']*/science-reader\.css(?:\?[^"\']*)?["\']', text, flags=re.I)
+    if reader_link and family_link and reader_link.start() > family_link.start():
+        errors.append(f"{page.relative_to(ROOT)} must load reader.css before science-reader.css so family styling wins")
     if re.search(r"<style\b", text, flags=re.I):
         errors.append(f"{page.relative_to(ROOT)} drifted back to inline structural CSS")
 
