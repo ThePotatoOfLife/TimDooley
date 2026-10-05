@@ -37,12 +37,14 @@ body.potatoes-hall-page{
     radial-gradient(ellipse at 82% 76%,transparent 0 52px,rgba(123,148,88,.20) 53px 54px,transparent 55px),
     linear-gradient(174deg,transparent 0 58%,rgba(122,93,58,.23) 58.4% 59%,transparent 59.4%);
 }
-.potatoes-hall-page .page-header{
+.potatoes-hall-page .page-header,
+html[data-site-floor] body.potatoes-hall-page .page-header{
   position:relative;overflow:hidden;padding:40px 32px 34px;margin-top:18px;
   border:1px solid rgba(164,139,88,.34);border-bottom:3px solid rgba(117,139,78,.55);
   background:
     radial-gradient(circle at 72% 0,rgba(183,200,121,.12),transparent 34%),
     linear-gradient(135deg,rgba(18,27,18,.95),rgba(31,35,22,.92) 56%,rgba(52,40,25,.91));
+  border-radius:var(--site-radius);box-shadow:0 14px 38px rgba(0,0,0,.16);
 }
 .potatoes-hall-page .page-header:after{
   content:"ROOT · EYE · SPROUT · FRUIT · SEED";position:absolute;right:20px;bottom:12px;
@@ -72,7 +74,7 @@ body.potatoes-hall-page{
 .potatoes-hall-page .growth-map .route b{color:#b3c47d}
 .potatoes-hall-page .growth-map .route i{font-style:normal;color:#817a5e}
 .potatoes-hall-page .links a{color:#bdc984}
-@media(max-width:680px){.potatoes-hall-page .page-header{padding:40px 20px 38px}}
+@media(max-width:680px){.potatoes-hall-page .page-header,html[data-site-floor] body.potatoes-hall-page .page-header{padding:40px 20px 38px;border-radius:9px}}
 
 
 /* One Hall, rising in altitude: grounded lineage below, ceremonial Angel court above. */
@@ -981,10 +983,6 @@ body.potatoes-hall-page{
 
 
 /* Small-surface spacing polish — prevent controls and tiles from visually fusing. */
-.potatoes-hall-page .page-header{
-  border-radius:12px;
-  box-shadow:0 14px 38px rgba(0,0,0,.16);
-}
 .potatoes-hall-page .hall-door-strip{
   gap:11px;
 }
@@ -1054,16 +1052,4 @@ body.potatoes-hall-page{
   border-radius:0;
   background:transparent;
   box-shadow:none;
-}
-
-
-/* Hall header specificity guard — outrank the generic floor-pane header contract. */
-html[data-site-floor] body.potatoes-hall-page .page-header{
-  padding:40px 32px 34px;border:1px solid rgba(164,139,88,.34);border-bottom:3px solid rgba(117,139,78,.55);border-radius:12px;background:radial-gradient(circle at 72% 0,rgba(183,200,121,.12),transparent 34%),linear-gradient(135deg,rgba(18,27,18,.95),rgba(31,35,22,.92) 56%,rgba(52,40,25,.91));box-shadow:0 14px 38px rgba(0,0,0,.16);
-}
-@media(max-width:680px){
-  html[data-site-floor] body.potatoes-hall-page .page-header{
-    padding:40px 20px 38px;
-    border-radius:9px;
-  }
 }
