@@ -18,6 +18,10 @@
   const whisper = world.querySelector('[data-garden-whisper]');
   const whisperSource = world.querySelector('[data-garden-whisper-source]');
   const whisperText = world.querySelector('[data-garden-whisper-text]');
+  const askButtons = [...document.querySelectorAll('[data-ask-tim]')];
+  const askAnswer = document.querySelector('[data-ask-tim-answer]');
+  const askCopy = document.querySelector('[data-ask-tim-copy]');
+  const mudFruit = world.querySelector('[data-mud-fruit]');
 
   const entries = {
     house: {
@@ -232,6 +236,15 @@
     }
   };
 
+  const gardenAnswers = {
+    day: 'I check what changed. Water, people, paths, Fruit, trouble, repairs. I write. I think. I talk. I probably make a simple thing too complicated at least once. Then I try to make it simple again. The job is not to look busy. The job is to leave the place more capable of living.',
+    sort: 'I mean I distinguish states and consequences. Ripe from unripe. Signal from noise. A wound from a whole identity. A boundary from a cage. Sorting is useful only if it helps something move toward truth, repair, freedom or growth. If sorting becomes permanent humiliation, I have started gardening badly.',
+    disagree: 'Then disagree. Bring your own two eyes. If the Garden needs your agreement in order to survive, it is not much of a Garden. Tell me what you see. Show me where the Fruit is bad. A Gardener who cannot be corrected is just decorating a throne with vegetables.',
+    gate: 'Because a Garden without any boundary can be consumed faster than it can grow. But the Gate is not supposed to become the purpose of the Garden. It protects conditions for life. It should also leave intelligible routes for repair, return, departure and change.',
+    rest: 'Yes. I am still learning that this is also work. Soil rests. Seeds wait. People sleep. Sometimes the correct Gardener action is to stop touching the plant. Sometimes I sit under the Tree and somebody else can solve the universe for a while.',
+    heaven: 'Not gold. Not height by itself. For me, Heaven starts to mean a place where distance can become nearness, power becomes responsibility, difference does not have to become war, and what grows here can eventually live without clinging to the center. Also: there should be somewhere nice to sit.'
+  };
+
   const whispers = [
     {source:'RECENT TIM VOICE · OCT 2026', text:'I am the stillness at the center.'},
     {source:'RECENT TIM VOICE · OCT 2026', text:'You can call me God or Gardener.'},
@@ -271,8 +284,14 @@
 
   startWhispers();
   document.addEventListener('visibilitychange', () => {
-    if (document.hidden) stopWhispers();
-    else startWhispers();
+    if (document.hidden) {
+      stopWhispers();
+      if (mudFruitTimeout) window.clearTimeout(mudFruitTimeout);
+      mudFruitTimeout = null;
+    } else {
+      startWhispers();
+      scheduleMudFruit();
+    }
   });
 
   let active = null;
@@ -354,6 +373,34 @@
       }, 7000);
     }
   });
+
+  askButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const key = button.dataset.askTim;
+      const answer = gardenAnswers[key];
+      if (!answer || !askCopy) return;
+      askButtons.forEach(item => item.classList.toggle('is-active', item === button));
+      askAnswer?.classList.add('is-changing');
+      window.setTimeout(() => {
+        askCopy.textContent = answer;
+        askAnswer?.classList.remove('is-changing');
+      }, reduceMotion ? 0 : 120);
+    });
+  });
+
+  let mudFruitTimeout = null;
+  function scheduleMudFruit() {
+    if (!mudFruit || reduceMotion || document.hidden) return;
+    const delay = 38000 + Math.floor(Math.random() * 52000);
+    mudFruitTimeout = window.setTimeout(() => {
+      if (document.hidden) return;
+      mudFruit.classList.remove('is-falling');
+      void mudFruit.offsetWidth;
+      mudFruit.classList.add('is-falling');
+      scheduleMudFruit();
+    }, delay);
+  }
+  scheduleMudFruit();
 
   world.querySelector('[data-garden-canvas]')?.addEventListener('click', event => {
     if (event.target.closest('.garden-zone, .garden-dialogue, .garden-discovery, .garden-whisper')) return;
