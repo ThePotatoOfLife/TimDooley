@@ -118,3 +118,81 @@
   .source-reader .prov-row{grid-template-columns:1fr;gap:4px}
   .source-reader .prov-row::before{display:none}
 }
+
+
+/* Raw Story recovery-room extension */
+.source-reader.raw-story-reader{
+  max-width:1040px;
+  font-size:17px;
+  line-height:1.75
+}
+.raw-story-reader .page-header{max-width:900px}
+.raw-story-reader .page-header h1{
+  font-size:clamp(52px,9vw,92px);
+  line-height:.92
+}
+.raw-story-reader .lead{
+  max-width:850px;
+  color:#3f3d36;
+  font:400 clamp(21px,2.6vw,28px)/1.52 var(--site-font-serif)
+}
+.raw-story-reader .section{
+  max-width:900px;
+  margin-top:36px;
+  padding:26px 22px 28px;
+  border:1px solid var(--source-line);
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.09),transparent 23%),
+    var(--source-paper-soft);
+  box-shadow:0 12px 28px rgba(0,0,0,.08)
+}
+.raw-story-reader .section h2{
+  margin:0 0 14px;
+  color:#312b20;
+  font:400 clamp(30px,4.5vw,46px)/1.1 var(--site-font-serif)
+}
+.raw-story-reader .section h3{
+  margin:27px 0 8px;
+  color:#684e1f;
+  font:400 23px/1.25 var(--site-font-serif)
+}
+.raw-story-reader .river{
+  border-top:1px solid rgba(128,111,76,.18)
+}
+.raw-story-reader .river div{
+  display:grid;
+  grid-template-columns:150px minmax(0,1fr);
+  gap:22px;
+  padding:15px 0;
+  border-bottom:1px solid rgba(128,111,76,.16)
+}
+.raw-story-reader .river b{color:#684e1f}
+.raw-story-reader .doorline{
+  color:var(--source-muted);
+  font-size:13px
+}
+.raw-story-reader .doorline a{color:#684e1f}
+.raw-story-reader .note{
+  padding:16px 18px;
+  border:1px solid var(--source-line);
+  border-left:3px solid rgba(139,104,43,.42);
+  background:rgba(240,232,212,.34);
+  color:#5b574e
+}
+.raw-story-reader .status{
+  color:var(--source-muted);
+  font-size:11px;
+  letter-spacing:.08em;
+  text-transform:uppercase
+}
+.raw-story-reader .links{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:18px
+}
+.raw-story-reader .links a{color:#684e1f}
+@media(max-width:680px){
+  .raw-story-reader .section{padding:20px 16px}
+  .raw-story-reader .river div{grid-template-columns:1fr;gap:3px}
+}
