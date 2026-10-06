@@ -194,7 +194,7 @@ jobs:
             fetch_live "${base}${route}" ".live-smoke/${safe_name}.html"
           done
 
-          for asset in             "science/science-papers.css"             "science/science-paper.css"             "assets/visuals/science-time-door-handshake.svg"             "app/site-elevator.js"             "app/site-elevator.css"             "app/elevator-page.js"             "app/elevator-page.css"             "app/garden-page.js"             "app/garden-page.css"             "assets/visuals/garden-eden-map.svg"             "app/header-heaven.svg"             "app/header-plane.svg"             "app/header-below.svg"             "app/house-journey.js"             "app/house-journey.css"             "app/home-heaven.avif"             "app/home-plane.avif"             "app/home-below.avif"             "app/hall-of-shame.avif"             "app/hall-of-heroes.avif"             "app/dogs-hall.css"             "app/potatoes-hall.css"             "app/lower-layer.css"             "data/house/elevator-spatial-projection.json" \
+          for asset in             "science/science-papers.css"             "science/science-paper.css"             "assets/visuals/science-time-door-handshake.svg"             "app/site-elevator.js"             "app/site-elevator.css"             "app/elevator-page.js"             "app/elevator-page.css"             "app/garden-page.js"             "app/garden-page.css"             "assets/visuals/garden-eden-master.webp"             "app/header-heaven.svg"             "app/header-plane.svg"             "app/header-below.svg"             "app/house-journey.js"             "app/house-journey.css"             "app/home-heaven.avif"             "app/home-plane.avif"             "app/home-below.avif"             "app/hall-of-shame.avif"             "app/hall-of-heroes.avif"             "app/dogs-hall.css"             "app/potatoes-hall.css"             "app/lower-layer.css"             "data/house/elevator-spatial-projection.json" \
             "knowledge/core/spudlight-field-manual.json" \
             "knowledge/core/lower-field-orientation.json" \
             "knowledge/world/lower-field-population-severity-estimate.json" \
@@ -275,7 +275,7 @@ jobs:
           assert "Garden / Eden" in elevator_page, "live dedicated Elevator missing Garden / Eden feature"
           assert "[data-garden-zone]" in garden_js and "data-dialogue-line" in garden_js, "live Garden runtime missing RPG dialogue controller"
           assert ".garden-world-canvas" in garden_css and ".garden-dialogue" in garden_css and ".garden-character-tim" in garden_css, "live Garden CSS missing RPG world surfaces"
-          assert "Garden of Eden RPG map" in garden_art and "Tree of Life" in garden_art and "Tree of the Knowledge of Good and Evil" in garden_art, "live Garden art missing RPG landmarks"
+          assert len(garden_art) > 40000 and garden_art[:4] == b"RIFF" and b"WEBP" in garden_art[:16], "live Garden master artwork missing or invalid"
           assert "centerBtn.disabled=atCenter" in dedicated_elevator_js, "live dedicated Elevator lost dead-control protection"
           assert "journeyReplay.disabled=journey.length<2" in dedicated_elevator_js, "live dedicated Elevator lost journey-control state"
           assert "body.elevator-page-shell" in dedicated_elevator_css, "live dedicated Elevator stylesheet missing page owner"
