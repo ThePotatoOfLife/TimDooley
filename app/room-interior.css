@@ -185,3 +185,189 @@
   font-size:var(--site-text-caption);
 }
 .inner-home .deep-links a{color:var(--site-gold)}
+
+
+/* 2026-10-07 floor-material Room system
+   Same Room architecture, different material depending on the active floor. */
+.inner-home{
+  --room-material-bg:rgba(226,211,177,.60);
+  --room-material-soft:rgba(218,199,160,.48);
+  --room-material-line:rgba(130,99,48,.22);
+  --room-material-ink:#242019;
+  --room-material-copy:#51493d;
+  --room-material-accent:#8a6427;
+}
+html[data-site-floor="heaven"] .inner-home{
+  --room-material-bg:rgba(244,245,239,.74);
+  --room-material-soft:rgba(239,241,234,.58);
+  --room-material-line:rgba(192,170,110,.30);
+  --room-material-ink:#1f211d;
+  --room-material-copy:#4a5048;
+  --room-material-accent:#9a742b;
+}
+html[data-site-floor="plane"] .inner-home{
+  --room-material-bg:rgba(220,204,170,.70);
+  --room-material-soft:rgba(213,194,155,.54);
+  --room-material-line:rgba(128,96,47,.24);
+  --room-material-ink:#262119;
+  --room-material-copy:#554d40;
+  --room-material-accent:#866124;
+}
+html[data-site-floor="below"] .inner-home{
+  --room-material-bg:rgba(5,6,7,.70);
+  --room-material-soft:rgba(7,8,9,.56);
+  --room-material-line:rgba(202,96,49,.20);
+  --room-material-ink:#eee8df;
+  --room-material-copy:#cbc6bf;
+  --room-material-accent:#d0703b;
+}
+.inner-home .page-header,
+.inner-home .room-language,
+.inner-home>.room-essay,
+.inner-home>.room-ledger,
+.inner-home>.room-quote,
+.inner-home>.adj-grid,
+.inner-home>.actions,
+.inner-home .room-reader,
+.inner-home .room-synthesis article{
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.08),transparent 23%),
+    var(--room-material-bg);
+  border-color:var(--room-material-line);
+  color:var(--room-material-ink);
+  box-shadow:inset 0 1px rgba(255,255,255,.12),0 13px 30px rgba(0,0,0,.11);
+  backdrop-filter:blur(8px) saturate(.86)
+}
+html[data-site-floor="below"] .inner-home .page-header,
+html[data-site-floor="below"] .inner-home .room-language,
+html[data-site-floor="below"] .inner-home>.room-essay,
+html[data-site-floor="below"] .inner-home>.room-ledger,
+html[data-site-floor="below"] .inner-home>.room-quote,
+html[data-site-floor="below"] .inner-home>.adj-grid,
+html[data-site-floor="below"] .inner-home>.actions,
+html[data-site-floor="below"] .inner-home .room-reader{
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.018),transparent 24%),
+    var(--room-material-bg);
+  box-shadow:inset 0 1px rgba(255,255,255,.025),0 16px 34px rgba(0,0,0,.22)
+}
+.inner-home .page-header h1,
+.inner-home .room-reader>.lede,
+.inner-home .room-quote,
+.inner-home .room-word b{
+  color:var(--room-material-ink)
+}
+.inner-home .page-header .summary,
+.inner-home .room-reader>p,
+.inner-home .room-essay p,
+.inner-home .room-ledger p,
+.inner-home .adj small,
+.inner-home .room-word p{
+  color:var(--room-material-copy)
+}
+.inner-home .room-run strong,
+.inner-home .room-ledger h3,
+.inner-home .room-language-head h2,
+.inner-home .room-word em,
+.inner-home .adj strong,
+.inner-home .room-synthesis strong,
+.inner-home .case h3,
+.inner-home .deep-links a{
+  color:var(--room-material-accent)
+}
+.inner-home .boundary{
+  border-left-color:color-mix(in srgb,var(--room-material-accent) 45%,transparent);
+  color:var(--room-material-copy)
+}
+.inner-home .room-essay>.room-run,
+.inner-home .room-essay>.room-ledger,
+.inner-home .room-essay>section,
+.inner-home .room-essay>article,
+.inner-home .room-word,
+.inner-home .adj,
+.inner-home .case{
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.055),transparent 27%),
+    var(--room-material-soft);
+  border-color:var(--room-material-line)
+}
+html[data-site-floor="below"] .inner-home .room-essay>.room-run,
+html[data-site-floor="below"] .inner-home .room-essay>.room-ledger,
+html[data-site-floor="below"] .inner-home .room-essay>section,
+html[data-site-floor="below"] .inner-home .room-essay>article,
+html[data-site-floor="below"] .inner-home .room-word,
+html[data-site-floor="below"] .inner-home .adj,
+html[data-site-floor="below"] .inner-home .case{
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.015),transparent 27%),
+    var(--room-material-soft)
+}
+
+/* Specialist primitives moved out of one-off inline page styles. */
+.inner-home .neuro-objects{
+  margin:30px 0;
+  padding:26px 0;
+  border-top:1px solid var(--room-material-line);
+  border-bottom:1px solid var(--room-material-line)
+}
+.inner-home .neuro-objects h2{
+  font:400 clamp(28px,4vw,42px)/1.08 var(--site-font-serif);
+  color:var(--room-material-accent);
+  margin:4px 0 10px
+}
+.inner-home .neuro-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(245px,1fr));
+  gap:9px;
+  margin-top:16px
+}
+.inner-home .neuro-card{
+  border:1px solid var(--room-material-line);
+  border-radius:11px;
+  padding:14px;
+  background:var(--room-material-soft)
+}
+.inner-home .neuro-card em{
+  font-style:normal;color:var(--room-material-accent);
+  font-size:8px;text-transform:uppercase;letter-spacing:.08em
+}
+.inner-home .neuro-card h3{
+  font:400 18px/1.15 var(--site-font-serif);
+  color:var(--room-material-accent);margin:4px 0 6px
+}
+.inner-home .neuro-card p{
+  font-size:10px;line-height:1.5;color:var(--room-material-copy);margin:0
+}
+.inner-home .neuro-card a{
+  display:inline-block;margin-top:9px;color:var(--room-material-accent);
+  font-size:9px;text-decoration:none;border-bottom:1px solid var(--room-material-line)
+}
+.inner-home .eq{
+  font:400 clamp(20px,2.8vw,31px)/1.5 var(--site-font-serif);
+  color:var(--room-material-accent);
+  border-top:1px solid var(--room-material-line);
+  border-bottom:1px solid var(--room-material-line);
+  padding:22px 0;margin:26px 0;overflow-wrap:anywhere
+}
+.inner-home .math-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:9px;
+  margin:18px 0 28px
+}
+.inner-home .math-grid article{
+  border:1px solid var(--room-material-line);
+  border-radius:10px;
+  padding:14px;
+  background:var(--room-material-soft)
+}
+.inner-home .math-grid b{
+  display:block;color:var(--room-material-accent);
+  font:400 18px var(--site-font-serif);margin-bottom:5px
+}
+.inner-home .math-grid small{
+  color:var(--room-material-copy);line-height:1.5
+}
+@media(max-width:720px){
+  .inner-home .math-grid{grid-template-columns:1fr}
+}
