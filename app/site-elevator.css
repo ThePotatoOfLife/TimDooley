@@ -1230,15 +1230,14 @@ html[data-site-floor] body.home-body::before{content:none;display:none}
   }
 }
 
-/* 2026-10-06 approved-reference desktop composition.
-   Large desktop uses the approved panorama at its native composition width.
-   The artwork and the live hit geometry share the same centered canvas, so a
-   1920px monitor no longer stretches a 1655px reference strip. Compact/laptop
-   widths keep the real responsive elevator UI defined above. */
-@media (min-width:1100px){
+/* 2026-10-06 approved-reference responsive composition.
+   Tablet-landscape, laptop and desktop now share one visual system. The
+   artwork and live hit geometry scale together on the same centered canvas;
+   only true mobile uses the compact fallback defined above. */
+@media (min-width:761px){
   .site-elevator{
     --elevator-art-width:1655px;
-    --elevator-shell-height:min(231px,13.96vw);
+    --elevator-shell-height:clamp(106px,13.96vw,231px);
     --site-header-shade:transparent;
     background:#080b0d;
     border:0;
@@ -1250,20 +1249,10 @@ html[data-site-floor] body.home-body::before{content:none;display:none}
     z-index:-2;
     opacity:1;
     background-color:#080b0d;
-    background-image:
-      linear-gradient(90deg,
-        #080b0d 0,
-        rgba(8,11,13,.96) 4%,
-        rgba(8,11,13,.26) 12%,
-        rgba(8,11,13,0) 20%,
-        rgba(8,11,13,0) 80%,
-        rgba(8,11,13,.26) 88%,
-        rgba(8,11,13,.96) 96%,
-        #080b0d 100%),
-      var(--site-header-art);
+    background-image:var(--site-header-art);
     background-repeat:no-repeat;
-    background-position:center,center;
-    background-size:100% 100%,min(100%,var(--elevator-art-width)) 100%;
+    background-position:center;
+    background-size:min(100%,var(--elevator-art-width)) 100%;
     filter:none;
   }
   .site-elevator::after{display:none}
