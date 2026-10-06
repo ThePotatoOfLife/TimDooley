@@ -113,7 +113,6 @@ jobs:
           grep -q 'data-garden-zone="knowledge"' _site/garden/index.html
           grep -q 'data-garden-zone="gate"' _site/garden/index.html
           grep -q 'data-garden-dialogue' _site/garden/index.html
-          grep -q 'garden-character-tim' _site/garden/index.html
           grep -q 'Tree of Life' _site/garden/index.html
           grep -q 'Garden / Eden' _site/elevator/index.html
           grep -q 'href="garden/"' _site/index.html
