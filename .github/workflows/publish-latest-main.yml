@@ -82,6 +82,11 @@ jobs:
           python scripts/validate_site_shell.py
           python scripts/validate_tts_coverage.py
 
+      - name: Validate universal elevator header
+        run: |
+          python scripts/validate_site_elevator.py
+          node scripts/test_site_elevator.mjs
+
       - name: Assert Research Papers entry and reader
         shell: bash
         run: |
