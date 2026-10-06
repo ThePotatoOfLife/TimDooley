@@ -747,11 +747,20 @@ html[data-site-floor] body.home-body::before{content:none;display:none}
   }
 
   /* The floor board and scenery are already painted into the panorama. */
+  .site-elevator-reel{
+    overflow:visible;
+    perspective:none;
+  }
   .site-elevator-reel::before,
   .site-elevator-reel::after{display:none}
   .site-elevator-floor{
     opacity:0;
     pointer-events:none;
+    transform:none;
+  }
+  .site-elevator[data-elevator-direction] .site-elevator-floor{
+    animation:none;
+    transform:none;
   }
   .site-elevator-stage{
     position:static;
