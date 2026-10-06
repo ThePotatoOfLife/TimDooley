@@ -5,3 +5,154 @@
 .foundation-reader{margin:32px 0;padding:26px 0;border-top:1px solid var(--site-line);border-bottom:1px solid var(--site-line)}.foundation-reader h2{font:400 clamp(30px,4vw,44px)/1.08 var(--site-font-serif);color:var(--site-gold);margin:0 0 10px}.foundation-reader>.lead2{font:400 20px/1.55 var(--site-font-serif);color:#cbd1c8;max-width:860px}.foundation-example{border-top:1px solid var(--site-line);margin-top:17px}.foundation-example article{display:grid;grid-template-columns:150px minmax(0,1fr);gap:22px;padding:17px 0;border-bottom:1px solid rgba(255,255,255,.055)}.foundation-example b{font:400 18px var(--site-font-serif);color:var(--site-gold)}.foundation-example p{margin:0;color:#cbd1c8}@media(max-width:700px){.foundation-example article{grid-template-columns:1fr;gap:3px}}
 
 .religion-lineage-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:16px 0 34px}.religion-lineage-card{border:1px solid var(--site-line);border-radius:12px;padding:14px;background:var(--site-pane-soft)}.religion-lineage-card h3{font:400 18px var(--site-font-serif);margin:0;color:var(--site-gold)}.religion-lineage-card em{display:block;color:var(--site-gold);font-style:normal;font-size:9px;text-transform:uppercase;letter-spacing:.06em;margin:4px 0}.religion-lineage-card p{color:var(--site-muted);font-size:10px;line-height:1.45;margin:5px 0}.religion-lineage-card small{display:block;color:var(--site-faint);font-size:9px;line-height:1.35}.religion-lineage-controls{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0 14px}.lineage-filter{appearance:none;border:1px solid var(--site-line);background:transparent;color:var(--site-muted);border-radius:999px;padding:6px 9px;cursor:pointer}.lineage-filter[aria-pressed="true"]{color:var(--site-gold);border-color:var(--site-gold)}.lineage-path{margin-top:8px;border-top:1px solid var(--site-line);padding-top:7px}.lineage-path b{color:#cdd5c8}@media(max-width:900px){.religion-lineage-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:640px){.religion-lineage-grid{grid-template-columns:1fr}}
+
+
+/* 2026-10-07 foundation archive material pass */
+body:has(.foundation-reader){
+  --foundation-stone:rgba(213,198,165,.70);
+  --foundation-stone-soft:rgba(207,189,151,.54);
+  --foundation-stone-deep:rgba(190,169,128,.44);
+  --foundation-ink:#241f17;
+  --foundation-copy:#50483a;
+  --foundation-muted:#706654;
+  --foundation-rule:rgba(120,91,43,.22);
+  --foundation-gold:#8c6526;
+}
+body:has(.foundation-reader) .page-header{
+  background:
+    linear-gradient(90deg,rgba(107,78,36,.045),transparent 16% 84%,rgba(107,78,36,.045)),
+    radial-gradient(circle at 50% 0,rgba(255,242,205,.26),transparent 43%),
+    linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.02)),
+    var(--foundation-stone);
+  border-color:rgba(135,101,49,.30);
+  color:var(--foundation-ink);
+  box-shadow:inset 0 1px rgba(255,255,255,.30),0 16px 34px rgba(0,0,0,.12);
+  backdrop-filter:blur(7px) saturate(.88)
+}
+body:has(.foundation-reader) .page-header h1{color:#211d17}
+body:has(.foundation-reader) .page-header .summary{color:#514b40}
+.foundation-reader{
+  position:relative;
+  padding:24px 22px 26px;
+  border:1px solid var(--foundation-rule);
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.10),transparent 24%),
+    var(--foundation-stone-soft);
+  box-shadow:0 13px 28px rgba(0,0,0,.10)
+}
+.foundation-reader h2{color:#44351d}
+.foundation-reader>.lead2{color:var(--foundation-copy)}
+.foundation-example article{
+  position:relative;
+  border-bottom-color:rgba(118,91,50,.16)
+}
+.foundation-example article::before{
+  content:"";
+  position:absolute;
+  left:-1px;
+  top:18px;
+  width:7px;height:7px;
+  border:1px solid rgba(140,101,42,.48);
+  background:#dfc99b;
+  transform:rotate(45deg)
+}
+.foundation-example b{color:#65491d}
+.foundation-example p{color:var(--foundation-muted)}
+.legend article{
+  padding:12px 13px;
+  border:1px solid rgba(120,91,43,.18);
+  background:rgba(236,224,196,.32)
+}
+.legend b{color:#66491d}
+.legend span{color:var(--foundation-muted)}
+.event,
+.foundation-room,
+.seed-card,
+.religion-lineage-card{
+  border-color:rgba(120,91,43,.20);
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.11),transparent 27%),
+    var(--foundation-stone-soft);
+  box-shadow:inset 0 1px rgba(255,255,255,.14),0 9px 22px rgba(0,0,0,.08);
+  transition:background .15s ease,border-color .15s ease,transform .15s ease
+}
+.event:hover,
+.foundation-room:hover,
+.seed-card:hover,
+.religion-lineage-card:hover{
+  transform:translateY(-1px);
+  border-color:rgba(140,104,47,.30);
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.14),transparent 27%),
+    rgba(215,198,162,.62)
+}
+.event strong,
+.event em,
+.foundation-room>em,
+.room-face b,
+.door-history b,
+.seed-card h3,
+.seed-card em,
+.religion-lineage-card h3,
+.religion-lineage-card em{
+  color:#694a1d
+}
+.event p,
+.room-face span,
+.room-face small,
+.foundation-room summary,
+.foundation-room details p,
+.seed-card p,
+.seed-card small,
+.religion-lineage-card p,
+.religion-lineage-card small{
+  color:var(--foundation-muted)
+}
+.room-metrics i,
+.room-badges span,
+.stage-chip,
+.status-chip{
+  border-color:rgba(120,91,43,.20);
+  color:#5f584c;
+  background:rgba(255,255,255,.15)
+}
+.room-status-ribbon{
+  border-top:1px solid rgba(120,91,43,.14);
+  padding-top:9px
+}
+.status-cell{
+  border-color:rgba(120,91,43,.17);
+  background:rgba(255,255,255,.10)
+}
+.research-queue,
+.seed-door{
+  border-left-color:rgba(137,98,39,.48);
+  background:rgba(232,219,188,.36)
+}
+.foundation-years{
+  position:relative
+}
+.year-group{
+  border-top-color:rgba(120,91,43,.22)
+}
+.year-group h2{color:#5c431c}
+.controls .filter,
+.room-filter,
+.seed-toggle,
+.lineage-filter{
+  border-color:rgba(120,91,43,.22);
+  color:#655d50;
+  background:rgba(255,255,255,.08)
+}
+.controls .filter[aria-pressed="true"],
+.room-filter[aria-pressed="true"],
+.seed-toggle[aria-pressed="true"],
+.lineage-filter[aria-pressed="true"]{
+  color:#5a3f18;
+  border-color:rgba(139,100,40,.50);
+  background:rgba(244,229,194,.40)
+}
+.readout{color:#655f54}
+@media(max-width:760px){
+  .foundation-reader{padding:18px 16px}
+}
