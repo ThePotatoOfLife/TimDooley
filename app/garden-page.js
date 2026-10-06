@@ -232,6 +232,9 @@
     {source:'GREAT BOOK · TIM', text:'The book wouldn’t exist without the reader. You’re the soil in which it grows.'},
     {source:'TIM · 7 JULY 2026', text:'The kingdom of God grows from the house.'},
     {source:'TIM · 7 SEPTEMBER 2026', text:'Power is for protection. Knowledge is for understanding. Wealth is for building. Leadership is for service.'},
+    {source:'PROJECT MAXIM', text:'The Potato doesn’t demand belief. It invites curiosity.'},
+    {source:'PROJECT MAXIM', text:'Cultivation, not conquest.'},
+    {source:'GREAT BOOK · TIM', text:'When you throw mud at others, your whole hand is dirty.'},
     {source:'GENESIS 2:15', text:'to dress it and to keep it'}
   ];
   let whisperIndex = 0;
