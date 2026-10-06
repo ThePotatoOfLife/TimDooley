@@ -148,3 +148,84 @@ padding:26px 18px;border:1px solid var(--site-line)}
   border-color:rgba(194,117,78,.19)
 }
 
+
+
+/* 2026-10-07 black-glass Below material */
+.below-page{
+  --below-glass:rgba(5,6,7,.68);
+  --below-glass-soft:rgba(7,8,9,.54);
+  --below-glass-line:rgba(207,101,51,.24);
+  --below-ember:#d06c36;
+}
+.below-page .page-header{
+  position:relative;
+  overflow:hidden;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.025),transparent 22%),
+    linear-gradient(135deg,rgba(255,255,255,.015),transparent 34%),
+    var(--below-glass);
+  border:1px solid rgba(219,112,60,.25);
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.045),
+    inset 0 0 0 1px rgba(255,138,80,.025),
+    0 18px 38px rgba(0,0,0,.28);
+  backdrop-filter:blur(10px) saturate(.82)
+}
+.below-page .page-header::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  opacity:.30;
+  background:
+    linear-gradient(118deg,transparent 0 67%,rgba(255,122,65,.20) 67.2%,transparent 67.45%),
+    linear-gradient(64deg,transparent 0 82%,rgba(255,122,65,.12) 82.15%,transparent 82.35%);
+  mix-blend-mode:screen
+}
+.below-page .lower-orientation,
+.below-page .archetype-guide,
+.below-page .conflict-field,
+.below-page .basin-mode-panel{
+  position:relative;
+  overflow:hidden;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.018),transparent 25%),
+    var(--below-glass-soft);
+  border-color:rgba(211,105,56,.18);
+  box-shadow:inset 0 1px rgba(255,255,255,.03),0 12px 28px rgba(0,0,0,.18);
+  backdrop-filter:blur(8px) saturate(.78)
+}
+.below-page .card,
+.below-page .desk,
+.below-page .case-path,
+.below-page .field-instrument,
+.below-page .axis,
+.below-page .archetype-column,
+.below-page .conflict-triad article{
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.018),transparent 28%),
+    rgba(5,6,7,.58);
+  border-color:rgba(202,98,51,.16);
+  box-shadow:inset 0 1px rgba(255,255,255,.025)
+}
+.below-page .card:hover,
+.below-page .desk:hover,
+.below-page .case-path:hover,
+.below-page .field-instrument:hover{
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.026),transparent 28%),
+    rgba(8,8,9,.70);
+  border-color:rgba(223,116,64,.24)
+}
+.below-page .chain,
+.below-page .lower-route,
+.below-page .conflict-repair{
+  background:rgba(3,4,5,.54);
+  border-color:rgba(202,98,51,.16);
+  box-shadow:inset 3px 0 rgba(208,108,54,.18)
+}
+.below-page .boundary,
+.below-page .conflict-overlap{
+  border-left-color:rgba(215,111,59,.42);
+  background:linear-gradient(90deg,rgba(128,49,22,.10),transparent 60%)
+}
