@@ -249,6 +249,10 @@ def main() -> int:
                 errors.append("hotspot map must share the 2172x239 v3 artboard")
             if hotspot_artboard.get("nav_top_y") != 180:
                 errors.append("hotspot navigation baseline must be y=180")
+            if art_manifest.get("version") != 4 or hotspots.get("version") != 4:
+                errors.append("approved world-tree header contracts must be version 4")
+            if ((art_manifest.get("alignment") or {}).get("axis_x")) != 1086:
+                errors.append("world-tree header must preserve the shared x=1086 central axis")
             for floor_id in ("heaven", "plane", "below"):
                 asset = (art_manifest.get("assets") or {}).get(floor_id, {})
                 art_name = asset.get("file")
