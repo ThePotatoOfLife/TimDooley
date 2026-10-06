@@ -714,3 +714,124 @@ html{scroll-behavior:smooth}
 @media(max-width:900px){
   .garden-god-near-layout,.garden-seedbed-inner{grid-template-columns:1fr}
 }
+
+
+/* --- Arrival / work / conversation / rare life pass --- */
+.garden-threshold-line{
+  display:flex;align-items:baseline;justify-content:center;gap:12px;
+  padding:9px 18px;border-top:1px solid rgba(255,255,255,.05);
+  background:#09100b;color:#8e9a90;text-align:center
+}
+.garden-threshold-line span{color:#8d7c53;font:800 .56rem ui-monospace,monospace;letter-spacing:.09em}
+.garden-threshold-line q{color:#c9b987;font:400 .8rem/1.45 var(--site-font-serif)}
+
+.garden-memory-path{
+  display:grid;grid-template-columns:.9fr 1.4fr auto;gap:22px;align-items:center;
+  margin-top:24px;padding:19px 20px;border:1px solid rgba(255,255,255,.06);
+  background:linear-gradient(90deg,rgba(113,139,91,.06),rgba(9,17,11,.98))
+}
+.garden-memory-path small{color:#7f8b78;font:800 .56rem ui-monospace,monospace;letter-spacing:.08em}
+.garden-memory-path h3{margin:6px 0 0;color:#e7dcc0;font:400 1.28rem/1.2 var(--site-font-serif)}
+.garden-memory-path>p{margin:0;color:#94a296;font-size:.82rem;line-height:1.58}
+.garden-memory-path>a{font-size:.69rem;text-decoration:none}
+
+.garden-verb-path{
+  margin-top:28px;padding:22px;border:1px solid rgba(219,187,99,.14);
+  background:linear-gradient(180deg,rgba(77,63,29,.1),rgba(9,17,11,.96))
+}
+.garden-verb-path-intro{display:grid;grid-template-columns:.75fr 1.25fr;gap:22px;align-items:end}
+.garden-verb-path-intro .eyebrow{margin:0;color:#97824d;font-size:.58rem;letter-spacing:.1em}
+.garden-verb-path-intro h3{margin:0;color:#ecdfbb;font:400 1.55rem/1.16 var(--site-font-serif)}
+.garden-verb-path ol{
+  display:grid;grid-template-columns:repeat(5,1fr);gap:1px;margin:18px 0 0;padding:0;
+  list-style:none;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.06)
+}
+.garden-verb-path li{display:flex;flex-direction:column;gap:7px;padding:15px;background:#0b130d}
+.garden-verb-path li span{color:#83764f;font:800 .56rem ui-monospace,monospace}
+.garden-verb-path li strong{color:#d9c997;font:400 .92rem/1.28 var(--site-font-serif)}
+.garden-verb-path>p{max-width:76ch;margin:16px 0 0;color:#8e9d91;font-size:.79rem;line-height:1.6}
+
+.garden-ask-tim{
+  margin-top:26px;padding:28px;border-top:1px solid rgba(255,255,255,.06);
+  border-bottom:1px solid rgba(255,255,255,.06);
+  background:
+    radial-gradient(circle at 85% 10%,rgba(210,179,90,.07),transparent 27%),
+    #09110b
+}
+.garden-ask-heading{max-width:780px}
+.garden-ask-heading .eyebrow{margin:0 0 7px;color:#9a8550;font-size:.58rem;letter-spacing:.11em}
+.garden-ask-heading h3{margin:0;color:#eee2c4;font:400 clamp(2rem,4vw,3.7rem)/1 var(--site-font-serif)}
+.garden-ask-heading>p:last-child{color:#7f8d83;font-size:.72rem;line-height:1.5}
+.garden-ask-shell{display:grid;grid-template-columns:.78fr 1.22fr;gap:18px;margin-top:22px}
+.garden-ask-questions{display:grid;gap:7px}
+.garden-ask-questions button{
+  text-align:left;border:1px solid rgba(255,255,255,.07);padding:12px 13px;
+  background:#0b130d;color:#c9d2c8;font:400 .8rem/1.35 var(--site-font-serif);
+  cursor:pointer;transition:background .16s ease,border-color .16s ease,transform .16s ease
+}
+.garden-ask-questions button:hover,.garden-ask-questions button:focus-visible,.garden-ask-questions button.is-active{
+  background:#0f1912;border-color:rgba(213,184,99,.22);transform:translateX(2px)
+}
+.garden-ask-answer{
+  min-height:230px;padding:22px;border:1px solid rgba(213,184,99,.14);
+  background:linear-gradient(180deg,rgba(50,42,22,.12),rgba(8,15,10,.98))
+}
+.garden-ask-answer small{color:#9c8750;font:800 .58rem ui-monospace,monospace;letter-spacing:.11em}
+.garden-ask-answer p{margin:14px 0 0;color:#e7ddc4;font:400 1.14rem/1.68 var(--site-font-serif)}
+.garden-ask-answer.is-changing{opacity:.55}
+
+.garden-farm-test{
+  display:grid;grid-template-columns:.8fr 1.2fr;gap:28px;align-items:center;
+  margin-top:20px;padding:20px;border-left:2px solid rgba(157,124,65,.45);
+  background:rgba(38,29,16,.18)
+}
+.garden-farm-test .eyebrow{margin:0 0 5px;color:#89764a;font-size:.58rem;letter-spacing:.1em}
+.garden-farm-test h3{margin:0;color:#e5d7ae;font:400 1.35rem/1.2 var(--site-font-serif)}
+.garden-farm-test>p{margin:0;color:#95a095;font-size:.82rem;line-height:1.6}
+
+.garden-reader--leave{
+  text-align:center;padding-top:52px;padding-bottom:52px
+}
+.garden-leave-inner{max-width:760px;margin:0 auto}
+.garden-leave-inner h2{margin:.1em 0 .45em;color:#efe5c9;font:400 clamp(2.5rem,5vw,4.8rem)/.95 var(--site-font-serif);letter-spacing:-.04em}
+.garden-leave-inner>p{color:#a8b4aa;font:400 1rem/1.72 var(--site-font-serif)}
+.garden-leave-inner blockquote{
+  margin:26px auto 0;padding:16px 20px;max-width:560px;border-top:1px solid rgba(213,184,99,.16);border-bottom:1px solid rgba(213,184,99,.16);
+  color:#dccb95;font:400 1.05rem/1.45 var(--site-font-serif)
+}
+
+/* rare Mud Tree fruit: tiny transform/opacity only */
+.garden-mud-fruit{
+  position:absolute;left:72.2%;top:28.2%;width:7px;height:7px;border-radius:50%;
+  background:#5f281f;box-shadow:0 0 0 1px rgba(37,15,12,.35);
+  opacity:0;transform:translateY(0) scale(1);will-change:transform,opacity
+}
+.garden-mud-fruit.is-falling{animation:mud-fruit-fall 1.15s cubic-bezier(.3,.05,.65,1) forwards}
+@keyframes mud-fruit-fall{
+  0%{opacity:0;transform:translate(0,0) scale(.8)}
+  10%{opacity:.9}
+  75%{opacity:.9;transform:translate(6px,54px) scale(1)}
+  90%{opacity:.65;transform:translate(7px,57px) scale(1.2,.7)}
+  100%{opacity:0;transform:translate(8px,58px) scale(1.5,.35)}
+}
+/* make angel read as winged rather than bobbing whole-body */
+.sprite-angel:before{transform-origin:100% 50%;animation:angel-wing-left 2.1s ease-in-out infinite}
+.sprite-angel:after{transform-origin:0 50%;animation:angel-wing-right 2.1s ease-in-out infinite}
+@keyframes angel-wing-left{0%,100%{transform:rotate(-17deg)}50%{transform:rotate(-37deg) translateY(-1px)}}
+@keyframes angel-wing-right{0%,100%{transform:rotate(17deg)}50%{transform:rotate(37deg) translateY(-1px)}}
+
+@media(max-width:900px){
+  .garden-memory-path,.garden-verb-path-intro,.garden-ask-shell,.garden-farm-test{grid-template-columns:1fr}
+  .garden-verb-path ol{grid-template-columns:1fr 1fr}
+}
+@media(max-width:650px){
+  .garden-threshold-line{align-items:center;flex-direction:column;gap:4px}
+  .garden-verb-path ol{grid-template-columns:1fr}
+  .garden-ask-tim{padding:22px 16px}
+  .garden-memory-path{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){
+  .garden-mud-fruit{display:none}
+  .sprite-angel:before,.sprite-angel:after{animation:none!important}
+  .garden-ask-questions button{transition:none}
+}
