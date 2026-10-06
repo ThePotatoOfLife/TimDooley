@@ -183,6 +183,8 @@ html[data-site-floor="below"]{
   letter-spacing:normal;
   text-transform:none;
   cursor:pointer;
+  touch-action:manipulation;
+  -webkit-tap-highlight-color:transparent;
   transition:color 110ms ease,background-color 110ms ease,text-shadow 110ms ease,opacity 110ms ease;
 }
 .site-elevator-arrow + .site-elevator-arrow{
@@ -414,6 +416,8 @@ html[data-site-floor="below"]{
   line-height:1.08;
   letter-spacing:.005em;
   text-shadow:0 1px 2px rgba(0,0,0,.95);
+  touch-action:manipulation;
+  -webkit-tap-highlight-color:transparent;
   transition:border-color 120ms ease,color 120ms ease,background-color 120ms ease,box-shadow 120ms ease,transform 120ms ease;
 }
 .site-elevator-room::before,
@@ -543,7 +547,7 @@ html[data-site-floor="below"]{
   .site-elevator{
     --elevator-control-width:34px;
     --elevator-board-width:118px;
-    --elevator-shell-height:82px;
+    --elevator-shell-height:clamp(88px,13vw,100px);
     --elevator-room-height:38px;
     --elevator-room-gap:3px;
     --elevator-floor-size:11px;
@@ -566,7 +570,7 @@ html[data-site-floor="below"]{
     align-items:flex-end;
     justify-content:center;
     min-height:var(--elevator-shell-height);
-    padding:37px 4px 7px;
+    padding:calc(var(--elevator-shell-height) - var(--elevator-room-height) - 7px) 4px 7px;
     gap:var(--elevator-room-gap);
   }
   .site-elevator-room{
@@ -583,7 +587,6 @@ html[data-site-floor="below"]{
   .site-elevator{
     --elevator-control-width:30px;
     --elevator-board-width:92px;
-    --elevator-shell-height:82px;
     --elevator-room-height:38px;
     --elevator-room-text:6.5px;
   }
@@ -645,10 +648,6 @@ html[data-site-floor] body:not(.home-body)::before{
     animation:none;
     transform:none;
   }
-  .site-elevator[data-elevator-direction] .site-elevator-floor{
-    animation:none!important;
-    transform:none!important;
-  }
 }
 html[data-site-floor] body.home-body{min-height:100vh}
 html[data-site-floor] body.home-body::before{content:none;display:none}
@@ -659,7 +658,7 @@ html[data-site-floor] body.home-body::before{content:none;display:none}
    no second HUD, no equal-width approximation, no moving invisible rail. */
 @media (min-width:761px){
   .site-elevator{
-    --elevator-shell-height:clamp(106px,13.96vw,286px);
+    --elevator-shell-height:clamp(106px,13.96vw,320px);
     --site-header-shade:transparent;
     background:#080b0d;
     border:0;
@@ -734,13 +733,18 @@ html[data-site-floor] body.home-body::before{content:none;display:none}
   .site-elevator-down{bottom:8%}
   .site-elevator-arrow::before,
   .site-elevator-arrow::after{display:none}
-  .site-elevator-arrow:hover:not(:disabled),
+  .site-elevator-arrow:hover:not(:disabled){
+    opacity:1;
+    outline:0;
+    background:rgba(255,215,120,.04);
+    box-shadow:inset 0 0 0 1px rgba(255,226,151,.28),0 0 10px rgba(236,190,96,.14);
+  }
   .site-elevator-arrow:focus-visible{
     opacity:1;
-    outline:2px solid rgba(255,221,145,.54);
+    outline:2px solid rgba(255,239,196,.78);
     outline-offset:-2px;
-    background:rgba(255,215,120,.055);
-    box-shadow:0 0 13px rgba(236,190,96,.20);
+    background:rgba(255,215,120,.045);
+    box-shadow:0 0 12px rgba(236,190,96,.20);
   }
   .site-elevator-arrow:disabled{
     opacity:0;
@@ -847,19 +851,28 @@ html[data-site-floor] body.home-body::before{content:none;display:none}
   .site-elevator[data-elevator-level="below"] .site-elevator-room:nth-child(3){left:66.16%;width:16.77%}
   .site-elevator[data-elevator-level="below"] .site-elevator-room:nth-child(4){left:83.11%;width:15.86%}
 
-  .site-elevator[data-elevator-level] .site-elevator-room:hover,
-  .site-elevator[data-elevator-level] .site-elevator-room:focus-visible,
-  .site-elevator[data-elevator-level] .site-elevator-room.is-active{
-    background:rgba(255,220,135,.045);
+  .site-elevator[data-elevator-level] .site-elevator-room:hover{
+    background:rgba(255,229,168,.028);
     box-shadow:
-      inset 0 0 0 2px rgba(255,225,154,.34),
-      0 0 12px rgba(229,180,83,.18);
+      inset 0 0 0 1px rgba(255,225,154,.30),
+      inset 0 0 16px rgba(255,220,135,.035);
+    outline:0;
+    transform:none;
+  }
+  .site-elevator[data-elevator-level] .site-elevator-room.is-active{
+    background:rgba(255,229,168,.038);
+    box-shadow:
+      inset 0 0 0 1px rgba(255,225,154,.42),
+      inset 0 0 18px rgba(255,220,135,.045);
     outline:0;
     transform:none;
   }
   .site-elevator[data-elevator-level] .site-elevator-room:focus-visible{
+    background:rgba(255,229,168,.045);
     box-shadow:
-      inset 0 0 0 2px rgba(255,237,190,.72),
-      0 0 14px rgba(234,190,98,.30);
+      inset 0 0 0 2px rgba(255,241,205,.78),
+      0 0 10px rgba(234,190,98,.18);
+    outline:0;
+    transform:none;
   }
 }
