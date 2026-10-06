@@ -374,9 +374,10 @@
       floorLabel.textContent=selectedFloorLabel.toUpperCase();
       stage.setAttribute('aria-label',selectedFloorLabel+' Rooms');
       roomRail.setAttribute('aria-label','Rooms on '+selectedFloorLabel);
-      roomLabel.textContent=selectedLevel==='plane'
-        ?'HOUSE ORIENTATION'
-        :'BROWSING FLOOR';
+      const currentRoom=spatial.room;
+      roomLabel.textContent=currentRoom&&selectedLevel===spatial.levelId
+        ?String(currentRoom.title||currentRoom.label||currentRoom.id||'CURRENT ROOM').toUpperCase()
+        :(selectedLevel===spatial.levelId?'HOUSE ORIENTATION':'BROWSING FLOOR');
       up.disabled=selectedLevel==='heaven'||!projection;
       down.disabled=selectedLevel==='below'||!projection;
       const upTarget=stepLevel(selectedLevel,'up');
