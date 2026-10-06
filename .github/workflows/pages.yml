@@ -237,7 +237,7 @@ jobs:
           garden=Path(".live-smoke/garden_.html").read_text(encoding="utf-8",errors="replace")
           garden_js=Path(".live-smoke/app_garden-page.js").read_text(encoding="utf-8",errors="replace")
           garden_css=Path(".live-smoke/app_garden-page.css").read_text(encoding="utf-8",errors="replace")
-          garden_art=Path(".live-smoke/assets_visuals_garden-eden-map.svg").read_text(encoding="utf-8",errors="replace")
+          garden_art=Path(".live-smoke/assets_visuals_garden-eden-master.webp").read_bytes()
           religion=Path(".live-smoke/religion_.html").read_text(encoding="utf-8",errors="replace")
           science=Path(".live-smoke/science_.html").read_text(encoding="utf-8",errors="replace")
           science_papers=Path(".live-smoke/science_papers_.html").read_text(encoding="utf-8",errors="replace")
