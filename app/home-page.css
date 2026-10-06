@@ -926,3 +926,137 @@ body.home-body{
 .home-hall-card a{position:relative;z-index:1}
 .home-hall-card--shame a{color:#d69a76}
 @media(max-width:700px){.home-hall-pair{grid-template-columns:1fr}}
+
+
+/* 2026-10-06 homepage first-screen finesse */
+.home-page{padding-top:14px}
+.home-nav{
+  width:max-content;
+  max-width:100%;
+  height:38px;
+  min-height:38px;
+  margin:0 0 28px;
+  padding:4px 6px;
+  gap:1px;
+  border-color:rgba(255,255,255,.075);
+  border-radius:14px;
+  background:rgba(8,11,10,.48);
+  box-shadow:0 5px 18px rgba(0,0,0,.10);
+}
+.home-nav > a{
+  height:28px;
+  min-height:28px;
+  padding:5px 8px;
+  border-radius:8px;
+  color:#d4d8d1;
+  font-size:11px;
+}
+.home-nav > a:hover,.home-nav > a:focus-visible{
+  background:rgba(255,255,255,.045);
+  box-shadow:none;
+}
+
+.home-hero,
+.home-hero--start{
+  grid-template-columns:minmax(300px,.98fr) minmax(360px,.82fr);
+  gap:clamp(38px,5vw,76px);
+  align-items:center;
+  padding:6px 0 38px;
+}
+.home-hero h1{
+  font-size:clamp(54px,7.6vw,88px);
+  line-height:.87;
+  letter-spacing:-.055em;
+  text-shadow:0 3px 18px rgba(0,0,0,.38);
+}
+.home-hero-title .eyebrow{
+  font-size:9px;
+  letter-spacing:.16em;
+  color:#f2e9d2;
+  opacity:.84;
+}
+.home-hero-whisper{
+  max-width:470px;
+  margin-top:15px;
+  color:#e4e6df;
+  font-size:clamp(14px,1.25vw,16px);
+  line-height:1.55;
+}
+
+.home-hero .home-intro{
+  width:min(100%,620px);
+  max-width:620px;
+  justify-self:end;
+  padding:18px 20px 17px;
+  border-color:rgba(246,225,173,.12);
+  border-radius:18px;
+  background:linear-gradient(180deg,rgba(8,13,16,.56),rgba(8,11,11,.50));
+  box-shadow:0 12px 34px rgba(0,0,0,.13),inset 0 1px rgba(255,255,255,.025);
+}
+.home-intro .project-purpose{
+  max-width:590px;
+  color:#e7eae3;
+  font:400 clamp(14.5px,1.12vw,16.5px)/1.62 var(--site-font-serif);
+}
+.home-intro .project-purpose:first-child{
+  color:#f1f0e9;
+  font-size:clamp(17px,1.36vw,20px);
+  line-height:1.46;
+}
+.home-intro .project-purpose + .project-purpose{margin-top:12px}
+.home-intro .project-purpose strong{
+  color:#fff5df;
+  font-weight:600;
+}
+.home-hero-actions{margin-top:16px;gap:7px}
+.home-start-action{
+  min-width:0;
+  padding:8px 10px;
+  border-color:rgba(255,255,255,.10);
+  background:rgba(8,11,11,.34);
+  font-size:11px;
+}
+.home-start-action--primary{
+  background:rgba(226,188,100,.065);
+  border-color:rgba(232,194,105,.20);
+}
+.home-intro .evidence-note{
+  max-width:590px;
+  margin-top:13px;
+  color:#bfc5bd;
+  font-size:10.5px;
+  line-height:1.5;
+}
+.home-intro .evidence-note strong{color:#d7d9d3}
+
+/* First-screen sections should not compete with the hero for visual weight. */
+.home-page > section{
+  box-shadow:0 9px 24px rgba(0,0,0,.075),inset 0 1px rgba(255,255,255,.014);
+}
+@media(max-width:900px){
+  .home-hero,.home-hero--start{
+    grid-template-columns:1fr;
+    gap:24px;
+    padding-bottom:28px;
+  }
+  .home-hero .home-intro{justify-self:start;width:min(100%,680px);max-width:680px}
+  .home-nav{width:100%;overflow-x:auto;white-space:nowrap}
+}
+@media(max-width:700px){
+  .home-nav{
+    height:auto;
+    min-height:38px;
+    margin:0 0 20px;
+    flex-wrap:nowrap;
+    overflow-x:auto;
+    overflow-y:hidden;
+  }
+  .home-nav a{
+    flex:0 0 auto;
+    white-space:nowrap;
+    padding:5px 7px;
+    font-size:10px;
+  }
+  .home-hero h1{font-size:clamp(48px,18vw,76px)}
+  .home-hero .home-intro{padding:15px 16px}
+}
