@@ -1229,3 +1229,300 @@ html[data-site-floor] body.home-body::before{content:none;display:none}
     .site-elevator[data-elevator-level="below"] .site-elevator-room::before{left:9px;width:20px;height:20px;font-size:14px;line-height:18px}
   }
 }
+
+/* 2026-10-06 panorama / vine / royal header overhaul */
+@media (min-width:761px){
+  .site-elevator{
+    --elevator-control-width:76px;
+    --elevator-board-width:390px;
+    --elevator-shell-height:124px;
+    --elevator-room-height:46px;
+    --elevator-room-gap:12px;
+    --elevator-vine:#9a7f3c;
+    --elevator-vine-leaf:#6e8c4c;
+    border-top:2px solid #0a0907;
+    border-bottom:2px solid #080706;
+    background:#090c0e;
+    box-shadow:
+      0 1px 0 #d2a257,
+      0 3px 0 #3a2817,
+      0 9px 28px rgba(0,0,0,.60);
+  }
+  .site-elevator[data-elevator-level="heaven"]{
+    --elevator-vine:#d8b859;
+    --elevator-vine-leaf:#78914f;
+    --site-header-shade:rgba(5,12,22,.18);
+  }
+  .site-elevator[data-elevator-level="plane"]{
+    --elevator-vine:#aa954b;
+    --elevator-vine-leaf:#4f7c48;
+    --site-header-shade:rgba(4,12,13,.18);
+  }
+  .site-elevator[data-elevator-level="below"]{
+    --elevator-vine:#9f4f28;
+    --elevator-vine-leaf:#7b3c25;
+    --site-header-shade:rgba(15,5,4,.20);
+  }
+
+  /* One continuous panorama behind the console and the floating Room plates. */
+  .site-elevator::before{
+    z-index:-3;
+    opacity:1;
+    background-image:
+      linear-gradient(180deg,rgba(2,5,7,.03),rgba(2,4,6,.08) 48%,rgba(2,3,4,.38) 100%),
+      var(--site-header-art,var(--site-realm-art));
+    background-repeat:no-repeat;
+    background-position:50% 50%,var(--site-header-art-position);
+    background-size:100% 100%,cover;
+    filter:saturate(1.06) contrast(1.05);
+  }
+  .site-elevator-main{
+    position:relative;
+    background:transparent;
+  }
+  .site-elevator-main::after{
+    content:"";
+    position:absolute;
+    inset:4px;
+    z-index:4;
+    pointer-events:none;
+    border:1px solid rgba(211,164,79,.45);
+    box-shadow:
+      inset 0 0 0 1px rgba(0,0,0,.74),
+      inset 0 0 0 3px rgba(213,161,72,.08);
+    clip-path:polygon(10px 0,calc(100% - 10px) 0,100% 10px,100% calc(100% - 10px),calc(100% - 10px) 100%,10px 100%,0 calc(100% - 10px),0 10px);
+  }
+
+  /* Organic elevator rail: a living vine/root behind the royal controls. */
+  .site-elevator-controls{
+    position:relative;
+    z-index:2;
+    overflow:hidden;
+    background:
+      linear-gradient(90deg,rgba(4,7,9,.92),rgba(13,18,20,.78)),
+      transparent;
+    border-right:2px solid rgba(161,112,51,.75);
+    box-shadow:
+      inset 0 0 0 2px #070808,
+      inset 0 0 0 4px rgba(190,140,60,.14);
+  }
+  .site-elevator-controls::before{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:5px;
+    bottom:5px;
+    width:26px;
+    transform:translateX(-50%);
+    opacity:.82;
+    pointer-events:none;
+    background:
+      radial-gradient(ellipse at 25% 10%,var(--elevator-vine-leaf) 0 4px,transparent 5px),
+      radial-gradient(ellipse at 76% 25%,var(--elevator-vine-leaf) 0 5px,transparent 6px),
+      radial-gradient(ellipse at 18% 46%,var(--elevator-vine-leaf) 0 4px,transparent 5px),
+      radial-gradient(ellipse at 81% 66%,var(--elevator-vine-leaf) 0 5px,transparent 6px),
+      radial-gradient(ellipse at 30% 86%,var(--elevator-vine-leaf) 0 4px,transparent 5px),
+      linear-gradient(100deg,transparent 42%,var(--elevator-vine) 44% 52%,transparent 54%);
+    filter:drop-shadow(0 0 3px rgba(0,0,0,.8));
+  }
+  .site-elevator-arrow{
+    z-index:2;
+    margin:5px 9px;
+    width:calc(100% - 18px);
+    border:1px solid rgba(193,149,76,.52);
+    background:
+      linear-gradient(135deg,rgba(221,174,88,.18) 0 2px,transparent 2px) top left/8px 8px no-repeat,
+      linear-gradient(225deg,rgba(221,174,88,.18) 0 2px,transparent 2px) top right/8px 8px no-repeat,
+      linear-gradient(180deg,rgba(25,31,32,.80),rgba(6,8,9,.86));
+    box-shadow:
+      inset 0 0 0 1px #060708,
+      inset 0 0 0 2px rgba(204,155,76,.10),
+      0 2px 5px rgba(0,0,0,.36);
+    backdrop-filter:blur(1px);
+  }
+  .site-elevator-arrow::before{
+    font-size:23px;
+    color:#f0e4c9;
+    text-shadow:0 0 7px var(--site-elevator-glow),0 2px 0 #000;
+  }
+  .site-elevator-arrow::after{
+    inset:4px;
+    border-color:rgba(214,168,85,.22);
+  }
+
+  .site-elevator-reel{
+    z-index:2;
+    border-right:2px solid rgba(157,111,50,.82);
+    background:
+      linear-gradient(135deg,rgba(222,175,85,.20) 0 3px,transparent 3px) top left/11px 11px no-repeat,
+      linear-gradient(225deg,rgba(222,175,85,.20) 0 3px,transparent 3px) top right/11px 11px no-repeat,
+      linear-gradient(180deg,rgba(16,25,31,.92),rgba(5,9,12,.91));
+    box-shadow:
+      inset 0 0 0 1px #050708,
+      inset 0 0 0 3px rgba(194,142,66,.19),
+      5px 0 12px rgba(0,0,0,.22);
+  }
+  .site-elevator-floor{
+    grid-template-columns:48px 80px minmax(0,1fr);
+    column-gap:14px;
+    padding:12px 20px 12px 11px;
+  }
+  .site-elevator-floor-emblem{
+    height:72px;
+    border-color:color-mix(in srgb,var(--site-elevator-accent) 72%,#5f4525);
+    background:
+      radial-gradient(circle at 50% 42%,color-mix(in srgb,var(--site-elevator-accent) 23%,transparent),transparent 58%),
+      linear-gradient(180deg,rgba(13,21,27,.95),rgba(5,9,12,.97));
+    box-shadow:
+      inset 0 0 0 2px #050708,
+      inset 0 0 0 4px color-mix(in srgb,var(--site-elevator-accent) 18%,transparent),
+      0 0 11px rgba(0,0,0,.42);
+  }
+  .site-elevator-floor-label{
+    font-size:24px;
+    letter-spacing:.055em;
+    color:#fff2d2;
+  }
+  .site-elevator-room-label{
+    font-size:9.5px;
+    color:#cfc6b2;
+  }
+
+  /* Stage uses the continuous header panorama; its own old image layer is retired visually. */
+  .site-elevator-stage{
+    z-index:1;
+    background:transparent;
+    border-left:1px solid rgba(73,48,24,.72);
+    outline:0;
+    box-shadow:
+      inset 0 1px rgba(255,245,215,.10),
+      inset 0 -1px rgba(0,0,0,.74);
+  }
+  .site-elevator-stage::before{
+    opacity:0;
+    background-image:none;
+  }
+  .site-elevator-stage::after{
+    z-index:-1;
+    background:
+      linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.02) 48%,rgba(2,4,5,.24) 70%,rgba(2,4,5,.55) 100%),
+      linear-gradient(90deg,rgba(4,7,8,.18),transparent 11%,transparent 89%,rgba(4,7,8,.18));
+  }
+  .site-elevator-room-rail{
+    grid-template-columns:repeat(var(--elevator-visible-count),minmax(0,1fr));
+    padding:68px 18px 10px;
+    gap:var(--elevator-room-gap);
+  }
+  .site-elevator-room-rail::before{
+    left:17px;
+    right:17px;
+    bottom:7px;
+    height:5px;
+    background:linear-gradient(180deg,#d0a45a 0 1px,#21160d 1px 3px,#8a5c2c 3px 4px,#080706 4px);
+    opacity:.86;
+  }
+  .site-elevator-room-rail::after{
+    left:19px;
+    right:19px;
+    bottom:11px;
+    opacity:.58;
+  }
+
+  .site-elevator-room{
+    --room-plate-top:rgba(14,27,37,.88);
+    --room-plate-bottom:rgba(4,10,15,.95);
+    min-height:var(--elevator-room-height);
+    height:var(--elevator-room-height);
+    max-height:var(--elevator-room-height);
+    padding:6px 14px;
+    color:#f1eadc;
+    border:1px solid color-mix(in srgb,var(--site-elevator-accent) 72%,#6c4d2a);
+    background:
+      linear-gradient(135deg,#e0b45f 0 3px,transparent 3px) top left/10px 10px no-repeat,
+      linear-gradient(225deg,#e0b45f 0 3px,transparent 3px) top right/10px 10px no-repeat,
+      linear-gradient(45deg,#5e3b1f 0 3px,transparent 3px) bottom left/10px 10px no-repeat,
+      linear-gradient(315deg,#5e3b1f 0 3px,transparent 3px) bottom right/10px 10px no-repeat,
+      linear-gradient(180deg,var(--room-plate-top),var(--room-plate-bottom));
+    box-shadow:
+      inset 0 0 0 1px #050606,
+      inset 0 0 0 3px color-mix(in srgb,var(--site-elevator-accent) 12%,transparent),
+      inset 0 2px 0 rgba(255,236,190,.07),
+      0 5px 10px rgba(0,0,0,.44),
+      0 0 0 1px rgba(0,0,0,.62);
+    backdrop-filter:blur(2px);
+    font-size:14px;
+    transform:translateY(-1px);
+  }
+  .site-elevator-room:hover,
+  .site-elevator-room:focus-visible{
+    transform:translateY(-3px);
+    background:
+      linear-gradient(135deg,#f0c873 0 3px,transparent 3px) top left/10px 10px no-repeat,
+      linear-gradient(225deg,#f0c873 0 3px,transparent 3px) top right/10px 10px no-repeat,
+      linear-gradient(45deg,#6b4625 0 3px,transparent 3px) bottom left/10px 10px no-repeat,
+      linear-gradient(315deg,#6b4625 0 3px,transparent 3px) bottom right/10px 10px no-repeat,
+      linear-gradient(180deg,rgba(34,36,29,.95),rgba(7,10,10,.97));
+    box-shadow:
+      inset 0 0 0 1px #050606,
+      inset 0 0 0 3px rgba(236,194,106,.18),
+      0 7px 13px rgba(0,0,0,.52),
+      0 0 13px var(--site-elevator-glow);
+  }
+
+  /* Small symbolic markers make the plates feel authored, not generic. */
+  .site-elevator[data-elevator-level="heaven"] .site-elevator-room,
+  .site-elevator[data-elevator-level="plane"] .site-elevator-room{
+    padding-left:42px;
+  }
+  .site-elevator[data-elevator-level="heaven"] .site-elevator-room::before,
+  .site-elevator[data-elevator-level="plane"] .site-elevator-room::before{
+    left:12px;
+    right:auto;
+    top:50%;
+    width:22px;
+    height:22px;
+    transform:translateY(-50%);
+    display:grid;
+    place-items:center;
+    background:rgba(4,8,12,.50);
+    border:1px solid color-mix(in srgb,var(--site-elevator-accent) 62%,#5b4224);
+    color:#f0cd72;
+    box-shadow:inset 0 0 0 1px #070706,0 0 6px var(--site-elevator-glow);
+    font:700 16px/20px Georgia,serif;
+  }
+  .site-elevator[data-elevator-level="heaven"] .site-elevator-room[data-room-id="potatoverse-canon"]::before{content:"✦"}
+  .site-elevator[data-elevator-level="heaven"] .site-elevator-room[data-room-id="traditions-texts"]::before{content:"✧"}
+  .site-elevator[data-elevator-level="heaven"] .site-elevator-room[data-room-id="works"]::before{content:"✦"}
+  .site-elevator[data-elevator-level="plane"] .site-elevator-room[data-room-id="time-history"]::before{content:"⌛"}
+  .site-elevator[data-elevator-level="plane"] .site-elevator-room[data-room-id="science-formal-models"]::before{content:"⚛"}
+  .site-elevator[data-elevator-level="plane"] .site-elevator-room[data-room-id="life-body"]::before{content:"❧"}
+  .site-elevator[data-elevator-level="plane"] .site-elevator-room[data-room-id="world-systems"]::before{content:"⊕"}
+  .site-elevator[data-elevator-level="plane"] .site-elevator-room[data-room-id="culture-information"]::before{content:"⌂"}
+
+  @media (max-width:1180px){
+    .site-elevator{
+      --elevator-control-width:60px;
+      --elevator-board-width:310px;
+      --elevator-shell-height:112px;
+      --elevator-room-height:44px;
+      --elevator-room-gap:7px;
+    }
+    .site-elevator-floor{
+      grid-template-columns:38px 62px minmax(0,1fr);
+      column-gap:9px;
+      padding:9px 13px 9px 8px;
+    }
+    .site-elevator-floor-emblem{height:62px}
+    .site-elevator-floor-label{font-size:19px}
+    .site-elevator-room-label{font-size:7.7px}
+    .site-elevator-room-rail{padding:61px 10px 8px}
+    .site-elevator-room{padding-right:7px;font-size:11px}
+    .site-elevator[data-elevator-level="heaven"] .site-elevator-room,
+    .site-elevator[data-elevator-level="plane"] .site-elevator-room{padding-left:31px}
+    .site-elevator[data-elevator-level="heaven"] .site-elevator-room::before,
+    .site-elevator[data-elevator-level="plane"] .site-elevator-room::before{
+      left:7px;width:18px;height:18px;font-size:12px;line-height:16px;
+    }
+    .site-elevator[data-elevator-level="below"] .site-elevator-room{padding-left:34px}
+  }
+}
