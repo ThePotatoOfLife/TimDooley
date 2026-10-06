@@ -474,3 +474,31 @@
   .tradition-reader .row{grid-template-columns:1fr}
   .tradition-reader .era{padding-top:0}
 }
+
+
+/* Comparative atlas extensions */
+.tradition-reader.comparative-atlas{max-width:1240px}
+.tradition-reader.comparative-atlas .grid{
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr))
+}
+.tradition-reader .eq{
+  margin:14px 0 20px;
+  padding:14px 16px;
+  border:1px solid rgba(145,116,62,.22);
+  border-radius:10px;
+  background:
+    repeating-linear-gradient(0deg,transparent 0 31px,rgba(115,88,47,.025) 32px),
+    rgba(238,228,204,.36);
+  color:#3c382f;
+  font-family:var(--site-font-mono);
+  white-space:pre-wrap;
+  overflow:auto;
+  box-shadow:inset 3px 0 rgba(155,116,49,.10)
+}
+.tradition-reader .note{
+  margin:18px 0 24px;
+  padding:14px 16px;
+  border-left:3px solid rgba(154,119,58,.42);
+  background:rgba(236,226,202,.38);
+  color:#5d574b
+}
