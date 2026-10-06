@@ -1,0 +1,93 @@
+/* Potatoism practice reader — grounded Plane / Garden material. */
+.grow-page{
+  --grow-stone:rgba(219,200,164,.70);
+  --grow-stone-soft:rgba(211,190,150,.54);
+  --grow-line:rgba(123,92,45,.22);
+  --grow-ink:#272118;
+  --grow-copy:#554d3f;
+  --grow-muted:#6d6453;
+  --grow-gold:#886226;
+}
+.grow-page .page-header{
+  background:
+    radial-gradient(circle at 18% 0,rgba(255,244,209,.24),transparent 42%),
+    linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.02)),
+    var(--grow-stone);
+  border-color:rgba(139,104,50,.30);
+  color:var(--grow-ink);
+  box-shadow:inset 0 1px rgba(255,255,255,.34),0 16px 34px rgba(0,0,0,.12);
+  backdrop-filter:blur(7px) saturate(.88)
+}
+.grow-page .page-header h1{color:#211c16}
+.grow-page .page-header .summary{color:#51493d}
+.grow-page .back{font-size:13px;color:var(--grow-muted);text-decoration:none}
+.grow-page .roots{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin:28px 0
+}
+.grow-page .root{
+  border:1px solid var(--grow-line);
+  border-radius:14px;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.11),transparent 28%),
+    var(--grow-stone-soft);
+  padding:20px;
+  box-shadow:inset 0 1px rgba(255,255,255,.15),0 10px 24px rgba(0,0,0,.09)
+}
+.grow-page .root strong{
+  font:400 28px var(--site-font-serif);
+  color:#61461d
+}
+.grow-page .root p{color:var(--grow-muted)}
+.grow-page h2{
+  font:400 32px/1.2 var(--site-font-serif);
+  color:#4a381d;
+  margin:40px 0 10px
+}
+.grow-page .dwelling-reflection{
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.08),transparent 24%),
+    rgba(217,199,164,.48);
+  border-color:var(--grow-line);
+  color:var(--grow-copy);
+  box-shadow:0 12px 28px rgba(0,0,0,.09);
+  backdrop-filter:blur(6px)
+}
+.grow-page .dwelling-reflection p,
+.grow-page .dwelling-reflection li{color:var(--grow-copy)}
+.grow-page .reflection-turn{
+  border-left-color:rgba(139,102,42,.40);
+  background:rgba(236,220,186,.28)
+}
+.grow-page .cycle{
+  border-left:1px solid rgba(123,92,45,.26);
+  margin:24px 0;
+  padding-left:22px
+}
+.grow-page .stage{
+  margin:0 0 22px;
+  padding:9px 12px;
+  background:rgba(235,219,185,.26);
+  border:1px solid rgba(123,92,45,.13)
+}
+.grow-page .stage b{color:var(--grow-gold)}
+.grow-page .derive{
+  border-top:1px solid var(--grow-line);
+  padding:14px 0
+}
+.grow-page .note{
+  margin:28px 0;
+  padding:18px;
+  border-left:3px solid rgba(137,98,38,.52);
+  background:rgba(232,216,181,.42);
+  color:#5a5245
+}
+.grow-page .note strong{color:#66491d}
+.grow-page .small{color:var(--grow-muted);font-size:14px}
+.grow-page a{color:#6f511f}
+.grow-page a:hover{color:#3e2f13}
+@media(max-width:700px){
+  .grow-page .roots{grid-template-columns:1fr}
+}
