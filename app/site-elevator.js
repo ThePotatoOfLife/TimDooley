@@ -167,6 +167,24 @@
     return row?.label||({heaven:'Heaven',plane:'Plane',below:'Below'}[levelId]||'Plane');
   }
 
+  function headerShortLabel(id,title=''){
+    const labels={
+      'potatoverse-canon':'Canon',
+      'traditions-texts':'Traditions',
+      'works':'Works',
+      'time-history':'Time',
+      'science-formal-models':'Science',
+      'life-body':'Life',
+      'world-systems':'World',
+      'culture-information':'Culture',
+      'below':'Basin',
+      'shadow-farm':'Farm',
+      'archive-sources':'Evidence',
+      'research-lab':'Repair'
+    };
+    return labels[id]||String(title||id||'Room').replace(/\s*\/.*$/,'').split(/\s+/)[0]||'Room';
+  }
+
   function mount(options={}){
     if(typeof document==='undefined'||typeof window==='undefined')return null;
     if(document.querySelector('.site-elevator'))return document.querySelector('.site-elevator');
@@ -244,6 +262,7 @@
         link.href=siteHref(landmark.homepage,context.siteBase);
         link.textContent=landmark.title||landmark.id;
         link.dataset.landmarkId=landmark.id;
+        link.dataset.shortLabel=headerShortLabel(landmark.id,landmark.title);
         const targetRoute=normalizeRoute(new URL(link.href,document.baseURI).pathname,new URL(context.siteBase).pathname);
         if(selectedLevel===spatial.levelId&&currentRoute===targetRoute){
           link.setAttribute('aria-current','location');
@@ -256,6 +275,7 @@
         link.className='site-elevator-room is-primary';
         link.href=siteHref(room.homepage||('/rooms/'+room.id+'/'),context.siteBase);
         link.textContent=room.title||room.id;
+        link.dataset.shortLabel=headerShortLabel(room.id,room.title);
         const fullRoomTitle=room.fullTitle||room.title||room.id;
         if(fullRoomTitle!==link.textContent){
           link.title=fullRoomTitle;
