@@ -207,7 +207,13 @@ assert.ok(css.includes('background-image:var(--site-header-art)'),'responsive st
 assert.ok(css.includes('background-size:100% 100%'),'responsive strip must fill the full shared composition box');
 assert.match(css,/--elevator-shell-height:clamp\(106px,13\.96vw,286px\)/,'header height must scale continuously with viewport width');
 assert.match(css,/\.site-elevator-main\{[\s\S]*?width:100%;[\s\S]*?max-width:none;/,'live geometry must share the full panorama width');
-assert.ok(css.includes('grid-template-columns:repeat(var(--elevator-visible-count),minmax(0,1fr))'),'room hit geometry must follow the painted plaque count');
+assert.equal(css.includes('grid-template-columns:repeat(var(--elevator-visible-count),minmax(0,1fr))'),false,'desktop hit map must not regress to equal-width plaque columns');
+assert.match(css,/\.site-elevator-room-rail\{[\s\S]*?inset:0;[\s\S]*?pointer-events:none;/,'desktop rail must use the whole painted banner as its coordinate system');
+assert.match(css,/\.site-elevator\[data-elevator-level\] \.site-elevator-room\{[\s\S]*?position:absolute;[\s\S]*?pointer-events:auto;/,'painted plaque links must be absolute interactive zones');
+assert.ok(css.includes('.site-elevator[data-elevator-level="plane"] .site-elevator-room:nth-child(5){left:82.32%;width:16.89%}'),'Plane fifth plaque needs measured artwork geometry');
+assert.ok(css.includes('.site-elevator[data-elevator-level="heaven"] .site-elevator-room:nth-child(3){left:74.70%;width:20.52%}'),'Heaven third plaque needs measured artwork geometry');
+assert.ok(css.includes('.site-elevator[data-elevator-level="below"] .site-elevator-room:nth-child(4){left:83.11%;width:15.86%}'),'Below fourth plaque needs measured artwork geometry');
+assert.match(css,/\.site-elevator\[data-elevator-direction\] \.site-elevator-room-rail\{[\s\S]*?animation:none;/,'invisible desktop hitboxes must not inherit rail motion');
 assert.equal(css.includes('overflow-x:auto'),false,'Room rail must not horizontally scroll');
 assert.equal(css.includes('scrollbar-width'),false,'Room rail must not render a scrollbar');
 assert.ok((css.match(/!important/g)||[]).length<=8,'elevator CSS should keep specificity escalation tightly bounded');
@@ -228,7 +234,6 @@ assert.ok(css.includes('.site-elevator-up::before{content:"△"}'),'mobile/base 
 assert.ok(css.includes('.site-elevator-down::before{content:"▽"}'),'mobile/base fallback must retain down-arrow semantics');
 
 assert.ok(source.includes("roomRail.dataset.roomCount=String(visibleCount)"),'runtime must expose actual floor door count for illustrated layout');
-assert.ok(css.includes('grid-template-columns:repeat(var(--elevator-visible-count),minmax(0,1fr))'),'desktop illustrated rail must size Heaven, Plane and Below by their actual door count');
 assert.ok(source.includes('site-elevator-stage'),'runtime must separate the stable console from the scenic Room window');
 assert.equal(source.includes("--elevator-room-count"),false,'Room geometry should stay CSS-owned rather than being recalculated in runtime');
 assert.ok(source.includes('header.dataset.elevatorRoom=spatial.roomId'),'runtime must publish the current Room on the header');
