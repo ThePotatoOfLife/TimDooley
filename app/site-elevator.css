@@ -1549,3 +1549,173 @@ html[data-site-floor] body.home-body::before{content:none;display:none}
   }
   .site-elevator-room::after{display:none!important}
 }
+
+
+/* 2026-10-06 exact target-reference desktop skin */
+@media (min-width:1100px){
+  .site-elevator{
+    --elevator-shell-height:clamp(170px,13.78vw,228px);
+    --site-header-shade:transparent;
+    background:transparent;
+    border:0;
+    box-shadow:0 7px 18px rgba(0,0,0,.22);
+  }
+
+  /* The approved panorama strip is the visual shell. DOM controls stay live as
+     transparent hit targets over the exact pixel-art artwork. */
+  .site-elevator::before{
+    inset:0;
+    z-index:-2;
+    opacity:1;
+    background-image:var(--site-header-art);
+    background-repeat:no-repeat;
+    background-position:center;
+    background-size:100% 100%;
+    filter:none;
+  }
+  .site-elevator::after{display:none}
+
+  .site-elevator-main{
+    grid-template-columns:5.55% 20.15% 74.30%;
+    height:var(--elevator-shell-height);
+    min-height:var(--elevator-shell-height);
+    max-height:var(--elevator-shell-height);
+    background:transparent;
+    border:0;
+    box-shadow:none;
+  }
+  .site-elevator-main::before,
+  .site-elevator-main::after{display:none}
+
+  .site-elevator-controls,
+  .site-elevator-reel,
+  .site-elevator-stage{
+    min-height:var(--elevator-shell-height);
+    background:transparent!important;
+    border:0!important;
+    outline:0!important;
+    box-shadow:none!important;
+  }
+  .site-elevator-controls{
+    position:relative;
+    display:block;
+    padding:0;
+  }
+  .site-elevator-controls::before,
+  .site-elevator-controls::after{display:none}
+
+  /* Exact invisible click zones for the illustrated vine elevator arrows. */
+  .site-elevator-arrow{
+    position:absolute;
+    left:17%;
+    right:17%;
+    width:66%;
+    height:24%;
+    min-height:0;
+    margin:0;
+    padding:0;
+    border:0!important;
+    background:transparent!important;
+    box-shadow:none!important;
+    opacity:0;
+    color:transparent!important;
+  }
+  .site-elevator-up{top:10%}
+  .site-elevator-down{bottom:10%}
+  .site-elevator-arrow::before,
+  .site-elevator-arrow::after{display:none!important}
+  .site-elevator-arrow:hover:not(:disabled),
+  .site-elevator-arrow:focus-visible{
+    opacity:1;
+    outline:2px solid rgba(255,221,145,.54);
+    outline-offset:-2px;
+    background:rgba(255,215,120,.055)!important;
+    box-shadow:0 0 13px rgba(236,190,96,.20)!important;
+  }
+  .site-elevator-arrow:disabled{
+    opacity:0;
+    cursor:default;
+  }
+
+  /* The left board lettering/emblem is already rendered in the reference art. */
+  .site-elevator-reel::before,
+  .site-elevator-reel::after{display:none!important}
+  .site-elevator-floor{opacity:0;pointer-events:none}
+
+  /* Do not redraw the panorama inside the stage; the shell image already owns it. */
+  .site-elevator-stage{overflow:visible}
+  .site-elevator-stage::before,
+  .site-elevator-stage::after{display:none!important}
+
+  /* Room links remain real links, but their pixel-art plaques come from the
+     target strip. Hover/focus only adds a restrained light response. */
+  .site-elevator-room-rail{
+    position:absolute;
+    z-index:5;
+    left:11.3%;
+    right:4.5%;
+    bottom:5.5%;
+    height:25%;
+    min-height:0;
+    margin:0;
+    padding:0;
+    display:grid;
+    grid-template-columns:repeat(var(--elevator-visible-count),minmax(0,1fr));
+    align-items:stretch;
+    gap:1.15%;
+    overflow:visible;
+    background:transparent;
+  }
+  .site-elevator[data-elevator-level="plane"] .site-elevator-room-rail{
+    left:.5%;
+    right:1.6%;
+    bottom:5.7%;
+    height:24%;
+    gap:.7%;
+  }
+  .site-elevator-room-rail::before,
+  .site-elevator-room-rail::after{display:none!important}
+
+  .site-elevator-room,
+  .site-elevator[data-elevator-level="heaven"] .site-elevator-room,
+  .site-elevator[data-elevator-level="plane"] .site-elevator-room,
+  .site-elevator[data-elevator-level="below"] .site-elevator-room{
+    width:auto;
+    max-width:none;
+    height:100%;
+    min-height:0;
+    max-height:none;
+    margin:0;
+    padding:0;
+    overflow:hidden;
+    border:0!important;
+    border-radius:0;
+    clip-path:none;
+    background:transparent!important;
+    box-shadow:none!important;
+    color:transparent!important;
+    text-shadow:none!important;
+    font-size:0!important;
+    transform:none!important;
+  }
+  .site-elevator-room::before,
+  .site-elevator-room::after,
+  .site-elevator[data-elevator-level] .site-elevator-room::before,
+  .site-elevator[data-elevator-level] .site-elevator-room::after{
+    display:none!important;
+  }
+  .site-elevator-room:hover,
+  .site-elevator-room:focus-visible,
+  .site-elevator-room.is-active{
+    background:rgba(255,220,135,.055)!important;
+    box-shadow:
+      inset 0 0 0 2px rgba(255,225,154,.34),
+      0 0 12px rgba(229,180,83,.18)!important;
+    outline:0;
+  }
+  .site-elevator-room:focus-visible{
+    box-shadow:
+      inset 0 0 0 2px rgba(255,237,190,.72),
+      0 0 14px rgba(234,190,98,.30)!important;
+  }
+}
