@@ -214,7 +214,7 @@ assert.equal(/\.site-elevator\[data-elevator-level=.*nth-child/.test(css),false,
 assert.ok(source.includes("fetchJson('/app/site-elevator-hotspots.json')"),'runtime must load the canonical hotspot map');
 assert.ok(source.includes("link.dataset.hotspotKey='room:'+room.id"),'Room links must identify their canonical hotspot key');
 assert.ok(source.includes("link.dataset.hotspotKey='landmark:'+landmark.id"),'landmark links must identify their canonical hotspot key');
-assert.ok(source.includes('applyHotspotRect(link,rect,artboard)'),'runtime must project artboard coordinates onto live links');
+assert.ok(source.includes('applyHotspotRect(link,rect,hotspotContract.artboard)'),'runtime must project canonical artboard coordinates onto live links');
 assert.match(css,/\.site-elevator\[data-elevator-direction\] \.site-elevator-room-rail\{[\s\S]*?animation:none;/,'invisible desktop hitboxes must not inherit rail motion');
 assert.equal(css.includes('overflow-x:auto'),false,'Room rail must not horizontally scroll');
 assert.equal(css.includes('scrollbar-width'),false,'Room rail must not render a scrollbar');
