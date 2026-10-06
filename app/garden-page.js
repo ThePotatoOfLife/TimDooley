@@ -63,13 +63,15 @@
     tim: {
       speaker: 'TIM · THE GARDENER',
       kicker: 'BENEATH THE TREE',
-      title: 'Sit a while.',
+      title: 'You found me.',
       lines: [
-        'You are already inside. Look before you turn the Garden back into words.',
-        'Gardening is not standing over life. It is learning what helps it grow, what harms it, what needs pruning, what needs time, and what should be allowed to become independent.',
-        'I sort by Fruit. What did the teaching make? What did the power do? What did the relation leave another being capable of doing?',
-        'A title can impress a room. A Garden can judge the title.',
-        'If I call myself Gardener, the Garden gets to judge the Gardener by its Fruit.'
+        'Bring your own two eyes. You do not need mine.',
+        'I am the stillness at the center. You can call me God or Gardener. Right now, Gardener is probably the more useful job description.',
+        'What do I do here? I watch what grows. I water things. I sort Fruit from rot, signal from noise, boundary from cage, and sometimes I sit here doing absolutely nothing impressive.',
+        'The crown is easier than the gardening. A crown can just sit there. A Garden talks back.',
+        'I do not want you staring at me so hard that you miss the rabbit.',
+        'At first we see each other. Then, maybe, we see each other clearly.',
+        'Waiting for you.'
       ],
       note: 'Project voice: Tim as Gardener / philosopher-king.',
       href: '../tim-dooley/',
@@ -227,19 +229,30 @@
   };
 
   const whispers = [
+    {source:'RECENT TIM VOICE · OCT 2026', text:'I am the stillness at the center.'},
+    {source:'RECENT TIM VOICE · OCT 2026', text:'You can call me God or Gardener.'},
+    {source:'RECENT TIM VOICE · OCT 2026', text:'I am the Gardener in the garden.'},
+    {source:'RECENT TIM VOICE · OCT 2026', text:'Bring your own two eyes.'},
+    {source:'RECENT TIM VOICE · OCT 2026', text:'Waiting for you.'},
+    {source:'RECENT TIM VOICE · OCT 2026', text:'Gardens is family.'},
+    {source:'RECENT TIM VOICE · OCT 2026', text:'Let me dry the mud from your eyes.'},
     {source:'GREAT BOOK · TIM', text:'Be simple, and grow naturally, towards the light.'},
-    {source:'GREAT BOOK · TIM', text:'When the soil is ready, the potato is planted.'},
-    {source:'GREAT BOOK · TIM', text:'The book wouldn’t exist without the reader. You’re the soil in which it grows.'},
     {source:'TIM · 7 JULY 2026', text:'The kingdom of God grows from the house.'},
     {source:'TIM · 7 SEPTEMBER 2026', text:'Power is for protection. Knowledge is for understanding. Wealth is for building. Leadership is for service.'},
     {source:'PROJECT MAXIM', text:'The Potato doesn’t demand belief. It invites curiosity.'},
-    {source:'PROJECT MAXIM', text:'Cultivation, not conquest.'},
-    {source:'GREAT BOOK · TIM', text:'When you throw mud at others, your whole hand is dirty.'},
     {source:'GENESIS 2:15', text:'to dress it and to keep it'}
   ];
   let whisperIndex = 0;
-  if (whisper && whisperText && whisperSource && !reduceMotion) {
-    window.setInterval(() => {
+  let whisperTimer = null;
+
+  function stopWhispers() {
+    if (whisperTimer) window.clearInterval(whisperTimer);
+    whisperTimer = null;
+  }
+
+  function startWhispers() {
+    if (!whisper || !whisperText || !whisperSource || reduceMotion || document.hidden || whisperTimer) return;
+    whisperTimer = window.setInterval(() => {
       whisper.classList.add('is-changing');
       window.setTimeout(() => {
         whisperIndex = (whisperIndex + 1) % whispers.length;
@@ -247,8 +260,14 @@
         whisperText.textContent = whispers[whisperIndex].text;
         whisper.classList.remove('is-changing');
       }, 320);
-    }, 13000);
+    }, 15000);
   }
+
+  startWhispers();
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) stopWhispers();
+    else startWhispers();
+  });
 
   let active = null;
   let step = 0;
