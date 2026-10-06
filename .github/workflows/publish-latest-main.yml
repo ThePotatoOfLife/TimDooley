@@ -105,7 +105,8 @@ jobs:
           test -f _site/garden/index.html
           test -f _site/app/garden-page.css
           test -f _site/app/garden-page.js
-          test -f _site/assets/visuals/garden-eden-map.svg
+          test -f _site/assets/visuals/garden-eden-master.webp
+          test -s _site/assets/visuals/garden-eden-master.webp
           grep -q 'data-site-floor="heaven"' _site/garden/index.html
           grep -q 'data-garden-world' _site/garden/index.html
           grep -q 'data-garden-zone="life"' _site/garden/index.html
@@ -191,7 +192,7 @@ jobs:
           fetch_live "${base}elevator/?level=heaven" ".live-smoke/elevator.html"
           fetch_live "${base}app/garden-page.js" ".live-smoke/garden-page.js"
           fetch_live "${base}app/garden-page.css" ".live-smoke/garden-page.css"
-          fetch_live "${base}assets/visuals/garden-eden-map.svg" ".live-smoke/garden-eden-map.svg"
+          fetch_live "${base}assets/visuals/garden-eden-master.webp" ".live-smoke/garden-eden-master.webp"
 
           python - <<'PY'
           import json, os
@@ -205,7 +206,7 @@ jobs:
           elevator=Path(".live-smoke/elevator.html").read_text(encoding="utf-8",errors="replace")
           js=Path(".live-smoke/garden-page.js").read_text(encoding="utf-8",errors="replace")
           css=Path(".live-smoke/garden-page.css").read_text(encoding="utf-8",errors="replace")
-          art=Path(".live-smoke/garden-eden-map.svg").read_text(encoding="utf-8",errors="replace")
+          art=Path(".live-smoke/garden-eden-master.webp").read_bytes()
 
           for marker in (
               'data-site-floor="heaven"',
@@ -221,6 +222,6 @@ jobs:
           assert "Garden / Eden" in elevator, "live Heaven elevator missing Garden feature"
           assert "[data-garden-zone]" in js and "data-dialogue-line" in js, "live Garden RPG dialogue runtime incomplete"
           assert ".garden-world-canvas" in css and ".garden-dialogue" in css and ".garden-character-tim" in css, "live Garden RPG styling incomplete"
-          assert "Garden of Eden RPG map" in art and "Tree of Life" in art and "Tree of the Knowledge of Good and Evil" in art, "live Garden RPG art incomplete"
+          assert len(art) > 40000 and art[:4] == b"RIFF" and b"WEBP" in art[:16], "live Garden master artwork missing or invalid"
           print("Live Garden verified at", expected)
           PY
