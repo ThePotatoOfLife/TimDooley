@@ -199,3 +199,63 @@
 @media(max-width:720px){.house-journey-ribbon{width:min(360px,calc(100vw - 108px));max-width:calc(100vw - 108px)}.house-journey-ribbon-title{display:none}.house-journey-ribbon-track a:nth-last-child(n+2){display:none}.house-journey-ribbon-actions a{display:none}.room-floor-grid{grid-template-columns:1fr}.room-floor-card{min-height:auto}.dwelling-object-head{grid-template-columns:1fr;gap:8px}.dwelling-object-card{min-height:auto}.rooms-best-head{grid-template-columns:1fr;gap:8px}.rooms-best-card{min-height:auto}.room-archive-head{grid-template-columns:1fr;gap:8px}.room-archive-drawer-title{display:block}.room-archive-drawer-title>a{display:inline-block;margin-top:8px}.house-corpus-card{min-height:auto}.dwelling-archive-index-head{grid-template-columns:1fr;gap:8px}}
 @media(max-width:680px){.room-section-guide{grid-template-columns:1fr;gap:8px}.room-section-guide>div:first-child{min-width:0}}
 @media(max-width:420px){.house-journey-ribbon{left:6px;width:calc(100vw - 102px);max-width:calc(100vw - 102px);padding:3px 4px}.house-journey-ribbon-track a{max-width:128px}.house-journey-ribbon-actions button{padding:4px}}
+
+
+/* 2026-10-06 journey depth pass */
+.room-floor-projection{
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(ellipse at 50% 0,rgba(216,181,107,.045),transparent 54%),
+    linear-gradient(180deg,rgba(8,12,10,.52),rgba(7,9,8,.40));
+  border-color:rgba(255,255,255,.10);
+  box-shadow:0 14px 32px rgba(0,0,0,.15)
+}
+.room-floor-projection::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:linear-gradient(90deg,rgba(0,0,0,.16),transparent 15% 85%,rgba(0,0,0,.16));
+}
+.room-floor-projection>*{position:relative;z-index:1}
+.room-floor-card{
+  overflow:hidden;
+  isolation:isolate;
+  box-shadow:inset 0 1px rgba(255,255,255,.025),0 9px 20px rgba(0,0,0,.12);
+  transition:transform .16s ease,border-color .16s ease,box-shadow .16s ease
+}
+.room-floor-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.025),transparent 24%),
+    linear-gradient(0deg,rgba(0,0,0,.26),transparent 52%);
+}
+.room-floor-card:hover{
+  transform:translateY(-2px);
+  box-shadow:inset 0 1px rgba(255,255,255,.035),0 14px 28px rgba(0,0,0,.18)
+}
+.room-floor-card.is-primary{
+  box-shadow:
+    inset 0 3px var(--site-gold,#d8b56b),
+    inset 0 0 0 1px rgba(255,244,202,.04),
+    0 14px 30px rgba(0,0,0,.18)
+}
+.dwelling-object-shelf,.rooms-best-of{
+  background:linear-gradient(180deg,rgba(255,255,255,.012),transparent 22%);
+  padding-inline:16px
+}
+.dwelling-object-card,.rooms-best-card,.house-corpus-card,.dwelling-archive-index-card{
+  background:rgba(8,11,9,.34);
+  border-color:rgba(255,255,255,.085);
+  transition:background .15s ease,border-color .15s ease,transform .15s ease
+}
+.dwelling-object-card:hover,.rooms-best-card:hover,.house-corpus-card:hover,.dwelling-archive-index-card:hover{
+  background:rgba(11,15,12,.48);
+  border-color:rgba(216,181,107,.16);
+  transform:translateY(-1px)
+}
