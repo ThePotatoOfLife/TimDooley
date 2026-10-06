@@ -903,8 +903,9 @@ html[data-site-floor] body.home-body::before{content:none;display:none}
     background-image:var(--site-header-art);
     background-repeat:no-repeat;
     background-position:right top;
-    /* Stage is 73.7% of the full strip: this recreates the original full-image scale. */
-    background-size:135.685% 100%;
+    /* The full source panorama stays viewport-scaled and aspect-correct.
+       The stage crops its right-hand scenic portion instead of stretching it. */
+    background-size:100vw auto;
     filter:none;
   }
   .site-elevator-stage::after{
