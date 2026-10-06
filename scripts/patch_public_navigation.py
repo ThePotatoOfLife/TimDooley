@@ -1333,6 +1333,10 @@ def main() -> None:
     # canonical subheader contract last so Home-first order cannot drift.
     changed.update(patch_page_navs(OUT))
 
+    # First-paint floor state is a final shell concern. Re-stamp it after every
+    # other HTML injector so no later navigation/TTS/access rewrite can erase it.
+    changed.update(patch_site_floors(OUT))
+
     print(f"Applied public navigation cleanup to {len(changed)} generated page(s).")
 
 
