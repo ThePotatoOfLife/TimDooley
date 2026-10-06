@@ -1230,402 +1230,299 @@ html[data-site-floor] body.home-body::before{content:none;display:none}
   }
 }
 
-/* 2026-10-06 panorama / vine / royal header overhaul */
+/* 2026-10-06 target-reference refinement.
+   Keep the existing elevator mechanics; make the illustrated header read as
+   one panorama with restrained royal hardware rather than stacked UI boxes. */
 @media (min-width:761px){
   .site-elevator{
-    --elevator-control-width:76px;
-    --elevator-board-width:390px;
-    --elevator-shell-height:124px;
-    --elevator-room-height:46px;
-    --elevator-room-gap:12px;
-    --elevator-vine:#9a7f3c;
-    --elevator-vine-leaf:#6e8c4c;
-    border-top:2px solid #0a0907;
-    border-bottom:2px solid #080706;
-    background:#090c0e;
-    box-shadow:
-      0 1px 0 #d2a257,
-      0 3px 0 #3a2817,
-      0 9px 28px rgba(0,0,0,.60);
-  }
-  .site-elevator[data-elevator-level="heaven"]{
-    --elevator-vine:#d8b859;
-    --elevator-vine-leaf:#78914f;
-    --site-header-shade:rgba(5,12,22,.18);
-  }
-  .site-elevator[data-elevator-level="plane"]{
-    --elevator-vine:#aa954b;
-    --elevator-vine-leaf:#4f7c48;
-    --site-header-shade:rgba(4,12,13,.18);
-  }
-  .site-elevator[data-elevator-level="below"]{
-    --elevator-vine:#9f4f28;
-    --elevator-vine-leaf:#7b3c25;
-    --site-header-shade:rgba(15,5,4,.20);
+    --elevator-control-width:62px;
+    --elevator-board-width:330px;
+    --elevator-shell-height:118px;
+    --elevator-room-height:48px;
+    --elevator-room-gap:10px;
+    --header-vine:#897338;
+    --header-leaf:#687b42;
+    --site-header-shade:rgba(5,9,12,.13);
+    background:#080b0d;
   }
 
-  /* One continuous panorama behind the console and the floating Room plates. */
+  /* One continuous realm panorama. Hardware floats over it. */
   .site-elevator::before{
-    z-index:-3;
     opacity:1;
     background-image:
-      linear-gradient(180deg,rgba(2,5,7,.03),rgba(2,4,6,.08) 48%,rgba(2,3,4,.38) 100%),
+      linear-gradient(180deg,rgba(3,5,7,.02),rgba(3,5,7,.03) 48%,rgba(2,3,4,.20) 100%),
       var(--site-header-art,var(--site-realm-art));
     background-repeat:no-repeat;
     background-position:50% 50%,var(--site-header-art-position);
     background-size:100% 100%,cover;
-    filter:saturate(1.06) contrast(1.05);
+    filter:saturate(1.04) contrast(1.03);
   }
-  .site-elevator-main{
-    position:relative;
+  .site-elevator-main{background:transparent}
+  .site-elevator-stage{
     background:transparent;
+    box-shadow:inset 0 1px rgba(255,245,215,.08),inset 0 -1px rgba(0,0,0,.62);
   }
-  .site-elevator-main::after{
-    content:"";
-    position:absolute;
-    inset:4px;
-    z-index:4;
-    pointer-events:none;
-    border:1px solid rgba(211,164,79,.45);
-    box-shadow:
-      inset 0 0 0 1px rgba(0,0,0,.74),
-      inset 0 0 0 3px rgba(213,161,72,.08);
-    clip-path:polygon(10px 0,calc(100% - 10px) 0,100% 10px,100% calc(100% - 10px),calc(100% - 10px) 100%,10px 100%,0 calc(100% - 10px),0 10px);
+  .site-elevator-stage::before{opacity:0}
+  .site-elevator-stage::after{
+    z-index:-1;
+    background:
+      linear-gradient(180deg,transparent 0 48%,rgba(2,3,4,.08) 64%,rgba(2,3,4,.33) 100%),
+      linear-gradient(90deg,rgba(3,5,6,.12),transparent 8%,transparent 92%,rgba(3,5,6,.12));
   }
 
-  /* Organic elevator rail: a living vine/root behind the royal controls. */
+  /* Narrower console = more art. The frame stays royal, but no longer becomes
+     the dominant object in the header. */
   .site-elevator-controls{
-    position:relative;
-    z-index:2;
-    overflow:hidden;
+    padding:7px 8px;
+    gap:5px;
     background:
-      linear-gradient(90deg,rgba(4,7,9,.92),rgba(13,18,20,.78)),
-      transparent;
-    border-right:2px solid rgba(161,112,51,.75);
+      radial-gradient(ellipse at 15% 12%,var(--header-leaf) 0 4px,transparent 5px),
+      radial-gradient(ellipse at 82% 31%,var(--header-leaf) 0 4px,transparent 5px),
+      radial-gradient(ellipse at 19% 67%,var(--header-leaf) 0 4px,transparent 5px),
+      radial-gradient(ellipse at 78% 88%,var(--header-leaf) 0 4px,transparent 5px),
+      linear-gradient(102deg,transparent 46%,var(--header-vine) 47% 52%,transparent 53%),
+      linear-gradient(180deg,rgba(21,29,34,.90),rgba(7,10,12,.91));
+    border-right:1px solid rgba(166,117,55,.72);
     box-shadow:
-      inset 0 0 0 2px #070808,
-      inset 0 0 0 4px rgba(190,140,60,.14);
+      inset 0 0 0 2px #07090a,
+      inset 0 0 0 3px rgba(208,161,77,.18);
   }
+  .site-elevator-arrow{
+    margin:0;
+    width:100%;
+    border-color:rgba(178,145,88,.48);
+    background:linear-gradient(180deg,rgba(34,43,46,.78),rgba(10,13,14,.88));
+  }
+  .site-elevator-arrow::before{
+    font-size:22px;
+    color:#f0dfb8;
+    text-shadow:0 0 7px var(--site-elevator-glow),0 2px 0 #000;
+  }
+
+  .site-elevator-reel{
+    background:
+      radial-gradient(ellipse at 5% 12%,var(--header-leaf) 0 5px,transparent 6px),
+      radial-gradient(ellipse at 96% 84%,var(--header-leaf) 0 4px,transparent 5px),
+      linear-gradient(180deg,rgba(18,28,35,.90),rgba(6,10,13,.92));
+    border-right:1px solid rgba(151,104,47,.78);
+    box-shadow:
+      inset 0 0 0 1px #050708,
+      inset 0 0 0 3px rgba(194,142,66,.14),
+      4px 0 12px rgba(0,0,0,.16);
+  }
+  .site-elevator-floor{
+    grid-template-columns:42px 68px minmax(0,1fr);
+    column-gap:11px;
+    padding:9px 16px 9px 9px;
+  }
+  .site-elevator-floor-code{
+    font-size:14px;
+    border-right-color:rgba(207,160,82,.24);
+  }
+  .site-elevator-floor-label{
+    font-size:22px;
+    letter-spacing:.045em;
+  }
+  .site-elevator-room-label{
+    font-size:8px;
+    letter-spacing:.07em;
+    color:#c9c2b4;
+  }
+
+  /* Replace the blocky abstract emblems with clear living silhouettes. */
+  .site-elevator-floor-emblem{
+    height:64px;
+    background:
+      radial-gradient(circle at 50% 46%,color-mix(in srgb,var(--site-elevator-accent) 18%,transparent),transparent 58%),
+      linear-gradient(180deg,rgba(11,20,26,.88),rgba(4,9,12,.94));
+  }
+  .site-elevator-floor-emblem::after{display:none}
+  .site-elevator-floor-emblem::before{
+    left:50%;
+    top:50%;
+    width:48px!important;
+    height:48px!important;
+    transform:translate(-50%,-50%)!important;
+    background:currentColor!important;
+    filter:drop-shadow(0 0 5px var(--site-elevator-glow));
+    -webkit-mask-repeat:no-repeat;
+    mask-repeat:no-repeat;
+    -webkit-mask-position:center;
+    mask-position:center;
+    -webkit-mask-size:contain;
+    mask-size:contain;
+  }
+  .site-elevator[data-elevator-level="heaven"] .site-elevator-floor-emblem::before{
+    -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='black' d='M29 57h6V41l13-11-4-4-9 8V24l9-9-4-4-5 5V6h-6v13l-7-7-4 4 11 11v9L17 27l-4 5 16 12zM18 57h28v4H18z'/%3E%3C/svg%3E");
+    mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='black' d='M29 57h6V41l13-11-4-4-9 8V24l9-9-4-4-5 5V6h-6v13l-7-7-4 4 11 11v9L17 27l-4 5 16 12zM18 57h28v4H18z'/%3E%3C/svg%3E");
+  }
+  .site-elevator[data-elevator-level="plane"] .site-elevator-floor-emblem::before{
+    -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='24' cy='24' r='13' fill='black'/%3E%3Ccircle cx='39' cy='22' r='14' fill='black'/%3E%3Ccircle cx='33' cy='12' r='12' fill='black'/%3E%3Cpath fill='black' d='M29 28h7v25h-7zM20 52h25v5H20z'/%3E%3C/svg%3E");
+    mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='24' cy='24' r='13' fill='black'/%3E%3Ccircle cx='39' cy='22' r='14' fill='black'/%3E%3Ccircle cx='33' cy='12' r='12' fill='black'/%3E%3Cpath fill='black' d='M29 28h7v25h-7zM20 52h25v5H20z'/%3E%3C/svg%3E");
+  }
+  .site-elevator[data-elevator-level="below"] .site-elevator-floor-emblem::before{
+    -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='black' d='M29 5h6v25l9 9 9-7 4 4-11 10-11-9v22h-6V37l-11 9L7 36l4-4 9 7 9-9zM18 43l5 4-9 12-5-3zm28 0 9 13-5 3-9-12z'/%3E%3C/svg%3E");
+    mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='black' d='M29 5h6v25l9 9 9-7 4 4-11 10-11-9v22h-6V37l-11 9L7 36l4-4 9 7 9-9zM18 43l5 4-9 12-5-3zm28 0 9 13-5 3-9-12z'/%3E%3C/svg%3E");
+  }
+
+  /* Buttons: royal plaques with free-standing symbols, not icons trapped in
+     mini square widgets. */
+  .site-elevator-room-rail{
+    display:grid;
+    grid-template-columns:repeat(var(--elevator-visible-count),minmax(0,1fr));
+    align-items:end;
+    padding:59px 16px 10px;
+    gap:var(--elevator-room-gap);
+  }
+  .site-elevator-room{
+    min-width:0;
+    width:auto;
+    max-width:none;
+    height:var(--elevator-room-height);
+    min-height:var(--elevator-room-height);
+    max-height:var(--elevator-room-height);
+    padding:6px 12px 6px 40px;
+    font:600 14px/1.06 var(--site-font-serif);
+    white-space:nowrap;
+    color:#f0e8d9;
+    background:
+      linear-gradient(135deg,var(--room-hardware-bright) 0 3px,transparent 3px) top left/10px 10px no-repeat,
+      linear-gradient(225deg,var(--room-hardware-bright) 0 3px,transparent 3px) top right/10px 10px no-repeat,
+      linear-gradient(45deg,var(--room-hardware-dim) 0 3px,transparent 3px) bottom left/10px 10px no-repeat,
+      linear-gradient(315deg,var(--room-hardware-dim) 0 3px,transparent 3px) bottom right/10px 10px no-repeat,
+      linear-gradient(180deg,var(--room-plate-top),var(--room-plate-bottom));
+    box-shadow:
+      inset 0 0 0 1px #050606,
+      inset 0 0 0 2px color-mix(in srgb,var(--site-elevator-accent) 12%,transparent),
+      0 5px 10px rgba(0,0,0,.35);
+  }
+  .site-elevator-room::before,
+  .site-elevator[data-elevator-level="below"] .site-elevator-room::before{
+    left:13px;
+    right:auto;
+    top:50%;
+    width:22px;
+    height:24px;
+    transform:translateY(-50%);
+    display:grid;
+    place-items:center;
+    border:0;
+    background:transparent;
+    box-shadow:none;
+    color:var(--room-hardware-bright);
+    font:700 19px/1 Georgia,serif;
+    text-shadow:0 0 7px var(--site-elevator-glow),0 1px 0 #000;
+  }
+  .site-elevator[data-elevator-level="heaven"] .site-elevator-room::before{content:"✦"}
+  .site-elevator[data-elevator-level="plane"] .site-elevator-room[data-room-id="time-history"]::before{content:"⌛"}
+  .site-elevator[data-elevator-level="plane"] .site-elevator-room[data-room-id="science-formal-models"]::before{content:"⚛"}
+  .site-elevator[data-elevator-level="plane"] .site-elevator-room[data-room-id="life-body"]::before{content:"❧"}
+  .site-elevator[data-elevator-level="plane"] .site-elevator-room[data-room-id="world-systems"]::before{content:"◎"}
+  .site-elevator[data-elevator-level="plane"] .site-elevator-room[data-room-id="culture-information"]::before{content:"⌂"}
+  .site-elevator[data-elevator-level="below"] .site-elevator-room[data-landmark-id="below"]::before{content:"♨"}
+  .site-elevator[data-elevator-level="below"] .site-elevator-room[data-landmark-id="shadow-farm"]::before{content:"♣"}
+  .site-elevator[data-elevator-level="below"] .site-elevator-room[data-room-id="archive-sources"]::before{content:"Ψ"}
+  .site-elevator[data-elevator-level="below"] .site-elevator-room[data-room-id="research-lab"]::before{content:"⚒"}
+  .site-elevator[data-elevator-level="heaven"] .site-elevator-room{font-size:15px}
+  .site-elevator[data-elevator-level="plane"] .site-elevator-room{font-size:13.2px}
+  .site-elevator[data-elevator-level="below"] .site-elevator-room{font-size:13.2px}
+
+  /* Active state stays a plaque state; do not replace the icon with a line. */
+  .site-elevator[data-elevator-level] .site-elevator-room.is-active::before{
+    left:13px;
+    right:auto;
+    top:50%;
+    width:22px;
+    height:24px;
+    transform:translateY(-50%);
+    border:0;
+    background:transparent;
+    box-shadow:none;
+    color:#ffe2a0;
+  }
+}
+
+/* Width bands preserve the same composition instead of changing design. */
+@media (min-width:1181px) and (max-width:1439px){
+  .site-elevator{
+    --elevator-control-width:58px;
+    --elevator-board-width:305px;
+    --elevator-shell-height:110px;
+    --elevator-room-height:44px;
+    --elevator-room-gap:8px;
+  }
+  .site-elevator-floor{grid-template-columns:38px 62px minmax(0,1fr);column-gap:9px;padding:8px 13px 8px 8px}
+  .site-elevator-floor-emblem{height:58px}
+  .site-elevator-floor-label{font-size:20px}
+  .site-elevator-room-rail{padding:56px 12px 8px}
+  .site-elevator-room{font-size:11.8px;padding-left:34px}
+  .site-elevator[data-elevator-level="heaven"] .site-elevator-room{font-size:13px}
+  .site-elevator-room::before,
+  .site-elevator[data-elevator-level="below"] .site-elevator-room::before{left:10px;width:19px;font-size:16px}
+  .site-elevator[data-elevator-level] .site-elevator-room.is-active::before{left:10px;width:19px}
+}
+@media (min-width:901px) and (max-width:1180px){
+  .site-elevator{
+    --elevator-control-width:52px;
+    --elevator-board-width:255px;
+    --elevator-shell-height:104px;
+    --elevator-room-height:42px;
+    --elevator-room-gap:6px;
+  }
+  .site-elevator-floor{grid-template-columns:34px 54px minmax(0,1fr);column-gap:7px;padding:7px 10px 7px 7px}
+  .site-elevator-floor-emblem{height:54px}
+  .site-elevator-floor-label{font-size:18px}
+  .site-elevator-room-label{font-size:7px}
+  .site-elevator-room-rail{padding:54px 8px 8px}
+  .site-elevator-room{font-size:9.5px;padding-left:29px;padding-right:5px}
+  .site-elevator[data-elevator-level="heaven"] .site-elevator-room{font-size:11px}
+  .site-elevator-room::before,
+  .site-elevator[data-elevator-level="below"] .site-elevator-room::before{left:7px;width:17px;font-size:14px}
+  .site-elevator[data-elevator-level] .site-elevator-room.is-active::before{left:7px;width:17px}
+}
+@media (min-width:761px) and (max-width:900px){
+  .site-elevator{
+    --elevator-control-width:44px;
+    --elevator-board-width:192px;
+    --elevator-shell-height:94px;
+    --elevator-room-height:38px;
+    --elevator-room-gap:4px;
+  }
+  .site-elevator-floor{grid-template-columns:27px 45px minmax(0,1fr);column-gap:5px;padding:6px 8px 6px 5px}
+  .site-elevator-floor-code{font-size:9px}
+  .site-elevator-floor-emblem{height:46px}
+  .site-elevator-floor-label{font-size:14px}
+  .site-elevator-room-label{font-size:6.2px}
+  .site-elevator-room-rail{padding:49px 6px 7px}
+  .site-elevator-room{font-size:7.8px;padding-left:22px;padding-right:3px;white-space:normal}
+  .site-elevator[data-elevator-level="heaven"] .site-elevator-room{font-size:8.6px}
+  .site-elevator-room::before,
+  .site-elevator[data-elevator-level="below"] .site-elevator-room::before{left:4px;width:14px;font-size:11px}
+  .site-elevator[data-elevator-level] .site-elevator-room.is-active::before{left:4px;width:14px}
+}
+
+/* Mobile: preserve the floor idea without pretending five long labels fit. */
+@media (max-width:760px){
+  .site-elevator-controls{position:relative;overflow:hidden}
   .site-elevator-controls::before{
     content:"";
     position:absolute;
     left:50%;
-    top:5px;
-    bottom:5px;
-    width:26px;
+    top:3px;
+    bottom:3px;
+    width:18px;
     transform:translateX(-50%);
-    opacity:.82;
     pointer-events:none;
+    opacity:.40;
     background:
-      radial-gradient(ellipse at 25% 10%,var(--elevator-vine-leaf) 0 4px,transparent 5px),
-      radial-gradient(ellipse at 76% 25%,var(--elevator-vine-leaf) 0 5px,transparent 6px),
-      radial-gradient(ellipse at 18% 46%,var(--elevator-vine-leaf) 0 4px,transparent 5px),
-      radial-gradient(ellipse at 81% 66%,var(--elevator-vine-leaf) 0 5px,transparent 6px),
-      radial-gradient(ellipse at 30% 86%,var(--elevator-vine-leaf) 0 4px,transparent 5px),
-      linear-gradient(100deg,transparent 42%,var(--elevator-vine) 44% 52%,transparent 54%);
-    filter:drop-shadow(0 0 3px rgba(0,0,0,.8));
+      radial-gradient(ellipse at 20% 15%,#62794a 0 3px,transparent 4px),
+      radial-gradient(ellipse at 80% 38%,#6d814d 0 3px,transparent 4px),
+      radial-gradient(ellipse at 22% 67%,#62794a 0 3px,transparent 4px),
+      radial-gradient(ellipse at 75% 88%,#6d814d 0 3px,transparent 4px),
+      linear-gradient(100deg,transparent 43%,#8e7139 45% 53%,transparent 55%);
   }
-  .site-elevator-arrow{
-    z-index:2;
-    margin:5px 9px;
-    width:calc(100% - 18px);
-    border:1px solid rgba(193,149,76,.52);
-    background:
-      linear-gradient(135deg,rgba(221,174,88,.18) 0 2px,transparent 2px) top left/8px 8px no-repeat,
-      linear-gradient(225deg,rgba(221,174,88,.18) 0 2px,transparent 2px) top right/8px 8px no-repeat,
-      linear-gradient(180deg,rgba(25,31,32,.80),rgba(6,8,9,.86));
-    box-shadow:
-      inset 0 0 0 1px #060708,
-      inset 0 0 0 2px rgba(204,155,76,.10),
-      0 2px 5px rgba(0,0,0,.36);
-    backdrop-filter:blur(1px);
-  }
-  .site-elevator-arrow::before{
-    font-size:23px;
-    color:#f0e4c9;
-    text-shadow:0 0 7px var(--site-elevator-glow),0 2px 0 #000;
-  }
-  .site-elevator-arrow::after{
-    inset:4px;
-    border-color:rgba(214,168,85,.22);
-  }
-
-  .site-elevator-reel{
-    z-index:2;
-    border-right:2px solid rgba(157,111,50,.82);
-    background:
-      linear-gradient(135deg,rgba(222,175,85,.20) 0 3px,transparent 3px) top left/11px 11px no-repeat,
-      linear-gradient(225deg,rgba(222,175,85,.20) 0 3px,transparent 3px) top right/11px 11px no-repeat,
-      linear-gradient(180deg,rgba(16,25,31,.92),rgba(5,9,12,.91));
-    box-shadow:
-      inset 0 0 0 1px #050708,
-      inset 0 0 0 3px rgba(194,142,66,.19),
-      5px 0 12px rgba(0,0,0,.22);
-  }
-  .site-elevator-floor{
-    grid-template-columns:48px 80px minmax(0,1fr);
-    column-gap:14px;
-    padding:12px 20px 12px 11px;
-  }
-  .site-elevator-floor-emblem{
-    height:72px;
-    border-color:color-mix(in srgb,var(--site-elevator-accent) 72%,#5f4525);
-    background:
-      radial-gradient(circle at 50% 42%,color-mix(in srgb,var(--site-elevator-accent) 23%,transparent),transparent 58%),
-      linear-gradient(180deg,rgba(13,21,27,.95),rgba(5,9,12,.97));
-    box-shadow:
-      inset 0 0 0 2px #050708,
-      inset 0 0 0 4px color-mix(in srgb,var(--site-elevator-accent) 18%,transparent),
-      0 0 11px rgba(0,0,0,.42);
-  }
-  .site-elevator-floor-label{
-    font-size:24px;
-    letter-spacing:.055em;
-    color:#fff2d2;
-  }
-  .site-elevator-room-label{
-    font-size:9.5px;
-    color:#cfc6b2;
-  }
-
-  /* Stage uses the continuous header panorama; its own old image layer is retired visually. */
-  .site-elevator-stage{
-    z-index:1;
-    background:transparent;
-    border-left:1px solid rgba(73,48,24,.72);
-    outline:0;
-    box-shadow:
-      inset 0 1px rgba(255,245,215,.10),
-      inset 0 -1px rgba(0,0,0,.74);
-  }
-  .site-elevator-stage::before{
-    opacity:0;
-    background-image:none;
-  }
-  .site-elevator-stage::after{
-    z-index:-1;
-    background:
-      linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.02) 48%,rgba(2,4,5,.24) 70%,rgba(2,4,5,.55) 100%),
-      linear-gradient(90deg,rgba(4,7,8,.18),transparent 11%,transparent 89%,rgba(4,7,8,.18));
-  }
-  .site-elevator-room-rail{
-    grid-template-columns:repeat(var(--elevator-visible-count),minmax(0,1fr));
-    padding:68px 18px 10px;
-    gap:var(--elevator-room-gap);
-  }
-  .site-elevator-room-rail::before{
-    left:17px;
-    right:17px;
-    bottom:7px;
-    height:5px;
-    background:linear-gradient(180deg,#d0a45a 0 1px,#21160d 1px 3px,#8a5c2c 3px 4px,#080706 4px);
-    opacity:.86;
-  }
-  .site-elevator-room-rail::after{
-    left:19px;
-    right:19px;
-    bottom:11px;
-    opacity:.58;
-  }
-
-  .site-elevator-room{
-    --room-plate-top:rgba(14,27,37,.88);
-    --room-plate-bottom:rgba(4,10,15,.95);
-    min-height:var(--elevator-room-height);
-    height:var(--elevator-room-height);
-    max-height:var(--elevator-room-height);
-    padding:6px 14px;
-    color:#f1eadc;
-    border:1px solid color-mix(in srgb,var(--site-elevator-accent) 72%,#6c4d2a);
-    background:
-      linear-gradient(135deg,#e0b45f 0 3px,transparent 3px) top left/10px 10px no-repeat,
-      linear-gradient(225deg,#e0b45f 0 3px,transparent 3px) top right/10px 10px no-repeat,
-      linear-gradient(45deg,#5e3b1f 0 3px,transparent 3px) bottom left/10px 10px no-repeat,
-      linear-gradient(315deg,#5e3b1f 0 3px,transparent 3px) bottom right/10px 10px no-repeat,
-      linear-gradient(180deg,var(--room-plate-top),var(--room-plate-bottom));
-    box-shadow:
-      inset 0 0 0 1px #050606,
-      inset 0 0 0 3px color-mix(in srgb,var(--site-elevator-accent) 12%,transparent),
-      inset 0 2px 0 rgba(255,236,190,.07),
-      0 5px 10px rgba(0,0,0,.44),
-      0 0 0 1px rgba(0,0,0,.62);
-    backdrop-filter:blur(2px);
-    font-size:14px;
-    transform:translateY(-1px);
-  }
-  .site-elevator-room:hover,
-  .site-elevator-room:focus-visible{
-    transform:translateY(-3px);
-    background:
-      linear-gradient(135deg,#f0c873 0 3px,transparent 3px) top left/10px 10px no-repeat,
-      linear-gradient(225deg,#f0c873 0 3px,transparent 3px) top right/10px 10px no-repeat,
-      linear-gradient(45deg,#6b4625 0 3px,transparent 3px) bottom left/10px 10px no-repeat,
-      linear-gradient(315deg,#6b4625 0 3px,transparent 3px) bottom right/10px 10px no-repeat,
-      linear-gradient(180deg,rgba(34,36,29,.95),rgba(7,10,10,.97));
-    box-shadow:
-      inset 0 0 0 1px #050606,
-      inset 0 0 0 3px rgba(236,194,106,.18),
-      0 7px 13px rgba(0,0,0,.52),
-      0 0 13px var(--site-elevator-glow);
-  }
-
-  /* Small symbolic markers make the plates feel authored, not generic. */
-  .site-elevator[data-elevator-level="heaven"] .site-elevator-room,
-  .site-elevator[data-elevator-level="plane"] .site-elevator-room{
-    padding-left:42px;
-  }
-  .site-elevator[data-elevator-level="heaven"] .site-elevator-room::before,
-  .site-elevator[data-elevator-level="plane"] .site-elevator-room::before{
-    left:12px;
-    right:auto;
-    top:50%;
-    width:22px;
-    height:22px;
-    transform:translateY(-50%);
-    display:grid;
-    place-items:center;
-    background:rgba(4,8,12,.50);
-    border:1px solid color-mix(in srgb,var(--site-elevator-accent) 62%,#5b4224);
-    color:#f0cd72;
-    box-shadow:inset 0 0 0 1px #070706,0 0 6px var(--site-elevator-glow);
-    font:700 16px/20px Georgia,serif;
-  }
-  .site-elevator[data-elevator-level="heaven"] .site-elevator-room[data-room-id="potatoverse-canon"]::before{content:"✦"}
-  .site-elevator[data-elevator-level="heaven"] .site-elevator-room[data-room-id="traditions-texts"]::before{content:"✧"}
-  .site-elevator[data-elevator-level="heaven"] .site-elevator-room[data-room-id="works"]::before{content:"✦"}
-  .site-elevator[data-elevator-level="plane"] .site-elevator-room[data-room-id="time-history"]::before{content:"⌛"}
-  .site-elevator[data-elevator-level="plane"] .site-elevator-room[data-room-id="science-formal-models"]::before{content:"⚛"}
-  .site-elevator[data-elevator-level="plane"] .site-elevator-room[data-room-id="life-body"]::before{content:"❧"}
-  .site-elevator[data-elevator-level="plane"] .site-elevator-room[data-room-id="world-systems"]::before{content:"⊕"}
-  .site-elevator[data-elevator-level="plane"] .site-elevator-room[data-room-id="culture-information"]::before{content:"⌂"}
-
-  @media (max-width:1180px){
-    .site-elevator{
-      --elevator-control-width:60px;
-      --elevator-board-width:310px;
-      --elevator-shell-height:112px;
-      --elevator-room-height:44px;
-      --elevator-room-gap:7px;
-    }
-    .site-elevator-floor{
-      grid-template-columns:38px 62px minmax(0,1fr);
-      column-gap:9px;
-      padding:9px 13px 9px 8px;
-    }
-    .site-elevator-floor-emblem{height:62px}
-    .site-elevator-floor-label{font-size:19px}
-    .site-elevator-room-label{font-size:7.7px}
-    .site-elevator-room-rail{padding:61px 10px 8px}
-    .site-elevator-room{padding-right:7px;font-size:11px}
-    .site-elevator[data-elevator-level="heaven"] .site-elevator-room,
-    .site-elevator[data-elevator-level="plane"] .site-elevator-room{padding-left:31px}
-    .site-elevator[data-elevator-level="heaven"] .site-elevator-room::before,
-    .site-elevator[data-elevator-level="plane"] .site-elevator-room::before{
-      left:7px;width:18px;height:18px;font-size:12px;line-height:16px;
-    }
-    .site-elevator[data-elevator-level="below"] .site-elevator-room{padding-left:34px}
-  }
+  .site-elevator-arrow{z-index:1}
 }
-
-/* 2026-10-06 responsive header audit fixes */
-
-/* Avoid the 760 -> 761px geometry cliff. Portrait tablets keep the panoramic
-   treatment, but the console yields enough width for all five Plane Rooms. */
-@media (min-width:761px) and (max-width:900px){
-  .site-elevator{
-    --elevator-control-width:44px;
-    --elevator-board-width:188px;
-    --elevator-shell-height:96px;
-    --elevator-room-height:40px;
-    --elevator-room-gap:4px;
-  }
-  .site-elevator-floor{
-    grid-template-columns:28px 50px minmax(0,1fr);
-    column-gap:6px;
-    padding:7px 9px 7px 6px;
-  }
-  .site-elevator-floor-code{font-size:9px}
-  .site-elevator-floor-emblem{height:50px}
-  .site-elevator-floor-label{font-size:15px;letter-spacing:.04em}
-  .site-elevator-room-label{font-size:6.8px;letter-spacing:.035em}
-  .site-elevator-room-rail{padding:51px 7px 7px;gap:var(--elevator-room-gap)}
-  .site-elevator-room{
-    min-height:var(--elevator-room-height);
-    height:var(--elevator-room-height);
-    max-height:var(--elevator-room-height);
-    padding-right:4px;
-    font-size:8.4px;
-    line-height:1.04;
-  }
-  .site-elevator[data-elevator-level="heaven"] .site-elevator-room{font-size:9px}
-  .site-elevator[data-elevator-level="heaven"] .site-elevator-room,
-  .site-elevator[data-elevator-level="plane"] .site-elevator-room{padding-left:25px}
-  .site-elevator[data-elevator-level="heaven"] .site-elevator-room::before,
-  .site-elevator[data-elevator-level="plane"] .site-elevator-room::before{
-    left:5px;width:15px;height:15px;font-size:10px;line-height:13px;
-  }
-  .site-elevator[data-elevator-level="below"] .site-elevator-room{padding-left:29px;font-size:8.4px}
-  .site-elevator[data-elevator-level="below"] .site-elevator-room::before{
-    left:6px;width:17px;height:17px;font-size:11px;line-height:15px;
-  }
-}
-
-/* Mid-size laptops: keep the royal HUD but stop the left console from eating
-   the panoramic stage. */
-@media (min-width:901px) and (max-width:1080px){
-  .site-elevator{
-    --elevator-control-width:52px;
-    --elevator-board-width:250px;
-    --elevator-shell-height:106px;
-    --elevator-room-height:42px;
-    --elevator-room-gap:6px;
-  }
-  .site-elevator-floor{
-    grid-template-columns:34px 58px minmax(0,1fr);
-    column-gap:8px;
-    padding:8px 11px 8px 7px;
-  }
-  .site-elevator-floor-emblem{height:57px}
-  .site-elevator-floor-label{font-size:18px}
-  .site-elevator-room-label{font-size:7.5px}
-  .site-elevator-room-rail{padding:57px 9px 8px}
-  .site-elevator-room{font-size:10px;padding-right:6px}
-  .site-elevator[data-elevator-level="heaven"] .site-elevator-room{font-size:10.8px}
-  .site-elevator[data-elevator-level="heaven"] .site-elevator-room,
-  .site-elevator[data-elevator-level="plane"] .site-elevator-room{padding-left:29px}
-  .site-elevator[data-elevator-level="heaven"] .site-elevator-room::before,
-  .site-elevator[data-elevator-level="plane"] .site-elevator-room::before{
-    left:7px;width:17px;height:17px;font-size:11px;line-height:15px;
-  }
-  .site-elevator[data-elevator-level="below"] .site-elevator-room{padding-left:32px;font-size:10px}
-}
-
-/* Smooth the old 1180 -> 1181px jump; full showcase proportions wait until
-   a genuinely wide desktop. */
-@media (min-width:1081px) and (max-width:1439px){
-  .site-elevator{
-    --elevator-control-width:64px;
-    --elevator-board-width:320px;
-    --elevator-shell-height:116px;
-    --elevator-room-height:44px;
-    --elevator-room-gap:8px;
-  }
-  .site-elevator-floor{
-    grid-template-columns:42px 68px minmax(0,1fr);
-    column-gap:10px;
-    padding:9px 15px 9px 9px;
-  }
-  .site-elevator-floor-emblem{height:64px}
-  .site-elevator-floor-label{font-size:21px}
-  .site-elevator-room-label{font-size:8.2px}
-  .site-elevator-room-rail{padding:64px 12px 8px}
-  .site-elevator-room{font-size:12px}
-  .site-elevator[data-elevator-level="heaven"] .site-elevator-room{font-size:13px}
-  .site-elevator[data-elevator-level="below"] .site-elevator-room{font-size:12px}
-}
-
-/* Phones cannot honestly fit five full multi-word Room titles into one row.
-   Keep the full text in the DOM/aria label, but render a concise visual label. */
 @media (max-width:560px){
   .site-elevator-room{
     font-size:0!important;
@@ -1650,33 +1547,5 @@ html[data-site-floor] body.home-body::before{content:none;display:none}
     letter-spacing:-.02em;
     text-shadow:0 1px 2px #000,0 0 5px var(--site-elevator-glow);
   }
-  .site-elevator-room.is-active::before{
-    color:#fff7dd!important;
-    text-shadow:0 0 6px var(--site-elevator-glow),0 1px 2px #000;
-  }
   .site-elevator-room::after{display:none!important}
-}
-
-/* Give the compact elevator the same living-vine cue as desktop without
-   making the arrows harder to tap. */
-@media (max-width:760px){
-  .site-elevator-controls{position:relative;overflow:hidden}
-  .site-elevator-controls::before{
-    content:"";
-    position:absolute;
-    left:50%;
-    top:3px;
-    bottom:3px;
-    width:18px;
-    transform:translateX(-50%);
-    pointer-events:none;
-    opacity:.45;
-    background:
-      radial-gradient(ellipse at 20% 15%,#62794a 0 3px,transparent 4px),
-      radial-gradient(ellipse at 80% 38%,#6d814d 0 3px,transparent 4px),
-      radial-gradient(ellipse at 22% 67%,#62794a 0 3px,transparent 4px),
-      radial-gradient(ellipse at 75% 88%,#6d814d 0 3px,transparent 4px),
-      linear-gradient(100deg,transparent 43%,#8e7139 45% 53%,transparent 55%);
-  }
-  .site-elevator-arrow{z-index:1}
 }
