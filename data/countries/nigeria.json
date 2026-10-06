@@ -1,0 +1,255 @@
+{
+  "record_version": "1.1.0",
+  "record_type": "country",
+  "status": "sourced-enriched",
+  "identity": {
+    "id": "nigeria",
+    "name": "Nigeria",
+    "iso2": "NG",
+    "iso3": "NGA",
+    "official_name": "Federal Republic of Nigeria",
+    "capital": "Abuja",
+    "currency": "Nigerian naira (NGN)",
+    "national_day": "October 1"
+  },
+  "blueprint": "data/countries-blueprint.json",
+  "blueprint_version": "1.0.0",
+  "coverage": {
+    "node_instantiated": true,
+    "blueprint_inherited": true,
+    "observations": 13,
+    "relationships": 0,
+    "sources": 1,
+    "research_status": "ready-for-source-enrichment",
+    "canonicalized": true
+  },
+  "observations": {
+    "population": {
+      "value": 237527782,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SP.POP.TOTL",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "gdp": {
+      "value": 290794361542.112,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "NY.GDP.MKTP.CD",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "gdp_per_capita": {
+      "value": 1224.25410237743,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "NY.GDP.PCAP.CD",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "gdp_per_capita_ppp": {
+      "value": 9531.61073275049,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "NY.GDP.PCAP.PP.CD",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "real_growth": {
+      "value": 4.01336180700973,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "NY.GDP.MKTP.KD.ZG",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "inflation": {
+      "value": 23.0101235833333,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "FP.CPI.TOTL.ZG",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "unemployment": {
+      "value": 3.064,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SL.UEM.TOTL.ZS",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "labour_force_participation": {
+      "value": 82.517,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SL.TLF.CACT.ZS",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "life_expectancy": {
+      "value": 54.635,
+      "year": 2024,
+      "source": "world-bank",
+      "indicator": "SP.DYN.LE00.IN",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "fertility": {
+      "value": 4.382,
+      "year": 2024,
+      "source": "world-bank",
+      "indicator": "SP.DYN.TFRT.IN",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "urbanization": {
+      "value": 63.7754180467872,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SP.URB.TOTL.IN.ZS",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "poverty": {
+      "value": 56.2,
+      "year": 2022,
+      "source": "world-bank",
+      "indicator": "SI.POV.NAHC",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "internet_penetration": {
+      "value": 41.21139908,
+      "year": 2024,
+      "source": "world-bank",
+      "indicator": "IT.NET.USER.ZS",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    }
+  },
+  "relationships": [
+    {
+      "type": "member-of",
+      "target": "opec"
+    },
+    {
+      "type": "member-of",
+      "target": "ecowas"
+    },
+    {
+      "type": "member-of",
+      "target": "african-union"
+    },
+    {
+      "type": "borders",
+      "target": "cameroon"
+    }
+  ],
+  "history": [],
+  "research_queue": [
+    "oil production",
+    "NLNG",
+    "electricity access",
+    "Lagos logistics",
+    "banking sector",
+    "agricultural value chains",
+    "population and urbanization",
+    "security infrastructure",
+    "AfCFTA trade"
+  ],
+  "provenance": {
+    "instantiated_at": "2026-09-07T12:37:31.426393+00:00",
+    "instantiation_method": "canonical country index + country blueprint",
+    "observation_policy": "No value is invented merely to fill a field; absent evidence remains missing/stale.",
+    "last_refresh": "2026-10-06T04:28:07.342073+00:00",
+    "source_priority": "international-official",
+    "historical_observations_preserved": true,
+    "source": "World Bank World Development Indicators",
+    "retrieved": "2026-09-07",
+    "enrichment_merged": true,
+    "enrichment_layer": "retired overlay merged into canonical country record"
+  },
+  "data_freshness": {
+    "last_refresh_attempt": "2026-09-07T21:59:50.659074+00:00",
+    "source": "world-bank"
+  },
+  "country_id": "nigeria",
+  "iso2": "NG",
+  "iso3": "NGA",
+  "updated": "2026-09-07",
+  "political_system": {
+    "system_type": "federal presidential republic",
+    "head_of_state": "President Bola Ahmed Tinubu",
+    "head_of_government": "President",
+    "legislature": [
+      "National Assembly",
+      "Senate",
+      "House of Representatives"
+    ]
+  },
+  "population": {
+    "value": 230.0,
+    "unit": "million approximately",
+    "source": "World Bank WDI"
+  },
+  "economy": {
+    "gdp_current_usd_billion": 252,
+    "source": "World Bank WDI"
+  },
+  "geography": {
+    "land_area_km2": 910770,
+    "borders": [
+      "Benin",
+      "Niger",
+      "Chad",
+      "Cameroon"
+    ],
+    "maritime_position": [
+      "Gulf of Guinea",
+      "Atlantic Ocean"
+    ]
+  },
+  "energy_and_resources": {
+    "strategic_assets": [
+      "oil",
+      "natural gas",
+      "LNG",
+      "agriculture",
+      "large domestic market",
+      "Lagos port system",
+      "critical minerals"
+    ]
+  },
+  "trade_and_value_chains": {
+    "major_relationships": [
+      "China",
+      "United States",
+      "India",
+      "European Union",
+      "Ghana",
+      "Benin"
+    ],
+    "frameworks": [
+      "ECOWAS",
+      "AfCFTA",
+      "OPEC",
+      "WTO"
+    ]
+  },
+  "security_and_external_relations": {
+    "major_organizations": [
+      "United Nations",
+      "African Union",
+      "ECOWAS",
+      "OPEC",
+      "Commonwealth"
+    ],
+    "alliances": [
+      "ECOWAS",
+      "African Union"
+    ]
+  },
+  "record_role": "canonical-country-record"
+}

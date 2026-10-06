@@ -1,0 +1,182 @@
+{
+  "id":"whole-brain-neurobiology-deepening-wave-1",
+  "version":"1.0.0",
+  "updated":"2026-09-15",
+  "status":"specialist deepening layer beneath whole-brain-neurobiology-atlas",
+  "owner":"knowledge/body/whole-brain-neurobiology-atlas.json",
+  "purpose":"Carve second-ring neurobiology that would overload the canonical whole-brain atlas: cranial nerves, hypothalamic nuclei, brainstem nuclei, hippocampal subfields, cerebellar microcircuitry, pain systems, neurovascular coupling, development/aging, language/social cognition and predictive-processing theory.",
+  "epistemic_rule":"This file deepens biology first. Potatoverse symbolism is added only where it clarifies an existing canonical mapping; theoretical neuroscience is labelled theory rather than anatomy.",
+  "clusters":[
+    {
+      "id":"cranial-nerves",
+      "name":"Cranial nerves and brain-body interfaces",
+      "summary":"Twelve paired cranial nerves link the brain to special senses and head/neck visceral, somatic and autonomic functions. Ten have nuclei associated with the brainstem; olfactory and optic systems are forebrain special-sensory pathways.",
+      "nerves":[
+        {"number":"I","name":"Olfactory","type":"sensory","core":"smell","central_relation":"olfactory bulb/cortex rather than a brainstem nucleus"},
+        {"number":"II","name":"Optic","type":"sensory","core":"vision","central_relation":"retina → diencephalic/tectal visual systems"},
+        {"number":"III","name":"Oculomotor","type":"motor + parasympathetic","core":"most extraocular movement, pupil constriction","central_relation":"midbrain nuclei"},
+        {"number":"IV","name":"Trochlear","type":"motor","core":"superior oblique muscle","central_relation":"midbrain; distinctive dorsal exit/crossing"},
+        {"number":"V","name":"Trigeminal","type":"mixed","core":"facial somatosensation and mastication","central_relation":"large sensory nuclear complex spanning brainstem plus motor nucleus"},
+        {"number":"VI","name":"Abducens","type":"motor","core":"lateral rectus","central_relation":"pons"},
+        {"number":"VII","name":"Facial","type":"mixed + parasympathetic","core":"facial expression, taste anterior tongue, lacrimal/salivary control","central_relation":"pons"},
+        {"number":"VIII","name":"Vestibulocochlear","type":"sensory","core":"hearing and balance","central_relation":"pontomedullary vestibular/cochlear nuclei"},
+        {"number":"IX","name":"Glossopharyngeal","type":"mixed + parasympathetic","core":"pharyngeal sensation, posterior-tongue taste, carotid body/sinus input, parotid control","central_relation":"medulla"},
+        {"number":"X","name":"Vagus","type":"mixed + parasympathetic","core":"visceral sensation and parasympathetic regulation; laryngeal/pharyngeal motor functions","central_relation":"medullary nuclei including nucleus tractus solitarius, dorsal motor nucleus and nucleus ambiguus"},
+        {"number":"XI","name":"Accessory","type":"motor","core":"sternocleidomastoid/trapezius","central_relation":"spinal accessory nucleus with cranial historical complexities"},
+        {"number":"XII","name":"Hypoglossal","type":"motor","core":"tongue movement","central_relation":"medulla"}
+      ],
+      "functional_columns":"Brainstem cranial-nerve nuclei can be understood by sensory/motor and somatic/visceral functional columns rather than by memorizing twelve isolated cables.",
+      "project_relation":"Cranial nerves are useful as literal biological doors/interfaces between brain and world/body, but no single cranial nerve is the canonical Potatoverse Door.",
+      "boundary":"Do not turn vagal or cranial-nerve anatomy into a one-to-one chakra or Spirit map.",
+      "sources":["https://pubmed.ncbi.nlm.nih.gov/29261885/","https://pubmed.ncbi.nlm.nih.gov/31335017/"]
+    },
+    {
+      "id":"hypothalamic-nuclei",
+      "name":"Hypothalamic nuclei and homeostatic control",
+      "summary":"The hypothalamus is not one thermostat. Distinct nuclei and neuronal populations coordinate circadian timing, endocrine outputs, temperature, feeding, fluid balance, reproduction, autonomic state and defensive/social behaviors.",
+      "systems":[
+        {"name":"Suprachiasmatic nucleus (SCN)","roles":["master circadian timing","retinal light entrainment"],"relation":"SCN → multisynaptic autonomic pathway → pineal melatonin timing"},
+        {"name":"Paraventricular nucleus (PVN)","roles":["neuroendocrine control","autonomic integration","stress-axis regulation","oxytocin/vasopressin populations"]},
+        {"name":"Supraoptic nucleus (SON)","roles":["vasopressin/oxytocin neurosecretory populations"]},
+        {"name":"Arcuate nucleus","roles":["feeding/metabolic sensing","pituitary-regulatory neuroendocrine populations"]},
+        {"name":"Ventromedial hypothalamus","roles":["metabolic/reproductive/defensive-state regulation"]},
+        {"name":"Lateral hypothalamic area","roles":["feeding","arousal","motivation","orexin/hypocretin systems"]},
+        {"name":"Preoptic area","roles":["thermoregulation","sleep","reproductive/endocrine functions"]},
+        {"name":"Mammillary bodies","roles":["memory circuitry","diencephalic limbic relationships"]}
+      ],
+      "project_relation":"This deeper anatomy strengthens the Steward metaphor: the hypothalamus is a distributed household-management system rather than the Father's House itself.",
+      "boundary":"Nucleus names and functions overlap; project roles must not be assigned one-to-one to every hypothalamic nucleus.",
+      "sources":[]
+    },
+    {
+      "id":"brainstem-nuclei-columns",
+      "name":"Brainstem nuclei, autonomic columns and neuromodulatory hubs",
+      "summary":"Brainstem gray matter is organized as nuclei embedded among ascending/descending tracts. Many life-support, sensory, motor and state systems are concentrated here.",
+      "systems":[
+        {"name":"Nucleus tractus solitarius (NTS)","roles":["visceral sensory integration","baroreceptor/chemoreceptor and vagal/glossopharyngeal input"]},
+        {"name":"Dorsal motor nucleus of vagus","roles":["preganglionic parasympathetic output"]},
+        {"name":"Nucleus ambiguus","roles":["pharyngeal/laryngeal motor output","cardiovagal contributions"]},
+        {"name":"Parabrachial complex","roles":["visceral/interoceptive relay","respiratory and threat/salience integration"]},
+        {"name":"Periaqueductal gray (PAG)","roles":["defensive behavior","pain modulation","autonomic patterning"]},
+        {"name":"Locus coeruleus","roles":["norepinephrine","arousal","attention","learning","state regulation"]},
+        {"name":"Raphe nuclei","roles":["serotonergic neuromodulation","sleep/wake","pain","mood/cognition relationships"]},
+        {"name":"Ventral tegmental area","roles":["dopaminergic motivation/reinforcement circuits"]},
+        {"name":"Substantia nigra","roles":["dopaminergic basal-ganglia modulation","basal-ganglia output circuitry"]},
+        {"name":"Superior colliculus","roles":["visual orienting","eye/head movement integration"]},
+        {"name":"Inferior colliculus","roles":["auditory midbrain processing"]},
+        {"name":"Inferior olive","roles":["climbing-fiber teaching/error signals to cerebellum"]}
+      ],
+      "project_relation":"The Lower Gate becomes more biologically precise when separated into autonomic life-support, orienting, pain/defense and arousal/neuromodulatory subsystems.",
+      "boundary":"The brainstem is not a primitive soul layer; its systems participate in sophisticated state, learning and cognition loops.",
+      "sources":["https://pubmed.ncbi.nlm.nih.gov/31335017/"]
+    },
+    {
+      "id":"hippocampal-subfields",
+      "name":"Hippocampal formation and subfield circuitry",
+      "summary":"The hippocampal formation contains distinct subfields with recurrent and feedforward motifs important to episodic/contextual memory and spatial representation.",
+      "subfields":[
+        {"name":"Dentate gyrus","roles":["sparse coding","pattern-separation-related processing"],"major_relation":"entorhinal input → dentate granule cells → CA3 mossy fibers"},
+        {"name":"CA3","roles":["recurrent associative processing","pattern-completion-related computations"],"major_relation":"dentate input + recurrent collateral network → CA1 via Schaffer collaterals"},
+        {"name":"CA2","roles":["distinct connectivity","social/contextual memory research"],"boundary":"Do not reduce CA2 to one social-memory module."},
+        {"name":"CA1","roles":["comparison/integration of hippocampal and entorhinal inputs","major hippocampal output stage"]},
+        {"name":"Subiculum","roles":["hippocampal output/interface with cortical and subcortical targets"]},
+        {"name":"Entorhinal cortex","roles":["major cortical gateway to/from hippocampal formation","spatial/contextual coding"]}
+      ],
+      "canonical_flow":"association cortex → entorhinal cortex → dentate gyrus → CA3 → CA1 → subiculum/entorhinal and fornical outputs, alongside important direct and recurrent pathways",
+      "project_relation":"This gives the project's Memory rooms a genuine multi-stage return architecture rather than one hippocampus=memory equation.",
+      "boundary":"Pattern separation/completion are useful computational descriptions, not exclusive functions of single subfields.",
+      "sources":["https://www.ncbi.nlm.nih.gov/books/NBK482171/","https://www.ncbi.nlm.nih.gov/books/NBK575732/"]
+    },
+    {
+      "id":"cerebellar-microcircuit",
+      "name":"Cerebellar cortex, teaching signals and deep nuclei",
+      "summary":"The cerebellum has a highly repeated microcircuit: mossy-fiber and climbing-fiber inputs shape granule/Purkinje processing, and Purkinje cells inhibit deep cerebellar nuclei that generate most cerebellar outputs.",
+      "layers":["molecular layer","Purkinje-cell layer","granule-cell layer"],
+      "core_elements":[
+        {"name":"Mossy fibers","roles":["broad sensory/cortical/contextual input via granule cells"]},
+        {"name":"Granule cells / parallel fibers","roles":["expanded distributed representation to Purkinje dendrites"]},
+        {"name":"Climbing fibers","source":"inferior olive","roles":["powerful instructive/error-related input to Purkinje cells"]},
+        {"name":"Purkinje cells","roles":["sole output of cerebellar cortex","inhibitory control of deep/vestibular nuclei"]},
+        {"name":"Deep nuclei","includes":["dentate","emboliform","globose","fastigial"],"roles":["major cerebellar outputs to thalamic/brainstem targets"]}
+      ],
+      "project_relation":"Correction/pruning/refinement gains a stronger biological neighbor here: prediction-error learning changes future output without implying moral correction.",
+      "boundary":"The cerebellum is not merely a motor coordinator and its error signals are not theological judgment.",
+      "sources":["https://www.ncbi.nlm.nih.gov/books/NBK545251/","https://ncbi.nlm.nih.gov/books/NBK11100/"]
+    },
+    {
+      "id":"pain-nociception",
+      "name":"Pain, nociception and descending modulation",
+      "summary":"Nociception is distributed across peripheral receptors, spinal/brainstem pathways, thalamus, cortex, limbic/interoceptive systems and descending modulatory circuits; pain is an experience, not a simple readout of tissue damage.",
+      "ascending":["nociceptors","dorsal horn","anterolateral/spinothalamic and parallel spinoreticular/spinomesencephalic pathways","brainstem/thalamic targets","insula/cingulate/somatosensory and association cortex"],
+      "descending":["cortex/hypothalamus/amygdala","periaqueductal gray","rostral ventromedial medulla/raphe and noradrenergic brainstem systems","spinal dorsal horn modulation"],
+      "relations":["attention, expectation, learning, threat and interoception shape pain","descending systems can facilitate as well as inhibit nociceptive transmission"],
+      "project_relation":"Pain belongs to the body's warning/report architecture, not a spiritual punishment axis.",
+      "boundary":"Nociception and pain are related but not identical; theological or moral meanings must not be inferred from pain biology.",
+      "sources":["https://www.ncbi.nlm.nih.gov/books/NBK10967/","https://pmc.ncbi.nlm.nih.gov/articles/PMC7859971/"]
+    },
+    {
+      "id":"neurovascular-metabolic-coupling",
+      "name":"Neurovascular and metabolic coupling",
+      "summary":"Neural activity depends on continuous energy delivery. Neurovascular coupling adjusts local cerebral blood flow through interactions among neurons, astrocytes, vascular cells and signaling molecules.",
+      "components":["neurons","astrocytes","endothelial cells","pericytes","smooth muscle","capillaries/arterioles","blood-brain barrier","glucose/oxygen delivery"],
+      "relation_to_imaging":"BOLD fMRI is an indirect hemodynamic/metabolic signal related to neural activity, not a direct photograph of thoughts.",
+      "project_relation":"Flow and Garden-support metaphors fit better here than claims of mystical brain energy: viable neural computation requires circulation, exchange and maintenance.",
+      "boundary":"Blood flow is not consciousness, and fMRI activation is not a direct measure of spiritual intensity.",
+      "sources":["https://pmc.ncbi.nlm.nih.gov/articles/PMC11719775/"]
+    },
+    {
+      "id":"development-aging",
+      "name":"Development, maturation, plasticity and aging",
+      "summary":"The brain changes throughout life through neurodevelopment, synaptogenesis, pruning, myelination, learning-related plasticity, hormonal transitions and aging-related structural/functional change.",
+      "stages":[
+        {"stage":"prenatal","themes":["neurulation","regional patterning","neurogenesis","migration","early connectivity"]},
+        {"stage":"infancy/childhood","themes":["rapid synaptic/connectivity change","sensory-motor learning","language/social development","progressive myelination"]},
+        {"stage":"adolescence","themes":["continued prefrontal/circuit maturation","reward/social-state changes","white-matter development"]},
+        {"stage":"adulthood","themes":["ongoing learning/plasticity","stable but adaptive network organization"]},
+        {"stage":"aging","themes":["heterogeneous structural/vascular/neurochemical changes","compensation and reserve","increased neurodegenerative risk"]}
+      ],
+      "project_relation":"Seed → growth → pruning → mature Tree is a legitimate developmental metaphor only at the level of change over time.",
+      "boundary":"Development does not encode a predetermined spiritual rank or destiny."
+    },
+    {
+      "id":"language-networks",
+      "name":"Language as a distributed network",
+      "summary":"Language depends on distributed frontal, temporal, parietal, auditory, motor and white-matter systems rather than two isolated Broca/Wernicke boxes.",
+      "components":["inferior frontal systems","posterior/superior temporal systems","middle/inferior temporal semantic systems","inferior parietal systems","auditory cortex","motor/somatosensory speech systems","arcuate/superior longitudinal and ventral association pathways"],
+      "functions":["speech production","phonology","syntax","semantic processing","comprehension","reading/writing interfaces","prosody/pragmatics"],
+      "project_relation":"Word/witness symbolism can be compared with distributed language production and reception, but there is no single anatomical Word center.",
+      "boundary":"Classic lesion models remain useful historically but are incomplete accounts of language organization."
+    },
+    {
+      "id":"social-cognition",
+      "name":"Social cognition and theory-of-mind systems",
+      "summary":"Understanding agents, intentions, emotion and social context recruits distributed medial prefrontal, temporoparietal, superior temporal, limbic, insular and default-network-related systems.",
+      "components":["medial prefrontal cortex","temporoparietal junction","posterior superior temporal sulcus","precuneus/posterior cingulate","amygdala","insula","temporal pole"],
+      "functions":["mental-state inference","social perception","emotion recognition","self/other modelling","norm/context integration"],
+      "project_relation":"Observer, witness and relation motifs can use social cognition as a scientific neighbor without equating mind-reading metaphors with literal neural telepathy.",
+      "boundary":"There is no single theory-of-mind organ; tasks and network definitions vary."
+    },
+    {
+      "id":"predictive-processing-active-inference",
+      "name":"Predictive processing / active inference — theory layer",
+      "status":"theoretical framework, not settled anatomical fact",
+      "summary":"Predictive-processing families model perception/action as hierarchical inference in which expectations interact with sensory evidence and prediction errors; active-inference formulations additionally model action as changing sampled states to reduce expected discrepancies under a generative model.",
+      "usefulness":"This is a strong scientific-theory neighbor for the project's Observer/world-model language because it emphasizes recurrent top-down/bottom-up exchange rather than passive reception.",
+      "anatomical_neighbors":["corticocortical recurrent loops","thalamocortical loops","sensory prediction-error systems","interoceptive inference","motor control"],
+      "project_relation":"Observer/world-model ↔ generative-model metaphor may be explored as a formal comparator.",
+      "boundary":"Predictive processing is a family of models with active debate over scope, implementation and falsifiability; it must not be presented as proof of Potato Dynamics, God, or metaphysical manifestation."
+    }
+  ],
+  "cross_links":[
+    "cranial nerves ↔ brainstem nuclei ↔ body interfaces",
+    "SCN ↔ hypothalamus ↔ autonomic pathway ↔ pineal",
+    "NTS/vagus ↔ interoception ↔ insula/hypothalamus",
+    "PAG/brainstem ↔ nociception ↔ thalamus/insula/cingulate",
+    "inferior olive ↔ climbing fibers ↔ Purkinje cells ↔ deep nuclei ↔ thalamus",
+    "entorhinal cortex ↔ dentate/CA3/CA1/subiculum ↔ distributed memory networks",
+    "neural activity ↔ astrocytes/neurovascular unit ↔ local blood flow",
+    "language/social networks ↔ large-scale cortical network architecture",
+    "predictive-processing theory ↔ recurrent cortical/thalamic/interoceptive loops"
+  ],
+  "routing_back":"knowledge/body/whole-brain-neurobiology-atlas.json"
+}

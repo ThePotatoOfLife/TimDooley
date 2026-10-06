@@ -1,0 +1,90 @@
+{
+  "id": "world-map-view-projections",
+  "version": "1.0.0",
+  "updated": "2026-09-20",
+  "status": "active-runtime-contract",
+  "authority": "data/atlas-projection-contract.json",
+  "purpose": "Declare the information preserved and omitted when canonical World Map material is compressed into reader-facing analytical views. These records describe view loss; they do not replace canonical data owners.",
+  "reconstructability_scale": {
+    "source-linked": "The view is lossy, but the canonical source owner and identity remain available for navigation or re-query.",
+    "partial": "Some source identity remains available, but the current runtime cannot reconstruct all inputs represented by the view.",
+    "none": "The view cannot reliably lead back to the source inputs and must not be promoted as a canonical analytical view."
+  },
+  "views": {
+    "country-scalar": {
+      "label": "Country scalar shading",
+      "operation": "one observation per country -> visual fill plus exact value text",
+      "preserves": [
+        "canonical country identity",
+        "displayed observation value",
+        "unit when supplied",
+        "source owner when supplied",
+        "observation period when supplied",
+        "missing-value state"
+      ],
+      "information_loss": [
+        "within-country variation",
+        "subnational distribution",
+        "other variables not selected by the active scalar layer",
+        "source detail not exposed by the selected observation"
+      ],
+      "reconstructability": "source-linked",
+      "source_path_back": "active layer source_owner plus country identity"
+    },
+    "country-set": {
+      "label": "Country set membership",
+      "operation": "one or more canonical memberships -> patterned country membership view",
+      "preserves": [
+        "canonical country identity",
+        "active set identity",
+        "membership result",
+        "ANY/ALL query mode",
+        "set epistemic type when declared"
+      ],
+      "information_loss": [
+        "membership mechanism and eligibility detail",
+        "reasons for non-membership",
+        "relations among member countries",
+        "attributes not represented by the active set layers"
+      ],
+      "reconstructability": "source-linked",
+      "source_path_back": "active layer source_owner plus runtime membership owner"
+    },
+    "active-country-relations": {
+      "label": "Active-country relation filter",
+      "operation": "typed relation graph -> bounded edges touching the active country",
+      "preserves": [
+        "active country identity",
+        "selected relation family",
+        "visible counterpart identity",
+        "typed direction where the relation renderer exposes it"
+      ],
+      "information_loss": [
+        "relations outside the active-country neighborhood",
+        "relation families excluded by the current filter",
+        "edge metadata not rendered in the compact relation view",
+        "higher-order network structure"
+      ],
+      "reconstructability": "source-linked",
+      "source_path_back": "canonical relationship graph and selected country"
+    },
+    "country-comparison": {
+      "label": "Pinned-country comparison",
+      "operation": "selected country records -> bounded side-by-side comparison context",
+      "preserves": [
+        "canonical country identities",
+        "currently selected comparison dimensions",
+        "explicit unknown values"
+      ],
+      "information_loss": [
+        "unselected country dimensions",
+        "countries outside the pinned comparison",
+        "relationships not represented by the selected comparison fields",
+        "historical variation outside the active time state"
+      ],
+      "reconstructability": "source-linked",
+      "source_path_back": "canonical country records for every pinned code"
+    }
+  },
+  "runtime_rule": "The Active View adapter composes the contracts for every active analytical operation, deduplicates their loss statements, and exposes the result to presentation surfaces. A map view must never imply that a choropleth, set, relation filter or comparison contains the full canonical record."
+}

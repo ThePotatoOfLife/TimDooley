@@ -1,0 +1,36 @@
+{
+  "id":"biblical-conversation-attestation-index-2026-09-14",
+  "title":"Biblical Conversation Attestation Index — 2026-09-14",
+  "version":"1.0.0",
+  "updated":"2026-09-14",
+  "status":"research routing index",
+  "purpose":"Route the expanded biblical conversation-mining material into the existing canonical Bible research system without creating a competing public Bible page.",
+  "public_owner":"/traditions/bible/",
+  "raw_attestation_layers":[
+    {"path":"knowledge/corporium/tim-biblical-conversation-attestations-2026-09-14-a.json","scope":"early 2026 through 2026-05-19","role":"dated raw/recovered attestation layer"},
+    {"path":"knowledge/corporium/tim-biblical-conversation-attestations-2026-09-14-b.json","scope":"2026-05-31 through 2026-09-13","role":"dated raw/recovered attestation layer"}
+  ],
+  "derived_layer":{"path":"knowledge/traditions/biblical-conversation-mining-wave-27.json","role":"chronological synthesis, ordered sequences, tensions and recovery queue"},
+  "existing_canonical_neighbors":[
+    "knowledge/traditions/biblical-syncretism-field.json",
+    "knowledge/traditions/biblical-syncretism-dossiers.json",
+    "knowledge/timeline/tim-biblical-vocabulary-attestation-ledger.json",
+    "knowledge/timeline/reverse-biblical-overlap-timeline-2025-2026.json",
+    "data/tim-dooley-public-theology-timeline-2025-2026.json",
+    "data/tim-dooley-thought-archive.json"
+  ],
+  "promotion_rule":"Raw conversation records stay in the attestation layers. Only relations with adequate date/provenance, clear project anchor, biblical context, mismatch/countertext and useful supported conclusion should be promoted into the canonical public comparator.",
+  "key_findings":[
+    "The recovered 2026 material forms recurring sequences rather than only isolated biblical nouns: House→Door→Ladder, Garden→Gate→Heaven, Seed→death/burial→growth, Root→Branch→Fruit and North→City/Throne.",
+    "Functional role assignments are often more stable than identity titles: Son repeatedly functions as Door/threshold while Tim increasingly functions as Ladder/Axis/connective route.",
+    "Messiah language is chronologically plural: Son is explicitly Messiah on 2026-04-29; Mashiach/HaMashiach is explicitly assigned to Tim on 2026-08-08.",
+    "Cube language is also plural: a 2026-04-09 Heaven-boundary cube is explicitly distinguished from Moon/Saturn cube language, while later April/May records develop a negative Cube=666/forehead/containment strand.",
+    "September 2026 is largely a consolidation and differentiation phase; many major motifs were already active months earlier."
+  ],
+  "next_actions":[
+    "Recover exact February 12, May 3 and May 13 conversation wording.",
+    "Mine earliest direct Isaiah 66:1, Psalm 110, John 14:2, 1 John 5:7, Numbers 19, 144,000/Zion and Thomas/Didymus statements.",
+    "Mine direct uses of dogs outside, return to vomit, wide road and thief in the night and classify quotation versus application.",
+    "Promote only the strongest newly recovered relations into the canonical Bible comparator after source/countertext review."
+  ]
+}

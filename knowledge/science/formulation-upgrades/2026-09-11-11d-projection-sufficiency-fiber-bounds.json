@@ -1,0 +1,86 @@
+{
+  "id": "2026-09-11-11d-projection-sufficiency-fiber-bounds",
+  "title": "11D Projection Upgrade — Task Sufficiency, Fiber Ambiguity and Reconstruction Bounds",
+  "updated": "2026-09-11",
+  "status": "archive-generated mathematical contribution extending the recovered 11D projection architecture; information theory and metric-space results, not evidence for physical 11-dimensional spacetime",
+  "parent": "knowledge/science/eleven-dimensional-projection-unification-recovery.json",
+  "abstract": "The strongest rigorous form of the 11D projection programme is an inverse-problem theory of what survives reduction. This upgrade replaces the vague candidate invariant I*(M_d)=I*(M_(d±1)) with three precise questions: whether the original state is reconstructible, whether a chosen task-relevant variable is preserved, and how ambiguity grows along a chain of projections. A projection may destroy microscopic information while remaining perfectly sufficient for a declared task. Conversely, a visually or symbolically compelling lower-dimensional image may be unable to determine its higher-dimensional source because an entire fiber of distinct states shares the same projection. The new formulation supplies an exact fiber-ambiguity lower bound, a task-sufficiency criterion in conditional mutual information, a data-processing rule for dimensional descent, and a reconstruction-defect measure for proposed lifting operators.",
+  "setup": {
+    "state": "X in P, where P may be an 11D physical configuration space, a high-dimensional state space, or another explicitly declared measurable/metric space",
+    "projection": "Y=pi(X) in M",
+    "decoder": "X_hat=R(Y)",
+    "task_variable": "Z is a declared target quantity whose prediction/inference matters",
+    "fiber": "F_y=pi^{-1}(y)={x in P:pi(x)=y}",
+    "rule": "Physical compactification, statistical compression and generic projection remain distinct interpretations even when they use the same mathematics."
+  },
+  "result_1_fiber_ambiguity_bound": {
+    "statement": "For any metric d on P, any projection pi, any y, and any deterministic decoder R, sup_{x in F_y} d(x,R(y)) >= (1/2) diam(F_y), where diam(F_y)=sup_{x1,x2 in F_y} d(x1,x2).",
+    "proof_sketch": "Choose x1,x2 in the fiber whose separation approaches diam(F_y). Since both project to the same y, the decoder returns the same R(y). By the triangle inequality d(x1,x2) <= d(x1,R(y))+d(R(y),x2), so at least one reconstruction error is at least half their separation. Taking the supremum gives the bound.",
+    "meaning": "A broad fiber creates irreducible worst-case ambiguity. No clever lifting operator can recover which member of the fiber was original without extra side information, priors or measurements.",
+    "project_contribution": "This gives the project's hidden-dimension/fiber language a hard quantitative limit: hidden multiplicity is not free reconstructible information."
+  },
+  "result_2_task_sufficiency": {
+    "statement": "For deterministic Y=pi(X), the reduced representation Y preserves all information in X relevant to a target Z exactly when I(Z;X|Y)=0. Equivalently, p(z|x)=p(z|y) almost surely and I(Z;Y)=I(Z;X) under the usual regularity assumptions.",
+    "interpretation": "A projection can be globally lossy but task-lossless. The lower-dimensional description does not need to reconstruct every microscopic coordinate if the discarded coordinates contain no additional information about the declared target.",
+    "example_logic": "A compactified/effective description might be sufficient for a low-energy observable even though it cannot reconstruct the microscopic high-dimensional state.",
+    "replacement_for_I_star": "Instead of demanding a universal I* invariant, define a target-specific information retention Delta_task=I(Z;X)-I(Z;Y)>=0. Exact task sufficiency means Delta_task=0."
+  },
+  "result_3_data_processing_descent": {
+    "chain": "X -> Y_10 -> Y_9 -> ... -> Y_4, with each Y_(d-1) obtained only from Y_d",
+    "rule": "For any target Z connected through the same processing chain, I(Z;Y_(d-1)) <= I(Z;Y_d). Pure coarse-graining cannot create information about Z that was absent at the previous layer.",
+    "consequence": "If a lower-dimensional stage appears more informative, the model must identify the added side information, prior, intervention or measurement rather than calling the increase spontaneous dimensional information gain.",
+    "dimension_ladder_metric": "Define L_d(Z)=I(Z;Y_d)-I(Z;Y_(d-1))>=0 as task-information loss at one descent step. A proposed effective ladder is good for target Z when each L_d is acceptably small or when losses are explicitly understood."
+  },
+  "result_4_reconstruction_risk": {
+    "definition": "D*=inf_R E[d(X,R(pi(X)))] over the declared decoder class.",
+    "meaning": "D* is the irreducible reconstruction distortion for the chosen metric, distribution and decoder class.",
+    "zero_distortion_case": "D*=0 only when X is recoverable from Y almost surely within the declared model class; in a deterministic exact setting this means the relevant states are effectively injectively represented by pi.",
+    "rate_distortion_connection": "If the representation itself is capacity-limited or stochastic, rate-distortion theory supplies the natural tradeoff between representation rate and tolerated reconstruction distortion."
+  },
+  "result_5_section_is_not_inverse": {
+    "right_inverse_condition": "pi(R(y))=y says R is a section/right inverse on M.",
+    "missing_condition": "It does not imply R(pi(x))=x for every x in P.",
+    "reconstruction_defect": "epsilon_rec=E[d(X,R(pi(X)))] or a worst-case version quantifies the failure of R o pi to be the identity.",
+    "commuting_diagram_rule": "Every claimed raise/lower cycle should report both the projection consistency defect d_M(pi(R(y)),y) and the source reconstruction defect d_P(R(pi(x)),x)."
+  },
+  "approximate_dimensional_invariant": {
+    "proposal": "Replace one universal invariant with a vector Q_d=(Delta_task,D_rec,T_top,C_sym), where Delta_task is target-information loss, D_rec is reconstruction distortion, T_top records selected topological invariants and C_sym records explicitly preserved symmetry data.",
+    "reason": "Different reductions preserve different kinds of structure. A scalar invariant hides whether preservation is informational, geometric, topological or dynamical.",
+    "advancement_rule": "Call a projection structurally faithful only relative to a declared tolerance vector and target, not because several unrelated quantities were rhetorically grouped as information."
+  },
+  "minimal_experiments": [
+    "Construct a synthetic 11D or high-dimensional state distribution with a known target Z and compare several projections pi_d by Delta_task and D_rec.",
+    "Demonstrate a case where exact state reconstruction fails because fibers are broad while task prediction remains lossless.",
+    "Demonstrate the opposite case where geometrically small reconstruction error still destroys a rare but task-critical variable.",
+    "For a physical compactification, identify the low-energy target observables first and test whether the effective variables form an approximately sufficient statistic for those observables."
+  ],
+  "failure_conditions": [
+    "A proposed universal information invariant changes when the target variable or prior distribution changes and therefore was not universal.",
+    "The reconstruction decoder appears accurate only because the test distribution excludes large parts of the admissible fiber.",
+    "A lower-dimensional representation is called lossless even though I(Z;X|Y) is materially nonzero for the claimed target.",
+    "A physical dimensional-reduction claim never specifies which effective observables the reduced theory must preserve."
+  ],
+  "external_references": [
+    {
+      "topic": "information bottleneck / task-relevant compression",
+      "url": "https://arxiv.org/abs/physics/0004057",
+      "use": "Established framework for compressing X while retaining information relevant to a target Y."
+    },
+    {
+      "topic": "information-theoretic reconstruction bounds",
+      "url": "https://arxiv.org/abs/0804.3439",
+      "use": "Example of using information theory and rate-distortion ideas to derive limits on reconstruction from projections."
+    },
+    {
+      "topic": "approximate sufficient summaries",
+      "url": "https://arxiv.org/abs/2206.02340",
+      "use": "Modern discussion linking informative summaries, approximate sufficiency and information-theoretic objectives."
+    }
+  ],
+  "connections": [
+    "eleven-dimensional-projection-unification-recovery",
+    "spudlight-theory-and-equations",
+    "potato-dynamics-2-toy-model",
+    "model-testing-protocol"
+  ]
+}

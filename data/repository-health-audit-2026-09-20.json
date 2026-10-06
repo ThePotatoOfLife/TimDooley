@@ -1,0 +1,152 @@
+{
+  "id": "repository-health-audit-2026-09-20",
+  "date": "2026-09-20",
+  "scope": [
+    "GitHub Actions and deployment workflow",
+    "quality-group orchestration",
+    "repository hygiene",
+    "SEO and machine discovery",
+    "canonical public navigation",
+    "House governance and registries",
+    "Timeline naming",
+    "TTS contracts",
+    "generated index sequencing",
+    "World Map runtime ownership",
+    "new religious-foundation lineage checks",
+    "reader-richness regression coverage"
+  ],
+  "executive_summary": "The repository's core domain systems are healthier than the failing CI suggested. The principal issue was contract drift: recent reader, Timeline and World Map architecture changes outpaced validators and deploy assertions. This pass updates those seams while preserving substantive invariants.",
+  "live_ci_baseline": {
+    "failing_run_id": 35514056654,
+    "observed_failures": [
+      "site-shell validator still expected retired homepage sections navigation and old Timeline application markers",
+      "Tim longform TTS test expected an obsolete item-selector shape",
+      "coordination and World Map CI tests inspected literal workflow commands after checks moved into grouped runner ownership",
+      "Timeline naming validator treated ordinary descriptive use of chronology as a product-name regression",
+      "core stability audit expected generated repository-index.json before the core group built it",
+      "World Map Path/Impact validators expected direct URLSearchParams mutation after migration to the canonical URL-state service",
+      "World Map 3D validator simultaneously required and forbade retired broad 3d-ui.js public ownership"
+    ]
+  },
+  "fixes_applied": [
+    {
+      "area": "Timeline naming",
+      "changes": [
+        "renamed active knowledge/reader/tim-dooley-identity-chronology.json to tim-dooley-identity-timeline.json",
+        "updated House specialist-subview registry",
+        "narrowed naming validator to route/product identity instead of banning ordinary prose"
+      ]
+    },
+    {
+      "area": "CI orchestration",
+      "changes": [
+        "coordination test now treats scripts/run_quality_group.py as the command owner",
+        "World Map context CI contract does the same",
+        "core group now builds repository-index and root navigation projection before stability audit"
+      ]
+    },
+    {
+      "area": "new coverage",
+      "changes": [
+        "religious foundation lineage validator added to Foundation quality group",
+        "reader-richness validator created and added to Content reader/projection quality group"
+      ]
+    },
+    {
+      "area": "public shell",
+      "changes": [
+        "site-shell contract now follows public-doors homepage authority",
+        "Timeline shell requires Long Turning/long-chronology runtime",
+        "Tim shell validates current Story/Timeline/100k/Statements entrances",
+        "Pages verification updated to the same canonical shapes"
+      ]
+    },
+    {
+      "area": "TTS",
+      "changes": [
+        "Tim portrait TTS test follows current .riddle,.long-section reader model and expanded exclusion boundary"
+      ]
+    },
+    {
+      "area": "World Map",
+      "changes": [
+        "Path and Impact URL checks follow shared 3d-url-state.js ownership",
+        "contradictory 3d-ui.js public requirement removed",
+        "runtime registry now names Inspector Router, Inspector Visibility, UI Layout, World Bar and Context Visibility as live interface owners"
+      ]
+    },
+    {
+      "area": "local hygiene",
+      "changes": [
+        "ignored _site, grouped quality logs/reports and deploy diagnostics"
+      ]
+    }
+  ],
+  "systems_found_healthy": [
+    "House governance/topology/subrooms/compatibility checks passed in the observed failing run",
+    "SEO pipeline passed",
+    "machine discoverability passed with 873 canonical sitemap URLs and 14 key discovery/reader pages audited",
+    "public navigation passed across 1118 built HTML pages in the observed run",
+    "repository hygiene workflow-sprawl check passed",
+    "religious foundation data is now present in lineage/timeline/geography/event owners and receives dedicated validation",
+    "reader-richness audit and shared nested-Room projection are now CI-visible"
+  ],
+  "open_followups": [
+    {
+      "priority": "P1",
+      "area": "World Map compatibility retirement",
+      "work": "Continue proving parity and removing remaining legacy 3d-ui.js / 3d-selection-ui.js / old Lens-Fields-Networks compatibility assumptions one owner at a time. Do not mass-delete until unique behavior is covered by current control-plane tests."
+    },
+    {
+      "priority": "P1",
+      "area": "Blueprint completeness",
+      "work": "validate_blueprints.py still reports numerous non-blocking warnings for missing implementation_notes, validation_rules and acquisition_plan. Complete these domain-by-domain rather than filling them with generic boilerplate."
+    },
+    {
+      "priority": "P1",
+      "area": "Reader richness",
+      "work": "Continue authored enrichment for the next critical nested Rooms: whole-body, games-simulations, visual-art, economy-finance, geography-countries, infrastructure-capability, experiments-formalization, open-questions, symbolic-body-comparison, law-justice and politics-governance."
+    },
+    {
+      "priority": "P2",
+      "area": "Generated-index ownership",
+      "work": "Repository and root navigation indexes are build artifacts rather than committed source on current main. Keep builders deterministic and ensure every validator either builds prerequisites or runs only in a build stage that owns them."
+    },
+    {
+      "priority": "P2",
+      "area": "GitHub Actions runtime warnings",
+      "work": "Current workflows force JavaScript actions onto Node 24 because GitHub reports Node 20 deprecation. Revisit action versions when upstream releases eliminate the compatibility warning; do not churn action versions without verification."
+    },
+    {
+      "priority": "P2",
+      "area": "Docs/TODO convergence",
+      "work": "Plans/specs are useful provenance but several describe intermediate World Map ownership states. Continue marking implementation status or linking superseding designs so historical plans are not mistaken for current architecture."
+    }
+  ],
+  "operating_rules": [
+    "Validators should test canonical ownership and externally meaningful invariants, not incidental implementation strings.",
+    "A generated artifact required by a validator must be built in the same quality group before the validator runs.",
+    "Public shell/navigation contracts should derive from data/house/public-surfaces.json and current reader markers rather than parallel hand-maintained nav taxonomies.",
+    "Retired compatibility code may remain only while a documented unique behavior is still uncovered by current owners.",
+    "Warning cleanup should add real domain-specific information; never silence warnings with generic filler.",
+    "Every new high-level data subsystem should ship with a validator and be wired into one existing quality group rather than adding workflow sprawl."
+  ],
+  "relevant_files": [
+    ".github/workflows/quality-checks.yml",
+    ".github/workflows/pages.yml",
+    "scripts/run_quality_group.py",
+    "scripts/site_shell_contract.py",
+    "scripts/validate_timeline_naming.py",
+    "scripts/test_longform_tts_adapter.mjs",
+    "scripts/validate_world_map_3d.py",
+    "scripts/validate_world_map_pathfinder.py",
+    "scripts/validate_world_map_impact_trace.py",
+    "scripts/test_world_map_context_ci_contract.mjs",
+    "data/world-map-3d-runtime.json",
+    "scripts/validate_religious_foundation_lineages.py",
+    "scripts/validate_reader_richness.py",
+    "data/house/reader-richness-audit.json",
+    "data/house/public-surfaces.json",
+    "data/house/room-dossiers.json"
+  ]
+}

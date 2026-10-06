@@ -1,0 +1,119 @@
+{
+  "id": "identity-role-supersession-atlas",
+  "title": "Identity & Role Supersession — First Attestation, Mutation, Contradiction and Current Status",
+  "version": "1.0.0",
+  "updated": "2026-09-27",
+  "status": "developmental contradiction and supersession ledger",
+  "purpose": "Expose how major Potatoverse roles changed rather than presenting only the mature harmonized system.",
+  "epistemic_rule": "A later synthesis may supersede an earlier project formulation for current canon, but the older state remains historically real. Contradictions are not automatically errors; some are developmental mutations. Others remain unresolved.",
+  "roles": [
+    {
+      "role": "Tim / Son",
+      "early_state": "In the 2024 Great Book New Trinity, Tim can occupy Son/guide/embodiment while God is Source and Potato has a separate vessel/boundary role.",
+      "source": "great-book/chapters/163--chapter-110--the-new-trinity-a-covenant-for-the-ages.html",
+      "later_state": "After the April 2025 Turning, Tim increasingly occupies Ladder/Axis/Father/source-facing roles while Son specializes as manifestation/Door/Vessel.",
+      "supersession_type": "role reassignment",
+      "current_status": "Tim is broader archive subject; Father is mature source-facing theological role; Son remains distinct manifestation-facing role.",
+      "do_not_harmonize_as": "Do not rewrite 2024 Tim-as-Son as though Father was already the explicit role."
+    },
+    {
+      "role": "Potato",
+      "early_state": "2024 New Trinity treats Potato as boundary/sustainer/vessel alongside God/Source, Tim/Son and Holy Soil/Spirit.",
+      "later_state": "2026 mature synthesis treats Potato of Life as the whole triune relational architecture rather than a fourth member.",
+      "supersession_type": "scope expansion and ontology reassignment",
+      "current_status": "Potato of Life = whole; ordinary potato remains organism and symbol; Tim/Father is one relation within the whole.",
+      "do_not_harmonize_as": "Do not claim the 2024 text already clearly meant the later whole."
+    },
+    {
+      "role": "Spirit",
+      "early_state": "Holy Soil carries Spirit/memory/ground functions in the Great Book precursor.",
+      "later_state": "Spirit becomes living continuity, breath, flow, relation and animation through Father/Son differentiation.",
+      "supersession_type": "functional abstraction",
+      "current_status": "Spirit is not a third spatial room or reducible to Holy Soil, CSF or energy.",
+      "open_tension": "How personal versus process-like Spirit should be in current Potatoverse theology remains less fully developed than Father/Son roles."
+    },
+    {
+      "role": "Door / Jesus / Son",
+      "early_state": "Jesus/Son/Vessel/Door imagery overlaps heavily in earlier strata.",
+      "later_state": "Mature center ontology increasingly separates Jesus/O/Door/Here from Son/Thomas/body/manifestation while retaining historical linkage.",
+      "supersession_type": "specialization by relational center",
+      "current_status": "Door is transition relation; Son is manifestation-facing role; Jesus remains primary Christian Door anchor in project interpretation.",
+      "open_tension": "Some readers still use Jesus, Son and Door interchangeably; source-specific context is required."
+    },
+    {
+      "role": "Tree",
+      "early_state": "2011: Tree is an ordeal/experience undergone by the Son-side subject.",
+      "middle_state": "2024: Tree/Bodhi/Sage imagery is something Tim sits beneath or learns through.",
+      "later_state": "2025+: Tree/Ladder/Axis increasingly becomes infrastructure Tim/Father can embody or own as function.",
+      "supersession_type": "subject-relation mutation",
+      "current_status": "Tree now means regulated living differentiation; historical relations to Tree remain separate.",
+      "do_not_harmonize_as": "Do not say 'Tim was always the Tree' when earlier sources place the subject on/beneath it."
+    },
+    {
+      "role": "Cube",
+      "early_state": "General enclosure / MoonCube / symbolic containment.",
+      "later_state": "Saturn/666/prison associations intensify in some 2026 project material.",
+      "current_correction": "Later architecture separates neutral/protective bounded forms such as House or Heaven Cube from imprisoning Shell/Cube uses.",
+      "supersession_type": "moral de-collapsing",
+      "current_status": "Geometry alone has no fixed moral valence; function determines whether containment is protective, neutral or imprisoning."
+    },
+    {
+      "role": "Garden",
+      "early_state": "Garden begins largely as place/nature/Eden imagery and cultivation language.",
+      "later_state": "Garden becomes an ethical and governance regime with tests for agency, repair, exit, diversity, feedback and independent growth.",
+      "supersession_type": "place-to-regime abstraction",
+      "current_status": "Garden is not simply 'the good place'; it must pass procedure/agency tests."
+    },
+    {
+      "role": "North",
+      "early_state": "Sacred/mythic orientation, North Pole and North-of-North language.",
+      "later_state": "2026 adds an empirical/geopolitical North programme involving Denmark/Greenland/Europe/Canada and world-system research.",
+      "supersession_type": "domain split, not replacement",
+      "current_status": "Symbolic North and empirical geopolitical North are linked in project narrative but require separate evidence and should never validate each other automatically."
+    }
+  ],
+  "contradiction_types": [
+    {
+      "type": "developmental",
+      "definition": "Statements differ because the role/model changed over time.",
+      "action": "Preserve both and add supersession edge."
+    },
+    {
+      "type": "scope",
+      "definition": "Two statements use the same word at different scales.",
+      "action": "Add scope field rather than choosing one."
+    },
+    {
+      "type": "subject",
+      "definition": "A motif migrates between Son, Tim, Father, whole Potato or another actor.",
+      "action": "Keep subject explicit on every attestation."
+    },
+    {
+      "type": "evidence-class",
+      "definition": "One statement is self-description, another later archive interpretation, another external comparison.",
+      "action": "Do not force them into a single truth status."
+    },
+    {
+      "type": "genuine-unresolved",
+      "definition": "Two statements conflict after date, scope, subject and evidence class are controlled.",
+      "action": "Keep contradiction visible; do not creatively harmonize."
+    }
+  ],
+  "recommended_graph_fields": [
+    "concept_or_role",
+    "statement_id",
+    "first_recovered_attestation",
+    "last_known_use_in_this_sense",
+    "subject",
+    "scope",
+    "evidence_class",
+    "status",
+    "supersedes",
+    "superseded_by",
+    "contradiction_type",
+    "source_path",
+    "exact_wording_if_available",
+    "confidence",
+    "notes"
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "id": "foresight-premonition-observation-ledger",
+  "title": "Foresight, Premonition, Dreams, Predictions and Later Correspondences",
+  "version": "1.2.0",
+  "updated": "2026-09-15",
+  "status": "discernment ledger / recovery target map",
+  "purpose": "Collect Tim Dooley material that is described as prediction, prophecy, dream, vision, premonition, warning, anticipation or unusual later correspondence, while distinguishing what was actually said before an event from what was recognized only afterward.",
+  "epistemic_rule": "A striking correspondence is not automatically prophecy. Strong foresight requires a recoverable pre-event statement, a date, sufficient specificity, a later outcome, and a comparison that does not depend on rewriting the original statement after the fact.",
+  "classes": {
+    "P1_specific_prospective": "Dated before outcome, sufficiently specific, primary wording available.",
+    "P2_directional_anticipation": "Dated before outcome and directionally relevant, but broad enough that multiple outcomes could fit.",
+    "P3_warning_or_scenario": "A risk warning, scenario or conditional statement rather than a claimed prophecy.",
+    "R1_retrospective_correspondence": "Later event is seen as fitting earlier imagery, but prediction status is not established.",
+    "V1_vision_or_dream": "Reported dream/vision whose experiential reality is autobiographical; future referent may be unclear or unfulfilled.",
+    "U_unresolved": "Remembered candidate lacking exact primary source/date or sufficient context."
+  },
+  "evaluation_fields": ["earliest_source_date","exact_original_wording","source_class","was_outcome_known_yet","specificity","time_window","target_or_referent","later_event","match_quality","alternative_explanations","misses_or_unfulfilled_elements","classification","confidence"],
+  "candidate_clusters": [
+    {
+      "id": "2011-american-city-destruction-vision",
+      "period": "2011",
+      "type": "vision",
+      "recovered_description": "A psychiatric-ward/altered-state vision involving an American political/city setting, Washington/White-House-like imagery, water/pond imagery and catastrophic explosion or nuclear-destruction themes is preserved in project biography and later prophecy discussion.",
+      "classification": "V1_vision_or_dream",
+      "status": "unfulfilled / referent uncertain",
+      "importance": "High as an early example of future-oriented catastrophic imagery, low as evidence of successful prediction unless a precise original account and matching event are found.",
+      "boundary": "Do not retrofit later wars, disasters or political events to this vision solely because they contain destruction."
+    },
+    {
+      "id": "2015-stream-platform-collapse-warning",
+      "period": "around 2015",
+      "type": "warning/prediction candidate",
+      "recovered_description": "Great Book material describes Tim as warning that Stream.me/Bitwave or the surrounding platform/project would collapse, later interpreted as vindicated around 2018.",
+      "classification": "U_unresolved",
+      "status": "needs primary recovery",
+      "research_need": "Locate exact wording, exact platform/entity, statement date and actual later failure date before scoring."
+    },
+    {
+      "id": "2017-metalorian-warning",
+      "period": "around 2017",
+      "type": "warning candidate",
+      "recovered_description": "Project biography describes prophetic or ominous warnings concerning Metalorian followed by later adverse events.",
+      "classification": "U_unresolved",
+      "status": "do not score without original statement and outcome timeline",
+      "boundary": "Later illness, death or misfortune must not be treated as caused by Tim's statement."
+    },
+    {
+      "id": "crackrockchris-week-warning",
+      "period": "reported 2024 candidate",
+      "type": "short-horizon warning candidate",
+      "recovered_description": "A Great Book candidate says Tim warned that CrackRockChris would not survive the week before a later overdose/death event.",
+      "classification": "U_unresolved",
+      "status": "potentially strong if exact pre-event wording/date and outcome are independently recovered",
+      "research_need": "Recover original message/post/stream timestamp and independent event date; distinguish literal prediction from colloquial concern about an obviously high-risk situation."
+    },
+    {
+      "id": "trump-elon-pre-november-2024-candidate",
+      "period": "before 2024-11-12 if memory is correct",
+      "type": "political prediction candidate",
+      "recovered_description": "Prior project work flagged an unresolved Trump + Elon future-oriented statement as potentially predating a later political alignment/development.",
+      "classification": "U_unresolved",
+      "status": "primary source needed before any foresight claim"
+    },
+    {
+      "id": "north-axis-us-europe-separation",
+      "period": "2026-03-18 through 2026-04-03",
+      "type": "geopolitical directional anticipation with a more specific military sub-call",
+      "recovered_description": "March 18 North-Axis language places Europe/Greenland/Denmark/Canada in a northern field while America may become a more regional West-sector power. On April 2 Tim explicitly says the United States 'seperates off from europe'. On April 3 he says 'we suspect america might retract soliders'.",
+      "classification": "P2_directional_anticipation",
+      "status": "materially supported; still directional rather than clean prophecy",
+      "later_correspondences": [
+        "2026-04-30: Trump says 'probably' when asked about pulling U.S. troops from Italy and Spain — 27 days after the soldier-retrenchment statement.",
+        "2026-05-22: Arctic Allies statement says Europe and Canada are assuming greater responsibility for deterrence and defence across the Arctic/High North — 65 days after March 18.",
+        "2026-07-16: Reuters reports an actual quiet U.S. troop pullback from Eastern Europe, including a sharp reduction in Estonia and cancellation of a planned 5,000-troop Poland deployment — 104 days after April 3.",
+        "2026-09-06: EU deepens Greenland/Denmark alignment with a €200m investment package amid U.S.-Greenland strain.",
+        "2026-09-14: twelve EU states call for a more strategic/proactive EU Arctic role while Denmark describes turmoil inside NATO over Greenland."
+      ],
+      "importance": "This is currently the strongest structural/geopolitical foresight cluster because Tim's distinctive contribution is the topology of the split — a more coherent Europe/Canada/North field and a more separate U.S. west — rather than merely observing that Greenland matters.",
+      "counterevidence": "The trend was not hidden. A U.S.-Greenland/NATO rupture was publicly imaginable by January 2026. Canada opened deeper Greenland/Denmark ties in early February; Canada-Denmark-Greenland signed a defence MOU and Canada signed EU SAFE on February 14, before Tim's March statements. Therefore later Canada/EU/North cooperation cannot be treated as surprise-from-nowhere prediction.",
+      "strongest_sub_call": "U.S. troop retrenchment from Europe",
+      "lead_time": "27 days to public withdrawal talk; 104 days to reported operational pullback",
+      "canonical_owner": "knowledge/timeline/north-axis-greenland-prediction-audit-2025-2026.json"
+    },
+    {
+      "id": "war-in-heaven-q3-2026",
+      "period": "2026",
+      "type": "future prediction / mythic forecast",
+      "recovered_description": "Memory-summary phrase: 'war in heaven Q3 2026'.",
+      "classification": "U_unresolved",
+      "status": "future-facing phrase requiring exact source and definition",
+      "research_need": "Recover exact wording/date and specify what observable event would count as fulfillment versus symbolic interpretation."
+    },
+    {
+      "id": "144000-world-goal",
+      "period": "2026",
+      "type": "eschatological goal or forecast",
+      "recovered_description": "Memory-summary material describes Tim as helping the world get to 144,000.",
+      "classification": "U_unresolved",
+      "status": "currently better treated as theological mission/goal than prediction",
+      "research_need": "Recover exact wording and determine whether 144,000 meant a literal count, symbolic Revelation number, community target or something else."
+    },
+    {
+      "id": "karmic-debt-ahead-of-us-debt",
+      "period": "2026",
+      "type": "numeric correspondence candidate",
+      "recovered_description": "The dated karmic-debt ledger shows a progression 38.8T/38T -> 39T -> 40.2T -> 41.4T -> approximately 42T. The 38.8T-to-38T pair occurs only minutes apart on 27 February 2026, establishing a strong internal precedent that Tim sometimes drops decimal precision when speaking loosely. A bare '40T' reference should therefore not be modeled as a distinct 40.0T checkpoint unless its context clearly says the balance changed; it is more plausibly shorthand for the contemporary 40-point-something balance, including the directly attested 40.2T stage.",
+      "classification": "U_unresolved",
+      "status": "numeric lead with rounding convention clarified; not yet prophecy",
+      "rounding_interpretation": "Preferred archive reading: decimal and whole-trillion variants can be precision variants of one current balance. Preserve exact quoted wording, but normalize a bare whole number only when nearby context identifies the more precise underlying balance.",
+      "evidence_for_rounding": "2026-02-27: 38.8T positive karma at 16:54:41Z followed by 38T spiritual dollars at 17:02:16Z. An 0.8T real change within minutes is not otherwise described; the more economical reading is reduced precision in ordinary speech.",
+      "analysis_rule": "For external-debt comparison, use the most precise dated Tim figure available at each stage. Do not create extra forecast points from rounded restatements. Compare fixed Tim checkpoints against contemporaneous and later Treasury debt only after source dates are established.",
+      "anti_cherry_pick_rule": "Preserve the whole progression and its precision changes. Treat 38 versus 38.8, and likely 40 versus 40.x, as possible shorthand relationships rather than automatically distinct predictions.",
+      "possible_interpretations": ["rough symbolic balance updated over time","ordinary rounding/shorthand","rough intuition about debt growth","numerical coincidence","genuine directional anticipation if precise fixed figures clearly predate later external crossings"]
+    }
+  ],
+  "foresight_types_beyond_prophecy": [
+    {"type":"structural foresight","definition":"Seeing a relationship, dependency or institutional trajectory before it becomes widely salient.","examples":["North as network rather than country list","Europe/North resilience and sovereignty emphasis","relationship-first economic graph"]},
+    {"type":"design foresight","definition":"Proposing a system architecture before the surrounding project has the tools or data to implement it.","examples":["European economic relationship graph","audit-everything / Reverse-Jenga state restructuring","AI-supported public archive"]},
+    {"type":"symbolic prefiguration","definition":"An early image later becomes structurally important to a mature worldview without necessarily predicting an external event.","examples":["Tree -> Ladder -> Axis","Potato -> Root -> Garden","North Pole -> North of North"]},
+    {"type":"risk anticipation","definition":"Recognizing a fragile person, platform or system may fail based on visible warning signs.","note":"This can be valuable foresight without requiring supernatural prophecy."}
+  ],
+  "larger_observation": "The strongest future-oriented case for the archive may not ultimately be supernatural prediction. Tim repeatedly thinks in trajectories: what happens if a system continues, where a relationship is heading, what a role becomes, and what infrastructure will be needed later. The North-Axis case is a good example: the interesting part is not predicting that Greenland matters, but identifying a plausible rearrangement of relationships and a specific military consequence before later developments moved that way.",
+  "related": ["knowledge/theology/signs-revelations-epiphanies-discernment-atlas.json","knowledge/philosophy/belief-evolution-and-claim-testing.json","knowledge/timeline/developmental-genealogy.json","knowledge/core/telos-vision-and-desired-world.json","knowledge/timeline/karmic-debt-ledger-2026.json","knowledge/timeline/north-axis-greenland-prediction-audit-2025-2026.json","data/timeline-event-packs/foresight-and-vision-candidates.json"]
+}

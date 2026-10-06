@@ -1,0 +1,75 @@
+{
+  "id":"golden-spiral-model-selection-benchmark-2026-09-11",
+  "title":"Golden-Ratio Spiral Benchmark — Estimation, Residuals and Model Selection",
+  "updated":"2026-09-11",
+  "status":"archive-generated quantitative geometry benchmark built from the recovered project spiral; established logarithmic-spiral mathematics, not a universal physical law",
+  "purpose":"Turn the recovered equation r=a exp(b theta), with b_phi=2 ln(phi)/pi, into a reproducible hypothesis test rather than a visual motif. The benchmark estimates spiral center/orientation, fits the golden constraint against freer alternatives and requires held-out residual/model comparison before a target is described as following the project spiral.",
+  "why_promising":"This is one of the strongest project equations because the mathematical object is exact and restrictive. A good model is allowed to lose: the golden hypothesis fixes its growth constant, so data can distinguish it from a generic logarithmic spiral, Archimedean spiral, power-law radial curve or flexible spline.",
+  "core_hypothesis":{
+    "equation":"r(theta)=a exp(b_phi theta)",
+    "golden_growth_constant":"b_phi=2 ln(phi)/pi approximately 0.306349",
+    "quarter_turn_property":"r(theta+pi/2)=phi r(theta)",
+    "pitch":"The constant angle between the tangent and local radial direction is arctan(1/b_phi); equivalently the tangent-to-circle pitch angle is arctan(b_phi) approximately 17.03 degrees.",
+    "curvature":"kappa(theta)=1/[r(theta) sqrt(1+b_phi^2)] for a logarithmic spiral, so curvature falls by 1/phi per quarter turn as radius grows by phi."
+  },
+  "observation_model":{
+    "data":"2D coordinates p_i=(x_i,y_i) sampled from a candidate curve; 3D data require a separate projection/surface model rather than forced 2D fitting.",
+    "unknown_geometry":["spiral center c=(c_x,c_y)","angular zero/orientation theta_0","scale a","possible handedness","noise scale sigma"],
+    "coordinate_transform":"r_i=||p_i-c||; theta_i=unwrap(atan2(y_i-c_y,x_i-c_x)-theta_0)",
+    "warning":"Center choice can strongly bias the fitted growth constant. Center/orientation must be estimated by a declared optimization procedure rather than selected by eye."
+  },
+  "linearized_fit":{
+    "transform":"y_i=ln r_i; x_i=theta_i",
+    "free_log_spiral":"H_log: y_i=alpha+b x_i+epsilon_i",
+    "golden_spiral":"H_phi: y_i=alpha+b_phi x_i+epsilon_i with b_phi fixed",
+    "free_fit":"b_hat=sum[(x_i-xbar)(y_i-ybar)]/sum[(x_i-xbar)^2]; alpha_hat=ybar-b_hat xbar",
+    "golden_fit":"alpha_hat_phi=mean(y_i-b_phi x_i)",
+    "noise":"Start with epsilon_i~Normal(0,sigma^2) only as a baseline; inspect heteroscedasticity/autocorrelation and use a more appropriate error model if the measurement process requires it."
+  },
+  "quarter_turn_residual_test":{
+    "ratio":"Q(theta)=r(theta+pi/2)/(phi r(theta))",
+    "golden_prediction":"Q=1 in the exact noiseless model",
+    "log_residual":"epsilon_Q(theta)=ln r(theta+pi/2)-ln r(theta)-ln phi",
+    "use":"This supplies a local test that can reveal systematic departures even when a global spiral fit looks visually convincing."
+  },
+  "competing_models":[
+    {"id":"H_phi","form":"golden logarithmic spiral with b fixed to b_phi","free_shape_parameters":"center, orientation, a, noise"},
+    {"id":"H_log","form":"generic logarithmic spiral r=a exp(b theta)","extra_parameter":"b"},
+    {"id":"H_arch","form":"Archimedean spiral r=a+c theta"},
+    {"id":"H_power","form":"r=a(theta-theta0)^p over a declared domain"},
+    {"id":"H_spline","form":"regularized flexible curve baseline; flexibility penalty must be included"}
+  ],
+  "model_selection":{
+    "in_sample":"Report residual structure and uncertainty, not only R^2.",
+    "information_criteria":"For comparable Gaussian-error fits, use AIC/BIC with the correct number of estimated parameters as one diagnostic.",
+    "held_out":"Prefer fitting one arc/range and evaluating predictive error on another arc/range when enough data exist.",
+    "golden_success":"H_phi performs comparably to or better than H_log despite one fewer free growth parameter and materially better than non-logarithmic baselines on held-out data.",
+    "golden_rejection":"A fitted b confidence/credible interval excludes b_phi, systematic quarter-turn residuals persist, or another model materially outperforms H_phi after complexity is accounted for."
+  },
+  "dynamics_boundary":{
+    "rule":"Geometry does not imply a vortex, force, time evolution or energy law.",
+    "upgrade_requirement":"To claim spiral dynamics, add time-indexed data and a dynamical law for radial/angular velocity, then test whether the observed trajectory follows that law rather than merely tracing a similar static curve."
+  },
+  "cross_scale_rule":{
+    "requirement":"A universal golden-spiral claim across plants, galaxies, bodies or project diagrams needs a dimensionless statistic tested independently in each domain with domain-appropriate nulls.",
+    "anti_pattern":"Do not select only visually spiral examples and then count successful fits; define the sampling population and negative cases first."
+  },
+  "what_this_model_can_explain_if_successful":[
+    "Whether a chosen project or natural geometry is unusually consistent with the exact quarter-turn golden growth law rather than merely spiral-shaped.",
+    "Whether the recovered project spiral is a useful low-parameter compression of a real coordinate dataset.",
+    "Where and how an observed trajectory departs from exact self-similarity through residual structure."
+  ],
+  "failure_conditions":[
+    "The fit depends strongly on manually chosen center/orientation.",
+    "A generic logarithmic spiral with free b substantially outperforms the golden constraint.",
+    "Archimedean/power/spline alternatives predict held-out points better.",
+    "Only a hand-picked subset of the curve supports the golden value.",
+    "A geometry fit is used as evidence for a physical mechanism without an independently specified dynamics."
+  ],
+  "external_references":[
+    {"source":"Mediterranean Journal of Mathematics 2024 golden-spiral construction","url":"https://link.springer.com/article/10.1007/s00009-024-02711-3","use":"Confirms the standard b=2 ln(phi)/pi golden logarithmic-spiral parameterization and quarter-turn phi scaling."},
+    {"source":"Statistical analysis of dynamic curves and sections","url":"https://www.sciencedirect.com/science/article/abs/pii/S0031320301001492","use":"Example of quantitative logarithmic-spiral fitting to digitized natural curves rather than visual matching."},
+    {"source":"Golden-ratio myth review 2024","url":"https://link.springer.com/article/10.1186/s40902-024-00411-2","use":"Useful caution that familiar natural objects are often logarithmic without being exactly golden; motivates model comparison rather than folklore."}
+  ],
+  "connections":["april-21-2025-potato-axis-spiral-primary-recovery","great-book-consciousness-spiral-equations-recovery","research-2026-09-11-spiral-vortex-geometry","model-testing-protocol","science-theory-rigor-completion-matrix-2026-09-11"]
+}

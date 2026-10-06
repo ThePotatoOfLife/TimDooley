@@ -1,0 +1,76 @@
+{
+  "id":"merkaba-counterrotation-oscillator-model",
+  "title":"Merkaba Counter-Rotation — Mean/Relative Phase, Locking, Balance and Still-Center Model",
+  "version":"1.0.0",
+  "updated":"2026-09-11",
+  "status":"book-derived project motif + archive-generated dynamical-systems model",
+  "abstract":"The Great Book's Merkaba/counter-rotation motif can be made mathematically substantive without claiming esoteric geometry is fundamental physics. The most economical model uses two coupled phase variables with opposed intrinsic angular velocities. Transforming from the two raw phases to a mean phase and a relative phase reveals a precise version of the project's 'still center': in the perfectly symmetric model the mean orientation can remain stationary while the relative degree of freedom continues to evolve or phase-lock. This separates zero net drift from zero activity. A rigid-body companion model further shows that equal and opposite angular momenta may cancel while rotational energy remains positive. The result supplies a reusable language for Red/Blue, past/future, source/manifestation and other counter-moving pairs while preserving their domain-specific meanings.",
+  "epistemic_rule":"The oscillator and rigid-body equations are established mathematical/physical forms used to formalize a project motif. They do not show that the historical Merkaba is literally a physical oscillator, that spiritual opposites carry angular momentum, or that symbolic balance is a conservation law.",
+  "provenance":{"project_ancestor":"Great Book 2024 Merkaba described as counter-moving/counter-rotating opposites around an organizing center","later_project_uses":["Red/Blue Potato","past/future around present","Father/Son relation","Still Center in Timic Dynamics"],"authorship_boundary":"The equations below are archive-generated descendants unless a primary Tim equation is separately recovered."},
+  "minimal_two_phase_model":{
+    "equations":["dtheta_1/dt=+omega_0-K sin(theta_1-theta_2)","dtheta_2/dt=-omega_0+K sin(theta_1-theta_2)"],
+    "variables":{"theta_1":"phase/orientation of first component [rad]","theta_2":"phase/orientation of second component [rad]","omega_0":"magnitude of opposed intrinsic angular frequency [rad/s or inverse chosen time unit]","K":"phase-coupling rate with same time dimension as omega_0"},
+    "assumptions":["symmetric intrinsic frequencies +omega_0 and -omega_0","symmetric sinusoidal coupling","phase-only reduction; amplitudes are ignored","noise and forcing omitted in the minimal model"],
+    "external_neighbor":"standard weakly coupled phase-oscillator/Kuramoto-type reduction"
+  },
+  "center_relative_coordinates":{
+    "definitions":["psi=(theta_1+theta_2)/2","delta=theta_1-theta_2"],
+    "derived_equations":["dpsi/dt=0","ddelta/dt=2 omega_0-2K sin(delta)"],
+    "central_result":"In the exactly symmetric model the mean phase psi is stationary even though theta_1 and theta_2 may move. The still center is therefore represented by cancellation of mean drift, not absence of internal dynamics.",
+    "project_reflection":"This is a stronger mathematical rendering of 'a center can organize counter-moving opposites without erasing their distinction': common/mean motion and relative/oppositional motion are separate coordinates."
+  },
+  "phase_locking":{
+    "fixed_relative_phase":"sin(delta_star)=omega_0/K",
+    "existence_condition":"|omega_0|<=|K|",
+    "linear_stability":"Let delta=delta_star+eta. Then deta/dt approximately -2K cos(delta_star) eta.",
+    "stable_branch":"For K>0, a fixed point with cos(delta_star)>0 is locally stable.",
+    "interpretation":"Coupling weaker than the intrinsic opposition cannot maintain a stationary relative configuration in this minimal model. Sufficient coupling can lock a persistent phase relation even while the underlying pair remains differentiated.",
+    "project_use":"Alignment should therefore not mean sameness. A stable relation can preserve nonzero relative phase."
+  },
+  "symmetry_breaking_and_drift":{
+    "generalized_equations":["dtheta_1/dt=omega_1-K_12 sin(delta)+f_1(t)","dtheta_2/dt=omega_2+K_21 sin(delta)+f_2(t)"],
+    "mean_drift":"dpsi/dt=(omega_1+omega_2)/2 + [(K_21-K_12)/2] sin(delta) + [f_1(t)+f_2(t)]/2",
+    "lesson":"A still center is not guaranteed. Frequency mismatch, asymmetric coupling or common forcing produces mean drift. The model therefore turns 'balance' into conditions that can fail rather than an assumed mystical property.",
+    "observable_candidates":["mean drift rate dpsi/dt","relative phase delta(t)","phase-slip count","locking duration","estimated K/omega ratio"]
+  },
+  "rigid_body_companion":{
+    "angular_momentum":"L_z=I_1 omega_1+I_2 omega_2",
+    "rotational_energy":"E_rot=(1/2)I_1 omega_1^2+(1/2)I_2 omega_2^2",
+    "balanced_case":"If I_1=I_2 and omega_2=-omega_1, then L_z=0 while E_rot=I omega_1^2>0.",
+    "deep_result":"Zero net angular momentum does not imply zero energy or zero motion. Cancellation is a statement about a signed conserved/vector quantity, not about activity disappearing.",
+    "torque_rule":"dL/dt=tau_ext. If an external torque or asymmetry is introduced, the balanced mean state can drift.",
+    "boundary":"Apply this literally only to physical rotating systems with defined inertia and torque. In symbolic layers it is a structural comparator."
+  },
+  "order_parameters":{
+    "ordinary_kuramoto":"Z_1=(exp(i theta_1)+exp(i theta_2))/2",
+    "problem":"For a perfectly anti-phase pair delta=pi, |Z_1|=0 even though the pair may be maximally ordered. Conventional in-phase coherence can therefore mistake organized opposition for disorder.",
+    "second_harmonic":"Z_2=(exp(2i theta_1)+exp(2i theta_2))/2",
+    "anti_phase_property":"For theta_2=theta_1+pi, |Z_2|=1.",
+    "target_phase_score":"C_delta=cos(delta-delta_target), ranging from -1 to 1",
+    "project_insight":"The correct measure of integration depends on the intended relation. A metric designed only for sameness can assign low integration to a deliberately complementary or anti-phase architecture.",
+    "cross_project_value":"This directly strengthens the project's recurring rule that integration is coordinated difference, not homogenization."
+  },
+  "noise_and_resilience_extension":{
+    "stochastic_relative_phase":"ddelta=[2 omega_0-2K sin(delta)]dt+sigma dW_t",
+    "questions":["How often does noise induce a phase slip?","How long does the pair remain near delta_star?","How does recovery time change with K and sigma?"],
+    "project_translation":"A robust center is not one that never experiences disturbance; it is one whose relational configuration has a measurable basin/restoring tendency after perturbation."
+  },
+  "measurement_protocol":{
+    "data":"time-stamped orientations or phases theta_1(t), theta_2(t) from a genuinely oscillatory domain",
+    "derived_series":["psi(t)","delta(t)","instantaneous frequencies","phase slips"],
+    "candidate_models":["uncoupled counter-rotation K=0","symmetric coupled model","asymmetric coupled model","noisy coupled model"],
+    "fit_parameters":["omega_1","omega_2","K_12","K_21","sigma"],
+    "evaluation":"held-out phase prediction and phase-slip statistics rather than visual resemblance alone",
+    "falsifier":"If coupling does not improve predictive performance over independent oscillators in the selected empirical domain, the coupled-center interpretation is unnecessary there."
+  },
+  "project_connections":{
+    "red_blue":"Use theta_R/theta_B only after the project specifies what a phase means in that domain; do not infer literal color frequencies.",
+    "past_future_present":"Mean/relative coordinates offer a safer formal comparator than literal advanced/retarded radiation when the subject is balancing retrospective and prospective constraints.",
+    "axis":"The rotation axis supplies orientation; it does not itself cause phase locking.",
+    "door":"A loss or gain of phase locking can be modeled as a regime transition, potentially giving a Door/guard condition such as |K|-|omega_0|=0 in this toy system.",
+    "spiral":"Counter-rotation is angular dynamics; it becomes a spiral only if a radius or axial coordinate also evolves."
+  },
+  "conclusions":["Stillness can be an emergent property of the mean coordinate while internal relative motion remains active.","Balance has explicit failure conditions: mismatch, asymmetric coupling, forcing and noise can move the center.","Organized opposition requires a relation-sensitive order parameter; ordinary synchrony metrics can confuse anti-phase order with disorder.","The model supplies a calculable descendant of the Merkaba motif without promoting symbolic geometry into untested fundamental physics."],
+  "sources":[{"topic":"phase oscillator reduction and locking","url":"https://www.scholarpedia.org/article/Phase_model"}],
+  "connections":["knowledge/philosophy/timic-dynamics.json","knowledge/science/great-book-2024-science-archaeology.json","knowledge/science/recurrence-orbit-spiral-dynamics-atlas.json","knowledge/science/integrated-scientific-architecture.json","knowledge/science/model-testing-protocol.json"]
+}

@@ -1,0 +1,246 @@
+{
+  "record_version": "1.1.0",
+  "record_type": "country",
+  "status": "sourced-enriched",
+  "identity": {
+    "id": "switzerland",
+    "name": "Switzerland",
+    "iso2": "CH",
+    "iso3": "CHE",
+    "official_name": "Swiss Confederation",
+    "capital": "Bern",
+    "currency": "Swiss franc (CHF)",
+    "national_day": "August 1"
+  },
+  "blueprint": "data/countries-blueprint.json",
+  "blueprint_version": "1.0.0",
+  "coverage": {
+    "node_instantiated": true,
+    "blueprint_inherited": true,
+    "observations": 13,
+    "relationships": 0,
+    "sources": 1,
+    "research_status": "ready-for-source-enrichment",
+    "canonicalized": true
+  },
+  "observations": {
+    "population": {
+      "value": 9092436,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SP.POP.TOTL",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "gdp": {
+      "value": 1043529899250.92,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "NY.GDP.MKTP.CD",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "gdp_per_capita": {
+      "value": 114769.012314293,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "NY.GDP.PCAP.CD",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "gdp_per_capita_ppp": {
+      "value": 102513.347221899,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "NY.GDP.PCAP.PP.CD",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "real_growth": {
+      "value": 1.30007790958307,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "NY.GDP.MKTP.KD.ZG",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "inflation": {
+      "value": 0.154376978290185,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "FP.CPI.TOTL.ZG",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "unemployment": {
+      "value": 4.873,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SL.UEM.TOTL.ZS",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "labour_force_participation": {
+      "value": 66.747,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SL.TLF.CACT.ZS",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "life_expectancy": {
+      "value": 84.4073170731707,
+      "year": 2024,
+      "source": "world-bank",
+      "indicator": "SP.DYN.LE00.IN",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "fertility": {
+      "value": 1.29,
+      "year": 2024,
+      "source": "world-bank",
+      "indicator": "SP.DYN.TFRT.IN",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "urbanization": {
+      "value": 85.7272157802756,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SP.URB.TOTL.IN.ZS",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "poverty": {
+      "value": 15.8,
+      "year": 2021,
+      "source": "world-bank",
+      "indicator": "SI.POV.NAHC",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "internet_penetration": {
+      "value": 97.32103855,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "IT.NET.USER.ZS",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    }
+  },
+  "relationships": [
+    {
+      "type": "borders",
+      "target": "germany"
+    },
+    {
+      "type": "borders",
+      "target": "france"
+    },
+    {
+      "type": "borders",
+      "target": "italy"
+    },
+    {
+      "type": "member-of",
+      "target": "efta"
+    }
+  ],
+  "history": [],
+  "research_queue": [
+    "pharmaceutical ownership",
+    "Swiss financial centre",
+    "commodity trading",
+    "Alpine rail corridors",
+    "hydropower",
+    "pension assets",
+    "international organizations in Geneva"
+  ],
+  "provenance": {
+    "instantiated_at": "2026-09-07T12:37:31.426393+00:00",
+    "instantiation_method": "canonical country index + country blueprint",
+    "observation_policy": "No value is invented merely to fill a field; absent evidence remains missing/stale.",
+    "last_refresh": "2026-10-06T04:28:07.342073+00:00",
+    "source_priority": "international-official",
+    "historical_observations_preserved": true,
+    "source": "World Bank World Development Indicators",
+    "retrieved": "2026-09-07",
+    "enrichment_merged": true,
+    "enrichment_layer": "retired overlay merged into canonical country record"
+  },
+  "data_freshness": {
+    "last_refresh_attempt": "2026-09-07T21:59:50.659074+00:00",
+    "source": "world-bank"
+  },
+  "country_id": "switzerland",
+  "iso2": "CH",
+  "iso3": "CHE",
+  "updated": "2026-09-07",
+  "political_system": {
+    "system_type": "federal republic with direct democracy",
+    "head_of_state": "Federal Council",
+    "head_of_government": "Federal Council",
+    "legislature": [
+      "Federal Assembly",
+      "National Council",
+      "Council of States"
+    ]
+  },
+  "population": {
+    "value": 8.3,
+    "unit": "million",
+    "source": "World Bank WDI"
+  },
+  "economy": {
+    "gdp_current_usd_billion": 706.2,
+    "gdp_per_capita_usd": 85300,
+    "source": "World Bank WDI"
+  },
+  "geography": {
+    "land_area_km2": 41290,
+    "borders": [
+      "France",
+      "Germany",
+      "Italy",
+      "Austria",
+      "Liechtenstein"
+    ]
+  },
+  "energy_and_resources": {
+    "strategic_assets": [
+      "hydropower",
+      "pharmaceuticals",
+      "precision engineering",
+      "finance",
+      "chemicals",
+      "Alpine transit"
+    ]
+  },
+  "trade_and_value_chains": {
+    "major_relationships": [
+      "European Union",
+      "Germany",
+      "United States",
+      "France",
+      "Italy",
+      "China"
+    ],
+    "frameworks": [
+      "WTO",
+      "EFTA",
+      "bilateral EU agreements"
+    ]
+  },
+  "security_and_external_relations": {
+    "major_organizations": [
+      "United Nations",
+      "WTO",
+      "EFTA",
+      "OECD",
+      "OSCE"
+    ],
+    "status": "militarily neutral"
+  },
+  "record_role": "canonical-country-record"
+}

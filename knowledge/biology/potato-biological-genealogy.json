@@ -1,0 +1,132 @@
+{
+  "id": "potato-biological-genealogy",
+  "title": "Potato Biological Genealogy — Hybrid Origin, Domestication, Introgression and Propagation",
+  "version": "1.0.0",
+  "updated": "2026-09-20",
+  "owner_room": "potato-biology",
+  "status": "canonical external evolutionary-biology layer",
+  "purpose": "Represent potato ancestry as a reticulate graph rather than a simple tree: ancient hybrid origin, species radiation, domestication, wild-relative introgression, sexual recombination, clonal propagation and breeding all contribute to present potato genomes.",
+  "hard_boundary": "Evolutionary history and biological inheritance are literal scientific topics. Project genealogical or theological interpretations are separate symbolic layers.",
+  "taxonomy": {
+    "family": "Solanaceae",
+    "genus": "Solanum",
+    "section_context": "Petota contains tuber-bearing potato species and cultivated potato lineages.",
+    "cultivated_name": "Solanum tuberosum"
+  },
+  "deep_origin": {
+    "finding": "Genomic analysis published in 2025 supports an ancient homoploid hybrid origin of the Petota lineage from ancestors related to the Tomato and Etuberosum lineages about 8–9 million years ago.",
+    "evidence_scale": "128 genomes, including 88 haplotype-resolved genomes, in the cited Cell study.",
+    "biological_consequence": "Complementary inherited parental genes contributed to the emergence of tuberization; sorting and recombination of hybrid-derived variation accompanied later species radiation."
+  },
+  "genealogy_edge_types": [
+    "phylogenetic descent",
+    "ancient hybridization",
+    "introgression/admixture",
+    "meiotic recombination",
+    "sexual parentage",
+    "clonal propagation",
+    "polyploidization/ploidy change",
+    "domestication selection",
+    "breeding cross",
+    "wild-relative resistance introgression",
+    "somatic mutation within clonal lineages"
+  ],
+  "domestication_and_diffusion": {
+    "andean_context": "Potato domestication is centered in the Andes and involved selection among diverse tuber-bearing Solanum germplasm over millennia.",
+    "europe": "Potatoes entered Europe in the sixteenth century; subsequent selection, bottlenecks and wild-relative introgression shaped European cultivars.",
+    "phased_european_pangenome": "A 2025 phased pan-genome built from ten historical tetraploid cultivars captured about 85% of haplotypes estimated to segregate in European potato and showed extremely high sequence divergence among haplotypes but a restricted haplotype space.",
+    "wild_introgression": "Modern cultivated genomes contain substantial wild-relative introgression, especially from breeding for disease resistance and adaptation.",
+    "key_rule": "A cultivar is not a pure endpoint of one linear ancestry. Its genome is a mosaic of inherited haplotype blocks with different evolutionary and breeding histories."
+  },
+  "clonal_vs_sexual_genealogy": {
+    "clonal": {
+      "vehicle": "seed tuber or viable tuber piece",
+      "effect": "largely preserves an existing multi-haplotype genotype and linkage phase",
+      "gains": [
+        "rapid fixation of elite heterozygous combinations",
+        "faithful cultivar propagation"
+      ],
+      "costs": [
+        "pathogen carryover",
+        "somatic mutation accumulation",
+        "continued carriage of deleterious variants"
+      ]
+    },
+    "sexual": {
+      "vehicle": "flower → pollination → berry → true potato seed",
+      "effect": "meiosis and fertilization reshuffle haplotypes and alleles",
+      "gains": [
+        "new recombinant combinations",
+        "purging or assembling alleles through breeding"
+      ],
+      "costs": [
+        "segregation breaks the uniform genotype of heterozygous tetraploid cultivars",
+        "complex inheritance in autotetraploids"
+      ]
+    }
+  },
+  "breeding_genealogy": {
+    "conventional_tetraploid": "Crossing tetraploid parents creates highly segregating offspring because of heterozygosity, dosage, phase and tetrasomic inheritance.",
+    "diploid_hybrid_direction": "Modern programs also work at the diploid level to create inbred parents and F1 hybrids.",
+    "self_incompatibility": "Many diploid potatoes have S-RNase-dependent gametophytic self-incompatibility; the Sli locus and genome editing of incompatibility components are major routes toward self-compatible breeding material.",
+    "design_rule": "Every breeding claim should identify ploidy, parent material, propagation mode, and whether the result is a clonal cultivar, segregating population or true-seed hybrid."
+  },
+  "graph_model": {
+    "node_types": [
+      "species",
+      "accession",
+      "landrace",
+      "cultivar",
+      "haplotype block",
+      "wild donor",
+      "breeding parent",
+      "clone"
+    ],
+    "edge_fields": [
+      "type",
+      "date_or_interval",
+      "genomic_fraction_or_locus",
+      "evidence",
+      "source",
+      "uncertainty"
+    ],
+    "query_examples": [
+      "Which wild lineage contributed this resistance locus?",
+      "Which haplotype blocks are shared among European founder cultivars?",
+      "Is this relationship clonal continuity, sexual parentage or introgression?",
+      "Which genome regions descend from ancient Tomato-like versus Etuberosum-like ancestry?"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Ancient hybridization underlies tuberization and radiation of the potato lineage",
+      "journal": "Cell",
+      "year": 2025,
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40749684/"
+    },
+    {
+      "title": "The phased pan-genome of tetraploid European potato",
+      "journal": "Nature",
+      "year": 2025,
+      "url": "https://www.nature.com/articles/s41586-025-08843-0"
+    },
+    {
+      "title": "Leveraging a phased pangenome for haplotype design of hybrid potato",
+      "journal": "Nature",
+      "year": 2025,
+      "url": "https://www.nature.com/articles/s41586-024-08476-9"
+    },
+    {
+      "title": "Breaking self-incompatibility for diploid hybrid potato breeding",
+      "journal": "Frontiers in Plant Science",
+      "year": 2026,
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13233500/"
+    }
+  ],
+  "connections": [
+    "potato-genetics-genomics-atlas",
+    "potato-life-cycle-state-machine",
+    "potato-pathology-immunity-storage",
+    "potato-biological-lexicon"
+  ]
+}

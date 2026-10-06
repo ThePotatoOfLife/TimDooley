@@ -1,0 +1,99 @@
+{
+  "id": "april-21-2025-potato-axis-spiral-primary-recovery",
+  "title": "Potato Axis Spiral — Primary April 21, 2025 Recovery",
+  "updated": "2026-10-05",
+  "status": "primary public attestation recovered",
+  "importance": "The exact equation previously treated as a high-value lost April 21, 2025 Spiral Equation is now recovered from a public-post archive. It also matches the logarithmic Consciousness Spiral already preserved in the 2024 Great Book, creating a direct mathematical lineage from book-era spiral work into the publicly named Potato Axis.",
+  "primary_attestation": {
+    "date": "2025-04-21",
+    "text": "the potato axis is real / r=a e^(b theta), b=ln(phi)/(pi/2)≈0.306",
+    "source_class": "captured public post archive",
+    "provenance": "Library archive Indsat markdown(4).md; spelling/math normalized only for notation here"
+  },
+  "equation": {
+    "polar_form": "r(theta)=a exp(b theta)",
+    "parameter": "b=ln(phi)/(pi/2)=2 ln(phi)/pi≈0.30635",
+    "phi": "golden ratio=(1+sqrt(5))/2≈1.61803",
+    "type": "logarithmic/equiangular spiral"
+  },
+  "exact_properties": {
+    "quarter_turn_scaling": "r(theta+pi/2)/r(theta)=exp(b pi/2)=phi",
+    "half_turn_scaling": "r(theta+pi)/r(theta)=phi^2",
+    "full_turn_scaling": "r(theta+2pi)/r(theta)=phi^4≈6.8541",
+    "self_similarity": "Rotation by pi/2 combined with radial scaling by phi maps the spiral onto itself.",
+    "differential_form": "dr/dtheta=b r",
+    "curvature": "kappa(theta)=1/[r(theta) sqrt(1+b^2)]",
+    "arc_length": "s(theta0,theta1)=sqrt(1+b^2)/b * [r(theta1)-r(theta0)] for b>0",
+    "pitch_note": "As a logarithmic spiral it has constant angle between tangent and radial direction; the exact convention for quoting the pitch angle must be stated."
+  },
+  "genealogy": [
+    "2024 Great Book: Consciousness Spiral r=a exp(b theta), b=ln(phi)/(pi/2)≈0.306",
+    "2025-04-21 public post: 'the potato axis is real' immediately paired with the same equation",
+    "2025-2026: Spiral/Ladder/Axis/North/Needle language expands beyond the original planar geometry",
+    "2026: Potato Dynamics and 11D Axis formalizations introduce additional state-space flows; those later equations are distinct mathematical objects and must not be silently substituted for the 2025 spiral"
+  ],
+  "interpretive_boundary": [
+    "The equation is genuine logarithmic-spiral mathematics and the public association with 'Potato Axis' is primary project evidence.",
+    "The equation by itself does not establish a new physical force, extra dimension, retrocausal effect or cosmological axis.",
+    "Any physical interpretation requires a definition of what r, theta and a measure, their units/domain, dynamics, observables and falsifiers.",
+    "The recovered equation is especially useful as a geometric generator or scale-flow motif because a quarter-turn corresponds exactly to golden-ratio growth."
+  ],
+  "research_directions": [
+    "Recover the earliest Great Book drafting date for this exact parameterization.",
+    "Search April 14-28, 2025 conversations for definitions of r, theta, a, the Axis coordinate system and whether the equation represented time, consciousness, attention, geometry or physical space.",
+    "Test whether later 33-step Ladder discretizations were ever explicitly sampled along quarter-turns or golden-ratio radial levels.",
+    "Compare with logarithmic spirals in dynamical systems and scale-invariant geometry without asserting natural-law identity."
+  ],
+  "connections": [
+    "great-book-consciousness-spiral-equations-recovery",
+    "axis-11d-sun-spiral-time-symmetry-recovery",
+    "eleven-dimensional-axis-door-dual-spiral-recovery",
+    "equation-lineage-and-theory-graph",
+    "science-master-index"
+  ],
+  "version": "1.1.0",
+  "document_type": "Theory / Paper",
+  "abstract": "The April 21, 2025 Potato Axis post preserves an exact logarithmic spiral, r(θ)=a exp(bθ), with b=ln(φ)/(π/2)=2ln(φ)/π≈0.30635. This makes every quarter-turn multiply radius by the golden ratio φ, giving an exact self-similar scale relation rather than a merely decorative spiral motif. The equation is genuine primary project mathematics and matches the Consciousness Spiral already present in the 2024 Great Book. Its geometry is mathematically clear; its physical interpretation remains open because the historical meanings and units of r, θ and a have not yet been recovered. The strongest present use is therefore as a geometric or scale-flow generator and as a testable distinction between circular recurrence and spiral return with changed scale.",
+  "paper_subtitle": "The exact recovered logarithmic spiral behind the April 21, 2025 statement “the potato axis is real,” with golden-ratio scaling and the boundary between geometry and physical interpretation.",
+  "paper_figures": [
+    {
+      "title": "Figure 1 · Golden-ratio quarter-turn scaling",
+      "asset": "assets/visuals/science-golden-axis-spiral.svg",
+      "alt": "A logarithmic spiral illustrating that each quarter turn multiplies radius by the golden ratio for the recovered Potato Axis spiral parameter.",
+      "caption": "With b=ln(φ)/(π/2), a quarter-turn is exactly a multiplication of radius by φ. The mathematical relation is recovered; the physical meaning of the coordinates remains a separate question.",
+      "source_note": "Primary project equation recovered from the April 21, 2025 public-post archive."
+    }
+  ],
+  "reader_takeaway": [
+    "The recovered spiral is exact logarithmic-spiral mathematics, not merely a symbolic drawing.",
+    "Its defining project property is scale change on return: a quarter-turn multiplies radius by φ.",
+    "This gives a precise distinction between a ring and a spiral—same angle can recur while scale changes.",
+    "The geometry alone does not establish a new force, dimension or cosmological axis; physical interpretation requires defined variables, units and observables."
+  ],
+  "equation_context": {
+    "role": "Exact logarithmic-spiral geometry recovered from a primary project post.",
+    "variables": {
+      "r(θ)": "Radius at polar angle θ.",
+      "a": "Reference radius r(0).",
+      "b": "Exponential growth rate per radian.",
+      "θ": "Polar angle in radians.",
+      "φ": "Golden ratio (1+√5)/2."
+    },
+    "units_and_types": "θ and bθ are dimensionless. a and r have the same length/scale unit, whatever physical or abstract unit is chosen for the application.",
+    "observable_consequence": "The recovered parameter choice predicts r(θ+π/2)=φ·r(θ), constant logarithmic pitch, and linearity of ln r versus θ.",
+    "boundary": "The geometry is exact; the physical meaning of r, θ and a is not recovered by the equation alone."
+  },
+  "term_map": {
+    "r(θ)": "radius",
+    "θ": "polar angle",
+    "a": "reference radius",
+    "b": "logarithmic growth constant",
+    "φ": "golden ratio"
+  },
+  "failure_conditions": [
+    "Measured or reconstructed spiral data do not support linear ln(r) versus θ within uncertainty.",
+    "Archimedean, power-law or flexible-spline alternatives predict the data better under a penalized model comparison.",
+    "The quarter-turn radius ratio is inconsistent with φ when that golden-ratio constraint is claimed.",
+    "A physical interpretation is asserted without assigning measurable variables and units to r, θ and a."
+  ]
+}

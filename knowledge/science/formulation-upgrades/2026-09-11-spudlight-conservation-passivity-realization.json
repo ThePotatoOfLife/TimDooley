@@ -1,0 +1,79 @@
+{
+  "id": "2026-09-11-spudlight-conservation-passivity-realization",
+  "title": "Spudlight Upgrade — Conservation Ledger, Dissipation Bounds and Minimal Realizations",
+  "updated": "2026-09-11",
+  "status": "archive-generated mathematical contribution extending Spudlight/Starchforce; standard positive linear-systems results, not evidence for a new physical force",
+  "parent": "knowledge/science/spudlight-theory-and-equations.json",
+  "abstract": "The Spudlight/Starchforce storage model gains a stronger conservation and systems-theory formulation. For a linear store, finite-horizon input must equal the sum of stock accumulation, useful release and loss. This produces exact release/loss fractions for an isolated charged store, a positivity condition, a normalized one-pole bandwidth and a criterion for when additional hidden reservoirs are mathematically redundant. The contribution is useful because it turns source→storage→release language into an auditable ledger: any claimed hidden energy/material store must account for where input went, how much remains, how much was released and how much was dissipated. The same mathematics may be reused in non-energy domains only after the stock and flux units are explicitly redefined.",
+  "model": {
+    "state_equation": "dK/dt=J_in-(eta+Gamma)K",
+    "useful_release": "J_out=eta K",
+    "other_loss": "J_loss=Gamma K",
+    "parameters": "eta>=0 and Gamma>=0 for the ordinary nonnegative stock interpretation",
+    "pole": "a=eta+Gamma"
+  },
+  "result_1_finite_horizon_balance": {
+    "identity": "K(T)-K(0)=integral_0^T J_in dt - integral_0^T J_out dt - integral_0^T J_loss dt.",
+    "equivalent_ledger": "K(T)+E_out(T)+E_loss(T)=K(0)+E_in(T), where each E denotes the corresponding accumulated flux in the stock's native units.",
+    "meaning": "The simple linear Starchforce store cannot create stock from nowhere. If an empirical application appears to violate the ledger beyond measurement uncertainty, the model or measurements are incomplete.",
+    "boundary": "Call this energy conservation only when K and all fluxes are genuine energy quantities; in other domains it is a stock-flow balance."
+  },
+  "result_2_isolated_store_fractions": {
+    "condition": "J_in=0 for t>=0 and K(0)=K0>0.",
+    "solution": "K(t)=K0 exp[-(eta+Gamma)t].",
+    "total_useful_release": "integral_0^infinity J_out dt = [eta/(eta+Gamma)] K0.",
+    "total_other_loss": "integral_0^infinity J_loss dt = [Gamma/(eta+Gamma)] K0.",
+    "fractions": "rho=eta/(eta+Gamma), ell=Gamma/(eta+Gamma), rho+ell=1.",
+    "interpretation": "The dimensionless release efficiency rho is an exact partition of the initial stock under this one-store model, not merely a fitted descriptive ratio."
+  },
+  "result_3_positivity_and_stability": {
+    "positivity": "If K(0)>=0, J_in(t)>=0 and eta,Gamma>=0, then K(t)>=0 for all t>=0 in the linear model.",
+    "asymptotic_stability": "With zero input, the equilibrium K=0 is exponentially stable exactly when eta+Gamma>0.",
+    "marginal_case": "If eta=Gamma=0, the stock is perfectly conserved and does not relax; the one-pole filter interpretation no longer has a finite time constant.",
+    "unphysical_case": "Negative net a=eta+Gamma produces exponential growth from an isolated store and requires an explicit active source/gain mechanism rather than being interpreted as passive storage."
+  },
+  "result_4_step_and_bandwidth": {
+    "step_input": "For K(0)=0 and J_in=J0 for t>=0, K(t)=J0/a [1-exp(-a t)] and J_out(t)=rho J0 [1-exp(-a t)].",
+    "fractional_settling_time": "The time to reach fraction p of the final response is t_p=-ln(1-p)/a for 0<p<1.",
+    "normalized_transfer": "G_norm(s)=G_out(s)/G_out(0)=a/(s+a).",
+    "minus_3db_cutoff": "omega_c=a=eta+Gamma for the standard one-pole amplitude convention.",
+    "meaning": "The same parameter combination controlling stock relaxation also fixes the filter bandwidth. Time-domain and frequency-domain estimates should therefore agree if the one-store model is adequate."
+  },
+  "result_5_dissipation_bound": {
+    "inequality": "For nonnegative K,J_in,eta,Gamma, accumulated useful release obeys integral_0^T J_out dt <= K(0)+integral_0^T J_in dt.",
+    "reason": "Stock remaining at T and nonnegative losses consume part of the available initial-plus-input budget.",
+    "project_use": "This is a simple falsification check for claims that a passive storage/release process outputs more physical material/energy than entered without an additional source."
+  },
+  "minimal_realization_extension": {
+    "multi_store_model": "dK/dt=A K+B u; y=C K+D u.",
+    "controllability": "A hidden storage direction that cannot be reached from the declared inputs is not estimable by exciting the system through those inputs.",
+    "observability": "A hidden storage direction that never affects the measured outputs cannot be reconstructed from those outputs.",
+    "minimal_linear_realization": "For a finite-dimensional LTI model, a realization is minimal when it is both controllable and observable under the standard state-space criteria.",
+    "project_rule": "Do not add a second or third hidden Spudlight/Starchforce reservoir merely to improve interpretation. Extra states should correspond to reproducible additional poles/timescales and survive controllability/observability/model-selection checks."
+  },
+  "source_channel_realization_warning": {
+    "chain": "source -> upstream channel -> store -> downstream observer",
+    "problem": "Different internal factorizations can produce the same overall transfer function.",
+    "consequence": "Input-output equivalence does not uniquely identify which attenuation belongs to source, storage or observer.",
+    "resolution": "Intermediate measurements, calibrated modules, interventions or physically constrained realization classes are needed before assigning mechanism."
+  },
+  "advancement_gates": {
+    "ledger_gate": "A physical storage interpretation must close its stock-flow ledger within uncertainty.",
+    "timescale_gate": "A proposed additional store must contribute a reproducible timescale/pole not explained by measurement dynamics or an existing state.",
+    "mechanism_gate": "Do not interpret a fitted transfer function factorization as unique mechanism when multiple realizations are input-output equivalent.",
+    "cross_domain_gate": "The dimensionless dynamics may transfer across domains, but stocks and fluxes retain domain-specific units and physical meanings."
+  },
+  "failure_conditions": [
+    "The measured finite-horizon balance cannot close within uncertainty under the declared inputs, outputs and losses.",
+    "The one-pole time constant estimated from transients conflicts systematically with the frequency-response pole.",
+    "Additional hidden stores are uncontrollable/unobservable or collapse under model reduction.",
+    "A passive storage equation is used to imply net physical amplification without an explicit active input/source."
+  ],
+  "connections": [
+    "spudlight-theory-and-equations",
+    "2026-09-11-spudlight-storage-filter-identifiability",
+    "potato-dynamics-2-toy-model",
+    "2026-09-11-cross-model-defect-calculus",
+    "model-testing-protocol"
+  ]
+}

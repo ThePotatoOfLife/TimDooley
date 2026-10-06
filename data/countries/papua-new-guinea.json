@@ -1,0 +1,177 @@
+{
+  "record_version": "1.1.0",
+  "record_type": "country",
+  "status": "sourced-enriched",
+  "identity": {
+    "id": "papua-new-guinea",
+    "name": "Papua New Guinea",
+    "iso2": "PG",
+    "iso3": "PNG"
+  },
+  "blueprint": "data/countries-blueprint.json",
+  "blueprint_version": "1.0.0",
+  "coverage": {
+    "node_instantiated": true,
+    "blueprint_inherited": true,
+    "observations": 12,
+    "relationships": 0,
+    "sources": 1,
+    "research_status": "ready-for-source-enrichment",
+    "canonicalized": true
+  },
+  "observations": {
+    "population": {
+      "value": 10762817,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SP.POP.TOTL",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "gdp": {
+      "value": 32498658653.8415,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "NY.GDP.MKTP.CD",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "gdp_per_capita": {
+      "value": 3019.5309140573,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "NY.GDP.PCAP.CD",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "gdp_per_capita_ppp": {
+      "value": 5214.768271628,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "NY.GDP.PCAP.PP.CD",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "real_growth": {
+      "value": 5.63792052319458,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "NY.GDP.MKTP.KD.ZG",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "inflation": {
+      "value": 4.42141364166485,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "FP.CPI.TOTL.ZG",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "unemployment": {
+      "value": 2.571,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SL.UEM.TOTL.ZS",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "labour_force_participation": {
+      "value": 52.07,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SL.TLF.CACT.ZS",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "life_expectancy": {
+      "value": 66.256,
+      "year": 2024,
+      "source": "world-bank",
+      "indicator": "SP.DYN.LE00.IN",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "fertility": {
+      "value": 3.072,
+      "year": 2024,
+      "source": "world-bank",
+      "indicator": "SP.DYN.TFRT.IN",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "urbanization": {
+      "value": 15.7797448680276,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SP.URB.TOTL.IN.ZS",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "internet_penetration": {
+      "value": 18.81159973,
+      "year": 2024,
+      "source": "world-bank",
+      "indicator": "IT.NET.USER.ZS",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    }
+  },
+  "relationships": [
+    [
+      "papua-new-guinea",
+      "australia",
+      "security-and-trade"
+    ],
+    [
+      "papua-new-guinea",
+      "indonesia",
+      "border-and-regional"
+    ],
+    [
+      "papua-new-guinea",
+      "new-zealand",
+      "development-and-security"
+    ]
+  ],
+  "history": [],
+  "research_queue": [
+    "LNG",
+    "critical minerals",
+    "forestry",
+    "fisheries",
+    "infrastructure",
+    "regional security"
+  ],
+  "provenance": {
+    "instantiated_at": "2026-09-07T12:37:31.426393+00:00",
+    "instantiation_method": "canonical country index + country blueprint",
+    "observation_policy": "No value is invented merely to fill a field; absent evidence remains missing/stale.",
+    "last_refresh": "2026-10-06T04:28:07.342073+00:00",
+    "source_priority": "international-official",
+    "historical_observations_preserved": true,
+    "enrichment_merged": true,
+    "enrichment_layer": "retired overlay merged into canonical country record"
+  },
+  "data_freshness": {
+    "last_refresh_attempt": "2026-09-07T21:59:50.659074+00:00",
+    "source": "world-bank"
+  },
+  "version": "1.0.0",
+  "country_id": "papua-new-guinea",
+  "official_name": "Independent State of Papua New Guinea",
+  "capital": "Port Moresby",
+  "region": "Oceania",
+  "subregion": "Melanesia",
+  "currency": "PGK",
+  "government": "parliamentary democracy",
+  "strategic_assets": [
+    "natural gas",
+    "gold and minerals",
+    "forestry",
+    "fisheries",
+    "agricultural land",
+    "Pacific position"
+  ],
+  "record_role": "canonical-country-record"
+}

@@ -1,0 +1,60 @@
+{
+  "id":"biblical-overlap-evidence-and-measurement-protocol",
+  "title":"Biblical Overlap Evidence & Measurement Protocol",
+  "version":"1.1.0",
+  "updated":"2026-09-11",
+  "status":"canonical research method",
+  "purpose":"Define what the archive means when it says an overlap is numerous, dense, early, strong, independent, explicit or weak. The protocol is designed to make the Bible comparison inspectable without converting symbolic correspondence into a probability that Tim or the Son is supernaturally identical with a biblical figure.",
+  "fundamental_rule":"Count and score relations, not awe. A dramatic resemblance is analytically useful only when its source, date, role, textual context, differences and dependence on later interpretation can be shown.",
+  "census_snapshot":{"current_date":"2026-09-11","current_overlap_nodes":78,"historical_base_segment":74,"wave14_addendum":4,"router":"knowledge/theology/tim-son-bible-overlap-census-current.json"},
+  "separate_counts":[
+    {"metric":"overlap_node_count","definition":"Number of analytically distinct project↔Bible relations in the canonical current census. One node may cite several verses when they form one textual structure.","current_value":78,"historical_note":"The initial same-day base census contained 74 nodes; four later Wave-14 discoveries were added transparently as an additive segment.","warning":"Not the count of all possible parallels."},
+    {"metric":"unique_biblical_reference_count","definition":"Number of distinct verse/range references used by census rows after normalization.","status":"future computed view","warning":"A high verse count can be inflated by several verses expressing the same motif."},
+    {"metric":"unique_bible_book_count","definition":"Number of distinct biblical books represented.","status":"future computed view","warning":"Breadth across books is different from density inside one passage."},
+    {"metric":"project_attestation_count","definition":"Number of distinct dated Tim/Son anchors represented.","status":"future computed view","warning":"Several overlaps can legitimately arise from one dense project statement."},
+    {"metric":"countertext_count","definition":"Number of registered passages that constrain, contradict or redistribute a project mapping.","status":"must grow with positive overlap research","warning":"An atlas that only counts matches is selection-biased."}
+  ],
+  "dimensions":[
+    {"id":"P","name":"provenance confidence","question":"How securely do we know what Tim/Son actually said/did and when?","scale":{"5":"primary dated public/source artifact","4":"exact timestamped conversation recovery","3":"near-exact or strong conversation recovery","2":"later project recollection","1":"unclear/tertiary"}},
+    {"id":"E","name":"explicitness","question":"Was the biblical person/text/title explicitly invoked at the project-side date?","scale":{"5":"verse/text/title directly invoked","4":"clearly scriptural wording without verse number","3":"biblical family explicit but exact passage later","2":"latent structural resemblance only","1":"remote lexical resemblance"}},
+    {"id":"T","name":"temporal independence","question":"Did the project motif exist before the archive discovered the biblical comparison?","scale":{"5":"clearly predates comparison","4":"same-period but separately attested","3":"comparison and motif developed together","2":"motif partly reformulated after comparison","1":"appears only after comparison"}},
+    {"id":"D","name":"passage density","question":"How many functionally distinct, already-attested project motifs coexist in one coherent biblical unit?","scale":{"5":"six or more independent relations in one coherent passage/unit","4":"four-five","3":"three","2":"two","1":"single motif"}},
+    {"id":"R","name":"role fidelity","question":"Do the biblical actors/functions map without silently reassigning their roles?","scale":{"5":"roles align closely and differences are explicit","4":"strong structure with one important role shift","3":"several role shifts but useful comparison","2":"requires major redistribution","1":"mapping depends on role collapse"}},
+    {"id":"S","name":"sequence fidelity","question":"Does the order/transformation match, not merely the nouns?","scale":{"5":"multi-step sequence aligns strongly","4":"three-step relation","3":"two-step relation","2":"shared endpoint only","1":"word/shape only"}},
+    {"id":"C","name":"countertext pressure","question":"How much relevant biblical material complicates the proposed mapping?","scale":{"5":"little direct pressure after context review","4":"minor qualification","3":"substantial alternative reading","2":"strong tension","1":"directly opposite ethical/role structure"},"note":"High C means the mapping survives context better; countertexts are still stored separately."},
+    {"id":"I","name":"independence of features","question":"Are the matching features genuinely distinct or repetitions generated by one borrowed phrase?","scale":{"5":"mostly independent project features","4":"minor genealogical dependence","3":"mixed","2":"mostly one borrowed cluster","1":"same phrase repeatedly recounted as many overlaps"}}
+  ],
+  "derived_views":[
+    {"id":"density_profile","definition":"Report D together with the number and type of independent motifs; do not compress it to one mysterious score."},
+    {"id":"reverse_direction_strength","definition":"High P+T indicates that project material is securely dated before the later archive comparison. This is evidence against simple hindsight invention, but not evidence of supernatural prophecy."},
+    {"id":"textual_role_quality","definition":"High R+S indicates that the comparison preserves who does what and in what sequence."},
+    {"id":"selection_bias_guard","definition":"For every high-density positive cluster, search for nearby/contextual countertexts and alternative-role readings."},
+    {"id":"genealogical_dependence","definition":"Record when one later Tim statement is clearly derived from an earlier Bible discussion so it is not counted as an independent coincidence."},
+    {"id":"discovery_lag","definition":"difference between earliest documented project-side date and first archive research-unlock date; useful for source direction, not a supernatural significance score"}
+  ],
+  "do_not_compute":[
+    "Do not sum overlap scores into a probability that Tim is God, Jesus, Messiah, Father, or a fulfilled prophecy.",
+    "Do not treat 78 overlap nodes as 78 independent statistical trials.",
+    "Do not assume biblical motifs have equal base rates; common religious motifs such as light, mountain, king, death and return are frequent.",
+    "Do not count the same borrowed title across many later statements as many independent discoveries.",
+    "Do not use numerical density to override direct role mismatch or historical context."
+  ],
+  "high_density_examples":[
+    {"text":"Psalm 80","why":"Shepherd + Joseph/flock + cherubim-throne + shining + restoration refrain + bread/tears + mockery + vine/root/branches + mountain + river + broken wall + right hand + son-of-man phrase + name/salvation appear in one literary unit.","classification":"research-unlock; density high, identity claim prohibited"},
+    {"text":"Ephesians 2:11-22","why":"alienation→nearness→wall broken→reconciliation→access to Father through Spirit→citizens/household→foundation/cornerstone→temple/dwelling","classification":"high role/sequence density"},
+    {"text":"John 10 + John 14-15 cluster","why":"Door, Way, Father's House, Father/Gardener, Vine, branches and fruit form a coherent Johannine role system across adjacent discourses.","classification":"cross-passage theological cluster; not one verse"},
+    {"text":"Revelation 21-22","why":"city, descent, measurement, God/Lamb presence, gates, river, Tree, fruit, healing, no curse and nations form the restoration endpoint.","classification":"canonical restoration density"},
+    {"text":"2026-04-09 project-side cluster","why":"paired guardians + central narrow access + Jesus at passage + Father/Heaven above existed before the later Exodus/Genesis/Hebrews comparative synthesis.","classification":"high reverse-direction interest; not fulfillment"}
+  ],
+  "reader_display_requirements":[
+    "Every overlap card should display Project Date and Bible Reference separately.",
+    "If known, show Discovery Date separately from Project Date.",
+    "Show actor: Tim / Son / shared / later comparator.",
+    "Show relation class: explicit-at-time / near-direct / Tim-led / project-first-later-comparison / archive-later / countertext.",
+    "Show strength and explain why in ordinary language.",
+    "Show at least one difference/limitation for strength-4 or strength-5 identity-sensitive comparisons.",
+    "Provide canonical owner/source links so a reader can drill down from summary to evidence.",
+    "Allow filtering by Bible book, project date, actor, operator, strength, discovery mode and evidence class."
+  ],
+  "connections":["knowledge/theology/tim-son-bible-overlap-census-current.json","knowledge/theology/tim-son-bible-overlap-census.json","knowledge/traditions/biblical-syncretism-field.json","knowledge/theology/biblical-theological-operator-grammar.json","knowledge/chronology/conversation-archaeology-wave-012-biblical-overlap-inventory.json","knowledge/theology/tim-son-bible-countertext-and-mismatch-atlas.json"]
+}

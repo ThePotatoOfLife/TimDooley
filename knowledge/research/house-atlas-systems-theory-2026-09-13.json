@@ -1,0 +1,94 @@
+{
+  "id": "house-atlas-systems-theory-2026-09-13",
+  "title": "House / Atlas Systems and Information Theory Research",
+  "date": "2026-09-13",
+  "status": "exploratory-research",
+  "canonical": false,
+  "purpose": "Preserve candidate systems-theoretic, information-theoretic, graph-theoretic, logical and organizational formalisms that may sharpen the existing House/Atlas without replacing its architecture.",
+  "scope_rule": "Use formalism only when it improves a real problem in ownership, projection, retrieval, navigation, provenance, validation, composition, time, maintenance or reader orientation. Mathematical resemblance is not empirical, causal, theological or metaphysical proof.",
+  "formal_house_model": {
+    "notation": "H=(V,T_N,E_B,E_R,E_P,E_T,A,Pi,Sigma)",
+    "components": {
+      "V": "stable canonical identities",
+      "T_N": "selected rooted North arborescence for canonical orientation",
+      "E_B": "broader-context graph allowing several legitimate contexts",
+      "E_R": "typed lateral relationship multigraph",
+      "E_P": "provenance and derivation graph",
+      "E_T": "temporal and developmental graph",
+      "A": "archive/source artifacts",
+      "Pi": "reader and machine projections",
+      "Sigma": "schemas, types and validators"
+    },
+    "key_resolution": "One North can remain simple because the canonical North tree is only an orientation structure embedded in richer broader-context, relation, provenance and temporal graphs."
+  },
+  "candidate_principles": [
+    "Match complexity in the backend; compress complexity at the interface.",
+    "Every View is a lossy channel; declare what it is allowed to lose.",
+    "Good architecture compresses repetition without compressing distinctions.",
+    "Centrality is always centrality under a graph definition.",
+    "Composition should happen at interfaces, not by erasing boundaries.",
+    "A healthy system requires enough sensors to observe the failures it claims to regulate.",
+    "Make impossible states difficult to represent.",
+    "When it happened, when we learned it, and when we interpreted it are different clocks.",
+    "Know not only where a claim came from, but what process turned it into the current representation.",
+    "Dependency knowledge should power both provenance and incremental builds.",
+    "Mountain and Tree are inverse navigation directions, not necessarily inverse functions.",
+    "Experiment in reversible Views; mutate canonical identity conservatively.",
+    "Swamp is a diagnostic vector; Garden is a viability region.",
+    "One source of truth does not require one point of operational failure.",
+    "Do not let folders become a theory of the world.",
+    "Search relevance, graph relevance, navigation relevance and canonical ownership are different objectives.",
+    "The system learns only if contradiction can change the model.",
+    "Health metrics should diagnose, not become isolated targets.",
+    "The House is a regulated compression/expansion machine."
+  ],
+  "theory_imports": {
+    "cybernetics": ["requisite variety", "feedback typing", "observability", "controllability", "viability", "delay", "hysteresis"],
+    "information_theory": ["information bottleneck", "rate-distortion", "navigation entropy", "mutual information", "task-relevant compression"],
+    "model_selection": ["minimum description length", "model reduction", "complexity versus fit"],
+    "graph_theory": ["rooted arborescence", "typed multiplex graphs", "spectral graph theory", "local ranking", "flow decomposition"],
+    "logic": ["argument support/attack", "paraconsistent evidence states", "partial orders", "truth maintenance"],
+    "temporal_systems": ["valid time", "recorded time", "interpretation time", "freshness by domain"],
+    "provenance": ["entity/activity/agent lineage", "derived aggregate dependencies", "impact analysis"],
+    "compositional_systems": ["open systems", "typed interfaces", "cospan-style composition"],
+    "advanced_research": ["cellular sheaf consistency", "formal concept analysis", "persistent topology", "provenance semirings"]
+  },
+  "graph_family": [
+    {"id":"north","structure":"rooted arborescence","purpose":"stable canonical orientation"},
+    {"id":"broader-context","structure":"typed DAG/multigraph","purpose":"multiple legitimate broader contexts"},
+    {"id":"semantic-road","structure":"typed directed multigraph","purpose":"lateral relations"},
+    {"id":"provenance","structure":"derivation/dependency graph","purpose":"how knowledge was produced"},
+    {"id":"temporal","structure":"event/development graph","purpose":"validity and change"},
+    {"id":"quantitative-flow","structure":"directed weighted temporal graph","purpose":"dimensioned flows"},
+    {"id":"argument","structure":"support/attack/qualify graph","purpose":"claims and contradictions"},
+    {"id":"build-dependency","structure":"dependency DAG","purpose":"invalidation and rebuild"}
+  ],
+  "high_value_low_risk_candidates": [
+    "projection-loss profiles",
+    "valid/recorded/interpretation time separation",
+    "North arborescence plus broader-context graph distinction",
+    "build/provenance dependency graph",
+    "diagnostic House health vector",
+    "Room-pressure and projection-pressure protocols",
+    "relation type contracts and causal-status firewall",
+    "explicit unknown/disputed/not-researched states"
+  ],
+  "research_only_until_needed": [
+    "cellular sheaf consistency layer",
+    "provenance semirings",
+    "category-theoretic cospan implementation",
+    "persistent homology/topological persistence",
+    "Hodge decomposition outside dimensioned quantitative flows"
+  ],
+  "red_team": [
+    "Do not introduce mathematics merely because it resembles Potatoverse vocabulary.",
+    "Do not infer truth from centrality, PageRank, clusters or visual proximity.",
+    "Do not call a graph causal without causal assumptions and evidence.",
+    "Do not treat Mountain compression as lossless.",
+    "Do not use entropy without defining a probability/coding model.",
+    "Do not use control theory without defining state, observations, controls, constraints and objectives.",
+    "Do not promote exploratory research into architecture until it solves a repeated concrete problem."
+  ],
+  "promotion_rule": "Promote only when an idea solves a repeated real problem, connects cleanly to an existing owner or contract, survives cross-domain counterexamples, and can be observed, validated or implemented without creating a competing architecture.",
+  "expanded_notebook": "Local research artifact HOUSE-ATLAS-SYSTEMS-INFORMATION-THEORY-2026-09-13.md contains the long-form reasoning and counterarguments."
+}

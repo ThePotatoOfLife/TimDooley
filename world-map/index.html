@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>World Map — countries, conflicts and connections</title>
+<meta name="description" content="Explore countries, current conflicts, connections, statistics and historical context on one interactive world map.">
+<link rel="canonical" href="https://thepotatooflife.github.io/TimDooley/world-map/">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maplibre-gl@6.9.0/dist/maplibre-gl.css">
+<script type="importmap">
+{"imports":{"https://unpkg.com/maplibre-gl@6.9.0/dist/maplibre-gl.mjs":"./maplibre-loader.js?v=6466194"}}
+</script>
+<style>
+:root{--bg:#080b0b;--panel:#101616;--panel2:#151d1d;--ink:#eff4eb;--muted:#aab4aa;--line:#283333;--accent:#bbdc8a;--gold:#e0bd78;--blue:#73a7d8;--red:#c27878;--panel-w:390px;--atlas-z-tint:1;--atlas-z-decoration:2;--atlas-z-axis:3;--atlas-z-map-control:4;--atlas-z-selection:6;--atlas-z-context:7;--atlas-z-overlay:8;--atlas-z-header:10;--atlas-z-menu:30;--atlas-surface-menu-bg:#0b1010f7;--atlas-surface-context-bg:#080b0be8;--atlas-surface-overlay-bg:#080c0ced;--atlas-surface-panel-bg:#0a1010ed;--atlas-surface-border:#344343;--atlas-surface-radius:11px;--atlas-surface-shadow:0 10px 28px #0009;--atlas-surface-blur:none}
+*{box-sizing:border-box}html,body{height:100%;margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 system-ui,sans-serif}.app{height:calc(100% - var(--site-elevator-clearance,0px));display:grid;grid-template-rows:auto 1fr;overflow:hidden}.top{display:flex;gap:5px;align-items:center;padding:5px 8px;background:#0b1010ef;border-bottom:1px solid var(--line);z-index:var(--atlas-z-header,10);min-height:46px}.brand{margin-right:auto;min-width:0}.brand b{font:400 18px Georgia,serif;white-space:nowrap}.brand small{display:block;color:var(--muted);font-size:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:430px}button,select,input{background:var(--panel2);border:1px solid var(--line);color:var(--ink);border-radius:7px;padding:7px 9px;font:inherit}button{cursor:pointer}button.active{border-color:var(--accent);color:var(--accent)}input{width:190px}.top input{width:170px;padding:5px 7px}.layout{min-height:0;display:grid;grid-template-columns:minmax(0,1fr) var(--panel-w);transition:grid-template-columns .22s ease}.app.panel-collapsed .layout{grid-template-columns:minmax(0,1fr) 0}.mapwrap{position:relative;min-width:0;overflow:hidden}.map{height:100%}.panel{overflow:auto;background:var(--panel);border-left:1px solid var(--line);padding:16px;min-width:0;transition:opacity .15s ease}.app.panel-collapsed .panel{opacity:0;pointer-events:none;padding-left:0;padding-right:0;border-left:0}.panel h1{font:400 30px/1.05 Georgia,serif;margin:5px 0 8px}.panel h2{font:400 20px Georgia,serif;color:var(--gold);margin:18px 0 7px}.muted{color:var(--muted)}.eyebrow{text-transform:uppercase;letter-spacing:.14em;font-size:10px;font-weight:800;color:var(--accent)}.card{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:10px 11px;margin:8px 0}.grid{display:grid;grid-template-columns:1fr 1fr;gap:7px}.metric{border:1px solid var(--line);border-radius:8px;padding:8px;min-width:0}.metric span{display:block;color:var(--muted);font-size:10px;text-transform:uppercase}.metric b{display:block;font-size:15px;overflow-wrap:anywhere}.metric small{display:block;margin-top:3px;font-size:9px;line-height:1.25}.boundary{border-left:3px solid var(--gold);padding:8px 10px;background:#191812;color:#d8d5c9;margin:10px 0;font-size:12px}.hud{position:absolute;left:12px;bottom:calc(var(--site-access-clearance,0px) + 12px);z-index:var(--atlas-z-decoration,2);background:#080b0bd9;border:1px solid var(--line);border-radius:999px;padding:7px 10px;max-width:360px;font-size:10px}.hud .muted{display:inline}.camera{position:absolute;right:12px;top:12px;z-index:var(--atlas-z-decoration,2);background:#080b0bcf;border:1px solid var(--line);border-radius:999px;padding:6px 8px;font-size:10px;color:var(--muted)}.status{position:absolute;left:50%;top:12px;transform:translateX(-50%);z-index:var(--atlas-z-map-control,4);background:#101616ee;border:1px solid var(--line);border-radius:999px;padding:7px 11px;color:var(--muted)}.status[data-kind="error"]{border-color:var(--red);color:#efc0c0}.time-state{position:absolute;left:12px;top:12px;z-index:var(--atlas-z-map-control,4);background:#0b1010df;border:1px solid #55656b;border-radius:999px;padding:6px 9px;font-size:10px;color:#d5e0e0}.pill{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:2px 7px;margin:2px;font-size:11px}.row{padding:7px 0;border-bottom:1px solid var(--line)}.row:last-child{border:0}.json{font:11px/1.45 ui-monospace,monospace;white-space:pre-wrap;overflow-wrap:anywhere;max-height:340px;overflow:auto}.actions{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}.actions button{background:#0c1212}.compare-table{width:100%;border-collapse:collapse;font-size:12px}.compare-table th,.compare-table td{padding:6px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}.compare-table th{color:var(--muted);font-weight:600}.relation-button{width:100%;display:flex;justify-content:space-between;gap:8px;text-align:left;margin:4px 0}.trace-level{border-top:1px solid var(--line);padding-top:8px;margin-top:8px}.map-inquiry{border-top:1px solid var(--line);margin-top:14px}.map-inquiry .question-stub{padding:9px 0;border-bottom:1px solid var(--line)}.map-inquiry .question-stub b{display:block;font:400 15px/1.25 Georgia,serif;color:var(--accent)}.map-inquiry .question-stub span{display:block;color:var(--muted);font-size:11px;margin-top:2px}.map-deep{display:flex;gap:8px 12px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:10px;margin-top:12px;font-size:11px}.map-deep a{color:var(--muted);text-decoration:none}.map-deep a:hover{color:var(--accent)}.maplibregl-popup-content{background:#101616;color:#eff4eb;border:1px solid #283333;border-radius:8px}.maplibregl-popup-tip{border-top-color:#101616!important}.atlas-hover{font-size:12px;line-height:1.45}.atlas-hover b{font-size:14px}.atlas-hover-capital b{color:#f7e8a4}.demography-heading,.religion-line{display:flex;align-items:center;justify-content:space-between;gap:8px}.religion-row{margin:8px 0}.religion-line{font-size:12px}.religion-line b{font-variant-numeric:tabular-nums}.religion-track{height:7px;border-radius:999px;background:#252f2f;overflow:hidden;margin-top:3px}.religion-fill{display:block;height:100%;border-radius:999px}.religion-christian{background:#d7b66f}.religion-muslim{background:#79aa80}.religion-hindu{background:#d49369}.religion-buddhist{background:#c7a86d}.religion-jewish{background:#75a6d6}.religion-other{background:#a687bd}.religion-unaffiliated{background:#899398}.demography-note{font-size:11px;margin:9px 0 3px}.demography-source{font-size:10px}.demography-compare-country{margin:10px 0 14px}.demography-compare-country>.card{margin-top:5px}.atlas-demography-card{border-color:#344343}a{color:var(--accent)}
+.menu{position:relative}.menu>summary{list-style:none;cursor:pointer;background:var(--panel2);border:1px solid var(--line);border-radius:7px;padding:7px 9px;user-select:none;white-space:nowrap}.menu>summary::-webkit-details-marker{display:none}.menu[open]>summary{border-color:#536969;color:var(--accent)}.menu-pop{position:absolute;right:0;top:calc(100% + 7px);z-index:var(--atlas-z-menu,30);min-width:230px;max-width:320px;background:var(--atlas-surface-menu-bg,#0b1010f7);border:1px solid var(--atlas-surface-border,#344343);border-radius:var(--atlas-surface-radius,11px);padding:9px;box-shadow:var(--atlas-surface-shadow,0 10px 28px #0009);backdrop-filter:var(--atlas-surface-blur,none)}.menu-pop>*{display:block;width:100%;margin:4px 0}.menu-pop button{text-align:left}.adl-heat-controls{display:grid;gap:5px;margin-top:6px}.adl-heat-controls select{width:100%}.adl-heat-controls .boundary{margin:4px 0;font-size:10px}.menu-title{font-size:9px;text-transform:uppercase;letter-spacing:.13em;color:var(--muted);padding:3px 2px}.menu-sep{height:1px;background:var(--line);margin:7px 0}.quick-actions{display:flex;gap:4px;align-items:center}.quick-actions button{min-height:28px;padding:5px 7px;font-size:12px}.panel-toggle{min-width:32px}.top-home{display:block;padding:5px 3px;text-decoration:none;font-size:12px}.map-ui-toggle{position:absolute;right:12px;bottom:calc(var(--site-access-clearance,0px) + 12px);z-index:var(--atlas-z-map-control,4);border-radius:999px;background:#0b1010df}
+#axisFieldLegend{transition:opacity .18s ease}.app.ui-focus #axisFieldLegend,.app.ui-focus #axisDepthNavigator,.app.ui-focus #axisOperatorHud,.app.ui-focus .camera,.app.ui-focus .hud,.app.ui-focus .time-state{opacity:0!important;pointer-events:none!important}.app.ui-focus .maplibregl-ctrl-top-right{opacity:.25}.app.ui-focus .maplibregl-ctrl-top-right:hover{opacity:1}
+@media(max-width:1150px){:root{--panel-w:350px}.brand small{display:none}.brand b{font-size:16px}.top input{width:145px}}
+@media(max-width:900px){.top{overflow-x:auto}.brand{display:none}.layout,.app.panel-collapsed .layout{grid-template-columns:1fr;grid-template-rows:minmax(55vh,1fr) auto}.panel{border-left:0;border-top:1px solid var(--line);max-height:42vh;padding-bottom:calc(16px + var(--site-access-clearance,0px))}.app.panel-collapsed .panel{display:none}.camera{display:none}.menu-pop{position:fixed;right:10px;top:calc(var(--site-elevator-clearance,0px) + 8px);max-height:calc(100dvh - var(--site-elevator-clearance,0px) - var(--site-access-clearance,0px) - 16px);overflow:auto}.top input{width:140px;min-width:140px}#axisDepthNavigator{transform:scale(.78);transform-origin:top right}#axisOperatorHud{width:calc(100% - 156px)!important;max-width:290px}}
+.maplibregl-ctrl-bottom-left,.maplibregl-ctrl-bottom-right{bottom:var(--site-access-clearance,0px)}
+html.potato-atlas-map-moving .mapwrap *{backdrop-filter:none!important;box-shadow:none!important;transition:none!important}
+@media(prefers-reduced-motion:reduce){.layout,.panel,#axisFieldLegend,.mapwrap *{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body><div id="atlasApp" class="app panel-collapsed" data-reader-surface="world-map">
+<header class="top">
+  <div class="brand"><b>World Map</b><small>What is happening where, and how is it connected?</small></div>
+  <input id="search" list="country-list" placeholder="Find country…" aria-label="Find country"><datalist id="country-list"></datalist>
+  <div class="quick-actions"><button id="compare">Compare</button><button id="panelToggle" class="panel-toggle" title="Show or hide deeper inspector" aria-label="Show or hide deeper inspector">Inspect</button></div>
+  <div id="atlasWorldBarHost" aria-label="World map controls"></div>
+
+  <details class="menu" id="layersMenu" hidden><summary>Layers</summary><div class="menu-pop">
+    <div class="menu-title">Map layers</div>
+    <button id="interior" class="active">Interior modules</button>
+    <div class="menu-sep"></div>
+    <div class="menu-title">U.S. evidence</div>
+    <button id="adlHeatLayer" type="button" title="ADL H.E.A.T. incident evidence by state and locality">ADL H.E.A.T. incidents</button>
+    <div class="menu-sep"></div>
+    <div class="menu-title">Project-symbolic U.S. cases</div>
+    <button id="mudBelowLayer" type="button" title="Tim/project Mud and Below case anchors; state-centroid locations only">Mud / Below cases</button>
+    <div class="boundary">Project terminology only. Case markers use broad state centroids, not homes or precise locations.</div>
+  </div></details>
+
+  <details class="menu" id="traceMenu"><summary>Connections</summary><div class="menu-pop">
+    <div class="menu-title">Show connections</div>
+    <button id="relations" class="active">Connection lines</button>
+    <select id="relationType" title="Filter relation type"><option value="all">All relation types</option></select>
+    <div class="menu-sep"></div>
+    <div class="menu-title">Follow connections</div>
+    <select id="traceDepth" title="How far to follow connections"><option value="1">1 step · direct</option><option value="2">2 steps</option><option value="3">3 steps</option></select>
+    <button id="fit" title="Fit the selected countries or connection trace">Fit what I’m exploring</button>
+  </div></details>
+
+  <details class="menu" id="timeMenu"><summary>History</summary><div class="menu-pop">
+    <div class="menu-title">Time</div>
+    <select id="timeMode" title="Choose a time view"><option value="current">Now</option><option value="as_of">Go to a date…</option><option value="changed_between">Compare two dates…</option></select>
+    <input id="timeDate" type="date" aria-label="Historical date" hidden>
+    <input id="timeDate2" type="date" aria-label="Comparison date" hidden>
+    <button id="timeNow">Return to now</button>
+    <div class="boundary">Historical mode is conservative: undated records remain explicitly unknown, and current overlays are not silently treated as historical truth.</div>
+  </div></details>
+
+  <details class="menu" id="viewMenu"><summary>Map</summary><div class="menu-pop">
+    <div class="menu-title">Display</div>
+    <select id="height" title="Country height on the map"><option value="flat">No country height</option><option value="population">Height by population</option><option value="area">Height by area</option></select>
+    <button id="tilt">Tilt map</button><button id="globe">Globe view</button><button id="world">Fit whole world</button>
+    <div class="menu-sep"></div><button id="focusMode">Hide extra overlays</button>
+  </div></details>
+
+  <a class="top-home" href="../">Home</a>
+</header>
+<div class="layout">
+  <div class="mapwrap">
+    <div id="map" class="map"></div>
+    <div id="status" class="status" hidden></div>
+    <div id="atlasTimeState" class="time-state" hidden>Current state</div>
+    <div id="camera" class="camera">drag · zoom · rotate · pitch</div>
+    <div id="hud" class="hud"><b>Explore the world</b> <span class="muted">Click a country, open Now for current conflicts, or follow Connections between places.</span></div>
+    <button id="mapInspectorToggle" class="map-ui-toggle" title="Show or hide details">Details</button>
+  </div>
+  <aside id="panel" class="panel">
+    <div class="eyebrow">World map</div><h1>What is happening where?</h1>
+    <p class="muted">Start with a country or a current conflict. The map can then show what the place is like, what is happening there, what it connects to, and how that changes through time.</p>
+    <section class="map-inquiry" aria-label="Ways to explore the world map">
+      <div class="question-stub"><b>Pick a country</b><span>See population, economy, religion, institutions, regions and other ordinary country context.</span></div>
+      <div class="question-stub"><b>See what is happening now</b><span>Turn on dated conflict context without pretending the map has live tactical positions.</span></div>
+      <div class="question-stub"><b>How are countries connected?</b><span>Follow trade, money, institutions, security, infrastructure, research and project relationships between places.</span></div>
+      <div class="question-stub"><b>Move through history</b><span>Use dated views and historical geography while keeping reconstruction, interpretation and present-day borders distinct.</span></div>
+    </section>
+    <nav class="map-deep" data-projection-surface aria-label="Explore map systems more deeply"><a href="../explore/#branch=north">North systems</a><a href="../explore/#branch=world">World systems</a><a href="../context/source-authority/">Sources</a><a href="../explore/">Full archive</a></nav>
+    <div class="boundary">Different layers answer different questions. Current events, historical reconstructions, statistics and project interpretations stay labeled so they are not mistaken for one another.</div>
+  </aside>
+</div></div>
+<script src="./3d-boot-guard.js?v=6466194"></script>
+<!-- Optional-module source markers retained for the source contract; bootstrap owns execution order. src="./3d-hover.js" src="./3d-pathfinder.js" src="./3d-demography.js" src="./3d-evidence.js" src="./3d-time.js" src="./3d-axis.js" -->
+<script type="module" src="./3d-bootstrap.js"></script>
+<script src="../app/house-journey.js"></script></body>
+</html>

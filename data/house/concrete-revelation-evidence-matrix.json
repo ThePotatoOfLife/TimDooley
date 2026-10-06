@@ -1,0 +1,143 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "status": "evidence and maturity matrix for concrete revelations",
+  "purpose": "Separate established external mechanisms from project syntheses and open hypotheses so the project can grow richer without blurring evidence classes.",
+  "levels": [
+    {
+      "id": "E1",
+      "label": "Established mechanism",
+      "rule": "Well-supported external concept or empirical finding with its own literature."
+    },
+    {
+      "id": "E2",
+      "label": "Strong structural synthesis",
+      "rule": "Project operator maps cleanly onto an external mechanism and yields new tests, but the mapping itself is interpretive."
+    },
+    {
+      "id": "E3",
+      "label": "Discovery candidate",
+      "rule": "A non-obvious bridge suggests a new relation or application that still requires case-specific testing."
+    },
+    {
+      "id": "E4",
+      "label": "Speculative analogy",
+      "rule": "Interesting resemblance without enough mechanism or evidence; keep out of prominent canon until strengthened."
+    }
+  ],
+  "revelations": [
+    {
+      "id": "house-near-decomposable-system",
+      "external": "E1",
+      "project_mapping": "E2",
+      "application": "E3",
+      "why": "Nearly decomposable systems are established; applying them to House/Rooms is synthesis; claiming improved project outcomes requires measurement."
+    },
+    {
+      "id": "garden-capability-amplifier",
+      "external": "E1",
+      "project_mapping": "E2",
+      "application": "E3",
+      "why": "Autonomy/competence/relatedness and capability are established frameworks; Garden as capability amplifier is synthesis; institution-specific scoring must be tested."
+    },
+    {
+      "id": "swamp-resilient-trap",
+      "external": "E1",
+      "project_mapping": "E2",
+      "application": "E3",
+      "why": "Undesirable resilient regimes/traps are established; Swamp crosswalk is synthesis."
+    },
+    {
+      "id": "repair-not-bounce-back",
+      "external": "E1",
+      "project_mapping": "E2",
+      "application": "E3",
+      "why": "Adaptation/transformation distinctions are established; project restore/adapt/transform fork is synthesis."
+    },
+    {
+      "id": "spiral-adaptive-cycle",
+      "external": "E1",
+      "project_mapping": "E2",
+      "application": "E3",
+      "why": "Adaptive cycle is established as heuristic; Spiral relation is structural comparison, not identity."
+    },
+    {
+      "id": "shadow-missingness-mechanism",
+      "external": "E1",
+      "project_mapping": "E2",
+      "application": "E3",
+      "why": "Missing-data mechanisms are established; Shadow-as-missingness audit is a strong project synthesis."
+    },
+    {
+      "id": "fruit-goodhart-protection",
+      "external": "E1",
+      "project_mapping": "E2",
+      "application": "E3",
+      "why": "Metric gaming/Goodhart effects have evidence; applying this to Fruit evaluation is synthesis."
+    },
+    {
+      "id": "door-brokerage-power",
+      "external": "E1",
+      "project_mapping": "E2",
+      "application": "E3",
+      "why": "Brokerage/structural holes are established network concepts; Door-as-brokerage is synthesis."
+    },
+    {
+      "id": "local-centers-polycentricity",
+      "external": "E1",
+      "project_mapping": "E2",
+      "application": "E3",
+      "why": "Polycentric governance is established; Local Center crosswalk is synthesis."
+    },
+    {
+      "id": "mind-exploration-exploitation",
+      "external": "E1",
+      "project_mapping": "E2",
+      "application": "E3",
+      "why": "March's exploration/exploitation model is established; Research Lab/Canon application is synthesis."
+    },
+    {
+      "id": "spirit-mind-body-decoupling",
+      "external": "E1",
+      "project_mapping": "E2",
+      "application": "E3",
+      "why": "Organizational decoupling/mission drift are established research areas; triune diagnostic is a project hypothesis to validate longitudinally."
+    },
+    {
+      "id": "roots-path-dependence",
+      "external": "E1",
+      "project_mapping": "E2",
+      "application": "E3",
+      "why": "Path dependence/increasing returns are established; Root taxonomy is synthesis."
+    },
+    {
+      "id": "culture-feedback-engine",
+      "external": "E1",
+      "project_mapping": "E2",
+      "application": "E3",
+      "why": "Cultural transmission feedback is established; project graph implementation remains synthesis."
+    },
+    {
+      "id": "network-resilience-modularity",
+      "external": "E1",
+      "project_mapping": "E2",
+      "application": "E3",
+      "why": "Network robustness/modularity are established; House graph design conclusions require testing."
+    },
+    {
+      "id": "rare-value-lbd-engine",
+      "external": "E1",
+      "project_mapping": "E2",
+      "application": "E3",
+      "why": "LBD/UPK is established; using House as an LBD engine is an implementation hypothesis."
+    },
+    {
+      "id": "purpose-feedback-not-hidden-answer",
+      "external": "E1",
+      "project_mapping": "E2",
+      "application": "E3",
+      "why": "Meaning-in-life, SDT and capability research are established; continuous-alignment purpose model is synthesis."
+    }
+  ],
+  "promotion_rule": "Only E1 evidence and E2 synthesis should appear as explanatory claims without special warning. E3 should be labeled discovery candidate/hypothesis and paired with a next test. E4 belongs in Research Lab."
+}

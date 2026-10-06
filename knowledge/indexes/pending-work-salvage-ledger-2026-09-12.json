@@ -1,0 +1,150 @@
+{
+  "id": "pending-work-salvage-ledger-2026-09-12",
+  "title": "Pending Work Salvage Ledger — 2026-09-12",
+  "updated": "2026-09-12",
+  "status": "active repository-maintenance owner",
+  "purpose": "Track open/stale branches as provenance reservoirs, distinguish merge-ready work from salvage-only work, and prevent older branch merges from overwriting newer canonical owners.",
+  "baseline_main_sha": "808fbc774879bf6a0438fe49a6851df88e5122a2",
+  "disposition_vocabulary": {
+    "already_on_main": "The substantive work has landed on main directly or through a later equivalent/superseding change.",
+    "unique_port": "A file/concept is absent from current main and should be transplanted onto a current-main branch.",
+    "merge_by_content": "An old branch modifies an owner that has since changed; reconcile semantics/key sections rather than merge the old file wholesale.",
+    "superseded": "Later work on main is more specific/current; keep old branch as provenance but do not re-promote its version.",
+    "defer_for_rebase": "Large branch or UI/runtime change requires a dedicated current-main reconciliation/reimplementation pass.",
+    "historical_reservoir": "Branch is too far behind for normal merging; use it as a source archive and salvage only demonstrably unique assets."
+  },
+  "recently_landed": [
+    {"pr": 58, "title": "Advance high-value science theories with calculable benchmarks", "status": "merged_to_main", "merge_sha": "995b391831df8b71a9e8693823d937c31c138a8e"},
+    {"pr": 56, "title": "Preserve Thomas battle context and 2005 crash history", "status": "merged_to_main", "merge_sha": "71990f07c53f04f16652dd808778af67a6f7efbf"},
+    {"pr": 60, "title": "Design potato biological genealogy and Sage-to-Gardener integration", "status": "merged_to_main", "merge_sha": "808fbc774879bf6a0438fe49a6851df88e5122a2"}
+  ],
+  "open_prs": [
+    {
+      "pr": 53,
+      "title": "Science: overhaul core theories and formulations",
+      "branch": "science-theory-overhaul-20260912",
+      "head": "fd04a9b61013a0a677b29424e2325532cac7fd39",
+      "ahead_by": 23,
+      "behind_by": 89,
+      "changed_files": 23,
+      "disposition": "active_salvage_in_this_branch",
+      "risk": "medium",
+      "value": "very_high",
+      "actions_completed": [
+        "ported five wholly missing science models onto current-main lineage",
+        "created PR53 reconciliation owner preserving semantic contributions and downstream supersession decisions"
+      ],
+      "ported_unique": [
+        "knowledge/science/cryptochrome-radical-pair-magnetoreception-recovery.json",
+        "knowledge/science/door-interaction-field-august-2026-recovery.json",
+        "knowledge/science/integration-fragmentation-red-blue-dynamics-recovery.json",
+        "knowledge/science/stratified-reconstruction-sheaf-repair-model.json",
+        "knowledge/science/trajectory-holonomy-return-topology-model.json"
+      ],
+      "remaining": "18 overlapping owners are classified in knowledge/science/pr53-science-overhaul-reconciliation-2026-09-12.json; merge-by-content work can proceed owner-by-owner without keeping PR53 as a merge unit."
+    },
+    {
+      "pr": 33,
+      "title": "Integrate Door, entanglement, constrained timelines, geometry and scientific modeling",
+      "branch": "expand-dog-return-geometry-2026-09-11",
+      "head": "d47c474888102eba804efa28c6df66fd15128c48",
+      "ahead_by": 161,
+      "behind_by": 536,
+      "changed_files": 129,
+      "disposition": "historical_reservoir",
+      "risk": "very_high",
+      "value": "very_high",
+      "reason": "Contains many unique Door/geometry/Bible/science records, but also modifies core owners and runtime surfaces that evolved hundreds of commits later. Never merge wholesale.",
+      "next_salvage": "Inventory files that remain absent on main, prioritizing unique science/core records before UI or generated indexes."
+    },
+    {
+      "pr": 42,
+      "title": "Build composable World Atlas registry",
+      "branch": "atlas-composable-registry",
+      "head": "82884594ef6f82a995b65a3c9e8bcba886a28615",
+      "ahead_by": 30,
+      "behind_by": 293,
+      "changed_files": 22,
+      "draft": true,
+      "disposition": "defer_for_rebase",
+      "risk": "high",
+      "value": "high",
+      "reason": "Registry/compositor/country-card concepts may still be useful, but current World Map has since landed entity ownership, functional chains, Africa repair, path finding, trace and related UI/runtime work.",
+      "next_salvage": "Compare world-atlas-layer-registry, compositor, country-card and world-bar capabilities against current map; port only missing registry/runtime primitives."
+    },
+    {
+      "pr": 35,
+      "title": "Deepen 3D atlas with religion, relational metrics and Axis flow",
+      "branch": "feature/3d-map-relationship-height",
+      "head": "8cb97437955a19793f461f92ea20a8b675e7f086",
+      "ahead_by": 86,
+      "behind_by": 424,
+      "changed_files": 39,
+      "draft": true,
+      "disposition": "historical_reservoir",
+      "risk": "very_high",
+      "value": "high",
+      "reason": "Contains useful D4 observables, relational verticality, hyperedges and research notes but rewrites major 3D UI/runtime files that have since changed substantially.",
+      "next_salvage": "Prefer data contracts/research notes first; reimplement UI capabilities against current 3D runtime instead of cherry-picking old UI files."
+    },
+    {
+      "pr": 28,
+      "title": "Overhaul Science Atlas around canonical model contracts",
+      "branch": "science-overhaul-model-registry",
+      "head": "2c95e7c15dcfc2ecc87e714b3666051d3990cd76",
+      "ahead_by": 24,
+      "behind_by": 829,
+      "changed_files": 16,
+      "disposition": "historical_reservoir",
+      "risk": "high",
+      "value": "medium_high",
+      "reason": "The science-model-registry concept may still be useful, but the branch also removes/restructures public science pages from an old site state.",
+      "next_salvage": "Inspect science-model-registry.json for model-contract content missing from current main; do not import page removals."
+    },
+    {
+      "pr": 25,
+      "title": "Great Book prediction archaeology and 1987–2030 timeline",
+      "branch": "great-book-timeline-wave-16",
+      "head": "c99454915fc59d2af754d52723e1725a010c6e5f",
+      "ahead_by": 14,
+      "behind_by": 1026,
+      "changed_files": 20,
+      "disposition": "historical_reservoir",
+      "risk": "high",
+      "value": "high",
+      "reason": "Mostly additive chronology/theology assets, but generated/single-line JSON comparison output and an ancient base make direct merging unsafe.",
+      "next_salvage": "Port unique chronology/core records individually after checking whether later canonical timelines already supersede them."
+    },
+    {
+      "pr": 9,
+      "title": "Repair web audit and complete the science canon",
+      "branch": "chatgpt/repair-web-audit-20260909",
+      "head": "1ccf4388583c41aedd937be1533dc947854a0f58",
+      "ahead_by": 20,
+      "behind_by": 1043,
+      "changed_files": 14,
+      "disposition": "historical_reservoir",
+      "risk": "high",
+      "value": "medium_high",
+      "reason": "Contains early science-canon consolidation records and web-audit work; many science concepts have since been redistributed into newer owners.",
+      "next_salvage": "Check unique additive science canon files against current science-master-index and newer theory records; ignore obsolete audit script rewrites unless a current bug reproduces."
+    },
+    {
+      "pr": 1,
+      "title": "Repository-wide repair pass",
+      "branch": "project-repair-2026-09-07",
+      "head": "cd835c80fb8774aefd3a5bfd6651c74102159d00",
+      "ahead_by": 61,
+      "behind_by": 2102,
+      "changed_files": 27,
+      "disposition": "historical_reservoir",
+      "risk": "extreme",
+      "value": "selective",
+      "reason": "Earliest large repair branch; repository architecture and public corpus handling have changed radically since. Includes huge public-domain text assets and old integration/index repairs.",
+      "next_salvage": "Only inspect individually named assets when a current gap points back to this branch; never attempt branch-level reconciliation."
+    }
+  ],
+  "priority_order": [53, 33, 42, 35, 28, 25, 9, 1],
+  "maintenance_law": "An open PR is not evidence that its branch should be merged. Branch age, behind count, owner overlap, current canonical routing and unique information content determine whether to merge, port, reconcile or retain as provenance.",
+  "next_target_after_this_pass": 33
+}

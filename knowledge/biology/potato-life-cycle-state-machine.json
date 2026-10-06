@@ -1,0 +1,241 @@
+{
+  "id": "potato-life-cycle-state-machine",
+  "title": "Potato Life-Cycle State Machine — Development, Role Switching and Return",
+  "version": "1.0.0",
+  "updated": "2026-09-20",
+  "owner_room": "potato-biology",
+  "status": "canonical developmental-biology layer",
+  "purpose": "Encode potato development as state transitions with explicit organs, signals, source/sink roles, resources and environmental constraints.",
+  "state_variables": [
+    "genotype/haplotype state",
+    "physiological age",
+    "meristem competence",
+    "hormone balance",
+    "carbon status",
+    "water status",
+    "nutrient status",
+    "temperature",
+    "photoperiod/light history",
+    "pathogen load",
+    "microbiome context"
+  ],
+  "states": [
+    {
+      "id": "seed-or-seed-tuber",
+      "organs": [
+        "true seed or tuber propagule"
+      ],
+      "role": "stored starting state",
+      "transitions": [
+        "germination",
+        "dormancy release"
+      ]
+    },
+    {
+      "id": "tuber-endodormancy",
+      "organs": [
+        "eyes/axillary buds",
+        "tuber parenchyma",
+        "periderm"
+      ],
+      "role": "reserve store with internally suppressed meristems",
+      "signals": [
+        "ABA/auxin-associated dormancy",
+        "cell-cycle suppression",
+        "redox/ROS regulation"
+      ],
+      "transition": "loss of endodormancy"
+    },
+    {
+      "id": "tuber-ecodormancy",
+      "organs": [
+        "competent buds"
+      ],
+      "role": "ready but externally restrained",
+      "constraints": [
+        "temperature",
+        "storage atmosphere",
+        "sprout suppressors"
+      ],
+      "transition": "sprouting when external inhibition is removed"
+    },
+    {
+      "id": "paradormant-apical-dominance",
+      "organs": [
+        "apical eye and subordinate buds"
+      ],
+      "role": "distributed meristems with unequal activation",
+      "transition": "single or multiple sprout growth depending on physiological age and regulation"
+    },
+    {
+      "id": "sprout-and-root-establishment",
+      "organs": [
+        "shoot",
+        "adventitious roots",
+        "seed tuber"
+      ],
+      "role": "tuber switches from prior sink to carbon/energy source supporting new growth",
+      "flows": [
+        "starch → sugars",
+        "respiration",
+        "nutrient remobilization"
+      ]
+    },
+    {
+      "id": "canopy-source-establishment",
+      "organs": [
+        "leaves",
+        "stems",
+        "roots"
+      ],
+      "role": "photosynthetic source network emerges",
+      "flows": [
+        "CO2 assimilation",
+        "water/mineral uptake",
+        "sucrose export"
+      ]
+    },
+    {
+      "id": "stolon-elongation",
+      "organs": [
+        "stolons"
+      ],
+      "role": "underground stem extension prior to storage-organ commitment",
+      "transport": "largely apoplastic unloading context in elongating stolon tissue"
+    },
+    {
+      "id": "tuber-initiation",
+      "organs": [
+        "stolon tip"
+      ],
+      "role": "developmental fate switch",
+      "signals": [
+        "StSP6A",
+        "sucrose",
+        "StBEL5-associated signalling",
+        "photoperiod/temperature integration",
+        "hormonal crosstalk"
+      ],
+      "transport": "transition toward symplastic sucrose unloading"
+    },
+    {
+      "id": "tuber-bulking",
+      "organs": [
+        "tuber parenchyma",
+        "vascular tissues",
+        "amyloplasts"
+      ],
+      "role": "strong carbon and nutrient sink",
+      "flows": [
+        "sucrose import",
+        "starch biosynthesis",
+        "protein/mineral accumulation",
+        "cell expansion"
+      ]
+    },
+    {
+      "id": "maturation-and-skin-set",
+      "organs": [
+        "canopy",
+        "periderm",
+        "tuber"
+      ],
+      "role": "canopy senescence + protective boundary maturation",
+      "signals": [
+        "developmental age",
+        "hormones",
+        "environment",
+        "source-sink decline"
+      ]
+    },
+    {
+      "id": "harvest-wound-healing",
+      "organs": [
+        "native/wound periderm"
+      ],
+      "role": "post-harvest repair and barrier reconstruction",
+      "processes": [
+        "closing-layer suberization",
+        "wound periderm formation"
+      ]
+    },
+    {
+      "id": "storage",
+      "organs": [
+        "tuber",
+        "lenticels",
+        "eyes"
+      ],
+      "role": "living post-harvest organ with respiration, water loss, dormancy progression and metabolic remodeling",
+      "risks": [
+        "sprouting",
+        "pathogens",
+        "cold-induced sweetening",
+        "dehydration",
+        "hypoxia"
+      ]
+    },
+    {
+      "id": "sexual-reproduction",
+      "organs": [
+        "flower",
+        "pollen",
+        "pistil",
+        "berry",
+        "true seed"
+      ],
+      "role": "recombinant lineage generation",
+      "processes": [
+        "meiosis",
+        "pollination",
+        "fertilization",
+        "embryo/seed development"
+      ]
+    }
+  ],
+  "source_sink_role_switches": [
+    "developing tuber: sink",
+    "stored/dormant tuber: reserve organ with ongoing maintenance respiration",
+    "sprouting seed tuber: source for new shoots and roots",
+    "mature leaves: source",
+    "young leaves/meristems: sinks",
+    "new tubers: strong sinks"
+  ],
+  "dormancy_types": {
+    "endodormancy": "Growth is prevented by internal meristem/tuber state even if external conditions are favorable.",
+    "ecodormancy": "The bud is competent but external conditions prevent growth.",
+    "paradormancy": "Another plant part or signal suppresses growth, as in apical dominance."
+  },
+  "transition_logic": {
+    "generic": "state_(t+1)=F(genotype, physiological_state, hormones, carbon, water, nutrients, environment, pathogens, microbiome)",
+    "warning": "No one hormone or gene alone is 'the switch' for the entire life cycle."
+  },
+  "sources": [
+    {
+      "title": "Physiological and molecular mechanisms associated with potato tuber dormancy",
+      "year": 2024,
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11480654/"
+    },
+    {
+      "title": "Phytohormones: plant switchers in developmental and growth stages in potato",
+      "year": 2021,
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8211815/"
+    },
+    {
+      "title": "A coordinated switch in sucrose and callose metabolism enables enhanced symplastic unloading in potato tubers",
+      "year": 2024,
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11058582/"
+    },
+    {
+      "title": "Potato Periderm Development and Tuber Skin Quality",
+      "year": 2022,
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9415511/"
+    }
+  ],
+  "connections": [
+    "potato-molecular-development-and-signalling",
+    "potato-anatomy-metabolism-ecology",
+    "potato-genetics-genomics-atlas",
+    "potato-pathology-immunity-storage"
+  ]
+}

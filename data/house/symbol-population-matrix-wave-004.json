@@ -1,0 +1,223 @@
+{
+  "id": "symbol-population-matrix-wave-004",
+  "title": "Symbol Population Matrix Wave 004 — What Is Dense, What Is Sparse and What Should Become Buildable",
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "status": "architecture planning / knowledge population census",
+  "purpose": "Translate accumulated symbolic research into a population map showing which structural families have enough definition, provenance and cross-links to support future Rooms, Chambers, readers or visual interfaces.",
+  "maturity_scale": [
+    "seed — recurring term but weak owner/definition",
+    "rooted — canonical owner and basic distinction",
+    "branched — variants and cross-system relations mapped",
+    "fruiting — tests, boundaries, provenance and practical navigation exist",
+    "buildable — reader/task/interface can be specified without inventing ontology"
+  ],
+  "families": [
+    {
+      "id": "center-and-threshold",
+      "maturity": "buildable",
+      "population": [
+        "Potato of Life",
+        "Father",
+        "Son",
+        "Spirit",
+        "House",
+        "Door",
+        "Axis",
+        "Plane",
+        "Cross",
+        "Vesica",
+        "Mandorla",
+        "Pillars"
+      ],
+      "build_signal": "Can support a canonical interactive center/threshold reader using exact geometry + relational definitions."
+    },
+    {
+      "id": "growth-and-repair",
+      "maturity": "buildable",
+      "population": [
+        "Seed",
+        "Root",
+        "Tree",
+        "Knowledge",
+        "Life",
+        "Strife",
+        "Garden",
+        "Swamp",
+        "Forge",
+        "Ash",
+        "Mud",
+        "Soil",
+        "Fruit",
+        "Repair",
+        "Return"
+      ],
+      "build_signal": "Can support process navigation/state transitions rather than another static symbol page."
+    },
+    {
+      "id": "architecture",
+      "maturity": "fruiting",
+      "population": [
+        "House",
+        "Dwelling",
+        "Room",
+        "Chamber",
+        "Temple",
+        "Sanctuary",
+        "Court",
+        "Gate",
+        "Door",
+        "Body",
+        "City",
+        "Throne",
+        "Seat",
+        "Table",
+        "Footstool",
+        "Altar",
+        "Lamp"
+      ],
+      "remaining_gap": "Need public task model for switching projections without overwhelming navigation.",
+      "possible_build": "Projection switcher: House / Temple / Body / City / Tree."
+    },
+    {
+      "id": "material-states",
+      "maturity": "branched",
+      "population": [
+        "Stone",
+        "Rock",
+        "Cornerstone",
+        "Clay",
+        "Dust",
+        "Ash",
+        "Mud",
+        "Soil"
+      ],
+      "remaining_gap": "Need stronger literal-material evidence for soil/ash/clay transformations and explicit route diagrams.",
+      "possible_build": "Material-state transformer only after scientific/ritual routes are clearly typed."
+    },
+    {
+      "id": "energy-and-visibility",
+      "maturity": "branched",
+      "population": [
+        "Fire",
+        "Heat",
+        "Flame",
+        "Light",
+        "Lamp",
+        "Sun",
+        "Glory",
+        "Spudlight",
+        "Shadow"
+      ],
+      "remaining_gap": "Need crosswalk among physical radiation/thermal process, biblical theophany and project cognition without implying physics.",
+      "possible_build": "Lens/filter rather than Room: 'What kind of light/fire claim is this?'"
+    },
+    {
+      "id": "carrier-and-flow",
+      "maturity": "fruiting",
+      "population": [
+        "River",
+        "Well",
+        "Fountain",
+        "Sea",
+        "Swamp",
+        "Drain",
+        "Vessel",
+        "Ark",
+        "Ship",
+        "Chariot",
+        "Merkavah"
+      ],
+      "remaining_gap": "Need one combined movement diagram showing carrier vs flow vs route vs orientation.",
+      "possible_build": "Mobility/flow comparator centered on source→carrier/channel→threshold→destination."
+    },
+    {
+      "id": "animals-and-roles",
+      "maturity": "branched",
+      "population": [
+        "Lion",
+        "Lamb",
+        "Shepherd",
+        "Ox/Cow",
+        "Red Heifer",
+        "Goat/Scapegoat",
+        "Serpent",
+        "Eagle",
+        "Dog"
+      ],
+      "remaining_gap": "Need passage-level provenance cards and explicit role changes over time.",
+      "possible_build": "Specialist comparison view, not global ontology."
+    },
+    {
+      "id": "number-and-time",
+      "maturity": "fruiting",
+      "population": [
+        "3",
+        "7",
+        "10",
+        "12",
+        "33",
+        "40",
+        "42",
+        "66",
+        "666",
+        "144",
+        "144000",
+        "Cycle",
+        "Ring",
+        "Spiral",
+        "Season",
+        "Sabbath",
+        "Jubilee",
+        "Epoch"
+      ],
+      "remaining_gap": "Need a typed-number/time UI that blocks numerological overreach by showing claim type first.",
+      "possible_build": "Measure/type inspector."
+    },
+    {
+      "id": "celestial",
+      "maturity": "fruiting",
+      "population": [
+        "North",
+        "Polaris",
+        "Sirius",
+        "Regulus",
+        "Sun",
+        "Moon",
+        "Saturn",
+        "Sagittarius A*",
+        "precession",
+        "coordinate frames"
+      ],
+      "remaining_gap": "Original user pointing/alignment claims still need primary-source reconstruction before any visual astronomical alignment tool.",
+      "possible_build": "Coordinate-aware sky comparator only after claim recovery."
+    },
+    {
+      "id": "comparative-trees",
+      "maturity": "fruiting",
+      "population": [
+        "Eden Life",
+        "Eden Knowledge",
+        "Kabbalistic Tree",
+        "Yggdrasil",
+        "Bodhi",
+        "Vine",
+        "Mustard",
+        "Root of Jesse",
+        "Tree of Strife"
+      ],
+      "remaining_gap": "Need source-specific compact cards and a structural-dimension matrix.",
+      "possible_build": "Tree family comparison with toggles for roots/water/knowledge/fruit/lineage/world-order."
+    }
+  ],
+  "architectural_deduction": "The project is becoming ready for interfaces based on operator type and projection switching, not more top-level pages. The highest-value future build is likely a relational explorer where the reader selects a center element and sees its states, neighboring operators, evidence layers, historical comparators and valid transitions.",
+  "build_gate": [
+    "canonical owner exists",
+    "definition and non-equivalences exist",
+    "source/provenance path exists",
+    "neighbor relations are typed",
+    "at least one confusion/test is resolved",
+    "the interface answers a real navigation/research question",
+    "adding UI does not create a second knowledge owner"
+  ]
+}

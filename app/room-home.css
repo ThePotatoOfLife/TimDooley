@@ -1,0 +1,102 @@
+/* Governed Room homepage layout.
+   Shared by Heaven, Plane and governed Below Room homes. Floor CSS may skin the
+   component, but geometry and reusable Room-home structure live here. */
+.room-home>section{
+  margin:24px 0;
+  padding:22px;
+  border:1px solid var(--site-pane-line);
+  border-radius:var(--site-radius-lg);
+  background:var(--site-pane);
+  box-shadow:var(--site-pane-shadow)
+}
+.room-home>section>h2{
+  max-width:28ch;
+  margin:0 0 12px;
+  color:var(--site-gold);
+  font:400 clamp(26px,3.2vw,38px)/1.1 var(--site-font-serif);
+  letter-spacing:-.02em;
+  text-wrap:balance
+}
+.room-home>section>p:not(.boundary){
+  max-width:76ch;
+  line-height:1.72
+}
+.door-grid,.sub-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:10px;
+  margin:18px 0
+}
+.door-card,.sub-card{
+  border:1px solid var(--site-line);
+  padding:16px;
+  border-radius:var(--site-radius);
+  text-decoration:none;
+  color:inherit;
+  background:rgba(8,10,10,.68)
+}
+.door-card strong,.sub-card strong{
+  display:block;
+  font:400 19px var(--site-font-serif);
+  color:var(--site-gold)
+}
+.door-card span,.sub-card span{
+  display:block;
+  color:var(--site-muted);
+  font-size:var(--site-text-xs);
+  line-height:1.45;
+  margin-top:4px
+}
+.boundary{
+  border-left:2px solid var(--site-line);
+  padding-left:14px;
+  color:var(--site-muted)
+}
+.room-actions{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin:16px 0
+}
+.room-actions a{
+  border:1px solid var(--site-line);
+  border-radius:var(--site-radius-pill);
+  padding:7px 10px;
+  text-decoration:none;
+  color:var(--site-muted);
+  font-size:var(--site-text-xs);
+  background:color-mix(in srgb,var(--site-panel) 62%,transparent)
+}
+.room-actions a:hover,
+.room-actions a:focus-visible,
+.dwelling-reader .sub-card:hover,
+.dwelling-reader .sub-card:focus-visible,
+.door-card:hover,
+.door-card:focus-visible{
+  color:var(--site-gold);
+  border-color:color-mix(in srgb,var(--site-gold) 44%,var(--site-line))
+}
+.dwelling-reader{
+  margin:28px 0;
+  padding:24px;
+  border:1px solid var(--site-pane-line);
+  border-radius:var(--site-radius-lg);
+  background:var(--site-pane);
+  box-shadow:var(--site-pane-shadow)
+}
+.dwelling-reader h2{
+  font:400 clamp(27px,3.5vw,40px)/1.1 var(--site-font-serif);
+  color:var(--site-gold);
+  margin:0 0 12px
+}
+.dwelling-reader>p{
+  max-width:880px;
+  color:var(--site-copy);
+  line-height:1.75
+}
+@media(max-width:700px){
+  .door-grid,.sub-grid{grid-template-columns:1fr}
+  .room-home>section{margin:18px 0;padding:16px}
+  .dwelling-reader{margin:20px 0;padding:17px}
+  .door-card,.sub-card{padding:14px}
+}

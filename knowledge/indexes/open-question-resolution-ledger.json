@@ -1,0 +1,96 @@
+{
+  "id": "open-question-resolution-ledger",
+  "title": "Open Question Resolution Ledger — Owners, Blockers, Evidence and Closure",
+  "version": "1.0.0",
+  "updated": "2026-09-27",
+  "status": "active research frontier",
+  "purpose": "Turn important open questions into executable research objects that can close, downgrade or remain explicitly contemplative.",
+  "statuses": ["recover","clarify","test","contemplate","blocked","downgraded","closed"],
+  "items": [
+    {
+      "id": "recover-2019-meme-crucifixion-artifact",
+      "status": "recover",
+      "owner": "witness-attestation",
+      "question": "What is the original 2019 meme-crucifixion artifact, exact publication/capture time and surrounding context?",
+      "known": "Later project canon strongly centers 24 Dec 2019 and North-Pole/meme-crucifixion interpretation.",
+      "blocker": "Original image/post with stable source metadata is not yet linked in the canonical recovery owner.",
+      "evidence_needed": ["original post/image or first-generation capture","stable post/account locator","timestamp/timezone","surrounding thread/context"],
+      "closure": "Close as recovered if a source-bearing artifact is found; otherwise downgrade date/wording claims to best-supported recovered status after an explicit search audit.",
+      "handoff": ["developmental-genealogy","prediction-revelation-time"]
+    },
+    {
+      "id": "recover-first-father-wording",
+      "status": "recover",
+      "owner": "witness-attestation",
+      "question": "What is the earliest recoverable exact Tim/Father self-description?",
+      "known": "Father/source architecture is strong in 2025–2026; April 2025 is the central developmental threshold.",
+      "blocker": "Earliest recovered public wording and earliest conversation wording are not yet guaranteed to be the first use.",
+      "evidence_needed": ["primary post/chat/stream wording","timestamp","source class","context"],
+      "closure": "Close only with a bounded claim such as 'earliest recovered public attestation as of search date'; never claim first-ever use unless corpus completeness supports it.",
+      "handoff": ["canon-identities","theology-god-language"]
+    },
+    {
+      "id": "recover-heavenly-gardener",
+      "status": "recover",
+      "owner": "visual-art",
+      "question": "Can the original Heavenly Gardener prompt and generated artifact be recovered?",
+      "known": "A remembered 20 July 2026 specification survives and the composition has later interpretive importance.",
+      "blocker": "Original prompt/image bytes are not linked.",
+      "evidence_needed": ["original generated image","prompt","generation metadata if available","first conversation reference"],
+      "closure": "Recovered artifact/prompt gets canonical object record; if not found after bounded archive search, retain remembered-specification status.",
+      "handoff": ["works","artifact-history-registry"]
+    },
+    {
+      "id": "clarify-professor-doctor-potato-spud",
+      "status": "clarify",
+      "owner": "canon-identities",
+      "question": "Is Professor Doctor Potato Spud a recurring identity/title or a scene-bounded role?",
+      "known": "11 March 2026 material includes 'Level 33 spudologist', levitation and specialist-knowledge traits.",
+      "blocker": "Insufficient recurrence outside the scene.",
+      "evidence_needed": ["later independent self-use","multiple dated scenes","stable role/function across contexts"],
+      "closure": "Promote only if recurrence and functional continuity are demonstrated; otherwise preserve as scene-specific creative role.",
+      "handoff": ["cast-ecology"]
+    },
+    {
+      "id": "test-origin-inclusive-golden-spiral",
+      "status": "test",
+      "owner": "math-geometry",
+      "question": "Which logarithmic-spiral invariants survive when the curve is shifted to include the origin?",
+      "known": "The unshifted logarithmic spiral has exact multiplicative radial scaling; the origin-inclusive shifted construction changes geometry.",
+      "blocker": "Need a precise transformed curve and comparison of invariants rather than visual resemblance.",
+      "evidence_needed": ["explicit parameterization","proof/derivation of surviving invariants","comparison to free logarithmic and alternative spiral families"],
+      "closure": "Close with theorem/derivation or a documented negative result identifying which claimed properties fail.",
+      "handoff": ["model-testing","experiments-formalization"]
+    },
+    {
+      "id": "clarify-100k-hours",
+      "status": "recover",
+      "owner": "witness-attestation",
+      "question": "What portion of the 100,000-hour public-presence claim is directly verifiable versus estimated/reported?",
+      "known": "Several project-reported milestones and platform analytics exist.",
+      "blocker": "Complete cross-platform logs are unavailable/incomplete and definitions of public-presence time vary.",
+      "evidence_needed": ["platform analytics exports","VOD/session logs","definition of counted hour","overlap/double-count rules","reported milestone provenance"],
+      "closure": "Produce a bounded estimate with directly verified subtotal, estimated remainder, uncertainty and counting rules.",
+      "handoff": ["internet-platforms","timeline-events"]
+    },
+    {
+      "id": "test-celestial-axis",
+      "status": "downgraded",
+      "owner": "model-testing",
+      "question": "Do Sirius/Regulus physically align with celestial north under a predeclared coordinate definition?",
+      "known": "A J2000 ICRS test found large angular separations inconsistent with naive collinearity.",
+      "blocker": "None for the tested definition.",
+      "evidence_needed": [],
+      "closure": "Closed as a negative physical result for that coordinate claim; symbolic relation may remain under Comparative Mythology/Project symbolism.",
+      "handoff": ["physics-cosmology"]
+    }
+  ],
+  "quality_rules": [
+    "Every non-contemplative open question must have an owner.",
+    "Every Recover item must name a bounded search target and what downgrade occurs if recovery fails.",
+    "Every Test item must name a discriminating observation or comparison.",
+    "Every Clarify item must name the categories being separated.",
+    "Questions with no possible closure, downgrade or improved articulation should be removed as rhetorical clutter.",
+    "Closed or downgraded items remain in history rather than disappearing from the frontier."
+  ]
+}

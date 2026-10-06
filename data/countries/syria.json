@@ -1,0 +1,172 @@
+{
+  "record_version": "1.1.0",
+  "record_type": "country",
+  "status": "sourced-enriched",
+  "identity": {
+    "id": "syria",
+    "name": "Syrian Arab Republic",
+    "iso2": "SY",
+    "iso3": "SYR"
+  },
+  "blueprint": "data/countries-blueprint.json",
+  "blueprint_version": "1.0.0",
+  "coverage": {
+    "node_instantiated": true,
+    "blueprint_inherited": true,
+    "observations": 10,
+    "relationships": 0,
+    "sources": 1,
+    "research_status": "ready-for-source-enrichment",
+    "canonicalized": true
+  },
+  "observations": {
+    "population": {
+      "value": 25620427,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SP.POP.TOTL",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "gdp": {
+      "value": 23737634644.3994,
+      "year": 2022,
+      "source": "world-bank",
+      "indicator": "NY.GDP.MKTP.CD",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "gdp_per_capita": {
+      "value": 1056.78264718197,
+      "year": 2022,
+      "source": "world-bank",
+      "indicator": "NY.GDP.PCAP.CD",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "gdp_per_capita_ppp": {
+      "value": 4905.15252202552,
+      "year": 2022,
+      "source": "world-bank",
+      "indicator": "NY.GDP.PCAP.PP.CD",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "real_growth": {
+      "value": -0.20247264200475,
+      "year": 2022,
+      "source": "world-bank",
+      "indicator": "NY.GDP.MKTP.KD.ZG",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "unemployment": {
+      "value": 13.569,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SL.UEM.TOTL.ZS",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "labour_force_participation": {
+      "value": 36.898,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SL.TLF.CACT.ZS",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "life_expectancy": {
+      "value": 72.56,
+      "year": 2024,
+      "source": "world-bank",
+      "indicator": "SP.DYN.LE00.IN",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "fertility": {
+      "value": 2.7,
+      "year": 2024,
+      "source": "world-bank",
+      "indicator": "SP.DYN.TFRT.IN",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "urbanization": {
+      "value": 72.0836286208518,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SP.URB.TOTL.IN.ZS",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    }
+  },
+  "relationships": [
+    [
+      "syria",
+      "turkey",
+      "border and regional relationship"
+    ],
+    [
+      "syria",
+      "lebanon",
+      "border and economic relationship"
+    ],
+    [
+      "syria",
+      "iraq",
+      "border and regional trade corridor"
+    ],
+    [
+      "syria",
+      "jordan",
+      "border and regional relationship"
+    ]
+  ],
+  "history": [],
+  "research_queue": [
+    "reconstruction finance",
+    "energy and electricity infrastructure",
+    "agriculture and water systems",
+    "transport corridor recovery",
+    "industrial rehabilitation",
+    "institutional and public-finance reconstruction"
+  ],
+  "provenance": {
+    "instantiated_at": "2026-09-07T12:37:31.426393+00:00",
+    "instantiation_method": "canonical country index + country blueprint",
+    "observation_policy": "No value is invented merely to fill a field; absent evidence remains missing/stale.",
+    "last_refresh": "2026-10-06T04:28:07.342073+00:00",
+    "source_priority": "international-official",
+    "historical_observations_preserved": true,
+    "enrichment_merged": true,
+    "enrichment_layer": "retired overlay merged into canonical country record"
+  },
+  "data_freshness": {
+    "last_refresh_attempt": "2026-09-07T21:59:50.659074+00:00",
+    "source": "world-bank"
+  },
+  "version": "1.0.0",
+  "country_id": "syria",
+  "official_name": "Syrian Arab Republic",
+  "capital": "Damascus",
+  "region": "Asia",
+  "subregion": "Western Asia",
+  "currency": "SYP",
+  "government": "transitional government",
+  "independence": "April 17, 1946",
+  "strategic_assets": [
+    "Eastern Mediterranean location",
+    "agricultural land and river systems",
+    "oil and gas resources",
+    "phosphate and mineral resources",
+    "historic trade corridors",
+    "industrial and urban infrastructure"
+  ],
+  "sources": [
+    "United Nations",
+    "World Bank",
+    "Government of Syria"
+  ],
+  "record_role": "canonical-country-record"
+}

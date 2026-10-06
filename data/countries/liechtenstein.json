@@ -1,0 +1,134 @@
+{
+  "record_version": "1.1.0",
+  "record_type": "country",
+  "status": "sourced-enriched",
+  "identity": {
+    "id": "liechtenstein",
+    "name": "Liechtenstein",
+    "iso2": "LI",
+    "iso3": "LIE"
+  },
+  "blueprint": "data/countries-blueprint.json",
+  "blueprint_version": "1.0.0",
+  "coverage": {
+    "node_instantiated": true,
+    "blueprint_inherited": true,
+    "observations": 7,
+    "relationships": 0,
+    "sources": 1,
+    "research_status": "ready-for-source-enrichment",
+    "canonicalized": true
+  },
+  "observations": {
+    "population": {
+      "value": 41024,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SP.POP.TOTL",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "gdp": {
+      "value": 8905764270.4054,
+      "year": 2024,
+      "source": "world-bank",
+      "indicator": "NY.GDP.MKTP.CD",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "gdp_per_capita": {
+      "value": 220167.225473557,
+      "year": 2024,
+      "source": "world-bank",
+      "indicator": "NY.GDP.PCAP.CD",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "life_expectancy": {
+      "value": 84.2,
+      "year": 2024,
+      "source": "world-bank",
+      "indicator": "SP.DYN.LE00.IN",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "fertility": {
+      "value": 1.37,
+      "year": 2024,
+      "source": "world-bank",
+      "indicator": "SP.DYN.TFRT.IN",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "urbanization": {
+      "value": 14.6298998993293,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SP.URB.TOTL.IN.ZS",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "internet_penetration": {
+      "value": 98.2641983,
+      "year": 2024,
+      "source": "world-bank",
+      "indicator": "IT.NET.USER.ZS",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    }
+  },
+  "relationships": [
+    [
+      "liechtenstein",
+      "switzerland",
+      "customs-and-monetary-integration"
+    ],
+    [
+      "liechtenstein",
+      "austria",
+      "border-and-trade"
+    ],
+    [
+      "liechtenstein",
+      "european-economic-area",
+      "market-integration"
+    ]
+  ],
+  "history": [],
+  "research_queue": [
+    "financial services",
+    "industrial specialization",
+    "tax system",
+    "cross-border labour",
+    "EU/EEA relations"
+  ],
+  "provenance": {
+    "instantiated_at": "2026-09-07T12:37:31.426393+00:00",
+    "instantiation_method": "canonical country index + country blueprint",
+    "observation_policy": "No value is invented merely to fill a field; absent evidence remains missing/stale.",
+    "last_refresh": "2026-10-06T04:28:07.342073+00:00",
+    "source_priority": "international-official",
+    "historical_observations_preserved": true,
+    "enrichment_merged": true,
+    "enrichment_layer": "retired overlay merged into canonical country record"
+  },
+  "data_freshness": {
+    "last_refresh_attempt": "2026-09-07T21:59:50.659074+00:00",
+    "source": "world-bank"
+  },
+  "version": "1.0.0",
+  "country_id": "liechtenstein",
+  "official_name": "Principality of Liechtenstein",
+  "capital": "Vaduz",
+  "region": "Europe",
+  "subregion": "Western Europe",
+  "currency": "CHF",
+  "government": "constitutional hereditary monarchy",
+  "strategic_assets": [
+    "specialized manufacturing",
+    "financial services",
+    "Alpine location",
+    "high-value exports"
+  ],
+  "record_role": "canonical-country-record"
+}

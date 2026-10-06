@@ -1,0 +1,170 @@
+{
+  "id": "neural-development-lineage-atlas",
+  "version": "1.0.0",
+  "updated": "2026-09-20",
+  "title": "Neural Development & Lineage Atlas — Neural Tube to Adult House, Brainstem and Ladder",
+  "status": "specialist developmental neurobiology owner",
+  "purpose": "Explain how the adult BODY rooms arise from embryonic patterning so adult anatomy is understood as a developmental transformation rather than a static parts list.",
+  "core_sequence": [
+    {
+      "stage": "neural induction / plate",
+      "process": "Ectodermal neural plate is specified and folds toward a neural tube.",
+      "adult_relevance": "Establishes the continuous CNS precursor before brain/spinal regionalization."
+    },
+    {
+      "stage": "neurulation",
+      "process": "Neural folds elevate and fuse; closure proceeds while neural crest separates and migrates.",
+      "adult_relevance": "Neural tube produces CNS; neural crest contributes many PNS neurons/glia plus non-neural derivatives."
+    },
+    {
+      "stage": "primary vesicles",
+      "process": "Rostral neural tube forms prosencephalon, mesencephalon and rhombencephalon.",
+      "adult_relevance": "First major regional partition of forebrain, midbrain and hindbrain."
+    },
+    {
+      "stage": "secondary vesicles",
+      "process": "Prosencephalon subdivides into telencephalon+diencephalon; rhombencephalon into metencephalon+myelencephalon; mesencephalon persists.",
+      "adult_relevance": "Creates developmental owners for cortex/basal ganglia, thalamus/hypothalamus/epithalamus, midbrain, pons/cerebellum and medulla."
+    },
+    {
+      "stage": "ventricular neuroepithelium",
+      "process": "Neuroepithelial progenitors line the ventricular zone and transition into radial glial progenitors.",
+      "adult_relevance": "Ventricular surfaces are developmental germinal interfaces, not empty leftover cavities."
+    },
+    {
+      "stage": "neurogenesis / migration",
+      "process": "Radial glia and intermediate progenitors generate neurons; cortical excitatory neurons migrate radially, producing an inside-out cortical layering pattern.",
+      "adult_relevance": "Adult laminae encode developmental birth order and migration history."
+    },
+    {
+      "stage": "interneuron migration",
+      "process": "Many cortical inhibitory interneurons arise in ventral telencephalic germinal zones and migrate tangentially into cortex.",
+      "adult_relevance": "Cortical cell identity cannot be understood as purely local radial lineage."
+    },
+    {
+      "stage": "gliogenesis",
+      "process": "Progenitors later generate astrocytic and oligodendroglial lineages; microglia arise from a distinct myeloid lineage rather than neuroectoderm.",
+      "adult_relevance": "The adult CNS is a mixed-lineage cellular ecosystem."
+    },
+    {
+      "stage": "axon guidance / tract formation",
+      "process": "Growing axons respond to molecular guidance cues and activity-dependent refinement.",
+      "adult_relevance": "Adult white-matter roads are developmentally constructed trajectories, not wires inserted after regions form."
+    },
+    {
+      "stage": "synaptogenesis / pruning / myelination",
+      "process": "Connections proliferate, stabilize, prune and myelinate over prolonged developmental periods.",
+      "adult_relevance": "Circuit architecture remains developmentally plastic well beyond gross anatomical formation."
+    }
+  ],
+  "vesicle_map": [
+    {
+      "developmental": "telencephalon",
+      "adult": [
+        "cerebral cortex",
+        "hippocampal formation",
+        "amygdala",
+        "basal ganglia",
+        "olfactory forebrain"
+      ],
+      "cavity": "lateral ventricles",
+      "project_neighbor": "upper distributed rooms / memory / affect / action selection"
+    },
+    {
+      "developmental": "diencephalon",
+      "adult": [
+        "thalamus",
+        "hypothalamus",
+        "epithalamus/pineal",
+        "subthalamic systems",
+        "retina/optic structures in developmental relation"
+      ],
+      "cavity": "third ventricle",
+      "project_neighbor": "House / Steward / Door / Inner Court"
+    },
+    {
+      "developmental": "mesencephalon",
+      "adult": [
+        "midbrain tectum",
+        "tegmentum",
+        "PAG",
+        "substantia nigra",
+        "oculomotor/trochlear systems"
+      ],
+      "cavity": "cerebral aqueduct",
+      "project_neighbor": "narrow passage / orienting / threshold-response zone"
+    },
+    {
+      "developmental": "metencephalon",
+      "adult": [
+        "pons",
+        "cerebellum"
+      ],
+      "cavity": "upper fourth ventricle",
+      "project_neighbor": "bridge + correction arbor"
+    },
+    {
+      "developmental": "myelencephalon",
+      "adult": [
+        "medulla"
+      ],
+      "cavity": "lower fourth ventricle",
+      "project_neighbor": "visceral/breath/return integration"
+    },
+    {
+      "developmental": "caudal neural tube",
+      "adult": [
+        "spinal cord"
+      ],
+      "cavity": "central canal developmental continuation",
+      "project_neighbor": "Ladder interior"
+    }
+  ],
+  "dorsal_ventral_patterning": {
+    "principle": "Neural tube dorsal-ventral identities are patterned by opposing signaling systems, classically including dorsal BMP/TGF-β-family influence and ventral Sonic hedgehog influence from notochord/floor plate.",
+    "consequence": "Sensory-processing territories become broadly dorsal and motor territories broadly ventral in spinal cord; the opened brainstem rearranges these columns around the fourth ventricle.",
+    "project_use": "Explains why the cranial/brainstem functional-column atlas and spinal dorsal/ventral rooms share a developmental grammar.",
+    "boundary": "Developmental morphogen gradients are molecular mechanisms, not spiritual ascent/descent forces."
+  },
+  "neural_crest_bridge": {
+    "role": "Neural crest emigrates from neural-fold borders and contributes extensively to peripheral sensory/autonomic ganglia, Schwann cells and other derivatives.",
+    "integration": "Provides developmental continuity between central Ladder and peripheral roots/ganglia without implying that CNS and PNS share identical mature cell architecture."
+  },
+  "developmental_questions": [
+    "Which adult House rooms share diencephalic developmental lineage?",
+    "How does opening of the fourth ventricle rotate/reposition brainstem sensory and motor columns?",
+    "How do spinal cord segments and peripheral ganglia acquire distinct rostrocaudal identities?",
+    "How does prolonged human cortical development reshape simple adult room labels?",
+    "Which project symbolic boundaries accidentally confuse developmental ancestry with adult function?"
+  ],
+  "boundaries": [
+    "Embryological ancestry does not determine one fixed adult function.",
+    "Human cortical development has species-specific timing and progenitor features; rodent developmental maps are informative but not complete human substitutes.",
+    "Microglia have a distinct myeloid developmental origin and should not be grouped with neural-tube-derived glia.",
+    "Neural crest and neural tube are developmentally adjacent but yield different mature structures."
+  ],
+  "sources": [
+    {
+      "topic": "neural tube differentiation / primary vesicles",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK10034/"
+    },
+    {
+      "topic": "major brain subdivisions",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK10954/"
+    },
+    {
+      "topic": "human brain developmental genetics and radial glia",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10926850/"
+    },
+    {
+      "topic": "neural crest and dorsal-ventral patterning",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK10132/"
+    }
+  ],
+  "connections": [
+    "knowledge/body/brain-room-deep-atlas.json",
+    "knowledge/body/cranial-brainstem-room-atlas.json",
+    "knowledge/body/spinal-cord-microcircuit-atlas.json",
+    "knowledge/body/vertebral-33-room-atlas.json"
+  ]
+}

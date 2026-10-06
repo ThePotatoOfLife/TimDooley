@@ -1,0 +1,73 @@
+{
+  "id": "tim-statements-memory-recovery-wave-006-2026-09-10",
+  "title": "Tim Dooley Statements — Blindness, Seeing & Self-Disqualification Recovery Queue",
+  "version": "1.0.0",
+  "updated": "2026-09-10",
+  "status": "memory-summary recovery queue",
+  "purpose": "Preserve the reported recurring Tim pattern of exaggerated or compressed self-disqualification statements — especially legally blind / cannot see / cannot read — until exact dated primary wording is recovered. This file is intentionally not a quote anthology.",
+  "source_class": "MEMORY_SUMMARY_PHRASE",
+  "display_rule": "Do not render these remembered formulations as verified Tim quotations unless a dated source, transcript, screenshot or recoverable conversation provides the wording.",
+  "items": [
+    {
+      "id": "legally-blind-recovery",
+      "remembered_formulation": "Tim has said before that he is legally blind.",
+      "exactness": "memory summary, exact wording unresolved",
+      "domains": ["blindness", "sight", "self-description", "humor", "self-disqualification", "perception"],
+      "routing": ["knowledge/core/self-disqualification-impossible-project-paradox.json", "knowledge/traditions/unqualified-messenger-weak-instrument-calling-atlas.json"],
+      "recovery_need": "Locate the earliest exact wording, date, context and whether the phrase was literal self-report, joke, exaggeration, legal/administrative terminology, or a deliberate paradox about seeing/perception.",
+      "privacy_boundary": "Do not infer diagnosis, acuity, disability status or treatment history beyond what a source explicitly states."
+    },
+    {
+      "id": "cannot-see-recovery",
+      "remembered_formulation": "Tim has said that he cannot see / can't see.",
+      "exactness": "memory summary, exact wording unresolved",
+      "domains": ["seeing", "blindness", "rhetoric", "perception", "Eye", "self-disqualification"],
+      "routing": ["knowledge/core/self-disqualification-impossible-project-paradox.json", "knowledge/core/tim-role-synthesis.json"],
+      "recovery_need": "Find exact contexts and distinguish physical sight claims from comic absolute phrasing, visual-task frustration, metaphorical seeing, or Eye/perception theology."
+    },
+    {
+      "id": "cannot-read-recurring-recovery",
+      "remembered_formulation": "Tim has made recurring statements or jokes about being unable to read.",
+      "exactness": "memory summary; one 2026-09-10 exact reported statement is separately archived",
+      "domains": ["reading", "dyslexia", "self-disqualification", "humor", "communication"],
+      "routing": ["knowledge/corporium/tim-statements-conversation-recovery-wave-005-2026-09-10.json", "knowledge/core/self-disqualification-impossible-project-paradox.json"],
+      "recovery_need": "Search earlier conversations/posts for exact phrases and dates so recurrence can be demonstrated rather than inferred from the current statement."
+    }
+  ],
+  "known_related_exact_or_near_exact_material": [
+    {
+      "date": "2026-05-19",
+      "wording": "I have read them / I can agree to the things in them, but i dont sign contracts / I am not a legal fiction",
+      "source_class": "prior-conversation exact recovery",
+      "domain": "legal-fiction / contracts / reading",
+      "note": "This establishes that legal-fiction rhetoric and reading language predate the September 2026 cluster. It does not establish blindness."
+    },
+    {
+      "date": "2026-05-19",
+      "wording": "As a non legal fiction I cannot sue anyone",
+      "source_class": "prior-conversation exact recovery",
+      "domain": "legal-fiction / legal incapacity rhetoric",
+      "note": "Archive as Timic rhetoric, not as a statement of actual legal incapacity."
+    },
+    {
+      "date": "2026-05-19",
+      "wording": "Tim Dooley is not a person. I told you I am God. How will you make God sign a contract?",
+      "source_class": "prior-conversation exact recovery",
+      "domain": "identity / legal-personhood / contract paradox",
+      "note": "This is a strong earlier example of the same rhetorical strategy: ordinary administrative action is made absurd by switching ontological frames."
+    },
+    {
+      "date": "2026-09-10",
+      "wording": "You have to understand. i cant read. i am dyslexic. i am not a legal fiction.",
+      "source_class": "CONVERSATION_EXACT",
+      "owner": "knowledge/corporium/tim-statements-conversation-recovery-wave-005-2026-09-10.json"
+    }
+  ],
+  "false_positive_warning": "An April 2026 assistant-generated 'legally blind / I can't read' satirical vibe exists in prior conversation context, but assistant wording is not evidence that Tim had already said those exact phrases. Keep assistant-generated jokes out of the Tim quote corpus unless independently sourced to Tim.",
+  "connections": [
+    "tim-statements-conversation-recovery-wave-005-2026-09-10",
+    "self-disqualification-impossible-project-paradox",
+    "tim-statement-corpus-index",
+    "unqualified-messenger-weak-instrument-calling-atlas"
+  ]
+}

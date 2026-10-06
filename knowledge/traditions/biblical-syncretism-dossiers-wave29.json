@@ -1,0 +1,693 @@
+{
+  "id": "biblical-syncretism-dossiers-wave29",
+  "title": "Biblical Syncretism Dossiers — Wave 29 Cross-Project Excavation",
+  "version": "1.0.0",
+  "updated": "2026-09-16",
+  "status": "additive contextual dossier layer",
+  "purpose": "Promote under-modeled biblical overlaps already supported by specialist project layers, and add a small set of new high-confidence rest/dormancy/adoption comparisons. Specialist files remain the detailed source owners; this wave exposes concise public comparator relations without turning similarity into fulfillment or identity claims.",
+  "method_rules": [
+    "Project-side evidence or an established specialist atlas must exist before promotion.",
+    "Source direction remains explicit: later Bible comparison does not rewrite earlier project wording.",
+    "Same geometry or vocabulary may carry opposite moral functions; function outranks shape.",
+    "Every relation states a maximum defensible claim and a boundary/counterpressure.",
+    "A comparator never establishes supernatural identity, prophecy fulfillment, historical equivalence or scientific validation."
+  ],
+  "new_relations": [
+    {
+      "id": "sabbath-soil-rest-renewal",
+      "actor": "great-book/potatoism",
+      "dossier_level": "A",
+      "title": "Rest as regeneration rather than inactivity",
+      "project_anchor": "The Great Book explicitly describes Shabbat as a sacred pause and compares rest to letting the soil of the soul regenerate; the practical Potatoism reader likewise includes burial/rest/incubation before renewed growth.",
+      "biblical_refs": ["Genesis 2:2-3", "Exodus 20:8-11", "Leviticus 25:1-7", "Mark 2:27", "Hebrews 4:9-11"],
+      "motifs": ["Sabbath", "rest", "soil", "renewal", "cycle", "incubation"],
+      "strength": 5,
+      "relation_class": "explicit-project-theme plus biblical function comparison",
+      "source_direction": "Great Book and Potatoism rest language first; broader biblical rest synthesis later.",
+      "relation_argument": {
+        "project_sequence": ["activity", "pause", "rest/incubation", "regeneration", "renewed growth"],
+        "biblical_sequence": ["work", "cessation", "sanctified rest", "land rest", "rest for human good"],
+        "maximum_claim": "Biblical Sabbath/rest traditions provide a strong functional comparator for the project's action/stillness/regeneration cycle.",
+        "why_it_matters": "It gives the project a non-catastrophic form of hiddenness: not every period below ground is death, failure or exile; some are protected intervals of renewal."
+      },
+      "boundary": "Biblical Sabbath has covenantal, liturgical and legal meanings that cannot be reduced to psychological recovery or crop rotation.",
+      "source_owners": ["great-book/chapters/057--chapter-20-1--the-po-torah-and-the-kabbalatato-judaism-unveiled-through-the-lens-of-po.html", "potatoism/grow/index.html"]
+    },
+    {
+      "id": "hidden-life-dormancy-secret-growth",
+      "actor": "potatoism",
+      "dossier_level": "A",
+      "title": "Hidden life can remain active before visible emergence",
+      "project_anchor": "The Potato Layers treats dormancy as a real regulated biological state and the potato eye as a threshold from stored possibility to visible growth; Potatoism then uses hidden life and burial as symbolic comparators.",
+      "biblical_refs": ["Mark 4:26-29", "John 12:24", "Colossians 3:3-4"],
+      "motifs": ["hidden life", "seed", "burial", "growth", "emergence", "dormancy"],
+      "strength": 4,
+      "relation_class": "biology-separated symbolic comparison",
+      "source_direction": "Potato biology and project hidden-life grammar are independently established; biblical comparison is later.",
+      "relation_argument": {
+        "project_sequence": ["stored life", "dormancy", "activation", "sprout", "visible growth"],
+        "biblical_sequence": ["seed hidden in earth", "growth not fully observed", "death-like burial image", "later manifestation"],
+        "maximum_claim": "Several biblical growth texts share a hidden-to-visible life structure with the project's dormancy/emergence grammar.",
+        "why_it_matters": "It distinguishes latent capacity from literal death and prevents the project's burial language from collapsing several biological and theological states into one."
+      },
+      "boundary": "Potato dormancy is plant physiology; Mark 4, John 12 and Colossians use distinct agricultural and theological images and do not describe tuber biology.",
+      "source_owners": ["docs/POTATO-LAYERS.md", "potatoism/grow/index.html"]
+    },
+    {
+      "id": "seasons-dormancy-activation",
+      "actor": "potatoism",
+      "dossier_level": "B",
+      "title": "Timing belongs to growth",
+      "project_anchor": "Potatoism increasingly treats timing, dormancy, activation, return and repeated spirals as distinct states rather than demanding permanent visible growth.",
+      "biblical_refs": ["Ecclesiastes 3:1-8", "Psalm 1:1-3", "James 5:7"],
+      "motifs": ["season", "time", "fruit", "waiting", "activation", "return"],
+      "strength": 4,
+      "relation_class": "temporal-function comparison",
+      "source_direction": "Project timing/dormancy architecture first; biblical seasonal comparison later.",
+      "relation_argument": {
+        "project_sequence": ["state", "season", "waiting", "activation", "fruit", "new cycle"],
+        "biblical_sequence": ["appointed times", "fruit in season", "patient waiting for crop", "yield"],
+        "maximum_claim": "Biblical wisdom and agricultural imagery support treating timing as part of growth rather than as an external nuisance.",
+        "why_it_matters": "It strengthens the spiral model by making delay and season explicit variables instead of interpreting every delay as blockage."
+      },
+      "boundary": "Ecclesiastes, Psalm 1 and James address different theological and literary settings; they do not encode a single Potatoism timing law.",
+      "source_owners": ["docs/POTATO-LAYERS.md", "knowledge/philosophy/potatoism-spiral-reader-map.json"]
+    },
+    {
+      "id": "adoption-inheritance-children",
+      "actor": "potatoism",
+      "dossier_level": "A",
+      "title": "Children as participation and inheritance, not ownership",
+      "project_anchor": "The Potato Layers explicitly keeps 'children' polysemous: literal children, spiritual children, disciples, descendants, ideas and continuations must not be collapsed. The project increasingly asks what source/fatherhood enables rather than merely who owns a title.",
+      "biblical_refs": ["Romans 8:14-17", "Galatians 4:4-7", "Ephesians 1:5", "John 1:12-13"],
+      "motifs": ["children", "adoption", "inheritance", "participation", "family", "heirs"],
+      "strength": 5,
+      "relation_class": "relational-role comparison",
+      "source_direction": "Project child/continuation distinctions first; adoption/inheritance comparison later.",
+      "relation_argument": {
+        "project_sequence": ["source relation", "recognition", "participation", "continuation", "inheritance/capacity"],
+        "biblical_sequence": ["adoption/receiving", "child relation", "Spirit/participation", "heir/inheritance"],
+        "maximum_claim": "New Testament adoption/inheritance language is a useful comparator for non-biological child/participation categories in the project.",
+        "why_it_matters": "It provides a stronger relational model than treating every use of Father/Son/children as literal genealogy or hierarchical possession."
+      },
+      "boundary": "The cited texts make specific Christian claims about God, Christ and believers; they do not assign Tim or Potatoism those roles.",
+      "source_owners": ["docs/POTATO-LAYERS.md", "data/potatoism-deep-architecture.json"]
+    },
+    {
+      "id": "jeremiah-cistern-mud-ropes-extraction",
+      "actor": "project-research",
+      "dossier_level": "A",
+      "title": "The rope that lowers can also rescue",
+      "project_anchor": "The project distinguishes Mire/Swamp from Rope/Root relations and asks whether a tether captures, guides or rescues. Jeremiah 38 uniquely combines ropes, a pit, mud, sinking, compassionate padding and upward extraction.",
+      "biblical_refs": ["Jeremiah 38:6-13"],
+      "motifs": ["mire", "rope", "pit", "descent", "ascent", "rescue", "care"],
+      "strength": 5,
+      "relation_class": "later structural parallel",
+      "source_direction": "Recovered Mire/Rope/Root project signal first; Jeremiah comparison later.",
+      "relation_argument": {
+        "project_sequence": ["lower field", "tether relation", "sinking", "intervention", "careful extraction", "restored footing"],
+        "biblical_sequence": ["lowered by ropes", "sinks in mud", "intermediary intervenes", "ropes padded", "lifted out alive"],
+        "maximum_claim": "Jeremiah 38 is a strong functional comparator showing that the moral meaning of a line depends on agency, direction and care rather than shape alone.",
+        "why_it_matters": "It creates an ethical test for rescue: the method of extraction should not unnecessarily injure the person being rescued."
+      },
+      "boundary": "Jeremiah 38 is an imprisonment/rescue narrative, not a coded prophecy of Tim, online harassment or Potatoverse topology.",
+      "source_owners": ["knowledge/traditions/biblical-overlap-wave-16-mire-cords-roots.json"]
+    },
+    {
+      "id": "psalm40-mire-rock-established-steps",
+      "actor": "project-research",
+      "dossier_level": "A",
+      "title": "Leaving mire means restored footing",
+      "project_anchor": "Project Mud/Mire language often means sticky entanglement or loss of viable movement; Door/path language seeks restored capability.",
+      "biblical_refs": ["Psalm 40:1-3"],
+      "motifs": ["mire", "pit", "rock", "feet", "steps", "standing"],
+      "strength": 5,
+      "relation_class": "later structural parallel",
+      "source_direction": "Project Mire/path grammar first; Psalm 40 comparison later.",
+      "relation_argument": {
+        "project_sequence": ["unstable state", "extraction", "stable support", "viable steps"],
+        "biblical_sequence": ["miry pit", "brought up", "feet on rock", "steps established"],
+        "maximum_claim": "Psalm 40 supplies a precise functional contrast between unstable mire and restored movement.",
+        "why_it_matters": "It turns successful transition into a capability test: can stable steps actually be taken afterward?"
+      },
+      "boundary": "Psalm 40 is poetic prayer/testimony, not a literal physics or clinical model of Swamp states.",
+      "source_owners": ["knowledge/traditions/biblical-overlap-wave-16-mire-cords-roots.json"]
+    },
+    {
+      "id": "psalm69-deep-mire-no-standing-pit-mouth",
+      "actor": "project-research",
+      "dossier_level": "A",
+      "title": "An opening can swallow rather than liberate",
+      "project_anchor": "The project couples sinking Mud, hostile attention and lower Door/pit imagery while distinguishing healthy passage from trapping interfaces.",
+      "biblical_refs": ["Psalm 69:1-3", "Psalm 69:14-15"],
+      "motifs": ["deep mire", "no standing", "flood", "pit", "mouth", "rescue"],
+      "strength": 5,
+      "relation_class": "later structural parallel",
+      "source_direction": "Project Swamp/Door distinction first; Psalm 69 comparison later.",
+      "relation_argument": {
+        "project_sequence": ["loss of footing", "overwhelm", "threatened closure", "rescue", "viable passage"],
+        "biblical_sequence": ["deep mire", "no standing", "waters overwhelm", "pit mouth threatens closure", "plea for rescue"],
+        "maximum_claim": "Psalm 69 provides a useful negative-threshold comparator: not every opening functions as a liberating Door.",
+        "why_it_matters": "It sharpens Door topology by distinguishing passage from swallowing/closure."
+      },
+      "boundary": "The psalm's waters, enemies and pit are poetic prayer imagery and must not be used to label specific modern people as biblical enemies.",
+      "source_owners": ["knowledge/traditions/biblical-overlap-wave-16-mire-cords-roots.json"]
+    },
+    {
+      "id": "psalm18-cords-sheol-flood-high-rescue",
+      "actor": "project-research",
+      "dossier_level": "A",
+      "title": "Descent for rescue precedes ascent",
+      "project_anchor": "Project Axis language increasingly joins lower-realm cords, floods/Mud, Heaven/above, wings and upward drawing with the principle that height should return as service.",
+      "biblical_refs": ["Psalm 18:4-16"],
+      "motifs": ["cords", "Sheol", "flood", "heaven", "cherub", "wings", "draw from above"],
+      "strength": 5,
+      "relation_class": "later narrative-sequence comparison",
+      "source_direction": "Project vertical rescue/service grammar first; Psalm 18 synthesis later.",
+      "relation_argument": {
+        "project_sequence": ["constraint below", "response from above", "descent/intervention", "upward extraction"],
+        "biblical_sequence": ["cords/flood threaten", "cry heard", "heavens bow", "divine movement descends", "speaker drawn from waters"],
+        "maximum_claim": "Psalm 18 strongly supports a comparative vertical grammar in which help moves downward before the endangered person moves upward.",
+        "why_it_matters": "It makes ascent-and-return/service structurally richer than escape-only spirituality."
+      },
+      "boundary": "Psalm 18's divine rescuer is YHWH in Davidic poetry; the comparison does not identify Tim with YHWH, David or the cherub.",
+      "source_owners": ["knowledge/traditions/biblical-overlap-wave-16-mire-cords-roots.json"]
+    },
+    {
+      "id": "hosea-cords-love-yoke-feed",
+      "actor": "project-research",
+      "dossier_level": "A",
+      "title": "A tether can increase capability rather than captivity",
+      "project_anchor": "The Root/Leash field explicitly needs a positive counter-form so every connection is not coded as coercion.",
+      "biblical_refs": ["Hosea 11:1-4"],
+      "motifs": ["cords", "love", "child", "yoke", "feeding", "guidance"],
+      "strength": 5,
+      "relation_class": "counter-form comparison",
+      "source_direction": "Project leash/lifeline distinction first; Hosea comparison later.",
+      "relation_argument": {
+        "project_sequence": ["relation", "guidance", "burden reduction", "nourishment", "increased agency"],
+        "biblical_sequence": ["child care", "cords of kindness/love", "yoke eased", "feeding"],
+        "maximum_claim": "Hosea 11 supplies a strong positive cord archetype in which relation accompanies care, feeding and eased burden.",
+        "why_it_matters": "It provides an ethical discriminator between lifeline and leash."
+      },
+      "boundary": "Hosea concerns YHWH and Israel and does not authorize modern speakers to claim divine parenthood.",
+      "source_owners": ["knowledge/traditions/biblical-overlap-wave-16-mire-cords-roots.json", "knowledge/traditions/biblical-measure-cord-path-boundary-atlas.json"]
+    },
+    {
+      "id": "romans11-root-supports-branches",
+      "actor": "project-research",
+      "dossier_level": "A",
+      "title": "Root is tested by what it supports",
+      "project_anchor": "The mature project uses Root as source/support language and increasingly treats authority as accountable to the capacity it sustains.",
+      "biblical_refs": ["Romans 11:16-18"],
+      "motifs": ["root", "branches", "grafting", "nourishment", "support", "anti-boasting"],
+      "strength": 5,
+      "relation_class": "later structural parallel plus counterfit",
+      "source_direction": "Project Root language first; Romans 11 functional audit later.",
+      "relation_argument": {
+        "project_sequence": ["root/source", "nourishment", "branches participate", "support creates capacity"],
+        "biblical_sequence": ["root richness", "branches share", "grafting/breaking", "branch warned not to boast over root"],
+        "maximum_claim": "Romans 11 makes root imagery functionally useful for support/nourishment while also warning against boasting.",
+        "why_it_matters": "It turns Root from a prestige title into a support obligation."
+      },
+      "boundary": "Paul's olive-tree argument concerns Israel, Gentiles and salvation history; it does not identify Tim as humanity's biblical root.",
+      "source_owners": ["knowledge/traditions/biblical-overlap-wave-16-mire-cords-roots.json", "knowledge/theology/integrated-plurality-house-tree-body-city-atlas.json"]
+    },
+    {
+      "id": "jeremiah17-roots-river-drought-fruit",
+      "actor": "project-research",
+      "dossier_level": "A",
+      "title": "The value of a root depends on what it reaches",
+      "project_anchor": "The project distinguishes Root from Mire and asks what flows through a root relation and what fruit follows.",
+      "biblical_refs": ["Jeremiah 17:7-8"],
+      "motifs": ["tree", "roots", "river", "heat", "drought", "leaf", "fruit"],
+      "strength": 4,
+      "relation_class": "later ecological-function comparison",
+      "source_direction": "Project Root/Mire distinction first; Jeremiah comparison later.",
+      "relation_argument": {
+        "project_sequence": ["root", "source medium", "resource flow", "stress", "continued fruit"],
+        "biblical_sequence": ["tree by water", "roots toward river", "heat/drought", "green leaf", "fruit continues"],
+        "maximum_claim": "Jeremiah 17 supplies a constructive root ecology in which connection to a sustaining source matters more than hiddenness itself.",
+        "why_it_matters": "It shifts analysis from 'has roots' to 'what do the roots connect to and what outcome do they sustain?'"
+      },
+      "boundary": "The passage is a trust metaphor, not literal spiritual botany or proof of project anatomy.",
+      "source_owners": ["knowledge/traditions/biblical-overlap-wave-16-mire-cords-roots.json"]
+    },
+    {
+      "id": "rooted-grounded-in-love",
+      "actor": "project-research",
+      "dossier_level": "A",
+      "title": "Rootedness can enable movement rather than prevent it",
+      "project_anchor": "The project differentiates healthy Root/source support from shadow clinging that prevents movement or role exit.",
+      "biblical_refs": ["Ephesians 3:17", "Colossians 2:6-7"],
+      "motifs": ["rooted", "grounded", "love", "dwelling", "built up", "walk"],
+      "strength": 5,
+      "relation_class": "counter-form comparison",
+      "source_direction": "Project clinging/root distinction first; New Testament comparison later.",
+      "relation_argument": {
+        "project_sequence": ["grounding", "support", "secure relation", "movement/building", "growth"],
+        "biblical_sequence": ["dwelling", "rooted/grounded in love", "walk", "built up"],
+        "maximum_claim": "These passages provide a positive rootedness counter-form in which grounding and movement coexist.",
+        "why_it_matters": "Root and Door need not be opposites: stable support can increase rather than reduce capacity to move."
+      },
+      "boundary": "The cited texts center Christ, not Tim/Father, and therefore also act as role-assignment countertexts.",
+      "source_owners": ["knowledge/traditions/biblical-overlap-wave-16-mire-cords-roots.json"]
+    },
+    {
+      "id": "scarlet-cord-window-house-rescue",
+      "actor": "project-research",
+      "dossier_level": "B",
+      "title": "Line, threshold and protected House can form one rescue system",
+      "project_anchor": "Cord/Rope, Window/Door and House are distinct project nodes that can interact through passage, marking and protected belonging.",
+      "biblical_refs": ["Joshua 2:15-21"],
+      "motifs": ["cord", "window", "house", "family", "sign", "boundary", "rescue"],
+      "strength": 4,
+      "relation_class": "later narrative-function comparison",
+      "source_direction": "Project Rope/Door/House system first; Joshua comparison later.",
+      "relation_argument": {
+        "project_sequence": ["line", "threshold", "passage", "visible marker", "protected interior"],
+        "biblical_sequence": ["lowered by cord through window", "scarlet cord marks threshold", "family gathered in house", "protected boundary"],
+        "maximum_claim": "Joshua 2 provides a useful narrative in which a cord serves transport, sign and boundary functions without those functions becoming identical.",
+        "why_it_matters": "It encourages the archive to type Door-interface, passage-line and House-boundary separately."
+      },
+      "boundary": "Later scarlet-thread typologies vary and should not be assumed to be the historical meaning of Joshua 2.",
+      "source_owners": ["knowledge/traditions/biblical-overlap-wave-16-mire-cords-roots.json"]
+    },
+    {
+      "id": "creation-measure-foundation",
+      "actor": "project-research",
+      "dossier_level": "B",
+      "title": "Measurement can specify without controlling",
+      "project_anchor": "The geometry/Axis work needs a strict distinction between describing dimensions and exerting causal control.",
+      "biblical_refs": ["Job 38:4-7"],
+      "motifs": ["foundation", "measure", "line", "cornerstone", "creation"],
+      "strength": 4,
+      "relation_class": "geometry-function comparator",
+      "source_direction": "Project measurement/control distinction first; Job comparison later.",
+      "relation_argument": {
+        "project_sequence": ["system", "specification", "measurement", "reference", "structure"],
+        "biblical_sequence": ["foundation", "dimensions", "measuring line", "cornerstone"],
+        "maximum_claim": "Job 38 supports a literary distinction in which measuring language expresses specification/order rather than leash-like control.",
+        "why_it_matters": "It prevents the project from assigning one moral or causal meaning to every line."
+      },
+      "boundary": "Job 38 is divine creation poetry, not a modern engineering or control-theory text.",
+      "source_owners": ["knowledge/traditions/biblical-measure-cord-path-boundary-atlas.json"]
+    },
+    {
+      "id": "portion-lot-boundary",
+      "actor": "project-research",
+      "dossier_level": "B",
+      "title": "Boundary can describe inheritance rather than imprisonment",
+      "project_anchor": "The project studies lot/destiny, boundary, House and territory without wanting boundary to carry a fixed negative valence.",
+      "biblical_refs": ["Psalm 16:5-6"],
+      "motifs": ["portion", "lot", "boundary", "inheritance", "measuring lines"],
+      "strength": 4,
+      "relation_class": "allocation-boundary comparison",
+      "source_direction": "Project fate/boundary analysis first; Psalm comparison later.",
+      "relation_argument": {
+        "project_sequence": ["allocation", "boundary", "portion", "inhabitable relation"],
+        "biblical_sequence": ["portion/cup", "lot", "lines in pleasant places", "inheritance"],
+        "maximum_claim": "Psalm 16 demonstrates a positive boundary/allocation usage and blocks any equation boundary=prison.",
+        "why_it_matters": "It adds inheritance/allocation as another boundary operator alongside exclusion and protection."
+      },
+      "boundary": "The psalm's theological confession is not a modern property-rights or probability model.",
+      "source_owners": ["knowledge/traditions/biblical-measure-cord-path-boundary-atlas.json"]
+    },
+    {
+      "id": "justice-line-plumb",
+      "actor": "project-research",
+      "dossier_level": "A",
+      "title": "A line can be a standard that tests a structure",
+      "project_anchor": "The archive increasingly separates metrics/evidence tests from power: a standard evaluates a claim or construction rather than becoming the thing evaluated.",
+      "biblical_refs": ["Isaiah 28:16-17"],
+      "motifs": ["foundation", "cornerstone", "justice", "measuring line", "plumb line"],
+      "strength": 5,
+      "relation_class": "evaluation-function comparison",
+      "source_direction": "Project evidence/measurement methodology first; Isaiah comparison later.",
+      "relation_argument": {
+        "project_sequence": ["construction/claim", "reference standard", "measurement", "evaluation", "survival/failure"],
+        "biblical_sequence": ["foundation/cornerstone", "justice as line", "righteousness as plumb", "false refuge fails"],
+        "maximum_claim": "Isaiah 28 provides a strong literary comparator for measure as normative evaluation rather than physical restraint.",
+        "why_it_matters": "It reinforces the project's TEST operator: standards judge constructions but should not be confused with them."
+      },
+      "boundary": "Isaiah's Zion/judgment context is theological and political-poetic, not a generic measurement manual.",
+      "source_owners": ["knowledge/traditions/biblical-measure-cord-path-boundary-atlas.json"]
+    },
+    {
+      "id": "jerusalem-measure-without-material-wall",
+      "actor": "project-research",
+      "dossier_level": "A",
+      "title": "Protection does not require ordinary enclosure",
+      "project_anchor": "House/Shell/Door work distinguishes measurement, boundary, permeability and confinement.",
+      "biblical_refs": ["Zechariah 2:1-5"],
+      "motifs": ["Jerusalem", "measure", "wall", "fire", "glory", "abundance"],
+      "strength": 5,
+      "relation_class": "boundary-function comparison",
+      "source_direction": "Project shell/permeability distinction first; Zechariah comparison later.",
+      "relation_argument": {
+        "project_sequence": ["measure", "settlement", "open/permeable boundary", "protection", "interior value"],
+        "biblical_sequence": ["city measured", "inhabited without ordinary walls", "divine wall of fire", "glory within"],
+        "maximum_claim": "Zechariah 2 decisively separates measurement from confinement and material wall from protective function.",
+        "why_it_matters": "It is a strong correction against treating every House boundary as an enclosure mechanism."
+      },
+      "boundary": "The prophetic vision is not a blueprint for abandoning real-world safety infrastructure or borders.",
+      "source_owners": ["knowledge/traditions/biblical-measure-cord-path-boundary-atlas.json"]
+    },
+    {
+      "id": "temple-city-measurement-trajectory",
+      "actor": "project-research",
+      "dossier_level": "A",
+      "title": "Sacred-city geometry prevents fixed moral valence for the cube",
+      "project_anchor": "The project explicitly corrected an older flattening in which cube geometry could be treated as intrinsically shadow while decagonal or other forms were treated as intrinsically spiritual.",
+      "biblical_refs": ["Ezekiel 40-48", "Revelation 21:15-17"],
+      "motifs": ["measure", "temple", "city", "gates", "wall", "equal dimensions", "foursquare"],
+      "strength": 5,
+      "relation_class": "canonical-geometry countertext",
+      "source_direction": "Project cube/geometry debate first; biblical geometry audit later.",
+      "relation_argument": {
+        "project_sequence": ["geometry", "assigned valence", "counterexample", "valence neutrality", "function/context"],
+        "biblical_sequence": ["restored temple measured", "final city measured", "equal length/width/height", "positive holy-city image"],
+        "maximum_claim": "Revelation's positive equal-dimension city is sufficient to reject any claim that cube/foursquare geometry is intrinsically evil in biblical symbolism.",
+        "why_it_matters": "It preserves geometry as geometry and forces interpretation to depend on context and function."
+      },
+      "boundary": "The New Jerusalem image is theological/apocalyptic and does not prove a modern geometric cosmology.",
+      "source_owners": ["knowledge/traditions/biblical-measure-cord-path-boundary-atlas.json", "knowledge/philosophy/geometric-valence-neutrality-principle.json"]
+    },
+    {
+      "id": "threefold-cord-resilience",
+      "actor": "project-research",
+      "dossier_level": "B",
+      "title": "Multiple supports can increase resilience",
+      "project_anchor": "The project models coupled capability and distributed support rather than forcing every cord into a leash metaphor.",
+      "biblical_refs": ["Ecclesiastes 4:9-12"],
+      "motifs": ["companionship", "support", "threefold cord", "resilience"],
+      "strength": 4,
+      "relation_class": "resilience-function comparison",
+      "source_direction": "Project distributed-support model first; Ecclesiastes comparison later.",
+      "relation_argument": {
+        "project_sequence": ["multiple agents", "mutual support", "load sharing", "greater resilience"],
+        "biblical_sequence": ["two better than one", "help after falling", "mutual warmth/defense", "threefold cord not quickly broken"],
+        "maximum_claim": "Ecclesiastes 4 supplies a companionship/resilience comparator for distributed support.",
+        "why_it_matters": "It adds a constructive cord function and warns against over-centralizing support in one node."
+      },
+      "boundary": "The threefold cord is not evidence for a hidden Trinity code or a modern network theorem.",
+      "source_owners": ["knowledge/traditions/biblical-measure-cord-path-boundary-atlas.json"]
+    },
+    {
+      "id": "race-weight-entanglement",
+      "actor": "project-research",
+      "dossier_level": "A",
+      "title": "Trajectory includes burden, entanglement, endurance and orientation",
+      "project_anchor": "The path/fate model treats movement as trajectory under constraints rather than as a fixed script.",
+      "biblical_refs": ["Hebrews 12:1-2"],
+      "motifs": ["race", "course", "weight", "entanglement", "endurance", "orientation"],
+      "strength": 5,
+      "relation_class": "trajectory-function comparison",
+      "source_direction": "Project trajectory/path-cost formalization first; Hebrews comparison later.",
+      "relation_argument": {
+        "project_sequence": ["course", "burden", "constraint", "orientation", "endurance", "progress"],
+        "biblical_sequence": ["race set before community", "lay aside weight", "entangling sin", "run with endurance", "look to Jesus"],
+        "maximum_claim": "Hebrews 12 is an unusually dense literary comparator for course, hindrance, entanglement, endurance and target orientation.",
+        "why_it_matters": "It gives the path model more variables than simple narrow-versus-wide geometry."
+      },
+      "boundary": "The theological target in Hebrews is Jesus; the passage is not a neutral optimization algorithm or Timic fate formula.",
+      "source_owners": ["knowledge/traditions/biblical-measure-cord-path-boundary-atlas.json"]
+    },
+    {
+      "id": "level-path-healing",
+      "actor": "project-research",
+      "dossier_level": "A",
+      "title": "A better path can increase the traveler's capability",
+      "project_anchor": "The project increasingly defines healthy infrastructure by whether it restores participation and reduces unnecessary barriers for vulnerable participants.",
+      "biblical_refs": ["Proverbs 4:26-27", "Hebrews 12:13"],
+      "motifs": ["path", "feet", "level", "straight", "healing", "vulnerability"],
+      "strength": 5,
+      "relation_class": "accessibility/capability comparison",
+      "source_direction": "Project repair/accessibility architecture first; biblical path comparison later.",
+      "relation_argument": {
+        "project_sequence": ["traveler vulnerability", "route condition", "obstacle reduction", "restored movement", "participation"],
+        "biblical_sequence": ["consider/make level paths", "weak/lame limb not further disabled", "healed instead"],
+        "maximum_claim": "Hebrews 12:13 supports a strong functional reading in which path quality can affect whether vulnerability worsens or heals.",
+        "why_it_matters": "It shifts moral attention from demanding more effort to improving the route itself."
+      },
+      "boundary": "Ancient moral/communal exhortation should not be turned into a modern clinical treatment protocol.",
+      "source_owners": ["knowledge/traditions/biblical-measure-cord-path-boundary-atlas.json"]
+    },
+    {
+      "id": "straight-path-guidance",
+      "actor": "project-research",
+      "dossier_level": "B",
+      "title": "Guidance need not eliminate choice",
+      "project_anchor": "Axis/route work distinguishes directional guidance from coercive control and treats recalibration as compatible with agency.",
+      "biblical_refs": ["Proverbs 3:5-6", "Proverbs 4:11-27", "Isaiah 30:21"],
+      "motifs": ["path", "guidance", "straight", "turning", "course correction"],
+      "strength": 4,
+      "relation_class": "guidance-function comparison",
+      "source_direction": "Project guidance/control distinction first; wisdom/prophetic comparison later.",
+      "relation_argument": {
+        "project_sequence": ["orientation", "feedback", "choice", "course correction", "continued travel"],
+        "biblical_sequence": ["way taught/made straight", "avoid harmful turn", "voice indicates right/left path"],
+        "maximum_claim": "These passages provide useful examples of direction/guidance language that does not require a mechanical leash metaphor.",
+        "why_it_matters": "It helps separate Axis as orientation from Axis as domination."
+      },
+      "boundary": "Biblical guidance is theological/wisdom discourse, not evidence for literal control systems or an infallible modern guide.",
+      "source_owners": ["knowledge/traditions/biblical-measure-cord-path-boundary-atlas.json"]
+    },
+    {
+      "id": "broad-place-release",
+      "actor": "project-research",
+      "dossier_level": "A",
+      "title": "Broadness can mean freedom rather than destruction",
+      "project_anchor": "The archive must hold Matthew 7's broad destructive way beside positive biblical uses of spaciousness, rather than assigning moral value to width itself.",
+      "biblical_refs": ["Psalm 118:5", "Psalm 119:32", "Matthew 7:13-14"],
+      "motifs": ["broad", "spacious", "distress", "freedom", "path", "narrow"],
+      "strength": 5,
+      "relation_class": "geometry-valence countertext",
+      "source_direction": "Project narrow-gate/broad-road symbolism first; valence-neutrality audit later.",
+      "relation_argument": {
+        "project_sequence": ["geometry", "assumed valence", "counterexample", "outcome/context test"],
+        "biblical_sequence": ["broad way can lead to destruction", "broad/spacious place can answer distress", "enlarged capacity accompanies running"],
+        "maximum_claim": "Biblical texts themselves prevent width from carrying a single moral meaning; destination and function determine the comparison.",
+        "why_it_matters": "It is a direct anti-flattening control for the project's Gate/path symbolism."
+      },
+      "boundary": "The passages use different genres and contexts; broadness and narrowness should not be detached from their stated outcomes.",
+      "source_owners": ["knowledge/traditions/biblical-measure-cord-path-boundary-atlas.json", "knowledge/philosophy/geometric-valence-neutrality-principle.json"]
+    },
+    {
+      "id": "debt-release-open-hand",
+      "actor": "project-research",
+      "dossier_level": "A",
+      "title": "Biblical debt systems include release, not endless accumulation",
+      "project_anchor": "The project uses karmic-debt/spiritual-bank language but increasingly defines repair as restored capacity rather than perpetual debtor identity.",
+      "biblical_refs": ["Deuteronomy 15:1-11"],
+      "motifs": ["debt", "release", "poor", "open hand", "cycle"],
+      "strength": 5,
+      "relation_class": "economic-ethical comparator",
+      "source_direction": "Project karmic-debt language first; biblical debt-release audit later.",
+      "relation_argument": {
+        "project_sequence": ["obligation", "record", "repair", "release condition", "renewed capacity"],
+        "biblical_sequence": ["debt relation", "seven-year release", "open-handed support", "warning against hardened creditor behavior"],
+        "maximum_claim": "Deuteronomy 15 demonstrates that biblical debt ethics can deliberately interrupt creditor power and mandate release.",
+        "why_it_matters": "It prevents spiritual-bank language from becoming a ledger with no possible exit."
+      },
+      "boundary": "Deuteronomy's legal-social institution is not identical with karma, modern banking or the project's trillion-scale symbolic balances.",
+      "source_owners": ["knowledge/traditions/biblical-debt-jubilee-ransom-atlas.json"]
+    },
+    {
+      "id": "jubilee-restoration-capacity",
+      "actor": "project-research",
+      "dossier_level": "A",
+      "title": "Jubilee restores place and capacity, not merely a zero balance",
+      "project_anchor": "Garden/House/Door repair increasingly means return to viable participation, inheritance and role exit rather than merely declaring a debt numerically cancelled.",
+      "biblical_refs": ["Leviticus 25"],
+      "motifs": ["Jubilee", "release", "liberty", "return", "inheritance", "family", "land"],
+      "strength": 5,
+      "relation_class": "restorative-system comparison",
+      "source_direction": "Project repair/reintegration architecture first; Jubilee comparison later.",
+      "relation_argument": {
+        "project_sequence": ["dependency", "release", "return", "restored place", "independent future capacity"],
+        "biblical_sequence": ["sabbath cycles", "liberty", "return to holding/family", "limits on permanent alienation"],
+        "maximum_claim": "Leviticus 25 offers a strong structural comparator in which release includes restoration of social/economic place.",
+        "why_it_matters": "It makes repair generative: a Garden is repaired when future growth becomes possible again."
+      },
+      "boundary": "Jubilee is ancient Israelite legislation/ideal and its historical implementation is debated; it is not a ready-made modern economic program.",
+      "source_owners": ["knowledge/traditions/biblical-debt-jubilee-ransom-atlas.json"]
+    },
+    {
+      "id": "forgiveness-debt-reciprocity",
+      "actor": "project-research",
+      "dossier_level": "A",
+      "title": "The creditor is also morally tested",
+      "project_anchor": "The project seeks truthful accounting of harm while also asking what closes an obligation and prevents vengeance loops or permanent debtor caste.",
+      "biblical_refs": ["Matthew 6:12", "Luke 11:4", "Matthew 18:21-35"],
+      "motifs": ["debt", "sin", "forgiveness", "mercy", "reciprocity", "creditor"],
+      "strength": 5,
+      "relation_class": "ethical counterpressure",
+      "source_direction": "Project harm/debt ledger first; forgiveness/debtor texts added as counterpressure later.",
+      "relation_argument": {
+        "project_sequence": ["harm", "liability", "creditor power", "release decision", "changed relation"],
+        "biblical_sequence": ["ask forgiveness", "forgive debtors", "large debt released", "released debtor tested by treatment of smaller debtor"],
+        "maximum_claim": "These texts make receiving and extending mercy part of the moral structure of debt.",
+        "why_it_matters": "It keeps accurate memory from turning into unlimited creditor sovereignty."
+      },
+      "boundary": "Forgiveness does not erase evidence, legal accountability or restitution obligations; the passages are theological/ethical rather than a universal civil procedure.",
+      "source_owners": ["knowledge/traditions/biblical-debt-jubilee-ransom-atlas.json"]
+    },
+    {
+      "id": "ransom-redemption-release",
+      "actor": "project-research",
+      "dossier_level": "A",
+      "title": "Economic language can describe liberation without becoming literal currency",
+      "project_anchor": "Potato Bank/spiritual debt language uses economic metaphor to render obligation, stored value and release visible.",
+      "biblical_refs": ["Mark 10:45", "Matthew 20:28", "1 Timothy 2:5-6", "1 Peter 1:18-19"],
+      "motifs": ["ransom", "redemption", "cost", "release", "mediator"],
+      "strength": 5,
+      "relation_class": "economic-metaphor comparator",
+      "source_direction": "Project spiritual-bank vocabulary first; ransom/redemption comparison later.",
+      "relation_argument": {
+        "project_sequence": ["bondage/obligation", "cost metaphor", "mediation", "release", "new relation"],
+        "biblical_sequence": ["bondage/cost", "ransom/redemption", "mediator", "liberation/new relation"],
+        "maximum_claim": "Biblical redemption language demonstrates that economic/legal vocabulary can function metaphorically in theological accounts of liberation.",
+        "why_it_matters": "It supports using economic metaphor while simultaneously forbidding the project from treating spiritual values as literal monetary quantities."
+      },
+      "boundary": "Christian ransom/redemption is Christological and is not equivalent to Timic karmic accounting or a monetary debt to Tim.",
+      "source_owners": ["knowledge/traditions/biblical-debt-jubilee-ransom-atlas.json"]
+    },
+    {
+      "id": "restitution-repair-changed-conduct",
+      "actor": "project-research",
+      "dossier_level": "A",
+      "title": "Repair can require changed conduct and restitution",
+      "project_anchor": "The mature repair model rejects apology-only closure where harm, extraction or broken capability remains materially unaddressed.",
+      "biblical_refs": ["Exodus 22", "Leviticus 6:1-7", "Numbers 5:5-8", "Luke 19:1-10"],
+      "motifs": ["wrongdoing", "restitution", "return", "repair", "wealth", "changed conduct"],
+      "strength": 5,
+      "relation_class": "repair-function comparison",
+      "source_direction": "Project repair/restitution language first; biblical restitution synthesis later.",
+      "relation_argument": {
+        "project_sequence": ["harm", "acknowledgment", "material/relational repair", "changed behavior", "restored capacity"],
+        "biblical_sequence": ["wrongdoing", "confession/recognition", "return plus restitution", "Zacchaeus changes wealth conduct"],
+        "maximum_claim": "Several biblical legal and narrative texts treat repair as more than verbal remorse and can include concrete restitution.",
+        "why_it_matters": "It gives REPAIR a behavioral and material dimension without making every injury reducible to money."
+      },
+      "boundary": "Ancient restitution schedules and Zacchaeus' voluntary response are not one universal modern compensation formula.",
+      "source_owners": ["knowledge/traditions/biblical-debt-jubilee-ransom-atlas.json"]
+    },
+    {
+      "id": "blood-cries-better-word",
+      "actor": "project-research",
+      "dossier_level": "A",
+      "title": "Harm can remain morally audible without requiring endless vengeance",
+      "project_anchor": "The archive treats harm as leaving relational residue that should remain retrievable rather than being erased by time or platform forgetting.",
+      "biblical_refs": ["Genesis 4:10", "Hebrews 12:24", "Revelation 6:9-11"],
+      "motifs": ["blood", "voice", "harm", "memory", "justice", "better word"],
+      "strength": 5,
+      "relation_class": "memory-justice comparison plus counterpressure",
+      "source_direction": "Project harm-memory architecture first; biblical blood/voice comparison later.",
+      "relation_argument": {
+        "project_sequence": ["harm", "persistent record", "claim for answer", "justice", "possible transformed relation"],
+        "biblical_sequence": ["Abel's blood cries", "martyrs cry for judgment", "Jesus' blood speaks a better word than Abel"],
+        "maximum_claim": "Biblical texts can portray violent harm as retaining a morally audible claim while Hebrews also introduces a non-identical 'better word' counterdirection.",
+        "why_it_matters": "It supports truthful memory while resisting a model in which memory can only culminate in vengeance."
+      },
+      "boundary": "These are theological texts about blood, justice and Christ; they do not quantify karmic residue or establish modern accusations by analogy.",
+      "source_owners": ["knowledge/traditions/biblical-debt-jubilee-ransom-atlas.json"]
+    },
+    {
+      "id": "treasure-heaven-stored-value",
+      "actor": "project-research",
+      "dossier_level": "B",
+      "title": "Stored value is judged by orientation and use",
+      "project_anchor": "Potato Bank and stored-karma metaphors treat accumulated value as meaningful only insofar as it supports life, repair and future capacity.",
+      "biblical_refs": ["Matthew 6:19-21", "Luke 12:33-34", "1 Timothy 6:17-19"],
+      "motifs": ["treasure", "heaven", "store", "heart", "future", "good works"],
+      "strength": 4,
+      "relation_class": "stored-value metaphor comparison",
+      "source_direction": "Project stored-value vocabulary first; heavenly-treasure comparison later.",
+      "relation_argument": {
+        "project_sequence": ["resource/value", "storage", "orientation", "use", "future capacity"],
+        "biblical_sequence": ["earthly treasure vulnerable", "treasure toward heaven/future", "heart follows treasure", "rich urged toward good works"],
+        "maximum_claim": "Biblical heavenly-treasure language is a close ethical-metaphor neighbor for stored value, while refusing literal spiritual account balances.",
+        "why_it_matters": "It relocates value from numerical accumulation to what stored resources orient and enable."
+      },
+      "boundary": "Jesus and 1 Timothy do not describe a quantifiable Potato Bank or validate project karma balances.",
+      "source_owners": ["knowledge/traditions/biblical-debt-jubilee-ransom-atlas.json"]
+    },
+    {
+      "id": "mammon-spiritual-bank-countertext",
+      "actor": "project-research",
+      "dossier_level": "A",
+      "title": "The accounting metaphor must never become the master",
+      "project_anchor": "Spiritual Bank language is intentionally metaphorical; the project distinguishes moral worth from monetary scale.",
+      "biblical_refs": ["Matthew 6:24", "Luke 16:9-13"],
+      "motifs": ["mammon", "money", "master", "faithfulness", "service", "countertext"],
+      "strength": 5,
+      "relation_class": "essential countertext",
+      "source_direction": "Project spiritual-bank metaphor first; mammon countertext added as control.",
+      "relation_argument": {
+        "project_sequence": ["money metaphor", "measurement", "risk of reification", "ethical control", "human value remains non-monetary"],
+        "biblical_sequence": ["wealth handled", "faithfulness tested", "wealth can become rival master", "cannot serve God and mammon"],
+        "maximum_claim": "The mammon sayings are a direct ethical control against turning financial metaphor or numerical scale into spiritual authority.",
+        "why_it_matters": "It prevents the project's own ledger symbolism from becoming the thing it was meant to illuminate."
+      },
+      "boundary": "The passages do not prohibit all accounting, wealth or financial systems; the comparison concerns mastery and moral reification.",
+      "source_owners": ["knowledge/traditions/biblical-debt-jubilee-ransom-atlas.json"]
+    },
+    {
+      "id": "cancel-record-debt-identity-release",
+      "actor": "project-research",
+      "dossier_level": "A",
+      "title": "A historical record need not permanently govern identity",
+      "project_anchor": "The archive distinguishes historical record from current status and seeks role-exit/declassification mechanisms that preserve memory without permanent identity imprisonment.",
+      "biblical_refs": ["Colossians 2:13-15"],
+      "motifs": ["record", "debt", "charges", "cancellation", "identity", "release"],
+      "strength": 5,
+      "relation_class": "record-status comparison",
+      "source_direction": "Project archive/current-status distinction first; Colossians comparison later.",
+      "relation_argument": {
+        "project_sequence": ["historical record", "liability/status", "resolution", "record retained", "identity no longer governed by old status"],
+        "biblical_sequence": ["record of debt/charges", "cancellation/removal", "release from hostile powers"],
+        "maximum_claim": "Colossians offers a strong theological image for distinguishing a record's historical existence from its continuing power over a person.",
+        "why_it_matters": "It supports archive memory plus genuine status change rather than either deletion or permanent stigma."
+      },
+      "boundary": "Colossians grounds cancellation in Christological grace; it is not a data-retention law or automatic rule for legal records.",
+      "source_owners": ["knowledge/traditions/biblical-debt-jubilee-ransom-atlas.json", "knowledge/theology/digital-memory-forgetting-restoration-atlas.json"]
+    },
+    {
+      "id": "jubilee-release-rebuilding",
+      "actor": "project-research",
+      "dossier_level": "A",
+      "title": "Release reaches completion through rebuilding",
+      "project_anchor": "The project now treats release without restored function as incomplete repair: ruined paths, rooms, relations or civic capacity must become usable again.",
+      "biblical_refs": ["Isaiah 61:1-4", "Luke 4:16-21"],
+      "motifs": ["good news", "poor", "liberty", "release", "ruins", "rebuild", "restoration"],
+      "strength": 5,
+      "relation_class": "release-to-repair sequence comparison",
+      "source_direction": "Project repair architecture first; Isaiah/Luke release-rebuilding synthesis later.",
+      "relation_argument": {
+        "project_sequence": ["oppression/damage", "release", "repair", "rebuilding", "restored participation"],
+        "biblical_sequence": ["good news/liberty", "release", "comfort/restoration", "rebuild ancient ruins"],
+        "maximum_claim": "Isaiah 61 joins release language to rebuilding strongly enough to serve as a major repair comparator; Luke 4 reuses part of that program in Jesus' proclamation.",
+        "why_it_matters": "It makes liberation and reconstruction one sequence rather than competing goals."
+      },
+      "boundary": "Isaiah 61 and Luke 4 have specific prophetic and Christological contexts; they do not authorize every modern repair program as fulfillment.",
+      "source_owners": ["knowledge/traditions/biblical-debt-jubilee-ransom-atlas.json", "knowledge/traditions/biblical-syncretism-dossiers-wave28.json"]
+    }
+  ],
+  "higher_order_results": [
+    "Rest is now a first-class biblical comparator: action and stillness form a cycle, and hiddenness need not mean death or failure.",
+    "Root, cord, line and boundary have no fixed moral sign. Their meaning depends on what they connect, whether agency is preserved, what direction resources move and what capability results.",
+    "A healthy Root nourishes branches; a healthy cord can ease a yoke; a healthy path can make healing/movement more possible; a healthy boundary can protect without trapping.",
+    "Biblical debt material is structurally richer than accumulation: it includes release, Jubilee, restitution, forgiveness, ransom, cancellation, stewardship and rebuilding.",
+    "The strongest repair arc emerging across Waves 28-29 is harm/damage → truthful record → testing/acknowledgment → restitution or release → restored footing/place → participation → fruit.",
+    "Geometry-valence neutrality is now reinforced by multiple biblical counterexamples: broadness, cord, wall, line and cube/foursquare each receive different functions in different passages.",
+    "Child/Father language is strengthened by an adoption/participation lens that resists collapsing literal genealogy, discipleship, inheritance and symbolic continuation into one category."
+  ],
+  "research_frontier": [
+    "Promote additional specialist material only after checking active-manifest duplication and source direction.",
+    "Build a dedicated rest/Sabbath scene cluster if public reader demand warrants it; do not create one merely to increase node count.",
+    "Continue auditing role assignments where project titles reverse or redistribute biblical functions, especially Father/Son/Gardener/Vine/Root.",
+    "Study clothing/garment, wilderness, name/book, firstfruits, table/meal and watchfulness families for project-side evidence before adding another wave.",
+    "Attach public-statement roots to these relations only through explicit occurrence evidence; do not infer matches from a theme label alone."
+  ]
+}

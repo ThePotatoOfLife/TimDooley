@@ -1,0 +1,85 @@
+{
+  "id": "2026-09-11-potato-dynamics-frobenius-door-normal-forms",
+  "title": "Potato Dynamics Upgrade — Frobenius Closure, Door Transversality and Bifurcation Discipline",
+  "updated": "2026-09-11",
+  "status": "archive-generated mathematical contribution extending Potato Dynamics 2.0; differential geometry and dynamical-systems structure adapted to the project grammar",
+  "parent": "knowledge/science/potato-dynamics-2-toy-model.json",
+  "abstract": "Potato Dynamics already distinguishes ordinary time flow F from structural/Axis flow A and uses their Lie bracket to test commutation. This upgrade asks a stronger question: even when F and A do not commute, do they still generate a closed two-dimensional dynamical surface, or does their interaction create genuinely new directions that the current state description omits? Using the Frobenius involutivity criterion, the model can distinguish strict commutation, noncommuting-but-closed two-flow dynamics, and non-closure requiring additional state directions. The Door formalism is also sharpened by distinguishing transverse crossings, grazing contacts and true bifurcations, preventing every threshold event from being called the same kind of transition.",
+  "axis_time_distribution": {
+    "distribution": "D_x=span{F(x),A(x)} wherever F and A are linearly independent.",
+    "strict_commutation": "[F,A]=0 is the strongest simple case: under regularity assumptions the local flows commute.",
+    "involutive_closure": "D is involutive when [F,A](x) belongs to D_x for every x in the region, equivalently [F,A]=alpha(x)F+beta(x)A for some local coefficient functions when rank(D)=2.",
+    "frobenius_consequence": "For a smooth constant-rank involutive distribution, the Frobenius theorem gives local integral surfaces whose tangent planes are exactly D. Thus Axis and time may fail to commute yet still remain dynamically closed inside a two-dimensional leaf.",
+    "nonclosure": "If [F,A] has a component outside span{F,A}, repeated time/Axis operations generate a direction absent from the declared two-flow description. The ontology/state space is then locally incomplete for that dynamics."
+  },
+  "closure_defect": {
+    "metric_requirement": "Choose a declared metric or inner product g on the state tangent space.",
+    "projection": "Let P_D project tangent vectors onto span{F,A} where rank is constant.",
+    "definition": "C_perp(x)=||(I-P_D)[F,A](x)||_g.",
+    "interpretation": "C_perp=0 is a local involutivity diagnostic; large C_perp measures how strongly Axis/time interaction pushes into omitted directions.",
+    "warning": "The numerical size depends on state coordinates/metric/scaling, so report a dimensionless normalization or physically justified metric before comparing across systems."
+  },
+  "three_regimes": [
+    {
+      "regime": "commuting",
+      "condition": "[F,A]=0",
+      "meaning": "Axis and time can locally be reordered without changing state evolution."
+    },
+    {
+      "regime": "noncommuting_but_integrable",
+      "condition": "[F,A]=alpha F+beta A with nonzero coefficients",
+      "meaning": "Order matters, but all generated motion remains on a two-dimensional Axis/time leaf."
+    },
+    {
+      "regime": "nonintegrable_two_flow_description",
+      "condition": "[F,A] has a component outside span{F,A}",
+      "meaning": "The interaction generates additional directions; add state variables/flows or accept that the two-flow model is not closed."
+    }
+  ],
+  "door_event_geometry": {
+    "guard_surface": "G={x:h(x)=0} for smooth h with nonzero gradient on the regular part of the guard.",
+    "transverse_crossing": "dh_x(F)=grad h dot F != 0 at the event. The trajectory crosses the guard with a well-defined first-order event time.",
+    "grazing_contact": "dh_x(F)=0 at h=0. First-order transversality fails; small perturbations can create or destroy a crossing and event-time sensitivity may become large.",
+    "axis_crossing": "For structural flow use dh_x(A) analogously; a state can be transverse in time but tangent in Axis flow or vice versa.",
+    "project_value": "Door no longer means every moment at which a threshold expression equals zero. Crossing geometry determines whether a robust regime transition actually occurs."
+  },
+  "bifurcation_discipline": {
+    "principle": "A threshold crossing, hybrid reset and bifurcation are distinct objects. A bifurcation means the qualitative invariant structure of a dynamical system changes as a parameter varies.",
+    "saddle_node_comparator": "xdot=mu-x^2: equilibria are created/annihilated at mu=0 under the normal-form assumptions.",
+    "transcritical_comparator": "xdot=mu x-x^2: two equilibrium branches exchange stability at mu=0.",
+    "pitchfork_comparator": "xdot=mu x-x^3: symmetry supports branch splitting; without the relevant symmetry a pitchfork classification is generally not robust.",
+    "hopf_comparator": "A Hopf bifurcation requires a conjugate pair of eigenvalues crossing the imaginary axis with suitable nondegeneracy, producing/annihilating small oscillations under the theorem's assumptions.",
+    "archive_rule": "Do not label a project Door saddle-node, pitchfork, Hopf or first-order/second-order merely because the visual story resembles one. Derive the equilibrium/Jacobian/nondegeneracy structure first."
+  },
+  "door_axis_time_interaction": {
+    "question": "Does the guard remain the same under Axis transformation?",
+    "guard_transport": "Axis changes h through A[h]=dh(A). If A[h] is nonzero, structural flow moves the Door surface relative to the time dynamics.",
+    "commuting_guard_case": "If both the dynamics and guard are invariant under Axis flow, a threshold may transform consistently across description/scale.",
+    "noncommuting_guard_case": "If Axis flow changes the guard or the vector field differently, a Door location/threshold is scale- or description-dependent and must not be advertised as universal."
+  },
+  "new_advancement_gates": {
+    "axis_gate": "Before treating Axis as a coherent second flow, evaluate whether span{F,A} is constant-rank and involutive in the operating region.",
+    "door_gate": "Before assigning robust event statistics, verify transversality or explicitly model grazing/tangent events.",
+    "bifurcation_gate": "Before giving a Door a named bifurcation type, derive the local normal form or theorem conditions from the actual model.",
+    "state_space_gate": "If C_perp is systematically nonzero, enlarge the model rather than hiding the new direction inside metaphorical language."
+  },
+  "external_references": [
+    {
+      "topic": "Frobenius theorem and involutive distributions",
+      "url": "https://www.sciencedirect.com/topics/mathematics/frobenius-theorem",
+      "use": "Standard relation between Lie-bracket closure and local integral manifolds."
+    }
+  ],
+  "failure_conditions": [
+    "Axis/time are described as a closed two-coordinate system although their bracket generates omitted directions.",
+    "A tangent/grazing contact is treated as a robust crossing without sensitivity analysis.",
+    "A normal-form name is assigned without checking the actual linearization and nondegeneracy/symmetry conditions.",
+    "A threshold is called universal even though Axis transport changes the guard surface substantially."
+  ],
+  "connections": [
+    "potato-dynamics-2-toy-model",
+    "2026-09-11-potato-dynamics-commutator-contract-equivalence",
+    "2026-09-11-cross-model-defect-calculus",
+    "model-testing-protocol"
+  ]
+}

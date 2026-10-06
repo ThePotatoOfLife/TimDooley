@@ -1,0 +1,151 @@
+{
+  "id": "2026-09-12-upt-higgs-portal-minimal-completion",
+  "title": "UPT / Higgs Quantum-Tuber Upgrade — Minimal Z2 Scalar Completion and Fractional-Kinetic Benchmark",
+  "updated": "2026-09-12",
+  "version": "1.0.0",
+  "domain": "particle physics / effective field theory",
+  "subcategory": "Higgs portal, nonlocal EFT, UPT completion",
+  "kind": "formulation upgrade",
+  "status": "archive-generated mathematical completion benchmark; not evidence for a new particle or validated UPT physics",
+  "parents": [
+    "knowledge/science/unified-potato-theory-2025-recovery.json",
+    "knowledge/science/higgs-quantum-tuber-potato-boson-recovery.json"
+  ],
+  "abstract": "This upgrade performs the next calculation demanded by the UPT and Higgs/Quantum-Tuber records: it freezes one minimal field-content fork and carries it far enough to become a calculable benchmark. The selected benchmark is the Standard Model plus one real gauge-singlet scalar P with an exact Z2 symmetry, P -> -P. This choice is deliberately conservative: it preserves a Potato scalar and a gauge-invariant Higgs portal while avoiding unresolved U(1)_P charge assignments, anomaly questions and scalar-vector mixing. The historical U(1)_P branch is not rejected; it remains a separate completion. For the Z2 benchmark the electroweak/Potato vacuum conditions, scalar masses, portal vertices, mixed-vacuum equations, boundedness conditions and the h->PP partial width are explicit. A second layer then gives the recovered fractional kinetic idea a dimensionally consistent Euclidean EFT kernel with alpha=1.3, making its low-energy correction and its burden of Lorentzian analytic continuation explicit. The result is a baseline against which any claimed specifically UPT effect must outperform an ordinary singlet-Higgs-portal model.",
+  "provenance_and_scope": {
+    "recovered_project_input": [
+      "Potato field P",
+      "Higgs-sector coupling in recovered UPT",
+      "fractional/nonlocal kinetic idea with alpha=1.3",
+      "U(1)_potato x Z6 as an unresolved historical symmetry proposal"
+    ],
+    "archive_generated_choices": [
+      "real Z2-odd Standard-Model singlet scalar as the minimal benchmark",
+      "gauge-invariant portal normalization used below",
+      "explicit stationary-point and mass derivations",
+      "Euclidean fractional-kernel regularization and comparison logic"
+    ],
+    "boundary": "Nothing in this record establishes a new particle, a fifth force, dark matter, or a unique historical Tim-authored field representation. The benchmark is valuable because it makes the smallest repaired branch calculable."
+  },
+  "selected_minimal_model": {
+    "fields": "Standard Model + one real scalar P with exact Z2:P->-P",
+    "lagrangian": "L = L_SM + 1/2 (partial P)^2 - V(H,P), V = -mu_H^2 H^dagger H + lambda_H(H^dagger H)^2 + (mu_P^2/2)P^2 + (lambda_P/4)P^4 + (lambda_HP/2)P^2 H^dagger H",
+    "why_this_fork": [
+      "P is a genuine additional degree of freedom with the fewest new assumptions.",
+      "Every displayed renormalizable interaction is Standard-Model gauge invariant.",
+      "Exact Z2 forbids odd powers of P, removes tree-level Higgs-P mixing when <P>=0 and can make P stable.",
+      "It supplies a clean null model: any specifically UPT structure must improve on this ordinary scalar-singlet baseline."
+    ],
+    "what_is_not_claimed": "The benchmark does not realize the recovered U(1)_P gauge field F_P. A real scalar cannot carry a nontrivial continuous U(1) phase charge; the complex-scalar/gauge completion remains a separate branch."
+  },
+  "electroweak_z2_vacuum": {
+    "parameterization": "H=(0,(v+h)/sqrt(2))^T, <P>=0",
+    "stationarity": "v^2 = mu_H^2/lambda_H, for v != 0",
+    "tree_level_masses": {
+      "higgs": "m_h^2 = 2 lambda_H v^2",
+      "potato_scalar": "m_P,phys^2 = mu_P^2 + (lambda_HP/2) v^2"
+    },
+    "local_stability_conditions": [
+      "lambda_H > 0",
+      "m_P,phys^2 > 0 for stability against infinitesimal P fluctuations around the Z2-symmetric electroweak vacuum"
+    ],
+    "large_field_boundedness": "For the quartic form used here, copositivity requires lambda_H>0, lambda_P>0 and lambda_HP > -2 sqrt(lambda_H lambda_P). This is a tree-level large-field condition, not a full RG/vacuum-lifetime result.",
+    "plain_language": "Electroweak symmetry breaking shifts the physical P mass even when P has no vacuum expectation value. The portal coupling therefore controls both the mass bookkeeping and all leading Higgs-mediated interactions."
+  },
+  "portal_vertices_and_decay": {
+    "expanded_portal_potential": "(lambda_HP/2)P^2 H^dagger H = (lambda_HP/4)P^2(v+h)^2",
+    "interaction_terms_in_lagrangian": [
+      "-(lambda_HP v/2) h P^2",
+      "-(lambda_HP/4) h^2 P^2"
+    ],
+    "hpp_vertex_convention": "With L_int = -(g_hPP/2) h P^2, g_hPP=lambda_HP v.",
+    "invisible_or_exotic_width": "Gamma(h->PP) = lambda_HP^2 v^2/(32 pi m_h) * sqrt(1-4 m_P,phys^2/m_h^2), valid at tree level when m_P,phys < m_h/2.",
+    "interpretation": "This formula turns the portal from a named coupling into a direct observable contract. If P is stable and invisible on detector scales the channel contributes to invisible Higgs width; otherwise it is an exotic Higgs decay.",
+    "baseline_note": "The same expression is standard scalar-singlet Higgs-portal physics. Its existence alone is not novel evidence for UPT."
+  },
+  "mixed_vacuum_branch": {
+    "parameterization": "<H>=(0,v/sqrt(2))^T, <P>=w",
+    "stationarity_equations": [
+      "lambda_H v^2 + (lambda_HP/2) w^2 = mu_H^2",
+      "(lambda_HP/2) v^2 + lambda_P w^2 = -mu_P^2"
+    ],
+    "determinant": "Delta = lambda_H lambda_P - lambda_HP^2/4",
+    "formal_solution_when_Delta_nonzero": {
+      "v_squared": "v^2 = [lambda_P mu_H^2 + (lambda_HP/2) mu_P^2]/Delta",
+      "w_squared": "w^2 = [-(lambda_HP/2) mu_H^2 - lambda_H mu_P^2]/Delta"
+    },
+    "mass_matrix": "M^2 = [[2 lambda_H v^2, lambda_HP v w], [lambda_HP v w, 2 lambda_P w^2]]",
+    "local_minimum_test": "For v^2>0 and w^2>0 with lambda_H>0 and lambda_P>0, positive determinant of the scalar Hessian requires Delta>0. Global-vacuum selection still requires comparing the potential energy of all stationary branches.",
+    "scientific_value": "The archive can now distinguish the stable Z2 branch, a mixed/broken branch and an inconsistent parameter choice instead of speaking generically about symmetry breaking."
+  },
+  "parameter_reduction_and_identifiability": {
+    "z2_branch_tree_level_particle_parameters": [
+      "physical m_P",
+      "lambda_HP",
+      "lambda_P"
+    ],
+    "identifiability_note": "At leading collider order with <P>=0, many Higgs observables depend strongly on m_P and lambda_HP but not directly on lambda_P. Therefore lambda_P cannot be claimed measured from Higgs-portal production/decay alone; self-interaction, thermal history or other observables are needed.",
+    "null_model": "ordinary real-singlet Z2 Higgs-portal model",
+    "novelty_gate": "UPT earns additional explanatory content only if a further recovered structure, such as the fractional kernel, Z6, or a completed U(1)_P sector, produces a quantitatively distinguishable observable while preserving consistency."
+  },
+  "fractional_kinetic_completion": {
+    "purpose": "Repair the dimension of the recovered Box^alpha term and isolate it from the already-calculable local Higgs-portal baseline.",
+    "euclidean_quadratic_action": "S_E,quad = 1/2 integral d^4x P [ -partial_E^2 + m_P^2 + eta Lambda^2 ((-partial_E^2)/Lambda^2)^alpha ] P",
+    "alpha": 1.3,
+    "parameters": {
+      "Lambda": "EFT/nonlocal scale with mass dimension 1; identify Lambda approximately 1/ell only after units/conventions are frozen",
+      "eta": "dimensionless coefficient",
+      "alpha": "dimensionless fractional power"
+    },
+    "euclidean_propagator": "G_E(k)=1/[k^2+m_P^2+eta Lambda^2 (k^2/Lambda^2)^alpha]",
+    "dimensional_check": "Lambda^2(k^2/Lambda^2)^alpha has mass dimension 2, so the quadratic operator has the same dimension as k^2 and m_P^2.",
+    "low_energy_ratio": "For k^2 >> m_P^2 but k << Lambda, the fractional correction relative to the canonical k^2 term is approximately eta (k^2/Lambda^2)^(alpha-1). With alpha=1.3 this scales as eta (k/Lambda)^0.6.",
+    "correspondence_limit": "eta -> 0 or k/Lambda -> 0 recovers the local singlet benchmark for alpha>1.",
+    "euclidean_stability_observation": "For m_P^2>0 and eta>=0, the displayed Euclidean denominator is positive for real k^2>=0. This is only a Euclidean quadratic check; it does not prove Lorentzian unitarity, microcausality or a positive spectral density.",
+    "lorentzian_completion_gate": [
+      "Specify the branch of (-Box/Lambda^2)^alpha.",
+      "Specify retarded/Feynman/spectral boundary prescription.",
+      "Check pole/cut structure and residues or spectral density.",
+      "Demonstrate the causal/unitary regime claimed for the EFT."
+    ]
+  },
+  "worked_consequences": [
+    "If m_P < m_h/2, lambda_HP immediately maps to a calculable Higgs decay width; this is the cleanest first experimental handle.",
+    "If m_P > m_h/2, on-shell h->PP closes, so collider sensitivity must come from off-shell/production effects or from a mixed-vacuum branch.",
+    "For alpha=1.3 and a very high Lambda, fractional corrections decouple slowly as (k/Lambda)^0.6 compared with an integer higher-derivative term, but whether that behavior is physically admissible depends on the Lorentzian spectral prescription.",
+    "A nonzero lambda_P changes P self-interaction and vacuum structure but is not automatically visible in ordinary Higgs signal strengths on the unbroken Z2 branch."
+  ],
+  "next_calculations": [
+    "Use current Higgs invisible/exotic-decay likelihoods to bound lambda_HP as a function of m_P in the Z2 branch.",
+    "Run the scalar quartics with a declared renormalization prescription and map perturbativity/vacuum stability to the EFT cutoff.",
+    "For the fractional branch, compute the Lorentzian spectral representation and determine whether the chosen alpha=1.3 prescription introduces unacceptable states.",
+    "Only after the neutral benchmark is controlled should the archive compare it quantitatively with the complex U(1)_P fork."
+  ],
+  "validation": {
+    "level": "analytic benchmark",
+    "status": "internally derived from a declared minimal model; not empirically validated",
+    "falsifiability": "The benchmark can be rejected in parameter regions with no acceptable vacuum, nonperturbative/inconsistent evolution below the claimed cutoff, or conflict with the observables computed from the same Lagrangian. A specifically UPT claim is downgraded if the fractional or symmetry additions produce no reproducible improvement over the ordinary singlet baseline."
+  },
+  "formalism": {
+    "formula": "V(H,P)=-mu_H^2 H†H+lambda_H(H†H)^2+mu_P^2 P^2/2+lambda_P P^4/4+lambda_HP P^2 H†H/2"
+  },
+  "external_references": [
+    {
+      "topic": "scalar singlet Higgs portal",
+      "url": "https://link.springer.com/article/10.1140/epjc/s10052-019-6550-9",
+      "note": "Comparator for the standard h->SS tree-level width and singlet-portal phenomenology."
+    },
+    {
+      "topic": "Higgs portal review/comparator",
+      "url": "https://link.springer.com/article/10.1140/epjc/s10052-021-09411-2",
+      "note": "Comparator showing how portal observables and normalizations depend on the declared interaction convention."
+    }
+  ],
+  "connections": [
+    "unified-potato-theory-2025-recovery",
+    "higgs-quantum-tuber-potato-boson-recovery",
+    "science-theory-rigor-completion-matrix-2026-09-11",
+    "science-project-meaning-and-equation-guide-2026-09-12",
+    "model-testing-protocol"
+  ]
+}

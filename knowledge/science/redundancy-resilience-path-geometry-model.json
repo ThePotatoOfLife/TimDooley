@@ -1,0 +1,91 @@
+{
+  "id":"redundancy-resilience-path-geometry-model",
+  "title":"Redundancy, Resilience & Path Geometry — Cord, Width, Straightness and Healing",
+  "version":"1.0.0",
+  "updated":"2026-09-11",
+  "status":"standard graph/geometry concepts + project comparator",
+  "purpose":"Turn biblical/project imagery of threefold cords, straight/level paths, burdens and broad/narrow ways into a disciplined resilience/accessibility model while keeping theology separate from engineering claims.",
+  "epistemic_rule":"Ecclesiastes, Proverbs, Psalms, Isaiah, Matthew and Hebrews are not engineering manuals. Graph connectivity, reliability, tortuosity and capacity are modern comparators used to sharpen the project vocabulary.",
+  "resilience_layer":{
+    "graph":"G=(V,E)",
+    "edge_connectivity":"lambda(s,t)=minimum number of edges whose removal disconnects s from t; in the finite-graph Menger setting this equals the maximum number of pairwise edge-disjoint s-t paths",
+    "node_connectivity":"kappa(s,t)=minimum internal vertices whose removal disconnects s from t, matched to internally vertex-disjoint paths under the corresponding Menger formulation",
+    "project_relation":"A cord/bundle is strongest as a resilience symbol when support strands are genuinely independent enough that one failure does not disable all function.",
+    "common_mode_warning":"Three nominal strands can still fail together if all depend on the same hidden node, power source, legal permission, institution or correlated hazard.",
+    "capacity_warning":"Disjoint routes may exist but have insufficient capacity; path count alone is not service resilience."
+  },
+  "simple_reliability_comparator":{
+    "independent_parallel_links":"If independent links each fail with probability p_i, probability all parallel links fail is product_i p_i; independence is a strong assumption.",
+    "identical_case":"for n independent equal-failure links, P(all fail)=p^n",
+    "warning":"Do not apply this formula when failures are correlated or links share dependencies."
+  },
+  "path_geometry_layer":{
+    "path_length":"L(gamma)=integral ||gamma'(s)|| ds",
+    "endpoint_distance":"d_geo(x0,x1)=geodesic distance in the declared geometry",
+    "tortuosity":"tau=L(gamma)/d_geo(x0,x1)>=1 when endpoints differ and the metric/geodesic are well-defined",
+    "interpretation":"Higher tortuosity means a longer or more circuitous route relative to the geodesic baseline; it is not morally worse by itself.",
+    "straight_path_caution":"Biblical straight/level path language is ethical/poetic and should not be reduced to minimum Euclidean length."
+  },
+  "path_accessibility_layer":{
+    "state":"traveler has capability vector c and path/environment has demand vector q(s)",
+    "feasible_traversal":"a path is accessible when required demands remain within the traveler's supported capability envelope after available assistance/adaptation",
+    "project_relation":"Hebrews 12:13's straight/level-path-to-healing cluster encourages a relational model: improve the route/environment rather than treating all failure as a defect in the traveler.",
+    "science_neighbors":["robust control","accessibility engineering","human factors","barrier removal","assistive design"],
+    "boundary":"This is a structural comparison, not a medical treatment claim."
+  },
+  "width_capacity_layer":{
+    "corridor_width":"w(s) can constrain passage/capacity in a spatial model",
+    "reachable_volume":"broader feasible corridors may enlarge reachable states in some systems",
+    "nonmonotone_value":"More width/capacity can be helpful, neutral or harmful depending on destination, flow, safety and objective.",
+    "biblical_control":"Matthew 7 assigns negative valence to the broad destructive way; Psalm 118 assigns positive valence to release into a broad/spacious place. Geometry does not settle value."
+  },
+  "burden_layer":{
+    "path_cost":"J[gamma]=Phi(x_T)+integral ell(x,u,s) ds",
+    "weight_effect":"Higher running cost can make an otherwise reachable path impractical; removing burden can change optimal or viable routes without altering topology.",
+    "biblical_neighbors":["Hebrews 12:1 hindrance/weight and entangling sin","Isaiah 5:18 cords/cart ropes dragging wrongdoing"],
+    "boundary":"Sin, guilt and moral burden are theological/ethical concepts, not literal mechanical mass."
+  },
+  "path_preparation_metrics":{
+    "tortuosity":"tau",
+    "maximum_gradient":"max |dz/ds| in a spatial path where slope matters",
+    "minimum_clearance":"minimum distance to obstacles in declared configuration space",
+    "bottleneck_width":"minimum traversable cross-section/capacity along route",
+    "control_effort":"minimum or expected input cost to keep trajectory within safe corridor",
+    "robust_margin":"distance to constraint violation under allowed disturbance set",
+    "project_value":"These metrics make 'make the path straight/level' testable in real engineered or institutional systems instead of using straightness as a decorative moral word."
+  },
+  "biblical_structural_crosswalk":[
+    {"text":"Ecclesiastes 4:9-12","project_operator":"redundant support / cord resilience","guardrail":"companionship context first"},
+    {"text":"Hebrews 12:1","project_operator":"trajectory + burden removal + endurance","guardrail":"race metaphor first"},
+    {"text":"Hebrews 12:13 / Proverbs 4:26","project_operator":"route preparation / accessibility / healing","guardrail":"ethical-pastoral text, not engineering formula"},
+    {"text":"Psalm 118:5","project_operator":"constraint release / expanded feasible space","guardrail":"poetic rescue image"},
+    {"text":"Matthew 7:13-14","project_operator":"route width + destination","guardrail":"eschatological/ethical contrast"}
+  ],
+  "test_cards":[
+    {
+      "id":"redundancy-audit",
+      "question":"Do apparent multiple support paths actually survive single-point and common-mode failures?",
+      "measurements":["edge/node disjointness","min cut","shared dependencies","capacity","recovery time"],
+      "negative_result":"Paths collapse to one hidden bottleneck; threefold appearance is not real redundancy."
+    },
+    {
+      "id":"path-preparation-audit",
+      "question":"Does route redesign increase successful traversal for constrained/vulnerable agents?",
+      "measurements":["completion rate","control effort","violations/falls/errors","travel time","robust margin"],
+      "negative_result":"Straightening/leveling does not improve traversal or creates new failure modes."
+    },
+    {
+      "id":"width-valence-audit",
+      "question":"Does increasing feasible width/capacity improve the declared objective?",
+      "measurements":["throughput","safety","target reachability","error/failure rate","exit options"],
+      "negative_result":"Greater width increases harmful flow, decreases guidance or does not improve the target outcome."
+    }
+  ],
+  "connections":[
+    "knowledge/science/crystallized-theory-abstracts-wave-008.json",
+    "knowledge/traditions/biblical-measure-cord-path-boundary-atlas.json",
+    "knowledge/philosophy/geometric-valence-neutrality-principle.json",
+    "knowledge/science/leash-timeline-trajectory-fate-destiny-constraint-atlas.json",
+    "knowledge/science/house-shell-boundary-permeability-model.json"
+  ]
+}

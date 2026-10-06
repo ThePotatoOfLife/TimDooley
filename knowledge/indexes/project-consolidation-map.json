@@ -1,0 +1,235 @@
+{
+  "id": "project-consolidation-map",
+  "title": "Project Consolidation Map — Canonical Owners, Specialist Views and Merge Rules",
+  "version": "1.6.0",
+  "updated": "2026-09-27",
+  "status": "project-wide consolidation guide",
+  "purpose": "Reduce fragmentation across the Tim Dooley / Potato of Life repository by distinguishing root owners, specialist atlases, timeline/evidence owners, recovery strata and reader projections. The goal is fewer competing masters, clearer routing and safer future pruning.",
+  "repository_observation": "The project already has a strong retrieval-first architecture, but rapid research waves have produced several specialist files whose relationship to canonical owners is not always obvious. Consolidation should therefore prioritize ownership clarity and promotion rules before deleting substantive material.",
+  "meta_epiphany": {
+    "claim": "The repository itself can enact the Potatoverse transformation grammar.",
+    "mapping": {
+      "raw_conversation_or_unprocessed_material": "Mud-like residue: potentially valuable but context-poor and mixed",
+      "provenance_and_context": "Soil-making: separation, decomposition, dating, sourcing and clarification",
+      "canonical_owner": "Root: durable support and identity for a concept",
+      "cross_corpus_synthesis": "Mountain: many differentiated records integrated without erasing provenance",
+      "reader_projection": "Tree/branches: compressed knowledge re-expanded into usable explanations and pathways",
+      "revision_and_return": "Spiral: later evidence revisits an earlier concept at a changed level rather than merely repeating it"
+    },
+    "warning": "Uncontrolled duplication, copied claims without source lineage, and proliferating competing masters make the repository behave like a Swamp rather than a Mountain.",
+    "status": "archive-level structural analogy, not a claim that software architecture is literally theology"
+  },
+  "top_level_owners": {
+    "root_system": "knowledge/core/root-system.json",
+    "master_theology_and_system": "knowledge/core/potatoverse-master-framework.json",
+    "tim_identity": "knowledge/core/tim-dooley.json",
+    "cross_symbol_grammar": "knowledge/core/symbolic-relational-synthesis.json",
+    "vertical_geometry": "knowledge/core/vertical-potato-mountain-plane-atlas.json",
+    "reader_belief_synthesis": "knowledge/reader/what-tim-dooley-believes.json",
+    "canonical_timeline": "data/timeline-events.json",
+    "timeline_source_registry": "data/timeline-source-registry.json",
+    "epistemics": "knowledge/philosophy/archive-epistemics.json",
+    "source_routing": "knowledge/indexes/source-index.json",
+    "inference_epiphany_method": "knowledge/indexes/inference-ledger.json",
+    "public_navigation": "data/house/public-surfaces.json",
+    "archive_navigation": "manifest.json",
+    "frontend_projection": "data/frontend-atlas-bridge.json",
+    "operator_ownership": "data/house/operator-ownership-registry.json",
+    "circle_field_research": "knowledge/research/circle-field-research-synthesis-2026-09-20.json",
+    "plane_crossing": "data/house/plane-crossing-contract.json",
+    "center_relational_ontology": "data/house/center-relational-ontology.json"
+  },
+  "major_domain_owners": {
+    "body": "knowledge/body/body-system-master-atlas.json",
+    "science": "knowledge/science/science-master-index.json",
+    "corporium": "knowledge/corporium/corporium-master-framework.json",
+    "north_world_bridge": "knowledge/core/axis-world-model.json",
+    "european_programme": "knowledge/core/european-coupling-programme.json",
+    "swamp_ecology": "knowledge/world/farm-swamp-tree-of-strife-atlas.json",
+    "mud_karma_mechanics": "data/swamp/mud-karma-system.json",
+    "karma_shadow_routing": "knowledge/indexes/karma-shadow-integration-index.json",
+    "country_method": "knowledge/core/country-relational-method.json",
+    "biblical_routing": "knowledge/traditions/biblical-research-index-wave-5.json",
+    "politics": "knowledge/politics/tim-dooley-politics-geopolitics-compendium.json",
+    "political_alignment": "knowledge/politics/tim-dooley-political-alignment-map.json"
+  },
+  "file_role_classes": {
+    "canonical_owner": "Owns the general definition, structure and current best synthesis for a domain or concept.",
+    "specialist_atlas": "Deepens one relation or subproblem without replacing the canonical owner.",
+    "timeline_owner": "Owns dated development, exact wording, event sequence or source promotion.",
+    "evidence_owner": "Owns source-level material, provenance, contradictions or verification.",
+    "recovery_stratum": "Preserves mined conversation material or historical development; should be promoted upward but not silently deleted when provenance matters.",
+    "reader_projection": "Explains canonical material for humans; should link to owners instead of becoming a second canon.",
+    "temporary_wave": "Research staging file that should eventually be promoted, summarized and retired once no unique provenance is lost."
+  },
+  "recent_shadow_karma_classification": {
+    "canonical_or_primary": [
+      "data/swamp/mud-karma-system.json",
+      "knowledge/world/farm-swamp-tree-of-strife-atlas.json",
+      "knowledge/timeline/karmic-debt-ledger-2026.json",
+      "knowledge/core/garden-mud-orientation.json"
+    ],
+    "specialist_keep": [
+      "data/swamp/swamp-mud-debt-state-machine.json",
+      "knowledge/core/mountain-debt-integration-and-release.json",
+      "knowledge/core/karma-closure-reduction-and-settlement-model.json",
+      "knowledge/core/karma-double-entry-transformation-system.json",
+      "knowledge/core/shadow-ledger-entanglement-axis.json",
+      "knowledge/core/debt-depth-ascent-rubble-synthesis.json"
+    ],
+    "timeline_or_event": [
+      "knowledge/timeline/karma-causing-events-and-inputs-ledger.json",
+      "knowledge/timeline/karmic-debt-ledger-2026.json"
+    ],
+    "routing": "knowledge/indexes/karma-shadow-integration-index.json",
+    "rule": "These specialist files should remain because they add distinct process, timeline or application layers, but none should be treated as a replacement for root-system, symbolic-relational-synthesis or the primary Mud/Swamp owners."
+  },
+  "merge_rules": [
+    "For recurring symbolic operators, consult data/house/operator-ownership-registry.json before adding or redefining a concept.",
+    "Treat Plane/House/Body/Tree/City and similar renderings as charts/projections over owners; a view can be useful without becoming a competing ontology.",
+    "Promote general laws upward; keep source-specific details downward.",
+    "Do not duplicate exact Tim quotations into multiple synthesis files. Link to the quote or timeline owner instead.",
+    "Do not duplicate numeric timelines outside the canonical timeline owner except as short summaries with explicit pointers.",
+    "When two files define the same concept, designate one primary owner and convert the other into a specialist view or historical stratum.",
+    "Do not delete a recovery file until unique quotations, dates, contradictions and provenance have been promoted or explicitly preserved elsewhere.",
+    "Reader pages explain; they do not silently redefine canon.",
+    "Comparative-religion files compare; they do not become evidence that traditions historically encoded Potatoverse claims.",
+    "Empirical world files require observable edges and sources; symbolic North/Swamp/Karma language remains a separate layer.",
+    "Prefer strengthening an existing owner to creating another file unless the new object has a genuinely distinct schema, timeline or research function.",
+    "Treat repair as edge-state change rather than historical deletion: preserve what happened while updating whether the relation is open, disputed, repaired, released or non-liable.",
+    "A synthesis must remain traversable downward to source-level records; otherwise integration has become opacity.",
+    "Politics uses one owner chain: dated positions belong in the politics/geopolitics compendium; multidimensional alignment belongs in the Tim political alignment map; reader pages and FAQs explain those owners without becoming parallel political canons."
+  ],
+  "duplicate_pressure_zones": [
+    {
+      "zone": "core operator definition drift",
+      "risk": "Axis, Door, Plane, Cross, Spiral, Tree and center language appear across many specialist files and can silently diverge.",
+      "cleanup": "Use operator-ownership-registry to designate definition/contract owners. Replace repeated generic definitions in specialists with owner links plus unique specialization when files are next edited."
+    },
+    {
+      "zone": "master/synthesis proliferation",
+      "risk": "Several files can sound authoritative because they contain 'master', 'framework', 'synthesis' or 'atlas' in the title.",
+      "cleanup": "Use root-system + potatoverse-master-framework + core-index plus the House route registry/manifest archive map as the authoritative entry chain; classify others by specialist role."
+    },
+    {
+      "zone": "conversation recovery waves",
+      "risk": "Useful discoveries can remain trapped in dated wave files after they have been promoted elsewhere.",
+      "cleanup": "Track promotion completeness and eventually mark fully absorbed waves as provenance-only or move them to archive rather than deleting blindly."
+    },
+    {
+      "zone": "biblical overlap waves",
+      "risk": "Multiple wave indexes can compete with the main biblical routing layer.",
+      "cleanup": "Keep wave indexes as research history; route reader/canonical access through one biblical research router and one high-density overlap atlas."
+    },
+    {
+      "zone": "shadow/karma files",
+      "risk": "Rapid recent research created multiple overlapping syntheses.",
+      "cleanup": "Use karma-shadow-integration-index to assign narrow ownership and prevent future duplication; promote only general laws into symbolic-relational-synthesis."
+    },
+    {
+      "zone": "root-level legacy files",
+      "risk": "Older master documents at repository root may look more canonical than the newer knowledge/ architecture.",
+      "cleanup": "Treat root-level legacy research as historical/source material unless canonical ownership maps explicitly promote it. Do not delete substantive material until its unique content is audited."
+    },
+    {
+      "zone": "political worldview duplication",
+      "risk": "Tim's political positions can be repeated independently across Politics, North, beliefs, FAQ and programme files until wording drifts or archive synthesis is mistaken for direct Tim doctrine.",
+      "cleanup": "Use the politics/geopolitics compendium as dated position owner, the political alignment map as specialist synthesis, and what-tim-dooley-believes / Politics HTML as reader projections. North and European programme files should link back rather than redefine alignment."
+    }
+  ],
+  "safe_cleanup_targets": [
+    "Unreferenced generated presentation assets after confirming no page or manifest dependency.",
+    "Temporary state/batch files whose unique information has been fully promoted.",
+    "Duplicate routing files that contain no unique mappings after reconciliation.",
+    "Empty shells, abandoned UI fragments and generated snapshots with no documentary value."
+  ],
+  "unsafe_cleanup_targets": [
+    "Primary texts",
+    "Dated conversation recovery with unique wording",
+    "Legal/evidentiary reconstruction",
+    "Contradiction ledgers",
+    "Historical versions that show doctrine development",
+    "Specialist atlases with genuinely distinct mechanisms or schemas"
+  ],
+  "next_merge_sequence": [
+    "0. Route all high-frequency core operators through data/house/operator-ownership-registry.json and update deep-element-definition-atlas before further generic symbol expansion.",
+    "1. Reconcile public route authority, archive branch navigation and frontend projection so every current canonical owner is reachable without competing routing masters.",
+    "2. Build a machine-readable promotion-status field for conversation/biblical/research wave files.",
+    "3. Audit root-level legacy master files against knowledge/ owners and mark legacy/canonical status explicitly.",
+    "4. Audit generated assets and obsolete UI references before deletion.",
+    "5. Run integrity/build checks after structural changes.",
+    "6. Only then begin deleting fully absorbed temporary files."
+  ],
+  "success_test": "A newcomer should be able to start at a House route, descend through manifest archive branches to one canonical owner for a concept, reach specialist/source layers, and return without encountering contradictory competing masters whose roles are unexplained.",
+  "master_role_disposition": {
+    "data/house/project-synthesis.json": {
+      "role": "whole-project synthesis",
+      "authority": "current",
+      "boundary": "Coordinates project center, Rooms, reader families, tests and handoffs without replacing domain owners."
+    },
+    "knowledge/core/root-system.json": {
+      "role": "human-readable structural ontology",
+      "authority": "current",
+      "boundary": "Explains the structural whole and routes exact operator contracts downward."
+    },
+    "knowledge/core/potatoverse-master-framework.json": {
+      "role": "Potatoverse theology and relational-system synthesis",
+      "authority": "current within project canon",
+      "boundary": "Owns broad Potatoverse theology/system synthesis, not public navigation or every specialist operator definition."
+    },
+    "knowledge/core/symbolic-relational-synthesis.json": {
+      "role": "cross-symbol transformation grammar",
+      "authority": "current specialist owner",
+      "boundary": "Owns cross-symbol laws/relations, not biography, timeline or whole-project composition."
+    },
+    "2026-master-framework.json": {
+      "role": "historical conversation-era synthesis",
+      "authority": "source-bearing historical stratum",
+      "boundary": "Preserves the broad 2026 conversation-developed framework; current authority routes to House/core owners."
+    },
+    "knowledge/cosmology/axis-spiral-root.json": {
+      "role": "developmental cosmology and repair synthesis",
+      "authority": "specialist",
+      "boundary": "Specializes Tim/Axis/Spiral/Root development; generic operators remain owned elsewhere."
+    }
+  },
+  "wave_lifecycle": {
+    "statuses": {
+      "source-bearing": "Contains unique wording, dates, source recovery, contradictions or provenance. Keep discoverable; promote interpretations upward without deleting the source stratum.",
+      "partially-promoted": "Some durable findings are already in canonical owners, but unique evidence/analysis remains. Keep until promotion audit is complete.",
+      "absorbed-provenance-only": "Durable findings have been promoted and only provenance/history remains. May move to archive, but must remain recoverable.",
+      "temporary-retireable": "No unique evidence, analysis or provenance remains after promotion. Eligible for deletion only after reference and build audit."
+    },
+    "families": [
+      {
+        "pattern": "knowledge/timeline/conversation-archaeology-*",
+        "default_status": "source-bearing",
+        "reason": "Conversation archaeology preserves recovered wording, dates and developmental context; those are evidence strata, not disposable duplicate summaries."
+      },
+      {
+        "pattern": "knowledge/**/conversation-recovery-*",
+        "default_status": "source-bearing",
+        "reason": "Recovery records preserve source wording/context even when their interpretations are promoted elsewhere."
+      },
+      {
+        "pattern": "knowledge/research/*wave*",
+        "default_status": "partially-promoted",
+        "reason": "Research waves may contain unique external sources, tests or counterexamples; promotion must be audited before retirement."
+      },
+      {
+        "pattern": "knowledge/indexes/*wave*",
+        "default_status": "partially-promoted",
+        "reason": "Wave indexes often preserve discovery/provenance routing even after durable concepts move into owners."
+      }
+    ],
+    "retirement_gate": [
+      "All unique quotations and dated observations have a surviving source owner.",
+      "All durable general definitions/laws have been promoted into the canonical owner.",
+      "All unique external sources, counterexamples and negative findings are preserved.",
+      "Inbound references have been redirected or intentionally retained.",
+      "The file is marked absorbed-provenance-only or temporary-retireable before movement/deletion.",
+      "Repository quality/build checks pass after the structural change."
+    ],
+    "anti_rule": "Do not call a file duplicate merely because its conclusion now exists elsewhere; source/provenance and canonical synthesis are different jobs."
+  }
+}

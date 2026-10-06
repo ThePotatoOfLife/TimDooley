@@ -1,0 +1,326 @@
+{
+  "id": "duaaaht",
+  "display_name": "duaaaht",
+  "bureau": "CIA — Characters, Incidents & Associations",
+  "depth_tier": "working-file",
+  "depth_note": "Recurring figure with enough dated presence for a working dossier; raw-source recovery can still deepen it.",
+  "entity_class": "person-or-handle",
+  "aliases": [],
+  "archive_status": "historical-current-unknown",
+  "room_policy": "cluster",
+  "room_path": null,
+  "tim_relation": {
+    "archetypes": [
+      "mystic-interpreter",
+      "bard-jester",
+      "seeker-student"
+    ],
+    "narrative_functions": [
+      "science-spirit jokes",
+      "surreal interpretation"
+    ],
+    "regions": [
+      "Saloon",
+      "Threshold"
+    ],
+    "editorial_reading": "Chronicle fuses scientific jokes and spiritual interpretation around this figure.",
+    "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+  },
+  "chronology": {
+    "chronicle_occurrence_count": 10,
+    "chronicle_dates": [
+      "November 3 2024",
+      "November 6, 2024",
+      "November 9, 2024",
+      "November 19, 2024"
+    ],
+    "cast_period_roles": [],
+    "recovered_social_days": [
+      {
+        "date": "2024-11-03",
+        "title": "Tanks, pipe, coffee and the first dense social snapshot",
+        "participants": [
+          "Tim Dooley",
+          "Marty",
+          "Port Monkey",
+          "Mr. E",
+          "Klunty",
+          "Optimistique",
+          "Rahu",
+          "Tdog",
+          "Termite",
+          "Ledgeview",
+          "Kale",
+          "Highly Regarded",
+          "DARKCHILD",
+          "duaaaht"
+        ],
+        "minimum_event": "Tim spends the day around Tanks/voice-chat social life while the Great Book is actively discussed. Optimistique urges him back into play, Rahu/Tdog supply religious interpretation, and Termite marks group camaraderie.",
+        "connections": [
+          "games ↔ social presence",
+          "Great Book ↔ live discussion",
+          "support ↔ ordinary companionship"
+        ],
+        "source_mode": "chronicle_retelling",
+        "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+        "co_present": [
+          "Tim Dooley",
+          "Marty",
+          "Port Monkey",
+          "Mr. E",
+          "Klunty",
+          "Optimistique",
+          "Rahu",
+          "Tdog",
+          "Termite",
+          "Ledgeview",
+          "Kale",
+          "Highly Regarded",
+          "DARKCHILD"
+        ]
+      },
+      {
+        "date": "2024-11-06",
+        "title": "Marty as Chance & Taylor; Optimistique's creative thread",
+        "participants": [
+          "Tim Dooley",
+          "Marty / Chance & Taylor",
+          "Optimistique",
+          "Rage",
+          "Termite",
+          "Tdog",
+          "duaaaht"
+        ],
+        "minimum_event": "Marty discusses being removed from another chat while Tim is already distancing from him; Optimistique discusses music, AI-generated instrumentals and Jungian-shadow creativity.",
+        "connections": [
+          "Marty ↔ separation begins",
+          "Optimistique ↔ music/creative identity",
+          "AI music ↔ social world"
+        ],
+        "source_mode": "chronicle_retelling",
+        "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+        "co_present": [
+          "Tim Dooley",
+          "Marty / Chance & Taylor",
+          "Optimistique",
+          "Rage",
+          "Termite",
+          "Tdog"
+        ]
+      }
+    ]
+  },
+  "top_co_presence": [
+    {
+      "name": "Tim Dooley",
+      "count": 2
+    },
+    {
+      "name": "Optimistique",
+      "count": 2
+    },
+    {
+      "name": "Tdog",
+      "count": 2
+    },
+    {
+      "name": "Termite",
+      "count": 2
+    },
+    {
+      "name": "Marty",
+      "count": 1
+    },
+    {
+      "name": "Port Monkey",
+      "count": 1
+    },
+    {
+      "name": "Mr. E",
+      "count": 1
+    },
+    {
+      "name": "Klunty",
+      "count": 1
+    }
+  ],
+  "symbolic_roles": [],
+  "highlighted_incidents": [
+    {
+      "date": "2024-11-03",
+      "title": "Tanks, pipe, coffee and the first dense social snapshot",
+      "summary": "Tim spends the day around Tanks/voice-chat social life while the Great Book is actively discussed. Optimistique urges him back into play, Rahu/Tdog supply religious interpretation, and Termite marks group camaraderie.",
+      "source_mode": "chronicle_retelling"
+    },
+    {
+      "date": "2024-11-06",
+      "title": "Marty as Chance & Taylor; Optimistique's creative thread",
+      "summary": "Marty discusses being removed from another chat while Tim is already distancing from him; Optimistique discusses music, AI-generated instrumentals and Jungian-shadow creativity.",
+      "source_mode": "chronicle_retelling"
+    }
+  ],
+  "source_strata": [
+    {
+      "type": "character_archive",
+      "path": "knowledge/story/character-archive-v2.json"
+    },
+    {
+      "type": "dated_social_ledger",
+      "path": "knowledge/story/social-presence-ledger-2024-2025.json"
+    },
+    {
+      "type": "cast_book",
+      "path": "knowledge/story/cast-book.json",
+      "note": "Period-role transitions and cast continuity."
+    }
+  ],
+  "recovery_leads": [
+    "Expand still-indexed Chronicle dates into source-bounded cases, starting with: November 3 2024; November 6, 2024; November 9, 2024; November 19, 2024.",
+    "Recover closer/raw artifacts behind the densest Chronicle dates: November 9, 2024 (6); November 3 2024 (2); November 6, 2024 (1); November 19, 2024 (1).",
+    "Cross-check relationship edges against dated scenes instead of raw co-presence: Tim Dooley, Optimistique, Tdog, Termite, Marty, Port Monkey."
+  ],
+  "cia_record": {
+    "authority": "canonical",
+    "record_type": "character-dossier",
+    "presence": {
+      "first_recorded": "2024-11-03",
+      "last_recorded": "2024-11-19",
+      "rule": "First/last currently recovered dated evidence in this dossier; not lifetime endpoints."
+    },
+    "association_rule": "Co-presence, direct interaction, explicit relationship language and later interpretation remain distinct evidence types.",
+    "debt_and_repair": {
+      "records": [],
+      "rule": "Do not attach legal, financial, karmic or spiritual debt unless a dated source explicitly does so; symbolic debt remains project language unless independently established."
+    },
+    "state_rule": "Roles, archetypes, upgrades, handicaps and project-symbolic placements are date/source-bounded states, not permanent human essences.",
+    "open_loops": [
+      "Recover closer/raw chat, stream, post or screenshot evidence behind the densest dated appearances.",
+      "Separate direct speech from Chronicle paraphrase and later project interpretation.",
+      "Promote this file to a deeper tier only when chronology, relationships and source strata materially improve."
+    ],
+    "evidence_inventory": {
+      "chronicle_mentions": 10,
+      "chronicle_distinct_dates": 4,
+      "expanded_social_ledger_cases": 2,
+      "recent_conversation_recovery": null,
+      "cast_period_roles": [],
+      "source_rule": "Chronicle counts establish recurrence and dated presence; day-level case summaries provide scene context; conversation archaeology and later project/literary layers remain separately typed."
+    },
+    "casebook": {
+      "summary": "duaaaht currently has 10 indexed Chronicle mentions across 4 Chronicle dates, 2 expanded day-level social cases.",
+      "cases": [
+        {
+          "date": "2024-11-03",
+          "title": "Tanks, pipe, coffee and the first dense social snapshot",
+          "what_happened": "Tim spends the day around Tanks/voice-chat social life while the Great Book is actively discussed. Optimistique urges him back into play, Rahu/Tdog supply religious interpretation, and Termite marks group camaraderie.",
+          "co_present": [
+            "Tim Dooley",
+            "Marty",
+            "Port Monkey",
+            "Mr. E",
+            "Klunty",
+            "Optimistique",
+            "Rahu",
+            "Tdog",
+            "Termite",
+            "Ledgeview",
+            "Kale",
+            "Highly Regarded",
+            "DARKCHILD"
+          ],
+          "source_mode": "chronicle_retelling",
+          "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+          "evidence_status": "dated authored Chronicle scene; strong for presence/topology, weaker for verbatim dialogue or motive"
+        },
+        {
+          "date": "2024-11-06",
+          "title": "Marty as Chance & Taylor; Optimistique's creative thread",
+          "what_happened": "Marty discusses being removed from another chat while Tim is already distancing from him; Optimistique discusses music, AI-generated instrumentals and Jungian-shadow creativity.",
+          "co_present": [
+            "Tim Dooley",
+            "Marty / Chance & Taylor",
+            "Optimistique",
+            "Rage",
+            "Termite",
+            "Tdog"
+          ],
+          "source_mode": "chronicle_retelling",
+          "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+          "evidence_status": "dated authored Chronicle scene; strong for presence/topology, weaker for verbatim dialogue or motive"
+        }
+      ],
+      "recent_recovery": null,
+      "chronicle_occurrence_index": [
+        {
+          "date": "November 3 2024",
+          "count": 2
+        },
+        {
+          "date": "November 6, 2024",
+          "count": 1
+        },
+        {
+          "date": "November 9, 2024",
+          "count": 6
+        },
+        {
+          "date": "November 19, 2024",
+          "count": 1
+        }
+      ],
+      "mining_frontier": [
+        {
+          "date": "November 3 2024",
+          "count": 2
+        },
+        {
+          "date": "November 6, 2024",
+          "count": 1
+        },
+        {
+          "date": "November 9, 2024",
+          "count": 6
+        },
+        {
+          "date": "November 19, 2024",
+          "count": 1
+        }
+      ],
+      "mining_rule": "Expand indexed dates into cases only when a source provides scene-level context. Do not invent dialogue, motives, wrongdoing or relationship changes from occurrence counts alone."
+    }
+  },
+  "meaning": {
+    "why_this_file_matters": "duaaaht is a compact example of the project's science-spirit humor layer: recurring social presence is real, while most distinctiveness comes from surreal interpretation and jokes rather than major conflict.",
+    "known": [
+      "The handle recurs across several November 2024 Chronicle dates.",
+      "Archive material associates the figure with science-spirit jokes and surreal interpretation.",
+      "Co-presence is strongest around Tim, Optimistique, Tdog and Termite."
+    ],
+    "interpretive": [
+      "Mystic/bard/seeker labels summarize project tone rather than making claims about belief or personality."
+    ],
+    "unknown": [
+      "The actual jokes and interpretive exchanges need closer/raw recovery.",
+      "Later presence beyond November 2024 is unclear."
+    ],
+    "relationship_arc": "recurring social participant → surreal/science-spirit interpreter → later continuity unresolved",
+    "confidence_note": "Good confidence in recurrence; thin scene-level detail.",
+    "evidence_density": {
+      "chronicle_mentions": 10,
+      "indexed_chronicle_dates": 4,
+      "expanded_day_level_cases": 2,
+      "unexpanded_indexed_dates": 2
+    },
+    "reader_rule": "Read the casebook before the archetype labels: dated scenes and source mode are the documentary spine; roles and symbolic interpretations explain later meaning but do not replace the events."
+  },
+  "symbolic_account": {
+    "status": "unassessed",
+    "good_karma": "unassessed",
+    "karmic_debt": "unassessed",
+    "dooley_welfare": {
+      "enabled": false
+    },
+    "outstanding": [],
+    "entries": []
+  }
+}

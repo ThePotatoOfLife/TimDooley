@@ -1,0 +1,144 @@
+{
+  "id": "country-rollout-manifest-disposition-2026-09-20",
+  "version": "1.0.0",
+  "updated": "2026-09-20",
+  "status": "maintenance-disposition",
+  "purpose": "Classify the September 7 country enrichment/node batch manifests after the country atlas reached canonical 195-country coverage.",
+  "conclusion": "The 18 batch/node files are rollout/migration bookkeeping rather than active country knowledge. Canonical country content lives in data/countries/*.json plus current country/world-map registries. Retain the manifests for historical provenance, but do not count them as active country-atlas holdings.",
+  "canonical_owners": [
+    "data/countries/*.json",
+    "data/countries/index.json",
+    "data/country-atlas.json",
+    "data/country-nodes.json",
+    "data/country-layer-manifest.json"
+  ],
+  "files": [
+    {
+      "path": "data/country-enrichment-batch-2026-09-07-02.json",
+      "disposition": "historical-rollout-manifest",
+      "active_house_holding": false,
+      "deletion_status": "retain-for-now",
+      "rationale": "Records rollout counts/added ids and links to enrichment/node manifests; does not supersede canonical country records."
+    },
+    {
+      "path": "data/country-nodes-batch-2026-09-07-02.json",
+      "disposition": "historical-rollout-manifest",
+      "active_house_holding": false,
+      "deletion_status": "retain-for-now",
+      "rationale": "Records rollout-time country node mappings; canonical node/country registries now own active graph identity."
+    },
+    {
+      "path": "data/country-enrichment-batch-2026-09-07-03.json",
+      "disposition": "historical-rollout-manifest",
+      "active_house_holding": false,
+      "deletion_status": "retain-for-now",
+      "rationale": "Records rollout counts/added ids and links to enrichment/node manifests; does not supersede canonical country records."
+    },
+    {
+      "path": "data/country-nodes-batch-2026-09-07-03.json",
+      "disposition": "historical-rollout-manifest",
+      "active_house_holding": false,
+      "deletion_status": "retain-for-now",
+      "rationale": "Records rollout-time country node mappings; canonical node/country registries now own active graph identity."
+    },
+    {
+      "path": "data/country-enrichment-batch-2026-09-07-04.json",
+      "disposition": "historical-rollout-manifest",
+      "active_house_holding": false,
+      "deletion_status": "retain-for-now",
+      "rationale": "Records rollout counts/added ids and links to enrichment/node manifests; does not supersede canonical country records."
+    },
+    {
+      "path": "data/country-nodes-batch-2026-09-07-04.json",
+      "disposition": "historical-rollout-manifest",
+      "active_house_holding": false,
+      "deletion_status": "retain-for-now",
+      "rationale": "Records rollout-time country node mappings; canonical node/country registries now own active graph identity."
+    },
+    {
+      "path": "data/country-enrichment-batch-2026-09-07-05.json",
+      "disposition": "historical-rollout-manifest",
+      "active_house_holding": false,
+      "deletion_status": "retain-for-now",
+      "rationale": "Records rollout counts/added ids and links to enrichment/node manifests; does not supersede canonical country records."
+    },
+    {
+      "path": "data/country-nodes-batch-2026-09-07-05.json",
+      "disposition": "historical-rollout-manifest",
+      "active_house_holding": false,
+      "deletion_status": "retain-for-now",
+      "rationale": "Records rollout-time country node mappings; canonical node/country registries now own active graph identity."
+    },
+    {
+      "path": "data/country-enrichment-batch-2026-09-07-06.json",
+      "disposition": "historical-rollout-manifest",
+      "active_house_holding": false,
+      "deletion_status": "retain-for-now",
+      "rationale": "Records rollout counts/added ids and links to enrichment/node manifests; does not supersede canonical country records."
+    },
+    {
+      "path": "data/country-nodes-batch-2026-09-07-06.json",
+      "disposition": "historical-rollout-manifest",
+      "active_house_holding": false,
+      "deletion_status": "retain-for-now",
+      "rationale": "Records rollout-time country node mappings; canonical node/country registries now own active graph identity."
+    },
+    {
+      "path": "data/country-enrichment-batch-2026-09-07-07.json",
+      "disposition": "historical-rollout-manifest",
+      "active_house_holding": false,
+      "deletion_status": "retain-for-now",
+      "rationale": "Records rollout counts/added ids and links to enrichment/node manifests; does not supersede canonical country records."
+    },
+    {
+      "path": "data/country-nodes-batch-2026-09-07-07.json",
+      "disposition": "historical-rollout-manifest",
+      "active_house_holding": false,
+      "deletion_status": "retain-for-now",
+      "rationale": "Records rollout-time country node mappings; canonical node/country registries now own active graph identity."
+    },
+    {
+      "path": "data/country-enrichment-batch-2026-09-07-08.json",
+      "disposition": "historical-rollout-manifest",
+      "active_house_holding": false,
+      "deletion_status": "retain-for-now",
+      "rationale": "Records rollout counts/added ids and links to enrichment/node manifests; does not supersede canonical country records."
+    },
+    {
+      "path": "data/country-nodes-batch-2026-09-07-08.json",
+      "disposition": "historical-rollout-manifest",
+      "active_house_holding": false,
+      "deletion_status": "retain-for-now",
+      "rationale": "Records rollout-time country node mappings; canonical node/country registries now own active graph identity."
+    },
+    {
+      "path": "data/country-enrichment-batch-2026-09-07-09.json",
+      "disposition": "historical-rollout-manifest",
+      "active_house_holding": false,
+      "deletion_status": "retain-for-now",
+      "rationale": "Records rollout counts/added ids and links to enrichment/node manifests; does not supersede canonical country records."
+    },
+    {
+      "path": "data/country-nodes-batch-2026-09-07-09.json",
+      "disposition": "historical-rollout-manifest",
+      "active_house_holding": false,
+      "deletion_status": "retain-for-now",
+      "rationale": "Records rollout-time country node mappings; canonical node/country registries now own active graph identity."
+    },
+    {
+      "path": "data/country-enrichment-batch-2026-09-07-10.json",
+      "disposition": "historical-rollout-manifest",
+      "active_house_holding": false,
+      "deletion_status": "retain-for-now",
+      "rationale": "Records rollout counts/added ids and links to enrichment/node manifests; does not supersede canonical country records."
+    },
+    {
+      "path": "data/country-nodes-batch-2026-09-07-10.json",
+      "disposition": "historical-rollout-manifest",
+      "active_house_holding": false,
+      "deletion_status": "retain-for-now",
+      "rationale": "Records rollout-time country node mappings; canonical node/country registries now own active graph identity."
+    }
+  ],
+  "next_step": "After a later archive-policy pass, move these manifests under archive/maintenance-history only if no external references require their current paths. Do not delete merely because their filenames are old."
+}

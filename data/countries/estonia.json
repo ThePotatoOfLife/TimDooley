@@ -1,0 +1,185 @@
+{
+  "record_version": "1.1.0",
+  "record_type": "country",
+  "status": "sourced-enriched",
+  "identity": {
+    "id": "estonia",
+    "name": "Estonia",
+    "iso2": "EE",
+    "iso3": "EST"
+  },
+  "blueprint": "data/countries-blueprint.json",
+  "blueprint_version": "1.0.0",
+  "coverage": {
+    "node_instantiated": true,
+    "blueprint_inherited": true,
+    "observations": 13,
+    "relationships": 0,
+    "sources": 1,
+    "research_status": "ready-for-source-enrichment",
+    "canonicalized": true
+  },
+  "observations": {
+    "population": {
+      "value": 1366475,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SP.POP.TOTL",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "gdp": {
+      "value": 47030833798.5866,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "NY.GDP.MKTP.CD",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "gdp_per_capita": {
+      "value": 34417.6320815138,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "NY.GDP.PCAP.CD",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "gdp_per_capita_ppp": {
+      "value": 52105.5093433416,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "NY.GDP.PCAP.PP.CD",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "real_growth": {
+      "value": 0.584308464789387,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "NY.GDP.MKTP.KD.ZG",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "inflation": {
+      "value": 4.82920753628342,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "FP.CPI.TOTL.ZG",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "unemployment": {
+      "value": 8.313,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SL.UEM.TOTL.ZS",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "labour_force_participation": {
+      "value": 65.128,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SL.TLF.CACT.ZS",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "life_expectancy": {
+      "value": 79.2951219512195,
+      "year": 2024,
+      "source": "world-bank",
+      "indicator": "SP.DYN.LE00.IN",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "fertility": {
+      "value": 1.18,
+      "year": 2024,
+      "source": "world-bank",
+      "indicator": "SP.DYN.TFRT.IN",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "urbanization": {
+      "value": 70.7208526598129,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SP.URB.TOTL.IN.ZS",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "poverty": {
+      "value": 22.5,
+      "year": 2022,
+      "source": "world-bank",
+      "indicator": "SI.POV.NAHC",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "internet_penetration": {
+      "value": 92.23796204,
+      "year": 2024,
+      "source": "world-bank",
+      "indicator": "IT.NET.USER.ZS",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    }
+  },
+  "relationships": [
+    [
+      "estonia",
+      "european-union",
+      "member"
+    ],
+    [
+      "estonia",
+      "nato",
+      "member"
+    ],
+    [
+      "estonia",
+      "baltic-states",
+      "regional-network"
+    ]
+  ],
+  "history": [],
+  "research_queue": [
+    "digital state",
+    "cyber resilience",
+    "Baltic energy",
+    "defense infrastructure",
+    "demographics"
+  ],
+  "provenance": {
+    "instantiated_at": "2026-09-07T12:37:31.426393+00:00",
+    "instantiation_method": "canonical country index + country blueprint",
+    "observation_policy": "No value is invented merely to fill a field; absent evidence remains missing/stale.",
+    "last_refresh": "2026-10-06T04:28:07.342073+00:00",
+    "source_priority": "international-official",
+    "historical_observations_preserved": true,
+    "enrichment_merged": true,
+    "enrichment_layer": "retired overlay merged into canonical country record"
+  },
+  "data_freshness": {
+    "last_refresh_attempt": "2026-09-07T21:59:50.659074+00:00",
+    "source": "world-bank"
+  },
+  "version": "1.0.0",
+  "country_id": "estonia",
+  "official_name": "Republic of Estonia",
+  "capital": "Tallinn",
+  "region": "Europe",
+  "subregion": "Northern Europe",
+  "currency": "EUR",
+  "government": "unitary parliamentary republic",
+  "national_day": "February 24",
+  "constitutional_basis": "Constitution of 1992",
+  "strategic_assets": [
+    "digital public infrastructure",
+    "Baltic ports",
+    "cybersecurity expertise",
+    "timber",
+    "energy interconnection"
+  ],
+  "record_role": "canonical-country-record"
+}

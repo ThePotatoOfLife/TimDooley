@@ -1,0 +1,17 @@
+/* Roots / Evidence: page-specific content only.
+   Shared Room geometry lives in room-home.css; lower-layer.css owns Below skin. */
+.flow-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:18px 0}
+.flow-card{border:1px solid var(--site-pane-line);border-radius:12px;padding:14px 16px;background:rgba(8,10,10,.68)}
+.flow-card b{display:block;color:var(--site-gold);font:400 19px var(--site-font-serif)}
+.flow-card span{display:block;color:var(--site-muted);font-size:var(--site-text-sm);line-height:1.5;margin-top:5px}
+.question-matrix{display:grid;grid-template-columns:140px minmax(0,1fr);border-top:1px solid var(--site-line);margin:18px 0}
+.question-matrix b,.question-matrix span{padding:9px 10px;border-bottom:1px solid var(--site-line)}
+.question-matrix b{color:var(--site-gold)}
+.question-matrix span{color:var(--site-muted);line-height:1.45}
+.route-chain{font-family:var(--site-font-mono);border:1px solid var(--site-pane-line);border-radius:12px;padding:14px 16px;line-height:1.7;margin:16px 0;color:var(--site-muted);background:rgba(8,10,10,.68)}
+.root-cross-section{position:relative;overflow:hidden;margin:28px 0;padding:24px 20px;border:1px solid var(--site-line)}
+.root-cross-section:before{content:"";position:absolute;left:49%;top:-12px;width:3px;height:115%;transform:rotate(2deg)}
+.root-cross-section>*{position:relative;z-index:1}
+.root-cross-section h2{max-width:720px}
+.root-cross-section p{max-width:880px}
+@media(max-width:700px){.flow-grid{grid-template-columns:1fr}.question-matrix{grid-template-columns:1fr}.question-matrix b{padding-bottom:2px;border-bottom:0}.question-matrix span{padding-top:2px}}

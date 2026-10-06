@@ -1,0 +1,106 @@
+{
+  "id": "world-axis-fields",
+  "version": "1.2.0",
+  "updated": "2026-09-10",
+  "purpose": "Versioned country-to-field registry for the World Relational Atlas. It separates Tim/Potatoverse axis assignments from empirical institutions while preserving overlap, uncertainty, timeline and provenance.",
+  "boundary": "North, West, East and South are project interpretive fields, not borders, sovereignty, citizenship, ethnicity, consent or legal alignment. Center is a convergence/hinge arena rather than a fifth territorial bloc. Countries may overlap fields. Empirical memberships remain separate evidence layers.",
+  "palette": {
+    "north": {"label": "North", "color": "#9fe8ff", "meaning": "icy / polar blue"},
+    "west": {"label": "West", "color": "#2f67b2", "meaning": "marine / Atlantic blue"},
+    "east": {"label": "East", "color": "#d95c5c", "meaning": "red"},
+    "south": {"label": "South", "color": "#d2a85a", "meaning": "warm southern gold"},
+    "center": {"label": "Center", "color": "#b692d0", "meaning": "convergence / hinge violet"},
+    "brics": {"label": "BRICS", "color": "#e54848", "meaning": "empirical BRICS backbone; visually coupled to East but not identical to it"}
+  },
+  "evidence_model": {
+    "confidence_order": ["explicit", "recovered", "corroborated", "provisional", "unknown"],
+    "explicit": "Directly recovered Tim country-list or field statement.",
+    "recovered": "Repeated or structurally consistent project formulation recovered from conversation/archive material.",
+    "corroborated": "Project assignment that also maps onto a strong observable relationship without treating that institution as the cause of the assignment.",
+    "provisional": "Current analytical hypothesis or newly suggested assignment not yet backed by a recovered project statement.",
+    "unknown": "Insufficient project evidence; do not color by inference alone."
+  },
+  "project_fields": {
+    "north": {
+      "status": "most-developed project field",
+      "explicit_or_recovered_primary": ["DNK","GRL","FRO","CAN","ISL","NOR","SWE","FIN","DEU","NLD","BEL","FRA","ESP","PRT","ITA","GRC","IRL","EST","UKR","TUR"],
+      "variable_or_overlap": ["GBR","AUS"],
+      "future_or_reconnection": ["IRQ","SYR","RUS"],
+      "provisional": ["MAR"],
+      "symbolic_function": "ascent / order / development / memory / civilization / Father / Throne",
+      "notes": "Recovered core runs Canada/Greenland through the North Atlantic, Scandinavia and continental Europe toward Ukraine and Türkiye. Official Arctic Council, Nordic, NATO and EU structures strongly corroborate parts of this topology without defining it. Russia is the clearest proof that physical Arctic geography and current project-North membership are not identical.",
+      "confidence": "high for named 2026 arc; mixed at UK, Russia and Mesopotamian edges"
+    },
+    "west": {
+      "status": "developed but broader and less institutionally bounded than North",
+      "explicit_or_recovered_primary": ["USA","ISR","ARG","CHL","COL","ECU","GUY","PRY","PER","SUR","URY","VEN"],
+      "strong_overlap": ["GBR","CAN","AUS","NZL","JPN","KOR","SAU"],
+      "hinge": ["BOL","BRA"],
+      "symbolic_function": "American / Israeli institutional power, finance, military-technology, disruption and visible-system field",
+      "notes": "Recovered West is U.S.-centered and Atlantic/American. South America was described as West-primary unless specifically pulled toward East/North. MERCOSUR demonstrates that real integration can cross the project West/East hinge. APEC likewise shows West, East and South economies occupying one economic forum.",
+      "confidence": "high at USA/Israel; medium across wider Americas and Indo-Pacific overlaps"
+    },
+    "east": {
+      "status": "developed relational field; explicitly not synonymous with BRICS",
+      "explicit_or_recovered_primary": ["CHN","RUS","IND","PAK","VNM","LAO","KHM","MMR","IRN","EGY","ETH","ZAF","BRA"],
+      "east_ties": ["IDN","THA","MYS","BOL","KAZ","BLR","CUB","NGA","UGA","UZB"],
+      "symbolic_function": "Eurasian / continental / BRICS-adjacent / resurrection-facing field",
+      "notes": "Recovered East is Eurasian/Asian plus selected BRICS-linked nodes. SCO is a stronger empirical Eurasian comparator than BRICS because its ten members cluster around China, Russia, Central Asia, India, Pakistan, Iran and Belarus. BRICS remains broader and officially frames itself as Global South coordination rather than an Eastern alliance.",
+      "confidence": "high at China/Russia/India and recovered Asian assignments; medium where BRICS is only corroborating context"
+    },
+    "south": {
+      "status": "least-settled project field",
+      "recovered_primary": ["AUS","NZL","IDN","MYS","SGP","BRN","PHL","TLS","TZA","ZMB","MOZ","MDG","MWI","ZWE","NAM","BWA"],
+      "overlap": ["ZAF","THA"],
+      "provisional": ["PNG"],
+      "symbolic_function": "southern / maritime / Pacific-Indian-Ocean / inversion field",
+      "notes": "Recovered material points toward an Australia/New Zealand/Pacific and Indian-Ocean/southern-African maritime field. SADC provides a real 16-state southern-African integration layer; Pacific Islands Forum and APEC provide real Pacific/Asia-Pacific relational structures. These corroborate a southern-maritime topology without proving Timic membership. Papua New Guinea remains provisional until a direct Tim assignment is recovered.",
+      "confidence": "medium at Australia/New Zealand and southern-maritime logic; provisional for Papua New Guinea and wider African expansion"
+    },
+    "center": {
+      "status": "convergence arena, not a territorial quadrant",
+      "explicit_or_recovered_primary": ["IRQ","ISR","IRN","EGY"],
+      "hinge": ["TUR","SAU","SYR"],
+      "provisional": ["JOR","LBN","ARE","KWT","QAT","BHR","OMN"],
+      "symbolic_function": "roots / cradle / promise / covenant / lion / rivers / old-source convergence",
+      "notes": "Recovered project language repeatedly places the Middle East as the middle where multiple fields meet: Mesopotamia/Iraq as Father/root/promise, Israel as Children/covenant and project-West, Iran as Lion and project-East, Egypt as civilizational hinge, Türkiye as North endpoint/bridge, and Saudi Arabia as West + Islam + oil + Center. GCC is useful empirical context inside the Gulf but does not define Center. Center should render as a convergence overlay, not as a fifth sovereign bloc.",
+      "confidence": "high for the convergence concept and Iraq/Israel/Iran/Egypt motifs; medium-to-provisional for wider Gulf extension"
+    }
+  },
+  "empirical_layers": {
+    "BRICS": {"source":"https://brics.br/en/about-the-brics","interpretive_use":"Global South coordination; useful East/South-South comparator but never an automatic East assignment."},
+    "NATO": {"member_count":32,"source":"https://www.nato.int/en/what-is-nato","interpretive_use":"Explains part of the dense North/West security graph, but defines neither project field."},
+    "EU": {"member_count":27,"source":"https://european-union.europa.eu/principles-countries-history/eu-countries_en","interpretive_use":"Institutional backbone inside European North; North also contains non-EU states, candidates and territories."},
+    "ARCTIC_COUNCIL": {"member_count":8,"source":"https://arctic-council.org/about/states/","interpretive_use":"Real circumpolar geography crossing project North, West and East."},
+    "NORDIC": {"source":"https://www.norden.org/en/information/about-nordic-council-ministers","interpretive_use":"Strong real institutional kernel inside project North."},
+    "SCO": {"member_count":10,"source":"https://eng.sectsco.org/20170109/192193.html","interpretive_use":"Strong Eurasian comparator for project East."},
+    "ASEAN": {"member_count":11,"source":"https://agreement.asean.org/","interpretive_use":"Observable Southeast Asian regional layer crossing project East/South boundaries."},
+    "APEC": {"member_economies":21,"source":"https://www.apec.org/who-we-are/our-members","interpretive_use":"Demonstrates that Asia-Pacific economic integration crosses West/East/South field boundaries."},
+    "PACIFIC_ISLANDS_FORUM": {"member_count":18,"source":"https://forumsec.org/pacific-islands-forum","interpretive_use":"Strong Pacific relational comparator for project South."},
+    "SADC": {"member_count":16,"source":"https://www.sadc.int/member-states","interpretive_use":"Real southern-African integration layer; prevents flattening all Africa into South."},
+    "GCC": {"member_count":6,"source":"https://www.gcc-sg.org/en/AboutUs/Pages/default.aspx","interpretive_use":"Real Gulf coordination layer inside the wider project Center arena."},
+    "African_Union_regions": {"member_count":55,"source":"https://www.au.int/en/member_states/countryprofiles2","interpretive_use":"Use five-region African geography to keep real geography distinct from project fields."},
+    "MERCOSUR": {"source":"https://www.mercosur.int/en/about-mercosur/countries","interpretive_use":"South American integration crossing the project West/East hinge."}
+  },
+  "bridge_zones": {
+    "north_west": ["CAN","GBR","AUS"],
+    "west_east": ["BRA","BOL","SAU"],
+    "east_south": ["IDN","MYS","THA","ZAF","VNM"],
+    "south_west": ["AUS","NZL"],
+    "north_center": ["TUR","IRQ","SYR"],
+    "east_center": ["IRN","EGY","SAU"],
+    "west_center": ["ISR","SAU","EGY"],
+    "note": "Bridge zones are analytically more informative than forcing mutually exclusive quadrants. They describe overlapping relationships, not territorial boundaries."
+  },
+  "display_priority": ["selected","compare","brics","north","west","east","south","center","unclassified"],
+  "classification_rule": "Prefer recovered explicit Tim assignments; preserve overlaps; attach confidence/provenance; mark inferred or developing assignments as provisional; use real-world institutions only as corroborating relationship layers, never as automatic project-field assignments.",
+  "next_research": [
+    "Recover exact Tim statements for Papua New Guinea and wider Pacific South.",
+    "Recover direct country-by-country South assignments before extending South further across Africa.",
+    "Recover whether all South American states were explicitly West or whether the statement was a regional heuristic.",
+    "Recover exact cross-axis statements for Saudi Arabia, Indonesia, Brazil, Bolivia and South Africa.",
+    "Recover Center statements around Egypt, Levant and Gulf states with dates and wording.",
+    "Recover England/Scotland/UK transitions with exact dates and wording.",
+    "Version any future changes rather than rewriting earlier project geography."
+  ]
+}

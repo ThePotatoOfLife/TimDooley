@@ -1,0 +1,217 @@
+{
+  "record_version": "1.1.0",
+  "record_type": "country",
+  "status": "sourced-enriched",
+  "identity": {
+    "id": "thailand",
+    "name": "Thailand",
+    "iso2": "TH",
+    "iso3": "THA"
+  },
+  "blueprint": "data/countries-blueprint.json",
+  "blueprint_version": "1.0.0",
+  "coverage": {
+    "node_instantiated": true,
+    "blueprint_inherited": true,
+    "observations": 13,
+    "relationships": 0,
+    "sources": 1,
+    "research_status": "ready-for-source-enrichment",
+    "canonicalized": true
+  },
+  "observations": {
+    "population": {
+      "value": 71619863,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SP.POP.TOTL",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "gdp": {
+      "value": 577009981112.015,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "NY.GDP.MKTP.CD",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "gdp_per_capita": {
+      "value": 8056.56359761558,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "NY.GDP.PCAP.CD",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "gdp_per_capita_ppp": {
+      "value": 26250.0723587304,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "NY.GDP.PCAP.PP.CD",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "real_growth": {
+      "value": 2.44247444990198,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "NY.GDP.MKTP.KD.ZG",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "inflation": {
+      "value": -0.133634356480207,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "FP.CPI.TOTL.ZG",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "unemployment": {
+      "value": 0.781,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SL.UEM.TOTL.ZS",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "labour_force_participation": {
+      "value": 66.678,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SL.TLF.CACT.ZS",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "life_expectancy": {
+      "value": 76.564,
+      "year": 2024,
+      "source": "world-bank",
+      "indicator": "SP.DYN.LE00.IN",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "fertility": {
+      "value": 1.204,
+      "year": 2024,
+      "source": "world-bank",
+      "indicator": "SP.DYN.TFRT.IN",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "urbanization": {
+      "value": 62.7993377136296,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SP.URB.TOTL.IN.ZS",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "poverty": {
+      "value": 5.4,
+      "year": 2022,
+      "source": "world-bank",
+      "indicator": "SI.POV.NAHC",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "internet_penetration": {
+      "value": 90.86718789,
+      "year": 2024,
+      "source": "world-bank",
+      "indicator": "IT.NET.USER.ZS",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    }
+  },
+  "relationships": [
+    {
+      "target": "malaysia",
+      "type": "border"
+    },
+    {
+      "target": "myanmar",
+      "type": "border"
+    },
+    {
+      "target": "cambodia",
+      "type": "border"
+    },
+    {
+      "target": "laos",
+      "type": "border"
+    },
+    {
+      "target": "asean",
+      "type": "member"
+    },
+    {
+      "target": "china",
+      "type": "trade-and-investment-relationship"
+    },
+    {
+      "target": "japan",
+      "type": "industrial-investment-relationship"
+    }
+  ],
+  "history": [],
+  "research_queue": [
+    "automotive and EV value chains",
+    "electronics manufacturing",
+    "Eastern Economic Corridor",
+    "ports and rail logistics",
+    "rice and food exports",
+    "energy imports and gas",
+    "tourism infrastructure",
+    "banking ownership",
+    "industrial estates",
+    "ASEAN supply chains",
+    "water and climate resilience"
+  ],
+  "provenance": {
+    "instantiated_at": "2026-09-07T12:37:31.426393+00:00",
+    "instantiation_method": "canonical country index + country blueprint",
+    "observation_policy": "No value is invented merely to fill a field; absent evidence remains missing/stale.",
+    "last_refresh": "2026-10-06T04:28:07.342073+00:00",
+    "source_priority": "international-official",
+    "historical_observations_preserved": true,
+    "enrichment_merged": true,
+    "enrichment_layer": "retired overlay merged into canonical country record"
+  },
+  "data_freshness": {
+    "last_refresh_attempt": "2026-09-07T21:59:50.659074+00:00",
+    "source": "world-bank"
+  },
+  "version": "1.0.0",
+  "country_id": "thailand",
+  "iso2": "TH",
+  "iso3": "THA",
+  "official_name": "Kingdom of Thailand",
+  "capital": "Bangkok",
+  "region": "Asia",
+  "subregion": "South-Eastern Asia",
+  "currency": "THB",
+  "national_day": "December 5",
+  "government": "Constitutional monarchy with parliamentary government",
+  "head_of_state": "King Vajiralongkorn",
+  "legislature": "National Assembly",
+  "administrative_structure": "Provinces and special administrative areas",
+  "constitution": "2017-04-06",
+  "population_2025": 71500000,
+  "gdp_current_usd_2025": 526000000000,
+  "strategic_assets": [
+    "automotive manufacturing",
+    "electronics",
+    "agriculture",
+    "tourism",
+    "food processing",
+    "ports",
+    "natural gas",
+    "regional logistics"
+  ],
+  "sources": [
+    "World Bank World Development Indicators"
+  ],
+  "record_role": "canonical-country-record"
+}

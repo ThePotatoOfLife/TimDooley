@@ -1,0 +1,17 @@
+{
+  "version":"1.0.0","status":"active-blueprint","purpose":"Map trade relationships, goods and services, trade policy, routes, counterparties, value chains, balances and strategic exposure.","entity":"trade_system",
+  "record_schema":{
+    "identity":["trade_id","product_or_service","classification","reporter","partner","period","flow_type"],
+    "flows":["exports","imports","reexports","services","quantity","value","currency","unit","origin","destination","transport_mode"],
+    "product_structure":["raw_material","intermediate_good","capital_good","consumer_good","energy","food","technology","service","strategic_good","critical_mineral"],
+    "counterparties":["country","company_when documented","port","customs_area","trade_bloc","supplier","buyer","intermediary"],
+    "policy":["tariff","quota","sanction","export_control","import_license","subsidy","tax","trade_agreement","rules_of_origin","standards","customs_procedure"],
+    "routes":["port","rail","road","air","pipeline","sea_lane","canal","border_crossing","chokepoint","transit_country","insurance_dependency"],
+    "economics":["unit_value","price","freight","insurance","tariff_cost","exchange_rate","terms_of_trade","trade_balance","value_added","domestic_content"],
+    "exposure":["partner_concentration","product_concentration","route_concentration","import_dependency","export_dependency","substitution","market_access","political_risk"],
+    "evidence":["customs_statistics","national_statistics","international_database","company_report","trade_agreement","regulatory_notice","research","methodology","retrieved_at","confidence"]
+  },
+  "derived_measures":["trade_balance","export_concentration","import_concentration","partner_share","product_share","revealed_specialization","domestic_value_added","terms_of_trade"],
+  "relationship_templates":["country-exports-to-country","country-imports-from-country","company-exports-product","port-handles-trade","agreement-governs-trade","policy-restricts-flow","country-depends-on-market"],
+  "integrity_rules":["Reporter and partner perspectives must not be conflated.","Goods trade and services trade are separate unless a source explicitly combines them.","Trade value is not equivalent to domestic value added.","A trade deficit does not by itself establish vulnerability.","Sanctions and tariffs require dates and legal instruments.","Trade classifications and revisions must be retained with the observation."]
+}

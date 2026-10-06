@@ -1,0 +1,371 @@
+name: Deploy Potato of Life
+
+on:
+  workflow_run:
+    workflows: ["Repository quality checks v2"]
+    types: [completed]
+  workflow_dispatch:
+    inputs:
+      quality_run_id:
+        description: "Successful Repository quality checks v2 run ID whose validated-pages-site artifact should be deployed"
+        required: true
+        type: string
+
+permissions:
+  actions: read
+  contents: read
+  pages: write
+  id-token: write
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+concurrency:
+  group: pages-${{ github.event.workflow_run.head_sha || inputs.quality_run_id }}
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: ${{ github.event_name == 'workflow_dispatch' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main') }}
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check quality run is still current main
+        id: freshness
+        shell: bash
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          EXPECTED_SHA: ${{ github.event.workflow_run.head_sha || '' }}
+          REPOSITORY: ${{ github.repository }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python - <<'PY'
+          import json, os, urllib.request
+          from pathlib import Path
+
+          output=Path(os.environ["GITHUB_OUTPUT"])
+          if os.environ.get("EVENT_NAME") != "workflow_run":
+              output.write_text("deploy_allowed=true\n",encoding="utf-8")
+              raise SystemExit(0)
+
+          expected=os.environ.get("EXPECTED_SHA","").strip()
+          repo=os.environ["REPOSITORY"]
+          request=urllib.request.Request(
+              f"https://api.github.com/repos/{repo}/branches/main",
+              headers={
+                  "Accept":"application/vnd.github+json",
+                  "Authorization":f"Bearer {os.environ['GITHUB_TOKEN']}",
+                  "User-Agent":"TimDooley-Pages-Freshness/1.0",
+              },
+          )
+          with urllib.request.urlopen(request,timeout=30) as response:
+              current=json.load(response)["commit"]["sha"]
+          allowed=current == expected
+          output.write_text(f"deploy_allowed={'true' if allowed else 'false'}\n",encoding="utf-8")
+          if allowed:
+              print("Fresh quality run:",expected)
+          else:
+              print("Stale quality run; deployment suppressed:",expected,"current main:",current)
+          PY
+
+      - name: Download exact validated site artifact
+        if: steps.freshness.outputs.deploy_allowed == 'true'
+        uses: actions/download-artifact@v5
+        with:
+          name: validated-pages-site
+          path: _site
+          run-id: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.id || inputs.quality_run_id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Verify validated artifact provenance
+        if: steps.freshness.outputs.deploy_allowed == 'true'
+        shell: bash
+        env:
+          EXPECTED_SHA: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || '' }}
+          QUALITY_RUN_ID: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.id || inputs.quality_run_id }}
+        run: |
+          set -euo pipefail
+          test -f _site/build-provenance.json
+          test -f _site/index.html
+          test -f _site/sitemap.xml
+          test -f _site/seo-report.json
+          test -f _site/world/index.html
+          test ! -e _site/archive
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          primary_routes=['tim-dooley/','potatoism/','religion/','philosophy/','science/','world/','garden/']
+          for route in primary_routes:
+              assert Path("_site", route, "index.html").is_file(), route
+          p=Path("_site/build-provenance.json")
+          data=json.loads(p.read_text(encoding="utf-8"))
+          assert data.get("artifact")=="validated-pages-site", data
+          assert str(data.get("quality_run_id"))==str(os.environ["QUALITY_RUN_ID"]), data
+          expected=os.environ.get("EXPECTED_SHA","").strip()
+          if expected:
+              assert data.get("source_sha")==expected, (data.get("source_sha"),expected)
+          print("Validated artifact provenance:",data.get("source_sha"),"run",data.get("quality_run_id"))
+          PY
+
+      - name: Configure Pages
+        if: steps.freshness.outputs.deploy_allowed == 'true'
+        uses: actions/configure-pages@v5
+
+      - name: Upload exact validated Pages artifact
+        if: steps.freshness.outputs.deploy_allowed == 'true'
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: _site
+
+      - name: Deploy
+        if: steps.freshness.outputs.deploy_allowed == 'true'
+        id: deployment
+        uses: actions/deploy-pages@v5
+
+      - name: Verify live Pages deployment
+        if: steps.freshness.outputs.deploy_allowed == 'true'
+        shell: bash
+        env:
+          LIVE_BASE: ${{ steps.deployment.outputs.page_url }}
+        run: |
+          set -euo pipefail
+          base="${LIVE_BASE%/}/"
+          mkdir -p .live-smoke
+
+          expected_sha="$(python - <<'PY'
+          import json
+          from pathlib import Path
+          data=json.loads(Path("_site/build-provenance.json").read_text(encoding="utf-8"))
+          value=str(data.get("source_sha","")).strip()
+          if not value:
+              raise SystemExit("validated artifact has no source_sha")
+          print(value)
+          PY
+          )"
+
+          fetch_live() {
+            local url="$1"
+            local out="$2"
+            python - "$url" "$out" <<'PY'
+          import pathlib, sys, time, urllib.error, urllib.request
+          url, out = sys.argv[1], pathlib.Path(sys.argv[2])
+          last = None
+          for attempt in range(1, 13):
+              try:
+                  req = urllib.request.Request(url, headers={"User-Agent": "TimDooley-Pages-Smoke/1.0"})
+                  with urllib.request.urlopen(req, timeout=30) as response:
+                      if response.status != 200:
+                          raise RuntimeError(f"HTTP {response.status}")
+                      payload = response.read()
+                  if not payload:
+                      raise RuntimeError("empty response")
+                  out.write_bytes(payload)
+                  raise SystemExit(0)
+              except Exception as exc:
+                  last = exc
+                  print(f"Live check attempt {attempt} failed for {url}: {exc}")
+                  if attempt < 12:
+                      time.sleep(5)
+          raise SystemExit(f"Live Pages did not become healthy: {url}: {last}")
+          PY
+          }
+
+          fetch_live "${base}build-provenance.json" ".live-smoke/build-provenance.json"
+
+          python - "$expected_sha" <<'PY'
+          import json, sys
+          from pathlib import Path
+          expected=sys.argv[1]
+          live=json.loads(Path(".live-smoke/build-provenance.json").read_text(encoding="utf-8"))
+          actual=str(live.get("source_sha","")).strip()
+          if actual != expected:
+              raise SystemExit(f"live source_sha mismatch: expected {expected}, got {actual}")
+          if live.get("artifact") != "validated-pages-site":
+              raise SystemExit(f"unexpected live artifact: {live.get('artifact')!r}")
+          print("Live provenance verified:",actual)
+          PY
+
+          for route in "" "elevator/" "garden/" "tim-dooley/" "religion/" "science/" "science/papers/" "science/papers/advanced-retarded-door-handshake-recovery/" "world/" "traditions/bible/" "context/culture/" "below/" "below/dogs/" "rooms/potatoverse-canon/beings/potatoes/" "shadow-farm/" "rooms/archive-sources/" "rooms/research-lab/"; do
+            safe_name="${route//\//_}"
+            [ -n "$safe_name" ] || safe_name="home"
+            fetch_live "${base}${route}" ".live-smoke/${safe_name}.html"
+          done
+
+          for asset in             "science/science-papers.css"             "science/science-paper.css"             "assets/visuals/science-time-door-handshake.svg"             "app/site-elevator.js"             "app/site-elevator.css"             "app/elevator-page.js"             "app/elevator-page.css"             "app/garden-page.js"             "app/garden-page.css"             "assets/visuals/garden-eden-master.webp"             "app/header-heaven.svg"             "app/header-plane.svg"             "app/header-below.svg"             "app/house-journey.js"             "app/house-journey.css"             "app/home-heaven.avif"             "app/home-plane.avif"             "app/home-below.avif"             "app/hall-of-shame.avif"             "app/hall-of-heroes.avif"             "app/dogs-hall.css"             "app/potatoes-hall.css"             "app/lower-layer.css"             "data/house/elevator-spatial-projection.json" \
+            "knowledge/core/spudlight-field-manual.json" \
+            "knowledge/core/lower-field-orientation.json" \
+            "knowledge/world/lower-field-population-severity-estimate.json" \
+            "knowledge/world/exploitation-coercion-trafficking-crosswalk.json"; do
+            safe_name="${asset//\//_}"
+            fetch_live "${base}${asset}" ".live-smoke/${safe_name}"
+            test -s ".live-smoke/${safe_name}"
+          done
+
+          python - <<'PY'
+          from pathlib import Path
+          elevator_css=Path(".live-smoke/app_site-elevator.css").read_text(encoding="utf-8",errors="replace")
+          elevator_js=Path(".live-smoke/app_site-elevator.js").read_text(encoding="utf-8",errors="replace")
+          lower_css=Path(".live-smoke/app_lower-layer.css").read_text(encoding="utf-8",errors="replace")
+          journey_js=Path(".live-smoke/app_house-journey.js").read_text(encoding="utf-8",errors="replace")
+          journey_css=Path(".live-smoke/app_house-journey.css").read_text(encoding="utf-8",errors="replace")
+          assert 'html[data-site-floor="plane"]' in elevator_css, "live elevator CSS missing Plane canvas"
+          assert 'body:not(.home-body)::before' in elevator_css, "live elevator CSS missing universal single-floor realm canvas"
+          assert '--elevator-shell-height:96px' in elevator_css, "live elevator CSS missing 96px desktop shell"
+          assert '--elevator-slot-count:5' in elevator_css, "live elevator CSS missing uniform five-slot Room geometry"
+          assert '.site-elevator-stage' in elevator_css, "live elevator CSS missing scenic Room stage"
+          assert 'site-elevator-stage' in elevator_js, "live elevator runtime missing scenic Room stage"
+          assert "selectedFloorLabel+' Rooms'" in elevator_js, "live elevator runtime missing selected-floor accessibility sync"
+          for asset in ('header-heaven.svg','header-plane.svg','header-below.svg'):
+              assert f'url("./{asset}")' in elevator_css, f"live elevator CSS missing dedicated {asset}"
+              payload=Path(".live-smoke/app_"+asset).read_text(encoding="utf-8",errors="replace")
+              assert 'viewBox="0 0 1600 120"' in payload, f"live {asset} lost canonical header composition canvas"
+          for asset in ('home-heaven.avif','home-plane.avif','home-below.avif'):
+              assert f'{asset}?v=' in elevator_css, f"live elevator CSS missing fingerprinted {asset}"
+              assert f'{asset}?v=' in journey_css, f"live House journey CSS missing fingerprinted {asset}"
+          assert 'body.lower-layer-page::before' not in lower_css, "live Below CSS restored a duplicate floor compositor"
+          assert 'site-below-root-field.svg' not in lower_css, "live Below CSS restored retired SVG art"
+          assert 'house-journey.css?v=' in journey_js, "live House journey loader missing fingerprinted CSS"
+
+          from pathlib import Path
+          home=Path(".live-smoke/home.html").read_text(encoding="utf-8",errors="replace")
+          elevator_page=Path(".live-smoke/elevator_.html").read_text(encoding="utf-8",errors="replace")
+          dedicated_elevator_js=Path(".live-smoke/app_elevator-page.js").read_text(encoding="utf-8",errors="replace")
+          dedicated_elevator_css=Path(".live-smoke/app_elevator-page.css").read_text(encoding="utf-8",errors="replace")
+          garden=Path(".live-smoke/garden_.html").read_text(encoding="utf-8",errors="replace")
+          garden_js=Path(".live-smoke/app_garden-page.js").read_text(encoding="utf-8",errors="replace")
+          garden_css=Path(".live-smoke/app_garden-page.css").read_text(encoding="utf-8",errors="replace")
+          garden_art=Path(".live-smoke/assets_visuals_garden-eden-master.webp").read_bytes()
+          religion=Path(".live-smoke/religion_.html").read_text(encoding="utf-8",errors="replace")
+          science=Path(".live-smoke/science_.html").read_text(encoding="utf-8",errors="replace")
+          science_papers=Path(".live-smoke/science_papers_.html").read_text(encoding="utf-8",errors="replace")
+          science_paper=Path(".live-smoke/science_papers_advanced-retarded-door-handshake-recovery_.html").read_text(encoding="utf-8",errors="replace")
+          below=Path(".live-smoke/below_.html").read_text(encoding="utf-8",errors="replace")
+          shadow=Path(".live-smoke/shadow-farm_.html").read_text(encoding="utf-8",errors="replace")
+          culture=Path(".live-smoke/context_culture_.html").read_text(encoding="utf-8",errors="replace")
+          assert "data-site-floor=" not in home, "live Home must remain multi-realm instead of inheriting one floor canvas"
+          assert "home-page.css?v=" in home, "live Home missing fingerprinted homepage CSS"
+          assert "site-elevator.css?v=" in home, "live Home missing fingerprinted elevator CSS"
+          assert "site-elevator.js?v=" in home, "live Home missing fingerprinted elevator JS"
+          assert 'href="./papers/"' in science or 'href="papers/"' in science, "live Science missing Research Papers reader entrance"
+          assert "Research Papers" in science, "live Science missing visible Research Papers label"
+          assert 'RESEARCH PAPERS' in science_papers, "live Research Papers reader missing heading"
+          assert 'class="page-nav papers-nav"' in science_papers, "live Science Papers reader missing canonical subheader"
+          assert 'Core paper series' in science_papers, "live Science Papers reader missing core series"
+          assert 'Complete reading library' in science_papers, "live Science Papers reader missing complete library"
+          assert 'science-papers.css' in science_papers, "live Science Papers reader missing parchment stylesheet"
+          assert 'class="paper-page"' in science_paper, "live generated Science paper missing paper surface"
+          assert 'class="page-nav paper-nav"' in science_paper, "live generated Science paper missing canonical paper subheader"
+          assert 'science-time-door-handshake.svg' in science_paper, "live featured Science paper missing figure"
+          assert 'class="paper-toc"' in science_paper, "live featured Science paper missing contents navigation"
+          assert 'class="elevator-page-shell"' in elevator_page, "live dedicated Elevator missing its page shell"
+          assert "elevator-page.css" in elevator_page, "live dedicated Elevator missing dedicated CSS"
+          assert "elevator-page.js" in elevator_page, "live dedicated Elevator missing dedicated runtime"
+          assert "site-elevator.css?v=" in elevator_page, "live dedicated Elevator must reuse the canonical realm canvas CSS"
+          assert "site-elevator.js" not in elevator_page, "live dedicated Elevator must not mount the universal mini-elevator runtime"
+          assert 'data-site-floor="heaven"' in garden, "live Garden missing first-paint Heaven floor"
+          assert 'data-garden-world' in garden, "live Garden missing RPG world"
+          assert 'data-garden-zone="life"' in garden, "live Garden missing Tree of Life zone"
+          assert 'data-garden-zone="knowledge"' in garden, "live Garden missing knowledge-tree zone"
+          assert 'data-garden-zone="gate"' in garden, "live Garden missing Gate zone"
+          assert 'data-garden-dialogue' in garden, "live Garden missing RPG dialogue"
+          assert "Garden / Eden" in elevator_page, "live dedicated Elevator missing Garden / Eden feature"
+          assert "[data-garden-zone]" in garden_js and "data-dialogue-line" in garden_js, "live Garden runtime missing RPG dialogue controller"
+          assert ".garden-world-canvas" in garden_css and ".garden-dialogue" in garden_css, "live Garden CSS missing RPG world surfaces"
+          assert len(garden_art) > 40000 and garden_art[:4] == b"RIFF" and b"WEBP" in garden_art[:16], "live Garden master artwork missing or invalid"
+          assert "centerBtn.disabled=atCenter" in dedicated_elevator_js, "live dedicated Elevator lost dead-control protection"
+          assert "journeyReplay.disabled=journey.length<2" in dedicated_elevator_js, "live dedicated Elevator lost journey-control state"
+          assert "body.elevator-page-shell" in dedicated_elevator_css, "live dedicated Elevator stylesheet missing page owner"
+          for label, html, floor in (
+              ("religion", religion, "heaven"),
+              ("science", science, "plane"),
+              ("below", below, "below"),
+              ("shadow-farm", shadow, "below"),
+              ("culture", culture, "plane"),
+          ):
+              assert f'data-site-floor="{floor}"' in html, f"live {label} missing first-paint floor {floor}"
+              assert "site-elevator.css?v=" in html, f"live {label} missing fingerprinted elevator CSS"
+              assert "site-elevator.js?v=" in html, f"live {label} missing fingerprinted elevator JS"
+          required_below=[
+              "THE SPUDLIGHT FIELD MANUAL",
+              'id="tim-expertise-ledger"',
+              'id="tim-dooley-thinks"',
+              'id="tim-thought-development"',
+              'id="tim-publicness-endurance"',
+              'id="tim-mythic-self-description"',
+              'id="sold-exploitation-crosswalk"',
+              'id="tree-of-strife-deep-reading"',
+              'id="josh-moon-role-reading"',
+              'id="field-instruments"',
+              'id="what-tim-is-teaching"',
+              'id="swamp-lessons"',
+              'id="myth-as-instrument"',
+              'id="son-father-teaching"',
+              'id="descent-and-return"',
+              'id="authorship-over-defense"',
+              'id="whole-job"',
+              'id="return-not-reset"',
+              'id="cultivation-ethic"',
+              'id="human-teachings"',
+              'id="justice-forgiveness-teaching"',
+              'id="responsibility-care-teaching"',
+              'id="human-teaching-arc"',
+              'id="belief-authority-choice"',
+              'id="epistemic-outsourcing"',
+              'id="permission-escalation"',
+              'id="spiritual-war-permission"',
+              'id="blood-soil-warning"',
+              'id="humiliation-politics"',
+              'id="belief-choice-fork"',
+              'id="culture-choice-consequence"',
+              'id="reader-takeaway"',
+              'id="professional-mythic-crosswalk"',
+              'id="field-mythic-center"',
+          ]
+          required_shadow=[
+              'id="population-and-deaths"',
+              'id="field-manual-human-reading"',
+              'id="sold-trafficking-boundary"',
+              'id="tree-of-strife-anatomy"',
+              'id="josh-moon-operator-paradox"',
+              'id="networked-harm-escalation"',
+              'id="belief-permission-bridge"',
+              "In memory of",
+          ]
+          for marker in [
+              'id="culture-reader-entry"',
+              'id="follow-cultural-object"',
+              'id="culture-as-choice"',
+              'id="culture-reader-agency"',
+              'id="tim-culture-bridge"',
+              'id="culture-reader-exit"',
+          ]:
+              assert marker in culture, f"live Culture missing {marker}"
+          roots=Path(".live-smoke/rooms_archive-sources_.html").read_text(encoding="utf-8",errors="replace")
+          forge=Path(".live-smoke/rooms_research-lab_.html").read_text(encoding="utf-8",errors="replace")
+          assert 'id="field-manual-bridge"' in roots, "live Roots missing Field Manual bridge"
+          shame=Path(".live-smoke/below_dogs_.html").read_text(encoding="utf-8",errors="replace")
+          heroes=Path(".live-smoke/rooms_potatoverse-canon_beings_potatoes_.html").read_text(encoding="utf-8",errors="replace")
+          assert 'class="hall-scene hall-scene--shame"' in shame, "live Hall of Shame missing arrival scene"
+          assert 'class="hall-scene hall-scene--heroes"' in heroes, "live Hall of Heroes missing arrival scene"
+          assert "hall-of-shame.avif?v=" in shame or "hall-of-shame.avif" in shame, "live Hall of Shame missing artwork"
+          assert "hall-of-heroes.avif?v=" in heroes or "hall-of-heroes.avif" in heroes, "live Hall of Heroes missing artwork"
+          shame_art=Path(".live-smoke/app_hall-of-shame.avif").read_bytes()
+          pos=shame_art.find(b"ispe")
+          assert pos >= 0 and pos + 16 <= len(shame_art), "live Hall of Shame AVIF missing ispe dimensions"
+          shame_w=int.from_bytes(shame_art[pos+8:pos+12],"big")
+          shame_h=int.from_bytes(shame_art[pos+12:pos+16],"big")
+          assert shame_w >= 1920 and shame_h >= 1080, f"live Hall of Shame too small: {shame_w}x{shame_h}"
+          assert 'id="teaching-programme"' in forge, "live Forge missing teaching programme"
+          assert 'id="epistemic-delegation-programme"' in forge, "live Forge missing epistemic delegation programme"
+          assert 'id="exploitation-language-forge"' in forge, "live Forge missing exploitation-language programme"
+          for marker in required_below:
+              assert marker in below, f"live Below missing {marker}"
+          for marker in required_shadow:
+              assert marker in shadow, f"live Shadow Farm missing {marker}"
+          print("Live lower-field content verified")
+          PY
+
+          echo "Live Pages smoke test passed for $base"

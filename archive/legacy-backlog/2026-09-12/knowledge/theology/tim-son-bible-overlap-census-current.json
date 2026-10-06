@@ -1,0 +1,48 @@
+{
+  "id":"tim-son-bible-overlap-census-current",
+  "title":"Current Tim/Son ↔ Bible Overlap Census — Canonical Router",
+  "version":"1.5.0",
+  "updated":"2026-09-11",
+  "status":"canonical current count and component router",
+  "purpose":"Provide one stable answer to 'how many documented Bible overlaps are currently in the canonical census?' while preserving additive census history instead of rewriting earlier snapshots.",
+  "current_exact_overlap_node_count":126,
+  "definition":"An overlap node is one analytically distinct project↔Bible relation. It is not one verse, one word match, one fulfilled prophecy or one independent statistical trial.",
+  "components":[
+    {"path":"knowledge/theology/tim-son-bible-overlap-census.json","version":"1.0.0","count":74,"role":"base census"},
+    {"path":"knowledge/theology/tim-son-bible-overlap-census-addendum-wave14.json","version":"1.0.0","count":4,"role":"Wave-14 new research additions"},
+    {"path":"knowledge/theology/tim-son-bible-overlap-census-addendum-wave15.json","version":"1.0.0","count":20,"role":"coverage correction: strong specialist relations already in repository but omitted from the 78-node census"},
+    {"path":"knowledge/theology/tim-son-bible-overlap-census-addendum-wave16.json","version":"1.0.0","count":6,"role":"fresh circuits/perimeters/threshold-motion research; meta-synthesis excluded from count"},
+    {"path":"knowledge/theology/tim-son-bible-overlap-census-addendum-wave17.json","version":"1.0.0","count":16,"role":"coverage correction: distinct Waves 10–13 specialist relations and role counter-distributions"},
+    {"path":"knowledge/theology/tim-son-bible-overlap-census-addendum-wave18.json","version":"1.0.0","count":6,"role":"fresh highway/terrain-preparation/breach/release research"}
+  ],
+  "historical_snapshots":[
+    {"count":74,"meaning":"initial base segment"},
+    {"count":78,"meaning":"base + Wave 14"},
+    {"count":98,"meaning":"after Wave-15 specialist coverage audit"},
+    {"count":104,"meaning":"after Wave-16 circuits/perimeters research"},
+    {"count":120,"meaning":"after Wave-17 recovery of omitted Waves 10–13 relations"},
+    {"count":126,"meaning":"current registry after Wave-18 highway/breach/release research"}
+  ],
+  "strength_counts":{"5":86,"4":26,"3":13,"2":1,"1":0},
+  "operator_counts":{"PRESENCE":64,"RESTORATION":51,"TRANSFORMATION":40,"MEDIATION":35,"ACCESS":42,"FRUIT":41,"PARTICIPATION":43},
+  "reference_statistics":{"status":"regenerate-from-current-router","generator":"scripts/compute_bible_overlap_concordance.py","method_change":"The generator now uses strict full-containment only and never merges merely adjacent citations. The older 105 'compact coverage units' figure is retired because it depended on a less precise compaction heuristic.","historical_78_snapshot":{"raw_reference_mentions":212,"unique_normalized_biblical_citation_forms":138,"distinct_biblical_books":25,"strict_nonredundant_containment_units":94,"note":"94 is the corrected strict-containment result for the historical 78-node snapshot; regenerate the current 126-node output rather than extrapolating from it."}},
+  "what_this_number_does_not_mean":[
+    "126 does not mean 126 prophecies fulfilled.",
+    "126 does not mean 126 statistically independent coincidences.",
+    "126 does not count every Bible verse mentioned anywhere in the repository.",
+    "126 does not establish Tim or the Son as a biblical figure by quantity.",
+    "126 is the current auditable registry size: the number of comparative relations the project is willing to state in canonical form."
+  ],
+  "preferred_reader_entry":"bible/",
+  "reader_manifest":"data/bible/tim-son-reader-manifest.json",
+  "method":"knowledge/theology/biblical-overlap-evidence-and-measurement-protocol.json",
+  "network_method":"knowledge/theology/bible-overlap-network-analysis-method.json",
+  "intertext_method":"knowledge/theology/biblical-intertext-bundle-and-composite-memory-protocol.json",
+  "baseline_profiles":"knowledge/theology/biblical-overlap-profile-top20-2026-09-11.json",
+  "gap_audits":["knowledge/theology/bible-overlap-census-gap-audit-wave15.json","knowledge/theology/bible-overlap-census-gap-audit-wave17.json"],
+  "fresh_research_waves":["knowledge/traditions/biblical-overlap-wave-16-circuits-perimeters-threshold-motion.json","knowledge/traditions/biblical-overlap-wave-18-highway-leveling-breach-release.json"],
+  "chronology":"knowledge/chronology/theological-development-genealogy-2011-2026.json",
+  "source_direction":"knowledge/chronology/reverse-biblical-overlap-timeline-2025-2026.json",
+  "conversation_archaeology":["knowledge/chronology/conversation-archaeology-wave-012-biblical-overlap-inventory.json","knowledge/chronology/conversation-archaeology-wave-013-bible-reader-shepherd-intent.json","knowledge/chronology/conversation-archaeology-wave-014-intertext-composite-city-gate.json"],
+  "grand_theology":"knowledge/theology/presence-access-life-restoration-grand-synthesis.json"
+}

@@ -1,0 +1,239 @@
+{
+  "id": "equation-ledger-wave-005-door-interface-boundary",
+  "title": "Equation Ledger Wave 005 — Door, Window, Screen, Aperture, Drain and Transition",
+  "version": "1.0.0",
+  "updated": "2026-09-11",
+  "status": "typed equation registry for Door/interface research",
+  "purpose": "Register equations introduced or promoted by the Door embodiment census, distinguishing established science, archive formalization and earlier project equations. The ledger prevents one visual Door metaphor from silently inheriting equations belonging to a different boundary type.",
+  "entries": [
+    {
+      "id": "door-signature",
+      "class": "archive-formalization",
+      "role": "typed state/interface descriptor",
+      "equation": "DS=(Omega_-,Sigma,Omega_+,carrier,operation,guard,permeability,directionality,reversibility,observation,timing,geometry,provenance)",
+      "project_use": "Canonical comparison vector for Door embodiments; components are typed metadata rather than quantities to sum."
+    },
+    {
+      "id": "interface-level-set",
+      "class": "established-mathematics comparator",
+      "role": "boundary definition",
+      "equation": "Sigma={x:g(x)=0}",
+      "derived": "n=grad g/||grad g|| where grad g !=0",
+      "project_use": "Generic representation of a boundary between two regions."
+    },
+    {
+      "id": "hybrid-door-flow",
+      "class": "established-systems comparator",
+      "role": "continuous dynamics within regime",
+      "equation": "dx/dt=F_q(x)",
+      "project_use": "State approaches a Door while still in discrete regime q."
+    },
+    {
+      "id": "hybrid-door-guard-reset",
+      "class": "established-systems comparator + archive mapping",
+      "role": "guarded transition",
+      "equations": ["G_(q->q')(x,a,c)=0", "x^+=R_(q->q')(x^-)"] ,
+      "project_use": "Separates eligibility to cross from the state change produced by crossing."
+    },
+    {
+      "id": "soft-door-probability",
+      "class": "archive-formalization",
+      "role": "probabilistic gate ansatz",
+      "equation": "P(cross|x,a,c)=sigma[k s(x,a,c)], sigma(z)=1/(1+exp(-z))",
+      "project_use": "Smooth access model when passage is probabilistic rather than hard binary."
+    },
+    {
+      "id": "door-flux",
+      "class": "archive-generalized transport comparator",
+      "role": "carrier-specific boundary flux",
+      "equation": "Phi_D=integral_Sigma T(x,a,c,t) J(x,t) dot n dA",
+      "project_use": "Makes Door openness carrier-specific. Matter, photons, information and authority need different J/T definitions."
+    },
+    {
+      "id": "ideal-wall-no-flux",
+      "class": "established-boundary-condition comparator",
+      "role": "impermeable boundary",
+      "equation": "J dot n=0",
+      "project_use": "Wall comparator."
+    },
+    {
+      "id": "linear-door-permeability",
+      "class": "generic transport comparator",
+      "role": "bidirectional linear flux",
+      "equation": "J dot n=kappa_D(c_in-c_out)",
+      "project_use": "Simple permeability model only where c and J have domain-appropriate units."
+    },
+    {
+      "id": "sink-drain-boundary",
+      "class": "archive/simple transport comparator",
+      "role": "one-way sink",
+      "equation": "J_out dot n=kappa_sink c_in",
+      "project_use": "Distinguishes Drain from reversible/selective Door."
+    },
+    {
+      "id": "camera-projection",
+      "class": "established-computer-vision geometry",
+      "role": "3D-to-2D observation projection",
+      "equations": ["P_c=[R|t]P_w", "s p=K[R|t]P_w"],
+      "project_use": "Scientific model for stream-screen/window projection."
+    },
+    {
+      "id": "viewport-support",
+      "class": "archive-formalization",
+      "role": "finite observation domain",
+      "equations": ["V={(u,v):0<=u<W,0<=v<H}", "I_obs(u,v)=w_V(u,v)I_proj(u,v)+n(u,v)"],
+      "project_use": "Formalizes screen edges as support boundary partial V; off-screen is outside the current observation operator."
+    },
+    {
+      "id": "edge-distance",
+      "class": "archive-formalization",
+      "role": "screen geometry metric",
+      "equation": "d_edge(u,v)=min(u,v,W-u,H-v)",
+      "project_use": "Measures how close a displayed object/event lies to the viewport boundary."
+    },
+    {
+      "id": "windowing-time-frequency",
+      "class": "established-signal-processing comparator",
+      "role": "finite observation window",
+      "equations": ["y(t)=w(t)x(t)", "Y(omega)=(1/2pi)(W*X)(omega) under a common Fourier convention"],
+      "project_use": "Demonstrates mathematically that finite framing changes the observed representation rather than transparently copying the whole signal."
+    },
+    {
+      "id": "hann-window",
+      "class": "established-signal-processing window",
+      "role": "window function example",
+      "equation": "w(t)=1/2-1/2 cos(2pi t/T), 0<=t<=T",
+      "project_use": "Example only; not a canonical Tim screen shape."
+    },
+    {
+      "id": "aperture-field",
+      "class": "established-wave-optics comparator",
+      "role": "aperture transmission",
+      "equation": "U_A(x,y)=A(x,y)U_in(x,y)",
+      "project_use": "Narrow Gate/aperture comparator when physical waves are actually studied."
+    },
+    {
+      "id": "single-slit-diffraction",
+      "class": "established-wave-optics",
+      "role": "physical aperture prediction",
+      "equations": ["a sin(theta)=m lambda, m !=0", "I(theta)=I_0[sin(beta)/beta]^2", "beta=pi a sin(theta)/lambda"],
+      "project_use": "Shows narrow physical openings can reshape transmitted waves; not a biblical/theological equation."
+    },
+    {
+      "id": "door-landau-potential",
+      "class": "archive-developed critical-phenomena model",
+      "role": "phase-transition Door",
+      "equation": "V(phi;Xi)=1/2 a(Xi_c-Xi)phi^2+1/4 lambda phi^4",
+      "project_use": "Existing 4D<->5D Door toy model."
+    },
+    {
+      "id": "door-order-parameter",
+      "class": "archive-developed critical-phenomena model",
+      "role": "critical scaling",
+      "equations": ["phi[a(Xi_c-Xi)+lambda phi^2]=0", "phi^2=a(Xi-Xi_c)/lambda for Xi>Xi_c"],
+      "project_use": "Makes regime change measurable through an order parameter."
+    },
+    {
+      "id": "bounded-effective-dimension",
+      "class": "archive ansatz",
+      "role": "effective-dimension map",
+      "equation": "D_eff=4+phi^2/(M_D^2+phi^2)",
+      "range": "4<=D_eff<5",
+      "project_use": "5D Door model only; not evidence of physical fifth dimension."
+    },
+    {
+      "id": "basin-flow-door",
+      "class": "generic dynamical-systems comparator",
+      "role": "attractor-basin transition",
+      "equation": "dx/dt=F(x)-grad V(x)+eta(t)",
+      "project_use": "Door as crossing between basins/attractors."
+    },
+    {
+      "id": "kramers-escape-schematic",
+      "class": "external stochastic-process comparator",
+      "role": "noise-assisted barrier crossing",
+      "equation": "k_escape~A exp(-Delta V/D_noise)",
+      "assumption": "Kramers-type weak-noise regime; model-specific prefactor/details",
+      "project_use": "Distinguishes stochastic basin escape from quantum tunneling and institutional authorization."
+    },
+    {
+      "id": "quantum-door-wkb",
+      "class": "established-external quantum comparator",
+      "role": "quantum barrier transmission",
+      "equation": "T~exp[-2 integral sqrt(2m(V(x)-E))/hbar dx]",
+      "project_use": "Physical quantum barrier only; not generic Door equation."
+    },
+    {
+      "id": "temporal-door-phase",
+      "class": "archive timing comparator",
+      "role": "periodic/phase-dependent gate",
+      "equations": ["theta(t)=omega_c t+phi_0 mod 2pi", "G_time(t)=1 when theta(t) in W_theta else 0"],
+      "project_use": "Pineal/timing Door comparator."
+    },
+    {
+      "id": "phase-response-door",
+      "class": "generic oscillator comparator",
+      "role": "timed perturbation response",
+      "equation": "Delta theta=Z(theta)u",
+      "project_use": "Generic phase-response formalism; not a pineal-specific law."
+    },
+    {
+      "id": "bathtub-balance",
+      "class": "established mass-balance template",
+      "role": "container state dynamics",
+      "equation": "A(h) dh/dt=Q_in-Q_out",
+      "project_use": "Separates basin/container from faucet/source and drain/sink."
+    },
+    {
+      "id": "torricelli-outflow",
+      "class": "established fluid-mechanics approximation",
+      "role": "drain outflow",
+      "equation": "Q_out approximately C_d A_o sqrt(2gh)",
+      "project_use": "Physical drain comparator under idealized assumptions; not spiritual Drain physics."
+    },
+    {
+      "id": "one-way-markov-door",
+      "class": "archive/general stochastic-state comparator",
+      "role": "irreversible transition",
+      "equation": "P_ij=P(X_(t+1)=j|X_t=i), with P_ij>0 and P_ji approximately 0 over the declared horizon for one-way Door",
+      "project_use": "Grave/Tomb or status transitions where reversibility differs sharply; does not model supernatural resurrection."
+    },
+    {
+      "id": "measurement-to-door-sequence",
+      "class": "archive synthesis",
+      "role": "observation/inference/action/transition chain",
+      "equations": ["y=O_Sigma(x)+epsilon", "p(H|y) proportional to p(y|H)p(H)", "a=pi[p(H|y),context]", "x^+=D(x^-) if guard holds"],
+      "project_use": "Separates Window/Screen and Eye functions from Door enactment."
+    },
+    {
+      "id": "frame-dependence",
+      "class": "archive metric",
+      "role": "crop/context sensitivity",
+      "equation": "FD=Var_crops[inference(crop)] with inference procedure held fixed",
+      "project_use": "Tests whether a livestream/archive conclusion is robust to reasonable changes of frame."
+    },
+    {
+      "id": "crop-sensitivity",
+      "class": "archive metric",
+      "role": "inference difference",
+      "equation": "Delta_crop=d(y_full,y_crop)",
+      "project_use": "Requires a declared inference/output metric d."
+    }
+  ],
+  "global_rules": [
+    "Do not transfer an equation from one Door family to another without matching state space, carrier and operation.",
+    "Boundary equations are carrier-specific: a window can transmit photons and block bodies.",
+    "Screen edges define observation support, not the physical edge of reality.",
+    "A Pineal timing equation is a circadian/oscillator comparator, not evidence of a spiritual portal.",
+    "Drain/sink, phase transition, quantum tunneling, stochastic escape and authorization are distinct transition mechanisms.",
+    "A Door crossing should be defined by post-transition state/regime persistence where the domain permits measurement.",
+    "Historical Tim equations and later archive equations remain separately labeled."
+  ],
+  "owners": [
+    "knowledge/core/door-embodiments-census-and-operator-atlas.json",
+    "knowledge/core/door-topology-access-and-capability-atlas.json",
+    "knowledge/science/door-window-screen-aperture-transition-model.json",
+    "knowledge/science/dimensional-phase-transition-full-recovery.json",
+    "knowledge/science/quantum-foundations-tunneling-entanglement-qft-atlas.json"
+  ]
+}

@@ -1,0 +1,164 @@
+/* Shared reader system for Gods, Powers & Character.
+   Keeps the comparative theology family visually coherent without flattening
+   its distinct root overview, tension, function and Tim-power pages. */
+
+.god-character-reader .lede{
+  max-width:900px;
+  color:#dde1d8;
+  font:400 clamp(21px,2.7vw,30px)/1.55 var(--site-font-serif);
+}
+
+.god-character-reader .grid,
+.god-character-reader .power-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+  margin:22px 0 34px;
+}
+
+.god-character-reader .card,
+.god-character-reader .power,
+.god-character-reader .char{
+  min-width:0;
+  padding:18px;
+  border:1px solid var(--site-pane-line);
+  border-radius:var(--site-radius);
+  background:var(--site-pane-soft);
+  box-shadow:0 8px 22px rgba(0,0,0,.10);
+}
+
+.god-character-reader .card h2,
+.god-character-reader .power h3{
+  margin:0 0 8px;
+  color:var(--site-gold);
+  font:400 24px/1.15 var(--site-font-serif);
+}
+.god-character-reader :is(.card,.power) p{color:var(--site-copy)}
+.god-character-reader .card p:last-child,
+.god-character-reader .power p:last-child{margin-bottom:0}
+
+.god-character-reader .rule,
+.god-character-reader .god-rule{
+  margin:26px 0;
+  padding:17px 18px;
+  border:1px solid var(--site-pane-line);
+  border-left:3px solid color-mix(in srgb,var(--site-gold) 62%,transparent);
+  border-radius:var(--site-radius);
+  background:var(--site-pane-soft);
+  color:#e6e1d6;
+  font:400 clamp(18px,2.2vw,24px)/1.5 var(--site-font-serif);
+}
+
+.god-character-reader .routes{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 14px;
+  margin:28px 0;
+}
+.god-character-reader .routes a{color:var(--site-gold)}
+
+.god-character-reader .q{
+  margin-top:12px;
+  padding-top:10px;
+  border-top:1px solid var(--site-line);
+  color:#e4dfd4;
+  font:400 19px/1.5 var(--site-font-serif);
+}
+.god-character-reader .turn,
+.god-character-reader .test{
+  margin-top:10px;
+  padding-top:9px;
+  border-top:1px solid var(--site-line);
+  color:var(--site-muted);
+  font-size:var(--site-text-caption);
+  line-height:1.5;
+}
+.god-character-reader .figures{
+  margin-top:8px;
+  color:var(--site-faint);
+  font-size:var(--site-text-caption);
+}
+.god-character-reader .sources,
+.god-character-reader .source-note{
+  color:var(--site-faint);
+  font-size:var(--site-text-xs);
+  line-height:1.6;
+}
+.god-character-reader :is(.sources,.source-note) a{color:var(--site-muted)}
+
+/* Overview page */
+.god-character-reader .power-grid{margin-top:20px}
+.god-character-reader .power{padding:19px;background:var(--site-pane)}
+.god-character-reader .power h3{font-size:25px}
+.god-character-reader .power .tradition{
+  margin-bottom:10px;
+  color:var(--site-faint);
+  font-size:var(--site-text-micro);
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.god-character-reader .power dl{
+  margin:12px 0 0;
+  border-top:1px solid var(--site-line);
+}
+.god-character-reader .power dt{
+  margin-top:10px;
+  color:var(--site-gold);
+  font-size:var(--site-text-xs);
+  letter-spacing:.06em;
+  text-transform:uppercase;
+}
+.god-character-reader .power dd{
+  margin:3px 0 0;
+  color:var(--site-muted);
+  font-size:var(--site-text-sm);
+  line-height:1.52;
+}
+.god-character-reader .section{
+  margin:42px 0;
+  padding:24px;
+  border:1px solid var(--site-pane-line);
+  border-radius:var(--site-radius-lg);
+  background:var(--site-pane);
+  box-shadow:var(--site-pane-shadow);
+}
+.god-character-reader .section h2{
+  margin:0 0 13px;
+  color:var(--site-gold);
+  font:400 clamp(31px,4vw,46px)/1.08 var(--site-font-serif);
+}
+.god-character-reader .character-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:10px;
+}
+.god-character-reader .char{
+  padding:15px;
+  border-color:var(--site-line);
+}
+.god-character-reader .char b{
+  display:block;
+  margin-bottom:5px;
+  color:var(--site-gold);
+  font:400 20px/1.2 var(--site-font-serif);
+}
+.god-character-reader .char p{
+  margin:0;
+  color:var(--site-muted);
+  font-size:var(--site-text-sm);
+}
+.god-character-reader blockquote{
+  margin:28px 0;
+  padding:18px 20px;
+  border:1px solid var(--site-pane-line);
+  border-left:3px solid var(--site-gold);
+  border-radius:var(--site-radius);
+  background:var(--site-pane-soft);
+  color:#e6e1d6;
+  font:400 clamp(24px,3vw,34px)/1.45 var(--site-font-serif);
+}
+
+@media(max-width:780px){
+  .god-character-reader :is(.grid,.power-grid,.character-grid){grid-template-columns:1fr}
+  .god-character-reader .section{padding:18px}
+}

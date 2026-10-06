@@ -1,0 +1,49 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-20",
+  "authority": "object-focus-contract",
+  "title": "Level 3 Object Focus / Center Table",
+  "purpose": "Define how cases, entities, concepts, artifacts and dossiers can be centered inside a nested Room without becoming architecture.",
+  "invariants": [
+    "The containing nested Room remains the architectural context while an inhabitant is focused.",
+    "Object focus does not change knowledge ownership.",
+    "An object may project into multiple Rooms; the focused Room determines the active question.",
+    "Object focus must expose type, active Room, other Rooms, public route and evidence/status notes when available.",
+    "Leaving object focus returns to the same Room center.",
+    "Journey history records object-focus as a distinct transition."
+  ],
+  "table_fields": [
+    "label",
+    "kind",
+    "active_room",
+    "other_rooms",
+    "route",
+    "summary",
+    "status_note",
+    "evidence_note"
+  ],
+  "actions": [
+    {
+      "id": "read",
+      "meaning": "Open the object's readable public route."
+    },
+    {
+      "id": "change-lens",
+      "meaning": "Move the same object into another registered Room projection."
+    },
+    {
+      "id": "return-room",
+      "meaning": "Remove the object from the center table and return to the containing Room."
+    },
+    {
+      "id": "evidence",
+      "meaning": "Follow provenance/evidence links when registered."
+    }
+  ],
+  "source_records": [
+    "data/house/room-inhabitants.json",
+    "data/house/subrooms.json",
+    "data/house/room-interiors.json",
+    "data/house/non-euclidean-room-grammar.json"
+  ]
+}

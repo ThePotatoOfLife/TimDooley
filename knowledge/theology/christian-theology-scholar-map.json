@@ -1,0 +1,191 @@
+{
+  "id":"christian-theology-scholar-map",
+  "title":"Christian Theology & Biblical Studies Scholar Map",
+  "version":"1.0.0",
+  "updated":"2026-09-10",
+  "status":"research routing index",
+  "purpose":"Give the Potato of Life theology layer a broad map of scholars, theologians and primary historical interpreters organized by question rather than treating prestige or one school as authority. Inclusion means useful for research, not endorsement.",
+  "use_rule":"For any major question, read across disagreement. Prefer primary texts for what historical theologians actually taught, peer-reviewed or academic publications for modern scholarship, and denominational sources for a tradition's current self-description.",
+  "domains":[
+    {
+      "id":"historical-jesus",
+      "question":"What can historical methods responsibly say about Jesus of Nazareth?",
+      "people":[
+        {"name":"E. P. Sanders","focus":"Jesus in Second Temple Judaism; historical reconstruction"},
+        {"name":"Paula Fredriksen","focus":"Jesus, Paul and early Christianity in Jewish/Roman context"},
+        {"name":"Amy-Jill Levine","focus":"Jewish context of Jesus and New Testament interpretation"},
+        {"name":"Dale C. Allison Jr.","focus":"historical Jesus, eschatology, resurrection traditions"},
+        {"name":"John P. Meier","focus":"multi-volume historical Jesus reconstruction"},
+        {"name":"Geza Vermes","focus":"Jesus in Jewish charismatic/teacher context"},
+        {"name":"Bart D. Ehrman","focus":"historical Jesus, textual history, early Christian diversity"},
+        {"name":"James D. G. Dunn","focus":"Jesus tradition, early Christology and memory"},
+        {"name":"Helen K. Bond","focus":"historical Jesus, crucifixion, Pilate, early Christian history"},
+        {"name":"N. T. Wright","focus":"Jesus, resurrection, Second Temple eschatology; theological-historical synthesis"}
+      ]
+    },
+    {
+      "id":"gospels-and-christology",
+      "question":"How do the Gospels and earliest Christians portray Jesus, divinity, Sonship and Messiahship?",
+      "people":[
+        {"name":"Raymond E. Brown","focus":"Johannine literature, infancy narratives, Passion narratives"},
+        {"name":"Joseph A. Fitzmyer","focus":"Luke-Acts, Semitic background, historical-critical exegesis"},
+        {"name":"Joel Marcus","focus":"Gospel of Mark and early Christology"},
+        {"name":"Richard Bauckham","focus":"Gospels, eyewitness tradition, early high Christology"},
+        {"name":"Larry W. Hurtado","focus":"early devotion to Jesus and origins of high Christology"},
+        {"name":"James F. McGrath","focus":"early Christology and monotheism"},
+        {"name":"Adela Yarbro Collins","focus":"Mark, Son of Man, apocalyptic and Christology"},
+        {"name":"Craig S. Keener","focus":"historical-cultural New Testament commentary"},
+        {"name":"C. Kavin Rowe","focus":"Luke-Acts and early Christian identity"},
+        {"name":"M. David Litwa","focus":"early Christianity in Greco-Roman religious context"}
+      ]
+    },
+    {
+      "id":"paul-resurrection-salvation",
+      "question":"How did early Christianity understand cross, resurrection, participation and salvation?",
+      "people":[
+        {"name":"N. T. Wright","focus":"Paul, resurrection and new creation"},
+        {"name":"James D. G. Dunn","focus":"Paul, justification, Spirit and early Christianity"},
+        {"name":"E. P. Sanders","focus":"Paul and Palestinian Judaism; covenantal context"},
+        {"name":"Beverly Roberts Gaventa","focus":"Paul, Romans and apocalyptic theology"},
+        {"name":"Douglas A. Campbell","focus":"Pauline theology and critiques of conventional justification models"},
+        {"name":"Michael J. Gorman","focus":"Paul, participation, cruciformity and resurrection"},
+        {"name":"Fleming Rutledge","focus":"theology of the crucifixion and atonement"},
+        {"name":"Gustaf Aulen","focus":"classic modern retrieval of Christus Victor"}
+      ]
+    },
+    {
+      "id":"revelation-apocalyptic",
+      "question":"How should Revelation and Jewish/Christian apocalyptic literature be read?",
+      "people":[
+        {"name":"Adela Yarbro Collins","focus":"Revelation, apocalypticism, myth and political context"},
+        {"name":"John J. Collins","focus":"Jewish apocalyptic literature and apocalyptic genre"},
+        {"name":"Craig R. Koester","focus":"Revelation, symbolism, imperial context and reception"},
+        {"name":"Richard Bauckham","focus":"theology of Revelation and its political/world vision"},
+        {"name":"David A. deSilva","focus":"Revelation in social and rhetorical context"},
+        {"name":"Elaine Pagels","focus":"Revelation and conflicts in early Christianity"},
+        {"name":"G. K. Beale","focus":"Revelation, Old Testament intertextuality and idealist/amillennial interpretation"},
+        {"name":"Gregory K. Beale","focus":"same scholar; retain one canonical identity if graph-deduping aliases"}
+      ],
+      "dedupe_note":"G. K. Beale / Gregory K. Beale is one person; alias resolution should prevent duplicate scholar nodes."
+    },
+    {
+      "id":"patristic-christology",
+      "question":"How did early Christians develop doctrine of Christ, Trinity, resurrection and eschatology?",
+      "people":[
+        {"name":"Irenaeus of Lyons","focus":"recapitulation, rule of faith, heresiology, Antichrist and Dan reception"},
+        {"name":"Hippolytus of Rome","focus":"early eschatology, Antichrist, Daniel/Revelation reception"},
+        {"name":"Origen of Alexandria","focus":"biblical interpretation, Logos theology, spiritual exegesis"},
+        {"name":"Athanasius of Alexandria","focus":"incarnation and Nicene divinity of the Son"},
+        {"name":"Basil of Caesarea","focus":"Trinitarian theology and Holy Spirit"},
+        {"name":"Gregory of Nazianzus","focus":"Trinity and Christology"},
+        {"name":"Gregory of Nyssa","focus":"Trinity, anthropology and eschatological theology"},
+        {"name":"Cyril of Alexandria","focus":"Christology and unity of Christ"},
+        {"name":"Augustine of Hippo","focus":"Trinity, grace, church, history and amillennial eschatology"},
+        {"name":"Maximus the Confessor","focus":"Christology, cosmic mediation and deification"}
+      ]
+    },
+    {
+      "id":"reformation-lutheran",
+      "question":"What does Lutheran and Reformation theology actually teach about faith, baptism, Christ and the last things?",
+      "people":[
+        {"name":"Martin Luther","focus":"justification, cross, scripture, baptism and Christian life"},
+        {"name":"Philip Melanchthon","focus":"Augsburg Confession, Lutheran doctrinal systematization"},
+        {"name":"Martin Chemnitz","focus":"Lutheran Christology, council reception and doctrine"},
+        {"name":"Robert Kolb","focus":"modern scholarship on Luther and Lutheran confessions"},
+        {"name":"Timothy J. Wengert","focus":"Luther, Melanchthon and Book of Concord scholarship"},
+        {"name":"Oswald Bayer","focus":"Lutheran theology of promise, faith and language"}
+      ]
+    },
+    {
+      "id":"catholic-orthodox-systematic",
+      "question":"How do major Catholic and Orthodox traditions formulate Christ, church, salvation and final things?",
+      "people":[
+        {"name":"Thomas Aquinas","focus":"classical Catholic systematic theology and Christology"},
+        {"name":"Henri de Lubac","focus":"church, nature/grace and patristic retrieval"},
+        {"name":"Karl Rahner","focus":"Trinity, Christology and modern Catholic theology"},
+        {"name":"Joseph Ratzinger","focus":"Christology, eschatology and Catholic dogmatic theology"},
+        {"name":"Hans Urs von Balthasar","focus":"Christology, revelation, beauty and eschatological hope"},
+        {"name":"John Zizioulas","focus":"Orthodox personhood, communion and ecclesiology"},
+        {"name":"Kallistos Ware","focus":"Orthodox theology and accessible doctrinal synthesis"},
+        {"name":"Vladimir Lossky","focus":"Orthodox mystical theology and apophaticism"},
+        {"name":"Alexander Schmemann","focus":"Orthodox sacramental and liturgical theology"}
+      ]
+    },
+    {
+      "id":"modern-systematic-eschatology",
+      "question":"How do modern theologians interpret revelation, hope, history, God and eschatology?",
+      "people":[
+        {"name":"Karl Barth","focus":"revelation, Christocentric dogmatics and critique of natural theology"},
+        {"name":"Dietrich Bonhoeffer","focus":"Christology, discipleship, suffering and ethics"},
+        {"name":"Jurgen Moltmann","focus":"theology of hope, crucified God and eschatology"},
+        {"name":"Wolfhart Pannenberg","focus":"history, resurrection and systematic theology"},
+        {"name":"Rudolf Bultmann","focus":"New Testament theology, existential interpretation and demythologization"},
+        {"name":"Paul Tillich","focus":"symbol, ultimate concern and systematic theology"},
+        {"name":"Soren Kierkegaard","focus":"faith, paradox, subjectivity and Christian existence"},
+        {"name":"Miroslav Volf","focus":"reconciliation, public theology and flourishing"},
+        {"name":"Sarah Coakley","focus":"Trinity, prayer, desire and systematic theology"},
+        {"name":"Rowan Williams","focus":"patristics, Christology, spirituality and contemporary theology"}
+      ]
+    },
+    {
+      "id":"dispensational-and-millennial",
+      "question":"Where did modern rapture systems come from, and how do millennial schools differ?",
+      "people":[
+        {"name":"John Nelson Darby","focus":"Plymouth Brethren leader central to development of modern dispensationalism"},
+        {"name":"C. I. Scofield","focus":"popularization of dispensational readings through the Scofield Reference Bible"},
+        {"name":"Lewis Sperry Chafer","focus":"dispensational systematic theology"},
+        {"name":"John F. Walvoord","focus":"dispensational eschatology"},
+        {"name":"Charles C. Ryrie","focus":"dispensational theology"},
+        {"name":"George Eldon Ladd","focus":"historic premillennialism and inaugurated kingdom theology"},
+        {"name":"Anthony A. Hoekema","focus":"Reformed amillennial eschatology"},
+        {"name":"Crawford Gribben","focus":"historian of Darby, dispensationalism and Protestant apocalyptic"}
+      ]
+    },
+    {
+      "id":"thomasine-syriac",
+      "question":"What does Thomas/Twin mean in canonical John and later Syriac/Thomasine Christianity?",
+      "people":[
+        {"name":"April D. DeConick","focus":"Gospel of Thomas and early Christian mysticism"},
+        {"name":"Nicholas Perrin","focus":"Gospel of Thomas and Syriac background debates"},
+        {"name":"Simon Gathercole","focus":"Gospel of Thomas, early Christian literature and Synoptic relations"},
+        {"name":"Hugh McGregor Ross","focus":"Thomasine textual study; use selectively and verify academic standing per claim"},
+        {"name":"Adam G. Cooper","focus":"Thomas the Twin / apostolic personality scholarship"}
+      ],
+      "source_note":"The repository's existing Thomas dossier also cites recent 2025 scholarship on the Mesopotamian background of the Twin motif. Preserve exact bibliographic data at the source record rather than relying on this routing index."
+    },
+    {
+      "id":"mimetic-suffering-political",
+      "question":"How can persecution, scapegoating, public violence and Passion narratives be analyzed without simply declaring identity?",
+      "people":[
+        {"name":"Rene Girard","focus":"mimetic desire, scapegoat mechanism and biblical revelation"},
+        {"name":"James Alison","focus":"Girardian Christian theology, atonement and desire"},
+        {"name":"James G. Williams","focus":"biblical violence and Girardian interpretation"},
+        {"name":"J. Denny Weaver","focus":"nonviolent atonement and critiques of violence-centered salvation models"},
+        {"name":"Walter Wink","focus":"powers, violence and political-spiritual interpretation"}
+      ]
+    },
+    {
+      "id":"religion-method-and-comparison",
+      "question":"How should a new religious system be compared with older traditions without assuming identity or transmission?",
+      "people":[
+        {"name":"Jonathan Z. Smith","focus":"comparison, classification and method in the study of religion"},
+        {"name":"Mircea Eliade","focus":"history of religions and sacred-symbol comparison; use with awareness of methodological criticism"},
+        {"name":"Ninian Smart","focus":"comparative dimensions of religion"},
+        {"name":"Catherine Bell","focus":"ritual theory"},
+        {"name":"Talal Asad","focus":"genealogy of religion and critique of universal categories"},
+        {"name":"Charles Taylor","focus":"secularity, belief and modern religious conditions"}
+      ]
+    }
+  ],
+  "research_protocol":[
+    "Do not use a scholar's name as a substitute for an argument.",
+    "For disputed questions, include at least two materially different schools where possible.",
+    "Separate theologians speaking confessionally from historians making historical claims.",
+    "Separate ancient authors as primary reception-history witnesses from modern scholars analyzing them.",
+    "Do not infer that one scholar represents an entire denomination.",
+    "For Thomasine, Revelation and historical-Jesus questions, preserve dating/source disagreements rather than choosing one silently.",
+    "When Potatoverse material is compared with a scholar's theory, record the exact relation: analogy, explanatory lens, contrast, influence, convergence or independent resemblance."
+  ],
+  "future_expansion_families":["Hebrew Bible / messianism","Second Temple Judaism","Dead Sea Scrolls","rabbinic reception of Jesus and messianism","medieval Christology","Reformation confessions","Pentecostal eschatology","Black theology","liberation theology","feminist theology","queer theology","postcolonial biblical interpretation","African Christianity","Asian Christianity","Latin American Christianity","World Christianity","mysticism","apophatic theology","sacramental theology","atonement theories","resurrection philosophy","religious epistemology","philosophy of religion","prophecy psychology","apocalyptic sociology","new religious movements"],
+  "connections":["knowledge/theology/christianity-jesus-eschatology-atlas.json","knowledge/theology/christian-eschatology-position-matrix.json","docs/THEOLOGY-ATLAS.md","knowledge/traditions/thomas-twin-of-christ.json"]
+}

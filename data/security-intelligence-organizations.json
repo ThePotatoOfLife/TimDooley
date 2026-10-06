@@ -1,0 +1,30 @@
+{
+  "version":"1.0.0",
+  "updated":"2026-09-07",
+  "purpose":"Canonical comparative dataset for intelligence, security and federal investigative organizations. It maps legal/public institutional identity, country, origin date, headquarters where publicly established, parent relationships and public functions. It does not infer covert relationships.",
+  "epistemic_rule":"Public institutional facts are separated from allegations, intelligence claims and project interpretations. Unknown personnel counts are not estimated as active membership.",
+  "records":[
+    {"id":"fbi","name":"Federal Bureau of Investigation","country_id":"united-states","type":"federal-investigative-agency","established":"1908-07-26","formal_name_from":"1935","headquarters":"Washington, D.C., USA","status":"active","public_functions":["federal criminal investigation","counterintelligence","counterterrorism","cyber investigations","civil rights enforcement"],"note":"The FBI traces its institutional origin to the Department of Justice special-agent force created in 1908; the name Federal Bureau of Investigation was adopted in 1935."},
+    {"id":"cia","name":"Central Intelligence Agency","country_id":"united-states","type":"foreign-intelligence-agency","established":"1947-09-18","headquarters":"Langley, Virginia, USA","status":"active","public_functions":["foreign intelligence collection","all-source analysis","national-security intelligence","covert action under presidential authority"],"note":"Created by the National Security Act of 1947."},
+    {"id":"mossad","name":"Mossad","country_id":"israel","type":"foreign-intelligence-and-special-operations-agency","established":"1949-12-13","headquarters":"Tel Aviv District, Israel","status":"active","public_functions":["strategic intelligence","clandestine intelligence collection","special operations","countering threats"],"note":"Israel's Institute for Intelligence and Special Operations. Exact operational staffing and locations are not publicly disclosed."},
+    {"id":"mi5","name":"Security Service (MI5)","country_id":"united-kingdom","type":"domestic-security-service","established":"1909","headquarters":"London, United Kingdom","status":"active","public_functions":["counterintelligence","counterterrorism","protective security","national-security investigations"],"note":"Began as the Home Section of the Secret Service Bureau in 1909; the modern statutory name is Security Service."},
+    {"id":"mi6","name":"Secret Intelligence Service (SIS / MI6)","country_id":"united-kingdom","type":"foreign-intelligence-service","established":"1909","headquarters":"London, United Kingdom","status":"active","public_functions":["foreign intelligence collection","liaison","national-security intelligence"],"note":"Originated in the Foreign Section of the Secret Service Bureau in 1909."},
+    {"id":"nsa","name":"National Security Agency","country_id":"united-states","type":"signals-intelligence-agency","established":"1952","headquarters":"Fort Meade, Maryland, USA","status":"active","public_functions":["signals intelligence","cybersecurity","cryptologic intelligence"],"note":"Established by presidential directive in 1952; exact historical legal lineage should be sourced separately."},
+    {"id":"dia","name":"Defense Intelligence Agency","country_id":"united-states","type":"defense-intelligence-agency","established":"1961","headquarters":"Washington, D.C., USA","status":"active","public_functions":["military intelligence","defense intelligence analysis","foreign military intelligence"],"note":"Defense Department intelligence agency."},
+    {"id":"nro","name":"National Reconnaissance Office","country_id":"united-states","type":"space-intelligence-agency","established":"1961","headquarters":"Chantilly, Virginia, USA","status":"active","public_functions":["reconnaissance satellites","space-based intelligence"],"note":"U.S. organization responsible for designing, acquiring and operating reconnaissance systems."},
+    {"id":"nsc","name":"National Security Council","country_id":"united-states","type":"executive-coordination-body","established":"1947","headquarters":"Washington, D.C., USA","status":"active","public_functions":["national-security policy coordination","interagency advice"],"note":"Policy-coordination institution rather than an intelligence collection agency."},
+    {"id":"jic-uk","name":"Joint Intelligence Committee","country_id":"united-kingdom","type":"intelligence-assessment-body","established":"1936","headquarters":"London, United Kingdom","status":"active","public_functions":["all-source intelligence assessment","interdepartmental coordination"],"note":"UK intelligence assessment body within the Cabinet Office system."}
+  ],
+  "relationship_templates":[
+    ["fbi","united-states","domestic-security-and-law-enforcement"],
+    ["cia","united-states","foreign-intelligence"],
+    ["mossad","israel","foreign-intelligence-and-special-operations"],
+    ["mi5","united-kingdom","domestic-security"],
+    ["mi6","united-kingdom","foreign-intelligence"],
+    ["nsa","united-states","signals-intelligence"],
+    ["dia","united-states","defense-intelligence"],
+    ["nro","united-states","space-intelligence"],
+    ["jic-uk","united-kingdom","intelligence-assessment"]
+  ],
+  "counts_policy":"Do not fabricate current headcounts for clandestine agencies. Where an official annual report supplies personnel counts, store the year and source as a time-series observation. For groups without reliable membership data, use estimated ranges only when a credible source provides one and label the estimate and methodology."
+}

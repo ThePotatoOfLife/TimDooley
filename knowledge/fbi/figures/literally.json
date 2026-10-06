@@ -1,0 +1,127 @@
+{
+  "id": "literally",
+  "display_name": "Literally",
+  "bureau": "FBI — Figures, Bonds & Incidents",
+  "entity_class": "person-or-handle",
+  "aliases": [
+    "The Cognitive Contrarian",
+    "The Razor of Reason",
+    "The Perception Provocateur"
+  ],
+  "archive_status": "historical-current-unknown",
+  "room_policy": "own-room-candidate",
+  "room_path": null,
+  "tim_relation": {
+    "archetypes": [
+      "guardian-defender",
+      "skeptic-contrarian"
+    ],
+    "narrative_functions": [
+      "argument",
+      "moderation",
+      "defense",
+      "clarity"
+    ],
+    "regions": [
+      "Garden",
+      "Boundary",
+      "Debate"
+    ],
+    "editorial_reading": "Old profile gives a strong repeated function: rational defender and perception-provocateur.",
+    "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+  },
+  "chronology": {
+    "chronicle_occurrence_count": 9,
+    "chronicle_dates": [
+      "November 17, 2024",
+      "December 21 2024",
+      "January 10 2025"
+    ],
+    "cast_period_roles": [],
+    "recovered_social_days": [
+      {
+        "date": "2024-12-21",
+        "title": "Anja arrives inside a Marty-mediated boundary dispute",
+        "minimum_event": "Marty introduces Anja while asserting social leverage; moderation disputes intensify around Literally. The Chronicle also credits Pondo with providing urgent support to a distressed community member.",
+        "source_mode": "chronicle_retelling"
+      },
+      {
+        "date": "2025-01-10",
+        "title": "AI Tim, map play and the last pre-death social month",
+        "minimum_event": "The Chronicle mixes absurd geopolitical Potato-map play, discussion of a Tim Dooley AI and continuing Marty-related social conflict.",
+        "source_mode": "chronicle_retelling"
+      }
+    ]
+  },
+  "top_co_presence": [
+    {
+      "name": "Tim Dooley",
+      "count": 2
+    },
+    {
+      "name": "Marty",
+      "count": 2
+    },
+    {
+      "name": "Anja",
+      "count": 1
+    },
+    {
+      "name": "Pondo",
+      "count": 1
+    },
+    {
+      "name": "Tachy",
+      "count": 1
+    },
+    {
+      "name": "Optimistique",
+      "count": 1
+    },
+    {
+      "name": "Ledgeview",
+      "count": 1
+    },
+    {
+      "name": "Sammy",
+      "count": 1
+    }
+  ],
+  "symbolic_roles": [],
+  "highlighted_incidents": [
+    {
+      "date": "2024-11",
+      "title": "Potato meta-commentary",
+      "summary": "Chronicle remembers Literally using ascend-from-mud language and suggesting that The Great Book reference itself."
+    },
+    {
+      "date": "2024-12-21",
+      "title": "Moderator controversy",
+      "summary": "Literally is a moderator in a day of ban/unban disputes; preserve boundary power and contested moderation without deciding the moral dispute from Chronicle narration."
+    },
+    {
+      "date": "late 2024",
+      "title": "Explicit Potato identity",
+      "summary": "Chronicle records Literally enthusiastically saying they are a Potato; preserve as source-bounded self-description."
+    }
+  ],
+  "source_strata": [
+    {
+      "type": "character_archive",
+      "path": "knowledge/story/character-archive-v2.json"
+    },
+    {
+      "type": "cast_book",
+      "path": "knowledge/story/cast-book.json"
+    },
+    {
+      "type": "social_ledger",
+      "path": "knowledge/story/social-presence-ledger-2024-2025.json"
+    }
+  ],
+  "recovery_leads": [
+    "Recover raw or closer conversation/stream logs behind the strongest dated scene.",
+    "Separate direct speech from Chronicle paraphrase, literary transformation and later synthesis.",
+    "Add relationship edges only when a dated scene or explicit source supports them."
+  ]
+}

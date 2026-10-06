@@ -1,0 +1,55 @@
+{
+  "id": "tim-statements-conversation-recovery-wave-002-2026-09-10",
+  "title": "Tim Dooley Statements — Conversation Recovery Wave 002",
+  "version": "1.0.0",
+  "updated": "2026-09-10",
+  "status": "conversation-archaeology statement addendum",
+  "purpose": "Preserve compact North and relationship-first formulations recovered after the main 2026-09-10 statement pass, without pretending later archive synthesis is an earlier Tim quotation.",
+  "provenance_rule": "These formulations are preserved from user-originated prior-project context. They remain conversation/project evidence until a dated public primary source is located.",
+  "statements": [
+    {
+      "id": "north-equals-network",
+      "wording": "North = network",
+      "source_class": "CONVERSATION_EXACT",
+      "period": "recovered prior 2026 project context",
+      "domains": ["North", "network", "relationship-first", "geopolitics", "systems"],
+      "meaning": "North is not only a compass direction or bloc label; in the project method it is a relational structure composed of connections, dependencies, routes, capabilities and shared orientation.",
+      "routing": [
+        "knowledge/core/axis-world-model.json",
+        "knowledge/core/country-relational-method.json",
+        "knowledge/core/european-coupling-programme.json",
+        "data/north-of-north-tim-canon.json"
+      ]
+    },
+    {
+      "id": "map-denmarks-relationships",
+      "wording": "Don’t map Denmark. Map Denmark’s relationships.",
+      "source_class": "CONVERSATION_EXACT",
+      "period": "recovered prior 2026 project context",
+      "domains": ["Denmark", "mapping", "relationships", "economic-graph", "North"],
+      "meaning": "A country is inadequately represented as an isolated node; the useful object is Denmark together with ownership, trade, finance, infrastructure, institutions, culture, energy, security, dependencies and bilateral/multilateral edges.",
+      "routing": [
+        "knowledge/core/country-relational-method.json",
+        "knowledge/core/european-coupling-programme.json",
+        "knowledge/core/axis-world-model.json",
+        "knowledge/indexes/conversation-recovery-inventory.json"
+      ]
+    }
+  ],
+  "paraphrased_context": [
+    {
+      "id": "britain-north-europe-relation",
+      "source_class": "PARAPHRASE",
+      "statement": "In the later North framing, Britain's strategically relevant relation was repeatedly considered through Europe/North rather than by automatically treating Britain as an extension of the United States.",
+      "routing": ["knowledge/core/axis-world-model.json", "knowledge/core/european-coupling-programme.json"],
+      "recovery_need": "Locate exact Tim wording and date before quoting this as a statement."
+    }
+  ],
+  "connections": [
+    "tim-statements-conversation-recovery-2026-09-10",
+    "conversation-recovery-inventory",
+    "country-relational-method",
+    "axis-world-model",
+    "north-of-north-tim-canon"
+  ]
+}

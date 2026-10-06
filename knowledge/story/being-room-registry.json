@@ -1,0 +1,457 @@
+{
+  "version": "1.2.0",
+  "updated": "2026-10-04",
+  "title": "Potatoverse Being Room Registry",
+  "purpose": "Expandable cast/being archaeology recovered from conversations, public records and literary material without flattening those source modes together.",
+  "source_statuses": {
+    "conversation_recovered": "Directly recovered from prior user conversations.",
+    "public_recovered": "Recovered from dated public/project records.",
+    "literary_recovered": "Recovered from Great Book or authored literary scene.",
+    "mixed": "More than one source mode exists; identity equivalence is not assumed.",
+    "unresolved": "Name exists but the underlying person/being/story has not been recovered cleanly."
+  },
+  "beings": [
+    {
+      "id": "potatoes",
+      "label": "Potatoes",
+      "kind": "collective_being",
+      "room": "rooms/potatoverse-canon/beings/potatoes/",
+      "status": [
+        "conversation_recovered",
+        "public_recovered",
+        "literary_recovered"
+      ],
+      "placement": [
+        "soil",
+        "Plane",
+        "community",
+        "spiritual-growth metaphor",
+        "sometimes angelic"
+      ],
+      "conversation_markers": [
+        {
+          "date": "2026-03-03",
+          "note": "World filled with potatoes; each potato described as an angelic vessel. Roots exchange karma and turn soil/waste into growth; fullness is explored as the source of direction."
+        },
+        {
+          "date": "2026-03-09",
+          "note": "One Potato/seed language: Tim as the seed who multiplies potato angels."
+        },
+        {
+          "date": "2026-04-09",
+          "note": "Potato described with eyes, ears and a job; public/project language includes 'I am potato multiplied'."
+        }
+      ],
+      "gifts_or_functions": [
+        "growth",
+        "rooting",
+        "multiplication",
+        "stored potential",
+        "direction after nourishment",
+        "community identity",
+        "spiritual work metaphor"
+      ],
+      "open_questions": [
+        "When is Potato a literal tuber, a person/badge, a species, an angelic vessel, or a metaphysical node?",
+        "Which named potatoes are documentary handles versus authored characters?"
+      ],
+      "reader_mode": "perception_hall",
+      "reader_job": "Teach Potato lineage, nature, symbols, first appearances, bestowed gifts, skills, jobs, milestones, named forms and growth toward Angelic responsibility.",
+      "project_lineage": "Internal project theology: Potatoes are children/outgrowths of Tim as Potato of Life / Seed / Father / Gardener; not biological genealogy."
+    },
+    {
+      "id": "angels",
+      "label": "Angels / Potato Angels",
+      "kind": "created_being_collective",
+      "room": "rooms/potatoverse-canon/beings/angels/",
+      "status": [
+        "conversation_recovered",
+        "literary_recovered"
+      ],
+      "placement": [
+        "Heaven",
+        "Earth",
+        "spirals/dimensions",
+        "street-corner/ordinary-world imagery"
+      ],
+      "conversation_markers": [
+        {
+          "date": "2026-03-03",
+          "note": "Potatoes become angelic vessels; nourishment/fullness is explored as direction and agency."
+        },
+        {
+          "date": "2026-03-15",
+          "note": "Potato Angels are given wings, many eyes, flaming swords, timeline/spiral movement, light-carving and dimensional travel language."
+        },
+        {
+          "date": "2026-07-17",
+          "note": "Male and female humanized potato angels appear in Heaven with wings of light and armor."
+        },
+        {
+          "date": "2026-07-26",
+          "note": "A story names 10,000 potato angels made of light, varied in size, fast/strong/gentle/majestic, rooted in cultivation rather than conquest."
+        }
+      ],
+      "gifts_or_functions": [
+        "wings",
+        "many-eyed perception",
+        "light-carving",
+        "dimensional/spiral movement",
+        "timeline levitation language",
+        "air/myth/victory language",
+        "rooted cultivation",
+        "guardianship"
+      ],
+      "open_questions": [
+        "Which abilities are species-wide and which belong only to particular stories?",
+        "How do generic angels, Potato Angels, messengers and Turbles differ?"
+      ],
+      "reader_mode": "perception_hall",
+      "reader_job": "Teach the upper mature form: eyes, wings, Ladder relation, bestowed abilities, service roles, milestones and recognition of Angelic function."
+    },
+    {
+      "id": "matthew-potato",
+      "label": "Matthew the Potato",
+      "kind": "named_created_being",
+      "room": "rooms/potatoverse-canon/beings/matthew/",
+      "status": [
+        "conversation_recovered"
+      ],
+      "placement": [
+        "Heaven",
+        "Earth",
+        "Ladder/spiral interface"
+      ],
+      "conversation_markers": [
+        {
+          "date": "2026-09-20",
+          "note": "Matthew grew wings, has many eyes, can see the Ladder/spiral from the side, is in Heaven and can also walk Earth."
+        }
+      ],
+      "gifts_or_functions": [
+        "side-view perception of Ladder/spiral",
+        "heaven-earth mobility",
+        "many-eyed watching",
+        "winged movement"
+      ],
+      "open_questions": [
+        "Is Matthew a Potato Angel, a Turble-relative, a messenger, or his own class?",
+        "What event caused the wings to grow?",
+        "What can be seen from the side that cannot be seen from inside the spiral?"
+      ],
+      "caution": "Created being; do not conflate with biblical Matthew or with the real public-chat participant Matthew / @mtclassic3. Any relation to the real person must be explicitly marked creative/projective."
+    },
+    {
+      "id": "rahu",
+      "label": "Rahu",
+      "kind": "mixed_character_or_handle",
+      "room": "rooms/potatoverse-canon/beings/rahu/",
+      "status": [
+        "conversation_recovered",
+        "literary_recovered",
+        "mixed"
+      ],
+      "placement": [
+        "Garden",
+        "Mud",
+        "threshold between lost soul and growth",
+        "social conversation layer"
+      ],
+      "conversation_markers": [
+        {
+          "date": "2026-03-01",
+          "note": "Rahu is framed as a lost soul nearly saved from death; Tim says it is never too late to grow a potato. Another-world/dream memory imagines a potato once called Rahu. Growth is tied to a tiny 1/137 increment."
+        },
+        {
+          "date": "2026-05-25",
+          "note": "Rahu appears as a social interlocutor in a discussion around Dim; this documentary/social layer must remain distinct from the literary Rahu."
+        }
+      ],
+      "literary_markers": [
+        {
+          "period": "2024",
+          "note": "Rahu appears as challenger/urgency figure, Garden companion with Spuddy, and in Great Book cast scenes."
+        }
+      ],
+      "gifts_or_functions": [
+        "pressure toward movement",
+        "challenge",
+        "growth under uncertainty",
+        "fence/threshold role",
+        "garden companionship"
+      ],
+      "open_questions": [
+        "Is literary Rahu based on the same handle/person seen later in conversation?",
+        "How did the Challenger role become the lost-soul/dream role?",
+        "What does the 1/137 growth increment mean elsewhere in the archive?"
+      ]
+    },
+    {
+      "id": "termite",
+      "label": "Termite",
+      "kind": "mixed_literary_and_public_name",
+      "room": "rooms/potatoverse-canon/beings/termite/",
+      "status": [
+        "public_recovered",
+        "literary_recovered",
+        "mixed"
+      ],
+      "placement": [
+        "Garden",
+        "soil",
+        "public supporter trail"
+      ],
+      "conversation_markers": [],
+      "public_markers": [
+        {
+          "date": "2025-02-20",
+          "note": "A public donation notice says Tim received a coffee from Termite."
+        }
+      ],
+      "literary_markers": [
+        {
+          "period": "2024",
+          "note": "Termite grows a physical Potatoverse potato; the visible plant is cut by a lawnmower, but a small potato survives underground."
+        }
+      ],
+      "gifts_or_functions": [
+        "persistence",
+        "cultivation",
+        "checking beneath visible damage",
+        "humility",
+        "physical proof-through-growing"
+      ],
+      "open_questions": [
+        "Recover the raw chats behind the dated Chronicle scenes; Chronicle dialogue may be paraphrased.",
+        "Is the public supporter handle related to the literary character, or did the book borrow the name?",
+        "Did the lawnmower story derive from an actual anecdote, or is it purely literary?"
+      ],
+      "chronicle_markers": [
+        {
+          "date": "2024-11-03",
+          "note": "Chronicle places Termite in the Tanks/Great Book social field, marking camaraderie and belonging."
+        },
+        {
+          "date": "2024-11-04",
+          "note": "Chronicle gives Termite playful theological/philosophical curiosity."
+        },
+        {
+          "date": "2024-12-04",
+          "note": "Chronicle remembers Termite as a supporter and dignity voice, including asking for a more respectful term for supporters."
+        },
+        {
+          "date": "2024-12-07",
+          "note": "Termite is cautious around reconciliation/apology claims while remaining part of the growth-oriented center."
+        },
+        {
+          "date": "2024-12-15 to 2024-12-20",
+          "note": "Cooking/music/creative social presence; jokes about Anacondasin coming to Denmark and repeats growth language."
+        }
+      ]
+    },
+    {
+      "id": "turbles",
+      "label": "Turbles",
+      "kind": "created_species",
+      "room": "rooms/potatoverse-canon/beings/turbles/",
+      "status": [
+        "conversation_recovered"
+      ],
+      "placement": [
+        "Earth/Plane",
+        "possible Heaven adjacency",
+        "workplaces",
+        "church/building/comedy scenes"
+      ],
+      "conversation_markers": [
+        {
+          "date": "2026-09-19",
+          "note": "Turbles are born as potato-shaped angelic beings: cute/uncanny, huge eyes, expressive mouths, short limbs, variable size; some have small wings and some walk on the ground."
+        },
+        {
+          "date": "2026-09-19",
+          "note": "Requested variants include women/girl Turbles, workers, praying Turbles, church-building Turbles and McDonald's Turbles."
+        }
+      ],
+      "gifts_or_functions": [
+        "job/role plasticity",
+        "expressive faces",
+        "some winged movement",
+        "work/prayer/building social roles"
+      ],
+      "open_questions": [
+        "Are Turbles a species of Potato Angel or a neighboring species?",
+        "Do wingless Turbles later grow wings?",
+        "Which jobs become canonical archetypes?",
+        "Can Turbles move between Heaven and Earth, or is that Matthew-specific?"
+      ]
+    }
+  ],
+  "recovery_shelf": [
+    {
+      "id": "professor-doctor-potato-spud",
+      "label": "Professor Doctor Potato Spud",
+      "status": "conversation_recovered",
+      "lead": "2026-03-11 — Level 33 spudologist; spudforce levitation; ecology/farming/gardening/alien-tech/theologic-potato history."
+    },
+    {
+      "id": "zombiedad",
+      "label": "Zombiedad / ZombieDadMan",
+      "status": "mixed_recovery",
+      "lead": "14 Nov 2024 Chronicle: Zombie Dad is in Discord voice/Tanks orbit with Tim, Sammy, Marty, Port Monkey, Suckerpunch, Barry Beefslice, Jazzy and Optimistique; later 2026 conversation material supplies a distinct Tree/Garden conflict layer. Do not flatten the two."
+    },
+    {
+      "id": "spuddy",
+      "label": "Spuddy",
+      "status": "literary_recovered",
+      "lead": "2024 — Garden companion to Tim and Rahu; needs conversation-side archaeology."
+    },
+    {
+      "id": "ethereal-tuber",
+      "label": "Ethereal Tuber",
+      "status": "literary_recovered",
+      "lead": "Between-worlds witness around Soul Farmers and connection."
+    },
+    {
+      "id": "fresh-potato",
+      "label": "Fresh Potato",
+      "status": "literary_recovered",
+      "lead": "Student/questioning character; candidate for learner archetype room."
+    },
+    {
+      "id": "ready-student",
+      "label": "Ready Student",
+      "status": "literary_recovered",
+      "lead": "Learner figure; may merge with Fresh Potato unless source differences justify separation."
+    },
+    {
+      "id": "optimistique",
+      "label": "Optimistique",
+      "status": "chronicle_recovered",
+      "lead": "3–6 Nov 2024: supporter + Tanks/voice-chat + music/AI-instrumental/Jungian-shadow creative identity; 7 Dec 2024: apology/reconciliation and trust-repair scene. Strong standalone-room candidate."
+    },
+    {
+      "id": "sentinel-of-silence",
+      "label": "Sentinel of Silence",
+      "status": "literary_recovered",
+      "lead": "Guardian/ally role in BigTech material."
+    },
+    {
+      "id": "mashyark",
+      "label": "Mashyark",
+      "status": "conversation_recovery_lead",
+      "lead": "Named in April 2026 synthesis; exact story and identity still need clean retrieval."
+    },
+    {
+      "id": "moon420",
+      "label": "Moon420",
+      "status": "unresolved",
+      "lead": "Name exists in archaeology queue; no clean exact-source hit yet."
+    },
+    {
+      "id": "juice-judas",
+      "label": "Juice / Judas",
+      "status": "unresolved",
+      "lead": "Identity unresolved; must not be conflated with generic Judas language."
+    }
+  ],
+  "cast_rooms": [
+    {
+      "id": "marty-biz",
+      "label": "Marty Biz Music",
+      "kind": "person",
+      "room": "rooms/potatoverse-canon/beings/marty/",
+      "status": [
+        "mixed",
+        "literary_recovered",
+        "public_recovered"
+      ],
+      "core_question": "How does a companion become a rival social center and later a grief object without flattening the person into one archetype?"
+    },
+    {
+      "id": "metalorian",
+      "label": "Metalorian / Meta",
+      "kind": "person",
+      "room": "rooms/potatoverse-canon/beings/metalorian/",
+      "status": [
+        "mixed",
+        "unresolved"
+      ],
+      "core_question": "What survives as primary interaction, and what exists only as later Meta/karmic interpretation?"
+    },
+    {
+      "id": "txt",
+      "label": "TXT",
+      "kind": "person_or_handle",
+      "room": "rooms/potatoverse-canon/beings/txt/",
+      "status": [
+        "mixed",
+        "public_recovered",
+        "literary_recovered"
+      ],
+      "core_question": "Can the missing 2017-2019 chronology be recovered between old-profile claims and the July 2026 public marker?"
+    },
+    {
+      "id": "conflict-modes",
+      "label": "Conflict Modes",
+      "kind": "crosswalk",
+      "room": "rooms/potatoverse-canon/beings/conflict-modes/",
+      "status": [
+        "method"
+      ],
+      "core_question": "Which mechanism occurs in each scene without making the mechanism a permanent identity?"
+    },
+    {
+      "id": "matthew-mtclassic",
+      "label": "Matthew / MTClassic",
+      "kind": "person",
+      "room": "rooms/potatoverse-canon/beings/matthew-mtclassic/",
+      "status": [
+        "public_recovered",
+        "conversation_recovered"
+      ],
+      "core_question": "How does one recurring livestream participant move between ordinary gaming, moderation advice, theology and later creative projection without those layers collapsing?"
+    },
+    {
+      "id": "mediomu007",
+      "label": "Mediomu007",
+      "kind": "person",
+      "room": "rooms/potatoverse-canon/beings/mediomu/",
+      "status": [
+        "public_recovered",
+        "conversation_recovered",
+        "mixed"
+      ],
+      "core_question": "How do ordinary room-making, theological questioning and the August mountain/bridge-building narrative relate while remaining source-distinct?"
+    },
+    {
+      "id": "fbi-bureau",
+      "label": "CIA — Characters, Incidents & Associations",
+      "kind": "archive-bureau",
+      "room": "rooms/potatoverse-canon/beings/cia/",
+      "status": [
+        "method",
+        "active"
+      ],
+      "core_question": "How can every recurring figure accumulate chronology, relationships, incidents, stories and source boundaries without becoming a fixed archetype or accusation?"
+    }
+  ],
+  "institutional_routes": [
+    {
+      "id": "mai-mercado-2016",
+      "label": "Mai Mercado / Christiania 2016 case",
+      "kind": "legal_political_case",
+      "canonical_owner": "knowledge/legal/mai-mercado-2016-research-index.md",
+      "rule": "Route evidence and attribution questions to the legal subsystem; do not turn a real political figure into a mythic cast essence."
+    }
+  ],
+  "related_ledgers": [
+    "knowledge/story/social-presence-ledger-2024-2025.json",
+    "knowledge/story/turning-corridor-chronicle-recovery-2025.json",
+    "knowledge/story/matthew-mtclassic-social-ledger-2026.json",
+    "knowledge/story/mediomu007-social-ledger-2026.json",
+    "knowledge/cia/manifest.json",
+    "knowledge/cia/associations/network.json",
+    "knowledge/cia/incidents/index.json"
+  ]
+}

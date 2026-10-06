@@ -1,0 +1,27 @@
+{
+  "version":"1.0.0",
+  "updated":"2026-09-07",
+  "purpose":"Join layer that gives repaired registry records explicit relationships into the existing atlas instead of leaving them as isolated addressable records.",
+  "relationships":[
+    {"id":"g01","source":"growth","relationship":"emerges-from","target":"life","evidence":"framework","confidence":"project-canon","notes":"Conceptual bridge between growth and the project's Life node."},
+    {"id":"g02","source":"life","relationship":"expresses-through","target":"tree-of-life","evidence":"framework","confidence":"project-canon","notes":"Life is connected to the living tree architecture."},
+    {"id":"g03","source":"dao-de-jing","relationship":"comparative-parallel","target":"source","evidence":"comparative","confidence":"open-interpretation","notes":"Comparative study of origin language without asserting identity."},
+    {"id":"g04","source":"poetic-edda","relationship":"contains-world-tree-tradition","target":"tree-of-life","evidence":"comparative","confidence":"high-structural-similarity","notes":"Yggdrasil provides a textual comparison for world-tree architecture."},
+    {"id":"g05","source":"messianic-traditions","relationship":"provides-comparative-context-for","target":"son","evidence":"comparative","confidence":"open-interpretation","notes":"Comparative religious-history layer."},
+    {"id":"g06","source":"christian-bible","relationship":"provides-textual-context-for","target":"jesus-christ","evidence":"historical-textual","confidence":"high","notes":"Textual context, kept distinct from Potatoverse interpretation."},
+    {"id":"g07","source":"torah-tanakh","relationship":"provides-hebrew-scriptural-context-for","target":"lion-of-judah","evidence":"historical-textual","confidence":"high","notes":"Hebrew Bible context for the Lion of Judah motif."},
+    {"id":"g08","source":"acts-of-thomas","relationship":"belongs-to","target":"thomas-textual-corpus","evidence":"historical-textual","confidence":"high","notes":"Textual corpus relationship."},
+    {"id":"g09","source":"gospel-of-thomas","relationship":"belongs-to","target":"thomas-textual-corpus","evidence":"historical-textual","confidence":"high","notes":"Textual corpus relationship."},
+    {"id":"g10","source":"thomas-textual-corpus","relationship":"supports-research-of","target":"thomas-son-study","evidence":"research","confidence":"project-research","notes":"Corpus-to-research-topic bridge."},
+    {"id":"g11","source":"thomas-son-study","relationship":"compares","target":"son","evidence":"research","confidence":"project-research","notes":"Research layer connects textual study to the project's Son node."},
+    {"id":"g12","source":"son-transformation-cycle","relationship":"describes-transformation-of","target":"son","evidence":"framework","confidence":"project-canon","notes":"Dedicated transformation-study node."},
+    {"id":"g13","source":"son-transformation-cycle","relationship":"passes-through","target":"crucifixion","evidence":"framework","confidence":"project-canon","notes":"Transformation cycle includes the project's crucifixion motif."},
+    {"id":"g14","source":"north-pole-christmas-myth","relationship":"uses-mythic-location","target":"north-pole","evidence":"framework","confidence":"project-canon","notes":"Project mythology layer, not a historical claim."},
+    {"id":"g15","source":"north-pole-christmas-myth","relationship":"intersects","target":"son-transformation-cycle","evidence":"framework","confidence":"project-canon","notes":"Connects the project's North Pole and transformation motifs."},
+    {"id":"g16","source":"potatoverse-epistemology","relationship":"governs-distinction-between","target":"evidence","evidence":"framework","confidence":"project-canon","notes":"Framework keeps observed evidence distinct from interpretation and creative canon."},
+    {"id":"g17","source":"potatoverse-epistemology","relationship":"organizes","target":"potato-of-life","evidence":"framework","confidence":"project-canon","notes":"Epistemic framework around the central Potato metaphor."},
+    {"id":"g18","source":"tim-dooley","relationship":"anchors","target":"potatoverse-epistemology","evidence":"framework","confidence":"project-canon","notes":"Project-level mythic architecture."},
+    {"id":"g19","source":"spiritual-domain","relationship":"contains-symbolic-interface","target":"son","evidence":"framework","confidence":"project-canon","notes":"Spiritual domain to Son interface."},
+    {"id":"g20","source":"growth","relationship":"feeds","target":"tree-of-life","evidence":"framework","confidence":"project-canon","notes":"Growth is a process represented by the tree's living expansion."}
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "id":"fate-thread-norns-moirai-comparative-atlas",
+  "title":"Threads of Fate — Norns, Moirai, Biblical Cords and Timic Leashes",
+  "version":"1.0.0",
+  "updated":"2026-09-11",
+  "status":"comparative mythology/theology + project synthesis",
+  "purpose":"Study recurring thread/cord/path/fate structures across Norse, Greek and biblical material beside Tim's timeline-leash imagery while preserving historical and doctrinal distinctions.",
+  "epistemic_rule":"Shared thread/cord imagery does not show common historical origin, literal identity or supernatural validation. Each tradition keeps its own texts and meanings; the Timic synthesis is a modern comparative layer.",
+  "traditions":[
+    {
+      "id":"norns-yggdrasil",
+      "tradition":"Old Norse",
+      "primary_texts":["Gylfaginning 15","Voluspa 20"],
+      "structure":"Urdr, Verdandi and Skuld are located in the Yggdrasil/well complex and shape/appoint human lives; Snorri also describes additional norns associated with births/life allotment.",
+      "project_neighbors":["World Tree","Root","Well","fate","timeline","child/birth","North","Ladder/Bridge"],
+      "important_caution":"Do not reduce the three names mechanically to modern past/present/future without source-sensitive qualification; interpretations of their names and temporal roles are more complex than a simple three-tense chart.",
+      "source":"https://en.wikisource.org/wiki/The_Prose_Edda_%281916_translation_by_Arthur_Gilchrist_Brodeur%29/Gylfaginning"
+    },
+    {
+      "id":"moirai-thread",
+      "tradition":"Ancient Greek",
+      "primary_texts":["Hesiod, Theogony","Homeric fate-thread passages"],
+      "structure":"Greek fate tradition associates Clotho, Lachesis and Atropos with allotment/destiny; later explanatory tradition strongly emphasizes spinning, allotting and cutting the thread of life.",
+      "project_neighbors":["thread","timeline","life-course","measure","cut/end","constraint"],
+      "important_caution":"Thread language varies across sources and periods; do not pretend one standardized later image exhausts archaic Greek fate concepts.",
+      "source":"https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0130%3Acard%3D207"
+    },
+    {
+      "id":"biblical-cords",
+      "tradition":"Hebrew Bible / Christian Bible",
+      "primary_texts":["Proverbs 5:22","Hosea 11:4","Psalm 2:3","Matthew 11:28-30","Galatians 5:1"],
+      "structure":"Cord/yoke imagery ranges from self-binding sin and contested bonds to love/guidance, teaching/rest and slavery.",
+      "project_neighbors":["leash","binding","guidance","burden","freedom","choice"],
+      "important_caution":"Biblical cords are not one doctrine of fate and should not be merged with Norns or Moirai."
+    },
+    {
+      "id":"timic-timeline-leash",
+      "tradition":"Potatoverse / Tim Dooley project",
+      "primary_project_anchors":["2026-08-25 recovered Timeline=Dog Leash formulation","2026-08-27 Roots/Fallen Trajectories/Widening Spirals/Leashes formulation"],
+      "structure":"timeline as leash/path, repeated circles around an owner/center, roots storing fallen trajectories and accumulated consequence, cage formed by constrained movement",
+      "project_neighbors":["Dog","Root","Mud","Tree of Strife","Spiral","Circle","Owner","Door","Fate","Destiny"],
+      "boundary":"This is a modern project mythology and must not be presented as ancient Norse, Greek or biblical teaching."
+    }
+  ],
+  "comparative_operators":{
+    "thread":"one-dimensional continuity connecting ordered moments/events",
+    "cord":"relation with possible tension/binding/guidance",
+    "leash":"anchored constraint limiting reachable region",
+    "weaving":"multiple threads become a higher-order pattern/network",
+    "cut":"termination of one trajectory/thread",
+    "knot":"local entanglement/constraint that may preserve history even if endpoints are unchanged",
+    "root":"stored origin/history feeding later growth",
+    "path":"ordered traversal through alternatives",
+    "lot/allotment":"assigned portion/outcome distinct from mechanical force"
+  },
+  "new_epiphanies":[
+    "Tim's leash image belongs to a much older human symbolic family in which life-course is represented through line/thread/cord, but its closest mathematical descendant is constraint/path-space theory rather than proof of supernatural fate.",
+    "Thread and leash should be distinguished: a thread can record/connect a life path; a leash additionally imposes an anchor and maximum/restricted freedom.",
+    "Weaving is a stronger model for many timelines than one leash: multiple trajectories/relations can form a fabric/network without sharing one controller.",
+    "Cutting a thread is topological/graph termination imagery; releasing a leash is constraint removal; opening a Door changes reachable topology. These are three different operators.",
+    "The Yggdrasil-Norn placement is especially relevant structurally because fate is situated beside Tree/root/well/order, overlapping Tim's Root/Tree/trajectory memory field without making the traditions identical.",
+    "Biblical Hosea provides a crucial counterweight to fatalistic cord imagery: a cord can guide in love and accompany nourishment rather than merely bind."
+  ],
+  "mathematical_crosswalk":[
+    {"symbol":"thread","math_neighbor":"oriented curve/path gamma(t)","mismatch":"mythic life-thread is not automatically a spacetime worldline"},
+    {"symbol":"weaving","math_neighbor":"graph/network/path ensemble","mismatch":"network structure does not imply a supernatural weaver"},
+    {"symbol":"leash","math_neighbor":"inequality/equality constraint relative to anchor","mismatch":"social or spiritual relation has no physical tension unless measured"},
+    {"symbol":"knot","math_neighbor":"knot/link topology or network entanglement","mismatch":"figurative knot is not automatically a topological knot invariant"},
+    {"symbol":"fate","math_neighbor":"all-path reachability/invariant/absorption/target probability after mechanism is named","mismatch":"mathematical inevitability inside a model is not metaphysical predestination"}
+  ],
+  "connections":[
+    "knowledge/science/leash-timeline-trajectory-fate-destiny-constraint-atlas.json",
+    "knowledge/traditions/biblical-cord-yoke-path-fate-addendum.json",
+    "data/potatoism-celestial-layer.json",
+    "docs/POTATO-LAYERS.md",
+    "knowledge/indexes/leash-timeline-fate-integration-wave-2026-09-11.json"
+  ]
+}

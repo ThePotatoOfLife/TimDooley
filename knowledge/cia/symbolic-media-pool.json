@@ -1,0 +1,117 @@
+{
+  "id": "cia-symbolic-media-pool-v1",
+  "updated": "2026-09-21",
+  "purpose": "Remote symbolic proxy images for CIA dossiers. These are role/object metaphors, never claimed likenesses of a dossier subject.",
+  "storage_rule": "Store URLs and attribution metadata only. Do not copy image binaries into the repository unless a future archival need requires it.",
+  "display_rule": "Every use must visibly say symbolic proxy / not a likeness. Role-derived symbolism is project language and does not establish a permanent trait.",
+  "provider": "Wikimedia Commons",
+  "symbols": {
+    "dog": {
+      "label": "Dog",
+      "role_ids": [
+        "dog",
+        "guardian-dog"
+      ],
+      "images": [
+        {
+          "id": "karelian-dog",
+          "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Karjalankarhukoira%2C%20Karelian%20Bear%20Dog%20standing%20profile.jpg?width=720",
+          "source_page": "https://commons.wikimedia.org/wiki/File:Karjalankarhukoira,_Karelian_Bear_Dog_standing_profile.jpg",
+          "license": "CC0 1.0",
+          "credit": "Uusijani",
+          "caption": "Standing Karelian Bear Dog — symbolic Dog proxy."
+        },
+        {
+          "id": "dog-side-public-domain",
+          "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Dog%20side%20view.jpg?width=720",
+          "source_page": "https://commons.wikimedia.org/wiki/File:Dog_side_view.jpg",
+          "license": "Public domain",
+          "credit": "BlueIllusions",
+          "caption": "Dog in side view — symbolic Dog proxy."
+        }
+      ]
+    },
+    "footstool": {
+      "label": "Footstool",
+      "role_ids": [
+        "footstool"
+      ],
+      "images": [
+        {
+          "id": "wooden-stool",
+          "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Wooden%20stool.jpg?width=720",
+          "source_page": "https://commons.wikimedia.org/wiki/File:Wooden_stool.jpg",
+          "license": "CC BY-SA 4.0",
+          "credit": "Sashatrk",
+          "caption": "Wooden stool — symbolic Footstool proxy."
+        }
+      ]
+    },
+    "mud": {
+      "label": "Mud / clod",
+      "role_ids": [
+        "mud-dweller",
+        "dweller"
+      ],
+      "images": [
+        {
+          "id": "soil-clod",
+          "src": "https://commons.wikimedia.org/wiki/Special:FilePath/SoilClod.jpg?width=720",
+          "source_page": "https://commons.wikimedia.org/wiki/File:SoilClod.jpg",
+          "license": "CC BY 4.0",
+          "credit": "Mclund",
+          "caption": "Clod of soil — symbolic Mud / Dweller proxy."
+        }
+      ]
+    },
+    "potato": {
+      "label": "Potato",
+      "role_ids": [
+        "potato"
+      ],
+      "images": [
+        {
+          "id": "potatoes-tuber",
+          "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Potatoes%20tuber.jpg?width=720",
+          "source_page": "https://commons.wikimedia.org/wiki/File:Potatoes_tuber.jpg",
+          "license": "CC0 1.0",
+          "credit": "Bamjos",
+          "caption": "Potato tubers — symbolic Potato proxy."
+        }
+      ]
+    },
+    "tomato": {
+      "label": "Tomato",
+      "role_ids": [
+        "tomato"
+      ],
+      "images": [
+        {
+          "id": "red-tomato",
+          "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Red%20tomato.jpg?width=720",
+          "source_page": "https://commons.wikimedia.org/wiki/File:Red_tomato.jpg",
+          "license": "CC0 1.0",
+          "credit": "Nat1620",
+          "caption": "Red tomato — symbolic Tomato proxy."
+        }
+      ]
+    },
+    "angel": {
+      "label": "Angel / wings",
+      "role_ids": [
+        "angel",
+        "guardian"
+      ],
+      "images": [
+        {
+          "id": "angel-wings",
+          "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Angelwings.svg?width=720",
+          "source_page": "https://commons.wikimedia.org/wiki/File:Angelwings.svg",
+          "license": "CC0 1.0 (Commons file page notes license review status)",
+          "credit": "Raw Pixel / Commons",
+          "caption": "Angel wings — symbolic Angel / Guardian proxy."
+        }
+      ]
+    }
+  }
+}

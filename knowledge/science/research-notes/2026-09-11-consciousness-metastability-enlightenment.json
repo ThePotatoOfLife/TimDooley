@@ -1,0 +1,117 @@
+{
+  "id": "research-2026-09-11-consciousness-metastability-enlightenment",
+  "title": "2026-09-11 Research Notes — Consciousness, Metastability, Hidden States and Enlightenment Operationalization",
+  "research_timestamp_local": "2026-09-11T09:12:30+02:00",
+  "timezone": "Europe/Copenhagen",
+  "status": "new project research extension; neuroscience methodology and model-design notes",
+  "novelty_scope": "Novel within the project research record on 2026-09-11. Hidden Markov models, entropy rate and metastability are established scientific tools; their integration here is a new project research move.",
+  "parent_records": [
+    "knowledge/science/great-book-human-map-mathematics-audit.json",
+    "knowledge/science/great-book-consciousness-spiral-equations-recovery.json",
+    "knowledge/science/model-testing-protocol.json"
+  ],
+  "research_findings": [
+    {
+      "id": "replace-single-enlightenment-number-with-state-dynamics",
+      "type": "methodological correction",
+      "finding": "The old Human Map tendency to assign one fixed fractal dimension, frequency or biochemical value to 'Enlightenment' should be replaced by a multivariate state/trait design. The scientifically tractable question is how measurable neural, behavioral and phenomenological variables change over time and across conditions.",
+      "candidate_state_vector": "q=(spectral_shape, PAC, complexity, metastability, integration, segregation, connectivity, report, behavior, physiology)",
+      "boundary": "No component or weighted sum is enlightenment itself."
+    },
+    {
+      "id": "hidden-state-model",
+      "type": "new project formalization",
+      "equations": [
+        "P(S_(t+1)=j | S_t=i)=P_ij",
+        "Y_t | S_t=i ~ p_i(y;theta_i)",
+        "pi=pi P for a stationary distribution when it exists"
+      ],
+      "finding": "A hidden Markov model supplies a disciplined way to describe recurring latent brain/network states and their transition probabilities instead of treating consciousness as one continuous scalar.",
+      "observables": ["fractional occupancy", "mean lifetime/dwell time", "switching rate", "transition matrix", "spectral profile by state", "state-specific connectivity"]
+    },
+    {
+      "id": "state-dwell-time-baseline",
+      "type": "derived diagnostic",
+      "equations": [
+        "For a discrete first-order HMM, P(T_i=k)=(P_ii)^(k-1)(1-P_ii)",
+        "E[T_i]=1/(1-P_ii) samples"
+      ],
+      "finding": "The ordinary HMM supplies a geometric dwell-time baseline. Systematic deviations can motivate a hidden semi-Markov or other duration-aware model rather than being labeled mystical persistence.",
+      "test_path": "Compare observed dwell-time distributions with the fitted HMM expectation and alternative duration models."
+    },
+    {
+      "id": "transition-entropy-rate",
+      "type": "new derived observable",
+      "equation": "h_state=-sum_i pi_i sum_j P_ij log(P_ij)",
+      "finding": "State-transition entropy rate measures unpredictability of switching under the fitted Markov model. Low entropy can mean rigid persistence; high entropy can mean flexible or noisy switching. Neither is automatically 'better' without task and behavioral context.",
+      "units": "nats/transition when natural logarithms are used"
+    },
+    {
+      "id": "metastability-must-be-operationalized",
+      "type": "research correction",
+      "finding": "Metastability should not be used as a synonym for complexity or spirituality. It should refer to transient coordination/state switching under an explicit dynamical or statistical definition.",
+      "candidate_measures": [
+        "variance of a Kuramoto order parameter when phase data are justified",
+        "state dwell-time and recurrence statistics",
+        "switching between integration/segregation regimes",
+        "distance to or residence near metastable/ghost attractor structures in an explicit model"
+      ]
+    },
+    {
+      "id": "state-trait-separation",
+      "type": "new experimental-design rule",
+      "finding": "Separate acute state effects from durable traits. A meditation or altered-state session may change q_state without establishing a lasting q_trait change.",
+      "minimal_design": [
+        "baseline session",
+        "within-session state labeling",
+        "post-session repeated measurement",
+        "matched control condition",
+        "behavioral and phenomenological outcomes",
+        "preregistered primary endpoints"
+      ]
+    },
+    {
+      "id": "exploratory-enlightenment-index",
+      "type": "restricted exploratory model",
+      "equations": [
+        "z=(standardized measured features)",
+        "E_star=w^T z"
+      ],
+      "finding": "A composite score can be used only as a predictive/psychometric index for a declared operational target such as attentional stability, compassion behavior or sustained nondual-report reliability.",
+      "promotion_rule": "Weights must be trained on one sample and evaluated on held-out data; compare against simpler baselines; do not rename E_star 'enlightenment' without a validated construct definition."
+    },
+    {
+      "id": "spiral-consciousness-separation-test",
+      "type": "new falsification rule",
+      "finding": "The recovered geometric Consciousness Spiral should not be linked to neural state sequences merely because both involve recurrence. A scientific bridge requires a measurable mapping from neural observables to polar coordinates and evidence that logarithmic-spiral geometry predicts held-out trajectories better than alternatives."
+    }
+  ],
+  "researcher_notes": [
+    "The best scientific upgrade is to turn the Human Map from a collection of special numbers into a longitudinal state-space program.",
+    "Recent neuroscience reviews emphasize that metastability is useful but frequently used too loosely; the project should therefore define the estimator every time it uses the term.",
+    "HMM transition statistics create a natural bridge to the project's Door language while keeping the model empirical and falsifiable."
+  ],
+  "external_science_sources": [
+    {
+      "title": "Metastability demystified — the foundational past, the pragmatic present and the promising future",
+      "journal": "Nature Reviews Neuroscience",
+      "year": 2025,
+      "doi": "10.1038/s41583-024-00883-1",
+      "url": "https://www.nature.com/articles/s41583-024-00883-1"
+    },
+    {
+      "title": "A comprehensive framework for statistical testing of brain dynamics",
+      "journal": "Nature Protocols",
+      "year": 2026,
+      "doi": "10.1038/s41596-025-01300-2",
+      "url": "https://www.nature.com/articles/s41596-025-01300-2"
+    }
+  ],
+  "falsification_and_quality_rules": [
+    "Predefine the operational target before feature selection.",
+    "Use motion/artifact controls and appropriate multiple-comparison correction.",
+    "Compare dynamic models to static connectivity and simple autoregressive baselines.",
+    "Report uncertainty, reliability and out-of-sample performance.",
+    "Do not infer supernatural causation from neural correlation."
+  ]
+}

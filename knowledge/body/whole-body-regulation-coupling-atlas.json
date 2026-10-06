@@ -1,0 +1,287 @@
+{
+  "id": "whole-body-regulation-coupling-atlas",
+  "title": "Whole-body Regulation & Coupling Atlas",
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "owner_room": "whole-body",
+  "purpose": "Describe the body as coupled regulatory systems rather than isolated organs: flows, sensors, control signals, effectors, buffers, barriers and recurrent feedback loops.",
+  "epistemic_rule": "This is physiology architecture for research/navigation, not diagnosis or medical advice. Symbolic correspondences belong to the Symbolic Body Crosswalk and cannot be inferred from physiology alone.",
+  "control_loop_template": {
+    "elements": [
+      "regulated variable or need",
+      "sensor",
+      "integrator/controller",
+      "signal",
+      "effector",
+      "response",
+      "feedback",
+      "disturbance"
+    ],
+    "example_pattern": "change in state → detection → integration → autonomic/endocrine/behavioral response → changed state → new sensing"
+  },
+  "major_couplings": [
+    {
+      "id": "oxygen-delivery",
+      "systems": [
+        "respiratory",
+        "cardiovascular",
+        "blood",
+        "cellular metabolism"
+      ],
+      "flow": "ventilation/gas exchange → blood transport → tissue delivery/use → CO2 return",
+      "observables": [
+        "ventilation",
+        "blood flow",
+        "oxygen content or saturation where clinically measured",
+        "metabolic demand"
+      ],
+      "boundary": "No single organ owns oxygen delivery."
+    },
+    {
+      "id": "fuel-homeostasis",
+      "systems": [
+        "gut",
+        "liver",
+        "pancreas",
+        "endocrine",
+        "adipose",
+        "muscle",
+        "brain"
+      ],
+      "flow": "intake/absorption → storage/release → circulating substrates → tissue use",
+      "observables": [
+        "meal timing",
+        "substrate availability",
+        "hormonal signals",
+        "energy expenditure"
+      ],
+      "boundary": "Metabolic regulation is multi-organ and time-dependent."
+    },
+    {
+      "id": "fluid-pressure",
+      "systems": [
+        "kidney",
+        "cardiovascular",
+        "endocrine",
+        "autonomic",
+        "vascular"
+      ],
+      "flow": "intake/distribution → filtration/excretion → vascular volume/tone → pressure/perfusion",
+      "observables": [
+        "volume status",
+        "renal handling",
+        "vascular tone",
+        "cardiac output"
+      ],
+      "boundary": "Pressure regulation is distributed and cannot be reduced to heart function alone."
+    },
+    {
+      "id": "temperature",
+      "systems": [
+        "skin",
+        "circulation",
+        "hypothalamic regulation",
+        "muscle",
+        "endocrine/metabolism",
+        "behavior"
+      ],
+      "flow": "heat production/exchange → sensing/integration → vasomotor/sweating/shivering/behavioral response",
+      "observables": [
+        "core temperature",
+        "skin temperature",
+        "environment",
+        "activity"
+      ]
+    },
+    {
+      "id": "immune-barrier",
+      "systems": [
+        "skin",
+        "gut",
+        "respiratory mucosa",
+        "innate immunity",
+        "adaptive immunity",
+        "lymphatic"
+      ],
+      "flow": "barrier exposure → recognition → local/systemic signaling → containment/repair/memory",
+      "observables": [
+        "barrier integrity",
+        "inflammatory mediators",
+        "immune-cell activity"
+      ],
+      "boundary": "Immune activation can be protective, dysregulated or context-dependent."
+    },
+    {
+      "id": "stress-adaptation",
+      "systems": [
+        "brain",
+        "autonomic",
+        "endocrine",
+        "cardiovascular",
+        "immune",
+        "metabolic"
+      ],
+      "flow": "salient demand → appraisal/integration → autonomic/endocrine mobilization → recovery/adaptation",
+      "observables": [
+        "heart-rate dynamics",
+        "hormonal timing",
+        "sleep",
+        "behavior",
+        "immune/metabolic effects"
+      ],
+      "boundary": "Stress is not one hormone or one emotional state."
+    },
+    {
+      "id": "brain-body-interoception",
+      "systems": [
+        "viscera",
+        "vagal/spinal afferents",
+        "brainstem",
+        "hypothalamus",
+        "thalamic/cortical networks"
+      ],
+      "flow": "internal state → neural/humoral signals → central representation/integration → autonomic/behavioral response",
+      "observables": [
+        "afferent signaling",
+        "autonomic outputs",
+        "subjective sensation"
+      ],
+      "boundary": "Subjective experience and measured physiology are related but not identical."
+    },
+    {
+      "id": "movement-posture",
+      "systems": [
+        "musculoskeletal",
+        "proprioceptive",
+        "vestibular",
+        "cerebellar",
+        "motor",
+        "cardiorespiratory"
+      ],
+      "flow": "goal/state estimate → motor command → force/movement → sensory feedback → correction",
+      "observables": [
+        "kinematics",
+        "force",
+        "balance",
+        "energy demand"
+      ]
+    },
+    {
+      "id": "sleep-circadian",
+      "systems": [
+        "retinal light input",
+        "brain clock networks",
+        "pineal timing",
+        "autonomic/endocrine",
+        "temperature",
+        "metabolism",
+        "sleep networks"
+      ],
+      "flow": "environmental timing cues + internal clocks → phase coordination → sleep/wake and physiological rhythms",
+      "observables": [
+        "light timing",
+        "sleep timing",
+        "activity",
+        "temperature and hormonal rhythms"
+      ],
+      "boundary": "Pineal signaling participates in timing; it is not a solitary master clock for the whole organism."
+    },
+    {
+      "id": "fluid-clearance",
+      "systems": [
+        "blood",
+        "interstitial fluid",
+        "lymphatic",
+        "CSF-related pathways",
+        "kidney"
+      ],
+      "flow": "capillary/interstitial exchange + tissue drainage → lymph/venous return and organ-specific clearance",
+      "observables": [
+        "fluid movement",
+        "barrier function",
+        "organ clearance"
+      ],
+      "boundary": "CSF, lymph, blood and interstitial fluid are distinct compartments with interfaces, not one universal river."
+    }
+  ],
+  "timescales": [
+    {
+      "scale": "milliseconds-seconds",
+      "examples": [
+        "neural signaling",
+        "cardiac cycle",
+        "reflexes"
+      ]
+    },
+    {
+      "scale": "seconds-minutes",
+      "examples": [
+        "ventilatory/autonomic adjustments",
+        "vascular responses"
+      ]
+    },
+    {
+      "scale": "minutes-hours",
+      "examples": [
+        "digestion",
+        "hormonal responses",
+        "temperature regulation"
+      ]
+    },
+    {
+      "scale": "hours-days",
+      "examples": [
+        "sleep/circadian cycles",
+        "immune responses",
+        "fluid balance"
+      ]
+    },
+    {
+      "scale": "days-months",
+      "examples": [
+        "training adaptation",
+        "healing",
+        "metabolic adaptation"
+      ]
+    },
+    {
+      "scale": "years",
+      "examples": [
+        "development",
+        "aging",
+        "chronic adaptation or pathology"
+      ]
+    }
+  ],
+  "integration_principles": [
+    "The same variable can be regulated by several systems at different timescales.",
+    "Feedback can stabilize one variable while shifting another; regulation involves tradeoffs.",
+    "A local perturbation can propagate through flows, signaling, behavior or resource competition.",
+    "Redundancy creates resilience but can hide declining reserve until stress exposes it.",
+    "The organism is open: food, air, microbes, light, temperature, social context and activity are inputs.",
+    "Health cannot be inferred from one biomarker without context, reference ranges and clinical interpretation."
+  ],
+  "project_bridge": {
+    "safe_analogy": "The project may compare distributed physiological regulation with House/Rooms/River/Axis architecture when the biology stays separately typed.",
+    "strong_neighbors": [
+      "barriers as controlled interfaces",
+      "circulation as transport network",
+      "feedback as return loop",
+      "organ systems as differentiated rooms",
+      "homeostatic regulation as maintenance"
+    ],
+    "forbidden_shortcuts": [
+      "CSF = Spirit as literal substance",
+      "thalamus = Father's House as anatomical fact",
+      "pineal = supernatural Door",
+      "spine = literal cosmic ladder"
+    ]
+  },
+  "joins": [
+    "body-system-master-atlas",
+    "neurobiology",
+    "symbolic-body-comparison",
+    "potato-biology",
+    "model-testing"
+  ]
+}

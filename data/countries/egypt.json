@@ -1,0 +1,213 @@
+{
+  "record_version": "1.1.0",
+  "record_type": "country",
+  "status": "sourced-enriched",
+  "identity": {
+    "id": "egypt",
+    "name": "Egypt",
+    "iso2": "EG",
+    "iso3": "EGY"
+  },
+  "blueprint": "data/countries-blueprint.json",
+  "blueprint_version": "1.0.0",
+  "coverage": {
+    "node_instantiated": true,
+    "blueprint_inherited": true,
+    "observations": 13,
+    "relationships": 0,
+    "sources": 1,
+    "research_status": "ready-for-source-enrichment",
+    "canonicalized": true
+  },
+  "observations": {
+    "population": {
+      "value": 118365995,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SP.POP.TOTL",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "gdp": {
+      "value": 365254630179.737,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "NY.GDP.MKTP.CD",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "gdp_per_capita": {
+      "value": 3085.80712036204,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "NY.GDP.PCAP.CD",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "gdp_per_capita_ppp": {
+      "value": 20204.0130500153,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "NY.GDP.PCAP.PP.CD",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "real_growth": {
+      "value": 4.39201068570188,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "NY.GDP.MKTP.KD.ZG",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "inflation": {
+      "value": 14.0735136645934,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "FP.CPI.TOTL.ZG",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "unemployment": {
+      "value": 6.781,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SL.UEM.TOTL.ZS",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "labour_force_participation": {
+      "value": 44.568,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SL.TLF.CACT.ZS",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "life_expectancy": {
+      "value": 71.806,
+      "year": 2024,
+      "source": "world-bank",
+      "indicator": "SP.DYN.LE00.IN",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "fertility": {
+      "value": 2.735,
+      "year": 2024,
+      "source": "world-bank",
+      "indicator": "SP.DYN.TFRT.IN",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "urbanization": {
+      "value": 42.9043204925248,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SP.URB.TOTL.IN.ZS",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "poverty": {
+      "value": 33.5,
+      "year": 2021,
+      "source": "world-bank",
+      "indicator": "SI.POV.NAHC",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "internet_penetration": {
+      "value": 74.64839935,
+      "year": 2024,
+      "source": "world-bank",
+      "indicator": "IT.NET.USER.ZS",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    }
+  },
+  "relationships": [
+    {
+      "target": "sudan",
+      "type": "border-and-nile-basin"
+    },
+    {
+      "target": "libya",
+      "type": "border"
+    },
+    {
+      "target": "israel",
+      "type": "border-and-security-relationship"
+    },
+    {
+      "target": "saudi-arabia",
+      "type": "red-sea-and-gulf-relationship"
+    },
+    {
+      "target": "g20",
+      "type": "regional-economic-partner"
+    },
+    {
+      "target": "african-union",
+      "type": "member"
+    }
+  ],
+  "history": [],
+  "research_queue": [
+    "Suez Canal revenue and logistics",
+    "Nile water governance and GERD exposure",
+    "natural-gas production and LNG",
+    "food import dependence",
+    "public debt and external financing",
+    "electricity generation",
+    "ports and transport corridors",
+    "fertilizer and chemical value chains",
+    "tourism economy",
+    "military-owned enterprises",
+    "population and urban growth"
+  ],
+  "provenance": {
+    "instantiated_at": "2026-09-07T12:37:31.426393+00:00",
+    "instantiation_method": "canonical country index + country blueprint",
+    "observation_policy": "No value is invented merely to fill a field; absent evidence remains missing/stale.",
+    "last_refresh": "2026-10-06T04:28:07.342073+00:00",
+    "source_priority": "international-official",
+    "historical_observations_preserved": true,
+    "enrichment_merged": true,
+    "enrichment_layer": "retired overlay merged into canonical country record"
+  },
+  "data_freshness": {
+    "last_refresh_attempt": "2026-09-07T21:59:50.659074+00:00",
+    "source": "world-bank"
+  },
+  "version": "1.0.0",
+  "country_id": "egypt",
+  "iso2": "EG",
+  "iso3": "EGY",
+  "official_name": "Arab Republic of Egypt",
+  "capital": "Cairo",
+  "region": "Africa",
+  "subregion": "Northern Africa",
+  "currency": "EGP",
+  "national_day": "July 23",
+  "government": "Unitary semi-presidential republic",
+  "head_of_state": "Abdel Fattah el-Sisi",
+  "legislature": "House of Representatives and Senate",
+  "administrative_structure": "Governorates",
+  "constitution": "2014-01-18",
+  "population_2025": 116500000,
+  "gdp_current_usd_2025": 329400000000,
+  "strategic_assets": [
+    "Suez Canal",
+    "Nile water system",
+    "natural gas",
+    "Mediterranean ports",
+    "Red Sea logistics",
+    "fertilizer industry",
+    "tourism",
+    "large domestic market"
+  ],
+  "sources": [
+    "World Bank World Development Indicators"
+  ],
+  "record_role": "canonical-country-record"
+}

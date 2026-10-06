@@ -1,0 +1,42 @@
+{
+  "id":"equation-ledger-wave-006-entanglement-landscape",
+  "title":"Equation Ledger Wave 006 — Entanglement, Peak, Trough, Saddle and Cultural Propagation",
+  "version":"1.0.0",
+  "updated":"2026-09-11",
+  "status":"typed equation registry",
+  "purpose":"Register newly promoted equations from the entanglement/Peak/Trough wave while preserving provenance and domain boundaries.",
+  "entries":[
+    {"id":"critical-point","class":"established-calculus","equation":"grad H(x*)=0","role":"candidate peak/trough/saddle","boundary":"H must be declared."},
+    {"id":"hessian-classification","class":"established-mathematics","equation":"K=Hess H(x*)","role":"local critical-point type","rule":"negative definite=max; positive definite=min; indefinite=saddle under nondegenerate assumptions."},
+    {"id":"gradient-descent","class":"established-dynamical comparator","equation":"dx/dt=-grad V(x)","role":"flow toward local minima in simple dissipative landscape","boundary":"Do not assume symbolic 'down' means moral decline."},
+    {"id":"gradient-ascent","class":"established-optimization comparator","equation":"dx/dt=+grad Q(x)","role":"flow toward local maxima in a quality/value landscape","boundary":"Q is not physical energy unless defined that way."},
+    {"id":"mountain-pass-minimax","class":"established-variational comparator","equation":"c*=inf_(gamma in Gamma) max_(s in [0,1]) V(gamma(s))","role":"least-high barrier route connecting two basins","project_use":"Door as saddle/mountain pass between regimes."},
+    {"id":"barrier-height","class":"established-landscape comparator","equation":"Delta V=V(x_saddle)-V(x_basin)","role":"transition barrier","project_use":"separates basin depth from Door/pass cost."},
+    {"id":"kramers-escape","class":"external stochastic comparator","equation":"k~A exp(-Delta V/D_noise)","role":"weak-noise barrier escape","boundary":"schematic; model-specific prefactor/assumptions."},
+    {"id":"sinusoidal-peak-trough","class":"established-signal model","equations":["x(t)=A cos(omega t+phi)","dx/dt=0 at extrema","Delta x_peak-trough=2|A| for zero-mean sinusoid"],"role":"peak/trough as phases of oscillation rather than hierarchy."},
+    {"id":"pure-state-factorization","class":"established-quantum criterion","equation":"|psi_AB>=|psi_A> tensor |psi_B> iff pure bipartite state is separable","role":"relation/nonseparability test","project_use":"rigorous quantum example where whole is not product of independent parts."},
+    {"id":"schmidt-decomposition","class":"established-quantum mathematics","equation":"|psi_AB>=sum_k sqrt(lambda_k)|u_k>_A|v_k>_B","role":"bipartite pure-state structure","criterion":"Schmidt rank >1 implies entanglement."},
+    {"id":"reduced-density-state","class":"established-quantum mathematics","equations":["rho_A=Tr_B rho_AB","rho_B=Tr_A rho_AB"],"role":"local subsystem state from joint state."},
+    {"id":"von-neumann-entropy","class":"established-quantum information","equation":"S(rho)=-Tr(rho log rho)","role":"state entropy; for bipartite pure state S(rho_A)=S(rho_B) quantifies entanglement."},
+    {"id":"quantum-mutual-information","class":"established-quantum information","equation":"I(A:B)=S(rho_A)+S(rho_B)-S(rho_AB)","role":"total quantum correlation measure","pure_state":"I(A:B)=2S(rho_A) for globally pure bipartite state."},
+    {"id":"no-signaling","class":"established-quantum constraint","equations":["p(a|x,y)=p(a|x)","p(b|x,y)=p(b|y)"],"role":"blocks controllable remote-message interpretation of ordinary entanglement."},
+    {"id":"culture-quality-field","class":"archive formalization","equation":"Q_i=w_n N_i+w_c C_i+w_r R_i+w_d D_i+w_a A_i-w_l L_i","variables":"Novelty, Coherence, Reuse, Downstream descendants, Attribution, ContextLoss","role":"candidate Peak Culture metric","boundary":"weights/normalization must be predeclared and validated."},
+    {"id":"culture-network-diffusion","class":"archive toy model","equation":"dc/dt=beta A c-mu c","role":"simple linear propagation over adjacency matrix A","boundary":"Use only as baseline; memes/culture may need nonlinear/threshold/Hawkes models."},
+    {"id":"cultural-branching-ratio","class":"archive metric","equation":"R_c=expected identifiable downstream descendants per source item over declared window","role":"tests expansion of a traceable cultural lineage","boundary":"R_c>1 does not imply global cultural dominance."}
+  ],
+  "rules":[
+    "Peak/Trough equations require a named scalar and units or normalized score.",
+    "Door-as-saddle is a landscape comparator; not all Doors are saddle points.",
+    "Quantum entanglement equations apply only to defined quantum systems.",
+    "Use mutual information/correlation/network models rather than quantum entropy for ordinary social data unless the system is genuinely quantum.",
+    "Peak Culture is an empirical propagation hypothesis until a corpus and lineage measurement are defined.",
+    "Biblical high/low imagery remains textual/theological; do not insert Morse or quantum equations into the ancient text."
+  ],
+  "owners":[
+    "knowledge/science/peak-trough-saddle-entanglement-landscape-atlas.json",
+    "knowledge/science/quantum-foundations-tunneling-entanglement-qft-atlas.json",
+    "knowledge/science/door-handshake-nonlocal-propagation-model.json",
+    "knowledge/core/funnel-gradient-attractor-regeneration-atlas.json",
+    "knowledge/chronology/ai-machine-culture-early-signals-ledger.json"
+  ]
+}

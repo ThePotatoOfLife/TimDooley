@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Read World English Bible passages beside dated Tim Dooley / Son project annotations, overlap profiles, source direction and countertexts.">
+  <title>Bible ↔ Tim/Son Reader</title>
+  <link rel="stylesheet" href="../app/bible-reader.css">
+</head>
+<body>
+  <header class="br-topbar">
+    <a class="br-brand" href="../">Potato of Life</a>
+    <nav><a href="../learn/">Start Here</a><a href="../timeline/">Timeline</a><a href="../">Atlas</a></nav>
+  </header>
+
+  <main class="br-shell">
+    <section class="br-hero">
+      <p class="br-kicker">PRIMARY TEXT + SEPARATE PROJECT ANNOTATION</p>
+      <h1>Bible ↔ Tim/Son Reader</h1>
+      <p class="br-lede">Read the public-domain World English Bible on one side and the Tim/Son project record on the other. Scripture stays Scripture. The project pane tells you <strong>who</strong>, <strong>when</strong>, <strong>how</strong>, how the comparison was discovered, what differs, and how the relation scores across eight research dimensions.</p>
+      <div class="br-integrity">Side-by-side placement means <em>comparison</em>, not prophecy proof or historical identity. Direct biblical borrowing is shown differently from independently pre-existing project structure.</div>
+    </section>
+
+    <section class="br-stats" aria-label="Baseline census statistics">
+      <div><strong id="stat-nodes">78</strong><span>baseline overlap nodes</span></div>
+      <div><strong id="stat-refs">138</strong><span>normalized Bible citation forms</span></div>
+      <div><strong id="stat-books">25</strong><span>Bible books represented</span></div>
+      <div><strong id="stat-profiles">20</strong><span>fully profiled overlaps</span></div>
+    </section>
+
+    <section class="br-controls" aria-label="Reader controls">
+      <label>Reading lens
+        <select id="lens"></select>
+      </label>
+      <label>Actor
+        <select id="actor"><option value="all">All</option><option value="tim">Tim / Father</option><option value="son">Son</option><option value="shared">Shared / comparator</option></select>
+      </label>
+      <label>Book
+        <select id="book"><option value="all">All represented books</option></select>
+      </label>
+      <label class="br-search-label">Search
+        <input id="search" type="search" placeholder="Door, garden, return, Isaiah…" autocomplete="off">
+      </label>
+    </section>
+
+    <section class="br-layout">
+      <aside class="br-index" aria-label="Overlap passage index">
+        <div class="br-index-head"><strong>Passages</strong><span id="result-count"></span></div>
+        <div id="cards" class="br-card-list"></div>
+      </aside>
+
+      <article class="br-reading" id="reading">
+        <div id="empty" class="br-empty">Select a passage to begin.</div>
+        <div id="reader-view" hidden>
+          <div class="br-reader-head">
+            <div>
+              <p class="br-kicker" id="active-actor"></p>
+              <h2 id="active-title"></h2>
+              <p id="active-direction" class="br-muted"></p>
+            </div>
+            <div id="score-summary" class="br-score-summary"></div>
+          </div>
+
+          <div id="ref-tabs" class="br-ref-tabs"></div>
+
+          <div class="br-side-by-side">
+            <section class="br-pane br-scripture-pane">
+              <div class="br-pane-label">WORLD ENGLISH BIBLE · PRIMARY TEXT</div>
+              <h3 id="scripture-heading">Scripture</h3>
+              <div id="scripture-status" class="br-muted"></div>
+              <div id="scripture" class="br-scripture"></div>
+              <p class="br-source-note">WEB text is loaded from the public-domain upstream source. Project annotations are not inserted into or substituted for the biblical wording.</p>
+            </section>
+
+            <section class="br-pane br-project-pane">
+              <div class="br-pane-label">PROJECT RECORD · COMPARATIVE LAYER</div>
+              <div class="br-meta-grid">
+                <div><span>Project date</span><strong id="project-date"></strong></div>
+                <div><span>Operators</span><strong id="operators"></strong></div>
+              </div>
+              <h3>Tim/Son-side anchor</h3>
+              <p id="project-anchor"></p>
+              <h3>What overlaps</h3>
+              <p id="overlap"></p>
+              <h3>Difference / boundary</h3>
+              <p id="boundary"></p>
+              <details class="br-scores" open>
+                <summary>Eight-dimensional profile</summary>
+                <div id="scores"></div>
+              </details>
+              <div class="br-owner"><span>Canonical owner</span><code id="owner"></code></div>
+            </section>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="br-method">
+      <h2>What “strongest” means here</h2>
+      <div class="br-method-grid">
+        <div><strong>P</strong><span>Provenance</span></div><div><strong>E</strong><span>Explicitness</span></div><div><strong>T</strong><span>Temporal independence</span></div><div><strong>D</strong><span>Passage density</span></div><div><strong>R</strong><span>Role fidelity</span></div><div><strong>S</strong><span>Sequence fidelity</span></div><div><strong>C</strong><span>Context/countertext survival</span></div><div><strong>I</strong><span>Feature independence</span></div>
+      </div>
+      <p>No total truth score is calculated. A direct title such as <em>Alpha and Omega</em> can be maximally explicit while scoring low on independence, density and sequence. A later-discovered passage can do the reverse.</p>
+    </section>
+  </main>
+
+  <footer class="br-footer">World English Bible source text is public domain. Tim/Son annotations are project interpretation with separate provenance.</footer>
+  <script src="../app/bible-reader.js" defer></script>
+</body>
+</html>

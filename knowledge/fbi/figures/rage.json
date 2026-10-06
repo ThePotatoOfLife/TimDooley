@@ -1,0 +1,147 @@
+{
+  "id": "rage",
+  "display_name": "Rage",
+  "bureau": "FBI — Figures, Bonds & Incidents",
+  "entity_class": "person-or-handle",
+  "aliases": [],
+  "archive_status": "historical-current-unknown",
+  "room_policy": "cluster",
+  "room_path": null,
+  "tim_relation": {
+    "archetypes": [
+      "guardian-defender",
+      "healer-companion"
+    ],
+    "narrative_functions": [
+      "crisis response",
+      "practical protection"
+    ],
+    "regions": [
+      "Plane",
+      "Saloon"
+    ],
+    "editorial_reading": "Chronicle includes a concrete rescue anecdote; avoid overgeneralizing beyond attested scenes.",
+    "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+  },
+  "chronology": {
+    "chronicle_occurrence_count": 44,
+    "chronicle_dates": [
+      "November 4, 2024",
+      "November 5, 2024",
+      "November 6, 2024",
+      "November 7, 2024",
+      "November 7, 2024",
+      "November 11, 2024",
+      "Nov 20 2024",
+      "November 28, 2024",
+      "December 4, 2024",
+      "December 7, 2024",
+      "December 20, 2024",
+      "January 10 2025",
+      "Feb 8 2025",
+      "Feb 24 2025",
+      "Feb 26 2025",
+      "March 1 2025",
+      "March 12, 2025"
+    ],
+    "cast_period_roles": [],
+    "recovered_social_days": [
+      {
+        "date": "2024-11-04",
+        "title": "Potatoism gets challenged from inside the room",
+        "minimum_event": "Juice challenges Potatoism with creator/First-Mover arguments; Kale answers with cyclic/interconnection language; Termite explores gods-creating-gods; Kibly contributes an epistemic box thought experiment.",
+        "source_mode": "chronicle_retelling"
+      },
+      {
+        "date": "2024-11-05",
+        "title": "Ordinary voice-chat ecology",
+        "minimum_event": "A mixed day of Tanks, voice chat, humor, business/life discussion and critique. The Chronicle preserves Marty as present in ordinary social activity rather than only later conflict mythology.",
+        "source_mode": "chronicle_retelling"
+      },
+      {
+        "date": "2024-11-06",
+        "title": "Marty as Chance & Taylor; Optimistique's creative thread",
+        "minimum_event": "Marty discusses being removed from another chat while Tim is already distancing from him; Optimistique discusses music, AI-generated instrumentals and Jungian-shadow creativity.",
+        "source_mode": "chronicle_retelling"
+      },
+      {
+        "date": "2024-11-28",
+        "title": "Marty, Monkey and Sammy occupy the same social field",
+        "minimum_event": "A dense Chronicle entry places the three major later threads—Marty, Monkey/Tree and Sammy—inside the same late-November social field.",
+        "source_mode": "chronicle_retelling"
+      },
+      {
+        "date": "2024-12-04",
+        "title": "The Tree becomes a separate social space",
+        "minimum_event": "Chronicle narration says Monkey and Tachy established a separate Tree server while Termite and Kale remained visible around Tim's space. This is a strong dated anchor for community fragmentation, though motive-language remains interpretive.",
+        "source_mode": "chronicle_retelling"
+      }
+    ]
+  },
+  "top_co_presence": [
+    {
+      "name": "Tim Dooley",
+      "count": 5
+    },
+    {
+      "name": "Termite",
+      "count": 4
+    },
+    {
+      "name": "Optimistique",
+      "count": 3
+    },
+    {
+      "name": "Kale",
+      "count": 2
+    },
+    {
+      "name": "Kibly",
+      "count": 2
+    },
+    {
+      "name": "Ledgeview",
+      "count": 2
+    },
+    {
+      "name": "Marty",
+      "count": 2
+    },
+    {
+      "name": "Port Monkey",
+      "count": 2
+    }
+  ],
+  "symbolic_roles": [],
+  "highlighted_incidents": [
+    {
+      "date": "2024-11-04/06",
+      "title": "Ordinary routine and music",
+      "summary": "Chronicle preserves everyday routine, cooking/gym talk, humor and shared music taste rather than only conflict."
+    },
+    {
+      "date": "2024-11",
+      "title": "Emergency cat rescue story",
+      "summary": "Chronicle remembers Rage recounting acting quickly when his girlfriend's cat choked; keep as Chronicle testimony unless closer source is recovered."
+    }
+  ],
+  "source_strata": [
+    {
+      "type": "character_archive",
+      "path": "knowledge/story/character-archive-v2.json"
+    },
+    {
+      "type": "cast_book",
+      "path": "knowledge/story/cast-book.json"
+    },
+    {
+      "type": "dated_social_ledger",
+      "path": "knowledge/story/social-presence-ledger-2024-2025.json"
+    }
+  ],
+  "recovery_leads": [
+    "Recover raw/closer conversation or stream logs behind the densest Chronicle dates.",
+    "Separate direct speech from Chronicle paraphrase and later character-profile interpretation.",
+    "Add relationship edges only when a scene/source supports them."
+  ]
+}

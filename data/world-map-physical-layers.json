@@ -1,0 +1,110 @@
+{
+  "schema_version": "1.5.1",
+  "updated": "2026-09-17",
+  "family": "physical-world",
+  "principles": [
+    "Dense global physical data loads on demand through tiles or provider services.",
+    "Physical hydrology is independent from sacred or textual river overlays.",
+    "Bare or sparse vegetation is not synonymous with desert or aridity."
+  ],
+  "entries": [
+    {
+      "id": "physical.terrain",
+      "label": "Terrain",
+      "kind": "module",
+      "availability": "current",
+      "load_policy": "on_demand",
+      "module": "./3d-physical-terrain.js",
+      "controller": "__potatoAtlasTerrain",
+      "source": {
+        "provider": "Mapterhorn",
+        "dataset": "Terrain DEM",
+        "version": "live TileJSON endpoint",
+        "attribution": "Terrain © Mapterhorn"
+      },
+      "default_opacity": 0.5,
+      "min_zoom": 0,
+      "max_zoom": 12,
+      "status_note": "Elevation and hillshade share one capped DEM source and load only after explicit activation. Provider failure is nonfatal."
+    },
+    {
+      "id": "physical.water.base",
+      "label": "Water",
+      "kind": "module",
+      "availability": "current",
+      "load_policy": "on_demand",
+      "module": "./3d-physical-water.js",
+      "controller": "__potatoAtlasPhysicalWater",
+      "source": {
+        "provider": "Natural Earth",
+        "dataset": "Seam-safe generated ocean base + Natural Earth 1:110m world overview and 1:50m regional-detail coastline, lakes, rivers and lake centerlines",
+        "version": "pinned commit ca96624a56bd078437bca8184e78163e5039ad19",
+        "attribution": "Made with Natural Earth · public domain"
+      },
+      "default_opacity": 0.72,
+      "min_zoom": 0,
+      "max_zoom": 9,
+      "status_note": "Ocean color uses a small seam-safe globe mesh beneath canonical country geometry so no world-spanning polygon crosses the antimeridian or closes over a pole. Natural Earth supplies 1:110m overview and lazily loaded 1:50m regional coastline, lake and river detail. This is cartographic context, not a legal boundary or drainage-basin authority layer."
+    },
+    {
+      "id": "physical.water.hydrology",
+      "label": "Hydrology",
+      "kind": "module",
+      "availability": "current",
+      "load_policy": "on_demand",
+      "module": "./3d-physical-hydrology.js",
+      "controller": "__potatoAtlasHydrology",
+      "source": {
+        "provider": "HydroSHEDS · HydroBASINS / HydroRIVERS",
+        "dataset": "HydroBASINS level 5 watershed boundaries + HydroRIVERS v1.0 major-river network",
+        "version": "HydroBASINS v1c / HydroRIVERS v1.0",
+        "delivery": "regional viewport-bounded ArcGIS FeatureServer queries",
+        "attribution": "HydroSHEDS · Lehner & Grill (2013); hosted FeatureServer delivery mirrors"
+      },
+      "default_opacity": 0.72,
+      "min_zoom": 4,
+      "max_zoom": 14,
+      "status_note": "Measured regional physical drainage context from HydroBASINS and HydroRIVERS. Requests are viewport-bounded and begin only at regional zoom. This physical hydrology remains independent from Eden/Four-Rivers or other sacred and textual overlays."
+    },
+    {
+      "id": "physical.land-cover",
+      "label": "Land cover",
+      "kind": "module",
+      "availability": "current",
+      "load_policy": "on_demand",
+      "module": "./3d-physical-land-cover.js",
+      "controller": "__potatoAtlasLandCover",
+      "source": {
+        "provider": "ESA WorldCover",
+        "dataset": "WorldCover 2021 global land-cover map at 10 m",
+        "version": "2021 v200",
+        "delivery": "Terrascope WMS · esa-worldcover-map-10m-2021-v2_map",
+        "attribution": "© ESA WorldCover project 2021 / Contains modified Copernicus Sentinel data (2021) processed by ESA WorldCover consortium"
+      },
+      "default_opacity": 0.58,
+      "min_zoom": 0,
+      "max_zoom": 14,
+      "status_note": "Visual land-cover context from the official cached WorldCover web map service. Classes include trees, shrubland, grassland, cropland, built-up, bare/sparse vegetation, water, wetland, mangroves, moss/lichen and snow/ice. Bare/sparse vegetation is not the same thing as desert. The RGB web layer is cartographic context, not an analytical class-query service."
+    },
+    {
+      "id": "physical.aridity",
+      "label": "Deserts / xeric",
+      "kind": "module",
+      "availability": "current",
+      "load_policy": "on_demand",
+      "module": "./3d-physical-deserts.js",
+      "controller": "__potatoAtlasDeserts",
+      "source": {
+        "provider": "The Nature Conservancy",
+        "dataset": "Global Terrestrial Ecoregions · Deserts and Xeric Shrublands",
+        "version": "snapshot as of 2009-12-14",
+        "delivery": "ArcGIS FeatureServer GeoJSON query",
+        "attribution": "The Nature Conservancy"
+      },
+      "default_opacity": 0.26,
+      "min_zoom": 0,
+      "max_zoom": 9,
+      "status_note": "Ecological ecoregion context for Deserts and Xeric Shrublands. This is a dated 2009 terrestrial ecoregion classification, not a continuous aridity index, not current desert extent, and not equivalent to WorldCover bare/sparse vegetation."
+    }
+  ]
+}

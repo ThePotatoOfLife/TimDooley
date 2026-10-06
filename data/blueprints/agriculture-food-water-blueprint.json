@@ -1,0 +1,18 @@
+{
+  "version":"1.0.0","status":"active-blueprint","purpose":"Map food and water systems from land, soil and water inputs through agriculture, processing, storage, trade, distribution, consumption and resilience.","entity":"food_water_system",
+  "record_schema":{
+    "identity":["system_id","resource","geography","period","status"],
+    "agriculture":["crop","livestock","fishery","area","yield","production","season","irrigation","fertilizer","seed","feed","labor","machinery"],
+    "water":["source","withdrawal","consumption","quality","treatment","distribution","wastewater","groundwater","surface_water","water_stress","recharge"],
+    "food_chain":["farm","processor","storage","wholesaler","retailer","market","institutional_buyer","household","food_service","waste"],
+    "trade":["imports","exports","origin","destination","product","quantity","value","supplier_concentration","transport_route"],
+    "inputs":["fertilizer","seed","feed","fuel","energy","machinery","chemicals","finance","technology"],
+    "security":["strategic_reserve","storage_capacity","import_dependency","crop_diversity","supplier_diversity","drought_exposure","flood_exposure","price_shock","substitution"],
+    "environment":["soil_health","water_use","emissions","nutrient_runoff","biodiversity","land_change","pesticides","restoration"],
+    "governance":["agricultural_policy","water_authority","food_safety","subsidy","quota","license","allocation_rule","emergency_measure"],
+    "evidence":["agricultural_statistics","water_statistics","food_balance","trade_data","remote_sensing","market_data","regulator","research","retrieved_at","confidence"]
+  },
+  "derived_measures":["food_self_sufficiency","import_dependency","yield_per_area","water_productivity","storage_coverage","supplier_concentration","food_price_exposure","irrigation_share"],
+  "relationship_templates":["farm-supplies-processor","country-imports-food","river-supplies-region","water-system-supports-city","fertilizer-supplies-agriculture","policy-supports-farm","storage-buffers-food-system"],
+  "integrity_rules":["Food production is not food availability at the household level.","Self-sufficiency does not equal food security.","Water withdrawal and water consumption are distinct.","Agricultural yield requires crop, area and time definitions.","Strategic reserves require usable quantity and coverage period.","Environmental impacts require defined boundaries and methodology."]
+}

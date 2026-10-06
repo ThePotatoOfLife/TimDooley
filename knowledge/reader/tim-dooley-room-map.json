@@ -1,0 +1,441 @@
+{
+  "id": "tim-dooley-room-map",
+  "version": "1.0.0",
+  "updated": "2026-09-20",
+  "purpose": "Reader-facing route map from Tim Dooley questions into Story episodes, raw Story recovery, statement archaeology and specialist project rooms.",
+  "route_rule": "The main Tim page should answer first. Routes are optional deeper doors, not prerequisites for understanding the answer.",
+  "groups": [
+    {
+      "id": "meet-tim",
+      "title": "Meet Tim",
+      "intro": "Start with the ordinary and public subject before the larger mythology: name, origin, work, birth, public presence and the basic question of who this is.",
+      "questions": [
+        "who-is-tim-dooley",
+        "where-does-tim-come-from",
+        "what-does-tim-dooley-mean",
+        "when-was-tim-born",
+        "is-tim-crazy"
+      ]
+    },
+    {
+      "id": "potato-and-god",
+      "title": "Potato, Father, Son",
+      "intro": "The core religious vocabulary develops rather than arriving finished: Potato, God, Father, Thomas/Son, Christianity and the wider Potatoist system.",
+      "questions": [
+        "what-is-potato-of-life",
+        "what-is-potatoism",
+        "is-tim-god",
+        "who-is-tims-father",
+        "who-is-thomas",
+        "what-does-thomas-mean",
+        "is-potatoism-christian"
+      ]
+    },
+    {
+      "id": "architecture",
+      "title": "Door, Ladder, North, Garden",
+      "intro": "Later identities become functions and places: Door as threshold, Ladder as relation, North as orientation and Gardener as an ethical office.",
+      "questions": [
+        "what-happened-april-2025",
+        "what-is-door",
+        "what-is-ladder",
+        "what-is-north",
+        "what-is-gardener"
+      ]
+    },
+    {
+      "id": "work-and-purpose",
+      "title": "Work, Mission, Building",
+      "intro": "The theology keeps turning back into work: stream, write, archive, map, build, repair, protect, cultivate and organize.",
+      "questions": [
+        "what-does-tim-want",
+        "what-is-tims-mission",
+        "mission-of-potatoes",
+        "what-is-tim-building",
+        "what-are-tims-politics"
+      ]
+    },
+    {
+      "id": "truth-and-fruit",
+      "title": "Truth, Judgment, Evidence",
+      "intro": "The archive keeps a distinction between a statement existing, the project believing it, an interpretation fitting it and external evidence establishing it.",
+      "questions": [
+        "is-tim-good-or-evil",
+        "is-tim-a-demon",
+        "what-is-true"
+      ]
+    }
+  ],
+  "doors": {
+    "who-is-tim-dooley": [
+      [
+        "story/",
+        "Story"
+      ],
+      [
+        "story/raw/",
+        "Raw story mine"
+      ],
+      [
+        "claims/",
+        "Statements"
+      ],
+      [
+        "public-witness/",
+        "Public witness"
+      ]
+    ],
+    "where-does-tim-come-from": [
+      [
+        "story/",
+        "Story"
+      ],
+      [
+        "../timeline/",
+        "Timeline"
+      ],
+      [
+        "../knowledge/reader/tim-dooley-etymology.json",
+        "Etymology record"
+      ]
+    ],
+    "what-does-tim-dooley-mean": [
+      [
+        "../knowledge/reader/tim-dooley-etymology.json",
+        "Name / etymology"
+      ],
+      [
+        "claims/",
+        "Statements"
+      ]
+    ],
+    "when-was-tim-born": [
+      [
+        "../timeline/",
+        "Timeline"
+      ],
+      [
+        "story/",
+        "Story"
+      ],
+      [
+        "story/raw/",
+        "Raw recovery"
+      ]
+    ],
+    "is-tim-crazy": [
+      [
+        "public-witness/",
+        "Public record"
+      ],
+      [
+        "evidence/",
+        "Evidence classes"
+      ],
+      [
+        "story/raw/",
+        "Raw source boundary"
+      ]
+    ],
+    "what-is-potato-of-life": [
+      [
+        "../philosophy/",
+        "Philosophy"
+      ],
+      [
+        "../great-book/",
+        "Great Book"
+      ],
+      [
+        "story/",
+        "Story"
+      ],
+      [
+        "claims/",
+        "Statements"
+      ]
+    ],
+    "what-is-potatoism": [
+      [
+        "../philosophy/",
+        "Philosophy"
+      ],
+      [
+        "../religion/",
+        "Religion"
+      ],
+      [
+        "../great-book/",
+        "Great Book"
+      ]
+    ],
+    "is-tim-god": [
+      [
+        "how-much-is-tim-god/",
+        "Godhood modes"
+      ],
+      [
+        "god-in-real-life/",
+        "Real-life case"
+      ],
+      [
+        "story/#i-am-god-2025-05-03",
+        "3 May 2025 Story"
+      ],
+      [
+        "claims/",
+        "Declarations"
+      ]
+    ],
+    "who-is-tims-father": [
+      [
+        "ontology/",
+        "Identity ontology"
+      ],
+      [
+        "biblical-case/",
+        "Biblical case"
+      ],
+      [
+        "story/",
+        "Story"
+      ]
+    ],
+    "who-is-thomas": [
+      [
+        "ontology/",
+        "Identity ontology"
+      ],
+      [
+        "story/#throne-door-2026-04-29",
+        "Son / Door Story"
+      ],
+      [
+        "biblical-case/",
+        "Biblical comparison"
+      ]
+    ],
+    "what-does-thomas-mean": [
+      [
+        "../knowledge/reader/tim-dooley-etymology.json",
+        "Etymology record"
+      ],
+      [
+        "biblical-case/",
+        "Biblical comparison"
+      ]
+    ],
+    "is-potatoism-christian": [
+      [
+        "../religion/",
+        "Religion"
+      ],
+      [
+        "biblical-case/",
+        "Biblical case"
+      ],
+      [
+        "../great-book/",
+        "Great Book"
+      ]
+    ],
+    "what-happened-april-2025": [
+      [
+        "story/#potato-axis-real-2025-04-21",
+        "April Story"
+      ],
+      [
+        "story/raw/",
+        "Raw April corridor"
+      ],
+      [
+        "../timeline/",
+        "Timeline"
+      ],
+      [
+        "../knowledge/story/reservoir/2026-09-14-wave-07-lived-texture.md",
+        "Recovery notes"
+      ]
+    ],
+    "what-is-door": [
+      [
+        "ontology/",
+        "Ontology"
+      ],
+      [
+        "story/#throne-door-2026-04-29",
+        "Son is a Door"
+      ],
+      [
+        "biblical-case/",
+        "Biblical case"
+      ]
+    ],
+    "what-is-ladder": [
+      [
+        "ontology/",
+        "Ontology"
+      ],
+      [
+        "story/#ladder-door-2026-05-19",
+        "Ladder and Door"
+      ],
+      [
+        "biblical-case/",
+        "Biblical case"
+      ]
+    ],
+    "what-is-north": [
+      [
+        "../world/",
+        "World / North"
+      ],
+      [
+        "../timeline/",
+        "Timeline"
+      ],
+      [
+        "story/",
+        "Story"
+      ],
+      [
+        "claims/",
+        "Statements"
+      ]
+    ],
+    "what-is-gardener": [
+      [
+        "../philosophy/",
+        "Philosophy"
+      ],
+      [
+        "god-in-real-life/",
+        "Godhood in life"
+      ],
+      [
+        "story/",
+        "Story"
+      ]
+    ],
+    "what-does-tim-want": [
+      [
+        "../philosophy/",
+        "Philosophy"
+      ],
+      [
+        "../knowledge/reader/what-tim-dooley-believes.json",
+        "Belief record"
+      ],
+      [
+        "story/raw/",
+        "Raw Story"
+      ]
+    ],
+    "what-is-tims-mission": [
+      [
+        "../philosophy/",
+        "Philosophy"
+      ],
+      [
+        "../world/",
+        "World"
+      ],
+      [
+        "story/",
+        "Story"
+      ]
+    ],
+    "mission-of-potatoes": [
+      [
+        "../philosophy/",
+        "Philosophy"
+      ],
+      [
+        "../great-book/",
+        "Great Book"
+      ],
+      [
+        "story/",
+        "Story"
+      ]
+    ],
+    "what-is-tim-building": [
+      [
+        "../world/",
+        "World / Map"
+      ],
+      [
+        "../science/",
+        "Science"
+      ],
+      [
+        "../great-book/",
+        "Great Book"
+      ],
+      [
+        "story/raw/",
+        "Project stories"
+      ]
+    ],
+    "what-are-tims-politics": [
+      [
+        "../world/",
+        "World"
+      ],
+      [
+        "../knowledge/politics/tim-dooley-politics-geopolitics-compendium.json",
+        "Political compendium"
+      ],
+      [
+        "../knowledge/politics/tim-dooley-political-alignment-map.json",
+        "Alignment record"
+      ]
+    ],
+    "is-tim-good-or-evil": [
+      [
+        "../philosophy/",
+        "Fruit / ethics"
+      ],
+      [
+        "public-witness/",
+        "Public record"
+      ],
+      [
+        "claims/",
+        "Statements"
+      ]
+    ],
+    "is-tim-a-demon": [
+      [
+        "../religion/",
+        "Religion"
+      ],
+      [
+        "biblical-case/",
+        "Biblical comparison"
+      ],
+      [
+        "claims/",
+        "Statements"
+      ]
+    ],
+    "what-is-true": [
+      [
+        "evidence/",
+        "Evidence classes"
+      ],
+      [
+        "public-witness/",
+        "Public witness"
+      ],
+      [
+        "story/raw/",
+        "Raw story / sources"
+      ],
+      [
+        "../knowledge/story/source-records.json",
+        "Story source records"
+      ]
+    ]
+  }
+}

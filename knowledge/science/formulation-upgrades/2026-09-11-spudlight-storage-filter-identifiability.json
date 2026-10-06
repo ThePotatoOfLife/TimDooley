@@ -1,0 +1,99 @@
+{
+  "id": "2026-09-11-spudlight-storage-filter-identifiability",
+  "title": "Spudlight Upgrade — Storage as a Dynamical Filter and Identifiability Problem",
+  "updated": "2026-09-11",
+  "status": "archive-generated mathematical contribution extending the Spudlight/Starchforce systems formulation; standard linear-systems mathematics, not evidence for a new physical force",
+  "parent": "knowledge/science/spudlight-theory-and-equations.json",
+  "abstract": "The storage/release part of Spudlight becomes substantially stronger when treated as a dynamical filter rather than only a stock-balance equation. A first-order store integrates input, attenuates fast variation and introduces a phase lag before release. This yields an exact impulse response, transfer function and frequency response that can be estimated from time-series data. The same formulation exposes an important identifiability result: depending on which quantities are measured, storage loss Gamma, release rate eta and upstream channel gain may or may not be separately recoverable. The project can therefore distinguish a true storage timescale from mere signal attenuation, and can state exactly what extra measurement or intervention is needed when parameters are confounded.",
+  "minimal_storage_model": {
+    "state_equation": "dK/dt = J_in(t) - a K(t), with a=eta+Gamma > 0",
+    "release": "J_out(t)=eta K(t)",
+    "interpretation": "K is a domain-specific stock; eta is controlled/useful release and Gamma is other loss/decay. Units must remain domain-specific.",
+    "exact_solution": "K(t)=exp(-a t)K(0)+integral_0^t exp[-a(t-s)] J_in(s) ds",
+    "impulse_response_stock": "h_K(t)=exp(-a t) for t>=0",
+    "impulse_response_release": "h_out(t)=eta exp(-a t) for t>=0"
+  },
+  "transfer_function_upgrade": {
+    "stock_transfer": "G_K(s)=K(s)/J_in(s)=1/(s+a) for zero initial condition",
+    "release_transfer": "G_out(s)=J_out(s)/J_in(s)=eta/(s+a)",
+    "dc_gain": "G_out(0)=eta/(eta+Gamma)",
+    "time_constant": "tau=1/(eta+Gamma)",
+    "meaning": "The store is a one-pole low-pass filter. Slow input variation passes into release with gain eta/(eta+Gamma), while fast variation is attenuated."
+  },
+  "frequency_response": {
+    "magnitude": "|G_out(i omega)|=eta/sqrt[(eta+Gamma)^2+omega^2]",
+    "phase": "arg G_out(i omega)=-atan[omega/(eta+Gamma)]",
+    "high_frequency_limit": "|G_out| approximately eta/|omega| -> 0",
+    "low_frequency_limit": "|G_out| -> eta/(eta+Gamma)",
+    "project_interpretation": "Storage naturally produces delay/smoothing. A delayed or softened manifestation of a source therefore does not require a new force; it can arise from ordinary reservoir dynamics."
+  },
+  "periodic_input_result": {
+    "input": "J_in(t)=J_bar + A cos(omega t)",
+    "steady_stock_mean": "K_bar=J_bar/(eta+Gamma)",
+    "oscillation_amplitude": "A_K=A/sqrt[(eta+Gamma)^2+omega^2]",
+    "phase_lag": "delta=atan[omega/(eta+Gamma)]",
+    "release_amplitude": "A_out=eta A_K",
+    "scientific_use": "A measured amplitude attenuation plus phase lag across forcing frequencies can estimate the storage pole and discriminate storage from a purely static gain."
+  },
+  "identifiability_results": {
+    "case_A_stock_observed": {
+      "measurements": "Known calibrated J_in(t), observed K(t), but J_out not separately measured",
+      "identifiable": "a=eta+Gamma can be identified from transient response under sufficiently informative input",
+      "not_identifiable": "eta and Gamma are not separately identifiable from K dynamics alone because only their sum appears in dK/dt.",
+      "required_extra_measurement": "Observe J_out=eta K or independently measure one loss channel."
+    },
+    "case_B_release_observed": {
+      "measurements": "Known calibrated J_in(t), absolute J_out(t)",
+      "identifiable": "The pole gives a=eta+Gamma and the transfer-function numerator/DC gain can identify eta; then Gamma=a-eta, subject to model adequacy and sufficient excitation.",
+      "warning": "If only normalized output shape is retained, amplitude information is lost and eta may again be confounded."
+    },
+    "case_C_unknown_upstream_gain": {
+      "model": "Observed y(t)=g J_out(t)+noise with unknown static gain g",
+      "confounding": "The numerator becomes g eta. Without calibration, g and eta cannot generally be separated from output alone.",
+      "solution": "Calibrate g, add an independent stock measurement, or perform an intervention that changes eta while leaving g fixed."
+    },
+    "general_rule": "Do not infer source strength, storage capacity, release efficiency and channel attenuation simultaneously from one uncalibrated output trace."
+  },
+  "dimensionless_form": {
+    "scales": "Let tau=1/a, K0=J0/a and define t_tilde=t/tau, k=K/K0, j=J_in/J0.",
+    "equation": "dk/dt_tilde = j(t_tilde)-k",
+    "release_fraction": "rho=eta/(eta+Gamma) in [0,1] for nonnegative eta,Gamma",
+    "benefit": "The dimensionless pair (forcing shape, rho) separates universal first-order reservoir behavior from domain-specific units."
+  },
+  "multi_store_extension": {
+    "model": "dK/dt = A K + B J_in; J_out=C K for vector stock K",
+    "meaning": "Multiple reservoirs produce multiple poles/timescales rather than one universal Spudlight decay constant.",
+    "advancement_gate": "Add a second reservoir only if residuals from the one-pole model show reproducible multi-timescale structure and model selection supports the extra state.",
+    "anti_pattern": "Do not interpret every observed lag as a separate symbolic layer before testing a low-order linear/nonlinear reservoir model."
+  },
+  "nonlinear_upgrade": {
+    "candidate": "J_out=J_max K/(K_50+K)",
+    "prediction": "At low K, release is approximately linear with slope J_max/K_50; at high K it saturates toward J_max.",
+    "test": "Compare held-out trajectories against the linear release model and penalize the extra parameter. Saturation is retained only if it improves prediction outside the calibration regime."
+  },
+  "source_storage_channel_separation": {
+    "chain": "J_source -> H_source/channel -> J_in -> storage G_store -> J_out -> H_observer -> y",
+    "frequency_domain": "Y(s)=H_observer(s) G_store(s) H_source(s) J_source(s)",
+    "identifiability_warning": "Only the product transfer function is visible from source/output data unless intermediate states, calibrated components or interventions separate the factors.",
+    "project_value": "This is a precise version of source/mediator/observer ambiguity: the same observed attenuation can be caused by the source channel, storage, release or observer."
+  },
+  "what_this_contributes": [
+    "An exact dynamical response rather than only a stock-flow slogan.",
+    "A measurable phase-lag prediction for periodic forcing.",
+    "A dimensionless release-efficiency parameter rho.",
+    "A clear statement of which Spudlight/Starchforce parameters are and are not identifiable from particular measurements.",
+    "A principled reason to add additional storage states only when data require additional timescales."
+  ],
+  "failure_conditions": [
+    "Measured response has no stable low-pass/reservoir structure under repeated forcing.",
+    "Estimated eta or Gamma depends strongly on arbitrary upstream/downstream gain assumptions.",
+    "A nonlinear or multi-store model fails to improve held-out prediction over the one-pole baseline.",
+    "Physical energy, information gain and symbolic meaning are combined into one conservation equation."
+  ],
+  "connections": [
+    "spudlight-theory-and-equations",
+    "research-2026-09-11-spudlight-starchforce-information",
+    "potato-dynamics-2-toy-model",
+    "model-testing-protocol"
+  ]
+}

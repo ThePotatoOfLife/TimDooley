@@ -1,0 +1,77 @@
+{
+  "id": "cosmic-potato-anisotropy-uncertainty-upgrade-2026-09-11",
+  "title": "Cosmic Potato Upgrade — Anisotropy Uncertainty and Geometry Separation",
+  "updated": "2026-09-11",
+  "status": "archive-generated uncertainty extension of the Laniakea kinematic ellipsoid benchmark; derived from published central values and quoted marginal errors, not a replacement for the original covariance analysis",
+  "parent": "knowledge/science/promising-models/cosmic-potato-laniakea-kinematic-ellipsoid-benchmark-2026-09-11.json",
+  "purpose": "Upgrade the archive-derived shear-to-expansion statistic from a central-value curiosity into an uncertainty-aware quantity and separate kinematic anisotropy from geometric shape more rigorously.",
+  "anisotropy_statistic": {
+    "definition": "A_sigma = sqrt[(3/2)(sigma_a^2+sigma_b^2+sigma_c^2)] / |theta|",
+    "central_inputs": {
+      "theta_km_s_Mpc": -3.33,
+      "sigma_a_km_s_Mpc": -2.29,
+      "sigma_b_km_s_Mpc": 0.46,
+      "sigma_c_km_s_Mpc": 1.80
+    },
+    "central_result": 1.0846,
+    "interpretation": "A_sigma near unity means the magnitude of the traceless directional shear is comparable to the magnitude of the isotropic expansion/contraction term in this compact summary. It does not itself imply a particular geometric boundary shape."
+  },
+  "uncertainty_propagation": {
+    "quoted_marginal_errors_used": {
+      "theta_sigma": 0.27,
+      "sigma_a_sigma": 0.70,
+      "sigma_b_sigma": 0.55,
+      "sigma_c_sigma": 0.45
+    },
+    "method": "Archive Monte Carlo propagation using Gaussian marginals as an illustrative approximation because the full published covariance matrix was not supplied in the parent record.",
+    "independent_marginal_approximation": {
+      "median_A_sigma": 1.120,
+      "mean_A_sigma": 1.131,
+      "sd_A_sigma": 0.241,
+      "approx_68_percent_interval": [0.893, 1.369],
+      "approx_95_percent_interval": [0.689, 1.635]
+    },
+    "trace_projected_approximation": {
+      "method": "Sample the quoted marginal shear components, then project each sampled triplet onto the traceless subspace sigma_a+sigma_b+sigma_c=0 before computing A_sigma.",
+      "median_A_sigma": 1.102,
+      "mean_A_sigma": 1.110,
+      "sd_A_sigma": 0.243,
+      "approx_68_percent_interval": [0.870, 1.350],
+      "approx_95_percent_interval": [0.657, 1.611]
+    },
+    "warning": "These intervals are methodological placeholders, not publication-grade confidence intervals. Correlations among theta and shear eigenvalues can materially change them. The next proper step is covariance-aware propagation from the source analysis or posterior samples."
+  },
+  "important_separation": {
+    "kinematic_anisotropy": "A_sigma summarizes the velocity-gradient tensor.",
+    "geometric_triaxiality": "Axis ratios q=b/a and s=c/a summarize a chosen geometric boundary or covariance ellipsoid.",
+    "topology_and_roughness": "Euler characteristic, Minkowski functionals and boundary roughness describe still different properties.",
+    "rule": "Do not infer geometric potatoness from A_sigma alone. A flow field may be strongly anisotropic inside a boundary that is not especially ellipsoidal, and an ellipsoidal boundary can coexist with weak shear."
+  },
+  "proposed_joint_descriptor": {
+    "vector": "P_joint=(q,s,T,A_sigma,F,P,chi,R_surface)",
+    "triaxiality": "T=(a^2-b^2)/(a^2-c^2) for ordered a>=b>=c where appropriate; T near 0 is oblate-like and T near 1 prolate-like, but this descriptor should not be overinterpreted when the boundary is strongly irregular.",
+    "advantage": "Separating kinematic, geometric and topological coordinates prevents one attractive number from absorbing unrelated kinds of structure."
+  },
+  "model_selection_upgrade": {
+    "sphere_vs_ellipsoid": "Compare an isotropic velocity-gradient model E=lambda I against a symmetric anisotropic E with shear terms using held-out likelihood or predictive residuals.",
+    "ellipsoid_vs_potato": "Only add boundary roughness/irregular modes after the triaxial ellipsoid has been fit; penalize additional modes and evaluate them on held-out spatial regions or independent tracers.",
+    "systematics": [
+      "change the assumed center",
+      "change the frame and peculiar-velocity reconstruction within defensible choices",
+      "vary boundary/watershed threshold",
+      "repeat with bootstrap or posterior samples of the velocity field",
+      "report principal-axis orientation uncertainty as well as eigenvalue uncertainty"
+    ]
+  },
+  "advancement_gate": {
+    "promote_kinematic_claim_if": "An anisotropic velocity model gives stable out-of-sample improvement over an isotropic/spherical baseline across reasonable reconstruction choices.",
+    "promote_project_specific_shape_if": "A predeclared compact-triaxial-plus-irregular descriptor improves morphology or flow prediction beyond ordinary ellipsoid/watershed models enough to justify its added complexity.",
+    "downgrade_if": "If the inferred anisotropy or morphology changes substantially under reasonable reconstruction, centering or boundary choices, classify the result as reconstruction-sensitive rather than a robust Cosmic Potato signature."
+  },
+  "scientific_value": "The improvement is not that A_sigma is near one. The value is that the project now has a covariance-sensitive test separating velocity anisotropy, geometry and topology, making it possible for one part of the historical intuition to survive while another fails.",
+  "connections": [
+    "cosmic-potato-laniakea-kinematic-ellipsoid-benchmark-2026-09-11",
+    "great-book-cosmic-potato-shape-audit",
+    "model-testing-protocol"
+  ]
+}

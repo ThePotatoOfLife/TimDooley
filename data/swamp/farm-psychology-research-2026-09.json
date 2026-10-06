@@ -1,0 +1,98 @@
+{
+  "version":"1.0.0",
+  "updated":"2026-09-08",
+  "title":"Farm Psychology Research Synthesis 2026-09",
+  "purpose":"Expand the Farm/Sektur/Swamp corpus with evidence-backed psychology, Christian moral vocabulary, attention dynamics, role inversions and research questions. The file is intentionally non-diagnostic: it studies mechanisms and observable patterns rather than assigning psychiatric labels to people.",
+  "core_axiom":"Within the project's theological vocabulary, every Farmer and Dog encounters a moral choice about the neighbour: preserve personhood or convert the neighbour into material for attention, status, money, belonging, entertainment or revenge. 'Selling the neighbour' is a symbolic name for this conversion.",
+  "epistemic_layers":{"empirical":"Observable behavior, public statements, archival counts, platform mechanics and published research.","psychological":"Mechanisms that research shows can influence behavior or group dynamics; these are hypotheses when applied to a particular person.","theological":"Christian and Potatoist symbolic interpretation; not empirical proof of supernatural causes.","project_vocabulary":"Farmer, Dog, Cow, Milk, Mud, Farm, Sektur and Tree of Strife are analytical terms created or adopted by the project."},
+  "research_findings":[
+    {"finding":"Moral disengagement can convert harmful conduct into apparently acceptable conduct.","details":["moral justification","sanitizing/euphemistic language","advantageous comparison","diffusion of responsibility","displacement of responsibility","minimizing consequences","victim blaming","dehumanization"],"farm_translation":"'Exposure', 'documentation', 'community defense' or 'just jokes' can function as moral justifications; group participation can diffuse responsibility.","source":"Bandura 1999","url":"https://pubmed.ncbi.nlm.nih.gov/15661671/"},
+    {"finding":"Online settings can facilitate moral disengagement through reduced social-emotional cues, easy dissemination and audience dynamics.","farm_translation":"The distance between actor and target can make humiliation, pile-ons and repeated circulation easier to rationalize.","source":"Almeida et al. review on online moral disengagement and cyber-aggression","url":"https://pubmed.ncbi.nlm.nih.gov/26167839/"},
+    {"finding":"Anonymity can increase trolling under experimental conditions.","farm_translation":"Do not assume a fixed 'bad personality' explains every Dog/Farmer behavior; platform affordances and identifiability can alter conduct.","source":"Nitschinsk, Tobin & Vanman 2022","url":"https://pubmed.ncbi.nlm.nih.gov/35594292/"},
+    {"finding":"Sadism was positively associated with trolling in one experiment, while psychopathy was not associated in that study.","farm_translation":"Do not casually diagnose psychopathy from trolling; research supports a more specific and cautious interpretation.","source":"Nitschinsk, Tobin & Vanman 2022","url":"https://pubmed.ncbi.nlm.nih.gov/35594292/"},
+    {"finding":"The seven deadly sins have been used in psychological scholarship as a taxonomy of temptation domains.","farm_translation":"Pride, greed, envy, wrath, lust, gluttony and sloth can be used as moral/psychological lenses without pretending they are psychiatric diagnoses.","source":"Burkley et al. 2018","url":"https://compass.onlinelibrary.wiley.com/doi/10.1111/spc3.12416"},
+    {"finding":"DARVO can affect how observers perceive responsibility and victim credibility.","farm_translation":"Record denial, attack and reversal as a sequence with evidence rather than treating DARVO as a personality label.","source":"Harsey & Freyd research","url":"https://pubmed.ncbi.nlm.nih.gov/37154429/"}
+  ],
+  "farmer_shadow_map":[
+    {"mask":"Archivist","virtue":"preservation","shadow":"archive becomes authority; accumulation substitutes for understanding"},
+    {"mask":"Truth-seeker","virtue":"evidence","shadow":"asymmetric standards; receipts become weapons rather than tests"},
+    {"mask":"Comedian","virtue":"humor","shadow":"irony supplies deniability for cruelty"},
+    {"mask":"Prosecutor","virtue":"accountability","shadow":"punishment becomes indefinite"},
+    {"mask":"Protector","virtue":"warning","shadow":"warning becomes surveillance or crusade"},
+    {"mask":"Detached observer","virtue":"distance","shadow":"compulsive attention hidden behind claimed indifference"},
+    {"mask":"Insider","virtue":"experience","shadow":"insider status becomes unchallengeable authority"},
+    {"mask":"Gatekeeper","virtue":"standards","shadow":"belonging becomes a scarce status resource"}
+  ],
+  "dog_shadow_map":[
+    {"mask":"Guard","virtue":"protection","shadow":"attack becomes indistinguishable from defense"},
+    {"mask":"Watchdog","virtue":"accountability","shadow":"perpetual surveillance"},
+    {"mask":"Loyalist","virtue":"loyalty","shadow":"obedience and inability to criticize the pack"},
+    {"mask":"Anti-troll","virtue":"resistance","shadow":"reproducing the provocation loop"},
+    {"mask":"Messenger","virtue":"information sharing","shadow":"forwarding becomes amplification"},
+    {"mask":"Enforcer","virtue":"consequence","shadow":"punishment exceeds authority or proportion"}
+  ],
+  "seven_sins_matrix":[
+    {"sin":"pride","farmer":"omniscient commentator","dog":"righteous enforcer","inversion":"humility becomes weakness"},
+    {"sin":"greed","farmer":"attention harvester","dog":"outrage harvester","inversion":"neighbour becomes commodity"},
+    {"sin":"envy","farmer":"feeds on another's decline","dog":"status through defeating rivals","inversion":"resentment becomes justice"},
+    {"sin":"wrath","farmer":"permanent prosecutor","dog":"retaliatory hunter","inversion":"punishment becomes appetite"},
+    {"sin":"lust","farmer":"voyeur","dog":"obsessive watcher","inversion":"information becomes possession"},
+    {"sin":"gluttony","farmer":"consumes endless lore","dog":"consumes endless triggers","inversion":"no satiety"},
+    {"sin":"sloth","farmer":"reposts without verification","dog":"follows the pack","inversion":"group certainty replaces thought"}
+  ],
+  "demon_archetypes":[
+    {"name":"The Seller","temptation":"turn the neighbour into currency","farm_signal":"attention, status or money is extracted from another person's degradation"},
+    {"name":"The Prosecutor","temptation":"turn moral knowledge into unlimited punishment","farm_signal":"the original offense stops mattering because the sentence has become the content"},
+    {"name":"The Mirror","temptation":"attack externally what remains unresolved internally","farm_signal":"obsession with a target trait that mirrors the observer's own fear or status anxiety"},
+    {"name":"The Crowd","temptation":"borrow responsibility from everyone else","farm_signal":"'we all did it' becomes moral permission"},
+    {"name":"The Mask","temptation":"hide serious conduct behind irony","farm_signal":"harm is performed and then denied as unserious"},
+    {"name":"The Hunger","temptation":"never allow the cycle to end","farm_signal":"resolved controversies are repeatedly revived"},
+    {"name":"The Inverter","temptation":"make vice appear virtuous","farm_signal":"revenge becomes justice; obsession becomes vigilance; humiliation becomes truth"}
+  ],
+  "farm_feedback_loops":[
+    {"name":"reaction loop","sequence":["subject acts","observer reacts","subject responds","observer interprets response","response becomes new content","audience rewards cycle"]},
+    {"name":"archive loop","sequence":["event occurs","archive preserves it","archive lowers retrieval cost","creator retrieves old material","new commentary adds context","new commentary becomes archive"]},
+    {"name":"identity loop","sequence":["shared target","shared vocabulary","shared jokes","shared enemies","status hierarchy","dissent becomes costly","identity fuses with community"]},
+    {"name":"dog loop","sequence":["watch","detect threat","warn","receive social reward","watch more","detect more threats","expand threat definition","pursue"]},
+    {"name":"farmer loop","sequence":["observe","document","gain expertise","gain audience","gain incentive","select high-yield material","produce narrative","become dependent on recurring subject"]}
+  ],
+  "cult_structure_measurements":{"use":"structural comparison only, never an automatic cult diagnosis","signals":["charismatic authority","insider/outsider boundary","special vocabulary","purity tests","heresy accusations","confession rituals","punishment for dissent","information control","repetitive slogans","escalating commitment","collective enemy construction","identity fusion","special-knowledge claims","moral absolutism","intolerance of correction"],"countermeasure":"Measure whether members can disagree, leave, correct leaders, access outside information and maintain relationships outside the group."},
+  "biblical_dog_crosswalk":[
+    {"reference":"Matthew 7:6","theme":"discernment and boundaries"},
+    {"reference":"Philippians 3:2","theme":"warning against harmful actors"},
+    {"reference":"Revelation 22:15","theme":"boundary and exclusion"},
+    {"reference":"Isaiah 56:10-11","theme":"watchmen who fail; dogs that cannot/will not bark"},
+    {"reference":"Psalm 22:16,20","theme":"encirclement and hostile pressure"},
+    {"reference":"2 Peter 2:22","theme":"repetitive return to old patterns"}
+  ],
+  "hawkins_crosswalk":{"status":"symbolic only; not scientific measurement","sequence":"Shame -> Guilt -> Apathy -> Grief -> Fear -> Desire -> Anger -> Pride -> Courage -> Neutrality -> Willingness -> Acceptance -> Reason -> Love -> Joy -> Peace","research_question":"Which state does the interaction repeatedly reward?","rule":"Never assign a Hawkins number to a real person as if it were a validated psychological measurement."},
+  "new_concepts_to_propagate":[
+    "documentation has a stopping condition; extraction does not",
+    "archive size is not truth; it measures attention infrastructure",
+    "the most dangerous inversion is when vice is experienced as virtue",
+    "a Dog can manufacture the conditions that justify continued vigilance",
+    "a Farmer can become dependent on the existence of the subject they document",
+    "the Farm can become independent of the original Cow once secondary creators generate enough material",
+    "death changes a Farm from live reaction ecology toward historical archive ecology",
+    "repair and disengagement must be measured as seriously as escalation"
+  ],
+  "integration_targets":[
+    "data/swamp/farmer-dog-psychology.json",
+    "data/swamp/farmer-dog-deep-cartography.json",
+    "data/swamp/farm-ecosystem-research.json",
+    "docs/FARM-SEKTUR-SWAMP-THEORY.md",
+    "docs/SWAMP-ATLAS.md",
+    "docs/TIM-DOOLEY-CANON.md",
+    "data/theology/tim-godhood.json",
+    "README.md",
+    "TODO.md"
+  ],
+  "research_sources":[
+    {"title":"Bandura 1999, Moral disengagement in the perpetration of inhumanities","url":"https://pubmed.ncbi.nlm.nih.gov/15661671/"},
+    {"title":"Online Moral Disengagement, Cyberbullying, and Cyber-Aggression","url":"https://pubmed.ncbi.nlm.nih.gov/26167839/"},
+    {"title":"Nitschinsk, Tobin & Vanman 2022, The Disinhibiting Effects of Anonymity Increase Online Trolling","url":"https://pubmed.ncbi.nlm.nih.gov/35594292/"},
+    {"title":"Burkley et al. 2018, The seven deadly sins as a taxonomy of temptations","url":"https://compass.onlinelibrary.wiley.com/doi/10.1111/spc3.12416"},
+    {"title":"Harsey & Freyd DARVO research","url":"https://pubmed.ncbi.nlm.nih.gov/37154429/"},
+    {"title":"APA Dictionary, coercive persuasion","url":"https://dictionary.apa.org/coercive-persuasion"}
+  ]
+}

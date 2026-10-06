@@ -1,0 +1,59 @@
+{
+  "version":"1.3.0",
+  "updated":"2026-09-12",
+  "purpose":"First-class non-sovereign or non-canonical entities that need full World Map identity/runtime behavior without changing the canonical 195 sovereign-country model.",
+  "entities":{
+    "GRL":{
+      "id":"greenland",
+      "iso3":"GRL",
+      "name":"Greenland",
+      "entity_type":"self-governing-territory",
+      "canonical_country":false,
+      "sovereignty_context":"Kingdom of Denmark",
+      "constitutional_parent":"DNK",
+      "capital":"Nuuk",
+      "render_status":"current",
+      "label_anchor":{"coordinates":[-51.7216,64.1835],"kind":"display-anchor","place":"Nuuk","note":"Display anchor for the map label; not a population centroid."},
+      "population":{"value":56740,"reference_date":"2026-01-01","source":"Statistics Greenland","source_url":"https://stat.gl/publ/en/BE/202601/contents/Population%20estimates.htm"},
+      "area":{"value":2166086,"unit":"km²","definition":"total area","reference_period":"2025","source":"Statistics Greenland — Greenland in Figures 2025","source_url":"https://stat.gl/publ/EN/GF/2025/pdf/Greenland%20in%20Figures%202025.pdf"},
+      "axis_profile":{"status":"classified","orientations":[{"axis":"north","role":"primary","basis":"explicit-tim","confidence":"high","note":"Greenland is an explicit anchor in the recovered Canada–Greenland–North Atlantic North formulation; this is project interpretation, not a sovereignty claim."}]},
+      "relationships":[{"target":"DNK","type":"constitutional","status":"current","note":"Greenland is a self-governing part of the Kingdom of Denmark."}]
+    },
+    "FRO":{
+      "id":"faroe-islands",
+      "iso3":"FRO",
+      "name":"Faroe Islands",
+      "entity_type":"self-governing-territory",
+      "canonical_country":false,
+      "sovereignty_context":"Kingdom of Denmark",
+      "constitutional_parent":"DNK",
+      "capital":"Tórshavn",
+      "render_status":"pending-geometry",
+      "note":"Entity semantics are registered now; the current World Map geometry source does not need to fabricate a polygon to represent it."
+    },
+    "ATA":{
+      "id":"antarctica",
+      "iso3":"ATA",
+      "name":"Antarctica",
+      "entity_type":"polar-continent",
+      "canonical_country":false,
+      "sovereignty_context":"Antarctic Treaty System; represented here as a geographic non-sovereign map entity.",
+      "render_status":"current",
+      "axis_profile":{"status":"classified","orientations":[{"axis":"south","role":"primary","basis":"project-synthesis","confidence":"high","note":"Antarctica contains the geographic South Pole and is used as the polar anchor of the project South field. This is a project/map interpretation and does not imply sovereignty or political authority."}]},
+      "note":"Antarctica has no ordinary permanent resident national population; the map leaves population unknown rather than converting seasonal research presence into a country-style population value."
+    },
+    "XKX":{
+      "id":"kosovo",
+      "iso3":"XKX",
+      "name":"Kosovo",
+      "entity_type":"partially-recognized-state",
+      "canonical_country":false,
+      "sovereignty_context":"Kosovo is represented as a distinct map entity; international recognition is not universal and this map entry does not adjudicate sovereignty disputes.",
+      "capital":"Pristina",
+      "render_status":"current",
+      "geometry_alias":"CS-KM",
+      "axis_profile":{"status":"classified","orientations":[{"axis":"north","role":"secondary","basis":"project-synthesis","confidence":"medium","note":"Kosovo is included in the project North field as part of the western Balkan corridor between Albania, North Macedonia, Montenegro and Serbia. This is a project-geographic classification, not a sovereignty or alliance claim."}]},
+      "note":"The upstream World Map geometry identifies Kosovo as CS-KM; the browser normalizes that polygon to XKX so the entity can participate in the same runtime as other first-class map entities."
+    }
+  }
+}

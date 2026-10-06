@@ -1,0 +1,115 @@
+{
+  "id": "pondo",
+  "display_name": "Pondo",
+  "bureau": "FBI — Figures, Bonds & Incidents",
+  "entity_class": "person-or-handle",
+  "aliases": [],
+  "archive_status": "historical-current-unknown",
+  "room_policy": "cluster",
+  "room_path": null,
+  "tim_relation": {
+    "archetypes": [
+      "healer-companion",
+      "guardian-defender"
+    ],
+    "narrative_functions": [
+      "kindness",
+      "de-escalation",
+      "crisis support"
+    ],
+    "regions": [
+      "Garden",
+      "Threshold"
+    ],
+    "editorial_reading": "Chronicles attribute a significant compassionate intervention to Pondo; treat sensitive details carefully.",
+    "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+  },
+  "chronology": {
+    "chronicle_occurrence_count": 7,
+    "chronicle_dates": [
+      "December 15, 2024",
+      "December 21 2024"
+    ],
+    "cast_period_roles": [],
+    "recovered_social_days": [
+      {
+        "date": "2024-12-15",
+        "title": "Cooking stream and the Potato–Tomato joke war",
+        "minimum_event": "Tim and Anacondasin make potato chips in a collaborative stream. Termite jokes about flying her to Denmark; Rahu adopts a tomato-villain role; a parallel access dispute concerns Tree/Garden boundaries.",
+        "source_mode": "chronicle_retelling"
+      },
+      {
+        "date": "2024-12-21",
+        "title": "Anja arrives inside a Marty-mediated boundary dispute",
+        "minimum_event": "Marty introduces Anja while asserting social leverage; moderation disputes intensify around Literally. The Chronicle also credits Pondo with providing urgent support to a distressed community member.",
+        "source_mode": "chronicle_retelling"
+      }
+    ]
+  },
+  "top_co_presence": [
+    {
+      "name": "Tim Dooley",
+      "count": 2
+    },
+    {
+      "name": "Ledgeview",
+      "count": 2
+    },
+    {
+      "name": "Anacondasin",
+      "count": 1
+    },
+    {
+      "name": "Termite",
+      "count": 1
+    },
+    {
+      "name": "Rahu",
+      "count": 1
+    },
+    {
+      "name": "Hetero God",
+      "count": 1
+    },
+    {
+      "name": "Port Monkey",
+      "count": 1
+    },
+    {
+      "name": "Sammy",
+      "count": 1
+    }
+  ],
+  "symbolic_roles": [],
+  "highlighted_incidents": [
+    {
+      "date": "2024-12-15",
+      "title": "Contrast-maker",
+      "summary": "Chronicle has Pondo comparing Anacondasin and Sammy as very different energies during the kitchen stream."
+    },
+    {
+      "date": "2024-12-21",
+      "title": "Care/intervention",
+      "summary": "Chronicle credits Pondo with urgent compassionate intervention during a community crisis; sensitive details should stay minimized unless primary logs are needed."
+    }
+  ],
+  "source_strata": [
+    {
+      "type": "character_archive",
+      "path": "knowledge/story/character-archive-v2.json"
+    },
+    {
+      "type": "cast_book",
+      "path": "knowledge/story/cast-book.json"
+    },
+    {
+      "type": "dated_social_ledger",
+      "path": "knowledge/story/social-presence-ledger-2024-2025.json"
+    }
+  ],
+  "recovery_leads": [
+    "Recover raw/closer conversation or stream logs behind the densest Chronicle dates.",
+    "Separate direct speech from Chronicle paraphrase and later character-profile interpretation.",
+    "Add relationship edges only when a scene/source supports them."
+  ]
+}

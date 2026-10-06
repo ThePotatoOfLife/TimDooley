@@ -1,0 +1,174 @@
+/*
+  LOWER FLOOR — canonical visual system
+  ------------------------------------
+  One floor, one palette, one scene plate.
+  Root ceiling · spiral · Salvaged 2026-10-01 visual language
+  The document is foreground; the ground-to-depth scene is atmosphere.
+*/
+
+
+body.lower-layer-page{
+  --lower-root:#8d5634;
+  --lower-root-lit:#c48755;
+  --lower-soil:#24130d;
+  --lower-stone:#71645a;
+  position:relative;
+  isolation:isolate;
+  min-height:100vh;
+  overflow-x:hidden;
+  color:var(--site-ink);
+  background:transparent;
+}
+
+/* The universal data-site-floor="below" realm canvas in site-elevator.css owns
+   the pixel environment. Lower-layer CSS owns only Below typography, panels and
+   semantic stage styling, so the floor cannot fork into a second background system. */
+
+/* Shared typography/surfaces. */
+.lower-layer-page .page-header{
+  position:relative;
+  margin-bottom:24px;
+  padding:22px;
+  border:1px solid var(--site-pane-line);
+  border-radius:var(--site-radius-lg);
+  background:var(--site-pane);
+  box-shadow:var(--site-pane-shadow);
+}
+.lower-layer-page .page-header::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-1px;
+  width:min(220px,42vw);
+  height:2px;
+  background:linear-gradient(90deg,rgba(216,181,107,.85),transparent);
+}
+.lower-layer-page h1{ text-shadow:0 4px 24px rgba(0,0,0,.7) }
+.lower-layer-page .summary{color:#d8d0c3}
+.lower-layer-page a{color:var(--lower-root-lit);text-decoration-color:rgba(216,181,107,.48)}
+.lower-layer-page a:hover,
+.lower-layer-page a:focus-visible{text-decoration-color:rgba(216,181,107,.95)}
+
+/* One panel vocabulary across Observatory, Farm, Roots and Forge. */
+.lower-layer-page .card,
+.lower-layer-page .desk,
+.lower-layer-page .axis,
+.lower-layer-page .forge-card,
+.lower-layer-page .flow-card,
+.lower-layer-page .sub-card,
+.lower-layer-page .door-card,
+.lower-layer-page .memorial,
+.lower-layer-page .basin-legend article,
+.lower-layer-page .case-path,
+.lower-layer-page .archetype-column,
+.lower-layer-page .frame-test>div{
+  border-color:var(--site-line);
+  background:color-mix(in srgb,var(--site-panel) 72%,transparent);
+  box-shadow:inset 0 1px rgba(255,255,255,.018);
+}
+.lower-layer-page .boundary,
+.lower-layer-page .note,
+.lower-layer-page .warning,
+.lower-layer-page .case-line,
+.lower-layer-page .layer-handoff{border-color:rgba(216,181,107,.52)}
+
+/* Below-specific Room-home skin.
+   Canonical Room geometry lives in room-home.css. Keep this file limited to
+   floor-specific palette and local surface treatment. */
+.lower-layer-page .room-home>section:not(.dwelling-reader):not(.lower-spine):not(.layer-spine):not(.root-cross-section):not(.dwelling-reflection){
+  background:var(--site-pane);
+}
+.lower-layer-page .door-card,
+.lower-layer-page .sub-card{
+  background:color-mix(in srgb,var(--site-panel) 72%,transparent);
+}
+.lower-layer-page .dwelling-reader>p{color:#d0c9bd}
+.lower-layer-page .room-actions a:hover,
+.lower-layer-page .room-actions a:focus-visible{
+  color:var(--site-gold);
+  border-color:rgba(216,181,107,.65);
+}
+
+/* Canonical route spine: Observe → Reproduce → Root → Forge → Return. */
+.lower-layer-page .layer-spine,
+.lower-layer-page .lower-spine{
+  margin:28px 0 36px;
+  padding:18px;
+  border:1px solid var(--site-line);
+  background:color-mix(in srgb,var(--site-panel) 70%,transparent);
+  box-shadow:0 12px 32px rgba(0,0,0,.12),inset 0 1px rgba(255,255,255,.018);
+}
+.lower-layer-page .layer-steps,
+.lower-layer-page .lower-spine-grid{
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:8px;
+  margin-top:14px;
+}
+.lower-layer-page .layer-step,
+.lower-layer-page .lower-spine-grid>div{
+  min-width:0;
+  padding:10px 8px;
+  border-top:2px solid rgba(216,181,107,.24);
+  background:rgba(5,5,5,.28);
+  font-size:.78rem;
+  line-height:1.4;
+}
+.lower-layer-page .layer-step strong,
+.lower-layer-page .lower-spine-grid strong{
+  display:block;
+  margin-bottom:4px;
+  color:var(--site-gold);
+  font-size:.82rem;
+}
+.lower-layer-page .layer-step span,
+.lower-layer-page .lower-spine-grid span{display:block;color:var(--site-muted)}
+.lower-layer-page .layer-step.is-here,
+.lower-layer-page .lower-spine-grid .is-here{
+  border-color:rgba(216,181,107,.72);
+  background:color-mix(in srgb,var(--site-gold) 8%,var(--site-panel));
+}
+
+/* Large lower-floor feature panels remain part of the same substrate. */
+.lower-layer-page .lower-orientation,
+.lower-layer-page .archetype-guide,
+.lower-layer-page .forge-return,
+.lower-layer-page .root-cross-section{
+  border-color:var(--site-line);
+  background:color-mix(in srgb,var(--site-panel) 68%,transparent);
+  box-shadow:inset 0 1px rgba(255,255,255,.018),0 12px 32px rgba(0,0,0,.10);
+}
+
+/* Roots / Evidence may draw a root locally, but it uses the same floor colour. */
+.lower-layer-page--roots .root-cross-section::before{
+  background:linear-gradient(180deg,rgba(190,151,96,.58),rgba(113,77,43,.64));
+  box-shadow:
+    -55px 100px 0 -1px rgba(137,98,59,.28),
+    65px 185px 0 -1px rgba(137,98,59,.24),
+    -112px 270px 0 -1px rgba(119,83,48,.16),
+    118px 330px 0 -1px rgba(119,83,48,.14);
+}
+
+@media(max-width:700px){
+  .lower-layer-page .room-home>section:not(.dwelling-reader):not(.lower-spine):not(.layer-spine):not(.root-cross-section):not(.dwelling-reflection){
+    margin:18px 0;
+    padding:16px;
+  }
+}
+
+@media(max-width:760px){
+  .lower-layer-page .layer-steps,
+  .lower-layer-page .lower-spine-grid{grid-template-columns:1fr 1fr}
+  .lower-layer-page .layer-step:last-child,
+  .lower-layer-page .lower-spine-grid>div:last-child{grid-column:1/-1}
+}
+
+@media(max-width:520px){
+  .lower-layer-page .layer-steps,
+  .lower-layer-page .lower-spine-grid{grid-template-columns:1fr}
+  .lower-layer-page .layer-step:last-child,
+  .lower-layer-page .lower-spine-grid>div:last-child{grid-column:auto}
+}
+
+
+

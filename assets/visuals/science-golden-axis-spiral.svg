@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+<title id="title">Golden-ratio logarithmic Potato Axis spiral</title>
+<desc id="desc">An equation-driven plot of r equals a times exponential b theta, with b equal to two log phi over pi. The spiral path is sampled directly from the recovered equation, so each quarter turn increases radius by the golden ratio.</desc>
+<style>
+text{font-family:system-ui,-apple-system,Segoe UI,sans-serif;fill:#1d1b18}.muted{fill:#6f685d}.accent{fill:#6b512f}.grid{stroke:#cfc6b7;stroke-width:1}.axis{stroke:#8a8174;stroke-width:1.5}.spiral{stroke:#6b512f;stroke-width:5;fill:none}.ray{stroke:#7c8b96;stroke-width:2;stroke-dasharray:7 7}.point{fill:#4d667d}.small{font-size:19px}.body{font-size:25px}.head{font-size:38px;font-weight:650}</style>
+<rect width="1200" height="800" fill="#eee9dc"/>
+<text x="600" y="58" text-anchor="middle" class="head">Potato Axis spiral · recovered 21 April 2025</text>
+<text x="600" y="96" text-anchor="middle" class="accent body">r(θ)=a eᵇᶿ    with    b = ln(φ)/(π/2) ≈ 0.30635</text>
+
+<g transform="translate(405 440)">
+<circle r="70" fill="none" class="grid"/><circle r="140" fill="none" class="grid"/><circle r="210" fill="none" class="grid"/><circle r="280" fill="none" class="grid"/>
+<line x1="-315" y1="0" x2="315" y2="0" class="axis"/><line x1="0" y1="-315" x2="0" y2="315" class="axis"/>
+<path d="M 32.00 0.00 L 32.42 -1.48 L 32.77 -3.00 L 33.06 -4.56 L 33.28 -6.15 L 33.43 -7.77 L 33.50 -9.42 L 33.50 -11.09 L 33.43 -12.78 L 33.27 -14.50 L 33.03 -16.23 L 32.71 -17.97 L 32.31 -19.72 L 31.82 -21.47 L 31.24 -23.22 L 30.57 -24.97 L 29.81 -26.71 L 28.96 -28.44 L 28.03 -30.15 L 26.99 -31.84 L 25.87 -33.50 L 24.66 -35.14 L 23.35 -36.74 L 21.96 -38.30 L 20.47 -39.81 L 18.90 -41.28 L 17.23 -42.69 L 15.48 -44.04 L 13.64 -45.33 L 11.72 -46.56 L 9.72 -47.70 L 7.64 -48.78 L 5.48 -49.77 L 3.25 -50.67 L 0.95 -51.48 L -1.42 -52.19 L -3.86 -52.81 L -6.35 -53.32 L -8.90 -53.72 L -11.51 -54.00 L -14.16 -54.18 L -16.85 -54.23 L -19.58 -54.15 L -22.34 -53.95 L -25.13 -53.62 L -27.94 -53.16 L -30.76 -52.56 L -33.59 -51.82 L -36.43 -50.94 L -39.26 -49.91 L -42.09 -48.75 L -44.89 -47.43 L -47.67 -45.97 L -50.42 -44.37 L -53.13 -42.61 L -55.79 -40.71 L -58.41 -38.66 L -60.96 -36.46 L -63.44 -34.11 L -65.84 -31.62 L -68.16 -28.98 L -70.39 -26.20 L -72.52 -23.29 L -74.55 -20.23 L -76.45 -17.05 L -78.24 -13.73 L -79.89 -10.29 L -81.41 -6.72 L -82.78 -3.04 L -84.00 0.75 L -85.06 4.65 L -85.96 8.65 L -86.68 12.74 L -87.22 16.91 L -87.57 21.17 L -87.73 25.50 L -87.69 29.89 L -87.45 34.34 L -87.00 38.84 L -86.34 43.37 L -85.45 47.93 L -84.35 52.51 L -83.02 57.10 L -81.46 61.69 L -79.66 66.26 L -77.63 70.81 L -75.37 75.33 L -72.86 79.80 L -70.12 84.21 L -67.13 88.55 L -63.91 92.81 L -60.45 96.98 L -56.75 101.04 L -52.81 104.99 L -48.64 108.80 L -44.23 112.47 L -39.60 115.98 L -34.75 119.32 L -29.68 122.49 L -24.40 125.46 L -18.91 128.22 L -13.22 130.77 L -7.34 133.08 L -1.28 135.16 L 4.96 136.98 L 11.37 138.53 L 17.93 139.81 L 24.63 140.80 L 31.47 141.50 L 38.43 141.88 L 45.50 141.95 L 52.66 141.70 L 59.91 141.11 L 67.22 140.17 L 74.58 138.89 L 81.98 137.24 L 89.40 135.24 L 96.83 132.86 L 104.24 130.11 L 111.62 126.98 L 118.95 123.47 L 126.22 119.57 L 133.40 115.29 L 140.47 110.61 L 147.42 105.55 L 154.23 100.11 L 160.87 94.27 L 167.33 88.05 L 173.58 81.46 L 179.62 74.48 L 185.40 67.14 L 190.93 59.43 L 196.17 51.37 L 201.10 42.96 L 205.71 34.21 L 209.97 25.13 L 213.87 15.74 L 217.39 6.05 L 220.50 -3.94 L 223.19 -14.19 L 225.44 -24.71 L 227.23 -35.47 L 228.55 -46.45 L 229.38 -57.63 L 229.70 -69.00 L 229.50 -80.53 L 228.76 -92.20 L 227.48 -103.99 L 225.63 -115.88 L 223.20 -127.83 L 220.20 -139.83 L 216.59 -151.84 L 212.39 -163.84 L 207.57 -175.81 L 202.14 -187.71 L 196.08 -199.51 L 189.40 -211.18 L 182.09 -222.70 L 174.16 -234.03 L 165.60 -245.14 L 156.41 -256.00" class="spiral"/>
+<line x1="0" y1="0" x2="32" y2="0" class="ray"/>
+<line x1="0" y1="0" x2="0" y2="-51.78" class="ray"/>
+<line x1="0" y1="0" x2="-83.78" y2="0" class="ray"/>
+<line x1="0" y1="0" x2="0" y2="135.55" class="ray"/>
+<circle cx="32" cy="0" r="7" class="point"/><circle cx="0" cy="-51.78" r="7" class="point"/><circle cx="-83.78" cy="0" r="7" class="point"/><circle cx="0" cy="135.55" r="7" class="point"/>
+<text x="42" y="-12" class="small">a</text><text x="10" y="-58" class="small">φa</text><text x="-125" y="-12" class="small">φ²a</text><text x="10" y="158" class="small">φ³a</text>
+</g>
+
+<rect x="770" y="210" width="350" height="340" rx="12" fill="#f7f2e8" stroke="#81786a" stroke-width="2"/>
+<text x="945" y="255" text-anchor="middle" class="accent body">Exact properties</text>
+<text x="810" y="310" class="small">Quarter turn:</text><text x="810" y="342" class="body">r(θ+π/2) = φ r(θ)</text>
+<text x="810" y="397" class="small">Half turn:</text><text x="810" y="429" class="body">r(θ+π) = φ² r(θ)</text>
+<text x="810" y="484" class="small">Differential form:</text><text x="810" y="516" class="body">dr/dθ = b r</text>
+
+<text x="600" y="700" text-anchor="middle" class="muted small">The geometry is exact. What r, θ and a physically represent is a separate empirical question.</text>
+<text x="600" y="736" text-anchor="middle" class="accent small">A spiral is more than recurrence: the system returns in angle while changing scale.</text>
+</svg>

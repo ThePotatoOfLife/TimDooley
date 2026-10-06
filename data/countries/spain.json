@@ -1,0 +1,316 @@
+{
+  "record_version": "1.1.0",
+  "record_type": "country",
+  "status": "sourced-enriched",
+  "identity": {
+    "id": "spain",
+    "name": "Spain",
+    "iso2": "ES",
+    "iso3": "ESP",
+    "official_name": "Kingdom of Spain",
+    "capital": "Madrid",
+    "continent": "Europe",
+    "region": "Europe",
+    "subregion": "Southern Europe",
+    "currency": "Euro (EUR)",
+    "national_day": "October 12"
+  },
+  "blueprint": "data/countries-blueprint.json",
+  "blueprint_version": "1.0.0",
+  "coverage": {
+    "node_instantiated": true,
+    "blueprint_inherited": true,
+    "observations": 13,
+    "relationships": 0,
+    "sources": 1,
+    "research_status": "ready-for-source-enrichment",
+    "canonicalized": true
+  },
+  "observations": {
+    "population": {
+      "value": 49355143,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SP.POP.TOTL",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "gdp": {
+      "value": 1906453309985.88,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "NY.GDP.MKTP.CD",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "gdp_per_capita": {
+      "value": 38627.2472148623,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "NY.GDP.PCAP.CD",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "gdp_per_capita_ppp": {
+      "value": 59867.6944716701,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "NY.GDP.PCAP.PP.CD",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "real_growth": {
+      "value": 2.82495400578509,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "NY.GDP.MKTP.KD.ZG",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "inflation": {
+      "value": 2.699932857627,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "FP.CPI.TOTL.ZG",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "unemployment": {
+      "value": 10.376,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SL.UEM.TOTL.ZS",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "labour_force_participation": {
+      "value": 57.41,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SL.TLF.CACT.ZS",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "life_expectancy": {
+      "value": 83.8878048780488,
+      "year": 2024,
+      "source": "world-bank",
+      "indicator": "SP.DYN.LE00.IN",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "fertility": {
+      "value": 1.1,
+      "year": 2024,
+      "source": "world-bank",
+      "indicator": "SP.DYN.TFRT.IN",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "urbanization": {
+      "value": 80.5149251039138,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SP.URB.TOTL.IN.ZS",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "poverty": {
+      "value": 20.2,
+      "year": 2022,
+      "source": "world-bank",
+      "indicator": "SI.POV.NAHC",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "internet_penetration": {
+      "value": 95.7574516,
+      "year": 2024,
+      "source": "world-bank",
+      "indicator": "IT.NET.USER.ZS",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    }
+  },
+  "relationships": [
+    {
+      "type": "member-of",
+      "target": "european-union",
+      "status": "active"
+    },
+    {
+      "type": "member-of",
+      "target": "nato",
+      "status": "active"
+    },
+    {
+      "type": "borders",
+      "target": "france",
+      "status": "active"
+    },
+    {
+      "type": "borders",
+      "target": "portugal",
+      "status": "active"
+    },
+    {
+      "type": "trade",
+      "target": "european-union",
+      "status": "active"
+    }
+  ],
+  "history": {
+    "turning_points": [
+      {
+        "date": "1978-12-06",
+        "event": "Constitution approved by referendum"
+      },
+      {
+        "date": "1986-01-01",
+        "event": "Spain joins European Communities"
+      },
+      {
+        "date": "2002-01-01",
+        "event": "Euro cash introduced"
+      }
+    ]
+  },
+  "research_queue": [
+    "central and regional fiscal relations",
+    "public debt instruments",
+    "autonomous communities",
+    "energy interconnectors",
+    "ports and logistics",
+    "automotive and industrial chains",
+    "tourism economy",
+    "major companies and ownership",
+    "health and education",
+    "migration",
+    "media ownership"
+  ],
+  "provenance": {
+    "instantiated_at": "2026-09-07T12:37:31.426393+00:00",
+    "instantiation_method": "canonical country index + country blueprint",
+    "observation_policy": "No value is invented merely to fill a field; absent evidence remains missing/stale.",
+    "last_refresh": "2026-10-06T04:28:07.342073+00:00",
+    "source_priority": "international-official",
+    "historical_observations_preserved": true,
+    "sources": [
+      "https://www.lamoncloa.gob.es/gobierno/composiciondelgobierno/Paginas/index.aspx",
+      "https://data.worldbank.org/?locations=ES-Z7"
+    ],
+    "retrieved": "2026-09-07",
+    "enrichment_merged": true,
+    "enrichment_layer": "retired overlay merged into canonical country record"
+  },
+  "data_freshness": {
+    "last_refresh_attempt": "2026-09-07T21:59:50.659074+00:00",
+    "source": "world-bank"
+  },
+  "country_id": "spain",
+  "iso2": "ES",
+  "iso3": "ESP",
+  "updated": "2026-09-07",
+  "political_system": {
+    "system_type": "parliamentary constitutional monarchy",
+    "head_of_state": "King Felipe VI",
+    "head_of_government": "President of the Government",
+    "current_leader": {
+      "name": "Pedro Sánchez",
+      "office": "President of the Government",
+      "source": "La Moncloa",
+      "source_url": "https://www.lamoncloa.gob.es/gobierno/composiciondelgobierno/Paginas/index.aspx"
+    },
+    "branches": [
+      "Executive",
+      "Legislative",
+      "Judicial"
+    ],
+    "legislature": [
+      "Congress of Deputies",
+      "Senate"
+    ],
+    "territorial_structure": "17 autonomous communities and 2 autonomous cities"
+  },
+  "constitutional_system": {
+    "founding_documents": [
+      "Spanish Constitution of 1978"
+    ],
+    "constitution_adopted": "1978-12-06"
+  },
+  "population": {
+    "value": 49355143,
+    "year": 2025,
+    "growth_rate": 1.0,
+    "life_expectancy": 84,
+    "net_migration": 96630,
+    "source": "World Bank",
+    "source_url": "https://data.worldbank.org/?locations=ES-Z7"
+  },
+  "economy": {
+    "gdp_current_usd_trillion": 1.91,
+    "gdp_year": 2025,
+    "gdp_per_capita_usd": 38627.2,
+    "gdp_growth_percent": 2.8,
+    "unemployment_percent": 10.4,
+    "inflation_percent": 2.7,
+    "source": "World Bank",
+    "source_url": "https://data.worldbank.org/?locations=ES-Z7"
+  },
+  "digital": {},
+  "energy_and_resources": {
+    "strategic_assets": [
+      "solar",
+      "wind",
+      "hydropower",
+      "Iberian electricity system",
+      "LNG terminals",
+      "ports",
+      "automotive manufacturing",
+      "tourism infrastructure"
+    ]
+  },
+  "trade_and_value_chains": {
+    "major_relationships": [
+      "European Union",
+      "France",
+      "Germany",
+      "Portugal",
+      "United States",
+      "China",
+      "Morocco"
+    ],
+    "frameworks": [
+      "European Union Single Market",
+      "WTO"
+    ]
+  },
+  "security_and_external_relations": {
+    "major_organizations": [
+      "United Nations",
+      "NATO",
+      "European Union",
+      "G20 guest diplomacy",
+      "OECD",
+      "WTO"
+    ],
+    "alliances": [
+      "NATO",
+      "European Union"
+    ]
+  },
+  "geography": {
+    "land_area_km2": 505990,
+    "borders": [
+      "Portugal",
+      "France",
+      "Andorra"
+    ],
+    "maritime_position": [
+      "Atlantic Ocean",
+      "Mediterranean Sea"
+    ],
+    "territorial_structure": "17 autonomous communities and 2 autonomous cities"
+  },
+  "record_role": "canonical-country-record"
+}

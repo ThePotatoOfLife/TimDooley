@@ -1,0 +1,55 @@
+{
+  "id": "infrastructure-capability-case-atlas",
+  "title": "Infrastructure Capability Case Atlas — Conversion, Bottlenecks and Recovery",
+  "version": "1.0.0",
+  "updated": "2026-09-27",
+  "status": "primary-source case synthesis",
+  "purpose": "Ground Infrastructure & Capability in observed failure, restoration and demand cases using first-party operators and investigators.",
+  "epistemic_rule": "Cases illustrate mechanisms. They do not imply that one failure mode generalizes to every infrastructure system or that resilience can be reduced to one scalar score.",
+  "cases": [
+    {
+      "id": "iberian-blackout-2025",
+      "date": "2025-04-28",
+      "system": "continental Spain and Portugal electricity system",
+      "primary_source": "ENTSO-E",
+      "finding": "ENTSO-E's March 2026 final report concluded that the blackout resulted from interacting factors including oscillations, gaps in voltage and reactive-power control, differences in voltage-regulation practices, rapid output reductions, generator disconnections and uneven stabilisation capabilities.",
+      "capability_lesson": "Installed generation is not identical to secure delivered electricity. Voltage control, dynamic stability, protection settings, system defence and restoration resources are conversion capabilities.",
+      "source": "https://www.entsoe.eu/publications/blackout/28-april-2025-iberian-blackout/"
+    },
+    {
+      "id": "key-bridge-2024",
+      "date": "2024-03-26",
+      "system": "Baltimore transport and port network",
+      "primary_source": "U.S. National Transportation Safety Board",
+      "finding": "NTSB determined that the Dali's contact with the Francis Scott Key Bridge followed a loss of electrical power caused by a loose signal-wire connection stemming from improperly installed wire-label banding; the resulting loss of propulsion and steering occurred close to the bridge. NTSB also identified the bridge's vessel-impact vulnerability and evacuation communications as contributing factors in the collapse/loss of life.",
+      "network_effect": "NTSB reports that more than 34,000 vehicles per day, around 10% trucks, had used the bridge; hazardous-material vehicles that could not use tunnels faced extended detours.",
+      "capability_lesson": "A tiny component fault can remove a major network edge when protection, recovery time and structural vulnerability align.",
+      "source": "https://www.ntsb.gov/investigations/pages/DCA24MM031.aspx"
+    },
+    {
+      "id": "data-centre-energy-2025",
+      "date": "2025",
+      "system": "global data-centre and AI infrastructure",
+      "primary_source": "International Energy Agency",
+      "finding": "IEA reports that global data-centre electricity consumption grew 17% in 2025, with AI-focused data-centre consumption growing faster. Its 2026 outlook places total data-centre electricity demand at roughly 485 TWh in 2025 and around 950 TWh in 2030 in the central projection.",
+      "bottlenecks": "IEA identifies grid connections, transformers, gas turbines, advanced chips, IT components, planning and regulatory approvals among near-term constraints on expansion.",
+      "capability_lesson": "Compute capacity is a coupled electricity-grid-equipment-chip-permitting system. GPU counts alone do not describe deployable AI capability.",
+      "sources": [
+        "https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary",
+        "https://www.iea.org/reports/energy-and-ai/energy-demand-from-ai"
+      ]
+    }
+  ],
+  "derived_model": {
+    "expression": "Usable capability = asset × operating condition × conversion edge × control/coordination × recovery",
+    "warning": "This is a project reasoning heuristic, not a universal physical equation.",
+    "questions": [
+      "What is the nominal asset?",
+      "What converts it into delivered service?",
+      "Which edge or control function can bottleneck it?",
+      "How quickly can the system detect and isolate failure?",
+      "What substitution, interconnection or detour exists?",
+      "What is restoration time and what downstream services fail before restoration?"
+    ]
+  }
+}

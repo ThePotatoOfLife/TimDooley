@@ -1,0 +1,100 @@
+{
+  "id": "matthew-mtclassic-social-ledger-2026",
+  "title": "Matthew / @mtclassic3 — Social & Story Ledger 2026",
+  "version": "1.0.0",
+  "updated": "2026-09-20",
+  "subject": {
+    "id": "matthew-mtclassic",
+    "display_name": "Matthew / MTClassic",
+    "handle": "@mtclassic3",
+    "class": "person / public chat participant"
+  },
+  "purpose": "Preserve Matthew's recurring public-chat presence as a changing human/social record while keeping creative Matthew-the-Potato material on a separate layer.",
+  "source_rule": "Real-person chat, conversation recovery and creative projection are separate strata. A fictional Potato ability is never silently promoted into biography.",
+  "strata": [
+    {
+      "date_or_period": "2026-05 to 2026-06",
+      "source_mode": "conversation-recovered public-chat excerpts",
+      "summary": "Recurring livestream participant appears in social/moderation and commentary exchanges around Tim and other chat participants.",
+      "confidence": "conversation recovered"
+    },
+    {
+      "date_or_period": "2026-08-13",
+      "source_mode": "conversation-recovered chat",
+      "summary": "Matthew advises banning recurrently harmful trolls while saying he will follow Tim's lead; useful as a moderation/guardian scene, not a permanent role.",
+      "confidence": "conversation recovered"
+    },
+    {
+      "date_or_period": "2026-08-17",
+      "source_mode": "creative conversation",
+      "summary": "A fictional Matthew/MTClassic story version is rendered as someone who can speak 'Potato'; this is a creative projection linked by name, not documentary biography.",
+      "confidence": "creative/recovered"
+    },
+    {
+      "date_or_period": "2026-08-20",
+      "source_mode": "conversation-recovered public chat",
+      "summary": "Matthew is explicitly identified with @mtclassic3 and talks about Elden Ring, collecting/upgrading, plants, DLC and leveling.",
+      "confidence": "conversation recovered"
+    },
+    {
+      "date_or_period": "2026-09-06",
+      "source_mode": "conversation-recovered public chat",
+      "summary": "Matthew uses God/Trinity/Potato language in conversation; keep his exact claims participant-attributed rather than converting them into project doctrine.",
+      "confidence": "conversation recovered"
+    },
+    {
+      "date_or_period": "2026-09-15",
+      "source_mode": "conversation-recovered discussion",
+      "summary": "Matthew/@mtclassic3 is treated as a real interlocutor for explaining the project's thesis.",
+      "confidence": "conversation recovered"
+    },
+    {
+      "date_or_period": "2026-09-20",
+      "source_mode": "user-supplied public YouTube chat capture",
+      "summary": "Top-fan UI shows @mtclassic3 as #1 in the supplied capture. He reports getting a new controller, jokes that one day without games nearly made him 'a better person' and start 'conquering the world' but that he would rather conquer Elden Ring, says he just woke up and will check the site soon, then reports finally defeating Ancient Dragon Senessax after more than twenty attempts and describes himself jokingly as a dragon slayer.",
+      "confidence": "direct supplied capture"
+    }
+  ],
+  "ordinary_texture": [
+    "gaming is a repeated conversational subject rather than a one-off motif",
+    "humor is self-deprecating and game-centered in the September 20 capture",
+    "the new controller is a mundane return-to-routine object",
+    "Elden Ring progress supplies concrete continuity across August and September",
+    "Matthew's chat presence includes both everyday play and higher-level theology/project discussion"
+  ],
+  "recurring_scene_functions": [
+    {
+      "role": "regular companion / chat presence",
+      "status": "documentary pattern"
+    },
+    {
+      "role": "gamer / progress narrator",
+      "status": "documentary pattern"
+    },
+    {
+      "role": "moderation adviser",
+      "status": "scene-specific"
+    },
+    {
+      "role": "theological interlocutor",
+      "status": "scene-specific"
+    },
+    {
+      "role": "Potato-speaking / winged Matthew",
+      "status": "creative projection only"
+    }
+  ],
+  "creative_projection": {
+    "created_being_id": "matthew-potato",
+    "room": "rooms/potatoverse-canon/beings/matthew/",
+    "relation": "same given name and prior creative Matthew/MTClassic use make a deliberate project relation plausible, but the created being remains a separate character unless the user explicitly fuses them.",
+    "forbidden_inference": "Do not treat wings, many eyes, Heaven placement or supernatural mobility as claims about the real person."
+  },
+  "routes": [
+    "rooms/potatoverse-canon/beings/matthew-mtclassic/",
+    "rooms/potatoverse-canon/beings/matthew/",
+    "knowledge/story/cast-book.json",
+    "knowledge/story/character-archive-v2.json",
+    "knowledge/story/arc-season-map.json"
+  ]
+}

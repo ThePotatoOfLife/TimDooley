@@ -1,0 +1,469 @@
+/* Universal site system.
+   Owns the site foundation: palette, typography, spacing, widths and base elements.
+   Room/floor CSS may add scoped environment or components, but must not redefine
+   :root or body. Custom rooms should scope variables to their room root. */
+:root {
+  --site-bg: #070707;
+  --site-ink: #f4f0e5;
+  --site-copy: #cfd3cc;
+  --site-copy-strong: #e1dfd5;
+  --site-muted: #aaa49a;
+  --site-faint: #777169;
+  --site-line: #302d29;
+  --site-gold: #d8b56b;
+  --site-panel: #0d0d0d;
+  --site-panel-strong: #121212;
+  --site-pane: rgba(8,10,10,.80);
+  --site-pane-soft: rgba(8,10,10,.68);
+  --site-pane-mist: rgba(239,238,229,.10);
+  --site-pane-mist-strong: rgba(239,238,229,.15);
+  --site-pane-paper: rgba(242,238,224,.92);
+  --site-pane-paper-ink: #181714;
+  --site-pane-line: rgba(255,255,255,.14);
+  --site-pane-shadow: 0 12px 30px rgba(0,0,0,.22);
+  --site-font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --site-font-serif: Georgia, "Times New Roman", serif;
+  --site-font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  --site-text-micro: 9px;
+  --site-text-xs: 10px;
+  --site-text-caption: 11px;
+  --site-text-sm: 12px;
+  --site-text-meta: 13px;
+  --site-text-ui: 14px;
+  --site-text-body: 16px;
+  --site-text-lead: clamp(20px, 2.3vw, 23px);
+  --site-text-title: clamp(52px, 8vw, 96px);
+  --site-text-section: clamp(28px, 4vw, 44px);
+  --site-text-subsection: clamp(20px, 2.4vw, 27px);
+  --site-leading-body: 1.64;
+  --site-leading-reading: 1.72;
+  --site-radius-sm: 10px;
+  --site-radius: 12px;
+  --site-radius-lg: 16px;
+  --site-radius-xl: 18px;
+  --site-radius-pill: 999px;
+  --site-space-1: 6px;
+  --site-space-2: 10px;
+  --site-space-3: 16px;
+  --site-space-4: 24px;
+  --site-space-5: 38px;
+  --site-content-reading: 980px;
+  --site-content-standard: 1060px;
+  --site-content-wide: 1160px;
+  --site-content-shell: 1320px;
+  --site-gutter: clamp(16px, 3vw, 24px);
+  --site-focus: #e0c17c;
+  --site-z-elevator: 9997;
+  --site-z-journey: 10040;
+  --site-z-counter: 10049;
+  --site-z-access: 10050;
+  --site-floating-gap: 8px;
+  --site-access-clearance: 58px;
+}
+
+* { box-sizing: border-box; }
+
+html { background: var(--site-bg); }
+
+body {
+  margin: 0;
+  background: var(--site-bg);
+  color: var(--site-ink);
+  font-family: var(--site-font-sans);
+  font-size: var(--site-text-body);
+  line-height: var(--site-leading-body);
+}
+
+a {
+  color: var(--site-ink);
+  text-underline-offset: 3px;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--site-focus);
+  outline-offset: 3px;
+}
+
+.page {
+  width: min(100%, calc(var(--site-content-standard) + (2 * var(--site-gutter))));
+  margin-inline: auto;
+  padding: 30px var(--site-gutter) calc(84px + var(--site-access-clearance));
+  position: relative;
+  isolation: isolate;
+}
+
+.page [id] {
+  scroll-margin-top: calc(var(--site-elevator-clearance, 56px) + 18px);
+}
+
+.page--reading {
+  width: min(100%, calc(var(--site-content-reading) + (2 * var(--site-gutter))));
+}
+
+.page--wide {
+  width: min(100%, calc(var(--site-content-wide) + (2 * var(--site-gutter))));
+}
+
+.page-nav {
+  box-sizing:border-box;
+  display:flex;
+  flex-wrap:nowrap;
+  align-items:center;
+  align-content:center;
+  gap:4px;
+  width:100%;
+  max-width:100%;
+  height:44px;
+  min-height:44px;
+  margin:0 0 24px;
+  padding:6px 8px;
+  overflow-x:auto;
+  overflow-y:hidden;
+  overscroll-behavior-x:contain;
+  scrollbar-width:none;
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:var(--site-radius-lg);
+  background:rgba(13,16,15,.72);
+  box-shadow:0 9px 24px rgba(0,0,0,.18),inset 0 1px rgba(255,255,255,.025);
+  font-size:var(--site-text-xs);
+  line-height:1.2;
+}
+.page-nav::-webkit-scrollbar{display:none}
+
+.page-nav > a {
+  box-sizing:border-box;
+  display:inline-flex;
+  align-items:center;
+  height:30px;
+  min-height:30px;
+  padding:6px 9px;
+  border-radius:8px;
+  color:#d9ddd6;
+  text-decoration:none;
+  white-space:nowrap;
+  transition:color 140ms ease,background-color 140ms ease,box-shadow 140ms ease;
+}
+
+.page-nav > a:hover,
+.page-nav > a:focus-visible {
+  color:#fff8e8;
+  background:rgba(255,255,255,.055);
+  box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--site-gold) 18%,transparent);
+}
+
+.page-nav > a[aria-current="page"] {
+  color:var(--site-gold);
+}
+
+.page-header {
+  width:100%;
+  max-width:900px;
+  margin:0 0 32px;
+}
+html[data-site-floor] .page-header{
+  max-width:none;
+  padding:clamp(18px,2.5vw,28px);
+  border:1px solid var(--site-pane-line);
+  border-radius:var(--site-radius-lg);
+  background:var(--site-pane);
+  box-shadow:var(--site-pane-shadow);
+}
+html[data-site-floor] .page-header .summary{max-width:72ch}
+html[data-site-floor] .page-header > :last-child{margin-bottom:0}
+
+/* Realm readability contract.
+   Pixel art is atmosphere; reader-facing text receives a surface by default.
+   Page/module CSS may override these low-specificity defaults when a specialized
+   geometry owns the surface. No backdrop blur: the artwork stays crisp and the
+   compositing cost stays predictable. */
+html[data-site-floor] .page-nav{
+  background:rgba(10,13,12,.74);
+  border-color:rgba(255,255,255,.11);
+}
+html[data-site-floor="heaven"] .page-nav{
+  background:linear-gradient(180deg,rgba(19,29,39,.78),rgba(8,12,17,.76));
+  border-color:rgba(222,190,112,.20);
+}
+html[data-site-floor="plane"] .page-nav{
+  background:linear-gradient(180deg,rgba(20,30,28,.78),rgba(8,13,12,.76));
+  border-color:rgba(183,176,109,.18);
+}
+html[data-site-floor="below"] .page-nav{
+  background:linear-gradient(180deg,rgba(34,19,14,.82),rgba(12,8,7,.80));
+  border-color:rgba(207,116,70,.22);
+}
+.page-nav a{line-height:1.35}
+.page-nav-directory::after,
+.page-nav-dwelling::after{
+  content:none;
+}
+.page-nav-current{white-space:nowrap}
+
+.page-nav-home{
+  color:var(--site-ink);
+  font-weight:700;
+}
+.page-nav-directory{color:var(--site-muted)}
+.page-nav-dwelling{
+  color:var(--site-ink);
+  font-weight:650;
+}
+.page-nav-current{
+  color:var(--site-gold);
+  font-weight:750;
+  text-decoration-thickness:1px;
+  text-underline-offset:3px;
+}
+.page-nav-room,
+.page-nav-subject{
+  color:color-mix(in srgb,var(--site-gold) 74%,var(--site-muted));
+}
+.page-nav-subject{font-weight:650}
+.page-nav > :is(.page-nav-home,.page-nav-directory,.page-nav-dwelling,.page-nav-current,.page-nav-room,.page-nav-subject):is(:hover,:focus-visible){
+  color:var(--site-gold);
+}
+html[data-site-floor] .page > :where(section,article,aside,details):not(.surface-clear){
+  padding:clamp(18px,2.4vw,26px);
+  border:1px solid var(--site-pane-line);
+  border-radius:var(--site-radius-lg);
+  background:var(--site-pane);
+  box-shadow:var(--site-pane-shadow);
+}
+html[data-site-floor] .page > :where(p.boundary,p.note,p.warning,p.lede,.boundary,.note,.warning):not(.surface-clear){
+  padding:14px 16px;
+  border:1px solid var(--site-pane-line);
+  border-radius:var(--site-radius);
+  background:var(--site-pane-soft);
+  box-shadow:0 8px 22px rgba(0,0,0,.14);
+}
+.surface-pane{
+  padding:clamp(18px,2.4vw,26px);
+  border:1px solid var(--site-pane-line);
+  border-radius:var(--site-radius-lg);
+  background:var(--site-pane);
+  box-shadow:var(--site-pane-shadow);
+}
+.surface-pane--soft{background:var(--site-pane-soft)}
+.surface-pane--mist{background:var(--site-pane-mist-strong)}
+.surface-pane--paper{
+  color:var(--site-pane-paper-ink);
+  background:var(--site-pane-paper);
+  border-color:rgba(35,31,25,.16);
+  box-shadow:0 12px 30px rgba(0,0,0,.18);
+}
+.surface-pane--paper :is(h1,h2,h3,h4,h5,h6,strong,a){color:#211d17}
+.surface-pane--paper :is(p,li,small,span){color:#39342c}
+.surface-clear{background:transparent!important;border-color:transparent!important;box-shadow:none!important}
+
+.eyebrow {
+  margin: 0 0 10px;
+  color: var(--site-ink);
+  font-size: var(--site-text-sm);
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.page-header h1 {
+  margin: 0 0 18px;
+  max-width: 16ch;
+  font-family: var(--site-font-serif);
+  font-size: var(--site-text-title);
+  font-weight: 400;
+  letter-spacing: -.045em;
+  line-height: .94;
+  text-wrap: balance;
+}
+
+.summary {
+  max-width: 900px;
+  margin: 0;
+  color: #dad5cd;
+  font-family: var(--site-font-serif);
+  font-size: var(--site-text-lead);
+  line-height: 1.52;
+}
+
+.page-section {
+  border-top: 1px solid var(--site-line);
+}
+
+.page-footer {
+  margin-top: 32px;
+  padding-top: 18px;
+  border-top: 1px solid var(--site-line);
+  color: var(--site-muted);
+  font-size: var(--site-text-ui);
+}
+
+@media (max-width:700px){
+  .page{padding-top:22px;padding-bottom:calc(64px + var(--site-access-clearance))}
+   .page-nav{margin:0 0 20px;height:44px;min-height:44px;padding:5px 6px;flex-wrap:nowrap;gap:2px;overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain;scroll-snap-type:x proximity;border-radius:var(--site-radius);scrollbar-width:none}
+  .page-nav::-webkit-scrollbar{display:none}
+  .page-nav > a{flex:0 0 auto;height:30px;min-height:30px;white-space:nowrap;padding:5px 8px;border:0;border-radius:8px;scroll-snap-align:start;font-size:var(--site-text-xs)}
+  .page-header{margin-bottom:24px}
+  .topology-context-head{display:block}
+  .topology-context-house{display:inline-block;margin-top:8px}
+  .topology-context-relations li{grid-template-columns:1fr;gap:2px}
+  .topology-traversal-grid{grid-template-columns:1fr}
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
+
+/* Optional House topology context: progressive enhancement only. */
+.topology-context{
+  margin:32px 0;
+  padding:20px;
+  border:1px solid var(--site-pane-line);
+  border-radius:var(--site-radius-lg);
+  background:var(--site-pane);
+  box-shadow:var(--site-pane-shadow)
+}
+.topology-context-head{display:flex;justify-content:space-between;gap:24px;align-items:end}
+.topology-context-head h2{margin:0;font:400 25px/1.1 var(--site-font-serif);color:var(--site-ink)}
+.topology-context-house{color:var(--site-ink);font-size:var(--site-text-sm);text-decoration:none;white-space:nowrap}
+.topology-context-chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}
+.topology-context-chip{display:inline-block;border:1px solid var(--site-line);border-radius:var(--site-radius-pill);padding:5px 9px;color:var(--site-gold);font-size:var(--site-text-caption);text-decoration:none}
+.topology-context-chip:hover,.topology-context-chip:focus-visible{border-color:#625b52;color:var(--site-ink)}
+.topology-context-relations{list-style:none;margin:15px 0 0;padding:0;display:grid;gap:7px}
+.topology-context-relations li{display:grid;grid-template-columns:minmax(220px,.7fr) 1.3fr;gap:14px;padding-top:7px;border-top:1px solid #292725}
+.topology-context-relations span{font-size:var(--site-text-sm)}.topology-context-relations em{font-style:normal;color:var(--site-ink);font-size:var(--site-text-xs);text-transform:uppercase;letter-spacing:.045em;margin:0 4px}
+.topology-context-relations small{color:var(--site-muted);line-height:1.45}
+.topology-context-boundary{margin:13px 0 0;color:var(--site-faint);font-size:var(--site-text-xs);line-height:1.45}
+
+
+.topology-traversal-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:18px}
+.topology-traversal-card{border:1px solid var(--site-line);border-radius:var(--site-radius);padding:16px;background:var(--site-panel)}
+.topology-traversal-card h3{margin:0 0 7px;font:400 22px/1.1 var(--site-font-serif);color:var(--site-gold)}
+.topology-traversal-card p:not(.eyebrow){margin:0;color:var(--site-muted);font-size:var(--site-text-sm);line-height:1.5}
+.topology-traversal-sequence{display:flex;flex-wrap:wrap;gap:4px 7px;align-items:center;margin:12px 0 10px;font-size:var(--site-text-caption)}
+.topology-traversal-sequence a{color:var(--site-ink);text-decoration:none;border-bottom:1px solid #45413b}
+.topology-traversal-card q{display:block;color:#d1ccc3;font:italic 13px/1.45 var(--site-font-serif)}
+
+
+/* Editorial visual system: explanatory figures, not decorative card art. */
+.editorial-visual{margin:30px 0 42px;border:1px solid var(--site-line);border-radius:var(--site-radius-xl);overflow:hidden;background:var(--site-panel);box-shadow:0 18px 60px rgba(0,0,0,.16)}
+.editorial-visual img{display:block;width:100%;height:auto;background:#0b0b0b}
+.editorial-visual figcaption{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px;align-items:start;padding:14px 16px;border-top:1px solid var(--site-line);color:var(--site-muted);font-size:var(--site-text-caption);line-height:1.5}
+.editorial-visual figcaption strong{display:block;color:var(--site-gold);font:400 16px/1.25 var(--site-font-serif);margin-bottom:3px}
+.editorial-visual figcaption a{font-size:var(--site-text-xs);white-space:nowrap;text-decoration:none;border-bottom:1px solid #45413b}
+.editorial-visual--wide{width:min(1120px,calc(100vw - 32px));max-width:none;margin-left:50%;transform:translateX(-50%)}
+@media(max-width:700px){.editorial-visual{margin:22px 0 32px}.editorial-visual figcaption{grid-template-columns:1fr}.editorial-visual figcaption a{white-space:normal}.editorial-visual--wide{width:100%;margin-left:0;transform:none}}
+
+/* Reader-first editorial layer: substance before wayfinding. */
+.dwelling-reflection{
+  width:100%;
+  max-width:none;
+  box-sizing:border-box;
+  margin:44px 0 38px;
+  padding:clamp(18px,2.4vw,26px);
+  border:1px solid var(--site-pane-line);
+  border-left:3px solid color-mix(in srgb,var(--site-gold) 58%,transparent);
+  border-radius:var(--site-radius-lg);
+  background:var(--site-pane);
+  box-shadow:var(--site-pane-shadow);
+}
+.dwelling-reflection h2{
+  max-width:790px;
+  margin:4px 0 15px;
+  font:400 clamp(27px,4vw,42px)/1.08 var(--site-font-serif);
+  letter-spacing:-.018em;
+}
+.dwelling-reflection p{
+  max-width:830px;
+  margin:11px 0;
+  color:#d8ded6;
+  font:400 17px/1.72 var(--site-font-serif);
+}
+.dwelling-reflection p strong{color:#f0e1b9;font-weight:600}
+.dwelling-reflection .reflection-turn{
+  color:var(--site-muted);
+  font:400 13px/1.58 var(--site-font-sans);
+}
+.rooms-architecture-details{
+  margin:34px 0;
+  padding:0 16px;
+  border:1px solid var(--site-pane-line);
+  border-radius:var(--site-radius-lg);
+  background:var(--site-pane-soft);
+  box-shadow:0 8px 22px rgba(0,0,0,.12);
+}
+.rooms-architecture-details>summary{
+  cursor:pointer;
+  list-style:none;
+  padding:13px 0;
+  color:var(--site-muted);
+  font:700 10px var(--site-font-sans);
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.rooms-architecture-details>summary::-webkit-details-marker{display:none}
+.rooms-architecture-details>summary::after{content:" +";color:var(--site-gold)}
+.rooms-architecture-details[open]>summary::after{content:" −"}
+@media(max-width:700px){
+  .dwelling-reflection{margin:34px 0 30px;padding:16px}
+  .dwelling-reflection p{font-size:16px}
+}
+
+/* Generated related-context navigation is a real component, not loose SEO text. */
+.related-context{
+  display:grid;
+  grid-template-columns:minmax(0,auto) minmax(0,1fr);
+  gap:10px 18px;
+  align-items:center;
+  margin:clamp(30px,5vw,54px) 0 0;
+  padding:14px 16px;
+  border:1px solid var(--site-pane-line);
+  border-radius:var(--site-radius-sm);
+  background:var(--site-pane-soft);
+  box-shadow:0 10px 28px rgba(0,0,0,.12);
+}
+.related-context > strong{
+  color:var(--site-muted);
+  font:700 9px/1.25 var(--site-font-sans);
+  letter-spacing:.07em;
+  text-transform:uppercase;
+}
+.related-context > nav{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+  gap:6px;
+  min-width:0;
+}
+.related-context > nav a{
+  display:inline-flex;
+  align-items:center;
+  min-height:29px;
+  padding:5px 8px;
+  border:1px solid var(--site-line);
+  border-radius:6px;
+  background:rgba(255,255,255,.015);
+  color:var(--site-muted);
+  text-decoration:none;
+  font-size:var(--site-text-xs);
+  line-height:1.2;
+}
+.related-context > nav a:hover,
+.related-context > nav a:focus-visible{
+  color:var(--site-gold);
+  border-color:color-mix(in srgb,var(--site-gold) 34%,var(--site-line));
+  background:color-mix(in srgb,var(--site-gold) 7%,transparent);
+}
+@media(max-width:620px){
+  .related-context{grid-template-columns:1fr;gap:9px}
+  .related-context > nav{justify-content:flex-start}
+}
+

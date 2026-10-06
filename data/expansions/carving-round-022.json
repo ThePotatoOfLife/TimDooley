@@ -1,0 +1,49 @@
+{
+  "id":"carving-round-022",
+  "date":"2026-09-07",
+  "status":"additive-research-layer",
+  "title":"Resolution Carving — turning broad systems into inspectable chains",
+  "canonical_rule":"Do not move or replace the ten canonical tree levels. Add resolution beneath them.",
+  "purpose":"The repository already has broad ontologies and sector maps. This round identifies the next resolution step: every broad noun should eventually open into a chain of objects, institutions, flows, controls, time, geography and evidence.",
+  "resolution_patterns":{
+    "country":"territory → population → constitution → government → revenue → expenditure → debt → public services → productive sectors → infrastructure → trade → ownership → external dependencies → historical change",
+    "company":"legal entity → owners → voting control → subsidiaries → assets → operators → employees → suppliers → customers → financing → procurement → regulators → geography → strategic dependencies",
+    "energy":"resource → extraction/import → processing → generation/conversion → storage → transmission → distribution → price → user/industry → emissions → regulation → ownership → decommissioning",
+    "infrastructure":"asset → location → owner → operator → capacity → users → inputs → maintenance → financing → regulation → failure modes → redundancy → repair → cross-border dependency",
+    "religion":"text/tradition → interpretation → doctrine → ritual → community → institution → property → education/charity/media → population → geography → law → politics → historical change",
+    "politics":"idea → ideology → organization/movement → manifesto → candidate/leader → voters → election → office → coalition → law → budget → implementation → outcome → public response",
+    "culture":"creator → work → medium → publisher/platform → distribution → audience → reception → imitation/adaptation → community → market → archive → generational change",
+    "science":"question → observation → experiment/model → measurement → dataset → publication → critique/replication → theory → engineering → prototype → standard → manufacturing → deployment",
+    "finance":"actor → account/claim → instrument → counterparty → cash flow → collateral → maturity → settlement → ownership/control → regulator → risk → historical change",
+    "history":"condition → actors → decision → event → location → material effect → legal/institutional response → population effect → investigation → memory → inherited constraint",
+    "information":"source → record → archive/database → transformation → publisher → platform → distribution → audience → reaction → correction/contest → archive/version"
+  },
+  "cross_domain_carving":{
+    "food":"soil → water → seed → farm → labour → machinery → fertilizer/feed → processing → logistics → retailer → household → waste → soil",
+    "housing":"land → planning law → developer/owner → finance → construction → utility connection → dwelling → rent/ownership → household → maintenance → inheritance/transfer",
+    "health":"population → risk/exposure → primary care → diagnosis → laboratory → treatment → medicine/device → payment/insurance → outcome → public-health data → research",
+    "education":"child/person → family → school → curriculum → teacher/labour → funding → building/technology → assessment → credential → labour market → income/productivity",
+    "trade":"resource/producer → contract → finance → port/rail/road → customs → logistics → importer → processing → final user → payment → data record"
+  },
+  "north_programme_resolution":{
+    "country_stack":["Denmark","Greenland","Faroe Islands","Canada","Iceland","Norway","Sweden","Finland","Britain/United Kingdom","Netherlands","France","Belgium","Germany","Poland","Ukraine","Turkey"],
+    "common_fields":["public-finance","debt","tax-base","pensions","health","education","labour","industry","energy","electricity","ports","rail","telecom","data-centres","research","technology","trade","ownership","procurement","strategic-dependencies"],
+    "priority_couplings":["Denmark ↔ Greenland ↔ Arctic","Denmark ↔ North Sea energy","Greenland ↔ Canada ↔ North Atlantic","Iceland ↔ North Atlantic cables/energy/shipping","Netherlands ↔ ports/industry/energy","France ↔ Belgium ↔ public finance/industry","Germany ↔ northern supply chains","Ukraine ↔ European reconstruction/industry/energy","Turkey ↔ European trade/logistics/energy"],
+    "rule":"These are research graph connections, not assertions that all listed actors form one political alliance. Each empirical edge must acquire its own source and date."
+  },
+  "evidence_resolution":{
+    "minimum_claim_record":["claim","subject","object_or_jurisdiction","claim_type","source","source_date","observation_date","last_verified","confidence","notes"],
+    "claim_types":["observed","calculated","estimated","historical","comparative","interpretive","scenario","mythological","creative"],
+    "contradiction_model":["claim-A","claim-B","same-subject","different-source","time-window","method-difference","resolution","unresolved"],
+    "missingness":"A missing relationship is a research gap, not evidence of absence. A failed search should record corpus, date and query scope where useful."
+  },
+  "next_carving_targets":[
+    "Promote high-value research questions into actual node records only when definitions and evidence roles are clear.",
+    "Attach authoritative data to country finance, energy, labour and demographic records.",
+    "Build ownership/control chains for strategic infrastructure and major firms.",
+    "Build event ledgers that join history to places, institutions, law and infrastructure.",
+    "Replicate the Christianity research depth for other major religious traditions.",
+    "Expand the spatial model from coordinates toward evidence-bearing relationship inspection.",
+    "Keep the Potatoverse symbolic layer rich while explicitly separated from empirical claims."
+  ]
+}

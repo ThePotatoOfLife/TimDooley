@@ -1,0 +1,283 @@
+{
+  "id": "2026-09-12-spudlight-potato-diel-starch-calibration",
+  "title": "Spudlight / Starchforce Empirical Benchmark — Diel Potato Leaf-Starch Reservoir Calibration",
+  "updated": "2026-09-12",
+  "version": "1.0.0",
+  "domain": "plant physiology / carbon allocation",
+  "subcategory": "photosynthesis, transient starch, source-sink dynamics, empirical calibration",
+  "kind": "formulation upgrade",
+  "status": "archive-generated empirical benchmark and measurement protocol; ordinary plant physiology used to test the Spudlight/Starchforce storage grammar, not evidence for a new force",
+  "parent": "knowledge/science/spudlight-theory-and-equations.json",
+  "companion": "knowledge/science/formulation-upgrades/2026-09-11-spudlight-storage-filter-identifiability.json",
+  "abstract": "This upgrade selects one empirical domain for Spudlight/Starchforce and turns the source-channel-storage-release grammar into a falsifiable calibration problem. The domain is diel carbon buffering in source leaves of potato, Solanum tuberosum, under controlled light-dark cycles. Incident photosynthetic photon flux density is the source; measured net CO2 assimilation is the channel output; transient leaf starch-carbon is the storage state; and nighttime disappearance of that starch pool is the operational release flux. A non-rectangular hyperbola calibrates the photon-to-carbon channel, while a piecewise one-store model estimates the fraction of assimilated carbon entering transient starch and the nighttime release rate. The model is deliberately modest: release means carbon leaving the measured starch pool and is not automatically equated with respiration, phloem export or tuber deposition. Independent dark-respiration measurements and optional 13CO2 tracing can partition or validate those downstream fates. The one-pole Starchforce interpretation is retained only if it predicts held-out starch trajectories better than simpler constant-depletion and capacity-limited alternatives, has identifiable parameters, respects carbon accounting and generalizes across light treatments. Thus the project gains an empirical benchmark capable of rejecting its preferred reservoir law rather than merely illustrating it.",
+  "why_this_domain": {
+    "selection_logic": [
+      "The project already interprets Starchforce most seriously as chemical storage/release rather than a fifth fundamental force.",
+      "Potato leaves accumulate transient starch during the light period and remobilize carbohydrate in darkness, giving a natural input-storage-release experiment on hour timescales.",
+      "Potato source-sink carbon flux has historically been manipulated with light and traced from CO2 into tubers, so the biological pathway is experimentally established even though the Spudlight vocabulary is project-specific.",
+      "PPFD, CO2 assimilation, starch concentration and dark respiration can all be measured independently with standard instruments/assays."
+    ],
+    "boundary": "The benchmark tests whether the project's reservoir mathematics is useful for one ordinary biological carbon-buffer system. Success would support the storage abstraction, not a new physical Spudlight particle, field or Starchforce."
+  },
+  "typed_empirical_chain": {
+    "source": {
+      "symbol": "I(t)",
+      "quantity": "incident photosynthetic photon flux density at the measured source leaf",
+      "units": "micromol photons m^-2 s^-1",
+      "measurement": "calibrated PAR sensor / leaf-chamber light sensor logged with the gas-exchange measurement",
+      "note": "If leaf absorptance is not measured, alpha below is an effective yield per incident photon rather than per absorbed photon."
+    },
+    "channel": {
+      "symbol": "A_n(t)",
+      "quantity": "net leaf CO2 assimilation",
+      "units": "micromol CO2 m^-2 s^-1",
+      "measurement": "open gas-exchange chamber with controlled CO2, leaf temperature, humidity/VPD and PPFD",
+      "role": "converts the optical source variable into an observed carbon-fixation flux"
+    },
+    "storage": {
+      "symbol": "K(t)",
+      "quantity": "transient leaf starch expressed as carbon per leaf area",
+      "units": "mmol C m^-2",
+      "measurement": "enzymatic total-starch assay on known leaf area and dry mass, converted to starch-carbon"
+    },
+    "release": {
+      "symbol": "J_rel(t)",
+      "quantity": "carbon flux leaving the measured transient starch pool during darkness",
+      "units": "mmol C m^-2 h^-1",
+      "measurement": "inferred from the calibrated storage trajectory and independently checked against dusk-to-dawn starch disappearance",
+      "boundary": "J_rel includes all destinations of carbon leaving the starch pool. It must not be labeled respiration or tuber export without an additional measurement."
+    }
+  },
+  "channel_model": {
+    "equation": "A_n(I)=[alpha I + A_max - sqrt((alpha I + A_max)^2 - 4 theta alpha I A_max)]/(2 theta) - R_d",
+    "model_class": "non-rectangular hyperbola light-response curve",
+    "parameters": {
+      "alpha": {
+        "meaning": "initial apparent quantum yield of net carbon assimilation",
+        "units": "mol CO2 per mol incident photons under consistent unit conversion",
+        "fit_bound": "0 <= alpha <= 0.15"
+      },
+      "A_max": {
+        "meaning": "light-saturated gross-like asymptotic photosynthetic scale before subtracting R_d in this parameterization",
+        "units": "micromol CO2 m^-2 s^-1",
+        "fit_bound": "0 < A_max <= 60"
+      },
+      "theta": {
+        "meaning": "curvature parameter controlling transition from light limitation to saturation",
+        "units": "dimensionless",
+        "fit_bound": "0.05 <= theta <= 1"
+      },
+      "R_d": {
+        "meaning": "dark/mitochondrial respiration offset used by the fitted light-response curve",
+        "units": "micromol CO2 m^-2 s^-1",
+        "fit_bound": "0 <= R_d <= 10"
+      }
+    },
+    "carbon_flux_conversion": "A_C(t)=3.6 max[A_n(t),0] mmol C m^-2 h^-1 because 1 micromol CO2 m^-2 s^-1 equals 3.6 mmol C m^-2 h^-1 after converting seconds to hours and micromoles to millimoles.",
+    "calibration_data": "Light-response measurements at nominal PPFD steps 0, 50, 100, 200, 400, 800 and 1200 micromol photons m^-2 s^-1 under fixed chamber CO2, temperature and humidity/VPD. Exact achieved PPFD rather than nominal setpoint is used in fitting.",
+    "simpler_baseline": "A piecewise-linear or rectangular-hyperbola light-response model with fewer effective parameters.",
+    "channel_failure": "The channel model is inadequate if physically admissible parameters cannot be obtained or if held-out assimilation has normalized RMSE greater than 15% with systematic light-dependent residual structure."
+  },
+  "minimal_storage_release_model": {
+    "name": "M1 one-store piecewise Starchforce benchmark",
+    "day_equation": "dK/dt = rho A_C(t), for light period in the minimal net-allocation model",
+    "night_equation": "dK/dt = -k_D K, for dark period",
+    "release_equation": "J_rel(t)=k_D K(t) during darkness",
+    "night_solution": "K(t)=K_dusk exp[-k_D(t-t_dusk)]",
+    "night_half_time": "t_1/2=ln(2)/k_D",
+    "parameters": {
+      "rho": {
+        "meaning": "net fraction of positive assimilated carbon appearing in the measured transient starch pool over the light period after concurrent daytime export/consumption has been absorbed into the net coefficient",
+        "units": "dimensionless",
+        "fit_bound": "0 <= rho <= 1"
+      },
+      "k_D": {
+        "meaning": "effective first-order nighttime release constant for disappearance from the measured starch pool",
+        "units": "h^-1",
+        "fit_bound": "0.001 <= k_D <= 1"
+      },
+      "K_0": {
+        "meaning": "measured/estimated starch-carbon stock at the start of the fitted cycle",
+        "units": "mmol C m^-2",
+        "fit_bound": "K_0 >= 0"
+      }
+    },
+    "interpretation": "rho is deliberately a net allocation coefficient, not a biochemical enzyme constant. k_D is a phenomenological release pole. If the data show near-linear night depletion, circadian control or multiple timescales, the one-pole interpretation should be rejected or reduced to a local approximation."
+  },
+  "starch_measurement_and_conversion": {
+    "assay": "Use an enzymatic alpha-amylase/amyloglucosidase total-starch method on homogenized tissue after removal of soluble sugars, with a standard curve/control and technical duplicates.",
+    "sampling_basis": "Record sampled leaf area, fresh mass and dry mass so starch can be expressed both per dry mass and per square metre of leaf area.",
+    "carbon_conversion": "For anhydroglucose repeat unit C6H10O5, carbon mass fraction is approximately 72.066/162.14 = 0.4445. If M_starch is mg starch m^-2, then K=(0.4445 M_starch)/12.011 mmol C m^-2.",
+    "quality_control": [
+      "Run extraction blanks and a starch reference/control with every assay batch.",
+      "Technical duplicate coefficient of variation target <= 10%; re-assay samples exceeding the predeclared QC threshold.",
+      "Randomize treatment/time samples across assay plates to prevent plate from becoming a time-of-day confound."
+    ]
+  },
+  "concrete_experiment": {
+    "organism": "clonally propagated Solanum tuberosum plants of one declared cultivar, measured after establishment of mature source leaves and before major senescence",
+    "growth_environment": {
+      "photoperiod": "14 h light / 10 h dark",
+      "temperature": "20 C nominal setpoint throughout the primary benchmark",
+      "relative_humidity": "approximately 60% or an equivalently predeclared VPD target",
+      "CO2": "420 micromol mol^-1 chamber/growth setpoint unless the facility requires another fixed declared value",
+      "light_treatments": [200, 400, 800],
+      "light_units": "micromol photons m^-2 s^-1 at canopy/source-leaf plane",
+      "acclimation": "minimum 7 days at assigned light treatment before calibration sampling"
+    },
+    "replication": "36 biological plants total, 12 per light treatment, randomized across chamber positions/blocks. Preassign 8 plants per treatment to calibration and 4 to held-out validation; use matched mature source leaves and preserve the split throughout analysis.",
+    "diel_sampling_times": [
+      "ZT0: lights on / dawn",
+      "ZT3.5",
+      "ZT7",
+      "ZT10.5",
+      "ZT14: lights off / dusk",
+      "ZT17",
+      "ZT20",
+      "ZT24: next dawn"
+    ],
+    "sampling_strategy": "Take small, position-balanced leaf discs from matched fully expanded source leaves at each time point, avoiding previously wounded margins; include a destructive validation subset if repeated disc sampling measurably changes leaf area or gas exchange.",
+    "gas_exchange": "Measure light-response curves on representative calibration and validation leaves using the same chamber settings. During the diel run, obtain net assimilation at least near ZT3.5, ZT7 and ZT10.5 plus dark respiration measurements during the night. Log actual PPFD, leaf temperature, chamber CO2 and water-vapor/VPD variables with each observation.",
+    "duration": "Three consecutive diel cycles after acclimation, with the third cycle reserved as an additional temporal holdout when practical.",
+    "secondary_endpoints": [
+      "leaf soluble sugars to detect substitution between starch and soluble carbohydrate pools",
+      "final tuber dry mass and tuber starch as a sink-level external outcome",
+      "optional non-radioactive 13CO2 pulse-chase in a subset if direct source-to-tuber transfer timing is required"
+    ]
+  },
+  "calibration_protocol": {
+    "stage_1_channel": [
+      "Fit alpha, A_max, theta and R_d to gas-exchange light-response data with constrained nonlinear regression or a hierarchical equivalent.",
+      "Estimate plant/treatment variability rather than reporting only a pooled best-fit curve.",
+      "Predict A_n on held-out plants before using the channel output in the storage fit."
+    ],
+    "stage_2_storage": [
+      "Convert measured starch to K in mmol C m^-2.",
+      "Integrate A_C(t) over the observed light trajectory and fit rho from the daytime K increase.",
+      "Fit k_D from nighttime K(t) using the exponential M1 model, propagating starch-assay uncertainty.",
+      "Estimate K_0 from the first measured point rather than allowing an unconstrained initial state to absorb model error."
+    ],
+    "stage_3_joint_check": [
+      "Simulate complete 24 h K trajectories from measured PPFD through the fitted channel and reservoir without re-fitting held-out plants.",
+      "Report prediction intervals, RMSE/NRMSE, bias and residuals by time of day and light treatment.",
+      "Use bootstrap or profile-likelihood intervals for rho and k_D and report their parameter correlation/identifiability."
+    ],
+    "no_leakage_rule": "No parameter may be re-tuned on held-out validation plants. Treatment-specific extensions are added only after the common-parameter model has been scored."
+  },
+  "competing_models": [
+    {
+      "id": "M0-constant-night-release",
+      "equation": "dK/dt=-v_D during darkness until K reaches zero",
+      "purpose": "Tests whether the apparent nighttime decline is closer to regulated near-linear depletion than first-order exponential release."
+    },
+    {
+      "id": "M2-capacity-limited-storage",
+      "equation": "dK/dt=rho A_C(t) max[0,1-K/K_max] during light; dK/dt=-k_D K during dark",
+      "new_parameter": "K_max>max(K_observed_starting_guess)",
+      "purpose": "Tests whether starch accumulation saturates as storage fills."
+    },
+    {
+      "id": "M3-two-store",
+      "equation": "dK_vec/dt=A K_vec+B A_C(t); J_rel=C K_vec",
+      "purpose": "Allowed only if reproducible residuals show at least two distinct timescales that cannot be explained by assay error or circadian forcing."
+    }
+  ],
+  "predeclared_model_selection": {
+    "primary_score": "held-out normalized RMSE on K(t)",
+    "secondary_scores": ["AICc or an equivalent complexity-penalized likelihood score", "time-of-day residual structure", "parameter stability across biological replicates/light treatments"],
+    "complexity_gate": "Retain an additional nonlinear/storage parameter only if it improves held-out NRMSE by at least 10% and improves AICc by at least 6 relative to the simpler adequate model, while remaining identifiable.",
+    "one_pole_success_rule": "M1 counts as an empirically useful Starchforce specialization only if held-out K NRMSE <=20%, parameters remain physical/identifiable, and neither M0 nor a justified richer model beats it by the complexity gate.",
+    "note": "Thresholds are preregistration-style engineering criteria for this benchmark, not universal biological constants."
+  },
+  "explicit_failure_criteria": {
+    "source_channel_failure": [
+      "The fitted light-response curve cannot predict held-out A_n to NRMSE <=15%.",
+      "Any required alpha, theta, A_max or R_d leaves its physically declared admissible range or becomes effectively non-identifiable.",
+      "Residuals show a reproducible dependence on omitted temperature, VPD, CO2 or time-of-day effects large enough to invalidate light as the dominant channel input under the controlled protocol."
+    ],
+    "storage_failure": [
+      "The fitted rho is outside [0,1], K predictions become negative, or the model misses held-out K by more than 20% NRMSE.",
+      "A single rho cannot generalize across light treatments and treatment dependence exceeds a factor of two without a mechanistic extension.",
+      "Daytime measured starch change and integrated rho A_C disagree beyond combined measurement uncertainty plus a 20% tolerance on held-out cycles."
+    ],
+    "release_failure": [
+      "The one-pole nighttime law predicts the wrong curvature or timing and M0 constant depletion improves held-out NRMSE by >=10% with Delta AICc>=6.",
+      "k_D is not repeatably positive/identifiable or its 95% interval spans more than a fivefold range after adequate sampling.",
+      "Dusk-to-dawn integrated J_rel fails to reproduce observed starch disappearance within combined assay uncertainty plus 20%."
+    ],
+    "identifiability_failure": [
+      "Bootstrap/profile likelihood leaves rho or k_D with coefficient of variation >50% or a practically flat likelihood over most of the allowed range.",
+      "Absolute fitted parameter correlation exceeds 0.9 in a way that prevents separate interpretation; in that case report only the identifiable combination or redesign the experiment.",
+      "Unknown gain/area normalization can reproduce the same trajectories as changes in rho or k_D; recalibrate the measurement rather than interpreting the confounded parameter."
+    ],
+    "theory_boundary_failure": [
+      "Ordinary photosynthesis and carbohydrate metabolism explain the observations with no residual requiring new physics. This is expected and means the result supports only the systems abstraction.",
+      "A successful biological fit is used as evidence for a universal cross-domain force, spiritual energy or a physical Spudlight field without an independent derivation."
+    ]
+  },
+  "independent_release_checks": {
+    "dark_respiration": "Measure leaf dark CO2 efflux by gas exchange. Treat it as a downstream carbon-loss measurement, not as identical to J_rel, because respiration can draw on soluble substrates as well as recently degraded starch.",
+    "soluble_sugar_pool": "Measure sucrose/glucose/fructose in the same diel samples. A large anticorrelated soluble pool indicates that a one-state starch model may need an explicit transport/intermediate store.",
+    "tuber_sink": "Final tuber starch/dry mass tests whether fitted source-leaf parameters have predictive value for a downstream sink, but the primary calibration does not force all released leaf starch to become tuber starch.",
+    "isotope_extension": "A 13CO2 pulse-chase can directly test transfer timing from assimilation into leaf starch, soluble pools and tubers without making the isotope experiment mandatory for the first benchmark."
+  },
+  "worked_parameter_interpretation": {
+    "example_only_not_fit": "If a future dataset gave rho=0.25 and k_D=0.10 h^-1, then 25% of positive net assimilated carbon would appear as net transient-starch accumulation under the simplified daytime accounting and the effective nighttime starch half-time would be ln(2)/0.10 approximately 6.93 h. These numbers are illustrative only and are not claims about potato physiology.",
+    "important_caveat": "A good fit does not make rho or k_D universal constants. They may depend on cultivar, developmental stage, photoperiod, sink demand, temperature, CO2 and nutrient/water status."
+  },
+  "what_success_would_mean": [
+    "Spudlight gains a calibrated optical-to-carbon channel rather than an unspecified source metaphor.",
+    "Starchforce gains a measurable state K, allocation coefficient rho and release timescale k_D in one real biological system.",
+    "The source/channel/storage/release decomposition becomes falsifiable because each stage has its own instrument or assay.",
+    "The archive acquires a disciplined bridge from 'sunlight hidden in matter' to ordinary photosynthetic carbon storage without confusing chemical energy with symbolic meaning."
+  ],
+  "what_success_would_not_mean": [
+    "It would not establish Starchforce as a fifth fundamental interaction.",
+    "It would not establish a new photon type or Spudlight field.",
+    "It would not show that information, attention, spiritual revelation and starch obey one physical conservation law.",
+    "It would not make the fitted potato parameters transferable to unrelated domains without re-instantiation and testing."
+  ],
+  "external_references": [
+    {
+      "topic": "potato source-sink carbon flux",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/29368807/",
+      "note": "Classic potato source/sink study varied light intensity and measured carbon transfer from CO2 toward tubers."
+    },
+    {
+      "topic": "potato diel leaf starch turnover",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2827413/",
+      "note": "Potato leaves grown under controlled light/dark conditions showed low starch at the start of light, daytime accumulation and subsequent turnover."
+    },
+    {
+      "topic": "potato photoperiod, PPFD and leaf starch",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/11539332/",
+      "note": "Controlled-environment evidence that net assimilation and leaf starch depend on photoperiod and photon flux; useful for deliberately exciting the source/channel/store system."
+    },
+    {
+      "topic": "gas-exchange and PPFD measurement",
+      "url": "https://www.licor.com/products/photosynthesis/LI-6800/measurements",
+      "note": "Instrument documentation for direct CO2 assimilation measurements under controlled light/environment."
+    },
+    {
+      "topic": "potato starch enzymatic assay example",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6018912/",
+      "note": "Potato tissue example using enzymatic total-starch measurement with AOAC/AACC-compatible methodology."
+    }
+  ],
+  "validation": {
+    "level": "pre-registered empirical benchmark design",
+    "status": "measurement-ready but not yet experimentally executed in this repository",
+    "falsifiability": "The preferred one-store reservoir law can fail against simpler release kinetics, held-out trajectories, identifiability checks or carbon accounting. That possibility is a feature of the upgrade, not a defect."
+  },
+  "formalism": {
+    "formula": "I(t) -> A_n(I;alpha,A_max,theta,R_d) -> A_C(t); light: dK/dt=rho A_C(t); dark: dK/dt=-k_D K; J_rel=k_D K"
+  },
+  "connections": [
+    "spudlight-theory-and-equations",
+    "2026-09-11-spudlight-storage-filter-identifiability",
+    "research-2026-09-11-spudlight-starchforce-information",
+    "science-theory-rigor-completion-matrix-2026-09-11",
+    "science-project-meaning-and-equation-guide-2026-09-12",
+    "model-testing-protocol"
+  ]
+}

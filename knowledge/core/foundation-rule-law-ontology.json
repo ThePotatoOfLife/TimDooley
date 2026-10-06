@@ -1,0 +1,195 @@
+{
+  "id": "foundation-rule-law-ontology",
+  "title": "Foundation, Rule & Law — Generative Zero-Points of the House",
+  "version": "2.0.0",
+  "updated": "2026-09-18",
+  "status": "canonical cross-domain foundation ontology",
+  "purpose": "Model the events, rules, instruments, texts, institutions and practices that create a durable center from which a system can reproduce, branch, remember itself and evolve through time.",
+  "project_clue": "In Potato geometry a Foundation can simultaneously act as Seed, Center and Plane/Platform. It is a 'dead point' only in the sense of a fixed historical reference coordinate: a preserved F0 state from which living development can be traced. The Archive/Akashic layer preserves successive states; the Spiral tracks return-with-change; the Tree tracks branching from the founded center.",
+  "core_definition": "A Foundation is a sufficiently stable generative commitment or state that later actors can point back to in order to answer: what is this, why does it exist, what rules bind it, who belongs, what may be changed, and what counts as continuity?",
+  "foundation_geometry": {
+    "F0_dead_point": {
+      "meaning": "Earliest fixed/recoverable reference state of the founded thing.",
+      "boundary": "Not literal death and not always a single instant; ancient traditions may have an F0 interval or contested cluster."
+    },
+    "seed": {
+      "meaning": "Compressed generative content: founding idea, covenant, charter, revelation, rule, method, design or initiative."
+    },
+    "center": {
+      "meaning": "Reference point later branches return to when arguing identity, legitimacy, reform or fidelity."
+    },
+    "plane_platform": {
+      "meaning": "The newly constituted surface of possibility on which later practices, institutions, laws, schools or branches can operate."
+    },
+    "archive_point": {
+      "meaning": "The foundation becomes a temporal coordinate in the record; later versions can be compared against it instead of silently overwriting it."
+    },
+    "spiral_origin": {
+      "meaning": "A system can return to the same founding principle under changed conditions. Each return may reinterpret rather than duplicate F0."
+    },
+    "tree_origin": {
+      "meaning": "Once the platform is viable, branches differentiate: denominations, agencies, schools, amendments, products, jurisdictions, subsidiaries, interpretations or reforms."
+    }
+  },
+  "non_equivalences": {
+    "root": "Provenance/dependency/ancestry that may predate foundation and remain causally active.",
+    "seed": "Transferable generative potential; seed becomes foundation only when it establishes a durable reference/platform.",
+    "foundation": "Stable generative center/platform to which later continuity can be referred.",
+    "origin": "Any earlier causal beginning; not every origin is durable enough to be a foundation.",
+    "constitution": "High-order foundation allocating authority, limits and amendment.",
+    "law": "Authoritative rule in a jurisdiction; only some laws are constitutive.",
+    "rule": "Local or system-wide instruction/norm; many rules can change without re-founding the whole.",
+    "charter": "Instrument establishing purpose/powers/corporate form.",
+    "treaty": "Agreement binding parties; may itself constitute an institution/order.",
+    "covenant": "Relationship-creating commitment that can combine identity, duties and sacred/legal memory.",
+    "creed_confession": "Doctrinal identity compression used for profession, teaching and boundary-making.",
+    "canon": "Authorized or inherited body of texts/rules that constrains interpretation.",
+    "discipline_rule": "Practice architecture governing how members live or work.",
+    "manifesto": "Self-conscious public declaration that may crystallize a movement without legal incorporation.",
+    "standard_protocol": "Technical/social rule-set whose foundation value comes from shared interoperability.",
+    "precedent_custom": "Repeated inherited practice that becomes load-bearing without one founding text."
+  },
+  "foundation_types": [
+    "constitutional order",
+    "charter/statute",
+    "treaty/pact",
+    "rights regime",
+    "doctrinal/creedal",
+    "canonical/legal corpus",
+    "community covenant",
+    "rule/discipline",
+    "philosophical school",
+    "educational/pedagogical",
+    "scientific institution",
+    "scientific paradigm/programme",
+    "technical standard/protocol",
+    "corporate/enterprise",
+    "movement/manifesto",
+    "custom/precedent",
+    "project-native mythology/philosophy",
+    "merger/refoundation",
+    "infrastructure platform"
+  ],
+  "multiple_clocks": [
+    {
+      "id": "substrate",
+      "meaning": "Predecessor conditions or inherited field already exist."
+    },
+    {
+      "id": "seed_idea",
+      "meaning": "Core idea/revelation/proposal/initiative becomes identifiable."
+    },
+    {
+      "id": "authorization",
+      "meaning": "Competent authority grants permission, charter or recognition."
+    },
+    {
+      "id": "adoption_signature",
+      "meaning": "Constitutive instrument is adopted, signed, promulgated or declared."
+    },
+    {
+      "id": "entry_into_force",
+      "meaning": "Rule/instrument becomes legally operative."
+    },
+    {
+      "id": "first_operation",
+      "meaning": "Institution/community/school begins actual operation."
+    },
+    {
+      "id": "consolidation",
+      "meaning": "Canon, governance, resources or practice become durably recognizable."
+    },
+    {
+      "id": "refoundation_revision",
+      "meaning": "Later reform changes the platform while preserving or redefining continuity."
+    },
+    {
+      "id": "branching",
+      "meaning": "Distinct descendant schools, agencies, denominations, subsidiaries or interpretations become stable."
+    },
+    {
+      "id": "termination_supersession",
+      "meaning": "Foundation expires, is replaced or becomes archival rather than operative."
+    }
+  ],
+  "date_contract": {
+    "fields": [
+      "date_or_range",
+      "year_start",
+      "year_end",
+      "event_type",
+      "precision",
+      "status",
+      "label",
+      "source"
+    ],
+    "precision_values": [
+      "exact-day",
+      "month",
+      "year",
+      "approximate-year",
+      "range",
+      "century",
+      "traditional-date",
+      "contested"
+    ],
+    "statuses": [
+      "documented",
+      "scholarly-estimate",
+      "traditional",
+      "project-canon",
+      "project-interpretation"
+    ],
+    "rule": "Never collapse authorization, legal effect, first operation and later consolidation into one start date when the distinction matters."
+  },
+  "structural_significance_indicators": {
+    "rule": "These are descriptive flags, not an overall political/religious ranking.",
+    "indicators": [
+      "constitutive — creates/redefines identity or authority",
+      "generative — produces durable descendants/branches",
+      "interpretive — repeatedly used to resolve disputes about meaning",
+      "reproductive — provides procedures for training/admission/succession",
+      "material — creates assets/infrastructure/capacity",
+      "path_dependent — later choices remain constrained by this founding state",
+      "currently_referenced — still invoked in current rules/identity",
+      "refoundable — contains or later acquires amendment/revision machinery"
+    ]
+  },
+  "foundation_questions": [
+    "What existed before F0?",
+    "What problem, promise or revelation concentrated into the Seed?",
+    "What turned the Seed into a stable platform rather than a passing event?",
+    "Who or what had authority to constitute it?",
+    "What rules became load-bearing?",
+    "What is the earliest recoverable source state?",
+    "When did it actually begin operating?",
+    "What branches grew from it?",
+    "Which later reforms are ordinary development and which are refoundations?",
+    "What old rule remains causally active even after formal replacement?",
+    "Who interprets the foundation when actors disagree?",
+    "What material platform lets the foundation reproduce itself?",
+    "What would have to change before we would say this is no longer the same system?"
+  ],
+  "triune_projection": {
+    "spirit": "Purpose, telos, covenant, creed, values, legitimacy and identity story.",
+    "mind": "Rules, doctrine, interpretation, governance, pedagogy, procedure, record and memory.",
+    "body": "People, territory, membership, offices, buildings, capital, ritual, infrastructure and enforcement/operational capacity."
+  },
+  "operator_relations": {
+    "Root": "substrate and active inherited cause before/below F0",
+    "Seed": "compressed idea/covenant/design that may become Foundation",
+    "Foundation": "fixed generative center/platform",
+    "Plane": "the operating surface made possible by the foundation",
+    "Center": "reference coordinate for identity and return",
+    "Door": "authorization/adoption/entry-into-force/admission/amendment thresholds",
+    "Spiral": "return to founding principles under changed conditions",
+    "Archive_Akashic": "preserved sequence F0→F1→F2 rather than one overwritten present",
+    "Tree": "branches and descendant institutions/schools",
+    "Pillar": "recurring principle bearing load across later cases",
+    "House": "the differentiated living system built on the foundation",
+    "Fruit": "consequences produced by the founded order",
+    "Revision": "tracked constitutional/doctrinal/technical change",
+    "Ash": "superseded rule that remains historically/path-dependently relevant"
+  },
+  "importance_rule": "In principle almost anything can be foundational at some scale. Public prominence should depend on structural reach: does it constitute identity, generate descendants, remain a reference in disputes, reproduce practice, create a platform, or constrain later possibilities? A minor local rule can still be foundational inside a small context."
+}

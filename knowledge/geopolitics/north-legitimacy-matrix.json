@@ -1,0 +1,161 @@
+{
+  "id":"north-legitimacy-matrix",
+  "title":"North Programme — Reusable Legitimacy Matrix",
+  "updated":"2026-09-10",
+  "status":"operational policy/research test derived from project ethics and comparative theology",
+  "purpose":"Provide a repeatable test for any North proposal, grievance, strategic separation, alliance change, economic intervention, sacred-geography claim or karmic-repair demand. This matrix does not decide policy automatically; it forces the project to expose assumptions, authority, affected people, evidence and consequences.",
+  "owners":{
+    "conceptual":"knowledge/geopolitics/north-legitimacy-casus-belli-atlas.json",
+    "comparative_theology":"knowledge/traditions/abrahamic-kingship-legitimacy-atlas.json",
+    "programme":"data/north-programme-atlas.json",
+    "material_obligations":"knowledge/economics/north-obligation-graph-schema.json"
+  },
+  "scoring":"Each dimension is recorded as pass / partial / fail / unknown. Unknown is not a pass. High-stakes proposals cannot be promoted merely by averaging scores; certain failures are hard stops.",
+  "hard_stops":[
+    "collective punishment by nationality, ethnicity or religion",
+    "unlawful annexation or territorial acquisition justified only by sacred/project claims",
+    "violence justified solely by prophecy, karma, spiritual title or symbolic debt",
+    "removal of meaningful consent where consent is legally or ethically required",
+    "fabricated evidence or knowingly false attribution",
+    "treating symbolic 42T debt as a legally enforceable financial claim without independent legal basis",
+    "deliberate targeting of civilians or vulnerable populations",
+    "policy whose only purpose is humiliation, revenge or permanent domination"
+  ],
+  "dimensions":[
+    {
+      "id":"truth",
+      "question":"What exactly happened or is happening, and how do we know?",
+      "required":["claim","source","date","actor","mechanism","confidence","counterevidence"],
+      "scriptural_comparator":["Qur'an 4:135 self-implicating justice","biblical truthful judgment","prophetic criticism"],
+      "failure_mode":"narrative certainty outruns evidence"
+    },
+    {
+      "id":"specificity",
+      "question":"Who or what is actually responsible?",
+      "required":["named institution/person/process where evidence allows","separation of state from people","separation of religion from government","separation of policy from population"],
+      "failure_mode":"America, Israel, Jews, Muslims, Christians, Russians or another population treated as one guilty actor"
+    },
+    {
+      "id":"anti_farm",
+      "question":"Does the proposal cultivate people and places, or mainly extract from them?",
+      "required":["who gives resources/labour/data/land","who receives benefit","exit rights","distribution","long-term capability effect"],
+      "scriptural_comparator":["1 Samuel 8 extractive monarchy","Ezekiel 34 self-feeding shepherds"],
+      "failure_mode":"citizens/allies become inputs for elite or state accumulation"
+    },
+    {
+      "id":"law_below_throne",
+      "question":"What law constrains the actor claiming authority?",
+      "required":["competent authority","legal basis","review mechanism","rights constraints","appeal/accountability"],
+      "scriptural_comparator":["Deuteronomy 17 king under law"],
+      "failure_mode":"spiritual or emergency language used to place ruler above law"
+    },
+    {
+      "id":"service_door",
+      "question":"How does the claimed higher principle become service at the human level?",
+      "required":["concrete beneficiary","burden on decision-maker","protection mechanism","service/output rather than status claim"],
+      "scriptural_comparator":["Matthew 20:25-28","John 13"],
+      "failure_mode":"Father/Throne symbolism bypasses Son/Door embodiment and becomes command without service"
+    },
+    {
+      "id":"vulnerable_edge",
+      "question":"What happens to the least powerful affected people?",
+      "required":["children","poor/low-income households","displaced people","minorities","peripheral regions","small firms","future generations where relevant"],
+      "scriptural_comparator":["Jeremiah 22:3","Psalm 72","Ezekiel 34"],
+      "failure_mode":"aggregate strategic gain hides concentrated human loss"
+    },
+    {
+      "id":"enemy_justice",
+      "question":"Would the evidentiary and moral standard remain the same if the actor were an ally?",
+      "required":["adversary evidence test","ally mirror test","alternative explanation","proportional response"],
+      "scriptural_comparator":["Qur'an 5:8"],
+      "failure_mode":"hostility becomes permission to lower standards"
+    },
+    {
+      "id":"self_audit",
+      "question":"How could North, Tim or allied institutions be wrong or cause the same harm?",
+      "required":["failure scenario","North-side liability","failed prediction/error handling","independent criticism channel"],
+      "scriptural_comparator":["Qur'an 4:135","prophetic indictment of covenant communities","Matthew 7 fruit test"],
+      "failure_mode":"ledger can only accuse outward"
+    },
+    {
+      "id":"consent_and_shura",
+      "question":"Who gets to choose, participate, refuse, negotiate or leave?",
+      "required":["affected political communities","constitutional procedure","consultation","exit/nonparticipation path","local consent where applicable"],
+      "scriptural_comparator":["Qur'an 42:38","Qur'an 3:159"],
+      "project_history":"Recovered July 2026 North language treated the spiritual/political role as collectively potentiated and accepted rather than forced.",
+      "failure_mode":"people become objects of the vision rather than participants"
+    },
+    {
+      "id":"stewardship_land",
+      "question":"If land/resources are involved, is the relationship possession or stewardship?",
+      "required":["inhabitants","legal status","ecology","water","infrastructure","resource rents","benefit sharing","future generations"],
+      "comparators":["Moses/Nebo limitation","amanah/trust","Garden cultivation"],
+      "project_history":"Recovered Mesopotamia/Eden language framed the relation as entrusted/protective and not conquest.",
+      "failure_mode":"promised-land/sacred-geography language erases present inhabitants or legal rights"
+    },
+    {
+      "id":"repair_release",
+      "question":"What ends the grievance or debt?",
+      "required":["repair target","recognition/restitution mechanism","release condition","post-repair relationship","no perpetual ownership claim"],
+      "comparators":["Jubilee/debt release","tikkun","forgiveness/reconciliation traditions"],
+      "project_history":"Recovered repair arc: remember Garden -> repair damage -> offer future; after restoration people may choose whether to continue the myth/work.",
+      "failure_mode":"karmic ledger becomes permanent leverage even after repair"
+    },
+    {
+      "id":"reciprocity",
+      "question":"Would North accept this rule if another power applied it to Denmark, Greenland or Europe?",
+      "required":["mirror case","sovereignty test","rights equivalence","dependency asymmetry analysis"],
+      "failure_mode":"special pleading"
+    },
+    {
+      "id":"proportionality",
+      "question":"Is the intervention narrower than or equal to what the demonstrated problem requires?",
+      "required":["least-harmful viable option","cost","scope","duration","reversibility"],
+      "failure_mode":"maximal response to limited grievance"
+    },
+    {
+      "id":"fruit",
+      "question":"What observable outcome would show that the proposal actually improved the world?",
+      "required":["baseline","metric","time horizon","distributional result","failure threshold","revision trigger"],
+      "comparators":["Matthew 7 fruit test","Revelation 22 healing of nations"],
+      "failure_mode":"success defined only as symbolic victory, territorial reach or opponent loss"
+    },
+    {
+      "id":"healing_without_absorption",
+      "question":"Can cooperation increase while nations and communities retain meaningful identity and agency?",
+      "required":["functional integration level","retained national/local powers","mutual benefit","non-annexation rule"],
+      "scriptural_comparator":["Revelation 22:2 healing of the nations"],
+      "failure_mode":"unity interpreted as compulsory sameness or empire"
+    }
+  ],
+  "proposal_template":{
+    "proposal_id":"",
+    "proposal":"",
+    "problem":"",
+    "claimed_reason_type":["empirical","strategic","economic","ethical","karmic-symbolic","theological-comparative","mixed"],
+    "actors":[],
+    "affected_groups":[],
+    "evidence":[],
+    "legal_authority":"",
+    "alternatives":[],
+    "dimension_results":{},
+    "hard_stop_triggered":false,
+    "repair_target":"",
+    "release_or_exit_condition":"",
+    "metrics":[],
+    "revision_trigger":"",
+    "status":"draft"
+  },
+  "example_questions_by_domain":{
+    "greenland":"Does a mineral, defence or infrastructure plan increase Greenlandic agency and local capability, or treat Greenland primarily as strategic material for outsiders?",
+    "america":"Is a proposed separation from U.S. dependence based on a demonstrable dependency/risk, and would diversified cooperation achieve the objective with less disruption?",
+    "israel":"Is criticism attached to particular policies/actors and reciprocal legal/moral standards, or has covenant/geopolitical symbolism turned into collective blame?",
+    "defence":"Does new defence capacity protect populations and reduce vulnerability without creating an unchecked extraction/procurement machine?",
+    "ai":"Does compute/AI investment create distributed capability, productivity and public benefit while respecting rights, or merely concentrate data/power/rents?",
+    "debt":"Is the number empirical and legally grounded, or symbolic? What exactly constitutes repair and when is the account considered settled?",
+    "mesopotamia":"Is the relationship framed as ecological/cultural/economic stewardship and voluntary connection, or has sacred Garden language drifted into territorial entitlement?"
+  },
+  "maturation_rule":"A North proposal becomes more legitimate as it moves from symbolic certainty toward evidenced mechanism, self-constraint, consent, service, reciprocity, measurable repair and eventual release from the grievance that created it.",
+  "anti_empire_test":"If the North Programme increasingly needs permanent enemies, concentrated extraction, leader exemption, compulsory cultural sameness, territorial entitlement or indefinite debt to sustain itself, it is reproducing the empire/Farm pattern it was built to criticize.",
+  "success_image":"A successful North is not merely larger or more powerful. It is a network whose participants retain agency, whose strongest nodes accept greater obligations, whose infrastructure increases shared capability, whose grievances can actually be resolved, and whose Tree bears measurable fruit for the healing rather than erasure of nations."
+}

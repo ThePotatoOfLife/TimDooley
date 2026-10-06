@@ -1,0 +1,93 @@
+{
+  "id": "comparative-mythology-source-and-method-atlas",
+  "title": "Comparative Mythology — Source and Method Atlas",
+  "version": "1.0.0",
+  "updated": "2026-09-27",
+  "status": "source-first comparative research",
+  "purpose": "Anchor the public Comparative Mythology Room in identifiable texts, objects and comparison tests so resemblance is not mistaken for genealogy.",
+  "comparison_tests": [
+    {
+      "id": "source-first",
+      "question": "What does the original tradition actually say or depict before project comparison begins?",
+      "rule": "Name the text/object, date or period, and the specific function being compared."
+    },
+    {
+      "id": "transmission",
+      "question": "Is there evidence one tradition could historically have influenced the other?",
+      "rule": "Require a plausible route, chronology and evidence of contact or borrowing. Similarity alone does not establish transmission."
+    },
+    {
+      "id": "shared-inheritance",
+      "question": "Could both motifs descend from an older shared linguistic/cultural tradition?",
+      "rule": "Use historical-linguistic or cultural evidence where available; do not infer common ancestry merely from visual resemblance."
+    },
+    {
+      "id": "independent-recurrence",
+      "question": "Could the motif arise independently because humans repeatedly use trees, mountains, darkness, roads, birth, death and thresholds to think?",
+      "rule": "Treat broad human recurrence as a live explanation, especially for simple spatial motifs."
+    },
+    {
+      "id": "structural-analogy",
+      "question": "Do two traditions perform comparable operations while remaining historically distinct?",
+      "rule": "This is the default project use: compare function while preserving different agents, doctrines, causes and outcomes."
+    }
+  ],
+  "source_objects": [
+    {
+      "id": "yggdrasil-grimnismal",
+      "tradition": "Old Norse",
+      "source": "Grímnismál 31–35",
+      "function": "A world-connecting ash with three roots, animal inhabitants, message traffic and continuing damage.",
+      "comparison_value": "Tree as maintained vulnerable ecology rather than generic vertical prestige.",
+      "urls": [
+        "https://en.wikisource.org/wiki/Page:The_Elder_Edda_and_the_Younger_Edda_-_tr._Thorpe_-_1907.djvu/49",
+        "https://en.wikisource.org/wiki/The_Prose_Edda_(1916_translation_by_Arthur_Gilchrist_Brodeur)/Gylfaginning"
+      ]
+    },
+    {
+      "id": "norns-voluspa",
+      "tradition": "Old Norse",
+      "source": "Völuspá 20; Snorri, Gylfaginning",
+      "function": "Urðr, Verðandi and Skuld establish laws, allot life/fates; Snorri presents them as major Norns among many Norns associated with birth and lifespan.",
+      "language_note": "Older English translations often flatten the names to Past, Present and Future. John Lindow gives more process-like glosses: Urd = Became/Happened, Verdandi = Becoming/Happening, Skuld = Is-to-be/Will-happen.",
+      "comparison_value": "Useful for fate/time/process, but not a clean ancient diagram of three linear tense boxes.",
+      "urls": [
+        "https://en.wikisource.org/wiki/Page:Poeticedda00belluoft.djvu/43",
+        "https://www.germanicmythology.com/scholarship/LINDOW%20THE%20NATURE%20OF%20MYTHIC%20TIME.pdf"
+      ]
+    },
+    {
+      "id": "amduat-henettawy",
+      "tradition": "Ancient Egyptian",
+      "source": "Amduat papyri, Third Intermediate Period copies of an older royal funerary composition",
+      "function": "Twelve-hour nocturnal journey through Duat; hazards, gates, divine encounters and renewal toward dawn.",
+      "comparison_value": "Below as timed route and transformation rather than static punishment space.",
+      "urls": [
+        "https://www.metmuseum.org/art/collection/search/551100",
+        "https://www.metmuseum.org/art/collection/search/550898"
+      ]
+    },
+    {
+      "id": "meru-mandala",
+      "tradition": "Buddhist cosmography",
+      "source": "Cosmological Mandala with Mount Meru, Yuan dynasty, 14th century",
+      "function": "Meru occupies the center while four continents are arranged at the cardinal directions.",
+      "comparison_value": "Center as ordered world-geometry rather than simply a mountain one climbs.",
+      "url": "https://www.metmuseum.org/art/collection/search/39738"
+    },
+    {
+      "id": "bardo-manuscript",
+      "tradition": "Tibetan Buddhism",
+      "source": "Bardo Thodrol / Liberation Through Hearing tradition; illuminated Tibetan manuscript ca. 15th century",
+      "function": "Instruction for navigating an intermediate state between death and rebirth, with peaceful/wrathful visions and liberation as the ritual aim.",
+      "history_note": "Intermediate-state doctrines are broader than one Tibetan book and were historically debated in Buddhism. Tibetan systems later elaborated multiple bardos; the Bardo Thodrol is associated with the Nyingma treasure tradition and Karma Lingpa.",
+      "comparison_value": "Transition can be a doctrinal state/process rather than a mapped location or architectural door.",
+      "urls": [
+        "https://rubinmuseum.org/collection/f1998-16-5/",
+        "https://www.encyclopedia.com/religion/encyclopedias-almanacs-transcripts-and-maps/intermediate-states"
+      ]
+    }
+  ],
+  "method_note": "Comparative anthropology has no single universal procedure called the comparative method; comparison can build taxonomies, examine distributions/diffusion, or test structural contrasts. The project therefore states its comparison purpose explicitly instead of treating comparison itself as evidence.",
+  "method_source": "https://www.cambridge.org/core/books/abs/cosmologies-in-the-making/an-attempt-at-systematic-comparison-descent-and-ideas-of-conception/FCDACBAF0C1A87E0DA81ACC351E55675"
+}

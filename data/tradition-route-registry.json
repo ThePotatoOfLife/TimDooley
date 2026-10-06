@@ -1,0 +1,168 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-26",
+  "authority": "tradition-public-route-registry",
+  "purpose": "Keep specialist tradition readers discoverable without turning them into new top-level House gateways. Routes own presentation only; canonical historical and theological meaning remains in the source/lineage records named by each entry.",
+  "rules": [
+    "Religion remains the broad public hub.",
+    "A specialist route may present one tradition, lineage family, source-led comparison or deep contextual guide without becoming a new House gateway.",
+    "Routes must resolve to real pages and use the existing tradition/history data rather than inventing a duplicate canon.",
+    "Terms such as denomination, communion, school, current, lineage and diffuse field must reflect the actual type of structure being described."
+  ],
+  "routes": [
+    {
+      "id": "bible",
+      "route": "/traditions/bible/",
+      "title": "Bible Comparison Laboratory",
+      "kind": "textual-comparison-lab",
+      "parent": "religion"
+    },
+    {
+      "id": "christianity",
+      "route": "/traditions/christianity/",
+      "title": "Christianity",
+      "kind": "branch-history-guide",
+      "parent": "religion"
+    },
+    {
+      "id": "christianity-ancient",
+      "route": "/traditions/christianity/ancient-communions/",
+      "title": "Ancient Christian Communions",
+      "kind": "branch-family-guide",
+      "parent": "christianity"
+    },
+    {
+      "id": "christianity-reformation",
+      "route": "/traditions/christianity/reformation/",
+      "title": "Reformation Families",
+      "kind": "branch-family-guide",
+      "parent": "christianity"
+    },
+    {
+      "id": "christianity-revival",
+      "route": "/traditions/christianity/revival-restoration/",
+      "title": "Revival, Holiness & Restoration",
+      "kind": "branch-family-guide",
+      "parent": "christianity"
+    },
+    {
+      "id": "judaism",
+      "route": "/traditions/judaism/",
+      "title": "Judaism",
+      "kind": "history-movements-guide",
+      "parent": "religion"
+    },
+    {
+      "id": "islam",
+      "route": "/traditions/islam/",
+      "title": "Islam",
+      "kind": "lineage-schools-guide",
+      "parent": "religion"
+    },
+    {
+      "id": "buddhism",
+      "route": "/traditions/buddhism/",
+      "title": "Buddhism",
+      "kind": "transmission-map",
+      "parent": "religion"
+    },
+    {
+      "id": "daoism",
+      "route": "/traditions/daoism/",
+      "title": "Daoism",
+      "kind": "textual-religious-lineage-guide",
+      "parent": "religion"
+    },
+    {
+      "id": "hindu",
+      "route": "/traditions/hindu/",
+      "title": "Hindu Traditions",
+      "kind": "overlapping-traditions-guide",
+      "parent": "religion"
+    },
+    {
+      "id": "jainism",
+      "route": "/traditions/jainism/",
+      "title": "Jainism",
+      "kind": "history-traditions-guide",
+      "parent": "religion"
+    },
+    {
+      "id": "sikhism",
+      "route": "/traditions/sikhism/",
+      "title": "Sikhism",
+      "kind": "guru-scripture-community-guide",
+      "parent": "religion"
+    },
+    {
+      "id": "zoroastrianism",
+      "route": "/traditions/zoroastrianism/",
+      "title": "Zoroastrianism",
+      "kind": "source-sensitive-history-guide",
+      "parent": "religion"
+    },
+    {
+      "id": "bahai",
+      "route": "/traditions/bahai/",
+      "title": "Bahá'í Faith",
+      "kind": "modern-foundation-history-guide",
+      "parent": "religion"
+    },
+    {
+      "id": "confucianism",
+      "route": "/traditions/confucianism/",
+      "title": "Confucian Traditions",
+      "kind": "ethical-ritual-intellectual-history-guide",
+      "parent": "religion"
+    },
+    {
+      "id": "shinto",
+      "route": "/traditions/shinto/",
+      "title": "Shinto",
+      "kind": "kami-shrine-history-guide",
+      "parent": "religion"
+    },
+    {
+      "id": "chinese-religion",
+      "route": "/traditions/chinese-religion/",
+      "title": "Chinese Popular / Communal Religion",
+      "kind": "diffuse-religious-field-guide",
+      "parent": "religion"
+    },
+    {
+      "id": "comparative-cosmology",
+      "route": "/traditions/comparative-cosmology/",
+      "title": "Trees, Worlds, Wells & Ways",
+      "kind": "comparative-cosmology-guide",
+      "parent": "religion"
+    },
+    {
+      "id": "norse-world-tree",
+      "route": "/traditions/comparative-cosmology/norse-world-tree/",
+      "title": "Yggdrasil & the Eddas",
+      "kind": "deep-context-guide",
+      "parent": "comparative-cosmology"
+    },
+    {
+      "id": "kabbalah-qliphoth",
+      "route": "/traditions/comparative-cosmology/kabbalah-qliphoth/",
+      "title": "Kabbalah, Qliphoth & Angelology",
+      "kind": "deep-context-guide",
+      "parent": "comparative-cosmology"
+    },
+    {
+      "id": "vesica",
+      "route": "/traditions/vesica/",
+      "title": "Vesica / Mandorla",
+      "kind": "symbolic-geometry-guide",
+      "parent": "religion"
+    },
+    {
+      "id": "ancient-religions",
+      "route": "/traditions/ancient-religions/",
+      "title": "Ancient Religions",
+      "kind": "period-cult-text-guide",
+      "parent": "religion"
+    }
+  ]
+}

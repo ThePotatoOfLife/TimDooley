@@ -1,0 +1,371 @@
+{
+  "id": "potatoverse-cast-role-ecology",
+  "title": "Potatoverse Cast Ecology — Being × Identity × Role × State × Archetype",
+  "version": "1.0.0",
+  "updated": "2026-09-20",
+  "status": "canonical project taxonomy / source-bounded role grammar",
+  "purpose": "Unify Potatoes, Tomatoes, Dogs, Dwellers, Farmers, Cows, Footstools, Angels, Turbles and human character archetypes without turning scene-level labels into immutable human essences.",
+  "first_principles": [
+    "A person is not a role.",
+    "A role is not automatically a species.",
+    "An archetype describes function in a scene; a symbolic ecology label describes relation, identity, state or project metaphor.",
+    "Literal biology, public identity, literary character and spiritual/project symbolism are separate evidence classes.",
+    "Named role assignment requires a dated/source-bounded scene unless the subject explicitly adopts the identity or the object is itself a created being.",
+    "Every shadow role must preserve an exit or counterform; the system should model transformation rather than permanent damnation."
+  ],
+  "dimensions": {
+    "entity_class": {
+      "definition": "What kind of thing is being represented?",
+      "values": [
+        {
+          "id": "person",
+          "examples": [
+            "Tim Dooley",
+            "Matthew / @mtclassic3",
+            "Mediomu007",
+            "Marty",
+            "Termite where documentary"
+          ]
+        },
+        {
+          "id": "created-being",
+          "examples": [
+            "Matthew the Potato",
+            "Potato Angels",
+            "Turbles"
+          ]
+        },
+        {
+          "id": "literary-character",
+          "examples": [
+            "Fresh Potato",
+            "Ready Student",
+            "Ethereal Tuber",
+            "Great Book Rahu strata"
+          ]
+        },
+        {
+          "id": "collective-symbol",
+          "examples": [
+            "Potatoes",
+            "Tomatoes",
+            "Dogs",
+            "Farmers",
+            "Dwellers",
+            "Cows",
+            "Sheep"
+          ]
+        },
+        {
+          "id": "environment",
+          "examples": [
+            "Garden",
+            "Mud",
+            "Swamp",
+            "Farm",
+            "Plane",
+            "Heaven"
+          ]
+        },
+        {
+          "id": "position",
+          "examples": [
+            "Footstool",
+            "Door threshold",
+            "Seat",
+            "Axis relation"
+          ]
+        }
+      ]
+    },
+    "archetype": {
+      "definition": "What function does the character perform in a bounded scene?",
+      "examples": [
+        "Gardener/Sage",
+        "Witness/Observer",
+        "Guardian/Defender",
+        "Healer/Companion",
+        "Skeptic/Contrarian",
+        "Trickster/Catalyst",
+        "Wanderer/Threshold",
+        "Builder/Cultivator",
+        "Seeker/Student",
+        "Herald/Messenger",
+        "Mirror/Foil",
+        "Center/Axis"
+      ]
+    },
+    "symbolic_role": {
+      "definition": "What project-specific relation or orientation is being enacted?",
+      "examples": [
+        "Dog",
+        "Farmer",
+        "Cow",
+        "Mud Dweller",
+        "Guardian Dog",
+        "Farm Dog",
+        "Tomato",
+        "Potato",
+        "Footstool"
+      ]
+    },
+    "location_or_medium": {
+      "definition": "Where/through what medium is the role occurring?",
+      "examples": [
+        "Garden",
+        "Mud",
+        "Swamp",
+        "Farm",
+        "House",
+        "Heaven",
+        "livestream",
+        "Discord",
+        "Tree",
+        "Plane"
+      ]
+    }
+  },
+  "role_families": [
+    {
+      "id": "potato",
+      "label": "Potato",
+      "kind": "identity / growth-symbol / literal plant / community badge depending context",
+      "neutral_core": "Buried storage, resilience, nourishment, eyes/sprouting, replication and growth from soil.",
+      "healthy_forms": [
+        "Potato as cultivable identity",
+        "Rooted Potato",
+        "Potato Angel where creative canon explicitly says so"
+      ],
+      "shadow_or_failure_forms": [
+        "buried without sprouting",
+        "identity badge without growth"
+      ],
+      "transitions": [
+        "Mud → Root → Potato → Sprout → Tree → Fruit"
+      ],
+      "boundary": "A real person called a Potato is not biologically a potato; community/spiritual identity and botany stay separate."
+    },
+    {
+      "id": "tomato",
+      "label": "Tomato",
+      "kind": "neighbor-symbol / counter-symbol / literal plant",
+      "neutral_core": "A Solanaceae neighbor to potato; Great Book chapter 35 gives Tomato vitality, beauty and vulnerability rather than one fixed negative essence.",
+      "healthy_forms": [
+        "Tomato of Life / shining tomato",
+        "Garden crop / neighboring life"
+      ],
+      "shadow_or_failure_forms": [
+        "Rotten tomato = missed nourishment/decay",
+        "Tomatoes around Marty/Baal = literary-social satire",
+        "tomato-villain = temporary comic role"
+      ],
+      "transitions": [
+        "healthy fruit → neglected/rotting fruit",
+        "comic Tomato ↔ ordinary participant"
+      ],
+      "boundary": "Do not treat Tomato as a permanent enemy species. Rahu's 15 Dec 2024 tomato-villain role is a scene performance; Brink's 'Tomato Apostle' is an old-source alias; neither proves a timeless moral identity."
+    },
+    {
+      "id": "dweller",
+      "label": "Dweller",
+      "kind": "positional habitation state",
+      "neutral_core": "One who inhabits a plane, room, environment or relational field.",
+      "healthy_forms": [
+        "Garden Dweller",
+        "Root Dweller",
+        "Heaven Dweller",
+        "Door-aware Dweller"
+      ],
+      "shadow_or_failure_forms": [
+        "Mud Dweller when unresolved residue becomes home/identity"
+      ],
+      "transitions": [
+        "Dweller → Mud Dweller",
+        "Mud Dweller → source-checking → Root/doorward growth"
+      ],
+      "boundary": "Dweller is morally neutral until the inhabited field and relation are specified."
+    },
+    {
+      "id": "dog",
+      "label": "Dog",
+      "kind": "boundary / vigilance / pursuit role",
+      "neutral_core": "Tracking, signaling, loyalty, warning, following cues, guarding boundaries.",
+      "healthy_forms": [
+        "Guardian Dog",
+        "companion/watchdog",
+        "protector who accepts stopping conditions"
+      ],
+      "shadow_or_failure_forms": [
+        "Farm Dog",
+        "pack chaser",
+        "proxy-enforcement Dog"
+      ],
+      "transitions": [
+        "Dog → Guardian through evidence/proportionality",
+        "Dog → Farm Dog through pack reward/pursuit",
+        "Dog → Farmer when chasing becomes infrastructure/classification"
+      ],
+      "boundary": "Dog is a role, not a species of moral person and not a permanent label for named individuals."
+    },
+    {
+      "id": "farmer",
+      "label": "Farmer",
+      "kind": "infrastructure / cultivation-or-extraction role",
+      "neutral_core": "Defines enclosure, manages cycles, classification, persistence, access and harvest.",
+      "healthy_forms": [
+        "Gardener",
+        "steward",
+        "regenerative farmer",
+        "systems builder increasing autonomy"
+      ],
+      "shadow_or_failure_forms": [
+        "extractive Farmer",
+        "attention harvester",
+        "permanent classifier"
+      ],
+      "transitions": [
+        "Farmer → Gardener through consent/repair/exit design",
+        "Farmer → Mud Dweller when the system becomes identity/dependency"
+      ],
+      "boundary": "Farming tools and systemizing traits are not inherently sinister; outcome and relation determine valence."
+    },
+    {
+      "id": "cow",
+      "label": "Cow / calf",
+      "kind": "attention-subject / nourishment role",
+      "neutral_core": "Subject around which Farm attention and extraction may organize; also nourishment/dependence imagery.",
+      "healthy_forms": [
+        "cared-for subject",
+        "reciprocal participant"
+      ],
+      "shadow_or_failure_forms": [
+        "objectified target",
+        "reactive target locked into feedback"
+      ],
+      "boundary": "Cow is not a victim essence and must not erase a real person's agency."
+    },
+    {
+      "id": "footstool",
+      "label": "Footstool",
+      "kind": "topological lower-position / support state",
+      "neutral_core": "Lower/supporting relation beneath Seat/Throne; can also represent a small local state containing an unfound Door.",
+      "healthy_forms": [
+        "support/step in explicitly symbolic topology"
+      ],
+      "shadow_or_failure_forms": [
+        "unrecognized Door",
+        "collapsed/subordinate state"
+      ],
+      "transitions": [
+        "Footstool → recognition → Door → changed state"
+      ],
+      "boundary": "Never use Footstool as permission to degrade a real person's human worth."
+    },
+    {
+      "id": "angelic-family",
+      "label": "Angels / Potato Angels / Turbles",
+      "kind": "created-being family",
+      "neutral_core": "Creative/canonical beings with explicitly authored traits rather than role-labels assigned to ordinary people.",
+      "healthy_forms": [
+        "messenger",
+        "guardian",
+        "worker",
+        "many-eyed/wings/light where established"
+      ],
+      "shadow_or_failure_forms": [],
+      "boundary": "Created-being traits remain creative canon unless a source explicitly states metaphorical comparison to a real person."
+    },
+    {
+      "id": "animal-symbol-family",
+      "label": "Sheep / swine / serpents / hyenas / goats",
+      "kind": "symbolic animal roles",
+      "neutral_core": "Contextual project metaphors inherited from religious, literary and internet-language layers.",
+      "healthy_forms": [
+        "context dependent"
+      ],
+      "shadow_or_failure_forms": [
+        "context dependent"
+      ],
+      "boundary": "Never treat animal-label metaphors as zoological, clinical or immutable classifications of people; always retain scene/source."
+    }
+  ],
+  "archetype_vs_role_examples": [
+    {
+      "subject": "Termite",
+      "archetype": [
+        "Builder/Cultivator",
+        "Guardian/Defender",
+        "Healer/Companion"
+      ],
+      "symbolic_role": [
+        "Potato/growth adjacency in literary material"
+      ],
+      "note": "Cultivation function is more stable than any species-label."
+    },
+    {
+      "subject": "Rahu",
+      "archetype": [
+        "Mystic/Interpreter",
+        "Seeker/Student",
+        "Wanderer/Threshold"
+      ],
+      "symbolic_role": [
+        "Tomato-villain on 2024-12-15",
+        "Mud-Dweller/lost-soul imagery in 2026-03-01 story"
+      ],
+      "note": "Both symbolic roles are scene-bound; neither replaces Rahu's broader character."
+    },
+    {
+      "subject": "Matthew / @mtclassic3",
+      "archetype": [
+        "Companion",
+        "Guardian/Defender in moderation scene",
+        "Seeker/Student in theological dialogue"
+      ],
+      "symbolic_role": [],
+      "note": "Do not import Matthew-the-Potato created-being traits into the person."
+    },
+    {
+      "subject": "Mediomu007",
+      "archetype": [
+        "Seeker/Student",
+        "Builder/Cultivator through literal room-making",
+        "Companion"
+      ],
+      "symbolic_role": [],
+      "note": "Mountain/bridge narrative is project interpretation, not a species assignment."
+    },
+    {
+      "subject": "Marty",
+      "archetype": [
+        "Companion",
+        "Trickster/Catalyst",
+        "Mirror/Foil",
+        "Wanderer/Threshold"
+      ],
+      "symbolic_role": [
+        "Tomatoes are attached to his literary orbit in some Great Book strata"
+      ],
+      "note": "Do not convert 'Tomatoes' around Marty into a permanent identity for Marty or his real associates."
+    }
+  ],
+  "transition_grammar": [
+    "Mud can become Soil through Root/integration.",
+    "Dweller can become Mud Dweller when habitation hardens into identity.",
+    "Mud Dweller can move toward Root/Door through recognition and source-checking.",
+    "Dog can become Guardian Dog or Farm Dog depending evidence, stopping conditions and proxy incentives.",
+    "Farmer can become Gardener when extraction becomes regenerative stewardship.",
+    "Tomato can be healthy fruit, comic counter-symbol or rotten fruit; rot is a state, not the essence of Tomato.",
+    "Potato can remain buried, sprout, branch and fruit; Potato is developmental rather than automatically morally superior.",
+    "A person can change archetype between scenes without changing identity."
+  ],
+  "canonical_owners": {
+    "lower_role_ecology": "knowledge/world/mud-dweller-dog-footstool-role-ecology.json",
+    "dog_farmer_detail": "knowledge/world/dog-farmer-role-ecology.json",
+    "character_archetypes": "knowledge/story/character-archive-v2.json",
+    "cast": "knowledge/story/cast-book.json",
+    "animal_comparators": "knowledge/traditions/animal-role-symbol-atlas.json",
+    "tomato_literary_source": "great-book/chapters/101--chapter-35--the-tomato-of-life-lessons-from-shining-fruits-and-rotten-roots.html",
+    "beings": "knowledge/story/being-room-registry.json"
+  }
+}

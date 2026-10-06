@@ -1,0 +1,185 @@
+{
+  "id": "geography-place-state-boundary-atlas",
+  "title": "Geography Atlas — Place, Territory, State, Boundary, Network and Scale",
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "owner_room": "geography-countries",
+  "purpose": "Give the World layer a neutral geographic grammar so countries, territories, cities, regions, seas, infrastructure corridors, cultural areas and project-symbolic directions are not collapsed into one kind of place.",
+  "geographic_objects": [
+    {
+      "id": "coordinate",
+      "definition": "A point or geometry in a reference system.",
+      "examples": [
+        "latitude/longitude point",
+        "line",
+        "polygon"
+      ]
+    },
+    {
+      "id": "place",
+      "definition": "A named location whose meaning may be physical, social, historical or administrative.",
+      "examples": [
+        "city",
+        "mountain",
+        "building",
+        "battlefield",
+        "sacred site"
+      ]
+    },
+    {
+      "id": "administrative_area",
+      "definition": "A jurisdictional subdivision defined by a governing system.",
+      "examples": [
+        "municipality",
+        "province",
+        "region"
+      ]
+    },
+    {
+      "id": "state",
+      "definition": "A political/legal entity with institutions and territorial claims/status.",
+      "boundary": "Statehood, recognition, sovereignty and territorial control are related but not identical fields."
+    },
+    {
+      "id": "territory",
+      "definition": "A bounded or claimed geographic area whose governing/sovereignty status must be represented explicitly."
+    },
+    {
+      "id": "cultural_region",
+      "definition": "A spatially distributed cultural/historical field that may cross state borders.",
+      "boundary": "Cultural regions are not automatically political claims."
+    },
+    {
+      "id": "functional_region",
+      "definition": "An area defined by flows or systems rather than identity alone.",
+      "examples": [
+        "commuting zone",
+        "energy market",
+        "river basin",
+        "port hinterland"
+      ]
+    },
+    {
+      "id": "corridor",
+      "definition": "A route or chain connecting places through transport, energy, trade, migration, communication or strategic function."
+    },
+    {
+      "id": "network_geography",
+      "definition": "A distributed spatial system where topology of connections matters as much as contiguous territory.",
+      "examples": [
+        "shipping network",
+        "internet cables",
+        "air routes",
+        "diaspora network"
+      ]
+    }
+  ],
+  "scale_ladder": [
+    "site",
+    "neighborhood",
+    "municipality",
+    "subnational-region",
+    "state-or-territory",
+    "cross-border-region",
+    "continent",
+    "global-network"
+  ],
+  "boundary_model": {
+    "fields": [
+      "boundary_type",
+      "legal_status",
+      "geometry_source",
+      "effective_control_if_relevant",
+      "dispute_status_if_relevant",
+      "date_or_period",
+      "source_authority"
+    ],
+    "rule": "A map line must not silently merge legal boundary, claimed boundary, administrative boundary, ceasefire line, cultural area and project-symbolic region."
+  },
+  "place_identity_model": {
+    "fields": [
+      "canonical_name",
+      "alternate_names",
+      "language/script",
+      "feature_type",
+      "parent_geographies",
+      "coordinates_or_geometry",
+      "time_validity",
+      "source"
+    ],
+    "temporal_rule": "Names, borders, jurisdictions and status can change; place identity must be time-aware."
+  },
+  "country_room_model": {
+    "sequence": [
+      "identity",
+      "physical geography",
+      "population and settlement",
+      "institutions",
+      "economy",
+      "infrastructure",
+      "resources/energy",
+      "culture/history",
+      "cross-border flows",
+      "dependencies",
+      "current sourced snapshot"
+    ],
+    "relation_types": [
+      "borders",
+      "trades_with",
+      "connected_by_infrastructure",
+      "shares_basin_or_sea",
+      "migration_link",
+      "supply_dependency",
+      "institutional_membership",
+      "historical_predecessor_or_successor"
+    ],
+    "caution": "Country relations can describe interdependence without implying alliance, hostility, hierarchy or motive."
+  },
+  "map_geometry_types": [
+    {
+      "id": "point-ready",
+      "use": "A specific geocodable origin, headquarters, site or event location."
+    },
+    {
+      "id": "region-ready",
+      "use": "A bounded or approximate regional origin where a point would falsely imply precision."
+    },
+    {
+      "id": "route-ready",
+      "use": "A corridor, journey, migration or infrastructure chain."
+    },
+    {
+      "id": "distributed-network",
+      "use": "A formation whose meaningful geography is multiple linked nodes."
+    },
+    {
+      "id": "virtual",
+      "use": "A primarily digital origin or operating space with no singular physical point."
+    },
+    {
+      "id": "unresolved",
+      "use": "Location evidence is insufficient or contradictory."
+    }
+  ],
+  "symbolic_firewall": {
+    "rule": "North, West, East, South, Heaven, Swamp, Garden or other project directions may be overlays but do not replace ordinary coordinates, legal geography or political status.",
+    "implementation": "Store project-symbolic orientation as a separate relation/layer referencing the ordinary geographic object."
+  },
+  "research_outputs": [
+    "time-aware gazetteer record",
+    "boundary/status ledger",
+    "country/territory relational graph",
+    "functional-corridor map",
+    "origin geometry for Foundations",
+    "cross-border dependency edges",
+    "uncertainty/dispute annotations"
+  ],
+  "joins": [
+    "data/countries/index.json",
+    "data/countries-blueprint.json",
+    "foundation-room-atlas",
+    "world-systems",
+    "infrastructure-capability",
+    "provenance-evidence"
+  ]
+}

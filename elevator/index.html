@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Door / Axis Elevator — Potato of Life</title>
+<meta name="description" content="A spatial navigator for the Potato House. Stand at the Door/Axis, move between Heaven, Plane and Below, and enter each Dwelling as a local center.">
+<link rel="canonical" href="https://thepotatooflife.github.io/TimDooley/elevator/">
+<link rel="stylesheet" href="../app/site-system.css?v=20260914a">
+<script>
+try{
+  const requestedFloor=new URLSearchParams(location.search).get('level');
+  if(['heaven','plane','below'].includes(requestedFloor))document.documentElement.dataset.siteFloor=requestedFloor;
+}catch(_){}
+</script>
+<link rel="stylesheet" href="../app/site-elevator.css">
+<link rel="stylesheet" href="../app/elevator-page.css">
+</head>
+<body class="elevator-page-shell"><main class="elevator-page"><div class="elevator-wrap">
+<nav class="page-nav elevator-nav" aria-label="Elevator context"><a class="page-nav-home" href="../">Home</a><a class="page-nav-directory" href="../rooms/">Rooms</a><a href="../house/">House</a><a href="../axis/">Living Axis</a></nav>
+
+<header class="elevator-head">
+  <div>
+    <p class="eyebrow">Door · Axis · Elevator</p>
+    <h1>THE HOUSE<br>FROM THE CENTER</h1>
+    <p>Choose a floor, turn toward a Dwelling, then either open its readable page or center the spatial view there. The Elevator shows relationships; it does not replace the Rooms themselves.</p>
+  </div>
+  <div class="elevator-head-meta" aria-label="Elevator model">
+    <span><b>03</b>Heaven</span>
+    <span><b>02</b>Plane</span>
+    <span><b>01</b>Below</span>
+  </div>
+</header>
+
+<section class="elevator-console" aria-label="Elevator controls">
+  <div class="elevator-console-copy">
+    <strong id="consoleTitle">Plane / Door</strong>
+    <span id="consoleHint">Choose a floor, then choose a Dwelling. Reading links open the full page; Center Here keeps you in the spatial viewer.</span>
+  </div>
+  <div class="level-controls" id="levelControls" aria-label="Elevator stops"></div>
+</section>
+
+<section class="elevator-heaven-feature" aria-label="Featured Heaven destination">
+  <div>
+    <p class="eyebrow">Heaven · featured entrance</p>
+    <h2>Garden / Eden</h2>
+    <p>Step out of the Elevator into the cultivated Heaven field: House and Door, River, Tree of Life, Tim as Gardener, dwellers, the shadow tree, sorting, Gate and the fall toward Below.</p>
+  </div>
+  <div class="elevator-heaven-feature__actions">
+    <a href="../garden/">Enter the Garden →</a>
+    <a href="?level=heaven">Stand on the Heaven floor</a>
+  </div>
+</section>
+
+<div class="viewport-shell">
+  <section class="viewport" aria-label="Spatial Potato House navigator">
+    <div class="level-sign" id="levelSign"></div>
+    <div class="inner-badge" id="innerBadge" hidden></div>
+    <div class="scene">
+      <div class="floor-disc"></div>
+      <div class="rotunda" id="rotunda"></div>
+      <section class="object-table" id="objectTable" aria-live="polite"></section>
+      <div class="axis-car" id="axisCar"><div><b>DOOR<br>/ AXIS</b><span>global spatial center</span></div></div>
+    </div>
+  </section>
+
+  <div class="local-panel">
+    <div class="depth-crumbs" id="depthCrumbs" aria-label="Spatial breadcrumb"></div>
+    <div class="local-copy" id="localCopy"><b>Door / Axis</b><span>You are at the global center. Select a Dwelling to make it the local center.</span></div>
+    <div class="local-controls">
+      <button type="button" id="centerBtn">At Door / Axis</button>
+      <button type="button" id="rotateLeft" aria-label="Turn left">Turn left</button>
+      <button type="button" id="rotateRight" aria-label="Turn right">Turn right</button>
+    </div>
+    <div class="level-portals" id="levelPortals" aria-label="Floor landmarks"></div>
+  </div>
+</div>
+
+<details class="journey" aria-label="Journey thread">
+  <summary>Your thread through the House <span class="journey-replay-status" id="journeyCount">0 steps</span></summary>
+  <div class="journey-body">
+    <div class="journey-head"><b>Remembered route</b><div class="journey-actions">
+      <button type="button" id="journeyBack">Back through thread</button>
+      <button type="button" id="journeyReplay">Replay route</button>
+      <button type="button" id="journeyClear">Clear thread</button>
+    </div></div>
+    <div class="journey-track" id="journeyTrack"></div>
+    <div class="journey-detail" id="journeyDetail">Your path will explain itself as you move.</div>
+  </div>
+</details>
+
+<details class="text-fallback">
+  <summary>Text navigation / accessible Room list</summary>
+  <div class="text-grid" id="textGrid"></div>
+</details>
+
+<section class="elevator-reader" id="how-to-read-elevator" data-tts-longform>
+  <p class="eyebrow">What this view means</p>
+  <h2>One Axis, three floors, many local centers</h2>
+  <p class="lead">The Elevator turns the House graph into a navigable scene. Nearness means a useful project relationship, not literal physical distance.</p>
+  <div class="elevator-logic">
+    <article><b>Door / Axis</b><p>The stable global reference. Return here whenever a local Room has become too narrow a viewpoint.</p></article>
+    <article><b>Floor</b><p>Heaven, Plane and Below change the question being asked. A governed Dwelling belongs to one canonical floor.</p></article>
+    <article><b>Dwelling</b><p>A top-level Room. Centering it rearranges the nearby doors around that local context.</p></article>
+    <article><b>Nested Room</b><p>A specialist interior inside a Dwelling. Cross-Dwelling adjacency appears as a wormhole door.</p></article>
+    <article><b>Readable page</b><p>The actual public home of the subject. Door labels open those pages directly.</p></article>
+    <article><b>Journey</b><p>An optional memory of how you moved. It stays folded away until you need it.</p></article>
+  </div>
+  <div class="elevator-examples">
+    <div class="elevator-example"><div><h3>Ladder</h3><p class="q">One object, different lenses</p></div><div><p>Move between Axis, Life &amp; Body, and Religion to compare spatial, anatomical, and textual uses without flattening them into one claim.</p><a href="../axis/">Axis →</a> · <a href="../life-body/">Life &amp; Body →</a> · <a href="../religion/">Religion →</a></div></div>
+    <div class="elevator-example"><div><h3>North</h3><p class="q">The floor changes the question</p></div><div><p>North can be symbolic orientation in the upper field and literal geography in the World. The route is meaningful because the distinction remains visible.</p><a href="../north/">North →</a> · <a href="../world/">World →</a> · <a href="../below/">Below →</a></div></div>
+  </div>
+  <p class="boundary">If the spatial view ever makes the archive harder to understand, use the Room list or ordinary page links. The Elevator succeeds only when it makes navigation clearer.</p>
+</section>
+
+</div></main>
+<script src="../app/elevator-page.js" defer></script>
+<script src="../app/site-tts.js" defer></script></body></html>

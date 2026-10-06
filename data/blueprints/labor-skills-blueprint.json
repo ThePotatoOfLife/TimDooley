@@ -1,0 +1,17 @@
+{
+  "version":"1.0.0","status":"active-blueprint","purpose":"Map labor markets, occupations, skills, wages, training, migration, bargaining and employer-worker relationships.","entity":"labor_skill_system",
+  "record_schema":{
+    "identity":["labor_id","occupation_or_group","sector","geography","period"],
+    "workforce":["employment","unemployment","participation","hours","full_time_equivalent","age","education","gender_when aggregate and relevant","migration_status_when public aggregate"],
+    "occupations":["occupation_code","tasks","skills","qualification","licensing","automation_exposure","shortage_or_surplus","career_path"],
+    "wages":["median_wage","mean_wage","hourly_wage","annual_income","wage_distribution","minimum_wage","collective_agreement","real_wage","price_reference"],
+    "employers":["company","public_body","sector","firm_size","vacancies","turnover","training","working_conditions","productivity"],
+    "institutions":["union","employer_association","training_provider","university","vocational_school","labor_ministry","inspection_body","employment_service"],
+    "mobility":["migration","commuting","job_switching","occupation_switching","promotion","retirement","brain_drain","brain_gain"],
+    "skills_system":["formal_qualification","informal_skill","apprenticeship","credential","recognition","reskilling","upskilling","skills_forecast","training_capacity"],
+    "relations":["worker-employed-by","worker-trained-by","union-represents-worker","employer-hires-occupation","occupation-supplies-sector","worker-migrates-to-place"],
+    "evidence":["labor_statistics","vacancy_data","collective_agreement","employer_report","education_statistics","survey","administrative_data","research","retrieved_at","confidence"]
+  },
+  "derived_measures":["labor_participation","unemployment_rate","real_wage_growth","vacancy_rate","skills_shortage_index","productivity_per_worker","training_rate","occupational_concentration"],
+  "integrity_rules":["Occupation codes and classifications must be retained.","Nominal and real wages are different observations.","Average wage can conceal distributional changes.","Vacancies are not equivalent to labor shortages.","Migration statistics require a defined population and period.","Individual sensitive employment information is never inferred or stored unnecessarily."]
+}

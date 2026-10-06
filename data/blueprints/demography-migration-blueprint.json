@@ -1,0 +1,16 @@
+{
+  "version":"1.0.0","status":"active-blueprint","purpose":"Map population structure, fertility, mortality, migration, urbanization, households and population change across time and geography.","entity":"demographic_system",
+  "record_schema":{
+    "identity":["demography_id","population","geography","period","estimation_status"],
+    "population_structure":["population_total","age","sex","households","dependency_ratio","cohort","urban_rural","regional_distribution"],
+    "vital_events":["births","fertility","deaths","mortality","life_expectancy","infant_mortality","cause_of_death","marriage","divorce"],
+    "migration":["immigration","emigration","net_migration","origin","destination","citizenship","birthplace","refugees","asylum","internal_migration","return_migration"],
+    "settlement":["urbanization","cities","density","housing","commuting","regional_growth","depopulation","rural_change"],
+    "projections":["baseline","assumptions","fertility_assumption","mortality_assumption","migration_assumption","scenario","projection_year","uncertainty"],
+    "drivers":["labor_market","housing","education","conflict","climate","family_policy","health","income","transport","border_policy"],
+    "relationships":["population-lives-in-place","migrant-moves-from-place-to-place","country-receives-migrants","country-sends-migrants","cohort-enters-labor-market","population-depends-on-service"],
+    "evidence":["census","population_register","vital_statistics","migration_statistics","survey","administrative_data","projection_model","international_database","retrieved_at","confidence"]
+  },
+  "derived_measures":["natural_increase","net_migration_rate","dependency_ratio","median_age","urbanization_rate","population_density","cohort_growth","population_projection_change"],
+  "integrity_rules":["Population estimates require a reference date or period.","Citizenship, birthplace and migration status are distinct dimensions.","Net migration is not the same as gross flows.","Projections are conditional scenarios, not observations.","Historical boundary changes require harmonization notes.","Aggregate demographic data must not be used to infer private individual identities."]
+}

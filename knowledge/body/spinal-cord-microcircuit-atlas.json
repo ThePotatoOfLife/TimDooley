@@ -1,0 +1,285 @@
+{
+  "id": "spinal-cord-microcircuit-atlas",
+  "version": "1.0.0",
+  "updated": "2026-09-20",
+  "title": "Spinal Cord Microcircuit Atlas — Laminae, Columns, Tracts and Segmental Loops",
+  "status": "specialist spinal neurobiology owner",
+  "purpose": "Fill the biological interior of the Ladder. Separate vertebral rooms from the spinal cord's own gray-matter laminae, motor columns, autonomic columns, ascending tracts, descending tracts, local reflex circuits and central-pattern networks.",
+  "epistemic_rule": "Spinal-cord organization is segmented neural tissue, not a chakra ladder. Project mappings are relational comparisons only.",
+  "gray_matter_rooms": [
+    {
+      "id": "lamina-I",
+      "name": "Rexed I — Marginal Layer",
+      "location": "superficial dorsal horn",
+      "roles": [
+        "nociceptive/thermal processing",
+        "projection neurons receiving small-diameter afferent input"
+      ],
+      "project": "outer warning/report edge",
+      "boundary": "Pain is distributed; lamina I is not a pain center."
+    },
+    {
+      "id": "lamina-II",
+      "name": "Rexed II — Substantia Gelatinosa",
+      "location": "superficial dorsal horn",
+      "roles": [
+        "dense local interneuron networks",
+        "modulation of nociceptive and somatosensory input"
+      ],
+      "project": "sensory sieve / local gate",
+      "boundary": "Gate-control metaphors are useful but simplified."
+    },
+    {
+      "id": "lamina-III-IV",
+      "name": "Rexed III–IV — Nucleus Proprius",
+      "location": "deeper dorsal horn",
+      "roles": [
+        "mechanosensory/tactile processing",
+        "local sensory integration"
+      ],
+      "project": "touch/body-report processing room",
+      "boundary": "Inputs and cell classes overlap laminar borders."
+    },
+    {
+      "id": "lamina-V",
+      "name": "Rexed V — Dorsal-Horn Neck",
+      "location": "deep dorsal horn",
+      "roles": [
+        "wide-dynamic-range nociceptive/somatic integration",
+        "projection pathways"
+      ],
+      "project": "multimodal warning junction",
+      "boundary": "Not one pain-intensity meter."
+    },
+    {
+      "id": "lamina-VI",
+      "name": "Rexed VI — Dorsal-Horn Base",
+      "location": "deep dorsal horn, especially enlargements",
+      "roles": [
+        "proprioceptive input",
+        "segmental motor/sensory integration"
+      ],
+      "project": "body-position report room",
+      "boundary": "Prominence varies by spinal level."
+    },
+    {
+      "id": "lamina-VII",
+      "name": "Rexed VII — Intermediate Zone",
+      "location": "intermediate gray matter",
+      "roles": [
+        "proprioceptive integration",
+        "autonomic neurons",
+        "premotor interneurons",
+        "Clarke's column in relevant levels"
+      ],
+      "project": "coordination / autonomic middle court",
+      "boundary": "Very heterogeneous; not one functional center."
+    },
+    {
+      "id": "clarke",
+      "name": "Clarke's Column",
+      "location": "medial lamina VII, roughly C8/T1–L2/L3 segments",
+      "roles": [
+        "unconscious proprioceptive relay to cerebellum via dorsal spinocerebellar tract"
+      ],
+      "project": "body-position road to correction system",
+      "boundary": "Segmental limits vary by atlas/specimen."
+    },
+    {
+      "id": "iml",
+      "name": "Intermediolateral Cell Column",
+      "location": "lateral horn/intermediate zone, mainly T1–L2/L3",
+      "roles": [
+        "sympathetic preganglionic output"
+      ],
+      "project": "autonomic descent room",
+      "boundary": "Not a side-channel chakra."
+    },
+    {
+      "id": "sacral-parasymp",
+      "name": "Sacral Parasympathetic Nucleus",
+      "location": "S2–S4 intermediate gray",
+      "roles": [
+        "pelvic parasympathetic preganglionic control"
+      ],
+      "project": "pelvic autonomic room",
+      "boundary": "Pelvic autonomic control is distributed with peripheral ganglia/plexuses."
+    },
+    {
+      "id": "lamina-VIII",
+      "name": "Rexed VIII — Ventromedial Interneuronal Room",
+      "location": "ventral horn/intermediate ventromedial gray",
+      "roles": [
+        "descending motor integration",
+        "commissural/intersegmental motor coordination"
+      ],
+      "project": "movement-coordination gate",
+      "boundary": "Not an isolated locomotion center."
+    },
+    {
+      "id": "lamina-IX",
+      "name": "Rexed IX — Motor Neuron Pools",
+      "location": "ventral horn clusters",
+      "roles": [
+        "alpha/gamma motor neurons controlling skeletal muscle"
+      ],
+      "project": "final common motor road",
+      "boundary": "Motor pools are muscle-specific and somatotopically organized."
+    },
+    {
+      "id": "lamina-X",
+      "name": "Rexed X — Central Canal Commissural Room",
+      "location": "gray matter surrounding central canal",
+      "roles": [
+        "commissural/local integration",
+        "visceral/nociceptive processing contributions"
+      ],
+      "project": "midline crossing / inner canal neighbor",
+      "boundary": "Adult central canal patency is variable and often reduced."
+    }
+  ],
+  "white_matter_roads": [
+    {
+      "id": "dorsal-columns",
+      "name": "Dorsal Columns",
+      "route": "primary afferents ascend ipsilaterally to gracile/cuneate nuclei",
+      "roles": [
+        "fine touch",
+        "vibration",
+        "conscious proprioception"
+      ],
+      "project": "high-fidelity ascent road"
+    },
+    {
+      "id": "anterolateral",
+      "name": "Anterolateral System",
+      "route": "spinal projection neurons cross and ascend toward brainstem/thalamic targets",
+      "roles": [
+        "pain",
+        "temperature",
+        "crude touch and related affective/arousal dimensions"
+      ],
+      "project": "warning/ascent road"
+    },
+    {
+      "id": "spinocerebellar",
+      "name": "Spinocerebellar Roads",
+      "route": "spinal/proprioceptive systems → cerebellum",
+      "roles": [
+        "unconscious proprioception",
+        "online movement-state feedback"
+      ],
+      "project": "correction-return road"
+    },
+    {
+      "id": "corticospinal",
+      "name": "Corticospinal Tract",
+      "route": "motor cortex → brainstem → spinal interneurons/motor pools",
+      "roles": [
+        "skilled voluntary movement",
+        "fractionated distal control"
+      ],
+      "project": "descending action road"
+    },
+    {
+      "id": "reticulospinal",
+      "name": "Reticulospinal Systems",
+      "route": "pontomedullary reticular formation → spinal cord",
+      "roles": [
+        "posture",
+        "locomotor support",
+        "muscle tone",
+        "autonomic-motor coordination"
+      ],
+      "project": "state-to-action descent"
+    },
+    {
+      "id": "vestibulospinal",
+      "name": "Vestibulospinal Systems",
+      "route": "vestibular nuclei → spinal cord",
+      "roles": [
+        "posture",
+        "head/body stabilization",
+        "extensor tone"
+      ],
+      "project": "orientation-to-axis road"
+    },
+    {
+      "id": "rubrospinal",
+      "name": "Rubrospinal Neighbor",
+      "route": "red nucleus → spinal cord, relatively reduced role in humans",
+      "roles": [
+        "upper-limb motor control contributions"
+      ],
+      "project": "secondary motor descent",
+      "boundary": "Less dominant in humans than many nonhuman mammals."
+    },
+    {
+      "id": "propriospinal",
+      "name": "Propriospinal Network",
+      "route": "intersegmental fibers within cord",
+      "roles": [
+        "coordination across spinal levels",
+        "sensorimotor integration"
+      ],
+      "project": "internal Ladder communication"
+    }
+  ],
+  "segmental_loops": [
+    {
+      "id": "stretch-reflex",
+      "name": "Stretch Reflex Loop",
+      "route": "muscle spindle Ia afferent → spinal circuitry → alpha motor neuron",
+      "function": "rapid length-related correction",
+      "project": "local correction without waiting for cortex"
+    },
+    {
+      "id": "withdrawal",
+      "name": "Withdrawal / Flexor Reflex",
+      "route": "nociceptive input → interneuronal network → coordinated flexor/extensor response",
+      "function": "protective movement",
+      "project": "local defensive gate"
+    },
+    {
+      "id": "crossed-extensor",
+      "name": "Crossed-Extensor Loop",
+      "route": "interneurons cross midline to stabilize opposite limb",
+      "function": "bilateral support during withdrawal",
+      "project": "cross-axis compensation"
+    },
+    {
+      "id": "central-pattern",
+      "name": "Locomotor Central-Pattern Networks",
+      "route": "distributed spinal interneuronal networks modulated by brainstem/sensory feedback",
+      "function": "rhythmic stepping-related coordination",
+      "project": "local rhythm / repeated Ladder cycle",
+      "boundary": "Human locomotor circuitry is distributed and less directly accessible experimentally than animal models."
+    }
+  ],
+  "important_truths": [
+    "The spinal cord itself has layered gray-matter rooms that do not correspond one-to-one with vertebrae.",
+    "A single vertebral room can contain cord segments with different segment names, especially inferiorly.",
+    "The cord is not only a cable: substantial preprocessing, gating, reflex control, autonomic output and rhythmic coordination occur locally.",
+    "Ascending sensory information is transformed repeatedly before cortex; descending motor commands are likewise shaped by brainstem and spinal circuits.",
+    "Autonomic output is anatomically split: sympathetic preganglionic neurons are mainly thoracolumbar; pelvic parasympathetic neurons are sacral."
+  ],
+  "sources": [
+    {
+      "topic": "human spinal cord tracts and Rexed laminae review",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36099279/"
+    },
+    {
+      "topic": "dorsal horn laminae organization",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7148279/"
+    },
+    {
+      "topic": "sensory neurons/touch and Rexed laminae",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3811145/"
+    }
+  ],
+  "connections": [
+    "knowledge/body/vertebral-33-room-atlas.json",
+    "knowledge/body/spine-csf-levels-axis-atlas.json",
+    "knowledge/body/axis-orientation-autonomic-interface-atlas.json"
+  ]
+}

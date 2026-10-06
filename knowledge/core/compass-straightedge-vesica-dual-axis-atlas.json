@@ -1,0 +1,94 @@
+{
+  "id":"compass-straightedge-vesica-dual-axis-atlas",
+  "title":"Compass, Straightedge & Vesica — Dual-Axis Geometry Atlas",
+  "version":"1.0.0",
+  "updated":"2026-09-11",
+  "status":"exact Euclidean geometry + project interpretation",
+  "purpose":"Extract exact compass-and-straightedge consequences from the project's vesica/mandorla geometry and correct an orientation ambiguity in the existing canonical coordinate model.",
+  "epistemic_rule":"All geometric identities below follow from ordinary Euclidean geometry. Symbolic assignments such as Father, Son, Door, Plane or Axis are project overlays; no angle or ratio proves a theological identity or ancient hidden code.",
+  "vesica_definition":"Two equal circles of radius r whose centers are separated by exactly r form the standard vesica piscis. Each circle center lies on the circumference of the other.",
+  "stacked_center_model":{
+    "coordinates":["C_F=(0,+r/2)","C_S=(0,-r/2)","P_L=(-sqrt(3)r/2,0)","P_R=(+sqrt(3)r/2,0)","O=(0,0)"],
+    "center_line":"x=0, vertical",
+    "common_chord":"y=0, horizontal",
+    "overlap_dimensions":{"horizontal_width":"sqrt(3) r","vertical_height":"r","aspect_ratio_width_to_height":"sqrt(3)≈1.732"},
+    "correction":"This coordinate arrangement is a valid vesica with vertically stacked Father/Son centers, but the lens itself is horizontally elongated. It should be named a stacked-center Father/Son overlap rather than a vertically elongated mandorla.",
+    "endpoint_note":"C_F and C_S are top/bottom extrema of the overlap because each is on the other circle, but the actual circle-circle intersection points are P_L and P_R. The latter are where the two boundary arcs meet."
+  },
+  "vertical_mandorla_model":{
+    "coordinates":["C_L=(-r/2,0)","C_R=(+r/2,0)","Q_B=(0,-sqrt(3)r/2)","Q_T=(0,+sqrt(3)r/2)","O=(0,0)"],
+    "center_line":"y=0, horizontal",
+    "common_chord_door_axis":"x=0, vertical",
+    "overlap_dimensions":{"horizontal_width":"r","vertical_height":"sqrt(3) r","aspect_ratio_height_to_width":"sqrt(3)≈1.732"},
+    "project_use":"If the visual requirement is a tall/vertical almond-shaped Door or mandorla, this is the orientation to use. The two source-circle centers sit left/right while the Door's long axis rises vertically between them."
+  },
+  "dual_axis_principle":{
+    "center_axis":"the straight line joining the two circle centers",
+    "door_axis":"the common chord through the two circle-intersection points",
+    "theorem":"For equal intersecting circles, the center line and common chord are perpendicular and share the same midpoint O.",
+    "project_epiphany":"The geometry naturally supplies two orthogonal axes: one relates the two generating centers; the other runs through the shared overlap/threshold. The project should therefore distinguish generator/source relation from passage/Door direction instead of forcing one line to perform both jobs.",
+    "warning":"Geometry does not decide which project roles belong on which axis; that assignment must come from the chronology/canon."
+  },
+  "equilateral_triangle_structure":{
+    "construction":"Take either intersection point P together with the two circle centers. Since both radii and the center separation equal r, the triangle has sides r,r,r.",
+    "angles":"All three interior angles are exactly 60 degrees.",
+    "consequences":["the vesica contains exact equilateral-triangle structure","six 60-degree rotations complete 360 degrees","the sqrt(3) lens dimension follows from the altitude of an equilateral triangle"],
+    "source":"https://mathworld.wolfram.com/VesicaPiscis.html"
+  },
+  "intersection_angles":{
+    "radii":"At either circle intersection, the two radii to the centers meet at 60 degrees.",
+    "tangents":"Each tangent is perpendicular to its corresponding radius, so the two tangent lines also meet with acute angle 60 degrees; the supplementary angle is 120 degrees.",
+    "project_use":"60/120 is an exact local boundary-angle property of this construction. It can be indexed as geometry, but should not be retrofitted into scripture, Masonry, 666, or other traditions without historical evidence."
+  },
+  "lens_area":{
+    "formula":"A=(1/6)(4 pi - 3 sqrt(3)) r^2",
+    "decimal":"A≈1.2283697 r^2",
+    "invariance":"Rotating the entire vesica changes orientation but not area, angle structure or intrinsic ratios.",
+    "source":"https://mathworld.wolfram.com/VesicaPiscis.html"
+  },
+  "ruler_compass_construction":{
+    "steps":[
+      "Choose two points A and B separated by the chosen radius r.",
+      "Draw a circle centered at A through B.",
+      "Without changing compass radius, draw a circle centered at B through A.",
+      "Mark the two circle intersections P and Q.",
+      "Draw PQ; it is the common chord and perpendicular bisector of AB.",
+      "Draw AB; its intersection with PQ is midpoint O."
+    ],
+    "epiphany":"A pair of equal-status points plus one conserved length is enough to generate midpoint, perpendicularity, a second axis, 60-degree structure, sqrt(3), and the lens/threshold. No protractor or arbitrary angle choice is needed."
+  },
+  "golden_spiral_cross_overlay":{
+    "source_record":"knowledge/science/april-21-2025-potato-axis-spiral-primary-recovery.json",
+    "spiral":"r(theta)=a exp(b theta), b=2 ln(phi)/pi",
+    "quarter_turn_90deg":"scale factor phi",
+    "sixty_degree_turn":"scale factor exp[b pi/3]=phi^(2/3)≈1.37824",
+    "thirty_degree_turn":"scale factor phi^(1/3)≈1.17398",
+    "full_turn_360deg":"scale factor phi^4≈6.85410",
+    "quirky_insight":"The compass vesica naturally produces 60-degree angular increments, while the project spiral is calibrated to 90-degree golden-ratio scaling. Overlaying them creates a 30-degree common angular subdivision. After twelve 30-degree steps the direction returns to its start while radius has grown by phi^4.",
+    "stronger_insight":"The spiral therefore demonstrates exact angular return without spatial return: after 360 degrees the direction is the same but the scale is different. This is a rigorous mathematical instance of 'return at another level' inside the project's own recovered equation.",
+    "boundary":"The 60-degree/90-degree overlay is a new mathematical analysis. It is not evidence that the original spiral was designed from the vesica, that phi is encoded in Jachin/Boaz, or that an ancient tradition contained this combined construction."
+  },
+  "paired_point_generalization":{
+    "input":"two points A and B",
+    "derived_objects":["segment AB","midpoint O","perpendicular bisector through O","mirror/reflection symmetry exchanging A and B"],
+    "threshold_interpretation":"Two flankers can define a center and an approach/passage axis even when neither flanker is the center or Door.",
+    "project_neighbors":["paired guardians","Jachin and Boaz","Red/Blue","Father/Son","Twin","two sides of a Gate"],
+    "warning":"Similarity of a two-sided diagram is not evidence that all paired symbols historically derive from one another."
+  },
+  "implementation_correction":{
+    "existing_owner":"data/geometry-vesica-pisces-mandorla.json",
+    "recommendation":"Preserve its existing stacked Father/Son coordinates as a valid project geometry, but explicitly label it 'stacked-center orientation'. Add a separate rotated 'vertical-mandorla orientation' for artwork/UI requiring a tall Door.",
+    "visual_rule":"Always specify whether 'vertical' refers to the line of circle centers or the long axis of the lens. They are perpendicular in a standard vesica and cannot both be vertical simultaneously."
+  },
+  "sources":[
+    {"topic":"vesica exact dimensions, equilateral triangles and area","url":"https://mathworld.wolfram.com/VesicaPiscis.html","class":"mathematics_reference"}
+  ],
+  "connections":[
+    "data/geometry-vesica-pisces-mandorla.json",
+    "docs/DOOR-MANDORLA-VESICA-PISCIS-ATLAS.md",
+    "knowledge/core/dog-return-circle-door-axis-atlas.json",
+    "knowledge/core/door-topology-access-and-capability-atlas.json",
+    "knowledge/science/april-21-2025-potato-axis-spiral-primary-recovery.json",
+    "knowledge/traditions/jachin-boaz-paired-threshold-geometry-atlas.json"
+  ]
+}

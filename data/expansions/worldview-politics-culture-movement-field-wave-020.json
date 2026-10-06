@@ -1,0 +1,122 @@
+{
+  "id":"wave-020-worldview-politics-culture-movement-field",
+  "version":"1.0.0",
+  "updated":"2026-09-07",
+  "purpose":"Create a reusable multi-layer field model for religions, political ideologies, cultures, subcultures and movements. The goal is to make belief, population, geography, institutions, practice, material infrastructure and relationships queryable without collapsing unlike things into one category.",
+  "core_principle":"Every mapped phenomenon gets multiple layers rather than one label: identity, ideas, texts, practices, institutions, people, population, geography, history, material infrastructure, power, networks, and change over time.",
+  "layer_stack":[
+    {"level":0,"name":"existence","question":"What is the thing?","examples":["religion","denomination","ideology","party","nation","movement","subculture"]},
+    {"level":1,"name":"identity","question":"Who identifies with it?","fields":["self_name","aliases","membership_definition","boundary","insider/outsider"]},
+    {"level":2,"name":"ideas","question":"What does it say is true, good, valuable or desirable?","fields":["beliefs","values","worldview","norms","goals","taboos","cosmology","political_program"]},
+    {"level":3,"name":"sources","question":"What texts, thinkers, events or authorities generate its ideas?","fields":["scriptures","creeds","manifestos","constitutions","founders","philosophers","historical_events","oral_traditions"]},
+    {"level":4,"name":"interpretation","question":"How are the sources interpreted?","fields":["schools","commentaries","confessions","jurisprudence","doctrinal_disputes","revision"]},
+    {"level":5,"name":"practice","question":"What do adherents actually do?","fields":["worship","ritual","voting","protest","dress","diet","festivals","speech","community_practice","daily_life"]},
+    {"level":6,"name":"organization","question":"How does it organize people?","fields":["church","party","association","network","leader","office","chapter","local_group","institution"]},
+    {"level":7,"name":"population","question":"How many people belong, identify, participate or sympathize?","fields":["self_identification","active_members","registered_members","attendance","supporters","voters","survey_measure","estimate_date"]},
+    {"level":8,"name":"demography","question":"Who are the people statistically?","fields":["age","sex","education","income","occupation","fertility","migration","urban/rural","generation"]},
+    {"level":9,"name":"geography","question":"Where are they?","fields":["country","region","city","neighborhood-scale only when public/aggregated","diaspora","majority/minority","migration_route"]},
+    {"level":10,"name":"institutions","question":"What durable institutions exist?","fields":["schools","universities","hospitals","charities","media","publishers","foundations","businesses","property","archives"]},
+    {"level":11,"name":"material","question":"What physical and economic systems support it?","fields":["land","buildings","money","employment","donations","taxation","procurement","supply_chain","technology"]},
+    {"level":12,"name":"power","question":"What authority or influence does it possess?","fields":["legal_status","political_representation","state_relationship","voting_power","economic_power","cultural_influence","coercive_power"]},
+    {"level":13,"name":"network","question":"What does it connect to?","fields":["allies","rivals","coalitions","international_bodies","media","platforms","diaspora","funders","opponents"]},
+    {"level":14,"name":"change","question":"How does it evolve?","fields":["birth","split","conversion","reform","radicalization","moderation","migration","decline","revival","merger","dissolution"]},
+    {"level":15,"name":"evidence","question":"How do we know?","fields":["primary_source","survey","census","archive","court_record","academic_study","journalism","self_report","estimate","confidence"]}
+  ],
+  "religion_field":{
+    "hierarchy":"religious_family → tradition → denomination/school → institution → congregation/community → person",
+    "belief_layers":["deity/conception of ultimate reality","creation/cosmos","human nature","problem/evil/suffering","salvation/liberation","ethics","ritual","afterlife","time/end","community","authority"],
+    "god_model":"Record whether a tradition is monotheistic, polytheistic, henotheistic, non-theistic, panentheistic, animist, ancestor-centered, philosophical or mixed; do not force traditions into Western categories when inappropriate.",
+    "scripture_model":"Record canon, sacred texts, oral traditions, commentary and authority separately.",
+    "population_model":"Keep global affiliation, country affiliation, active membership, attendance and doctrinal adherence separate.",
+    "geographic_model":"country → region → city/settlement → institution, using aggregated public geography rather than private addresses.",
+    "country_join":"religion → country → population estimate → percentage → denomination/tradition → age/gender/education where available → migration → institution → political/legal context"
+  },
+  "religion_universe":{
+    "major_global_families":["Christianity","Islam","Hindu traditions","Buddhist traditions","Judaism","Sikhism","Jainism","Baháʼí Faith","Daoist traditions","Shinto","Zoroastrian traditions","African traditional religions","Indigenous religions","folk religions","new religious movements","religiously unaffiliated/atheist/agnostic/nonreligious worldviews"],
+    "classification_rule":"These are research families, not claims that all members share one theology. Internal diversity must be carved before comparison.",
+    "demographic_anchor":"Pew's 2025 global landscape uses seven broad categories and draws on more than 2,700 censuses, surveys and registers across 201 countries and territories. Its categories are useful for population baselines but too coarse for denominational theology."
+  },
+  "politics_field":{
+    "principle":"Politics should be mapped as a multidimensional field, not a single left-right line.",
+    "dimensions":[
+      {"id":"economic","negative":"more state direction/redistribution","positive":"more market/property autonomy","warning":"economic left/right is only one axis"},
+      {"id":"social-cultural","negative":"progressive/liberal social change","positive":"traditional/conservative social order","warning":"varies by issue and culture"},
+      {"id":"state-authority","negative":"limited/coercive-state skepticism","positive":"stronger state authority/order","warning":"authoritarianism can coexist with left or right economics"},
+      {"id":"liberty","negative":"collective/security priorities","positive":"individual civil-liberty priorities","warning":"liberty has multiple forms"},
+      {"id":"internationalism","negative":"national sovereignty/territorial priority","positive":"international integration/cooperation","warning":"not identical to globalism"},
+      {"id":"institutionalism","negative":"anti-establishment/system distrust","positive":"institutional continuity/technocracy","warning":"anti-establishment movements can be ideologically diverse"},
+      {"id":"ecology","negative":"production/abundance priority","positive":"ecological limits/conservation priority","warning":"green politics can be left, liberal, conservative or communitarian"},
+      {"id":"religion-state","negative":"secular separation","positive":"greater religious influence on public order","warning":"specific church-state models differ"},
+      {"id":"democracy","negative":"direct/plebiscitary emphasis","positive":"representative/constitutional intermediary emphasis","warning":"both can be democratic; authoritarianism is a separate concern"}
+    ],
+    "ideology_layers":["philosophical roots","core values","view of human nature","view of state","economic model","social order","foreign policy","institutional model","policy program","movement identity","historical practice","current adaptation"],
+    "political_families":["liberalism","conservatism","social democracy","democratic socialism","socialism","communism","libertarianism","anarchism","Christian democracy","national conservatism","nationalism","ethnonationalism","green/ecological politics","agrarianism","populism","fascism","monarchism","republicanism","technocracy","communitarianism","centrism","regionalism/separatism","anti-establishment movements"],
+    "classification_rule":"A party can combine positions from several families. Map its platform, leadership, voters, institutions and historical record separately from the abstract ideology label.",
+    "party_model":"ideology → manifesto → organization → candidates/leaders → membership → voters → constituencies → funding → media → policy → government action → outcomes"
+  },
+  "culture_field":{
+    "principle":"Culture is not a single ideology. It is a layered system of meaning, practice, memory, production and social belonging.",
+    "layers":["language","religion","family","kinship","food","dress","music","art","literature","architecture","ritual","festivals","sport","work","education","humor","sexual/family norms","death/burial","political memory","national symbols","media","digital culture"],
+    "transmission":"family → school → religious institution → peer group → workplace → media → platform → state → diaspora",
+    "change":"migration → intermarriage → technology → economic change → political conflict → media exposure → generational replacement → cultural hybridization"
+  },
+  "subculture_field":{
+    "definition":"A subculture is a socially recognizable pattern within a larger society that has distinctive styles, practices, language, values or communities.",
+    "dimensions":["style","language/slang","music","media","platform","place","age","occupation","hobby","politics","religion","sexual/gender identity","ritual","community norms","boundary markers"],
+    "examples_for_research":["punk","metal","hip-hop","goth","skate","gaming","maker","academic","open-source","car culture","football supporter culture","cosplay","anime/manga communities","fandoms","religious youth cultures","digital-native communities"],
+    "rule":"Do not infer political ideology from subcultural aesthetics alone. A subculture can contain internally opposed political and religious positions."
+  },
+  "movement_field":{
+    "movement_types":["religious","political","social","labor","civil-rights","environmental","nationalist","anti-war","reform","revolutionary","artistic","digital","scientific","consumer","local-community"],
+    "life_cycle":"condition → grievance/vision → framing → founders → recruitment → organization → symbols → communication → mobilization → institutionalization → fragmentation → decline/revival",
+    "movement_graph":"movement → people → ideas → organizations → places → events → media → institutions → policy/cultural effect",
+    "event_types":["founding","protest","election","strike","publication","conference","split","merger","ban","court_case","policy_change","violent_event","peaceful_mass_action","migration","platform_change"]
+  },
+  "spirit_matter_bridge":{
+    "purpose":"Provide a project-level bridge between meaning and material conditions without claiming metaphysical categories are scientific measurements.",
+    "spirit_side":["belief","meaning","value","identity","ritual","memory","hope","fear","sacredness","ideology","narrative"],
+    "matter_side":["people","population","land","buildings","money","food","energy","technology","labor","institutions","borders","infrastructure"],
+    "bridge_edges":["belief-influences-practice","practice-produces-institution","institution-controls-resource","resource-supports-practice","migration-transmits-belief","law-constrains-practice","technology-amplifies-narrative","economic-change-alters-community","community-reproduces-identity"],
+    "epistemic_warning":"These are social-science relational categories and project metaphors, not a scientific claim that spirit and matter are independently measurable layers of reality."
+  },
+  "map_model":{
+    "node":"person/group/institution/place/text/event/object/idea",
+    "edge":"believes, practices, belongs-to, lives-in, governs, votes-for, funds, teaches, publishes, opposes, allies-with, migrates-to, converts-to, splits-from, owns, regulates, depends-on, influences, is-influenced-by",
+    "time":"Every important relationship should support valid_from, valid_to, source_date, last_verified and evidence_status.",
+    "geography":"Country and region first; city-level public aggregation where useful; no private residential targeting.",
+    "confidence":"primary-record, census, survey, official-statistic, academic, reputable-reporting, self-description, community-estimate, allegation, unverified"
+  },
+  "country_religion_table_target":{
+    "columns":["country","population_year","religion_family","tradition","denomination","estimated_people","share_percent","source","measurement_type","year","age_profile","urbanization","migration","majority_or_minority","institutional_presence","legal_status","confidence"],
+    "goal":"Build a country-by-country religious field where the available evidence supports it, beginning with broad population baselines and then progressively carving denominational detail."
+  },
+  "country_politics_table_target":{
+    "columns":["country","party_or_movement","ideological_family","economic_axis","social_axis","authority_axis","liberty_axis","international_axis","ecology_axis","religion_state_axis","vote_share","seats","membership_estimate","government_role","platform_date","source","confidence"],
+    "goal":"Turn political ideology into a measurable relational field while keeping party-specific evidence separate from abstract ideological theory."
+  },
+  "research_sequence":[
+    "1. Build reusable schemas before filling millions of records.",
+    "2. Complete Christianity at text/canon/denomination/belief/practice/population/geography/institution levels.",
+    "3. Replicate the same architecture for Islam, Hindu traditions, Buddhism, Judaism, Sikhism, Jainism, Baháʼí, Daoist/Shinto traditions, indigenous/folk religions and nonreligious worldviews.",
+    "4. Build country religion composition using census/survey datasets as the demographic spine.",
+    "5. Build political ideology as a multidimensional field rather than left-right alone.",
+    "6. Add parties, movements and historical political organizations as separate entities linked to ideology.",
+    "7. Build culture and subculture as transmission networks rather than fixed labels.",
+    "8. Add events, migrations, media and institutions to explain change over time.",
+    "9. Couple all layers through country, place, institution, person/group, event and time relationships.",
+    "10. Expose the graph spatially only after evidence-bearing relationships exist."
+  ],
+  "integrity_rules":[
+    "Never treat affiliation as belief intensity.",
+    "Never treat follower count as membership without qualification.",
+    "Never treat party label as complete ideology.",
+    "Never treat culture as ethnicity or nationality.",
+    "Never infer private beliefs from public association alone.",
+    "Never infer extremism from aesthetic or religious identity alone.",
+    "Never turn disputed demographic estimates into exact counts.",
+    "Keep historical, empirical, interpretive and project-symbolic edges visibly distinct.",
+    "Preserve time: a group can change ideology, population, territory and institutional status.",
+    "Use country-level aggregation for sensitive populations and avoid private-person mapping."
+  ],
+  "external_demography_anchor":"Pew Research Center's 2025 dataset covers seven broad religious categories for 201 countries and territories and is based on more than 2,700 data sources; it is an appropriate global demographic backbone while this repository supplies the deeper denominational and doctrinal layers."
+}

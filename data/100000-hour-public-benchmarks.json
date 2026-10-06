@@ -1,0 +1,83 @@
+{
+  "id": "100000-hour-public-benchmarks",
+  "version": "1.0.0",
+  "updated": "2026-09-20",
+  "purpose": "Give the 100,000-hour page public scale comparators without confusing broadcaster-hours, viewer-hours, uninterrupted-stream records or the project's broader public-presence definition.",
+  "comparison_rule": "These are benchmark examples, not a complete global ranking. Tim's project total spans a broader claimed public-presence continuum and remains subject to reconstruction; third-party streamer figures are platform/channel-specific. Do not use the table to claim a certified world record.",
+  "metrics": {
+    "broadcaster_hours": "Time the broadcaster/channel itself was live or publicly broadcasting.",
+    "viewer_hours": "Aggregate audience time: one hour watched by 1,000 viewers equals 1,000 viewer-hours.",
+    "uninterrupted_record": "Duration of one continuous live-stream event.",
+    "unique_reach": "Number of distinct people reached; usually unavailable across a creator's full multi-platform lifetime.",
+    "archive_footprint": "Searchable recordings, posts, clips and downstream copies; not equivalent to live duration."
+  },
+  "benchmark_channels": [
+    {
+      "name": "summit1g",
+      "platform": "Twitch",
+      "hours_streamed": 39818,
+      "source": "SullyGnome long-term stats",
+      "url": "https://sullygnome.com/channel/summit1g/longtermstats",
+      "retrieved": "2026-09-20"
+    },
+    {
+      "name": "CohhCarnage",
+      "platform": "Twitch",
+      "hours_streamed": 28581,
+      "source": "SullyGnome long-term stats",
+      "url": "https://sullygnome.com/channel/cohhcarnage/longtermstats",
+      "retrieved": "2026-09-20"
+    },
+    {
+      "name": "xQc",
+      "platform": "Twitch",
+      "hours_streamed": 26565,
+      "source": "SullyGnome long-term stats",
+      "url": "https://sullygnome.com/channel/xqc/longtermstats",
+      "retrieved": "2026-09-20"
+    },
+    {
+      "name": "HasanAbi",
+      "platform": "Twitch",
+      "hours_streamed": 21488,
+      "source": "SullyGnome long-term stats",
+      "url": "https://sullygnome.com/channel/hasanabi/longtermstats",
+      "retrieved": "2026-09-20"
+    },
+    {
+      "name": "shroud",
+      "platform": "Twitch",
+      "hours_streamed": 20735,
+      "source": "SullyGnome long-term stats",
+      "url": "https://sullygnome.com/channel/shroud/longtermstats/",
+      "retrieved": "2026-09-20"
+    },
+    {
+      "name": "Asmongold",
+      "platform": "Twitch",
+      "hours_streamed": 9046,
+      "source": "SullyGnome long-term stats",
+      "url": "https://sullygnome.com/channel/asmongold/longtermstats",
+      "retrieved": "2026-09-20"
+    },
+    {
+      "name": "zackrawrr",
+      "platform": "Twitch",
+      "hours_streamed": 11044,
+      "source": "SullyGnome long-term stats",
+      "url": "https://sullygnome.com/channel/zackrawrr/longtermstats",
+      "retrieved": "2026-09-20"
+    }
+  ],
+  "other_record_context": {
+    "title": "Longest live-stream (video)",
+    "holder": "Planeta Alofoke",
+    "duration_hours": 1272,
+    "date": "2026-06-14",
+    "source": "Guinness World Records",
+    "url": "https://www.guinnessworldrecords.com/world-records/373225-longest-uninterrupted-live-webcast-video",
+    "boundary": "One uninterrupted broadcast is a different record category from lifetime cumulative public presence."
+  },
+  "interpretive_note": "If a de-duplicated 100,000-hour Tim public-presence total is independently established under comparable rules, it would substantially exceed the tracked lifetime Twitch airtime of these prominent benchmark channels. That comparison does not establish 'most in human history' because no exhaustive cross-media dataset has been assembled.",
+  "expertise_boundary": "Extreme practice time supports claims of unusual experience only in activities actually repeated and evidenced. It does not confer subject-matter expertise on everything discussed during those hours."
+}

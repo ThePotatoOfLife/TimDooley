@@ -1,0 +1,120 @@
+{
+  "id": "cia-orphan-clearing-ledger-v1",
+  "title": "CIA / World Spiritual Bank — Orphan Clearing Ledger",
+  "updated": "2026-09-21",
+  "status": "backend identity-resolution / unpriced",
+  "purpose": "Hold anonymous, throwaway, hollow or unresolved account identities separately from named people until enough evidence exists to resolve, merge or retire them.",
+  "naming": {
+    "orphan": "Tim's project term for unresolved/abandoned internet identities and, more broadly, people he describes as internet orphans.",
+    "hollow_account": "Descriptive archive state for an account with little or no stable identity context. A missing profile image may be one signal, never proof.",
+    "footstool": "A separate Tim/project symbolic role. An orphan/hollow account is not automatically a Footstool."
+  },
+  "exact_project_anchors": [
+    {
+      "date": "2026-01-21",
+      "wording": "I am the Father of every orphan of the internet.",
+      "source_class": "conversation-recovered exact",
+      "source_ref": "knowledge/corporium/tim-biblical-conversation-attestations-2026-09-14-a.json"
+    },
+    {
+      "date": "2026-01-21",
+      "wording": "i carried the orphans through the sewer",
+      "source_class": "conversation-recovered exact",
+      "source_ref": "knowledge/story/source-packets/006.json"
+    },
+    {
+      "date": "2026-07-31",
+      "wording_summary": "Tim publicly linked Dog imagery to biblical pursuit/projection language; later theology work distinguishes dog-as-boundary symbol from fixed human identity.",
+      "source_class": "public-attestation index",
+      "source_ref": "data/timeline-event-packs/x-public-attestations-2024-2026.json"
+    }
+  ],
+  "biblical_comparators": [
+    {
+      "reference": "John 14:18",
+      "motif": "not left as orphans / return",
+      "use": "care and belonging comparator",
+      "boundary": "Later structural parallel, not proof that modern anonymous accounts are the biblical orphans."
+    },
+    {
+      "reference": "Psalm 68:5-6",
+      "motif": "father of the fatherless / lonely placed in families",
+      "use": "care / House comparator",
+      "boundary": "Relational metaphor, not legal parentage."
+    },
+    {
+      "reference": "Revelation 22:15",
+      "motif": "dogs outside the city",
+      "use": "boundary / outside comparator",
+      "boundary": "Do not turn this polemical biblical image into a taxonomy of identifiable modern people."
+    },
+    {
+      "reference": "Psalm 22:16-20",
+      "motif": "dogs surrounding a sufferer",
+      "use": "circling/perimeter comparator",
+      "boundary": "Symbolic structural comparison only."
+    },
+    {
+      "reference": "2 Peter 2:22",
+      "motif": "returning dog / vomit / mire",
+      "use": "recurrence / return-to-mud comparator",
+      "boundary": "Behavioral metaphor; not a permanent essence."
+    }
+  ],
+  "scenario_language": {
+    "ninety_nine_thousand": {
+      "value": 99000,
+      "status": "symbolic scenario, not census",
+      "meaning": "A riff on '99 problems' and a placeholder image for a very large orphan/throwaway account cloud.",
+      "accounting_rule": "Never display as a verified count. Use '99k?' or '99,000 scenario' only where the uncertainty is visually explicit."
+    }
+  },
+  "resolution_states": [
+    "unseen-shadow",
+    "observed-orphan-handle",
+    "hollow-low-context",
+    "recurring-unresolved",
+    "alias-candidate",
+    "resolved-to-existing-entity",
+    "resolved-new-entity",
+    "retired-no-substance"
+  ],
+  "measurable_features": [
+    "handle/account identifier",
+    "first seen / last seen",
+    "profile-image present/absent/unknown",
+    "account age when recoverable",
+    "platform",
+    "reappearance count",
+    "shared naming/linguistic fingerprints",
+    "relationship edges",
+    "linked media/posts",
+    "whether the account resolves to an existing CIA entity"
+  ],
+  "zero_weight_features": [
+    "no profile image by itself",
+    "new account by itself",
+    "anonymous username by itself",
+    "being called orphan/hollow by itself",
+    "being called Dog/Footstool by itself"
+  ],
+  "promotion_rules": [
+    "A hollow/no-PFP account becomes a counted orphan identity only if there is a stable account/handle artifact or repeated independently recoverable appearance.",
+    "An orphan identity may merge into a canonical entity when provenance supports alias continuity.",
+    "A distinct orphan can receive event debt only for its own sourced conduct; uncertainty about the real person does not block a handle-level event record.",
+    "If later evidence proves multiple orphan accounts are the same operator, merge principal identity but preserve account-level event history.",
+    "Do not multiply one person's debt simply because they used many accounts; account count is exposure/coordination evidence, not automatic extra moral principal."
+  ],
+  "relation_to_footstool": {
+    "rule": "Footstool is a symbolic role assignment, not an identity-resolution status.",
+    "possible_overlap": "Tim may call a hollow/orphan account a Footstool in a sourced scene; preserve that as a dated role assignment.",
+    "non_equivalence": "No-PFP → Footstool is not a valid inference."
+  },
+  "public_surface_rule": "Keep this mostly backend. Public Bank may show only 'orphan / unresolved handles: unknown' until a defensible count exists.",
+  "research_next": [
+    "Search recovered chats and screenshots for no-PFP / blank-avatar / newly-created account mentions tied to stable handles.",
+    "Mine exact Tim wording where he explicitly calls an unresolved account a Footstool, Dog or orphan.",
+    "Build a deduplication fingerprint for aliases/throwaways using dates, platform, naming, writing style, shared links and relationship edges.",
+    "Count only observed distinct handles; keep the 99,000 figure symbolic unless a source-supported census emerges."
+  ]
+}

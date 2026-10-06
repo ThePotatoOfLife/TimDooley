@@ -1,0 +1,101 @@
+{
+  "id": "time-cycle-season-sabbath-jubilee-atlas",
+  "title": "Time, Cycle, Season, Sabbath & Jubilee — Recurrence and Release Grammar",
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "status": "temporal ontology + biblical cycle comparison + project routing",
+  "purpose": "Separate repetition, calendar indexing, environmental seasons, ritual rest, sabbatical land/debt cycles, jubilee release and project Ring/Spiral so time symbolism becomes operational rather than decorative.",
+  "master_rule": "Always declare period, recurrence rule, state variable and reset/release effect. A repeated date is not automatically a cycle of transformation; a cycle is not automatically a spiral.",
+  "temporal_types": [
+    {
+      "id": "instant-event",
+      "definition": "localized occurrence or threshold",
+      "project_neighbor": "Door/transition"
+    },
+    {
+      "id": "duration",
+      "definition": "elapsed interval during which a state/process persists",
+      "project_neighbor": "ordeal, dormancy, cultivation, repair"
+    },
+    {
+      "id": "cycle",
+      "definition": "generic recurrence after a period",
+      "distinction": "Says nothing by itself about progress or net state change."
+    },
+    {
+      "id": "ring",
+      "definition": "recurrence returning to approximately equivalent selected state",
+      "project_neighbor": "orbit/repetition/maintenance"
+    },
+    {
+      "id": "spiral",
+      "definition": "recurrence with measurable state displacement",
+      "project_neighbor": "learning/development/return-with-memory"
+    },
+    {
+      "id": "season",
+      "definition": "periodic environmental/social phase whose conditions change what actions are viable",
+      "project_neighbor": "Garden/Farm timing, sowing/harvest, cultural cycle",
+      "distinction": "Season is regime/context, not merely clock count."
+    },
+    {
+      "id": "calendar",
+      "definition": "coordinate/index system assigning dates to recurring astronomical/social intervals",
+      "distinction": "Calendar labels time; it does not cause events."
+    },
+    {
+      "id": "age-epoch",
+      "definition": "broad historical/interpretive interval defined by conventions or transformations",
+      "distinction": "Epoch boundary requires declared criterion."
+    }
+  ],
+  "biblical_cycles": {
+    "weekly_sabbath": {
+      "structure": "six units of ordinary work followed by a seventh-day rest/cessation",
+      "project_neighbor": "bounded pause, maintenance, non-production, reset",
+      "boundary": "Sabbath is not merely inactivity; textual/theological meanings include sanctification, rest and covenant."
+    },
+    "sabbatical_year": {
+      "structure": "six agricultural years followed by a seventh land-rest cycle, with related release/debt/service legislation differing across Pentateuchal codes",
+      "project_neighbor": "regenerative pause + reduced extraction",
+      "source": "https://www.cambridge.org/core/journals/israel-law-review/article/abs/jubilee-laws/9E5FB38AA347E2B7F7AA39FC94DA3490"
+    },
+    "jubilee": {
+      "structure": "Leviticus 25 counts seven sabbatical cycles (49 years) and hallows the fiftieth year with release/restoration themes",
+      "functions": [
+        "land rest",
+        "liberty/release",
+        "return of hereditary holdings in the text",
+        "reset of long-duration accumulation"
+      ],
+      "project_neighbor": "repair/release/return rather than merely higher rank",
+      "source": "https://www.degruyter.com/document/doi/10.1515/NAHA.2007.003/html"
+    },
+    "book_of_jubilees": {
+      "structure": "Second Temple text strongly organizes chronology by sevenfold units and jubilee periods, using a 364-day solar calendar; its jubilee reckoning is not identical in every respect to Leviticus 25.",
+      "source": "https://journals.sagepub.com/doi/10.1177/0146107920913795",
+      "boundary": "Do not merge biblical Jubilee legislation and Book of Jubilees calendar into one system."
+    }
+  },
+  "project_time_grammar": {
+    "seed_dormancy": "Stored potential over duration without visible growth.",
+    "ring_vs_spiral": "Repeat with ~zero selected-state displacement vs repeat with nonzero displacement.",
+    "forge_cooling": "Transformation is incomplete until post-intensity stabilization is observed.",
+    "garden_season": "Cultivation depends on timing/conditions, not only intent.",
+    "archive_time": "Event date, statement date, interpretation date and recovery date remain distinct.",
+    "return": "Return is mature only if memory/provenance survive without recreating the old harmful state."
+  },
+  "productive_tensions": [
+    "Rest can be inactivity, maintenance, resistance to extraction or sacred completion depending context.",
+    "Repetition can preserve life or trap a system.",
+    "Release can restore capability without deleting historical debt/provenance.",
+    "A season can return while the organism/community is no longer in the same state."
+  ],
+  "connections": [
+    "time-history",
+    "seed-spiral-routing",
+    "repair-forge-protocol",
+    "garden-regime-mechanics",
+    "number-measure-symbol-atlas"
+  ]
+}

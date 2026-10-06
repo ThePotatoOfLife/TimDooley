@@ -1,0 +1,58 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "version": "1.0.0",
+    "updated": "2026-09-19",
+    "id": "us-mud-below-project-cases",
+    "title": "U.S. Mud / Below project case anchors",
+    "purpose": "Small, explicitly project-symbolic map anchors for selected U.S. cases already discussed in the Potatoverse Below/Farm corpus. These are not objective classifications of people and the coordinates are intentionally broad state centroids, not residences or current locations.",
+    "epistemic_type": "project-interpretive",
+    "coordinate_policy": "state-centroid-only"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "id": "us-mud-below-chris-chan",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.6569,
+          37.4316
+        ]
+      },
+      "properties": {
+        "label": "Chris Chan / CWCki case",
+        "state": "Virginia",
+        "subdivision_id": "US-VA",
+        "anchor_precision": "state-centroid",
+        "map_role": "Below / Farm case",
+        "project_relation": "Persistent-target ecology and Farm/archive case in the project corpus.",
+        "source_path": "below/index.html",
+        "supporting_path": "data/swamp/farm-ecosystem-research.json",
+        "boundary": "This marker represents a project case study anchored only to Virginia. It does not classify the person as a literal Mud Dweller and does not identify a home or current location."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "us-mud-below-cyraxx",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.9071,
+          40.4173
+        ]
+      },
+      "properties": {
+        "label": "Cyraxx / reaction-loop case",
+        "state": "Ohio",
+        "subdivision_id": "US-OH",
+        "anchor_precision": "state-centroid",
+        "map_role": "Mud / Farm case",
+        "project_relation": "Cyraxx appears in the Great Book's Mud Dweller storyline and in the project's Farm/reaction-loop research.",
+        "source_path": "great-book/chapters/019--chapter-9-31--the-descent-of-the-mud-dwellers-marty-cyraxx-and-the-path-of-lost-souls.html",
+        "supporting_path": "data/swamp/farm-ecosystem-research.json",
+        "boundary": "This is Tim/project symbolic language preserved as attribution. The point is an Ohio state centroid, not a residence or current location."
+      }
+    }
+  ]
+}

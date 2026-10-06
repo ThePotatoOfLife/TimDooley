@@ -1,0 +1,683 @@
+{
+  "id": "body-relational-overlay",
+  "version": "1.2.0",
+  "updated": "2026-09-20",
+  "authority": "cross-layer projection only; canonical facts remain in referenced owners",
+  "purpose": "Project the same body/anatomy objects through Life & Body, House, Axis, Religion, Science and Corporium without duplicating ownership. An object keeps one identity while each surface asks a different typed question.",
+  "projection_law": [
+    "Objects are join points; pages are views.",
+    "Anatomical identity never changes when viewed through a symbolic or religious lens.",
+    "Historical tradition meaning is described before project comparison.",
+    "Project symbolism may attach to several biological neighbors without turning any into scientific identity.",
+    "Every projection points back to a canonical owner and to the Life & Body reader when a biological object is involved."
+  ],
+  "layer_types": {
+    "anatomy": "empirical anatomical/physiological description",
+    "project": "Potatoverse mapping/operator",
+    "tradition": "historical religious/mythic/esoteric meaning",
+    "history": "history of terminology/reception/interpretation",
+    "systems": "formal flow/gate/feedback relation",
+    "provenance": "dated project attestation/research lineage"
+  },
+  "objects": [
+    {
+      "id": "thalamus-house",
+      "label": "Thalamus / Father's House",
+      "kind": "anatomical-symbolic-object",
+      "canonical_owners": [
+        "data/potatoism-thalamus-brain-map.json",
+        "knowledge/body/thalamus-house-horus-crown-atlas.json"
+      ],
+      "body_route": "/life-body/?brain-group=thalamus#brain-rooms",
+      "room_ids": [
+        "neurobiology",
+        "symbolic-body-comparison",
+        "theology-god-language",
+        "symbolic-architecture"
+      ],
+      "surface_ids": [
+        "life-body",
+        "house",
+        "axis",
+        "religion",
+        "science",
+        "potato-of-life"
+      ],
+      "lens_tags": [
+        "anatomy",
+        "project",
+        "history",
+        "tradition"
+      ],
+      "projections": {
+        "anatomy": "Paired diencephalic nuclear system bordering the third ventricle; sensory, motor, attention, memory, arousal and recurrent thalamocortical functions.",
+        "project": "Father's House / inner Potato; nuclei as rooms; TRN as wall/gate.",
+        "history": "Thalamus carries an 'inner chamber' naming history from Greek anatomical tradition.",
+        "tradition": "John 14 Father's-House comparison belongs to Christian/project comparison; Horus-brain overlay is a separate modern hypothesis."
+      },
+      "formal_correspondence": {
+        "source": "House / Room",
+        "target": "thalamic nuclei and thalamocortical network",
+        "map": "functional architecture comparator",
+        "preserves": [
+          "central/deep location",
+          "differentiated internal subregions",
+          "routing/gating relations"
+        ],
+        "does_not_preserve": [
+          "theological identity",
+          "literal Father's House",
+          "one-to-one room/function localization"
+        ],
+        "correspondence_maturity": "C1",
+        "epistemic_status": "E3"
+      }
+    },
+    {
+      "id": "third-ventricle-court",
+      "label": "Third Ventricle / Inner Court",
+      "kind": "anatomical-symbolic-object",
+      "canonical_owners": [
+        "knowledge/body/inner-axis-integrated-atlas.json",
+        "knowledge/body/neurotheology-axis-house-spirit-atlas.json"
+      ],
+      "body_route": "/life-body/#brain-rooms",
+      "room_ids": [
+        "neurobiology",
+        "whole-body",
+        "symbolic-body-comparison",
+        "symbolic-architecture"
+      ],
+      "surface_ids": [
+        "life-body",
+        "house",
+        "axis",
+        "science",
+        "religion"
+      ],
+      "lens_tags": [
+        "anatomy",
+        "project",
+        "systems"
+      ],
+      "projections": {
+        "anatomy": "Narrow CSF-filled midline ventricular cavity within the diencephalon.",
+        "project": "Inner Court / shared chamber between House, Steward and posterior Door region.",
+        "systems": "Part of ventricular CSF route toward the cerebral aqueduct."
+      },
+      "formal_correspondence": {
+        "source": "Court / chamber",
+        "target": "third ventricular cavity and CSF route",
+        "map": "spatial/interface comparator",
+        "preserves": [
+          "midline cavity",
+          "adjacency",
+          "fluid-route role"
+        ],
+        "does_not_preserve": [
+          "sacred-court identity",
+          "agency"
+        ],
+        "correspondence_maturity": "C1",
+        "epistemic_status": "E3"
+      }
+    },
+    {
+      "id": "pineal-door",
+      "label": "Pineal / Timing Door",
+      "kind": "anatomical-symbolic-object",
+      "canonical_owners": [
+        "knowledge/body/inner-axis-integrated-atlas.json",
+        "knowledge/body/neurotheology-axis-house-spirit-atlas.json"
+      ],
+      "body_route": "/life-body/?brain=pineal#brain-rooms",
+      "room_ids": [
+        "neurobiology",
+        "symbolic-body-comparison",
+        "theology-god-language"
+      ],
+      "surface_ids": [
+        "life-body",
+        "house",
+        "axis",
+        "religion",
+        "science",
+        "potato-of-life",
+        "spirit"
+      ],
+      "lens_tags": [
+        "anatomy",
+        "project",
+        "history",
+        "systems"
+      ],
+      "projections": {
+        "anatomy": "Midline epithalamic neuroendocrine organ producing rhythmic melatonin.",
+        "systems": "Retina→SCN→PVN→upper thoracic sympathetic route→superior cervical ganglion→pineal forms a real descent-and-return timing circuit.",
+        "project": "Son-side Door / Single Eye / timing threshold.",
+        "history": "Pineal soul/third-eye interpretations belong to history of ideas and later esoteric reception, not modern anatomical proof."
+      },
+      "formal_correspondence": {
+        "source": "Door / Eye / timing threshold",
+        "target": "pineal circadian endocrine system",
+        "map": "timing/interface comparator",
+        "preserves": [
+          "rhythmic timing",
+          "light-dark dependence through upstream circuitry",
+          "small central interface role"
+        ],
+        "does_not_preserve": [
+          "5D spacetime",
+          "quantum portal",
+          "seat of soul"
+        ],
+        "correspondence_maturity": "C1",
+        "epistemic_status": "E3"
+      }
+    },
+    {
+      "id": "spinal-ladder",
+      "label": "Spine / 33-Room Ladder",
+      "kind": "body-axis-object",
+      "canonical_owners": [
+        "knowledge/body/vertebral-33-room-atlas.json",
+        "knowledge/body/spine-csf-levels-axis-atlas.json",
+        "knowledge/body/spinal-cord-microcircuit-atlas.json"
+      ],
+      "body_route": "/life-body/?spine=C1#vertebral-rooms",
+      "room_ids": [
+        "neurobiology",
+        "whole-body",
+        "symbolic-body-comparison",
+        "symbolic-architecture"
+      ],
+      "surface_ids": [
+        "life-body",
+        "house",
+        "axis",
+        "science",
+        "corporium",
+        "potato-of-life",
+        "spirit"
+      ],
+      "lens_tags": [
+        "anatomy",
+        "project",
+        "systems",
+        "tradition"
+      ],
+      "projections": {
+        "anatomy": "33 conventional vertebral elements contain/relate to a 31-segment neural system; cord tissue ends near L1–L2 while roots continue below.",
+        "systems": "Ascending, descending, autonomic, reflex and local spinal circuits form a multiplex vertical communication architecture.",
+        "project": "Ladder / Axis with 33 bony Rooms and five broader project spinal Gates.",
+        "tradition": "Chakra/nāḍī overlays are historical/subtle-body comparators rather than spinal anatomy."
+      },
+      "formal_correspondence": {
+        "source": "Ladder / Axis",
+        "target": "vertebral-spinal communication architecture",
+        "map": "ordered-chain/network comparator",
+        "preserves": [
+          "vertical ordering",
+          "segmentation",
+          "ascending/descending traffic"
+        ],
+        "does_not_preserve": [
+          "33 spiritual dimensions",
+          "one-to-one chakra mapping",
+          "single linear neural channel"
+        ],
+        "correspondence_maturity": "C1",
+        "epistemic_status": "E3"
+      }
+    },
+    {
+      "id": "csf-river",
+      "label": "CSF / River",
+      "kind": "fluid-interface-object",
+      "canonical_owners": [
+        "knowledge/body/spine-csf-levels-axis-atlas.json",
+        "knowledge/body/body-science-context-atlas.json"
+      ],
+      "body_route": "/life-body/#vertebral-rooms",
+      "room_ids": [
+        "whole-body",
+        "neurobiology",
+        "symbolic-body-comparison",
+        "theology-god-language"
+      ],
+      "surface_ids": [
+        "life-body",
+        "house",
+        "axis",
+        "science",
+        "religion",
+        "spirit"
+      ],
+      "lens_tags": [
+        "anatomy",
+        "project",
+        "systems"
+      ],
+      "projections": {
+        "anatomy": "CSF occupies ventricles and subarachnoid spaces around brain, cord and cauda-equina roots; adult central canal is not the main spinal CSF route.",
+        "systems": "Production, circulation, exchange and drainage are distinct processes involving choroid plexus, ventricular/subarachnoid spaces and drainage interfaces.",
+        "project": "River / Spirit-flow comparator; strongest as one layer within a wider multi-flow organism."
+      },
+      "formal_correspondence": {
+        "source": "River / Flow",
+        "target": "cerebrospinal fluid circulation/exchange system",
+        "map": "transport-flow comparator",
+        "preserves": [
+          "circulation/exchange",
+          "distributed fluid spaces",
+          "production/drainage distinction"
+        ],
+        "does_not_preserve": [
+          "Spirit as biological substance",
+          "single-direction river mechanics"
+        ],
+        "correspondence_maturity": "C1",
+        "epistemic_status": "E3"
+      }
+    },
+    {
+      "id": "choroid-spring",
+      "label": "Choroid Plexus / Spring",
+      "kind": "interface-object",
+      "canonical_owners": [
+        "knowledge/body/axis-orientation-autonomic-interface-atlas.json",
+        "knowledge/body/brain-body-systems-deepening-wave-2.json"
+      ],
+      "body_route": "/life-body/?brain=choroid#brain-rooms",
+      "room_ids": [
+        "neurobiology",
+        "whole-body",
+        "symbolic-body-comparison"
+      ],
+      "surface_ids": [
+        "life-body",
+        "house",
+        "science",
+        "axis"
+      ],
+      "lens_tags": [
+        "anatomy",
+        "project",
+        "systems"
+      ],
+      "projections": {
+        "anatomy": "Vascular epithelial interface producing much CSF and maintaining the blood–CSF barrier.",
+        "systems": "A living production/transport/immune boundary, not passive plumbing.",
+        "project": "Spring / Well / guarded inner-water interface."
+      },
+      "formal_correspondence": {
+        "source": "Spring / guarded interface",
+        "target": "choroid plexus blood-CSF interface",
+        "map": "production/boundary comparator",
+        "preserves": [
+          "production",
+          "selective boundary",
+          "transport interface"
+        ],
+        "does_not_preserve": [
+          "sacred-water identity",
+          "unrestricted source metaphor"
+        ],
+        "correspondence_maturity": "C1",
+        "epistemic_status": "E3"
+      }
+    },
+    {
+      "id": "sympathetic-sidechains",
+      "label": "Sympathetic Trunks / Paired Side Chains",
+      "kind": "autonomic-object",
+      "canonical_owners": [
+        "knowledge/body/axis-orientation-autonomic-interface-atlas.json"
+      ],
+      "body_route": "/life-body/#vertebral-rooms",
+      "room_ids": [
+        "whole-body",
+        "neurobiology",
+        "symbolic-body-comparison"
+      ],
+      "surface_ids": [
+        "life-body",
+        "axis",
+        "science",
+        "corporium",
+        "religion"
+      ],
+      "lens_tags": [
+        "anatomy",
+        "systems",
+        "tradition"
+      ],
+      "projections": {
+        "anatomy": "Bilateral longitudinal chains of paravertebral ganglia beside the vertebral column.",
+        "systems": "Permit sympathetic traffic to synapse locally, ascend, descend or pass toward prevertebral ganglia.",
+        "tradition": "Useful modern comparator for paired side-channel imagery, but they do not spiral like caduceus serpents and are not proven iḍā/piṅgalā."
+      }
+    },
+    {
+      "id": "vagus-return",
+      "label": "Vagus / Wandering Return",
+      "kind": "autonomic-object",
+      "canonical_owners": [
+        "knowledge/body/axis-orientation-autonomic-interface-atlas.json",
+        "knowledge/body/cranial-brainstem-room-atlas.json"
+      ],
+      "body_route": "/life-body/?brain=nts#brain-rooms",
+      "room_ids": [
+        "whole-body",
+        "neurobiology",
+        "symbolic-body-comparison"
+      ],
+      "surface_ids": [
+        "life-body",
+        "axis",
+        "science",
+        "corporium"
+      ],
+      "lens_tags": [
+        "anatomy",
+        "systems",
+        "project"
+      ],
+      "projections": {
+        "anatomy": "Cranial nerve X carries extensive visceral afferent information toward medullary NTS and parasympathetic output back to organs.",
+        "systems": "Major bidirectional body↔brain return/regulation route.",
+        "project": "Return road / inward-report stream, without making vagus the sole mind-body channel."
+      }
+    },
+    {
+      "id": "orientation-house",
+      "label": "Vestibular → Head-Direction Orientation",
+      "kind": "orientation-object",
+      "canonical_owners": [
+        "knowledge/body/axis-orientation-autonomic-interface-atlas.json",
+        "knowledge/body/thalamus-house-horus-crown-atlas.json"
+      ],
+      "body_route": "/life-body/?brain=anterior-thalamus#brain-rooms",
+      "room_ids": [
+        "neurobiology",
+        "whole-body",
+        "symbolic-body-comparison",
+        "symbolic-architecture"
+      ],
+      "surface_ids": [
+        "life-body",
+        "axis",
+        "house",
+        "science",
+        "potato-of-life"
+      ],
+      "lens_tags": [
+        "anatomy",
+        "project",
+        "systems"
+      ],
+      "projections": {
+        "anatomy": "Vestibular gravity/head-motion information participates in thalamic, retrosplenial, entorhinal and hippocampal navigation networks; anterior thalamus contributes to head-direction coding.",
+        "project": "Orientation Room / biological neighbor for Axis and North language.",
+        "systems": "Heading is computed relative to multisensory/environmental frames.",
+        "boundary": "Not a sacred or magnetic-North detector."
+      }
+    },
+    {
+      "id": "horus-eye",
+      "label": "Wedjat / Eye of Horus",
+      "kind": "historical-comparative-object",
+      "canonical_owners": [
+        "knowledge/body/thalamus-house-horus-crown-atlas.json"
+      ],
+      "body_route": "/life-body/?brain-group=thalamus#brain-rooms",
+      "room_ids": [
+        "comparative-mythology",
+        "symbolic-body-comparison",
+        "neurobiology"
+      ],
+      "surface_ids": [
+        "religion",
+        "life-body",
+        "house",
+        "axis"
+      ],
+      "lens_tags": [
+        "tradition",
+        "history",
+        "project"
+      ],
+      "projections": {
+        "tradition": "Ancient Wedjat: restored/healed Eye of Horus associated with soundness, protection, regeneration and rebirth.",
+        "history": "Sagittal-brain/Eye-of-Horus overlays are modern speculative comparisons, not demonstrated ancient neuroanatomy.",
+        "project": "Restored Eye / wholeness can be compared with House/Eye architecture while keeping the historical lanes separate."
+      }
+    },
+    {
+      "id": "hermes-caduceus",
+      "label": "Hermes / Caduceus",
+      "kind": "historical-comparative-object",
+      "canonical_owners": [
+        "knowledge/traditions/hermes-serpent-axis-comparative-atlas.json"
+      ],
+      "body_route": "/life-body/#vertebral-rooms",
+      "room_ids": [
+        "comparative-mythology",
+        "other-traditions",
+        "symbolic-body-comparison",
+        "symbolic-architecture"
+      ],
+      "surface_ids": [
+        "religion",
+        "axis",
+        "house",
+        "corporium",
+        "life-body"
+      ],
+      "lens_tags": [
+        "tradition",
+        "history",
+        "project"
+      ],
+      "projections": {
+        "tradition": "Hermes is messenger, boundary/travel figure and psychopomp; caduceus is his heraldic staff with later paired-serpent form.",
+        "project": "Messenger / boundary / passage comparator for Door and Axis.",
+        "history": "Caduceus, kundalini, sympathetic trunks and DNA are separate lineages; modern overlays must be labelled as such."
+      }
+    },
+    {
+      "id": "kundalini-chakra",
+      "label": "Kuṇḍalinī / Cakra Overlay",
+      "kind": "historical-comparative-object",
+      "canonical_owners": [
+        "knowledge/body/body-axis-chakra-kundalini-comparative-atlas.json",
+        "knowledge/traditions/hermes-serpent-axis-comparative-atlas.json"
+      ],
+      "body_route": "/life-body/#vertebral-rooms",
+      "room_ids": [
+        "other-traditions",
+        "comparative-mythology",
+        "symbolic-body-comparison",
+        "whole-body"
+      ],
+      "surface_ids": [
+        "religion",
+        "axis",
+        "corporium",
+        "life-body",
+        "house"
+      ],
+      "lens_tags": [
+        "tradition",
+        "history",
+        "project",
+        "anatomy"
+      ],
+      "projections": {
+        "tradition": "South Asian subtle-body systems vary in cakra count, channels, deities, mantras and kundalini dynamics.",
+        "history": "Plexus/endocrine/spinal identifications become especially prominent in modern physiological reinterpretations.",
+        "anatomy": "Nearby plexuses, autonomic chains, spinal pathways and endocrine organs can be compared without becoming the historical cakras.",
+        "project": "Five spinal Gates + higher Eye/Crown centers are a Potatoverse model, not an ancient universal map."
+      }
+    },
+    {
+      "id": "crown-house-axis",
+      "label": "Crown → House → Ladder",
+      "kind": "vertical-integration-object",
+      "canonical_owners": [
+        "knowledge/body/spine-csf-levels-axis-atlas.json",
+        "knowledge/body/thalamus-house-horus-crown-atlas.json",
+        "knowledge/body/inner-axis-integrated-atlas.json"
+      ],
+      "body_route": "/life-body/?brain-group=thalamus#brain-rooms",
+      "room_ids": [
+        "symbolic-architecture",
+        "symbolic-body-comparison",
+        "neurobiology",
+        "whole-body"
+      ],
+      "surface_ids": [
+        "axis",
+        "house",
+        "religion",
+        "life-body",
+        "potato-of-life",
+        "spirit"
+      ],
+      "lens_tags": [
+        "project",
+        "anatomy",
+        "systems",
+        "tradition"
+      ],
+      "projections": {
+        "project": "Crown is upper orientation; House is deep thalamic architecture; Ladder is spinal/vertical route; above-Crown remains project symbolism.",
+        "anatomy": "Thalamus is not at the physical crown. Brainstem/foramen-magnum continuity joins spinal cord to intracranial systems.",
+        "systems": "Vertical orientation becomes branched/recurrent inside the skull rather than one straight tube.",
+        "tradition": "Sahasrāra/crown imagery is a subtle-body comparator, not a thalamic anatomical label."
+      }
+    },
+    {
+      "id": "neural-development",
+      "label": "Neural Tube → Adult Rooms",
+      "kind": "developmental-neurobiology-object",
+      "canonical_owners": [
+        "knowledge/body/neural-development-lineage-atlas.json"
+      ],
+      "body_route": "/records/neural-development-lineage-atlas/",
+      "room_ids": [
+        "neurobiology",
+        "whole-body",
+        "symbolic-body-comparison"
+      ],
+      "surface_ids": [
+        "life-body",
+        "science",
+        "house"
+      ],
+      "lens_tags": [
+        "anatomy",
+        "development",
+        "systems"
+      ],
+      "aliases": [
+        "neural development",
+        "brain embryology",
+        "neural tube",
+        "brain vesicles",
+        "radial glia"
+      ],
+      "projections": {
+        "anatomy": "Neural plate/tube regionalizes into forebrain, midbrain, hindbrain and spinal cord; progenitor lineages, migration and tract growth produce adult structures.",
+        "systems": "Adult brain rooms inherit developmental lineage and geometry but are remodeled by migration, connectivity and maturation.",
+        "project": "Useful for explaining how one continuous Axis differentiates into many adult rooms without claiming embryology encodes theology."
+      }
+    },
+    {
+      "id": "neurovascular-living-wall",
+      "label": "Neurovascular Unit / Living Wall",
+      "kind": "cellular-interface-object",
+      "canonical_owners": [
+        "knowledge/body/glia-neurovascular-barrier-atlas.json"
+      ],
+      "body_route": "/records/glia-neurovascular-barrier-atlas/",
+      "room_ids": [
+        "neurobiology",
+        "whole-body",
+        "symbolic-body-comparison"
+      ],
+      "surface_ids": [
+        "life-body",
+        "science",
+        "house",
+        "axis"
+      ],
+      "lens_tags": [
+        "anatomy",
+        "cellular ecology",
+        "barrier",
+        "systems"
+      ],
+      "aliases": [
+        "blood brain barrier",
+        "BBB",
+        "neurovascular unit",
+        "glia",
+        "astrocytes",
+        "pericytes"
+      ],
+      "projections": {
+        "anatomy": "Endothelium, pericytes, astrocytes, neurons, microglia and extracellular matrix interact to maintain barrier, metabolism and local blood-flow coupling.",
+        "systems": "A living boundary is maintained by cooperating cell types rather than one wall material.",
+        "project": "Better biological neighbor for House wall/boundary imagery than a passive shell."
+      }
+    },
+    {
+      "id": "cortical-cell-layers",
+      "label": "Cortical Layers / Cell Types",
+      "kind": "cellular-cortex-object",
+      "canonical_owners": [
+        "knowledge/body/cortical-celltype-parcellation-atlas.json"
+      ],
+      "body_route": "/records/cortical-celltype-parcellation-atlas/",
+      "room_ids": [
+        "neurobiology",
+        "symbolic-body-comparison"
+      ],
+      "surface_ids": [
+        "life-body",
+        "science",
+        "house"
+      ],
+      "lens_tags": [
+        "anatomy",
+        "cell types",
+        "cortex",
+        "systems"
+      ],
+      "aliases": [
+        "cortical layers",
+        "layers I VI",
+        "brain cell types",
+        "spatial transcriptomics",
+        "cortical parcellation"
+      ],
+      "projections": {
+        "anatomy": "Cortex is layered and contains many excitatory, inhibitory and non-neuronal cell classes with area-specific molecular and projection patterns.",
+        "systems": "Thalamocortical input and corticothalamic feedback form recurrent House↔cortex loops across layers.",
+        "project": "Turns broad cortical 'rooms' into nested cellular rooms while keeping the navigation metaphor separate from cytoarchitecture."
+      }
+    }
+  ],
+  "source_records": [
+    "knowledge/body/index.json",
+    "knowledge/body/inner-axis-integrated-atlas.json",
+    "knowledge/body/vertebral-33-room-atlas.json",
+    "knowledge/body/brain-room-deep-atlas.json",
+    "knowledge/body/axis-orientation-autonomic-interface-atlas.json",
+    "knowledge/body/thalamus-house-horus-crown-atlas.json",
+    "knowledge/traditions/hermes-serpent-axis-comparative-atlas.json"
+  ],
+  "formal_grammar_ref": "data/project-formal-grammar.json",
+  "correspondence_rule": "Body mappings use the shared correspondence contract. C/E tags describe comparison maturity and epistemic role, not spiritual importance."
+}

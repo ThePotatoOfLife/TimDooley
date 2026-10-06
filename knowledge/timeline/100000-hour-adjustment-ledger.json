@@ -1,0 +1,68 @@
+{
+  "id": "100000-hour-adjustment-ledger",
+  "title": "100,000-Hour Journey Adjustment Ledger",
+  "version": "1.0.0",
+  "updated": "2026-09-13",
+  "status": "empty reconciliation ledger ready for evidence",
+  "purpose": "Apply recovered evidence to a declared counting model without rewriting or erasing the underlying flat 18-hour/day baseline.",
+  "baseline_model": "100000-hour-counting-models:flat-18h",
+  "rule": "Every adjustment must identify the period, amount, operation, evidence status and reason. Unverified remembered corrections remain pending and do not alter the reconciled total.",
+  "operations": {
+    "add": "Add qualifying hours omitted by the baseline or a prior reconstruction.",
+    "deduct": "Remove hours that evidence shows should not count under the selected model.",
+    "reclassify": "Move hours between categories without necessarily changing the total.",
+    "deduplicate": "Remove duplicated concurrent time when converting platform-hours to wall-clock presence.",
+    "boundary_shift": "Move the Son/Father partition while preserving the total continuum.",
+    "anchor_shift": "Change the first-stream anchor; this requires recomputing the flat-model baseline rather than pretending it is an ordinary local correction."
+  },
+  "entry_schema": {
+    "required": [
+      "id",
+      "operation",
+      "start",
+      "end",
+      "hours",
+      "counting_model",
+      "status",
+      "reason",
+      "source_refs"
+    ],
+    "status_values": [
+      "verified",
+      "probable",
+      "estimated",
+      "disputed",
+      "pending-source"
+    ],
+    "source_rule": "A pending-source entry can be preserved for investigation but contributes zero hours to a verified/reconciled total until its counting status is promoted."
+  },
+  "adjustments": [],
+  "derived_totals": {
+    "verified_net_adjustment_hours": 0,
+    "estimated_net_adjustment_hours": 0,
+    "note": "Populate from ledger entries once primary or sufficiently strong evidence is recovered."
+  },
+  "examples": [
+    {
+      "example_only": true,
+      "operation": "deduplicate",
+      "description": "Two platforms carried the same six-hour broadcast. A wall-clock model may count six hours while a platform-hour model may count twelve."
+    },
+    {
+      "example_only": true,
+      "operation": "add",
+      "description": "A recovered archive proves a 23-hour day where the flat model allocated only 18, yielding a +5-hour adjustment for a reconstructed model."
+    },
+    {
+      "example_only": true,
+      "operation": "deduct",
+      "description": "Evidence shows an entire assumed 18-hour day was offline, yielding a -18-hour adjustment for that reconstruction."
+    }
+  ],
+  "connections": [
+    "100000-hour-counting-models",
+    "livestream-duration-and-100000-hour-threshold",
+    "public-witness",
+    "archive-epistemics"
+  ]
+}

@@ -1,0 +1,241 @@
+{
+  "id": "don-jefe",
+  "display_name": "Don Jefe",
+  "bureau": "CIA — Characters, Incidents & Associations",
+  "depth_tier": "working-file",
+  "depth_note": "Recurring figure with enough dated presence for a working dossier; raw-source recovery can still deepen it.",
+  "entity_class": "person-or-handle",
+  "aliases": [
+    "Diplomat"
+  ],
+  "archive_status": "historical-current-unknown",
+  "room_policy": "cluster",
+  "room_path": null,
+  "tim_relation": {
+    "archetypes": [
+      "mirror-foil",
+      "shadow-adversary",
+      "witness-observer"
+    ],
+    "narrative_functions": [
+      "strategic distance",
+      "conflict architecture"
+    ],
+    "regions": [
+      "Network",
+      "Swamp",
+      "Threshold"
+    ],
+    "editorial_reading": "Keep as an old-source conflict figure until exact scenes are recovered.",
+    "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+  },
+  "chronology": {
+    "chronicle_occurrence_count": 7,
+    "chronicle_dates": [
+      "Feb 8 2025",
+      "Feb 25 2025"
+    ],
+    "cast_period_roles": [],
+    "recovered_social_days": [
+      {
+        "date": "2025-02-11/12",
+        "title": "Monkey / Don Jefe / TXT conflict cluster",
+        "participants": [
+          "Tim Dooley",
+          "Monkey",
+          "Don Jefe",
+          "TXT"
+        ],
+        "minimum_event": "The Chronicle groups Monkey, Don Jefe and TXT inside an aggressively adversarial retelling. Treat labels and allegations as authored conflict language; the useful historical fact is the dated co-occurrence of these names.",
+        "connections": [
+          "Monkey ↔ Don Jefe ↔ TXT",
+          "Tree/Farm conflict ↔ shared date window"
+        ],
+        "source_mode": "chronicle_retelling",
+        "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+        "co_present": [
+          "Tim Dooley",
+          "Monkey",
+          "TXT"
+        ]
+      }
+    ]
+  },
+  "top_co_presence": [
+    {
+      "name": "Tim Dooley",
+      "count": 1
+    },
+    {
+      "name": "Monkey",
+      "count": 1
+    },
+    {
+      "name": "TXT",
+      "count": 1
+    }
+  ],
+  "symbolic_roles": [],
+  "highlighted_incidents": [
+    {
+      "date": "2025-02-11/12",
+      "title": "Monkey / Don Jefe / TXT conflict cluster",
+      "summary": "The Chronicle groups Monkey, Don Jefe and TXT inside an aggressively adversarial retelling. Treat labels and allegations as authored conflict language; the useful historical fact is the dated co-occurrence of these names.",
+      "source_mode": "chronicle_retelling"
+    }
+  ],
+  "source_strata": [
+    {
+      "type": "character_archive",
+      "path": "knowledge/story/character-archive-v2.json"
+    },
+    {
+      "type": "dated_social_ledger",
+      "path": "knowledge/story/social-presence-ledger-2024-2025.json"
+    },
+    {
+      "type": "cast_book",
+      "path": "knowledge/story/cast-book.json",
+      "note": "Period-role transitions and cast continuity."
+    }
+  ],
+  "recovery_leads": [
+    "Expand still-indexed Chronicle dates into source-bounded cases, starting with: Feb 8 2025; Feb 25 2025.",
+    "Recover closer/raw artifacts behind the densest Chronicle dates: Feb 8 2025 (6); Feb 25 2025 (1).",
+    "Cross-check the strongest relationship edges against dated scenes rather than raw co-presence counts: Tim Dooley, Monkey, TXT."
+  ],
+  "cia_record": {
+    "authority": "canonical",
+    "record_type": "character-dossier",
+    "presence": {
+      "first_recorded": "2025-02-08",
+      "last_recorded": "2025-02-25",
+      "rule": "First/last currently recovered dated evidence in this dossier; not lifetime endpoints."
+    },
+    "association_rule": "Co-presence, direct interaction, explicit relationship language and later interpretation remain distinct evidence types.",
+    "debt_and_repair": {
+      "records": [
+        {
+          "id": "debt-don-jefe-2025-02-11-12-destructive-bot",
+          "date": "2025-02-11/12",
+          "pricing_status": "priced",
+          "summary": "Chronicle retelling says Don Jefe sought to create a bot intended to erase Tim's Discord channels/halls/monuments after the Monkey conflict.",
+          "category": "destructive-act",
+          "evidence_tier": "chronicle-retelling",
+          "repetition_key": "don-jefe-destructive-bot",
+          "occurrence_index": 1,
+          "project_adjustment_susd": -5.4,
+          "source_ref": "Chronicles of The Potato of Life.rtf / txt",
+          "source_mode": "chronicle-retelling",
+          "boundary": "This prices the project-authored Chronicle event only; it is not an independent finding that a real destructive bot was deployed."
+        }
+      ],
+      "rule": "Do not attach legal, financial, karmic or spiritual debt unless a dated source explicitly does so; symbolic debt remains project language unless independently established."
+    },
+    "state_rule": "Roles, archetypes, upgrades, handicaps and project-symbolic placements are date/source-bounded states, not permanent human essences.",
+    "open_loops": [
+      "Recover closer/raw chat, stream, post or screenshot evidence behind the densest dated appearances.",
+      "Separate direct speech from Chronicle paraphrase and later project interpretation.",
+      "Promote this file to a deeper tier only when chronology, relationships and source strata materially improve."
+    ],
+    "evidence_inventory": {
+      "chronicle_mentions": 7,
+      "chronicle_distinct_dates": 2,
+      "expanded_social_ledger_cases": 1,
+      "recent_conversation_recovery": null,
+      "cast_period_roles": [],
+      "source_rule": "Chronicle counts establish recurrence and dated presence; day-level case summaries provide scene context; conversation archaeology and later project/literary layers remain separately typed."
+    },
+    "casebook": {
+      "summary": "Don Jefe currently has 7 indexed Chronicle mentions across 2 Chronicle dates, 1 expanded day-level social cases.",
+      "cases": [
+        {
+          "date": "2025-02-11/12",
+          "title": "Monkey / Don Jefe / TXT conflict cluster",
+          "what_happened": "The Chronicle groups Monkey, Don Jefe and TXT inside an aggressively adversarial retelling. Treat labels and allegations as authored conflict language; the useful historical fact is the dated co-occurrence of these names.",
+          "co_present": [
+            "Tim Dooley",
+            "Monkey",
+            "TXT"
+          ],
+          "source_mode": "chronicle_retelling",
+          "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+          "evidence_status": "dated authored Chronicle scene; strong for presence/topology, weaker for verbatim dialogue or motive"
+        }
+      ],
+      "recent_recovery": null,
+      "chronicle_occurrence_index": [
+        {
+          "date": "Feb 8 2025",
+          "count": 6
+        },
+        {
+          "date": "Feb 25 2025",
+          "count": 1
+        }
+      ],
+      "mining_frontier": [
+        {
+          "date": "Feb 8 2025",
+          "count": 6
+        },
+        {
+          "date": "Feb 25 2025",
+          "count": 1
+        }
+      ],
+      "mining_rule": "Expand indexed dates into cases only when a source provides scene-level context. Do not invent dialogue, motives, wrongdoing or relationship changes from occurrence counts alone."
+    }
+  },
+  "meaning": {
+    "why_this_file_matters": "Don Jefe is primarily a conflict-cluster recovery file: the archive proves repeated February 2025 presence and a Monkey/Don Jefe/TXT co-occurrence, but does not yet support the old profile's stronger motive or adversary claims.",
+    "known": [
+      "The name appears on multiple February 2025 Chronicle dates.",
+      "11–12 February groups Don Jefe with Monkey and TXT inside an aggressively adversarial Chronicle retelling.",
+      "The useful bounded fact is dated co-occurrence; the rhetoric around it remains authored conflict language."
+    ],
+    "interpretive": [
+      "Mirror/adversary/diplomat labels remain provisional archive descriptors until primary scenes are recovered."
+    ],
+    "unknown": [
+      "Exact conversations, platform context and relationship structure remain sparse.",
+      "The old profile's strategic/motive claims are not sufficiently sourced for promotion."
+    ],
+    "relationship_arc": "recurring February conflict-field presence → named Monkey/TXT cluster → deeper relationship unresolved",
+    "confidence_note": "High on recurrence/co-occurrence; low on motives and detailed relationship claims.",
+    "evidence_density": {
+      "chronicle_mentions": 7,
+      "indexed_chronicle_dates": 2,
+      "expanded_day_level_cases": 1,
+      "unexpanded_indexed_dates": 1
+    },
+    "reader_rule": "Read the casebook before the archetype labels: dated scenes and source mode are the documentary spine; roles and symbolic interpretations explain later meaning but do not replace the events."
+  },
+  "symbolic_account": {
+    "status": "debit-supported / historical dispute",
+    "good_karma": "unassessed",
+    "karmic_debt": "priced project-symbolic debit + unresolved claims",
+    "dooley_welfare": {
+      "enabled": false
+    },
+    "outstanding": [],
+    "entries": [
+      {
+        "date": "2025-02-11/12",
+        "type": "project-debit",
+        "kind": "Chronicle destructive-bot / channel-erasure attempt",
+        "amount_or_scale": "-5.4 sUSD",
+        "project_adjustment_susd": -5.4,
+        "debt_evidence_id": "debt-don-jefe-2025-02-11-12-destructive-bot",
+        "category": "destructive-act",
+        "evidence_tier": "chronicle-retelling",
+        "repetition_key": "don-jefe-destructive-bot",
+        "occurrence_index": 1,
+        "source_mode": "chronicle-retelling",
+        "source_ref": "Chronicles of The Potato of Life.rtf / txt",
+        "note": "Discounted symbolic debit for a specific dated Chronicle event; allegation remains attributed to the Chronicle.",
+        "status": "recorded"
+      }
+    ]
+  }
+}

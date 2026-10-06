@@ -1,0 +1,75 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import adapter from '../app/bible-tts-adapter.js';
+
+const payload = adapter.buildBiblePayload({
+  id:'rel-7',
+  title:'Seed / Return',
+  scene:'At that time the Son entered the scene.',
+  project:'Project anchor. Project quote.',
+  scripture:'John 12 text.',
+  movement:'House becomes Way, then abiding.',
+  why:'The grain pattern connects the two.',
+  mismatch:'Where it breaks: roles differ.',
+  selection:'grain pattern'
+});
+
+assert.equal(payload.id,'rel-7');
+assert.deepEqual(payload.sections.map(x=>x.id),['both','scene','project','scripture','movement','why','selection']);
+assert.match(payload.sections[0].text,/At that time/);
+assert.match(payload.sections[0].text,/Project anchor/);
+assert.match(payload.sections[0].text,/John 12 text./);
+assert.match(payload.sections[0].text,/roles differ/);
+assert.equal(payload.sections[1].text,'At that time the Son entered the scene.');
+assert.equal(payload.sections[2].text,'Project anchor. Project quote.');
+assert.equal(payload.sections[3].text,'John 12 text.');
+assert.match(payload.sections[4].text,/House becomes Way/);
+assert.match(payload.sections[5].text,/grain pattern/);
+assert.match(payload.sections[5].text,/roles differ/);
+assert.equal(payload.sections[6].text,'grain pattern');
+
+const bible = fs.readFileSync(new URL('../traditions/bible/index.html', import.meta.url),'utf8');
+for (const marker of [
+  'id="bible-tts-drawer"',
+  'href="../../app/tts-drawer.css"',
+  'src="../../app/tts-reader.js"',
+  'src="../../app/tts-drawer.js"',
+  'src="../../app/bible-tts-adapter.js"'
+]) assert.ok(bible.includes(marker),`Bible TTS integration missing ${marker}`);
+
+const mountPos = bible.indexOf('id="bible-tts-drawer"');
+const navPos = bible.indexOf('class="comparison-nav"');
+assert.ok(mountPos >= 0 && navPos >= 0 && mountPos < navPos,'Bible TTS mount must appear immediately before comparison navigation');
+
+const readerPos=bible.indexOf('src="../../app/tts-reader.js"');
+const drawerPos=bible.indexOf('src="../../app/tts-drawer.js"');
+const adapterPos=bible.indexOf('src="../../app/bible-tts-adapter.js"');
+assert.ok(readerPos < drawerPos && drawerPos < adapterPos,'Bible TTS dependencies must load engine -> drawer -> adapter');
+
+const adapterSource=fs.readFileSync(new URL('../app/bible-tts-adapter.js', import.meta.url),'utf8');
+assert.ok(!adapterSource.includes('function ensureRelationListen()'),'Bible should use one primary reader instead of a duplicate contextual Listen button');
+assert.ok(!adapterSource.includes("className='ptts-inline-listen'"),'Bible active comparison must not inject a second Listen entry point');
+assert.ok(adapterSource.includes("host.dataset.ttsPrimary=''"),'Bible page-level reader must mark itself as the primary TTS host');
+assert.ok(adapterSource.includes('selectionInsideActive'),'Bible adapter must constrain selection reading to the active relation');
+assert.ok(adapterSource.includes('mountSelectionAction'),'Bible comparator must use the shared read-selection action');
+assert.ok(adapterSource.includes('createPageHighlighter'),'Bible comparator must use shared actual-page word highlighting');
+assert.ok(adapterSource.includes("event.sectionId==='scene'"),'Bible word highlighting must target the chronicle scene for Scene scope');
+assert.ok(adapterSource.includes("event.sectionId==='project'"),'Bible word highlighting must target the project side for Project scope');
+assert.ok(adapterSource.includes("event.sectionId==='movement'"),'Bible word highlighting must target the continuous sequence for Movement scope');
+assert.ok(adapterSource.includes("event.sectionId==='scripture'"),'Bible word highlighting must target the scripture side for Scripture scope');
+assert.ok(adapterSource.includes("event.sectionId==='why'"),'Bible word highlighting must map the Why scope back to explanation/boundary text');
+assert.ok(adapterSource.includes('pageHighlighter.clear()'),'Bible page highlighting must clear at speech end or relation change');
+
+// Continuous listen-through is Bible-specific: it keeps the existing drawer,
+// preserves the selected scope, and advances through the comparator's visible
+// result sequence only after a natural speech completion.
+assert.ok(adapterSource.includes('Continue through results'),'Bible TTS must expose a continue-through-results control');
+assert.ok(adapterSource.includes('bibleContinue'),'Bible TTS must persist the continuation preference');
+assert.ok(adapterSource.includes("getElementById('next-relation')"),'Bible TTS continuation must use the comparator next-result control');
+assert.ok(adapterSource.includes("event.type==='complete'"),'Bible TTS continuation must react to natural completion');
+assert.ok(adapterSource.includes('waitForRelationChange'),'Bible TTS must wait for the next relation before restarting speech');
+assert.ok(adapterSource.includes('continuing=false'),'Bible TTS must be able to stop automatic continuation');
+assert.ok(adapterSource.includes("event.type==='stop'"),'Stop must disable automatic continuation');
+assert.ok(adapterSource.includes("event.type==='error'"),'Errors must disable automatic continuation');
+
+console.log('bible tts adapter contract: ok');

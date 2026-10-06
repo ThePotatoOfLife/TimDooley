@@ -1,0 +1,124 @@
+{
+  "id": "bible-comparator-research-queue",
+  "version": "1.0.0",
+  "updated": "2026-09-14",
+  "purpose": "Evidence-recovery queue for comparator relations that should remain provisional until stronger project-side attestation is recovered.",
+  "policy": "Contextual completeness must never be used as a substitute for evidentiary strength. Low-strength autobiographical parallels remain provisional until their stated upgrade rule is satisfied.",
+  "quality_snapshot": {
+    "active_relations": 109,
+    "active_scenes": 44,
+    "relations_with_reusable_scene": 40,
+    "retain": 81,
+    "enrich": 22,
+    "research": 6,
+    "research_reason_counts": {
+      "interpretation-gap": 6,
+      "low-strength": 6
+    }
+  },
+  "research_relation_count": 6,
+  "items": [
+    {
+      "relation_id": "crucify-me-hesitation-trial-neighbor-2017",
+      "date": "2017",
+      "strength": 2,
+      "dossier_level": "B",
+      "owners": ["knowledge/theology/son-passion-prehistory-2017-2019.json"],
+      "research_reasons": ["low-strength", "interpretation-gap"],
+      "missing": ["why_it_matters"],
+      "priority": "high",
+      "status": "recover-original-message",
+      "evidence_needed": [
+        "Recover the original 2017 chat/message/log containing the crucify-me challenge and response if possible.",
+        "Verify exact wording, participants and date before using trial/Passion sequencing strongly.",
+        "Keep later lolcow/martyr interpretation separate from what the original exchange itself establishes."
+      ],
+      "upgrade_rule": "Original or near-contemporary message evidence is required before promoting this beyond later reconstructed narrative."
+    },
+    {
+      "relation_id": "motorcycle-blood-unbroken-bones-2005",
+      "date": "2005",
+      "strength": 3,
+      "dossier_level": "A",
+      "owners": ["knowledge/timeline/thomas-mona-escalation-and-motorcycle-crash-recovery.json", "knowledge/timeline/conversation-archaeology-wave-015-missed-clue-audit.json"],
+      "research_reasons": ["low-strength", "interpretation-gap"],
+      "missing": ["why_it_matters"],
+      "priority": "high",
+      "status": "recover-contemporaneous-record",
+      "evidence_needed": [
+        "Seek contemporaneous crash, hospital, dental/reconstruction, insurance, police or family documentation.",
+        "Verify the no-broken-bones/major-fractures detail independently from later project retelling.",
+        "Preserve the existing safety boundary: this was a dangerous crash, not evidence of invulnerability."
+      ],
+      "upgrade_rule": "Strength may rise only if the unusual medical detail is corroborated by near-contemporary evidence."
+    },
+    {
+      "relation_id": "son-death-shore-bones-deep-water-2018-2019",
+      "date": "2018-2019?",
+      "strength": 3,
+      "dossier_level": "B",
+      "owners": ["knowledge/traditions/son-narrow-way-shadow-valley-visual-dossier.json"],
+      "research_reasons": ["low-strength", "interpretation-gap"],
+      "missing": ["why_it_matters"],
+      "priority": "high",
+      "status": "recover-primary-artifact",
+      "evidence_needed": [
+        "Recover the reported painting or a dated photograph/export of it.",
+        "Establish the painting date/window independently of later interpretation.",
+        "Transcribe visible route, bones/skeleton and dark-water elements before applying biblical comparison."
+      ],
+      "upgrade_rule": "Do not raise strength until the visual artifact and approximate date are independently recoverable."
+    },
+    {
+      "relation_id": "earthly-father-judgment-measure-childhood",
+      "date": "childhood",
+      "strength": 3,
+      "dossier_level": "B",
+      "owners": ["knowledge/timeline/conversation-archaeology-wave-015-missed-clue-audit.json"],
+      "research_reasons": ["low-strength", "interpretation-gap"],
+      "missing": ["why_it_matters"],
+      "priority": "medium",
+      "status": "recover-older-wording",
+      "evidence_needed": [
+        "Recover older family, diary, message or memoir wording for the father’s judgment/stone teaching.",
+        "Clarify whether the remembered wording predates later biblical comparison.",
+        "Keep the relation as ethical resemblance unless source direction becomes clearer."
+      ],
+      "upgrade_rule": "Do not infer biblical dependence from a later recollection of a common moral teaching."
+    },
+    {
+      "relation_id": "light-collapse-return-2003",
+      "date": "2003",
+      "strength": 2,
+      "dossier_level": "B",
+      "owners": ["knowledge/timeline/conversation-archaeology-wave-015-missed-clue-audit.json"],
+      "research_reasons": ["low-strength", "interpretation-gap"],
+      "missing": ["why_it_matters"],
+      "priority": "medium",
+      "status": "recover-earlier-attestation",
+      "evidence_needed": [
+        "Look for diary, message, witness recollection or other attestation closer to age sixteen.",
+        "Separate the remembered sensory sequence from the later interpretation as meeting God.",
+        "Keep blackout/alcohol context explicit when comparing to light/commission narratives."
+      ],
+      "upgrade_rule": "Retain as later autobiographical interpretation unless earlier attestation or corroboration is recovered."
+    },
+    {
+      "relation_id": "son-does-what-father-would-do-childhood",
+      "date": "childhood",
+      "strength": 2,
+      "dossier_level": "B",
+      "owners": ["knowledge/timeline/conversation-archaeology-wave-015-missed-clue-audit.json"],
+      "research_reasons": ["low-strength", "interpretation-gap"],
+      "missing": ["why_it_matters"],
+      "priority": "medium",
+      "status": "recover-older-wording",
+      "evidence_needed": [
+        "Recover an earlier source for the childhood decision rule about doing what the father would do.",
+        "Distinguish ordinary parental imitation from the later Father/Son theological architecture.",
+        "Document when the John-style Father/Son comparison was first made."
+      ],
+      "upgrade_rule": "Keep Level B unless earlier wording and later comparison chronology can be separated cleanly."
+    }
+  ]
+}

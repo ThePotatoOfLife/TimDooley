@@ -1,0 +1,162 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://thepotatooflife.github.io/TimDooley/data/relational-hyperedge-state.schema.json",
+  "title": "World Relational Atlas — Higher-Order Relation State",
+  "description": "A typed relation among three or more canonical participants when reducing the interaction to independent pairwise edges would lose meaning. Empirical evidence and project interpretation remain separate.",
+  "type": "object",
+  "required": ["id", "participants", "relationship_type", "epistemic_layer", "evidence", "state"],
+  "properties": {
+    "id": {"type":"string","minLength":1},
+    "relationship_type": {"type":"string","minLength":1},
+    "relationship_family": {"type":["string","null"]},
+    "epistemic_layer": {"enum":["observed","disclosed","estimated","inferred","interpretive","project-canon","allegation","scenario","unknown"]},
+    "participants": {
+      "type":"array",
+      "minItems":3,
+      "items": {
+        "type":"object",
+        "required":["id"],
+        "properties": {
+          "id":{"type":"string","minLength":1},
+          "role":{"type":["string","null"]},
+          "weight":{"type":["number","null"]},
+          "share":{"type":["number","null"],"minimum":0,"maximum":1},
+          "direction_role":{"enum":["source","sink","mediator","member","governor","guarantor","beneficiary","mixed","unknown"]}
+        },
+        "additionalProperties": true
+      }
+    },
+    "time": {
+      "type":"object",
+      "properties": {
+        "valid_from":{"type":["string","null"]},
+        "valid_to":{"type":["string","null"]},
+        "as_of":{"type":["string","null"]},
+        "status":{"enum":["current","historical","future","ongoing","disputed","unknown"]}
+      },
+      "additionalProperties": true
+    },
+    "evidence": {
+      "type":"object",
+      "required":["confidence"],
+      "properties": {
+        "confidence":{"enum":["high","medium","low","unknown"]},
+        "sources":{"type":"array","items":{"type":"string"}},
+        "source_class":{"type":"array","items":{"enum":["official","primary","academic","journalistic","archive","conversation","project","other"]}},
+        "corroboration_count":{"type":"integer","minimum":0},
+        "contradictions":{"type":"array","items":{"type":"string"}},
+        "notes":{"type":"string"}
+      },
+      "additionalProperties": true
+    },
+    "state": {
+      "type":"object",
+      "properties": {
+        "visibility": {
+          "type":"object",
+          "properties": {
+            "status":{"enum":["public","partially_public","confidential_disclosed","inferred","alleged_hidden","unknown"]},
+            "basis":{"type":"string"},
+            "notes":{"type":"string"}
+          },
+          "additionalProperties": false
+        },
+        "bond": {
+          "type":"object",
+          "properties": {
+            "formality":{"enum":["informal","customary","contractual","treaty","institutional","constitutional","mixed","unknown"]},
+            "institutionalization":{"type":["number","null"],"minimum":0,"maximum":1},
+            "shared_capability":{"type":["number","null"],"minimum":0,"maximum":1},
+            "entry_rule":{"type":["string","null"]},
+            "exit_rule":{"type":["string","null"]},
+            "governance_rule":{"type":["string","null"]}
+          },
+          "additionalProperties": true
+        },
+        "flow": {
+          "type":"object",
+          "properties": {
+            "kind":{"enum":["money","goods","energy","people","data","authority","care","security","attention","obligation","ownership-control","knowledge","cultural-exchange","symbolic","mixed","unknown"]},
+            "quantity_semantics":{"enum":["stock","flow","capacity","utilization","balance","rate","share","index","mixed","unknown"]},
+            "value":{"type":["number","null"]},
+            "unit":{"type":["string","null"]},
+            "period":{"type":["string","null"]},
+            "allocation_rule":{"type":["string","null"]},
+            "description":{"type":"string"}
+          },
+          "additionalProperties": true
+        },
+        "agency": {
+          "type":"object",
+          "properties": {
+            "decision_rule":{"type":["string","null"]},
+            "veto_holders":{"type":"array","items":{"type":"string"}},
+            "exit_available":{"type":["boolean","null"]},
+            "exit_cost":{"type":["number","null"],"minimum":0,"maximum":1},
+            "asymmetry":{"type":["number","null"],"minimum":0,"maximum":1}
+          },
+          "additionalProperties": true
+        },
+        "dynamics": {
+          "type":"object",
+          "properties": {
+            "recurrence_frequency":{"type":["number","null"]},
+            "frequency_unit":{"type":["string","null"]},
+            "adaptive_rewiring":{"type":["boolean","null"]},
+            "regime":{"type":["string","null"]},
+            "reversible":{"type":["boolean","null"]},
+            "reversal_condition":{"type":["string","null"]}
+          },
+          "additionalProperties": true
+        },
+        "vertical_projection": {
+          "type":"array",
+          "items": {
+            "type":"object",
+            "required":["dimension","basis","role"],
+            "properties": {
+              "dimension":{"type":"integer","minimum":1,"maximum":11},
+              "role":{"type":"string","minLength":1},
+              "basis":{"enum":["observed","derived","inferred","interpretive","project-canon"]},
+              "reason":{"type":"string"}
+            },
+            "additionalProperties": false
+          }
+        },
+        "closure": {
+          "type":"object",
+          "properties": {
+            "status":{"enum":["open","disputed","repairing","substantially_repaired","released","closed","unknown"]},
+            "conditions":{"type":"array","items":{"type":"string"}},
+            "review_date":{"type":["string","null"]}
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    },
+    "pairwise_projection": {
+      "type":"object",
+      "description":"Optional derived pairwise representation for visualization or algorithms that cannot consume hyperedges. It must declare information loss.",
+      "properties": {
+        "allowed":{"type":"boolean"},
+        "method":{"type":["string","null"]},
+        "derived_edge_ids":{"type":"array","items":{"type":"string"}},
+        "information_loss":{"type":"string"},
+        "warning":{"type":"string"}
+      },
+      "additionalProperties": true
+    },
+    "project_interpretation": {
+      "type":"object",
+      "properties": {
+        "axis_dimension":{"type":["integer","null"],"minimum":1,"maximum":11},
+        "symbols":{"type":"array","items":{"type":"string"}},
+        "reading":{"type":"string"},
+        "confidence":{"enum":["canonical","developed","provisional","speculative","unknown"]}
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

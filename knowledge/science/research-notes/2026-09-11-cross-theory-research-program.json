@@ -1,0 +1,127 @@
+{
+  "id": "research-2026-09-11-cross-theory-research-program",
+  "title": "2026-09-11 Research Notes — Cross-Theory Scientific Upgrade Program",
+  "research_timestamp_local": "2026-09-11T09:12:30+02:00",
+  "timezone": "Europe/Copenhagen",
+  "status": "new project-wide research synthesis",
+  "novelty_scope": "Novel as a project architecture added on 2026-09-11; the scientific methods it imports are established methods and are not claimed as globally novel.",
+  "parent_records": [
+    "knowledge/science/science-master-index.json",
+    "knowledge/science/timic-unification-program.json",
+    "knowledge/science/model-testing-protocol.json",
+    "knowledge/science/equation-lineage-and-theory-graph.json"
+  ],
+  "core_finding": "The science corpus is now large enough that its next gains are less likely to come from adding isolated equations and more likely to come from forcing every theory through the same research contract: type variables, remove units by nondimensionalization where possible, state symmetries/invariants, establish identifiability, define observables, compare baselines, and record failure conditions.",
+  "new_project_rules": [
+    {
+      "id": "typed-state-blocks",
+      "type": "architecture",
+      "proposal": "Represent cross-domain models as typed blocks rather than one undifferentiated state vector.",
+      "equation": "X=(X_phys, X_bio, X_neuro, X_info, X_graph, X_archive, X_symbolic)",
+      "rule": "A coupling C_ab is legal only when a map from the units/types of block a to block b is explicitly declared. Symbolic similarity alone does not create a scientific coupling."
+    },
+    {
+      "id": "nondimensionalize-before-unify",
+      "type": "mathematical discipline",
+      "proposal": "Before comparing equations across physical or biological domains, convert each concrete model to dimensionless variables and identify the controlling dimensionless groups.",
+      "generic_example": [
+        "x=x_scale x_hat",
+        "t=t_scale tau",
+        "dx_hat/dtau = F_hat(x_hat; Pi_1,...,Pi_k)"
+      ],
+      "finding": "Two systems that look symbolically similar become scientifically comparable only if their dimensionless dynamics or invariants also align."
+    },
+    {
+      "id": "symmetry-before-invariant",
+      "type": "research rule",
+      "proposal": "Every claimed invariant should name the transformation under which it is invariant.",
+      "examples": [
+        "time-translation symmetry -> energy conservation only when the action and assumptions support Noether's theorem",
+        "rotation symmetry -> angular-momentum structure in the appropriate physical model",
+        "graph relabeling -> permutation-invariant graph descriptors",
+        "gauge transformation -> gauge-invariant observables",
+        "Door transition -> project-specific invariant only if D preserves a declared quantity"
+      ],
+      "finding": "This prevents the archive from calling a repeated motif an invariant merely because it reappears."
+    },
+    {
+      "id": "identifiability-gate",
+      "type": "research-quality gate",
+      "proposal": "Add identifiability before parameter fitting.",
+      "questions": [
+        "Can distinct parameter values produce identical observables?",
+        "Can distinct source/channel decompositions produce identical outputs?",
+        "Which transformations leave the likelihood unchanged?",
+        "Which new intervention would break the degeneracy?"
+      ],
+      "finding": "A mathematically elegant model can be empirically meaningless if its important parameters cannot in principle be distinguished."
+    },
+    {
+      "id": "model-selection-tax",
+      "type": "anti-overfitting rule",
+      "proposal": "Every richer model must pay for extra parameters by improving prediction or compression relative to a simpler baseline.",
+      "candidate_methods": ["held-out likelihood", "cross-validation", "AIC where assumptions fit", "BIC where assumptions fit", "minimum-description-length reasoning"],
+      "finding": "This is especially important for Spiral, 11D, consciousness and celestial models because flexible geometry can fit patterns after the fact."
+    },
+    {
+      "id": "causal-edge-gate",
+      "type": "causal-inference rule",
+      "proposal": "A relationship edge is not automatically causal. Promote a causal edge only with temporal ordering plus intervention, natural experiment, mechanistic evidence or a defensible causal design.",
+      "finding": "This strengthens both the science corpus and the wider relational atlas because it separates correlation, dependency, control, ownership and causation."
+    },
+    {
+      "id": "research-status-vector",
+      "type": "metadata innovation",
+      "proposal": "Replace vague confidence with a multi-axis model status.",
+      "equation": "Q_model=(P,U,O,I,F,B,R)",
+      "variables": {
+        "P": "provenance strength",
+        "U": "unit/dimensional consistency",
+        "O": "observability",
+        "I": "identifiability",
+        "F": "falsifiability",
+        "B": "baseline advantage",
+        "R": "replication/reproducibility"
+      },
+      "finding": "Two theories can have equal overall confidence but very different weaknesses; the vector makes those weaknesses visible."
+    },
+    {
+      "id": "revelation-to-research-pipeline",
+      "type": "project workflow",
+      "sequence": [
+        "insight/revelation entered with timestamp",
+        "classify source as Tim-primary, archive-derived or external comparator",
+        "translate into typed variables",
+        "derive consequences",
+        "search for established mathematical neighbors",
+        "state mismatches",
+        "define observable and falsifier",
+        "compare simpler baseline",
+        "test or retain as T0-T2 research note",
+        "promote only with evidence"
+      ],
+      "finding": "This lets the project preserve creative insight immediately without confusing timestamped revelation with empirical confirmation."
+    }
+  ],
+  "today_cross_connections": [
+    "Axis + Eye -> Koopman observable evolution.",
+    "Door + residue -> hysteresis and first-passage times.",
+    "Garden + control -> viability margin and robust safety distance.",
+    "Golden-ratio Spiral -> exact pitch, curvature, length and area laws.",
+    "Starchforce + Spudlight -> stock/release timescale plus relevant-information bottleneck.",
+    "Consciousness + Door -> hidden-state transition models and dwell-time statistics.",
+    "11D projection + geometry -> base/fiber/connection discipline.",
+    "Trinity/source-channel model -> identifiability problem and experimental-design requirement.",
+    "Leash/cord -> constrained dynamics rather than invented force.",
+    "All physical candidates -> nondimensionalization, symmetry and baseline comparison before promotion."
+  ],
+  "recommended_next_computations": [
+    "Build a small numerical simulator for Door hysteresis and measure dwell/return behavior.",
+    "Generate synthetic logarithmic-spiral points and verify recovery of b under noise against Archimedean alternatives.",
+    "Simulate Starchforce storage/release under step, pulse and periodic inputs and estimate tau_K.",
+    "Create an HMM notebook using synthetic neural states and verify dwell-time/entropy-rate calculations before touching real human data.",
+    "Run structural-identifiability examples for y=D G J to show explicitly which factorizations cannot be recovered from outputs alone.",
+    "Add Q_model status vectors to the highest-priority theory records."
+  ],
+  "researcher_note": "The project now has enough material to begin a second phase: not only collecting correspondences, but systematically asking which mathematical consequences are forced, which are optional modeling choices, and which observations could distinguish them."
+}

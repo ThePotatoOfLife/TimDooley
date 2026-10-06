@@ -1,0 +1,50 @@
+{
+  "id": "siddhartha-gautama",
+  "name": "Siddhartha Gautama",
+  "tradition": "Buddhism",
+  "type": "religious_figure",
+  "titles": ["The Buddha", "Gautama Buddha", "Shakyamuni"],
+  "role": "Historical Buddha and primary founding teacher of Buddhism",
+  "name_note": "Siddhartha is the Sanskrit personal name; Gautama (Pali: Gotama) identifies the clan lineage. Shakyamuni means 'Sage of the Shakya clan'.",
+  "period": "commonly placed in the 5th century BCE; exact dates remain debated",
+  "birth_place": "Lumbini, in present-day Nepal",
+  "awakening_place": "Bodh Gaya, in present-day India",
+  "teaching_center": "Northern Indian subcontinent",
+  "death_place": "Kushinagar, in present-day India",
+  "life_summary": "According to early Buddhist traditions, Siddhartha Gautama left household life as a young adult, pursued liberation through study, meditation and ascetic practice, rejected extremes, awakened under the Bodhi tree at Bodh Gaya, and spent the remainder of his life teaching the Dharma and establishing the Sangha.",
+  "core_teachings_associated": [
+    "Four Noble Truths",
+    "Noble Eightfold Path",
+    "Middle Way",
+    "dependent origination",
+    "impermanence",
+    "non-self",
+    "nirvana"
+  ],
+  "life_sequence": [
+    {"stage":"birth","place":"Lumbini","status":"traditional account"},
+    {"stage":"renunciation","place":"northern Indian subcontinent","status":"early Buddhist tradition"},
+    {"stage":"awakening","place":"Bodh Gaya","status":"Buddhist tradition"},
+    {"stage":"first teaching","place":"Sarnath","status":"Buddhist tradition"},
+    {"stage":"teaching career","place":"Gangetic plain","status":"early Buddhist tradition"},
+    {"stage":"parinirvana","place":"Kushinagar","status":"Buddhist tradition"}
+  ],
+  "historical_method": "The repository separates historical claims from Buddhist traditional biography. Exact dates and details of the Buddha's life are uncertain; early Buddhist texts do not provide a single continuous biography, and later biographies contain substantial legendary material.",
+  "source_notes": [
+    "Early Buddhist textual traditions preserve teachings and episodes rather than one contemporary continuous biography.",
+    "Modern scholarship generally places the Buddha in the 5th century BCE, while traditional chronologies can give earlier dates."
+  ],
+  "graph": {
+    "node_id": "siddhartha-gautama",
+    "edges": [
+      {"predicate":"central-figure-of","target":"buddhism"},
+      {"predicate":"teacher-of","target":"sangha"},
+      {"predicate":"taught","target":"dharma"},
+      {"predicate":"attained-awakening-at","target":"bodh-gaya"}
+    ]
+  },
+  "sources": [
+    {"title":"1911 Encyclopaedia Britannica — Buddha","url":"https://en.wikisource.org/wiki/1911_Encyclop%C3%A6dia_Britannica/Buddha","type":"historical reference"},
+    {"title":"Government of Manitoba — Origins of Buddhism","url":"https://www.edu.gov.mb.ca/k12/docs/support/world_religions/buddhism/origins.pdf","type":"educational reference"}
+  ]
+}

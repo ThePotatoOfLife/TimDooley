@@ -1,0 +1,190 @@
+import assert from 'node:assert/strict';
+
+class FakeElement {
+  constructor() { this.hidden = false; this.style = {}; this.innerHTML = ''; this.id = ''; this.textContent = ''; }
+  appendChild() {}
+  addEventListener() {}
+  querySelector() { return new FakeElement(); }
+}
+
+const elements = new Map();
+globalThis.document = {
+  head: new FakeElement(),
+  getElementById(id) { return elements.get(id) || null; },
+  createElement() {
+    const element = new FakeElement();
+    Object.defineProperty(element, 'id', {
+      get() { return this._id || ''; },
+      set(value) { this._id = value; if (value) elements.set(value, this); },
+    });
+    return element;
+  },
+};
+
+globalThis.location = { href: 'https://example.test/world-map/' };
+globalThis.history = { replaceState() {} };
+globalThis.CustomEvent = class CustomEvent { constructor(type, init={}) { this.type = type; this.detail = init.detail; } };
+globalThis.window = globalThis;
+
+const scaleRuntime = Object.freeze({
+  threshold(capability, phase) {
+    const values = { subdivisions:{ render:3.4, label:4.25 } };
+    const value = values?.[capability]?.[phase];
+    if (!Number.isFinite(value)) throw new Error(`unexpected scale threshold ${capability}.${phase}`);
+    return value;
+  },
+  bandThreshold(band) {
+    const values = { 'macro-region':2.5, subnational:5.8, local:8 };
+    const value = values[band];
+    if (!Number.isFinite(value)) throw new Error(`unexpected scale band ${band}`);
+    return value;
+  },
+  capabilityActive(capability, phase, zoom) {
+    const values = { subdivisions:{ load:3.4, render:3.4, label:4.25, interact:3.4 } };
+    const value = values?.[capability]?.[phase];
+    if (!Number.isFinite(value)) throw new Error(`unexpected scale capability ${capability}.${phase}`);
+    return Number(zoom) >= value;
+  },
+});
+window.__potatoAtlasScale = { ...scaleRuntime, ready:Promise.resolve(scaleRuntime) };
+
+const selectedEvents = [];
+globalThis.dispatchEvent = event => {
+  if (event?.type === 'potato-atlas-subdivision-select') selectedEvents.push(event.detail);
+  return true;
+};
+
+const california = {
+  type: 'Feature',
+  properties: {
+    id: 'US-CA', name: 'California', code: 'CA', subdivision_type: 'state',
+    parent_iso3: 'USA', parent_name: 'United States of America', area_km2: 423970,
+    population: { value: 39431263, period: 2025, unit: 'persons', source: 'U.S. Census Bureau' },
+    geometry_source: 'U.S. Census Bureau',
+  },
+  geometry: { type: 'Polygon', coordinates: [[[-124.4,32.5],[-114.1,32.5],[-114.1,42],[-124.4,42],[-124.4,32.5]]] },
+};
+
+const syddanmark = {
+  type: 'Feature',
+  properties: {
+    id: 'DK-1083', name: 'Region Syddanmark', code: '1083', subdivision_type: 'region',
+    parent_iso3: 'DNK', parent_name: 'Denmark',
+    geometry_source: 'Danish Agency for Climate Data (DAWA/Dataforsyningen)',
+    geometry_source_url: 'https://api.dataforsyningen.dk/regioner?format=geojson',
+  },
+  geometry: { type: 'Polygon', coordinates: [[[8.0,54.7],[10.8,54.7],[10.8,55.7],[8.0,55.7],[8.0,54.7]]] },
+};
+
+const uusimaa = {
+  type:'Feature',
+  properties:{ id:'FI-18', name:'Uusimaa', code:'18', subdivision_type:'region', parent_iso3:'FIN', parent_name:'Finland' },
+  geometry:{ type:'Polygon', coordinates:[[[23.5,59.7],[26.8,59.7],[26.8,60.8],[23.5,60.8],[23.5,59.7]]] },
+};
+
+const handlers = new Map();
+const sources = new Map();
+const layers = new Map();
+const fetched = [];
+const fakeMap = {
+  getZoom() { return 6; },
+  getBounds() { return { getWest:()=>20, getEast:()=>21, getSouth:()=>0, getNorth:()=>1 }; },
+  getCenter() { return { lng:20.5, lat:0.5 }; },
+  getSource(id) { return sources.get(id) || null; },
+  addSource(id, source) {
+    const state = { ...source, setData(data) { this.data = data; } };
+    sources.set(id, state);
+  },
+  getLayer(id) { return layers.get(id) || null; },
+  addLayer(layer) { layers.set(layer.id, layer); },
+  setFilter(id, filter) { const layer=layers.get(id); if (layer) layer.filter=filter; },
+  setLayerZoomRange(id, minzoom, maxzoom) { const layer=layers.get(id); if (layer) { layer.minzoom=minzoom; layer.maxzoom=maxzoom; } },
+  setLayoutProperty(id, key, value) { const layer=layers.get(id); if (layer) { layer.layout=layer.layout||{}; layer.layout[key]=value; } },
+  getCanvas() { return { style:{} }; },
+  on(event, layerOrHandler, maybeHandler) {
+    const layer = typeof layerOrHandler === 'string' ? layerOrHandler : '*';
+    const handler = typeof layerOrHandler === 'function' ? layerOrHandler : maybeHandler;
+    handlers.set(`${event}:${layer}`, handler);
+  },
+  fitBounds() {},
+};
+window.__potatoAtlasMap = fakeMap;
+
+globalThis.fetch = async url => {
+  const text = String(url);
+  fetched.push(text);
+  if (text.includes('world-subdivisions/index.json')) {
+    return {
+      ok:true,
+      json:async()=>({
+        runtime_budget:{
+          partition_max_bytes:1500000,
+          rendered_max_bytes:3000000,
+          rendered_max_partitions:4,
+          cache_max_bytes:6000000,
+          cache_max_partitions:2,
+        },
+        partitions:{
+          USA:{ path:'USA.geo.json', bytes:389005, id_prefix:'US-', viewport_bounds:{west:-179.5,east:-65,south:17,north:72.5} },
+          DNK:{ path:'DNK.geo.json', bytes:551315, id_prefix:'DK-', viewport_bounds:{west:7.5,east:15.3,south:54.4,north:57.9} },
+          FIN:{ path:'FIN.geo.json', bytes:120000, id_prefix:'FI-', viewport_bounds:{west:19,east:32,south:59,north:70} },
+        },
+      }),
+    };
+  }
+  if (text.includes('world-subdivisions/USA.geo.json')) {
+    return { ok:true, json:async()=>({ type:'FeatureCollection', features:[california] }) };
+  }
+  if (text.includes('world-subdivisions/DNK.geo.json')) {
+    return { ok:true, json:async()=>({ type:'FeatureCollection', features:[syddanmark] }) };
+  }
+  if (text.includes('world-subdivisions/FIN.geo.json')) {
+    return { ok:true, json:async()=>({ type:'FeatureCollection', features:[uusimaa] }) };
+  }
+  throw new Error(`unexpected fetch ${text}`);
+};
+
+await import(new URL('../world-map/3d-subdivisions.js?bounded-runtime-regression=1', import.meta.url));
+await window.__potatoAtlasSubdivisions.loadPartition('USA');
+await window.__potatoAtlasSubdivisions.loadPartition('DNK');
+
+assert.deepEqual([...sources.keys()], ['atlas-subdivisions-active'], 'subdivisions must use exactly one shared GeoJSON source');
+assert.deepEqual(
+  [...layers.keys()].filter(id => id.startsWith('atlas-subdivision')).sort(),
+  ['atlas-subdivision-hit', 'atlas-subdivision-label', 'atlas-subdivision-line', 'atlas-subdivision-selected-label'],
+  'subdivisions must use three shared interaction/context layers plus one selected-label layer independent of loaded country count',
+);
+assert.equal(layers.get('atlas-subdivision-line')?.minzoom, 2.5, 'subdivision borders should remain visible at national context scale once geometry is retained');
+assert.equal(layers.get('atlas-subdivision-hit')?.minzoom, 3.4, 'early national-context borders must not create early subdivision hit targets');
+assert.equal(layers.get('atlas-subdivision-label')?.minzoom, 4.25, 'wide-screen state labels should keep the shared label threshold');
+assert.equal(layers.get('atlas-subdivision-selected-label')?.layout?.['text-allow-overlap'], true, 'selected tiny/dense subdivisions must bypass ordinary collision suppression');
+
+assert.equal(await window.__potatoAtlasSubdivisions.select('US-CA', {fit:false}), true);
+assert.deepEqual(layers.get('atlas-subdivision-selected-label')?.filter, ['==',['get','id'],'US-CA'], 'selected subdivision must receive a collision-independent label');
+assert.equal(selectedEvents.at(-1)?.feature?.properties?.population?.source, 'U.S. Census Bureau', 'selection must preserve raw nested population provenance');
+assert.equal(await window.__potatoAtlasSubdivisions.select('DK-1083', {fit:false}), true);
+assert.equal(selectedEvents.at(-1)?.feature?.properties?.geometry_source_url, 'https://api.dataforsyningen.dk/regioner?format=geojson', 'selection must preserve raw nested/source provenance');
+
+await window.__potatoAtlasSubdivisions.loadPartition('FIN');
+const status = window.__potatoAtlasSubdivisions.status();
+assert.ok(status.cachedPartitions.length <= 2, 'cache partition count must stay within budget');
+assert.ok(status.cachedPartitions.includes('DNK'), 'selected subdivision partition must be protected from eviction');
+assert.ok(status.cacheEvictions >= 1, 'loading beyond cache budget must evict an unprotected LRU partition');
+assert.equal(typeof status.cacheHits, 'number');
+assert.equal(typeof status.cacheMisses, 'number');
+assert.ok(status.renderedPartitions.length <= status.budget.rendered_max_partitions);
+
+await window.__potatoAtlasSubdivisions.retainPartition('USA', 'adl-heat');
+await window.__potatoAtlasSubdivisions.retainPartition('USA', 'mud-below-us');
+let retained = window.__potatoAtlasSubdivisions.status();
+assert.deepEqual(retained.retentionOwners.USA, ['adl-heat','mud-below-us'], 'shared U.S. geometry must retain independent overlay owners');
+await window.__potatoAtlasSubdivisions.releasePartition('USA', 'adl-heat');
+retained = window.__potatoAtlasSubdivisions.status();
+assert.ok(retained.forcedPartitions.includes('USA'), 'releasing ADL must not evict U.S. geometry while another owner still needs it');
+assert.deepEqual(retained.retentionOwners.USA, ['mud-below-us']);
+await window.__potatoAtlasSubdivisions.releasePartition('USA', 'mud-below-us');
+retained = window.__potatoAtlasSubdivisions.status();
+assert.ok(!retained.forcedPartitions.includes('USA'), 'U.S. geometry may release after its final owner releases it');
+assert.equal(retained.retentionOwners.USA, undefined);
+
+console.log('WORLD MAP BOUNDED SUBDIVISION RUNTIME REGRESSION PASSED');

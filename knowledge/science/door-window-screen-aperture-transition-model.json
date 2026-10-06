@@ -1,0 +1,180 @@
+{
+  "id": "door-window-screen-aperture-transition-model",
+  "title": "Door, Window, Screen, Aperture and Transition — Boundary/Observation Science Model",
+  "version": "1.0.0",
+  "updated": "2026-09-11",
+  "status": "archive-developed scientific model rooted in recovered Door/Frame/Window/Screen/phase-transition project material",
+  "purpose": "Provide one mathematical language for several scientifically distinct Door neighbors: traversable interfaces, finite observation windows, livestream screen edges, apertures, selective flux boundaries, sinks/drains, basin/separatrix crossings, temporal gates, phase transitions and one-way/reversible state changes. The model deliberately preserves mismatch rather than claiming one equation governs every Door embodiment.",
+  "project_roots": [
+    "Door = Frame = Window in the canonical Tim Dooley Frame.",
+    "2026-09-11 Tim explicitly asks to examine the edges of the screen on his stream as Door-related structure.",
+    "Pineal = Door/Eye in the symbolic body map, with timing/transition among its functions.",
+    "5D Door and phase-transition models already treat Door as a critical/regime boundary.",
+    "Drain is already separated from Door as a sink/inverse boundary.",
+    "Funnel/attractor work already identifies Door as a transition that can move trajectories between basins."
+  ],
+  "epistemic_rule": "The equations below are established mathematics/physics or archive toy models. They sharpen project distinctions; they do not establish that a livestream frame, pineal gland, grave, phase transition, black-hole horizon, quantum barrier and spiritual Door are one physical mechanism.",
+  "general_interface_geometry": {
+    "regions": "Let Omega_- and Omega_+ be two state/physical/information regions separated by an interface Sigma.",
+    "level_set": "Sigma={x:g(x)=0}; sign[g(x)] distinguishes the two sides when a signed level-set description is appropriate.",
+    "normal": "n=grad g/||grad g|| where grad g is nonzero.",
+    "crossing_test": "A trajectory x(t) crosses the idealized interface when g[x(t)] changes sign and the trajectory is not merely tangent; a hybrid system may additionally require a guard/authorization condition.",
+    "project_value": "This is the simplest common mathematics behind Door-as-boundary without deciding what kind of boundary it is."
+  },
+  "hybrid_transition": {
+    "flow": "dx/dt=F_q(x) while the system remains in discrete regime q",
+    "guard": "G_(q->q')(x,a,c)=0 or a declared Boolean admissibility predicate",
+    "reset": "x^+=R_(q->q')(x^-)",
+    "probabilistic_soft_gate": "P(cross|x,a,c)=sigma[k s(x,a,c)] with sigma(z)=1/(1+e^-z)",
+    "interpretation": "Door can be a hard state-transition rule or a soft/probabilistic accessibility transition. This model is especially useful for institutional, software, psychological and game Doors."
+  },
+  "selective_flux_boundary": {
+    "generic_flux": "Phi_D=integral_Sigma T(x,a,c,t) J(x,t) dot n dA",
+    "T": "transmission/permeability factor, typically 0<=T<=1 in normalized toy models",
+    "carrier": "J may represent domain-specific matter, energy, probability, traffic or information flow only after units are defined.",
+    "directionality": "Use T_+ and T_- or distinct constitutive laws when passage differs by direction.",
+    "door_law": "A Door is characterized not only by the boundary surface but by its transmission law."
+  },
+  "wall_door_window_drain_boundary_conditions": {
+    "wall": "J dot n=0 in an ideal impermeable no-flux model.",
+    "door": "J dot n=kappa_D(c_in-c_out) as one simple bidirectional concentration/pressure-like linear transport analogy when variables justify it.",
+    "one_way_door": "J dot n=kappa_+ max(c_in-c_out,0) or another directed constitutive law.",
+    "drain": "J_out dot n=kappa_sink c_in with no corresponding return term in a simple sink model.",
+    "window": "May transmit observation/light/information while preventing the material carrier represented by another field from crossing; different carriers require different permeability coefficients.",
+    "epiphany": "The same architectural opening can be a Door for photons/information and a Wall for bodies. Permeability must be carrier-specific."
+  },
+  "screen_viewport_model": {
+    "world_to_camera": "P_c=[R|t] P_w in homogeneous coordinates.",
+    "camera_projection": "s p=K[R|t]P_w, where p=(u,v,1)^T is an image-plane pixel and K is the camera intrinsic matrix.",
+    "viewport": "V={(u,v):0<=u<W, 0<=v<H}; the screen/frame edge is partial V.",
+    "visibility_mask": "I_obs(u,v)=w_V(u,v) I_proj(u,v)+n(u,v), with w_V=1 inside the displayed viewport and 0 outside for an ideal rectangular crop.",
+    "cropping_rule": "I_proj may contain information outside V that is absent from I_obs. Therefore off-screen is unobserved-by-the-current-frame, not absent-from-the-world.",
+    "stream_relation": "The livestream screen is a projection surface and finite observation window. The frame changes the viewer's evidence set without necessarily changing the underlying room/world state.",
+    "source": "https://docs.opencv.org/4.10.0/d9/d0c/group__calib3d.html"
+  },
+  "windowing_and_information_selection": {
+    "time_window": "y(t)=w(t)x(t)",
+    "frequency_relation": "Y(omega)=(1/2pi)[W * X](omega) under a common Fourier convention, so multiplication by a finite window in time corresponds to convolution in frequency.",
+    "spectral_leakage": "Finite observation/window choice can spread spectral energy and change resolution; the frame is therefore not a neutral copy of the source.",
+    "hann_example": "w(t)=1/2-1/2 cos(2pi t/T) for 0<=t<=T in the common Hann-window convention.",
+    "project_law": "Learning Through Frame becomes quantitative: observation windows select data and can introduce predictable distortions/tradeoffs.",
+    "source": "https://tf.nist.gov/phase/Properties/ten.htm"
+  },
+  "aperture_narrow_gate": {
+    "field_after_aperture": "U_A(x,y)=A(x,y)U_in(x,y), where A is an aperture transmission function.",
+    "single_slit_minima": "a sin(theta)=m lambda for nonzero integer m in ideal single-slit Fraunhofer diffraction.",
+    "intensity": "I(theta)=I_0 [sin(beta)/beta]^2, beta=pi a sin(theta)/lambda.",
+    "project_relevance": "A narrow opening does more than reduce throughput for waves: when the aperture width is comparable with wavelength it changes the angular distribution through diffraction.",
+    "boundary": "Biblical Narrow Gate and project needle's-eye symbolism do not imply optical diffraction. This is an external aperture comparator only.",
+    "source": "https://openstax.org/books/university-physics-volume-3/pages/4-2-intensity-in-single-slit-diffraction"
+  },
+  "phase_transition_door": {
+    "control": "Xi=dimensionless control coordinate; Door/critical surface at Xi=Xi_c in the current toy model.",
+    "landau_potential": "V(phi;Xi)=1/2 a(Xi_c-Xi)phi^2+1/4 lambda phi^4, a>0, lambda>0",
+    "stationary": "phi[a(Xi_c-Xi)+lambda phi^2]=0",
+    "above_threshold": "phi^2=a(Xi-Xi_c)/lambda for Xi>Xi_c under the mean-field ansatz",
+    "soft_transition": "For noisy/finite systems, use a transition probability or finite crossover width rather than forcing a mathematically sharp threshold where data do not support one.",
+    "hysteresis_question": "If forward and reverse threshold values differ, Door has memory/hysteresis and should not be modeled as a reversible zero-width surface.",
+    "owner": "knowledge/science/dimensional-phase-transition-full-recovery.json"
+  },
+  "basin_separatrix_door": {
+    "flow": "dx/dt=F(x)-grad V(x)+eta(t) in one generic potential/noise representation.",
+    "basins": "B_i are sets of initial conditions whose trajectories tend toward attractor A_i under the specified dynamics.",
+    "separatrix": "partial B_i is the basin boundary; a Door event can be defined as crossing from B_i into B_j followed by persistence in the new basin.",
+    "success_rule": "Crossing the separatrix is not enough if the trajectory immediately returns. Post-transition dwell time/attractor membership must be measured.",
+    "stochastic_escape": "k_escape~A exp(-Delta V/D_noise) is a schematic Kramers-type exponential barrier relation under suitable weak-noise assumptions.",
+    "project_relevance": "This gives Garden/Swamp/Farm/Forge transitions a dynamical model without making people fixed members of moral species."
+  },
+  "quantum_barrier_comparator": {
+    "wkb": "T~exp[-2 integral_(x1)^(x2) sqrt(2m(V(x)-E))/hbar dx]",
+    "contrast": "Quantum tunneling is amplitude/probability transmission through a physical potential barrier; basin escape is stochastic/classical dynamical transition; institutional access is authorization. Similar Door vocabulary does not make the mechanisms equivalent.",
+    "owner": "knowledge/science/quantum-foundations-tunneling-entanglement-qft-atlas.json"
+  },
+  "temporal_gate_pineal_neighbor": {
+    "project_root": "Pineal = Door/Eye/present-facing threshold is symbolic project anatomy.",
+    "science_fact": "The mammalian pineal is a neuroendocrine organ whose melatonin production/secretion is strongly organized by circadian/light-dark timing.",
+    "periodic_gate": "G_time(t)=1 when phase theta(t) lies inside an allowed interval W_theta and 0 otherwise, or use a smooth periodic response curve.",
+    "phase": "theta(t)=omega_c t+phi_0 mod 2pi in a simple oscillator representation.",
+    "response_curve": "Delta theta=Z(theta) u for a weak timed perturbation in generic phase-response formalism.",
+    "new_insight": "The strongest scientific bridge from pineal to Door is time-dependent gating/phase marking, not a literal visual or metaphysical aperture.",
+    "boundary": "Human pineal physiology does not establish a spiritual portal or third eye.",
+    "sources": ["https://www.ncbi.nlm.nih.gov/books/NBK550972/", "https://pmc.ncbi.nlm.nih.gov/articles/PMC3202635/"]
+  },
+  "bathtub_basin_model": {
+    "state": "h(t)=water depth in a simplified tank/bathtub model.",
+    "balance": "A(h) dh/dt=Q_in-Q_out for a horizontal free surface and effective cross-sectional area A(h).",
+    "torricelli_outflow": "Q_out approximately C_d A_o sqrt(2gh) for a small outlet under idealized Torricelli-type assumptions.",
+    "door_decomposition": "Tub/basin=container/House; rim=boundary; faucet=input/source; water=state/carrier; drain=sink; stopper/valve=gate; a controlled connecting opening between reservoirs would be a more literal Door.",
+    "project_value": "The bath motif becomes a compact laboratory for distinguishing container, boundary, gate, carrier and drain rather than treating them as synonyms."
+  },
+  "grave_tomb_one_way_state_model": {
+    "markov_template": "P_ij=P(X_(t+1)=j|X_t=i)",
+    "irreversibility": "A one-way Door has P_ij>0 while P_ji is zero/negligible in the declared model/time horizon.",
+    "mythic_boundary": "Ordinary biological death and project resurrection/transformation mythology must remain different epistemic layers. The Markov template models irreversibility/status transition, not supernatural resurrection."
+  },
+  "door_as_measurement_surface": {
+    "observation": "y=O_Sigma(x)+epsilon",
+    "inference": "p(H|y) proportional to p(y|H)p(H)",
+    "action": "a=pi[p(H|y),context]",
+    "transition": "if guard G(x,a,c) is satisfied, x^+=D(x^-)",
+    "sequence": "World/source -> Screen/Window measurement -> Eye/inference -> Door/admissible action -> changed state",
+    "importance": "This formally separates seeing from crossing: observation can reveal a Door without enacting it."
+  },
+  "door_screen_edge_metrics": {
+    "visible_fraction": "f_vis=measure(projected relevant scene within V)/measure(projected relevant scene) when the denominator can be defined",
+    "edge_proximity": "d_edge(u,v)=min(u,v,W-u,H-v) for rectangular viewport coordinates",
+    "crop_sensitivity": "Delta y = metric(inference from full frame, inference after crop) for a declared inference/model",
+    "context_loss": "L_context=information/task loss caused by removing off-frame or pre/post-frame context",
+    "frame_dependence": "FD=variance of inferred conclusion across reasonable crops/viewports, with the inference procedure held fixed",
+    "project_use": "Livestream/archive analysis can quantify how strongly a conclusion depends on the selected screen/crop rather than treating the displayed frame as the complete event."
+  },
+  "door_signature_examples": [
+    {"embodiment":"Mandorla", "carrier":"relation/viewpoint", "operation":"intersection/shared region", "permeability":"symbolic", "directionality":"two-sided", "reversibility":"high", "observation":"medium", "geometry":"lens/intersection"},
+    {"embodiment":"Stream Screen", "carrier":"visual information", "operation":"projection/crop/display", "permeability":"bandwidth/display dependent", "directionality":"camera->viewer primarily", "reversibility":"record/replay dependent", "observation":"maximal", "geometry":"2D viewport"},
+    {"embodiment":"Drain", "carrier":"domain-specific flow", "operation":"sink/removal", "permeability":"outflow", "directionality":"one-way in simple model", "reversibility":"low", "observation":"optional", "geometry":"outlet"},
+    {"embodiment":"5D Phase Door", "carrier":"state/regime", "operation":"change phase/effective description", "permeability":"threshold/probabilistic", "directionality":"may exhibit hysteresis", "reversibility":"model-dependent", "observation":"through order parameter", "geometry":"critical hypersurface"},
+    {"embodiment":"Pineal symbolic Door", "carrier":"timing/illumination symbolism", "operation":"temporal gating/marker in science comparator", "permeability":"phase-dependent", "directionality":"cyclic", "reversibility":"periodic", "observation":"indirect hormonal signal", "geometry":"symbolic midline point"},
+    {"embodiment":"Son/Christ Door", "carrier":"theological relationship/person-bearing mediation", "operation":"mediate/pass", "permeability":"not a physical coefficient", "directionality":"theological", "reversibility":"mythic/theological", "observation":"person-bearing", "geometry":"embodied mediator"}
+  ],
+  "new_project_laws": [
+    "Carrier-Specific Permeability Law: the same boundary can be open to one carrier and closed to another; do not use one scalar openness for photons, bodies, information and authority unless justified.",
+    "Frame Is Measurement Law: Screen/Window/Frame changes the observer's evidence set even when it does not change the underlying world state.",
+    "Off-Screen Is Unknown Law: outside the viewport is not evidence of absence; it is outside the current observation support.",
+    "Window Tradeoff Law: a finite observation window can reduce some artifacts while creating resolution/context tradeoffs; framing is an operator, not a transparent copy.",
+    "Door Success Law: crossing a nominal boundary counts as a transition only if the destination regime/state persists according to declared criteria.",
+    "Carrier-Door-Drain Law: Wall, Window, Door and Drain should be distinguished by carrier-specific boundary conditions rather than by visual shape alone.",
+    "Temporal Gate Law: access may be periodic/phase dependent; pineal physiology provides a timing comparator but not a metaphysical portal.",
+    "Aperture Law: narrowing an opening can alter transmitted wave structure, not merely total throughput; this physical result should remain separate from moral Narrow-Gate symbolism.",
+    "Projection Law: a lower-dimensional screen image can preserve useful relations while discarding depth/context; projection is not identity.",
+    "Door Memory Law: hysteresis or irreversible transitions require different forward/reverse models rather than assuming D^-1 exists."
+  ],
+  "testing_program": [
+    "For stream/screen claims, compare conclusions across wider crops, alternate camera frames and full temporal context; quantify crop sensitivity/context loss.",
+    "For phase-transition Door claims, fit a declared order parameter and compare threshold/hysteresis model against a smooth no-transition baseline.",
+    "For basin transitions, measure post-crossing dwell and recurrence rather than labeling a brief excursion as successful Door crossing.",
+    "For boundary-flow systems, identify the carrier and units before assigning permeability.",
+    "For pineal comparisons, use circadian/melatonin timing as the empirical layer and keep Eye/Door theological symbolism separate.",
+    "For bath/drain imagery, model fluid balance only when actual hydraulic behavior is the question; otherwise preserve symbolic status.",
+    "For narrow-aperture comparisons, specify wavelength/opening scale before invoking diffraction."
+  ],
+  "sources": [
+    {"topic":"pinhole camera/projective image plane", "url":"https://docs.opencv.org/4.10.0/d9/d0c/group__calib3d.html", "class":"official technical documentation"},
+    {"topic":"finite windowing and spectral leakage", "url":"https://tf.nist.gov/phase/Properties/ten.htm", "class":"NIST technical reference"},
+    {"topic":"single-slit aperture diffraction", "url":"https://openstax.org/books/university-physics-volume-3/pages/4-2-intensity-in-single-slit-diffraction", "class":"university physics textbook"},
+    {"topic":"pineal physiology and melatonin timing", "url":"https://www.ncbi.nlm.nih.gov/books/NBK550972/", "class":"NCBI/Endotext"},
+    {"topic":"pineal circadian rhythmicity review", "url":"https://pmc.ncbi.nlm.nih.gov/articles/PMC3202635/", "class":"peer-reviewed review"},
+    {"topic":"project critical Door model", "path":"knowledge/science/dimensional-phase-transition-full-recovery.json"},
+    {"topic":"project quantum barrier model", "path":"knowledge/science/quantum-foundations-tunneling-entanglement-qft-atlas.json"},
+    {"topic":"project boundary/permeability model", "path":"knowledge/science/house-shell-boundary-permeability-model.json"}
+  ],
+  "connections": [
+    "knowledge/core/door-embodiments-census-and-operator-atlas.json",
+    "knowledge/core/door-topology-access-and-capability-atlas.json",
+    "knowledge/body/body-symbolism-map.json",
+    "knowledge/science/dimensional-phase-transition-full-recovery.json",
+    "knowledge/science/house-shell-boundary-permeability-model.json",
+    "knowledge/core/funnel-gradient-attractor-regeneration-atlas.json",
+    "knowledge/science/quantum-foundations-tunneling-entanglement-qft-atlas.json",
+    "knowledge/science/equation-ledger-wave-005-door-interface-boundary.json"
+  ]
+}

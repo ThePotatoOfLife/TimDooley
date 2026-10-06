@@ -1,0 +1,20 @@
+{
+  "version":"1.0.0",
+  "updated":"2026-09-07",
+  "purpose":"Explicit external concept nodes referenced by the religious-adjacent relationship graph. These are not counted as canonical adjacent records because they are concepts or broader evidence domains rather than expanded registry records.",
+  "nodes":[
+    {"id":"ancient-egyptian-set-traditions","type":"external_historical_tradition","name":"Ancient Egyptian Set traditions","status":"external comparative node","integrity":"Modern Setian religion is not treated as an unchanged continuation of ancient Egyptian religion."},
+    {"id":"political-esotericism","type":"external_research_domain","name":"Political esotericism","status":"comparative research concept","integrity":"Used as an analytical category, not as a single organization."},
+    {"id":"extremist-political-milieus","type":"external_research_domain","name":"Extremist political milieus","status":"comparative research concept","integrity":"Specific historical associations must be attributed to documented people, texts or organizations."},
+    {"id":"christian-esotericism","type":"external_religious_field","name":"Christian esotericism","status":"comparative religious field","integrity":"Broad analytical category rather than a single institution."},
+    {"id":"satanic-symbolism","type":"external_symbolic_domain","name":"Satanic symbolism","status":"comparative symbolic domain","integrity":"Symbolic use is not itself evidence of doctrinal or institutional identity."},
+    {"id":"punic-religious-evidence","type":"external_evidence_domain","name":"Punic molk / Tophet evidence","status":"archaeological and epigraphic evidence domain","integrity":"Evidence is relevant to Moloch/Molek debates but does not by itself establish identity with the biblical term."},
+    {"id":"saturnian-occultism","type":"external_modern_reception","name":"Saturnian occultism","status":"later esoteric reception","integrity":"Must remain distinct from the ancient Roman cult of Saturn."},
+    {"id":"alchemy","type":"external_esoteric_field","name":"Alchemy","status":"historical esoteric field"},
+    {"id":"astrology","type":"external_esoteric_field","name":"Astrology","status":"historical esoteric field"},
+    {"id":"tarot-occultism","type":"external_esoteric_field","name":"Occult Tarot","status":"modern Western esoteric system"},
+    {"id":"biodynamic-agriculture","type":"external_institutional_application","name":"Biodynamic agriculture","status":"anthroposophical institutional application"},
+    {"id":"waldorf-education","type":"external_institutional_application","name":"Waldorf education","status":"anthroposophical educational application"}
+  ],
+  "integrity":"External nodes are explicitly separated from the 22-record base registry and 23 deep-expansion records. They provide graph targets without pretending that every concept is a religious-adjacent record."
+}

@@ -1,0 +1,117 @@
+{
+  "id": "cia-mud-bank-snapshot-2026-09-21",
+  "title": "World Spiritual Bank — CIA Current Desk Balance Snapshot",
+  "as_of": "2026-09-21T00:00:00Z",
+  "denomination": "fictional sUSD-equivalent",
+  "welfare_rate_per_second": 1e-11,
+  "method": "Welfare from exact/override story-entry dates plus explicit event weights and evidence-discounted project-debit amounts from knowledge/cia/mud-bank-contract.json. Dispute/entanglement alone is zero-weight.",
+  "boundary": "Approximate project accounting only; not money, compensation, objective morality, legal debt, guilt, creditworthiness or human worth.",
+  "accounts": [
+    {
+      "id": "dim",
+      "welfare_as_of": 0.000065664,
+      "event_adjustment": 0,
+      "approx_balance": 0.000065664,
+      "posture": "mixed/disputed",
+      "basis": [
+        "open zero-weight public conflict/relation dispute"
+      ],
+      "note": "No sourced debit or credit assigned yet."
+    },
+    {
+      "id": "txt",
+      "welfare_as_of": 0.000507168,
+      "event_adjustment": -4,
+      "approx_balance": -3.999492832,
+      "posture": "debit-supported / disputed relation",
+      "basis": [
+        "project-debit: repeated disputed narrative -4",
+        "open zero-weight reciprocal/current disputes"
+      ],
+      "note": "The debit prices recovered circulation/repetition only; later reciprocal conflict and current presence remain zero-weight."
+    },
+    {
+      "id": "matthew-mtclassic",
+      "welfare_as_of": 8.64e-7,
+      "event_adjustment": 25,
+      "approx_balance": 25.000000864,
+      "posture": "constructive-positive",
+      "basis": [
+        "project-credit: moderation advice +25",
+        "achievement: gaming persistence 0"
+      ],
+      "note": "Achievement retained as texture rather than moral credit."
+    },
+    {
+      "id": "mediomu007",
+      "welfare_as_of": 0.000024192,
+      "event_adjustment": 20,
+      "approx_balance": 20.000024192,
+      "posture": "constructive-positive / repair-active",
+      "basis": [
+        "repair-attempt +8",
+        "yield: room-making +12"
+      ],
+      "note": "Bridge-building remains interpretive; ordinary room-making is documentary."
+    },
+    {
+      "id": "rahu",
+      "welfare_as_of": 0.000593568,
+      "event_adjustment": 6,
+      "approx_balance": 6.000593568,
+      "posture": "growth-positive",
+      "basis": [
+        "growth: 1/137 symbolic growth +6"
+      ],
+      "note": "Growth is a project-symbolic event, not an objective measure."
+    },
+    {
+      "id": "port-monkey",
+      "welfare_as_of": 0.000593568,
+      "event_adjustment": 1.4,
+      "approx_balance": 1.400593568,
+      "posture": "mixed / repair-active / net-positive",
+      "basis": [
+        "project-debit: project-authored destructive trust event -6.6",
+        "repair-attempt: seed / grievance-healing proposal +8"
+      ],
+      "note": "Historical project-authored debit remains visible; later repair attempt does not erase it."
+    },
+    {
+      "id": "gg",
+      "welfare_as_of": 0.000593568,
+      "event_adjustment": 8,
+      "approx_balance": 8.000593568,
+      "posture": "repair-in-progress",
+      "basis": [
+        "repair-attempt: reported grievance/healing proposal +8"
+      ],
+      "note": "Proposal is reported through recovered material; outcome unresolved."
+    },
+    {
+      "id": "tim-dooley",
+      "welfare_as_of": 0.001810944,
+      "event_adjustment": 12,
+      "approx_balance": 12.001810944,
+      "posture": "treasury/operator / constructive-positive",
+      "basis": [
+        "welfare start override: 2020-12-25",
+        "+12 yield: stewardship/building doctrine"
+      ],
+      "note": "Tim's account is the archive operator/root and is not directly comparable to ordinary character sub-ledgers."
+    }
+  ],
+  "interpretation_rules": [
+    "Positive event balance means the weighted project ledger currently contains constructive/repair/growth entries; it does not mean a person is morally good.",
+    "Mixed/disputed means conflict exists and may include both debit and repair history; unpriced candidates remain visible without changing the number.",
+    "Negative posture requires at least one explicit source-bounded project-debit event. TXT currently qualifies on the current desk; Marty qualifies in the broader closed/historical set.",
+    "A repair event never deletes an older debit. Port Monkey is the clearest present example: -6.6 debit +8 repair attempt = +1.4 net event balance.",
+    "System domains such as Epstein Axis, Rubble, Mud, Swamp, Loosh and Rainbow Shadow are not rolled into these person-level sUSD totals."
+  ],
+  "system_context": {
+    "custody": "North / Roots",
+    "movement": "Mud / Swamp / Rubble → evidence/accountability → Ladder → Garden / Tikkun",
+    "system_liability_ledger": "knowledge/cia/system-liability-ledger.json",
+    "note": "World-scale symbolic liabilities are held separately and remain unpriced; this snapshot covers individual CIA sub-ledgers only."
+  }
+}

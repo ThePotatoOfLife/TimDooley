@@ -1,0 +1,30 @@
+{
+  "version":"1.0.0",
+  "updated":"2026-09-07",
+  "purpose":"Reusable dimension catalogue for deep religious records and comparative graph construction.",
+  "dimensions":[
+    {"id":"origin","question":"Where does this formation understand itself to come from?","facets":["sacred origin","historical emergence","predecessors","founder/formative figures","foundational event","earliest evidence"]},
+    {"id":"field","question":"What already existed around the emergence point?","facets":["language","ecology","landscape","political order","economy","social hierarchy","family structure","neighboring traditions","technology","trade","migration"]},
+    {"id":"ontology","question":"What is ultimately real?","facets":["god","gods","ultimate reality","absolute","spirits","ancestors","nature","matter","mind","emptiness","emanation","creation","plurality"]},
+    {"id":"cosmos","question":"How is reality structured?","facets":["worlds","heaven","earth","underworld","cosmic axis","tree","mountain","river","cycle","linear time","cosmic ages","end","renewal"]},
+    {"id":"human","question":"What is a human being and what is the human problem?","facets":["body","soul","self","mind","sin","ignorance","suffering","desire","karma","death","destiny","agency","fate","dignity"]},
+    {"id":"path","question":"What changes the human condition?","facets":["faith","knowledge","devotion","ethics","ritual","meditation","sacrifice","repentance","grace","discipline","service","initiation"]},
+    {"id":"goal","question":"What is the desired end-state?","facets":["salvation","liberation","awakening","union","resurrection","rebirth","nirvana","kingdom","redemption","deification","ancestral continuity","cosmic renewal"]},
+    {"id":"authority","question":"Who or what can establish religious knowledge and obligation?","facets":["revelation","scripture","oral tradition","lineage","teacher","priesthood","institution","council","law","reason","experience","community"]},
+    {"id":"text","question":"How is memory stabilized?","facets":["oral corpus","scripture","canon","commentary","law","poetry","myth","hagiography","translation","manuscript","printing","digital corpus"]},
+    {"id":"practice","question":"How is religion enacted?","facets":["prayer","worship","meditation","sacrifice","sacrament","fasting","pilgrimage","festival","initiation","marriage","burial","charity","diet","dress","music"]},
+    {"id":"place","question":"Where does religion become spatial?","facets":["temple","church","mosque","synagogue","shrine","mountain","river","city","grave","monastery","pilgrimage route","sacred landscape","diaspora site"]},
+    {"id":"institution","question":"What durable structures carry it?","facets":["congregation","clergy","monastery","school","university","charity","hospital","endowment","publisher","media","archive","museum"]},
+    {"id":"community","question":"How is belonging organized?","facets":["family","household","local community","denomination","school","ethnicity when measured","diaspora","conversion","deconversion","generation"]},
+    {"id":"power","question":"How does religion interact with power?","facets":["state","law","empire","property","taxation","education","political movements","nationalism","civil society","conflict","peacebuilding"]},
+    {"id":"economy","question":"What material system sustains religious life?","facets":["land","buildings","donations","tithes","endowments","waqf","employment","publishing","tourism","pilgrimage","procurement","tax status"]},
+    {"id":"transmission","question":"How does the tradition reproduce itself?","facets":["oral","ritual","family","teacher","text","school","institution","printing","broadcast","internet","platform","migration","diaspora"]},
+    {"id":"branching","question":"How does internal diversity develop?","facets":["school","denomination","sect","rite","reform","schism","revival","mysticism","esotericism","regional form","modern movement"]},
+    {"id":"encounter","question":"How does the tradition meet others?","facets":["coexistence","conflict","conversion","translation","borrowing","syncretism","polemics","ecumenism","mutual influence","boundary maintenance"]},
+    {"id":"change","question":"How does it transform through time?","facets":["continuity","adaptation","institutionalization","secularization","revival","decline","reform","migration","diaspora","modernization","digitalization"]},
+    {"id":"memory","question":"How does the tradition remember itself?","facets":["founders","martyrs","saints","ancestors","holy days","commemoration","pilgrimage","monuments","genealogy","archives","collective memory"]},
+    {"id":"evidence","question":"What kind of evidence supports each claim?","facets":["material","archaeological","epigraphic","manuscript","textual","demographic","institutional","legal","economic","observational","traditional","interpretive","project-symbolic"]}
+  ],
+  "graph_principle":"Dimensions are cross-sections, not a forced hierarchy. The historical tree supplies vertical growth; dimensions supply horizontal structure through which each tradition can be examined.",
+  "future_layers":["health","medicine","environmental ethics","food systems","calendar/timekeeping","astronomy","mathematics","sacred geometry","language change","translation networks","education networks","media ecology","digital religion","pilgrimage economy","heritage management","museum collections","legal disputes","property networks","charitable flows"]
+}

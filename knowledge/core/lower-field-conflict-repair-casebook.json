@@ -1,0 +1,264 @@
+{
+  "id": "lower-field-conflict-repair-casebook",
+  "title": "Lower Field — Conflict Language, Worked Cases and Repair Outcomes",
+  "updated": "2026-10-01",
+  "status": "research-backed lower-field contract",
+  "purpose": "Prevent dramatic lower-field vocabulary from outrunning evidence, show how cultural/spiritual/information layers can overlap without collapsing, and define observable routes from diagnosis to correction, repair, release and resilience.",
+  "language_thresholds": [
+    {
+      "term": "war",
+      "prefer_when": "armed conflict; an explicitly bounded scholarly/doctrinal category such as culture war; or clearly marked project-symbolic spiritual/information-war language",
+      "otherwise_use": [
+        "conflict",
+        "contest",
+        "dispute",
+        "competition",
+        "pressure"
+      ],
+      "boundary": "Do not infer coordination, violence or an enemy structure merely because a conflict is intense."
+    },
+    {
+      "term": "information operation",
+      "prefer_when": "there is evidence of intentional, coordinated activity designed to shape an information environment, ideally with identified actors, methods and objective",
+      "otherwise_use": [
+        "information campaign",
+        "amplification pattern",
+        "messaging",
+        "coordinated activity if coordination is evidenced"
+      ],
+      "boundary": "Ordinary error, rumor, disagreement or virality is not automatically an information operation."
+    },
+    {
+      "term": "disinformation",
+      "prefer_when": "false or misleading content is spread deliberately to manipulate opinions or actions",
+      "otherwise_use": [
+        "misinformation when intent is unestablished",
+        "false claim",
+        "unsupported claim",
+        "misleading content"
+      ],
+      "boundary": "Intent is part of the distinction."
+    },
+    {
+      "term": "propaganda",
+      "prefer_when": "a sourced communication effort is designed to shape a target audience toward a belief or behavior, especially as part of a sustained campaign",
+      "otherwise_use": [
+        "advocacy",
+        "messaging",
+        "persuasion",
+        "framing"
+      ],
+      "boundary": "Disliked or partisan speech is not automatically propaganda."
+    },
+    {
+      "term": "operation",
+      "prefer_when": "a named or evidenced plan has actors, coordination, tasks or infrastructure",
+      "otherwise_use": [
+        "pattern",
+        "network",
+        "campaign",
+        "sequence",
+        "ecology"
+      ],
+      "boundary": "Similar outcomes do not prove one operation."
+    },
+    {
+      "term": "enemy",
+      "prefer_when": "quoting a participant, describing a formal belligerent relation, or explicitly analyzing enemy-production as a role",
+      "otherwise_use": [
+        "opponent",
+        "critic",
+        "rival",
+        "other party"
+      ],
+      "boundary": "The project should not turn analytic disagreement into permanent enemy identity."
+    },
+    {
+      "term": "demon",
+      "prefer_when": "describing a religious text/tradition, quoting project mythology, or explicitly marking symbolic moral language",
+      "otherwise_use": [
+        "harmful pattern",
+        "adversarial role",
+        "dehumanizing frame",
+        "destructive behavior"
+      ],
+      "boundary": "Never use demon as an empirical diagnosis of a human being."
+    },
+    {
+      "term": "cult",
+      "prefer_when": "quoting a dated classification, discussing the term historically, or comparing observable high-control mechanisms",
+      "otherwise_use": [
+        "high-control formation",
+        "self-sealing group",
+        "bounded subculture",
+        "organization"
+      ],
+      "boundary": "No intrinsic cult=true flag; authority, information control, dissent cost, dependency and exit cost should remain separately visible."
+    },
+    {
+      "term": "owns / ownership",
+      "prefer_when": "legal ownership is sourced, or Potatoverse symbolic hierarchy/stewardship language is explicitly marked as such",
+      "otherwise_use": [
+        "influences",
+        "frames",
+        "tracks",
+        "hosts",
+        "claims responsibility for",
+        "symbolically adopts"
+      ],
+      "boundary": "Project ownership language never establishes ownership of real people."
+    }
+  ],
+  "worked_cases": [
+    {
+      "id": "online-harassment-reputation-exit",
+      "class": "internet / subculture empirical pattern",
+      "question": "How can an online conflict become a durable lower-field problem without proving one central conspiracy?",
+      "evidence": [
+        "Pew's 2014 U.S. survey found that targets used responses including profile changes, forum withdrawal and law-enforcement reporting, and that some respondents reported reputational effects.",
+        "The case supports studying persistence, reputation, withdrawal/exit cost and archive effects without assuming every negative interaction belongs to one coordinated campaign."
+      ],
+      "layer_split": {
+        "cultural": "group norms can reward ridicule, criticism, support, silence or exit; labels and audience expectations shape how a target is read",
+        "spiritual": "if participants moralize a subject as corrupt/evil/deserving, record that as moral or religious framing rather than empirical proof",
+        "informational": "searchable posts, screenshots and recirculation can preserve a narrative after the initiating interaction; coordination must be evidenced rather than inferred"
+      },
+      "repair": [
+        "right of reply",
+        "correction propagation",
+        "doxxing/threat boundaries",
+        "archive context",
+        "meaningful disengagement",
+        "reputation repair where false material persists"
+      ],
+      "sources": [
+        "https://www.pewresearch.org/internet/2014/10/22/online-harassment/",
+        "https://www.pewresearch.org/internet/2014/10/22/part-4-the-aftermath-of-online-harassment/"
+      ]
+    },
+    {
+      "id": "ritual-abuse-moral-panic",
+      "class": "religious-cultural / investigative case",
+      "question": "What happens when genuine concern about harm becomes fused with a totalizing spiritual explanation?",
+      "evidence": [
+        "Moral-panic research distinguishes public concern from the empirical scale/nature of an alleged threat and notes the creation of stereotyped 'folk devils'.",
+        "Kenneth Lanning's 1992 law-enforcement guidance on ritual-abuse allegations urged fact-focused investigation and alternative explanations rather than assuming widespread satanic-cult causation.",
+        "The boundary cuts both ways: skepticism toward a totalizing satanic explanation must not erase independently evidenced abuse."
+      ],
+      "layer_split": {
+        "cultural": "fear, media narratives, professional communities and public concern can stabilize a threat model",
+        "spiritual": "Satanic/evil language can organize meaning and moral urgency",
+        "informational": "interviews, repeated claims, conferences, media, investigative assumptions and urban-legend transmission can amplify or distort evidence"
+      },
+      "repair": [
+        "separate abuse evidence from ritual explanation",
+        "improve interviewing/source discipline",
+        "correct unsupported generalizations",
+        "preserve support for actual victims",
+        "retain uncertainty where facts remain unresolved"
+      ],
+      "sources": [
+        "https://www.annualreviews.org/content/journals/10.1146/annurev.so.20.080194.001053",
+        "https://www.ojp.gov/ncjrs/virtual-library/abstracts/investigators-guide-allegations-ritual-child-abuse"
+      ]
+    },
+    {
+      "id": "ira-2016-influence-operation",
+      "class": "state-linked information-operation case",
+      "question": "What evidence raises a messaging pattern to the stronger term 'information operation'?",
+      "evidence": [
+        "The 2018 U.S. federal indictment alleged a structured Internet Research Agency effort using management, departments, budgets, fictitious U.S. personas and coordinated social-media activity targeting U.S. political processes.",
+        "NATO's current terminology defines information threats around intentional, harmful, manipulative and coordinated activity and distinguishes disinformation from misinformation by intent."
+      ],
+      "layer_split": {
+        "cultural": "operators can appropriate existing identities, grievances and cultural symbols rather than invent every underlying conflict",
+        "spiritual": "religious/moral language used by any campaign should be analyzed as content/framing unless supernatural causation is separately being discussed",
+        "informational": "coordination, deceptive personas, infrastructure, targeting and intent supply the stronger operation/disinformation threshold"
+      },
+      "repair": [
+        "public attribution with evidence",
+        "platform/account enforcement under applicable rules",
+        "proactive accurate information",
+        "media literacy/resilience",
+        "preserve genuine grievances from being dismissed merely because an operation exploited them"
+      ],
+      "sources": [
+        "https://www.justice.gov/archives/opa/pr/grand-jury-indicts-thirteen-russian-individuals-and-three-russian-companies-scheme-interfere",
+        "https://www.nato.int/en/what-we-do/wider-activities/natos-approach-to-counter-information-threats"
+      ],
+      "political_neutrality": "This case is used to illustrate evidentiary thresholds for coordination/intent, not to rank parties, candidates or political choices."
+    }
+  ],
+  "repair_outcomes": [
+    {
+      "state": "clarified",
+      "meaning": "source/claim distinction restored; unsupported expansion removed",
+      "evidence": "dated correction or narrowed finding"
+    },
+    {
+      "state": "replied",
+      "meaning": "affected party has a meaningful answer in the record",
+      "evidence": "reply attached and discoverable"
+    },
+    {
+      "state": "corrected",
+      "meaning": "false or materially misleading claim changed at its owner",
+      "evidence": "correction/retraction with propagation where feasible"
+    },
+    {
+      "state": "harm_stopped",
+      "meaning": "the mechanism creating new harm has ended",
+      "evidence": "behavior/infrastructure change"
+    },
+    {
+      "state": "restitution_or_restoration",
+      "meaning": "specific loss, access, opportunity or capacity restored where appropriate",
+      "evidence": "documented remedy"
+    },
+    {
+      "state": "apology_or_recognition",
+      "meaning": "responsibility or injury acknowledged without pretending apology alone settles everything",
+      "evidence": "dated statement plus fit to the actual harm"
+    },
+    {
+      "state": "disengaged",
+      "meaning": "pursuit/retaliation/harvesting stops and no new traces are intentionally generated",
+      "evidence": "sustained cessation or explicit boundary"
+    },
+    {
+      "state": "institutionally_repaired",
+      "meaning": "procedure, incentives, moderation, appeals or oversight changed so recurrence is less likely",
+      "evidence": "implemented system change"
+    },
+    {
+      "state": "released",
+      "meaning": "the project no longer treats a sufficiently repaired obligation as currently outstanding",
+      "evidence": "explicit release/forgiveness/settlement event"
+    },
+    {
+      "state": "non_liability_established",
+      "meaning": "evidence shows the attributed actor was not responsible or the original allegation is unsupported",
+      "evidence": "reversal/removal while historical record remains auditable"
+    },
+    {
+      "state": "reconciled_or_normalized",
+      "meaning": "parties can coexist or relate without the old conflict organizing every future interaction",
+      "evidence": "working relation / stable non-hostility; not forced friendship"
+    }
+  ],
+  "repair_principles": [
+    "Repair should fit the injury; unrelated good works do not automatically settle a specific harm.",
+    "Truth and correction can coexist with forgiveness; forgiveness does not require deleting history.",
+    "Victims/affected parties cannot be forced to forgive as a condition of archive closure.",
+    "A system-level problem generally needs system-level repair.",
+    "A closed case must remain historically inspectable without remaining socially active forever.",
+    "Reconciliation is one possible outcome, not the only legitimate exit; safe separation can also be repair.",
+    "A repair system should restore agency rather than create permanent creditor/debtor identities."
+  ],
+  "research_anchors": [
+    "https://www.annualreviews.org/content/journals/10.1146/annurev-psych-030124-114525",
+    "https://www.annualreviews.org/content/journals/10.1146/annurev-soc-081309-150110",
+    "https://www.annualreviews.org/content/journals/10.1146/annurev-psych-022625-112840",
+    "https://www.nato.int/en/what-we-do/wider-activities/natos-approach-to-counter-information-threats"
+  ]
+}

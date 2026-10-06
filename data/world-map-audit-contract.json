@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0",
+  "owners": {},
+  "shared": {
+    "api:__potatoAtlasSelection": {
+      "modules": [
+        "world-map/3d-app.js",
+        "world-map/3d-country-selection.js"
+      ],
+      "rationale": "Country selection deliberately wraps and replaces the core selection API while retaining compatibility for downstream modules."
+    },
+    "api:__potatoAtlasCapitals": {
+      "modules": [
+        "world-map/3d-hover.js",
+        "world-map/3d-places.js"
+      ],
+      "rationale": "Places owns capitals when production place data is healthy; hover provides the bounded fallback capitals API otherwise."
+    },
+    "url:country": {
+      "modules": [
+        "world-map/3d-app.js",
+        "world-map/3d-country-selection.js"
+      ],
+      "rationale": "The core renderer remains the low-level country URL writer while the browse-first selection controller wraps it and persists the canonical working selection."
+    },
+    "url:compare": {
+      "modules": [
+        "world-map/3d-app.js",
+        "world-map/3d-country-selection.js"
+      ],
+      "rationale": "The core renderer retains compare compatibility while the browse-first selection controller clears or preserves compare state during working-selection persistence."
+    }
+  },
+  "style_restoration": {
+    "owner_module": "world-map/3d-style-lifecycle.js",
+    "participants": {
+      "world-map/3d-render-stack.js": "render-stack",
+      "world-map/3d-physical-water.js": "physical-water",
+      "world-map/3d-physical-land-cover.js": "physical-land-cover",
+      "world-map/3d-physical-deserts.js": "physical-deserts",
+      "world-map/3d-physical-hydrology.js": "physical-hydrology",
+      "world-map/3d-places.js": "places",
+      "world-map/3d-subdivisions.js": "subdivisions",
+      "world-map/3d-spatial-overlays.js": "spatial-overlays"
+    },
+    "rationale": "One central styledata listener schedules deterministic restore callbacks; participants register restore work instead of binding styledata directly."
+  },
+  "conventions": {
+    "transient_popup_class": "atlas-hover"
+  },
+  "ignore": {},
+  "render_stack_slots": [
+    "physical-surface",
+    "physical-water",
+    "physical-line",
+    "geography-context",
+    "context-network",
+    "selection-emphasis"
+  ]
+}

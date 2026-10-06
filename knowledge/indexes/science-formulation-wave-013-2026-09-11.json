@@ -1,0 +1,65 @@
+{
+  "id": "science-formulation-wave-013-2026-09-11",
+  "title": "Science Formulation Wave 013 — Reconstruction, Filtering, Commutation and Dark-Sector Closure",
+  "updated": "2026-09-11",
+  "status": "integration index",
+  "purpose": "Record a formulation-focused science pass that improves existing theories by adding exact constraints, derivations and failure tests rather than expanding the ontology with more named entities.",
+  "records": [
+    {
+      "id": "2026-09-11-11d-projection-sufficiency-fiber-bounds",
+      "path": "knowledge/science/formulation-upgrades/2026-09-11-11d-projection-sufficiency-fiber-bounds.json",
+      "parent": "eleven-dimensional-projection-unification-recovery",
+      "main_contribution": "Replaces an undefined cross-dimensional information invariant with task sufficiency, reconstruction distortion, a fiber-ambiguity lower bound and data-processing losses along a projection ladder.",
+      "strongest_result": "For any decoder on a projection fiber, worst-case reconstruction error is at least half the fiber diameter; task preservation is instead characterized by I(Z;X|Y)=0."
+    },
+    {
+      "id": "2026-09-11-spudlight-storage-filter-identifiability",
+      "path": "knowledge/science/formulation-upgrades/2026-09-11-spudlight-storage-filter-identifiability.json",
+      "parent": "spudlight-theory-and-equations",
+      "main_contribution": "Turns Starchforce storage/release into an explicit one-pole dynamical filter with impulse response, transfer function, phase lag and parameter-identifiability cases.",
+      "strongest_result": "Stock-only measurements identify eta+Gamma but cannot separate release eta from loss Gamma; calibrated release measurements can in principle separate them under the model."
+    },
+    {
+      "id": "2026-09-11-potato-dynamics-commutator-contract-equivalence",
+      "path": "knowledge/science/formulation-upgrades/2026-09-11-potato-dynamics-commutator-contract-equivalence.json",
+      "parent": "potato-dynamics-2-toy-model",
+      "main_contribution": "Introduces the Axis/time Lie bracket, assume-guarantee Door contracts, viability compatibility and an observable-equivalence criterion for model reduction.",
+      "strongest_result": "[F,A] measures whether structural/Axis flow and time evolution commute; a nonzero bracket means their order changes predictions and they cannot be treated as independent operations without modeling the coupling."
+    },
+    {
+      "id": "2026-09-11-cross-model-defect-calculus",
+      "path": "knowledge/science/formulation-upgrades/2026-09-11-cross-model-defect-calculus.json",
+      "parent": "cross-model rigor layer",
+      "main_contribution": "Defines a typed defect vector for reconstruction loss, task-information loss, noncommutation, observable-reduction error, Door coarse-graining error, contract violation and predictive loss.",
+      "strongest_result": "The theories can share a rigor language without being claimed to share a physical ontology."
+    },
+    {
+      "id": "2026-09-11-cosmic-soil-interacting-dark-sector-benchmark",
+      "path": "knowledge/science/formulation-upgrades/2026-09-11-cosmic-soil-interacting-dark-sector-benchmark.json",
+      "parent": "great-book-quantum-fields-dark-sector-recovery",
+      "main_contribution": "Selects one explicit Q=xi H rho_c interacting-dark-sector benchmark, solves the background analytically and makes the perturbation-closure problem explicit.",
+      "strongest_result": "A background interaction law does not determine growth perturbations until a covariant transfer four-vector, momentum-transfer frame, sound-speed/field assumptions and stability prescription are specified."
+    }
+  ],
+  "shared_upgrade_pattern": [
+    "Replace an undefined invariant with a conditional or task-specific one.",
+    "Replace a qualitative flow with a transfer function or vector field.",
+    "Replace symbolic compatibility with a contract or commutator test.",
+    "Replace model menus with one nested benchmark that has an exact null limit.",
+    "Make failure/underidentification a first-class model outcome."
+  ],
+  "next_best_contributions": [
+    "Apply the 11D task-sufficiency framework to one explicit synthetic high-dimensional projection and calculate Delta_task versus D_rec.",
+    "Fit the Spudlight one-pole versus two-pole storage model to an actual public time-series domain where input and stock/release are measured.",
+    "Construct a small Potato Dynamics example with explicit F and A and calculate [F,A] analytically, then verify the finite-flow order defect numerically.",
+    "Complete perturbation equations for exactly one Cosmic Soil coupling prescription or stop at background level rather than mixing incompatible perturbation choices."
+  ],
+  "relationship_to_other_waves": "Wave 010 improved rigor and completion standards; Wave 011 selected promising calculable benchmarks; Wave 012 defines a deeper mixed research programme; Wave 013 focuses specifically on mathematical formulation and contributes reusable exact constraints to existing theories.",
+  "connections": [
+    "science-rigor-wave-010-2026-09-11",
+    "science-promising-models-wave-011-2026-09-11",
+    "science-secondary-model-upgrades-2026-09-11",
+    "model-testing-protocol",
+    "science-master-index"
+  ]
+}

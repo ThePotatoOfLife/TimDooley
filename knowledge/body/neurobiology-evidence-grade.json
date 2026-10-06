@@ -1,0 +1,156 @@
+{
+  "id":"neurobiology-evidence-grade",
+  "version":"1.0.0",
+  "updated":"2026-09-15",
+  "title":"Neurobiology Evidence Grade — Human, Animal, Mechanistic and Speculative Layers",
+  "status":"evidence-quality sidecar for BODY/neurobiology",
+  "purpose":"Prevent the project from flattening stable anatomy, human observations, animal causal work, active research fields and Potatoverse analogy into one confidence level.",
+  "grade_scale":[
+    {"id":"A","meaning":"well-established anatomy/physiology supported across human and experimental evidence"},
+    {"id":"B","meaning":"strong evidence with meaningful human support, but mechanism/detail remains actively refined"},
+    {"id":"C","meaning":"credible emerging field; substantial experimental evidence but important human translation/causal questions remain"},
+    {"id":"D","meaning":"limited/preliminary direct evidence or strongly model-dependent claim"},
+    {"id":"P","meaning":"Potatoverse/project interpretation, historical/esoteric comparison or hypothesis; not scientific evidence"}
+  ],
+  "topics":[
+    {
+      "topic":"basic thalamic anatomy and reciprocal thalamocortical organization",
+      "grade":"A",
+      "basis":"Human anatomy, lesions, electrophysiology/imaging and extensive animal systems neuroscience.",
+      "boundary":"Specific nuclei have heterogeneous functions; avoid one-relay-switch language.",
+      "routes":["knowledge/body/whole-brain-neurobiology-atlas.json","data/potatoism-thalamus-brain-map.json"]
+    },
+    {
+      "topic":"thalamus in consciousness/arousal",
+      "grade":"B",
+      "basis":"Large heterogeneous human and animal literature links several thalamic nuclei, especially intralaminar/CM-Pf systems, with arousal and consciousness state; agreement on a unique consciousness nucleus is lacking.",
+      "boundary":"Supports importance, not a sole seat/seed of consciousness.",
+      "sources":["https://pmc.ncbi.nlm.nih.gov/articles/PMC12241866/"]
+    },
+    {
+      "topic":"pineal melatonin and circadian biology",
+      "grade":"A",
+      "basis":"Well-established neuroendocrine physiology: retinal light entrains SCN-driven autonomic influence on pineal melatonin rhythms.",
+      "boundary":"Does not support literal Third Eye or spiritual-light claims."
+    },
+    {
+      "topic":"pineal melatonin entering third-ventricular CSF",
+      "grade":"C",
+      "basis":"Direct human ventricular measurements in small clinical samples report higher third-ventricular melatonin and support possible entry through the pineal recess; animal evidence is stronger. Physiological significance remains unresolved.",
+      "boundary":"Do not generalize to pineal CSF sensing, consciousness or mystical present-time detection.",
+      "sources":["https://pubmed.ncbi.nlm.nih.gov/24975205/","https://pubmed.ncbi.nlm.nih.gov/17286741/"]
+    },
+    {
+      "topic":"interoceptive sensory architecture",
+      "grade":"A",
+      "basis":"Strong anatomy/physiology across visceral sensory receptors, vagal/spinal afferents, brainstem circuits and forebrain integration, with convergent human and animal evidence.",
+      "boundary":"Exact coding of complex subjective feeling remains incomplete; interoception is not one pathway or organ.",
+      "sources":["https://pmc.ncbi.nlm.nih.gov/articles/PMC11103614/","https://pmc.ncbi.nlm.nih.gov/articles/PMC11222051/"]
+    },
+    {
+      "topic":"baroreflex, chemoreflex and brainstem cardiorespiratory control",
+      "grade":"A",
+      "basis":"Established cardiovascular/respiratory physiology with human clinical and experimental support.",
+      "boundary":"Does not imply a separate heart consciousness or spiritual breath force."
+    },
+    {
+      "topic":"gut–brain neural/endocrine/immune communication",
+      "grade":"B",
+      "basis":"Multiple pathways are well established, including enteric, vagal, endocrine, immune and metabolic signaling; human causal translation varies by mechanism and condition.",
+      "boundary":"Avoid deterministic microbiome→mood/personality claims and direct gut-neurotransmitter→brain simplifications.",
+      "sources":["https://www.nature.com/articles/s41579-024-01136-9","https://www.nature.com/articles/s41575-025-01041-3"]
+    },
+    {
+      "topic":"microbiome causality for mental-health phenotypes",
+      "grade":"C",
+      "basis":"Associations and plausible pathways are abundant, but causative, correlative and bidirectional contributions differ by phenotype and remain difficult to separate in humans.",
+      "boundary":"Do not translate rodent transfer studies into universal human psychological causation.",
+      "sources":["https://www.nature.com/articles/s44220-025-00498-0"]
+    },
+    {
+      "topic":"enteroendocrine neuropod rapid gut-to-vagus signaling",
+      "grade":"B",
+      "basis":"Specific epithelial–neural synaptic pathways have strong experimental support; scope and relative importance across human gut physiology remain active research.",
+      "boundary":"Do not generalize one neuropod circuit to all microbiome/gut signaling.",
+      "sources":["https://www.nature.com/articles/s41522-025-00810-x"]
+    },
+    {
+      "topic":"choroid plexus as CSF-producing blood–CSF barrier and immune interface",
+      "grade":"A",
+      "basis":"Established anatomy/physiology; molecular transport and immune roles continue to be refined.",
+      "boundary":"Selective interface, not sacred purifier or passive filter.",
+      "sources":["https://pmc.ncbi.nlm.nih.gov/articles/PMC11341628/"]
+    },
+    {
+      "topic":"meningeal lymphatic drainage",
+      "grade":"B",
+      "basis":"Anatomical and functional evidence across animals with growing human imaging/anatomical support.",
+      "boundary":"Exact quantitative contribution to brain-solute clearance in normal humans remains under study."
+    },
+    {
+      "topic":"glymphatic/perivascular brain clearance in humans",
+      "grade":"C",
+      "basis":"Strong animal tracer literature and growing human MRI/tracer observations, but interpretation of routes, mechanisms and coupling to lymphatic drainage remains debated.",
+      "boundary":"Do not present one canonical glymphatic pipe model as settled human anatomy or spiritual cleansing.",
+      "sources":["https://pmc.ncbi.nlm.nih.gov/articles/PMC10933166/","https://pmc.ncbi.nlm.nih.gov/articles/PMC11805491/"]
+    },
+    {
+      "topic":"skull bone marrow ↔ meninges channels",
+      "grade":"C",
+      "basis":"Physical channels exist in humans and experimental work supports immune-cell/solute exchange, but most functional mechanistic evidence is rodent-based and disease-context heavy.",
+      "boundary":"Do not describe normal human skull marrow as a proven rapid CSF-immune command system.",
+      "sources":["https://www.nature.com/articles/s41593-023-01487-1","https://pmc.ncbi.nlm.nih.gov/articles/PMC11765306/"]
+    },
+    {
+      "topic":"neuroimmune connectome and vagal inflammatory circuits",
+      "grade":"B",
+      "basis":"Nervous–immune bidirectional communication is established; specific circuit logic is rapidly developing with strong animal causal work and selected human/clinical evidence.",
+      "boundary":"The vagus is not a universal anti-inflammatory healing cable and immune state is not spiritual purity.",
+      "sources":["https://www.nature.com/articles/s41586-024-08474-x","https://www.nature.com/articles/s41577-025-01199-6"]
+    },
+    {
+      "topic":"kidney as interoceptive organ",
+      "grade":"B",
+      "basis":"Renal sympathetic efferent physiology is established; sensory afferent contributions to sympathetic regulation have substantial experimental and growing clinical relevance.",
+      "boundary":"Does not imply kidney consciousness.",
+      "sources":["https://www.nature.com/articles/s41581-024-00893-3"]
+    },
+    {
+      "topic":"adipose sensory innervation",
+      "grade":"C",
+      "basis":"Sympathetic regulation is well established; sensory adipose innervation is anatomically supported but its normal integrative roles are less resolved and heavily experimental.",
+      "boundary":"Do not overstate fat-to-brain sensory coding in humans.",
+      "sources":["https://pmc.ncbi.nlm.nih.gov/articles/PMC10960112/"]
+    },
+    {
+      "topic":"muscle-derived myokines as mediators of exercise→brain effects",
+      "grade":"C",
+      "basis":"Exercise benefits and muscle secretory activity are established, but relative causal contribution, source specificity and BBB actions of individual proposed myokines remain incompletely resolved, with much mechanistic work preclinical.",
+      "boundary":"Do not label one myokine the molecule of exercise, cognition or spiritual vitality.",
+      "sources":["https://pmc.ncbi.nlm.nih.gov/articles/PMC11647023/"]
+    },
+    {
+      "topic":"reproductive HPG / GnRH / kisspeptin control",
+      "grade":"A",
+      "basis":"Core hypothalamic–pituitary–gonadal physiology and GnRH/gonadotropin/steroid feedback are well established; detailed neural regulation continues to develop.",
+      "boundary":"Biological sexual differentiation does not establish metaphysical polarity or spiritual hierarchy.",
+      "sources":["https://pmc.ncbi.nlm.nih.gov/articles/PMC11228153/"]
+    },
+    {
+      "topic":"River as multiplex biological flow",
+      "grade":"P",
+      "basis":"Repository formalization integrating several independently established biological channels; River is the project-level unifying analogy, not a scientific entity.",
+      "boundary":"Never cite the existence of many body flows as evidence for Spirit or one universal information fluid.",
+      "routes":["knowledge/science/biological-multiplex-flow-formalization.json"]
+    },
+    {
+      "topic":"return-to-center as recurrent regulation",
+      "grade":"P",
+      "basis":"Systems/control analogy built from genuine biological feedback loops.",
+      "boundary":"No single anatomical center or universal control law has been demonstrated.",
+      "routes":["knowledge/body/tim-neurobiology-relational-reconciliation.json","knowledge/science/biological-multiplex-flow-formalization.json"]
+    }
+  ],
+  "project_rule":"When a claim crosses from grade A/B biology into C/D active research or P project interpretation, the change in evidence status must be explicit in the same record. Never use a P-level Potatoverse mapping to raise the scientific grade of a biological claim.",
+  "routing":"knowledge/body/index.json"
+}

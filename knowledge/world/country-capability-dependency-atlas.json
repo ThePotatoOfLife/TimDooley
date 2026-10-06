@@ -1,0 +1,111 @@
+{
+  "id": "country-capability-dependency-atlas",
+  "title": "Country Capability & Dependency Atlas",
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "owner_room": "geography-countries",
+  "purpose": "Turn country records from static profiles into relational state models: what a country has, can do, needs, depends on, supplies to others, is building and cannot do alone.",
+  "country_state_sequence": [
+    "identity_and_territory",
+    "population_and_settlement",
+    "institutions_and_public_capacity",
+    "economic_base",
+    "energy_and_resources",
+    "infrastructure",
+    "industry_and_production",
+    "technology_and_research",
+    "labour_and_skills",
+    "finance_and_fiscal_position",
+    "security_and_resilience",
+    "dependencies",
+    "capabilities",
+    "cross_border_complements",
+    "current_projects_and_trajectory"
+  ],
+  "capability_record": {
+    "fields": [
+      "capability_id",
+      "domain",
+      "description",
+      "scale",
+      "geography",
+      "operating_entities",
+      "inputs_required",
+      "infrastructure_required",
+      "workforce_required",
+      "funding_required",
+      "current_output_or_capacity",
+      "bottlenecks",
+      "substitutes",
+      "source_date",
+      "sources"
+    ],
+    "rule": "Capability means demonstrated or credibly available capacity within a stated time horizon, not aspiration alone."
+  },
+  "dependency_record": {
+    "fields": [
+      "dependency_id",
+      "domain",
+      "required_input_or_service",
+      "source_countries_or_entities",
+      "share_or_concentration_if_known",
+      "criticality",
+      "substitutability",
+      "stockpile_or_buffer",
+      "time_to_replace",
+      "infrastructure_constraints",
+      "evidence",
+      "as_of"
+    ],
+    "rule": "Dependency is directional and time-dependent. Mutual interdependence should be represented as two directed edges when both directions matter."
+  },
+  "complementarity_record": {
+    "fields": [
+      "actor_a",
+      "actor_b",
+      "combined_capability",
+      "what_a_contributes",
+      "what_b_contributes",
+      "shared_infrastructure",
+      "coordination_requirement",
+      "single_actor_limit",
+      "source"
+    ],
+    "purpose": "Represent capabilities that only emerge through cooperation rather than pretending each country separately owns the full capacity."
+  },
+  "trajectory_fields": [
+    "current_projects",
+    "committed_investment",
+    "construction_or_deployment_status",
+    "expected_capacity",
+    "dependencies_created",
+    "dependencies_reduced",
+    "policy_or_market_constraints",
+    "completion_uncertainty"
+  ],
+  "resilience_tests": [
+    "What fails first if the primary supplier/route is unavailable?",
+    "How quickly can an alternative be activated?",
+    "Does substitution require new physical infrastructure, legal approval, skills or capital?",
+    "Is nominal capacity actually available during a regional/system-wide shock?",
+    "Does a resilience intervention merely move dependency elsewhere?",
+    "Which capabilities are redundant, complementary or single-point-of-failure?"
+  ],
+  "output_views": [
+    "country capability profile",
+    "dependency matrix",
+    "bilateral complementarity profile",
+    "regional capability chain",
+    "bottleneck map",
+    "project/trajectory ledger",
+    "resilience scenario"
+  ],
+  "joins": [
+    "geography-place-state-boundary-atlas",
+    "economy-finance",
+    "infrastructure-capability",
+    "politics-governance",
+    "data/countries/index.json",
+    "world-map"
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "id":"tim-son-bible-overlap-census-addendum-wave14",
+  "title":"Tim/Son Bible Overlap Census Addendum — Wave 14",
+  "version":"1.0.0",
+  "updated":"2026-09-11",
+  "status":"canonical additive census segment",
+  "purpose":"Add four high-value overlap nodes discovered after the 74-node base census was written. Keeping them as an additive segment preserves the history of the count and makes future census growth auditable.",
+  "base_census":"knowledge/theology/tim-son-bible-overlap-census.json",
+  "base_count":74,
+  "added_count":4,
+  "current_combined_count":78,
+  "added_strength_counts":{"5":4},
+  "added_operator_counts":{"PRESENCE":4,"ACCESS":3,"MEDIATION":1,"TRANSFORMATION":0,"PARTICIPATION":1,"FRUIT":2,"RESTORATION":3},
+  "records":[
+    {
+      "id":"exodus25-two-cherubim-central-presence",
+      "a":"tim-shared comparator",
+      "d":"project anchor 2026-04-09; biblical comparison promoted 2026-09-11",
+      "p":"project-first / archive-later research unlock",
+      "x":"one guardian at right + one at left + narrow central passage to Heaven + Jesus at/between passage + Father above",
+      "b":["Exodus 25:17-22","Hebrews 9:5","Psalm 80:1","Psalm 99:1"],
+      "r":"Exodus explicitly supplies two cherubim at opposite ends around a central atonement-cover/meeting zone with divine presence described above/between them; tighter paired-guardian comparator than Genesis 3 alone",
+      "o":["PRESENCE","ACCESS","MEDIATION"],
+      "s":5,
+      "f":"knowledge/traditions/biblical-overlap-wave-14-return-shepherd-repair.json",
+      "limit":"Exodus describes sanctuary furniture/Ark, not a narrow gate; Jesus is not in the Exodus scene."
+    },
+    {
+      "id":"psalm80-ultradense-restoration-vine-cluster",
+      "a":"tim-son shared comparator",
+      "d":"research unlock 2026-09-11",
+      "p":"archive-later high-density discovery",
+      "x":"Shepherd/Joseph/flock + cherubim throne + shining + restore-us refrain + bread/tears/mockery + vine/root/branches + mountain/river + wall breach + right-hand/son-of-man/name/salvation cluster",
+      "b":["Psalm 80"],
+      "r":"one biblical literary unit contains an unusually large number of motifs independently important elsewhere in Tim/Son theology",
+      "o":["PRESENCE","PARTICIPATION","FRUIT","RESTORATION"],
+      "s":5,
+      "f":"knowledge/traditions/biblical-overlap-wave-14-return-shepherd-repair.json",
+      "limit":"Psalm 80 is a communal prayer for Israel; its vine is Israel and its son-of-man wording cannot simply be reassigned to Tim or the modern Son."
+    },
+    {
+      "id":"revelation22-water-life-invitation",
+      "a":"shared comparator",
+      "d":"research unlock 2026-09-11",
+      "p":"archive-later canonical-restoration discovery",
+      "x":"the final River/Tree/open-access theology includes active invitation: Spirit/Bride say come and the thirsty may take water of life",
+      "b":["Revelation 22:1-5","Revelation 22:17"],
+      "r":"restored access culminates not only in open gates but invitation/hospitality toward life-giving water",
+      "o":["PRESENCE","ACCESS","FRUIT","RESTORATION"],
+      "s":5,
+      "f":"knowledge/traditions/biblical-overlap-wave-14-return-shepherd-repair.json",
+      "limit":"The invitation belongs to Revelation's eschatological/liturgical conclusion, not a modern platform access rule."
+    },
+    {
+      "id":"noah-teivah-versus-covenant-aron",
+      "a":"shared comparator",
+      "d":"research unlock 2026-09-11",
+      "p":"archive-later linguistic/function correction",
+      "x":"project Ark/Vessel symbolism must separate catastrophe-preservation vessel from covenant/presence container",
+      "b":["Genesis 6-9","Exodus 25","Hebrews 9"],
+      "r":"English 'ark' conceals two different Hebrew terms/functions: Noah/Moses-basket teivah/tebah versus Covenant Ark aron; later reception may compare them but lexical identity should not be assumed",
+      "o":["PRESENCE","ACCESS","RESTORATION"],
+      "s":5,
+      "f":"knowledge/traditions/biblical-overlap-wave-14-return-shepherd-repair.json",
+      "limit":"Shared English vocabulary is not evidence that the Hebrew narratives use the same object-word or function."
+    }
+  ],
+  "combined_summary":{"overlap_nodes":78,"strength_5":49,"strength_4":15,"strength_3":13,"strength_2":1,"research_unlock_2026_09_11":17,"operator_counts":{"PRESENCE":38,"RESTORATION":34,"TRANSFORMATION":27,"MEDIATION":27,"ACCESS":25,"FRUIT":24,"PARTICIPATION":21}},
+  "counting_note":"Combined summary equals base census plus this additive segment. Do not interpret node count or strength totals as independent statistical evidence for supernatural identity."
+}

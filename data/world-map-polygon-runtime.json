@@ -1,0 +1,89 @@
+{
+  "id": "world-map-polygon-runtime",
+  "version": "1.0.0",
+  "updated": "2026-09-10",
+  "status": "active polygon interaction contract",
+  "purpose": "Define the country/territory polygon as the primary spatial doorway into the World Relational Atlas rather than a decorative choropleth cell.",
+  "core_rule": "A polygon is geometry plus identity routing. It is not the country record itself and it is never a moral score for an entire people.",
+  "interaction_states": {
+    "idle": "polygon rendered according to selected map layer",
+    "hover": "temporary emphasis plus resolved country/territory code",
+    "selected": "persistent high-contrast border; polygon becomes origin node for local graph",
+    "focused": "map fits selected polygon geometry while preserving graph context",
+    "neighbor": "land-border adjacent polygon highlighted separately from alliance/project relations",
+    "related": "polygon connected by a curated typed relationship edge",
+    "unresolved": "geometry exists but canonical country/territory owner is missing or ambiguous"
+  },
+  "event_grammar": [
+    "hover -> identify polygon",
+    "click -> select polygon and load canonical dossier",
+    "double click -> select + fit polygon",
+    "show neighbors -> render geographic adjacency",
+    "show relations -> render curated typed cross-border edges",
+    "click relation edge -> inspect relationship record",
+    "follow relation -> change selected origin polygon",
+    "deep link -> preserve country + layer in URL"
+  ],
+  "polygon_identity": {
+    "primary_key": "ISO3 where available",
+    "fallback": "resolved country/territory name against geographic metadata",
+    "canonical_country_route": "data/countries/index.json -> data/countries/{country_id}.json",
+    "territory_rule": "A territory polygon must not be silently promoted to sovereign-state status merely because the geometry exists. Territory/constitutional status requires its own relationship data."
+  },
+  "edge_separation": {
+    "border": "physical land adjacency",
+    "curated_relation": "typed project/observable relation from canonical world graph",
+    "alliance": "institutional membership relation",
+    "trade_finance_energy_migration": "future data-driven typed relations",
+    "interpretive": "North/West/East/Swamp/Timic relation with explicit epistemic-plane label",
+    "rule": "Never render all edges as if they mean the same thing. Visual styling and edge cards must preserve type and provenance."
+  },
+  "zoom_behavior": [
+    {"zoom":"2-3","mode":"world","polygon_role":"global comparison and system overlays"},
+    {"zoom":"4-5","mode":"regional","polygon_role":"regional graph origin; border and corridor relations become legible"},
+    {"zoom":"5-7","mode":"country","polygon_role":"country dossier container; major institutions/issues/relations can appear"},
+    {"zoom":"7+","mode":"subnational","polygon_role":"country polygon becomes context shell while cities, ports, facilities and sites become primary nodes"}
+  ],
+  "implemented_2026_09_10": [
+    "persistent selected-polygon styling",
+    "hover state distinct from selection",
+    "double-click fit to selected country geometry",
+    "fit-selected control",
+    "zoom HUD with world/regional/country/subnational modes",
+    "land-border neighbor graph",
+    "curated relationship graph",
+    "edge inspection cards",
+    "follow-edge navigation between polygons",
+    "deep-link state for country and layer",
+    "country search resolving into polygon selection",
+    "canonical country lazy-loading remains source of dossier data"
+  ],
+  "next_priority": [
+    "Replace coarse external polygon source with a maintained local Natural Earth/GeoJSON asset so map geometry is versioned with the repository.",
+    "Create territory registry for Greenland, Faroe Islands and other non-sovereign polygons with parent/constitutional relations.",
+    "Add local centroids/label points rather than depending on REST Countries coordinates for every graph line.",
+    "Add multi-select compare mode so two or more polygons can stay selected simultaneously.",
+    "Add trace mode that recursively follows typed edges across polygons and non-country nodes.",
+    "Add date slider so historical polygons/edges/alliances and slavery/war/colonial relations are time-scoped rather than permanently attached.",
+    "Add religion/irreligion choropleth only after dated country values are ingested with methodology metadata.",
+    "Add subnational point registries for ports, bases, institutions, sacred sites, companies and infrastructure at zoom 7+.",
+    "Add edge filtering by relation type and epistemic plane.",
+    "Add accessibility path: keyboard polygon navigation, strong focus state, screen-reader labels, and read-aloud-friendly country summaries."
+  ],
+  "safety_and_epistemics": [
+    "Country polygon != collective guilt.",
+    "Religious demographic polygon != political ideology.",
+    "Historical slavery relation != inherited personal guilt.",
+    "Trafficking/corruption/conflict attach to documented actors, mechanisms and periods rather than staining a polygon.",
+    "Tim/Potatoverse overlays remain project-canon or interpretive unless separately supported as observable relations."
+  ],
+  "connections": [
+    "data/world-map-runtime.json",
+    "data/world-relational-map.json",
+    "data/country-atlas.json",
+    "data/countries/index.json",
+    "data/world-entanglement-registry.json",
+    "data/world-religion-layer.json",
+    "world-map/index.html"
+  ]
+}

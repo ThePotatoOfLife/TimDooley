@@ -1,0 +1,43 @@
+{
+  "id":"gauge-unification-equation-audit",
+  "title":"Gauge Unification & Supersymmetry Equation Audit",
+  "updated":"2026-09-09",
+  "status":"canonical equation-audit record",
+  "scope":"Equations introduced in the SU(4)/SU(5)/Spin(10)/supersymmetry branch and their compatibility with the repository's Standard Model and RG conventions.",
+  "audit_results":[
+    {"id":"sm-group","equation":"G_SM=SU(3)_C×SU(2)_L×U(1)_Y","status":"pass","notes":"Matches existing repository convention."},
+    {"id":"charge","equation":"Q=T3+Y","status":"pass","notes":"Repository uses Y equal to half the hypercharge used in conventions where Q=T3+Y/2. All new equations are normalized to Q=T3+Y unless explicitly noted."},
+    {"id":"pati-salam-group","equation":"G_PS=SU(4)_C×SU(2)_L×SU(2)_R","status":"pass","notes":"Standard Pati-Salam gauge group."},
+    {"id":"pati-salam-breaking","equation":"SU(4)_C ⊃ SU(3)_C×U(1)_(B-L)","status":"pass","notes":"Correct subgroup structure up to the usual global quotient details."},
+    {"id":"pati-salam-charge","equation":"Q=T3L+T3R+(B-L)/2","status":"pass","notes":"Convention-safe physical charge formula."},
+    {"id":"pati-salam-hypercharge","equation":"Y=T3R+(B-L)/2","status":"pass-with-convention-note","notes":"Correct for physical right-handed fields with Q=T3L+Y. If all fermions are represented as left-chiral conjugates, T3R can enter with opposite sign depending on representation convention. Archive now requires convention metadata."},
+    {"id":"su5-dimension","equation":"dim SU(N)=N^2-1; dim SU(5)=24","status":"pass","notes":"Standard Lie-group dimension formula."},
+    {"id":"su5-generator","equation":"Y=diag(-1/3,-1/3,-1/3,1/2,1/2)","status":"pass","notes":"Compatible with repository Q=T3+Y convention for the fundamental generator; conjugate representations reverse eigenvalue signs as expected."},
+    {"id":"su5-generation","equation":"10⊕5bar [plus 1 for ν_R]","status":"pass","notes":"Standard SU(5) matter embedding; ν_R is an SU(5) singlet."},
+    {"id":"su5-adjoint","equation":"24→(8,1)_0⊕(1,3)_0⊕(1,1)_0⊕(3,2)_(-5/6)⊕(3bar,2)_(5/6)","status":"pass","notes":"Standard adjoint decomposition under SU(3)_C×SU(2)_L×U(1)_Y."},
+    {"id":"spin10-generation","equation":"16→one SM generation + ν_R","status":"pass","notes":"Correct chiral spinor organization; use Spin(10) when discussing spinor representations, although SO(10) is conventional shorthand in phenomenology."},
+    {"id":"susy-algebra","equation":"{Q_α,Qbar_dotβ}=2σ^μ_(αdotβ)P_μ","status":"pass","notes":"Standard 4D N=1 super-Poincare relation in common normalization."},
+    {"id":"susy-translation","equation":"[P_μ,Q_α]=0","status":"pass","notes":"Standard super-Poincare commutator."},
+    {"id":"symmetry-breaking","equation":"G --<Φ>≠0--> H","status":"pass-as-schematic","notes":"Valid schematic grammar only; a physical model must specify Φ, its representation, potential, vacuum and stabilizer subgroup H."},
+    {"id":"rg-beta","equation":"μ dg_i/dμ=(b_i/16π²)g_i³","status":"pass-with-sign-convention","notes":"One-loop form is correct when b_i includes the convention-dependent sign. Some texts define β(g)=-(b/16π²)g³ instead. Store the coefficient convention whenever numerical b_i values are added."},
+    {"id":"rg-alpha","equation":"dα_i^(-1)/dlnμ=-b_i/(2π)","status":"pass-with-sign-convention","notes":"Follows from the previous convention α_i=g_i²/(4π)."},
+    {"id":"11d-field-strength","equation":"G4=dC3","status":"pass","notes":"Standard 11D supergravity notation."},
+    {"id":"11d-compactification","equation":"M11→M4×X7","status":"pass-as-schematic","notes":"Product-space shorthand; warped/fibered compactifications require more general geometry."},
+    {"id":"11d-warped-metric","equation":"ds²=e^(2A(y))g_μν(x)dx^μdx^ν+g_mn(y)dy^mdy^n","status":"pass-as-schematic","notes":"Standard warped-product ansatz form; exact powers/warp factors are model dependent."}
+  ],
+  "integration_rules":[
+    "Retain Q=T3+Y as the repository-wide electroweak convention unless a source uses another normalization.",
+    "Every U(1) equation must record normalization before comparing generators or running couplings.",
+    "Record right-handed versus all-left-chiral field conventions in Pati-Salam and GUT representation tables.",
+    "Use Spin(10) for mathematically precise spinor-representation statements; SO(10) may remain a search alias and phenomenology label.",
+    "Do not treat a schematic symmetry-breaking arrow as a complete Lagrangian or dynamical theory.",
+    "Do not infer supersymmetry from ordinary gauge-group enlargement. Gauge unification and SUSY are linked research branches, not the same symmetry."
+  ],
+  "external_audit_sources":[
+    "Pati-Salam literature for SU(4)_C×SU(2)_L×SU(2)_R and Q=T3L+T3R+(B-L)/2",
+    "Georgi-Glashow SU(5) literature for 5bar⊕10 matter embedding and 24 adjoint",
+    "standard supersymmetry literature for {Q,Qbar}=2σ·P",
+    "11D supergravity literature for G4=dC3 and 4D N=1/G2 compactification context"
+  ],
+  "result":"All core equations pass at schematic/algebraic level after adding explicit convention controls for Pati-Salam hypercharge and beta-function signs."
+}

@@ -1,0 +1,67 @@
+{
+  "version": "1.0.0",
+  "status": "active-blueprint",
+  "purpose": "A multidimensional ontology for mapping people, peoples, communities, populations and dwellers without assuming that ethnicity, nationality, religion, politics, culture or residence are the same thing.",
+  "entity": "people_or_community",
+  "core_principle": "A person can occupy many overlapping social positions at once; a group can be nested inside several different systems. Never force one identity into one box.",
+  "epistemic_rule": "Store observed, self-described, legally defined, institutionally defined and project-symbolic classifications separately.",
+  "classification_axes": {
+    "population_status": ["resident", "citizen", "non_citizen_resident", "temporary_resident", "migrant", "refugee", "asylum_seeker", "stateless_person", "diaspora_member", "returnee", "nomadic_or_mobile_population", "internally_displaced_person"],
+    "territorial_relation": ["local_population", "regional_population", "national_population", "cross_border_people", "transnational_community", "diaspora", "indigenous_people", "settler_population", "minority_population", "majority_population", "urban_population", "rural_population", "island_population", "frontier_population", "arctic_population"],
+    "kinship_and_peoplehood": ["family", "clan", "lineage", "tribe", "people", "nation", "ethnolinguistic_people", "ethnic_group", "cultural_group", "descent_group", "community", "neighbourhood", "household"],
+    "language": ["mother_tongue", "home_language", "heritage_language", "national_language_community", "minority_language_community", "bilingual_population", "multilingual_population", "sign_language_community"],
+    "religious_relation": ["religiously_affiliated", "practising", "nominal_affiliate", "convert", "apostate_or_former_affiliate", "unaffiliated", "atheist", "agnostic", "spiritual_but_not_religious", "syncretic_practitioner", "folk_religion_practitioner", "esoteric_practitioner", "mystery_or_initiatory_member", "clergy_or_religious_specialist", "monastic", "pilgrim"],
+    "religious_tradition": ["Christian", "Muslim", "Jewish", "Hindu", "Buddhist", "Sikh", "Jain", "Bahai", "Zoroastrian", "Daoist", "Confucian", "Shinto", "Indigenous_religion", "African_traditional_religion", "folk_religion", "new_religious_movement", "Satanist", "occult_or_esoteric", "other_or_mixed", "none_or_unaffiliated"],
+    "political_relation": ["non_partisan", "party_member", "party_supporter", "voter", "non_voter", "political_office_holder", "civil_servant", "activist", "organizer", "union_member", "political_movement_member", "ideological_community", "monarchist", "republican", "liberal", "conservative", "socialist", "communist", "social_democratic", "libertarian", "green", "nationalist", "regionalist", "anarchist", "populist", "fascist_or_neofascist_as_historically_defined", "anti_authoritarian", "anti_religious", "religiously_political", "politically_unaffiliated"],
+    "cultural_relation": ["cultural_majority", "cultural_minority", "subculture", "counterculture", "diasporic_culture", "heritage_community", "artistic_community", "music_scene", "literary_community", "sports_community", "foodway_community", "festival_community", "digital_community", "online_subculture", "academic_community", "scientific_community", "maker_or_technical_community"],
+    "social_and_economic_position": ["child", "adolescent", "young_adult", "working_age", "older_adult", "retired", "student", "worker", "employer", "entrepreneur", "farmer", "professional", "craft_worker", "care_worker", "unemployed", "informal_worker", "public_sector_worker", "private_sector_worker", "low_income", "middle_income", "high_income", "wealth_holder", "tenant", "homeowner", "landholder", "precarious_worker"],
+    "institutional_relation": ["household_member", "school_member", "university_member", "company_employee", "company_owner", "shareholder", "union_member", "professional_association_member", "religious_institution_member", "military_member", "veteran", "civil_service_member", "political_party_member", "ngo_member", "cooperative_member", "club_member", "fraternity_or_sorority_member", "lodge_member", "secret_or_private_association_member_when_documented"],
+    "life_and_practice": ["urban", "rural", "suburban", "commuter", "migrant_lifestyle", "nomadic", "sedentary", "student_life", "military_life", "monastic_life", "religious_life", "professional_life", "artistic_life", "political_life", "digital_life", "communal_life", "household_centered", "individualist_lifestyle"],
+    "generational_relation": ["generation", "age_cohort", "historical_generation", "youth_movement", "elder_population", "intergenerational_household"],
+    "status_and_power": ["governing_elite", "political_elite", "economic_elite", "landed_elite", "religious_elite", "military_elite", "professional_elite", "middle_class", "working_class", "underclass_when_methodologically_defined", "marginalized_group", "protected_minority", "majority_group", "minority_group"],
+    "symbolic_project_layer": ["dweller", "mud_dweller", "root_dweller", "tree_dweller", "ladder_dweller", "axis_dweller", "north_dweller", "plane_dweller", "door_dweller", "heaven_dweller", "tree_of_life_symbolic_relation", "tree_of_strife_symbolic_relation"],
+    "symbolic_rule": "Project-symbolic dweller categories are interpretive vocabulary, not claims about real demographic or moral status. They may describe a relationship to the project's mythic architecture but never replace empirical classifications."
+  },
+  "record_schema": {
+    "identity": ["people_id", "preferred_name", "native_names", "aliases", "group_type", "status", "time_period", "regions", "languages"],
+    "peoplehood": ["self_identification", "external_classifications", "origin_accounts", "historical_formation", "kinship_structure", "peoplehood_basis", "boundary_markers"],
+    "territory_and_mobility": ["homeland", "settlement_area", "migration_history", "diaspora", "urban_rural_distribution", "cross_border_presence"],
+    "language": ["languages", "language_status", "literacy", "language_shift", "script", "translation_ecology"],
+    "religion": ["affiliation", "belief", "practice", "institutions", "denominations", "conversion_and_switching", "religious_specialists"],
+    "politics": ["political_participation", "party_affiliations_when_measured", "movements", "representation", "political_ideologies_when_self_identified_or_reliably_measured", "state_relationship"],
+    "culture": ["customs", "arts", "music", "foodways", "festivals", "dress", "family_patterns", "social_norms", "heritage", "media", "sports"],
+    "economy": ["occupations", "industries", "income_distribution", "wealth_when_available", "property", "labour_relations", "trade_role", "remittances"],
+    "institutions": ["schools", "religious_bodies", "political_organizations", "companies", "unions", "associations", "clubs", "military_or_security_institutions_when_public"],
+    "history": ["formation_events", "migrations", "wars", "persecution_when documented", "emancipation", "political_movements", "cultural_turning_points", "contemporary_changes"],
+    "demography": ["population_estimate", "reference_year", "age", "sex_when relevant", "households", "education", "employment", "citizenship", "birthplace"],
+    "relationships": ["belongs_to", "contains", "overlaps_with", "resides_in", "citizen_of", "diaspora_of", "speaks_language", "practices_religion", "member_of", "votes_for", "works_in", "owns_or_controls", "migrates_between", "influences", "influenced_by", "conflicts_with", "coexists_with", "historically_descends_from"],
+    "evidence": ["sources", "source_type", "self_description", "census_or_survey", "administrative_definition", "academic_definition", "contested_points", "confidence", "last_verified"],
+    "privacy": "Use aggregate public information for populations and communities. Do not infer sensitive identity about individual people."
+  },
+  "country_intersection_model": {
+    "purpose": "Allow each country to expose the communities, identities and social formations present within it while preserving overlap.",
+    "country_fields": ["resident_populations", "citizenship_groups", "ethnolinguistic_groups", "language_communities", "religious_communities", "political_parties_and_movements", "cultural_communities", "occupational_groups", "class_and_income_groups", "age_cohorts", "diasporas", "indigenous_peoples", "migrant_populations", "institutional_memberships", "urban_rural_populations"],
+    "rule": "A country is a field containing overlapping populations, not a single people. Membership can be nested, intersecting, temporary, contested or changing over time."
+  },
+  "relationship_graph": {
+    "edge_types": ["person_member_of_group", "group_contains_group", "group_overlaps_group", "group_present_in_country", "group_majority_in_country", "group_minority_in_country", "group_spans_countries", "group_speaks_language", "group_uses_script", "group_practices_tradition", "group_belongs_to_denomination", "group_supports_party", "group_participates_in_movement", "group_works_in_sector", "group_concentrated_in_region", "group_has_diaspora", "group_migrated_to_country", "group_descends_from_group", "group_split_from_group", "group_influenced_group", "group_conflicts_with_group", "group_coexists_with_group", "group_organized_by_institution", "group_represented_by_institution", "group_symbolically_mapped_to_project_node"],
+    "temporal_rule": "Every relationship that can change must carry valid_from, valid_to or reference_period."
+  },
+  "integrity_rules": [
+    "Nationality is not ethnicity.",
+    "Citizenship is not ethnicity, religion or culture.",
+    "Residence is not citizenship.",
+    "Ethnicity is not language in every case.",
+    "Religion is not ethnicity and religious affiliation may cross every other boundary.",
+    "Political ideology is not a property of an entire people unless supported by aggregate evidence.",
+    "Culture is multidimensional and should not be reduced to one ethnicity or religion.",
+    "Class is not a moral category.",
+    "A minority can be locally majoritarian and nationally minoritarian.",
+    "A diaspora can belong simultaneously to the homeland, host-country and transnational community layers.",
+    "Historical peoples, modern populations and political nations must be time-stamped rather than silently equated.",
+    "Use native/self-designations alongside external analytical labels.",
+    "Disputed classifications remain disputed rather than being forced into a single answer.",
+    "Never infer individual sensitive identity from group membership, geography or names.",
+    "Project-symbolic dweller categories remain explicitly symbolic."
+  ]
+}

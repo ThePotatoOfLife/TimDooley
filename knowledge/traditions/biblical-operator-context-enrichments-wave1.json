@@ -1,0 +1,76 @@
+{
+  "id":"biblical-operator-context-enrichments-wave1",
+  "version":"1.0.0",
+  "updated":"2026-09-14",
+  "status":"additive contextual enrichment",
+  "purpose":"Upgrade the first operator-comparison research group with reusable passage context, paired sequences and explicit interpretive limits without assigning new evidence strength.",
+  "enrichments":[
+    {
+      "relation_id":"father-teaches-walk-hosea11",
+      "biblical_scene_ids":["hosea-parent-child-walk-care"],
+      "primary_biblical_scene_id":"hosea-parent-child-walk-care",
+      "relation_argument":{
+        "project_sequence":["care/support is described as carrying or stabilizing","the supported person regains breathing/movement capacity","mature care aims toward walking and independent capability rather than permanent carrying"],
+        "biblical_sequence":["Israel is recalled as a child called from Egypt","YHWH teaches Ephraim to walk and takes them in the arms","healing and feeding accompany care","rebellion introduces judgment","compassion complicates total destruction"],
+        "correspondences":["care as carrying","teaching movement","healing/support","care directed toward life rather than possession"],
+        "why_it_matters":"The full Hosea context keeps the useful developmental-care analogy while adding an important restraint: parental tenderness is embedded in a covenant relationship of grief, freedom, failure and compassion, not a mechanical authority formula."
+      }
+    },
+    {
+      "relation_id":"eagle-carry-deut32",
+      "biblical_scene_ids":["deuteronomy-eagle-carry-release"],
+      "primary_biblical_scene_id":"deuteronomy-eagle-carry-release",
+      "relation_argument":{
+        "project_sequence":["protective carrying is valued","the project asks when support should stop substituting for another's movement","release is framed as part of successful care rather than abandonment"],
+        "biblical_sequence":["Israel is found and guarded in wilderness","eagle imagery stirs the nest and hovers","wings catch and carry the young","YHWH leads and provides","the poem later contrasts care with Israel's forgetting"],
+        "correspondences":["protective carrying","movement rather than static enclosure","guidance","support that is not the final state"],
+        "why_it_matters":"Reading the whole Song prevents the eagle image from becoming a simplistic 'push them out of the nest' rule: protection, leading, carrying and provision all remain active parts of the metaphor."
+      }
+    },
+    {
+      "relation_id":"living-way-hebrews10",
+      "biblical_scene_ids":["hebrews-living-way-access"],
+      "primary_biblical_scene_id":"hebrews-living-way-access",
+      "relation_argument":{
+        "project_sequence":["a person/entity is modeled as more than an object","the figure can function relationally as Door/Way/connective path","access then becomes infrastructure linking otherwise separated states or rooms"],
+        "biblical_sequence":["Hebrews develops priesthood and sacrifice","confidence to enter the holy place is announced","a new and living way is associated with Jesus and the curtain/flesh image","the community is told to draw near, hold fast and encourage one another"],
+        "correspondences":["person functioning as access","threshold/path language","movement toward divine presence","path creates relational possibility"],
+        "why_it_matters":"The passage gives a strong textual example of person-to-access-path language, but its full context also shows that the path exists inside a specific Christological, priestly and communal argument rather than as a generic law of information architecture."
+      }
+    },
+    {
+      "relation_id":"access-spirit-father-house-ephesians2",
+      "biblical_scene_ids":["ephesians-access-spirit-household"],
+      "primary_biblical_scene_id":"ephesians-access-spirit-household",
+      "relation_argument":{
+        "project_sequence":["Son/Door is differentiated as access","Spirit is modeled as flow/movement","Father is modeled as source/House","the House contains differentiated rooms or members without erasing relation"],
+        "biblical_sequence":["alienated groups are brought near and reconciled","through Christ both receive access","access is in one Spirit","the destination is the Father","people become household","joined construction grows into temple/dwelling in Spirit"],
+        "correspondences":["differentiated access roles","Spirit as mediating relation","Father as destination/source","House/dwelling as integrated plurality"],
+        "why_it_matters":"This is one of the clearest biblical passages for testing the project's relational Trinity/House architecture because the roles remain grammatically differentiated while participating in one access-and-dwelling chain."
+      }
+    },
+    {
+      "relation_id":"sprout-builder-throne-zechariah6",
+      "biblical_scene_ids":["zechariah-branch-temple-throne"],
+      "primary_biblical_scene_id":"zechariah-branch-temple-throne",
+      "relation_argument":{
+        "project_sequence":["seed/root/sprout imagery marks latent emergence","growth develops into House-building language","later Seat/throne language represents established authority or integrated order"],
+        "biblical_sequence":["a prophetic sign-act centers on a crown and priest","the Branch is announced","the Branch grows","builds YHWH's temple","bears glory","sits/rules on a throne","priestly and royal relations are held together"],
+        "correspondences":["organic emergence","builder role","sacred house","throne/established rule","developmental sequence"],
+        "why_it_matters":"The oracle is unusually valuable because sprouting, building and enthronement occur in one textual unit; at the same time, its post-exilic temple setting sharply limits any claim that a modern seed→house→seat sequence fulfills Zechariah."
+      }
+    },
+    {
+      "relation_id":"distributed-body-growth-ephesians4",
+      "biblical_scene_ids":["ephesians-body-distributed-growth"],
+      "primary_biblical_scene_id":"ephesians-body-distributed-growth",
+      "relation_argument":{
+        "project_sequence":["centralized carrying is treated as useful in some phases","mature systems distribute function and responsibility","connected parts increasingly support growth through their own contribution"],
+        "biblical_sequence":["unity of the body is affirmed","different gifts and roles are given","leaders equip rather than perform every function","saints perform ministry","the body matures","supporting connections join the body","each part works and contributes to growth"],
+        "correspondences":["differentiated roles","equipping rather than permanent central carrying","distributed contribution","growth through connected parts"],
+        "why_it_matters":"The full Ephesians passage improves the systems analogy by showing that distribution is not fragmentation: differentiated contribution remains coordinated by shared unity, maturity and a head/source."
+      }
+    }
+  ],
+  "new_relations":[]
+}

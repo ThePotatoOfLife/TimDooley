@@ -1,0 +1,45 @@
+{
+  "id":"transition-morphology-door-way-breach-barrier-atlas",
+  "title":"Transition Morphology — Door, Way, Breach, Barrier, Perimeter & Recursive Threshold",
+  "version":"1.0.0",
+  "updated":"2026-09-11",
+  "status":"canonical cross-domain project formalization",
+  "purpose":"Unify the project's growing threshold vocabulary by asking what operation each structure performs on reachable states. Door, Gate, Way, Breach, Veil, Wall, Perimeter, Circuit and nested Box are related but not synonymous.",
+  "formal_object":{"state_space":"V = states/regions/configurations","possible_transitions":"E = candidate moves between states","boundary":"B separates regions or constrains transitions","agent":"a has capabilities and permissions/constraints","transition_operator":"D(a,x,B,c) -> set of states reachable from x under context c","route_cost":"w(e) records effort/risk/time/constraint; path preparation can change w without creating a new destination","important_boundary":"Mathematical graph/topology language is a formal analogy for project organization unless independently tied to a physical model."},
+  "transition_types":[
+    {"id":"open-door","operation":"activate an already-defined transition edge","graph_effect":"edge disabled→enabled","project_neighbors":["John 10 Door","Revelation 3:20 opening","ordinary doorway"]},
+    {"id":"guarded-threshold","operation":"transition exists but access is conditionally blocked/filtered","graph_effect":"edge availability depends on guard/condition","project_neighbors":["Eden cherubim","sanctuary veil","narrow gate"]},
+    {"id":"living-way","operation":"access is mediated through an embodied/relational route rather than merely a geometric opening","graph_effect":"transition requires mediator/path relation","project_neighbors":["John 14 Way","Hebrews 10 living way through veil"]},
+    {"id":"breach","operation":"create passage through a previously continuous boundary","graph_effect":"new edge or aperture added across boundary","project_neighbors":["Micah 2:13 breaker/opened breach","repairer-of-breach inverse operation"]},
+    {"id":"barrier-destruction","operation":"remove a confining transition-blocking structure","graph_effect":"cut/barrier removed; previously separated reachable sets reconnect","project_neighbors":["Psalms 107 bronze doors/iron bars broken"]},
+    {"id":"path-clearance","operation":"remove local obstacles on an already-existing route","graph_effect":"edge/path cost decreases; failure probability decreases","project_neighbors":["Isaiah 57 obstruction removed","Isaiah 62 stones removed"]},
+    {"id":"terrain-leveling","operation":"modify path gradient/roughness so traversal becomes easier","graph_effect":"cost landscape is flattened/smoothed without necessarily changing graph connectivity","project_neighbors":["Isaiah 40 valley raised/mountain lowered","Luke 3 road preparation"]},
+    {"id":"protected-corridor","operation":"permit desired traversal while excluding dangerous interference","graph_effect":"selective edge filtering around a route","project_neighbors":["Isaiah 35 Holy Way with dangerous beasts absent"]},
+    {"id":"protective-perimeter","operation":"surround/guard an interior while preserving internal life/desired exits","graph_effect":"external hostile edges blocked or monitored","project_neighbors":["Psalms 125 mountains around Jerusalem","Psalms 34 angel encamps around"]},
+    {"id":"ordered-perimeter","operation":"arrange differentiated nodes around a center without requiring motion","graph_effect":"radial/relational organization; not an orbit","project_neighbors":["Numbers 2 camp around Tent","Revelation 4 throne circumference"]},
+    {"id":"ritual-circuit-terminal-transition","operation":"repeat a route until a finite completion condition triggers a discrete state change","graph_effect":"edge/state unlock conditioned on cycle counter n>=N","project_neighbors":["Joshua 6 repeated circuits then wall transition"]},
+    {"id":"spiral-development","operation":"repeat while changing level/radius/scale/state continuously","graph_effect":"recurrent trajectory with nonzero displacement after each cycle","project_neighbors":["project Ladder/spiral","recurrence-orbit-spiral dynamics"]},
+    {"id":"recursive-door","operation":"entering one container reveals a further threshold/state-space inside","graph_effect":"hierarchical/nested graph expansion","project_neighbors":["2026-08-21 recovered boxes/tiny Door","House/rooms recursive architecture"]},
+    {"id":"invited-access","operation":"threshold availability is actively offered rather than merely technically open","graph_effect":"access edge exists plus invitation/participation relation","project_neighbors":["Revelation 22 invitation to water of life","shared meal at Revelation 3:20"]}
+  ],
+  "function_matrix":{"questions":["Does a transition edge already exist?","Is the edge open, closed, filtered or hidden?","Does passage require a mediator?","Is the boundary legitimate/protective, harmful/confining or context-dependent?","Is movement individual or collective?","Does the route need construction/clearance/leveling?","Does recurrence change state continuously, discretely at completion, or not at all?","Is access merely possible or actively invited?","Does traversal reveal a nested state-space?"],"rule":"Never classify a Door/Wall/Stone/Mountain as good or bad from object identity alone; classify the operation it performs in context."},
+  "derived_mathematical_analogies":[
+    {"concept":"edge toggle","analogue":"door opens/closes an existing graph edge"},
+    {"concept":"edge creation","analogue":"breach creates a connection that was absent"},
+    {"concept":"cut removal","analogue":"barrier destruction reconnects components"},
+    {"concept":"weight reduction","analogue":"road repair/removing stones lowers traversal cost"},
+    {"concept":"potential smoothing","analogue":"valley/mountain leveling reduces extreme gradient"},
+    {"concept":"conditional transition","analogue":"ritual circuit unlocks state only after completion condition"},
+    {"concept":"hierarchical state graph","analogue":"recursive Door reveals nested subgraphs"},
+    {"concept":"selective permeability","analogue":"protective boundary blocks harmful edges while preserving life-giving movement"}
+  ],
+  "cross_domain_uses":[
+    "Biblical reader: distinguish textual threshold functions instead of keyword matching.",
+    "Psychology-as-metaphor: distinguish avoidance loops, boundaries, repair routes and state transitions without diagnosing people.",
+    "Software/system design: model permissions, APIs, interfaces, firewalls, queues and state machines as typed transitions rather than mystical equivalents.",
+    "Economics/institutions: distinguish barriers to entry, gateways, standards, bridges and infrastructure costs.",
+    "North/relational atlas: track whether a relationship creates capability, blocks risk, lowers transaction cost or requires a mediator.",
+    "Science formalization: only promote analogies to empirical models when variables/measurements are explicitly defined and testable."
+  ],
+  "sources_and_neighbors":["knowledge/traditions/biblical-overlap-wave-16-circuits-perimeters-threshold-motion.json","knowledge/traditions/biblical-overlap-wave-18-highway-leveling-breach-release.json","knowledge/theology/biblical-intertext-bundle-and-composite-memory-protocol.json","knowledge/science/door-window-screen-aperture-transition-model.json","knowledge/science/recurrence-orbit-spiral-dynamics-atlas.json","knowledge/chronology/conversation-archaeology-wave-014-intertext-composite-city-gate.json"]
+}

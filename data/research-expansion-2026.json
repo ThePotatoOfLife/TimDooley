@@ -1,0 +1,79 @@
+{
+  "version":"1.0.0",
+  "updated":"2026-09-07",
+  "purpose":"Cross-domain expansion pack for the Atlas. Each record is designed to become a canonical node or a relationship family rather than an isolated fact.",
+  "domains":{
+    "energy":[
+      {"id":"energy-system","name":"European Energy System","type":"system","definition":"Interconnected electricity, gas, oil, nuclear, renewables, storage, grids, markets and demand across Europe."},
+      {"id":"north-sea-offshore-wind","name":"North Sea Offshore Wind","type":"infrastructure-system","definition":"Offshore wind generation and associated grid, port, vessel, cable and industrial supply-chain systems around the North Sea."},
+      {"id":"european-power-grid","name":"European Power Grid","type":"infrastructure","definition":"Synchronous and interconnected electricity networks linking national transmission systems through cross-border interconnectors."},
+      {"id":"lng","name":"Liquefied Natural Gas","type":"energy-market","definition":"Globally traded natural gas shipped as a cryogenic liquid and regasified near demand centres."},
+      {"id":"nuclear-energy","name":"Nuclear Energy","type":"energy-system","definition":"Electricity and heat production using nuclear fission, with fuel-cycle, reactor, waste and regulatory dependencies."},
+      {"id":"hydrogen","name":"Hydrogen Economy","type":"emerging-energy-system","definition":"Production, transport, storage and industrial use of hydrogen and derivatives such as ammonia."}
+    ],
+    "finance":[
+      {"id":"finance-debt","name":"Public Finance and Debt","type":"system","definition":"Government revenue, expenditure, deficits, debt issuance, interest costs, guarantees and fiscal rules."},
+      {"id":"sovereign-bonds","name":"Sovereign Bond Markets","type":"financial-market","definition":"Markets in government debt securities linking states, banks, funds, households and central banks."},
+      {"id":"banking-system","name":"European Banking System","type":"financial-system","definition":"Banks, central counterparties, payment systems, deposit protection, regulators and credit channels."},
+      {"id":"capital-markets-union","name":"Capital Markets Union","type":"policy-framework","definition":"EU effort to deepen cross-border capital markets and diversify financing beyond bank credit."},
+      {"id":"esg-finance","name":"Sustainable Finance","type":"financial-policy","definition":"Financial products, disclosure rules and capital-allocation frameworks relating to environmental and social risks."}
+    ],
+    "trade-logistics":[
+      {"id":"ports","name":"European Port System","type":"infrastructure-system","definition":"Ports, terminals, shipping lines, hinterland rail/road connections, customs and logistics networks."},
+      {"id":"container-shipping","name":"Container Shipping","type":"global-logistics","definition":"Intermodal freight system connecting manufacturers, ports, shipping companies, warehouses and consumers."},
+      {"id":"rail-freight","name":"European Rail Freight","type":"infrastructure-system","definition":"Cross-border freight rail corridors and terminals connecting industrial regions and ports."},
+      {"id":"north-sea","name":"North Sea","type":"geographic-system","definition":"Marine region linking the UK, Norway, Denmark, Germany, Netherlands, Belgium and France through ecology, energy, shipping and security."},
+      {"id":"arctic-shipping","name":"Arctic Shipping","type":"strategic-logistics","definition":"Maritime transport routes and infrastructure affected by Arctic geography, ice conditions, sovereignty and environmental constraints."}
+    ],
+    "technology":[
+      {"id":"semiconductors","name":"Semiconductor Supply Chain","type":"technology-system","definition":"Design, fabrication, equipment, materials, packaging and distribution networks underpinning modern electronics."},
+      {"id":"cloud-computing","name":"Cloud Computing","type":"digital-infrastructure","definition":"Distributed compute, storage, networking and platform services supplied through large data-centre and software ecosystems."},
+      {"id":"ai","name":"Artificial Intelligence","type":"technology-system","definition":"Machine-learning and related computational systems used for prediction, generation, optimization, automation and decision support."},
+      {"id":"cybersecurity","name":"Cybersecurity","type":"security-technology","definition":"Technologies, institutions and practices protecting information systems, networks and critical infrastructure."},
+      {"id":"subsea-cables","name":"Subsea Cable Network","type":"digital-infrastructure","definition":"Undersea telecommunications cables carrying a major share of intercontinental data traffic."},
+      {"id":"satellite-infrastructure","name":"Satellite Infrastructure","type":"space-infrastructure","definition":"Launch, satellite, ground-station and communications systems supporting navigation, Earth observation, communications and intelligence."}
+    ],
+    "institutions":[
+      {"id":"nato","name":"North Atlantic Treaty Organization","type":"security-organization","founded":1949,"hq":"Brussels","definition":"Collective-defence alliance linking European and North American members."},
+      {"id":"united-nations","name":"United Nations","type":"international-organization","founded":1945,"hq":"New York City","definition":"Global intergovernmental organization covering peace and security, development, humanitarian affairs and international law."},
+      {"id":"wto","name":"World Trade Organization","type":"international-organization","founded":1995,"hq":"Geneva","definition":"International institution governing a multilateral trade-rule framework."},
+      {"id":"imf","name":"International Monetary Fund","type":"international-financial-institution","founded":1944,"hq":"Washington, D.C.","definition":"International financial institution focused on monetary cooperation, balance-of-payments support and macroeconomic surveillance."},
+      {"id":"world-bank","name":"World Bank Group","type":"international-financial-institution","founded":1944,"hq":"Washington, D.C.","definition":"Development-finance institutions providing loans, grants, research and policy support."},
+      {"id":"oecd","name":"OECD","type":"international-organization","founded":1961,"hq":"Paris","definition":"Intergovernmental organization producing comparative economic, tax, education and policy analysis."},
+      {"id":"osce","name":"OSCE","type":"regional-security-organization","founded":1975,"hq":"Vienna","definition":"Regional security organization focused on conflict prevention, arms control, human rights and field missions."}
+    ],
+    "society":[
+      {"id":"demography","name":"Demography","type":"analytical-domain","definition":"Population size, age structure, fertility, mortality, migration, households and spatial distribution."},
+      {"id":"migration","name":"Migration System","type":"social-system","definition":"Flows and stocks of people moving across borders or within states, shaped by work, family, conflict, law and opportunity."},
+      {"id":"labour","name":"Labour Market","type":"economic-social-system","definition":"Workers, employers, skills, wages, participation, unemployment, migration and institutions governing employment."},
+      {"id":"healthcare","name":"Healthcare System","type":"public-system","definition":"Institutions, professionals, financing, medicines, infrastructure and services used to maintain population health."},
+      {"id":"education","name":"Education System","type":"public-social-system","definition":"Schools, universities, vocational systems, teachers, students, credentials and research institutions."},
+      {"id":"housing","name":"Housing System","type":"social-economic-system","definition":"Housing stock, construction, rents, mortgages, land, planning rules and household affordability."}
+    ],
+    "governance":[
+      {"id":"procurement","name":"Public Procurement","type":"institutional-system","definition":"Government purchasing of goods, services and works through contracts, tenders, frameworks and supplier relationships."},
+      {"id":"tax-expenditure","name":"Tax Expenditures","type":"fiscal-system","definition":"Revenue foregone through exemptions, deductions, credits, reduced rates and preferential treatments."},
+      {"id":"subsidies","name":"Subsidy System","type":"fiscal-policy","definition":"Transfers or financial advantages provided by governments to households, firms, sectors or regions."},
+      {"id":"regulation","name":"Regulatory System","type":"institutional-system","definition":"Rules, regulators, licensing, enforcement and compliance mechanisms shaping economic and social activity."},
+      {"id":"pensions","name":"Pension System","type":"social-fiscal-system","definition":"Public and private arrangements transferring income across working life and retirement."}
+    ],
+    "security":[
+      {"id":"counterterrorism","name":"Counterterrorism System","type":"security-system","definition":"Law-enforcement, intelligence, border, financial, judicial and prevention mechanisms used to counter terrorism."},
+      {"id":"counterintelligence","name":"Counterintelligence System","type":"security-system","definition":"Institutions and practices intended to detect, deter and disrupt foreign intelligence activity and espionage."},
+      {"id":"financial-intelligence","name":"Financial Intelligence","type":"security-finance-system","definition":"Collection and analysis of financial transaction information for detecting money laundering, terrorist financing and related crime."},
+      {"id":"border-security","name":"Border Security","type":"security-system","definition":"Institutions, infrastructure, customs, immigration and information systems controlling movement across borders."},
+      {"id":"critical-infrastructure-protection","name":"Critical Infrastructure Protection","type":"security-system","definition":"Protection and resilience of energy, transport, communications, water, finance, health and other essential systems."}
+    ]
+  },
+  "relationship_seeds":[
+    ["energy-system","depends-on","infrastructure"],["energy-system","depends-on","finance-debt"],["energy-system","affects","trade"],
+    ["north-sea-offshore-wind","depends-on","ports"],["north-sea-offshore-wind","depends-on","subsea-cables"],["north-sea-offshore-wind","connects-to","european-power-grid"],
+    ["semiconductors","depends-on","trade"],["semiconductors","depends-on","technology"],["cloud-computing","depends-on","subsea-cables"],["ai","depends-on","semiconductors"],
+    ["nato","links","security-intelligence-country-layer"],["europol","supports","counterterrorism"],["counterterrorism","uses","financial-intelligence"],
+    ["demography","affects","labour"],["demography","affects","pensions"],["migration","affects","labour"],["housing","affects","labour"],
+    ["public-procurement","depends-on","regulation"],["tax-expenditure","affects","finance-debt"],["subsidies","affects","finance-debt"],["pensions","affects","finance-debt"],
+    ["ports","connects","container-shipping"],["container-shipping","connects","rail-freight"],["north-sea","contains-system","north-sea-offshore-wind"],
+    ["critical-infrastructure-protection","covers","energy-system"],["critical-infrastructure-protection","covers","subsea-cables"],["critical-infrastructure-protection","covers","ports"]
+  ],
+  "next_expansion_targets":["country-level fiscal profiles for all 195 states","country-level intelligence/security institutions","major ports and rail corridors","electricity interconnectors","oil and gas fields and terminals","major semiconductor firms and foundries","banks and central banks","sovereign wealth and pension funds","defence procurement relationships","universities and research networks","religious traditions and denominations","historical empires and successor states","migration corridors","major organized-crime networks","humanitarian organizations","global supply-chain bottlenecks"]
+}

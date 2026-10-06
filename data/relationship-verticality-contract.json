@@ -1,0 +1,77 @@
+{
+  "id": "relationship-verticality-contract",
+  "version": "1.0.2",
+  "updated": "2026-09-11",
+  "status": "active relational projection contract",
+  "purpose": "Define how one canonical relationship can appear across factual D4 reality and multiple D1-D11 analytical/project-symbolic projections without duplicating the relationship or turning uncertainty into fact.",
+  "core_rule": "A relationship does not belong to exactly one dimension. The canonical edge remains one edge; D1-D11 describe different states, functions, histories, thresholds, recurrences, generative effects, transmissions, integrations or project-symbolic readings of that edge.",
+  "epistemic_firewall": "Material facts, legal instruments, financial balances, treaties, observed exchanges and sourced institutional relations remain empirical records. Spiritual height, heaven/hell proximity, karmic polarity, light, attraction and other Potatoverse readings remain optional project interpretation and may not overwrite empirical fields.",
+  "visibility_rule": "Visibility is epistemic, not spiritual altitude. A hidden or invisible relation is not automatically deep, corrupt, malicious or D1-D3. Its visibility state records what can be known and how.",
+  "visibility_states": {
+    "public": "The relation is openly documented and inspectable.",
+    "partially_public": "The relation is established but important terms, counterparties or quantities are incomplete or redacted.",
+    "confidential_disclosed": "A reliable source establishes that a non-public relation exists, while some details remain confidential.",
+    "inferred": "The relation is a reasoned inference from observable evidence and must remain labeled as inference.",
+    "alleged_hidden": "A source alleges a concealed relation but the Atlas does not treat it as established fact.",
+    "unknown": "Visibility or existence cannot currently be resolved."
+  },
+  "bond_formality": {
+    "informal": "Personal, social or customary relation without formal instrument.",
+    "customary": "Repeated practice or norm creates a durable relation without a single governing contract.",
+    "contractual": "A contract or comparable enforceable instrument defines material terms.",
+    "treaty": "A treaty or formal interstate agreement institutionalizes the relation.",
+    "institutional": "Membership, governance or standing institutional rules bind the actors.",
+    "constitutional": "The relation is embedded in a constitutional or foundational legal order.",
+    "mixed": "Several forms apply.",
+    "unknown": "Formality is unresolved."
+  },
+  "flow_kinds": ["money","goods","energy","people","data","authority","care","security","attention","obligation","ownership-control","knowledge","cultural-exchange","symbolic","mixed","unknown"],
+  "vertical_roles": {
+    "1": "Lock-in, near-terminal closure, relation with no modeled viable exit or revision pathway.",
+    "2": "Capture, recurrence, blocked exit, opaque circulation, adversarial orbit or disintegrating feedback.",
+    "3": "History, provenance, buried terms, accumulated memory, inherited obligation, path dependence and unresolved residue.",
+    "4": "Observable/material relation: instrument, payment, treaty, trade, ownership, communication, migration, event or other sourced fact.",
+    "5": "Threshold and terms: authorization, covenant/contract trigger, maturity, accession, default, settlement, refusal, release or other regime change.",
+    "6": "Recurrence with change: rollover, repeated cooperation, learning, renegotiation, escalation/de-escalation and measurable relational delta.",
+    "7": "Generative relation: reciprocal capacity, friendship/partnership that creates useful downstream capability, nourishment or future branches.",
+    "8": "Composition and durable alliance: institutions, federated systems, cultural rooms, shared infrastructure, mutual defense and differentiated coexistence.",
+    "9": "Relay and transmission: diplomacy, intelligence-sharing, standards, data, education, media, research, translation and message fidelity.",
+    "10": "Integrated system effect: collective capability, balance sheet, alliance architecture, network leverage, aggregate burden/capacity and system-level coordination.",
+    "11": "Meta-orientation: shared criteria, constitutional purpose, covenantal/project-symbolic orientation or system-wide objective used to evaluate lower projections."
+  },
+  "relation_archetypes": {
+    "loan_or_debt": {"typical_dimensions":[3,4,5,6,10],"reading":"D4 records the instrument and balance; D3 preserves issuance/creditor history; D5 holds maturity, covenant, refinancing, default and settlement thresholds; D6 tracks rollover and changing terms; D10 aggregates portfolio/system exposure.","caution":"Owing money is not automatically moral/spiritual descent. Distress, capture or repair are separate state variables."},
+    "treaty": {"typical_dimensions":[4,5,8,10],"reading":"The signed instrument is D4; ratification/accession/withdrawal clauses are D5; durable institutional composition is D8; system-wide consequences can be D10."},
+    "alliance": {"typical_dimensions":[4,5,8,9,10],"reading":"Observable commitments remain D4; entry/exit/activation conditions are D5; institutionalized cooperation and shared capability are D8; intelligence/diplomatic relay is D9; collective deterrence or integrated capacity is D10.","caution":"Higher integration does not automatically mean morally good. Preserve coercion, asymmetry, agency and externalities."},
+    "friendship_or_trust": {"typical_dimensions":[4,6,7,8],"reading":"Observed interaction remains D4; sustained reciprocal history is D6; demonstrated mutual generativity can project to D7; durable social/cultural composition can project to D8.","caution":"Do not infer friendship from mere proximity, alliance, shared ideology or repeated contact."},
+    "intelligence_or_information_sharing": {"typical_dimensions":[4,5,9,10],"reading":"Documented exchange is D4; permissions/classification/access gates are D5; relay fidelity and mediation are D9; integrated information advantage can be D10."},
+    "ownership_or_control": {"typical_dimensions":[3,4,5,8,10],"reading":"Ownership/control facts are D4, provenance chains are D3, change-of-control triggers are D5, governance composition can be D8, and consolidated control/system exposure can be D10."},
+    "trade_or_supply_dependency": {"typical_dimensions":[4,5,6,8,10],"reading":"Flows and contracts are D4; tariffs/sanctions/thresholds are D5; changing dependence is D6; shared production systems are D8; systemic concentration/resilience is D10."},
+    "migration_or_diaspora": {"typical_dimensions":[3,4,6,8,9,10],"reading":"Observed movement/population is D4; historical paths are D3; repeated waves/change are D6; durable communities/cultural rooms are D8; communication/remittance/knowledge relay can be D9; aggregate demographic/economic effects can be D10."},
+    "care_or_social_obligation": {"typical_dimensions":[4,5,7,8],"reading":"Observable duty/service is D4; explicit commitment and release conditions are D5; reciprocal/autonomous capacity created by care can be D7; durable care institutions belong to D8."},
+    "capture_or_adversarial_loop": {"typical_dimensions":[2,3,4,5],"reading":"Observable interactions remain D4; provenance and accumulated residue are D3; recurrence/blocked exit/capture is D2; a safe exit, settlement or boundary is D5.","caution":"D2 is a property of the relational regime, not a permanent label for a person, population, platform or territory."},
+    "cultural_affinity": {"typical_dimensions":[3,4,6,8,9],"reading":"Language, surveys, migration and institutions provide D4 evidence; history is D3; change over time is D6; durable differentiated culture is D8; cultural transmission is D9."},
+    "project_activation": {"typical_dimensions":[4,5,6,9,11],"reading":"A project-canon activation relation can mark narrative anchoring, gating, routing or orientation through the Axis, while any real geographic/constitutional/institutional relation between the same endpoints remains a separate empirical edge.","caution":"Activation is project semantics; it does not establish supernatural force, empirical causation, sovereignty, ownership or legal authority. See data/north-axis-semantic-contract.json for the Denmark -> Greenland -> North Gate example."}
+  },
+  "relational_height_principle": {
+    "meaning": "Height represents the kind or maturity of relational organization being inspected, not social worth, holiness, GDP, military power or moral rank.",
+    "higher_tendencies": ["greater reciprocity","institutionalization","interoperability","shared capability","generativity","faithful relay","integration with preserved agency"],
+    "lower_tendencies": ["blocked exit","unresolved recurrence","opacity","capture","fragmentation","compounding unresolved obligation"],
+    "non_monotonic_rule": "The same relation can have high institutional integration and severe asymmetry or harm. Therefore the Atlas must show multiple observables instead of one vertical goodness score."
+  },
+  "hidden_relation_rules": ["Never infer a hidden alliance, debt, ownership chain or personal tie solely from symbolic similarity, co-occurrence or project mythology.","Render inferred and alleged-hidden relations differently from public/disclosed relations and expose the evidence basis on inspection.","A confidential but reliably disclosed relation can be highly institutionalized; secrecy does not imply D2.","Unknown counterparties should remain unknown rather than being filled by narrative inference.","Project-symbolic invisible ties belong in project_interpretation unless separately evidenced."],
+  "us_sovereign_debt_example": {
+    "status": "modeling example; values must come from dated official/validated datasets before display",
+    "canonical_objects": ["issuer","Treasury security/instrument","holder/creditor class","principal/outstanding stock","interest obligation","maturity schedule","guarantee/legal terms","time/source"],
+    "projections": {"D3":"issuance history, creditor composition history, refinancing path dependence","D4":"actual outstanding instruments, holders, currency, rates, maturity and cash flows","D5":"auction, maturity, refinancing, statutory/legal thresholds, payment/default/settlement events","D6":"rollover cycles and change in rates, duration, holder composition and burden","D9":"market-information and payment/settlement transmission where modeled","D10":"aggregate sovereign balance-sheet, interest burden, network exposure and macro-system consequences"},
+    "firewall": "No US public-debt value may be added to, converted into, or displayed as project-symbolic karmic debt."
+  },
+  "implementation_guidance": {
+    "edge_storage": "Extend relational-edge-state records with visibility, bond, flow and vertical_projection while keeping empirical evidence and project interpretation separate.",
+    "map_behavior": "Selecting an edge should eventually expose its D4 facts first and then let Axis navigation reveal other projections of the same edge.",
+    "trace_behavior": "Trace should be able to filter by relationship family, visibility/evidence class, flow kind, direction, time and selected D-role.",
+    "visual_behavior": "Use arrows/width/animation only when direction, amount/rate and time semantics are defined. Use dashed/faded styling for inferred/alleged relations rather than pretending precision.",
+    "metric_behavior": "Never collapse reciprocity, institutionalization, asymmetry, recurrence, closure and generativity into one universal relation score."
+  },
+  "connections": ["docs/KINGDOM-ATLAS.md","data/relationship-axis-projection-matrix.json","data/relational-edge-state.schema.json","data/axis-flow-contract.json","data/axis-operators.json","data/blueprints/finance-debt-blueprint.json","data/atlas-projection-contract.json","data/north-axis-semantic-contract.json","data/relational-observable-dimensions.json"]
+}

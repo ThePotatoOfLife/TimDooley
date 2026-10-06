@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://thepotatooflife.github.io/TimDooley/schemas/house-data-holdings.schema.json",
+  "title": "Potato House Data Holdings",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "updated",
+    "authority",
+    "principle",
+    "bundles",
+    "summary",
+    "unbundled_paths"
+  ],
+  "properties": {
+    "version": {
+      "type": "string"
+    },
+    "updated": {
+      "type": "string"
+    },
+    "authority": {
+      "const": "house-data-holdings"
+    },
+    "principle": {
+      "type": "string"
+    },
+    "bundles": {
+      "type": "array",
+      "minItems": 10,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "title",
+          "primary_room_id",
+          "secondary_room_ids",
+          "sources",
+          "kind",
+          "purpose",
+          "file_count",
+          "source_files",
+          "featured_files"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "primary_room_id": {
+            "type": "string"
+          },
+          "secondary_room_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "sources": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "kind": {
+            "type": "string"
+          },
+          "purpose": {
+            "type": "string"
+          },
+          "file_count": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "source_files": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "featured_files": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          }
+        }
+      }
+    },
+    "summary": {
+      "type": "object"
+    },
+    "unbundled_paths": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    }
+  }
+}

@@ -1,0 +1,132 @@
+{
+  "id": "pr53-science-overhaul-reconciliation-2026-09-12",
+  "title": "PR #53 Science Overhaul Reconciliation Against Current Main",
+  "updated": "2026-09-12",
+  "status": "maintenance reconciliation / provenance-preserving salvage",
+  "source": {
+    "pull_request": 53,
+    "branch": "science-theory-overhaul-20260912",
+    "head": "fd04a9b61013a0a677b29424e2325532cac7fd39",
+    "changed_files": 23,
+    "commits": 23
+  },
+  "reconciliation_rule": "Old branch content is not allowed to replace a newer current-main owner merely because the old branch is denser. Unique capabilities are either promoted as independent records, routed as historical/addendum content, or marked superseded when a later benchmark makes a more specific modeling choice.",
+  "ported_unique_records": [
+    "knowledge/science/cryptochrome-radical-pair-magnetoreception-recovery.json",
+    "knowledge/science/door-interaction-field-august-2026-recovery.json",
+    "knowledge/science/integration-fragmentation-red-blue-dynamics-recovery.json",
+    "knowledge/science/stratified-reconstruction-sheaf-repair-model.json",
+    "knowledge/science/trajectory-holonomy-return-topology-model.json"
+  ],
+  "overlapping_owners": [
+    {
+      "path": "knowledge/science/unified-potato-theory-2025-recovery.json",
+      "pr53_contribution": ["dimensionally normalized nonlocal kernel", "inverse propagator", "scalar-Higgs vacuum/mass equations", "U(1) completion", "correspondence limits", "explicit novelty gate"],
+      "disposition": "superseded_for_current_benchmark_but_preserve_as_history",
+      "reason": "Current main now contains the later minimal Z2 Higgs-portal completion in formulation-upgrades, which freezes a more concrete benchmark without deleting the historical U(1) alternative. PR #53 remains useful as broader theory-development provenance."
+    },
+    {
+      "path": "knowledge/science/higgs-quantum-tuber-potato-boson-recovery.json",
+      "pr53_contribution": ["real-singlet and complex-U(1) phases", "mass/mixing logic", "finite-temperature phase-transition branch", "observable contracts"],
+      "disposition": "superseded_for_current_benchmark_but_preserve_as_history",
+      "reason": "The later Higgs-portal formulation upgrade on main selects and derives a concrete minimal benchmark while retaining alternative phases as historical branches."
+    },
+    {
+      "path": "knowledge/science/dimensional-phase-transition-full-recovery.json",
+      "pr53_contribution": ["Door as eigenvalue crossing", "nonlinear bifurcation", "zero-mode threshold", "amplitude scaling", "radion metric ansatz", "Kaluza-Klein bridge"],
+      "disposition": "superseded_for_current_benchmark_but_preserve_as_history",
+      "reason": "Current main now has the explicit scalar-Gauss-Bonnet critical-eigenvalue benchmark, which is a more calculable realization of the same bifurcation programme. PR #53's radion/Kaluza-Klein material remains a future alternate branch rather than the flagship benchmark."
+    },
+    {
+      "path": "knowledge/science/spudlight-theory-and-equations.json",
+      "pr53_contribution": ["continuous state-space", "optical transfer", "storage/passivity/conservation", "memory kernels", "information bottleneck", "observability", "Door decision layer"],
+      "disposition": "superseded_for_flagship_empirical_benchmark_but_preserve_as_general_theory",
+      "reason": "Current main now contains the explicit potato diel-starch calibration experiment and one-store model. The PR #53 systems-theory material remains useful as a general theory layer and should not overwrite the concrete empirical benchmark."
+    },
+    {
+      "path": "knowledge/science/advanced-retarded-door-handshake-recovery.json",
+      "pr53_contribution": ["separation of wave physics, smoothing/inference and goal-conditioned control", "Green functions", "Gaussian Door fusion", "variational/optimal-control equations", "retrocausality failure test"],
+      "disposition": "merge_by_content_when_current_owner_is_next_edited",
+      "reason": "Conceptually valuable and not replaced by PR #58; preserve as a reconciliation route rather than risk replacing any later provenance additions in the current owner."
+    },
+    {
+      "path": "knowledge/science/celestial-axis-coordinate-measurement-model.json",
+      "pr53_contribution": ["directional statistics", "axis estimation", "Fisher/axial distributions", "look-elsewhere nulls", "epoch/frame uncertainty", "torus inverse geometry"],
+      "disposition": "merge_by_content_when_current_owner_is_next_edited",
+      "reason": "Keep current owner authoritative while preserving this explicit measurement programme as a queued semantic merge."
+    },
+    {
+      "path": "knowledge/science/conversation-formalisms-august-2026.json",
+      "pr53_contribution": ["multivariate state-space feedback", "partial ordering", "return maps", "memory", "resource/error-correction/smoothing chain"],
+      "disposition": "merge_by_content_when_current_owner_is_next_edited"
+    },
+    {
+      "path": "knowledge/science/door-handshake-nonlocal-propagation-model.json",
+      "pr53_contribution": ["generative temporal-network model", "edge formation", "Door event hazards", "joint likelihood", "homophily-vs-influence separation", "counterfactual simulation"],
+      "disposition": "merge_by_content_when_current_owner_is_next_edited"
+    },
+    {
+      "path": "knowledge/science/eleven-dimensional-projection-unification-recovery.json",
+      "pr53_contribution": ["inverse-problem/posterior reconstruction", "fibers/equivalence classes", "rate-distortion", "Blackwell ordering", "linear-Gaussian worked model", "separate compactification branch"],
+      "disposition": "merge_by_content_when_current_owner_is_next_edited",
+      "reason": "The newly salvaged stratified-reconstruction record now preserves much of the projection/fiber logic without forcing an immediate destructive rewrite of the 11D owner."
+    },
+    {
+      "path": "knowledge/science/gauge-unification-supersymmetry-archaeology.json",
+      "pr53_contribution": ["route comparison", "breaking/gauge-mass machinery", "threshold-aware RG", "quantitative unification residual", "proton-decay scaling", "seesaw bridge", "reproducible SUSY benchmark sequence"],
+      "disposition": "merge_by_content_when_current_owner_is_next_edited"
+    },
+    {
+      "path": "knowledge/science/great-book-human-map-mathematics-audit.json",
+      "pr53_contribution": ["hierarchical latent-state measurement theory", "HMM/HSMM", "multimodal fusion", "state/trait separation", "Fisher identifiability", "intervention logic", "model comparison"],
+      "disposition": "partly_already_promoted",
+      "reason": "Current science equation/meaning guide already references HMM/HSMM and Fisher/profile-likelihood identifiability as the Human Map equation focus; the full owner can be reconciled later without losing the conceptual advance."
+    },
+    {
+      "path": "knowledge/science/great-book-quantum-fields-dark-sector-recovery.json",
+      "pr53_contribution": ["explicit cosmological forks", "ratio fixed-point dynamics", "negative result for simplest interacting model", "perturbation/stability contracts", "distinctive prediction requirements"],
+      "disposition": "merge_by_content_when_current_owner_is_next_edited"
+    },
+    {
+      "path": "knowledge/science/potato-dynamics-2-toy-model.json",
+      "pr53_contribution": ["stochastic hybrid dynamics", "filtering/state estimation", "Fisher identifiability", "Door first-passage/hazard statistics", "causal intervention", "constrained control", "viability", "model reduction"],
+      "disposition": "merge_by_content_when_current_owner_is_next_edited",
+      "reason": "The independently salvaged Door-interaction model now preserves first-passage/guard/reset machinery and can be linked into Potato Dynamics in a later owner-focused pass."
+    },
+    {
+      "path": "knowledge/science/microtubule-tubulin-consciousness-recovery.json",
+      "pr53_contribution": ["five-level causal transfer theory", "classical mechanics/transport baselines", "transfer functions", "mediation", "intervention", "circuit embedding", "gated quantum branch"],
+      "disposition": "merge_by_content_when_current_owner_is_next_edited"
+    },
+    {
+      "path": "knowledge/science/great-book-potato-tree-bioengineering-audit.json",
+      "pr53_contribution": ["multitrait developmental engineering", "carbon allocation", "resource conservation", "mechanical constraints", "Pareto trade-offs", "staged causal validation"],
+      "disposition": "route_to_new_potato_biology_programme",
+      "reason": "The new Potato biological-genealogy design on main is now the preferred destination for biology-specific source-sink, trade-off and developmental content."
+    },
+    {
+      "path": "knowledge/science/great-book-cosmic-potato-shape-audit.json",
+      "pr53_contribution": ["probabilistic 3D shape inference", "descriptor posteriors", "mask/reconstruction uncertainty", "simulation-calibrated classification", "cross-scale hierarchical testing"],
+      "disposition": "merge_by_content_when_current_owner_is_next_edited"
+    },
+    {
+      "path": "knowledge/science/research-notes/2026-09-11-spiral-vortex-geometry.json",
+      "pr53_contribution": ["statistical curve inference", "fixed-vs-free golden parameter testing", "uncertainty-aware fitting", "kinematic consequences", "explicit vortex requirements"],
+      "disposition": "merge_by_content_when_current_owner_is_next_edited"
+    },
+    {
+      "path": "knowledge/science/mirror-vector-dimensional-collapse-recovery.json",
+      "pr53_contribution": ["multi-view representation model", "information loss", "cross-view translation", "commutative-diagram error", "reconstruction", "invariant tests"],
+      "disposition": "partly_routed_to_stratified_reconstruction",
+      "reason": "This owner already exists on current main; the newly salvaged stratified-reconstruction model now captures the shared reconstruction/fiber/commuting-diagram machinery and should be cross-linked in the next owner edit."
+    }
+  ],
+  "next_science_reconciliation_priority": [
+    "advanced-retarded-door-handshake-recovery.json",
+    "gauge-unification-supersymmetry-archaeology.json",
+    "great-book-quantum-fields-dark-sector-recovery.json",
+    "potato-dynamics-2-toy-model.json",
+    "celestial-axis-coordinate-measurement-model.json"
+  ],
+  "completion_boundary": "This record makes PR #53's scientific contributions discoverable and preserves all wholly missing models on the current-main lineage. It does not claim every overlapping owner has already absorbed every line of the old branch; queued merge-by-content items remain explicit rather than hidden."
+}

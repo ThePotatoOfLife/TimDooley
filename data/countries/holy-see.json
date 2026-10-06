@@ -1,0 +1,85 @@
+{
+  "record_version": "1.1.0",
+  "record_type": "country",
+  "status": "sourced-enriched",
+  "identity": {
+    "id": "holy-see",
+    "name": "Holy See",
+    "iso2": "VA",
+    "iso3": "VAT"
+  },
+  "blueprint": "data/countries-blueprint.json",
+  "blueprint_version": "1.0.0",
+  "coverage": {
+    "node_instantiated": true,
+    "blueprint_inherited": true,
+    "observations": 0,
+    "relationships": 0,
+    "sources": 0,
+    "research_status": "ready-for-source-enrichment",
+    "canonicalized": true
+  },
+  "observations": {},
+  "relationships": [
+    [
+      "italy",
+      "territorial and diplomatic relationship"
+    ],
+    [
+      "united-nations",
+      "permanent observer relationship"
+    ],
+    [
+      "catholic-church",
+      "global ecclesiastical governance relationship"
+    ],
+    [
+      "europe",
+      "European diplomatic and cultural relationship"
+    ]
+  ],
+  "history": [],
+  "research_queue": [
+    "Holy See diplomatic network",
+    "Vatican finances and public reporting",
+    "Catholic education and healthcare networks",
+    "cultural heritage administration",
+    "treaty and concordat network"
+  ],
+  "provenance": {
+    "instantiated_at": "2026-09-07T12:37:31.426393+00:00",
+    "instantiation_method": "canonical country index + country blueprint",
+    "observation_policy": "No value is invented merely to fill a field; absent evidence remains missing/stale.",
+    "last_refresh": "2026-10-06T04:28:07.342073+00:00",
+    "source_priority": "international-official",
+    "historical_observations_preserved": true,
+    "enrichment_merged": true,
+    "enrichment_layer": "retired overlay merged into canonical country record"
+  },
+  "data_freshness": {
+    "last_refresh_attempt": "2026-09-07T21:59:50.659074+00:00",
+    "source": "world-bank"
+  },
+  "version": "1.0.0",
+  "country_id": "holy-see",
+  "official_name": "Holy See",
+  "capital": "Vatican City",
+  "region": "Europe",
+  "subregion": "Southern Europe",
+  "currency": "Euro (EUR)",
+  "government": "Elective ecclesiastical monarchy; sovereign jurisdiction of the Holy See",
+  "independence": "Sovereignty recognized through the Lateran Treaty of 1929",
+  "strategic_assets": [
+    "Roman Curia and global diplomatic network",
+    "Vatican Apostolic Archive and Vatican Library",
+    "Catholic institutional and educational networks",
+    "St Peter's Basilica and Vatican cultural heritage"
+  ],
+  "sources": [
+    "United Nations",
+    "Holy See",
+    "Vatican City State",
+    "Lateran Treaty"
+  ],
+  "record_role": "canonical-country-record"
+}

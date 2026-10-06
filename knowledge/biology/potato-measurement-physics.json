@@ -1,0 +1,247 @@
+{
+  "id": "potato-measurement-physics",
+  "title": "Potato Measurement Physics — Seeing Composition, Water, Structure and State Without Destroying the Tuber",
+  "version": "1.0.0",
+  "updated": "2026-09-20",
+  "owner_room": "potato-biology",
+  "status": "canonical instrumentation/observability layer",
+  "purpose": "Define how the physical and chemical state of a potato can actually be measured: spectroscopy, dielectric response, magnetic resonance, imaging, calorimetry, rheology and transport measurements.",
+  "measurement_principle": "A scientific potato model should connect hidden state variables to observables. Different instruments sense different physics; no single measurement is 'the truth of the potato'.",
+  "modalities": [
+    {
+      "method": "NIR / Vis-NIR spectroscopy",
+      "physics": "molecular overtone and combination-band absorption/scattering",
+      "observables": [
+        "water/moisture",
+        "dry matter",
+        "starch",
+        "soluble solids",
+        "sugars with calibration"
+      ],
+      "strengths": [
+        "fast",
+        "non-destructive",
+        "possible inline use"
+      ],
+      "limits": [
+        "requires calibration",
+        "spectral scattering and cultivar/domain shift",
+        "indirect inference rather than direct molecule counting"
+      ]
+    },
+    {
+      "method": "hyperspectral imaging",
+      "physics": "spatially resolved wavelength-dependent reflectance/transmittance",
+      "observables": [
+        "moisture maps",
+        "dry matter",
+        "starch distribution",
+        "defects",
+        "disease/stress signatures",
+        "processing constituents"
+      ],
+      "strengths": [
+        "composition + spatial structure"
+      ],
+      "limits": [
+        "large data volume",
+        "surface/penetration constraints",
+        "model transferability"
+      ]
+    },
+    {
+      "method": "dielectric spectroscopy",
+      "physics": "frequency-dependent polarization and conduction of water, ions and membranes",
+      "observables": [
+        "dry-matter-related dielectric signature",
+        "membrane/tissue status"
+      ],
+      "strengths": [
+        "rapid electrical probe"
+      ],
+      "limits": [
+        "strong sensitivity to heterogeneity, geometry, temperature, water and ionic composition"
+      ]
+    },
+    {
+      "method": "electrical impedance spectroscopy",
+      "physics": "frequency-dependent resistance/capacitance of extracellular fluid, membranes and intracellular compartments",
+      "observables": [
+        "membrane integrity",
+        "drying/heat damage",
+        "electroporation state"
+      ],
+      "strengths": [
+        "mechanistically linked to cell membranes"
+      ],
+      "limits": [
+        "equivalent-circuit parameters are model-dependent"
+      ]
+    },
+    {
+      "method": "MRI / NMR relaxometry",
+      "physics": "nuclear spin relaxation and diffusion of water in magnetic fields",
+      "observables": [
+        "water compartmentalization",
+        "tissue development",
+        "internal defects",
+        "growth dynamics",
+        "water-stress response"
+      ],
+      "strengths": [
+        "non-destructive 3D internal imaging",
+        "sensitive to water mobility and compartmentation"
+      ],
+      "limits": [
+        "cost, acquisition complexity, interpretation depends on structure and starch/water state"
+      ]
+    },
+    {
+      "method": "differential scanning calorimetry",
+      "physics": "heat-flow difference during thermal transitions",
+      "observables": [
+        "starch gelatinization onset/peak/conclusion",
+        "transition enthalpy"
+      ],
+      "strengths": [
+        "direct thermodynamic transition measurement"
+      ],
+      "limits": [
+        "small destructive sample; thermal history and water content matter"
+      ]
+    },
+    {
+      "method": "X-ray diffraction",
+      "physics": "coherent scattering from ordered molecular structure",
+      "observables": [
+        "starch crystal type",
+        "relative crystallinity",
+        "structural changes after gelatinization/processing"
+      ],
+      "strengths": [
+        "direct crystalline-structure information"
+      ],
+      "limits": [
+        "averaged structural measurement; sample preparation"
+      ]
+    },
+    {
+      "method": "polarized-light microscopy",
+      "physics": "birefringence of ordered anisotropic starch granules",
+      "observables": [
+        "Maltese-cross/polarization pattern",
+        "loss of order during gelatinization"
+      ],
+      "strengths": [
+        "simple visual marker of granule order"
+      ],
+      "limits": [
+        "local microscopy, not whole-tuber quantitation"
+      ]
+    },
+    {
+      "method": "FTIR / Raman spectroscopy",
+      "physics": "molecular vibrational transitions",
+      "observables": [
+        "functional groups",
+        "starch order/disorder",
+        "cell-wall chemical changes",
+        "metabolite fingerprints"
+      ],
+      "strengths": [
+        "chemical structural sensitivity"
+      ],
+      "limits": [
+        "complex spectra and calibration; penetration varies"
+      ]
+    },
+    {
+      "method": "texture analysis / rheometry / micromanipulation",
+      "physics": "stress–strain, fracture and oscillatory viscoelastic response",
+      "observables": [
+        "hardness",
+        "fracturability",
+        "elasticity",
+        "G'",
+        "G''",
+        "single-cell bursting/deformation"
+      ],
+      "strengths": [
+        "connects cell/tissue structure to material behavior"
+      ],
+      "limits": [
+        "geometry and loading-rate dependent; often destructive"
+      ]
+    },
+    {
+      "method": "density / specific gravity",
+      "physics": "mass-to-volume relation and buoyancy",
+      "observables": [
+        "dry matter proxy",
+        "processing yield proxy"
+      ],
+      "strengths": [
+        "simple and established"
+      ],
+      "limits": [
+        "indirect and affected by internal composition/air space"
+      ]
+    }
+  ],
+  "observability_map": [
+    "genotype is not directly visible from texture",
+    "dry matter can be estimated by density, NIR, HSI or dielectric response",
+    "water state can be probed by MRI/NMR rather than bulk moisture alone",
+    "membrane integrity can be probed by impedance and electroporation response",
+    "starch order can be probed by XRD, polarized optics and DSC",
+    "mechanical phenotype can be probed from single-cell to whole-tissue scales"
+  ],
+  "project_use": {
+    "core_rule": "For every physical Potato claim, ask: what variable, what unit, what sensor, what timescale, what perturbation, what falsifier?",
+    "spudlight": "If the project discusses light interacting with potato tissue, use real optical observables—absorption, scattering, reflectance, fluorescence or photosynthetic response—before symbolic interpretation.",
+    "starchforce": "If the project discusses stored capacity, measurable neighbors are chemical free energy, starch mass, enthalpy, redox/metabolic flux and mechanical/osmotic state; do not label them a fifth fundamental force."
+  },
+  "sources": [
+    {
+      "title": "Research progress in near-infrared spectroscopy for detecting the quality of potato crops",
+      "year": 2025,
+      "url": "https://link.springer.com/article/10.1186/s40538-025-00747-5"
+    },
+    {
+      "title": "A Systematized Review on the Applications of Hyperspectral Imaging for Quality Control of Potatoes",
+      "year": 2024,
+      "url": "https://link.springer.com/article/10.1007/s11540-024-09702-7"
+    },
+    {
+      "title": "Dielectric spectroscopy for evaluating dry matter content of potato tubers",
+      "year": 2016,
+      "url": "https://www.sciencedirect.com/science/article/pii/S0260877416301820"
+    },
+    {
+      "title": "Electrical impedance analysis of potato tissues during drying",
+      "year": 2014,
+      "url": "https://www.sciencedirect.com/science/article/pii/S0260877413004123"
+    },
+    {
+      "title": "Characterization of the Water Shortage Effects on Potato Tuber Tissues during Growth Using MRI Relaxometry and Biochemical Parameters",
+      "year": 2022,
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9330452/"
+    },
+    {
+      "title": "Magnetic resonance imaging, water relation, gene expression and biochemical data for analysis of water stress on potato",
+      "year": 2024,
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11416618/"
+    },
+    {
+      "title": "Physico-chemical properties of potato starches",
+      "year": 2011,
+      "url": "https://www.sciencedirect.com/science/article/pii/S0308814610012008"
+    }
+  ],
+  "connections": [
+    "potato-physical-chemistry-biophysics-atlas",
+    "potato-genetics-genomics-atlas",
+    "potato-anatomy-metabolism-ecology",
+    "model-testing-protocol"
+  ]
+}

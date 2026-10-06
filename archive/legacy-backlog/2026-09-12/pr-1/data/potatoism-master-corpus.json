@@ -1,0 +1,31 @@
+{
+  "id": "potatoism-master-corpus",
+  "version": "1.0.0",
+  "title": "Potatoism Master Corpus",
+  "status": "symbolic project corpus index",
+  "purpose": "Single machine-readable entry point for the Potatoism layers; individual datasets remain authoritative for their own detail.",
+  "provenance_model": "user_defined_canon, project_memory, interpretation, public_source, empirical and disputed_external_claim remain distinct.",
+  "layers": [
+    {"id":"entities","path":"data/potatoism-entities.json","role":"stable entity identifiers"},
+    {"id":"deep-layers","path":"data/potatoism-deep-layers.json","role":"cosmology, chronology, ethics and research gaps"},
+    {"id":"glossary","path":"data/potatoism-glossary.json","role":"dense searchable vocabulary"},
+    {"id":"events-relations","path":"data/potatoism-event-and-relation-atlas.json","role":"events and canonical symbolic relations"},
+    {"id":"public-observations","path":"data/potatoism-public-observations.json","role":"source-aware external observations"},
+    {"id":"integration","path":"data/potatoism-integration.json","role":"routing and validation contract"}
+  ],
+  "entry_points": [
+    "potatoism.html",
+    "repository.html",
+    "node.html?id=potatoism",
+    "node.html?id=potato-of-life",
+    "node.html?id=north-axis"
+  ],
+  "graph_principle": "Relationships are first-class: symbols, events, texts, nations, systems and evidence should be connected without collapsing symbolic claims into empirical facts.",
+  "maintenance": [
+    "Keep stable IDs once published.",
+    "Add provenance to externally sourced material.",
+    "Do not silently turn interpretation into canon.",
+    "Do not delete overlapping legacy layers until consumers have been migrated.",
+    "Validate references after every integration change."
+  ]
+}

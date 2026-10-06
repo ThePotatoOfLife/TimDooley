@@ -1,0 +1,96 @@
+{
+  "id": "stratified-reconstruction-sheaf-repair-model",
+  "title": "Stratified Reconstruction, Residual Structure and Sheaf-Repair Model",
+  "version": "1.0.0",
+  "updated": "2026-09-12",
+  "status": "conversation-derived mathematical architecture; reconstruction/compatibility model, not a physical law",
+  "provenance": "Recovered from August 2026 conversations in which loss, descent, return and repair were expressed using nested spaces, projections, reconstruction, quotienting, residual structure and gluing of compatible local data. The mathematical vocabulary is established mathematics; its synthesis here is project formalization.",
+  "abstract": "This model formalizes a recurring project question: after information or structure is lost through projection, descent or fragmentation, what can be reconstructed, what invariants survive, and when can locally compatible pieces be glued back into a coherent whole? The system is represented by nested or stratified description spaces M_0 -> M_1 -> ... -> M_k, with projection maps that discard degrees of freedom and reconstruction maps that attempt to lift lower-resolution descriptions. Reconstruction need not return the original state: M'_0 may differ from M_0 while preserving selected invariants I(M'_0)=I(M_0). Ambiguity is represented by fibers/equivalence classes; unrecoverable information is residual structure. A sheaf-style layer represents local observations on overlapping regions and asks whether they agree on overlaps strongly enough to admit a global section. Failure to glue is an explicit obstruction rather than a vague statement that the system is 'fragmented.' This creates a rigorous mathematical home for project concepts of descent, repair, restoration and Return-not-Reset while remaining applicable to data fusion, distributed sensing, repository knowledge integration and multiscale reconstruction.",
+  "research_question": "Given lossy projections or locally distributed observations, which information is recoverable, which invariants survive reconstruction, and what compatibility or obstruction conditions determine whether local pieces can be assembled into a coherent global model?",
+  "maturity": "T2 mathematical framework; empirical maturity depends on specialization",
+  "stratified_description": {
+    "nested_form": "M_0 -> M_1 -> ... -> M_k",
+    "projection": "pi_i:M_i -> M_(i+1)",
+    "reconstruction": "R_i:M_(i+1) -> M_i",
+    "round_trip": "R_i(pi_i(x)) need not equal x",
+    "reconstruction_error": "e_i(x)=d_i(x,R_i(pi_i(x))) under a declared metric/distortion",
+    "interpretation": "Moving to a reduced description can discard distinctions. A lift back up produces one admissible reconstruction, not automatically the historical original."
+  },
+  "fibers_and_equivalence": {
+    "fiber": "F_y=pi^-1(y)",
+    "equivalence": "x~_pi x' iff pi(x)=pi(x')",
+    "quotient": "M/~_pi collects states indistinguishable under the chosen projection",
+    "ambiguity": "Large or topologically complex fibers indicate many hidden states compatible with the same observed description.",
+    "information_boundary": "No reconstruction algorithm can infer distinctions absent from y without priors, side information or additional measurements."
+  },
+  "invariants_and_restoration": {
+    "invariant_condition": "I_j(R(pi(x)))=I_j(x) for selected j",
+    "weaker_statistical_condition": "E[L(I(x),I(xhat))] <= epsilon",
+    "return_not_reset": "x' != x can still count as successful restoration relative to a task if required invariants and constraints are preserved.",
+    "task_equivalence": "x~_task x' iff U(a,x)=U(a,x') for all actions/queries relevant to the declared task, or another explicit equivalence criterion.",
+    "meaning": "Identity of function or invariant is weaker than microscopic identity. The model makes that distinction explicit."
+  },
+  "residual_structure": {
+    "decomposition": "x = R(pi(x)) + r_pi(x) in a linear setting",
+    "residual": "r_pi(x)=x-R(pi(x))",
+    "orthogonal_case": "For an orthogonal projection P, x=Px+(I-P)x and the residual lies in the discarded subspace.",
+    "nonlinear_case": "Use reconstruction error, latent fiber uncertainty or conditional entropy H(X|Y) rather than pretending a vector subtraction is meaningful.",
+    "scientific_value": "Residuals quantify what the chosen description fails to capture."
+  },
+  "sheaf_gluing_layer": {
+    "cover": "Let {U_i} cover a domain X and assign local data s_i in F(U_i).",
+    "restriction": "rho_(ij):F(U_i)->F(U_i cap U_j)",
+    "compatibility": "rho_(i,ij)(s_i)=rho_(j,ij)(s_j) on overlaps U_i cap U_j",
+    "global_section": "A global s in F(X) is a successful gluing when s restricted to each U_i equals s_i.",
+    "interpretation": "Local truths can each be internally valid yet fail to coexist globally if their overlap constraints disagree.",
+    "project_translation": "Repair means resolving overlap inconsistencies or revising local sections until a coherent global section exists; it is not mere aggregation."
+  },
+  "obstruction_and_inconsistency": {
+    "residual_on_overlap": "e_ij=d(rho_i(s_i),rho_j(s_j))",
+    "global_inconsistency_score": "E_glue=sum_(i<j) w_ij e_ij^2 over nonempty overlaps",
+    "zero_case": "E_glue=0 is necessary for exact pairwise compatibility in this simple metric formulation.",
+    "higher_order_warning": "Pairwise compatibility may not capture every global topological obstruction; cohomological machinery can encode higher-order failure where appropriate.",
+    "boundary": "Do not import cohomology language merely because information is contradictory; specify the presheaf/sheaf and obstruction object."
+  },
+  "probabilistic_reconstruction": {
+    "posterior": "p(x|y) proportional to p(y|x)p(x)",
+    "bayes_estimator": "xhat=argmin_a E[L(X,a)|Y=y]",
+    "uncertainty": "Report posterior uncertainty or an ensemble over the fiber rather than only one reconstructed state.",
+    "side_information": "p(x|y,z) shows how additional context z can shrink the ambiguity fiber.",
+    "connection": "This is the probabilistic counterpart of deterministic lifting R(y)."
+  },
+  "multiscale_consistency": {
+    "commuting_requirement": "For two routes through descriptions, compare R_a pi_a with R_b pi_b or require a diagram to commute approximately under a declared tolerance.",
+    "commutator_error": "E_comm=d(f_2(f_1(x)),g_2(g_1(x)))",
+    "meaning": "Different explanatory routes should agree where they claim to describe the same retained information. Noncommutativity is itself measurable structure, not automatically an error."
+  },
+  "persistent_structure": {
+    "filtration": "K_0 subseteq K_1 subseteq ... subseteq K_n",
+    "persistence_question": "Which topological features survive across scales/thresholds rather than appearing only at one arbitrary segmentation?",
+    "use": "Persistent homology is relevant when reconstruction concerns geometric/topological data; it is not a universal repair metric.",
+    "project_value": "Features persistent across multiple descriptive resolutions are stronger invariant candidates than features seen at one threshold."
+  },
+  "worked_repository_application": {
+    "domain": "distributed project knowledge",
+    "local_sections": "different files/conversations each encode partial claims, dates, equations and provenance",
+    "overlap": "shared entities/equations/events create compatibility constraints",
+    "global_section": "canonical record integrating all mutually compatible claims while retaining provenance/status differences",
+    "obstruction": "two sources assign incompatible dates, variable meanings or authorship to the same equation",
+    "repair": "retain both local statements with provenance, identify the conflict explicitly, recover a primary source if possible, and only then promote a reconciled canonical fact."
+  },
+  "falsification_and_failure_conditions": [
+    "A claimed invariant changes substantially under small admissible changes in projection/segmentation.",
+    "Reconstruction quality is not better than a simpler baseline or naive interpolation.",
+    "The gluing criterion is so weak that mutually contradictory local models always count as compatible.",
+    "The model claims exact restoration where the projection is provably many-to-one and no side information is supplied.",
+    "Topological language is invoked without a defined space, cover, map or invariant."
+  ],
+  "connections": [
+    "eleven-dimensional-projection-unification-recovery",
+    "mirror-vector-dimensional-collapse-recovery",
+    "potato-dynamics-2-toy-model",
+    "equation-lineage-and-theory-graph",
+    "model-testing-protocol"
+  ],
+  "salvage_provenance": {"source_pr":53,"source_branch":"science-theory-overhaul-20260912","source_head":"fd04a9b61013a0a677b29424e2325532cac7fd39","reconciled_on":"2026-09-12"}
+}

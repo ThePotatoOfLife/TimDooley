@@ -1,0 +1,165 @@
+{
+  "id": "democratic-republic-of-the-congo",
+  "name": "Democratic Republic of the Congo",
+  "iso2": "CD",
+  "iso3": "COD",
+  "blueprint": "data/countries-blueprint.json",
+  "status": "sourced-enriched",
+  "research_queue": [
+    "critical minerals",
+    "Congo Basin",
+    "energy and hydropower",
+    "regional security",
+    "infrastructure",
+    "agriculture"
+  ],
+  "version": "1.0.0",
+  "country_id": "democratic-republic-of-the-congo",
+  "official_name": "Democratic Republic of the Congo",
+  "capital": "Kinshasa",
+  "region": "Africa",
+  "subregion": "Middle Africa",
+  "currency": "CDF",
+  "government": "semi-presidential republic",
+  "strategic_assets": [
+    "Congo Basin rainforest",
+    "cobalt and copper",
+    "hydropower",
+    "agricultural land",
+    "critical minerals"
+  ],
+  "relationships": [
+    [
+      "democratic-republic-of-the-congo",
+      "congo",
+      "border-and-trade"
+    ],
+    [
+      "democratic-republic-of-the-congo",
+      "zambia",
+      "border-and-minerals"
+    ],
+    [
+      "democratic-republic-of-the-congo",
+      "angola",
+      "border-and-trade"
+    ],
+    [
+      "democratic-republic-of-the-congo",
+      "rwanda",
+      "border-and-security"
+    ]
+  ],
+  "provenance": {
+    "enrichment_merged": true,
+    "last_refresh": "2026-10-06T04:28:07.342073+00:00",
+    "source_priority": "international-official",
+    "historical_observations_preserved": true,
+    "enrichment_layer": "retired overlay merged into canonical country record"
+  },
+  "record_type": "country",
+  "identity": {
+    "id": "democratic-republic-of-the-congo",
+    "name": "Democratic Republic of the Congo",
+    "iso2": "CD",
+    "iso3": "COD"
+  },
+  "observations": {
+    "population": {
+      "value": 112832473,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SP.POP.TOTL",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "gdp": {
+      "value": 91030531316.9936,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "NY.GDP.MKTP.CD",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "gdp_per_capita": {
+      "value": 806.776000708534,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "NY.GDP.PCAP.CD",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "gdp_per_capita_ppp": {
+      "value": 1919.82250200565,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "NY.GDP.PCAP.PP.CD",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "real_growth": {
+      "value": 5.75924471639999,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "NY.GDP.MKTP.KD.ZG",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "unemployment": {
+      "value": 4.434,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SL.UEM.TOTL.ZS",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "labour_force_participation": {
+      "value": 64.306,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SL.TLF.CACT.ZS",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "life_expectancy": {
+      "value": 62.074,
+      "year": 2024,
+      "source": "world-bank",
+      "indicator": "SP.DYN.LE00.IN",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "fertility": {
+      "value": 5.981,
+      "year": 2024,
+      "source": "world-bank",
+      "indicator": "SP.DYN.TFRT.IN",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "urbanization": {
+      "value": 45.1135633042151,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SP.URB.TOTL.IN.ZS",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "internet_penetration": {
+      "value": 19.67350006,
+      "year": 2024,
+      "source": "world-bank",
+      "indicator": "IT.NET.USER.ZS",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    }
+  },
+  "history": [],
+  "coverage": {
+    "observations": 11,
+    "sources": 1,
+    "canonicalized": true
+  },
+  "record_role": "canonical-country-record",
+  "record_version": "1.1.0"
+}

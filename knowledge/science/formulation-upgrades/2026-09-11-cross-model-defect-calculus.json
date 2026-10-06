@@ -1,0 +1,73 @@
+{
+  "id": "2026-09-11-cross-model-defect-calculus",
+  "title": "Cross-Model Defect Calculus — Quantifying Where a Theory Fails to Commute, Reconstruct, Identify or Compose",
+  "updated": "2026-09-11",
+  "status": "archive-generated research-governance and mathematical synthesis; structural comparison across models, not a shared physical law",
+  "purpose": "Give several Potatoverse science models a common language for measuring failure without pretending that gravity, information channels, storage systems and social networks are governed by one physical equation. The common object is a defect: a nonnegative or norm-like quantity measuring how far a desired diagram, reconstruction, equivalence or contract is from closing.",
+  "core_principle": "A model becomes more informative when it states not only its ideal relation but the size and meaning of its failure to satisfy that relation.",
+  "defect_vector": {
+    "notation": "Delta_model=(D_rec, Delta_task, C_FA, epsilon_O, delta_D, v_C, Delta_pred)",
+    "components": {
+      "D_rec": "projection/reconstruction distortion E[d(X,R(pi(X)))]",
+      "Delta_task": "task-information loss I(Z;X)-I(Z;pi(X)) when information quantities are well defined",
+      "C_FA": "Axis/time noncommutation norm ||[F,A]|| or an observable finite-flow commutator defect",
+      "epsilon_O": "observable discrepancy between full and reduced models over a declared horizon",
+      "delta_D": "Door/reset commutation defect between full and coarse models",
+      "v_C": "contract violation magnitude or negative interface-compatibility margin",
+      "Delta_pred": "held-out predictive loss relative to the best simpler baseline"
+    },
+    "warning": "The components have different units/scales and are not to be blindly summed. Delta_model is a typed diagnostic record, not one universal scalar."
+  },
+  "closed_diagram_ideal": {
+    "projection": "R o pi approximately id on the source class when reconstruction is claimed",
+    "task": "Z independent of X conditional on pi(X) when task sufficiency is claimed",
+    "axis_time": "Phi_F^t o Phi_A^s approximately Phi_A^s o Phi_F^t when independent structural/time evolution is claimed",
+    "door_reduction": "q o D_full approximately D_red o q when a coarse Door is claimed",
+    "composition": "upstream guarantees lie inside downstream assumptions when subsystem composition is claimed",
+    "reduction": "O_full approximately O_red on the admissible input/state class when simplification is claimed"
+  },
+  "promotion_logic": {
+    "step_1": "Name the ideal relation the theory needs.",
+    "step_2": "Define its defect in the appropriate metric/probability/observable space.",
+    "step_3": "Estimate uncertainty and a tolerance justified by the application.",
+    "step_4": "Compare against a simpler baseline and against null/synthetic cases.",
+    "step_5": "Promote, retain as approximation, or downgrade the claim according to the defect rather than narrative attractiveness."
+  },
+  "model_specific_uses": [
+    {
+      "model": "11D Projection",
+      "use": "Separate microscopic reconstruction failure D_rec from task-information loss Delta_task. A projection can fail one and pass the other."
+    },
+    {
+      "model": "Spudlight/Starchforce",
+      "use": "Use predictive residuals and parameter-identifiability diagnostics to determine whether attenuation belongs to source, storage, release or observer."
+    },
+    {
+      "model": "Potato Dynamics",
+      "use": "Measure Axis/time commutator C_FA, Door coarse-graining defect delta_D and contract margin v_C before treating modules as independently composable."
+    },
+    {
+      "model": "Golden Spiral",
+      "use": "Center/profile instability acts as a geometry-identification defect; held-out residuals measure whether the golden constraint actually survives nuisance uncertainty."
+    },
+    {
+      "model": "Human Map",
+      "use": "State-label instability, non-invariance and poor parameter recovery are latent-identification defects rather than reasons to invent stronger labels."
+    },
+    {
+      "model": "Door/Handshake",
+      "use": "Residual confounding/sensitivity determines whether influence is identified or remains observationally compatible with common causes."
+    }
+  ],
+  "new_project_contribution": "The project no longer needs every theory to share an ontology in order to be compared structurally. Different theories can be compared by the kinds of mathematical commitments they make and by how large their corresponding defects are. This creates a common rigor layer without claiming a common physical substance.",
+  "anti_equation_theater_rule": "A new equation is valuable only when it either reduces an existing defect, predicts how a defect changes, or introduces a measurable defect that can falsify a previously vague claim.",
+  "connections": [
+    "2026-09-11-11d-projection-sufficiency-fiber-bounds",
+    "2026-09-11-spudlight-storage-filter-identifiability",
+    "2026-09-11-potato-dynamics-commutator-contract-equivalence",
+    "golden-spiral-center-uncertainty-profile-test-2026-09-11",
+    "human-map-identifiability-measurement-invariance-upgrade-2026-09-11",
+    "door-handshake-synthetic-identification-test-2026-09-11",
+    "model-testing-protocol"
+  ]
+}

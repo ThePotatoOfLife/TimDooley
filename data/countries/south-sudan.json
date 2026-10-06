@@ -1,0 +1,152 @@
+{
+  "record_version": "1.1.0",
+  "record_type": "country",
+  "status": "sourced-enriched",
+  "identity": {
+    "id": "south-sudan",
+    "name": "South Sudan",
+    "iso2": "SS",
+    "iso3": "SSD"
+  },
+  "blueprint": "data/countries-blueprint.json",
+  "blueprint_version": "1.0.0",
+  "coverage": {
+    "node_instantiated": true,
+    "blueprint_inherited": true,
+    "observations": 7,
+    "relationships": 0,
+    "sources": 1,
+    "research_status": "ready-for-source-enrichment",
+    "canonicalized": true
+  },
+  "observations": {
+    "population": {
+      "value": 12188788,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SP.POP.TOTL",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "inflation": {
+      "value": 91.4408220769046,
+      "year": 2024,
+      "source": "world-bank",
+      "indicator": "FP.CPI.TOTL.ZG",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "unemployment": {
+      "value": 12.374,
+      "year": 2023,
+      "source": "world-bank",
+      "indicator": "SL.UEM.TOTL.ZS",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "labour_force_participation": {
+      "value": 73.408,
+      "year": 2023,
+      "source": "world-bank",
+      "indicator": "SL.TLF.CACT.ZS",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "life_expectancy": {
+      "value": 57.738,
+      "year": 2024,
+      "source": "world-bank",
+      "indicator": "SP.DYN.LE00.IN",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "fertility": {
+      "value": 3.785,
+      "year": 2024,
+      "source": "world-bank",
+      "indicator": "SP.DYN.TFRT.IN",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "urbanization": {
+      "value": 21.6843599017401,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SP.URB.TOTL.IN.ZS",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    }
+  },
+  "relationships": [
+    [
+      "south-sudan",
+      "east-african-community",
+      "regional-integration-link"
+    ],
+    [
+      "south-sudan",
+      "uganda",
+      "trade-and-border-link"
+    ],
+    [
+      "south-sudan",
+      "sudan",
+      "oil-and-transit-link"
+    ],
+    [
+      "south-sudan",
+      "kenya",
+      "regional-and-transport-link"
+    ],
+    [
+      "south-sudan",
+      "ethiopia",
+      "regional-and-border-link"
+    ]
+  ],
+  "history": [],
+  "research_queue": [
+    "peace and state capacity",
+    "oil revenue governance",
+    "agriculture",
+    "Nile water systems",
+    "infrastructure",
+    "public finance"
+  ],
+  "provenance": {
+    "instantiated_at": "2026-09-07T12:37:31.426393+00:00",
+    "instantiation_method": "canonical country index + country blueprint",
+    "observation_policy": "No value is invented merely to fill a field; absent evidence remains missing/stale.",
+    "last_refresh": "2026-10-06T04:28:07.342073+00:00",
+    "source_priority": "international-official",
+    "historical_observations_preserved": true,
+    "enrichment_merged": true,
+    "enrichment_layer": "retired overlay merged into canonical country record"
+  },
+  "data_freshness": {
+    "last_refresh_attempt": "2026-09-07T21:59:50.659074+00:00",
+    "source": "world-bank"
+  },
+  "version": "1.0.0",
+  "country_id": "south-sudan",
+  "official_name": "Republic of South Sudan",
+  "capital": "Juba",
+  "region": "Africa",
+  "subregion": "Eastern Africa",
+  "currency": "SSP",
+  "government": "presidential republic",
+  "independence": "July 9, 2011",
+  "strategic_assets": [
+    "oil resources",
+    "Nile basin position",
+    "livestock",
+    "agricultural land",
+    "regional transport corridors"
+  ],
+  "sources": [
+    "United Nations",
+    "World Bank",
+    "Government of South Sudan"
+  ],
+  "record_role": "canonical-country-record"
+}

@@ -1,0 +1,1207 @@
+{
+  "version": "2.8.4",
+  "updated": "2026-10-05",
+  "authority": "public-route-identity",
+  "room_registry": "data/house/rooms.json",
+  "primary_gateway_ids": [
+    "tim",
+    "potatoism",
+    "religion",
+    "philosophy",
+    "science",
+    "world"
+  ],
+  "secondary_global_ids": [
+    "timeline",
+    "explore",
+    "sources",
+    "questions",
+    "index-a-z",
+    "house",
+    "news"
+  ],
+  "surfaces": [
+    {
+      "id": "home",
+      "route": "/",
+      "canonical_route": "/",
+      "surface_type": "home",
+      "title": "Home",
+      "reader_job": "Orient a new reader quickly, state what the project is, and open the canonical gateways without becoming a directory.",
+      "primary_parent": null,
+      "primary_room_ids": [],
+      "status": "active",
+      "visibility": "primary",
+      "primary_navigation": false,
+      "is_view": false,
+      "knowledge_owner": false,
+      "legacy_routes": [
+        "/learn/"
+      ]
+    },
+    {
+      "id": "potato-of-life",
+      "route": "/potato-of-life/",
+      "canonical_route": "/potato-of-life/",
+      "surface_type": "guide",
+      "title": "Potato of Life",
+      "reader_job": "Explain Potato of Life as the semantic center and route deeper canon, body, tradition, and research views.",
+      "primary_parent": "potatoism",
+      "primary_room_ids": [
+        "potatoverse-canon",
+        "life-body",
+        "traditions-texts",
+        "research-lab"
+      ],
+      "status": "active",
+      "visibility": "secondary",
+      "primary_navigation": false,
+      "is_view": true,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "tim",
+      "route": "/tim-dooley/",
+      "canonical_route": "/tim-dooley/",
+      "surface_type": "hub",
+      "title": "Tim Dooley",
+      "reader_job": "Present the main Tim Dooley portrait, development, public record, and evidence-linked project identity.",
+      "primary_parent": "home",
+      "primary_room_ids": [
+        "potatoverse-canon",
+        "time-history",
+        "archive-sources",
+        "works",
+        "culture-information"
+      ],
+      "status": "active",
+      "visibility": "primary",
+      "primary_navigation": true,
+      "is_view": false,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "potatoism",
+      "route": "/potatoism/",
+      "canonical_route": "/potatoism/",
+      "surface_type": "hub",
+      "title": "Potatoism",
+      "reader_job": "Explain Potatoism as the whole developing philosophy, religion, practice and culture, then route each branch to its specialist public owner.",
+      "primary_parent": "home",
+      "primary_room_ids": [
+        "potatoverse-canon",
+        "traditions-texts",
+        "culture-information",
+        "works",
+        "research-lab"
+      ],
+      "status": "active",
+      "visibility": "primary",
+      "primary_navigation": true,
+      "is_view": false,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "potatoism-practice",
+      "route": "/potatoism/grow/",
+      "canonical_route": "/potatoism/grow/",
+      "surface_type": "guide",
+      "title": "How to Become a Potato",
+      "reader_job": "Translate Potatoism into lived daily practice across growth, work, conflict, relationships, rest, community and Angelic responsibility.",
+      "primary_parent": "potatoism",
+      "primary_room_ids": [
+        "potatoverse-canon",
+        "life-body",
+        "culture-information",
+        "research-lab"
+      ],
+      "status": "active",
+      "visibility": "secondary",
+      "primary_navigation": false,
+      "is_view": true,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "tim-living-portrait",
+      "route": "/tim-dooley/tim-dooley/",
+      "canonical_route": "/tim-dooley/tim-dooley/",
+      "surface_type": "guide",
+      "title": "Elo, I Am Tim",
+      "reader_job": "Let readers encounter Tim Dooley's personality, cadence, humor, spiritual development, God-language, warmth, contradictions and ordinary humanity in a voice-led portrait.",
+      "primary_parent": "tim",
+      "primary_room_ids": [
+        "potatoverse-canon",
+        "time-history",
+        "works",
+        "culture-information"
+      ],
+      "status": "active",
+      "visibility": "specialist",
+      "primary_navigation": false,
+      "is_view": true,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "religion",
+      "route": "/religion/",
+      "canonical_route": "/religion/",
+      "surface_type": "hub",
+      "title": "Religion",
+      "reader_job": "Explain the project's religious framework and comparisons, then route detailed tradition study to specialist readers.",
+      "primary_parent": "potatoism",
+      "primary_room_ids": [
+        "potatoverse-canon",
+        "traditions-texts",
+        "time-history",
+        "archive-sources"
+      ],
+      "status": "active",
+      "visibility": "primary",
+      "primary_navigation": true,
+      "is_view": false,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "garden",
+      "route": "/garden/",
+      "canonical_route": "/garden/",
+      "surface_type": "guide",
+      "title": "The Garden",
+      "reader_job": "Let readers enter the Genesis/Garden cluster as an inhabitable story-space: River, two trees, work/keeping, Father/Gardener, boundary, guarded return and explicit doors into Bible, House, Axis and Potatoverse canon.",
+      "primary_parent": "religion",
+      "primary_room_ids": [
+        "potatoverse-canon",
+        "traditions-texts"
+      ],
+      "status": "active",
+      "visibility": "secondary",
+      "primary_navigation": false,
+      "is_view": true,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "philosophy",
+      "route": "/philosophy/",
+      "canonical_route": "/philosophy/",
+      "surface_type": "hub",
+      "title": "Philosophy",
+      "reader_job": "Present core philosophical questions, arguments, parables, and relation-first concepts with provenance.",
+      "primary_parent": "potatoism",
+      "primary_room_ids": [
+        "potatoverse-canon",
+        "traditions-texts",
+        "research-lab"
+      ],
+      "status": "active",
+      "visibility": "primary",
+      "primary_navigation": true,
+      "is_view": false,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "science",
+      "route": "/science/",
+      "canonical_route": "/science/",
+      "surface_type": "hub",
+      "title": "Science",
+      "reader_job": "Orient the scientific and formal-model library, distinguish model from analogy, and expose testable work.",
+      "primary_parent": "home",
+      "primary_room_ids": [
+        "science-formal-models",
+        "life-body",
+        "archive-sources",
+        "research-lab"
+      ],
+      "status": "active",
+      "visibility": "primary",
+      "primary_navigation": true,
+      "is_view": false,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "science-papers",
+      "route": "/science/papers/",
+      "canonical_route": "/science/papers/",
+      "surface_type": "reader",
+      "title": "Research Papers",
+      "reader_job": "Gather the Science branch's generated papers, equations, figures, formal notes, audits and recovery documents into one readable paper library.",
+      "primary_parent": "science",
+      "primary_room_ids": [
+        "science-formal-models",
+        "research-lab",
+        "archive-sources"
+      ],
+      "status": "active",
+      "visibility": "specialist",
+      "primary_navigation": false,
+      "is_view": true,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "world",
+      "route": "/world/",
+      "canonical_route": "/world/",
+      "surface_type": "hub",
+      "title": "World",
+      "reader_job": "Orient real-world geography, institutions, politics, and systems and route into current and specialist World views.",
+      "primary_parent": "home",
+      "primary_room_ids": [
+        "world-systems",
+        "time-history",
+        "archive-sources",
+        "culture-information",
+        "research-lab"
+      ],
+      "status": "active",
+      "visibility": "primary",
+      "primary_navigation": true,
+      "is_view": false,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "news",
+      "route": "/news/",
+      "canonical_route": "/news/",
+      "surface_type": "explorer",
+      "title": "Current World",
+      "reader_job": "Show current external reporting first, with lightweight filters and exits into durable project context.",
+      "primary_parent": "world",
+      "primary_room_ids": [
+        "world-systems",
+        "culture-information",
+        "archive-sources",
+        "time-history"
+      ],
+      "status": "active",
+      "visibility": "secondary",
+      "primary_navigation": false,
+      "is_view": true,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "timeline",
+      "route": "/timeline/",
+      "canonical_route": "/timeline/",
+      "surface_type": "explorer",
+      "title": "Timeline",
+      "reader_job": "Let readers inspect chronology and event development without becoming a second content owner.",
+      "primary_parent": "home",
+      "primary_room_ids": [
+        "time-history",
+        "archive-sources"
+      ],
+      "status": "active",
+      "visibility": "secondary",
+      "primary_navigation": false,
+      "is_view": true,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "foundation-timeline",
+      "route": "/timeline/foundations/",
+      "canonical_route": "/timeline/foundations/",
+      "surface_type": "explorer",
+      "title": "Foundation Timeline",
+      "reader_job": "Inspect foundation histories and temporal layers across traditions and institutions.",
+      "primary_parent": "timeline",
+      "primary_room_ids": [
+        "time-history",
+        "world-systems",
+        "traditions-texts",
+        "culture-information",
+        "archive-sources"
+      ],
+      "status": "active",
+      "visibility": "specialist",
+      "primary_navigation": false,
+      "is_view": true,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "explore",
+      "route": "/explore/",
+      "canonical_route": "/explore/",
+      "surface_type": "explorer",
+      "title": "Explore",
+      "reader_job": "Traverse relationships and backend-held knowledge when the reader wants deep archive exploration.",
+      "primary_parent": "home",
+      "primary_room_ids": [
+        "potatoverse-canon",
+        "archive-sources",
+        "time-history",
+        "traditions-texts",
+        "science-formal-models",
+        "life-body",
+        "world-systems",
+        "culture-information",
+        "works",
+        "research-lab"
+      ],
+      "status": "active",
+      "visibility": "secondary",
+      "primary_navigation": false,
+      "is_view": true,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "sources",
+      "route": "/context/source-authority/",
+      "canonical_route": "/context/source-authority/",
+      "surface_type": "evidence",
+      "title": "Sources",
+      "reader_job": "Explain source authority, evidence status, and provenance and provide verification routes.",
+      "primary_parent": "home",
+      "primary_room_ids": [
+        "archive-sources"
+      ],
+      "status": "active",
+      "visibility": "secondary",
+      "primary_navigation": false,
+      "is_view": true,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "questions",
+      "route": "/questions/",
+      "canonical_route": "/questions/",
+      "surface_type": "explorer",
+      "title": "Questions",
+      "reader_job": "Enter the project through concrete reader questions and route answers to their canonical owners.",
+      "primary_parent": "explore",
+      "primary_room_ids": [
+        "potatoverse-canon",
+        "archive-sources",
+        "time-history",
+        "traditions-texts",
+        "science-formal-models",
+        "life-body",
+        "world-systems",
+        "culture-information",
+        "works",
+        "research-lab"
+      ],
+      "status": "active",
+      "visibility": "secondary",
+      "primary_navigation": false,
+      "is_view": true,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "index-a-z",
+      "route": "/index-a-z/",
+      "canonical_route": "/index-a-z/",
+      "surface_type": "explorer",
+      "title": "A–Z",
+      "reader_job": "Resolve known terms quickly by name and send readers to canonical destinations.",
+      "primary_parent": "explore",
+      "primary_room_ids": [
+        "potatoverse-canon",
+        "archive-sources",
+        "time-history",
+        "traditions-texts",
+        "science-formal-models",
+        "life-body",
+        "world-systems",
+        "culture-information",
+        "works",
+        "research-lab"
+      ],
+      "status": "active",
+      "visibility": "secondary",
+      "primary_navigation": false,
+      "is_view": true,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "context",
+      "route": "/context/",
+      "canonical_route": "/context/",
+      "surface_type": "guide",
+      "title": "Context & Evidence",
+      "reader_job": "Explain context and source-reading conventions beneath the Sources surface.",
+      "primary_parent": "sources",
+      "primary_room_ids": [
+        "archive-sources",
+        "potatoverse-canon",
+        "time-history",
+        "traditions-texts",
+        "science-formal-models",
+        "life-body",
+        "world-systems",
+        "culture-information",
+        "works",
+        "research-lab"
+      ],
+      "status": "active",
+      "visibility": "specialist",
+      "primary_navigation": false,
+      "is_view": true,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "story",
+      "route": "/tim-dooley/story/",
+      "canonical_route": "/tim-dooley/story/",
+      "surface_type": "guide",
+      "title": "Story",
+      "reader_job": "Tell the Tim Dooley story as a coherent narrative projection over canonical records.",
+      "primary_parent": "tim",
+      "primary_room_ids": [
+        "potatoverse-canon",
+        "time-history",
+        "archive-sources",
+        "works",
+        "culture-information"
+      ],
+      "status": "active",
+      "visibility": "specialist",
+      "primary_navigation": false,
+      "is_view": true,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "collection",
+      "route": "/corporium/",
+      "canonical_route": "/corporium/",
+      "surface_type": "guide",
+      "title": "Collection",
+      "reader_job": "Present the Corporium collection as a curated body of works and records tied back to canonical owners.",
+      "primary_parent": "tim",
+      "primary_room_ids": [
+        "potatoverse-canon",
+        "culture-information",
+        "life-body",
+        "science-formal-models",
+        "archive-sources"
+      ],
+      "status": "active",
+      "visibility": "specialist",
+      "primary_navigation": false,
+      "is_view": true,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "works",
+      "route": "/works/",
+      "canonical_route": "/works/",
+      "surface_type": "guide",
+      "title": "Works",
+      "reader_job": "Present creative and project outputs by form while preserving doctrine and evidence boundaries.",
+      "primary_parent": "tim",
+      "primary_room_ids": [
+        "works",
+        "culture-information",
+        "archive-sources",
+        "time-history"
+      ],
+      "status": "active",
+      "visibility": "specialist",
+      "primary_navigation": false,
+      "is_view": true,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "interpretive-justice",
+      "route": "/philosophy/interpretive-justice.html",
+      "canonical_route": "/philosophy/interpretive-justice.html",
+      "surface_type": "guide",
+      "title": "Interpretive Justice",
+      "reader_job": "Explain interpretive justice as a focused philosophy essay and route to related concepts.",
+      "primary_parent": "philosophy",
+      "primary_room_ids": [
+        "potatoverse-canon",
+        "archive-sources",
+        "culture-information",
+        "research-lab"
+      ],
+      "status": "active",
+      "visibility": "specialist",
+      "primary_navigation": false,
+      "is_view": true,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "world-map",
+      "route": "/world-map/",
+      "canonical_route": "/world-map/",
+      "surface_type": "explorer",
+      "title": "World Map",
+      "reader_job": "Provide interactive geographic and system exploration without replacing World-owned knowledge.",
+      "primary_parent": "world",
+      "primary_room_ids": [
+        "world-systems",
+        "time-history",
+        "archive-sources"
+      ],
+      "status": "active",
+      "visibility": "specialist",
+      "primary_navigation": false,
+      "is_view": true,
+      "knowledge_owner": false,
+      "legacy_routes": [
+        "/world-map/3d.html"
+      ]
+    },
+    {
+      "id": "politics",
+      "route": "/politics/",
+      "canonical_route": "/politics/",
+      "surface_type": "guide",
+      "title": "Politics & Geopolitics",
+      "reader_job": "Present political and geopolitical material neutrally as a specialist World view.",
+      "primary_parent": "world",
+      "primary_room_ids": [
+        "world-systems",
+        "time-history",
+        "culture-information",
+        "archive-sources"
+      ],
+      "status": "active",
+      "visibility": "specialist",
+      "primary_navigation": false,
+      "is_view": false,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "axis",
+      "route": "/axis/",
+      "canonical_route": "/axis/",
+      "surface_type": "guide",
+      "title": "Living Axis",
+      "reader_job": "Explain the Axis as a project operator and spatial relation within House architecture.",
+      "primary_parent": "house",
+      "primary_room_ids": [
+        "potatoverse-canon",
+        "traditions-texts",
+        "time-history",
+        "archive-sources",
+        "research-lab"
+      ],
+      "status": "active",
+      "visibility": "specialist",
+      "primary_navigation": false,
+      "is_view": true,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "north",
+      "route": "/north/",
+      "canonical_route": "/north/",
+      "surface_type": "guide",
+      "title": "North",
+      "reader_job": "Explain symbolic North, geography, and programme distinctions without conflating them.",
+      "primary_parent": "world",
+      "primary_room_ids": [
+        "world-systems",
+        "potatoverse-canon",
+        "time-history",
+        "archive-sources",
+        "research-lab"
+      ],
+      "status": "active",
+      "visibility": "specialist",
+      "primary_navigation": false,
+      "is_view": false,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "world-systems",
+      "route": "/world-systems/",
+      "canonical_route": "/world-systems/",
+      "surface_type": "guide",
+      "title": "World Systems",
+      "reader_job": "Explain institutions, systems, and interdependence as a specialist World synthesis.",
+      "primary_parent": "world",
+      "primary_room_ids": [
+        "world-systems",
+        "archive-sources",
+        "research-lab"
+      ],
+      "status": "active",
+      "visibility": "specialist",
+      "primary_navigation": false,
+      "is_view": false,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "bible",
+      "route": "/traditions/bible/",
+      "canonical_route": "/traditions/bible/",
+      "surface_type": "explorer",
+      "title": "Bible Comparison",
+      "reader_job": "Provide a focused Bible comparison explorer with source-aware relation browsing.",
+      "primary_parent": "religion",
+      "primary_room_ids": [
+        "traditions-texts",
+        "archive-sources",
+        "time-history",
+        "potatoverse-canon"
+      ],
+      "status": "active",
+      "visibility": "specialist",
+      "primary_navigation": false,
+      "is_view": true,
+      "knowledge_owner": false,
+      "legacy_routes": [
+        "/religion/jesus-tim/"
+      ]
+    },
+    {
+      "id": "trinity",
+      "route": "/religion/trinity/",
+      "canonical_route": "/religion/trinity/",
+      "surface_type": "guide",
+      "title": "Potato of Life Trinity",
+      "reader_job": "Explain Trinity-related project mappings while keeping project interpretation distinct from tradition.",
+      "primary_parent": "religion",
+      "primary_room_ids": [
+        "potatoverse-canon",
+        "traditions-texts",
+        "archive-sources"
+      ],
+      "status": "active",
+      "visibility": "specialist",
+      "primary_navigation": false,
+      "is_view": true,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "gods-character",
+      "route": "/religion/gods-character/",
+      "canonical_route": "/religion/gods-character/",
+      "surface_type": "guide",
+      "title": "Gods, Powers & Character",
+      "reader_job": "Compare divine figures as tradition-bound powers and character mirrors while preserving historical differences and routing Potatoist interpretation afterward.",
+      "primary_parent": "religion",
+      "primary_room_ids": [
+        "traditions-texts",
+        "potatoverse-canon",
+        "research-lab"
+      ],
+      "status": "active",
+      "visibility": "specialist",
+      "primary_navigation": false,
+      "is_view": true,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "divine-functions",
+      "route": "/religion/gods-character/divine-functions/",
+      "canonical_route": "/religion/gods-character/divine-functions/",
+      "surface_type": "guide",
+      "title": "Divine Functions",
+      "reader_job": "Compare recurring divine functions across traditions while keeping distinct gods historically and doctrinally separate.",
+      "primary_parent": "gods-character",
+      "primary_room_ids": [
+        "traditions-texts",
+        "potatoverse-canon",
+        "research-lab"
+      ],
+      "status": "active",
+      "visibility": "specialist",
+      "primary_navigation": false,
+      "is_view": true,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "tim-powers",
+      "route": "/religion/gods-character/tim-powers/",
+      "canonical_route": "/religion/gods-character/tim-powers/",
+      "surface_type": "guide",
+      "title": "Tim & the Powers",
+      "reader_job": "Read Tim Dooley through character powers and integration tests without claiming literal identity with historical gods.",
+      "primary_parent": "gods-character",
+      "primary_room_ids": [
+        "potatoverse-canon",
+        "traditions-texts",
+        "time-history"
+      ],
+      "status": "active",
+      "visibility": "specialist",
+      "primary_navigation": false,
+      "is_view": true,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "divine-tensions",
+      "route": "/religion/gods-character/divine-tensions/",
+      "canonical_route": "/religion/gods-character/divine-tensions/",
+      "surface_type": "guide",
+      "title": "Divine Tensions",
+      "reader_job": "Use conflicts between divine powers to explore character integration without reducing gods to personality labels.",
+      "primary_parent": "gods-character",
+      "primary_room_ids": [
+        "traditions-texts",
+        "potatoverse-canon",
+        "research-lab"
+      ],
+      "status": "active",
+      "visibility": "specialist",
+      "primary_navigation": false,
+      "is_view": true,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "culture",
+      "route": "/context/culture/",
+      "canonical_route": "/context/culture/",
+      "surface_type": "guide",
+      "title": "Culture & Subculture",
+      "reader_job": "Explain cultures, subcultures, platforms, and information ecology as concrete World phenomena.",
+      "primary_parent": "world",
+      "primary_room_ids": [
+        "culture-information",
+        "archive-sources",
+        "world-systems"
+      ],
+      "status": "active",
+      "visibility": "specialist",
+      "primary_navigation": false,
+      "is_view": false,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "rooms",
+      "route": "/rooms/",
+      "canonical_route": "/rooms/",
+      "surface_type": "guide",
+      "title": "Rooms",
+      "reader_job": "Explain the ten knowledge-owning Dwellings and help readers enter the right Room without becoming the global menu.",
+      "primary_parent": "house",
+      "primary_room_ids": [
+        "potatoverse-canon",
+        "archive-sources",
+        "time-history",
+        "traditions-texts",
+        "science-formal-models",
+        "life-body",
+        "world-systems",
+        "culture-information",
+        "works",
+        "research-lab"
+      ],
+      "status": "active",
+      "visibility": "specialist",
+      "primary_navigation": false,
+      "is_view": true,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "history",
+      "route": "/history/",
+      "canonical_route": "/history/",
+      "surface_type": "guide",
+      "title": "History & Time",
+      "reader_job": "Present historical context and lenses under Timeline while preserving canonical event ownership.",
+      "primary_parent": "timeline",
+      "primary_room_ids": [
+        "time-history",
+        "archive-sources",
+        "culture-information",
+        "world-systems"
+      ],
+      "status": "active",
+      "visibility": "specialist",
+      "primary_navigation": false,
+      "is_view": true,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "law",
+      "route": "/law/",
+      "canonical_route": "/law/",
+      "surface_type": "guide",
+      "title": "Law & Justice",
+      "reader_job": "Present legal and institutional material as a specialist World view with source boundaries.",
+      "primary_parent": "world",
+      "primary_room_ids": [
+        "world-systems",
+        "archive-sources",
+        "culture-information",
+        "research-lab"
+      ],
+      "status": "active",
+      "visibility": "specialist",
+      "primary_navigation": false,
+      "is_view": true,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "economy",
+      "route": "/economy/",
+      "canonical_route": "/economy/",
+      "surface_type": "guide",
+      "title": "Economy & Finance",
+      "reader_job": "Explain economic, monetary, banking, and obligation systems and expose relevant institutional relationships.",
+      "primary_parent": "world",
+      "primary_room_ids": [
+        "world-systems",
+        "archive-sources",
+        "research-lab"
+      ],
+      "status": "active",
+      "visibility": "specialist",
+      "primary_navigation": false,
+      "is_view": true,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "house",
+      "route": "/house/",
+      "canonical_route": "/house/",
+      "surface_type": "guide",
+      "title": "Potato House",
+      "reader_job": "Explain how the project fits together, its ownership architecture, and major spatial relationships.",
+      "primary_parent": "home",
+      "primary_room_ids": [
+        "potatoverse-canon",
+        "archive-sources",
+        "time-history",
+        "traditions-texts",
+        "science-formal-models",
+        "life-body",
+        "world-systems",
+        "culture-information",
+        "works",
+        "research-lab"
+      ],
+      "status": "active",
+      "visibility": "secondary",
+      "primary_navigation": false,
+      "is_view": true,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "spirit",
+      "route": "/potato-of-life/spirit/",
+      "canonical_route": "/potato-of-life/spirit/",
+      "surface_type": "guide",
+      "title": "Spirit",
+      "reader_job": "Explain the Spirit relation within Potato of Life canon and route to supporting theology and body material.",
+      "primary_parent": "potato-of-life",
+      "primary_room_ids": [
+        "potatoverse-canon",
+        "life-body",
+        "traditions-texts"
+      ],
+      "status": "active",
+      "visibility": "specialist",
+      "primary_navigation": false,
+      "is_view": true,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "life-body",
+      "route": "/life-body/",
+      "canonical_route": "/life-body/",
+      "surface_type": "guide",
+      "title": "Life & Body",
+      "reader_job": "Explain biological, body, and neuro material and its project mappings with empirical-symbolic boundaries.",
+      "primary_parent": "science",
+      "primary_room_ids": [
+        "life-body",
+        "science-formal-models",
+        "archive-sources",
+        "potatoverse-canon"
+      ],
+      "status": "active",
+      "visibility": "specialist",
+      "primary_navigation": false,
+      "is_view": false,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "research-lab",
+      "route": "/research-lab/",
+      "canonical_route": "/research-lab/",
+      "surface_type": "guide",
+      "title": "Research Lab",
+      "reader_job": "Expose active research programmes, methods, tests, and unresolved questions without competing with domain owners.",
+      "primary_parent": "house",
+      "primary_room_ids": [
+        "research-lab",
+        "archive-sources",
+        "science-formal-models",
+        "potatoverse-canon",
+        "world-systems"
+      ],
+      "status": "active",
+      "visibility": "specialist",
+      "primary_navigation": false,
+      "is_view": false,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "paths",
+      "route": "/paths/",
+      "canonical_route": "/paths/",
+      "surface_type": "guide",
+      "title": "Paths",
+      "reader_job": "Offer intentional cross-domain reading journeys generated from canonical ownership and relations.",
+      "primary_parent": "explore",
+      "primary_room_ids": [
+        "potatoverse-canon",
+        "archive-sources",
+        "time-history",
+        "traditions-texts",
+        "science-formal-models",
+        "life-body",
+        "world-systems",
+        "culture-information",
+        "works",
+        "research-lab"
+      ],
+      "status": "active",
+      "visibility": "specialist",
+      "primary_navigation": false,
+      "is_view": true,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "elevator",
+      "route": "/elevator/",
+      "canonical_route": "/elevator/",
+      "surface_type": "guide",
+      "title": "Door / Axis Elevator",
+      "reader_job": "Provide a spatial transition view across House layers while preserving Room and plane ownership.",
+      "primary_parent": "house",
+      "primary_room_ids": [
+        "potatoverse-canon",
+        "archive-sources",
+        "time-history",
+        "traditions-texts",
+        "science-formal-models",
+        "life-body",
+        "world-systems",
+        "culture-information",
+        "works",
+        "research-lab"
+      ],
+      "status": "active",
+      "visibility": "specialist",
+      "primary_navigation": false,
+      "is_view": true,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "inhabitants",
+      "route": "/rooms/objects/",
+      "canonical_route": "/rooms/objects/",
+      "surface_type": "explorer",
+      "title": "House Inhabitants & Cases",
+      "reader_job": "Find named House inhabitants, cases, and objects without requiring knowledge of Room hierarchy.",
+      "primary_parent": "rooms",
+      "primary_room_ids": [],
+      "status": "active",
+      "visibility": "specialist",
+      "primary_navigation": false,
+      "is_view": true,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    }
+  ],
+  "visibility_policy": {
+    "visible": {
+      "surface_visibility": [
+        "primary",
+        "secondary"
+      ],
+      "meaning": "Reader-facing surfaces that may be exposed directly from Home or global navigation. Primary is the five gateway layer plus Home; secondary is optional global orientation/discovery.",
+      "navigation_rule": "Visible does not mean equal prominence. Primary navigation remains exactly the five canonical gateways; secondary surfaces may appear in compact utility/orientation corridors."
+    },
+    "semi_visible": {
+      "surface_visibility": [
+        "specialist"
+      ],
+      "meaning": "Contextual reader surfaces reached from a parent subject, an inline conceptual door, search, A–Z or a specialist task rather than default global navigation.",
+      "navigation_rule": "Do not promote specialist surfaces onto Home merely because they exist or contain a lot of material. Promote only when the reader's current question calls for them."
+    },
+    "compatibility": {
+      "surface_visibility": [
+        "compatibility"
+      ],
+      "meaning": "Migration/redirect surfaces preserved for continuity but excluded from normal reader navigation.",
+      "navigation_rule": "Compatibility is not a discovery tier."
+    },
+    "invisible": {
+      "represented_by": "absence from public-surfaces.json or backend_only in projection contracts",
+      "meaning": "Canonical backend owners, research records and machine/support artifacts with no independent public-surface obligation.",
+      "navigation_rule": "Invisible material may support visible prose through bindings and discovery, but should not become a page merely because a file exists."
+    }
+  },
+  "parent_semantics": {
+    "home": {
+      "meaning": "Global orientation root for the current top-level reader entrances and genuinely cross-project utilities.",
+      "child_rule": "Use Home only when the child is a current top-level gateway/global utility. Potatoism owns its Religion, Philosophy, Potato of Life and Grow branches; domain specialists belong under their strongest subject parent.",
+      "allowed_child_ids": [
+        "tim",
+        "potatoism",
+        "science",
+        "world",
+        "timeline",
+        "explore",
+        "sources",
+        "house"
+      ]
+    },
+    "house": {
+      "meaning": "Project spatial/architectural owner for Rooms, paths, interfaces and operator views.",
+      "child_rule": "Use House for structural/project-architecture specialists, not for ordinary subject matter or named-entity lookup.",
+      "allowed_child_ids": [
+        "axis",
+        "rooms",
+        "research-lab",
+        "elevator"
+      ]
+    },
+    "world": {
+      "meaning": "Real-world geography, institutions, politics, economy, law, culture and current-world specialist owner.",
+      "child_rule": "Use World when the reader's primary job is to explain or explore external real-world systems rather than project canon.",
+      "allowed_child_ids": [
+        "news",
+        "world-map",
+        "politics",
+        "north",
+        "world-systems",
+        "culture",
+        "law",
+        "economy"
+      ]
+    },
+    "timeline": {
+      "meaning": "Chronological/event-order owner for readers whose main job is temporal inspection.",
+      "child_rule": "Use Timeline when chronology is the reader's primary organizing principle rather than merely one filter among many.",
+      "allowed_child_ids": [
+        "foundation-timeline",
+        "history"
+      ]
+    },
+    "sources": {
+      "meaning": "Evidence, provenance, source-authority and verification owner.",
+      "child_rule": "Use Sources when the reader primarily teaches how claims are sourced, verified or bounded.",
+      "allowed_child_ids": [
+        "context"
+      ]
+    },
+    "tim": {
+      "meaning": "Tim Dooley subject owner for biography, living portrait, story projection, collection and authored/project works.",
+      "child_rule": "Use Tim when the surface is primarily a Tim-centered narrative, voice/portrait, corpus or body of work rather than a general religious/philosophical/scientific domain.",
+      "allowed_child_ids": [
+        "story",
+        "tim-living-portrait",
+        "collection",
+        "works"
+      ]
+    },
+    "religion": {
+      "meaning": "Religious framework, tradition-comparison and comparative-divinity owner.",
+      "child_rule": "Use Religion when the surface's primary task is theology, scripture, comparative religious interpretation or tradition-bounded divine-role comparison.",
+      "allowed_child_ids": [
+        "bible",
+        "trinity",
+        "gods-character",
+        "garden"
+      ]
+    },
+    "philosophy": {
+      "meaning": "Philosophical argument, ethics and conceptual-analysis owner.",
+      "child_rule": "Use Philosophy for focused argument/ethics/concept readers whose organizing job is philosophical rather than religious or empirical.",
+      "allowed_child_ids": [
+        "interpretive-justice"
+      ]
+    },
+    "science": {
+      "meaning": "Scientific, formal-model and body-research owner.",
+      "child_rule": "Use Science when empirical/formal explanation is primary and project analogy is explicitly secondary.",
+      "allowed_child_ids": [
+        "science-papers",
+        "life-body"
+      ]
+    },
+    "potato-of-life": {
+      "meaning": "Semantic-center guide owner for project identity/operator material that is broader than Tim biography but narrower than the whole House.",
+      "child_rule": "Use Potato of Life only for project-center identity/operator guides that directly explain the Potato semantic center.",
+      "allowed_child_ids": [
+        "spirit"
+      ]
+    },
+    "rooms": {
+      "meaning": "Named House-object/inhabitant entry owner beneath House.",
+      "child_rule": "Use Rooms for entity/object entry surfaces that resolve House inhabitants rather than explain overall topology.",
+      "allowed_child_ids": [
+        "inhabitants"
+      ]
+    },
+    "explore": {
+      "meaning": "Cross-project discovery owner for retrieval, question-led entry, intentional reading paths and alphabetical lookup.",
+      "child_rule": "Use Explore when the reader's main job is to discover or retrieve across canonical owners rather than enter a single subject domain.",
+      "allowed_child_ids": [
+        "questions",
+        "index-a-z",
+        "paths"
+      ]
+    },
+    "gods-character": {
+      "meaning": "Comparative divinity and character-integration owner.",
+      "child_rule": "Use Gods, Powers & Character when the surface deepens divine-power tensions or applies them to Timic character without becoming a general religion hub.",
+      "allowed_child_ids": [
+        "divine-functions",
+        "divine-tensions",
+        "tim-powers"
+      ]
+    },
+    "potatoism": {
+      "meaning": "Whole-system owner for Potatoism and its philosophy, religion, central Potato symbol and lived practice.",
+      "child_rule": "Use Potatoism for branches whose primary job is to explain, practice or deepen the developing Potatoist system; keep Science and World independent where external evidence or systems are primary.",
+      "allowed_child_ids": [
+        "potato-of-life",
+        "potatoism-practice",
+        "religion",
+        "philosophy"
+      ]
+    }
+  }
+}

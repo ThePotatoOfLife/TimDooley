@@ -1,0 +1,322 @@
+{
+  "record_version": "1.1.0",
+  "record_type": "country",
+  "status": "sourced-enriched",
+  "identity": {
+    "id": "finland",
+    "name": "Finland",
+    "iso2": "FI",
+    "iso3": "FIN",
+    "official_name": "Republic of Finland",
+    "capital": "Helsinki",
+    "continent": "Europe",
+    "region": "Europe",
+    "subregion": "Northern Europe",
+    "currency": "Euro (EUR)",
+    "national_day": "December 6"
+  },
+  "blueprint": "data/countries-blueprint.json",
+  "blueprint_version": "1.0.0",
+  "coverage": {
+    "node_instantiated": true,
+    "blueprint_inherited": true,
+    "observations": 13,
+    "relationships": 0,
+    "sources": 1,
+    "research_status": "ready-for-source-enrichment",
+    "canonicalized": true
+  },
+  "observations": {
+    "population": {
+      "value": 5646436,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SP.POP.TOTL",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "gdp": {
+      "value": 317039368819.607,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "NY.GDP.MKTP.CD",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "gdp_per_capita": {
+      "value": 56148.580949046,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "NY.GDP.PCAP.CD",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "gdp_per_capita_ppp": {
+      "value": 65884.4876972259,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "NY.GDP.PCAP.PP.CD",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "real_growth": {
+      "value": 0.173444509584499,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "NY.GDP.MKTP.KD.ZG",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "inflation": {
+      "value": 0.337874659400574,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "FP.CPI.TOTL.ZG",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "unemployment": {
+      "value": 9.461,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SL.UEM.TOTL.ZS",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "labour_force_participation": {
+      "value": 59.681,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SL.TLF.CACT.ZS",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "life_expectancy": {
+      "value": 82.3365853658537,
+      "year": 2024,
+      "source": "world-bank",
+      "indicator": "SP.DYN.LE00.IN",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "fertility": {
+      "value": 1.25,
+      "year": 2024,
+      "source": "world-bank",
+      "indicator": "SP.DYN.TFRT.IN",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "urbanization": {
+      "value": 74.5247844319848,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SP.URB.TOTL.IN.ZS",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "poverty": {
+      "value": 12.2,
+      "year": 2022,
+      "source": "world-bank",
+      "indicator": "SI.POV.NAHC",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "internet_penetration": {
+      "value": 93.72405196,
+      "year": 2024,
+      "source": "world-bank",
+      "indicator": "IT.NET.USER.ZS",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    }
+  },
+  "relationships": [
+    {
+      "type": "member-of",
+      "target": "european-union",
+      "status": "active"
+    },
+    {
+      "type": "member-of",
+      "target": "nato",
+      "status": "active"
+    },
+    {
+      "type": "borders",
+      "target": "sweden",
+      "status": "active"
+    },
+    {
+      "type": "borders",
+      "target": "norway",
+      "status": "active"
+    },
+    {
+      "type": "borders",
+      "target": "russia",
+      "status": "active"
+    },
+    {
+      "type": "trade",
+      "target": "european-union",
+      "status": "active"
+    }
+  ],
+  "history": {
+    "turning_points": [
+      {
+        "date": "1917-12-06",
+        "event": "Independence from Russian Empire"
+      },
+      {
+        "date": "1995-01-01",
+        "event": "Finland joins European Union"
+      },
+      {
+        "date": "2002-01-01",
+        "event": "Euro cash introduced"
+      },
+      {
+        "date": "2023-04-04",
+        "event": "Finland becomes NATO member"
+      }
+    ]
+  },
+  "research_queue": [
+    "Russia border infrastructure",
+    "Arctic logistics",
+    "forest value chains",
+    "nuclear power",
+    "wind power",
+    "Baltic connectivity",
+    "digital sovereignty",
+    "education and R&D",
+    "defence procurement",
+    "major companies and ownership"
+  ],
+  "provenance": {
+    "instantiated_at": "2026-09-07T12:37:31.426393+00:00",
+    "instantiation_method": "canonical country index + country blueprint",
+    "observation_policy": "No value is invented merely to fill a field; absent evidence remains missing/stale.",
+    "last_refresh": "2026-10-06T04:28:07.342073+00:00",
+    "source_priority": "international-official",
+    "historical_observations_preserved": true,
+    "sources": [
+      "https://www.consilium.europa.eu/en/press/press-releases/2026/09/04/president-antonio-costa-s-tour-des-capitals-preview-for-week-3/",
+      "https://data.worldbank.org/?locations=FI-DK-ES"
+    ],
+    "retrieved": "2026-09-07",
+    "enrichment_merged": true,
+    "enrichment_layer": "retired overlay merged into canonical country record"
+  },
+  "data_freshness": {
+    "last_refresh_attempt": "2026-09-07T21:59:50.659074+00:00",
+    "source": "world-bank"
+  },
+  "country_id": "finland",
+  "iso2": "FI",
+  "iso3": "FIN",
+  "updated": "2026-09-07",
+  "political_system": {
+    "system_type": "parliamentary republic",
+    "head_of_state": "President Alexander Stubb",
+    "head_of_government": "Prime Minister",
+    "current_leader": {
+      "name": "Petteri Orpo",
+      "office": "Prime Minister",
+      "source": "European Council / Finnish government",
+      "source_url": "https://www.consilium.europa.eu/en/press/press-releases/2026/09/04/president-antonio-costa-s-tour-des-capitales-preview-for-week-3/"
+    },
+    "branches": [
+      "Executive",
+      "Legislative",
+      "Judicial"
+    ],
+    "legislature": [
+      "Parliament of Finland"
+    ],
+    "territorial_structure": "19 regions and municipalities"
+  },
+  "constitutional_system": {
+    "founding_documents": [
+      "Constitution of Finland"
+    ],
+    "constitution_adopted": "1999-06-11"
+  },
+  "population": {
+    "value": 5646436,
+    "year": 2025,
+    "growth_rate": 0.5,
+    "life_expectancy": 82,
+    "net_migration": 18246,
+    "source": "World Bank",
+    "source_url": "https://data.worldbank.org/?locations=FI-DK-ES"
+  },
+  "economy": {
+    "gdp_current_usd_billion": 317.04,
+    "gdp_year": 2025,
+    "gdp_per_capita_usd": 56148.6,
+    "gdp_growth_percent": 0.2,
+    "unemployment_percent": 9.5,
+    "inflation_percent": 0.3,
+    "source": "World Bank",
+    "source_url": "https://data.worldbank.org/?locations=FI-DK-ES"
+  },
+  "energy_and_resources": {
+    "strategic_assets": [
+      "nuclear power",
+      "forestry",
+      "biomass",
+      "wind",
+      "Baltic ports",
+      "digital infrastructure",
+      "advanced engineering",
+      "critical-mineral potential"
+    ]
+  },
+  "trade_and_value_chains": {
+    "major_relationships": [
+      "European Union",
+      "Sweden",
+      "Germany",
+      "Estonia",
+      "United States",
+      "China",
+      "Norway"
+    ],
+    "frameworks": [
+      "European Union Single Market",
+      "WTO"
+    ]
+  },
+  "security_and_external_relations": {
+    "major_organizations": [
+      "United Nations",
+      "NATO",
+      "European Union",
+      "OECD",
+      "WTO"
+    ],
+    "alliances": [
+      "NATO",
+      "European Union"
+    ]
+  },
+  "geography": {
+    "land_area_km2": 338455,
+    "borders": [
+      "Sweden",
+      "Norway",
+      "Russia"
+    ],
+    "maritime_position": [
+      "Baltic Sea",
+      "Gulf of Finland",
+      "Gulf of Bothnia"
+    ],
+    "territorial_structure": "19 regions and municipalities"
+  },
+  "record_role": "canonical-country-record"
+}

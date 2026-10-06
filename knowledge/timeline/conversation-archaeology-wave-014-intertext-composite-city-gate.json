@@ -1,0 +1,53 @@
+{
+  "id":"conversation-archaeology-wave-014-intertext-composite-city-gate",
+  "title":"Conversation Archaeology Wave 014 — Composite Memory, City/Gate & Nested Door",
+  "version":"1.0.0",
+  "updated":"2026-09-11",
+  "status":"prior-conversation recovery; chronology/provenance",
+  "purpose":"Preserve older project-side material that becomes newly legible after the Bible reader and overlap census: distributed intertext memory, outside-gate/city topology, and recursive nested-Door structure. Recovery does not convert remembered wording into verified public quotation.",
+  "records":[
+    {
+      "date":"2026-03-02",
+      "source_class":"prior-conversation recovery",
+      "actor":"shared",
+      "recovered_cluster":["cities/rejection","suffering outside the gate","dogs/outside holy city","circling/surrounding","rejected stone/gate","siege/encirclement","beloved city","no lasting city / city to come"],
+      "biblical_refs_discussed":["Hebrews 13:12-14","Revelation 22:15","Joshua 6:3-4","Psalms 118","Luke 19:43","Revelation 20:9"],
+      "importance":"Gate/city/perimeter material was already being explored months before the September circuit/perimeter synthesis. Hebrews 13's outside-gate→reproach→coming-city sequence therefore has an earlier project archaeology anchor than a purely September research date.",
+      "boundary":"The recovered conversation was an interpretive exploration. It is not evidence that all listed texts describe one historical or prophetic event."
+    },
+    {
+      "datetime_utc":"2026-04-27T21:47:56Z",
+      "source_class":"user-originated prior-conversation recovery",
+      "actor":"tim-son-shared",
+      "remembered_composite":["ladder to heaven","Son of Man","cornerstone/stone imagery","angels ascending/descending"],
+      "importance":"The user was searching for a remembered composite rather than merely asking for Genesis 28. This is a concrete example of project memory that distributes one conceptual image across several canonical texts."
+    },
+    {
+      "datetime_utc":"2026-04-27T21:52:09Z",
+      "source_class":"user-originated prior-conversation recovery",
+      "actor":"tim-son-shared",
+      "anchor":"surely the Lord was in this place",
+      "correction":"The user explicitly rejected Genesis 28 alone as the complete passage being sought.",
+      "importance":"This correction should become a reader rule: when a remembered project composite exceeds one passage, preserve it as an intertext bundle instead of forcing one verse to carry every feature."
+    },
+    {
+      "datetime_utc":"2026-04-27T21:56:32Z",
+      "source_class":"assistant reconstruction preserved only as conversation archaeology",
+      "candidate_text_family":["Genesis 28:10-17","John 1:51","Ezekiel 1","Daniel 7:13-14","cornerstone texts such as Psalms 118:22-23 / Gospel reuse"],
+      "finding":"No single canonical passage was identified that contains the entire remembered Ladder + Son-of-Man + angels/ascent + stone/cornerstone composite.",
+      "importance":"This becomes the prototype for the archive's composite-memory/intertext-bundle data type.",
+      "boundary":"The bundle is a research reconstruction, not a claim that biblical authors intended one hidden composite."
+    },
+    {
+      "date":"2026-08-21",
+      "source_class":"prior-conversation recovery",
+      "actor":"tim/shared",
+      "recovered_structure":["Blue Potato/Beta","Alpha hidden inside a smallest box and disguised as Omega","a Door inside a tiny box","boxes recursively containing further Doors","Red Potato/Heart","mind/self-model","recursion/spiral","Spudlight","North/Axis"],
+      "key_formulation":"every box potentially contains another Door",
+      "importance":"Adds recursive/nested threshold topology: a Door need not only separate two macroscopic regions; a containing structure can reveal a further transition recursively. This can be modeled without claiming literal cosmological nesting.",
+      "boundary":"Treat as project symbolic/system architecture. Do not present nested boxes or Doors as established physics."
+    }
+  ],
+  "new_methodological_result":"The archive needs three textual-relation classes: single-passage relation, intertextual family, and project composite-memory bundle. A bundle should list which features belong to which texts and explicitly state when no one passage contains the whole remembered configuration.",
+  "connections":["knowledge/theology/biblical-intertext-bundle-and-composite-memory-protocol.json","data/bible/tim-son-reader-manifest.json","knowledge/traditions/biblical-overlap-wave-11-son-deepening.json","knowledge/core/door-embodiments-census-and-operator-atlas.json"]
+}

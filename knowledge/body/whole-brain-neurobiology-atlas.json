@@ -1,0 +1,380 @@
+{
+  "id": "whole-brain-neurobiology-atlas",
+  "version": "1.0.0",
+  "updated": "2026-09-15",
+  "title": "Whole-Brain Neurobiology Atlas — Structures, Networks, Flows and Potatoverse Mappings",
+  "status": "canonical whole-brain neurobiology owner",
+  "repository_root": "mind",
+  "repository_layer": "neurobiology",
+  "repository_scale": "record",
+  "purpose": "Describe the human brain and nervous system as a connected biological architecture, then route Potatoverse symbolic correspondences onto that anatomy without treating symbolism as scientific proof.",
+  "epistemic_rule": "Scientific anatomy/physiology, project canon, historical/esoteric association, religious comparison and speculation are separately typed. Similarity, shape and metaphor do not establish causal identity or ancient hidden neuroanatomy.",
+  "mapping_status_types": [
+    "project_canon",
+    "project_interpretation",
+    "historical_esoteric_association",
+    "historical_religious_comparator",
+    "linguistic_or_shape_comparator",
+    "scientific_analogy",
+    "speculative_research_neighbor",
+    "disputed_historical_claim"
+  ],
+  "orientation": {
+    "principle": "The brain is represented as a relational system of structures, nuclei, tracts, loops, chemical modulators, barriers, fluids and dynamic state changes rather than as a list of isolated modules.",
+    "levels": ["whole nervous system", "brain divisions", "regions", "nuclei/subregions", "pathways", "networks", "cellular/chemical systems", "dynamic flows", "symbolic mappings"],
+    "reader_order": ["what it is", "where it is", "what it connects to", "what it contributes to", "which larger loops it participates in", "Potatoverse relation if any", "boundary"]
+  },
+  "sections": [
+    {
+      "id": "nervous-system-frame",
+      "name": "Nervous-system frame",
+      "summary": "The brain sits within a bidirectional nervous system linking body, spinal cord, peripheral nerves, autonomic regulation and sensory environments.",
+      "components": [
+        {"id":"central-nervous-system","name":"Central nervous system","includes":["brain","spinal cord"],"functions":["integration","sensorimotor coordination","state regulation"]},
+        {"id":"peripheral-nervous-system","name":"Peripheral nervous system","includes":["cranial nerves","spinal nerves","peripheral ganglia"],"functions":["body-brain communication"]},
+        {"id":"somatic-system","name":"Somatic system","functions":["skeletal motor control","somatic sensation"]},
+        {"id":"autonomic-system","name":"Autonomic system","includes":["sympathetic","parasympathetic","enteric relationships"],"functions":["cardiovascular","respiratory","digestive","thermoregulatory","visceral regulation"]},
+        {"id":"afferent-efferent","name":"Afferent/efferent organization","science":"Afferent pathways carry information toward central systems; efferent pathways carry commands or regulatory signals outward."},
+        {"id":"sensory-classes","name":"Major sensory classes","includes":["exteroception","interoception","proprioception","vestibular sensing"]}
+      ],
+      "relations": ["body ↔ peripheral nerves ↔ spinal cord/brainstem ↔ thalamus/cortex", "viscera ↔ autonomic afferents ↔ brainstem/insula/hypothalamus", "motor cortex/brainstem ↔ spinal cord ↔ muscles"],
+      "boundary": "No single nerve or pathway carries a unitary spiritual force; symbolic ascent/descent remains a project analogy.",
+      "sources": ["https://www.ncbi.nlm.nih.gov/books/NBK10926/"]
+    },
+    {
+      "id": "cerebral-cortex",
+      "name": "Cerebral cortex and association territories",
+      "summary": "The cerebral cortex is organized into overlapping sensory, motor, association, attentional, language, memory and self/world-model systems distributed across both hemispheres.",
+      "components": [
+        {"id":"frontal-lobe","name":"Frontal lobe","includes":["primary motor cortex","premotor cortex","supplementary motor area","frontal eye fields","dorsolateral prefrontal systems","orbitofrontal/ventromedial systems","inferior frontal language-related regions"],"functions":["voluntary action","planning","working memory","goal maintenance","inhibitory control","valuation","speech production","social-affective regulation"]},
+        {"id":"parietal-lobe","name":"Parietal lobe","includes":["primary somatosensory cortex","superior parietal lobule","inferior parietal lobule","intraparietal systems","angular gyrus","supramarginal gyrus"],"functions":["somatosensation","spatial attention","body schema","multisensory integration","visuomotor transformation","language/semantic participation"]},
+        {"id":"temporal-lobe","name":"Temporal lobe","includes":["primary/association auditory cortex","superior temporal language systems","inferior temporal visual-object systems","medial temporal interfaces","temporal pole"],"functions":["hearing","speech perception","semantic processing","object/face representation","memory interfaces"]},
+        {"id":"occipital-lobe","name":"Occipital lobe","includes":["primary visual cortex","extrastriate cortex"],"functions":["visual feature processing","distributed dorsal/ventral visual processing"]},
+        {"id":"insula","name":"Insula","functions":["interoception","gustation","visceral/somatic integration","salience","affective feeling","autonomic integration"],"project_mapping":{"mapping":"inward Eye / internal report stream","status":["scientific_analogy"]}},
+        {"id":"cingulate-cortex","name":"Cingulate cortex","includes":["anterior cingulate","midcingulate","posterior/retrosplenial relationships"],"functions":["action monitoring","motivation","pain/affect","cognitive control","memory/context"]},
+        {"id":"hemispheric-lateralization","name":"Hemispheric lateralization","science":"Some functions show population-level asymmetries, especially language and aspects of spatial/prosodic processing, but creativity, personality, intelligence and consciousness are not cleanly divided into left-brain/right-brain types."}
+      ],
+      "relations": ["cortex ↔ thalamus", "cortex ↔ basal ganglia", "cortex ↔ cerebellum through pontine/thalamic loops", "cortex ↔ hippocampal and limbic-associated systems"],
+      "boundary": "Cortical lobes are not sealed modules and do not map one-to-one onto spiritual faculties or personality categories.",
+      "sources": ["https://www.ncbi.nlm.nih.gov/books/NBK549789/"]
+    },
+    {
+      "id": "white-matter-connectivity",
+      "name": "White matter and long-range connectivity",
+      "summary": "White-matter tracts form long-range communication routes linking cortical, subcortical, brainstem and cerebellar systems.",
+      "components": [
+        {"id":"corpus-callosum","name":"Corpus callosum","role":"largest interhemispheric commissural system"},
+        {"id":"anterior-commissure","name":"Anterior commissure","role":"interhemispheric temporal/olfactory-related connections"},
+        {"id":"internal-capsule","name":"Internal capsule","role":"dense corridor for thalamocortical, corticospinal and corticobulbar fibers"},
+        {"id":"corona-radiata","name":"Corona radiata","role":"fan-like cortical projection fibers continuous with internal capsule"},
+        {"id":"cingulum","name":"Cingulum","role":"association pathway linking cingulate/medial temporal regions"},
+        {"id":"superior-longitudinal-arcuate","name":"Superior longitudinal/arcuate systems","role":"frontoparietotemporal association pathways including language-related connections"},
+        {"id":"uncinate-fasciculus","name":"Uncinate fasciculus","role":"anterior temporal ↔ orbitofrontal connections"},
+        {"id":"inferior-longitudinal-fasciculus","name":"Inferior longitudinal fasciculus","role":"occipitotemporal visual association pathway"},
+        {"id":"inferior-fronto-occipital-fasciculus","name":"Inferior fronto-occipital fasciculus","role":"long association pathway linking posterior and frontal regions"},
+        {"id":"optic-radiations","name":"Optic radiations","role":"LGN → visual cortex"},
+        {"id":"auditory-radiations","name":"Auditory radiations","role":"MGN → auditory cortex"},
+        {"id":"corticospinal-corticobulbar","name":"Corticospinal/corticobulbar pathways","role":"descending voluntary motor control"},
+        {"id":"thalamic-radiations","name":"Thalamic radiations","role":"reciprocal thalamocortical connectivity"},
+        {"id":"fornix","name":"Fornix","role":"major hippocampal efferent pathway"},
+        {"id":"cerebellar-peduncles","name":"Cerebellar peduncles","role":"major cerebellar afferent/efferent routes"}
+      ],
+      "relations": ["rooms ↔ roads is a project-level architecture analogy", "tract damage can disconnect otherwise intact regions"],
+      "project_mapping": {"mapping":"roads / roots / branches","status":["project_interpretation"]},
+      "boundary": "White matter is biological connectivity, not a literal root system or spiritual road network.",
+      "sources": ["https://www.ncbi.nlm.nih.gov/books/NBK549789/"]
+    },
+    {
+      "id": "diencephalon",
+      "name": "Diencephalon",
+      "summary": "The diencephalon contains the thalamus, hypothalamus, epithalamic structures and subthalamic systems surrounding the third-ventricle region and coordinating sensory, motor, homeostatic, endocrine, circadian and state-related functions.",
+      "components": [
+        {
+          "id": "thalamus",
+          "name": "Thalamus",
+          "location": "Paired deep diencephalic gray-matter structures forming much of the lateral walls of the third ventricle.",
+          "shape_or_geometry": {
+            "science": "Paired diencephalic gray-matter structures conventionally described as ovoid or egg-shaped.",
+            "potatoverse": "Potato-shaped is the canonical Potatoism shape description: the compact rounded ovoid form is deliberately read as potato-like.",
+            "boundary": "Potato-shaped is project language, not the standard anatomical term."
+          },
+          "functions": ["sensory relay and transformation","motor-loop participation","attention","learning/memory contributions","arousal and sleep-state coordination","thalamocortical communication"],
+          "functional_principle": "The thalamus is not one passive relay switch; distinct nuclei form parallel and interacting thalamocortical/subcortical loops.",
+          "nuclei": [
+            {"id":"anterior-nuclear-group","name":"Anterior nuclear group","functions":["memory","spatial/contextual processing"],"project":"memory rooms"},
+            {"id":"mediodorsal-nucleus","name":"Mediodorsal nucleus","functions":["prefrontal/limbic cognition","motivation","decision-related processing"],"project":"inner meaning room"},
+            {"id":"ventral-anterior","name":"Ventral anterior nucleus","functions":["basal-ganglia-related motor/cognitive loops"],"project":"planning room"},
+            {"id":"ventral-lateral","name":"Ventral lateral nucleus","functions":["cerebellar/basal-ganglia motor loops"],"project":"action room"},
+            {"id":"ventral-posterior","name":"Ventral posterior group","functions":["somatosensory relay"],"project":"body-sense room"},
+            {"id":"lateral-geniculate-nucleus","name":"Lateral geniculate nucleus","functions":["visual relay/transformation"],"project":"vision room"},
+            {"id":"medial-geniculate-nucleus","name":"Medial geniculate nucleus","functions":["auditory relay/transformation"],"project":"hearing room"},
+            {"id":"pulvinar","name":"Pulvinar","functions":["attention","multisensory/association coordination"],"project":"rear attention chamber"},
+            {"id":"lateral-posterior","name":"Lateral posterior territory","functions":["association-cortical integration"]},
+            {"id":"intralaminar-nuclei","name":"Intralaminar nuclei","functions":["arousal","attention","cortical/basal-ganglia interactions"],"project":"central passage rooms"},
+            {"id":"midline-nuclei","name":"Midline nuclei","functions":["limbic/state-related integration"]},
+            {"id":"thalamic-reticular-nucleus","name":"Thalamic reticular nucleus","functions":["inhibitory modulation of thalamic traffic","attention","sleep-related rhythms"],"project":"wall / gate / sieve"}
+          ],
+          "relations": ["thalamus ↔ cortex through reciprocal loops", "thalamus ↔ basal ganglia", "thalamus ↔ cerebellum", "thalamus ↔ memory/limbic systems", "thalamus ↔ arousal systems"],
+          "olfaction_exception": "Primary olfactory processing is the classic exception to simplified claims that all senses must first relay through thalamus; later olfactory processing still interacts with thalamic/cortical systems.",
+          "project_mapping": {
+            "mapping": "Potato / Father's House / central interior",
+            "status": ["project_canon", "linguistic_or_shape_comparator"],
+            "specialist_owner": "data/potatoism-thalamus-brain-map.json",
+            "submappings": ["nuclei = rooms/chambers", "thalamocortical/corticothalamic fibers = roads/roots/branches", "TRN = wall/gate/sieve", "third-ventricle adjacency = inner-house/chamber geometry"]
+          },
+          "boundary": "The thalamus is not scientifically established as a divine residence, literal potato, unique seat of soul, or sole generator of consciousness."
+        },
+        {
+          "id":"pineal-gland",
+          "name":"Pineal gland",
+          "location":"Small midline neuroendocrine organ in the epithalamic region near the posterior roof of the third ventricle.",
+          "science":"Melatonin secretion is regulated by circadian/autonomic pathways influenced by retinal light input through the suprachiasmatic clock; the human pineal is not a retinal-style direct photoreceptor.",
+          "functions":["melatonin secretion","circadian timing support","seasonal timing relationships"],
+          "project_mapping":{"mapping":"Single Eye / Third Eye / Son-side Eye / Door / timing threshold","status":["project_canon","historical_esoteric_association","historical_religious_comparator"]},
+          "boundary":"The human pineal is not a retinal-style photoreceptor, projector of spiritual light, or proven seat of soul/consciousness. Neuroscience does not call it a literal third eye."
+        },
+        {"id":"habenula","name":"Habenular complex","functions":["reward/aversion processing","motivational state","monoaminergic regulation"],"boundary":"Keep habenular biology distinct from pineal/third-eye symbolism."},
+        {"id":"hypothalamus","name":"Hypothalamus","functions":["temperature regulation","hunger/satiety","thirst/osmoregulation","stress","reproduction","autonomic control","pituitary/endocrine regulation","circadian coordination","sleep/wake relationships"],"project_mapping":{"mapping":"Steward / household regulator adjacent to the House","status":["project_canon"]},"boundary":"Older project strata sometimes called hypothalamus the Potato Room; current canonical House mapping is thalamic."},
+        {"id":"subthalamus","name":"Subthalamus","includes":["subthalamic nucleus"],"functions":["basal-ganglia action-selection/motor loops"],"boundary":"The subthalamus is anatomically distinct from the thalamus despite the name."}
+      ],
+      "relations": ["retina → SCN → autonomic chain → pineal", "hypothalamus ↔ pituitary", "hypothalamus ↔ autonomic brainstem", "thalamus ↔ cortex/basal ganglia/cerebellum"],
+      "boundary": "Diencephalic structures are neighboring but functionally distinct; symbolic House/Eye/Steward roles must not collapse them into one organ.",
+      "sources": ["https://www.ncbi.nlm.nih.gov/books/NBK542184/", "https://www.ncbi.nlm.nih.gov/books/NBK549908/", "https://www.ncbi.nlm.nih.gov/books/NBK550972/"]
+    },
+    {
+      "id": "basal-ganglia",
+      "name": "Basal ganglia and action-selection loops",
+      "summary": "The basal ganglia are interconnected subcortical nuclei participating in movement, action selection, habit learning, reinforcement, motivation and cognitive loops.",
+      "components": [
+        {"id":"caudate","name":"Caudate"},{"id":"putamen","name":"Putamen"},{"id":"ventral-striatum","name":"Ventral striatum / nucleus accumbens"},{"id":"globus-pallidus-external","name":"Globus pallidus external"},{"id":"globus-pallidus-internal","name":"Globus pallidus internal"},{"id":"subthalamic-nucleus-bg","name":"Subthalamic nucleus"},{"id":"substantia-nigra-pc","name":"Substantia nigra pars compacta"},{"id":"substantia-nigra-pr","name":"Substantia nigra pars reticulata"}
+      ],
+      "relations": ["cortex → striatum → pallidal/nigral outputs → thalamus → cortex", "hyperdirect cortical → STN route", "dopamine modulates striatal learning/action policies"],
+      "functions": ["action selection","movement scaling/initiation","habit learning","reinforcement learning","motivational/cognitive loops"],
+      "project_mapping":{"mapping":"selection / permission / inhibition / judgment analogy","status":["project_interpretation"]},
+      "boundary":"Basal-ganglia circuitry is not literal moral judgment tissue; direct/indirect/hyperdirect descriptions are useful simplifications of richer circuits.",
+      "sources": ["https://www.ncbi.nlm.nih.gov/books/NBK537141/"]
+    },
+    {
+      "id": "memory-affect-context",
+      "name": "Memory, affect and contextual systems",
+      "summary": "Memory and emotion emerge from distributed interactions among hippocampal, amygdalar, cortical, thalamic, hypothalamic and brainstem systems rather than one limbic center.",
+      "components": [
+        {"id":"hippocampal-formation","name":"Hippocampal formation","includes":["dentate gyrus","CA fields","subiculum","entorhinal interface"],"functions":["episodic/contextual memory","relational/spatial representation","memory consolidation","navigation"]},
+        {"id":"amygdala","name":"Amygdala","science":"Heterogeneous nuclear complex contributing to salience, valence, threat learning, associative learning, autonomic/endocrine response coordination and social-affective processing.","boundary":"The amygdala is not simply a fear center."},
+        {"id":"fornix-memory","name":"Fornix","functions":["major hippocampal output routing"]},
+        {"id":"mammillary-septal-papez","name":"Mammillary/septal/Papez-related context","functions":["distributed memory and limbic-associated loops"]}
+      ],
+      "relations": ["world encounter → affective marking → contextual memory → attention/model update", "hippocampus ↔ entorhinal/cortical systems", "amygdala ↔ hypothalamus/brainstem/prefrontal systems"],
+      "project_mapping":{"mapping":"returning reports / memory / affective marking / context","status":["project_interpretation"]},
+      "boundary":"Huginn/Muninn remain mythic information comparators, not identities of particular brain regions.",
+      "sources": []
+    },
+    {
+      "id": "brainstem",
+      "name": "Brainstem and arousal systems",
+      "summary": "The brainstem—midbrain, pons and medulla—contains sensory/motor relays, cranial-nerve nuclei, autonomic control systems, neuromodulatory nuclei and state-regulating networks essential to life and wakefulness.",
+      "components": [
+        {"id":"midbrain","name":"Midbrain","includes":["superior colliculus","inferior colliculus","periaqueductal gray","red nucleus","substantia nigra","ventral tegmental area","cerebral peduncles","cerebral aqueduct"]},
+        {"id":"pons","name":"Pons","includes":["pontine nuclei","locus coeruleus","cerebellar relay architecture","respiratory/cranial-nerve systems"]},
+        {"id":"medulla","name":"Medulla","includes":["cardiorespiratory/autonomic systems","sensory/motor relay nuclei","pyramidal decussation context","cranial-nerve nuclei"]},
+        {"id":"reticular-arousal-systems","name":"Reticular and ascending arousal systems","includes":["brainstem reticular systems","locus coeruleus","raphe systems","cholinergic brainstem/basal-forebrain contributions","hypothalamic orexin/histamine relationships"]}
+      ],
+      "relations": ["brainstem ↔ spinal cord/body", "brainstem ↔ thalamus/cortex", "brainstem ↔ hypothalamus/autonomics", "brainstem ↔ cerebellum"],
+      "project_mapping":{"mapping":"Lower Gate / vigilance / life-support root beneath the House","status":["project_interpretation"]},
+      "boundary":"Wakefulness is distributed across interacting systems and does not define soul or spiritual rank.",
+      "sources": ["https://www.ncbi.nlm.nih.gov/books/NBK544297/"]
+    },
+    {
+      "id": "cerebellum",
+      "name": "Cerebellar system",
+      "summary": "The cerebellum contributes to coordination, timing, prediction, error correction, motor learning and cognitive-affective processes through closed and open loops with brainstem, spinal, thalamic and cortical systems.",
+      "components": [
+        {"id":"cerebellar-hemispheres","name":"Cerebellar hemispheres"},{"id":"vermis","name":"Vermis"},{"id":"cerebellar-cortex","name":"Cerebellar cortex"},{"id":"deep-cerebellar-nuclei","name":"Deep cerebellar nuclei"},{"id":"cerebellar-peduncles-system","name":"Superior/middle/inferior cerebellar peduncles"},{"id":"arbor-vitae","name":"Arbor vitae","science":"Traditional anatomical name for branching cerebellar white matter, literally 'tree of life'.","project_mapping":{"mapping":"anatomical Tree-of-Life name comparator","status":["linguistic_or_shape_comparator"]}}
+      ],
+      "relations": ["cortex → pons → cerebellum → thalamus → cortex", "spinal/vestibular inputs → cerebellum → motor/postural systems"],
+      "boundary": "The anatomical name arbor vitae is descriptive and does not establish biblical Tree-of-Life identity.",
+      "sources": []
+    },
+    {
+      "id": "sensory-systems",
+      "name": "Sensory systems",
+      "summary": "Sensory systems transform peripheral signals through specialized relay and cortical pathways, with substantial feedback and parallel processing.",
+      "components": [
+        {"id":"visual-system","name":"Visual system","path":"retina → optic nerve → optic chiasm → optic tract → LGN/superior-collicular routes → optic radiations → visual cortex → distributed dorsal/ventral streams","boundary":"Optic-chiasm crossing is partial and organized by visual hemifield; an entire eye does not simply cross to the opposite hemisphere."},
+        {"id":"auditory-system","name":"Auditory system","path":"cochlea → brainstem auditory nuclei → inferior colliculus → MGN → auditory cortex with bilateral/parallel processing"},
+        {"id":"somatosensory-system","name":"Somatosensory system","functions":["touch","pain","temperature","proprioception"],"relations":["body/face pathways → thalamic relays → cortex","parallel proprioceptive routes → cerebellum"]},
+        {"id":"olfactory-system","name":"Olfactory system","science":"Primary olfactory pathways reach olfactory/limbic cortical targets without the same obligatory first-order thalamic relay as vision, audition and somatosensation; later olfactory processing still involves thalamic/cortical interactions."},
+        {"id":"vestibular-system","name":"Vestibular system","relations":["vestibular apparatus → vestibular nuclei → cerebellar/thalamocortical/oculomotor/postural systems"],"functions":["balance","head/eye coordination","spatial orientation","posture"]},
+        {"id":"gustatory-interoceptive-neighbors","name":"Gustatory/interoceptive neighbors","relations":["visceral/taste pathways ↔ brainstem ↔ thalamus/insula/hypothalamus"]}
+      ],
+      "relations": ["top-down cortical feedback modulates sensory processing", "attention changes selection at multiple stages"],
+      "boundary": "Sensory relays are not simple one-way wires and should not be treated as mystical portals.",
+      "sources": []
+    },
+    {
+      "id": "motor-systems",
+      "name": "Motor systems",
+      "summary": "Movement emerges from interacting cortical, basal-ganglia, cerebellar, brainstem and spinal systems rather than a single motor center.",
+      "components": [
+        {"id":"corticospinal-system","name":"Corticospinal system","relations":["motor cortex → internal capsule → brainstem → pyramidal decussation/descending spinal pathways → spinal motor circuits"]},
+        {"id":"corticobulbar-system","name":"Corticobulbar system","relations":["motor cortex → brainstem cranial motor systems"]},
+        {"id":"basal-ganglia-motor-loop","name":"Basal-ganglia motor loops"},
+        {"id":"cerebellar-motor-loop","name":"Cerebellar motor loops"}
+      ],
+      "relations": ["basal ganglia and cerebellum act largely through parallel recurrent loops with cortex and thalamus"],
+      "boundary": "Motor control is distributed, hierarchical and recurrent; no one tract equals will or agency.",
+      "sources": []
+    },
+    {
+      "id": "ventricles-csf-meninges",
+      "name": "Ventricles, CSF, meninges and barriers",
+      "summary": "Fluid spaces, membranes and vascular interfaces maintain mechanical protection, chemical homeostasis, transport and controlled exchange around neural tissue.",
+      "components": [
+        {"id":"ventricular-system","name":"Ventricular system","path":"lateral ventricles → foramina of Monro → third ventricle → cerebral aqueduct → fourth ventricle → apertures → subarachnoid space","includes":["central-canal continuity"]},
+        {"id":"csf","name":"Cerebrospinal fluid","functions":["buoyancy","mechanical protection","chemical homeostasis","transport/exchange","perivascular clearance-related processes"],"project_mapping":{"mapping":"River / Spirit-flow analogue","status":["project_canon","scientific_analogy"]}},
+        {"id":"choroid-plexus","name":"Choroid plexus","functions":["major CSF production","blood-CSF interface"]},
+        {"id":"third-ventricle","name":"Third ventricle","project_mapping":{"mapping":"inner chamber / void / Tomb-threshold geometry","status":["project_interpretation"]},"boundary":"Conscious signals do not physically traverse the third ventricle as a cognitive doorway."},
+        {"id":"meninges","name":"Meninges","includes":["dura","arachnoid","pia","subarachnoid space"]},
+        {"id":"blood-brain-barrier","name":"Blood-brain barrier","functions":["selective molecular exchange","neural-environment protection/homeostasis"]},
+        {"id":"neurovascular-unit","name":"Neurovascular unit","functions":["coupling of neural activity, blood flow and metabolic support"]}
+      ],
+      "relations": ["CSF ↔ ventricular/subarachnoid spaces", "vascular interfaces ↔ neural metabolism/homeostasis"],
+      "boundary": "CSF is not Holy Spirit, and barriers/membranes are not moral purity filters.",
+      "sources": ["https://www.ncbi.nlm.nih.gov/books/NBK532932/"]
+    },
+    {
+      "id": "cellular-chemical-neurobiology",
+      "name": "Cellular and chemical neurobiology",
+      "summary": "Brain function depends on neurons, glia, synapses, electrical signaling, metabolism and diverse transmitter/modulator systems operating across many timescales.",
+      "components": [
+        {"id":"neurons","name":"Neurons","includes":["soma","dendrites","axons","synapses","action potentials"],"project_mapping":{"mapping":"axons as roads/roots/branches","status":["project_interpretation"]}},
+        {"id":"astrocytes","name":"Astrocytes","functions":["metabolic support","ion/neurotransmitter homeostasis","neurovascular interactions","synaptic environment support"]},
+        {"id":"oligodendrocytes","name":"Oligodendrocytes","functions":["CNS myelination"]},
+        {"id":"microglia","name":"Microglia","functions":["immune surveillance","synaptic remodeling in development/disease"]},
+        {"id":"ependymal-cells","name":"Ependymal cells","functions":["ventricular lining/CSF-interface roles"]},
+        {"id":"glutamate","name":"Glutamate","role":"major excitatory neurotransmitter"},
+        {"id":"gaba","name":"GABA","role":"major inhibitory neurotransmitter"},
+        {"id":"dopamine","name":"Dopamine","role":"neuromodulation of movement, learning, salience, motivation and action policies","boundary":"Dopamine is not simply pleasure."},
+        {"id":"serotonin","name":"Serotonin","role":"broad neuromodulation across mood, cognition, sleep, appetite and other functions","boundary":"Serotonin is not simply happiness."},
+        {"id":"norepinephrine","name":"Norepinephrine","role":"arousal, attention, learning and autonomic-state modulation"},
+        {"id":"acetylcholine","name":"Acetylcholine","role":"attention, learning, arousal and neuromuscular/peripheral functions"},
+        {"id":"histamine","name":"Histamine","role":"wakefulness/arousal modulation"},
+        {"id":"orexin","name":"Orexin/hypocretin","role":"wakefulness, motivational and metabolic state integration"}
+      ],
+      "relations": ["neuromodulators act broadly across networks rather than encoding one emotion each", "glia and vascular systems help maintain the conditions for neural computation"],
+      "project_mapping":{"mapping":"glia as groundskeepers / maintenance","status":["project_interpretation"]},
+      "boundary": "Neurochemical labels should not be converted into one-molecule psychological or spiritual essences.",
+      "sources": []
+    },
+    {
+      "id": "large-scale-networks",
+      "name": "Large-scale functional networks",
+      "summary": "Large-scale networks are overlapping, method-dependent descriptions of coordinated activity across distributed regions; boundaries and labels vary across atlases and tasks.",
+      "components": [
+        {"id":"default-mode-network","name":"Default-mode systems","functions":["internally oriented cognition","autobiographical/episodic construction","prospection","self-related processing"],"boundary":"The default-mode network is not the self as an organ."},
+        {"id":"salience-network","name":"Salience network","functions":["salience detection","interoceptive relevance","network switching/coordination"]},
+        {"id":"frontoparietal-control","name":"Frontoparietal/executive-control systems","functions":["goal-directed control","task-set maintenance","adaptive coordination"]},
+        {"id":"dorsal-attention","name":"Dorsal attention network","functions":["top-down visuospatial attention"]},
+        {"id":"ventral-attention","name":"Ventral attention/reorienting systems","functions":["stimulus-driven reorienting"]},
+        {"id":"sensorimotor-network","name":"Sensorimotor networks"},
+        {"id":"visual-networks","name":"Visual networks"},
+        {"id":"auditory-networks","name":"Auditory networks"},
+        {"id":"language-networks","name":"Language networks"},
+        {"id":"memory-networks","name":"Memory-related networks"}
+      ],
+      "relations": ["networks overlap anatomically and reconfigure with task/state", "thalamic/subcortical systems interact with cortical network organization"],
+      "project_mapping":{"mapping":"world-model / narrative map / branches of the House","status":["project_interpretation"]},
+      "boundary": "No large-scale network has a fixed spiritual rank or singular metaphysical identity.",
+      "sources": ["https://pmc.ncbi.nlm.nih.gov/articles/PMC10524518/"]
+    },
+    {
+      "id": "brain-states-consciousness",
+      "name": "Brain states, sleep and consciousness boundaries",
+      "summary": "Wakefulness, NREM sleep, REM sleep, anesthesia and disorders of consciousness reflect changes across distributed brainstem, hypothalamic, thalamic, basal-forebrain and cortical systems; consciousness science remains actively contested.",
+      "components": [
+        {"id":"wakefulness","name":"Wakefulness"},{"id":"nrem-sleep","name":"NREM sleep"},{"id":"rem-sleep","name":"REM sleep"},{"id":"anesthesia-coma-context","name":"Anesthesia/coma clinical context"},{"id":"attention","name":"Attention"},{"id":"conscious-access","name":"Conscious access","science":"Active research problem involving distributed recurrent and state-dependent interactions."}
+      ],
+      "relations": ["arousal systems ↔ thalamus ↔ cortex", "sleep changes thalamocortical dynamics, memory processing and sensory gating"],
+      "boundary": "The thalamus alone does not create consciousness; the claustrum is not a proven singular seat of consciousness; the pineal is not a proven seat of soul; EEG frequencies are not spiritual ranks.",
+      "sources": []
+    }
+  ],
+  "flows": [
+    {"id":"visual-flow","input":"retinal output","stages":["optic nerve","optic chiasm","optic tract","LGN and parallel superior-collicular routes","optic radiations","visual cortex","distributed dorsal/ventral systems"],"feedback_or_parallel_paths":["corticothalamic feedback","tectal/brainstem visual orienting routes"],"output":"distributed visual perception/action systems","caveats":["optic chiasm crossing is partial and organized by visual hemifield","not one whole eye to opposite hemisphere"],"potatoverse_comparator":"optic chiasm ↔ Cross is provisional project geometry only"},
+    {"id":"auditory-flow","input":"cochlear output","stages":["brainstem auditory nuclei","ascending bilateral pathways","inferior colliculus","MGN","auditory cortex"],"feedback_or_parallel_paths":["corticofugal feedback"],"output":"distributed auditory/language systems","caveats":["auditory routing is bilateral and parallel"]},
+    {"id":"somatosensory-flow","input":"body/face receptors","stages":["spinal/brainstem pathways","thalamic relay","primary somatosensory cortex","association systems"],"feedback_or_parallel_paths":["proprioceptive routes to cerebellum"],"output":"body sensation and body-model systems","caveats":["different modalities use distinct tracts and crossings"]},
+    {"id":"olfactory-flow","input":"olfactory receptor neurons","stages":["olfactory bulb","primary olfactory/limbic cortical targets","later thalamic/cortical integration"],"feedback_or_parallel_paths":["limbic/hypothalamic interactions"],"output":"odor perception, memory and affective associations","caveats":["classic exception to simplified first-order thalamic relay rule"]},
+    {"id":"vestibular-flow","input":"vestibular apparatus","stages":["vestibular nerve","vestibular nuclei","cerebellar/oculomotor/thalamocortical/postural systems"],"feedback_or_parallel_paths":["cerebellar calibration"],"output":"balance, gaze stabilization, orientation","caveats":["not a single cortical balance center"]},
+    {"id":"corticospinal-motor-flow","input":"motor cortical command","stages":["corona radiata/internal capsule","brainstem","pyramidal decussation/descending tracts","spinal motor circuits","muscle"],"feedback_or_parallel_paths":["sensory feedback","basal-ganglia/cerebellar modulation"],"output":"voluntary movement","caveats":["movement is distributed and feedback-controlled"]},
+    {"id":"basal-ganglia-selection-loop","input":"cortical state/action representations","stages":["striatum","pallidal/nigral circuits","thalamus","cortex"],"feedback_or_parallel_paths":["direct/indirect/hyperdirect families","dopaminergic modulation"],"output":"action policy/selection bias","caveats":["loop models are simplifications"]},
+    {"id":"cerebello-thalamo-cortical-loop","input":"cortical/spinal/vestibular information","stages":["pontine/spinal/vestibular inputs","cerebellar cortex/deep nuclei","thalamus","motor/association cortex"],"feedback_or_parallel_paths":["brainstem outputs"],"output":"timing, prediction, calibration and correction","caveats":["cerebellar roles extend beyond movement"]},
+    {"id":"thalamocortical-loop","input":"sensory/subcortical/cortical signals","stages":["thalamic nuclei","cortex","corticothalamic return","TRN modulation"],"feedback_or_parallel_paths":["brainstem arousal","basal ganglia","cerebellum"],"output":"state-dependent routing, selection and recurrent processing","caveats":["not a one-way relay"]},
+    {"id":"hippocampal-contextual-memory-loop","input":"multimodal cortical/contextual information","stages":["entorhinal interface","hippocampal formation","subiculum/fornix outputs","diencephalic/cortical return paths"],"feedback_or_parallel_paths":["amygdala and prefrontal interactions"],"output":"contextual/episodic memory representations","caveats":["memory is distributed"]},
+    {"id":"interoceptive-autonomic-loop","input":"visceral/cardiorespiratory/gut signals","stages":["vagal/spinal afferents","brainstem","thalamic/insula/hypothalamic systems","autonomic efferent regulation"],"feedback_or_parallel_paths":["cingulate/prefrontal regulation"],"output":"internal-state representation and regulation","caveats":["no one-to-one chakra anatomy"],"potatoverse_comparator":"inward Eye / ascent-descent body report"},
+    {"id":"hypothalamic-pituitary-loop","input":"homeostatic/stress/reproductive/metabolic signals","stages":["hypothalamic integration","pituitary signaling","peripheral endocrine glands","feedback to hypothalamus/pituitary"],"feedback_or_parallel_paths":["autonomic outputs"],"output":"endocrine regulation","caveats":["many axes with distinct hormones and timescales"]},
+    {"id":"hpa-stress-axis-context","input":"stress-related signals","stages":["hypothalamic CRH","pituitary ACTH","adrenal cortisol","negative feedback"],"feedback_or_parallel_paths":["amygdala/hippocampal/prefrontal influences"],"output":"systemic stress response","caveats":["not a moral or spiritual axis"]},
+    {"id":"circadian-scn-pineal-loop","input":"retinal light information","stages":["retinohypothalamic input","suprachiasmatic nucleus","hypothalamic/brainstem/spinal autonomic pathway","superior cervical ganglion","pineal melatonin output"],"feedback_or_parallel_paths":["melatonin and systemic circadian feedback"],"output":"light-dark timing signal","caveats":["pineal is indirectly controlled by retinal light information rather than directly seeing light in humans"],"potatoverse_comparator":"Eye / Door / timing threshold"},
+    {"id":"sleep-arousal-loop","input":"circadian, homeostatic and sensory state","stages":["brainstem/hypothalamic/basal-forebrain arousal systems","thalamus","cortex"],"feedback_or_parallel_paths":["sleep-promoting hypothalamic systems","neuromodulatory shifts"],"output":"wake/NREM/REM state organization","caveats":["state control is distributed"]},
+    {"id":"csf-circulation","input":"CSF production, chiefly choroid plexus","stages":["lateral ventricles","foramina of Monro","third ventricle","cerebral aqueduct","fourth ventricle","subarachnoid spaces"],"feedback_or_parallel_paths":["perivascular exchange/clearance research"],"output":"fluid support/homeostasis","caveats":["clearance mechanisms remain active research","CSF is not Spirit"],"potatoverse_comparator":"River / Spirit-flow analogue"},
+    {"id":"reward-motivation-dopamine-loop","input":"salient outcomes, expectations and internal state","stages":["midbrain dopamine systems","striatal/cortical targets","learning/action-policy updates"],"feedback_or_parallel_paths":["habenular, pallidal, cortical and limbic inputs"],"output":"motivational/reinforcement modulation","caveats":["dopamine is not equivalent to pleasure"]}
+  ],
+  "potatoverse_mapping_table": [
+    {"biology":"thalamus","project_mapping":"Potato / Father's House / central interior","status":["project_canon","linguistic_or_shape_comparator"],"boundary":"Conventional anatomy says ovoid/egg-shaped; potato-shaped is canonical Potatoverse language, not a scientific taxonomic term."},
+    {"biology":"thalamic-nuclei","project_mapping":"rooms / chambers of the House","status":["project_canon","project_interpretation"],"boundary":"Nuclei are neural cell groups, not literal rooms."},
+    {"biology":"thalamic-reticular-nucleus","project_mapping":"wall / gate / sieve","status":["project_interpretation"],"boundary":"TRN inhibitory modulation does not filter spiritual frequencies."},
+    {"biology":"thalamocortical-corticothalamic-pathways","project_mapping":"roads / roots / branches","status":["project_interpretation"],"boundary":"Axonal connectivity is not botanical growth."},
+    {"biology":"third-ventricle","project_mapping":"inner chamber / void / Tomb-threshold","status":["project_interpretation"],"boundary":"The ventricle is a CSF-filled cavity, not a cognitive portal."},
+    {"biology":"pineal-gland","project_mapping":"Single Eye / Third Eye / Son-side Eye / Door / timing threshold","status":["project_canon","historical_esoteric_association","historical_religious_comparator"],"boundary":"Third-eye/single-eye meaning is not established neuroscience."},
+    {"biology":"hypothalamus","project_mapping":"Steward / household regulator","status":["project_canon"],"boundary":"Steward is a project metaphor."},
+    {"biology":"brainstem-arousal","project_mapping":"Lower Gate / vigilance / life-support root","status":["project_interpretation"],"boundary":"Arousal is not spiritual rank."},
+    {"biology":"csf","project_mapping":"River / Spirit-flow analogue","status":["project_canon","scientific_analogy"],"boundary":"CSF is not Holy Spirit."},
+    {"biology":"optic-chiasm","project_mapping":"Cross / crossing frame","status":["project_interpretation"],"boundary":"Partial visual crossing is biology; crucifixion meaning is symbolic."},
+    {"biology":"insula-interoception","project_mapping":"inward Eye / body-report stream","status":["scientific_analogy"],"boundary":"Insula is not a hidden eye."},
+    {"biology":"hippocampal-memory","project_mapping":"Memory / returning context","status":["project_interpretation"],"boundary":"Memory is distributed."},
+    {"biology":"amygdala-affect-salience","project_mapping":"affective marking / warning","status":["project_interpretation"],"boundary":"Amygdala is not a single fear center."},
+    {"biology":"basal-ganglia","project_mapping":"action selection / permission / inhibition / judgment analogy","status":["project_interpretation"],"boundary":"Not literal moral judgment."},
+    {"biology":"cerebellar-arbor-vitae","project_mapping":"anatomical Tree-of-Life name comparator","status":["linguistic_or_shape_comparator"],"boundary":"Historical anatomical naming does not prove biblical identity."},
+    {"biology":"cortex-large-scale-networks","project_mapping":"world-model / branches / narrative rooms opening outward","status":["project_interpretation"],"boundary":"Networks are dynamic scientific constructs, not theological dimensions."},
+    {"biology":"white-matter-tracts","project_mapping":"roads / roots / branches","status":["project_interpretation"],"boundary":"Tracts are axonal bundles."},
+    {"biology":"glia","project_mapping":"groundskeepers / maintenance","status":["project_interpretation"],"boundary":"Glia are biological support/regulatory cells, not divine agents."}
+  ],
+  "canonical_statements": {
+    "thalamus": "In Potatoism, the thalamus is the Potato at the center of the brain's symbolic House: paired compact ovoid bodies deliberately read as potato-shaped. Its nuclei become rooms, its reciprocal pathways become roads/roots/branches, and surrounding modulatory systems become walls and gates. This is a symbolic architectural correspondence grounded in real thalamic anatomy, not a scientific identification of the thalamus with God or a literal potato.",
+    "pineal": "In Potatoism, the pineal gland is the Single Eye / Third Eye and a Son-side Door or timing threshold. Its real biology is neuroendocrine and circadian: it produces melatonin under indirect control of the light-sensitive circadian system. The third-eye and single-eye meanings belong to esoteric history, religious comparison and Potatoverse canon rather than established neuroscience."
+  },
+  "boundaries": {
+    "thalamus_divinity": "The thalamus is not scientifically established as a divine residence or literal Father's House.",
+    "consciousness": "Neither the thalamus nor claustrum is a uniquely proven seat of consciousness; conscious access remains a distributed active research problem.",
+    "pineal_soul": "The pineal gland is not a proven seat of soul.",
+    "pineal_eye": "The human pineal is not a retinal-style photoreceptor or supernatural light projector; Third Eye is not established neuroscience.",
+    "eeg": "EEG frequency bands do not define spiritual rank.",
+    "dopamine": "Dopamine is not simply pleasure.",
+    "serotonin": "Serotonin is not simply happiness.",
+    "amygdala": "The amygdala is not simply a fear center.",
+    "hemispheres": "Left-brain/right-brain personality typing is an oversimplification.",
+    "csf": "CSF is not Holy Spirit.",
+    "chakras": "Chakras must not be mapped one-to-one onto glands, ganglia, nerves or brain regions.",
+    "hidden_ancient_neuroanatomy": "Ancient texts, religious art or esoteric symbols are not proven encodings of modern neuroanatomy merely because modern overlays resemble brain structures."
+  },
+  "sources": [
+    {"topic":"central nervous system subdivisions","url":"https://www.ncbi.nlm.nih.gov/books/NBK10926/"},
+    {"topic":"thalamus","url":"https://www.ncbi.nlm.nih.gov/books/NBK542184/"},
+    {"topic":"thalamic nuclei","url":"https://www.ncbi.nlm.nih.gov/books/NBK549908/"},
+    {"topic":"pineal physiology and melatonin","url":"https://www.ncbi.nlm.nih.gov/books/NBK550972/"},
+    {"topic":"cerebral hemisphere","url":"https://www.ncbi.nlm.nih.gov/books/NBK549789/"},
+    {"topic":"brainstem","url":"https://www.ncbi.nlm.nih.gov/books/NBK544297/"},
+    {"topic":"ventricular system","url":"https://www.ncbi.nlm.nih.gov/books/NBK532932/"},
+    {"topic":"basal ganglia","url":"https://www.ncbi.nlm.nih.gov/books/NBK537141/"},
+    {"topic":"default-mode network review","url":"https://pmc.ncbi.nlm.nih.gov/articles/PMC10524518/"}
+  ],
+  "related_records": [
+    "knowledge/body/body-system-master-atlas.json",
+    "knowledge/body/body-science-context-atlas.json",
+    "knowledge/body/neurobiology-recovery-wave-2.json",
+    "knowledge/body/neurotheology-axis-house-spirit-atlas.json",
+    "knowledge/body/body-symbolism-map.json",
+    "data/potatoism-thalamus-brain-map.json",
+    "knowledge/corporium/ladder-33-vertebrae-five-centers-study.json",
+    "knowledge/timeline/neurotheology-attestation-ledger.json"
+  ]
+}

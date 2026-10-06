@@ -1,0 +1,88 @@
+{
+  "id": "cryptochrome-radical-pair-magnetoreception-recovery",
+  "title": "Cryptochrome Radical-Pair Magnetoreception — Quantum-Biology Recovery and Test Model",
+  "version": "1.0.0",
+  "updated": "2026-09-12",
+  "status": "recovered conversation branch + established quantum-biology comparator; relevance to humans or Potatoverse symbolism unestablished",
+  "provenance": "Recovered from prior conversations where cryptochrome, spin chemistry, magnetic-field sensitivity and biological orientation were discussed as a possible real quantum-biological comparator. This record separates established radical-pair physics from any broader symbolic Axis interpretation.",
+  "abstract": "Cryptochrome magnetoreception is one of the rare project-adjacent topics where genuine quantum spin dynamics plausibly couples to organism-level sensing. The radical-pair mechanism proposes that photoexcited cryptochrome can generate spin-correlated radical intermediates whose singlet-triplet evolution depends on hyperfine interactions and an external magnetic field. Chemical reaction yields can therefore become direction- or field-dependent. This model is scientifically valuable because it supplies an explicit Hamiltonian, open-system kinetics, measurable chemical outputs and organism-level behavioral tests. It is not evidence that humans possess a cryptochrome compass, that symbolic North/Axis language is biologically encoded, or that generic weak magnetic-field effects must share one mechanism. The correct research chain is photon absorption -> radical-pair preparation -> spin evolution -> spin-selective reaction yield -> receptor/cellular signal -> behavior. Every arrow requires independent measurement. Recent literature still treats cryptochrome radical-pair magnetoreception as an active and serious mechanism, while specific protein isoforms and claims of universal magnetobiological explanation remain testable and contested.",
+  "research_question": "Can a specific cryptochrome radical-pair reaction exhibit reproducible geomagnetic-scale field sensitivity that propagates through a defined biochemical signaling chain to a behavioral orientation response better than competing sensory mechanisms?",
+  "maturity": "Established spin chemistry; strong mechanistic hypothesis for animal magnetoreception; species/protein-specific biological completion remains active research",
+  "minimal_spin_hamiltonian": {
+    "equation": "H = omega_1 dot S_1 + omega_2 dot S_2 + sum_k S_1 dot A_(1k) dot I_(1k) + sum_l S_2 dot A_(2l) dot I_(2l) + J S_1 dot S_2 + S_1 dot D dot S_2",
+    "variables": {
+      "S_1,S_2": "electron-spin operators of the radical pair",
+      "I": "nuclear-spin operators",
+      "A": "hyperfine tensors",
+      "omega_i": "electron Zeeman terms proportional to the external magnetic field",
+      "J": "exchange coupling",
+      "D": "electron-electron dipolar coupling"
+    },
+    "meaning": "The field does not need to supply thermal-scale energy to the molecule; it changes coherent spin evolution and therefore the probability of spin-selective reaction channels."
+  },
+  "open_system_reaction_model": {
+    "density_matrix": "rho_dot=-(i/hbar)[H,rho]+L_relax[rho]-K_S[rho]-K_T[rho]",
+    "singlet_projector": "P_S",
+    "triplet_projector": "P_T=I-P_S",
+    "yield_example": "Phi_S(B)=k_S integral_0^infinity Tr[P_S rho(t;B)] dt",
+    "magnetic_effect": "Delta Phi_S(B)=Phi_S(B)-Phi_S(B_ref)",
+    "orientation_dependence": "If hyperfine tensors are anisotropic and molecular orientation is sufficiently constrained, Phi_S can depend on the direction of B relative to the molecule."
+  },
+  "photochemical_chain": {
+    "schematic": "cryptochrome + photon -> excited flavin state -> electron transfer -> radical pair -> spin evolution -> spin-selective chemistry -> signaling-state difference",
+    "cofactor": "FAD/flavin chemistry is central in widely studied cryptochrome radical-pair proposals.",
+    "candidate_partner": "Electron-transfer partners can include nearby amino-acid radicals such as tryptophan-chain-derived radicals in model schemes; the exact biologically relevant pair is species/protein dependent.",
+    "rule": "Do not hard-code one radical pair as universal unless the protein-specific reaction path is experimentally established."
+  },
+  "sensitivity_requirements": {
+    "field_scale": "Model the actual geomagnetic field range rather than using only laboratory-strong fields.",
+    "lifetime": "The radical pair must persist long enough for field-sensitive spin evolution to affect reaction yield.",
+    "orientation": "A directional compass requires anisotropic response and some molecular/tissue ordering or equivalent directional encoding.",
+    "noise": "Spin relaxation, molecular motion, exchange/dipolar interactions and biochemical variability can erase sensitivity.",
+    "readout": "A field-sensitive yield is not yet a sense organ; the biochemical signal must alter downstream neural/behavioral variables."
+  },
+  "behavioral_model": {
+    "latent_heading": "theta_t",
+    "field_direction": "b_hat",
+    "sensor_signal": "s(theta,b)=Phi_S(B,orientation(theta,b)) + noise",
+    "choice_model": "p(a_t|s_t,context)=softmax(beta f(s_t,context))",
+    "test": "Predict orientation distributions under rotated fields, intensity changes, wavelength manipulations and sham controls while preserving blinding and preregistered endpoints."
+  },
+  "competing_mechanisms": [
+    "magnetite-based mechanosensory/transduction models",
+    "electromagnetic induction/electroreceptive mechanisms where biologically plausible",
+    "non-magnetic visual/olfactory/celestial navigation cues",
+    "radical-pair models using alternative radical species or cryptochrome isoforms"
+  ],
+  "model_comparison_contract": {
+    "chemical_level": "Fit transient kinetics and magnetic-field-dependent yields under the same illumination/temperature conditions.",
+    "protein_level": "Compare candidate cryptochrome isoforms or mutations rather than treating all cryptochromes as equivalent.",
+    "organism_level": "Use field rotations or perturbations that generate distinct predictions from visual, magnetite or nonspecific stress explanations.",
+    "cross_level": "A mechanistic claim requires that protein-level perturbation changes the predicted spin-chemical signal and the behavioral effect in the corresponding direction."
+  },
+  "project_boundary": {
+    "valid_bridge": "Cryptochrome radical-pair chemistry is a real example of microscopic quantum dynamics feeding into biological function.",
+    "invalid_inference": "It does not establish that Tim's North/Axis symbolism is caused by cryptochrome, that human consciousness is magnetically oriented, or that every weak-field biological report is a radical-pair effect.",
+    "relation_to_microtubules": "Both are quantum-biology questions, but cryptochrome radical pairs have a much more explicit spin-chemical mechanism and observable than speculative microtubule-consciousness models."
+  },
+  "failure_conditions": [
+    "The candidate protein/reaction shows no reproducible magnetic-field-dependent yield at relevant field strengths and conditions.",
+    "The effect persists unchanged after disrupting the proposed radical-pair pathway but disappears under an alternative sensory perturbation.",
+    "Orientation-dependent predictions fail under field rotation or controlled wavelength/illumination tests.",
+    "Behavioral effects cannot be linked to the protein-level magnetic signal with causal perturbations.",
+    "A broad universal magnetobiology claim is made from one species/protein mechanism without direct cross-system evidence."
+  ],
+  "references": [
+    {"topic":"radical-pair mechanism review","url":"https://pubmed.ncbi.nlm.nih.gov/27216936/"},
+    {"topic":"cryptochrome magnetic-field kinetics","url":"https://pubmed.ncbi.nlm.nih.gov/22171949/"},
+    {"topic":"2025 review of weak magnetic-field biology and radical pairs","url":"https://pubmed.ncbi.nlm.nih.gov/41331283/"},
+    {"topic":"2025 protein-specific caution: European robin Cry4b","url":"https://pmc.ncbi.nlm.nih.gov/articles/PMC12364574/"}
+  ],
+  "connections": [
+    "microtubule-tubulin-consciousness-recovery",
+    "great-book-human-map-mathematics-audit",
+    "celestial-axis-coordinate-measurement-model",
+    "model-testing-protocol"
+  ],
+  "salvage_provenance": {"source_pr":53,"source_branch":"science-theory-overhaul-20260912","source_head":"fd04a9b61013a0a677b29424e2325532cac7fd39","reconciled_on":"2026-09-12"}
+}

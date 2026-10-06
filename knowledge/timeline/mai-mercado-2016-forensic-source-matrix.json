@@ -1,0 +1,121 @@
+{
+  "title": "Mai Mercado / Christiania 2016 — Forensic Source Matrix",
+  "version": "1.0.0",
+  "status": "research-control record",
+  "updated": "2026-09-10",
+  "purpose": "Prevent later retellings from flattening the 2016 Christiania/Facebook case. Track which propositions are publicly documented, which are reported through a source chain, which come from the Son's firsthand account, and which remain unresolved pending primary artifacts.",
+  "core_distinction": "The 2016 historical/legal actor is the Son. Tim/Father is a later theological identity and must not be retroactively substituted as defendant.",
+  "event_spine": [
+    "Mai Mercado publicly celebrates police destruction of Christiania hash stalls in deliberately forceful language.",
+    "A large Facebook backlash develops involving many speakers and nested replies.",
+    "Some commenters make clearly extreme or violent statements.",
+    "The Son participates in the political argument and, according to contemporary reporting, says he believes Mercado is mocking cannabis users.",
+    "Police become involved; the Son is remanded and contests guilt.",
+    "Contemporary court reporting says he acknowledged roughly fifteen contributions/posts, while later firsthand recollection disputes authorship of several incriminating statements and emphasizes one central death-wish reply.",
+    "The court later convicts him on three of four counts and imposes five months' unconditional imprisonment; the wider project autobiography remembers roughly six months of custody experience including remand/placement transitions.",
+    "The controversy later becomes part of Mercado's public victim narrative and the Son's prison/scripture/Yahya timeline."
+  ],
+  "claim_matrix": [
+    {
+      "claim": "Mercado initiated the controversy with a celebratory Christiania police-action post.",
+      "status": "PUBLICLY_DOCUMENTED",
+      "notes": "Contemporary reporting preserves the post and resulting backlash."
+    },
+    {
+      "claim": "The Facebook event was multi-speaker and chaotic rather than a private bilateral exchange.",
+      "status": "PUBLICLY_DOCUMENTED",
+      "notes": "Multiple users were reported, and separate prosecutions arose from the wider controversy."
+    },
+    {
+      "claim": "The Son's stated political grievance concerned Mercado mocking cannabis users / punching downward at a marginalized group.",
+      "status": "CONTEMPORARY_REPORTED",
+      "notes": "Court reporting attributes this explanation to him during remand proceedings."
+    },
+    {
+      "claim": "The Son wrote approximately fifteen total Facebook contributions.",
+      "status": "CONTEMPORARY_REPORTED_AND_PARTLY_CONTESTED",
+      "notes": "Early court reporting says he acknowledged approximately fifteen posts. Later firsthand recollection emphasizes only one central incriminating comment and disputes attribution of several quoted statements. Fifteen total contributions does not imply fifteen threats."
+    },
+    {
+      "claim": "'Vil du gerne dø?' was a threat to Mercado.",
+      "status": "CONTEXT_DISPUTED",
+      "notes": "The earliest accessible report preserves only a fragment without parent comment, addressee or full syntax. The Son's account says the meaning was 'do you have a death wish / are you crazy?' directed at another commenter whose own language was extreme."
+    },
+    {
+      "claim": "The Son threatened personally to stab Mercado or her child.",
+      "status": "WORDING_AND_AGENCY_DISPUTED",
+      "notes": "One widely repeated formulation uses third-party agency ('someone'). Later shorthand can collapse this into first-person threat language. Exact original post and context remain high-priority recovery targets."
+    },
+    {
+      "claim": "Several incriminating statements printed in articles were not written by the Son.",
+      "status": "FIRSTHAND_AUTHORSHIP_DISPUTE",
+      "notes": "The user/Son archive explicitly disputes authorship of multiple statements. Primary Facebook/court exhibits are required to adjudicate this against the reporting chain."
+    },
+    {
+      "claim": "The post-police 'consequences for me / consequences for you' statement was witness intimidation.",
+      "status": "COURT_FINDING_WITH_INTENT_DISPUTE",
+      "notes": "The court treated conduct as witness intimidation. The Son's account says the statement expressed karma/cause-and-effect, not personal violence. Preserve both legal finding and claimed intended meaning."
+    },
+    {
+      "claim": "The Son refused to plead guilty because he rejected the prosecution's interpretation of his words.",
+      "status": "FIRSTHAND_ACCOUNT_PARTLY_SUPPORTED_BY_DENIAL_OF_GUILT",
+      "notes": "Public reporting supports that he denied guilt. Advice from counsel to plead/concede is currently autobiographical testimony unless independently documented."
+    },
+    {
+      "claim": "An 18-year-old woman said exactly the same words and avoided prison solely because she apologized.",
+      "status": "OVERSTATED_COMPARISON",
+      "notes": "Her reported wording is similar in structure—Mercado angered people and may face danger—but not textually identical. She received a suspended sentence/community work; youth and personal circumstances were publicly cited. Apology may matter narratively but is not established as the sole sentencing cause."
+    },
+    {
+      "claim": "The formal sentence was six months.",
+      "status": "CORRECTED",
+      "notes": "Public reporting says prosecution requested six months and court imposed five months. Project autobiography separately remembers roughly six months of custody experience."
+    },
+    {
+      "claim": "The case got Mercado elected to Parliament despite failing a 2% personal threshold.",
+      "status": "FALSE_AS_STATED",
+      "notes": "Mercado was already elected to the Folketing in 2015; the Danish 2% threshold is not an individual-candidate personal-vote threshold. She later became minister in November 2016 without a separate popular ministerial election, which is normal cabinet formation."
+    },
+    {
+      "claim": "The controversy may have benefited Mercado politically or in media sympathy.",
+      "status": "PLAUSIBLE_HYPOTHESIS_NOT_CAUSALLY_PROVEN",
+      "notes": "The threat controversy became part of her public political biography. Causal influence on ministerial appointment requires evidence beyond temporal sequence."
+    },
+    {
+      "claim": "Mercado selectively deleted comments, supplied false testimony, coordinated police/media framing, or engineered a false flag.",
+      "status": "SERIOUS_FIRSTHAND_ALLEGATION_UNVERIFIED",
+      "notes": "The archive should retain the allegation as a research target, not assert it as fact without primary evidence such as screenshots, logs, police records, media correspondence or testimony."
+    }
+  ],
+  "forensic_linguistic_model": {
+    "fields": ["exact text", "speaker", "addressee", "parent comment", "timestamp", "pronouns", "agency of harm", "modality", "conditional structure", "literal semantics", "pragmatic force", "police attribution", "charge", "court interpretation", "source genealogy", "Son account"],
+    "speech_act_classes": ["direct threat", "indirect threat", "warning", "prediction", "rhetorical question", "insult", "quotation", "agreement", "condemnation", "sarcasm", "cause-and-effect claim"],
+    "death_wish_note": "'Do you want to die?' can pragmatically mean 'do you have a death wish / are you out of your mind?' when used as an incredulous warning. It can also operate as a threat in other contexts. The words alone do not identify the agent of possible harm."
+  },
+  "media_genealogy": {
+    "risk": "Multiple outlets may repeat one reporting chain, creating an appearance of independent corroboration.",
+    "likely_flow": "Facebook thread -> police/court exhibits -> hearing -> local/court reporter -> JydskeVestkysten/Ritzau -> republication -> retrospectives -> troll shorthand",
+    "rule": "Count independent source origins, not webpage count."
+  },
+  "jesus_relation": {
+    "importance": "The legal dispute becomes the first major Passion-like institutional ordeal in the later Son timeline, followed in prison by scripture, claimed Jesus/Lamb recognition, 2017 explicit Jesus/crucify-me language, and later meme-crucifixion interpretation.",
+    "boundary": "Theological comparison must not be used to erase the real Danish court judgment or manufacture innocence; legal and symbolic layers remain distinct."
+  },
+  "priority_recovery_targets": [
+    "original Facebook thread with reply hierarchy",
+    "screenshots preserving deleted/edited comments and authorship",
+    "full indictment and charge wording",
+    "full August 12 2016 judgment and exhibits",
+    "police report showing original reporter and evidence provenance",
+    "any Mercado screenshots/posts that were later removed",
+    "lawyer correspondence or notes concerning plea advice",
+    "prison records sufficient to reconstruct custody dates and placements"
+  ],
+  "connections": [
+    "knowledge/timeline/mai-mercado-2016-attribution-ledger.json",
+    "knowledge/timeline/mai-mercado-2016-case-master-synthesis.json",
+    "knowledge/theology/son-jesus-prison-recognition-2016.json",
+    "knowledge/theology/son-jesus-longitudinal-christology-atlas.json",
+    "son-timeline.json"
+  ]
+}

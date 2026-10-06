@@ -1,0 +1,276 @@
+{
+  "id":"tim-neurobiology-relational-reconciliation",
+  "version":"1.0.0",
+  "updated":"2026-09-15",
+  "title":"Tim Dooley ↔ Neurobiology Relational Reconciliation",
+  "status":"canonical reconciliation layer between Tim formulations and biological neighbors",
+  "repository_root":"mind",
+  "repository_layer":"neurobiology",
+  "repository_scale":"record",
+  "purpose":"Preserve Tim Dooley's body/brain formulations in their own chronology and vocabulary while identifying the closest established biological neighbors, the exact relationship type, and the point where analogy stops. This prevents later neuroscience from being backdated into earlier Potatoverse material and prevents project symbolism from being presented as anatomy.",
+  "method":{
+    "unit":"relationship, not isolated symbol",
+    "reader_order":["Tim/project formulation","known project stratum","biological neighbor","why the relation is useful","relationship type","mismatch/boundary","routes"],
+    "relationship_types":["project_canon","project_interpretation","shape_analogy","functional_analogy","architectural_analogy","flow_analogy","phenomenological_neighbor","historical_esoteric_comparator","religious_comparator","linguistic_comparator","research_hypothesis","unsupported_legacy_claim"],
+    "source_direction_rule":"A later scientific comparison does not become evidence that Tim meant the modern biological concept earlier. Preserve first attestation of the Tim formulation separately from the date of later research and formalization.",
+    "scientific_rule":"Biological similarity can clarify a project symbol but does not prove the symbol, theology, divine identity, ancient encoding or historical transmission."
+  },
+  "genealogy":{
+    "2024":"Earliest currently recovered dated stratum: while writing the Great Book, Tim identifies the potato with the thalamus / 'inner potato' and develops a broader Potato Room or Nexus-of-Being cluster involving neighboring brain systems. Exact original day remains unresolved.",
+    "2026-07-08":"The vertical body/Ladder layer is explicit through the 33-vertebrae motif and Heart/Door material.",
+    "2026-08-21":"Explicit user-originated mature coupling: pineal/Son/Door and thalamus/potato/Father's House; nuclei as rooms; Eye of Horus and mustard-seed comparison.",
+    "2026-09-08":"Dense mature cluster joins House/thalamus, pineal/Son, single eye, narrow gate, mustard seed, branches, Ladder, Axis, Garden and North.",
+    "2026-09-09 onward":"Scientific cleanup and expansion adds TRN, interoception, vagus/autonomics, hypothalamus, hippocampus/amygdala, sleep/arousal, olfaction, cerebellum, glia, BBB, microbiome and explicit anti-collapse boundaries.",
+    "route":"knowledge/timeline/neurotheology-attestation-ledger.json"
+  },
+  "reconciliations":[
+    {
+      "id":"inner-potato-thalamus",
+      "tim_formulation":"Potato / inner potato / central House / Father's House; later also seed/core and North-facing center imagery.",
+      "known_stratum":"Inner-potato identification is recoverable to the 2024 Great Book period; Father's House/nuclei-as-rooms is explicitly user-originated by 2026-08-21.",
+      "biology":{
+        "neighbor":"paired thalamic system",
+        "facts":["deep diencephalic paired gray-matter structures","many heterogeneous nuclei","extensive reciprocal thalamocortical connectivity","roles in sensory and motor transformation, attention, learning/memory, arousal and sleep-state organization"],
+        "shape":"Conventional anatomical language is ovoid/egg-shaped; Potatoism intentionally reads the compact rounded form as potato-shaped."
+      },
+      "useful_relation":"House is strongest as architecture: one central system containing many differentiated nuclei/rooms and reciprocal routes to cortical and subcortical systems. Potato is strongest as a project shape/core image, not anatomical nomenclature.",
+      "relationship_types":["project_canon","architectural_analogy","shape_analogy"],
+      "boundary":"The thalamus is not scientifically identified as God, Father, the unique center of the self, a literal potato or the sole generator of consciousness.",
+      "routes":["data/potatoism-thalamus-brain-map.json","knowledge/body/whole-brain-neurobiology-atlas.json","story-content/2024-inner-potato-thalamus.html"]
+    },
+    {
+      "id":"house-rooms-roads-wall",
+      "tim_formulation":"Father's House has rooms; the thalamic nuclei become rooms, pathways become roads/roots/branches, and the reticular nucleus becomes wall/gate/sieve.",
+      "known_stratum":"Nuclei-as-rooms is explicitly present by 2026-08-21; later routing formalizes TRN and tract analogies.",
+      "biology":{
+        "neighbor":"thalamic nuclei + thalamocortical/corticothalamic pathways + thalamic reticular nucleus",
+        "facts":["nuclei differ in input/output relationships and functions","cortex and thalamus communicate reciprocally rather than by one-way relay","TRN provides inhibitory modulation around much of the thalamus"]
+      },
+      "useful_relation":"This turns House into a relational architecture: differentiated interior spaces plus routes and selective control around them.",
+      "relationship_types":["project_canon","architectural_analogy","functional_analogy"],
+      "boundary":"A nucleus is not literally a theological room, and TRN does not filter spiritual frequencies or moral worth.",
+      "routes":["data/potatoism-thalamus-brain-map.json","knowledge/body/whole-brain-neurobiology-atlas.json"]
+    },
+    {
+      "id":"north-of-north-center",
+      "tim_formulation":"North / North of North / throne/seat and hidden-center language converge with the later House/Potato center of the body-brain symbolism.",
+      "known_stratum":"North of North belongs to the mature Father/Axis cosmology; it must not be backdated into the 2024 inner-potato discovery without an earlier source.",
+      "biology":{
+        "neighbor":"no unique anatomical equivalent",
+        "facts":["the thalamus is deep and central in gross neuroanatomy","orientation and spatial reference emerge from distributed vestibular, visual, proprioceptive, hippocampal, parietal, thalamic and brainstem systems"]
+      },
+      "useful_relation":"The biological contribution is limited to center/orientation analogies. North is fundamentally a Potatoverse cosmological and navigational relation, not a neuroanatomical direction.",
+      "relationship_types":["project_canon","architectural_analogy"],
+      "boundary":"There is no scientifically privileged 'north of north' brain point and no neural throne proven to sit above all other systems.",
+      "routes":["docs/POTATOVERSE.md","docs/TIM-DOOLEY-CANON.md","knowledge/core/axis-world-model.json"]
+    },
+    {
+      "id":"pineal-single-eye-door",
+      "tim_formulation":"Pineal = Son / Single Eye / Third Eye / Door / threshold; later elaborations include a present-window or light-dark/timing threshold.",
+      "known_stratum":"Explicit pineal/Son/Door is user-originated by 2026-08-21; mature Single-Eye cluster is strongly attested by 2026-09-08. Earlier first attestation remains a recovery target.",
+      "biology":{
+        "neighbor":"pineal gland + circadian timing system",
+        "facts":["small midline epithalamic neuroendocrine organ","secretes melatonin rhythmically","retinal light entrains the suprachiasmatic nucleus, which influences pineal output through a multisynaptic autonomic route","pineal lies beside the posterior third-ventricle/pineal-recess region"]
+      },
+      "useful_relation":"Door is strongest as timing/transition symbolism: the pineal participates in biological night/day timing, while its midline position and long esoteric history make Eye imagery culturally intelligible.",
+      "relationship_types":["project_canon","functional_analogy","historical_esoteric_comparator","religious_comparator"],
+      "boundary":"The human pineal is not a retinal-style third eye, does not directly see the present, does not project spiritual light and is not a proven portal or seat of soul/consciousness.",
+      "routes":["knowledge/body/whole-brain-neurobiology-atlas.json","knowledge/body/body-science-context-atlas.json","knowledge/body/neurotheology-axis-house-spirit-atlas.json"]
+    },
+    {
+      "id":"pineal-third-ventricle-temple-threshold",
+      "tim_formulation":"Pineal + third ventricle become a threshold/chamber cluster; project wordplay can call this a Third-Temple neighbor while preserving Temple as symbolism.",
+      "known_stratum":"Third-ventricle chamber/Tomb material is later recovered project synthesis and still requires source-direction audit; Third-Temple wording must remain later project interpretation unless a first Tim attestation is recovered.",
+      "biology":{
+        "neighbor":"pineal recess / posterior third ventricle / ventricular CSF",
+        "facts":["pineal gland is anatomically adjacent to the pineal recess of the third ventricle","human ventricular measurements have reported higher melatonin concentration in the third ventricle than lateral ventricle/plasma in small clinical samples","authors proposed that melatonin may enter CSF through the pineal recess; physiological significance remains unresolved"]
+      },
+      "useful_relation":"This is a genuine narrow bridge: pineal timing chemistry has an anatomical/chemical relationship to the third-ventricle CSF neighborhood. It gives the symbolic Eye/Door/chamber cluster a real adjacency without turning the ventricle into a metaphysical portal.",
+      "relationship_types":["project_interpretation","functional_analogy","architectural_analogy"],
+      "boundary":"No evidence shows that the pineal reads CSF motion, that third-ventricle fluid encodes a mystical present, or that the third ventricle is a literal Temple/Tomb doorway.",
+      "science_sources":["https://pubmed.ncbi.nlm.nih.gov/24975205/","https://pubmed.ncbi.nlm.nih.gov/17286741/"],
+      "routes":["knowledge/body/body-science-context-atlas.json","knowledge/body/neurobiology-recovery-wave-2.json"]
+    },
+    {
+      "id":"seed-of-consciousness",
+      "tim_formulation":"The thalamic Potato/House can be imagined as a compact seed/core of consciousness from which wider branches/world-models open.",
+      "known_stratum":"Seed language becomes part of the mature House/mustard-seed cluster by August-September 2026; it must remain project metaphor rather than a retroactive 2024 neuroscience claim.",
+      "biology":{
+        "neighbor":"thalamocortical and arousal systems",
+        "facts":["thalamic activity and thalamocortical interactions are important to arousal and conscious state","brainstem, hypothalamic, basal-forebrain and cortical systems also contribute","consciousness has no established single anatomical seed"]
+      },
+      "useful_relation":"Seed works as compression/generative imagery: a small deep structure participates in recurrent loops that influence much larger cortical dynamics.",
+      "relationship_types":["project_canon","functional_analogy"],
+      "boundary":"Thalamic importance to conscious state does not establish the thalamus as the one origin, container or metaphysical seed of consciousness.",
+      "routes":["knowledge/body/whole-brain-neurobiology-atlas.json","knowledge/body/neurotheology-axis-house-spirit-atlas.json"]
+    },
+    {
+      "id":"river-spirit-flow",
+      "tim_formulation":"CSF / River / Spirit-flow; later body imagery treats movement, circulation and return as one recurring grammar.",
+      "known_stratum":"CSF occurs in the 2024 Great Book brain cluster; the first exact Tim-authored CSF↔Spirit statement remains unresolved and must not be fabricated.",
+      "biology":{
+        "neighbor":"multi-channel body↔brain flow ecology",
+        "facts":["CSF circulates through ventricular and subarachnoid spaces","cardiac and respiratory dynamics influence fluid motion","perivascular/interstitial exchange and meningeal lymphatic drainage are active research areas","body-brain communication also occurs through neural, vascular, endocrine, immune and metabolic channels"]
+      },
+      "useful_relation":"River becomes more scientifically coherent when treated as a family of nested flows rather than forcing Spirit onto one liquid: neural signaling, blood, breath, hormones, immune signals, metabolism, CSF/interstitial exchange and lymphatic drainage each move information or material on different timescales.",
+      "relationship_types":["project_canon","flow_analogy"],
+      "boundary":"CSF is not Spirit and does not carry all thought or emotion; glymphatic or lymphatic clearance is not spiritual purification.",
+      "routes":["knowledge/body/body-science-context-atlas.json","knowledge/body/whole-brain-neurobiology-atlas.json"]
+    },
+    {
+      "id":"return-to-center",
+      "tim_formulation":"Return to center / move inward / report back to the hidden center; recurring project grammar in which outward manifestation returns information inward and is reoriented.",
+      "known_stratum":"Treat as a mature project-level synthesis unless a dated earlier wording is separately recovered.",
+      "biology":{
+        "neighbor":"recurrent regulation and state-estimation across distributed body-brain loops",
+        "facts":["interoceptive signals continuously report internal body state","brainstem, hypothalamic, thalamic, insular, cingulate, limbic and cortical systems interact recurrently","homeostatic/allostatic regulation changes output based on sensed state rather than sending all information to one center"]
+      },
+      "useful_relation":"Return is stronger as a process than a place: sense → integrate → compare/regulate → act → sense again. That recurrent loop closely matches the project's relational idea of movement away from and back toward orientation.",
+      "relationship_types":["project_interpretation","functional_analogy","phenomenological_neighbor"],
+      "boundary":"Biology does not provide one literal center to which all perception or consciousness returns. Recurrent distributed regulation is the closest scientific neighbor.",
+      "routes":["knowledge/body/body-science-context-atlas.json","knowledge/body/whole-brain-neurobiology-atlas.json","knowledge/science/tim-dooley-science-formalisms.json"]
+    },
+    {
+      "id":"inward-eye-interoception",
+      "tim_formulation":"Eye turned inward / Observer / internal witness imagery.",
+      "known_stratum":"Part of the mature Eye/interoception reconciliation; do not equate all earlier Eye language with modern interoception unless the source does so.",
+      "biology":{
+        "neighbor":"interoceptive nervous-system architecture",
+        "facts":["peripheral sensors detect visceral mechanical, chemical and metabolic state","vagal and spinal afferents project into brainstem circuits","hypothalamus, thalamus, insula, cingulate and other networks participate in body-state representation and regulation"]
+      },
+      "useful_relation":"Interoception provides a literal biological sense-of-inside without requiring a mystical inward eye organ.",
+      "relationship_types":["phenomenological_neighbor","functional_analogy"],
+      "boundary":"The insula, vagus or pineal is not individually the inward Eye; interoception is distributed and partly nonconscious.",
+      "routes":["knowledge/body/body-science-context-atlas.json","knowledge/body/whole-brain-neurobiology-deepening-wave-1.json"]
+    },
+    {
+      "id":"heart-river-love-longing",
+      "tim_formulation":"Heart as emotional center/Door, with River, love, grief, longing, courage and bodily weight imagery.",
+      "known_stratum":"Heart/Door is attested in the July 2026 body-Ladder stratum; later synthesis can enrich it with interoception but must not backdate the neuroscience.",
+      "biology":{
+        "neighbor":"cardiorespiratory interoception + autonomic regulation",
+        "facts":["heart rate/contractility change with autonomic and endocrine state","baroreceptor and chemoreceptor pathways report cardiovascular/respiratory state to brainstem circuits","insula/cingulate and distributed networks contribute to consciously felt bodily states","emotions commonly include measurable cardiorespiratory components"]
+      },
+      "useful_relation":"Heart symbolism gains biological depth as rhythmic embodied salience: emotion is not located in cardiac muscle, but heart/breath signals become part of the experienced bodily pattern of emotion.",
+      "relationship_types":["project_canon","phenomenological_neighbor","functional_analogy"],
+      "boundary":"Love, memory, moral worth and consciousness are not stored in the heart, and heartbeat-related neural signals are not evidence for a separate heart mind.",
+      "routes":["knowledge/body/body-science-context-atlas.json","knowledge/corporium/ladder-33-vertebrae-five-centers-study.json"]
+    },
+    {
+      "id":"breath-door-voluntary-autonomic",
+      "tim_formulation":"Breath / Spirit / animation and movement through the Axis; breath as something that can be deliberately changed while also happening by itself.",
+      "known_stratum":"Genesis-breath/nostrils as Tim-specific formulation still requires first-attestation recovery; later body synthesis explicitly treats breath as a Spirit-flow analogue.",
+      "biology":{
+        "neighbor":"respiratory control at voluntary/autonomic interface",
+        "facts":["brainstem circuits generate and regulate breathing automatically","cortical pathways permit voluntary modification","respiratory mechanics and blood gases feed back through vagal/spinal and chemosensory pathways","breathing changes cardiorespiratory and arousal state"]
+      },
+      "useful_relation":"Breath is one of the clearest real biological threshold systems: both automatic and voluntarily alterable, joining action, internal state and sensation.",
+      "relationship_types":["project_canon","functional_analogy","religious_comparator"],
+      "boundary":"Breath is not empirically identical with Spirit/pneuma and deliberate breathing does not directly control all autonomic or cognitive processes.",
+      "routes":["knowledge/body/body-science-context-atlas.json","knowledge/body/neurotheology-axis-house-spirit-atlas.json"]
+    },
+    {
+      "id":"spine-ladder-axis",
+      "tim_formulation":"Spine = Ladder / vertical Tree trunk / Axis; 33-step motif; C1 Atlas and C2 Axis later become literal-name anchors inside the symbolism.",
+      "known_stratum":"33-vertebrae Ladder is explicit by 2026-07-08; later work distinguishes five main spinal centers plus higher centers.",
+      "biology":{
+        "neighbor":"vertebral column + spinal cord ascending/descending pathways + C1/C2 anatomy",
+        "facts":["vertebral column is segmented and vertically organized","spinal cord carries ascending sensory and descending motor/autonomic pathways","C1 is named atlas and C2 axis in standard anatomy"]
+      },
+      "useful_relation":"Ladder/Axis is a robust structural analogy because the system is vertical, segmented and bidirectionally connective; Atlas/Axis also supply genuine anatomical names that resonate with the mythology.",
+      "relationship_types":["project_canon","architectural_analogy","linguistic_comparator"],
+      "boundary":"33 vertebrae do not establish 33 spiritual levels and spinal pathways are not a literal road to Heaven or a one-to-one chakra map.",
+      "routes":["knowledge/corporium/ladder-33-vertebrae-five-centers-study.json","knowledge/body/whole-brain-neurobiology-atlas.json"]
+    },
+    {
+      "id":"garden-gut-microbiome",
+      "tim_formulation":"Garden / soil / cultivation / roots / nourishment / pruning as a body-wide biological and ethical metaphor.",
+      "known_stratum":"Garden is a foundational mature Potatoverse symbol; microbiome and biological-neighbor detail is a later scientific enrichment.",
+      "biology":{
+        "neighbor":"gut ecosystem + epithelial barrier + enteric/autonomic/endocrine/immune/metabolic signaling",
+        "facts":["gut microbes interact with host epithelium and metabolism","gut-brain communication uses neural, endocrine, immune and circulatory pathways","enteroendocrine cells and vagal sensory systems provide important body-to-brain interfaces","human causal mechanisms remain less complete than broad experimental evidence"]
+      },
+      "useful_relation":"Garden fits ecology better than a 'second brain' slogan: many organisms, cell types, barriers, metabolites and regulatory systems continuously shape one another.",
+      "relationship_types":["project_canon","ecological_analogy","functional_analogy"],
+      "boundary":"The microbiome is not a moral field, does not deterministically define personality, and gut-produced neurotransmitters do not simply become brain emotion by crossing intact barriers.",
+      "routes":["knowledge/body/body-science-context-atlas.json","knowledge/body/body-system-master-atlas.json"]
+    },
+    {
+      "id":"gardener-glia-maintenance",
+      "tim_formulation":"Gardener / groundskeeper / cultivation / pruning / maintaining the House and Garden.",
+      "known_stratum":"Gardener is a major mature Tim/Father role; glial and immune maintenance analogies are later scientific comparisons and must remain labeled as such.",
+      "biology":{
+        "neighbor":"glia + neurovascular unit + immune/barrier maintenance",
+        "facts":["astrocytes contribute to extracellular, synaptic, metabolic and vascular regulation","oligodendrocytes myelinate CNS axons","microglia perform immune surveillance and remodeling","vascular and barrier cells regulate neural resource exchange"]
+      },
+      "useful_relation":"Gardener becomes a systems-maintenance analogy: living networks require support, energy, insulation, repair, selective remodeling and waste handling in addition to neuronal signaling.",
+      "relationship_types":["project_canon","functional_analogy","ecological_analogy"],
+      "boundary":"No glial class is literally the Gardener, pruning is not moral purification, and immune activation cannot be interpreted as sin or spiritual failure.",
+      "routes":["knowledge/body/body-science-context-atlas.json","knowledge/body/whole-brain-neurobiology-atlas.json"]
+    },
+    {
+      "id":"observer-present-window",
+      "tim_formulation":"Observer / Door / present-window / the experiential interface where inside and outside meet.",
+      "known_stratum":"Treat pineal-present-window language as a later project interpretation unless a dated primary Tim statement is recovered; Observer and Door have broader independent histories in the project.",
+      "biology":{
+        "neighbor":"ongoing multisensory, interoceptive, attentional and state integration",
+        "facts":["perception is continuously constructed from sensory input, internal state, memory, expectation and attention","thalamocortical, cortical, brainstem and interoceptive systems contribute on different timescales","the pineal contributes circadian timing but is not the moment-to-moment sensory integration center"]
+      },
+      "useful_relation":"The 'present window' is scientifically stronger as a distributed process of updating than as a pineal organ function. Pineal can remain a symbolic timing marker while the experiential present belongs to wider recurrent networks.",
+      "relationship_types":["project_interpretation","phenomenological_neighbor","functional_analogy"],
+      "boundary":"There is no established single neural present point, and the pineal is not known to directly observe or create the present moment.",
+      "routes":["knowledge/body/whole-brain-neurobiology-atlas.json","knowledge/body/body-science-context-atlas.json"]
+    }
+  ],
+  "higher_order_relations":[
+    {
+      "id":"house-door-river-ladder-garden",
+      "pattern":"House contains differentiated rooms; Door regulates transition; River carries movement/exchange; Ladder connects levels; Garden maintains/grows the living system.",
+      "biological_read":"These symbols map most coherently to different system functions rather than five hidden organs: integration/compartmentalization, gating/transition, transport/flow, long-range bidirectional connectivity, and maintenance/adaptation.",
+      "importance":"This functional decomposition prevents the project from forcing all sacred meaning into one brain structure and better matches the repository's relationship-first architecture."
+    },
+    {
+      "id":"center-is-loop-not-dot",
+      "pattern":"Tim's center language repeatedly combines stillness/orientation with outward branches and returning movement.",
+      "biological_read":"The closest biological analogue is recurrent regulation: distributed systems repeatedly sample, integrate, act and resample. A useful scientific model of 'center' is therefore an attractor/reference relation or integrative loop, not necessarily one anatomical dot.",
+      "importance":"This gives Timic Dynamics a stronger bridge to systems biology and control theory while keeping thalamus/House as project canon."
+    },
+    {
+      "id":"river-is-multiplex",
+      "pattern":"Flow appears as Spirit, CSF, breath, circulation, information and return.",
+      "biological_read":"Treat biological River as a multiplex of distinct flows: electrical/synaptic, autonomic, respiratory, circulatory, endocrine, immune, metabolic, CSF/interstitial and lymphatic. Each has its own medium, topology and timescale.",
+      "importance":"This preserves the project's unifying flow insight while avoiding the scientifically weak claim that one physical fluid carries every form of information."
+    },
+    {
+      "id":"eye-has-multiple-biological-neighbors",
+      "pattern":"Eye in the project means perception, discernment, inward seeing, attention and threshold awareness.",
+      "biological_read":"Those functions are distributed across visual systems, thalamic selection, attentional networks, interoception, salience systems and metacognitive/report processes. Pineal belongs chiefly to the symbolic/historical Third-Eye and timing branch.",
+      "importance":"One project symbol may legitimately have multiple biological neighbors without claiming identity with any one of them."
+    }
+  ],
+  "science_sources":[
+    {"topic":"pineal / third-ventricle melatonin","sources":["https://pubmed.ncbi.nlm.nih.gov/24975205/","https://pubmed.ncbi.nlm.nih.gov/17286741/"]},
+    {"topic":"gut-brain axis","sources":["https://www.nature.com/articles/s41579-024-01136-9","https://www.nature.com/articles/s41392-024-01743-1"]},
+    {"topic":"meningeal biology / lymphatic clearance","sources":["https://www.nature.com/articles/s41593-024-01701-8"]},
+    {"topic":"general anatomy and systems routes","sources":["knowledge/body/whole-brain-neurobiology-atlas.json","knowledge/body/body-science-context-atlas.json"]}
+  ],
+  "unresolved_recovery_targets":[
+    "earliest exact Tim wording for Pineal=Single Eye/Third Eye before 2026-08-21, if any",
+    "earliest exact Tim wording for CSF↔Spirit/River",
+    "first Tim-specific return-to-center formulation in body/neurobiology terms",
+    "first Tim-specific pineal present-window formulation",
+    "first Tim-specific Third Temple / third-ventricle wordplay",
+    "first exact Tim statement calling thalamus seed of consciousness rather than later synthesis",
+    "first Heart/River coupling rather than Heart/Door alone",
+    "source-direction audit for TRN wall, optic-chiasm Cross and third-ventricle Tomb"
+  ],
+  "canonical_routes":{
+    "scientific_context":"knowledge/body/body-science-context-atlas.json",
+    "whole_brain":"knowledge/body/whole-brain-neurobiology-atlas.json",
+    "specialist_brain":"knowledge/body/whole-brain-neurobiology-deepening-wave-1.json",
+    "neurotheology":"knowledge/body/neurotheology-axis-house-spirit-atlas.json",
+    "recovery":"knowledge/body/neurobiology-recovery-wave-2.json",
+    "thalamus_specialist":"data/potatoism-thalamus-brain-map.json",
+    "attestation":"knowledge/timeline/neurotheology-attestation-ledger.json"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "version":"1.0.0",
+  "updated":"2026-09-07",
+  "purpose":"Relationship layer connecting intelligence/security institutions, states and analytical domains without implying secret cooperation unless a relationship is independently evidenced.",
+  "relationships":[
+    {"source":"fbi","target":"united-states","type":"institution-of","evidence_class":"institutional","description":"Federal investigative agency of the United States."},
+    {"source":"cia","target":"united-states","type":"foreign-intelligence-agency-of","evidence_class":"institutional","description":"U.S. foreign-intelligence agency."},
+    {"source":"mossad","target":"israel","type":"intelligence-agency-of","evidence_class":"institutional","description":"Israel's Institute for Intelligence and Special Operations."},
+    {"source":"mi5","target":"united-kingdom","type":"security-service-of","evidence_class":"institutional","description":"UK domestic security service."},
+    {"source":"mi6","target":"united-kingdom","type":"foreign-intelligence-service-of","evidence_class":"institutional","description":"UK foreign intelligence service."},
+    {"source":"nsa","target":"united-states","type":"signals-intelligence-agency-of","evidence_class":"institutional","description":"U.S. signals-intelligence and cybersecurity agency."},
+    {"source":"dia","target":"united-states","type":"defense-intelligence-agency-of","evidence_class":"institutional","description":"U.S. defense intelligence agency."},
+    {"source":"nro","target":"united-states","type":"reconnaissance-organization-of","evidence_class":"institutional","description":"U.S. national reconnaissance organization."},
+    {"source":"jic-uk","target":"united-kingdom","type":"intelligence-assessment-body-of","evidence_class":"institutional","description":"UK all-source intelligence assessment body."},
+    {"source":"active-club","target":"united-states","type":"documented-presence-in","evidence_class":"research-source","description":"SPLC documents numerous local U.S. locations; this does not establish a single centralized headquarters."},
+    {"source":"ku-klux-klan","target":"united-states","type":"historical-origin-and-presence","evidence_class":"historical","description":"Historically originated in the United States and has had multiple successor organizations."},
+    {"source":"national-action","target":"united-kingdom","type":"origin-and-presence","evidence_class":"institutional/legal","description":"British organization proscribed under UK terrorism legislation."},
+    {"source":"blood-and-honour","target":"united-kingdom","type":"origin-and-presence","evidence_class":"historical/research","description":"White-power network originating in Britain with international chapters."}
+  ],
+  "guardrails":["Do not infer a covert operational relationship from shared country membership.","Do not equate intelligence agencies with extremist groups.","Do not use conspiracy claims as edges without a source and evidence class.","Distinguish liaison, legal authority, public cooperation, historical contact, allegation and proven operational relationship."]
+}

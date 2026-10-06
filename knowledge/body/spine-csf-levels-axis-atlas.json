@@ -1,0 +1,329 @@
+{
+  "id": "spine-csf-levels-axis-atlas",
+  "version": "1.0.0",
+  "updated": "2026-09-20",
+  "title": "Spine, CSF & Levels Atlas — 33 Bones, 31 Neural Segments, River, Ladder and Crown",
+  "status": "canonical specialist anatomy + historical comparison + Potatoverse placement",
+  "purpose": "Make the project's 33-rung Ladder anatomically precise by separating vertebral bones, spinal cord segments, nerve roots, meninges/CSF spaces, autonomic routes, chakra overlays and cranial/crown continuation.",
+  "epistemic_rule": "The vertebral column, cord, nerve roots, meninges and CSF are anatomy. Chakra/kundalini systems are religious/subtle-body traditions. Ladder/River/Crown/House are Potatoverse mappings. Numeric or visual resemblance does not make the layers identical.",
+  "coordinate_systems": [
+    {
+      "id": "bony-33",
+      "name": "Vertebral Ladder",
+      "count": "commonly 33 vertebrae",
+      "regions": [
+        {
+          "region": "cervical",
+          "count": 7,
+          "levels": "C1-C7"
+        },
+        {
+          "region": "thoracic",
+          "count": 12,
+          "levels": "T1-T12"
+        },
+        {
+          "region": "lumbar",
+          "count": 5,
+          "levels": "L1-L5"
+        },
+        {
+          "region": "sacral",
+          "count": 5,
+          "levels": "S1-S5",
+          "adult_state": "normally fused into sacrum"
+        },
+        {
+          "region": "coccygeal",
+          "count": 4,
+          "levels": "Co1-Co4",
+          "adult_state": "usually fused; variation occurs"
+        }
+      ],
+      "project_role": "The clearest literal substrate for the project's '33-rung' Ladder.",
+      "boundary": "Thirty-three is a common anatomical count, not an invariant metaphysical constant; congenital and coccygeal variation occur."
+    },
+    {
+      "id": "neural-31",
+      "name": "Spinal cord segment / spinal nerve ladder",
+      "count": "31 pairs of spinal nerves / 31 cord segments",
+      "regions": [
+        {
+          "region": "cervical",
+          "count": 8,
+          "levels": "C1-C8"
+        },
+        {
+          "region": "thoracic",
+          "count": 12,
+          "levels": "T1-T12"
+        },
+        {
+          "region": "lumbar",
+          "count": 5,
+          "levels": "L1-L5"
+        },
+        {
+          "region": "sacral",
+          "count": 5,
+          "levels": "S1-S5"
+        },
+        {
+          "region": "coccygeal",
+          "count": 1,
+          "levels": "Co1"
+        }
+      ],
+      "project_role": "Neural traffic levels inside/alongside the bony Ladder.",
+      "boundary": "31 neural segments are not the same coordinate system as 33 vertebrae."
+    },
+    {
+      "id": "cord-length",
+      "name": "Spinal cord proper",
+      "extent": "foramen magnum / medulla continuity to conus medullaris, typically around L1-L2 vertebral level in adults",
+      "lower_continuation": "Below the conus, lumbar/sacral/coccygeal nerve roots descend as the cauda equina; the filum terminale anchors inferiorly.",
+      "project_role": "The central neural Ladder does not physically occupy every lower vertebral level as spinal-cord tissue.",
+      "boundary": "Any project ascent through all 33 bones must distinguish bone, nerve roots and symbolic levels from spinal-cord parenchyma."
+    },
+    {
+      "id": "csf-space",
+      "name": "Spinal CSF / meningeal coordinate",
+      "anatomy": "CSF occupies the subarachnoid space around the spinal cord and roots. Dura and arachnoid continue below the conus to approximately S2, creating the lumbar cistern around cauda equina and filum terminale.",
+      "project_role": "River-around-Ladder: the fluid field surrounds the neural axis and continues below the end of the cord.",
+      "boundary": "The spinal subarachnoid CSF space is distinct from the spinal cord's central canal."
+    },
+    {
+      "id": "central-canal",
+      "name": "Spinal central canal",
+      "anatomy": "An embryological continuation of the ventricular lumen through the cord; in adults it is tiny and commonly stenosed or partly/mostly obliterated, with variable patency.",
+      "project_role": "Developmental inner-channel comparator, but not the main adult CSF River.",
+      "boundary": "Do not draw the central canal as a large continuously patent CSF pipe through the adult spine."
+    },
+    {
+      "id": "autonomic",
+      "name": "Autonomic vertical routes",
+      "anatomy": "Sympathetic preganglionic neurons arise primarily from thoracolumbar cord levels and communicate with sympathetic chain/prevertebral ganglia; parasympathetic outflow includes cranial pathways and sacral outflow. Vagal afferents return visceral information to the brainstem rather than traveling through the entire spinal cord.",
+      "project_role": "A separate ascent/descent layer for body regulation, including the circadian pineal descent-return loop.",
+      "boundary": "Autonomic routes are not identical to suṣumṇā, kundalini or Spirit."
+    },
+    {
+      "id": "subtle-body",
+      "name": "Chakra / kuṇḍalinī coordinate",
+      "anatomy_status": "religious/subtle-body model, not anatomical segmentation",
+      "project_role": "Phenomenological and historical vertical overlay on the body axis.",
+      "boundary": "Traditional systems vary; the modern seven-center scheme should not be projected backward as universal ancient anatomy."
+    }
+  ],
+  "vertical_regions": [
+    {
+      "id": "coccygeal-sacral-foundation",
+      "bony_levels": "Co1-Co4 + S1-S5",
+      "anatomy": [
+        "sacrum/coccyx",
+        "sacral nerve roots",
+        "cauda equina",
+        "filum terminale",
+        "lower lumbar cistern / subarachnoid CSF to ~S2"
+      ],
+      "project_relations": [
+        "Root",
+        "Foundation",
+        "Burial",
+        "Soil",
+        "lower Ladder"
+      ],
+      "key_insight": "At the lowest Ladder, cord tissue is absent; roots and CSF continue within the canal. This creates a Root architecture of distributed strands suspended in River rather than a solid central cord."
+    },
+    {
+      "id": "lumbar-power-mobility",
+      "bony_levels": "L1-L5",
+      "anatomy": [
+        "conus medullaris commonly around L1-L2",
+        "cauda equina below",
+        "lumbar enlargement corresponds to lower-limb innervation but is located rostral to same-numbered vertebral levels",
+        "lumbar cistern"
+      ],
+      "project_relations": [
+        "Work",
+        "movement",
+        "stored force",
+        "ascent initiation"
+      ],
+      "key_insight": "Vertebral and neural maps diverge strongly here; one visible 'rung' can contain roots belonging to much lower neural segments."
+    },
+    {
+      "id": "thoracic-heart-breath-autonomic",
+      "bony_levels": "T1-T12",
+      "anatomy": [
+        "thoracic cord",
+        "rib cage relation",
+        "sympathetic preganglionic outflow",
+        "cardiorespiratory body region"
+      ],
+      "project_relations": [
+        "Heart",
+        "Breath",
+        "Door",
+        "Forge heat",
+        "relational middle"
+      ],
+      "key_insight": "Thoracic levels are especially important for sympathetic body regulation and for the descending sympathetic limb of the pineal timing circuit."
+    },
+    {
+      "id": "cervical-word-neck-hinge",
+      "bony_levels": "C1-C7",
+      "anatomy": [
+        "cervical cord",
+        "cervical enlargement",
+        "phrenic motor contributions C3-C5",
+        "upper-limb pathways",
+        "vertebral arteries",
+        "C1 Atlas / C2 Axis"
+      ],
+      "project_relations": [
+        "Throat",
+        "Word",
+        "Breath",
+        "Atlas",
+        "Axis",
+        "upper Ladder gate"
+      ],
+      "key_insight": "C1/C2 supply unusually literal project vocabulary: Atlas supports the skull and Axis provides a pivot, but their mythological names are anatomical naming history rather than proof of cosmology."
+    },
+    {
+      "id": "foramen-magnum-brainstem-hinge",
+      "anatomy": [
+        "foramen magnum",
+        "medulla-spinal continuity",
+        "vertebral arteries entering cranial cavity",
+        "lower cranial nerve / brainstem systems"
+      ],
+      "project_relations": [
+        "Hinge",
+        "Gate",
+        "transition from Ladder to House-complex"
+      ],
+      "key_insight": "This is the best physical transition point between spinal Axis and intracranial House architecture."
+    },
+    {
+      "id": "cranial-house-court-door",
+      "anatomy": [
+        "brainstem",
+        "fourth ventricle",
+        "cerebral aqueduct",
+        "third ventricle",
+        "hypothalamus",
+        "paired thalami",
+        "pineal/epithalamus"
+      ],
+      "project_relations": [
+        "Lower Gate",
+        "Narrow Passage",
+        "Inner Court",
+        "Steward",
+        "Father's House",
+        "Door"
+      ],
+      "key_insight": "The Ladder does not terminate at a generic 'brain center'; it opens into a sequence of distinct spaces and systems."
+    },
+    {
+      "id": "crown",
+      "anatomy": "The anatomical crown/vertex is a surface region of skull/scalp. Deep thalamic and pineal structures are not located at the physical crown.",
+      "historical_subtle_body": "Sahasrāra/crown language belongs to subtle-body history and varies by tradition; in many modern systems it marks the culmination or supra-cranial end of the vertical ascent.",
+      "project_relations": [
+        "Crown",
+        "North",
+        "House orientation",
+        "Heaven",
+        "above-crown Spudlight"
+      ],
+      "key_insight": "Crown should be treated as the orientation/terminal of the vertical symbolic axis, while House is a deep intracranial architecture beneath it. Crown and House can relate without being anatomically identical."
+    }
+  ],
+  "river_architecture": {
+    "production_and_cranial_route": "CSF is produced mainly by choroid plexus and circulates through the ventricular system before entering subarachnoid spaces around brain and spinal cord.",
+    "spinal_geometry": "Most adult spinal CSF relevant to the project's River is outside the cord in the subarachnoid space, between arachnoid and pia, rather than moving through the tiny central canal.",
+    "lumbar_cistern": "Below the conus, the subarachnoid space continues around cauda equina and filum terminale to about S2.",
+    "project_synthesis": "River should be drawn as a sheath/field around the Ladder plus ventricular chambers in the head, with a much smaller developmental central-canal line inside the cord.",
+    "anti_collapse": "CSF is not established as Spirit, kundalini, consciousness or a universal information fluid."
+  },
+  "crown_house_relation": {
+    "rule": "Crown and House are different coordinates.",
+    "crown": "vertical orientation / terminal / supra-cranial symbolic center",
+    "house": "deep paired thalamic architecture bordering the third ventricle",
+    "court": "third ventricular cavity between/adjacent to thalamic-hypothalamic walls",
+    "door": "pineal project mapping near posterior third-ventricle region",
+    "axis_relation": "The symbolic Axis rises through the body toward the crown while the anatomical pathways enter the skull through brainstem systems and distribute into deep House/Court/Door networks before cortical and surface-level processing.",
+    "visualization_rule": "Never place the thalamus literally on top of the skull just because House is associated with Crown/North in project symbolism."
+  },
+  "number_33": {
+    "anatomy": "33 is a conventional count of vertebral elements: 7 cervical + 12 thoracic + 5 lumbar + 5 sacral + 4 coccygeal.",
+    "adult_fusion": "The 5 sacral vertebrae and usually 4 coccygeal elements fuse, so an adult does not have 33 freely movable vertebrae.",
+    "neural_mismatch": "The nervous system has 31 spinal nerve pairs/segments, not 33.",
+    "project_use": "Use 33 as the bony Ladder count. If the project later develops 33 symbolic levels, each level must be labeled as project symbolism rather than a one-to-one functional neural level.",
+    "historical_religious_caution": "Do not infer a Christian or other religious 33-level anatomy merely from number coincidence unless a historical source explicitly makes that connection."
+  },
+  "historical_physicalization_of_subtle_body": {
+    "medieval_layer": "Kuṇḍalinī and cakra systems arose in varied medieval tantric/yogic contexts with subtle channels and centers; there was no single timeless standardized seven-center anatomical map.",
+    "modern_translation_layer": "From the nineteenth and twentieth centuries, interpreters increasingly translated subtle-body concepts into modern physiology. Harvard's 2026 historical overview highlights Vasant Rele's 1927 identification of suṣumṇā with spinal cord, iḍā/piṅgalā with sympathetic chains, sahasrāra with cerebrum, amṛta with CSF, and kundalini with the vagus nerve.",
+    "project_rule": "These modern physicalizations are historically important comparators, not accepted neurobiology and not evidence that medieval sources secretly described modern anatomy.",
+    "significance": "The project can now track a genealogy: traditional subtle body → modern physiological reinterpretation → Potatoverse comparative anatomy, keeping all three strata separate."
+  },
+  "visualization_layers": [
+    "Layer 1: vertebral bones (33 conventional elements)",
+    "Layer 2: spinal cord + 31 neural segments",
+    "Layer 3: cauda equina / nerve roots / filum terminale",
+    "Layer 4: meninges + subarachnoid CSF River",
+    "Layer 5: autonomic sympathetic / parasympathetic routes",
+    "Layer 6: five project spinal gates",
+    "Layer 7: brow / crown / above-crown centers",
+    "Layer 8: intracranial House / Court / Door route",
+    "Layer 9: historical chakra/kundalini overlays with dates",
+    "Layer 10: evidence/boundary badges"
+  ],
+  "research_questions": [
+    "Should project '33 levels' be individual vertebrae, regional rungs, or a nested hierarchy where individual bones sit inside larger five-gate zones?",
+    "How should the cauda equina be visualized symbolically: roots below the cord, a horse-tail branching system, or simply a scientific lower-axis structure?",
+    "Can lumbar cistern / River-around-roots become a stronger Root/Garden image without implying mystical CSF function?",
+    "Should foramen magnum be promoted as the formal Hinge between Ladder and intracranial House?",
+    "How should the project's five spinal gates map onto bony regions without pretending that historical chakras were vertebral levels?"
+  ],
+  "sources": [
+    {
+      "topic": "33 vertebrae, cord termination, 31 spinal nerves",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK526133/"
+    },
+    {
+      "topic": "vertebral column anatomy and embryology",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK525969/"
+    },
+    {
+      "topic": "spinal subarachnoid space and S2 termination",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK551715/"
+    },
+    {
+      "topic": "lumbar cistern",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK557521/"
+    },
+    {
+      "topic": "spinal meninges and CSF",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK547755/"
+    },
+    {
+      "topic": "adult central canal anatomy and frequent occlusion",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5234862/"
+    },
+    {
+      "topic": "kundalini physicalization history",
+      "url": "https://cswr.hds.harvard.edu/news/2026/04/23/kundalini"
+    }
+  ],
+  "connections": [
+    "knowledge/body/inner-axis-integrated-atlas.json",
+    "knowledge/corporium/ladder-33-vertebrae-five-centers-study.json",
+    "knowledge/body/body-axis-chakra-kundalini-comparative-atlas.json",
+    "knowledge/body/neurotheology-axis-house-spirit-atlas.json",
+    "knowledge/body/body-science-context-atlas.json",
+    "data/potatoism-thalamus-brain-map.json"
+  ]
+}

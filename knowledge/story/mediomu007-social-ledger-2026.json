@@ -1,0 +1,71 @@
+{
+  "id": "mediomu007-social-ledger-2026",
+  "title": "Mediomu007 — Social & Story Ledger 2026",
+  "version": "1.0.0",
+  "updated": "2026-09-20",
+  "subject": {
+    "id": "mediomu007",
+    "display_name": "Mediomu007",
+    "handle": "@mediomu007",
+    "class": "person / public chat participant"
+  },
+  "purpose": "Preserve Mediomu007 as a recurring person with ordinary chat, questioning and project-narrative layers without turning symbolic mountain material into literal biography.",
+  "source_rule": "Public chat, recovered conversation and project narrative are distinct. Symbolic mountain placement is a later narrative interpretation unless a source explicitly says otherwise.",
+  "strata": [
+    {
+      "date_or_period": "2026-08-24",
+      "source_mode": "project conversation archaeology",
+      "summary": "Existing project files place Tim and Mediomu007 in a Mount-Zion-like mountain story looking over Swamp/burned bridges before forgiveness, bridge-building and renewed planting. This is stored as project narrative/interpretation.",
+      "confidence": "conversation archaeology"
+    },
+    {
+      "date_or_period": "2026-09-06",
+      "source_mode": "conversation-recovered public chat",
+      "summary": "Mediomu007 asks whether Tim is literally God or instead a myth, establishing a questioning/clarification role in the theology discussion.",
+      "confidence": "conversation recovered"
+    },
+    {
+      "date_or_period": "2026-09-20",
+      "source_mode": "user-supplied public YouTube chat capture",
+      "summary": "Top-fan UI shows @mediomu007 as #2 in the supplied capture. Mediomu says hello, describes rearranging and cleaning the room—moving TV and console closer and relocating the bed, desk and bedside table—asks 'what up?' and later says goodbye.",
+      "confidence": "direct supplied capture"
+    }
+  ],
+  "ordinary_texture": [
+    "room organization and practical comfort appear directly in the September 20 chat",
+    "Mediomu's presence can be brief and ordinary rather than always symbolic",
+    "the same person can occupy practical, questioning and creative-narrative roles on different dates"
+  ],
+  "recurring_scene_functions": [
+    {
+      "role": "public chat companion",
+      "status": "documentary"
+    },
+    {
+      "role": "questioner / clarification seeker",
+      "status": "conversation recovered"
+    },
+    {
+      "role": "bridge-building / mountain companion",
+      "status": "project narrative layer"
+    },
+    {
+      "role": "room-maker / organizer",
+      "status": "literal September 20 act; symbolic House comparison optional"
+    }
+  ],
+  "symbolic_relation": {
+    "project_files": [
+      "knowledge/core/tim-role-synthesis.json",
+      "knowledge/core/vertical-potato-mountain-plane-atlas.json"
+    ],
+    "interpretation": "The literal act of rearranging a bedroom can sit beside the project's House/Room language as a resonant image, but the archive should not claim the chat participant was performing a theological House ritual."
+  },
+  "routes": [
+    "rooms/potatoverse-canon/beings/mediomu/",
+    "knowledge/core/tim-role-synthesis.json",
+    "knowledge/core/vertical-potato-mountain-plane-atlas.json",
+    "knowledge/story/cast-book.json",
+    "knowledge/story/character-archive-v2.json"
+  ]
+}

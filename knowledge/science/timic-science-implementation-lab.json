@@ -1,0 +1,167 @@
+{
+  "id":"timic-science-implementation-lab",
+  "title":"Timic Science Implementation Lab — Models, Simulations, Metrics & Falsifiers",
+  "updated":"2026-09-09",
+  "status":"canonical implementation layer for archive-derived toy models",
+  "purpose":"Turn the science canon into things that can actually be implemented, simulated, measured, compared and rejected. Every module below defines state variables, equations, outputs, null models and failure conditions. It does not promote symbolic mappings into established physics.",
+  "modules":[
+    {
+      "id":"lab-01-axis-door-spiral",
+      "title":"Axis + Door + Spiral Hybrid Dynamics",
+      "state":"X=(x,y,m)",
+      "temporal_flow":"F(X)=(-ωy-γx, ωx-γy, κx²)",
+      "axis_flow":"A(X)=(αx, -αy, η)",
+      "commutator_test":"compute [F,A]=J_F A-J_A F",
+      "door_guard":"G(X)=x²+y²-r_c²",
+      "door_reset":"D(x,y,m)=(q x,q y,m+Δm), 0<q≤1",
+      "outputs":["number of Door crossings","return distance in x,y","memory drift Δm","winding number","commutator norm","Lyapunov estimate"],
+      "null_models":["A=0","[F,A]=0 matched model","Door disabled"],
+      "question":"Does transformed recurrence appear specifically because structural and temporal flows do not commute, or does ordinary oscillation explain it?",
+      "falsifier":"If the noncommuting model adds no robust behavior beyond simpler matched baselines, Axis-Time noncommutativity is unnecessary for this toy system."
+    },
+    {
+      "id":"lab-02-needle-bottleneck",
+      "title":"Needle as Information Bottleneck",
+      "variables":"X high-dimensional incoming representation; Z compressed Door state; Y downstream-relevant target",
+      "objective":"L_IB=I(X;Z)-β I(Z;Y)",
+      "metrics":["compression I(X;Z)","retained relevant information I(Z;Y)","prediction loss","reconstruction error","minimal sufficient dimension"],
+      "project_result":"A narrow gate can be better when it discards irrelevant information while preserving task-relevant structure.",
+      "null_model":"random projection with equal output dimension",
+      "failure_condition":"If the Door representation preserves no more relevant information than random compression, the proposed Needle encoding has no demonstrated advantage."
+    },
+    {
+      "id":"lab-03-house-chart-consistency",
+      "title":"House / Rooms as Knowledge Atlas",
+      "state":"canonical entity c with domain charts φ_i(c)",
+      "transition":"h_ij=φ_j∘φ_i^{-1}",
+      "consistency_test":"h_ki∘h_jk∘h_ij≈Id on triple overlaps",
+      "repository_metrics":["duplicate canonical entities","unmapped aliases","contradictory crosswalks","round-trip information loss","orphan charts"],
+      "implementation":"Treat theology, science, chronology, economics and culture records as contextual charts over canonical entities rather than competing copies.",
+      "failure_condition":"If two charts cannot be translated without changing the asserted identity or epistemic class, they are not merely coordinate views and must remain separate objects."
+    },
+    {
+      "id":"lab-04-dimensional-filtration",
+      "title":"Potatoverse Dimensional Filtration",
+      "levels":[1,2,3,4,5,6,7,8,10,11],
+      "project_labels":{"1":"hell/line","2":"frame","3":"box","4":"dweller/society","5":"Door/self/observer","6":"seed","7":"root","8":"branches","10":"Tree","11":"Eye/integration"},
+      "implementation":"For each level define allowed node types, edge types, observables and transformations; build inclusion maps F_k→F_l where justified.",
+      "persistent_feature_test":"track concepts/relations that survive across successive levels; persistent homology may be used only when a genuine simplicial filtration is constructed.",
+      "key_question":"What capability is gained at each level?",
+      "failure_condition":"If level labels do not induce nested mathematical structures, treat the sequence as taxonomy rather than filtration."
+    },
+    {
+      "id":"lab-05-torus-return",
+      "title":"Toroidal Recurrence / Winding Lab",
+      "state":"(θ,φ)∈T²",
+      "dynamics":"θdot=ω_1+K sin(φ-θ); φdot=ω_2+K sin(θ-φ)",
+      "outputs":["rotation number","phase locking","winding pair","recurrence time","coverage of torus","memory variable after return"],
+      "derived_question":"Can two cyclic processes produce apparent return without exact total-state repetition?",
+      "failure_condition":"If one-dimensional periodic dynamics reproduces the same observations, toroidal state space is unnecessary."
+    },
+    {
+      "id":"lab-06-two-boundary-handshake",
+      "title":"Advanced/Retarded Two-Boundary Solver",
+      "model":"minimize action or path cost J[q]=∫L(q,qdot,t)dt subject to q(t_i)=q_i and q(t_f)=q_f",
+      "comparison":"ordinary initial-value problem with q(t_i),qdot(t_i) specified",
+      "outputs":["path difference","sensitivity to final boundary","cost","stability","number of admissible paths"],
+      "interpretation":"Tests global two-sided constraint solving; not future-to-past messaging.",
+      "external_neighbor":"time-symmetric advanced/retarded Green-function formulations",
+      "failure_condition":"Do not infer retrocausal signaling from a boundary-value solution."
+    },
+    {
+      "id":"lab-07-life-strife-branching",
+      "title":"Life / Strife Multi-Type Branching",
+      "state":"z_n=(L_n,S_n)^T",
+      "dynamics":"E[z_(n+1)|z_n]=M z_n",
+      "matrix":"M=[[m_LL,m_LS],[m_SL,m_SS]]",
+      "outputs":["spectral radius ρ(M)","dominant eigenvector","extinction probability","cross-type conversion","tipping thresholds"],
+      "network_extension":"xdot=-κL_Gx+f(x) with signed/typed edges",
+      "project_result":"Branch dominance becomes a question of reproduction, conversion and loss parameters rather than moral labels alone.",
+      "failure_condition":"If empirical network data do not support distinct propagation processes, keep Life/Strife as symbolic classification."
+    },
+    {
+      "id":"lab-08-meme-replicator",
+      "title":"Meme / Logos Replication Dynamics",
+      "state":"frequency vector x_i of meme variants",
+      "dynamics":"xdot_i=Σ_j Q_ij f_j x_j-φx_i",
+      "graph_layer":"adoption state evolves over social graph with diffusion/threshold terms",
+      "measurements":["R_eff","mutation matrix Q","community jump rate","half-life","variant entropy","source attribution confidence"],
+      "project_result":"Signal propagation, contagion and replication are three different mechanisms and should be separately measured.",
+      "failure_condition":"Do not call something self-replicating unless copies/variants and transmission events can be operationally identified."
+    },
+    {
+      "id":"lab-09-meta-recursion",
+      "title":"Recursion-of-Recursion / Self-Improving Archive",
+      "state_update":"x_(n+1)=F_(θ_n)(x_n)",
+      "rule_update":"θ_(n+1)=G(θ_n,e_n)",
+      "error":"e_n=L(x_n,target)",
+      "repository_observables":["validation failures per commit","duplicate-rate trend","orphan-rate trend","search recall","source coverage","canonical-owner compression ratio","time-to-fix recurring defect class"],
+      "derived_result":"A project is meta-improving only if the mechanism that performs corrections itself improves, not merely if content volume grows.",
+      "failure_condition":"More commits or more files alone do not demonstrate recursive improvement."
+    },
+    {
+      "id":"lab-10-starchforce-promotion",
+      "title":"Starchforce: Reservoir Model → Fifth-Force Test Harness",
+      "safe_generic_model":"Kdot=P_in-P_out-ΓK",
+      "physical_promotion_candidate":"V(r)=-(Gm_1m_2/r)[1+α exp(-r/λ)]",
+      "required_parameters":["α strength","λ range","what property carries the coupling","screening mechanism if any","units","source","detector","predicted deviation"],
+      "null":"Newtonian/GR gravity plus known interactions",
+      "promotion_rule":"Starchforce remains a storage/capacity metaphor or generic reservoir variable until a parameterized interaction predicts observations distinguishable from known physics.",
+      "failure_condition":"No unique deviation → no physical-force promotion."
+    },
+    {
+      "id":"lab-11-black-hole-door",
+      "title":"Compactness / Door Regime Lab",
+      "variables":"M,R,ρ,T,B,...",
+      "compactness":"C=GM/(Rc²)",
+      "order_parameter":"Ξ=a_C C+a_ρ(ρ/ρ*)+a_T(T/T*)+a_B(B²/B*²)+...",
+      "guard":"Ξ≥Ξ_c",
+      "external_baseline":"event-horizon criterion is determined by spacetime geometry; for Schwarzschild r_s=2GM/c²",
+      "project_use":"Tests what a threshold model would require if black holes are used as Door comparators.",
+      "failure_condition":"A chosen Ξ with no independent calibration or observable transition is only a toy order parameter."
+    },
+    {
+      "id":"lab-12-precessing-axis",
+      "title":"Axis Identity vs Orientation",
+      "state":"unit vector n(t)",
+      "dynamics":"ndot=Ω_p×n",
+      "external_anchor":"Earth's spin axis precesses over about 26,000 years; astronomy therefore specifies epochs for coordinates.",
+      "project_result":"A reference role can remain stable while the vector representing its orientation changes.",
+      "implementation":"Attach coordinate frame and epoch to celestial North/Eye claims.",
+      "failure_condition":"Do not infer metaphysical recurrence from Earth's axial precession alone."
+    },
+    {
+      "id":"lab-13-neuro-symbolic-routing",
+      "title":"House / Eye / Flow Neuro-Symbolic Comparator",
+      "state":"neural subsystem states x_T (thalamic), φ_C (circadian phase), q_CSF (fluid variables)",
+      "thalamus_model":"xdot_T=A_Tx_T+B_Tu; gating weights g_i(state,attention) regulate routed signals",
+      "pineal_model":"φdot_C=ω_C+Z(φ_C)u_light(t); melatonin output M(φ_C,darkness)",
+      "csf_model":"continuity + pressure/flow compartment model",
+      "science_boundary":"Thalamus routing/integration, pineal circadian melatonin physiology and CSF flow are established physiological topics. Their Father/House, Son/Eye and Spirit mappings remain symbolic/project correspondences.",
+      "derived_result":"The pineal comparator is scientifically stronger as phase/timing than as literal vision; the thalamus comparator is stronger as differentiated routing/integration than as a single undivided center; CSF is stronger as a regulated fluid-flow comparator than as evidence for a spiritual substance.",
+      "failure_condition":"Never infer spiritual ontology from neuroanatomical function."
+    }
+  ],
+  "shared_output_schema":["model_id","epistemic_class","parameters","units","initial_conditions","boundary_conditions","baseline","observables","prediction","failure_condition","source_provenance"],
+  "implementation_priority":[
+    "1. Axis + Door + Spiral hybrid dynamics",
+    "2. House chart consistency against the actual repository",
+    "3. Needle information-bottleneck model",
+    "4. Meta-recursive repository improvement metrics",
+    "5. Life/Strife branching and meme propagation",
+    "6. Toroidal recurrence and winding",
+    "7. Two-boundary solver",
+    "8. Dimensional filtration",
+    "9. Black-hole/Starchforce test harnesses",
+    "10. Neuro-symbolic routing comparator"
+  ],
+  "verified_external_anchors":[
+    {"topic":"information bottleneck","note":"Tishby, Pereira and Bialek formalize compression that preserves information relevant to a target variable."},
+    {"topic":"Earth axial precession","note":"NASA describes Earth's axis tracing a precessional circle over about 26,000 years and explains epoch dependence of celestial coordinates."},
+    {"topic":"pineal gland","note":"NCBI Endotext identifies light-dark information and melatonin secretion as the principal established pineal function."},
+    {"topic":"thalamus","note":"Neuroscience reviews describe differentiated thalamic nuclei participating in relay, modulation, integration, memory, attention and cognition."},
+    {"topic":"CSF","note":"NCBI StatPearls describes continuous CSF production and pulsatile flow influenced by cardiac pulse, respiration, posture and circadian variation."},
+    {"topic":"advanced/retarded radiation","note":"Wheeler-Feynman absorber theory is a genuine time-symmetric advanced/retarded radiation framework; this does not imply practical future signaling."}
+  ],
+  "connections":["conversation-recovery-derived-results","fundamental-science-unification-canon","potato-dynamics-2-toy-model","equation-ledger","model-testing-protocol","science-master-index"]
+}

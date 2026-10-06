@@ -1,0 +1,100 @@
+{
+  "id": "house-atlas-systems-theory-index",
+  "version": "1.0.0",
+  "updated": "2026-09-13",
+  "status": "exploratory-research-index",
+  "canonical": false,
+  "runtime_contract": false,
+  "purpose": "Machine-readable index of systems, information, graph, logic, provenance and maintenance ideas being tested against the existing House / Atlas architecture.",
+  "governing_rule": "Promote a formalism only when it solves a repeated concrete problem, fits an existing owner or contract, survives cross-domain counterexamples and can be tested or validated without creating a competing architecture.",
+  "notes": [
+    {"id":"cybernetics-control","path":"knowledge/research/house-atlas-systems-theory/01-system-cybernetics-and-control.md","topics":["requisite variety","observability","controllability","viability","feedback","stocks and flows","resilience"]},
+    {"id":"information-compression","path":"knowledge/research/house-atlas-systems-theory/02-information-compression-and-views.md","topics":["information bottleneck","rate distortion","minimum description length","navigation entropy","orientation budget","Mountain coarse-graining","Tree expansion"]},
+    {"id":"graph-family-north","path":"knowledge/research/house-atlas-systems-theory/03-graph-family-and-north.md","topics":["North arborescence","broader context graph","typed multigraph","provenance graph","temporal graph","argument graph","relation records"]},
+    {"id":"logic-provenance-time","path":"knowledge/research/house-atlas-systems-theory/04-logic-provenance-time-and-truth-maintenance.md","topics":["contradiction","argument graph","truth maintenance","valid time","recorded time","interpretation time","provenance","causal firewall","type discipline"]},
+    {"id":"maintenance-health-growth","path":"knowledge/research/house-atlas-systems-theory/05-maintenance-health-and-growth.md","topics":["Promote","Merge","Split","Archive","Deprecate","Project","Reparent","Validate","Prune","Room pressure","health vector","dependency graph"]},
+    {"id":"retrieval-ranking","path":"knowledge/research/house-atlas-systems-theory/06-retrieval-ranking-and-question-routing.md","topics":["lexical retrieval","semantic retrieval","graph retrieval","temporal retrieval","question routing","personalized PageRank","retrieval provenance"]},
+    {"id":"dependency-invalidation","path":"knowledge/research/house-atlas-systems-theory/07-provenance-dependency-and-invalidation.md","topics":["W3C PROV neighbor","dependency lineage","derived aggregates","invalidation","event sourcing analogy","incremental build","provenance of interpretation"]},
+    {"id":"advanced-math","path":"knowledge/research/house-atlas-systems-theory/08-advanced-math-candidates.md","topics":["spectral graph","hyperbolic hierarchy","Hodge flow","topological persistence","sheaf-like consistency","Formal Concept Analysis","open-system composition"]}
+  ],
+  "formal_house_model": {
+    "notation": "H=(V,T_N,E_B,E_R,E_P,E_T,A,Pi,Sigma)",
+    "components": {
+      "V": "stable canonical identities",
+      "T_N": "selected rooted North arborescence used for canonical orientation",
+      "E_B": "other broader-context relations",
+      "E_R": "typed semantic and functional Roads",
+      "E_P": "provenance and derivation dependencies",
+      "E_T": "temporal, validity and version relations",
+      "A": "artifacts and preserved source strata",
+      "Pi": "reader and machine projections",
+      "Sigma": "schemas, types, validators and invariants"
+    },
+    "research_interpretation": "One North is compatible with many legitimate contexts when canonical North is an orientation arborescence embedded in richer typed graphs."
+  },
+  "candidate_principles": [
+    {"id":"requisite-variety","expression":"Match complexity in the backend; compress complexity at the interface.","use":"Schemas, relation types, epistemic states and room grammars must be expressive enough for corpus diversity without exposing all complexity at once."},
+    {"id":"lossy-view","expression":"Every View is a lossy channel; declare what it is allowed to lose.","use":"Projection contracts should record material omissions, aggregation and source path back."},
+    {"id":"compression-with-distinction","expression":"Good architecture compresses repetition without compressing distinctions.","use":"Guide consolidation and Room fission using an MDL-like complexity tradeoff."},
+    {"id":"north-arborescence","expression":"One North can be a selected arborescence inside a richer reality.","use":"Keep one stable canonical parent while preserving other broader contexts as Roads/Views."},
+    {"id":"typed-centrality","expression":"Centrality is always centrality under a graph definition.","use":"Prevent graph metrics from silently becoming truth, authority, causality or universal importance."},
+    {"id":"interface-composition","expression":"Composition should happen at interfaces, not by erasing boundaries.","use":"Keep modules/Rooms differentiated while validating their shared interfaces."},
+    {"id":"observability","expression":"A healthy system requires enough sensors to observe the failures it claims to regulate.","use":"Validators and health audits should cover the failure modes named in governance rules."},
+    {"id":"type-safety","expression":"Make impossible states difficult to represent.","use":"Relation/schema contracts should prevent category errors before presentation."},
+    {"id":"three-clocks","expression":"When it happened, when we learned it, and when we interpreted it are different times.","use":"Separate validity, recording and interpretation time for recovered/developing material."},
+    {"id":"process-provenance","expression":"Know not only where a claim came from, but what process turned it into the current representation.","use":"Track transformations, activities and agents for major syntheses/derived outputs."},
+    {"id":"dependency-dual-use","expression":"Dependency knowledge should power both provenance and incremental builds.","use":"Use lineage for impact analysis, stale detection and selective rebuild/review."},
+    {"id":"mountain-tree","expression":"Mountain and Tree are inverse navigation directions, not necessarily inverse functions.","use":"Coarse-graining is lossy even if navigation can return to source ingredients."},
+    {"id":"reversible-experiment","expression":"Experiment in reversible Views; mutate canonical identity conservatively.","use":"Keep costly merges/reparents/deletes behind stronger review than projection experiments."},
+    {"id":"swamp-garden","expression":"Swamp is a diagnostic vector; Garden is a viability region.","use":"Avoid moral or universal scalar scores; retain multiple failure/health dimensions."},
+    {"id":"truth-vs-availability","expression":"Retrieval failure is a system state, not automatically a claim about reality.","use":"Differentiate absent, unindexed, alias-hidden, source-only, unresearched and unavailable."},
+    {"id":"learning-system","expression":"The system learns only if contradiction can change the model.","use":"Provide review routes from contradiction/question back into canonical revision or durable unresolved state."},
+    {"id":"metric-safeguard","expression":"Health metrics should diagnose, not become isolated targets.","use":"Reduce Goodhart pressure from node counts, relation counts, coverage or confidence scores."},
+    {"id":"growth-cycle","expression":"Expansion without gardening becomes Swamp; gardening without expansion becomes a museum.","use":"Alternate exploration with consolidation, validation and pruning."}
+  ],
+  "graph_layers": [
+    {"id":"north","structure":"rooted arborescence","purpose":"stable orientation"},
+    {"id":"broader-context","structure":"typed DAG/multigraph","purpose":"other legitimate larger contexts"},
+    {"id":"semantic-road","structure":"typed directed multigraph","purpose":"ordinary relations"},
+    {"id":"provenance","structure":"derivation/dependency graph","purpose":"source and transformation lineage"},
+    {"id":"temporal","structure":"event/validity/version graph","purpose":"development through time"},
+    {"id":"quantitative-flow","structure":"directed weighted temporal graph","purpose":"dimensioned flows"},
+    {"id":"argument","structure":"support/attack/qualification graph","purpose":"dispute and inference"},
+    {"id":"build-dependency","structure":"dependency DAG","purpose":"rebuild and review invalidation"}
+  ],
+  "maintenance_operators": ["Promote","Merge","Split","Archive","Deprecate","Project","Reparent","Validate","Prune"],
+  "time_coordinates": ["valid_time","recorded_time","interpretation_time"],
+  "health_dimensions": [
+    "canonical_owner_coverage",
+    "provenance_coverage",
+    "typed_relation_coverage",
+    "unresolved_endpoint_rate",
+    "duplicate_owner_pressure",
+    "stale_projection_pressure",
+    "contradiction_handling_coverage",
+    "reader_orientation_quality",
+    "build_reproducibility",
+    "integration_loss_visibility",
+    "source_freshness_by_domain",
+    "room_pressure",
+    "generic_relation_ratio"
+  ],
+  "advanced_candidates": [
+    {"id":"spectral-graph","status":"candidate","gate":"defined non-geographic graph and concrete layout/diagnostic need"},
+    {"id":"hyperbolic-hierarchy","status":"candidate","gate":"deep hierarchy whose Euclidean navigation is demonstrably poor"},
+    {"id":"hodge-flow","status":"strict-candidate","gate":"directed edges with compatible quantities, units, period and source coverage"},
+    {"id":"topological-persistence","status":"research-only","gate":"real threshold-sensitivity question on sufficiently large empirical graph"},
+    {"id":"sheaf-like-consistency","status":"research-only","gate":"ordinary cross-view consistency validators become insufficient"},
+    {"id":"formal-concept-analysis","status":"research-only","gate":"actual object-attribute data and a neighborhood-discovery task"},
+    {"id":"category-composition","status":"research-only","gate":"typed subsystem interfaces need formal composition beyond ordinary schemas"}
+  ],
+  "red_team": [
+    "Do not use mathematics merely because vocabulary resembles project symbolism.",
+    "Do not infer truth, authority, morality or causality from centrality, clustering or visual proximity.",
+    "Do not use entropy without a defined probability/coding model.",
+    "Do not use control theory without declared states, observations, controls and constraints.",
+    "Do not treat Mountain compression as lossless.",
+    "Do not add advanced formalism where a simple schema, validator or typed relation solves the problem.",
+    "Do not promote research notes into canonical architecture without a repeated concrete need."
+  ]
+}

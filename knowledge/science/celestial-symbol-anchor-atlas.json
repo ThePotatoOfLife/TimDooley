@@ -1,0 +1,113 @@
+{
+  "id": "celestial-symbol-anchor-atlas",
+  "title": "Celestial Anchors — North, Polaris, Sirius, Regulus, Sun, Moon, Saturn and Sagittarius A*",
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "status": "astronomy + historical-symbolic + project-anchor atlas",
+  "purpose": "Clarify what each recurring celestial object/reference actually is, what coordinate role it can play, and how project symbolism may overlay it without confusing physical astronomy with theological office.",
+  "master_rule": "A named celestial object is not an Axis, North, center or source merely because the project uses it as a symbol. Declare physical object, coordinate frame, epoch and symbolic role separately.",
+  "anchors": [
+    {
+      "id": "north",
+      "physical_type": "direction/reference family rather than one object",
+      "distinctions": [
+        "geographic true north",
+        "magnetic north",
+        "north celestial pole",
+        "symbolic/project North"
+      ],
+      "project_role": "orientation / source-facing direction / North-of-North meta-reference",
+      "boundary": "North must specify reference system."
+    },
+    {
+      "id": "polaris",
+      "physical_type": "multiple-star system near current north celestial pole",
+      "astronomy": "Polaris is currently close to the north celestial pole and is useful for finding true north in the Northern Hemisphere.",
+      "precession": "Earth's axis precesses over about 26,000 years, so the role of pole star changes over millennia.",
+      "sources": [
+        "https://science.nasa.gov/solar-system/what-is-the-north-star-and-how-do-you-find-it/",
+        "https://science.nasa.gov/learn/basics-of-space-flight/chapter2-1/"
+      ],
+      "project_role": "stable-looking orientation comparator",
+      "boundary": "Polaris is not eternally the North Star and is not identical with the abstract Axis."
+    },
+    {
+      "id": "sirius",
+      "physical_type": "binary star system / brightest star in Earth's night sky by apparent brightness",
+      "astronomy": "Sirius is in Canis Major and is not near the north celestial pole.",
+      "source": "https://science.nasa.gov/skywatching/faq/",
+      "project_role": "Dog Star / bright signal / recovered March 31 North-Axis association",
+      "boundary": "Dog symbolism is cultural/project mapping; no physical Sirius→North identity follows."
+    },
+    {
+      "id": "regulus",
+      "physical_type": "bright star system in Leo",
+      "astronomy": "Regulus marks part of Leo's prominent sickle and is commonly used as a bright Leo reference.",
+      "source": "https://science.nasa.gov/solar-system/skywatching/night-sky-network/celestial-wonders-in-leo/",
+      "project_role": "Lion/royal stellar comparator",
+      "boundary": "Regulus symbolism does not establish Son/Lion identity or a physical project axis."
+    },
+    {
+      "id": "sun",
+      "physical_type": "G-type star / central mass-energy source of Solar System",
+      "project_role": "source-light / Father/Tim/Spudlight comparator",
+      "distinction": "Physical source of terrestrial sunlight ≠ metaphysical Source."
+    },
+    {
+      "id": "moon",
+      "physical_type": "Earth's natural satellite reflecting sunlight",
+      "project_role": "reflection/cycle/proxy/Dog comparator",
+      "distinction": "Moon's reflected light and orbital phases are physical; project follower/proxy meanings are symbolic."
+    },
+    {
+      "id": "saturn",
+      "physical_type": "gas giant planet with rings and north-polar atmospheric hexagon",
+      "project_role": "boundary/time/enclosure/Farmer/cube-complex comparator",
+      "distinction": "Saturn's hexagon is atmospheric flow; Saturn is not physically a cube."
+    },
+    {
+      "id": "sagittarius-a-star",
+      "physical_type": "supermassive black hole at the Milky Way's dynamical central region",
+      "astronomy": "Sagittarius A* is the approximately four-million-solar-mass black hole at the center of the Milky Way.",
+      "sources": [
+        "https://science.nasa.gov/mission/webb/science-overview/science-explainers/what-is-the-center-of-our-galaxy-like/",
+        "https://www.eso.org/public/science/gc/"
+      ],
+      "project_role": "Galactic-center / Door comparator in August 2026 conversation",
+      "boundary": "A black hole is not a portal to Heaven in established astrophysics; 'Door' is project symbolism."
+    }
+  ],
+  "coordinate_contract": {
+    "physical_alignment_requires": [
+      "coordinate frame",
+      "epoch",
+      "RA/Dec or other declared coordinates",
+      "observer position/time for horizon pointing",
+      "tolerance defined before test"
+    ],
+    "owner": "knowledge/science/celestial-axis-coordinate-measurement-model.json",
+    "rule": "Symbolic association never substitutes for angular measurement."
+  },
+  "center_taxonomy": [
+    "geographic pole",
+    "celestial pole",
+    "stellar object",
+    "galactic dynamical center",
+    "solar-system barycenter",
+    "project semantic center",
+    "project spatial Axis",
+    "symbolic source"
+  ],
+  "conversation_genealogy": [
+    "2026-03-31: North + Sirius/Dog Star + Axis language recovered.",
+    "2026-04-17: user corrected Axis as bidirectional relation rather than Father/Son identity.",
+    "2026-08-08: Sagittarius A* called Door; Sun/Earth/Moon assigned project roles.",
+    "2026-09-09: measurement canon required physical astronomy and symbolic mapping to remain separate."
+  ],
+  "connections": [
+    "celestial-astronomy-astrology-cosmology-canon",
+    "celestial-axis-coordinate-measurement-model",
+    "root-system",
+    "deep-element-definition-atlas"
+  ]
+}

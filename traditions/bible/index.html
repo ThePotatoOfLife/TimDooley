@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tim, the Son & the Bible — Story, Prophecy & Comparison</title>
+<meta name="description" content="Focused Tim Dooley / Son / Bible comparison browser with atlas navigation, chronology, scripture order, evidence filters, source direction, counter-texts and canonical provenance.">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<link rel="canonical" href="https://thepotatooflife.github.io/TimDooley/traditions/bible/">
+<link rel="stylesheet" href="../../app/site-system.css">
+<link rel="stylesheet" href="../../app/bible-study.css">
+<link rel="stylesheet" href="../../app/bible-library.css">
+<link rel="stylesheet" href="../../app/bible-atlas-navigation.css">
+<link rel="stylesheet" href="../../app/tts-drawer.css">
+</head>
+<body>
+<main class="bible-page">
+<nav class="page-nav bible-nav" aria-label="Bible comparison navigation"><a href="../../religion/">← Religion</a><a href="../../timeline/?view=bible">Timeline</a><a href="../comparative-cosmology/">Comparative cosmology</a><a href="../../tim-dooley/">Tim Dooley</a><a href="../../">Home</a></nav>
+
+<section class="study-shell" id="study-tool" aria-label="Tim and Son biblical comparison study tool">
+<span id="compare" class="comparison-anchor" aria-hidden="true"></span>
+<h1 class="sr-only">Tim and the Son Bible comparison</h1>
+<section class="atlas-explorer" id="atlas-explorer" hidden aria-label="Explore the Bible comparison atlas">
+<div class="atlas-intro">
+<div class="eyebrow">Explore without searching</div>
+<h2>Explore the Tim / Son story from another angle</h2>
+<p>Start with Tim / Son chronology, then branch into roles, symbols, transformations, stories or Bible books only when they help answer what happened and what it resembles.</p>
+</div>
+<div class="atlas-routes" id="atlas-routes" aria-label="Atlas routes"></div>
+<nav class="atlas-breadcrumbs" id="atlas-breadcrumbs" aria-label="Atlas location"></nav>
+<div class="atlas-topics" id="atlas-topics"></div>
+</section>
+
+
+
+<div class="reader-toolbar">
+<div class="toolbar-field focus-field">
+<label for="focus-select">Focus</label>
+<select id="focus-select">
+<optgroup label="Study views">
+<option value="view:core">Core Tim / Son story</option>
+<option value="view:tim-lived">Full Tim / Son story</option>
+<option value="view:tim-said">What Tim said</option>
+<option value="view:prophecy">Prophecy / public signs</option>
+<option value="view:jesus">Jesus / Gospel parallels</option>
+<option value="view:father-house">Father / House</option>
+<option value="view:door-ladder">Door / Ladder</option>
+<option value="view:death-return">Death / Return</option>
+<option value="view:revelation-zion">Revelation / Zion</option>
+<option value="view:counter-texts">Counter-texts</option>
+<option value="view:all">Everything</option>
+</optgroup>
+<optgroup label="Structural arcs">
+<option value="arc:god-presence">God / Presence</option>
+<option value="arc:garden-spirit">Garden / Spirit</option>
+<option value="arc:door-ladder">Door / Gate / Ladder</option>
+<option value="arc:death-return">Seed / Death / Return</option>
+<option value="arc:father-house">Father / House / Source</option>
+</optgroup>
+</select>
+</div>
+
+<div class="toolbar-field order-field">
+<label for="order-select">Order</label>
+<select id="order-select">
+<option value="story">Story order</option>
+<option value="asc">Oldest → newest</option>
+<option value="desc">Newest → oldest</option>
+<option value="strength">Strongest first</option>
+<option value="bible">Bible order</option>
+</select>
+</div>
+
+<div class="toolbar-field search-field">
+<label for="search">Find</label>
+<input id="search" type="search" placeholder="Optional shortcut: John 12, Father, gardener…" autocomplete="off">
+</div>
+
+<div class="reader-actions">
+<button class="toolbar-button" id="clear-search" type="button">Clear</button>
+<button class="toolbar-button" id="filter-toggle" type="button" aria-expanded="false">Filters <span id="filter-count">0</span></button>
+<button class="toolbar-button" id="results-toggle" type="button" aria-expanded="false">Results <span id="result-count">0</span></button>
+</div>
+</div>
+
+<div class="study-status" aria-live="polite">
+<span>Studying</span><strong class="active-view" id="active-view">Core Tim / Son story</strong><span id="study-count">Loading…</span><span class="shortcut-hint">← → navigate · / find · R random</span>
+</div>
+
+<div class="filters-panel" id="bible-filters" hidden>
+<div class="filters">
+<div class="filter"><label for="operator">Operator</label><select id="operator"><option value="">All operators</option></select></div>
+<div class="filter"><label for="actor">Actor</label><select id="actor"><option value="">All actors</option></select></div>
+<div class="filter"><label for="evidence-kind">Evidence</label><select id="evidence-kind"><option value="">All evidence classes</option></select></div>
+<div class="filter"><label for="discovery-mode">Discovery</label><select id="discovery-mode"><option value="">All discovery modes</option></select></div>
+<div class="filter"><label for="relation-class">Relation class</label><select id="relation-class"><option value="">All relation classes</option></select></div>
+<div class="filter"><label for="bible-book">Bible book</label><select id="bible-book"><option value="">All books</option></select></div>
+<div class="filter"><label for="minimum-strength">Minimum strength</label><select id="minimum-strength"></select></div>
+<div class="filter"><label for="from-year">From year</label><input id="from-year" inputmode="numeric" placeholder="1987"></div>
+<div class="filter"><label for="to-year">To year</label><input id="to-year" inputmode="numeric" placeholder="2026"></div>
+</div>
+<div class="filter-footer"><label class="toggle-filter"><input id="exact-wording-only" type="checkbox"> Exact / recovered project wording only</label><button class="reset-filters" id="reset-filters" type="button">Reset filters</button></div>
+</div>
+
+<div class="results-panel" id="results-panel" hidden>
+<div class="drawer-head"><strong>Current result sequence</strong><span>Choose any relation without changing the current focus or filters.</span></div>
+<div class="results-list" id="results-list"></div>
+</div>
+
+<div id="bible-tts-drawer" class="bible-tts-drawer" aria-label="Read the active Bible comparison aloud"></div>
+
+<div class="comparison-nav" aria-label="Comparison navigation">
+<button id="previous-relation" type="button">← Previous</button>
+<div class="position-wrap"><strong id="result-position">0 / 0</strong><span id="sequence-label">chronology</span></div>
+<button class="roll" id="roll-relation" type="button">Random</button>
+<button id="next-relation" type="button">Next →</button>
+</div>
+
+<div class="active-relation" id="active-relation" aria-live="polite"><div class="loading">Loading canonical comparisons…</div></div>
+
+<noscript>
+<p class="noscript-note">JavaScript is unavailable, so the compact canonical index is shown below. Open an item to inspect its comparison.</p>
+</noscript>
+<div class="relations static-index" id="relations"><!-- BIBLE_RELATIONS_STATIC --></div>
+</section>
+<section class="comparison-boundary" aria-label="How to read the comparison">
+  <p><strong>Keep the layers separate.</strong> Biblical text, Tim/Son evidence, later interpretation and historical corroboration are not the same thing. A resemblance is not automatically prophecy, identity or dependence. <a href="../../context/source-authority/">Source rules →</a></p>
+  <p>When a motif opens into Norse, Kabbalistic, Buddhist, Daoist or other neighboring traditions, use the <a href="../comparative-cosmology/">comparative cosmology</a> after the Bible comparison rather than importing those systems into the biblical text.</p>
+</section>
+
+
+<section class="bible-guided" id="tim-son-story" aria-label="Tim and Son story with biblical reflections">
+  <div class="guided-head">
+    <div>
+      <div class="eyebrow">The spine of this page</div>
+      <h2>Follow Tim and the Son through time</h2>
+      <p>The life sequence is primary. Open an event to see where biblical scenes, Jesus traditions, prophetic language or counter-texts help explain what the archive is looking at.</p>
+    </div>
+    <p class="guided-rule">Event first → dated wording → biblical reflection → later interpretation. The Bible does not replace the event, and later recognition is not backdated.</p>
+  </div>
+
+  <div class="life-map-head">
+    <div>
+      <div class="eyebrow">Tim / Son chronology</div>
+      <h3>Where the Bible comparisons attach to the life</h3>
+    </div>
+    <a href="../../timeline/?view=bible">Open full Bible timeline →</a>
+  </div>
+  <div class="life-map" aria-label="Tim and Son Bible comparison life sequence">
+    <a href="?focus=view:core&order=story&id=childhood-cultivation-gardener-precursor-1992" class="life-stop"><time>1992-era</time><strong>Cultivation</strong><span>literal childhood garden → later Gardener prehistory</span></a>
+    <a href="?focus=view:core&order=story&id=christian-vocabulary-enters-age12-1999" class="life-stop"><time>1999 · age 12</time><strong>Jesus enters the conscious vocabulary</strong><span>religious studies and church context introduce Christianity, sacrifice and salvation; the later Luke-2 age-twelve comparison remains only a chronological/intertextual resonance</span></a>
+    <a href="?focus=view:core&order=story&id=light-collapse-return-2003" class="life-stop"><time>2003 · age 16</time><strong>Collapse → light → return</strong><span>the remembered tunnel/structured-light episode later receives Acts/resurrection-style comparisons; experience first, biblical interpretation later</span></a>
+    <a href="?focus=view:core&order=story&id=motorcycle-blood-unbroken-bones-2005" class="life-stop"><time>2005 · age 18</time><strong>Crash &amp; reconstruction</strong><span>severe injury, blood loss and long reconstruction become death-nearness / reconstitution prehistory; later Passion/Passover parallels remain retrospective and evidence-limited</span></a>
+    <a href="?focus=view:core&order=story&id=care-home-rise-walk-witness-2009-era" class="life-stop is-new"><time>2009-era</time><strong>Care &amp; walking</strong><span>rise → walk → witnesses; reported rehabilitation and sight/mobility themes are compared without treating medical causality as independently established</span></a>
+    <a href="?focus=view:core&order=story&id=tree-ordeal-hanging-curse-redemption-2011" class="life-stop"><time>2011</time><strong>Tree ordeal</strong><span>Tree suffering / transformation; separate from later crucifixion</span></a>
+    <a href="?focus=view:core&order=story&id=yahya-john-lamb-recognition-2016" class="life-stop"><time>2016</time><strong>Prison recognition</strong><span>Yahya / John name-role + Jesus / Lamb recollection</span></a>
+    <a href="?focus=view:core&order=story&id=crucify-me-hesitation-trial-neighbor-2017" class="life-stop"><time>2017</time><strong>Crucifixion declaration</strong><span>Jesus-Christ / crucify-me language appears before the later meme-death interpretation</span></a>
+    <a href="?focus=view:core&order=story&id=persona-death-old-new-self-2018" class="life-stop is-new"><time>2018</time><strong>Persona death</strong><span>old-self / new-self grammar rather than bodily resurrection</span></a>
+    <a href="?focus=view:core&order=story&id=son-meme-crucifixion-burial-2019-2020" class="life-stop"><time>2019–20</time><strong>Meme death &amp; seed</strong><span>crucifixion → burial / concealment → Door / Vessel → emergence</span></a>
+    <a href="?focus=view:core&order=story&id=potato-birth-hidden-life-2020-12-25" class="life-stop"><time>25 Dec 2020</time><strong>Tim / Potato birth</strong><span>project-canonical hidden/seed beginning; earliest exact 2020 attestation remains a recovery target, and Fatherhood is still future</span></a>
+    <a href="?focus=view:core&order=story&id=chosen-gentile-potato-2024-10-02" class="life-stop is-new"><time>2021–2024</time><strong>Hidden Potato → public identity</strong><span>mask / incubation → Great Book → Chosen Vegetable and die-for-sins satire → public “Potato of Life” identity; the mature Father/Ladder system has not yet arrived</span></a>
+    <a href="?focus=view:core&order=story&id=potato-axis-turning-ladder-2025-04-21" class="life-stop"><time>Apr 2025</time><strong>Father / Ladder hinge</strong><span>Tim's source-facing identity expands into Ladder, Axis, House and Father language; birth and later role-completion remain separate</span></a>
+    <a href="?focus=view:core&order=story&id=emmaus-return-before-recognition-bread" class="life-stop is-new"><time>2026</time><strong>Return becomes staged recognition</strong><span>return before recognition → gardener misrecognition → appearance interval → shore recognition, feeding and service</span></a>
+    <a href="#prophetic-unity" class="life-stop is-new"><time>2026</time><strong>Public Father theology</strong><span>God/Father declarations, witness, prophecy-language, North/Axis and stewardship become explicit public doctrine</span></a>
+  </div>
+
+  <div class="guided-latest">
+    <strong>Continuity repaired in this pass</strong>
+    <p><b>1999</b> is now a real cultural-input hinge rather than a label floating above the comparator. <b>2018 persona death</b>, <b>2019–20 meme/personhood death</b> and <b>25 Dec 2020 Potato birth</b> are kept as three different transitions. <b>2021–2024</b> now has a visible incubation/public-identity bridge before the <b>April 2025 Father/Ladder turning</b>. The 2026 return material is also staged as recognition and service rather than collapsed into one generic resurrection card.</p>
+  </div>
+</section>
+<section class="identity-keys" aria-label="Who is who in the story">
+  <div class="eyebrow">Keep the actors straight</div>
+  <h2>Four hinges prevent the story from collapsing into one biography</h2>
+  <div class="identity-key-grid">
+    <article><time>31 Jul 1987</time><strong>The Son / human vessel</strong><p>Childhood, work, the 2011 Tree ordeal, prison and the later persona/meme-death corridor belong first to the Son-side lived timeline.</p></article>
+    <article><time>2018 → 25 Dec 2020</time><strong>Persona death → meme death → Tim / Potato</strong><p>The archive separates identity rupture in 2018, symbolic/social personhood death in 2019–20 and the later project-canonical Potato birth rather than calling all three “resurrection.”</p></article>
+    <article><time>2021–2024</time><strong>Potato / Sage incubation</strong><p>Mask, observation, humor, Great Book experimentation and increasingly explicit public Potato language develop before the mature Father/source role.</p></article>
+    <article><time>Apr 2025</time><strong>Father / Ladder realization</strong><p>Tim's later Father, Ladder, Axis, House and North language grows from this hinge rather than being projected backward into childhood or the 2020 birth marker.</p></article>
+  </div>
+  <p class="identity-key-note">These are project-canonical distinctions. They help the reader track who a scene belongs to before comparing it with Jesus, Jacob, prophetic figures or Revelation.</p>
+  <div class="guided-latest">
+    <strong>Deep research owners behind this public spine</strong>
+    <p>The visible reader is a projection over a larger Jesus/Son research field rather than its replacement. <a href="../../knowledge/theology/jesus-son-research-index.json">Jesus/Son research index</a> routes the whole field; <a href="../../knowledge/theology/son-jesus-longitudinal-christology-atlas.json">longitudinal Christology atlas</a> follows the full life; <a href="../../knowledge/theology/son-jesus-passion-detention-overlap-atlas.json">Passion / detention atlas</a> keeps custody and Passion comparisons precise; and <a href="../../knowledge/traditions/chapter-24-jesus-parallel-atlas.json">Chapter 24 parallel atlas</a> preserves early-life and biographical comparators with explicit strength/boundary labels.</p>
+  </div>
+</section>
+
+
+<section class="story-meaning" id="story-arcs" aria-label="Major Tim and Son story arcs">
+  <div class="story-meaning-head">
+    <div class="eyebrow">What the story is doing</div>
+    <h2>Seven arcs carry the Tim / Son Bible story</h2>
+    <p>The comparator works best as a developmental story: ordinary formation first, then rupture, naming, death/transition, hidden growth, source-facing theology and finally return as recognition and service.</p>
+  </div>
+  <div class="story-arc-grid">
+    <article>
+      <div class="arc-no">01</div><h3>Ordinary formation → later symbolic vocabulary</h3>
+      <p><strong>What happened.</strong> Childhood cultivation, early Christian vocabulary, bodily injury/reconstruction and later care work all precede the mature theology.</p>
+      <p><strong>Biblical mirror.</strong> Cultivation, formation, suffering, care and healing stories can illuminate later interpretation without turning childhood biography into prophecy.</p>
+      <p><strong>Why it matters.</strong> The symbols have lived precursors. Garden, sacrifice, repair and care do not appear from nowhere in 2025–2026.</p>
+      <a href="?focus=view:core&order=story&id=childhood-cultivation-gardener-precursor-1992">Open the formation arc →</a>
+    </article>
+    <article>
+      <div class="arc-no">02</div><h3>Tree ordeal → knowledge through suffering</h3>
+      <p><strong>What happened.</strong> The Son's 2011 ordeal becomes a major prehistory of later Tree, Axis and transformation language.</p>
+      <p><strong>Biblical mirror.</strong> Tree, wilderness, testing and ascent/descent traditions; later Cross/Tree comparisons are secondary rather than original-at-time.</p>
+      <p><strong>Why it matters.</strong> The project repeatedly treats suffering as something that can become structure, knowledge and orientation rather than merely damage.</p>
+      <a href="?focus=view:core&order=story&id=tree-ordeal-hanging-curse-redemption-2011">Open this arc →</a>
+    </article>
+    <article>
+      <div class="arc-no">03</div><h3>Prison → recognition, naming and witness</h3>
+      <p><strong>What happened.</strong> The 2016 prison period intensifies Bible/Qur'an reading, Yahya/John associations and remembered Lamb/Jesus recognition before the Son's own later declaration.</p>
+      <p><strong>Biblical mirror.</strong> Captivity, witness, naming and recognition scenes—kept as comparison rather than independent corroboration of the remembered event.</p>
+      <p><strong>Why it matters.</strong> The chronology distinguishes recognition attributed to another person from the Son's explicit 2017 self-comparison.</p>
+      <a href="?focus=view:core&order=story&id=yahya-john-lamb-recognition-2016">Open this arc →</a>
+    </article>
+    <article>
+      <div class="arc-no">04</div><h3>Crucifixion language → persona rupture → meme death</h3>
+      <p><strong>What happened.</strong> 2017 Jesus/crucify-me language is followed by 2018 persona/essence rupture and then the 2019–20 meme/personhood-death corridor.</p>
+      <p><strong>Biblical mirror.</strong> Passion and rejected-stone language belongs beside Pauline old-self/new-self grammar and grain/tomb imagery, but those are different death-types rather than one event.</p>
+      <p><strong>Why it matters.</strong> Separating the stages makes the Son-side story intelligible: declaration, identity rupture and symbolic/social death no longer collapse into a single retrospective “crucifixion.”</p>
+      <a href="?focus=view:core&order=story&id=crucify-me-hesitation-trial-neighbor-2017">Open the death corridor →</a>
+    </article>
+    <article>
+      <div class="arc-no">05</div><h3>Potato birth → hidden life → public identity</h3>
+      <p><strong>What happened.</strong> The mature project marks 25 December 2020 as Tim/Potato birth, followed by years of mask/incubation, Great Book experimentation and increasingly explicit public Potato language through 2024.</p>
+      <p><strong>Biblical mirror.</strong> Seed, buried or hidden life, growth, fruit and transformed continuity.</p>
+      <p><strong>Why it matters.</strong> Tim does not become the mature Father at birth. A developmental middle now exists between Son-side death and the 2025 Turning.</p>
+      <a href="?focus=view:core&order=story&id=potato-birth-hidden-life-2020-12-25">Open the hidden-life arc →</a>
+    </article>
+    <article>
+      <div class="arc-no">06</div><h3>Father / Ladder → differentiated access architecture</h3>
+      <p><strong>What happened.</strong> From the April 2025 hinge into 2026, Tim's language expands into Axis, Father, Ladder, House, North and public God declarations while the Son increasingly specializes as Door, Bread, Tomb and Cornerstone.</p>
+      <p><strong>Biblical mirror.</strong> Jacob's Ladder, Father's House, Door, vine/gardener, throne and cornerstone traditions—plus counter-texts where biblical role distribution differs from the project.</p>
+      <p><strong>Why it matters.</strong> The mature theology becomes relational architecture rather than a pile of aliases: source, manifestation and passage are increasingly differentiated.</p>
+      <a href="?focus=view:core&order=story&id=potato-axis-turning-ladder-2025-04-21">Open the architecture arc →</a>
+    </article>
+    <article>
+      <div class="arc-no">07</div><h3>Return → recognition → feeding / service</h3>
+      <p><strong>What happened.</strong> The 2026 research layer stops treating return as one instant and compares several mechanisms: return before recognition, gardener misrecognition, an appearance interval, shore recognition and feeding.</p>
+      <p><strong>Biblical mirror.</strong> Emmaus, Mary at the garden tomb, Acts' post-resurrection interval and John 21.</p>
+      <p><strong>Why it matters.</strong> Return gains an outward test: recognition is incomplete until it reconnects with other people through feeding, care, witness or service. Counter-texts remain visible where project claims diverge from the New Testament.</p>
+      <a href="?focus=view:core&order=story&id=emmaus-return-before-recognition-bread">Open the return arc →</a>
+    </article>
+  </div>
+</section>
+
+<section class="source-voices" id="source-voices" aria-label="Source-near voices">
+  <div class="source-voices-head">
+    <div class="eyebrow">Let the story speak before interpreting it</div>
+    <h2>Four hinges where the wording itself matters</h2>
+    <p>These are source-near formulations preserved by the project. They are shown before the biblical comparison so the reader can see what the archive is actually interpreting.</p>
+  </div>
+  <div class="source-voice-grid">
+    <article>
+      <time>2016 · prison testimony</time>
+      <strong>Recognition by others</strong>
+      <blockquote>“THIS is JESUS CHRIST, The Lamb!”</blockquote>
+      <p>The project attributes this remembered wording to Yahya Hassan during the prison period. The archive treats it as autobiographical/project testimony unless independently corroborated.</p>
+      <a href="?focus=view:core&order=story&id=yahya-john-lamb-recognition-2016+Lamb">Open the prison-recognition comparisons →</a>
+    </article>
+    <article>
+      <time>2017 · Josh Moon confrontation</time>
+      <strong>Self-comparison becomes explicit</strong>
+      <blockquote>“I am Jesus Christ—go on then, crucify me.”</blockquote>
+      <p>The project records this in substance within a dehumanization/martyr frame, followed by a promise of continued public return. Original recording and timestamp remain a high-value recovery target.</p>
+      <a href="?focus=view:jesus&order=asc&q=crucify+2017">Open the 2017 arc →</a>
+    </article>
+    <article>
+      <time>6 Oct 2024 · public Potato identity</time>
+      <strong>The hidden phase becomes plainly named</strong>
+      <blockquote>“Hello I am the Potato of Life. My name is Tim Dooley”</blockquote>
+      <p>This dated public line joins the ordinary name to the Potato identity before the later Father/Axis consolidation. Nearby October posts already use Chosen Vegetable and death-for-sins satire, making 2024 a bridge rather than an empty interval.</p>
+      <a href="?focus=view:core&order=story&id=potatoes-die-for-sins-2024-10-03">Open the 2024 bridge →</a>
+    </article>
+    <article>
+      <time>1 Oct 2026 · public X theology</time>
+      <strong>Father, Ladder and digital domain converge</strong>
+      <blockquote>“I am the Father in heaven. The Father of the internet… The ladder to heaven. The potato of life… Invisibly, present, central…”</blockquote>
+      <p>This directly supplied public post compresses several mature roles into one statement. Its X status ID is preserved in the occurrence ledger.</p>
+      <a href="#prophetic-unity">Open the October prophetic cluster →</a>
+    </article>
+  </div>
+</section>
+
+<section class="core-findings" id="core-findings" aria-label="Interpretive findings">
+  <div class="core-findings-head">
+    <div class="eyebrow">Interpretive lessons</div>
+    <h2>What the comparison work clarifies</h2>
+    <p>These are recurring interpretive lessons from the archive. They describe how the project material can be compared with biblical texts without treating resemblance as proof of identity or fulfillment.</p>
+  </div>
+  <div class="core-findings-grid">
+    <article><strong>Rejection can become structure</strong><p>Later project theology often reinterprets rejection and concealment as Door, Vessel or Cornerstone functions.</p></article>
+    <article><strong>Recognition has a chronology</strong><p>The archive distinguishes claimed recognition by others from later explicit self-comparison.</p></article>
+    <article><strong>Return has different forms</strong><p>Regression, repetition, homecoming and transformed return should not be treated as one idea.</p></article>
+    <article><strong>Authority can be tested by care</strong><p>Shepherd, Gardener, Father and King imagery becomes more informative when compared with feeding, protection, repair and service.</p></article>
+    <article><strong>Door is relational</strong><p>Biblical door language can include invitation, response, hospitality and participation as well as passage.</p></article>
+    <article><strong>Role difference matters</strong><p>Some passages are most useful because they keep Father, Son, House, Builder, Vine or Ladder functions distinct.</p></article>
+    <article><strong>Service constrains exaltation</strong><p>Texts such as Philippians 2 place descent and service before exaltation, providing a meaningful counterweight to status language.</p></article>
+    <article><strong>The sequence ends outward</strong><p>Many biblical restoration patterns culminate in fruit, feeding, repair, healing and restored participation rather than ascent alone.</p></article>
+  </div>
+  <p class="core-findings-source"><a href="../../explore/#record=knowledge%2Ftraditions%2Ftim-son-biblical-core-findings-2026-10-01.json">Open the full synthesis record →</a></p>
+</section>
+
+
+<section class="bible-guided" id="prophetic-grammar" aria-label="Worked prophetic grammar">
+  <div class="guided-head">
+    <div>
+      <div class="eyebrow">Worked reading · prophetic grammar</div>
+      <h2>How “three days of darkness” opens into a larger biblical vocabulary</h2>
+      <p>This is not one hidden sentence scattered across the Bible. It is a family of motifs that different books reuse: bounded time, darkness, cloud, trumpet, voice, sealing, silence and sevenfold completion. The useful work is tracing where the motifs actually touch—and where they do not.</p>
+    </div>
+    <p class="guided-rule">Do not call resemblance “fulfillment” by default. First establish the earlier wording and date; then separate textual parallel, later recognition, prediction and independently checkable event.</p>
+  </div>
+
+  <div class="canon-map" aria-label="Three days darkness cloud trumpet voice seal seven sequence">
+    <a href="?q=Exodus+10%3A21-23" class="canon-stop"><span>01</span><strong>Three days + darkness</strong><small>Exodus 10: darkness over Egypt lasts three days. This is an actual three-day-darkness text, but it is not the Sinai trumpet scene.</small></a>
+    <a href="?q=Exodus+19%3A10-19" class="canon-stop"><span>02</span><strong>Third day + cloud + trumpet + voice</strong><small>Sinai: preparation reaches the third day; thick cloud, an increasingly loud trumpet and divine voice mark encounter.</small></a>
+    <a href="?q=Joel+2%3A1-2" class="canon-stop"><span>03</span><strong>Trumpet + darkness + cloud</strong><small>Joel binds the motifs directly in Day-of-the-Lord language; Zephaniah 1 uses a similar darkness/cloud/trumpet cluster.</small></a>
+    <a href="?q=Matthew+24%3A29-31" class="canon-stop"><span>04</span><strong>Darkening + clouds + trumpet + gathering</strong><small>Matthew 24 reuses cosmic darkening, coming on clouds and a great trumpet around gathering.</small></a>
+    <a href="?q=1+Thessalonians+4%3A16-17" class="canon-stop"><span>05</span><strong>Trumpet + clouds + meeting</strong><small>Paul joins the trumpet of God to being caught up in clouds; 1 Corinthians 15 joins the “last trumpet” to mystery and transformation.</small></a>
+    <a href="?q=Revelation+8%3A1-6" class="canon-stop"><span>06</span><strong>Seal → silence → seven trumpets</strong><small>The seventh seal opens into silence before seven angels prepare seven trumpets. Completion begins with a pause, not immediate spectacle.</small></a>
+    <a href="?q=Revelation+10%3A4-7" class="canon-stop"><span>07</span><strong>Sealed thunder → mystery → seventh trumpet</strong><small>Some utterance remains sealed; the “mystery of God” reaches completion in the seventh-trumpet horizon, followed by kingdom proclamation in Revelation 11.</small></a>
+  </div>
+
+  <div class="guided-latest">
+    <strong>What a phrase like “three days of darkness” can mean without pretending the texts are one code</strong>
+    <p><b>Three days</b> can mark a bounded threshold. <b>Darkness</b> can mark judgment, concealment or disorientation. <b>Cloud</b> can mark presence that remains veiled. <b>Trumpet</b> can summon, warn, announce or gather. <b>Voice</b> turns hidden presence into speech. <b>Seal and silence</b> mark withheld access. <b>Seven</b> can organize a sequence toward completion. The meaning of any one occurrence still comes from its own passage.</p>
+  </div>
+
+  <div class="canon-map" aria-label="How to classify a claimed prophetic relation">
+    <a href="../../rooms/inside/prediction-revelation-time/" class="canon-stop"><span>R</span><strong>Revelation</strong><small>A relation becomes newly readable. This can happen retrospectively and does not require a prior prediction.</small></a>
+    <a href="?q=typology" class="canon-stop"><span>T</span><strong>Typology</strong><small>An older scriptural form recurs or is reapplied in another setting. Structural resemblance is the point.</small></a>
+    <a href="?focus=view:prophecy&order=asc" class="canon-stop"><span>P</span><strong>Prophecy / prior sign</strong><small>The wording must exist before the later event if the archive wants to test foresight rather than later interpretation.</small></a>
+    <a href="../../rooms/inside/prediction-revelation-time/" class="canon-stop"><span>F</span><strong>Fulfillment</strong><small>Highest bar: prior wording, specificity, timing, independent event evidence, alternatives and misses all remain visible.</small></a>
+  </div>
+
+  <div class="guided-latest">
+    <strong>Carry this test into any prophecy claim</strong>
+    <p><b>1 · Earlier?</b> Can you recover the wording from before the event? <b>2 · Specific?</b> What outcomes would have counted as a miss? <b>3 · Independent?</b> Is the later event established without relying on the interpretation itself? <b>4 · Context?</b> Does the biblical passage actually mean what the comparison needs it to mean? <b>5 · Alternatives?</b> How many other events or texts could fit equally well? <b>6 · Misses?</b> Are failed predictions and bad parallels preserved beside the impressive ones?</p>
+    <p>If those questions cannot be answered, the material may still be powerful as theology, literature, typology or retrospective revelation. It just has not yet earned the stronger evidentiary label.</p>
+  </div>
+
+  <div class="guided-latest">
+    <strong>Two useful sequences now owned by the overlap atlas</strong>
+    <p><b>Manifestation grammar:</b> bounded interval → darkness/concealment → cloud/presence → trumpet/summons → voice/disclosure. <b>Revelation grammar:</b> sealed/hidden → silence/waiting → opening → trumpet sequence → mystery/disclosure → proclamation. These are research operators for reading; neither sequence is itself proof that a modern event fulfilled Revelation.</p>
+    <p><a href="../../knowledge/traditions/biblical-overlap-atlas.json">Inspect the Biblical Overlap Atlas →</a> · <a href="../../knowledge/prophecy/seals-and-fulfillment-matrix.json">Inspect the seals / fulfillment method →</a></p>
+  </div>
+</section>
+
+<section class="bible-guided" id="prophetic-unity" aria-label="Prophetic unity map">
+  <div class="guided-head">
+    <div>
+      <div class="eyebrow">Prophetic unity · 1 October 2026 integration</div>
+      <h2>Read proclamation, witness, rejection, throne and counter-text together</h2>
+      <p>The newest public declarations become more intelligible when they are not reduced to the phrase <em>I am God</em>. The denser biblical network is name + witness + deaf/blind accusation + public commission + throne/footstool + rejection/recognition + judgment. The archive also preserves a major contradiction: canonical resurrection texts conflict directly with the sentence “Jesus is dead.”</p>
+    </div>
+    <p class="guided-rule">A biblical parallel can describe rhetorical form, narrative structure or symbolic architecture. It does not by itself establish divine identity, prophecy fulfillment or audience assent.</p>
+  </div>
+  <div class="canon-map" aria-label="Prophetic unity relations">
+    <a href="?focus=view:tim-said&order=desc&q=Isaiah+43" class="canon-stop"><span>01</span><strong>Name + witness</strong><small>Exodus 3 · Isaiah 43 · John 8 → first-person divine identity beside public witness</small></a>
+    <a href="?focus=view:prophecy&order=bible&q=Isaiah+6" class="canon-stop"><span>02</span><strong>Deaf / blind accusation</strong><small>Isaiah 6 · Jeremiah 5 · Ezekiel 12 → prophetic non-recognition grammar</small></a>
+    <a href="?focus=view:prophecy&order=bible&q=Ezekiel+33" class="canon-stop"><span>03</span><strong>Watchman / square</strong><small>speak → hear or refuse → witness/accountability; proclamation is not prediction</small></a>
+    <a href="?focus=view:father-house&order=bible&q=Isaiah+66" class="canon-stop"><span>04</span><strong>Throne / footstool</strong><small>Isaiah 66 · Psalm 110 → heaven above / earth below inside mature House geometry</small></a>
+    <a href="?focus=view:death-return&order=bible&q=John+20" class="canon-stop"><span>05</span><strong>Rejection → recognition</strong><small>stone · Emmaus · gardener · return; compare scenes, not rejection alone</small></a>
+    <a href="?focus=view:counter-texts&order=bible&q=Romans+6%3A9" class="canon-stop"><span>!</span><strong>“Jesus is dead” counter-text</strong><small>Romans 6:9 · Revelation 1:18 explicitly keep the risen Christ living</small></a>
+  </div>
+  <div class="guided-latest">
+    <strong>Latest public nexus · 1 October</strong>
+    <p><b>Father in heaven → Father/God of the internet → staring/witness → original/first → Ladder to Heaven → Potato of Life → invisible presence → center → culture/subculture → Swamp.</b> One public post now compresses roles that had developed separately across the previous year. Biblical neighbors include Matthew 6:9, Genesis 28 / John 1:51, invisible-God language in Colossians 1:15 and 1 Timothy 1:17, and the mire family in Psalm 40:2. The archive records the comparison without turning the post's divinity, ownership or centrality claims into independent conclusions.</p>
+    <p><a href="?focus=view:father-house&order=desc&q=Father+internet+ladder">Trace the nexus in the atlas →</a> · <a href="../../explore/#record=knowledge%2Ftraditions%2Frational-potato-x-biblical-reference-occurrence-index-2024-2026.json">Open the dated X/Bible occurrence index →</a></p>
+  </div>
+  <div class="guided-latest">
+    <strong>The deeper unity</strong>
+    <p>The site's strongest long-form biblical sequence remains <b>Seed → Root/Tree → Ladder → Door → death → return → restored Garden/City</b>. The October public corpus adds a second, more prophetic sequence: <b>Name → proclamation → witness → refusal/non-recognition → judgment → throne</b>. These two sequences now meet without being collapsed into one claim.</p>
+    <p><a href="../../rooms/inside/prediction-revelation-time/">Open prophecy / revelation method →</a> · <a href="../../explore/#record=knowledge%2Ftraditions%2Fbiblical-prophetic-synthesis-2026-10-01.json">Open the full synthesis record →</a></p>
+  </div>
+</section>
+
+<section class="bible-guided" id="start-here" aria-label="Start here">
+  <div class="guided-head">
+    <div>
+      <div class="eyebrow">How the comparison works</div>
+      <h2>When you want to check a parallel, keep four layers separate</h2>
+      <p>The aim is not to force a verdict. It is to make the strongest connections legible while keeping source, scripture, interpretation and disagreement separate enough that a reader can inspect them.</p>
+    </div>
+    <p class="guided-rule">Ask four questions in order: What was actually said? What does the biblical text actually say? What is the structural relation? What remains interpretation or claim?</p>
+  </div>
+  <div class="canon-map" aria-label="Evidence layers">
+    <a href="?focus=view:tim-said&order=desc" class="canon-stop"><span>A</span><strong>Attestation</strong><small>dated public wording, event, source ID, chronology</small></a>
+    <a href="#bible-library" class="canon-stop"><span>B</span><strong>Biblical text</strong><small>read the passage in its own book before using it as a comparator</small></a>
+    <a href="?focus=view:all&order=strength" class="canon-stop"><span>↔</span><strong>Parallel</strong><small>shared function, sequence, image or rhetorical form—with mismatches visible</small></a>
+    <a href="../../rooms/inside/prediction-revelation-time/" class="canon-stop"><span>?</span><strong>Interpretation</strong><small>prophecy, revelation, typology, synchronism and prediction receive different labels</small></a>
+  </div>
+  <div class="guided-latest">
+    <strong>Fast routes</strong>
+    <p><a href="#prophetic-unity">Latest prophetic/public cluster →</a> · <a href="?focus=view:jesus">Jesus / Son parallels →</a> · <a href="?focus=view:father-house">Father / House →</a> · <a href="?focus=view:counter-texts">Counter-texts →</a> · <a href="../../timeline/?view=bible">Bible chronology →</a></p>
+  </div>
+</section>
+<section class="bible-guided" id="role-grammar-bridge" aria-label="Role grammar bridge">
+  <div class="guided-head"><div><div class="eyebrow">Deeper lens · after the story</div><h2>Where biblical roles agree, split or reverse the project roles</h2>
+  <p>Jacob's ladder, the Son of Man, Father's House, the Key of David, the veil, the living Way and the coming city form a network of access images. Their value is strongest when the archive records where biblical roles move between Father, Son, House, Gate, community and divine presence instead of forcing one-to-one matches.</p></div>
+  <p class="guided-rule">Comparison question: which function is present—source, support, access, mediation, dwelling, movement, judgment, repair—and who carries it in this text?</p></div>
+  <div class="canon-map">
+    <a href="?focus=view:door-ladder&order=bible" class="canon-stop"><span>01</span><strong>Jacob → Son of Man</strong><small>ladder / gate / House → ascent/descent relocated onto the Son</small></a>
+    <a href="?q=Hebrews+3" class="canon-stop"><span>02</span><strong>Builder / House / Son</strong><small>anti-collapse grammar for Father's House</small></a>
+    <a href="?q=Isaiah+22" class="canon-stop"><span>03</span><strong>Key / peg / vessels</strong><small>access authority + fixed support + dependent vessels</small></a>
+    <a href="?q=Hebrews+10" class="canon-stop"><span>04</span><strong>Veil / living Way</strong><small>threshold becomes embodied access</small></a>
+    <a href="?q=Revelation+22" class="canon-stop"><span>05</span><strong>River / Tree / fruit</strong><small>source-flow-growth-healing sequence</small></a>
+    <a href="?q=Daniel+7" class="canon-stop"><span>06</span><strong>Throne / Son / kingdom</strong><small>authority is distributed across differentiated roles</small></a>
+  </div>
+</section>
+
+
+
+
+<section class="bible-guided" aria-label="Cross-tradition side chambers"><div class="guided-head"><div><div class="eyebrow">Loose comparative doors</div><h2>When the biblical motif continues into another tradition</h2><p>The Bible remains the source owner for Genesis Trees, Jacob's Ladder, cherubim, prophetic throne imagery and Christian reception. Side chambers show how later Jewish mysticism and Norse world-tree traditions solve related structural problems without being silently folded into scripture.</p></div><p class="guided-rule">Bible text first → later tradition second → project comparison third.</p></div><div class="canon-map"><a href="../comparative-cosmology/kabbalah-qliphoth/" class="canon-stop"><span>J</span><strong>Kabbalah / Qliphoth</strong><small>sefirot · angels · shells · tikkun · later occult reception</small></a><a href="../comparative-cosmology/norse-world-tree/" class="canon-stop"><span>N</span><strong>Yggdrasil / Eddas</strong><small>world tree · wells · Odin · Norns · realms · renewal</small></a><a href="../comparative-cosmology/" class="canon-stop"><span>↔</span><strong>Comparative Cosmology</strong><small>Christianity · Buddhism · Daoism · Potatoism · functional crosswalk</small></a></div></section>
+
+
+<div class="bible-library-separator">
+  <div class="eyebrow">Reference shelf · use when you need the text</div>
+  <h2>Read the Bible itself</h2>
+  <p>The Tim / Son story and comparison tool above are the main experience. Come here when you want to inspect an exact book, chapter or verse directly.</p>
+</div>
+<section class="bible-library" id="bible-library" aria-label="Bible scripture library">
+  <div class="bible-library-head">
+    <div>
+      <div class="eyebrow">Scripture library</div>
+      <h2>Read the Bible itself</h2>
+      <p>The comparison atlas sits beside a real book-and-chapter library: the complete 80-book 1611 KJV catalogue is preserved as metadata, while exact chapter reading uses the separate 66-book public-domain World English Bible source.</p>
+    </div>
+    <div class="bible-library-summary" id="bible-library-summary" aria-label="Bible catalogue summary"></div>
+  </div>
+  <p class="bible-library-loading">Loading the scripture catalogue…</p>
+
+  <div class="bible-library-groups" id="bible-library-groups" aria-label="Bible divisions"></div>
+
+  <div class="bible-library-tools">
+    <div class="bible-library-tabs" aria-label="Filter Bible books by section">
+      <button type="button" data-bible-section="all" class="is-active" aria-pressed="true">All 80</button>
+      <button type="button" data-bible-section="old" aria-pressed="false">Old Testament</button>
+      <button type="button" data-bible-section="apocrypha" aria-pressed="false">KJV Apocrypha</button>
+      <button type="button" data-bible-section="new" aria-pressed="false">New Testament</button>
+    </div>
+    <div class="bible-library-search-row">
+      <input id="bible-book-search" type="search" placeholder="Find a book or division — Isaiah, wisdom, gospel…" autocomplete="off" aria-label="Find a Bible book">
+      <span id="bible-book-count">80 books</span>
+    </div>
+    <div class="bible-book-grid" id="bible-book-grid" aria-label="Bible books"></div>
+  </div>
+
+  <section class="bible-library-reader" id="bible-library-reader" hidden aria-label="Selected Bible book">
+    <div class="bible-library-reader-head">
+      <div>
+        <div class="eyebrow">Selected book</div>
+        <h3 id="bible-reader-book">John</h3>
+        <p id="bible-reader-meta"></p>
+      </div>
+      <div class="bible-library-reader-controls">
+        <select id="bible-reader-chapter" aria-label="Choose chapter"></select>
+        <button id="bible-read-chapter" type="button">Read exact WEB chapter</button>
+      </div>
+    </div>
+    <p class="bible-reader-source" id="bible-reader-source"></p>
+    <form class="bible-reference-form" id="bible-reference-form">
+      <input id="bible-reference-input" type="text" placeholder="Open a precise WEB reference — John 12:24; Genesis 28:12-17" aria-label="Bible reference">
+      <button type="submit">Open reference</button>
+    </form>
+    <div class="bible-reference-help">The reference reader supports book + chapter, verse, ranges, comma continuations and semicolon-separated passages inside the current 66-book WEB source.</div>
+  </section>
+</section>
+
+
+<section class="source-recovery" id="source-recovery" aria-label="Source recovery priorities">
+  <div class="eyebrow">Research priorities</div>
+  <h2>What would make the archive stronger next</h2>
+  <p>The next gains should come from recovering source-nearest material for the most important chronology and comparison claims, rather than adding more retrospective prose.</p>
+  <div class="source-recovery-grid">
+    <article><strong>2017 Josh Moon exchange</strong><span>Original recording and timestamp.</span></article>
+    <article><strong>2016 prison recognition</strong><span>Earliest dated wording and any independent witness material.</span></article>
+    <article><strong>North Pole meme</strong><span>Original file, first posting date and earliest interpretation.</span></article>
+    <article><strong>Grain motif</strong><span>Earliest dated wording before later biblical comparison.</span></article>
+    <article><strong>Thomas / Twin</strong><span>First dated public use for the Son.</span></article>
+    <article><strong>Door / Vessel</strong><span>First explicit post-death mapping.</span></article>
+    <article><strong>April 2025 Turning</strong><span>Most source-near reconstruction of the transition.</span></article>
+    <article><strong>Early Father wording</strong><span>Earliest exact public wording with date and context.</span></article>
+  </div>
+</section>
+
+<section class="next-paths" aria-label="Suggested next paths">
+  <div class="eyebrow">Where to go next</div>
+  <h2>Choose the question you actually have</h2>
+  <div class="next-path-grid">
+    <a href="#tim-son-story"><strong>I want the story</strong><span>Return to the Tim / Son chronology and identity hinges.</span></a>
+    <a href="#story-arcs"><strong>I want the meaning</strong><span>Read the five major transformations carrying most of the biblical weight.</span></a>
+    <a href="#prophetic-unity"><strong>I want the prophecy</strong><span>Public declarations, witness, rejection, judgment and October 1.</span></a>
+    <a href="#compare"><strong>I want to test a parallel</strong><span>Open the comparison engine and inspect evidence, scripture and mismatch.</span></a>
+    <a href="#bible-library"><strong>I want the biblical text</strong><span>Leave the synthesis and read the underlying book, chapter or verse.</span></a>
+  </div>
+</section>
+
+<details class="research-notes"><summary>Method and evidence boundaries</summary><div class="research-grid">
+<article><strong>Exact is exact</strong><p>Quoted public wording and recovered attestation text are shown as such. Archive summaries remain summaries.</p></article>
+<article><strong>Timeline matters</strong><p>A later biblical discovery is not backdated into an earlier event. The browser keeps event date, recognition and later synthesis distinct.</p></article>
+<article><strong>Mismatch is evidence too</strong><p>Role conflicts, counter-texts and historical differences remain visible even when a structural parallel is strong.</p></article>
+</div></details>
+</main>
+<script src="../../app/bible-corpus-loader.js"></script>
+<script src="../../app/bible-relation-redirects.js"></script>
+<script src="../../app/bible-atlas-navigation.js"></script>
+<script src="../../app/bible-mining-wave19-loader.js"></script>
+<script src="../../app/bible-mining-wave20-loader.js"></script>
+<script src="../../app/bible-mining-wave22-loader.js"></script>
+<script src="../../app/bible-mining-wave23-loader.js"></script>
+<script src="../../app/bible-dossier-loader.js"></script>
+<script src="../../app/bible-study.js"></script>
+<script src="../../app/tts-reader.js"></script>
+<script src="../../app/tts-drawer.js"></script>
+<script src="../../app/bible-tts-adapter.js"></script>
+<script src="../../app/bible-scripture-reader.js"></script>
+<script src="../../app/bible-library.js"></script>
+<script src="../../app/bible-atlas-ui.js"></script>
+<script src="../../app/house-journey.js"></script></body>
+</html>

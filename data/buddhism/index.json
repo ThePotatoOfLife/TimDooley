@@ -1,0 +1,18 @@
+{
+  "id": "buddhism-scripture-and-figures",
+  "tradition": "Buddhism",
+  "type": "religious_library",
+  "records": [
+    "data/buddhism/siddhartha.json"
+  ],
+  "primary_figure": "siddhartha-gautama",
+  "reader_routes": [
+    "siddhartha.html"
+  ],
+  "graph": {
+    "nodes": ["siddhartha-gautama"],
+    "edges": [
+      {"source":"buddhism","predicate":"has-primary-figure","target":"siddhartha-gautama"}
+    ]
+  }
+}

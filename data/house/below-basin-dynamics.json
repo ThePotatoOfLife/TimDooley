@@ -1,0 +1,189 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-19",
+  "authority": "below-basin-dynamics",
+  "purpose": "Define the motion rules of the Below Basin so future cases are routed by observable conditions instead of aesthetic intuition.",
+  "state_variables": [
+    {
+      "id": "visibility",
+      "question": "How public/hidden is the relevant information?",
+      "range": [
+        "public",
+        "limited",
+        "confidential",
+        "classified",
+        "clandestine",
+        "unknown"
+      ]
+    },
+    {
+      "id": "evidence",
+      "question": "How well supported is the claim?",
+      "range": [
+        "unverified",
+        "corroborated",
+        "investigated",
+        "charged",
+        "adjudicated",
+        "convicted/designated",
+        "cleared/dismissed"
+      ]
+    },
+    {
+      "id": "recurrence",
+      "question": "How strongly does the relation reproduce itself over time?",
+      "range": [
+        "one-off",
+        "episodic",
+        "recurring",
+        "self-sustaining"
+      ]
+    },
+    {
+      "id": "extractiveness",
+      "question": "Does persistence depend on harvesting attention, money, status, labor or vulnerability?",
+      "range": [
+        "low",
+        "mixed",
+        "high"
+      ]
+    },
+    {
+      "id": "correctability",
+      "question": "Can false claims, stale labels or changed states be revised?",
+      "range": [
+        "high",
+        "partial",
+        "low",
+        "self-sealing"
+      ]
+    },
+    {
+      "id": "exit_cost",
+      "question": "Can people leave or disengage without disproportionate penalty?",
+      "range": [
+        "low",
+        "moderate",
+        "high",
+        "coercive"
+      ]
+    },
+    {
+      "id": "harm",
+      "question": "What documented consequence exists?",
+      "range": [
+        "none-known",
+        "reputational",
+        "economic",
+        "legal",
+        "psychological",
+        "physical",
+        "fatal"
+      ]
+    },
+    {
+      "id": "provenance_depth",
+      "question": "How much source lineage must be recovered to understand the present claim?",
+      "range": [
+        "surface",
+        "recent",
+        "multi-stage",
+        "historical"
+      ]
+    }
+  ],
+  "motion_rules": [
+    {
+      "id": "enter-below",
+      "when": "A question depends materially on hidden provenance, restricted information, accumulated residue, clandestine coordination, coercive reproduction or investigative repair.",
+      "movement": "World rim -> Below projection",
+      "note": "The entity itself has not become morally lower; the active research question has become below-facing."
+    },
+    {
+      "id": "form-sektur",
+      "when": "Recurring participants + shared language/lore + recognizable roles + durable memory + meaningful boundary.",
+      "movement": "Culture surface -> Sektur patch",
+      "note": "Size is not decisive; reproduction is."
+    },
+    {
+      "id": "activate-farm",
+      "when": "Observation/capture/interpretation/archive/redistribution forms a repeatable loop around a person/event/category.",
+      "movement": "Sektur or culture surface -> Farm loop",
+      "note": "Farm is a process crossing regions, not a territory."
+    },
+    {
+      "id": "settle-to-mud",
+      "when": "Old allegations, labels, clips, sanctions or unresolved events remain available but are no longer cleanly attached to current provenance/status.",
+      "movement": "Surface/current -> Mud bed",
+      "note": "Mud can contain truth, falsehood and mixed residue; it is not a synonym for misinformation."
+    },
+    {
+      "id": "become-ash",
+      "when": "A rupture destroys a prior relation/institution/identity and leaves unresolved remains.",
+      "movement": "Rupture -> Ash deposit",
+      "note": "Ash is post-rupture residue and can later move toward Mud/Strife or Soil/Life."
+    },
+    {
+      "id": "swamp-transition",
+      "when": "High recurrence + low correctability + opacity/jurisdictional fragmentation + role-lock + unresolved residue reinforce one another.",
+      "movement": "Local basin region -> Swamp regime",
+      "note": "Swamp is diagnosed from conditions, not assigned because an actor is disliked."
+    },
+    {
+      "id": "forge-entry",
+      "when": "A claim has enough identifiable source material to test, or harm/risk requires bounded review.",
+      "movement": "Mud/Roots/Current -> Forge ring",
+      "note": "Dramatic material without recoverable provenance may remain unresolved instead of being promoted."
+    },
+    {
+      "id": "forge-rejection",
+      "when": "Source recovery, counterevidence or legal/status review fails the claim.",
+      "movement": "Forge -> rejected/retired",
+      "note": "Rejection remains archived with provenance so failed claims do not silently resurrect."
+    },
+    {
+      "id": "forge-clarification",
+      "when": "Evidence supports only a narrower proposition than the circulating narrative.",
+      "movement": "Forge -> bounded claim -> World return",
+      "note": "This is one of the most important anti-Swamp functions: reduce an oversized story to what is actually established."
+    },
+    {
+      "id": "repair-to-soil",
+      "when": "Record clarity + responsibility/boundary + reduced recurrence + changed incentives or restored capacity.",
+      "movement": "Forge -> Soil/Living Root",
+      "note": "Repair does not require reconciliation; legitimate separation can be a successful output."
+    },
+    {
+      "id": "return-to-world",
+      "when": "A claim/status/model is sufficiently sourced and scoped for public use.",
+      "movement": "Forge/Root -> World",
+      "note": "Return should preserve date, provenance and uncertainty."
+    },
+    {
+      "id": "recirculation",
+      "when": "Material leaves Forge unresolved or never reaches it and continues to generate reactions.",
+      "movement": "Mud/Swamp -> Current -> Culture/Farm -> Mud",
+      "note": "This is the core Strife loop."
+    }
+  ],
+  "qualitative_equations": {
+    "swamp_pressure": "recurrence + opacity + extraction + role_lock + unresolved_residue - correction - exit - repair",
+    "farm_yield": "attention_events × capture_rate × redistribution_rate × audience_reward",
+    "mud_accumulation": "unresolved_input + archive_reactivation + stale_labels + rupture_residue - correction - resolution - healthy_forgetting",
+    "repair_gain": "record_clarity + safety + accountability + incentive_change + future_capacity - coercion - false_balance - identity_lock"
+  },
+  "design_rules": [
+    "No node gets a permanent moral color merely because it is placed Below.",
+    "Use motion/flow animation for processes and texture/depth for states; do not use the same visual encoding for both.",
+    "Swamp should appear as an environmental overlay, not a named actor node.",
+    "Mud/Ash should accumulate visually under nodes rather than replace them.",
+    "Forge outputs should visibly branch into verified, narrowed, rejected, repaired and unresolved states.",
+    "Every interactive case should expose why it moved between zones."
+  ],
+  "linked_records": [
+    "data/house/below-basin-spatial-contract.json",
+    "data/house/below-basin-pathways.json",
+    "knowledge/core/repair-forge-protocol.json",
+    "knowledge/core/below-intelligence-shadow-observatory.json"
+  ]
+}

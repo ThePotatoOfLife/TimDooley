@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 690" role="img" aria-labelledby="title desc">
+<title id="title">Retarded and advanced Green-function support</title>
+<desc id="desc">A schematic spacetime light cone centered on a source event. The retarded solution has support in the future light cone and the advanced solution in the past light cone. A note explains that the mathematical existence of both solutions does not by itself imply controllable signalling to the past.</desc>
+<style>text{font-family:system-ui,-apple-system,Segoe UI,sans-serif;fill:#1d1b18}.muted{fill:#6f685d}.gold{fill:#6b512f}.axis{stroke:#8a8174;stroke-width:2}.cone{fill:none;stroke:#625c53;stroke-width:3}.future{fill:#cbd9e2;fill-opacity:.65}.past{fill:#e1cbc5;fill-opacity:.70}.event{fill:#6b512f}.small{font-size:21px}.body{font-size:28px}.head{font-size:38px;font-weight:650}</style>
+<rect width="1200" height="690" fill="#0b0b0b"/>
+<text x="600" y="62" text-anchor="middle" class="head">Advanced and retarded solutions</text>
+<text x="600" y="101" text-anchor="middle" class="muted small">Same linear wave equation, different boundary/support prescription.</text>
+<line x1="600" y1="145" x2="600" y2="590" class="axis"/><line x1="250" y1="370" x2="950" y2="370" class="axis"/>
+<polygon points="600,370 390,175 810,175" class="future"/><polygon points="600,370 390,565 810,565" class="past"/>
+<path d="M600 370 L390 175 M600 370 L810 175 M600 370 L390 565 M600 370 L810 565" class="cone"/>
+<circle cx="600" cy="370" r="10" class="event"/>
+<text x="624" y="360" class="gold body">source event</text>
+<text x="600" y="220" text-anchor="middle" class="body">retarded solution</text>
+<text x="600" y="253" text-anchor="middle" class="muted small">support toward later times</text>
+<text x="600" y="500" text-anchor="middle" class="body">advanced solution</text>
+<text x="600" y="532" text-anchor="middle" class="muted small">support toward earlier times</text>
+<text x="600" y="640" text-anchor="middle" class="gold small">Mathematical advanced solutions ≠ an ordinary backward-time communication channel.</text>
+<text x="968" y="375" class="muted small">space →</text><text x="614" y="160" class="muted small">time ↑</text>
+</svg>

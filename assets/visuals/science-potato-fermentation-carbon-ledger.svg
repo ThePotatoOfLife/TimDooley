@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1360 820" role="img" aria-labelledby="title desc">
+<title id="title">Potato fermentation chemistry carbon ledger</title>
+<desc id="desc">A conceptual biochemical mass-balance diagram showing potato starch hydrolysis to fermentable sugars, separate accounting for added sugar, fermentation to ethanol and carbon dioxide, and downstream separation that does not create ethanol.</desc>
+<style>text{font-family:system-ui,-apple-system,Segoe UI,sans-serif;fill:#1d1b18}.muted{fill:#6f685d}.accent{fill:#6b512f}.blue{fill:#4d667d}.green{fill:#526d59}.warn{fill:#8d5e50}.box{fill:#f7f2e8;stroke:#81786a;stroke-width:2}.bio{fill:#e8efe9;stroke:#718978;stroke-width:2.5}.chem{fill:#e8edf0;stroke:#7c8b96;stroke-width:2.5}.line{stroke:#716a60;stroke-width:2.5;fill:none}.dash{stroke:#8a8174;stroke-width:2;stroke-dasharray:8 8;fill:none}.small{font-size:18px}.body{font-size:23px}.head{font-size:38px;font-weight:650}</style>
+<rect width="1360" height="820" fill="#eee9dc"/>
+<text x="680" y="58" text-anchor="middle" class="head">Potato fermentation chemistry · keep the carbon ledger honest</text>
+<text x="680" y="94" text-anchor="middle" class="muted small">Conceptual chemistry only: starch conversion and fermentation are separate stages, and downstream separation does not create ethanol.</text>
+
+<rect x="65" y="200" width="250" height="165" rx="12" class="bio"/>
+<text x="190" y="242" text-anchor="middle" class="green body">Potato starch</text>
+<text x="100" y="292" class="small">(C₆H₁₀O₅)n</text>
+<text x="100" y="328" class="muted small">stored polymeric carbohydrate</text>
+
+<rect x="370" y="200" width="250" height="165" rx="12" class="chem"/>
+<text x="495" y="242" text-anchor="middle" class="blue body">Hydrolysis</text>
+<text x="405" y="292" class="small">starch + H₂O → sugars</text>
+<text x="405" y="328" class="muted small">saccharification stage</text>
+
+<rect x="675" y="200" width="250" height="165" rx="12" class="bio"/>
+<text x="800" y="242" text-anchor="middle" class="green body">Fermentable sugar</text>
+<text x="710" y="292" class="small">C₆H₁₂O₆ comparator</text>
+<text x="710" y="328" class="muted small">potato-derived and added sugar tracked separately</text>
+
+<rect x="980" y="200" width="315" height="165" rx="12" class="chem"/>
+<text x="1137" y="242" text-anchor="middle" class="blue body">Fermentation products</text>
+<text x="1020" y="292" class="small">C₆H₁₂O₆ → 2 C₂H₅OH + 2 CO₂</text>
+<text x="1020" y="328" class="muted small">plus biomass / side products / losses</text>
+
+<path d="M315 282 H358 M620 282 H663 M925 282 H968" class="line"/>
+
+<rect x="220" y="505" width="360" height="150" rx="12" class="box"/>
+<text x="400" y="547" text-anchor="middle" class="accent body">Added sugar ledger</text>
+<text x="260" y="592" class="small">Jadded enters the sugar pool separately</text>
+<text x="260" y="626" class="muted small">so potato-derived carbon is identifiable</text>
+<path d="M400 505 C400 450 700 445 760 375" class="dash"/>
+
+<rect x="760" y="505" width="360" height="150" rx="12" class="box"/>
+<text x="940" y="547" text-anchor="middle" class="warn body">Downstream separation</text>
+<text x="800" y="592" class="small">separates a mixture by physical properties</text>
+<text x="800" y="626" class="muted small">does not chemically create ethanol</text>
+<path d="M1137 365 C1137 445 940 450 940 493" class="dash"/>
+
+<text x="680" y="735" text-anchor="middle" class="accent small">Scientific question: can the staged mass-balance model close the carbon ledger and predict measured stocks/fluxes within uncertainty?</text>
+<text x="680" y="774" text-anchor="middle" class="muted small">This figure is not an operating recipe; practical production and distillation have separate safety and legal requirements.</text>
+</svg>

@@ -1,0 +1,234 @@
+{
+  "id": "provenance-chain-of-custody-atlas",
+  "title": "Provenance & Evidence Chain-of-Custody Atlas",
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "owner_room": "provenance-evidence",
+  "purpose": "Make every important claim traversable from public synthesis back through extraction, transformation and source roots, while preserving independent corroboration, contradictions and uncertainty.",
+  "master_model": "source → artifact → extraction → claim → transformation/calculation → synthesis → publication → revision",
+  "object_types": [
+    {
+      "id": "source",
+      "definition": "The origin that produced or preserves information.",
+      "fields": [
+        "source_id",
+        "source_class",
+        "creator/publisher",
+        "date",
+        "jurisdiction/domain",
+        "stable_locator",
+        "access_date"
+      ]
+    },
+    {
+      "id": "artifact",
+      "definition": "The concrete document, post, dataset, recording, filing, image or other retrievable object.",
+      "fields": [
+        "artifact_id",
+        "source_id",
+        "title",
+        "creation_date",
+        "format",
+        "hash_or_version",
+        "locator"
+      ]
+    },
+    {
+      "id": "extraction",
+      "definition": "A bounded piece taken from an artifact.",
+      "fields": [
+        "artifact_id",
+        "page_line_timestamp_or_record",
+        "exact_or_paraphrase",
+        "extractor",
+        "extracted_at",
+        "transformation_notes"
+      ]
+    },
+    {
+      "id": "claim",
+      "definition": "A proposition the project may support, dispute or leave unresolved.",
+      "fields": [
+        "claim_id",
+        "claim_text",
+        "subject",
+        "time_scope",
+        "status",
+        "owner_room",
+        "source_refs"
+      ]
+    },
+    {
+      "id": "derived_value",
+      "definition": "A calculation, estimate, classification or inference produced from inputs.",
+      "fields": [
+        "formula_or_method",
+        "inputs",
+        "units",
+        "assumptions",
+        "uncertainty",
+        "author/date"
+      ]
+    },
+    {
+      "id": "synthesis",
+      "definition": "A higher-level explanation joining claims/relationships while retaining routes to components.",
+      "fields": [
+        "component_claim_ids",
+        "interpretive_status",
+        "alternative_readings",
+        "boundary"
+      ]
+    },
+    {
+      "id": "revision",
+      "definition": "A dated correction, retraction, supersession or narrowing.",
+      "fields": [
+        "target_id",
+        "change_type",
+        "reason",
+        "new_status",
+        "date",
+        "source_refs"
+      ]
+    }
+  ],
+  "custody_events": [
+    "created",
+    "captured",
+    "downloaded",
+    "transcribed",
+    "normalized",
+    "translated",
+    "excerpted",
+    "calculated",
+    "classified",
+    "cited",
+    "corrected",
+    "superseded",
+    "archived"
+  ],
+  "lineage_rules": [
+    "Never cite a synthesis as though it were the original artifact when the original survives.",
+    "Every exact quotation needs a retrievable locator or an explicit unresolved locator status.",
+    "Every derived number must expose inputs, units, method and date.",
+    "Translations preserve the source-language artifact and identify translator/method.",
+    "Screenshots and archive copies preserve the original URL/account/object identity when known.",
+    "A missing source must remain missing; plausible reconstruction is not custody.",
+    "Revision appends history rather than silently overwriting the prior public state."
+  ],
+  "corroboration_model": {
+    "root_definition": "Two sources are independent only when their relevant information does not derive from the same underlying root.",
+    "classes": [
+      {
+        "id": "same-artifact-copy",
+        "meaning": "Duplicate/cached/reposted copy; zero new provenance root."
+      },
+      {
+        "id": "derivative-report",
+        "meaning": "A new publication substantially dependent on another report/source."
+      },
+      {
+        "id": "partially-independent",
+        "meaning": "Shares some roots but contributes independent observation/data."
+      },
+      {
+        "id": "independent-root",
+        "meaning": "Obtained the relevant evidence independently."
+      }
+    ],
+    "rule": "Count roots before counting URLs."
+  },
+  "date_precision": [
+    {
+      "id": "exact-time",
+      "example": "2026-09-18T20:18:46Z"
+    },
+    {
+      "id": "exact-date",
+      "example": "2026-09-18"
+    },
+    {
+      "id": "month",
+      "example": "2026-09"
+    },
+    {
+      "id": "year",
+      "example": "2026"
+    },
+    {
+      "id": "range",
+      "example": "2025-04 to 2025-05"
+    },
+    {
+      "id": "relative-only",
+      "example": "before/after another dated artifact"
+    },
+    {
+      "id": "unknown",
+      "example": "date not responsibly recoverable"
+    }
+  ],
+  "claim_status_transitions": [
+    "unresolved → source-found",
+    "source-found → directly-attested",
+    "directly-attested → independently-corroborated",
+    "corroborated → contested",
+    "any → narrowed",
+    "any → corrected",
+    "any → superseded",
+    "any → withdrawn"
+  ],
+  "evidence_packet_contract": {
+    "required": [
+      "claim",
+      "claim_type",
+      "owner",
+      "time_scope",
+      "source_roots",
+      "exact_locators_or_gap",
+      "independence_map",
+      "counterevidence",
+      "uncertainty",
+      "last_reviewed"
+    ],
+    "for_numbers": [
+      "units",
+      "period",
+      "denominator",
+      "method",
+      "input_sources"
+    ],
+    "for_relationships": [
+      "direction",
+      "relationship_type",
+      "date_or_range",
+      "geography",
+      "direct_inferred_or_alleged"
+    ],
+    "for_quotes": [
+      "speaker/author",
+      "exactness",
+      "context_window",
+      "locator"
+    ]
+  },
+  "failure_modes": [
+    "citation laundering: a weak or derivative claim gains apparent authority through repetition",
+    "locator loss: quotation survives but retrievable position disappears",
+    "date hardening: approximate date becomes exact through repeated copying",
+    "authorship drift: assistant/archive formalization is later attributed to Tim or an earlier source",
+    "scope creep: a source competent for one fact is used to support motive, causation or a broader conclusion",
+    "version blindness: later corrected material is read without its revision history",
+    "denominator loss: a percentage or rate survives without the population/time base that gave it meaning"
+  ],
+  "public_provenance_minimum": "A reader should be able to see what kind of claim it is, where it came from, when, how strong the linkage is, and what would change the conclusion without opening the entire backend.",
+  "joins": [
+    "source-index",
+    "archive-epistemics",
+    "memory-recovery",
+    "witness-attestation",
+    "information-ecology",
+    "model-testing"
+  ]
+}

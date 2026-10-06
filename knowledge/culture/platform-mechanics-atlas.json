@@ -1,0 +1,190 @@
+{
+  "id": "platform-mechanics-atlas",
+  "title": "Platform Mechanics Atlas — Visibility, Persistence, Incentives and Social Memory",
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "owner_room": "internet-platforms",
+  "purpose": "Model a platform as an active mediation system rather than a neutral container. Track how affordances, ranking, identity, monetization, moderation, archive rules and portability change what becomes visible, repeatable and memorable.",
+  "platform_stack": [
+    {
+      "layer": "identity",
+      "questions": [
+        "Who can speak?",
+        "Is identity persistent, pseudonymous, verified, portable or disposable?"
+      ]
+    },
+    {
+      "layer": "object",
+      "questions": [
+        "What can be posted: text, video, live, thread, story, file, reaction, remix?",
+        "What metadata travels with it?"
+      ]
+    },
+    {
+      "layer": "distribution",
+      "questions": [
+        "Follower graph, search, recommendation, trending, embedding, notifications or direct delivery?"
+      ]
+    },
+    {
+      "layer": "interaction",
+      "questions": [
+        "Replies, quote-posts, duets, stitches, reactions, chat, moderation, collaboration?"
+      ]
+    },
+    {
+      "layer": "ranking",
+      "questions": [
+        "Which signals influence ordering or recommendation?",
+        "Which parts are known versus opaque?"
+      ]
+    },
+    {
+      "layer": "monetization",
+      "questions": [
+        "Ads, subscriptions, donations, revenue share, commerce, sponsorship, no direct monetization?"
+      ]
+    },
+    {
+      "layer": "governance",
+      "questions": [
+        "Rules, enforcement, appeals, account-level sanctions, object-level sanctions, age gates, regional restrictions?"
+      ]
+    },
+    {
+      "layer": "memory",
+      "questions": [
+        "Searchability, deletion, edit history, caching, clipping, download, external archives, API access?"
+      ]
+    },
+    {
+      "layer": "portability",
+      "questions": [
+        "Can users export identity, content, audience graph, subscriptions or archives?"
+      ]
+    },
+    {
+      "layer": "measurement",
+      "questions": [
+        "Which metrics are public, private, estimated, sampled or unavailable?"
+      ]
+    }
+  ],
+  "core_mechanisms": [
+    {
+      "id": "visibility-selection",
+      "mechanism": "Only a subset of available objects is surfaced to a user.",
+      "variables": [
+        "candidate pool",
+        "rank position",
+        "impression probability",
+        "audience overlap",
+        "freshness"
+      ]
+    },
+    {
+      "id": "feedback-loop",
+      "mechanism": "Exposure produces interaction; interaction can affect further exposure.",
+      "variables": [
+        "impressions",
+        "engagement",
+        "return rate",
+        "recommendation recurrence"
+      ],
+      "boundary": "Observed correlation between engagement and reach does not by itself reveal the full ranking algorithm."
+    },
+    {
+      "id": "context-collapse",
+      "mechanism": "Material produced for one audience/time can circulate into another context.",
+      "variables": [
+        "repost distance",
+        "time delay",
+        "audience change",
+        "context retained"
+      ]
+    },
+    {
+      "id": "archive-persistence",
+      "mechanism": "Copies, clips, quotes, screenshots and external archives can outlive the original object or account.",
+      "variables": [
+        "copy count where observable",
+        "search visibility",
+        "source-link retention",
+        "correction linkage"
+      ]
+    },
+    {
+      "id": "creator-dependence",
+      "mechanism": "A creator/community may depend on platform-owned discovery, payments, identity or audience access.",
+      "variables": [
+        "traffic concentration",
+        "revenue concentration",
+        "exportability",
+        "multi-homing"
+      ]
+    },
+    {
+      "id": "moderation-shaping",
+      "mechanism": "Rules and enforcement change which practices can persist.",
+      "variables": [
+        "removal scope",
+        "appeal route",
+        "repeat-offender policy",
+        "regional variance"
+      ]
+    },
+    {
+      "id": "format-selection",
+      "mechanism": "Character limits, clip length, live chat, threading and remix tools change expression and interpretation.",
+      "variables": [
+        "object length",
+        "thread depth",
+        "editability",
+        "remix affordance"
+      ]
+    },
+    {
+      "id": "metric-reflexivity",
+      "mechanism": "Visible metrics become goals and status signals, changing behavior.",
+      "variables": [
+        "likes",
+        "views",
+        "followers",
+        "watch time",
+        "rank",
+        "revenue"
+      ]
+    }
+  ],
+  "lifecycle": [
+    "creation",
+    "publication",
+    "initial distribution",
+    "interaction",
+    "ranking amplification or decay",
+    "remix/quotation",
+    "archive/copy",
+    "moderation/correction",
+    "migration or deletion",
+    "resurfacing"
+  ],
+  "measurement_vector": [
+    "reach",
+    "repeat_exposure",
+    "participation_depth",
+    "creator_dependency",
+    "audience_portability",
+    "archive_persistence",
+    "context_retention",
+    "correction_linkage",
+    "moderation_reversibility",
+    "format_pressure"
+  ],
+  "comparison_rule": "Compare platforms by mechanisms and measurements, not by vague claims that one platform is 'more free', 'more toxic' or 'more viral'.",
+  "handoffs": {
+    "information_ecology": "Translate platform mechanics into attention, memory, repetition and correction dynamics.",
+    "subculture_group_formation": "Pass repeated interaction patterns only when there is evidence of identity, norms, roles or reproduction.",
+    "witness_attestation": "Preserve what was publicly witnessed without inferring private motive.",
+    "below_observatory": "Escalate abuse, harassment or illicit-network questions only with evidence-specific case records."
+  }
+}

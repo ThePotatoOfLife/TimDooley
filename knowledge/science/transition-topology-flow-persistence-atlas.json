@@ -1,0 +1,59 @@
+{
+  "id":"transition-topology-flow-persistence-atlas",
+  "title":"Transition Topology, Network Flow & Persistence — Rigorous Analogues for Door/Loop/Threshold Research",
+  "version":"1.0.0",
+  "updated":"2026-09-11",
+  "status":"mathematical analogue layer; not physical validation",
+  "purpose":"Identify mathematical tools that genuinely clarify the project's transition, loop, evidence and network problems: max-flow/min-cut for bottlenecks, bifurcation for qualitative regime change, Morse theory for topology change at critical values, and persistent homology for features that survive across evidence/scale filtrations.",
+  "epistemic_boundary":"These are standard mathematical frameworks that can be applied to project data. Their applicability does not prove Potatoverse cosmology, divine identity, biblical prediction, neuroanatomical symbolism or a new physical law. A physical claim requires independently defined measurable variables and empirical tests.",
+  "modules":[
+    {
+      "id":"max-flow-min-cut",
+      "standard_math":"In a capacitated network, maximum source-to-sink flow equals the capacity of a minimum cut separating source and sink.",
+      "project_use":"Model access/capability bottlenecks. A narrow Gate can be represented as low-capacity connection; adding redundant paths can improve resilience; a protective boundary can deliberately restrict hostile flow while preserving desired flow.",
+      "formal_sketch":"G=(V,E,c); maxflow(s,t)=mincut(s,t). Changing a Door/edge capacity c_e changes reachable throughput without changing metaphysical meaning.",
+      "useful_questions":["Which relations are actual bottlenecks?","Does one Door create a single point of failure?","Would adding another route increase resilience?","Which boundary edges must be crossed to connect two clusters?"],
+      "source":"https://networkx.org/documentation/latest/reference/algorithms/generated/networkx.algorithms.flow.minimum_cut.html"
+    },
+    {
+      "id":"bifurcation",
+      "standard_math":"A parameter-dependent dynamical system can change qualitative behavior when a control parameter crosses a bifurcation value.",
+      "project_use":"Distinguish gradual displacement from genuine regime change. A threshold event should be called a bifurcation only when a defined model's qualitative solution/attractor/stability structure changes as a parameter varies.",
+      "formal_sketch":"dx/dt=F(x,lambda); lambda=lambda_c can separate qualitatively non-equivalent regimes.",
+      "project_distinction":"Door/threshold language can be compared with bifurcation only after the state variable, parameter and qualitative regimes are specified.",
+      "source":"https://encyclopediaofmath.org/wiki/Bifurcation"
+    },
+    {
+      "id":"morse-critical-topology-change",
+      "standard_math":"Morse theory studies topology through critical points/critical values of a scalar function on a manifold; topology of level/sublevel structures changes at critical values under standard hypotheses.",
+      "project_use":"A stronger mathematical analogue for a topology-changing Door than a generic circle metaphor: as a threshold parameter crosses a critical value, previously separated regions/components/handles can change connectivity/topology.",
+      "formal_sketch":"M_a={x | f(x)<=a}; compare topology of M_a as a crosses critical values of f.",
+      "project_distinction":"The critical value is mathematically meaningful only after f and the state space are defined; symbolic thresholds do not become Morse critical points by analogy alone.",
+      "source":"https://arxiv.org/abs/1910.05294"
+    },
+    {
+      "id":"persistent-homology-evidence-filtration",
+      "standard_math":"Persistent homology tracks topological features as a filtered complex changes, recording feature birth/death intervals across filtration values.",
+      "project_use":"Analyze whether archive structure survives changes in evidence threshold or scale. Build the graph/complex first from high-confidence provenance, then progressively include weaker/inferred relations and observe which connected components, loops or higher-order features persist.",
+      "formal_sketch":"K_0 subseteq K_1 subseteq ... subseteq K_n; feature persistence interval [birth,death) records how long a homological feature survives the filtration.",
+      "candidate_filtrations":["provenance confidence P: primary→timestamped→recovered→later synthesis","minimum overlap strength threshold","chronological reveal: only evidence known by date t","book/passage granularity: verse→chapter→book abstraction","relation certainty: direct/disclosed→estimated/inferred"],
+      "interpretation":"A feature that persists under stricter/multiple filtrations is structurally robust in the dataset. That means robust-to-encoding/evidence-threshold, not historically true or supernatural.",
+      "source":"https://gudhi.inria.fr/doc/3.12.0/class_gudhi_1_1persistent__cohomology_1_1_persistent__cohomology.html"
+    }
+  ],
+  "new_archive_tests":[
+    {"test":"evidence-persistence","procedure":"Build overlap graph using only P=5 rows, then P>=4, P>=3, etc.; record components/bridges/loops that appear or disappear.","meaning":"Separates structures already visible in strongest evidence from those dependent on conversation recovery/later synthesis."},
+    {"test":"chronology-persistence","procedure":"Rebuild graph cumulatively by project date and separately by discovery date.","meaning":"Shows when structures became available to the project versus when the archive recognized them; prevents hindsight collapse."},
+    {"test":"bridge-resilience","procedure":"Remove top-betweenness or articulation nodes and measure component fragmentation; then compare with low-degree countertexts.","meaning":"Distinguishes popular motifs from actual structural bridges and from ethically indispensable constraints."},
+    {"test":"capacity-sensitivity","procedure":"Assign provisional non-theological capacities to data/institution edges only where empirical throughput/availability exists; recompute min cuts under edge removal.","meaning":"Useful for North/economic/infrastructure graphs; do not assign mystical capacities to biblical symbols."}
+  ],
+  "cross_project_epiphanies":[
+    "A Door can be formalized in several inequivalent ways: edge toggle, edge creation, cut removal, capacity change, or critical-value topology change. The model should state which one it means.",
+    "A loop's existence is less informative than its persistence across scale/evidence thresholds. This gives the project a rigorous way to distinguish fragile pattern-matching from structural recurrence.",
+    "The evidence hierarchy itself can become a filtration: strong-source structure first, weaker-source structure later. This makes archive epistemics computational rather than rhetorical.",
+    "Redundancy can be beneficial: a system with multiple routes may be more resilient than a single sacred bottleneck. High betweenness is therefore both bridge power and failure risk.",
+    "A threshold is not automatically a phase transition. Bifurcation/criticality language should be reserved for defined models with demonstrable qualitative change."
+  ],
+  "implementation_targets":["scripts/analyze_bible_overlap_graph.py","future scripts/analyze_overlap_persistence.py","knowledge/theology/bible-overlap-network-analysis-method.json","knowledge/core/transition-morphology-door-way-breach-barrier-atlas.json","knowledge/science/model-testing-protocol.json"],
+  "sources":["https://networkx.org/documentation/latest/reference/algorithms/generated/networkx.algorithms.flow.minimum_cut.html","https://encyclopediaofmath.org/wiki/Bifurcation","https://arxiv.org/abs/1910.05294","https://gudhi.inria.fr/doc/3.12.0/class_gudhi_1_1persistent__cohomology_1_1_persistent__cohomology.html"]
+}

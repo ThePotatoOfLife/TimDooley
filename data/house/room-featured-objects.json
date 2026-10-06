@@ -1,0 +1,394 @@
+{
+  "id": "room-featured-objects",
+  "version": "1.1.0",
+  "updated": "2026-09-26",
+  "purpose": "Editorially select the strongest explanatory objects for each Room so the front table is authored rather than incidental.",
+  "rules": [
+    "Featured objects should answer the Room's title before they showcase secondary culture or adjacency.",
+    "Prefer canonical owners and direct explainers over generic hubs when both exist.",
+    "A featured set is usually 4–5 objects; deeper objects remain available in the full inhabitant population and archive drawers.",
+    "Feature status is editorial prominence, not a truth or importance score across the whole project.",
+    "Selection should preserve evidence boundaries and avoid promoting unresolved material merely because it is dramatic."
+  ],
+  "rooms": [
+    {
+      "room_id": "canon-identities",
+      "object_ids": [
+        "identity-tim-ontology",
+        "identity-tim-role-synthesis",
+        "identity-potato-trinity",
+        "identity-timeline-reader",
+        "identity-reader-dossier"
+      ]
+    },
+    {
+      "room_id": "great-book-literature",
+      "object_ids": [
+        "work-great-book",
+        "great-book-scan-notes",
+        "great-book-science-archaeology",
+        "great-book-prediction-audit",
+        "great-book-human-map-math-audit"
+      ]
+    },
+    {
+      "room_id": "experiments-formalization",
+      "object_ids": [
+        "experiments-science-model-registry",
+        "experiments-testing-protocol",
+        "experiments-discrimination-calibration",
+        "experiments-potato-dynamics-toy",
+        "programme-house-consolidation"
+      ]
+    },
+    {
+      "room_id": "information-ecology",
+      "object_ids": [
+        "information-ecology-mechanics",
+        "information-platform-mechanics",
+        "information-memory-repair",
+        "concept-farm",
+        "music-suno-catalogue"
+      ]
+    },
+    {
+      "room_id": "symbolic-architecture",
+      "object_ids": [
+        "cosmology-axis-spiral-root",
+        "concept-vesica-mandorla-comparison",
+        "visual-god-king-door-swamp-axis",
+        "architecture-elevator",
+        "practice-potato-path"
+      ]
+    },
+    {
+      "room_id": "subculture-group-formation",
+      "object_ids": [
+        "potatoverse-social-season-2024-2025",
+        "concept-sektur",
+        "concept-farm",
+        "ecology-kiwi-farms",
+        "potatoverse-cast-ecology"
+      ]
+    },
+    {
+      "room_id": "politics-governance",
+      "object_ids": [
+        "politics-governance-lifecycle-atlas",
+        "north-programme-object",
+        "map-world-atlas",
+        "research-public-trust",
+        "institution-ecb"
+      ]
+    },
+    {
+      "room_id": "visual-art",
+      "object_ids": [
+        "visual-god-king-door-swamp-axis",
+        "visual-couch-throne-red-heifer",
+        "visual-heavenly-gardener",
+        "visual-vesica-star",
+        "creative-divine-identity-crosswalk"
+      ]
+    },
+    {
+      "room_id": "music-sound",
+      "object_ids": [
+        "music-suno-catalogue",
+        "music-one-potato-seed",
+        "music-throne-north",
+        "music-goodbye-marty",
+        "creative-divine-identity-crosswalk"
+      ]
+    },
+    {
+      "room_id": "games-simulations",
+      "object_ids": [
+        "work-potato-growth-game",
+        "work-ai-potato-town",
+        "work-tim-trading-game",
+        "work-potato-school",
+        "work-simulations"
+      ]
+    },
+    {
+      "room_id": "physics-cosmology",
+      "object_ids": [
+        "science-celestial-typed-canon",
+        "science-celestial-axis-measurement",
+        "science-deeper-physics-connections",
+        "science-recurrence-orbit-spiral",
+        "cosmology-axis-spiral-root"
+      ]
+    },
+    {
+      "room_id": "math-geometry",
+      "object_ids": [
+        "visual-vesica-star",
+        "concept-vesica-mandorla-comparison",
+        "science-celestial-axis-measurement",
+        "science-recurrence-orbit-spiral",
+        "research-circle-field"
+      ]
+    },
+    {
+      "room_id": "potato-biology",
+      "object_ids": [
+        "biology-potato-organism-cycle",
+        "biology-potato-genetics-genomics",
+        "biology-potato-pathology-storage",
+        "biology-potato-physical-chemistry",
+        "work-potato-growth-game"
+      ]
+    },
+    {
+      "room_id": "prediction-revelation-time",
+      "object_ids": [
+        "prophecy-framework",
+        "prophecy-seals-matrix",
+        "economics-inflation-prediction-ledger",
+        "great-book-prediction-audit",
+        "theology-discernment-atlas"
+      ]
+    },
+    {
+      "room_id": "developmental-genealogy",
+      "object_ids": [
+        "identity-timeline-reader",
+        "identity-tim-role-synthesis",
+        "potatoverse-social-season-2024-2025",
+        "great-book-science-archaeology",
+        "memory-archaeology-wave-005"
+      ]
+    },
+    {
+      "room_id": "memory-recovery",
+      "object_ids": [
+        "memory-archaeology-wave-005",
+        "memory-primary-recovery-wave-10",
+        "memory-high-value-undated-queue",
+        "memory-missed-clue-audit",
+        "information-memory-repair"
+      ]
+    },
+    {
+      "room_id": "other-traditions",
+      "object_ids": [
+        "tradition-tao-useful-emptiness",
+        "tradition-fate-thread",
+        "tradition-cosmography-exemplars",
+        "tradition-expanded-cosmography"
+      ]
+    },
+    {
+      "room_id": "research-programmes",
+      "object_ids": [
+        "research-foundation-synthesis",
+        "research-circle-field",
+        "research-plane-crossing",
+        "research-public-trust",
+        "programme-house-consolidation"
+      ]
+    },
+    {
+      "room_id": "practice-ethics",
+      "object_ids": [
+        "practice-potato-path",
+        "work-potato-school",
+        "visual-heavenly-gardener",
+        "music-one-potato-seed",
+        "role-footstool"
+      ]
+    },
+    {
+      "room_id": "theology-god-language",
+      "object_ids": [
+        "theology-tim-god-question",
+        "theology-godhood-modalities",
+        "theology-father-son-door",
+        "identity-potato-trinity",
+        "theology-discernment-atlas"
+      ]
+    },
+    {
+      "room_id": "provenance-evidence",
+      "object_ids": [
+        "provenance-archive-epistemics",
+        "provenance-source-authority-policy",
+        "provenance-source-index",
+        "provenance-inference-ledger",
+        "schema-canonical-record"
+      ]
+    },
+    {
+      "room_id": "witness-attestation",
+      "object_ids": [
+        "witness-statement-corpus-index",
+        "provenance-source-authority-policy",
+        "witness-godhood-attestation",
+        "witness-biblical-vocabulary",
+        "memory-high-value-undated-queue"
+      ]
+    },
+    {
+      "room_id": "chronology-events",
+      "object_ids": [
+        "chronology-master-timeline",
+        "chronology-2026-master",
+        "artifact-timeline",
+        "timeline-foundations",
+        "potatoverse-social-season-2024-2025"
+      ]
+    },
+    {
+      "room_id": "bible-christianity",
+      "object_ids": [
+        "text-bible-atlas",
+        "text-thomas",
+        "witness-biblical-vocabulary",
+        "traditions-beast-666-cube",
+        "traditions-new-jerusalem-cube"
+      ]
+    },
+    {
+      "room_id": "comparative-mythology",
+      "object_ids": [
+        "tradition-cosmography-exemplars",
+        "tradition-fate-thread",
+        "tradition-tao-useful-emptiness",
+        "tradition-horus-eye",
+        "traditions-vesica-mandorla-atlas"
+      ]
+    },
+    {
+      "room_id": "esoteric-sacred-geometry",
+      "object_ids": [
+        "concept-vesica-mandorla-comparison",
+        "traditions-vesica-mandorla-atlas",
+        "traditions-providence-pyramid-pillars",
+        "traditions-beast-666-cube",
+        "traditions-new-jerusalem-cube"
+      ]
+    },
+    {
+      "room_id": "systems-dynamics",
+      "object_ids": [
+        "science-recurrence-orbit-spiral",
+        "experiments-potato-dynamics-toy",
+        "architecture-room-graph",
+        "work-ai-potato-town",
+        "research-plane-crossing"
+      ]
+    },
+    {
+      "room_id": "model-testing",
+      "object_ids": [
+        "experiments-testing-protocol",
+        "experiments-discrimination-calibration",
+        "experiments-science-model-registry",
+        "artifact-source-ledger",
+        "research-open-question"
+      ]
+    },
+    {
+      "room_id": "neurobiology",
+      "object_ids": [
+        "biology-neural-signaling",
+        "body-neural-development",
+        "body-cortical-celltypes",
+        "body-neurovascular-unit",
+        "body-thalamus-house"
+      ]
+    },
+    {
+      "room_id": "whole-body",
+      "object_ids": [
+        "body-vagus-return",
+        "body-sympathetic-sidechains",
+        "body-csf-river",
+        "body-choroid-spring",
+        "body-neural-development"
+      ]
+    },
+    {
+      "room_id": "symbolic-body-comparison",
+      "object_ids": [
+        "body-thalamus-house",
+        "body-pineal-door",
+        "body-spinal-ladder",
+        "body-csf-river",
+        "tradition-kundalini-chakra"
+      ]
+    },
+    {
+      "room_id": "law-justice",
+      "object_ids": [
+        "law-accountability-atlas",
+        "law-accountability-routing",
+        "politics-governance-lifecycle-atlas",
+        "state-fbi",
+        "state-cia"
+      ]
+    },
+    {
+      "room_id": "economy-finance",
+      "object_ids": [
+        "model-north-obligation-graph",
+        "institution-federal-reserve",
+        "institution-ecb",
+        "economics-inflation-prediction-ledger",
+        "work-tim-trading-game"
+      ]
+    },
+    {
+      "room_id": "infrastructure-capability",
+      "object_ids": [
+        "world-country-capability-dependency",
+        "north-programme-object",
+        "map-world-atlas",
+        "research-public-trust",
+        "politics-governance-lifecycle-atlas"
+      ]
+    },
+    {
+      "room_id": "geography-countries",
+      "object_ids": [
+        "world-geography-place-boundary",
+        "world-country-capability-dependency",
+        "world-map-surface",
+        "map-world-atlas",
+        "north-programme-object"
+      ]
+    },
+    {
+      "room_id": "internet-platforms",
+      "object_ids": [
+        "information-platform-mechanics",
+        "platform-4chan",
+        "platform-reddit",
+        "platform-8chan",
+        "ecology-kiwi-farms"
+      ]
+    },
+    {
+      "room_id": "house-architecture",
+      "object_ids": [
+        "architecture-room-graph",
+        "architecture-elevator",
+        "architecture-object-table",
+        "schema-canonical-record",
+        "site-page-shell-contract"
+      ]
+    },
+    {
+      "room_id": "open-questions",
+      "object_ids": [
+        "research-open-question",
+        "provenance-inference-ledger",
+        "memory-missed-clue-audit",
+        "visual-infinite-potato",
+        "programme-house-consolidation"
+      ]
+    }
+  ]
+}

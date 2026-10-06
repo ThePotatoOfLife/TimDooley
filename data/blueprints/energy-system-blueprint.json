@@ -1,0 +1,18 @@
+{
+  "version":"1.0.0","status":"active-blueprint","purpose":"Map energy systems end-to-end: resources, extraction, conversion, generation, grids, storage, trade, prices, ownership, dependencies and transition pathways.","entity":"energy_system",
+  "record_schema":{
+    "identity":["energy_id","resource_or_asset","technology","operator","jurisdiction","status","valid_from","valid_to"],
+    "resource_base":["resource_type","reserves","production","quality","field_or_site","extraction_method","decline_rate","imports","exports"],
+    "generation":["plant_type","capacity","actual_output","capacity_factor","fuel","efficiency","commission_date","retirement_date","availability"],
+    "network":["grid","interconnector","pipeline","terminal","storage","transformer","substation","capacity","congestion","flow_direction","cross_border_flow"],
+    "markets":["market_design","wholesale_price","retail_price","tariff","auction","balancing","ancillary_services","carbon_price","subsidy","tax"],
+    "ownership":["owner","operator","state_ownership","investors","concession","regulator","financing","power_purchase_agreement"],
+    "demand":["sector","consumption","peak_demand","load_shape","electrification","industrial_use","transport_use","heating_use"],
+    "security":["import_dependence","supplier_concentration","storage_days","spare_capacity","redundancy","blackout_risk","fuel_switching","strategic_stockpile"],
+    "transition":["renewables","nuclear","fossil_phaseout","electrification","efficiency","hydrogen","carbon_capture","grid_expansion","storage_expansion","transition_cost"],
+    "evidence":["operator_data","regulator","grid_operator","energy_statistics","trade_data","project_filing","market_data","research","retrieved_at","confidence"]
+  },
+  "derived_measures":["import_dependency","generation_mix","capacity_margin","interconnector_dependency","storage_coverage","emissions_intensity","price_exposure","renewable_share"],
+  "relationship_templates":["resource-feeds-plant","plant-supplies-grid","grid-connects-country","pipeline-supplies-market","company-operates-asset","country-imports-fuel","storage-buffers-system","interconnector-transfers-power"],
+  "integrity_rules":["Installed capacity is not generation.","Generation share is not capacity share.","Energy imports must identify the energy product and reference period.","Ownership, operation and dispatch authority are distinct.","Intermittent generation requires temporal context.","Energy security claims must identify the dependency and plausible substitute."]
+}

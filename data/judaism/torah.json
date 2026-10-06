@@ -1,0 +1,29 @@
+{
+  "id":"judaism-torah",
+  "tradition":"Judaism",
+  "layer":"Torah",
+  "title":"Torah — The Five Books of Moses",
+  "canonical_scope":"Genesis, Exodus, Leviticus, Numbers, Deuteronomy",
+  "hebrew":"תורה",
+  "description":"The Torah, or Five Books of Moses, is the foundational scriptural corpus of Judaism. This record treats the Torah as a Jewish textual tradition while preserving the relationship to the broader Tanakh.",
+  "books":[
+    {"id":"genesis","title":"Genesis","hebrew":"בראשית","sefaria_ref":"Genesis","chapters":50},
+    {"id":"exodus","title":"Exodus","hebrew":"שמות","sefaria_ref":"Exodus","chapters":40},
+    {"id":"leviticus","title":"Leviticus","hebrew":"ויקרא","sefaria_ref":"Leviticus","chapters":27},
+    {"id":"numbers","title":"Numbers","hebrew":"במדבר","sefaria_ref":"Numbers","chapters":36},
+    {"id":"deuteronomy","title":"Deuteronomy","hebrew":"דברים","sefaria_ref":"Deuteronomy","chapters":34}
+  ],
+  "reader":{"provider":"Sefaria","api":"https://www.sefaria.org/api/v3/texts/{tref}","languages":["Hebrew","English"],"note":"The reader retrieves the Hebrew source text and an available English translation from Sefaria's structured text service. The English translation is identified by the API rather than silently represented as the Hebrew original."},
+  "relationships":[
+    {"type":"part_of","from":"judaism-torah","to":"judaism-tanakh"},
+    {"type":"foundational_text_of","from":"judaism-torah","to":"judaism"},
+    {"type":"contains","from":"judaism-torah","to":"genesis"},
+    {"type":"contains","from":"judaism-torah","to":"exodus"},
+    {"type":"contains","from":"judaism-torah","to":"leviticus"},
+    {"type":"contains","from":"judaism-torah","to":"numbers"},
+    {"type":"contains","from":"judaism-torah","to":"deuteronomy"}
+  ],
+  "source_note":"Sefaria documents the Torah as the five books Genesis, Exodus, Leviticus, Numbers and Deuteronomy and provides structured Hebrew and English text access through its API.",
+  "source":"https://www.sefaria.org/texts/Tanakh/Torah",
+  "epistemic_status":"religious textual tradition / primary-source reading layer"
+}

@@ -1,0 +1,83 @@
+{
+  "id":"cosmic-potato-laniakea-kinematic-ellipsoid-benchmark-2026-09-11",
+  "title":"Cosmic Potato Benchmark — Laniakea as a Triaxial Kinematic Ellipsoid",
+  "updated":"2026-09-11",
+  "status":"archive-generated quantitative descendant of the Great Book Cosmic Potato morphology idea using current Laniakea kinematic literature; not evidence of universal potato morphology",
+  "purpose":"Promote the scientifically strongest part of the historical Cosmic Potato intuition from visual resemblance to a measurable local-cosmography problem. Instead of asking whether Laniakea 'looks like a potato', model the dynamically selected Laniakea region as a triaxial ellipsoidal cell with an anisotropic velocity-gradient tensor and test whether that compact model predicts directional peculiar-velocity/luminosity-distance structure.",
+  "why_promising":"Laniakea is now analyzed in the literature using an ellipsoidal peculiar-velocity model with principal-axis expansion/shear. This gives the project a genuine tensor observable and a model-comparison route. The scientific content is the triaxial kinematics and residual morphology, not the word potato.",
+  "epistemic_boundary":"An ellipsoid is a generic low-parameter geometric model. Good ellipsoidal fits do not uniquely identify a potato/tuber morphology, universal scale law or Potatoverse mechanism. The project-specific contribution must come from a predeclared morphology/kinematics statistic that beats simpler alternatives.",
+  "kinematic_model":{
+    "local_velocity_field":"v_i(x)=v0_i + E_ij (x_j-x0_j) as a first-order affine approximation inside the selected region",
+    "expansion_scalar":"theta=Tr(E)",
+    "shear_tensor":"sigma_ij=E_(ij) - (theta/3) delta_ij after removing any antisymmetric/vorticity component used in the chosen model",
+    "principal_frame":"Diagonalize the symmetric velocity-gradient tensor to obtain principal directions and eigen-expansion rates Delta H_a, Delta H_b, Delta H_c.",
+    "interpretation":"The ellipsoid is kinematic: its axes organize anisotropic flow/expansion. It need not coincide exactly with an isodensity solid or a uniquely bounded material object."
+  },
+  "published_laniakea_reference_values":{
+    "source_context":"Values quoted in the 2026 supernova reconstruction as the Cosmicflows-4 ellipsoidal reference model it aims to recover.",
+    "theta_km_s_Mpc":"approximately -3.33 +/- 0.27",
+    "shear_eigenvalues_km_s_Mpc":["sigma_a approximately -2.29 +/- 0.70","sigma_b approximately +0.46 +/- 0.55","sigma_c approximately +1.80 +/- 0.45"],
+    "trace_check":"The shear eigenvalues sum approximately to zero within rounding, as required for a traceless shear tensor.",
+    "derived_anisotropy_indicator":"Using A_sigma=sqrt[(3/2) sum_i sigma_i^2]/|theta| gives about 1.08 from the central values. This is an archive-derived dimensionless summary, not a standard published Laniakea statistic.",
+    "interpretation":"The anisotropic shear is comparable in magnitude to the mean local expansion/contraction signal, so a spherical one-parameter description discards substantial directional structure."
+  },
+  "potato_morphology_upgrade":{
+    "old_question":"Do plotted superclusters resemble rounded/oblong potatoes?",
+    "new_question":"Does a compact triaxial ellipsoid plus controlled boundary roughness/topology provide a better low-complexity description of a dynamically defined region than sphere, filament/skeleton or unconstrained shape models?",
+    "candidate_descriptor":"P_shape=(q=b/a, s=c/a, F_filamentarity, P_planarity, chi, R_surface, A_sigma)",
+    "components":{"q_s":"principal-axis ratios from geometry/covariance","F_filamentarity":"dimensionless shapefinder from Minkowski functionals under a declared convention","P_planarity":"dimensionless shapefinder","chi":"Euler characteristic/topology","R_surface":"declared normalized surface-roughness statistic","A_sigma":"kinematic shear-to-isotropic-expansion ratio"},
+    "rule":"No single component is 'potatoness'. Predefine a compact/triaxial/low-filamentarity region in this descriptor space before evaluating a target."
+  },
+  "model_comparison":{
+    "H_sphere":"isotropic spherical region/flow with one local expansion parameter",
+    "H_ellipsoid":"triaxial ellipsoid with principal-axis expansion rates",
+    "H_filament":"spline/skeleton or prolate filament model",
+    "H_watershed":"nonparametric dynamical basin boundary obtained from reconstructed velocity streamlines",
+    "H_potato":"ellipsoidal core plus a small, penalized irregular-boundary component and predeclared morphology bounds",
+    "success_rule":"The project-specific H_potato is scientifically useful only if its added boundary/morphology structure improves held-out velocity/distance or shape statistics enough to justify its extra parameters over H_ellipsoid/watershed."
+  },
+  "observables":[
+    "peculiar radial velocities",
+    "Type Ia supernova luminosity-distance anisotropy/multipoles",
+    "principal-axis directions and expansion/shear eigenvalues",
+    "3D galaxy/group or reconstructed-density coordinates when testing geometry",
+    "watershed membership under the chosen velocity reconstruction",
+    "Minkowski functionals/shapefinders of a declared thresholded region"
+  ],
+  "current_external_findings":{
+    "2024_effective_model":"A Cosmicflows-4-based study reports that Laniakea can be effectively described as an ellipsoid with triaxial expansion and that local anisotropic flow can shift inferred luminosity distances by percent-level amounts along different lines of sight.",
+    "2026_supernova_reconstruction":"A July 2026 arXiv study develops an independent supernova-based reconstruction of the ellipsoidal peculiar-velocity field and reports that luminosity-distance multipoles carry information about Laniakea expansion/shear and principal directions.",
+    "important_caution":"The exact amplitudes depend on geometry, centering, frame and data/model choices. This makes geometry-selection/systematic tests part of the model rather than an afterthought."
+  },
+  "what_this_model_can_explain_if_successful":[
+    "Why local low-redshift distance/velocity residuals depend on direction through a triaxial peculiar-velocity field.",
+    "Why a spherical local-environment correction can miss substantial shear structure.",
+    "Whether the historical compact/oblong intuition can be reformulated as a quantitatively useful low-parameter morphology rather than a visual analogy."
+  ],
+  "what_it_does_not_explain":[
+    "A universal potato shape across all cosmic scales.",
+    "Dark matter/dark energy microphysics.",
+    "A fundamental new force or dimension.",
+    "Why unrelated biological or quantum structures should share the same morphology."
+  ],
+  "next_calculations":[
+    "Recover the published Laniakea ellipsoid semi-axis lengths/orientation and compute q,s with uncertainties.",
+    "Reproduce A_sigma and propagate covariance rather than using central values only.",
+    "Compare spherical versus triaxial velocity models on a public peculiar-velocity/supernova subset.",
+    "Compute geometry descriptors for the watershed boundary and compare with best-fit ellipsoid and filament models.",
+    "Define any project-specific irregular 'potato' residual before inspecting the held-out morphology so the test cannot adapt to every shape."
+  ],
+  "failure_conditions":[
+    "The triaxial model fails to improve predictive likelihood over a spherical/local-flow baseline after complexity is penalized.",
+    "A filament/watershed representation consistently describes the selected object better than a compact ellipsoid-like one.",
+    "The inferred morphology is unstable under reasonable Cosmicflows reconstruction, threshold, centering or survey-selection changes.",
+    "The project calls any triaxial ellipsoid a potato without an independent predeclared discriminator."
+  ],
+  "external_references":[
+    {"source":"Giani et al. 2024 effective Laniakea description","url":"https://arxiv.org/abs/2311.00215","use":"Ellipsoidal/triaxial peculiar-velocity model and local-cosmology consequences."},
+    {"source":"Sorrenti, Pasten and Giani 2026","url":"https://arxiv.org/abs/2607.11860","use":"Independent Type Ia supernova reconstruction framework for Laniakea ellipsoidal kinematics."},
+    {"source":"Dupuy and Courtois dynamic cosmography","url":"https://arxiv.org/abs/2305.02339","use":"Watershed/dynamical supercluster definitions from Cosmicflows-4, including Laniakea and Perseus-Pisces."},
+    {"source":"Supercluster shapefinder methodology","url":"https://academic.oup.com/mnras/article/331/4/1020/1084772","use":"Established ellipsoid/Minkowski/shapefinder approach for distinguishing sphere, filament, pancake and triaxial supercluster morphologies."}
+  ],
+  "connections":["great-book-cosmic-potato-shape-audit","celestial-orbits-particles-cmb-expansion-wave-004","science-theory-rigor-completion-matrix-2026-09-11","science-promising-models-wave-011-2026-09-11"]
+}

@@ -1,0 +1,36 @@
+{
+  "version":"1.0.0",
+  "updated":"2026-09-07",
+  "purpose":"Sourced snapshot of selected European system observations that can be joined to the North Europe systems and economic graph layers.",
+  "epistemic":"empirical",
+  "observations":[
+    {"id":"eu-population-2026","subject":"eu","metric":"population","value":452000000,"unit":"persons","period":"2026-01-01","source_id":"eurostat-population-2026","note":"Eurostat estimated EU population at 452.0 million on 1 January 2026."},
+    {"id":"eu-population-growth-2026","subject":"eu","metric":"population-change","value":706000,"unit":"persons","period":"2025-01-01_to_2026-01-01","source_id":"eurostat-population-2026","note":"Population increased by about 706,000 over the preceding year."},
+    {"id":"eu-real-gdp-growth-2025","subject":"eu","metric":"real-gdp-growth","value":1.5,"unit":"percent","period":"2025","source_id":"eurostat-gdp-2025","note":"Real EU GDP increased 1.5% in 2025."},
+    {"id":"eu-real-gdp-growth-2024","subject":"eu","metric":"real-gdp-growth","value":1.1,"unit":"percent","period":"2024","source_id":"eurostat-gdp-2025","note":"Eurostat reports 1.1% real GDP growth for the EU in 2024."},
+    {"id":"eu-gdp-per-capita-2025","subject":"eu","metric":"gdp-per-capita","value":41570,"unit":"EUR_per_person","period":"2025","source_id":"eurostat-gdp-per-capita-2025","note":"Average EU GDP per inhabitant at current prices."},
+    {"id":"eu-population-migration-driver","subject":"eu","metric":"population-growth-driver","value":"net-migration","unit":"classification","period":"2012-2026","source_id":"eurostat-population-2026","note":"Since 2012, negative natural change has been compensated by positive net migration in the EU aggregate."},
+    {"id":"eu-population-ageing","subject":"eu","metric":"median-age","value":44.9,"unit":"years","period":"2025","source_id":"eurostat-demography-2026","note":"Eurostat reports a median EU age of 44.9 years in 2025."},
+    {"id":"eu-age-80-plus-2025","subject":"eu","metric":"population-share-age-80-plus","value":6,"unit":"percent","period":"2025","source_id":"eurostat-demography-2026","note":"Around 6% of the EU population was aged 80 or over in 2025."},
+    {"id":"euro-area-deposit-rate-june-2026","subject":"euro-area","metric":"ecb-deposit-facility-rate","value":2.25,"unit":"percent","period":"2026-06-17","source_id":"ecb-rates-june-2026","note":"ECB deposit facility rate effective from 17 June 2026."},
+    {"id":"euro-area-main-refi-rate-june-2026","subject":"euro-area","metric":"ecb-main-refinancing-rate","value":2.40,"unit":"percent","period":"2026-06-17","source_id":"ecb-rates-june-2026","note":"ECB main refinancing operations rate effective from 17 June 2026."},
+    {"id":"euro-area-marginal-lending-rate-june-2026","subject":"euro-area","metric":"ecb-marginal-lending-rate","value":2.65,"unit":"percent","period":"2026-06-17","source_id":"ecb-rates-june-2026","note":"ECB marginal lending facility rate effective from 17 June 2026."}
+  ],
+  "sources":[
+    {"id":"eurostat-population-2026","publisher":"Eurostat","title":"EU population continued to grow in 2025","url":"https://ec.europa.eu/eurostat/en/web/products-eurostat-news/w/ddn-20260710-3","accessed":"2026-09-07"},
+    {"id":"eurostat-gdp-2025","publisher":"Eurostat","title":"EU’s gross domestic product up by 1.5% in 2025","url":"https://ec.europa.eu/eurostat/en/web/products-eurostat-news/w/ddn-20260306-3","accessed":"2026-09-07"},
+    {"id":"eurostat-gdp-per-capita-2025","publisher":"Eurostat","title":"GDP at current market prices, 2006–25","url":"https://ec.europa.eu/eurostat/statistics-explained/SEPDF/cache/1136.pdf","accessed":"2026-09-07"},
+    {"id":"eurostat-demography-2026","publisher":"Eurostat","title":"Demography of Europe – 2026 edition","url":"https://ec.europa.eu/eurostat/web/interactive-publications/demography-2026","accessed":"2026-09-07"},
+    {"id":"ecb-rates-june-2026","publisher":"European Central Bank","title":"Monetary policy decisions, 11 June 2026","url":"https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.mp260611~4d41bd5e6f.en.html","accessed":"2026-09-07"}
+  ],
+  "relationships":[
+    {"source":"eu","relationship":"has-observation","target":"eu-population-2026"},
+    {"source":"eu","relationship":"has-observation","target":"eu-real-gdp-growth-2025"},
+    {"source":"eu","relationship":"has-observation","target":"eu-gdp-per-capita-2025"},
+    {"source":"eu","relationship":"has-demographic-driver","target":"eu-population-migration-driver"},
+    {"source":"eu","relationship":"has-age-structure","target":"eu-population-ageing"},
+    {"source":"euro-area","relationship":"has-policy-rate","target":"euro-area-deposit-rate-june-2026"},
+    {"source":"euro-area","relationship":"has-policy-rate","target":"euro-area-main-refi-rate-june-2026"},
+    {"source":"euro-area","relationship":"has-policy-rate","target":"euro-area-marginal-lending-rate-june-2026"}
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "version":"1.0.0","status":"active-blueprint","purpose":"Map conflict and security systems through actors, capabilities, alliances, geography, incidents, escalation, defence institutions and documented consequences.","entity":"security_conflict_system",
+  "record_schema":{
+    "identity":["security_id","event_or_system","type","jurisdiction","start_date","end_date","status"],
+    "actors":["state","armed_force","alliance","international_organization","insurgent_group","police","security_agency","company","civilian_organization"],
+    "capabilities":["personnel","equipment","air","land","naval","cyber","space","intelligence","logistics","industrial_base","training","readiness"],
+    "institutions":["defence_ministry","general_staff","service_branch","police","intelligence_service","border_force","civil_defence","oversight_body"],
+    "finance_and_industry":["defence_budget","procurement","supplier","contract","domestic_production","imports","exports","stockpile","maintenance","research"],
+    "geography":["frontier","base","port","airfield","corridor","chokepoint","terrain","population_centre","critical_infrastructure"],
+    "incident":["date","location","actors","action","target","reported_effect","civilian_effect","infrastructure_effect","source_quality","disputed_accounts"],
+    "diplomacy":["treaty","alliance","sanction","ceasefire","peace_process","security_guarantee","arms_control","confidence_building"],
+    "resilience":["civil_defence","continuity_of_government","critical_infrastructure_redundancy","supply_reserve","cyber_resilience","emergency_response","recovery_time"],
+    "evidence":["official_record","treaty","procurement_record","satellite_or_geospatial_source","investigative_reporting","academic_study","international_monitor","retrieved_at","confidence"]
+  },
+  "relationship_templates":["state-defends-state","alliance-protects-member","force-operates-in-theatre","company-supplies-defence","state-procures-system","sanction-restricts-actor","conflict-displaces-population","attack-damages-infrastructure"],
+  "integrity_rules":["Capability is not intent.","Military expenditure is not military capability without context.","Reported incidents may have disputed facts and must retain source provenance.","Civilian harm claims require appropriate evidence and uncertainty.","Defence procurement, delivery and operational deployment are distinct stages.","Do not infer secret operations or motives without evidence."]
+}

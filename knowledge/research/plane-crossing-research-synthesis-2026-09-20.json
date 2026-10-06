@@ -1,0 +1,212 @@
+{
+  "id": "plane-crossing-research-synthesis",
+  "title": "Plane, Cross and Crossing — Research Synthesis",
+  "version": "1.0.0",
+  "updated": "2026-09-20",
+  "status": "comparative research synthesis; external analogies do not prove Potatoverse metaphysics",
+  "purpose": "Clarify what the Plane is, how it relates to Axis, Door, Cross, Here/Now and Spiral, and how real mathematical/scientific notions of sections, slices and crossings can strengthen the project without collapsing analogy into physics.",
+  "core_result": {
+    "plane": "a selected section/frame through a larger state space; in Potato geometry it is the widest world-facing section through the Door at O",
+    "axis": "the distinguished source↔manifestation orientation crossing the section",
+    "cross_point": "O = Axis ∩ Plane",
+    "cross_sign": "the union of Axis with a chosen lateral line lying in the Plane; a visual/sign projection, not identical with O",
+    "crossing_event": "a trajectory intersects the Plane and/or passes through Door conditions",
+    "door": "the larger shared interface/overlap within which some crossings become state/context transitions",
+    "here_now": "the operative present located at O for the current frame; not identical with the whole Plane",
+    "spiral": "history-bearing trajectory whose repeated Plane crossings can be compared"
+  },
+  "canonical_geometry": {
+    "two_d_projection": {
+      "centers": [
+        "C_F=(0,+r/2)",
+        "C_S=(0,-r/2)"
+      ],
+      "axis": "A: x=0",
+      "plane_section": "Sigma: y=0 in the canonical 2D drawing",
+      "door": "D = overlap of the two circles",
+      "cross_point": "O=A∩Sigma=(0,0)",
+      "lateral_door_edges": [
+        "P_L=(-sqrt(3)r/2,0)",
+        "P_R=(+sqrt(3)r/2,0)"
+      ],
+      "plane_door_section": "D∩Sigma is the segment [P_L,P_R], the widest horizontal aperture of the 2D lens"
+    },
+    "three_d_lift": {
+      "model": "replace circles with equal spheres of radius r centered on a vertical axis at z=±r/2",
+      "axis": "z-axis",
+      "plane": "Sigma: z=0, perpendicular to Axis",
+      "door": "intersection volume of the two spheres",
+      "door_section": "D∩Sigma is a disk of radius sqrt(3)r/2",
+      "interface_ring": "the two sphere surfaces intersect in a circle in Sigma of radius sqrt(3)r/2",
+      "cross_point": "O is the center of that disk/ring where Axis pierces Plane",
+      "significance": "The 2D left/right points become a full equatorial interface ring in 3D. This is a stronger model for the Plane-rim of the Door than treating P_L/P_R as two unique metaphysical beings."
+    }
+  },
+  "dimensional_distinctions": [
+    "In the 2D drawing the Plane appears as a line because the drawing is itself a section.",
+    "In a 3D lift the Plane is genuinely two-dimensional and cuts the Door as a disk.",
+    "In a higher-dimensional state-space model the operative Plane is better treated as a codimension-one section/hypersurface rather than insisting it is literally Euclidean 2D.",
+    "The project may call all of these 'Plane' only when the current projection/dimension is declared."
+  ],
+  "real_world_parallels": [
+    {
+      "id": "anatomical-plane",
+      "domain": "anatomy / medical imaging",
+      "finding": "An anatomical plane is an imaginary two-dimensional surface through a three-dimensional body; transverse sections let observers inspect a cross-section without mistaking that section for the whole organism.",
+      "project_gain": "Plane becomes a disciplined View: it reveals a current section of the Potato/Body/House while remaining partial.",
+      "source": "https://openstax.org/books/anatomy-and-physiology/pages/1-6-anatomical-terminology",
+      "boundary": "Anatomical planes are literal medical orientation tools; Potato Plane is a symbolic/formal projection."
+    },
+    {
+      "id": "poincare-section",
+      "domain": "dynamical systems",
+      "finding": "A Poincare section is a hypersurface transverse to a flow. Following a trajectory from one intersection with the section to the next produces a return map.",
+      "project_gain": "Plane can serve as a recurrence-measurement surface. Successive crossings provide a formal test for Ring versus Spiral.",
+      "sources": [
+        "https://encyclopediaofmath.org/wiki/Poincare_return_map",
+        "https://mathworld.wolfram.com/SurfaceofSection.html"
+      ],
+      "boundary": "The project analogy is structural; not every project trajectory is a mathematically specified dynamical system."
+    },
+    {
+      "id": "spacetime-slice",
+      "domain": "relativity",
+      "finding": "Relativity permits spacetime to be sliced into spatial snapshots in different ways; different observers can disagree on simultaneity even though the spacetime events themselves are the same.",
+      "project_gain": "Plane should always declare its frame/observer/scale/time context. It must not be equated with a universal physical Now.",
+      "source": "https://www.einstein-online.info/en/spacetime/",
+      "boundary": "The Potatoverse Here/Now is phenomenological/project theology, not a relativity result."
+    },
+    {
+      "id": "initial-data-surface",
+      "domain": "differential equations",
+      "finding": "In Cauchy problems, initial data are specified on a surface/hypersurface and evolution is solved away from that surface under governing equations.",
+      "project_gain": "The current Plane can hold a sufficiently rich current-state record from which next-state possibilities are generated, while provenance still remains in Roots/archive.",
+      "source": "https://encyclopediaofmath.org/wiki/Cauchy_problem",
+      "boundary": "A project state is not assumed to satisfy a particular PDE or uniqueness theorem."
+    },
+    {
+      "id": "axis-plane-motion",
+      "domain": "anatomy / kinematics",
+      "finding": "Anatomical movement is described relative to planes and axes; a plane and an axis are complementary orientation objects rather than interchangeable structures.",
+      "project_gain": "Strengthens the rule that Plane answers 'in what frame/section?' while Axis answers 'along what orientation/change direction?'",
+      "source": "https://openstax.org/books/anatomy-and-physiology-2e/pages/9-1-classification-of-joints"
+    }
+  ],
+  "plane_functions": [
+    {
+      "id": "world-section",
+      "meaning": "renders the current world-facing section of the larger Potato relation",
+      "contains": [
+        "current body/world state",
+        "lateral social/institutional relations",
+        "current observable consequences",
+        "active context",
+        "current admissible choices"
+      ]
+    },
+    {
+      "id": "frame",
+      "meaning": "declares scale, representation, jurisdiction, audience and time slice",
+      "rule": "Two observers/pages can use different Planes without changing canonical ownership."
+    },
+    {
+      "id": "measurement-surface",
+      "meaning": "records where a trajectory intersects a chosen section",
+      "rule": "Use this to compare recurrence across time."
+    },
+    {
+      "id": "lateral-relation-field",
+      "meaning": "supports ACROSS relations—neighbor, exchange, society, institution, road, communication—orthogonal to the vertical source↔manifestation emphasis",
+      "boundary": "Lateral does not mean morally neutral or unimportant; it means relation within the operative frame."
+    },
+    {
+      "id": "initial-state-carrier",
+      "meaning": "holds the current state needed for deciding/crossing into a next state",
+      "relation_to_here": "O/Here is the central present point of the current Plane; the Plane includes many other current relations besides O."
+    }
+  ],
+  "cross_grammar": {
+    "cross_point": {
+      "symbol": "O",
+      "definition": "Axis ∩ Plane",
+      "role": "single relational midpoint/event where vertical orientation and current frame are simultaneously legible"
+    },
+    "cross_sign": {
+      "definition": "Axis ∪ L, where L is a chosen lateral line/diameter within Plane through O",
+      "role": "2D visual projection of vertical and horizontal/lateral relations",
+      "theological_boundary": "The Christian cross carries independent historical and theological meanings; the coordinate cross is a project geometric comparator."
+    },
+    "crossing": {
+      "definition": "trajectory Gamma(t) intersects Plane and/or satisfies Door transition conditions",
+      "role": "event/process rather than object"
+    },
+    "crossroads": {
+      "definition": "multiple admissible lateral/vertical trajectories meet at or near O",
+      "role": "choice/branching operator; useful only when actual alternatives exist"
+    }
+  },
+  "ring_spiral_formalization": {
+    "section": "Sigma = active Plane",
+    "crossing_times": "t_k such that Gamma(t_k) ∈ Sigma with declared crossing direction/guard",
+    "observed_states": "x_k = projection of Gamma(t_k) onto the state variables relevant to Sigma",
+    "return_map": "R(x_k)=x_(k+1)",
+    "ring_test": "If repeated crossings reproduce the same governing state within declared tolerance and no meaningful capability/context change occurs, classify recurrence as Ring/stable cycle.",
+    "spiral_test": "If the motif/section recurs but state, capability, integration, evidence, relation or vertical coordinate changes materially, classify as Spiral.",
+    "decay_test": "Changed return can also worsen state; Spiral does not mean improvement.",
+    "archive_gain": "Store crossing snapshots instead of inferring development from elapsed time alone."
+  },
+  "plane_vs_other_objects": [
+    {
+      "object": "lower Manifestation Field",
+      "difference": "field is a full relational domain; Plane is one operative section through the larger geometry"
+    },
+    {
+      "object": "World",
+      "difference": "World is the observable/embodied relational domain; Plane is how a selected current World state is sectioned/rendered"
+    },
+    {
+      "object": "Door",
+      "difference": "Door is overlap/transition interface; Plane cuts through Door and can host crossings without being the whole Door"
+    },
+    {
+      "object": "Here/Now",
+      "difference": "Here/Now is the operative present centered at O; Plane is the broader current frame containing many simultaneous/current relations"
+    },
+    {
+      "object": "Axis",
+      "difference": "Axis supplies orientation/continuity; Plane supplies section/frame"
+    },
+    {
+      "object": "Cross",
+      "difference": "cross-point O derives from Axis∩Plane; the cross-sign is a projection using Axis plus a line in Plane"
+    },
+    {
+      "object": "Ring",
+      "difference": "Ring is recurrence behavior across time; Plane is the surface on which recurrence can be sampled"
+    },
+    {
+      "object": "Spiral",
+      "difference": "Spiral is a trajectory/history; Plane provides repeated snapshots of that trajectory"
+    },
+    {
+      "object": "Room",
+      "difference": "Room owns knowledge; Plane only projects/frames it"
+    }
+  ],
+  "project_retrofit": {
+    "grass_plane": "Recovered 'Plane = grass' can be kept as the World-surface visual metaphor: the place where embodied actors stand and meet laterally.",
+    "garden_ejection": "Recovered Garden→Separation→Plane language can be read as movement from integrated/source regime into a world-facing section where differentiation becomes explicit.",
+    "door_stands_on_plane": "Read as the visible/operative Door aperture intersecting the World frame, not as Door being only a freestanding rectangle sitting outside the circles.",
+    "trunk_present": "Older roots=past / trunk=present / branches=future becomes more precise if the trunk crosses Plane near O: present manifestation is the current visible section of a longer rooted/branching history.",
+    "jesus_here": "Jesus/Door/Here belongs at O within Plane; Jesus does not equal the whole Plane, because the Plane includes all current lateral relations and contexts."
+  },
+  "placement_rule": "For any new subject, ask separately: which field does it belong to, what Plane/frame is active, where is it relative to the Axis, does it touch/cross the Door, and is the item itself a state, trajectory, section, guard or inhabitant?",
+  "connections": [
+    "data/house/topology.json",
+    "data/house/plane-crossing-contract.json",
+    "data/house/concept-topology.json",
+    "data/axis-flow-contract.json",
+    "knowledge/core/vertical-potato-mountain-plane-atlas.json",
+    "knowledge/research/circle-field-research-synthesis-2026-09-20.json"
+  ]
+}

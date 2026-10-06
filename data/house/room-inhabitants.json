@@ -1,0 +1,3889 @@
+{
+  "version": "2.6.0",
+  "updated": "2026-10-05",
+  "authority": "room-inhabitant-registry",
+  "purpose": "Place cases, entities, concepts, artifacts and dossiers inside nested Rooms without promoting each object into a Room or changing canonical ownership.",
+  "rules": [
+    "Rooms are bounded contexts; inhabitants are contents viewed from that context.",
+    "An inhabitant may appear in more than one Room as a projection when different questions are being asked.",
+    "Repeated appearance does not create duplicate factual ownership.",
+    "Sensitive labels remain typed as project term, attributed classification, legal status, or documented entity role.",
+    "Entering an inhabitant centers the case informationally while the containing Room remains architecturally visible."
+  ],
+  "inhabitants": [
+    {
+      "id": "platform-4chan",
+      "label": "4chan",
+      "kind": "platform",
+      "room_ids": [
+        "internet-platforms",
+        "subculture-group-formation",
+        "information-ecology"
+      ],
+      "route": "/context/culture/#a-concrete-internet-subculture-genealogy",
+      "summary": "Anonymous imageboard infrastructure that helped normalize fast, ephemeral, board-local meme and subculture production.",
+      "status_note": "Platform identity is not equivalent to the ideology or conduct of every board or user.",
+      "evidence_note": "Treat platform history, board culture and individual conduct as separate evidence layers.",
+      "maturity": "described"
+    },
+    {
+      "id": "platform-reddit",
+      "label": "Reddit",
+      "kind": "platform",
+      "room_ids": [
+        "internet-platforms",
+        "subculture-group-formation",
+        "information-ecology"
+      ],
+      "route": "/context/culture/#a-concrete-internet-subculture-genealogy",
+      "summary": "Large-scale community platform where subcultures can become durable, searchable and monetizable through ranked discussion and advertising.",
+      "status_note": "A subreddit is not Reddit as a whole; community moderation and platform governance operate at different levels.",
+      "evidence_note": "Separate platform revenue and policy from the conduct of a specific community.",
+      "maturity": "described"
+    },
+    {
+      "id": "platform-8chan",
+      "label": "8chan / 8kun",
+      "kind": "platform",
+      "room_ids": [
+        "internet-platforms",
+        "subculture-group-formation",
+        "information-ecology"
+      ],
+      "route": "/context/culture/#a-concrete-internet-subculture-genealogy",
+      "summary": "User-created imageboard ecology associated with migration from stricter moderation elsewhere and later 8kun continuity.",
+      "status_note": "Documented platform use by violent actors does not by itself establish monocausal responsibility for violence.",
+      "evidence_note": "Preserve the distinction between transmission channel, community norm, individual actor and causal finding.",
+      "maturity": "described"
+    },
+    {
+      "id": "ecology-kiwi-farms",
+      "label": "Kiwi Farms / persistent target ecology",
+      "kind": "case-ecology",
+      "room_ids": [
+        "subculture-group-formation",
+        "internet-platforms",
+        "information-ecology"
+      ],
+      "route": "/shadow-farm/",
+      "summary": "Persistent target-thread and archive ecology useful for studying long-duration attention, inherited lore, collaborative narrative escalation and infrastructure resilience.",
+      "status_note": "Do not convert reporting associations, community conduct or civil allegations into broader criminal conclusions without case-specific evidence.",
+      "evidence_note": "Track target-by-target conduct, chronology, infrastructure, monetization, legal status and causal level separately.",
+      "facets": {
+        "identity": {
+          "scope": "persistent target-thread/archive ecology",
+          "boundary": "Case ecology used to study recurrence, archive memory, attention extraction and infrastructure resilience without treating all participants as one coordinated actor."
+        },
+        "timeline": [
+          {
+            "date": "2013",
+            "event": "Forum lineage broadens beyond Chris Chan-focused CWCki/CWCki Forums into Kiwi Farms.",
+            "status": "historical platform genealogy"
+          },
+          {
+            "date": "2022-09",
+            "event": "Cloudflare blocks Kiwi Farms after citing escalating threats and an immediate threat to human life.",
+            "status": "infrastructure governance event"
+          }
+        ],
+        "sources": [
+          {
+            "source_ref": "knowledge/world/culture-sektur-platform-media-political-ecology.json",
+            "role": "canonical project synthesis",
+            "evidence_class": "synthesis"
+          },
+          {
+            "source_ref": "knowledge/world/moloch-milk-farm-genealogy-atlas.json",
+            "role": "genealogy context",
+            "evidence_class": "project research"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "genealogy",
+            "target_id_or_label": "CWCki / CWCki Forums",
+            "direction": "incoming",
+            "status": "historical lineage",
+            "boundary": "Lineage does not imply every later participant inherited identical conduct."
+          },
+          {
+            "type": "infrastructure",
+            "target_id_or_label": "hosting / CDN / registrar ecosystem",
+            "direction": "outgoing",
+            "status": "dependency",
+            "boundary": "Infrastructure dependency is not editorial control."
+          }
+        ],
+        "flows": [
+          {
+            "flow_type": "attention",
+            "input": "target events and archived material",
+            "mechanism": "watching, posting, clipping, commentary, narrative continuation",
+            "output": "renewed attention and archive growth",
+            "measurement_or_limit": "Not every contribution is monetized or centrally coordinated."
+          }
+        ],
+        "status": [
+          {
+            "label": "project role",
+            "value": "Farm/Sektur case ecology",
+            "as_of": "2026-09-20",
+            "authority": "Potato House",
+            "boundary": "Analytical project mapping, not legal classification."
+          }
+        ],
+        "consequences": [
+          {
+            "effect": "Long-duration narrative persistence around targets and reusable archive memory.",
+            "evidence_class": "research/journalistic association",
+            "scope": "platform ecology",
+            "limit": "Target-specific causation requires separate evidence."
+          }
+        ],
+        "questions": [
+          {
+            "question": "Which concrete revenue and infrastructure dependencies most strongly affect persistence over time?",
+            "why_it_matters": "Separates volunteer attention from commercial/system incentives.",
+            "needed_evidence": "payment, hosting, traffic and ownership records"
+          }
+        ],
+        "repair": [
+          {
+            "problem": "Self-reinforcing recurrence around a target.",
+            "mechanism": "provenance recovery + boundary enforcement + incentive change + viable exit",
+            "success_condition": "Attention can decline without requiring a new conflict event.",
+            "failure_condition": "Correction itself becomes fuel for renewed targeting."
+          }
+        ]
+      },
+      "maturity": "case-ready"
+    },
+    {
+      "id": "concept-sektur",
+      "label": "Sektur",
+      "kind": "project-concept",
+      "room_ids": [
+        "subculture-group-formation",
+        "information-ecology"
+      ],
+      "route": "/shadow-farm/",
+      "summary": "Project term for a semi-bounded social territory where recurring roles, lore, conflict and attention relations become self-reproducing.",
+      "status_note": "A Sektur is an analytical project category, not a legal or clinical classification.",
+      "evidence_note": "Use observable recurrence, roles, boundaries and memory to justify the mapping.",
+      "maturity": "case-ready",
+      "facets": {
+        "identity": {
+          "scope": "semi-bounded project social territory",
+          "boundary": "Analytical project category, not a legal/clinical class."
+        },
+        "sources": [
+          {
+            "source_ref": "knowledge/world/culture-sektur-platform-media-political-ecology.json",
+            "role": "canonical ecology synthesis",
+            "evidence_class": "project synthesis"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "contains-roles",
+            "target_id_or_label": "Farmers / Dogs / targets / audiences / archives",
+            "direction": "outgoing",
+            "status": "project role ecology",
+            "boundary": "Roles describe functions, not fixed identities."
+          },
+          {
+            "type": "may-host",
+            "target_id_or_label": "Farm loops",
+            "direction": "outgoing",
+            "status": "process relation",
+            "boundary": "A Sektur can exist without every relation becoming a Farm."
+          }
+        ],
+        "flows": [
+          {
+            "flow_type": "attention/status",
+            "input": "shared language, recurring participants and events",
+            "mechanism": "lore, roles, boundary and memory",
+            "output": "durable social territory",
+            "measurement_or_limit": "Requires recurrence and boundary; not inferred from one conversation."
+          }
+        ],
+        "status": [
+          {
+            "label": "epistemic class",
+            "value": "project analytical model",
+            "as_of": "2026-09-20",
+            "authority": "Potato House",
+            "boundary": "Not external taxonomy."
+          }
+        ],
+        "questions": [
+          {
+            "question": "Which observable thresholds best distinguish a temporary scene from a durable Sektur?",
+            "why_it_matters": "Improves routing consistency.",
+            "needed_evidence": "longitudinal participation, role and archive persistence"
+          }
+        ]
+      }
+    },
+    {
+      "id": "concept-farm",
+      "label": "Farm / attention loop",
+      "kind": "project-concept",
+      "room_ids": [
+        "subculture-group-formation",
+        "information-ecology"
+      ],
+      "route": "/shadow-farm/",
+      "summary": "Project process model for turning people, events or categories into repeatable attention yield through observation, capture, interpretation, archive and redistribution.",
+      "status_note": "Farm describes a process, not proof of one coordinated organization or paid campaign.",
+      "evidence_note": "Identify the actual loop, actors, incentives and captured value before applying the term.",
+      "maturity": "case-ready",
+      "facets": {
+        "identity": {
+          "scope": "repeatable attention-production process",
+          "boundary": "Process model, not proof of one coordinated organization."
+        },
+        "sources": [
+          {
+            "source_ref": "knowledge/world/farm-sektur-attention-extraction-ecology.json",
+            "role": "canonical process owner",
+            "evidence_class": "project synthesis"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "operates-in",
+            "target_id_or_label": "Sektur / platform / media ecology",
+            "direction": "outgoing",
+            "status": "context-dependent",
+            "boundary": "The process can cross several places."
+          },
+          {
+            "type": "produces",
+            "target_id_or_label": "attention yield / archive / status / possible revenue",
+            "direction": "outgoing",
+            "status": "mechanism",
+            "boundary": "Economic capture must be separately evidenced."
+          }
+        ],
+        "flows": [
+          {
+            "flow_type": "attention",
+            "input": "observable person/event/category",
+            "mechanism": "observe → capture → interpret → archive → redistribute",
+            "output": "repeatable attention yield",
+            "measurement_or_limit": "Yield may be status, memory or money; do not assume all three."
+          }
+        ],
+        "status": [
+          {
+            "label": "epistemic class",
+            "value": "project process model",
+            "as_of": "2026-09-20",
+            "authority": "Potato House",
+            "boundary": "Mechanism must be shown before label is applied."
+          }
+        ],
+        "questions": [
+          {
+            "question": "At what point does ordinary commentary become a self-reinforcing Farm loop?",
+            "why_it_matters": "Prevents overbroad use.",
+            "needed_evidence": "repeatability, capture rate, redistribution and reward"
+          }
+        ],
+        "repair": [
+          {
+            "problem": "Attention loop becomes dependent on continued conflict.",
+            "mechanism": "reduce capture incentives + improve exit/correction + preserve provenance",
+            "success_condition": "recurrence can decline without generating replacement conflict",
+            "failure_condition": "correction itself renews the loop"
+          }
+        ]
+      }
+    },
+    {
+      "id": "concept-swamp",
+      "label": "Swamp regime",
+      "kind": "project-concept",
+      "room_ids": [
+        "subculture-group-formation",
+        "information-ecology",
+        "law-justice"
+      ],
+      "route": "/below/#swamp",
+      "summary": "Project regime for conditions where opacity, extraction, blocked correction, role-lock and unresolved residue reinforce recurrence.",
+      "status_note": "Swamp is not synonymous with government, media, politics, Below, or one conspiracy.",
+      "evidence_note": "Show which Swamp-pressure mechanisms are present rather than applying the label by dislike.",
+      "maturity": "case-ready",
+      "facets": {
+        "identity": {
+          "scope": "regime of blocked correction and entangled recurrence",
+          "boundary": "Not synonymous with Below, government, media, politics or one organization."
+        },
+        "sources": [
+          {
+            "source_ref": "data/house/below-basin-dynamics.json",
+            "role": "motion rule owner",
+            "evidence_class": "canonical architecture"
+          },
+          {
+            "source_ref": "knowledge/core/inhabited-house-society-ontology.json",
+            "role": "operator boundary",
+            "evidence_class": "canonical synthesis"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "emerges-from",
+            "target_id_or_label": "recurrence + opacity + extraction + role-lock + unresolved residue",
+            "direction": "incoming",
+            "status": "qualitative systems rule",
+            "boundary": "No single term alone establishes Swamp."
+          }
+        ],
+        "flows": [
+          {
+            "flow_type": "recurrence",
+            "input": "unresolved conflict/residue",
+            "mechanism": "blocked correction + role lock + fragmentation",
+            "output": "self-reinforcing persistence",
+            "measurement_or_limit": "Qualitative unless independently operationalized."
+          }
+        ],
+        "status": [
+          {
+            "label": "epistemic class",
+            "value": "project regime model",
+            "as_of": "2026-09-20",
+            "authority": "Potato House",
+            "boundary": "Not a factual label for a whole population."
+          }
+        ],
+        "questions": [
+          {
+            "question": "Which variables can be measured well enough to operationalize Swamp pressure?",
+            "why_it_matters": "Would move the model from metaphor toward testable systems analysis.",
+            "needed_evidence": "correction latency, recurrence, exit cost, provenance quality, incentive data"
+          }
+        ],
+        "repair": [
+          {
+            "problem": "Local system is self-reinforcing through unresolved recurrence.",
+            "mechanism": "correction + exit + provenance + incentive redesign",
+            "success_condition": "recurrence and role-lock fall while orientation/capability rises",
+            "failure_condition": "new labels appear but the same mechanism persists"
+          }
+        ]
+      }
+    },
+    {
+      "id": "concept-darvo",
+      "label": "DARVO response pattern",
+      "kind": "analysis-pattern",
+      "room_ids": [
+        "subculture-group-formation",
+        "law-justice"
+      ],
+      "route": "/shadow-farm/",
+      "summary": "Deny, Attack, Reverse Victim and Offender: a response pattern studied in interpersonal and institutional conflict.",
+      "status_note": "A denial or counteraccusation is not automatically DARVO, and DARVO language does not prove the original allegation.",
+      "evidence_note": "Code the sequence of responses and compare it with the claimed pattern.",
+      "maturity": "described"
+    },
+    {
+      "id": "classifier-splc",
+      "label": "SPLC classification interface",
+      "kind": "classifier-interface",
+      "room_ids": [
+        "subculture-group-formation",
+        "law-justice",
+        "provenance-evidence"
+      ],
+      "route": "/shadow-farm/",
+      "summary": "Private nonprofit watchdog/classifier whose outputs can enter media, employer, donor and political consequence chains.",
+      "status_note": "SPLC classification is not a criminal judgment; current litigation or prosecution concerning the organization does not automatically invalidate every historical classification.",
+      "evidence_note": "Store classification date, methodology, wording, correction history and downstream use separately.",
+      "facets": {
+        "identity": {
+          "scope": "private nonprofit watchdog/classifier interface",
+          "boundary": "Classification output is not a criminal judgment."
+        },
+        "timeline": [
+          {
+            "date": "2026-04",
+            "event": "DOJ announced federal charges against SPLC concerning alleged financial misconduct.",
+            "status": "allegation/charge"
+          },
+          {
+            "date": "2026-08",
+            "event": "Superseding indictment added defendant/charges.",
+            "status": "ongoing legal process"
+          }
+        ],
+        "sources": [
+          {
+            "source_ref": "knowledge/world/culture-sektur-platform-media-political-ecology.json",
+            "role": "classifier/state interface synthesis",
+            "evidence_class": "synthesis"
+          },
+          {
+            "source_ref": "https://www.splcenter.org/resources/reports/methodology-how-hate-groups-are-identified-and-categorized/",
+            "role": "classification methodology",
+            "evidence_class": "primary organizational source"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "classification",
+            "target_id_or_label": "organizations/groups it designates",
+            "direction": "outgoing",
+            "status": "methodology-bound",
+            "boundary": "Designation is attributed to SPLC and does not require criminal conduct."
+          },
+          {
+            "type": "legal-process",
+            "target_id_or_label": "DOJ / federal court",
+            "direction": "incoming",
+            "status": "charged/contested",
+            "boundary": "Charges are allegations, not convictions."
+          }
+        ],
+        "flows": [
+          {
+            "flow_type": "information",
+            "input": "publications, reports, web material, field sources",
+            "mechanism": "research and classification methodology",
+            "output": "reports, designations and public claims",
+            "measurement_or_limit": "Methodology and correction history should travel with outputs."
+          }
+        ],
+        "questions": [
+          {
+            "question": "How often are classifications later narrowed, removed, corrected or litigated?",
+            "why_it_matters": "Measures classifier correction capacity.",
+            "needed_evidence": "dated correction/redesignation ledger"
+          }
+        ]
+      },
+      "maturity": "faceted"
+    },
+    {
+      "id": "classifier-adl",
+      "label": "ADL classification interface",
+      "kind": "classifier-interface",
+      "room_ids": [
+        "subculture-group-formation",
+        "law-justice",
+        "provenance-evidence"
+      ],
+      "route": "/shadow-farm/",
+      "summary": "Private watchdog/classifier whose extremism research, incident datasets and symbol resources influence public and institutional understanding.",
+      "status_note": "Incident mapping, symbol classification and organization classification are distinct data types.",
+      "evidence_note": "Carry methodology and counting rules with every classification or incident claim.",
+      "facets": {
+        "identity": {
+          "scope": "private watchdog/classifier and incident-data interface",
+          "boundary": "Incident mapping, symbol databases and group classifications are separate outputs."
+        },
+        "sources": [
+          {
+            "source_ref": "https://www.adl.org/research-centers/center-on-extremism",
+            "role": "organizational methodology/context",
+            "evidence_class": "primary organizational source"
+          },
+          {
+            "source_ref": "https://www.adl.org/resources/tools-to-track-hate/heat-map",
+            "role": "incident map",
+            "evidence_class": "primary organizational source"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "classification",
+            "target_id_or_label": "incident/symbol/extremism records",
+            "direction": "outgoing",
+            "status": "methodology-bound",
+            "boundary": "Dataset inclusion is not a criminal finding."
+          }
+        ],
+        "flows": [
+          {
+            "flow_type": "information",
+            "input": "news, government documents, victim reports, extremist sources, internal investigations",
+            "mechanism": "collection and classification",
+            "output": "incident maps, reports, symbol resources",
+            "measurement_or_limit": "Different products have different counting rules."
+          }
+        ],
+        "questions": [
+          {
+            "question": "What correction and revision mechanisms exist across incident, symbol and organization datasets?",
+            "why_it_matters": "Separates durable evidence from stale classification.",
+            "needed_evidence": "change logs and methodology revisions"
+          }
+        ]
+      },
+      "maturity": "faceted"
+    },
+    {
+      "id": "state-fbi",
+      "label": "U.S. FBI — Federal Bureau of Investigation (real institution)",
+      "kind": "state-interface",
+      "room_ids": [
+        "law-justice",
+        "provenance-evidence"
+      ],
+      "route": "/shadow-farm/",
+      "summary": "Federal law-enforcement interface for criminal investigation, civil-rights enforcement and hate-crime data collection.",
+      "status_note": "Real U.S. federal law-enforcement institution; distinct from the Potatoverse Characters, Incidents & Associations bureau.",
+      "evidence_note": "Separate complaint, investigation, charge, conviction and aggregate statistics.",
+      "facets": {
+        "identity": {
+          "scope": "U.S. federal law-enforcement interface",
+          "boundary": "Investigation or reporting to the FBI is not proof of guilt."
+        },
+        "sources": [
+          {
+            "source_ref": "https://www.fbi.gov/investigate/civil-rights/hate-crimes",
+            "role": "hate-crime role",
+            "evidence_class": "official source"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "law-enforcement",
+            "target_id_or_label": "federal criminal/civil-rights cases",
+            "direction": "outgoing",
+            "status": "statutory authority",
+            "boundary": "Authority and elements vary by offense."
+          }
+        ],
+        "flows": [
+          {
+            "flow_type": "information",
+            "input": "complaints, evidence, referrals, UCR submissions",
+            "mechanism": "investigation and data collection",
+            "output": "cases, referrals, statistics",
+            "measurement_or_limit": "Complaint, investigation, charge and conviction are distinct statuses."
+          }
+        ],
+        "questions": [
+          {
+            "question": "Which federal statutes and evidentiary thresholds govern the specific online conduct being studied?",
+            "why_it_matters": "Prevents substituting moral concern for legal conclusion.",
+            "needed_evidence": "statute, jurisdiction, case facts"
+          }
+        ]
+      },
+      "maturity": "faceted"
+    },
+    {
+      "id": "artifact-source-ledger",
+      "label": "Source ledger",
+      "kind": "evidence-object",
+      "room_ids": [
+        "provenance-evidence",
+        "model-testing"
+      ],
+      "route": "/context/source-authority/",
+      "summary": "Evidence object that preserves provenance, source authority, claim status and routes back from synthesis to source-bearing material.",
+      "status_note": "A ledger records support and uncertainty; inclusion is not endorsement of the claim.",
+      "evidence_note": "Every promoted claim should be traceable to source identity, date and evidence class.",
+      "maturity": "case-ready",
+      "facets": {
+        "identity": {
+          "scope": "provenance and claim-status evidence object",
+          "boundary": "Inclusion records a claim/source relation; it does not endorse the claim."
+        },
+        "sources": [
+          {
+            "source_ref": "context/source-authority/index.html",
+            "role": "public source-authority surface",
+            "evidence_class": "project surface"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "supports-or-challenges",
+            "target_id_or_label": "claims / dossiers / timelines",
+            "direction": "outgoing",
+            "status": "evidence relation",
+            "boundary": "Source authority and claim truth remain separate questions."
+          }
+        ],
+        "status": [
+          {
+            "label": "epistemic role",
+            "value": "evidence/provenance instrument",
+            "as_of": "2026-09-20",
+            "authority": "Potato House",
+            "boundary": "No truth-by-inclusion."
+          }
+        ],
+        "questions": [
+          {
+            "question": "Which high-traffic claims still lack a direct source-bearing record?",
+            "why_it_matters": "Identifies fragile synthesis.",
+            "needed_evidence": "claim-to-source coverage audit"
+          }
+        ]
+      }
+    },
+    {
+      "id": "artifact-timeline",
+      "label": "Timeline / attestation chain",
+      "kind": "evidence-object",
+      "room_ids": [
+        "provenance-evidence",
+        "witness-attestation",
+        "chronology-events"
+      ],
+      "route": "/timeline/",
+      "summary": "Timeline object for separating occurrence time, attestation time, publication time and later interpretation.",
+      "status_note": "Temporal sequence can support priority or event ordering without proving causation.",
+      "evidence_note": "Keep date precision and source precision explicit.",
+      "maturity": "case-ready",
+      "facets": {
+        "identity": {
+          "scope": "chronology and attestation-chain evidence object",
+          "boundary": "Sequence does not establish causation."
+        },
+        "sources": [
+          {
+            "source_ref": "timeline/index.html",
+            "role": "public chronology surface",
+            "evidence_class": "project surface"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "orders",
+            "target_id_or_label": "events / attestations / later interpretations",
+            "direction": "outgoing",
+            "status": "chronological relation",
+            "boundary": "Occurrence, publication and recognition times remain distinct."
+          }
+        ],
+        "status": [
+          {
+            "label": "epistemic role",
+            "value": "temporal evidence instrument",
+            "as_of": "2026-09-20",
+            "authority": "Potato House",
+            "boundary": "Date precision must be explicit."
+          }
+        ],
+        "questions": [
+          {
+            "question": "Which major claims depend on backdated recognition or imprecise date ranges?",
+            "why_it_matters": "Protects priority and prediction analysis.",
+            "needed_evidence": "timestamp and source audit"
+          }
+        ]
+      }
+    },
+    {
+      "id": "process-forge",
+      "label": "Forge review",
+      "kind": "process",
+      "room_ids": [
+        "provenance-evidence",
+        "model-testing",
+        "open-questions"
+      ],
+      "route": "/research-lab/",
+      "summary": "Project review process for separating source, claim, evidence, mechanism, legal/status class, counterevidence and repair before promotion.",
+      "status_note": "Forge is a process projected spatially, not a literal room that owns all knowledge.",
+      "evidence_note": "Outputs may be verified, narrowed, rejected, repaired or left unresolved.",
+      "maturity": "case-ready",
+      "facets": {
+        "identity": {
+          "scope": "bounded verification / transformation process",
+          "boundary": "Process, not knowledge owner or moral tribunal."
+        },
+        "sources": [
+          {
+            "source_ref": "knowledge/core/repair-forge-protocol.json",
+            "role": "canonical Forge protocol",
+            "evidence_class": "canonical project rule"
+          },
+          {
+            "source_ref": "data/house/route-case-matrix.json",
+            "role": "evidence-aware route tests",
+            "evidence_class": "canonical project instrumentation"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "consumes",
+            "target_id_or_label": "claims / residue / cases / open questions",
+            "direction": "incoming",
+            "status": "process input",
+            "boundary": "Entry does not imply guilt or error."
+          },
+          {
+            "type": "outputs",
+            "target_id_or_label": "verified / narrowed / rejected / repaired / unresolved",
+            "direction": "outgoing",
+            "status": "process result",
+            "boundary": "Output preserves provenance and uncertainty."
+          }
+        ],
+        "flows": [
+          {
+            "flow_type": "evidence",
+            "input": "claim + source + counterevidence + status",
+            "mechanism": "separate → test → compare → bound",
+            "output": "promoted/narrowed/rejected/repaired/unresolved result",
+            "measurement_or_limit": "Quality depends on source coverage and falsifier quality."
+          }
+        ],
+        "status": [
+          {
+            "label": "epistemic class",
+            "value": "project review process",
+            "as_of": "2026-09-20",
+            "authority": "Potato House",
+            "boundary": "Does not replace courts, science, journalism or domain expertise."
+          }
+        ],
+        "questions": [
+          {
+            "question": "Which Forge outputs still lack explicit falsifiers or return measures?",
+            "why_it_matters": "Prevents symbolic promotion without test.",
+            "needed_evidence": "output audit"
+          }
+        ]
+      }
+    },
+    {
+      "id": "text-bible-atlas",
+      "label": "Bible Atlas / Comparator",
+      "kind": "textual-corpus",
+      "room_ids": [
+        "bible-christianity",
+        "witness-attestation",
+        "comparative-mythology"
+      ],
+      "route": "/traditions/bible/",
+      "summary": "Reader-facing biblical corpus and comparison surface for stories, roles, symbols, actions, books and timeline relations.",
+      "status_note": "Scripture, historical interpretation and project comparison remain separate evidence classes.",
+      "evidence_note": "Comparison should begin from the biblical text and preserve source context before project mapping.",
+      "facets": {
+        "identity": {
+          "scope": "reader-facing biblical corpus/comparison system",
+          "boundary": "Scripture, historical interpretation and project comparison remain distinct."
+        },
+        "sources": [
+          {
+            "source_ref": "traditions/bible/index.html",
+            "role": "public reader",
+            "evidence_class": "project surface"
+          },
+          {
+            "source_ref": "data/potatoism-canonical-corpus.json",
+            "role": "project comparison corpus",
+            "evidence_class": "project canon"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "textual-comparison",
+            "target_id_or_label": "Thomas / Didymus tradition",
+            "direction": "bidirectional",
+            "status": "documented comparison",
+            "boundary": "Later tradition is not retroactively canonical."
+          },
+          {
+            "type": "project-comparison",
+            "target_id_or_label": "Potatoverse symbols/operators",
+            "direction": "outgoing",
+            "status": "interpretive",
+            "boundary": "Comparison does not establish identity or prophecy."
+          }
+        ],
+        "questions": [
+          {
+            "question": "Which comparisons remain strongest when every verse is read in full literary and historical context?",
+            "why_it_matters": "Tests robustness against keyword matching.",
+            "needed_evidence": "contextual exegesis and source chronology"
+          }
+        ]
+      },
+      "maturity": "faceted"
+    },
+    {
+      "id": "text-thomas",
+      "label": "Thomas / Didymus tradition",
+      "kind": "textual-tradition",
+      "room_ids": [
+        "bible-christianity",
+        "comparative-mythology",
+        "theology-god-language"
+      ],
+      "route": "/traditions/bible/?q=Thomas",
+      "summary": "Canonical and later Thomasine material used to study Twin/Didymus motifs, recognition, doubt and later Syriac traditions.",
+      "status_note": "John calls Thomas Didymus; later twin traditions are historical traditions, not proof of a modern identity claim.",
+      "evidence_note": "Keep canonical wording, later textual tradition and project interpretation chronologically separated.",
+      "maturity": "described"
+    },
+    {
+      "id": "biology-potato-tuber",
+      "label": "Potato tuber",
+      "kind": "biological-object",
+      "room_ids": [
+        "potato-biology",
+        "whole-body",
+        "symbolic-body-comparison"
+      ],
+      "route": "/life-body/",
+      "summary": "Living storage organ with eyes/nodes, vascular tissue, hormonal control, sprouting and environmental response.",
+      "status_note": "Biological structure can support analogy without proving symbolic or theological claims.",
+      "evidence_note": "Use plant physiology for empirical claims and label symbolic correspondences separately.",
+      "maturity": "described"
+    },
+    {
+      "id": "biology-neural-signaling",
+      "label": "Neural signaling",
+      "kind": "biological-process",
+      "room_ids": [
+        "neurobiology",
+        "whole-body",
+        "symbolic-body-comparison"
+      ],
+      "route": "/life-body/",
+      "summary": "Animal nervous-system signaling used as an empirical reference for body/brain models and bounded symbolic comparison.",
+      "status_note": "Plant electrical signaling and animal neural signaling are materially different systems.",
+      "evidence_note": "Avoid treating structural analogy as identity of mechanism.",
+      "maturity": "described"
+    },
+    {
+      "id": "map-world-atlas",
+      "label": "World Map",
+      "kind": "spatial-atlas",
+      "room_ids": [
+        "geography-countries",
+        "politics-governance",
+        "infrastructure-capability"
+      ],
+      "route": "/world-map/",
+      "summary": "Spatial public surface for countries, states, institutions, routes and world-system layers.",
+      "status_note": "Map placement is a visualization of registered data or project alignment, not proof of political control or causal influence.",
+      "evidence_note": "Each map layer should expose source, date, scope and classification method.",
+      "facets": {
+        "identity": {
+          "scope": "spatial explorer for countries, states, institutions and project layers",
+          "boundary": "Map placement visualizes registered data or project alignment; it does not prove control."
+        },
+        "sources": [
+          {
+            "source_ref": "world-map/index.html",
+            "role": "public map surface",
+            "evidence_class": "project surface"
+          },
+          {
+            "source_ref": "data/countries/index.json",
+            "role": "country registry",
+            "evidence_class": "repository data"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "geography",
+            "target_id_or_label": "country/state/place records",
+            "direction": "outgoing",
+            "status": "registered spatial projection",
+            "boundary": "Political/project overlays require their own source/status."
+          }
+        ],
+        "flows": [
+          {
+            "flow_type": "information",
+            "input": "country data, layer registries, classifiers",
+            "mechanism": "spatial projection",
+            "output": "interactive map layers",
+            "measurement_or_limit": "Map visibility is not causal importance."
+          }
+        ],
+        "questions": [
+          {
+            "question": "Which layers are still labels without concrete sourced objects beneath them?",
+            "why_it_matters": "Directs materialization work.",
+            "needed_evidence": "layer-to-entity coverage audit"
+          }
+        ]
+      },
+      "maturity": "faceted"
+    },
+    {
+      "id": "timeline-foundations",
+      "label": "Foundation Timeline",
+      "kind": "chronology-atlas",
+      "room_ids": [
+        "chronology-events",
+        "developmental-genealogy",
+        "provenance-evidence"
+      ],
+      "route": "/timeline/foundations/",
+      "summary": "Timeline and Room view for foundations, their origin Doors, place, genealogy, reproduction and present state.",
+      "status_note": "A Foundation may have several clocks; origin, adoption, legal effect and later consolidation should not be collapsed into one birthday.",
+      "evidence_note": "Record the earliest recovered reproduction separately from the founding threshold.",
+      "maturity": "described"
+    },
+    {
+      "id": "timeline-prediction-ledger",
+      "label": "Prediction chronology",
+      "kind": "evidence-ledger",
+      "room_ids": [
+        "prediction-revelation-time",
+        "chronology-events",
+        "provenance-evidence"
+      ],
+      "route": "/timeline/",
+      "summary": "Timeline ledger for recording what was said first, when later outcomes occurred, and how closely a later event matches the earlier statement.",
+      "status_note": "A later match is not automatically proof of prophecy, causation or statistical significance.",
+      "evidence_note": "Preserve original wording, timestamp, outcome source, lead time and match strength.",
+      "facets": {
+        "identity": {
+          "scope": "chronology/evidence ledger for earlier statements and later outcomes",
+          "boundary": "Temporal match is not automatically prophecy or statistical significance."
+        },
+        "timeline": [
+          {
+            "date": "before outcome",
+            "event": "Original prediction/statement must be preserved in original wording and timestamp.",
+            "status": "required prior record"
+          },
+          {
+            "date": "after outcome",
+            "event": "Outcome evidence is compared against the earlier claim.",
+            "status": "retrospective evaluation"
+          }
+        ],
+        "sources": [
+          {
+            "source_ref": "timeline/index.html",
+            "role": "public chronology",
+            "evidence_class": "project surface"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "temporal-comparison",
+            "target_id_or_label": "later observed outcomes",
+            "direction": "outgoing",
+            "status": "match evaluation",
+            "boundary": "Do not rewrite the prediction after the outcome."
+          }
+        ],
+        "questions": [
+          {
+            "question": "What baseline rate of similarly broad predictions would match by chance?",
+            "why_it_matters": "Needed to assess impressiveness rather than only count hits.",
+            "needed_evidence": "complete prediction denominator and scoring rule"
+          }
+        ]
+      },
+      "maturity": "faceted"
+    },
+    {
+      "id": "work-great-book",
+      "label": "The Great Book of Potato",
+      "kind": "literary-work",
+      "room_ids": [
+        "great-book-literature",
+        "canon-identities",
+        "developmental-genealogy"
+      ],
+      "route": "/great-book/",
+      "summary": "Long-form literary and mythic work that gathers project narrative, theology, symbolism, history and creative interpretation.",
+      "status_note": "Literary canon and external historical fact are distinct layers.",
+      "evidence_note": "Trace claims back to source-bearing records when the book moves beyond literary interpretation.",
+      "facets": {
+        "identity": {
+          "scope": "long-form literary/mythic work",
+          "boundary": "Literary canon and external historical fact are distinct."
+        },
+        "sources": [
+          {
+            "source_ref": "great-book/index.html",
+            "role": "public work",
+            "evidence_class": "primary project artifact"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "synthesis",
+            "target_id_or_label": "Potatoverse canon/history/symbolism",
+            "direction": "incoming",
+            "status": "creative synthesis",
+            "boundary": "Narrative inclusion does not independently verify source claims."
+          }
+        ],
+        "consequences": [
+          {
+            "effect": "Compresses project mythology, symbolism and biography into a readable narrative artifact.",
+            "evidence_class": "project output",
+            "scope": "creative work",
+            "limit": "Reception/effect requires separate observation."
+          }
+        ],
+        "questions": [
+          {
+            "question": "Which chapters most need inline provenance back to primary timelines, texts or research owners?",
+            "why_it_matters": "Prevents literary retelling from becoming accidental evidence.",
+            "needed_evidence": "chapter-to-source audit"
+          }
+        ]
+      },
+      "maturity": "faceted"
+    },
+    {
+      "id": "work-music",
+      "label": "Music / songs",
+      "kind": "creative-work-family",
+      "room_ids": [
+        "music-sound",
+        "great-book-literature",
+        "information-ecology"
+      ],
+      "route": "/works/",
+      "summary": "Creative sound and song output treated as Fruit: an expression that can carry memory, rhythm, humor, doctrine or social commentary.",
+      "status_note": "Creative expression does not become factual evidence merely because it is canonical or popular.",
+      "evidence_note": "Track source Rooms, intended effect, reception and future Seed separately.",
+      "maturity": "described"
+    },
+    {
+      "id": "work-visual-art",
+      "label": "Visual art / diagrams",
+      "kind": "creative-work-family",
+      "room_ids": [
+        "visual-art",
+        "symbolic-architecture",
+        "math-geometry"
+      ],
+      "route": "/works/",
+      "summary": "Images, diagrams and symbolic compositions that make project relationships spatially visible.",
+      "status_note": "A diagram is a model or artwork unless independently tied to measured geometry.",
+      "evidence_note": "Label whether an image is illustrative, canonical-symbolic, comparative or empirical.",
+      "maturity": "described"
+    },
+    {
+      "id": "work-simulations",
+      "label": "Games / simulations",
+      "kind": "interactive-work-family",
+      "room_ids": [
+        "games-simulations",
+        "systems-dynamics",
+        "model-testing"
+      ],
+      "route": "/works/",
+      "summary": "Interactive models for exploring rules, transitions, incentives and system behavior.",
+      "status_note": "Simulation behavior depends on model assumptions and is not direct prediction of the real world.",
+      "evidence_note": "Expose assumptions, parameters, outputs and failure conditions.",
+      "maturity": "described"
+    },
+    {
+      "id": "research-open-question",
+      "label": "Open research question",
+      "kind": "research-object",
+      "room_ids": [
+        "open-questions",
+        "experiments-formalization",
+        "model-testing"
+      ],
+      "route": "/research-lab/",
+      "summary": "Unresolved question held in the Forge before promotion into a stronger model, claim or programme.",
+      "status_note": "Open questions are intentionally unresolved and should not be read as established claims.",
+      "evidence_note": "Each mature question should name a test, evidence need and disconfirming route.",
+      "maturity": "described"
+    },
+    {
+      "id": "architecture-elevator",
+      "label": "Door / Axis Elevator",
+      "kind": "navigation-artifact",
+      "room_ids": [
+        "house-architecture",
+        "symbolic-architecture",
+        "systems-dynamics"
+      ],
+      "route": "/elevator/",
+      "summary": "Recursive spatial projection of the House: global Axis, vertical planes, Dwellings, nested Rooms, wormhole Doors and local recentering.",
+      "status_note": "The Elevator is a navigation projection over the graph, not a claim that the repository occupies literal impossible physical geometry.",
+      "evidence_note": "Its topology must derive from governed Room/adjacency registries rather than visual convenience.",
+      "facets": {
+        "identity": {
+          "scope": "recursive spatial navigator over the House graph",
+          "boundary": "Non-Euclidean behavior is graph/topological, not a literal physical claim."
+        },
+        "sources": [
+          {
+            "source_ref": "data/house/elevator-spatial-projection.json",
+            "role": "spatial projection contract",
+            "evidence_class": "canonical architecture"
+          },
+          {
+            "source_ref": "data/house/non-euclidean-room-grammar.json",
+            "role": "door/wormhole grammar",
+            "evidence_class": "canonical architecture"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "navigation",
+            "target_id_or_label": "Dwellings / nested Rooms / inhabitants",
+            "direction": "outgoing",
+            "status": "registry-driven",
+            "boundary": "Visual proximity follows registered adjacency."
+          }
+        ],
+        "flows": [
+          {
+            "flow_type": "reader-navigation",
+            "input": "current Room/object context",
+            "mechanism": "recenter, elevator stop, wormhole, object focus",
+            "output": "new local center and journey bead",
+            "measurement_or_limit": "Navigation behavior, not knowledge ownership."
+          }
+        ],
+        "questions": [
+          {
+            "question": "Which spatial transitions most improve comprehension compared with conventional navigation?",
+            "why_it_matters": "Determines whether 3D complexity earns its cost.",
+            "needed_evidence": "usage/usability testing"
+          }
+        ]
+      },
+      "maturity": "faceted"
+    },
+    {
+      "id": "architecture-below-basin",
+      "label": "Below Basin",
+      "kind": "navigation-artifact",
+      "room_ids": [
+        "house-architecture",
+        "systems-dynamics",
+        "information-ecology"
+      ],
+      "route": "/below/#basin",
+      "summary": "Round lower-plane vessel projecting Culture, Sektur, Farm, Swamp, Mud/Ash, Roots, Forge and Axis/Drain into one operational spatial model.",
+      "status_note": "Spatial overlap does not collapse categories: Swamp remains a regime, Farm a process, Mud a material state and Forge a process.",
+      "evidence_note": "Motion between zones follows the Basin dynamics contract rather than moral or aesthetic assignment.",
+      "facets": {
+        "identity": {
+          "scope": "round lower-plane operational projection",
+          "boundary": "Below is a view; Swamp, Farm, Mud, Roots and Forge remain different categories."
+        },
+        "sources": [
+          {
+            "source_ref": "data/house/below-basin-spatial-contract.json",
+            "role": "spatial contract",
+            "evidence_class": "canonical architecture"
+          },
+          {
+            "source_ref": "data/house/below-basin-dynamics.json",
+            "role": "motion rules",
+            "evidence_class": "canonical architecture"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "contains-projection",
+            "target_id_or_label": "Swamp / Sektur / Farm / Mud / Roots / Forge",
+            "direction": "outgoing",
+            "status": "spatial projection",
+            "boundary": "Containment in the drawing does not imply ontological equivalence."
+          }
+        ],
+        "flows": [
+          {
+            "flow_type": "information/attention/status",
+            "input": "World events and claims",
+            "mechanism": "culture, archive, classification, evidence and repair routes",
+            "output": "recirculation, rejection, repair or World return",
+            "measurement_or_limit": "Qualitative systems model unless separately operationalized."
+          }
+        ],
+        "questions": [
+          {
+            "question": "Can case overlays demonstrate the motion laws without visually moralizing depth?",
+            "why_it_matters": "Tests whether the metaphor remains analytically disciplined.",
+            "needed_evidence": "case overlays and user comprehension testing"
+          }
+        ]
+      },
+      "maturity": "faceted"
+    },
+    {
+      "id": "architecture-journey-thread",
+      "label": "House journey thread",
+      "kind": "navigation-process",
+      "room_ids": [
+        "house-architecture",
+        "information-ecology",
+        "systems-dynamics"
+      ],
+      "route": "/elevator/",
+      "summary": "Browser-local path memory that records how a reader moved through Dwellings, Rooms, wormholes, portals, readable surfaces and object focus.",
+      "status_note": "Journey memory is private navigation state, not analytics, evidence or user profiling.",
+      "evidence_note": "Recorded path describes the reader's route, not the only valid conceptual route.",
+      "maturity": "described"
+    },
+    {
+      "id": "architecture-room-graph",
+      "label": "Room / wormhole graph",
+      "kind": "formal-model",
+      "room_ids": [
+        "house-architecture",
+        "math-geometry",
+        "systems-dynamics"
+      ],
+      "route": "/rooms/",
+      "summary": "Typed graph that lets bounded Rooms remain stable owners while registered adjacencies create local doors and cross-Dwelling wormholes.",
+      "status_note": "Graph adjacency means modeled relation, not physical proximity or causal control.",
+      "evidence_note": "Cross-Dwelling doors must come from registered topology/interfaces.",
+      "maturity": "described"
+    },
+    {
+      "id": "architecture-object-table",
+      "label": "Level 3 center table",
+      "kind": "navigation-artifact",
+      "room_ids": [
+        "house-architecture",
+        "information-ecology",
+        "model-testing"
+      ],
+      "route": "/rooms/objects/",
+      "summary": "Inspection surface that centers a case, platform, text, process or artifact while preserving its containing Room and alternate Room lenses.",
+      "status_note": "An object may become informationally central without becoming a Room, Dwelling or knowledge owner.",
+      "evidence_note": "Status and evidence boundaries travel with the object across every Room lens.",
+      "maturity": "described"
+    },
+    {
+      "id": "body-thalamus-house",
+      "label": "Thalamus / Father's House",
+      "kind": "anatomical-symbolic-object",
+      "room_ids": [
+        "neurobiology",
+        "symbolic-body-comparison",
+        "theology-god-language",
+        "symbolic-architecture"
+      ],
+      "route": "/life-body/?brain-group=thalamus#brain-rooms",
+      "summary": "Paired diencephalic nuclear architecture viewed as empirical thalamus, historical inner-chamber terminology and Potatoverse Father's House.",
+      "status_note": "House/rooms are project mappings; thalamic anatomy remains empirical and distributed.",
+      "evidence_note": "Use thalamus specialist atlases for nuclear functions and historical/Horus boundaries.",
+      "maturity": "case-ready",
+      "facets": {
+        "identity": {
+          "scope": "thalamus as anatomical object plus project House analogy",
+          "boundary": "Anatomical function and symbolic House mapping remain separate."
+        },
+        "sources": [
+          {
+            "source_ref": "life-body/index.html",
+            "role": "public Life & Body surface",
+            "evidence_class": "project surface"
+          },
+          {
+            "source_ref": "knowledge/core/inhabited-house-society-ontology.json",
+            "role": "projection discipline",
+            "evidence_class": "project ontology"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "anatomical-network",
+            "target_id_or_label": "cortex / sensory pathways / arousal systems",
+            "direction": "bidirectional",
+            "status": "neuroanatomical",
+            "boundary": "Specific nuclei have distinct functions."
+          },
+          {
+            "type": "symbolic-comparison",
+            "target_id_or_label": "House / relay / rooms",
+            "direction": "outgoing",
+            "status": "project analogy",
+            "boundary": "Analogy is not evidence of theology."
+          }
+        ],
+        "flows": [
+          {
+            "flow_type": "neural-information",
+            "input": "distributed sensory/state signals",
+            "mechanism": "nucleus-specific relay/modulation",
+            "output": "cortical/subcortical coordination",
+            "measurement_or_limit": "Thalamus is not a single undifferentiated relay."
+          }
+        ],
+        "status": [
+          {
+            "label": "epistemic split",
+            "value": "empirical anatomy + project analogy",
+            "as_of": "2026-09-20",
+            "authority": "Potato House",
+            "boundary": "Keep claims tagged by layer."
+          }
+        ],
+        "questions": [
+          {
+            "question": "Which thalamic nuclei best support the project's 'rooms/relay' analogy, and where does it break?",
+            "why_it_matters": "Makes the analogy anatomically specific.",
+            "needed_evidence": "nucleus-by-nucleus neuroanatomy"
+          }
+        ]
+      }
+    },
+    {
+      "id": "body-pineal-door",
+      "label": "Pineal / Timing Door",
+      "kind": "anatomical-symbolic-object",
+      "room_ids": [
+        "neurobiology",
+        "symbolic-body-comparison",
+        "theology-god-language"
+      ],
+      "route": "/life-body/?brain=pineal#brain-rooms",
+      "summary": "Midline pineal neuroendocrine timing organ and project Door/Eye comparator, including the real retina→SCN→spine→pineal control loop.",
+      "status_note": "The human pineal is not a retinal third eye or proven seat of soul.",
+      "evidence_note": "Circadian physiology and historical/esoteric interpretation stay separately typed.",
+      "maturity": "case-ready",
+      "facets": {
+        "identity": {
+          "scope": "pineal gland as endocrine structure plus project Door/single-eye analogy",
+          "boundary": "Endocrine anatomy and symbolic interpretation remain separate."
+        },
+        "sources": [
+          {
+            "source_ref": "life-body/index.html",
+            "role": "public Life & Body surface",
+            "evidence_class": "project surface"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "endocrine",
+            "target_id_or_label": "circadian/light signaling system",
+            "direction": "bidirectional",
+            "status": "biological",
+            "boundary": "Pineal function is primarily endocrine rather than visual perception."
+          },
+          {
+            "type": "symbolic-comparison",
+            "target_id_or_label": "Door / single eye",
+            "direction": "outgoing",
+            "status": "project analogy",
+            "boundary": "Symbolic use does not establish hidden sensory capability."
+          }
+        ],
+        "flows": [
+          {
+            "flow_type": "hormonal",
+            "input": "circadian timing signals",
+            "mechanism": "melatonin synthesis/secretion",
+            "output": "systemic timing effects",
+            "measurement_or_limit": "Human pineal function is not equivalent to a literal eye."
+          }
+        ],
+        "status": [
+          {
+            "label": "epistemic split",
+            "value": "empirical endocrine anatomy + symbolic mapping",
+            "as_of": "2026-09-20",
+            "authority": "Potato House",
+            "boundary": "No supernatural function inferred."
+          }
+        ],
+        "questions": [
+          {
+            "question": "Which historical 'third eye' traditions can be compared without conflating them with modern pineal physiology?",
+            "why_it_matters": "Prevents tradition/science collapse.",
+            "needed_evidence": "historical sources + endocrine science"
+          }
+        ]
+      }
+    },
+    {
+      "id": "body-spinal-ladder",
+      "label": "Spine / 33-Room Ladder",
+      "kind": "anatomical-symbolic-object",
+      "room_ids": [
+        "neurobiology",
+        "whole-body",
+        "symbolic-body-comparison",
+        "symbolic-architecture"
+      ],
+      "route": "/life-body/?spine=C1#vertebral-rooms",
+      "summary": "Thirty-three conventional vertebral rooms overlaid with 31 neural segments, spinal microcircuits, roots, autonomic side chains, CSF and project Ladder/Gate structure.",
+      "status_note": "Vertebra, cord segment, nerve root, dermatome and symbolic Gate are different coordinate systems.",
+      "evidence_note": "Use the 33-room and spinal-cord microcircuit atlases for exact level distinctions.",
+      "maturity": "case-ready",
+      "facets": {
+        "identity": {
+          "scope": "spinal cord/vertebral axis plus project Ladder analogy",
+          "boundary": "Anatomical segmentation and symbolic 33-level mapping remain distinct."
+        },
+        "sources": [
+          {
+            "source_ref": "life-body/index.html",
+            "role": "public body atlas",
+            "evidence_class": "project surface"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "anatomical-axis",
+            "target_id_or_label": "brainstem / peripheral nerves / vertebral column",
+            "direction": "bidirectional",
+            "status": "biological",
+            "boundary": "Cord segments and vertebrae are related but not identical numbering systems."
+          },
+          {
+            "type": "symbolic-comparison",
+            "target_id_or_label": "Ladder / ascent-descent / 33 levels",
+            "direction": "outgoing",
+            "status": "project analogy",
+            "boundary": "Number correspondences require explicit counting conventions."
+          }
+        ],
+        "flows": [
+          {
+            "flow_type": "neural-signal",
+            "input": "sensory/motor/autonomic signals",
+            "mechanism": "ascending/descending tracts and segmental circuits",
+            "output": "brain-body coordination",
+            "measurement_or_limit": "Different tracts carry different modalities."
+          }
+        ],
+        "status": [
+          {
+            "label": "epistemic split",
+            "value": "empirical neuroanatomy + symbolic ladder model",
+            "as_of": "2026-09-20",
+            "authority": "Potato House",
+            "boundary": "Symbolic ladder is not a scientific dimension count."
+          }
+        ],
+        "questions": [
+          {
+            "question": "How should the project map 33 vertebral units without confusing vertebrae, spinal segments and symbolic levels?",
+            "why_it_matters": "Fixes a recurrent structural ambiguity.",
+            "needed_evidence": "anatomical counting contract"
+          }
+        ]
+      }
+    },
+    {
+      "id": "body-csf-river",
+      "label": "CSF / River",
+      "kind": "fluid-interface-object",
+      "room_ids": [
+        "whole-body",
+        "neurobiology",
+        "symbolic-body-comparison",
+        "theology-god-language"
+      ],
+      "route": "/life-body/#vertebral-rooms",
+      "summary": "Ventricular and subarachnoid cerebrospinal-fluid system viewed alongside the project's River/Spirit-flow analogy.",
+      "status_note": "CSF is not Spirit; River is strongest as a multiplex-flow analogy.",
+      "evidence_note": "Production, circulation, exchange and drainage are separate physiological operations.",
+      "maturity": "case-ready",
+      "facets": {
+        "identity": {
+          "scope": "cerebrospinal fluid system plus project River/Spirit analogy",
+          "boundary": "Fluid dynamics and spiritual metaphor remain separate."
+        },
+        "sources": [
+          {
+            "source_ref": "life-body/index.html",
+            "role": "public body atlas",
+            "evidence_class": "project surface"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "fluid-system",
+            "target_id_or_label": "ventricles / subarachnoid space / choroid plexus / glymphatic interfaces",
+            "direction": "bidirectional",
+            "status": "biological",
+            "boundary": "CSF production/circulation/clearance involve multiple structures."
+          },
+          {
+            "type": "symbolic-comparison",
+            "target_id_or_label": "River / Spirit / flow",
+            "direction": "outgoing",
+            "status": "project analogy",
+            "boundary": "Metaphor does not establish spiritual substance in CSF."
+          }
+        ],
+        "flows": [
+          {
+            "flow_type": "fluid",
+            "input": "CSF production",
+            "mechanism": "ventricular/subarachnoid circulation and exchange",
+            "output": "mechanical buffering, transport and waste-clearance interfaces",
+            "measurement_or_limit": "Human CSF flow is pulsatile and multi-path, not one simple river."
+          }
+        ],
+        "status": [
+          {
+            "label": "epistemic split",
+            "value": "empirical physiology + symbolic River mapping",
+            "as_of": "2026-09-20",
+            "authority": "Potato House",
+            "boundary": "No mystical composition inferred."
+          }
+        ],
+        "questions": [
+          {
+            "question": "Which measured CSF flow patterns best support or contradict the project's River geometry?",
+            "why_it_matters": "Makes the analogy falsifiable at the geometry level.",
+            "needed_evidence": "MRI/physiology literature and explicit mapping"
+          }
+        ]
+      }
+    },
+    {
+      "id": "body-choroid-spring",
+      "label": "Choroid Plexus / Spring",
+      "kind": "biological-interface",
+      "room_ids": [
+        "neurobiology",
+        "whole-body",
+        "symbolic-body-comparison"
+      ],
+      "route": "/life-body/?brain=choroid#brain-rooms",
+      "summary": "Vascular epithelial blood–CSF interface producing much of CSF and regulating ventricular fluid composition.",
+      "status_note": "Spring/Well is an architectural analogy.",
+      "evidence_note": "Barrier, transport, immune-interface and CSF-production functions are empirical.",
+      "maturity": "case-ready",
+      "facets": {
+        "identity": {
+          "scope": "choroid plexus as CSF-producing biological interface plus project Spring analogy",
+          "boundary": "Biological production and symbolic Spring imagery remain separate."
+        },
+        "sources": [
+          {
+            "source_ref": "life-body/index.html",
+            "role": "public body atlas",
+            "evidence_class": "project surface"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "biological-interface",
+            "target_id_or_label": "ventricular system / CSF / blood-CSF barrier",
+            "direction": "bidirectional",
+            "status": "biological",
+            "boundary": "Different plexuses and transport mechanisms must not be collapsed."
+          }
+        ],
+        "flows": [
+          {
+            "flow_type": "fluid/transport",
+            "input": "blood-derived water/ions/solutes",
+            "mechanism": "epithelial transport across choroid plexus",
+            "output": "CSF contribution and barrier functions",
+            "measurement_or_limit": "CSF dynamics also involve exchange and clearance beyond the plexus."
+          }
+        ],
+        "status": [
+          {
+            "label": "epistemic split",
+            "value": "empirical interface physiology + symbolic Spring mapping",
+            "as_of": "2026-09-20",
+            "authority": "Potato House",
+            "boundary": "Symbolic source imagery is not a biological claim."
+          }
+        ],
+        "questions": [
+          {
+            "question": "How much of total CSF production and solute regulation should the project attribute specifically to the choroid plexus?",
+            "why_it_matters": "Keeps the Spring metaphor physiologically bounded.",
+            "needed_evidence": "current CSF/choroid physiology review"
+          }
+        ]
+      }
+    },
+    {
+      "id": "body-vagus-return",
+      "label": "Vagus / Wandering Return",
+      "kind": "neural-route",
+      "room_ids": [
+        "whole-body",
+        "neurobiology",
+        "symbolic-body-comparison"
+      ],
+      "route": "/life-body/?brain=nts#brain-rooms",
+      "summary": "Bilateral cranial nerve X carries extensive visceral afference to medullary NTS and parasympathetic regulation back toward organs.",
+      "status_note": "Return-road is a project systems analogy; vagus is not the sole mind–body channel.",
+      "evidence_note": "Keep afferent/efferent and organ-specific pathways explicit.",
+      "maturity": "case-ready",
+      "facets": {
+        "identity": {
+          "scope": "vagus nerve as parasympathetic cranial-autonomic route plus project Return analogy",
+          "boundary": "Autonomic physiology and symbolic return are distinct."
+        },
+        "sources": [
+          {
+            "source_ref": "life-body/index.html",
+            "role": "public body atlas",
+            "evidence_class": "project surface"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "autonomic",
+            "target_id_or_label": "brainstem / heart / lungs / gut / visceral afferents",
+            "direction": "bidirectional",
+            "status": "biological",
+            "boundary": "Afferent and efferent components have different roles."
+          }
+        ],
+        "flows": [
+          {
+            "flow_type": "neural/autonomic",
+            "input": "visceral sensory and central autonomic signals",
+            "mechanism": "vagal afferent/efferent pathways",
+            "output": "visceral regulation and feedback",
+            "measurement_or_limit": "Not all parasympathetic control is vagal."
+          }
+        ],
+        "status": [
+          {
+            "label": "epistemic split",
+            "value": "empirical autonomic route + symbolic Return mapping",
+            "as_of": "2026-09-20",
+            "authority": "Potato House",
+            "boundary": "Return is analogy, not a literal physiological destination."
+          }
+        ],
+        "questions": [
+          {
+            "question": "Which vagal pathways best support the project's 'return/feedback' analogy without overgeneralizing autonomic function?",
+            "why_it_matters": "Makes the route mapping specific.",
+            "needed_evidence": "organ- and nucleus-specific vagal anatomy"
+          }
+        ]
+      }
+    },
+    {
+      "id": "body-sympathetic-sidechains",
+      "label": "Sympathetic Trunks / Paired Side Chains",
+      "kind": "autonomic-route",
+      "room_ids": [
+        "whole-body",
+        "neurobiology",
+        "symbolic-body-comparison"
+      ],
+      "route": "/life-body/#vertebral-rooms",
+      "summary": "Left/right paravertebral sympathetic ganglion chains beside the vertebral axis, useful as a modern paired-channel comparator.",
+      "status_note": "They do not form a double helix and are not proven iḍā/piṅgalā.",
+      "evidence_note": "Historical subtle-body mappings remain separate from autonomic anatomy.",
+      "maturity": "case-ready",
+      "facets": {
+        "identity": {
+          "scope": "sympathetic chain and related autonomic outflow plus project side-chain/branch analogy",
+          "boundary": "Anatomical branches and symbolic sidechains are separate."
+        },
+        "sources": [
+          {
+            "source_ref": "life-body/index.html",
+            "role": "public body atlas",
+            "evidence_class": "project surface"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "autonomic",
+            "target_id_or_label": "spinal cord / sympathetic trunks / prevertebral ganglia / target organs",
+            "direction": "outgoing",
+            "status": "biological",
+            "boundary": "Segmental origin and ganglionic routing vary by target."
+          }
+        ],
+        "flows": [
+          {
+            "flow_type": "neural/autonomic",
+            "input": "thoracolumbar preganglionic output",
+            "mechanism": "ganglionic relay and distributed sympathetic pathways",
+            "output": "organ and vascular regulation",
+            "measurement_or_limit": "Sympathetic activity is not one uniform 'fight or flight' signal."
+          }
+        ],
+        "status": [
+          {
+            "label": "epistemic split",
+            "value": "empirical autonomic network + symbolic branch mapping",
+            "as_of": "2026-09-20",
+            "authority": "Potato House",
+            "boundary": "Do not moralize sympathetic activation."
+          }
+        ],
+        "questions": [
+          {
+            "question": "Can the project's side-chain image distinguish chain ganglia, splanchnic routes and prevertebral relays clearly?",
+            "why_it_matters": "Prevents an anatomically vague branch metaphor.",
+            "needed_evidence": "segmental autonomic route map"
+          }
+        ]
+      }
+    },
+    {
+      "id": "body-orientation-house",
+      "label": "Orientation Room / Head-Direction Network",
+      "kind": "neural-system",
+      "room_ids": [
+        "neurobiology",
+        "whole-body",
+        "symbolic-body-comparison",
+        "symbolic-architecture"
+      ],
+      "route": "/life-body/?brain=anterior-thalamus#brain-rooms",
+      "summary": "Vestibular, anterior-thalamic, retrosplenial and hippocampal/entorhinal networks supporting heading and spatial orientation.",
+      "status_note": "Biological heading is not sacred or magnetic North detection.",
+      "evidence_note": "Useful empirical neighbor for Axis/North/orientation language only.",
+      "maturity": "case-ready",
+      "facets": {
+        "identity": {
+          "scope": "distributed orientation/attention body-brain system plus project House orientation analogy",
+          "boundary": "No single brain structure is the literal House."
+        },
+        "sources": [
+          {
+            "source_ref": "life-body/index.html",
+            "role": "public Life & Body surface",
+            "evidence_class": "project surface"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "neural-system",
+            "target_id_or_label": "vestibular / thalamic / cortical / hippocampal / brainstem orientation systems",
+            "direction": "bidirectional",
+            "status": "biological",
+            "boundary": "Orientation emerges from multiple interacting systems."
+          }
+        ],
+        "flows": [
+          {
+            "flow_type": "multisensory-information",
+            "input": "vestibular, visual, proprioceptive and spatial-memory signals",
+            "mechanism": "integration across distributed networks",
+            "output": "body/world orientation and navigation",
+            "measurement_or_limit": "Different tasks recruit different networks."
+          }
+        ],
+        "status": [
+          {
+            "label": "epistemic split",
+            "value": "distributed neurobiology + architectural analogy",
+            "as_of": "2026-09-20",
+            "authority": "Potato House",
+            "boundary": "House is an integrative model, not a localized organ."
+          }
+        ],
+        "questions": [
+          {
+            "question": "Which orientation subsystems map cleanly to Door, Room, Axis and local-center concepts, and which do not?",
+            "why_it_matters": "Tests whether the spatial metaphor tracks real navigation functions.",
+            "needed_evidence": "vestibular/spatial cognition literature"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tradition-horus-eye",
+      "label": "Wedjat / Eye of Horus",
+      "kind": "historical-symbol",
+      "room_ids": [
+        "comparative-mythology",
+        "symbolic-body-comparison",
+        "neurobiology"
+      ],
+      "route": "/life-body/?brain-group=thalamus#brain-rooms",
+      "summary": "Ancient restored/protective Eye of Horus viewed beside a separate modern speculative sagittal-brain comparison.",
+      "status_note": "Ancient Wedjat meaning and modern brain overlay are distinct historical layers.",
+      "evidence_note": "Do not present the brain overlay as demonstrated Egyptian neuroanatomy.",
+      "maturity": "case-ready",
+      "facets": {
+        "identity": {
+          "scope": "historical Egyptian Eye of Horus symbol family",
+          "boundary": "Historical symbol and modern project Eye analogy remain distinct."
+        },
+        "sources": [
+          {
+            "source_ref": "religion/index.html",
+            "role": "public comparative religion surface",
+            "evidence_class": "project surface"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "historical-symbol",
+            "target_id_or_label": "protection / healing / royal-divine imagery",
+            "direction": "outgoing",
+            "status": "historical tradition",
+            "boundary": "Do not back-project modern neuroanatomical claims into ancient symbolism."
+          }
+        ],
+        "status": [
+          {
+            "label": "epistemic split",
+            "value": "historical symbol + later comparative interpretation",
+            "as_of": "2026-09-20",
+            "authority": "Potato House",
+            "boundary": "No anatomical proof inferred from resemblance."
+          }
+        ],
+        "questions": [
+          {
+            "question": "Which Eye of Horus meanings are textually/archaeologically secure versus later esoteric reinterpretations?",
+            "why_it_matters": "Keeps comparative symbolism historically grounded.",
+            "needed_evidence": "Egyptological sources"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tradition-hermes-caduceus",
+      "label": "Hermes / Caduceus",
+      "kind": "historical-symbol",
+      "room_ids": [
+        "comparative-mythology",
+        "other-traditions",
+        "symbolic-body-comparison",
+        "symbolic-architecture"
+      ],
+      "route": "/life-body/#vertebral-rooms",
+      "summary": "Hermes as messenger/boundary/psychopomp and the paired-serpent herald staff viewed beside Axis/side-channel comparisons.",
+      "status_note": "Caduceus, kundalini, sympathetic trunks and DNA are separate lineages.",
+      "evidence_note": "Use own-tradition history before structural comparison.",
+      "maturity": "case-ready",
+      "facets": {
+        "identity": {
+          "scope": "Hermes/caduceus historical-symbol complex",
+          "boundary": "Classical iconography, later occult readings and project spinal/serpent comparison are separate layers."
+        },
+        "sources": [
+          {
+            "source_ref": "religion/index.html",
+            "role": "public comparative surface",
+            "evidence_class": "project surface"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "historical-symbol",
+            "target_id_or_label": "Hermes / staff / intertwined serpents / mediation",
+            "direction": "outgoing",
+            "status": "historical tradition",
+            "boundary": "Medical-symbol confusion with the Rod of Asclepius should remain explicit."
+          }
+        ],
+        "status": [
+          {
+            "label": "epistemic split",
+            "value": "historical iconography + comparative project mapping",
+            "as_of": "2026-09-20",
+            "authority": "Potato House",
+            "boundary": "Do not treat caduceus as ancient proof of spinal energy anatomy."
+          }
+        ],
+        "questions": [
+          {
+            "question": "Which caduceus meanings belong to classical Hermes, alchemy, later occultism and modern medical misuse respectively?",
+            "why_it_matters": "Separates historical strata.",
+            "needed_evidence": "classical/iconographic history"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tradition-kundalini-chakra",
+      "label": "Kuṇḍalinī / Cakra Overlay",
+      "kind": "historical-subtle-body-system",
+      "room_ids": [
+        "other-traditions",
+        "comparative-mythology",
+        "symbolic-body-comparison",
+        "whole-body"
+      ],
+      "route": "/life-body/#vertebral-rooms",
+      "summary": "Variable South Asian subtle-body systems and later modern physiological reinterpretations compared with the project's five spinal Gates + higher centers.",
+      "status_note": "Cakras/nāḍīs are not established anatomical structures.",
+      "evidence_note": "Historical variation and modern plexus/endocrine mappings must remain chronologically visible.",
+      "maturity": "case-ready",
+      "facets": {
+        "identity": {
+          "scope": "South Asian subtle-body traditions concerning kundalini/chakra systems",
+          "boundary": "Historical/religious subtle-body models and modern neuroanatomy are not identical systems."
+        },
+        "sources": [
+          {
+            "source_ref": "religion/index.html",
+            "role": "comparative traditions surface",
+            "evidence_class": "project surface"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "tradition",
+            "target_id_or_label": "yogic/tantric subtle-body systems",
+            "direction": "incoming",
+            "status": "historical religious tradition",
+            "boundary": "Systems differ across texts and lineages."
+          },
+          {
+            "type": "comparative",
+            "target_id_or_label": "spine / ladder / centers",
+            "direction": "outgoing",
+            "status": "project comparison",
+            "boundary": "Comparison does not establish physiological equivalence."
+          }
+        ],
+        "status": [
+          {
+            "label": "epistemic split",
+            "value": "historical subtle-body tradition + project comparison",
+            "as_of": "2026-09-20",
+            "authority": "Potato House",
+            "boundary": "No biomedical identity claim."
+          }
+        ],
+        "questions": [
+          {
+            "question": "Which chakra/kundalini schemas are earliest, lineage-specific, or modern standardizations?",
+            "why_it_matters": "Prevents treating one modern seven-chakra scheme as universal.",
+            "needed_evidence": "textual history"
+          }
+        ]
+      }
+    },
+    {
+      "id": "body-neural-development",
+      "label": "Neural Tube → Adult Rooms",
+      "kind": "developmental-neurobiology",
+      "room_ids": [
+        "neurobiology",
+        "whole-body",
+        "symbolic-body-comparison"
+      ],
+      "route": "/knowledge/body/neural-development-lineage-atlas.json",
+      "summary": "Developmental route from neural plate/tube through brain vesicles, progenitors, migration, glia and tract formation into adult House/brainstem/spinal architecture.",
+      "status_note": "Developmental ancestry informs but does not uniquely determine adult function.",
+      "evidence_note": "Human development and rodent models must remain distinguishable.",
+      "maturity": "case-ready",
+      "facets": {
+        "identity": {
+          "scope": "developmental construction of nervous-system structure and connectivity",
+          "boundary": "Developmental biology is empirical; project growth imagery is comparative."
+        },
+        "sources": [
+          {
+            "source_ref": "life-body/index.html",
+            "role": "public body atlas",
+            "evidence_class": "project surface"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "developmental",
+            "target_id_or_label": "neurogenesis / migration / axon guidance / synaptogenesis / pruning / myelination",
+            "direction": "outgoing",
+            "status": "biological",
+            "boundary": "Timing and mechanisms vary by region and species."
+          }
+        ],
+        "flows": [
+          {
+            "flow_type": "developmental-state",
+            "input": "progenitors + molecular gradients + activity",
+            "mechanism": "differentiation, migration, wiring, refinement",
+            "output": "mature neural circuits",
+            "measurement_or_limit": "Development is staged and overlapping, not a single linear ladder."
+          }
+        ],
+        "status": [
+          {
+            "label": "epistemic class",
+            "value": "empirical developmental neurobiology",
+            "as_of": "2026-09-20",
+            "authority": "Potato House",
+            "boundary": "Symbolic growth language must be separately labeled."
+          }
+        ],
+        "questions": [
+          {
+            "question": "Which developmental transitions best explain the project's Seed → Root → Branch sequence without forcing a false one-to-one mapping?",
+            "why_it_matters": "Tests biological usefulness of the growth analogy.",
+            "needed_evidence": "developmental timing and mechanism comparison"
+          }
+        ]
+      }
+    },
+    {
+      "id": "body-neurovascular-unit",
+      "label": "Neurovascular Unit / Living Wall",
+      "kind": "cellular-interface",
+      "room_ids": [
+        "neurobiology",
+        "whole-body",
+        "symbolic-body-comparison"
+      ],
+      "route": "/knowledge/body/glia-neurovascular-barrier-atlas.json",
+      "summary": "Astrocytes, endothelium, pericytes, microglia, neurons and extracellular matrix form a living barrier/metabolic/vascular ecosystem.",
+      "status_note": "BBB, blood-CSF barrier and meningeal borders are distinct interfaces.",
+      "evidence_note": "Use the glia/neurovascular atlas for cell-type and boundary distinctions.",
+      "maturity": "case-ready",
+      "facets": {
+        "identity": {
+          "scope": "cellular interface coupling neural activity, vascular regulation and barrier function",
+          "boundary": "Unit is a systems concept spanning several cell types and compartments."
+        },
+        "sources": [
+          {
+            "source_ref": "life-body/index.html",
+            "role": "public body atlas",
+            "evidence_class": "project surface"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "cellular-interface",
+            "target_id_or_label": "neurons / astrocytes / endothelial cells / pericytes / extracellular matrix",
+            "direction": "bidirectional",
+            "status": "biological",
+            "boundary": "Roles vary by region and condition."
+          }
+        ],
+        "flows": [
+          {
+            "flow_type": "blood-flow/metabolic",
+            "input": "neural activity and vascular signals",
+            "mechanism": "cellular signaling and vessel regulation",
+            "output": "local perfusion, exchange and barrier maintenance",
+            "measurement_or_limit": "Neurovascular coupling is multi-mechanistic and context dependent."
+          }
+        ],
+        "status": [
+          {
+            "label": "epistemic class",
+            "value": "empirical cellular systems model",
+            "as_of": "2026-09-20",
+            "authority": "Potato House",
+            "boundary": "Do not reduce it to one cell or one direction of control."
+          }
+        ],
+        "questions": [
+          {
+            "question": "Can the neurovascular unit provide a better scientific model for project 'interface' language than single-structure analogies?",
+            "why_it_matters": "May improve the technical accuracy of Door/interface concepts.",
+            "needed_evidence": "cellular coupling literature"
+          }
+        ]
+      }
+    },
+    {
+      "id": "body-cortical-celltypes",
+      "label": "Cortical Layers / Cell Types",
+      "kind": "cellular-neuroanatomy",
+      "room_ids": [
+        "neurobiology",
+        "symbolic-body-comparison"
+      ],
+      "route": "/knowledge/body/cortical-celltype-parcellation-atlas.json",
+      "summary": "Layers I–VI, projection classes, interneuron families, glia and transcriptomic parcellations deepen broad cortical room labels.",
+      "status_note": "No single parcellation is the final map of cortex.",
+      "evidence_note": "Cytoarchitecture, transcriptomics, connectivity and functional networks are complementary coordinate systems.",
+      "maturity": "case-ready",
+      "facets": {
+        "identity": {
+          "scope": "diverse cortical neuronal and glial cell populations",
+          "boundary": "Cell-type taxonomies are empirical classifications and continue to evolve."
+        },
+        "sources": [
+          {
+            "source_ref": "life-body/index.html",
+            "role": "public body atlas",
+            "evidence_class": "project surface"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "cellular-network",
+            "target_id_or_label": "excitatory neurons / inhibitory interneurons / glia / layers / long-range projections",
+            "direction": "bidirectional",
+            "status": "biological",
+            "boundary": "Transcriptomic, morphological and functional classes do not always align one-to-one."
+          }
+        ],
+        "flows": [
+          {
+            "flow_type": "neural-computation",
+            "input": "local and long-range synaptic signals",
+            "mechanism": "cell-type-specific connectivity and dynamics",
+            "output": "distributed cortical processing",
+            "measurement_or_limit": "No single cell taxonomy captures every functional distinction."
+          }
+        ],
+        "status": [
+          {
+            "label": "epistemic class",
+            "value": "empirical cellular neuroanatomy",
+            "as_of": "2026-09-20",
+            "authority": "Potato House",
+            "boundary": "Project roles must not be projected onto cell types as if they were literal social agents."
+          }
+        ],
+        "questions": [
+          {
+            "question": "Which cell-type distinctions matter most for the House's future brain model: transcriptomic, laminar, projectional or physiological?",
+            "why_it_matters": "Determines a scalable scientific ontology.",
+            "needed_evidence": "cell atlas comparison"
+          }
+        ]
+      }
+    },
+    {
+      "id": "role-dog",
+      "label": "Dog role",
+      "kind": "project-role",
+      "room_ids": [
+        "canon-identities",
+        "practice-ethics",
+        "subculture-group-formation",
+        "information-ecology"
+      ],
+      "route": "/religion/#three-center-system",
+      "summary": "Contextual boundary/response role spanning pursuit, guarding, signaling, companion/free-agent behavior, pack/hive coordination and source/proxy orientation.",
+      "status_note": "Dog is a project role, not a fixed identity or diagnosis of a person.",
+      "evidence_note": "Use dated behavior/relation and named source context; recovered stories show Dog can change state.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "role-footstool",
+      "label": "Footstool role",
+      "kind": "project-role",
+      "room_ids": [
+        "symbolic-architecture",
+        "theology-god-language",
+        "practice-ethics"
+      ],
+      "route": "/axis/",
+      "summary": "Support/positional role beneath Seat/Throne, with distinct cosmic, cultic, conquest and project-microcosm meanings; project stories also treat Footstool as a tiny world with an unfound Door and as transformed support.",
+      "status_note": "Lower position never means lower intrinsic human worth.",
+      "evidence_note": "Specify which footstool mode and textual/project source is active.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "role-cow",
+      "label": "Cow role family",
+      "kind": "project-role-family",
+      "room_ids": [
+        "bible-christianity",
+        "comparative-mythology",
+        "subculture-group-formation",
+        "information-ecology"
+      ],
+      "route": "/religion/#three-center-system",
+      "summary": "Typed Cow family covering ordinary cow, ox, nourisher, cash cow, lolcow, Holy Cow, Red Heifer, Golden Calf, Cow-target and project cosmological variants.",
+      "status_note": "Cow variants are not interchangeable and never define a person's intrinsic worth.",
+      "evidence_note": "Record subtype, source tradition or subculture, relation, date and whether the role is current or historical.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "role-lolcow",
+      "label": "Lolcow / harvest-target role",
+      "kind": "project-role",
+      "room_ids": [
+        "subculture-group-formation",
+        "information-ecology"
+      ],
+      "route": "/shadow-farm/",
+      "summary": "Internet attention-extraction role in which a person is treated as repeatedly harvestable for reaction, amusement, archive material or status.",
+      "status_note": "Lolcow is an attributed/subcultural role label, not an objective essence; the archive must preserve exit and declassification.",
+      "evidence_note": "Track who applies the label, what behavior/attention loop supports it, how long it persists, and whether correction or role exit is recognized.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "potatoverse-social-season-2024-2025",
+      "label": "Potatoverse Social Season · Nov 2024–Apr 2025",
+      "kind": "historical-social-context",
+      "room_ids": [
+        "memory-recovery",
+        "chronology-events",
+        "developmental-genealogy",
+        "subculture-group-formation",
+        "internet-platforms",
+        "canon-identities"
+      ],
+      "route": "/tim-dooley/story/#potatoverse-social-room-2024-11-03",
+      "summary": "Recovered social season spanning games, voice chat, Great Book discussion, theology, cooking, music, moderation, reconciliation, Tree/Garden boundaries, grief, TTS/HTML work and movement through new online spaces into the April 2025 Turning corridor.",
+      "status_note": "Built primarily from a dated authored Chronicle and later routed into stronger owners; it is not a verbatim transcript season.",
+      "evidence_note": "Chronicle co-presence and dates are recovery evidence; dialogue, motives and allegations require closer source recovery.",
+      "maturity": "described",
+      "facets": {
+        "timeline": [
+          {
+            "date": "2024-11-03",
+            "event": "Dense Tanks/voice-chat/Great Book social snapshot.",
+            "status": "Chronicle recovery"
+          },
+          {
+            "date": "2024-12-04",
+            "event": "Tree recorded as separate social space.",
+            "status": "Chronicle recovery"
+          },
+          {
+            "date": "2024-12-07",
+            "event": "Reconciliation/trust-repair day.",
+            "status": "Chronicle recovery"
+          },
+          {
+            "date": "2025-01-29",
+            "event": "Marty death date corrected by funeral-home obituary.",
+            "status": "externally corrected date"
+          },
+          {
+            "date": "2025-03-12",
+            "event": "HTML/TTS/interactive Great Book creation wave.",
+            "status": "Chronicle recovery"
+          },
+          {
+            "date": "2025-04-08 to 2025-04-13",
+            "event": "Empire → Fishtank → Tree movement before April Turning.",
+            "status": "Chronicle recovery; primary invites/log missing"
+          }
+        ],
+        "sources": [
+          {
+            "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+            "role": "day-level social owner",
+            "evidence_class": "recovered synthesis"
+          },
+          {
+            "source_ref": "knowledge/indexes/social-presence-memory-integration-2024-2025.json",
+            "role": "promotion/routing spine",
+            "evidence_class": "archive method"
+          },
+          {
+            "source_ref": "knowledge/story/turning-corridor-chronicle-recovery-2025.json",
+            "role": "March-April corridor owner",
+            "evidence_class": "recovered synthesis"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "contains",
+            "target_id_or_label": "Marty / Termite / Optimistique / Zombie Dad / Rahu / Tree / livestream",
+            "direction": "outgoing",
+            "status": "dated social co-presence",
+            "boundary": "Co-presence does not imply shared motive or permanent alliance."
+          },
+          {
+            "type": "develops-into",
+            "target_id_or_label": "April 2025 Turning corridor",
+            "direction": "outgoing",
+            "status": "developmental bridge",
+            "boundary": "Later mythic interpretation is not backdated into ordinary events."
+          }
+        ],
+        "flows": [
+          {
+            "flow_type": "social-presence",
+            "input": "voice chat / games / chat / collaborative streams",
+            "mechanism": "repeated co-presence + shared artifacts + moderation + movement between spaces",
+            "output": "durable community memory and later narrative roles",
+            "measurement_or_limit": "Chronicle frequency is not equivalent to full platform participation data."
+          }
+        ],
+        "questions": [
+          {
+            "question": "Which raw logs survive behind the highest-value Chronicle days?",
+            "why_it_matters": "Would convert remembered topology into closer documentary history.",
+            "needed_evidence": "Discord/YouTube logs, screenshots, VODs, server records"
+          },
+          {
+            "question": "Which March 2025 TTS/HTML artifacts survive?",
+            "why_it_matters": "Would directly connect early interactive experiments to later site architecture.",
+            "needed_evidence": "HTML files, screenshots, TTS code/output, project folders"
+          }
+        ]
+      }
+    },
+    {
+      "id": "potatoverse-cast-ecology",
+      "label": "Potatoverse Cast Ecology",
+      "kind": "project-role-ecology",
+      "room_ids": [
+        "canon-identities",
+        "subculture-group-formation",
+        "information-ecology"
+      ],
+      "route": "/rooms/potatoverse-canon/beings/cast-ecology/",
+      "summary": "Unified grammar for Potatoes, Tomatoes, Dwellers, Dogs, Farmers, Cows, Footstools, Angels/Turbles and human archetypes with explicit scene-level role transitions.",
+      "status_note": "Project taxonomy, not an external classification of real people.",
+      "evidence_note": "Named assignments require source-bounded scenes; collective metaphors and created beings remain distinct from persons.",
+      "maturity": "described",
+      "facets": {
+        "relationships": [
+          {
+            "type": "contains",
+            "target_id_or_label": "Potato / Tomato / Dweller / Dog / Farmer / Cow / Footstool / Angelic family",
+            "direction": "outgoing",
+            "status": "canonical project role families",
+            "boundary": "Roles and states are not immutable human essences."
+          },
+          {
+            "type": "interfaces-with",
+            "target_id_or_label": "Character Archive",
+            "direction": "outgoing",
+            "status": "person × archetype projection",
+            "boundary": "Archetypes describe scene function."
+          }
+        ],
+        "flows": [
+          {
+            "flow_type": "role-transition",
+            "input": "scene conditions and relation",
+            "mechanism": "source-bounded assignment + transition rules",
+            "output": "changed symbolic role or archetypal function",
+            "measurement_or_limit": "No cross-scene persistence without evidence."
+          }
+        ],
+        "questions": [
+          {
+            "question": "Which collective roles have healthy/shadow variants that still need explicit transition rules?",
+            "why_it_matters": "Prevents one-sided caste drift.",
+            "needed_evidence": "dated project usages and literary/public scenes"
+          }
+        ],
+        "sources": [
+          {
+            "source_ref": "knowledge/world/potatoverse-cast-role-ecology.json",
+            "role": "canonical ecology owner",
+            "evidence_class": "project synthesis"
+          },
+          {
+            "source_ref": "knowledge/story/character-symbolic-role-assignments.json",
+            "role": "scene assignment ledger",
+            "evidence_class": "source-bounded project mapping"
+          }
+        ]
+      }
+    },
+    {
+      "id": "fbi-character-bureau",
+      "label": "CIA — Characters, Incidents & Associations (Potatoverse)",
+      "kind": "character-dossier-bureau",
+      "room_ids": [
+        "memory-recovery",
+        "provenance-evidence",
+        "witness-attestation",
+        "canon-identities",
+        "developmental-genealogy",
+        "subculture-group-formation"
+      ],
+      "route": "/rooms/potatoverse-canon/beings/cia/",
+      "summary": "Canonical Potatoverse dossier bureau linking recurring figures to aliases, chronology, conversations, Story, archetypes, symbolic roles, bonds, dated incidents and recovery leads.",
+      "status_note": "FBI means Characters, Incidents & Associations. This is a Potatoverse archive system, not law enforcement.",
+      "evidence_note": "Dossier inclusion means archival relevance only; it does not imply suspicion, guilt or wrongdoing.",
+      "maturity": "case-ready",
+      "facets": {
+        "sources": [
+          {
+            "source_ref": "knowledge/cia/manifest.json",
+            "role": "bureau manifest",
+            "evidence_class": "project archive synthesis"
+          },
+          {
+            "source_ref": "knowledge/cia/associations/network.json",
+            "role": "relationship/co-presence network",
+            "evidence_class": "source-derived network"
+          },
+          {
+            "source_ref": "knowledge/cia/incidents/index.json",
+            "role": "dated incident index",
+            "evidence_class": "source-bounded event index"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "contains",
+            "target_id_or_label": "20 deep figure dossiers",
+            "direction": "outgoing",
+            "status": "active",
+            "boundary": "Dossier inclusion is archival relevance, not suspicion or wrongdoing."
+          },
+          {
+            "type": "interfaces-with",
+            "target_id_or_label": "Cast Ecology / Story / Memory / Time",
+            "direction": "outgoing",
+            "status": "active",
+            "boundary": "No subsystem silently overrides source status."
+          }
+        ],
+        "flows": [
+          {
+            "flow_type": "character-recovery",
+            "input": "conversation / Chronicle / public chat / literature",
+            "mechanism": "identify → date → relate → classify source → link Story/Room → record unresolved",
+            "output": "persistent figure dossier",
+            "measurement_or_limit": "No motive or permanent identity inferred from co-presence alone."
+          }
+        ]
+      }
+    },
+    {
+      "id": "concept-vesica-mandorla-comparison",
+      "label": "Vesica Piscis / Mandorla comparison field",
+      "kind": "comparative-symbol-system",
+      "room_ids": [
+        "esoteric-sacred-geometry",
+        "math-geometry",
+        "symbolic-architecture"
+      ],
+      "route": "/traditions/vesica/",
+      "summary": "Source-led comparison object connecting exact Vesica geometry, Christian mandorla art and later esoteric Sun/Moon or cosmological readings without collapsing those evidence classes.",
+      "status_note": "Exact geometry, art history, esoteric interpretation and Potatoverse symbolism remain separate layers even when they share a diagram.",
+      "evidence_note": "Use the Vesica/Mandorla source ledger and distinguish historical attestation from later project comparison.",
+      "maturity": "described"
+    },
+    {
+      "id": "model-physics-cosmology-family",
+      "label": "Physics & cosmology model family",
+      "kind": "research-model-family",
+      "room_ids": [
+        "physics-cosmology",
+        "model-testing",
+        "experiments-formalization"
+      ],
+      "route": "/science/",
+      "summary": "Project research family containing quantum, field, celestial-coordinate, dark-sector and cosmological analogies that must pass from metaphor through explicit model assumptions before any empirical claim is made.",
+      "status_note": "A mathematical or symbolic resemblance is not evidence that nature implements the proposed mechanism.",
+      "evidence_note": "Track equations, assumptions, testable discriminators, source physics and current evidence status separately.",
+      "maturity": "described"
+    },
+    {
+      "id": "model-north-obligation-graph",
+      "label": "North obligation / debt graph",
+      "kind": "economic-system-model",
+      "room_ids": [
+        "economy-finance",
+        "politics-governance",
+        "infrastructure-capability",
+        "research-programmes"
+      ],
+      "route": "/economy/",
+      "summary": "Material obligation model for tracing debt, bonds, currency, institutions, ownership, fiscal capacity and cross-border financial dependencies as typed economic relations.",
+      "status_note": "Material legal/financial obligations remain separate from symbolic or karmic debt language.",
+      "evidence_note": "Every edge should carry instrument, issuer/holder or counterparty, jurisdiction, date, amount/status and source where available.",
+      "maturity": "described"
+    },
+    {
+      "id": "programme-house-consolidation",
+      "label": "House consolidation & integration programme",
+      "kind": "research-programme",
+      "room_ids": [
+        "research-programmes",
+        "house-architecture",
+        "open-questions",
+        "experiments-formalization"
+      ],
+      "route": "/research-lab/",
+      "summary": "Project-wide programme for turning accumulated files, Rooms, interfaces and public surfaces into fewer clearer owners, stronger handoffs, explicit evidence boundaries and reader-facing routes.",
+      "status_note": "A coordination programme may connect many Rooms but never becomes the factual owner of their subject matter.",
+      "evidence_note": "Use ownership registries, health audits, validators and concrete before/after route or duplication findings rather than generic cleanup claims.",
+      "maturity": "described"
+    },
+    {
+      "id": "state-cia",
+      "label": "U.S. CIA — Central Intelligence Agency",
+      "kind": "state-intelligence-interface",
+      "room_ids": [
+        "politics-governance",
+        "law-justice",
+        "provenance-evidence"
+      ],
+      "route": "/shadow-farm/#intelligence-desk",
+      "summary": "U.S. foreign-intelligence institution modeled as a real state interface for foreign intelligence collection, all-source analysis, covert action under presidential direction, oversight and public/declassified records.",
+      "status_note": "A real U.S. government agency; placement in Below reflects restricted-information/intelligence work, not a presumption of corruption, criminality or project alignment.",
+      "evidence_note": "Separate public institutional mandate, declassified record, oversight finding, allegation, historical operation and project interpretation.",
+      "maturity": "faceted",
+      "facets": {
+        "identity": {
+          "scope": "U.S. foreign-intelligence agency established in 1947",
+          "boundary": "Institutional identity does not establish the truth of any specific intelligence claim or allegation."
+        },
+        "sources": [
+          {
+            "source_ref": "https://www.cia.gov/about/",
+            "role": "official mission and institutional description",
+            "evidence_class": "official source"
+          },
+          {
+            "source_ref": "https://www.cia.gov/about/organization/",
+            "role": "current organization and oversight offices",
+            "evidence_class": "official source"
+          },
+          {
+            "source_ref": "data/security-intelligence-organizations.json",
+            "role": "project institutional registry",
+            "evidence_class": "project structured data"
+          },
+          {
+            "source_ref": "data/intelligence-security-graph.json",
+            "role": "country/institution relationship layer",
+            "evidence_class": "project structured data"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "institution-of",
+            "target_id_or_label": "United States",
+            "direction": "outgoing",
+            "status": "institutional",
+            "boundary": "Agency mandate is defined under U.S. law and executive authority."
+          },
+          {
+            "type": "oversight",
+            "target_id_or_label": "Executive branch / Congress / CIA Inspector General",
+            "direction": "incoming",
+            "status": "institutional",
+            "boundary": "Oversight mechanisms and specific findings must be sourced separately."
+          }
+        ],
+        "flows": [
+          {
+            "flow_type": "intelligence",
+            "input": "foreign-source information and collection",
+            "mechanism": "collection → analysis → dissemination / authorized action",
+            "output": "national-security intelligence and policy support",
+            "measurement_or_limit": "Public descriptions do not reveal classified operational detail."
+          }
+        ],
+        "questions": [
+          {
+            "question": "Which public, declassified or oversight records are relevant to a specific project claim?",
+            "why_it_matters": "Prevents generic CIA references from becoming unsupported explanations.",
+            "needed_evidence": "declassified records, statutes, oversight reports, official releases"
+          }
+        ]
+      }
+    },
+    {
+      "id": "institution-federal-reserve",
+      "label": "Federal Reserve System",
+      "kind": "central-bank-system",
+      "room_ids": [
+        "economy-finance",
+        "politics-governance",
+        "infrastructure-capability"
+      ],
+      "route": "/economy/",
+      "summary": "The U.S. central-bank system, represented as a material monetary/financial node for monetary policy, financial stability, bank supervision, payment and settlement infrastructure, and dollar-system obligations.",
+      "status_note": "A real U.S. institution. Project metaphors about printers, spiritual banking or karmic debt remain separate from the Federal Reserve's legal and economic functions.",
+      "evidence_note": "Connect Fed observations to dated FOMC/Board releases, balance-sheet or payment-system data and legal authority; do not infer ownership of government debt from monetary-policy involvement.",
+      "maturity": "faceted",
+      "facets": {
+        "identity": {
+          "scope": "central bank of the United States",
+          "boundary": "The Federal Reserve System, Board of Governors, Reserve Banks and FOMC have distinct roles and should not be collapsed into one actor for every relation."
+        },
+        "sources": [
+          {
+            "source_ref": "https://www.federalreserve.gov/",
+            "role": "official current institution",
+            "evidence_class": "official source"
+          },
+          {
+            "source_ref": "https://www.federalreserve.gov/aboutthefed/files/pf_complete.pdf",
+            "role": "official functions overview",
+            "evidence_class": "official source"
+          },
+          {
+            "source_ref": "knowledge/economics/stock-flow-obligation-network-atlas.json",
+            "role": "project obligation/stock-flow model",
+            "evidence_class": "project research"
+          },
+          {
+            "source_ref": "knowledge/economics/north-obligation-graph-schema.json",
+            "role": "typed obligation edge schema",
+            "evidence_class": "project schema"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "monetary-authority-of",
+            "target_id_or_label": "United States / U.S. dollar system",
+            "direction": "outgoing",
+            "status": "institutional",
+            "boundary": "Monetary authority is not ownership of all dollar-denominated assets or liabilities."
+          },
+          {
+            "type": "payment-infrastructure",
+            "target_id_or_label": "banks / U.S. Treasury / payment and settlement systems",
+            "direction": "bidirectional",
+            "status": "institutional",
+            "boundary": "Specific services and legal relationships must be modeled separately."
+          }
+        ],
+        "flows": [
+          {
+            "flow_type": "monetary-financial",
+            "input": "economic conditions / bank reserves / financial-market information",
+            "mechanism": "policy, supervision, liquidity and payment-system operations",
+            "output": "interest-rate/balance-sheet conditions, financial-system and payment-system effects",
+            "measurement_or_limit": "Policy transmission is distributed and should not be modeled as a single deterministic command edge."
+          }
+        ],
+        "questions": [
+          {
+            "question": "Who owes what to whom across Treasuries, reserves, deposits and Fed balance-sheet positions?",
+            "why_it_matters": "Turns vague 'Fed/debt' language into typed counterparties and instruments.",
+            "needed_evidence": "Treasury/Fed balance sheets, security-holder data, instrument and maturity records"
+          }
+        ]
+      }
+    },
+    {
+      "id": "institution-ecb",
+      "label": "European Central Bank / Eurosystem",
+      "kind": "central-bank-system",
+      "room_ids": [
+        "economy-finance",
+        "politics-governance",
+        "infrastructure-capability"
+      ],
+      "route": "/economy/",
+      "summary": "Euro-area monetary authority represented as a material node for euro monetary policy, foreign reserves, payment systems, banking supervision, financial stability and relations with national central banks.",
+      "status_note": "The ECB and the Eurosystem are related but not identical: the Eurosystem comprises the ECB plus the national central banks of euro-area countries.",
+      "evidence_note": "Attach monetary-policy, payments, supervision and balance-sheet claims to ECB/Eurosystem sources and distinguish euro-area authority from the wider EU.",
+      "maturity": "faceted",
+      "facets": {
+        "identity": {
+          "scope": "ECB as euro-area central bank within the Eurosystem",
+          "boundary": "Euro area, European Union, ECB, Eurosystem and ESCB are overlapping but distinct institutional scopes."
+        },
+        "sources": [
+          {
+            "source_ref": "https://www.ecb.europa.eu/ecb/orga/tasks/html/index.en.html",
+            "role": "official tasks",
+            "evidence_class": "official source"
+          },
+          {
+            "source_ref": "https://www.ecb.europa.eu/ecb/orga/escb/ecb-mission/html/index.en.html",
+            "role": "official mission and supervision role",
+            "evidence_class": "official source"
+          },
+          {
+            "source_ref": "data/european-system-observations-2026-09.json",
+            "role": "project European observations",
+            "evidence_class": "project structured data"
+          },
+          {
+            "source_ref": "knowledge/economics/north-obligation-graph-schema.json",
+            "role": "typed obligation edge schema",
+            "evidence_class": "project schema"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "monetary-authority-of",
+            "target_id_or_label": "Euro area / euro",
+            "direction": "outgoing",
+            "status": "institutional",
+            "boundary": "The ECB does not constitute the whole EU institutional system."
+          },
+          {
+            "type": "system-member-relation",
+            "target_id_or_label": "euro-area national central banks / Eurosystem",
+            "direction": "bidirectional",
+            "status": "institutional",
+            "boundary": "Operational and balance-sheet roles may sit at ECB or national-central-bank level."
+          }
+        ],
+        "flows": [
+          {
+            "flow_type": "monetary-financial",
+            "input": "euro-area economic/financial conditions",
+            "mechanism": "monetary policy, foreign-reserve operations, payment systems, supervision and macroprudential work",
+            "output": "euro-area monetary and financial-system effects",
+            "measurement_or_limit": "The exact channel depends on instrument, national banking systems and market transmission."
+          }
+        ],
+        "questions": [
+          {
+            "question": "How do ECB/Eurosystem balance sheets, sovereign debt, bank funding and TARGET services connect countries and institutions?",
+            "why_it_matters": "Makes the European obligation graph concrete rather than treating the euro as one undifferentiated node.",
+            "needed_evidence": "ECB/NCB accounts, securities holdings, TARGET and banking-sector data"
+          }
+        ]
+      }
+    },
+    {
+      "id": "science-celestial-typed-canon",
+      "label": "Celestial astronomy / astrology / project canon",
+      "kind": "typed-science-record",
+      "room_ids": [
+        "physics-cosmology"
+      ],
+      "route": "/knowledge/science/celestial-astronomy-astrology-cosmology-canon.json",
+      "summary": "Separates physical astronomy, historical astrology/symbolism and Potatoverse celestial interpretation so evidence cannot bleed across layers.",
+      "status_note": "Astronomical facts and symbolic uses remain separate claim classes.",
+      "evidence_note": "Canonical science record with explicit layer boundaries.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "science-celestial-axis-measurement",
+      "label": "Celestial Axis coordinate measurement model",
+      "kind": "measurement-model",
+      "room_ids": [
+        "physics-cosmology",
+        "math-geometry"
+      ],
+      "route": "/knowledge/science/celestial-axis-coordinate-measurement-model.json",
+      "summary": "Frame-, epoch- and coordinate-aware model for testing North, star and axis alignments instead of relying on visual resemblance.",
+      "status_note": "A coordinate model is a test method, not proof of a symbolic alignment.",
+      "evidence_note": "Uses explicit coordinate/frame discipline.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "science-deeper-physics-connections",
+      "label": "Deeper Physics Connections",
+      "kind": "formal-comparator-atlas",
+      "room_ids": [
+        "physics-cosmology",
+        "systems-dynamics"
+      ],
+      "route": "/knowledge/science/deeper-physics-connections.json",
+      "summary": "T-duality, mirror symmetry, holonomy, effective theory and other rigorous comparators used with explicit limits.",
+      "status_note": "Comparators clarify structure without establishing identity with Potatoverse claims.",
+      "evidence_note": "Established physics concepts are distinguished from project analogy.",
+      "maturity": "described"
+    },
+    {
+      "id": "science-recurrence-orbit-spiral",
+      "label": "Recurrence / Orbit / Spiral Dynamics",
+      "kind": "dynamics-atlas",
+      "room_ids": [
+        "physics-cosmology",
+        "math-geometry",
+        "systems-dynamics"
+      ],
+      "route": "/knowledge/science/recurrence-orbit-spiral-dynamics-atlas.json",
+      "summary": "Distinguishes closed recurrence, orbital return and changed-state spiral behavior across geometry and dynamics.",
+      "status_note": "State change must be defined rather than inferred from metaphor.",
+      "evidence_note": "Formal comparison record.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "traditions-vesica-mandorla-atlas",
+      "label": "Vesica / Mandorla / Sun / Moon atlas",
+      "kind": "symbol-genealogy",
+      "room_ids": [
+        "esoteric-sacred-geometry",
+        "comparative-mythology"
+      ],
+      "route": "/knowledge/traditions/vesica-mandorla-sun-moon-esoteric-atlas.json",
+      "summary": "Tracks exact lens geometry, sacred-art mandorla history, Sun/Moon reception and later Potatoverse use as separate layers.",
+      "status_note": "Historical recurrence does not prove one timeless doctrine.",
+      "evidence_note": "Source-led tradition and reception atlas.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "traditions-providence-pyramid-pillars",
+      "label": "Providence Eye / Pyramid / Pillars atlas",
+      "kind": "symbol-genealogy",
+      "room_ids": [
+        "esoteric-sacred-geometry"
+      ],
+      "route": "/knowledge/traditions/providence-pyramid-pillars-atlas.json",
+      "summary": "Separates biblical pillars, Great Seal provenance, later esoteric reception and modern project comparison.",
+      "status_note": "Shared symbols and dates do not establish secret causal influence.",
+      "evidence_note": "Historical provenance record.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "traditions-beast-666-cube",
+      "label": "Beast / Mark / Forehead / 666 / Cube atlas",
+      "kind": "text-symbol-crosswalk",
+      "room_ids": [
+        "esoteric-sacred-geometry",
+        "bible-christianity",
+        "prediction-revelation-time"
+      ],
+      "route": "/knowledge/traditions/beast-mark-forehead-666-cube-atlas.json",
+      "summary": "Keeps Revelation's mark/name/number text distinct from later Potatoverse 666/cube/enclosure symbolism.",
+      "status_note": "Biblical 666 does not itself establish the later cube equation.",
+      "evidence_note": "Textual and project layers are explicitly typed.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "traditions-new-jerusalem-cube",
+      "label": "144,000 / Zion / New Jerusalem / Cube atlas",
+      "kind": "comparative-text-atlas",
+      "room_ids": [
+        "esoteric-sacred-geometry",
+        "bible-christianity"
+      ],
+      "route": "/knowledge/traditions/revelation-144000-zion-new-jerusalem-cube-atlas.json",
+      "summary": "Examines Revelation's city geometry and number imagery while preserving the boundary between text, reception and project architecture.",
+      "status_note": "Comparison is not fulfillment proof.",
+      "evidence_note": "Source-led biblical/comparative record.",
+      "maturity": "described"
+    },
+    {
+      "id": "prophecy-framework",
+      "label": "Prophecy / Revelation / Rupture / Rapture framework",
+      "kind": "claim-resolution-framework",
+      "room_ids": [
+        "prediction-revelation-time"
+      ],
+      "route": "/knowledge/prophecy/prophecy-revelation-rupture-rapture.json",
+      "summary": "Defines the categories used to separate prior prediction, symbolic pattern, revelation, rupture and later interpretation.",
+      "status_note": "Framework classifies claims; it does not verify them.",
+      "evidence_note": "Project methodology record.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "prophecy-seals-matrix",
+      "label": "Seals & Fulfillment Matrix",
+      "kind": "claim-audit",
+      "room_ids": [
+        "prediction-revelation-time",
+        "bible-christianity"
+      ],
+      "route": "/knowledge/prophecy/seals-and-fulfillment-matrix.json",
+      "summary": "Tracks claimed correspondences, timing, mismatches and evidence status across seal/fulfillment interpretations.",
+      "status_note": "Claimed fulfillment remains an attributed project interpretation unless prior specificity and evidence support more.",
+      "evidence_note": "Audit matrix designed to preserve mismatch and uncertainty.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "economics-inflation-prediction-ledger",
+      "label": "Inflation / Rates / Bond Prediction Ledger",
+      "kind": "dated-prediction-ledger",
+      "room_ids": [
+        "prediction-revelation-time",
+        "economy-finance"
+      ],
+      "route": "/knowledge/economics/tim-dooley-inflation-ledger.md",
+      "summary": "Dated economic claims classified as forecast, conditional forecast, mechanism or scenario, with later outcome assessment and retained misses.",
+      "status_note": "Economic forecast records are not prophecy proof.",
+      "evidence_note": "Dated project ledger with explicit success/error boundaries.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "biology-potato-organism-cycle",
+      "label": "Potato Organism Cycle Atlas",
+      "kind": "biology-atlas",
+      "room_ids": [
+        "potato-biology"
+      ],
+      "route": "/knowledge/biology/potato-organism-cycle-atlas.json",
+      "summary": "Literal organism-level cycle from dormancy and sprouting through vegetative growth, tuber initiation, bulking and renewed dormancy.",
+      "status_note": "Literal potato biology; symbolic comparison belongs elsewhere.",
+      "evidence_note": "Canonical biology atlas.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "biology-potato-genetics-genomics",
+      "label": "Potato Genetics & Genomics Atlas",
+      "kind": "biology-atlas",
+      "room_ids": [
+        "potato-biology"
+      ],
+      "route": "/knowledge/biology/potato-genetics-genomics-atlas.json",
+      "summary": "Genetic and genomic structure behind potato traits, development and variation.",
+      "status_note": "Biological genetics does not validate symbolic inheritance claims.",
+      "evidence_note": "Canonical biology record.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "biology-potato-pathology-storage",
+      "label": "Potato Pathology, Immunity & Storage",
+      "kind": "biology-atlas",
+      "room_ids": [
+        "potato-biology"
+      ],
+      "route": "/knowledge/biology/potato-pathology-immunity-storage.json",
+      "summary": "Disease pressure, defense, wound response, storage physiology and post-harvest constraints.",
+      "status_note": "Literal plant health and storage science.",
+      "evidence_note": "Canonical biology record.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "biology-potato-physical-chemistry",
+      "label": "Potato Physical Chemistry & Biophysics",
+      "kind": "biology-atlas",
+      "room_ids": [
+        "potato-biology",
+        "physics-cosmology"
+      ],
+      "route": "/knowledge/biology/potato-physical-chemistry-biophysics-atlas.json",
+      "summary": "Water, starch, tissue mechanics, heat and other physical properties of the literal tuber.",
+      "status_note": "Physical potato properties are not a new fundamental force.",
+      "evidence_note": "Biophysics/physical-chemistry context.",
+      "maturity": "described"
+    },
+    {
+      "id": "world-geography-place-boundary",
+      "label": "Geography / Place / State / Boundary Atlas",
+      "kind": "world-atlas",
+      "room_ids": [
+        "geography-countries"
+      ],
+      "route": "/knowledge/world/geography-place-state-boundary-atlas.json",
+      "summary": "Distinguishes physical geography, political territory, state identity, borders and project geographic overlays.",
+      "status_note": "Symbolic orientation does not alter legal borders or sovereignty.",
+      "evidence_note": "World-system geography owner.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "world-country-capability-dependency",
+      "label": "Country Capability & Dependency Atlas",
+      "kind": "world-atlas",
+      "room_ids": [
+        "geography-countries",
+        "infrastructure-capability"
+      ],
+      "route": "/knowledge/world/country-capability-dependency-atlas.json",
+      "summary": "Connects country-level geography to energy, industry, logistics, infrastructure and strategic dependencies.",
+      "status_note": "Capability relationships are dated empirical claims where sourced, not permanent national essences.",
+      "evidence_note": "World-system capability synthesis.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "world-map-surface",
+      "label": "Interactive World Map",
+      "kind": "interactive-atlas",
+      "room_ids": [
+        "geography-countries"
+      ],
+      "route": "/world-map/",
+      "summary": "Public map surface for countries, regions and system layers, acting as a view over canonical world records rather than their truth owner.",
+      "status_note": "Map rendering is a view; canonical records and sources own facts.",
+      "evidence_note": "Public interactive projection.",
+      "maturity": "described"
+    },
+    {
+      "id": "north-programme-object",
+      "label": "North Programme",
+      "kind": "programme",
+      "room_ids": [
+        "geography-countries",
+        "politics-governance",
+        "infrastructure-capability"
+      ],
+      "route": "/north/",
+      "summary": "A split symbolic and empirical programme covering North as orientation alongside cooperation, geography, energy, industry, digital infrastructure and capability research.",
+      "status_note": "Symbolic North does not itself create legal membership, sovereignty or alliance status.",
+      "evidence_note": "Project programme with explicit symbolic/empirical boundary.",
+      "maturity": "described"
+    },
+    {
+      "id": "work-potato-growth-game",
+      "label": "Potato of Life Growth Game",
+      "kind": "game-simulation",
+      "room_ids": [
+        "games-simulations",
+        "potato-biology",
+        "symbolic-architecture"
+      ],
+      "route": "/works/#actual-works",
+      "summary": "Generational growth simulation concept where inheritance, weather, selection, resources and future viability become explicit state transitions.",
+      "status_note": "Simulation rules model chosen mechanics; outcomes are not biological evidence unless independently calibrated.",
+      "evidence_note": "Instrumented Works/Fruit record sourced from the Creative Systems Archive.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "work-tim-trading-game",
+      "label": "Tim Dooley Trading Game",
+      "kind": "market-simulation",
+      "room_ids": [
+        "games-simulations",
+        "economy-finance",
+        "information-ecology"
+      ],
+      "route": "/works/#actual-works",
+      "summary": "Browser market simulation exploring price signals, attention, narrative and feedback without claiming authority over real asset prices.",
+      "status_note": "Creative simulation, not financial guidance or a market-data source.",
+      "evidence_note": "Instrumented Works/Fruit record with explicit false-realism boundary.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "work-ai-potato-town",
+      "label": "Self-Playing AI Potato Town",
+      "kind": "agent-simulation",
+      "room_ids": [
+        "games-simulations",
+        "systems-dynamics",
+        "subculture-group-formation"
+      ],
+      "route": "/works/#actual-works",
+      "summary": "Accelerated-time town where local agents, seasons, Door events and small rules generate larger stories for observation and ablation.",
+      "status_note": "Emergence inside the simulation describes implemented rules, not autonomous proof of real social or cosmological claims.",
+      "evidence_note": "Instrumented Works/Fruit record from Creative Systems Archive.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "work-potato-school",
+      "label": "Secret Hidden Esoteric Potato School",
+      "kind": "interactive-teaching-satire",
+      "room_ids": [
+        "games-simulations",
+        "practice-ethics",
+        "subculture-group-formation"
+      ],
+      "route": "/works/#actual-works",
+      "summary": "Quest-based teaching satire using Doors, keys, cultivation and absurd credentials to test whether philosophy can be learned through play while mocking gatekeeping.",
+      "status_note": "Creative teaching satire, not a real secret institution or credential.",
+      "evidence_note": "Memory-recovery source; original specification remains a recovery target.",
+      "maturity": "described"
+    },
+    {
+      "id": "music-suno-catalogue",
+      "label": "Suno Music Archive — 62 recovered generations",
+      "kind": "music-corpus",
+      "room_ids": [
+        "music-sound",
+        "great-book-literature",
+        "information-ecology"
+      ],
+      "route": "/explore/#record=knowledge%2Fcreative%2Ftim-dooley-suno-music-archive.json",
+      "summary": "Recovered public catalogue fragment containing 62 distinct song generations and 59 unique titles, kept as a creative-source ledger rather than prophecy evidence.",
+      "status_note": "Song lyrics and titles are creative artifacts; lyrical assertions are not independent factual evidence.",
+      "evidence_note": "Primary song identity keyed by Suno UUID; dates/lyrics included only when directly recovered.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "music-one-potato-seed",
+      "label": "One Potato (The Seed)",
+      "kind": "song",
+      "room_ids": [
+        "music-sound",
+        "practice-ethics"
+      ],
+      "route": "/explore/#record=knowledge%2Fcreative%2Ftim-dooley-suno-music-archive.json",
+      "summary": "Recovered Suno generation centered on the Seed motif, useful for tracing how compact musical form carries cultivation and origin language.",
+      "status_note": "Creative artifact; motif use does not establish doctrine by itself.",
+      "evidence_note": "Song identity preserved by Suno UUID in the music archive.",
+      "maturity": "described"
+    },
+    {
+      "id": "music-throne-north",
+      "label": "The Throne of North of North",
+      "kind": "song",
+      "room_ids": [
+        "music-sound",
+        "theology-god-language"
+      ],
+      "route": "/explore/#record=knowledge%2Fcreative%2Ftim-dooley-suno-music-archive.json",
+      "summary": "Rock-form song generation carrying North/throne language into performance rather than expository theology.",
+      "status_note": "Performance register may exaggerate or compress canon and should not be treated as a doctrinal authority.",
+      "evidence_note": "Recovered Suno catalogue record.",
+      "maturity": "described"
+    },
+    {
+      "id": "music-goodbye-marty",
+      "label": "Goodbye Marty",
+      "kind": "song",
+      "room_ids": [
+        "music-sound",
+        "developmental-genealogy"
+      ],
+      "route": "/explore/#record=knowledge%2Fcreative%2Ftim-dooley-suno-music-archive.json",
+      "summary": "Recovered V3.5 song artifact associated with Marty, useful as a creative/memory object in the 2025 corridor rather than as a substitute for biographical evidence.",
+      "status_note": "Creative memorial artifact; chronology and biographical claims belong to their own owners.",
+      "evidence_note": "Recovered Suno catalogue record.",
+      "maturity": "described"
+    },
+    {
+      "id": "music-mooncube",
+      "label": "The Mooncube",
+      "kind": "song",
+      "room_ids": [
+        "music-sound",
+        "esoteric-sacred-geometry"
+      ],
+      "route": "/explore/#record=knowledge%2Fcreative%2Ftim-dooley-suno-music-archive.json",
+      "summary": "Recovered V4 song title preserving Moon/Cube imagery as a creative artifact inside the project's symbolic development.",
+      "status_note": "A song title is evidence of creative motif use, not of external occult or astronomical truth.",
+      "evidence_note": "Recovered Suno catalogue record.",
+      "maturity": "described"
+    },
+    {
+      "id": "visual-god-king-door-swamp-axis",
+      "label": "God-King / Door / Swamp / Axis composition",
+      "kind": "visual-composition",
+      "room_ids": [
+        "visual-art",
+        "symbolic-architecture"
+      ],
+      "route": "/explore/#record=knowledge%2Fcreative%2Fvisual-art-symbolic-composition-archive.json",
+      "summary": "Recurring composition placing Father above an open Door with Son at threshold and roots, dogs, mud/Swamp, Moon and dawn in the lower/lateral field.",
+      "status_note": "Core visual synthesis, not literal cosmography.",
+      "evidence_note": "Conversation visual specification preserved in the visual composition archive.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "visual-couch-throne-red-heifer",
+      "label": "Couch-Throne / Door / Red-Heifer composition",
+      "kind": "visual-composition",
+      "room_ids": [
+        "visual-art",
+        "bible-christianity",
+        "symbolic-architecture"
+      ],
+      "route": "/explore/#record=knowledge%2Fcreative%2Fvisual-art-symbolic-composition-archive.json",
+      "summary": "Father on a salmon/orange couch-throne, Door before/below, Son peering through and red-heifer foundation imagery in the lower field.",
+      "status_note": "Creative/theological composition, not evidence of biblical fulfillment.",
+      "evidence_note": "Conversation visual specification with explicit boundary.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "visual-heavenly-gardener",
+      "label": "Heavenly Gardener / Green Ring",
+      "kind": "visual-composition",
+      "room_ids": [
+        "visual-art",
+        "practice-ethics",
+        "garden"
+      ],
+      "route": "/explore/#record=knowledge%2Fcreative%2Fvisual-art-symbolic-composition-archive.json",
+      "summary": "Gardener waters one potato inside a green Spudlight ring and gate while crowd/dogs, dark tree, ladder and mountain occupy surrounding fields.",
+      "status_note": "Visual ethic of cultivation; original prompt/artifact remains a recovery target where not yet linked.",
+      "evidence_note": "Remembered 2026-07-20 visual specification.",
+      "maturity": "described"
+    },
+    {
+      "id": "visual-vesica-star",
+      "label": "Vertical Potato / Vesica / Star composition",
+      "kind": "diagram-composition",
+      "room_ids": [
+        "visual-art",
+        "math-geometry",
+        "esoteric-sacred-geometry"
+      ],
+      "route": "/explore/#record=knowledge%2Fcreative%2Fvisual-art-symbolic-composition-archive.json",
+      "summary": "Upper and lower equal fields with overlap/mandorla Door and a vertical Axis through both centers, translating exact geometry into project iconography.",
+      "status_note": "Project mapping sits on top of exact geometry; the mapping itself is interpretive.",
+      "evidence_note": "User visual mapping with canonical geometry owners.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "visual-infinite-potato",
+      "label": "Infinite Potato with many eyes",
+      "kind": "creative-lore-image",
+      "room_ids": [
+        "visual-art",
+        "open-questions"
+      ],
+      "route": "/explore/#record=knowledge%2Fcreative%2Fvisual-art-symbolic-composition-archive.json",
+      "summary": "Older creative image/lore of a many-eyed potato observing many timelines, retained as possible precursor to later Eye/witness architecture.",
+      "status_note": "Creative archaeology; original story/image still needs primary recovery.",
+      "evidence_note": "Memory-recovery target explicitly marked unresolved.",
+      "maturity": "seeded"
+    },
+    {
+      "id": "memory-archaeology-wave-005",
+      "label": "Conversation Archaeology Wave 005",
+      "kind": "recovery-wave",
+      "room_ids": [
+        "memory-recovery",
+        "developmental-genealogy"
+      ],
+      "route": "/knowledge/timeline/conversation-archaeology-wave-005.json",
+      "summary": "Recovered earlier conversation strata including older symbolic and theological formulations, preserved with provenance rather than silently rewritten into current canon.",
+      "status_note": "Conversation archaeology is recovery evidence, not automatically verbatim Tim-authored publication.",
+      "evidence_note": "Canonical recovery wave with provenance boundaries.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "memory-high-value-undated-queue",
+      "label": "High-Value Undated Recovery Queue",
+      "kind": "recovery-queue",
+      "room_ids": [
+        "memory-recovery",
+        "witness-attestation"
+      ],
+      "route": "/knowledge/timeline/high-value-undated-timeline-recovery-queue.json",
+      "summary": "Tracks important remembered formulations that still lack a sufficiently precise original date or source artifact.",
+      "status_note": "Items remain unresolved until stronger source/time evidence is recovered.",
+      "evidence_note": "Explicit uncertainty queue.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "memory-primary-recovery-wave-10",
+      "label": "Primary Recovery Wave 10 Ledger",
+      "kind": "recovery-ledger",
+      "room_ids": [
+        "memory-recovery",
+        "provenance-evidence"
+      ],
+      "route": "/knowledge/timeline/primary-recovery-wave-10-ledger.json",
+      "summary": "Primary-source recovery work promoted into a dated ledger so rediscovered wording can be distinguished from later summaries.",
+      "status_note": "Recovery status and source class remain part of each record.",
+      "evidence_note": "Primary recovery ledger.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "memory-missed-clue-audit",
+      "label": "Missed Clue Audit — Wave 015",
+      "kind": "recovery-audit",
+      "room_ids": [
+        "memory-recovery",
+        "open-questions"
+      ],
+      "route": "/knowledge/timeline/conversation-archaeology-wave-015-missed-clue-audit.json",
+      "summary": "Audits earlier material for overlooked connections while preserving the danger of hindsight and retrospective overfitting.",
+      "status_note": "A later-recognized connection is not a prior prediction merely because it now looks meaningful.",
+      "evidence_note": "Conversation archaeology audit.",
+      "maturity": "described"
+    },
+    {
+      "id": "tradition-tao-useful-emptiness",
+      "label": "Door / Window / Useful Emptiness — Daoist atlas",
+      "kind": "tradition-atlas",
+      "room_ids": [
+        "other-traditions",
+        "comparative-mythology",
+        "symbolic-architecture"
+      ],
+      "route": "/knowledge/traditions/door-window-negative-space-tao-atlas.json",
+      "summary": "Uses Daoist discussions of hub, vessel and room opening to sharpen the project distinction between boundary and usable emptiness.",
+      "status_note": "Functional comparison only; Daoist wu is not reduced to a Potatoverse engineering variable.",
+      "evidence_note": "Source-led comparative tradition atlas.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "tradition-fate-thread",
+      "label": "Norns / Moirai / Fate Thread atlas",
+      "kind": "tradition-atlas",
+      "room_ids": [
+        "other-traditions",
+        "comparative-mythology"
+      ],
+      "route": "/knowledge/traditions/fate-thread-norns-moirai-comparative-atlas.json",
+      "summary": "Compares Norse fate, Greek allotment/thread, biblical cords and Timic leash/path imagery while preserving operator differences.",
+      "status_note": "Shared line/thread imagery does not establish one common doctrine or transmission path.",
+      "evidence_note": "Comparative traditions atlas.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "tradition-cosmography-exemplars",
+      "label": "Selected Cosmography Structural Exemplars",
+      "kind": "tradition-atlas",
+      "room_ids": [
+        "other-traditions",
+        "comparative-mythology"
+      ],
+      "route": "/knowledge/traditions/selected-cosmography-structural-exemplars.json",
+      "summary": "Yggdrasil, Duat, Mount Meru and Bardo used as distinct structural exemplars for ecology, staged descent, world-order and transitional state.",
+      "status_note": "Each tradition remains distinct; comparison is structural rather than identity-based.",
+      "evidence_note": "Source-led comparative selection.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "tradition-expanded-cosmography",
+      "label": "Expanded Comparative Cosmography Atlas",
+      "kind": "tradition-atlas",
+      "room_ids": [
+        "other-traditions",
+        "comparative-mythology",
+        "symbolic-architecture"
+      ],
+      "route": "/knowledge/traditions/comparative-placement-cosmography-expanded-atlas.json",
+      "summary": "Broader placement-oriented comparison across world-axis, mountain, tree, underworld and threshold cosmographies.",
+      "status_note": "Placement similarity does not prove genealogy or hidden universality.",
+      "evidence_note": "Comparative synthesis with source boundaries.",
+      "maturity": "described"
+    },
+    {
+      "id": "research-foundation-synthesis",
+      "label": "Foundation Cross-Domain Synthesis",
+      "kind": "research-programme",
+      "room_ids": [
+        "research-programmes",
+        "house-architecture",
+        "systems-dynamics"
+      ],
+      "route": "/knowledge/research/foundation-cross-domain-synthesis.json",
+      "summary": "Cross-domain investigation of beginnings, substrate, Seed, succession, reproduction and refoundation across project and external systems.",
+      "status_note": "Cross-domain analogies require owner-specific evidence before promotion.",
+      "evidence_note": "Canonical research synthesis.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "research-circle-field",
+      "label": "Circle / Field Research Synthesis",
+      "kind": "research-programme",
+      "room_ids": [
+        "research-programmes",
+        "math-geometry",
+        "symbolic-architecture"
+      ],
+      "route": "/knowledge/research/circle-field-research-synthesis-2026-09-20.json",
+      "summary": "Investigates circles, overlapping fields, centers, boundaries and project field language across geometry and systems contexts.",
+      "status_note": "Formal resemblance does not establish a physical field.",
+      "evidence_note": "Dated research synthesis.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "research-plane-crossing",
+      "label": "Plane-Crossing Research Synthesis",
+      "kind": "research-programme",
+      "room_ids": [
+        "research-programmes",
+        "house-architecture",
+        "systems-dynamics"
+      ],
+      "route": "/knowledge/research/plane-crossing-research-synthesis-2026-09-20.json",
+      "summary": "Tests what should count as a plane, projection and crossing event without multiplying duplicate worlds.",
+      "status_note": "Project planes are architectural/formal constructs unless separately tied to measurable physical variables.",
+      "evidence_note": "Dated research synthesis.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "research-public-trust",
+      "label": "Public Trust Infrastructure Synthesis",
+      "kind": "research-programme",
+      "room_ids": [
+        "research-programmes",
+        "politics-governance",
+        "infrastructure-capability"
+      ],
+      "route": "/knowledge/research/public-trust-infrastructure-synthesis.json",
+      "summary": "Examines how capability, transparency, correction, institutions and infrastructure interact in public trust systems.",
+      "status_note": "Institutional performance claims require dated jurisdiction-specific evidence.",
+      "evidence_note": "Cross-domain research synthesis.",
+      "maturity": "described"
+    },
+    {
+      "id": "cosmology-axis-spiral-root",
+      "label": "Axis / Spiral / Root & Repair Architecture",
+      "kind": "cosmology-synthesis",
+      "room_ids": [
+        "physics-cosmology",
+        "symbolic-architecture",
+        "developmental-genealogy"
+      ],
+      "route": "/knowledge/cosmology/axis-spiral-root.json",
+      "summary": "Master synthesis joining Axis, Spiral, Root, biography and repair while explicitly separating myth, documentary history, science and civic proposals.",
+      "status_note": "Developing project cosmology; symbolic entanglement does not establish physical causation or political authority.",
+      "evidence_note": "Canonical cosmology synthesis with explicit epistemic firewall.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "creative-divine-identity-crosswalk",
+      "label": "Creative Theology Crosswalk",
+      "kind": "creative-interpretation-index",
+      "room_ids": [
+        "visual-art",
+        "music-sound",
+        "theology-god-language"
+      ],
+      "route": "/knowledge/creative/divine-identity-creative-crosswalk.json",
+      "summary": "Uses fiction, songs, satire, scenes and simulations as stress-tests for different Godhood modalities without turning creative material into documentary proof.",
+      "status_note": "Creative interpretation clarifies or exaggerates doctrine; it is not independent evidence.",
+      "evidence_note": "Canonical creative-theology crosswalk.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "politics-governance-lifecycle-atlas",
+      "label": "Governance, Institutions & Policy Lifecycle Atlas",
+      "kind": "governance-atlas",
+      "room_ids": [
+        "politics-governance",
+        "law-justice",
+        "infrastructure-capability"
+      ],
+      "route": "/knowledge/politics/governance-institutions-policy-lifecycle-atlas.json",
+      "summary": "Neutral grammar for authority, institutions, implementation, accountability, review and policy lifecycle without collapsing governance into partisan scoring.",
+      "status_note": "Institutional descriptions are jurisdiction- and date-sensitive; proposals, authorization, implementation and outcomes remain separate.",
+      "evidence_note": "Canonical governance owner.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "practice-potato-path",
+      "label": "Potatoism Practice Path",
+      "kind": "practice-path",
+      "room_ids": [
+        "practice-ethics",
+        "symbolic-architecture"
+      ],
+      "route": "/knowledge/practice/potato-path.json",
+      "summary": "Canonical practical growth sequence from Mud and Burial through Eye, Root, Sprout, Door, Ladder, Tree, Fruit, Seed and Return.",
+      "status_note": "Practice guidance is project philosophy; it does not override medical, legal or professional standards.",
+      "evidence_note": "Canonical practice owner.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "schema-canonical-record",
+      "label": "Canonical Record Schema",
+      "kind": "archive-schema",
+      "room_ids": [
+        "house-architecture",
+        "provenance-evidence",
+        "research-programmes"
+      ],
+      "route": "/knowledge/schema/canonical-record.schema.json",
+      "summary": "Machine-readable contract for canonical record structure and fields, helping different domains remain interoperable without sharing truth standards.",
+      "status_note": "A schema standardizes representation; it does not validate the truth of a record's content.",
+      "evidence_note": "Canonical archive schema.",
+      "maturity": "described"
+    },
+    {
+      "id": "site-page-shell-contract",
+      "label": "Page Shell Layout Contract",
+      "kind": "site-contract",
+      "room_ids": [
+        "house-architecture",
+        "internet-platforms"
+      ],
+      "route": "/knowledge/site/page-shell-layout-contract.json",
+      "summary": "Site-level contract for page shells and layout behavior, connecting editorial architecture to the actual public interface.",
+      "status_note": "A UI contract governs presentation and navigation, not subject-matter truth.",
+      "evidence_note": "Canonical site architecture record.",
+      "maturity": "described"
+    },
+    {
+      "id": "identity-tim-ontology",
+      "label": "Tim Identity Ontology",
+      "kind": "identity-ontology",
+      "room_ids": [
+        "canon-identities"
+      ],
+      "route": "/knowledge/core/tim-identity-ontology.json",
+      "summary": "Compact ontology separating Tim as public subject, role occupant, project identity and later interpretive layers.",
+      "status_note": "Project identity structure does not independently verify supernatural claims.",
+      "evidence_note": "Canonical Core identity owner.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "identity-tim-role-synthesis",
+      "label": "Tim Role Synthesis",
+      "kind": "role-synthesis",
+      "room_ids": [
+        "canon-identities",
+        "developmental-genealogy"
+      ],
+      "route": "/knowledge/core/tim-role-synthesis.json",
+      "summary": "Large synthesis of Tim's recurring roles and functions across phases, including how titles overlap without becoming one undifferentiated identity.",
+      "status_note": "Roles must retain date, function and source class rather than becoming timeless essence.",
+      "evidence_note": "Canonical role synthesis.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "identity-potato-trinity",
+      "label": "Potato of Life — Triune Whole",
+      "kind": "theology-identity-model",
+      "room_ids": [
+        "canon-identities",
+        "theology-god-language"
+      ],
+      "route": "/knowledge/theology/potato-of-life-trinity.json",
+      "summary": "Mature Father/Son/Spirit relation in which Potato of Life names the whole rather than a fourth member beside the triad.",
+      "status_note": "Project theology and self-description, not independent supernatural proof.",
+      "evidence_note": "Canonical theology owner.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "identity-timeline-reader",
+      "label": "Tim Dooley Identity Timeline",
+      "kind": "reader-timeline",
+      "room_ids": [
+        "canon-identities",
+        "developmental-genealogy"
+      ],
+      "route": "/knowledge/reader/tim-dooley-identity-timeline.json",
+      "summary": "Reader-facing sequence showing how Potato, Sage, Ladder, Father and related identities emerge through time rather than being backdated.",
+      "status_note": "Reader synthesis compresses underlying sources and must preserve uncertainty.",
+      "evidence_note": "Reader layer over canonical timeline/identity owners.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "identity-reader-dossier",
+      "label": "Tim Dooley Reader Dossier",
+      "kind": "reader-dossier",
+      "room_ids": [
+        "canon-identities"
+      ],
+      "route": "/knowledge/reader/tim-dooley-dossier.json",
+      "summary": "Direct synthesis of public person, self-description, mythology, development and evidence boundaries for readers entering the identity question.",
+      "status_note": "Reader synthesis documents and interprets claims; it does not establish supernatural identity as external fact.",
+      "evidence_note": "Public reader synthesis.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "great-book-scan-notes",
+      "label": "Great Book Bookwide Scan Notes",
+      "kind": "book-archaeology",
+      "room_ids": [
+        "great-book-literature",
+        "memory-recovery"
+      ],
+      "route": "/knowledge/timeline/great-book-bookwide-scan-notes.json",
+      "summary": "Book-wide recovery notes exposing motifs, chapters and developmental material that later project systems inherit or reinterpret.",
+      "status_note": "Scan notes are recovery/navigation material, not a substitute for the original authored text.",
+      "evidence_note": "Timeline/recovery owner.",
+      "maturity": "described"
+    },
+    {
+      "id": "great-book-prediction-audit",
+      "label": "Great Book Prediction / Vision Audit",
+      "kind": "claim-audit",
+      "room_ids": [
+        "great-book-literature",
+        "prediction-revelation-time"
+      ],
+      "route": "/knowledge/timeline/great-book-prediction-vision-audit.json",
+      "summary": "Audits prophetic or predictive-looking Great Book passages by separating prior wording, later matching and retrospective interpretation.",
+      "status_note": "Similarity to later events does not itself establish fulfilled prediction.",
+      "evidence_note": "Dated prediction audit.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "great-book-science-archaeology",
+      "label": "Great Book 2024 Science Archaeology",
+      "kind": "science-archaeology",
+      "room_ids": [
+        "great-book-literature",
+        "developmental-genealogy"
+      ],
+      "route": "/knowledge/science/great-book-2024-science-archaeology.json",
+      "summary": "Recovers the scientific language present in the 2024 book so later formal models can be traced without backdating their mature form.",
+      "status_note": "Earlier speculative language is historical project material, not established science.",
+      "evidence_note": "Science archaeology record.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "great-book-human-map-math-audit",
+      "label": "Great Book Human Map Mathematics Audit",
+      "kind": "formal-audit",
+      "room_ids": [
+        "great-book-literature",
+        "math-geometry"
+      ],
+      "route": "/knowledge/science/great-book-human-map-mathematics-audit.json",
+      "summary": "Examines mathematical claims and structures in the Great Book's human-map material and separates exact relations from metaphor.",
+      "status_note": "Mathematical audit does not promote symbolic mappings into anatomy or physics.",
+      "evidence_note": "Canonical science audit.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "experiments-science-model-registry",
+      "label": "Science Model Registry",
+      "kind": "model-registry",
+      "room_ids": [
+        "experiments-formalization",
+        "model-testing"
+      ],
+      "route": "/knowledge/science/science-model-registry.json",
+      "summary": "Registry of project scientific/formal models with status, assumptions, evidence class and promotion state.",
+      "status_note": "Registration means the model exists, not that the model is empirically validated.",
+      "evidence_note": "Canonical science registry.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "experiments-testing-protocol",
+      "label": "Model Testing Protocol",
+      "kind": "testing-protocol",
+      "room_ids": [
+        "experiments-formalization",
+        "model-testing"
+      ],
+      "route": "/knowledge/science/model-testing-protocol.json",
+      "summary": "Defines what a project model needs in order to become testable: observables, baselines, controls, discriminating predictions and failure conditions.",
+      "status_note": "A proposed test can still be inadequate or inconclusive; protocol is not validation.",
+      "evidence_note": "Canonical testing protocol.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "experiments-discrimination-calibration",
+      "label": "Model Discrimination & Calibration Atlas",
+      "kind": "testing-atlas",
+      "room_ids": [
+        "experiments-formalization",
+        "model-testing"
+      ],
+      "route": "/knowledge/science/model-discrimination-calibration-atlas.json",
+      "summary": "Framework for comparing candidate models, calibrating parameters and asking whether competing explanations make distinguishable predictions.",
+      "status_note": "Calibration to existing data does not by itself establish out-of-sample validity.",
+      "evidence_note": "Canonical testing/formalization record.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "experiments-potato-dynamics-toy",
+      "label": "Potato Dynamics 2 — Toy Model",
+      "kind": "toy-model",
+      "room_ids": [
+        "experiments-formalization",
+        "systems-dynamics"
+      ],
+      "route": "/knowledge/science/potato-dynamics-2-toy-model.json",
+      "summary": "Concrete toy-model implementation translating part of the project grammar into explicit states, variables and dynamics.",
+      "status_note": "Toy models clarify implications of assumptions; they are not evidence that the modeled system exists in nature.",
+      "evidence_note": "Canonical formal model.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "information-platform-mechanics",
+      "label": "Platform Mechanics Atlas",
+      "kind": "culture-atlas",
+      "room_ids": [
+        "information-ecology",
+        "internet-platforms"
+      ],
+      "route": "/knowledge/culture/platform-mechanics-atlas.json",
+      "summary": "Mechanisms by which ranking, identity, moderation, persistence and platform affordances shape attention and cultural behavior.",
+      "status_note": "Platform mechanics vary by product, community and period and do not determine every user's behavior.",
+      "evidence_note": "Canonical culture mechanics record.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "information-ecology-mechanics",
+      "label": "Information Ecology Mechanics Atlas",
+      "kind": "information-atlas",
+      "room_ids": [
+        "information-ecology"
+      ],
+      "route": "/knowledge/culture/information-ecology-mechanics-atlas.json",
+      "summary": "Direct mechanism atlas for repetition, transmission, context loss, attention, archive persistence and correction in information environments.",
+      "status_note": "A mechanism can increase likelihood without establishing intent or coordinated manipulation.",
+      "evidence_note": "Canonical culture/information owner.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "information-memory-repair",
+      "label": "Information Correction & Memory Repair Atlas",
+      "kind": "repair-atlas",
+      "room_ids": [
+        "information-ecology",
+        "memory-recovery"
+      ],
+      "route": "/knowledge/culture/information-correction-memory-repair-atlas.json",
+      "summary": "How corrections propagate, how stale claims persist, and what archival repair requires when memory and circulation diverge from better evidence.",
+      "status_note": "Correction requires source quality and context; later consensus alone is not proof.",
+      "evidence_note": "Canonical culture/memory repair record.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "theology-tim-god-question",
+      "label": "Tim God Question",
+      "kind": "theology-synthesis",
+      "room_ids": [
+        "theology-god-language",
+        "canon-identities"
+      ],
+      "route": "/knowledge/theology/tim-god-question.json",
+      "summary": "Large synthesis of what the project means by Tim's God/Father claims, how the identity develops, and which evidence classes can and cannot establish different parts of the claim.",
+      "status_note": "Documents project theology and self-description; it does not independently prove supernatural identity.",
+      "evidence_note": "Canonical theology synthesis.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "theology-godhood-modalities",
+      "label": "Tim Godhood Modalities",
+      "kind": "theology-atlas",
+      "room_ids": [
+        "theology-god-language"
+      ],
+      "route": "/knowledge/theology/tim-godhood-modalities.json",
+      "summary": "Separates functional, symbolic, relational, public, memetic and other Godhood modalities so different claims are not collapsed into one undifferentiated assertion.",
+      "status_note": "Modal classification clarifies what a claim means; it does not verify the claim.",
+      "evidence_note": "Canonical theology atlas.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "theology-father-son-door",
+      "label": "Father / Son / Door Reciprocity",
+      "kind": "theology-relation-model",
+      "room_ids": [
+        "theology-god-language",
+        "canon-identities"
+      ],
+      "route": "/knowledge/theology/father-son-door-reciprocity.json",
+      "summary": "Direct model of source, manifestation and threshold relations underlying the mature Father/Son architecture.",
+      "status_note": "Project theological relation model; historical Christian doctrine remains separately sourced.",
+      "evidence_note": "Canonical theology relation owner.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "theology-discernment-atlas",
+      "label": "Signs, Revelations & Epiphanies Discernment Atlas",
+      "kind": "discernment-atlas",
+      "room_ids": [
+        "theology-god-language",
+        "prediction-revelation-time"
+      ],
+      "route": "/knowledge/theology/signs-revelations-epiphanies-discernment-atlas.json",
+      "summary": "Framework for distinguishing intense meaning, synchronicity, revelation, interpretation and stronger evidentiary claims.",
+      "status_note": "Meaningful experience does not automatically establish external causation or prophecy.",
+      "evidence_note": "Canonical discernment record.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "provenance-archive-epistemics",
+      "label": "Archive Epistemics",
+      "kind": "epistemics-owner",
+      "room_ids": [
+        "provenance-evidence",
+        "information-ecology"
+      ],
+      "route": "/knowledge/philosophy/archive-epistemics.json",
+      "summary": "Core account of how source, memory, recovery, inference, contradiction and canonical promotion should interact in the archive.",
+      "status_note": "Method governs confidence and provenance; it does not make weak evidence strong by classification alone.",
+      "evidence_note": "Canonical epistemics owner.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "provenance-source-authority-policy",
+      "label": "Source Authority & Provenance Policy",
+      "kind": "source-policy",
+      "room_ids": [
+        "provenance-evidence",
+        "witness-attestation"
+      ],
+      "route": "/knowledge/philosophy/source-authority-and-provenance-policy.json",
+      "summary": "Defines source classes, authority, provenance and how later synthesis should remain traceable to earlier material.",
+      "status_note": "Source authority is domain-specific and cannot be inferred from repetition or popularity alone.",
+      "evidence_note": "Canonical provenance policy.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "provenance-source-index",
+      "label": "Source Index",
+      "kind": "source-index",
+      "room_ids": [
+        "provenance-evidence",
+        "witness-attestation"
+      ],
+      "route": "/knowledge/indexes/source-index.json",
+      "summary": "Project-wide index routing claims and records back toward their source objects and source classes.",
+      "status_note": "An index routes evidence; it is not itself independent evidence.",
+      "evidence_note": "Canonical index infrastructure.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "provenance-inference-ledger",
+      "label": "Inference Ledger",
+      "kind": "inference-ledger",
+      "room_ids": [
+        "provenance-evidence",
+        "open-questions"
+      ],
+      "route": "/knowledge/indexes/inference-ledger.json",
+      "summary": "Tracks derived conclusions separately from direct attestations so interpretation and evidence are not silently merged.",
+      "status_note": "An inference remains dependent on premises and may weaken when source evidence changes.",
+      "evidence_note": "Canonical inference registry.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "witness-statement-corpus-index",
+      "label": "Tim Statement Corpus Index",
+      "kind": "attestation-index",
+      "room_ids": [
+        "witness-attestation",
+        "canon-identities"
+      ],
+      "route": "/knowledge/indexes/tim-statement-corpus-index.json",
+      "summary": "Index over recoverable Tim statements and source strata, supporting first-attestation and wording checks.",
+      "status_note": "Indexing a statement documents the archive's record of it; public authenticity still depends on source class.",
+      "evidence_note": "Canonical statement index.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "witness-godhood-attestation",
+      "label": "Godhood Modality Attestation Ledger",
+      "kind": "attestation-ledger",
+      "room_ids": [
+        "witness-attestation",
+        "theology-god-language"
+      ],
+      "route": "/knowledge/timeline/godhood-modality-attestation-ledger.json",
+      "summary": "Dated attestations for God/Father-related formulations across different modalities and periods.",
+      "status_note": "Attestation proves recoverable wording/date within its source class, not the supernatural truth of the content.",
+      "evidence_note": "Timeline attestation ledger.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "witness-biblical-vocabulary",
+      "label": "Biblical Vocabulary Attestation Ledger",
+      "kind": "attestation-ledger",
+      "room_ids": [
+        "witness-attestation",
+        "bible-christianity"
+      ],
+      "route": "/knowledge/timeline/tim-biblical-vocabulary-attestation-ledger.json",
+      "summary": "Tracks when biblical terms and motifs appear in the project so later theological readings are not backdated.",
+      "status_note": "Vocabulary recurrence does not prove fulfillment, influence or doctrinal identity.",
+      "evidence_note": "Dated vocabulary attestation ledger.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "chronology-master-timeline",
+      "label": "Master Timeline 1987–2030",
+      "kind": "master-timeline",
+      "room_ids": [
+        "chronology-events",
+        "developmental-genealogy"
+      ],
+      "route": "/knowledge/timeline/master-timeline-1987-2030.json",
+      "summary": "Long-range chronological spine joining biography, project phases, public activity and later interpretation with typed event status.",
+      "status_note": "Future or projected entries remain distinct from established past events.",
+      "evidence_note": "Canonical timeline owner.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "chronology-2026-master",
+      "label": "Dated Master Timeline 2026",
+      "kind": "year-timeline",
+      "room_ids": [
+        "chronology-events"
+      ],
+      "route": "/knowledge/timeline/dated-master-timeline-2026.json",
+      "summary": "High-resolution 2026 chronology for public statements, project development, recoveries and dated events.",
+      "status_note": "Chronology preserves event/source distinctions and does not convert later interpretation into prior fact.",
+      "evidence_note": "Dated timeline owner.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "law-accountability-atlas",
+      "label": "Legal Accountability & Human Consequence Atlas",
+      "kind": "legal-atlas",
+      "room_ids": [
+        "law-justice",
+        "subculture-group-formation"
+      ],
+      "route": "/knowledge/world/legal-accountability-human-consequence-atlas.json",
+      "summary": "Separates allegation, source, legal status, procedure, liability, remedy and human consequence across contested cases and institutional contexts.",
+      "status_note": "Project analysis does not replace official legal records, adjudication or qualified legal advice.",
+      "evidence_note": "Canonical world/legal accountability atlas.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "law-accountability-routing",
+      "label": "Legal Accountability / Under-Culture Routing",
+      "kind": "legal-routing",
+      "room_ids": [
+        "law-justice",
+        "provenance-evidence"
+      ],
+      "route": "/knowledge/world/legal-accountability-under-culture-routing.json",
+      "summary": "Routing layer that hands contested social claims toward the appropriate legal/evidence owners instead of treating project labels as legal conclusions.",
+      "status_note": "Routing identifies where a claim should be evaluated; it does not adjudicate it.",
+      "evidence_note": "Canonical legal/evidence routing record.",
+      "maturity": "described"
+    }
+  ],
+  "source_records": [
+    "data/house/subrooms.json",
+    "knowledge/world/culture-sektur-platform-media-political-ecology.json",
+    "data/house/below-basin-spatial-contract.json",
+    "data/house/non-euclidean-room-grammar.json"
+  ]
+}

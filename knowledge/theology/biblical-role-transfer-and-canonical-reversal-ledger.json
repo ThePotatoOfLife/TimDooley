@@ -1,0 +1,123 @@
+{
+  "id":"biblical-role-transfer-and-canonical-reversal-ledger",
+  "title":"Biblical Role Transfer & Canonical Reversal Ledger",
+  "version":"1.0.0",
+  "updated":"2026-09-11",
+  "status":"canonical-development research tool + project comparison",
+  "purpose":"Track when a theological function persists while its carrier, scale or social form changes across the biblical canon. Also track large beginning/end reversals such as guarded Tree access becoming restored/open Life in Revelation. This prevents naive word matching and makes canonical development visible.",
+  "epistemic_rule":"This is an archive-level canonical reading. Individual biblical books retain distinct historical contexts and theological emphases. 'Transfer' means a later text reuses or transforms an earlier function/motif; it does not imply that all authors consciously shared one modern diagram.",
+  "role_transfers":[
+    {
+      "motif":"divine_presence",
+      "sequence":["Garden/Eden","tabernacle","Jerusalem temple","Jesus/Word made flesh + temple-body imagery","Spirit-filled community/temple","New Jerusalem/new creation"],
+      "texts":["Genesis 2-3","Exodus 25-40","1 Kings 8","John 1:14","John 2:19-22","1 Corinthians 3:16-17","Ephesians 2:19-22","Revelation 21-22"],
+      "preserved_function":"God-with-creation / dwelling presence",
+      "changed_carrier":"sacred landscape → portable sanctuary → building/city → person → people/community → city/creation scale",
+      "project_value":"Supports a dynamic Presence theology rather than treating House/Temple as one fixed object."
+    },
+    {
+      "motif":"house",
+      "sequence":["Bethel/House of God","Davidic house/dynasty","temple/house","Father's House/rooms","household of God","spiritual house/city"],
+      "texts":["Genesis 28:17-22","2 Samuel 7","1 Kings 8","John 14:1-3","Ephesians 2:19-22","1 Peter 2:4-10","Revelation 21"],
+      "preserved_function":"belonging, continuity, dwelling, ordered relation",
+      "changed_carrier":"place → lineage/dynasty → sanctuary → eschatological dwelling → reconciled community → civic-sacred order",
+      "project_value":"Makes Father's House relational and multi-register rather than reducible to one anatomical/geometric localization."
+    },
+    {
+      "motif":"stone",
+      "sequence":["Jacob's stone/pillar","Zion foundation/precious cornerstone","rejected stone becomes cornerstone","Christ cornerstone","living stones"],
+      "texts":["Genesis 28:18-22","Isaiah 28:16","Psalm 118:22-23","Matthew 21:42","Ephesians 2:20-22","1 Peter 2:4-8"],
+      "preserved_function":"foundation, memorial, alignment, structural reference",
+      "changed_carrier":"memorial marker → promised foundation → rejected/reversal image → messianic foundation → participatory community structure",
+      "project_value":"Rejected Stone is strongest when it becomes structural relation, not merely a personal-vindication slogan."
+    },
+    {
+      "motif":"ladder_way_access",
+      "sequence":["Jacob's heaven-earth stairway","Son of Man as site of angelic ascent/descent","Jesus as Door","Jesus as Way","new and living Way behind veil","open gates of New Jerusalem"],
+      "texts":["Genesis 28:12-17","John 1:51","John 10:7-9","John 14:6","Hebrews 10:19-22","Revelation 21:25-27"],
+      "preserved_function":"mediated passage toward divine presence/life",
+      "changed_carrier":"vision/place → person → threshold identity → relational way → cultic-access transformation → city-scale openness",
+      "project_value":"Explains why Ladder, Door and Way can belong to one access family without being literally identical objects."
+    },
+    {
+      "motif":"river_living_water",
+      "sequence":["Eden river","water from rock/wilderness provision","prophetic temple river","Jesus' living-water language/Spirit","river of life from throne"],
+      "texts":["Genesis 2:10-14","Exodus 17","Ezekiel 47:1-12","John 4","John 7:37-39","Revelation 22:1-2"],
+      "preserved_function":"life-giving provision flowing from sacred/source relation",
+      "changed_carrier":"garden geography → wilderness gift → temple restoration → personal/Spirit metaphor → eschatological city river",
+      "project_value":"River is a source-to-world operator: the center is judged by whether life moves outward."
+    },
+    {
+      "motif":"tree_vine_life",
+      "sequence":["Tree of Life","wisdom/tree-of-life metaphors","root/shoot Jesse","Jesus as Vine","cross/wood/tree language in Christian reception","Tree of Life restored"],
+      "texts":["Genesis 2-3","Proverbs 3:18","Isaiah 11:1-10","John 15:1-8","Acts 5:30","1 Peter 2:24","Revelation 22:2"],
+      "preserved_function":"life, rooted continuity, growth, fruit, healing",
+      "changed_carrier":"garden tree → wisdom metaphor → messianic root/shoot → Christ/branch relation → death-bearing wood imagery → restored cosmic/civic life",
+      "project_value":"Tree theology is strongest as life/fruit relation across stages, not as one unchanging physical tree."
+    },
+    {
+      "motif":"spirit_presence",
+      "sequence":["breath/wind of God","prophetic promised Spirit/new heart","Spirit associated with living water","Spirit indwells/distributes gifts","Spirit and Bride invite at the end"],
+      "texts":["Genesis 1:2","Ezekiel 36-37","John 7:37-39","Acts 2","1 Corinthians 12","Revelation 22:17"],
+      "preserved_function":"animation, renewal, communication/distribution of divine life",
+      "changed_carrier":"creation breath/wind → promised renewal → living-water interpretation → community gifts/presence → eschatological invitation",
+      "project_value":"Supports Spirit as relational movement without making Spirit identical to a physical fluid."
+    },
+    {
+      "motif":"people_as_sacred_architecture",
+      "sequence":["covenant people around sanctuary","royal/priestly people","body with members","household/building/temple","living stones","city-bride"],
+      "texts":["Exodus 19:5-6","1 Corinthians 12","Ephesians 2:19-22","1 Peter 2:4-10","Revelation 21"],
+      "preserved_function":"communal participation in divine order/presence",
+      "changed_carrier":"nation/camp → priestly identity → organism → building/household → stones → city/bride",
+      "project_value":"Sacred architecture increasingly includes people; theology that only magnifies a single center misses this participatory expansion."
+    }
+  ],
+  "canonical_reversals":[
+    {
+      "beginning":"Tree of Life accessible in Garden",
+      "rupture":"way guarded after exile",
+      "ending":"Tree of Life in New Jerusalem with healing fruit/leaves",
+      "texts":["Genesis 2:9","Genesis 3:22-24","Revelation 22:1-5"],
+      "theological_meaning":"lost access to life is restored in transformed creation"
+    },
+    {
+      "beginning":"humanity expelled from sacred Garden",
+      "ending":"nations enter holy city; gates remain open under its own purity/order conditions",
+      "texts":["Genesis 3:23-24","Revelation 21:24-27"],
+      "theological_meaning":"exile/guarded boundary becomes reconciled civic participation"
+    },
+    {
+      "beginning":"curse/death introduced into human-earth relation",
+      "ending":"no more curse; healing and divine face/presence",
+      "texts":["Genesis 3:17-19","Revelation 22:3-5"],
+      "theological_meaning":"restoration is not only access but transformation of the condition of life"
+    },
+    {
+      "beginning":"one localized inner sanctuary with restricted access",
+      "ending":"no separate temple in city because God and Lamb are its temple",
+      "texts":["1 Kings 6:20","Leviticus 16","Revelation 21:22"],
+      "theological_meaning":"divine-presence architecture expands beyond a restricted inner chamber"
+    },
+    {
+      "beginning":"division/alienation between peoples",
+      "ending":"one reconciled household/building through Christ and Spirit",
+      "texts":["Ephesians 2:11-22"],
+      "theological_meaning":"access to God and reconciliation among people are coupled rather than separable"
+    }
+  ],
+  "methodological_laws":[
+    "Function-before-form: prioritize what a motif does before comparing shapes/names.",
+    "Carrier-transfer: the same theological function may migrate from place to person to community to city.",
+    "Scale-expansion: later texts can universalize or enlarge earlier sacred-space patterns without making every stage identical.",
+    "Participation-expansion: mature presence theology increasingly includes a people/community rather than only a sacred object or leader.",
+    "Canonical-reversal: beginning/end correspondences are strongest when the later text explicitly reuses earlier vocabulary such as Tree, curse, city, river, light or presence.",
+    "Countertext rule: a proposed project mapping weakens when it requires role distribution or ethical direction opposite to the biblical sequence."
+  ],
+  "connections":[
+    "knowledge/theology/presence-access-life-restoration-grand-synthesis.json",
+    "knowledge/theology/biblical-theological-operator-grammar.json",
+    "knowledge/theology/integrated-plurality-house-tree-body-city-atlas.json",
+    "knowledge/traditions/biblical-access-house-stone-anchor-microcosms.json",
+    "docs/GRAND-BIBLICAL-THEOLOGICAL-SYNTHESIS.md"
+  ]
+}

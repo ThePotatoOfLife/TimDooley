@@ -1,0 +1,95 @@
+{
+  "id": "2026-09-11-potato-dynamics-commutator-contract-equivalence",
+  "title": "Potato Dynamics Upgrade — Axis/Time Commutators, Interface Contracts and Observable Equivalence",
+  "updated": "2026-09-11",
+  "status": "archive-generated mathematical contribution extending Potato Dynamics 2.0; established dynamical-systems and contract concepts adapted to the project grammar",
+  "parent": "knowledge/science/potato-dynamics-2-toy-model.json",
+  "abstract": "Potato Dynamics distinguishes ordinary time evolution F from Axis/structural flow A, but the earlier framework did not say when those two operations can be applied independently. This upgrade introduces the Lie bracket [F,A] as a quantitative measure of order dependence: when it vanishes, time evolution and Axis transformation commute locally; when it does not, changing scale/description before evolving can differ from evolving before changing scale/description. The upgrade also gives open-system composition an assume-guarantee contract semantics and defines observable equivalence between a full model and a reduced model. Together these additions make three recurring project questions precise: whether structural and temporal evolution are compatible, whether two systems can actually be connected through a Door, and whether a simpler model preserves everything that matters for the declared observable.",
+  "axis_time_compatibility": {
+    "flows": "dx/dt=F(x) and dx/ds=A(x) on the same smooth state space when both are defined",
+    "lie_bracket": "[F,A](x)=D A(x) F(x)-D F(x) A(x)",
+    "meaning": "The bracket measures first-order failure of the two vector fields to commute.",
+    "local_flow_test": "Let Phi_F^t and Phi_A^s be the respective flows. The discrepancy Phi_F^t(Phi_A^s(x))-Phi_A^s(Phi_F^t(x)) is of order ts [F,A](x) for small t,s, up to convention/sign and higher-order terms.",
+    "commuting_case": "If [F,A]=0 on the relevant domain and regularity conditions hold, the local flows commute: applying Axis then time gives the same result as time then Axis.",
+    "project_interpretation": "The Axis is not automatically outside time. The model must test whether structural/scale transformation commutes with temporal dynamics or whether their order changes predictions."
+  },
+  "axis_time_examples": {
+    "pure_rescaling": "If A generates a scale transformation and F is exactly scale-equivariant, the bracket may vanish or close on F/A depending on weights. This can justify a clean scale-flow interpretation.",
+    "noncommuting_case": "If temporal dynamics contain a fixed scale or threshold that Axis changes, [F,A] is generally nonzero. Then structural re-description alters the subsequent time evolution and must be modeled explicitly.",
+    "empirical_test": "Estimate both orders on data or simulation and report the commutator defect instead of assuming structural and temporal transformations are interchangeable."
+  },
+  "door_interface_contract": {
+    "contract": "C=(A_assume,G_guarantee), where A_assume is the set of admissible interface/environment behaviors and G_guarantee is the behavior the subsystem promises while assumptions hold.",
+    "system_satisfaction": "Subsystem P satisfies C when every allowed trajectory compatible with A_assume also satisfies G_guarantee under the declared semantics.",
+    "cascade_condition": "For a simple cascade P1 -> P2, a sufficient interface compatibility condition is that the output behaviors guaranteed by P1 lie inside the input assumptions required by P2: G1_out subseteq A2_in.",
+    "unit_type_condition": "Interface variables must also match mathematical type, units, timing convention and uncertainty semantics; set inclusion alone does not repair a type mismatch.",
+    "feedback_warning": "Feedback composition requires stronger conditions because each subsystem helps generate the other's environment. Strong/forward-invariant contract semantics are preferable to a one-way compatibility check."
+  },
+  "viability_under_composition": {
+    "warning": "Viability of P1 and P2 separately does not imply viability of their interconnection.",
+    "reason": "Coupling can push either subsystem outside the disturbance/input set for which its viability controller was designed.",
+    "compatibility_margin": "Define m_C as the minimum signed distance between realized interface behavior and the boundary of the receiving subsystem's admissible assumption set over the horizon.",
+    "interpretation": "Positive margin means the Door coupling remains inside the declared contract; zero/negative margin marks fragility or contract violation."
+  },
+  "observable_equivalence": {
+    "definition": "Models M1 and M2 are (O,epsilon,T)-equivalent over an admissible input class U if matched initial conditions can be chosen so that sup_{u in U} sup_{0<=t<=T} d_Y(O1(x1(t;u)),O2(x2(t;u))) <= epsilon.",
+    "meaning": "Two models need not share internal ontology to be equivalent for a declared observation horizon and tolerance.",
+    "exact_case": "epsilon=0 gives exact observational equivalence for the specified outputs/input class/horizon, not necessarily state-space isomorphism.",
+    "model_reduction_use": "A symbolic/internal component that can be removed while preserving (O,epsilon,T)-equivalence is not empirically necessary for that task."
+  },
+  "door_reduction_commutation": {
+    "full_reset": "x_plus=D_full(x_minus)",
+    "coarse_map": "z=q(x)",
+    "reduced_reset": "z_plus=D_red(z_minus)",
+    "commutation_defect": "delta_D(x)=d_Z(q(D_full(x)), D_red(q(x)))",
+    "criterion": "A reduced Door is exact on the tested guard when delta_D=0; it is approximate when sup delta_D<=epsilon_D.",
+    "value": "This detects when coarse-graining destroys transition logic even if continuous trajectories look similar away from the Door."
+  },
+  "compositional_error_budget": {
+    "idea": "When several approximate modules are composed, assign each interface/model reduction an error tolerance epsilon_i and propagate a declared bound to the final observable rather than treating each approximation as independently harmless.",
+    "simple_lipschitz_case": "If downstream map H is L-Lipschitz and an upstream reduction introduces error epsilon, downstream output error is at most L epsilon before additional errors are added.",
+    "project_value": "This creates a quantitative error ledger for multi-room/multi-Door models and prevents hidden approximation debt from accumulating invisibly."
+  },
+  "new_research_questions": [
+    "For a chosen specialization, is [F,A] zero, small or large in the operating regime?",
+    "Which Door connections violate assume-guarantee compatibility even though the variables have similar names?",
+    "Can a reduced model preserve the target observable through Door events, not just during smooth flow?",
+    "What is the smallest subsystem set needed to stay within the final observable error budget?"
+  ],
+  "advancement_gates": {
+    "axis_gate": "Do not claim independent Axis and time flows when their commutator materially changes predictions without modeling that coupling.",
+    "composition_gate": "Do not compose subsystems merely because their symbolic roles fit; require interface contract/type compatibility.",
+    "reduction_gate": "Prefer the reduced model whenever it meets the declared observable tolerance and the fuller ontology adds no discriminating prediction/control value.",
+    "door_gate": "A reduced transition model must preserve reset/guard behavior within tolerance, not only continuous-state averages."
+  },
+  "external_references": [
+    {
+      "topic": "Lie brackets and commuting flows",
+      "url": "https://encyclopediaofmath.org/wiki/Vector_field_on_a_manifold",
+      "use": "Standard differential-geometric definition of the Lie bracket as the commutator of vector-field actions/flows."
+    },
+    {
+      "topic": "contract-based design for hybrid systems",
+      "url": "https://arxiv.org/abs/2405.07718",
+      "use": "Modern assume-guarantee semantics for hybrid-system interconnections, including distinctions between cascade and feedback composition."
+    },
+    {
+      "topic": "resilience-based feasible contracts",
+      "url": "https://arxiv.org/abs/2509.01832",
+      "use": "Recent framework connecting assume-guarantee contracts, interconnection effects and resilience margins."
+    }
+  ],
+  "failure_conditions": [
+    "Axis and time are treated as independent despite a large nonzero commutator in the chosen model.",
+    "A composed model violates the receiving subsystem's assumptions or variable units/types.",
+    "A complex model is retained even though a reduced model is observationally equivalent within the declared tolerance.",
+    "Coarse-graining preserves smooth outputs but fails badly at Door/reset events.",
+    "Approximation errors accumulate across composed modules beyond the final error budget."
+  ],
+  "connections": [
+    "potato-dynamics-2-toy-model",
+    "door-handshake-nonlocal-propagation-model",
+    "eleven-dimensional-projection-unification-recovery",
+    "model-testing-protocol"
+  ]
+}

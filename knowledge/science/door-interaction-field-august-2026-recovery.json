@@ -1,0 +1,90 @@
+{
+  "id": "door-interaction-field-august-2026-recovery",
+  "title": "August 2026 Door Interaction Field — State Space, Hypersurface and Coupled Transformation Recovery",
+  "version": "1.0.0",
+  "updated": "2026-09-12",
+  "status": "conversation-derived mathematical recovery; general interaction/interface model, not established new physics",
+  "provenance": "Recovered from prior August 2026 conversations in which Door was formalized as a threshold hypersurface, interaction operator and map between structured state spaces. Exact notation may have been assistant-formalized while translating Tim's Door intuition; it must not be retroactively presented as a historical Tim-authored physics equation.",
+  "abstract": "This record recovers an earlier Door formalism that treated the interface not merely as a symbolic threshold but as a typed interaction region between coupled subsystems. A system state was represented by a product space containing spacetime/configuration variables and internal fields, with a Door defined by a hypersurface H(X,t)=0 or H(X,t)>=0. Crossing activates an interaction Hamiltonian or transition generator that maps an incoming composite state T⊗A to an outgoing state T'⊗A'. The scientific content is the separation of three objects: the state manifold, the guard/hypersurface selecting when interaction occurs, and the coupling law determining what changes at the crossing. This architecture is useful in hybrid systems, scattering, open quantum systems, control interfaces and phase-boundary models. It does not imply that a theological Door is a literal fifth-dimensional portal. The record reconnects the earlier August equations to Potato Dynamics, Door/Handshake and the dimensional-transition programme while keeping its distinct interaction-field content.",
+  "research_question": "Can Door events be modeled as localized interactions on a declared guard/hypersurface such that pre/post states, coupling strength, conserved quantities and transition probabilities are calculable and distinguishable from ordinary continuous evolution?",
+  "state_space": {
+    "generic_product": "X in mathcal X = M x F",
+    "recovered_extended_state": "Psi=(x^mu,phi_H,q_i,chi_i,s,Rcal,...)",
+    "typed_interpretation": {
+      "x^mu": "spacetime/configuration coordinates when a physical model uses them",
+      "phi_H": "threshold/order/interface field or coordinate under the chosen specialization",
+      "q_i": "internal discrete or continuous degrees of freedom",
+      "chi_i": "coupling/integration/internal coordinates; meaning must be fixed per model",
+      "s": "structural/scale/auxiliary evolution parameter where used",
+      "Rcal": "relation/context/memory variable family when present"
+    },
+    "rule": "The tuple is a container for typed variables, not evidence that all entries are independent physical dimensions."
+  },
+  "door_hypersurface": {
+    "guard": "Sigma_D={(X,t):H(X,t)=0}",
+    "open_region": "Omega_D={(X,t):H(X,t)>=0} under a declared orientation",
+    "normal": "n=grad H/|grad H| when H is differentiable and grad H != 0",
+    "crossing_rate": "dH/dt=partial_t H + grad H dot F(X,t)",
+    "transversality": "A clean crossing requires dH/dt != 0 at the event; dH/dt=0 can indicate grazing/tangency and may need separate event logic.",
+    "meaning": "Door opening is an event condition in state space, not an extra force."
+  },
+  "interaction_generator": {
+    "classical_piecewise": [
+      "dX/dt=F_-(X) for H<0",
+      "dX/dt=F_+(X) for H>0",
+      "X^+=D(X^-) at an instantaneous reset, if the model requires one"
+    ],
+    "localized_coupling": "F(X,t)=F_0(X,t)+g_D kappa(H(X,t)) F_int(X,t), where kappa is localized near the Door",
+    "quantum_comparator": "H_total=H_A+H_B+g_D(t) H_int",
+    "unitary_transition": "|Psi(t2)>=T exp[-(i/hbar) integral_(t1)^(t2) H_total(t) dt]|Psi(t1)>",
+    "boundary": "The quantum form applies only to a genuine quantum system; it is not a default equation for social, symbolic or psychological Doors."
+  },
+  "coupled_transformation": {
+    "recovered_form": "T tensor A -> T' tensor A'",
+    "general_map": "D: S_T x S_A -> S_T x S_A",
+    "quantum_channel_variant": "rho'_TA=E_D(rho_TA), with E_D completely positive and trace preserving for an ordinary open-system channel",
+    "information_question": "How much mutual information I(T;A) is created, destroyed or redistributed by the Door interaction?",
+    "entanglement_boundary": "If T and A are quantum subsystems, entanglement must be quantified by an appropriate witness/measure; ordinary dependence is not quantum entanglement."
+  },
+  "conservation_and_flux": {
+    "surface_flux": "J_D=integral_(Sigma_D) j dot n dSigma for a conserved/current-like quantity j",
+    "continuity": "partial_t rho + div j = S, with S=0 for strict local conservation",
+    "jump_condition": "For conservation laws, Rankine-Hugoniot-type jump conditions relate fluxes across a moving interface when applicable.",
+    "project_value": "A Door that transfers matter, energy, probability or information should specify what crosses, what is conserved and what can be dissipated."
+  },
+  "transition_probability": {
+    "hazard_form": "P(event in [t,t+dt)|history)=lambda_D(X_t,t)dt+o(dt)",
+    "activated_form": "lambda_D=lambda_0 exp[beta H(X,t)] is one phenomenological comparator when event probability rises near a threshold",
+    "first_passage": "tau_D=inf{t>=0:H(X_t,t)>=0}",
+    "observable_outputs": ["crossing probability","first-passage distribution","dwell time","post-crossing state distribution","energy/information transferred","hysteresis"]
+  },
+  "relation_to_other_project_models": {
+    "potato_dynamics": "Supplies the hybrid-system host: continuous flow + Door guard + reset/intervention.",
+    "door_handshake": "Adds localized state interaction before/after network edge or relational coupling events.",
+    "dimensional_door": "Shares threshold mathematics, but a strong-gravity dimensional transition needs a gravitational action/eigenmode derivation rather than this generic interface formalism.",
+    "trinity_operator": "Source/flow/manifestation can use Door as an interface operator, but the theology remains interpretation rather than physical validation."
+  },
+  "worked_minimal_model": {
+    "state": "X=(x,a)",
+    "guard": "H(x)=x-x_c",
+    "pre_flow": "dx/dt=v_-, da/dt=-gamma_- a",
+    "door_reset": "x^+=x^-, a^+=a^-+kappa tanh(a^-)",
+    "post_flow": "dx/dt=v_+, da/dt=-gamma_+ a",
+    "questions": ["What is tau_D?","How does the reset change a?","Is the post-Door state stable?","Can kappa be inferred from observed transitions?"]
+  },
+  "falsification_and_failure_conditions": [
+    "The guard surface is chosen only after seeing the transition and fails on held-out events.",
+    "The interaction term adds no predictive value beyond a smooth single-regime model.",
+    "Claimed conserved quantities show unexplained source/sink terms under the completed equations.",
+    "Quantum terminology is used without quantum state preparation/readout or a quantum-sensitive observable.",
+    "Different variable meanings are silently mixed in one state tuple."
+  ],
+  "connections": [
+    "potato-dynamics-2-toy-model",
+    "door-handshake-nonlocal-propagation-model",
+    "dimensional-phase-transition-full-recovery",
+    "advanced-retarded-door-handshake-recovery",
+    "yhwh-trinity-operator-toe-archaeology"
+  ],
+  "salvage_provenance": {"source_pr":53,"source_branch":"science-theory-overhaul-20260912","source_head":"fd04a9b61013a0a677b29424e2325532cac7fd39","reconciled_on":"2026-09-12"}
+}

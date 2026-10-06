@@ -1,0 +1,201 @@
+{
+  "id": "glia-neurovascular-barrier-atlas",
+  "version": "1.0.0",
+  "updated": "2026-09-20",
+  "title": "Glia, Neurovascular Unit & Living Boundary Atlas",
+  "status": "specialist cellular-support and barrier owner",
+  "purpose": "Replace the neuron-only view of the House with the cellular, vascular, immune and extracellular systems that maintain neural tissue.",
+  "cell_rooms": [
+    {
+      "id": "astrocytes",
+      "name": "Astrocyte Territories",
+      "roles": [
+        "ion/neurotransmitter homeostasis",
+        "metabolic support",
+        "synapse modulation",
+        "vascular/endfoot interactions",
+        "water/potassium handling"
+      ],
+      "project_neighbor": "local caretakers / interface cells",
+      "boundary": "Astrocytes are heterogeneous across region and state."
+    },
+    {
+      "id": "oligodendrocytes",
+      "name": "Oligodendrocyte / Myelin Rooms",
+      "roles": [
+        "CNS myelination",
+        "axonal metabolic support",
+        "conduction-timing effects"
+      ],
+      "project_neighbor": "road insulation / timing support",
+      "boundary": "Myelin is dynamic and axon-specific, not merely electrical wrapping."
+    },
+    {
+      "id": "opcs",
+      "name": "Oligodendrocyte Precursor Cells",
+      "roles": [
+        "generate oligodendrocytes",
+        "remain abundant proliferative/glial population in adult CNS",
+        "receive synaptic inputs in some contexts"
+      ],
+      "project_neighbor": "maintenance/renewal pool",
+      "boundary": "OPCs are not only dormant replacement cells."
+    },
+    {
+      "id": "microglia",
+      "name": "Microglial Immune Rooms",
+      "roles": [
+        "immune surveillance",
+        "phagocytosis",
+        "developmental/synaptic remodeling",
+        "injury/disease response"
+      ],
+      "project_neighbor": "resident immune custodians",
+      "boundary": "Simple M1/M2 polarization is an outdated oversimplification of state diversity."
+    },
+    {
+      "id": "endothelium",
+      "name": "Brain Endothelial Barrier",
+      "roles": [
+        "tight-junction barrier",
+        "selective transport",
+        "vascular signaling"
+      ],
+      "project_neighbor": "blood-facing wall",
+      "boundary": "BBB properties vary across CNS regions and specialized interfaces."
+    },
+    {
+      "id": "pericytes",
+      "name": "Pericyte / Mural Interface",
+      "roles": [
+        "capillary stability",
+        "barrier regulation",
+        "vascular signaling",
+        "blood-flow contributions"
+      ],
+      "project_neighbor": "wall-support / vessel regulation"
+    },
+    {
+      "id": "smooth-muscle",
+      "name": "Vascular Smooth Muscle",
+      "roles": [
+        "arteriolar tone",
+        "regional perfusion control"
+      ],
+      "project_neighbor": "supply-road valve"
+    },
+    {
+      "id": "ependymal",
+      "name": "Ependymal Ventricular Lining",
+      "roles": [
+        "ventricular surface",
+        "ciliary contribution to local CSF movement",
+        "interface with underlying tissue"
+      ],
+      "project_neighbor": "Court lining",
+      "boundary": "Ependyma is distinct from choroid-plexus epithelium."
+    },
+    {
+      "id": "choroid-epithelium",
+      "name": "Choroid Plexus Epithelium",
+      "roles": [
+        "CSF secretion",
+        "blood-CSF barrier",
+        "transport",
+        "immune signaling"
+      ],
+      "project_neighbor": "Spring / guarded water-maker"
+    },
+    {
+      "id": "meningeal",
+      "name": "Meningeal Cells & Border Compartments",
+      "roles": [
+        "mechanical covering",
+        "vascular/immune interface",
+        "CSF/border compartment organization"
+      ],
+      "project_neighbor": "nested sheaths / courts",
+      "boundary": "Dura, arachnoid and pia are distinct tissues."
+    }
+  ],
+  "neurovascular_unit": {
+    "components": [
+      "neurons",
+      "astrocytes",
+      "microvascular endothelial cells",
+      "pericytes/mural cells",
+      "microglia/immune components",
+      "basement membrane/extracellular matrix"
+    ],
+    "functions": [
+      "couple local neural activity to blood flow",
+      "maintain blood-brain barrier",
+      "coordinate metabolism",
+      "shape inflammatory and repair responses"
+    ],
+    "project_use": "Turns 'House wall' into a living distributed boundary instead of a passive shell."
+  },
+  "barrier_ecology": [
+    {
+      "interface": "blood-brain barrier",
+      "location": "brain microvascular endothelium",
+      "distinction": "tight endothelial barrier supported by neurovascular-unit interactions"
+    },
+    {
+      "interface": "blood-CSF barrier",
+      "location": "choroid plexus epithelium",
+      "distinction": "separate epithelial barrier governing blood↔ventricular CSF exchange"
+    },
+    {
+      "interface": "circumventricular windows",
+      "location": "selected specialized organs near ventricles",
+      "distinction": "modified vascular permeability enables sensing/secretion; not generic BBB failure"
+    },
+    {
+      "interface": "meningeal/CSF borders",
+      "location": "subarachnoid and meningeal interfaces",
+      "distinction": "separate border compartments with immune/vascular functions"
+    }
+  ],
+  "vascular_gradient": {
+    "principle": "Arterial, capillary and venous endothelial/perivascular states form spatial and molecular gradients rather than one generic blood-vessel cell type.",
+    "development": "Brain vascular growth is dynamic during development, relatively quiescent in healthy adult tissue and can reactivate/remodel in disease.",
+    "integration": "Supply roads must therefore be modeled as cellular territories plus flow networks, not pipes alone."
+  },
+  "glial_truths": [
+    "Neural computation depends on non-neuronal cells for metabolic, ionic, immune and structural homeostasis.",
+    "White matter is a living axon–oligodendrocyte–astrocyte–vascular system rather than inert cabling.",
+    "Barrier physiology is distributed across specialized interfaces; BBB and blood-CSF barrier are not interchangeable.",
+    "Cell state changes with development, region, aging, injury and disease, so fixed cartoon cell types are incomplete."
+  ],
+  "missing_depth": [
+    "regional astrocyte taxonomies",
+    "human oligodendrocyte lineage regional differences",
+    "microglial spatial states in healthy human brain",
+    "perivascular macrophage and border-associated macrophage atlas",
+    "glymphatic/perivascular exchange evidence grading by claim"
+  ],
+  "sources": [
+    {
+      "topic": "2025 neurovascular unit and BBB review",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11956146/"
+    },
+    {
+      "topic": "human brain vascular single-cell atlas",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11324530/"
+    },
+    {
+      "topic": "integrated human brain cell atlas",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11405287/"
+    },
+    {
+      "topic": "microglia and BBB integrity",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10964094/"
+    }
+  ],
+  "connections": [
+    "knowledge/body/brain-room-deep-atlas.json",
+    "knowledge/body/body-science-context-atlas.json",
+    "knowledge/body/axis-orientation-autonomic-interface-atlas.json"
+  ]
+}

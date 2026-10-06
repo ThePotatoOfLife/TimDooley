@@ -1,0 +1,85 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "authority": "history-canon-revision",
+  "purpose": "Govern how project canon changes when new sources, recovered context, stronger interpretation or contradiction appears, while preserving prior states and dates.",
+  "rule": "Revision changes the current model; it does not rewrite what the project previously said or what historical sources originally meant.",
+  "record_layers": [
+    "occurrence",
+    "source/artifact",
+    "attestation",
+    "recovery",
+    "interpretation",
+    "reception",
+    "canon-state",
+    "revision"
+  ],
+  "revision_types": [
+    {
+      "id": "additive",
+      "meaning": "new detail without contradicting earlier canon"
+    },
+    {
+      "id": "narrowing",
+      "meaning": "claim becomes more specific/cautious"
+    },
+    {
+      "id": "strengthening",
+      "meaning": "new independent evidence raises confidence"
+    },
+    {
+      "id": "reinterpretive",
+      "meaning": "same evidence receives a new project interpretation"
+    },
+    {
+      "id": "corrective",
+      "meaning": "earlier canon was inaccurate or conflated layers"
+    },
+    {
+      "id": "superseding",
+      "meaning": "new model replaces older operational model while preserving history"
+    },
+    {
+      "id": "retraction",
+      "meaning": "claim no longer supported and is removed from current canon"
+    }
+  ],
+  "required_fields": [
+    "revision_id",
+    "date",
+    "affected_claim_or_node",
+    "prior_state",
+    "new_state",
+    "reason",
+    "source_changes",
+    "evidence_class",
+    "author/reviewer",
+    "downstream_files",
+    "compatibility_notes"
+  ],
+  "propagation": [
+    "update canonical owner first",
+    "mark prior state as superseded/corrected rather than deleting provenance",
+    "update public readers and indexes",
+    "update comparative mappings only after owner changes",
+    "run validators/search for stale wording",
+    "record unresolved downstream incompatibilities in Research Lab"
+  ],
+  "versioning_context": {
+    "note": "Modern data stewardship emphasizes explicit dataset version tracking so changes can be compared and reused responsibly.",
+    "source": "https://www.nature.com/articles/s41597-024-03153-y"
+  },
+  "anti_patterns": [
+    "silent overwrite",
+    "backdating new meaning",
+    "copying one corrected claim into many owners",
+    "deleting embarrassing prior states",
+    "treating changed interpretation as changed occurrence"
+  ],
+  "owners": [
+    "time-history",
+    "archive-sources",
+    "potatoverse-canon",
+    "research-lab"
+  ]
+}

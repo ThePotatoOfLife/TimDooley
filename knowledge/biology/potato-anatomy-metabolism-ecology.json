@@ -1,0 +1,232 @@
+{
+  "id": "potato-anatomy-metabolism-ecology",
+  "title": "Potato Anatomy, Metabolism & Ecology — Cell to Tuber to Soil",
+  "version": "1.0.0",
+  "updated": "2026-09-20",
+  "owner_room": "potato-biology",
+  "status": "canonical organism/cell/ecology layer",
+  "purpose": "Map the physical potato from organelles and cells through tissues and organs to resource flows and microbial/ecological niches.",
+  "scale_stack": [
+    {
+      "scale": "organelle",
+      "entities": [
+        "nucleus",
+        "chloroplast",
+        "amyloplast",
+        "mitochondrion",
+        "vacuole",
+        "peroxisome"
+      ],
+      "functions": [
+        "gene regulation",
+        "photosynthesis",
+        "starch storage",
+        "respiration",
+        "ion/metabolite storage",
+        "redox metabolism"
+      ]
+    },
+    {
+      "scale": "cell",
+      "entities": [
+        "meristematic cells",
+        "parenchyma",
+        "phloem/xylem cells",
+        "guard cells",
+        "periderm/phellogen derivatives",
+        "lenticel filling cells"
+      ],
+      "functions": [
+        "division",
+        "storage",
+        "transport",
+        "gas regulation",
+        "barrier formation"
+      ]
+    },
+    {
+      "scale": "tissue",
+      "entities": [
+        "periderm",
+        "cortex",
+        "perimedullary/parenchyma zones",
+        "vascular ring",
+        "pith/medulla",
+        "meristematic eye tissues"
+      ],
+      "functions": [
+        "protection",
+        "storage",
+        "transport",
+        "growth"
+      ]
+    },
+    {
+      "scale": "organ",
+      "entities": [
+        "leaf",
+        "stem",
+        "root",
+        "stolon",
+        "tuber",
+        "flower",
+        "berry",
+        "seed"
+      ],
+      "functions": [
+        "capture",
+        "transport",
+        "uptake",
+        "propagation",
+        "storage",
+        "sexual reproduction"
+      ]
+    },
+    {
+      "scale": "whole plant",
+      "entities": [
+        "source-sink network",
+        "hormone network",
+        "hydraulic system",
+        "immune system"
+      ],
+      "functions": [
+        "allocation",
+        "coordination",
+        "homeostasis",
+        "defense"
+      ]
+    },
+    {
+      "scale": "ecological interface",
+      "entities": [
+        "rhizosphere",
+        "geocaulosphere",
+        "endosphere",
+        "phyllosphere"
+      ],
+      "functions": [
+        "nutrient cycling",
+        "microbial signalling",
+        "pathogen interaction",
+        "stress modulation"
+      ]
+    }
+  ],
+  "tuber_anatomy": {
+    "outer_boundary": {
+      "epidermis": "Present transiently in very young tubers.",
+      "periderm": "Replaces the epidermis and contains phellem, phellogen and phelloderm.",
+      "suberin": "Hydrophobic barrier polymer important for limiting water loss and pathogen penetration.",
+      "lenticels": "Specialized gas-exchange structures through the periderm; their state varies with development, moisture and storage."
+    },
+    "flesh": {
+      "cortex_and_parenchyma": "Living storage tissue occupying much of the tuber; cells contain abundant amyloplasts.",
+      "vascular_ring": "Connects the tuber to phloem/xylem transport and organizes imported resources.",
+      "pith_medulla": "Inner tissue region continuous with stem developmental organization.",
+      "eyes": "Node/bud complexes distributed over the stem-derived tuber surface."
+    }
+  },
+  "metabolism": {
+    "carbon_cycle": [
+      "leaf chloroplast: photons + CO2 → fixed carbon",
+      "source leaf: sucrose synthesis/export",
+      "phloem: long-distance transport",
+      "developing tuber: unloading + sucrose metabolism",
+      "amyloplast: starch synthesis/storage",
+      "storage/sprouting: reserve remobilization",
+      "mitochondria: respiration supplies ATP and metabolic intermediates"
+    ],
+    "mineral_water": {
+      "roots": "take up water and mineral nutrients",
+      "xylem": "moves water/minerals upward through transpiration-driven and pressure-related processes",
+      "phloem": "redistributes carbon, nutrients and signals among sources and sinks",
+      "potassium": "major nutrient strongly associated with potato yield, osmotic regulation and tuber quality; optimum supply is context dependent",
+      "nitrogen": "supports canopy/protein synthesis but excessive or poorly timed N can delay maturity and alter tuberization/quality",
+      "calcium": "important for membranes/cell walls and tuber quality; delivery to tubers is constrained by transport physiology",
+      "phosphorus_magnesium_sulfur_micronutrients": "contribute to energy metabolism, photosynthesis, enzymes and quality traits"
+    },
+    "secondary_metabolism": {
+      "steroidal_glycoalkaloids": "alpha-solanine and alpha-chaconine are defense-related metabolites; biosynthesis involves cholesterol-derived pathways including GAME-family enzymes.",
+      "pigments": "anthocyanins and carotenoids contribute cultivar-dependent skin/flesh coloration and antioxidant chemistry.",
+      "phenolics": "participate in defense, wound responses and nutritional chemistry."
+    }
+  },
+  "boundary_and_repair": {
+    "periderm_rule": "A living boundary is not sealed completely; it balances protection, water relations and gas exchange.",
+    "wound_healing": [
+      "closing-layer formation: existing surface-adjacent cells become suberized",
+      "wound-periderm formation: meristematic phellogen activity produces new protective tissue"
+    ],
+    "lenticel_tradeoff": "Lenticels enable O2/CO2 exchange but can also provide pathogen entry opportunities; wet/low-oxygen conditions can alter lenticel morphology."
+  },
+  "microbiome": {
+    "niches": [
+      "rhizosphere",
+      "root endosphere",
+      "phyllosphere",
+      "geocaulosphere/tuber-associated soil",
+      "tuber endosphere"
+    ],
+    "functions": [
+      "nutrient transformation",
+      "growth promotion",
+      "stress modulation",
+      "pathogen suppression or disease"
+    ],
+    "determinants": [
+      "soil",
+      "climate",
+      "cultivar/genotype",
+      "developmental stage",
+      "agricultural practice",
+      "seed-tuber history"
+    ],
+    "caution": "Microbiome composition is dynamic and environmentally acquired; 'potato microbiome' is not one fixed species list."
+  },
+  "environmental_biophysics": {
+    "gas_exchange": "Leaves use stomata; tuber gas exchange relies heavily on lenticels/periderm permeability.",
+    "water": "Water availability influences canopy growth, cell expansion, tuber set and bulking; both drought and waterlogging create stress.",
+    "temperature": "Heat can inhibit tuberization and accelerate stress/senescence; cold storage reshapes tuber metabolism.",
+    "mechanics": "Cell-wall expansion, turgor and tissue mechanics contribute to tuber swelling and organ shape.",
+    "light": "Leaves require light for photosynthesis; direct tuber exposure causes greening and is associated with quality/defense-metabolite changes."
+  },
+  "sources": [
+    {
+      "title": "Potato Periderm Development and Tuber Skin Quality",
+      "year": 2022,
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9415511/"
+    },
+    {
+      "title": "Potato Tuber Lenticels: A Review of Their Development, Structure, Function, and Disease Susceptibility",
+      "year": 2023,
+      "url": "https://link.springer.com/article/10.1007/s12230-023-09923-5"
+    },
+    {
+      "title": "Biological differences that distinguish the 2 major stages of wound healing in potato tubers",
+      "year": 2017,
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5225934/"
+    },
+    {
+      "title": "Potato Microbiome: Relationship with Environmental Factors and Approaches for Microbiome Modulation",
+      "year": 2024,
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10815375/"
+    },
+    {
+      "title": "Potato steroidal glycoalkaloids: properties, biosynthesis, regulation and genetic manipulation",
+      "year": 2024,
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11639122/"
+    },
+    {
+      "title": "The Importance of Nutrient Management for Potato Production Part II: Plant Nutrition and Tuber Quality",
+      "year": 2020,
+      "url": "https://link.springer.com/article/10.1007/s11540-019-09430-3"
+    }
+  ],
+  "connections": [
+    "potato-life-cycle-state-machine",
+    "potato-molecular-development-and-signalling",
+    "potato-pathology-immunity-storage",
+    "potato-biological-lexicon"
+  ]
+}

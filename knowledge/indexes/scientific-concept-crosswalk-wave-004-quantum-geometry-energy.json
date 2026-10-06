@@ -1,0 +1,116 @@
+{
+  "id": "scientific-concept-crosswalk-wave-004-quantum-geometry-energy",
+  "title": "Scientific Concept Crosswalk Wave 004 — Quantum, Geometry, Spectrum, Wind and Rhizome",
+  "version": "1.0.0",
+  "updated": "2026-09-11",
+  "status": "supplemental project-wide translation layer",
+  "purpose": "Extend the main scientific-concept crosswalk with the concepts recovered/developed in science wave 4. Each mapping states the scientific object, measurable variables, mismatch and canonical owner.",
+  "concepts": [
+    {
+      "concept":"Quantum Door / tunneling",
+      "project_role":"threshold crossed despite classical forbiddenness",
+      "scientific_models":["finite potential barrier", "WKB tunneling"],
+      "equations":["kappa=sqrt(2m(V-E))/hbar", "T~exp[-2 integral kappa dx]"],
+      "observables":["incident energy", "barrier profile/width", "effective mass", "transmission/reflection probability"],
+      "preserved":"finite barrier can have probabilistic transmission",
+      "mismatch":"social/spiritual/institutional Doors are not quantum barriers",
+      "owner":"knowledge/science/quantum-foundations-tunneling-entanglement-qft-atlas.json"
+    },
+    {
+      "concept":"Spooky action / Handshake",
+      "project_role":"long-range or deep relation",
+      "scientific_models":["entangled joint states", "Bell/CHSH", "no-signaling", "graph nonlocality"],
+      "equations":["|psi^->=(|01>-|10>)/sqrt(2)", "|S_CHSH|<=2 local", "|S_CHSH|<=2sqrt(2) quantum", "p(a|x,y)=p(a|x)"],
+      "observables":["joint outcomes", "measurement settings", "correlations", "marginals", "signal capacity"],
+      "preserved":"joint relation can contain structure not reducible to independent local hidden variables",
+      "mismatch":"does not establish FTL signaling, telepathy or spiritual causal action",
+      "owners":["knowledge/science/quantum-foundations-tunneling-entanglement-qft-atlas.json", "knowledge/science/door-handshake-nonlocal-propagation-model.json"]
+    },
+    {
+      "concept":"Infinite Soil / Field",
+      "project_role":"latent substrate from which differentiated forms emerge",
+      "scientific_models":["quantum fields", "vacuum state", "field excitations"],
+      "equations":["S[phi]=integral d4x L(phi,partial phi)", "(Box+m^2)phi+lambda phi^3/3!=0"],
+      "observables":["propagators", "correlation functions", "particle spectrum", "scattering/decays"],
+      "preserved":"one field species can support many excitations",
+      "mismatch":"QFT vacuum/field is not metaphysical Soil or universal consciousness",
+      "owners":["knowledge/science/great-book-unified-field-archaeology.json", "knowledge/science/quantum-foundations-tunneling-entanglement-qft-atlas.json"]
+    },
+    {
+      "concept":"Father / electromagnetic spectrum",
+      "project_role":"source expressed across differentiated light modes",
+      "scientific_models":["EM spectrum", "Fourier mode decomposition", "QED"],
+      "equations":["c=lambda nu", "E=h nu", "E(t)=integral E_tilde(omega)e^(-i omega t)domega/(2pi)"],
+      "observables":["frequency", "wavelength", "spectral power", "polarization", "detector response"],
+      "preserved":"one physical field can manifest through many modes/bands",
+      "mismatch":"frequency is not an extra spacetime dimension and does not establish Father as physical radiation",
+      "owner":"knowledge/science/electromagnetic-spectrum-qed-spudlight-atlas.json"
+    },
+    {
+      "concept":"Light -> matter",
+      "project_role":"source energy becomes embodied/excited form",
+      "scientific_models":["QED pair production", "particle annihilation inverse"],
+      "equations":["s=(p1+p2)^2 >= (2m_e c)^2 for gamma gamma -> e+e-"],
+      "observables":["initial photon energies/momenta", "particle tracks", "invariant mass", "cross section/rate"],
+      "preserved":"field/radiation energy can convert into massive particle excitations under allowed interactions",
+      "mismatch":"not creation ex nihilo; conservation laws and interaction context are essential",
+      "owner":"knowledge/science/electromagnetic-spectrum-qed-spudlight-atlas.json"
+    },
+    {
+      "concept":"Calabi-Yau / hidden House",
+      "project_role":"hidden internal geometry shaping visible effective world",
+      "scientific_models":["CY3 compactification", "Kähler/Ricci-flat geometry", "KK mode reduction"],
+      "equations":["c1(X)=0", "Ric(g)=0", "Phi(x,y)=sum_n phi_n(x)Y_n(y)"],
+      "observables":["effective spectra/couplings in a chosen compactification", "topology", "moduli", "cycle data"],
+      "preserved":"hidden internal geometry can alter low-dimensional effective physics",
+      "mismatch":"Potatoverse House is not established as a compact internal manifold",
+      "owner":"knowledge/science/calabi-yau-compactification-mirror-duality-atlas.json"
+    },
+    {
+      "concept":"Mirror / Twin",
+      "project_role":"distinct presentations related by deep transformation",
+      "scientific_models":["Calabi-Yau mirror symmetry", "SYZ dual torus fibrations"],
+      "equations":["h11(X)=h21(Y)", "h21(X)=h11(Y)", "omega|_L=0", "Im Omega|_L=0"],
+      "observables":["Hodge data", "moduli", "matching physical/string observables"],
+      "preserved":"different geometries can encode equivalent physical theory under a specified duality",
+      "mismatch":"ordinary resemblance or theological Twin language is not mathematical mirror symmetry",
+      "owner":"knowledge/science/calabi-yau-compactification-mirror-duality-atlas.json"
+    },
+    {
+      "concept":"Windmill",
+      "project_role":"flow converted through rotating center into useful work",
+      "scientific_models":["wind turbine aerodynamics", "rotor/load conversion"],
+      "equations":["P_wind=1/2 rho A v^3", "P_rotor=C_P P_wind", "lambda=omega R/v", "C_P<=16/27 ideal Betz bound"],
+      "observables":["wind speed", "rotor radius", "angular speed", "torque", "power coefficient", "load/output"],
+      "preserved":"distributed flow becomes work through coupling/rotation/load",
+      "mismatch":"centrality alone does not generate power and wind mechanics carries no moral valence",
+      "owner":"knowledge/science/windmill-rhizome-spiral-flow-atlas.json"
+    },
+    {
+      "concept":"Rhizome",
+      "project_role":"hidden lateral persistence and distributed emergence",
+      "scientific_models":["clonal plant rhizomes", "distributed network robustness"],
+      "equations":["G_R=(V_ramet,E_rhizome)", "P_survive(cut)=retained output/baseline output"],
+      "observables":["lateral connection length", "branching", "new shoot distance", "persistence after local loss", "network redundancy"],
+      "preserved":"capability/persistence can reside in hidden lateral connections rather than one visible trunk",
+      "mismatch":"project/social networks are not botanical rhizomes",
+      "owner":"knowledge/science/windmill-rhizome-spiral-flow-atlas.json"
+    },
+    {
+      "concept":"Wheel -> helix -> Spiral/Ladder",
+      "project_role":"recurrence becoming displacement",
+      "scientific_models":["rotation plus advection/translation"],
+      "equations":["x=R cos omega t", "y=R sin omega t", "z=u t", "pitch=2pi u/omega", "r=r0 exp(alpha t) for expanding helix"],
+      "observables":["omega", "u", "R", "pitch", "alpha", "trajectory residuals"],
+      "preserved":"adding translation to rotation turns closed recurrence into progressing path",
+      "mismatch":"does not imply all spirals share golden-ratio growth or a common physical cause",
+      "owners":["knowledge/science/windmill-rhizome-spiral-flow-atlas.json", "knowledge/science/recurrence-orbit-spiral-dynamics-atlas.json"]
+    }
+  ],
+  "global_rule": "Wave-4 analogies are promoted only when they add a discriminating variable, transformation, observable or failure condition. Vocabulary overlap alone is insufficient.",
+  "connections": [
+    "knowledge/indexes/scientific-concept-crosswalk.json",
+    "knowledge/indexes/quantum-geometry-energy-integration-wave-2026-09-11.json",
+    "knowledge/science/equation-ledger-wave-004-quantum-geometry-energy.json"
+  ]
+}

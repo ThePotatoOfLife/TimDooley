@@ -1,0 +1,110 @@
+{
+  "id": "foundation-room-contract",
+  "title": "Foundation Room Contract — Origin Door, House Placement and Today",
+  "version": "1.1.0",
+  "updated": "2026-09-18",
+  "status": "canonical reader-object contract",
+  "purpose": "Make each Foundation tangible as a Room/blob in the House with a dated/placeable origin Door, a conceptual House home, and a current snapshot. Genealogy remains a technical drawer rather than the Foundation's primary identity.",
+  "primary_faces": [
+    {
+      "id": "origin-door",
+      "question": "When and where did this Foundation cross into an operating form?",
+      "fields": [
+        "door_event",
+        "door_time",
+        "physical_origin",
+        "map_anchor",
+        "place_precision",
+        "source_status"
+      ]
+    },
+    {
+      "id": "house-location",
+      "question": "Where does this Foundation Room live in the House?",
+      "fields": [
+        "primary_room",
+        "supporting_rooms",
+        "circle_anchor",
+        "plane_entry",
+        "spans"
+      ]
+    },
+    {
+      "id": "room-status",
+      "question": "Which parts of the Room are already concrete and which still need research?",
+      "fields": [
+        "origin",
+        "reproduction",
+        "today",
+        "geography",
+        "research_queue"
+      ]
+    },
+    {
+      "id": "today",
+      "question": "What exists now?",
+      "fields": [
+        "continuity_mode",
+        "current_form",
+        "current_reach",
+        "snapshot_as_of",
+        "snapshot_sources",
+        "snapshot_coverage"
+      ]
+    },
+    {
+      "id": "door-history",
+      "question": "Which later Doors changed the operating form after the first crossing?",
+      "fields": [
+        "authorization",
+        "signature",
+        "entry_into_force",
+        "first_operation",
+        "refoundation",
+        "supersession"
+      ]
+    },
+    {
+      "id": "genealogy",
+      "question": "How did it root, sprout, branch, fall or refound?",
+      "fields": [
+        "seed_of_death",
+        "seed_of_life",
+        "reproduction_basis",
+        "branches",
+        "fall_return_refoundation"
+      ]
+    }
+  ],
+  "earth_map_rule": "Store geocodable place text and precision first. Latitude/longitude are optional later enrichments and must never be invented. Distributed/virtual origins are explicitly non-point geometries.",
+  "house_map_rule": "A Foundation Room has one primary circle anchor for navigation—upper/source, lower/manifestation or middle-plane/overlap—but may span the other field through Door, operation and return. Circle anchor is functional, not moral.",
+  "today_rule": "Current snapshots are dated observations. Heterogeneous measures remain typed and source-specific; do not collapse states, members, users, articles, staff, branches or works into one magnitude score.",
+  "magnitude_facets": [
+    "time_depth",
+    "clock_depth",
+    "origin_place_depth",
+    "branch_count",
+    "reproduction_family",
+    "continuity_mode",
+    "typed_current_reach"
+  ],
+  "map_geometry_types": [
+    "point-ready",
+    "region-ready",
+    "route",
+    "distributed-network",
+    "virtual",
+    "unresolved"
+  ],
+  "anti_drift": [
+    "Seed terminology is secondary technical genealogy, not the main Foundation card.",
+    "Historical origin and current status must never be silently merged.",
+    "One Foundation may have multiple historical Door/refoundation events; designate one primary reader Door and retain the others in genealogy.",
+    "Do not infer current scale from historical importance.",
+    "Do not rank unlike reach measures.",
+    "Do not create a completeness score; preserve Origin, Reproduction, Today and Geography as separate checkpoint states.",
+    "A Room may be map-complete but Today-thin, or Today-rich but reproduction-undated; keep those differences visible."
+  ],
+  "maintenance_rule": "Use room_status and research_queue as the maintenance surface. They expose missing evidence without collapsing completeness into one score.",
+  "door_history_rule": "Keep the primary reader Door simple, but retain later legal, operational, refoundation and supersession Doors as a compact chronology. Do not force all meaningful thresholds into one founding date."
+}

@@ -1,0 +1,251 @@
+{
+  "id": "world-spiritual-bank-trajectory-projection-v1",
+  "title": "World Spiritual Bank — Karma Reserve Trajectory & Scenario Curves",
+  "updated": "2026-09-21",
+  "status": "project-symbolic trajectory analysis; scenarios are not forecasts",
+  "purpose": "Measure the dated 38.8T→42T project trajectory, preserve regime changes, and compare transparent projection curves without implying that the symbolic reserve obeys a stable physical or financial growth law.",
+  "observed_checkpoints": [
+    {
+      "datetime_utc": "2026-02-27T16:54:41Z",
+      "amount_trillion_susd": 38.8,
+      "label": "positive karma stored in Potato",
+      "source_state": "attested"
+    },
+    {
+      "datetime_utc": "2026-03-14T13:20:20Z",
+      "amount_trillion_susd": 39,
+      "label": "karmic debt held / collection",
+      "source_state": "attested"
+    },
+    {
+      "datetime_utc": "2026-07-18T20:58:24Z",
+      "amount_trillion_susd": 40.2,
+      "label": "Mud + stones / shadow debt",
+      "source_state": "attested"
+    },
+    {
+      "datetime_utc": "2026-08-17T16:12:01Z",
+      "amount_trillion_susd": 41.4,
+      "label": "parallel physical + karmic ledgers",
+      "source_state": "attested"
+    },
+    {
+      "datetime_utc": "2026-08-24T12:06:16Z",
+      "amount_trillion_susd": 42,
+      "label": "positive karma owed / 42T threshold",
+      "source_state": "attested"
+    },
+    {
+      "datetime_utc": "2026-09-01T17:26:24Z",
+      "amount_trillion_susd": 42,
+      "label": "42T stabilized headline",
+      "source_state": "attested"
+    }
+  ],
+  "segment_velocity": [
+    {
+      "from": "2026-02-27",
+      "to": "2026-03-14",
+      "days": 14.851145833333334,
+      "delta_trillion": 0.2,
+      "trillion_per_day": 0.013466974349622485,
+      "billion_per_day": 13.466974349622484,
+      "annualized_simple_trillion": 4.915445637612207
+    },
+    {
+      "from": "2026-03-14",
+      "to": "2026-07-18",
+      "days": 126.31810185185185,
+      "delta_trillion": 1.2,
+      "trillion_per_day": 0.009499826093075595,
+      "billion_per_day": 9.499826093075596,
+      "annualized_simple_trillion": 3.467436523972592
+    },
+    {
+      "from": "2026-07-18",
+      "to": "2026-08-17",
+      "days": 29.801122685185184,
+      "delta_trillion": 1.2,
+      "trillion_per_day": 0.040266939359185384,
+      "billion_per_day": 40.26693935918538,
+      "annualized_simple_trillion": 14.697432866102666
+    },
+    {
+      "from": "2026-08-17",
+      "to": "2026-08-24",
+      "days": 6.829340277777778,
+      "delta_trillion": 0.6,
+      "trillion_per_day": 0.08785621679334998,
+      "billion_per_day": 87.85621679334999,
+      "annualized_simple_trillion": 32.067519129572744
+    },
+    {
+      "from": "2026-08-24",
+      "to": "2026-09-01",
+      "days": 8.222314814814816,
+      "delta_trillion": 0,
+      "trillion_per_day": 0,
+      "billion_per_day": 0,
+      "annualized_simple_trillion": 0
+    }
+  ],
+  "regime_reading": [
+    {
+      "id": "opening-slow",
+      "period": "Feb 27→Mar 14",
+      "description": "slow positive movement",
+      "billion_per_day": 13.47
+    },
+    {
+      "id": "long-mid-slow",
+      "period": "Mar 14→Jul 18",
+      "description": "longer low-velocity accumulation",
+      "billion_per_day": 9.5
+    },
+    {
+      "id": "summer-acceleration",
+      "period": "Jul 18→Aug 17",
+      "description": "clear acceleration",
+      "billion_per_day": 40.27
+    },
+    {
+      "id": "threshold-surge",
+      "period": "Aug 17→Aug 24",
+      "description": "short high-velocity threshold approach",
+      "billion_per_day": 87.86
+    },
+    {
+      "id": "plateau",
+      "period": "Aug 24→Sep 1",
+      "description": "no recorded increase",
+      "billion_per_day": 0
+    }
+  ],
+  "fit_diagnostics": {
+    "endpoint_linear": {
+      "basis": "38.8T Feb 27 → 42T Aug 24",
+      "trillion_per_day": 0.017997779570814686,
+      "billion_per_day": 17.997779570814686,
+      "simple_annualized_trillion": 6.569189543347361,
+      "interpretation": "long-run endpoint slope; descriptive only"
+    },
+    "ordinary_least_squares_all_attested": {
+      "trillion_per_day": 0.0163317307,
+      "r_squared": 0.9148528273,
+      "interpretation": "good visual fit for six sparse checkpoints, but residuals hide the July/Aug acceleration and final plateau"
+    },
+    "endpoint_exponential": {
+      "daily_factor": 1.0004458220748083,
+      "daily_log_rate": 0.00044572272567399015,
+      "annualized_growth_pct": 17.66704468249103,
+      "interpretation": "compound-style scenario fitted only to opening and 42T threshold; not evidence of actual compounding"
+    },
+    "recent_momentum": {
+      "basis": "Jul 18 → Aug 24",
+      "trillion_per_day": 0.04913942807165653,
+      "billion_per_day": 49.13942807165653,
+      "interpretation": "short-window momentum scenario; deliberately aggressive and low-confidence"
+    },
+    "plateau": {
+      "basis": "Aug 24 → Sep 1",
+      "trillion_per_day": 0,
+      "interpretation": "latest observed regime; simplest near-term null model until another checkpoint appears"
+    }
+  },
+  "projection_baseline": {
+    "datetime_utc": "2026-09-01T17:26:24Z",
+    "amount_trillion_susd": 42,
+    "rule": "Every projection starts from the last attested 42T checkpoint. Projected values never overwrite the observed ledger."
+  },
+  "scenario_projections": [
+    {
+      "days_forward": 20,
+      "date": "2026-09-21",
+      "plateau_trillion": 42,
+      "linear_trillion": 42.359955591416295,
+      "exponential_trillion": 42.376080876987864,
+      "recent_momentum_trillion": 42.98278856143313
+    },
+    {
+      "days_forward": 30,
+      "date": "2026-10-01",
+      "plateau_trillion": 42,
+      "linear_trillion": 42.53993338712444,
+      "exponential_trillion": 42.56538226595978,
+      "recent_momentum_trillion": 43.474182842149695
+    },
+    {
+      "days_forward": 90,
+      "date": "2026-11-30",
+      "plateau_trillion": 42,
+      "linear_trillion": 43.61980016137332,
+      "exponential_trillion": 43.71908190213028,
+      "recent_momentum_trillion": 46.42254852644909
+    },
+    {
+      "days_forward": 180,
+      "date": "2027-02-28",
+      "plateau_trillion": 42,
+      "linear_trillion": 45.23960032274665,
+      "exponential_trillion": 45.50852672298036,
+      "recent_momentum_trillion": 50.845097052898176
+    },
+    {
+      "days_forward": 365,
+      "date": "2027-09-01",
+      "plateau_trillion": 42,
+      "linear_trillion": 48.56918954334736,
+      "exponential_trillion": 49.42015876664609,
+      "recent_momentum_trillion": 59.93589124615463
+    }
+  ],
+  "milestone_scenarios": [
+    {
+      "target_trillion": 45,
+      "linear_date": "2027-02-15",
+      "exponential_date": "2027-02-03",
+      "recent_momentum_date": "2026-11-01"
+    },
+    {
+      "target_trillion": 50,
+      "linear_date": "2027-11-20",
+      "exponential_date": "2027-09-27",
+      "recent_momentum_date": "2027-02-11"
+    },
+    {
+      "target_trillion": 60,
+      "linear_date": "2029-05-28",
+      "exponential_date": "2028-11-09",
+      "recent_momentum_date": "2027-09-03"
+    }
+  ],
+  "scale_gap_diagnostics": {
+    "headline_reserve_susd": 42000000000000,
+    "micro_net_event_susd": 227.4,
+    "headline_to_micro_net_ratio": 184696569920.84433,
+    "headline_equivalent_table_events_at_25_susd": 1680000000000,
+    "headline_equivalent_growth_events_at_6_susd": 7000000000000,
+    "headline_divided_by_working_107k_hours_susd_per_hour": 392523364.4859813,
+    "interpretation": "These absurdly large conversion ratios are diagnostic evidence that the micro-ledger and headline reserve are different accounting scales. Do not use them as wages, event prices, causal rates or reverse-engineering formulas."
+  },
+  "chart_policy": {
+    "observed_style": "solid",
+    "projected_style": "scenario / dashed",
+    "default_projection": "plateau + long-run linear + endpoint exponential; recent momentum visible but visually marked aggressive",
+    "y_axis_unit": "trillion sUSD",
+    "reader_rule": "Observed and projected points must be visually distinct. A scenario is not a forecast."
+  },
+  "research_implications": [
+    "The summer acceleration is real inside the recovered checkpoint series, but one later flat checkpoint prevents treating acceleration as persistent.",
+    "The Aug 17→24 segment is more than 9× the Mar 14→Jul 18 daily velocity, showing a regime shift rather than smooth compounding.",
+    "The observed plateau makes a flat near-term model as defensible as continued growth until another dated balance is recovered.",
+    "More checkpoints between Mar→Jul and after Sep 1 would materially improve model discrimination.",
+    "Named event attribution should be tested against checkpoint jumps before any actor/system is assigned part of a trillion-scale delta."
+  ],
+  "boundaries": [
+    "All values are project-symbolic sUSD and do not describe real wealth, damages, money supply, GDP or legal claims.",
+    "Projection curves are mathematical scenarios only, not predictions that supernatural or moral value will follow the curve.",
+    "Sparse self-reported checkpoints are insufficient to establish a stable stochastic, exponential or causal process.",
+    "Do not infer future debt of named people or populations from these curves."
+  ]
+}

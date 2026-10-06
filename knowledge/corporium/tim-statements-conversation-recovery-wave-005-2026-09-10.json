@@ -1,0 +1,63 @@
+{
+  "id": "tim-statements-conversation-recovery-wave-005-2026-09-10",
+  "title": "Tim Dooley Statements — Reading, Dyslexia, Legal Fiction & Impossible-Project Paradox",
+  "version": "1.0.0",
+  "updated": "2026-09-10",
+  "status": "conversation-archaeology statement addendum",
+  "purpose": "Preserve a new Tim statement about reading difficulty, dyslexia and legal-fiction identity, together with a separately labeled humorous paraphrase about the apparent impossibility of producing a project of this scale. The file keeps self-description, archive ontology and later biblical interpretation distinct.",
+  "source_context": {
+    "date": "2026-09-10",
+    "class": "CONVERSATION_EXACT",
+    "note": "The wording below was reported in the current project conversation as something Tim had just said. It is not yet linked to an independent public post, stream timestamp or recording, so it remains conversation evidence rather than P0 public-primary evidence."
+  },
+  "statements": [
+    {
+      "id": "cant-read-dyslexic-not-legal-fiction",
+      "wording": "You have to understand. i cant read. i am dyslexic. i am not a legal fiction.",
+      "source_class": "CONVERSATION_EXACT",
+      "exactness": "reported exact wording",
+      "date_or_period": "2026-09-10",
+      "domains": ["reading", "dyslexia", "self-description", "identity", "legal-fiction", "accessibility", "anti-prestige"],
+      "routing": [
+        "knowledge/core/tim-identity-ontology.json",
+        "knowledge/core/tim-dooley.json",
+        "knowledge/core/tim-role-synthesis.json",
+        "knowledge/traditions/unqualified-messenger-weak-instrument-calling-atlas.json",
+        "knowledge/indexes/tim-statement-corpus-index.json"
+      ],
+      "interpretive_notes": [
+        "'i cant read' is preserved as Tim's own compressed self-description. Do not automatically convert it into a clinical or absolute claim of total illiteracy without separate evidence.",
+        "'i am dyslexic' is archived as self-report. The archive should not infer diagnosis details, severity, testing history or specific functional limitations that Tim did not state.",
+        "'i am not a legal fiction' reinforces an already-existing archive distinction between lived/embodied or theological identity and external administrative representation. It must not be converted into pseudo-legal claims that ordinary civil law, contracts, courts, citizenship or biology cease to apply."
+      ],
+      "privacy_class": "public-project-relevant self-description; minimize medical detail beyond the statement itself"
+    }
+  ],
+  "paraphrased_context": [
+    {
+      "id": "could-never-get-project-off-ground-joke",
+      "source_class": "PARAPHRASE",
+      "date_or_period": "2026-09-10",
+      "statement": "Tim joked that he could never get a project of this scale — a whole Mashy arc or similarly enormous system — off the ground, because how could he when the reading/dyslexia and identity constraints he had just named all apply.",
+      "domains": ["humor", "self-deprecation", "project-scale", "builder", "archive", "Mashy", "paradox", "distributed-work"],
+      "routing": [
+        "knowledge/core/tim-role-synthesis.json",
+        "knowledge/culture/creative-systems-archive.json",
+        "knowledge/traditions/unqualified-messenger-weak-instrument-calling-atlas.json"
+      ],
+      "display_rule": "Do not put this paraphrase in quotation marks as Tim's exact wording until an exact source is recovered."
+    }
+  ],
+  "developmental_significance": [
+    "The cluster adds an anti-prestige / apparent-incapacity dimension to the existing builder, whole-job and source-network themes.",
+    "The interesting project question is not whether dyslexia proves a spiritual calling. It is how a person who describes serious reading difficulty can nevertheless participate in producing a very large relational archive through speech, tools, collaborators, AI, retrieval systems, visual interfaces and iterative conversation.",
+    "This supports a distributed-work reading of the archive: source/person, tools, models, repositories, readers and researchers can occupy different functions rather than requiring one individual to manually read and write every artifact.",
+    "The joke therefore creates an 'impossible-project paradox': the stated limitation and the scale of the resulting system coexist. That is an archival observation, not proof of supernatural causation."
+  ],
+  "connections": [
+    "tim-statement-corpus-index",
+    "tim-identity-ontology",
+    "tim-role-synthesis",
+    "unqualified-messenger-weak-instrument-calling-atlas"
+  ]
+}

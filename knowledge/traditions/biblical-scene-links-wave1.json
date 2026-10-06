@@ -1,0 +1,30 @@
+{
+  "id":"biblical-scene-links-wave1",
+  "version":"1.0.0",
+  "updated":"2026-09-14",
+  "status":"additive scene-link enrichment layer",
+  "purpose":"Connect existing canonical comparison relations to reusable whole-situation Biblical Scene records without duplicating or replacing the underlying relation owners.",
+  "enrichments":[
+    {
+      "relation_id":"gate-root-garden-north-2026-03-31",
+      "biblical_scene_ids":["genesis-jacob-ladder-bethel","john-son-of-man-ladder"],
+      "primary_biblical_scene_id":"genesis-jacob-ladder-bethel"
+    },
+    {
+      "relation_id":"bread-door-tomb-resurrection-2026-04-23",
+      "biblical_scene_ids":["john-door-shepherd-discourse"],
+      "primary_biblical_scene_id":"john-door-shepherd-discourse"
+    },
+    {
+      "relation_id":"son-messiah-door-new-jerusalem-2026-04-29",
+      "biblical_scene_ids":["john-door-shepherd-discourse"],
+      "primary_biblical_scene_id":"john-door-shepherd-discourse"
+    },
+    {
+      "relation_id":"new-jerusalem-house-ladder-cluster-2026-05-01",
+      "biblical_scene_ids":["genesis-jacob-ladder-bethel","john-son-of-man-ladder","john-house-way-thomas-father"],
+      "primary_biblical_scene_id":"john-house-way-thomas-father"
+    }
+  ],
+  "new_relations":[]
+}

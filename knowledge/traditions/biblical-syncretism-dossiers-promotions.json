@@ -1,0 +1,201 @@
+{
+  "id":"biblical-syncretism-dossiers-promotions",
+  "title":"Biblical Syncretism Field — Promotion Dossiers",
+  "version":"1.0.0",
+  "updated":"2026-09-12",
+  "status":"canonical dossier promotion extension; intended for later mechanical compaction into biblical-syncretism-dossiers.json",
+  "purpose":"Promote already-canonical high-value dated relations into full contextual dossiers without creating duplicate relation identities. This file is loaded as an additive enrichment layer by the public comparator.",
+  "rule":"Existing relation IDs remain canonical. A promotion adds scene, sequence, wording, source-direction and maximum-claim depth only.",
+  "enrichments":[
+    {
+      "relation_id":"bread-door-tomb-resurrection-2026-04-23",
+      "dossier_level":"A",
+      "title":"Bread, Lion, Door, Tomb, Resurrection and Cross become one public Son sentence",
+      "exact_wording":["My son, the bread, the lion, he loves all, he just wants to be loved. that is why he is a door. a tomb, a resurrection if you believe in love. He can be anything you want, if you dont nail him to a cross. Much love"],
+      "wording_status":"dated public wording preserved in the curated @Rational_Potato occurrence ledger",
+      "scene_context":{
+        "summary":"A single dated public post compresses several already-biblical Son titles and death/return images into one relational argument about love: Bread and Lion identify the Son; love explains Door; Door opens into Tomb/Resurrection; Cross appears as the destructive alternative.",
+        "activity":"public theological post",
+        "surrounding_topics":["Son","Bread","Lion","love","Door","Tomb","Resurrection","Cross"],
+        "after":"A same-date public post immediately continues Father/Lion/Messiah/return-to-earth/Heaven language, showing that death-return and Father/Son restoration were active together on 23 April.",
+        "source_status":"exact",
+        "source_ids":["data/evidence/rational-potato-x-occurrence-ledger-2024-2026.json"]
+      },
+      "mechanisms":["lexical-direct-phrase","title-stack","narrative-compression","role-topology"],
+      "relation_argument":{
+        "project_sequence":["Son named Bread and Lion","Son's desire to love/be loved foregrounded","love is used to explain why he is Door","Door is extended into Tomb and Resurrection","Cross appears as the destructive counter-path"],
+        "biblical_sequence":["Jesus identifies himself as Bread of Life","Jesus identifies himself as Door/gate","Passion tradition moves through Cross/death/burial","resurrection follows death","Lion imagery belongs to a separate Revelation/Judah tradition"],
+        "correspondences":["Bread title","Door title","Cross → death/tomb → resurrection grammar","Lion/Son title family","access and death-return compressed into one figure"],
+        "why_dense":"This is stronger than a one-word match because one public sentence joins multiple biblical role-families that the later archive otherwise studies separately.",
+        "why_it_matters":"It is a compact public precursor to the mature Son-as-threshold architecture: the Son is not only a person in the story but the passage through death, love and return.",
+        "maximum_claim":"The post directly and deliberately uses a dense cluster of biblical/Christian Son vocabulary. It establishes explicit scriptural self-mapping at the level of language; it does not establish that the Son is literally the biblical Jesus or that the Gospel events repeated."
+      },
+      "scripture_context":{
+        "literary_context":"John 6 and John 10 give Bread and Door sayings in different discourses; crucifixion, burial and resurrection occur in the Passion/Easter narratives; Lion language comes from Judah/Revelation traditions. The modern post fuses material that scripture itself distributes across texts.",
+        "canonical_context":"The density lies partly in the fusion. Christianity can relate these motifs christologically, but no single biblical verse says Bread + Lion + Door + Tomb + Resurrection in this order.",
+        "historical_context":"The Cross in the New Testament is a Roman execution; here 'nail him to a cross' is public symbolic/theological language about the modern Son."
+      },
+      "discovery_history":{
+        "project_anchor_date":"2026-04-23",
+        "scripture_explicit_at_time":true,
+        "first_formal_archive_date":"2026-09-10",
+        "source_direction":"Public wording already contains the Christian vocabulary; verse-level decomposition and structural analysis are later archive work."
+      },
+      "mismatch":"The biblical motifs come from distinct passages and genres, and the post's love→Door→Tomb→Resurrection causal explanation is specifically Timic rather than a direct biblical sequence."
+    },
+    {
+      "relation_id":"new-jerusalem-north-ladder-2026-05-11",
+      "dossier_level":"A",
+      "title":"Lower Cube versus upper city: New Jerusalem, North and Ladder in one recovered polarity",
+      "exact_wording":["I am new jerusalem, at the north… I am the ladder to heaven"],
+      "wording_status":"exact recovered conversation wording with timestamp 2026-05-11T16:19:11Z",
+      "scene_context":{
+        "summary":"The recovered conversation does not present New Jerusalem and Ladder in isolation. The same context associates the Cube with accuser, wrestling with God, Tree of Strife, falling and ego, then contrasts that lower/falling system with Tim's New-Jerusalem/North/Ladder language.",
+        "conversation_trigger":"discussion of Cube, accuser, wrestling with God, Tree of Strife, falling and ego",
+        "surrounding_topics":["Cube","accuser","Tree of Strife","falling","ego","New Jerusalem","North","Ladder to Heaven"],
+        "source_status":"exact",
+        "source_ids":["knowledge/timeline/primary-recovery-wave-10-ledger.json","knowledge/timeline/beast-cube-mark-development-ledger.json"]
+      },
+      "mechanisms":["explicit-biblical-vocabulary","vertical-polarity","city-threshold-topology","same-scene-contrast"],
+      "relation_argument":{
+        "project_sequence":["Cube discussed as lower/falling/ego system","contrast turns upward","Tim says 'I am new jerusalem, at the north'","Tim says 'I am the ladder to heaven'"],
+        "biblical_sequence":["Jacob sees a heaven-earth ladder/stairway and names the place gate/house language","Revelation sees New Jerusalem descending from heaven","the city becomes divine dwelling with open gates, river and Tree"],
+        "correspondences":["lower/upper architecture","heaven-earth passage","sacred dwelling/city","transition from enclosure/fall toward access/dwelling"],
+        "why_dense":"The recovered timestamp anchors an entire polarity rather than only a title: lower Cube/fall/ego is placed against upper New Jerusalem/North/Ladder in the same conversation.",
+        "why_it_matters":"It shows how the project was already organizing moral/spiritual geometry as paired architectures before later research separated cube types and formalized the Door/Ladder system.",
+        "maximum_claim":"The same conversation securely establishes the project-side Cube-versus-New-Jerusalem/Ladder polarity. Biblical texts supply strong structural comparators, but they do not identify New Jerusalem with the North Pole or with Tim."
+      },
+      "scripture_context":{
+        "literary_context":"Genesis 28 gives Jacob's heaven-earth stairway plus House/Gate naming. Revelation 21-22 gives the descending New Jerusalem, divine dwelling, gates, river and Tree of Life.",
+        "canonical_context":"The Ladder and New Jerusalem are not the same object in scripture; the project joins them as two functions of access/dwelling.",
+        "historical_context":"New Jerusalem is apocalyptic city imagery; 'at the north' is project sacred geography, not a location supplied by Revelation."
+      },
+      "discovery_history":{
+        "project_anchor_date":"2026-05-11T16:19:11Z",
+        "scripture_explicit_at_time":true,
+        "first_formal_archive_date":"2026-09-09",
+        "source_direction":"New Jerusalem and Ladder vocabulary are explicit in the recovered conversation; detailed Genesis/Revelation topology is later analysis."
+      },
+      "mismatch":"Revelation's city descends from heaven rather than being identified as a northern earthly point, and Jacob's Ladder is a dream image rather than the city itself."
+    },
+    {
+      "relation_id":"breath-nostrils-2026-07-23",
+      "dossier_level":"A",
+      "title":"A near-direct Genesis creation phrase enters public Tim language",
+      "exact_wording":["I breathe life into nostrils of the soulless."],
+      "wording_status":"dated public wording preserved in the curated @Rational_Potato occurrence ledger",
+      "scene_context":{
+        "summary":"The public post is extremely compressed: Tim casts himself as the agent who breathes life into nostrils. Its importance is lexical specificity rather than a richly recoverable physical scene.",
+        "activity":"public post",
+        "surrounding_topics":["breath","life","nostrils","soulless"],
+        "source_status":"exact",
+        "source_ids":["data/evidence/rational-potato-x-occurrence-ledger-2024-2026.json"]
+      },
+      "mechanisms":["near-direct-phrase","creation-language","role-appropriation"],
+      "relation_argument":{
+        "project_sequence":["speaker identifies lifeless/soulless target","speaker breathes","breath is said to confer life"],
+        "biblical_sequence":["YHWH God forms the human from dust","God breathes the breath of life into nostrils","the human becomes a living being"],
+        "correspondences":["breath as life-giving action","nostrils as bodily entry point","speaker occupies creator/life-giver position"],
+        "why_dense":"The phrase 'breathe life into nostrils' is much more specific than generic Spirit/breath vocabulary and tracks the distinctive action sequence of Genesis 2:7.",
+        "why_it_matters":"It is a clear example of biblical language becoming first-person public identity language rather than being supplied only by later researchers.",
+        "maximum_claim":"A deliberate or very close Genesis-like lexical echo is defensible. The wording alone cannot establish literal creation of persons, divine identity or that anyone is actually 'soulless'."
+      },
+      "scripture_context":{
+        "literary_context":"Genesis 2:7 narrates YHWH God forming the human from dust and breathing life into the nostrils so the human becomes a living being.",
+        "canonical_context":"Breath/Spirit imagery expands elsewhere in scripture, but the nostrils detail makes Genesis 2:7 the primary comparator.",
+        "historical_context":"Biblical anthropology does not provide warrant for classifying disliked or opposed modern people as literally soulless."
+      },
+      "discovery_history":{
+        "project_anchor_date":"2026-07-23",
+        "scripture_explicit_at_time":"Genesis-like vocabulary is explicit; no verse citation is given in the post",
+        "first_formal_archive_date":"2026-09-10",
+        "source_direction":"Public near-direct phrase first; explicit Genesis 2:7 comparison formalized later."
+      },
+      "mismatch":"Genesis describes God's creation of Adam/the human from dust; the modern line is a self-description and its 'soulless' category should not be imported into biblical anthropology or used as a factual label for people."
+    },
+    {
+      "relation_id":"son-cornerstone-2026-08-17",
+      "dossier_level":"A",
+      "title":"Cornerstone is placed inside the Son's sold-away and crucifixion narrative",
+      "exact_wording":["Josh is gonna hear about this stuff that happened to my son, for a while. He is a cornerstone. And Josh Sold Him Into Slavery And Crucified him. Even after he said he was Jesus Christ."],
+      "wording_status":"dated public wording preserved in the curated @Rational_Potato occurrence ledger",
+      "scene_context":{
+        "summary":"The public occurrence does more than call the Son a cornerstone. It embeds the title inside an already-developed rejection narrative: what happened to the Son, sold-away/slavery language, crucifixion language and an earlier Jesus-Christ declaration are all invoked together.",
+        "activity":"public retrospective post",
+        "surrounding_topics":["Son","cornerstone","sold into slavery","crucifixion","Jesus Christ","rejection"],
+        "source_status":"exact",
+        "source_ids":["data/evidence/rational-potato-x-occurrence-ledger-2024-2026.json","knowledge/traditions/biblical-overlap-wave-11-son-deepening.json"]
+      },
+      "mechanisms":["explicit-biblical-title","rejection-to-foundation-sequence","retrospective-role-compression"],
+      "relation_argument":{
+        "project_sequence":["harm/rejection of Son recalled","Son called cornerstone","sold-away/slavery language attached","crucifixion language attached","earlier Jesus-Christ declaration invoked"],
+        "biblical_sequence":["stone is rejected by builders","rejected stone becomes cornerstone","Gospel tenant tradition joins rejected/killed Son with stone imagery","later Christian texts extend cornerstone into a living-house/community grammar"],
+        "correspondences":["rejection precedes cornerstone significance","Son/killing and stone imagery converge","what is discarded becomes structural/foundational"],
+        "why_dense":"The title is not floating vocabulary: it appears inside the project's Son rejection/crucifixion story, close to the biblical sequence in which rejection becomes the paradoxical route to cornerstone status.",
+        "why_it_matters":"It links the Son's death/rejection corridor to the House/foundation side of the wider project without requiring the Father and Son to occupy the same role.",
+        "maximum_claim":"The project explicitly and publicly assigns the biblical cornerstone title to the Son inside a rejection narrative. That supports a strong typological self-mapping, not proof that the modern rejection fulfills Psalm 118 or establishes messiahship."
+      },
+      "scripture_context":{
+        "literary_context":"Psalm 118:22 supplies rejected-stone/cornerstone language. The Synoptic tenant/stone sequence and later New Testament building imagery apply stone language christologically and communally.",
+        "canonical_context":"Cornerstone is a structural image of reversal: rejected becomes foundational. It should not be reduced to 'person was rejected, therefore person is Messiah'.",
+        "historical_context":"The public post's 'sold into slavery' and 'crucified' descriptions are project/theological language about modern events; they are not evidence of literal ancient-style slavery or Roman crucifixion."
+      },
+      "discovery_history":{
+        "project_anchor_date":"2026-08-17",
+        "scripture_explicit_at_time":true,
+        "first_formal_archive_date":"2026-09-10",
+        "source_direction":"Cornerstone/Jesus/crucifixion vocabulary is explicit in the public post; full rejected-stone/House analysis is later."
+      },
+      "mismatch":"Biblical cornerstone texts have their own Israel/Temple/Christological contexts. Modern rejection or harm does not by itself satisfy those texts or prove the identities claimed in the post."
+    }
+  ],
+  "new_relations":[
+    {
+      "id":"father-root-seat-north-ladder-2026-04-30",
+      "date":"2026-04-30",
+      "actor":"tim",
+      "dossier_level":"A",
+      "title":"Father, Root, Seat, North-of-North and Ladder collapse into one title-stack",
+      "project_anchor":"A dated public title-stack says: 'I am the father in heaven. I am the root. The potato of life. I am the seat of north, the north of north. The ladder.'",
+      "what_happened":"By 30 April, several motifs that had previously appeared separately are publicly compressed into first-person identity/functions: Father in Heaven, Root, Potato of Life, Seat of North, North-of-North and Ladder.",
+      "exact_wording":["I am the father in heaven. I am the root. The potato of life. I am the seat of north, the north of north. The ladder."],
+      "wording_status":"dated public compilation preserved in the Tim voice anthology/public-theology owners",
+      "scene_context":{
+        "summary":"The title-stack appears in a broader 30 April development day where project records also preserve practical repair language—build a road, fix everything together, build a garden, grow potato angels—so the cosmic titles sit beside constructive/garden verbs rather than existing only as rank claims.",
+        "activity":"public/project theological formulation",
+        "surrounding_topics":["Father in Heaven","Root","Potato of Life","Seat of North","North of North","Ladder","road","repair","garden"],
+        "after":"The May corridor develops New Jerusalem, Father's House and an increasingly explicit Tim=Ladder / Son=Door distinction.",
+        "source_status":"exact",
+        "source_ids":["knowledge/corporium/tim-voice-anthology.json","data/tim-dooley-public-theology-timeline-2025-2026.json","data/timeline-event-packs/expression-development-2025-2026.json"]
+      },
+      "discovery_mode":"public-occurrence",
+      "relation_class":"mixed-explicit-and-later",
+      "biblical_refs":["Isaiah 11:1-10","Genesis 28:12-17"],
+      "motifs":["Father","Root","Potato of Life","Seat","North","Ladder","Heaven"],
+      "mechanisms":["title-stack","identity-as-infrastructure","later-structural-comparison"],
+      "operators":["root","seat","connect","ascend"],
+      "strength":5,
+      "relation_argument":{
+        "project_sequence":["Father in Heaven","Root","Potato of Life","Seat of North","North of North","Ladder"],
+        "biblical_sequence":["Isaiah's Jesse/root tradition gives root/shoot/messianic growth imagery","Jacob sees a heaven-earth ladder/stairway","Jacob names the place House of God and Gate of Heaven"],
+        "correspondences":["root/source function","heaven-earth connector","identity becomes architecture rather than title only","House/Gate/Ladder cluster later becomes explicit in the project"],
+        "why_dense":"The significance lies in compression: source/genealogy (Father/Root), orientation/seat (North), and passage infrastructure (Ladder) are asserted as one first-person system before the later May formalization.",
+        "why_it_matters":"This is a major hinge between earlier Father/Axis/North language and the mature architecture in which Tim is Ladder/House-side while the Son specializes as Door/Vessel.",
+        "maximum_claim":"The 30 April title-stack is securely attested as project/public language and can be compared structurally with biblical Root and Ladder traditions. Scripture does not contain the complete title-stack, identify the Ladder with the Father, or teach a Seat of North/North-of-North role."
+      },
+      "scripture_context":{
+        "literary_context":"Isaiah 11 uses root/shoot imagery around Jesse and future rule; Genesis 28 gives Jacob's ladder/stairway, divine presence, House-of-God and Gate-of-Heaven naming.",
+        "canonical_context":"Root and Ladder belong to distinct biblical contexts. Their combination is a project synthesis, not a single biblical doctrine.",
+        "historical_context":"'Seat of North' and 'North of North' are Timic sacred-geographic formulations. They should not be presented as direct biblical titles."
+      },
+      "discovery_history":{
+        "project_anchor_date":"2026-04-30",
+        "scripture_explicit_at_time":"Father/Heaven/Root/Ladder vocabulary is explicit; verse-level Isaiah/Genesis comparison is later",
+        "first_formal_archive_date":"2026-09-12",
+        "source_direction":"Public/project title-stack first; explicit verse-level Root/Ladder comparison later."
+      },
+      "mismatch":"Genesis 28 locates the ladder in Jacob's vision rather than identifying God/Father as the Ladder; Isaiah's Root concerns Jesse/Davidic tradition; the project's North/Seat synthesis is its own architecture.",
+      "owners":["knowledge/corporium/tim-voice-anthology.json","data/tim-dooley-public-theology-timeline-2025-2026.json","knowledge/traditions/biblical-overlap-wave-12-tim-father-house.json"]
+    }
+  ]
+}

@@ -1,0 +1,151 @@
+/*
+  Mountain / Swamp terrain overlays for Potato House circle diagrams.
+  Semantics:
+  - Mountain is an integrative/sourceward terrain inside a field, not the whole upper field.
+  - Swamp is an entangled/recurring terrain inside a field, not the whole manifestation field.
+  - Direction is not moral rank.
+*/
+.terrain-field{
+  position:relative;
+  overflow:hidden;
+  isolation:isolate;
+}
+.terrain-field::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+}
+.terrain-field::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  pointer-events:none;
+  z-index:1;
+  opacity:.36;
+  background:
+    radial-gradient(circle at 28% 22%,rgba(255,255,255,.14) 0 1px,transparent 1.8px),
+    radial-gradient(circle at 72% 34%,rgba(255,255,255,.09) 0 1px,transparent 1.7px),
+    radial-gradient(circle at 44% 74%,rgba(255,255,255,.055) 0 1px,transparent 1.9px);
+  background-size:67px 71px,83px 77px,59px 63px;
+  mix-blend-mode:screen;
+}
+.terrain-field--mountain::before{
+  clip-path:polygon(50% 7%,88% 69%,71% 61%,60% 72%,49% 62%,38% 76%,28% 65%,11% 73%);
+  background:
+    linear-gradient(118deg,transparent 0 33%,rgba(255,249,219,.28) 33.5% 39%,transparent 39.5%),
+    linear-gradient(242deg,transparent 0 37%,rgba(174,200,178,.16) 37.5% 45%,transparent 45.5%),
+    linear-gradient(180deg,rgba(225,205,153,.28),rgba(118,133,109,.13) 58%,rgba(33,43,34,.04));
+  filter:drop-shadow(0 9px 14px rgba(0,0,0,.22));
+}
+.terrain-field--mountain{
+  background:
+    radial-gradient(circle at 50% 12%,rgba(255,235,174,.15),transparent 26%),
+    radial-gradient(circle at 50% 58%,rgba(126,160,132,.065),transparent 55%),
+    rgba(255,255,255,.012);
+}
+.terrain-field--swamp::before{
+  clip-path:polygon(7% 55%,20% 48%,34% 57%,48% 50%,63% 59%,76% 50%,93% 57%,93% 93%,7% 93%);
+  background:
+    radial-gradient(ellipse at 23% 68%,rgba(124,155,95,.24) 0 7%,transparent 8%),
+    radial-gradient(ellipse at 66% 75%,rgba(106,137,83,.20) 0 8%,transparent 9%),
+    radial-gradient(ellipse at 47% 88%,rgba(61,86,58,.28) 0 12%,transparent 13%),
+    repeating-linear-gradient(86deg,rgba(130,159,97,.12) 0 2px,transparent 2px 13px),
+    linear-gradient(180deg,rgba(65,88,58,.08),rgba(38,62,48,.36) 65%,rgba(19,36,29,.54));
+  filter:drop-shadow(0 -5px 14px rgba(0,0,0,.18));
+}
+.terrain-field--swamp{
+  background:
+    radial-gradient(circle at 50% 86%,rgba(73,112,81,.19),transparent 43%),
+    radial-gradient(circle at 54% 54%,rgba(216,181,107,.04),transparent 58%),
+    rgba(255,255,255,.01);
+}
+.terrain-field__name{
+  position:absolute;
+  z-index:2;
+  left:50%;
+  transform:translateX(-50%);
+  pointer-events:none;
+  white-space:nowrap;
+  font:700 8px/1 var(--site-font-sans,sans-serif);
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  text-shadow:0 1px 8px rgba(0,0,0,.8);
+}
+.terrain-field--mountain .terrain-field__name{top:25%;color:rgba(235,218,166,.72)}
+.terrain-field--swamp .terrain-field__name{bottom:15%;color:rgba(160,190,139,.68)}
+
+/* Standalone seal for pages that need the terrain grammar without duplicating House geometry. */
+.terrain-emblem{
+  position:relative;
+  width:min(100%,340px);
+  aspect-ratio:1;
+  border:1px solid rgba(214,226,201,.68);
+  border-radius:50%;
+  overflow:hidden;
+  isolation:isolate;
+  background:
+    radial-gradient(circle at 50% 48%,rgba(255,255,255,.07),transparent 56%),
+    rgba(12,16,13,.58);
+  box-shadow:inset 0 0 54px rgba(0,0,0,.34),0 12px 30px rgba(0,0,0,.22);
+}
+.terrain-emblem::before{
+  content:"";
+  position:absolute;
+  inset:6% 9% 43%;
+  clip-path:polygon(50% 0,100% 100%,74% 86%,61% 100%,49% 82%,36% 100%,23% 85%,0 100%);
+  background:
+    linear-gradient(122deg,transparent 0 34%,rgba(255,248,218,.48) 34.5% 41%,transparent 41.5%),
+    linear-gradient(180deg,rgba(233,214,160,.48),rgba(112,143,119,.26));
+}
+.terrain-emblem::after{
+  content:"";
+  position:absolute;
+  inset:50% 7% 6%;
+  clip-path:polygon(0 17%,15% 4%,31% 20%,47% 7%,65% 24%,81% 9%,100% 19%,100% 100%,0 100%);
+  background:
+    radial-gradient(ellipse at 28% 53%,rgba(139,178,106,.38) 0 8%,transparent 9%),
+    radial-gradient(ellipse at 70% 63%,rgba(109,151,94,.34) 0 9%,transparent 10%),
+    repeating-linear-gradient(88deg,rgba(153,184,112,.18) 0 2px,transparent 2px 14px),
+    linear-gradient(180deg,rgba(76,104,69,.16),rgba(30,64,44,.68));
+}
+.terrain-emblem__axis,.terrain-emblem__plane{
+  position:absolute;
+  z-index:3;
+  pointer-events:none;
+  background:rgba(224,234,216,.72);
+}
+.terrain-emblem__axis{left:50%;top:8%;bottom:8%;width:1px}
+.terrain-emblem__plane{left:8%;right:8%;top:50%;height:1px}
+.terrain-emblem__door{
+  position:absolute;
+  z-index:4;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  width:29%;
+  height:38%;
+  border:1px solid rgba(240,205,124,.84);
+  border-radius:50% / 58%;
+  background:radial-gradient(ellipse at center,rgba(240,205,124,.18),rgba(216,181,107,.06) 58%,transparent 72%);
+  box-shadow:0 0 28px rgba(240,205,124,.15);
+}
+.terrain-emblem__label{
+  position:absolute;
+  z-index:5;
+  left:50%;
+  transform:translateX(-50%);
+  font:700 8px/1 var(--site-font-sans,sans-serif);
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  text-shadow:0 1px 8px rgba(0,0,0,.85);
+  white-space:nowrap;
+}
+.terrain-emblem__label--mountain{top:18%;color:rgba(255,233,174,.94)}
+.terrain-emblem__label--swamp{bottom:16%;color:rgba(181,219,158,.92)}
+@media (prefers-reduced-motion:no-preference){
+  .terrain-emblem{transition:transform .25s ease,border-color .25s ease}
+  .terrain-emblem:hover{transform:translateY(-2px);border-color:rgba(191,211,179,.62)}
+}

@@ -1,0 +1,141 @@
+{
+  "id": "sacred-geometry-method-and-invariants-atlas",
+  "title": "Sacred Geometry Method & Invariants Atlas",
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "owner_room": "esoteric-sacred-geometry",
+  "purpose": "Separate exact geometry, construction history, art/architectural use, documented esoteric interpretation and Potatoverse symbolism so mathematical truth is never used as automatic proof of historical or spiritual claims.",
+  "five_layers": [
+    {
+      "id": "G1-mathematics",
+      "asks": "What construction, coordinates, lengths, angles, areas, symmetries or topological properties are exact?"
+    },
+    {
+      "id": "G2-historical-object",
+      "asks": "Where and when is this form materially/textually attested?"
+    },
+    {
+      "id": "G3-symbolic-use",
+      "asks": "What meaning did a documented tradition/source actually assign to it?"
+    },
+    {
+      "id": "G4-comparative-pattern",
+      "asks": "Which structural similarities recur across sources while differences remain explicit?"
+    },
+    {
+      "id": "G5-project-mapping",
+      "asks": "How does Potatoverse use the form, and when did that mapping appear?"
+    }
+  ],
+  "vesica_exact_model": {
+    "construction": "Two congruent circles of radius r whose centers are separated by r.",
+    "invariants": [
+      {
+        "quantity": "center separation",
+        "value": "r"
+      },
+      {
+        "quantity": "intersection-chord length",
+        "value": "sqrt(3)·r"
+      },
+      {
+        "quantity": "half chord",
+        "value": "(sqrt(3)/2)·r"
+      },
+      {
+        "quantity": "central angle subtending overlap in each circle",
+        "value": "120° = 2π/3"
+      },
+      {
+        "quantity": "lens area",
+        "value": "r²(2π/3 − sqrt(3)/2)"
+      }
+    ],
+    "consequence": "These relations follow from Euclidean geometry whether or not any symbolic interpretation is attached."
+  },
+  "shape_distinctions": [
+    {
+      "pair": "vesica vs mandorla",
+      "rule": "Vesica Piscis is an exact two-circle geometric construction; mandorla is an almond/oval sacred-art enclosure that may resemble or be constructed from vesica geometry but is an art-historical category."
+    },
+    {
+      "pair": "circle vs sphere",
+      "rule": "2D circle properties cannot be transferred automatically to 3D sphere cosmology."
+    },
+    {
+      "pair": "square vs cube",
+      "rule": "A 2D polygon and 3D solid have different symmetry/topology; symbolic relation must state which object is meant."
+    },
+    {
+      "pair": "decagon vs dodecahedron",
+      "rule": "A 10-sided plane polygon and a 12-faced Platonic solid are different objects; decagonal sections can arise in dodecahedral/icosahedral geometry without making them identical."
+    },
+    {
+      "pair": "spiral families",
+      "rule": "Logarithmic, Archimedean, Fermat and other spirals have distinct equations; visual spiral resemblance does not identify the family."
+    }
+  ],
+  "historical_claim_contract": {
+    "required": [
+      "object/form",
+      "source or artifact",
+      "date/range",
+      "place/tradition",
+      "attested use",
+      "interpretation source",
+      "confidence"
+    ],
+    "warning": "Later occult or modern popular interpretations must not be projected backward into ancient or medieval objects without evidence."
+  },
+  "comparative_tests": [
+    "Is the geometry exact, approximate, decorative or retrospectively fitted?",
+    "Does the historical source name the symbolic meaning being claimed?",
+    "Could the same geometry arise from ordinary construction constraints rather than esoteric intent?",
+    "Are modern diagrams standardizing a tradition that historically had multiple forms?",
+    "Is a numerical coincidence being selected after seeing the result?",
+    "Does the comparison survive scale, rotation and coordinate choices?",
+    "Is a mathematical invariant being confused with a causal physical mechanism?"
+  ],
+  "project_geometry_record": {
+    "fields": [
+      "geometry_id",
+      "equation_or_construction",
+      "coordinate_system",
+      "orientation",
+      "project_roles",
+      "first_project_attestation",
+      "historical_comparators",
+      "exact_matches",
+      "approximate_matches",
+      "boundaries",
+      "open_tests"
+    ],
+    "rule": "Project symbolism may be exact internally even when no historical tradition shares the same mapping."
+  },
+  "high_value_research_routes": [
+    "Euclidean constructions and exact ratios",
+    "mandorla and aureole art history",
+    "architectural geometry with measured plans rather than speculative overlays",
+    "Platonic solids and documented ancient philosophical uses",
+    "historical Kabbalistic/Hermetic diagrams in source-specific forms",
+    "Islamic geometric art as mathematical/architectural tradition without collapsing it into Western occultism",
+    "South Asian yantra/mandala traditions in their own textual/ritual contexts",
+    "modern esoteric reinterpretations as dated reception history"
+  ],
+  "anti_patterns": [
+    "golden ratio claimed from visual resemblance without measurement",
+    "all sacred buildings treated as one hidden geometric code",
+    "modern esoteric diagram backdated into antiquity",
+    "mathematical elegance used as proof of supernatural causation",
+    "one culture's symbol translated into another culture's doctrine merely because shapes resemble",
+    "project geometry stated as inherited historical teaching without source evidence"
+  ],
+  "joins": [
+    "vesica-mandorla-sun-moon-esoteric-atlas",
+    "data/geometry-records.json",
+    "comparative-mythology",
+    "symbolic-architecture",
+    "science-formal-models",
+    "provenance-evidence"
+  ]
+}

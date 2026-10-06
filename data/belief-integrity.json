@@ -1,0 +1,23 @@
+{
+  "version":"1.0.0",
+  "updated":"2026-09-07",
+  "purpose":"Canonical integrity contract for the belief layer. A visible label is not considered populated unless it resolves to substantive descriptive data.",
+  "rules":[
+    "Every tree belief node must resolve to a canonical belief record or an explicitly declared category node.",
+    "A populated record requires a non-empty definition; classifications and coordinates are optional unless the record type requires them.",
+    "Denominations and movements should remain distinct from parent traditions where the distinction is meaningful.",
+    "Project-defined Potatoism material must be marked as project-canon rather than presented as external historical fact.",
+    "Missing evidence is recorded as missing rather than replaced with invented detail."
+  ],
+  "required_fields_by_type":{
+    "religious-tradition":["id","name","definition"],
+    "denomination-or-movement":["id","name","definition","parent_or_family"],
+    "worldview":["id","name","definition"],
+    "project-defined-belief":["id","name","definition","epistemic_status"]
+  },
+  "coverage_targets":[
+    "christianity","catholicism","eastern-orthodoxy","oriental-orthodoxy","protestantism","adventism","islam","judaism","hinduism","buddhism","sikhism","jainism","zoroastrianism","bahai-faith","taoism","confucianism","shinto","african-traditional-religions","atheism","agnosticism","secular-humanism","potatoism"
+  ],
+  "status":"active",
+  "note":"This file governs completeness checks; it is not a second belief encyclopedia. Descriptive content remains owned by the canonical religious lexicon, political lexicon and Potatoism datasets."
+}

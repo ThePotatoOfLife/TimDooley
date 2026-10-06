@@ -1,0 +1,135 @@
+{
+  "id": "institutional-protection-private-intelligence-atlas",
+  "version": "1.0.0",
+  "updated": "2026-09-12",
+  "status": "mechanism-first-atlas",
+  "purpose": "Compare documented failures of protection, information handling and accountability with private-intelligence/security capabilities without presuming a single coordinated system.",
+  "core_distinctions": [
+    "failure is not automatically intentional interference",
+    "capability is not deployment",
+    "deployment is not automatically misuse",
+    "reputation protection is not automatically criminal obstruction",
+    "document presence is not guilt",
+    "victim/survivor privacy outranks graph completeness"
+  ],
+  "institutional_failure_mechanisms": [
+    "delayed-response",
+    "failure-to-notify-appropriate-authority",
+    "poor-or-missing-documentation",
+    "jurisdictional-fragmentation",
+    "weak-intelligence-sharing",
+    "reputation-protection",
+    "retaliation-or-intimidation",
+    "incomplete-or-inaccurate-later-accounting",
+    "failure-to-mitigate-known-risk",
+    "weak-whistleblower-or-victim-pathway",
+    "record-loss-destruction-or-non-retention",
+    "conflict-of-interest",
+    "oversight-gap",
+    "corrective-inquiry",
+    "restitution-or-reform"
+  ],
+  "anchor_cases": [
+    {
+      "id": "nassar-fbi",
+      "name": "Lawrence Nassar / FBI handling",
+      "status": "documented official failure",
+      "source": "https://oig.justice.gov/sites/default/files/reports/21-093.pdf",
+      "mechanisms": ["delayed-response", "failure-to-notify-appropriate-authority", "poor-or-missing-documentation", "failure-to-mitigate-known-risk", "incomplete-or-inaccurate-later-accounting"],
+      "critical_counterevidence": "DOJ OIG explicitly said it did not find evidence that Indianapolis officials' failures were motivated by intent to interfere with the investigation.",
+      "lesson": "Catastrophic protection failure can be real without evidence of a centralized conspiracy."
+    },
+    {
+      "id": "savile-policing",
+      "name": "Jimmy Savile / UK policing intelligence failures",
+      "status": "documented official review",
+      "source": "https://www.gov.uk/government/speeches/hmics-review-into-allegations-and-intelligence-material-concerning-jimmy-savile",
+      "mechanisms": ["weak-intelligence-sharing", "poor-investigative-quality", "delayed-accountability"],
+      "lesson": "Fragmented information and poor investigation can create long-lived protection effects without requiring one protecting command structure."
+    },
+    {
+      "id": "weinstein-black-cube",
+      "name": "Harvey Weinstein / Black Cube",
+      "status": "documented private-intelligence engagement",
+      "source": "https://www.newyorker.com/sections/news/read-the-contract-between-a-private-security-firm-and-one-of-harvey-weinsteins-lawyers",
+      "mechanisms": ["private-intelligence", "reputation-protection", "information-acquisition", "publication-suppression-objective"],
+      "lesson": "Wealth and legal intermediaries can purchase private-intelligence capabilities inside reputation and media conflicts."
+    },
+    {
+      "id": "epstein-doj-corpus",
+      "name": "Epstein/Maxwell DOJ transparency corpus",
+      "status": "large public primary-source reservoir",
+      "source": "https://www.justice.gov/opa/pr/department-justice-publishes-35-million-responsive-pages-compliance-epstein-files",
+      "mechanisms": ["document-corpus", "investigation-history", "victim-privacy", "source-contamination-risk"],
+      "lesson": "A giant corpus requires stricter provenance because the DOJ itself warns it includes responsive public submissions that may be false or fake."
+    },
+    {
+      "id": "nxivm",
+      "name": "NXIVM / Keith Raniere",
+      "status": "court-established criminal exploitation case",
+      "source": "https://www.justice.gov/usao-edny/pr/jury-finds-nxivm-leader-keith-raniere-guilty-all-counts",
+      "mechanisms": ["high-control", "sex-trafficking", "forced-labor", "racketeering"],
+      "lesson": "Use adjudicated conduct to anchor high-control analysis rather than transferring a cult label by analogy."
+    }
+  ],
+  "private_intelligence_and_surveillance": [
+    {
+      "id": "black-cube",
+      "type": "private-intelligence-firm",
+      "known_case": "Weinstein engagement",
+      "required_graph_fields": ["client", "intermediary", "contract", "target", "tactic", "purpose", "date", "legal-status", "source"]
+    },
+    {
+      "id": "nso-group",
+      "type": "spyware-vendor",
+      "official_action": "U.S. Commerce Entity List addition, 2021",
+      "source": "https://www.commerce.gov/news/press-releases/2021/11/commerce-adds-nso-group-and-other-foreign-companies-entity-list",
+      "official_claim": "Commerce said evidence showed spyware supplied to foreign governments was used to maliciously target officials, journalists, activists and others."
+    },
+    {
+      "id": "candiru",
+      "type": "spyware-vendor",
+      "official_action": "U.S. Commerce Entity List addition, 2021",
+      "source": "https://www.commerce.gov/news/press-releases/2021/11/commerce-adds-nso-group-and-other-foreign-companies-entity-list"
+    },
+    {
+      "id": "cellebrite",
+      "type": "digital-forensics-vendor",
+      "source": "https://www.sec.gov/Archives/edgar/data/1854587/000162828025013334/cele-20241231.htm",
+      "reported_2024": {"approx_customers": 7000, "approx_government_agencies": 5300, "public_sector_share_of_revenue": "more than 90%"},
+      "caution": "Large public-sector deployment documents capability and customer base, not misuse in any specific case."
+    },
+    {
+      "id": "palantir",
+      "type": "data-integration-government-technology-vendor",
+      "source": "https://www.sec.gov/Archives/edgar/data/1321655/000132165525000022/pltr-20241231.htm",
+      "reported_2024": "Strategic partnership with Israeli Defense Ministry to supply technology assisting Israel in the ongoing war.",
+      "caution": "Contract/partnership evidence must remain separate from allegations about specific targeting, intelligence use or unlawful conduct."
+    }
+  ],
+  "capability_chain": ["vendor", "customer", "contract-or-authorization", "capability", "deployment", "target-or-data-source", "legal-authority", "oversight", "alleged-misuse", "investigation-or-remedy"],
+  "epstein_edge_ladder": [
+    "APPEARS_IN_DOCUMENT",
+    "CONTACT_RECORD",
+    "TRAVEL_RECORD",
+    "FINANCIAL_OR_BUSINESS_RELATIONSHIP",
+    "WITNESS_OR_ALLEGATION",
+    "INVESTIGATION",
+    "CHARGE",
+    "CONVICTION_OR_ADJUDICATED_FINDING"
+  ],
+  "victim_safety_rules": [
+    "Prefer aggregate or anonymized affected-party records unless public identification is necessary to understand a public court/inquiry record.",
+    "Do not republish redacted personal information from source corpora.",
+    "Do not create entertainment rankings, scores or gamified victim counts.",
+    "Separate survivor testimony from third-party allegations and from adjudicated findings.",
+    "Represent institutional repair, restitution and prevention alongside harm."
+  ],
+  "research_questions": [
+    "Which industries routinely buy private-intelligence, crisis-PR or investigations services and under what legal controls?",
+    "Which abuse scandals show the same failure mechanisms despite having unrelated actors?",
+    "Which public agencies contract with major digital-forensics or data-integration vendors, and what oversight governs deployment?",
+    "Which mechanisms create protection effects without requiring intentional coordination?",
+    "Where did reforms measurably reduce recurrence after inquiry or scandal?"
+  ]
+}

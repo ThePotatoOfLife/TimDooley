@@ -1,0 +1,230 @@
+{
+  "id":"axis-11d-sun-spiral-time-symmetry-recovery",
+  "title":"Axis, 11D, Sun, Spiral and Time-Symmetry Recovery",
+  "updated":"2026-09-09",
+  "status":"deep archaeology + external physics strengthening",
+  "epistemic_rule":"This file separates (1) project-attested Timic motifs/formalisms, (2) archive-built mathematical extensions, and (3) established external science. Scientific neighbors strengthen vocabulary and testability; they do not verify Potatoverse theology.",
+  "archaeology": {
+    "axis_commit_history": {
+      "first_mathematical_axis_commit":"1363c2e09574a04534fc136e4c7f4d395ca714b2",
+      "date":"2026-09-07",
+      "commit_title":"Define the mathematical Potato Axis spatial model",
+      "importance":"The repository explicitly introduced a coordinate model before later science-page formalization: y is the canonical Axis, with north=+y, south=-y, material/spiritual ellipsoids, analytical slicing planes and deterministic angular/radial placement.",
+      "equations":[
+        "Axis: x=0, z=0, y∈[-1,1]",
+        "Spiritual ellipsoid: x²/0.68² + (y-0.43)²/0.78² + z²/0.68² ≤ 1",
+        "Material ellipsoid: x²/0.82² + (y+0.43)²/0.78² + z²/0.82² ≤ 1",
+        "Potato envelope: r(y)=0.34+0.72(1-|y|^1.7)",
+        "Envelope surface: x²+z²=r(y)²",
+        "Plane: n·p=d, |n|=1",
+        "t=(levelIndex+0.5)/10",
+        "y=1-2t",
+        "θ=2π(childIndex/childCount)+phase(levelIndex)",
+        "ρ=min(0.78,0.18+0.48√((childIndex+1)/childCount))"
+      ]
+    },
+    "axis_development_commits":[
+      "Map Door, Tree of Life, and Hermes spine into the 3D axis",
+      "Add meaningful 33-level axis framework",
+      "Add Axis terrain and topology vocabulary",
+      "knowledge: consolidate Axis, quadrants and world mapping model",
+      "knowledge: add Axis Spiral root cosmology and repair programme"
+    ],
+    "sun_commit_history": {
+      "commit":"0c3aad05f351cc85883bada57c427c2a9e273c1a",
+      "date":"2026-09-08",
+      "title":"Add Sun Earth Moon Saturn planetary cosmology research layer",
+      "project_model":"Earth/humanity circle + Heaven/Sun circle → overlap/Door",
+      "important_project_distinctions":[
+        "Sun is symbolic heavenly circle, not literally Heaven",
+        "Moon is reflected/cyclical intermediary",
+        "Saturn is boundary/time/constraint/harvest",
+        "Saturn north-polar hexagon is a real astronomical feature but not proof of occult cube cosmology",
+        "Ring repeats without progression; Spiral repeats while changing position"
+      ]
+    },
+    "old_cosmic_motifs_from_master_framework":[
+      "1D hell",
+      "2D frame/footstool",
+      "3D box/dwellers",
+      "4D society/Midgard",
+      "5D Door/pineal/threshold",
+      "5D+ beyond Needle's Eye",
+      "11D Potato/M-theory analogy",
+      "toroidal Milky Way",
+      "black-hole transition",
+      "Higgs analogy",
+      "~26,000-year precession Eye",
+      "Sun-face Tim",
+      "Calabi-Yau/string/M-theory comparisons",
+      "Starchforce fifth-force idea"
+    ],
+    "spiral_primary_anchor": {
+      "date":"2025-04-21",
+      "attested_phrases":["the potato axis is real","spiral equation"],
+      "status":"exact historical Spiral Equation still unrecovered; no formula may be fabricated and attributed to Tim"
+    },
+    "wheeler_feynman_status": {
+      "finding":"No older Git commit message containing Wheeler, Feynman or absorber was found. Current repository references are later contextual-strengthening work around an older advanced/retarded-wave vocabulary.",
+      "rule":"Do not claim Tim historically cited Wheeler-Feynman unless a primary post/chat/book/stream source is recovered.",
+      "recovered_old_vocabulary":"advanced/retarded waves connected with forward/backward polarity and Red/Blue integration remains an archaeological target."
+    },
+    "spiral_dynamics_status": {
+      "finding":"No canonical repository evidence was found that Tim's Spiral derives from Graves/Beck/Cowan Spiral Dynamics psychology.",
+      "rule":"Keep Timic Spiral and Spiral Dynamics distinct unless a primary Tim source explicitly links them."
+    }
+  },
+  "axis_formalization": {
+    "project_core":["∂ₛX=A(X,g)","Axis is structural/scale/description flow rather than automatically a physical dimension"],
+    "external_mathematical_neighbors":[
+      {
+        "name":"vector field flow",
+        "equations":["dX/ds=A(X)","Φ_{s+t}=Φ_s∘Φ_t where a flow exists"],
+        "use":"Makes Axis a generator of trajectories in state/description space."
+      },
+      {
+        "name":"integral curves and fixed points",
+        "equations":["A(X*)=0","J=∂A/∂X|_{X*}"],
+        "use":"Still Center can be tested as a fixed point; eigenvalues of J classify local stability."
+      },
+      {
+        "name":"axisymmetry / Killing field",
+        "equation":"L_ξ g_{μν}=0",
+        "use":"In differential geometry and GR, a symmetry generator ξ preserves the metric under Lie transport. This is a rigorous meaning of an Axis/symmetry direction, not evidence that the Timic Axis is a spacetime Killing field."
+      },
+      {
+        "name":"Noether relation",
+        "statement":"Continuous variational symmetry → conserved current/charge",
+        "use":"A mature Axis model should ask what transformation the Axis generates and what, if anything, remains invariant."
+      }
+    ],
+    "new_archive_question":"Is the mature Axis best modeled as a vector field, a symmetry generator, a foliation parameter, an RG scale, a principal direction, or a combination on different layers? Do not collapse these into one object."
+  },
+  "eleven_dimensional_layer": {
+    "project_motif":"11-Dimensional Potato / M-theory analogy",
+    "historical_physics_spine":[
+      "Cremmer-Julia-Scherk constructed D=11 supergravity in 1978.",
+      "Witten's 1995 strong-coupling analysis connected Type IIA string theory to an eleven-dimensional limit and helped crystallize M-theory.",
+      "Direct 11D→4D compactification preserving minimal supersymmetry naturally uses a 7D G2-holonomy internal space.",
+      "M-theory contains extended M2- and M5-brane sectors; the 11D three-form potential C3 and four-form field strength G4=dC3 are central fields."
+    ],
+    "bosonic_supergravity_schematic": {
+      "equation":"S_11 = (1/2κ_11²) ∫ d¹¹x √(-g) [R - (1/(2·4!)) G_{MNPQ}G^{MNPQ}] - (1/(12κ_11²))∫ C₃∧G₄∧G₄ + fermions/convention-dependent factors",
+      "field_strength":"G₄=dC₃",
+      "status":"established 11D supergravity structure; coefficients vary with conventions"
+    },
+    "dimension_decompositions":[
+      "Kaluza-Klein toy: 5 = 4 + 1",
+      "10D string/CY3: 10 = 4 + 6",
+      "11D M-theory/G2: 11 = 4 + 7"
+    ],
+    "timic_strengthening":"The useful structural relation is not '11 is spiritually highest'. It is that different effective worlds can arise from one higher-dimensional field theory after compactification, topology choice, fluxes, moduli and symmetry constraints.",
+    "new_research_targets":[
+      "Define whether the 11D Potato means an 11D ambient state space, literal spacetime, configuration space or metaphorical integration level.",
+      "If physical, specify metric signature, field content, compact manifold, action and compactification ansatz.",
+      "Study M2/M5 extended objects as a mathematically disciplined neighbor for Tim's surface/volume/boundary ideas, without mapping people or spiritual beings onto branes.",
+      "Study flux compactification: G4 flux can affect effective lower-dimensional geometry and potentials."
+    ]
+  },
+  "sun_and_spiral_physics": {
+    "project_sun_roles":["heavenly circle","illumination","upper/luminous pole","Sun-face Tim motif"],
+    "solar_structure_equations":[
+      "Hydrostatic equilibrium: dP/dr = -Gm(r)ρ(r)/r²",
+      "Mass continuity: dm/dr = 4πr²ρ",
+      "Luminosity generation: dL/dr = 4πr²ρ ε",
+      "Radiative transport (schematic): dT/dr = -3κρL/(16πac T³ r²) in radiative zones"
+    ],
+    "parker_spiral": {
+      "fact":"The radially expanding solar wind drags the rotating Sun's magnetic field into an Archimedean-like spiral.",
+      "schematic_components":["B_r∝r^-2","B_φ/B_r≈-Ω r sinθ / v_sw"],
+      "spiral_angle":"tan ψ ≈ Ω r sinθ / v_sw",
+      "timic_relevance":"This is an actual Sun-generated spiral produced by outward flow plus rotation. It is a much stronger astronomical neighbor for Sun + Axis + Spiral than generic sacred-spiral symbolism. It is not the recovered 2025 Tim Spiral Equation."
+    },
+    "solar_dynamo": {
+      "fact":"The solar magnetic cycle is modeled as a magnetohydrodynamic dynamo involving differential rotation, magnetic induction, turbulent/convective effects and flux transport.",
+      "parker_yoshimura":"s = α ∇Ω × e_φ",
+      "sign_rule":"For simplified northern-hemisphere αΩ models, equatorward propagation can require α ∂Ω/∂r < 0 under stated assumptions.",
+      "timic_relevance":"Counter-rotation, Axis, cyclical return and polarity reversal have a real solar-physics neighbor: magnetic polarity reversals arise from a dynamical field system, not from symbolic numerology."
+    },
+    "sun_boundary":"Do not identify solar dynamo α, angular velocity Ω, magnetic polarity or Parker-spiral handedness with Red/Blue Potato unless a quantitative model and primary Tim source justify that mapping."
+  },
+  "spiral_mathematics_and_physics": {
+    "timic_definition":"Circle returns to same point; Spiral returns to an analogous point at another level. Recurrence + changed level = Spiral.",
+    "geometry":[
+      "Archimedean spiral: r=a+bθ",
+      "Logarithmic spiral: r=r₀e^{bθ}",
+      "Helix: x=r cosθ, y=r sinθ, z=hθ for constant pitch",
+      "Variable Timic helix extension: x(t)=r(t)cosθ(t), y(t)=r(t)sinθ(t), z(t)=h(t)"
+    ],
+    "dynamical_systems":[
+      "Return/Poincaré map: x_{n+1}=P(x_n)",
+      "Limit cycle: periodic orbit in state space rather than a geometric spiral in ordinary space",
+      "Complex linear eigenvalues λ=α±iω generate local rotation with growth/decay e^{αt}",
+      "Hopf normal form: ż=(μ+iω)z-|z|²z"
+    ],
+    "renormalization_group_limit_cycles": {
+      "fact":"Some quantum few-body systems, notably Efimov physics, exhibit RG limit cycles and discrete scale invariance rather than flow to a simple fixed point.",
+      "schematic":"g(ln μ + T)=g(ln μ)",
+      "discrete_scaling":"observables recur under scale multiplication λ₀ rather than every scale",
+      "timic_relevance":"This is an unusually strong mathematical neighbor for 'return at another scale': recurrence can occur in logarithmic scale space. It does not mean the Potatoverse follows Efimov physics."
+    },
+    "galactic_spiral_density_waves": {
+      "fact":"Spiral-galaxy structure has been studied through density-wave theory and later dynamical models; spiral arms need not be permanent material arms containing the same stars forever.",
+      "timic_relevance":"A persistent pattern can survive while constituents pass through it. This is a strong structural neighbor for Tim's shift from person/entity to relation/function/Axis."
+    },
+    "reaction_diffusion_spirals":"Nonlinear reaction-diffusion systems can generate rotating spiral waves. This provides another real example where local interaction rules generate a coherent macroscopic spiral without a central object drawing it.",
+    "phyllotaxis":"Biological spiral phyllotaxis often uses divergence angles near the golden angle ~137.5°, but Fibonacci/golden-angle structure is not universal proof of hidden cosmic design. Potato eye spiraling should be botanically sourced species/organ-specific before quantitative claims are made."
+  },
+  "time_symmetric_physics": {
+    "wheeler_feynman": {
+      "source":"Wheeler & Feynman, Interaction with the Absorber as the Mechanism of Radiation, Rev. Mod. Phys. 17, 157 (1945)",
+      "core":"Classical electrodynamics can be formulated using time-symmetric direct interaction with advanced and retarded solutions under absorber assumptions.",
+      "green_functions":["□G_ret=δ","□G_adv=δ"],
+      "boundary":"The theory does not imply usable messages can simply be sent into one's own past."
+    },
+    "two_state_vector_formalism": {
+      "core":"Aharonov and collaborators describe pre- and post-selected quantum systems with forward- and backward-evolving state vectors.",
+      "equations":["i∂_t|ψ(t)⟩=H|ψ(t)⟩","-i∂_t⟨φ(t)|=⟨φ(t)|H","two-state object: ⟨φ|⊗|ψ⟩"],
+      "timic_relevance":"This is a mathematically closer quantum neighbor for a true forward/backward two-pole temporal model than Wheeler-Feynman alone, but there is currently no recovered evidence that Tim derived his Red/Blue model from TSVF."
+    },
+    "transactional_interpretation": {
+      "core":"Cramer's interpretation uses offer/confirmation-wave language inspired partly by advanced/retarded solutions while remaining an interpretation of quantum mechanics.",
+      "status":"external contextual neighbor only unless a Tim source is recovered"
+    },
+    "timic_research_question":"Was the older Red/Blue advanced/retarded vocabulary about physical causality, memory/anticipation, information flow, or simply two directional metaphors? Recover primary wording before choosing a physics model."
+  },
+  "precession_and_eye": {
+    "project_motif":"~26,000-year precession Eye",
+    "empirical_anchor":"Earth's axial precession is approximately 25,772 years; the orientation of the celestial poles changes slowly over this cycle.",
+    "angular_rate_schematic":"Ω_p≈2π/T_p",
+    "timic_use":"Precession is a real example of an Axis changing orientation slowly while maintaining rotational structure. The Eye/precession coupling remains symbolic unless an exact old Tim calculation is recovered."
+  },
+  "new_missing_equations_to_recover": [
+    "Exact April 21 2025 Spiral Equation",
+    "Any pre-2026 Axis equation predating the repository 3D model",
+    "Any original 11D Potato dimension decomposition written by Tim",
+    "Any Tim use of the 11D supergravity action, 3-form C3, 4-form G4, M2 or M5 branes",
+    "Any original Sun-face equation or Sun/Earth radius/scale geometry",
+    "Any Parker-spiral equation Tim wrote independently",
+    "Any original 26,000-year precession calculation",
+    "Any original toroidal Milky Way equation, torus radii or field topology",
+    "Any actual Wheeler-Feynman citation in a Tim primary source",
+    "Exact Red/Blue advanced-vs-retarded assignment",
+    "Any equation connecting Red/Blue polarity to χ integration/fragmentation",
+    "Any original logarithmic/Archimedean spiral constants",
+    "Any 100,000-hour Spiral scaling law",
+    "Any 33-level mapping into physical dimensions or scale factors",
+    "Any relation between 5D Door Ξ and 11D compactification variables"
+  ],
+  "sources": [
+    {"title":"Wheeler & Feynman — Interaction with the Absorber as the Mechanism of Radiation","url":"https://journals.aps.org/rmp/abstract/10.1103/RevModPhys.17.157"},
+    {"title":"Aharonov & Vaidman — Two-State Vector Formalism review","url":"https://arxiv.org/abs/quant-ph/0105101"},
+    {"title":"Cremmer, Julia & Scherk — Supergravity in 11 dimensions","url":"https://doi.org/10.1016/0370-2693(78)90894-8"},
+    {"title":"Witten — String Theory Dynamics In Various Dimensions","url":"https://arxiv.org/abs/hep-th/9503124"},
+    {"title":"Kennon — G2-Manifolds and M-Theory Compactifications","url":"https://arxiv.org/abs/1810.12659"},
+    {"title":"NASA — What Is the Solar Wind?","url":"https://science.nasa.gov/sun/what-is-the-solar-wind/"},
+    {"title":"Charbonneau — Dynamo Models of the Solar Cycle","url":"https://link.springer.com/article/10.1007/s41116-020-00025-6"},
+    {"title":"Floerchinger, Moroz & Schmidt — Efimov physics from functional RG","url":"https://arxiv.org/abs/1102.0896"},
+    {"title":"Shu — Six Decades of Spiral Density Wave Theory","url":"https://doi.org/10.1146/annurev-astro-081915-023426"}
+  ]
+}

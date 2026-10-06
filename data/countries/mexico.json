@@ -1,0 +1,330 @@
+{
+  "record_version": "1.1.0",
+  "record_type": "country",
+  "status": "sourced-enriched",
+  "identity": {
+    "id": "mexico",
+    "name": "Mexico",
+    "iso2": "MX",
+    "iso3": "MEX",
+    "official_name": "United Mexican States",
+    "capital": "Mexico City",
+    "continent": "North America",
+    "region": "Americas",
+    "subregion": "Central America",
+    "currency": "Mexican peso (MXN)",
+    "national_day": "September 16"
+  },
+  "blueprint": "data/countries-blueprint.json",
+  "blueprint_version": "1.0.0",
+  "coverage": {
+    "node_instantiated": true,
+    "blueprint_inherited": true,
+    "observations": 13,
+    "relationships": 0,
+    "sources": 1,
+    "research_status": "ready-for-source-enrichment",
+    "canonicalized": true
+  },
+  "observations": {
+    "population": {
+      "value": 131946900,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SP.POP.TOTL",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "gdp": {
+      "value": 1832641364775.52,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "NY.GDP.MKTP.CD",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "gdp_per_capita": {
+      "value": 13889.2339628708,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "NY.GDP.PCAP.CD",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "gdp_per_capita_ppp": {
+      "value": 25868.4787520629,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "NY.GDP.PCAP.PP.CD",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "real_growth": {
+      "value": 0.561683456144578,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "NY.GDP.MKTP.KD.ZG",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "inflation": {
+      "value": 3.80668650726485,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "FP.CPI.TOTL.ZG",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "unemployment": {
+      "value": 2.673,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SL.UEM.TOTL.ZS",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "labour_force_participation": {
+      "value": 61.609,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SL.TLF.CACT.ZS",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "life_expectancy": {
+      "value": 75.264,
+      "year": 2024,
+      "source": "world-bank",
+      "indicator": "SP.DYN.LE00.IN",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "fertility": {
+      "value": 1.892,
+      "year": 2024,
+      "source": "world-bank",
+      "indicator": "SP.DYN.TFRT.IN",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "urbanization": {
+      "value": 80.0408930629723,
+      "year": 2025,
+      "source": "world-bank",
+      "indicator": "SP.URB.TOTL.IN.ZS",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "poverty": {
+      "value": 29.6,
+      "year": 2024,
+      "source": "world-bank",
+      "indicator": "SI.POV.NAHC",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    },
+    "internet_penetration": {
+      "value": 83.12233799,
+      "year": 2024,
+      "source": "world-bank",
+      "indicator": "IT.NET.USER.ZS",
+      "retrieved_at": "2026-10-06T04:28:07.342073+00:00",
+      "confidence": "international-official"
+    }
+  },
+  "relationships": [
+    {
+      "type": "borders",
+      "target": "united-states",
+      "status": "active"
+    },
+    {
+      "type": "borders",
+      "target": "guatemala",
+      "status": "active"
+    },
+    {
+      "type": "borders",
+      "target": "belize",
+      "status": "active"
+    },
+    {
+      "type": "trade",
+      "target": "united-states",
+      "status": "active"
+    },
+    {
+      "type": "trade",
+      "target": "canada",
+      "status": "active"
+    },
+    {
+      "type": "member-of",
+      "target": "g20",
+      "status": "active"
+    },
+    {
+      "type": "member-of",
+      "target": "oecd",
+      "status": "active"
+    }
+  ],
+  "history": {
+    "turning_points": [
+      {
+        "date": "1810-09-16",
+        "event": "Beginning of Mexican War of Independence"
+      },
+      {
+        "date": "1821-09-27",
+        "event": "Mexican independence achieved"
+      },
+      {
+        "date": "1910-11-20",
+        "event": "Mexican Revolution begins"
+      },
+      {
+        "date": "1917-02-05",
+        "event": "Constitution promulgated"
+      },
+      {
+        "date": "1994-01-01",
+        "event": "NAFTA enters into force"
+      },
+      {
+        "date": "2020-07-01",
+        "event": "USMCA enters into force"
+      }
+    ]
+  },
+  "research_queue": [
+    "USMCA value chains",
+    "automotive manufacturing",
+    "electronics and semiconductor supply chains",
+    "oil and gas production",
+    "Pemex finances",
+    "electricity grid and renewables",
+    "water stress",
+    "nearshoring",
+    "ports and rail corridors",
+    "migration corridors",
+    "public finance",
+    "major banks and corporate ownership",
+    "manufacturing regions"
+  ],
+  "provenance": {
+    "instantiated_at": "2026-09-07T12:37:31.426393+00:00",
+    "instantiation_method": "canonical country index + country blueprint",
+    "observation_policy": "No value is invented merely to fill a field; absent evidence remains missing/stale.",
+    "last_refresh": "2026-10-06T04:28:07.342073+00:00",
+    "source_priority": "international-official",
+    "historical_observations_preserved": true,
+    "sources": [
+      "https://databank.worldbank.org/reports.aspx?country=MEX&series=SP.POP.TOTL&source=2",
+      "https://databank.worldbank.org/reports.aspx?country=MEX&series=NY.GDP.MKTP.CD&source=2",
+      "https://databank.worldbank.org/reports.aspx?country=MEX&series=NY.GDP.PCAP.CD&source=2"
+    ],
+    "retrieved": "2026-09-07",
+    "enrichment_merged": true,
+    "enrichment_layer": "retired overlay merged into canonical country record"
+  },
+  "data_freshness": {
+    "last_refresh_attempt": "2026-09-07T21:59:50.659074+00:00",
+    "source": "world-bank"
+  },
+  "country_id": "mexico",
+  "iso2": "MX",
+  "iso3": "MEX",
+  "updated": "2026-09-07",
+  "political_system": {
+    "system_type": "federal presidential republic",
+    "head_of_state": "President",
+    "head_of_government": "President",
+    "current_leader": {
+      "name": "Claudia Sheinbaum",
+      "office": "President"
+    },
+    "legislature": [
+      "Congress of the Union",
+      "Chamber of Deputies",
+      "Senate"
+    ],
+    "territorial_structure": "31 states and Mexico City"
+  },
+  "constitutional_system": {
+    "founding_documents": [
+      "Constitution of 1917"
+    ],
+    "constitution_adopted": "1917-02-05"
+  },
+  "population": {
+    "value": 131946900,
+    "year": 2025,
+    "source": "World Bank",
+    "source_url": "https://databank.worldbank.org/reports.aspx?country=MEX&series=SP.POP.TOTL&source=2"
+  },
+  "economy": {
+    "gdp_current_usd_billion": 1832.64,
+    "gdp_year": 2025,
+    "gdp_per_capita_usd": 13889.2,
+    "gdp_per_capita_ppp_usd": 25868.5,
+    "source": "World Bank",
+    "source_url": "https://databank.worldbank.org/reports.aspx?country=MEX&series=NY.GDP.MKTP.CD&source=2"
+  },
+  "energy_and_resources": {
+    "strategic_assets": [
+      "oil and gas",
+      "Gulf of Mexico",
+      "manufacturing base",
+      "automotive value chains",
+      "electronics manufacturing",
+      "mining",
+      "renewables",
+      "Pacific and Gulf ports"
+    ]
+  },
+  "trade_and_value_chains": {
+    "major_relationships": [
+      "United States",
+      "Canada",
+      "European Union",
+      "China",
+      "Japan",
+      "Central America"
+    ],
+    "frameworks": [
+      "USMCA",
+      "WTO",
+      "Pacific Alliance"
+    ]
+  },
+  "security_and_external_relations": {
+    "major_organizations": [
+      "United Nations",
+      "OECD",
+      "WTO",
+      "G20",
+      "APEC",
+      "Pacific Alliance"
+    ],
+    "alliances": [
+      "North American economic integration through USMCA"
+    ]
+  },
+  "geography": {
+    "land_area_km2": 1964375,
+    "borders": [
+      "United States",
+      "Guatemala",
+      "Belize"
+    ],
+    "maritime_position": [
+      "Pacific Ocean",
+      "Gulf of California",
+      "Gulf of Mexico",
+      "Caribbean Sea"
+    ],
+    "territorial_structure": "31 states and Mexico City"
+  },
+  "record_role": "canonical-country-record"
+}

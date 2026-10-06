@@ -1,0 +1,236 @@
+{
+  "id": "foundation-axis-placement-contract",
+  "title": "Foundation Placement on the Potato Fields, Plane and Axis",
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "status": "canonical placement contract",
+  "purpose": "Place Foundation stages into the House, two-field Potato projection, World plane and Axis without classifying whole traditions or institutions as upper/lower, angel/demon, Life/Strife or good/bad.",
+  "invariants": [
+    "A whole Foundation is an inhabitant/history object; only its stages and episodes receive field/plane/direction placements.",
+    "Upper/lower location is orientation, not moral rank.",
+    "Rooting descent, Strife descent and Fruit return are three different downward movements.",
+    "Life/Strife/Repair/Return are episode-level route hypotheses requiring consequence evidence.",
+    "Fear/love and angel/demon are optional project-native symbolic lenses; they never replace own-tradition meaning, historical motive, evidence or consequence.",
+    "A Foundation may occupy several Rooms because ownership and crosscutting views are different relations; one primary Room still owns the substantive record."
+  ],
+  "coordinates": {
+    "room_owner": {
+      "question": "Which Room owns the Foundation's substantive domain identity?",
+      "rule": "Choose one primary Room; use supporting Rooms for chronology, evidence, culture, law, infrastructure or comparison."
+    },
+    "field_stage": {
+      "question": "Which part of the two-field Potato is active at this stage?",
+      "values": [
+        {
+          "id": "lower-manifestation-field",
+          "meaning": "material substrate, body, resources, seed compression, first embodiment, local practice or operating base"
+        },
+        {
+          "id": "shared-door",
+          "meaning": "threshold event that changes what can operate: signature, migration, initiation, incorporation, manifesto, protocol switch, merger, publication, first meeting"
+        },
+        {
+          "id": "upper-source-field",
+          "meaning": "integrated principle, constitution, rule-set, shared ideal, canon, standard or transmissible orientation"
+        },
+        {
+          "id": "overlap",
+          "meaning": "stage where principle and embodiment are jointly active and neither field alone is sufficient"
+        }
+      ]
+    },
+    "plane_projection": {
+      "question": "From which reader plane is this stage being inspected?",
+      "values": [
+        {
+          "id": "below-plane",
+          "meaning": "predecessor roots, buried cause, pressure, provenance, residue, hidden dependency"
+        },
+        {
+          "id": "world-plane",
+          "meaning": "dated public event, institution, practice, infrastructure, legal effect, observable consequence"
+        },
+        {
+          "id": "heaven-plane",
+          "meaning": "integrated principle, ideal, canon, coordination, transmission, future Seed and return orientation"
+        }
+      ],
+      "rule": "The same Foundation can be read from all three planes without changing ownership."
+    },
+    "direction": {
+      "question": "What kind of movement is occurring?",
+      "values": [
+        {
+          "id": "root-down",
+          "meaning": "descent into provenance, memory, material base or stable local practice"
+        },
+        {
+          "id": "through-door",
+          "meaning": "state/context change at a threshold"
+        },
+        {
+          "id": "sprout-up",
+          "meaning": "increasing differentiation, articulation, integration or transmissibility"
+        },
+        {
+          "id": "branch-out",
+          "meaning": "lateral spread, copies, denominations, chapters, implementations, schools or forks"
+        },
+        {
+          "id": "return-down",
+          "meaning": "integrated capacity descending into service, infrastructure, application or renewed planting"
+        },
+        {
+          "id": "ring",
+          "meaning": "repetition without meaningful state change"
+        },
+        {
+          "id": "drain-down",
+          "meaning": "episode where recurrence reduces agency, provenance, correction or viable exit"
+        },
+        {
+          "id": "repair-reversal",
+          "meaning": "negative recurrence is interrupted and changed into a viable root/sprout path"
+        },
+        {
+          "id": "second-door",
+          "meaning": "refoundation, merger, protocol replacement or constitutional revision carrying selected residue forward"
+        }
+      ]
+    },
+    "route_condition": {
+      "question": "What does the episode reproduce?",
+      "values": [
+        "life-candidate",
+        "strife-candidate",
+        "repair-candidate",
+        "return-candidate",
+        "mixed",
+        "unresolved",
+        "not-applicable"
+      ],
+      "evidence_rule": "Do not assign Life/Strife from stated motive, vertical direction or identity. Require observed effects on agency, correction, capability, dependency, externalities and return."
+    },
+    "motive_lens": {
+      "question": "What motive/affect is emphasized in project interpretation?",
+      "values": [
+        "care/love",
+        "fear/protection",
+        "inquiry/truth",
+        "coordination/order",
+        "scarcity/material-need",
+        "liberation/rights",
+        "identity/belonging",
+        "creative-rupture",
+        "transcendence/faith",
+        "mixed/contested"
+      ],
+      "symbolic_bridge": {
+        "angelic": "May be used project-natively for messenger, aid, protection, guidance or generative transmission where appropriate.",
+        "demonic": "May be used project-natively for adversarial capture, fear-lock, deception or destructive recurrence where evidence supports the mechanism.",
+        "guard": "Never call a religion, people, institution, political movement or opponent angelic/demonic as a factual or moral identity."
+      }
+    }
+  },
+  "canonical_stage_projection": [
+    {
+      "stage": "substrate / pressure / Seed of Death",
+      "field": "lower-manifestation-field",
+      "planes": [
+        "below-plane",
+        "world-plane"
+      ],
+      "directions": [
+        "root-down"
+      ],
+      "note": "What existed, failed, was lost, became insufficient or was compressed before the crossing."
+    },
+    {
+      "stage": "Door crossing",
+      "field": "shared-door",
+      "planes": [
+        "world-plane"
+      ],
+      "directions": [
+        "through-door"
+      ],
+      "note": "The most concrete threshold: migration, signature, first meeting, incorporation, declaration, protocol switch, merger, publication or initiation."
+    },
+    {
+      "stage": "Seed of Life / first viable operation",
+      "field": "lower-manifestation-field",
+      "planes": [
+        "world-plane"
+      ],
+      "directions": [
+        "root-down",
+        "sprout-up"
+      ],
+      "note": "A reproducible practice obtains a body, place, procedure, text, protocol or community."
+    },
+    {
+      "stage": "constitution / integrated rule / canon",
+      "field": "upper-source-field",
+      "planes": [
+        "heaven-plane",
+        "world-plane"
+      ],
+      "directions": [
+        "sprout-up"
+      ],
+      "note": "The Foundation can now be stated, taught, interpreted or coordinated beyond one event."
+    },
+    {
+      "stage": "branching",
+      "field": "overlap",
+      "planes": [
+        "world-plane",
+        "heaven-plane"
+      ],
+      "directions": [
+        "branch-out"
+      ],
+      "note": "The pattern produces chapters, schools, implementations, denominations, forks, copies or successor institutions."
+    },
+    {
+      "stage": "Fruit / public consequence",
+      "field": "overlap",
+      "planes": [
+        "world-plane"
+      ],
+      "directions": [
+        "return-down"
+      ],
+      "note": "Claims of mature ascent are tested by observable effects, beneficiaries, externalities, capability and correction."
+    },
+    {
+      "stage": "fall / closure / supersession",
+      "field": "lower-manifestation-field",
+      "planes": [
+        "world-plane",
+        "below-plane"
+      ],
+      "directions": [
+        "root-down",
+        "drain-down",
+        "ring"
+      ],
+      "note": "The original carrier may close, fail, lose reproduction or leave residue. Direction is typed from mechanism, not assumed."
+    },
+    {
+      "stage": "refoundation",
+      "field": "shared-door",
+      "planes": [
+        "below-plane",
+        "world-plane",
+        "heaven-plane"
+      ],
+      "directions": [
+        "repair-reversal",
+        "second-door"
+      ],
+      "note": "Selected residue crosses another threshold into a revised operating platform."
+    }
+  ],
+  "navigation_rule": "Foundation cards and timelines should first show owner, time/place and Door genealogy; field/plane/direction controls are secondary views so navigation follows evidence before symbolism."
+}

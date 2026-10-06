@@ -1,0 +1,320 @@
+{
+  "id": "governance-institutions-policy-lifecycle-atlas",
+  "title": "Governance, Institutions & Policy Lifecycle Atlas",
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "owner_room": "politics-governance",
+  "purpose": "Give the World layer a neutral governance grammar for describing how public authority is constituted, constrained, exercised, implemented, reviewed and changed without turning the Room into a partisan scorecard.",
+  "master_rule": "Describe institutions, authority, procedures, incentives, outcomes and evidence separately. A governance record should make disagreement inspectable rather than hide it inside one overall rating.",
+  "governance_objects": [
+    {
+      "id": "constitution_or_basic_order",
+      "questions": [
+        "What establishes authority?",
+        "What rights/competences are entrenched?",
+        "How can the basic order be amended?"
+      ]
+    },
+    {
+      "id": "legislature",
+      "questions": [
+        "Who makes general rules?",
+        "How are members selected?",
+        "How are committees, budgets and oversight organized?"
+      ]
+    },
+    {
+      "id": "executive",
+      "questions": [
+        "Who directs administration and policy execution?",
+        "How are appointments, emergency powers and delegated authority bounded?"
+      ]
+    },
+    {
+      "id": "judiciary",
+      "questions": [
+        "How are disputes adjudicated?",
+        "What review powers exist?",
+        "How are independence, appointment and enforcement structured?"
+      ]
+    },
+    {
+      "id": "public_administration",
+      "questions": [
+        "Which bodies implement policy?",
+        "What professional, budgetary and procedural capacities do they possess?"
+      ]
+    },
+    {
+      "id": "regulator",
+      "questions": [
+        "What market/social domain is regulated?",
+        "What legal mandate, independence, accountability and appeal structure apply?"
+      ]
+    },
+    {
+      "id": "subnational_government",
+      "questions": [
+        "Which powers/resources belong to regional/local levels?",
+        "Which responsibilities are shared or delegated?"
+      ]
+    },
+    {
+      "id": "public_enterprise_or_agency",
+      "questions": [
+        "What service/capability is delivered?",
+        "Who controls it?",
+        "How are budgets, performance and accountability handled?"
+      ]
+    },
+    {
+      "id": "political_party_or_coalition",
+      "questions": [
+        "How are candidates/leadership selected?",
+        "What commitments, coalition terms and legislative positions are documented?"
+      ]
+    },
+    {
+      "id": "civil_society_and_media",
+      "questions": [
+        "How can citizens, associations, journalists and interest groups participate, scrutinize or contest public decisions?"
+      ]
+    }
+  ],
+  "authority_dimensions": [
+    {
+      "id": "selection",
+      "meaning": "How office-holders or decision-makers enter authority.",
+      "examples": [
+        "election",
+        "appointment",
+        "inheritance",
+        "professional selection",
+        "delegation"
+      ]
+    },
+    {
+      "id": "mandate",
+      "meaning": "What the actor is authorized to decide or administer."
+    },
+    {
+      "id": "resources",
+      "meaning": "Budget, staff, legal powers, information, infrastructure and implementation capacity."
+    },
+    {
+      "id": "constraints",
+      "meaning": "Law, courts, oversight, federal division, transparency, rights, elections, professional rules or external commitments."
+    },
+    {
+      "id": "accountability",
+      "meaning": "Who can demand reasons, review conduct, reverse decisions, sanction failure or replace leadership."
+    },
+    {
+      "id": "implementation",
+      "meaning": "Whether formally adopted decisions can actually be carried out across territory, agencies and time."
+    },
+    {
+      "id": "feedback",
+      "meaning": "How outcomes, public response, audit, data and judicial/administrative review alter future decisions."
+    }
+  ],
+  "policy_lifecycle": [
+    {
+      "stage": "problem-definition",
+      "outputs": [
+        "problem statement",
+        "baseline evidence",
+        "affected population",
+        "jurisdiction",
+        "uncertainty"
+      ]
+    },
+    {
+      "stage": "agenda-setting",
+      "outputs": [
+        "sponsor",
+        "institutional venue",
+        "priority rationale",
+        "alternative non-action path"
+      ]
+    },
+    {
+      "stage": "design",
+      "outputs": [
+        "instrument choice",
+        "legal basis",
+        "cost estimate",
+        "distributional effects",
+        "implementation owner",
+        "risk analysis"
+      ]
+    },
+    {
+      "stage": "authorization",
+      "outputs": [
+        "vote/order/regulation/appropriation",
+        "amendments",
+        "coalition/support record",
+        "procedural status"
+      ]
+    },
+    {
+      "stage": "implementation",
+      "outputs": [
+        "responsible agencies",
+        "funding",
+        "rules/procurement",
+        "timelines",
+        "operational constraints"
+      ]
+    },
+    {
+      "stage": "monitoring",
+      "outputs": [
+        "performance indicators",
+        "audit",
+        "complaints",
+        "administrative data",
+        "unintended effects"
+      ]
+    },
+    {
+      "stage": "review",
+      "outputs": [
+        "judicial/legislative/administrative evaluation",
+        "independent studies",
+        "stakeholder evidence",
+        "counterfactual comparison where possible"
+      ]
+    },
+    {
+      "stage": "revision_or_exit",
+      "outputs": [
+        "amendment",
+        "renewal",
+        "sunset",
+        "repeal",
+        "replacement",
+        "institutional learning"
+      ]
+    }
+  ],
+  "measurement_vector": [
+    {
+      "id": "participation_and_voice",
+      "note": "Who can participate, compete, petition, access information or organize; method and population must be named."
+    },
+    {
+      "id": "rule_and_review",
+      "note": "Whether rules and decisions are subject to known procedures, rights and review mechanisms."
+    },
+    {
+      "id": "state_capacity",
+      "note": "Administrative, fiscal, informational and operational ability to implement lawful decisions."
+    },
+    {
+      "id": "accountability",
+      "note": "Availability and effectiveness of answerability, oversight, appeal, audit and replacement mechanisms."
+    },
+    {
+      "id": "service_and_policy_performance",
+      "note": "Observed outputs/outcomes in the policy domain; do not infer institutional quality from one outcome alone."
+    },
+    {
+      "id": "integrity_and_conflict_controls",
+      "note": "Rules/processes addressing conflicts of interest, misuse of office, procurement and public resources."
+    },
+    {
+      "id": "decentralization_and_coordination",
+      "note": "Distribution of authority and ability to coordinate across government levels and agencies."
+    },
+    {
+      "id": "adaptation_and_learning",
+      "note": "Capacity to revise policy after evidence, shocks, court decisions, audit or changing conditions."
+    }
+  ],
+  "evidence_contract": {
+    "preferred": [
+      "constitution/statute/regulation",
+      "official institutional record",
+      "budget/appropriation",
+      "audit report",
+      "election/appointment record",
+      "court/tribunal decision",
+      "administrative data",
+      "independent scholarly or statistical assessment"
+    ],
+    "rules": [
+      "Separate formal rules from observed practice.",
+      "Separate policy announcement from authorization, funding, implementation and measured outcome.",
+      "State the time period and jurisdiction for every governance assessment.",
+      "Keep perceived-governance indicators distinct from direct administrative measures.",
+      "Composite indices are views over underlying indicators, not intrinsic properties of a country.",
+      "Preserve uncertainty, methodological changes and margins of error where supplied."
+    ]
+  },
+  "relationship_types": [
+    "appoints",
+    "elects",
+    "authorizes",
+    "delegates_to",
+    "funds",
+    "regulates",
+    "oversees",
+    "audits",
+    "reviews",
+    "adjudicates",
+    "implements",
+    "coordinates_with",
+    "reports_to",
+    "appeals_to",
+    "consults",
+    "represents",
+    "sanctions",
+    "replaces"
+  ],
+  "policy_case_contract": [
+    "case_id",
+    "jurisdiction",
+    "time_window",
+    "problem",
+    "institutions",
+    "legal_basis",
+    "decision_sequence",
+    "resources",
+    "implementation",
+    "measured_outputs",
+    "measured_outcomes",
+    "distributional_effects",
+    "oversight_and_challenge",
+    "revisions",
+    "sources",
+    "uncertainties"
+  ],
+  "comparative_rule": "Compare like institutional functions and explicitly state constitutional, historical, territorial and economic context. Do not convert this atlas into an overall political ranking.",
+  "source_frameworks": [
+    {
+      "name": "World Bank Worldwide Governance Indicators",
+      "use": "Reference framework for broad governance dimensions and explicit uncertainty/composite-method cautions.",
+      "url": "https://www.worldbank.org/en/publication/worldwide-governance-indicators"
+    },
+    {
+      "name": "International IDEA State of Democracy Assessment Framework",
+      "use": "Question-led assessment of citizenship/law/rights, representative and accountable government, civil society/participation and democracy beyond the state.",
+      "url": "https://www.idea.int/data-tools/tools/state-democracy-assessments/state-democracy-framework"
+    },
+    {
+      "name": "OECD Best Practice Principles for Regulatory Policy — Governance of Regulators",
+      "use": "Institutional questions around regulator mandate, independence, accountability and performance.",
+      "url": "https://www.oecd.org/en/publications/the-governance-of-regulators_9789264209015-en.html"
+    }
+  ],
+  "joins": [
+    "law-justice",
+    "economy-finance",
+    "geography-countries",
+    "infrastructure-capability",
+    "provenance-evidence",
+    "information-ecology"
+  ]
+}

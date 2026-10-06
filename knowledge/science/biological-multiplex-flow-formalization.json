@@ -1,0 +1,218 @@
+{
+  "id":"biological-multiplex-flow-formalization",
+  "version":"1.0.0",
+  "updated":"2026-09-15",
+  "title":"Biological Multiplex Flow Formalization — River, Door, Axis and Return",
+  "status":"scientific analogy / systems-biology formalization; not a new physical theory",
+  "repository_root":"mind",
+  "repository_layer":"neurobiology",
+  "repository_scale":"record",
+  "purpose":"Connect the mature BODY/neurobiology architecture to Potato Dynamics without claiming that Potatoverse theology is established biology or physics. Formalize River as multiple typed biological channels, Door as channel-specific transition/gating, Axis as directed flow/organization, Eye as observation, and Return as feedback.",
+  "parent_formalism":"knowledge/science/tim-dooley-science-formalisms.json",
+  "body_routes":["knowledge/body/body-system-master-atlas.json","knowledge/body/body-science-context-atlas.json","knowledge/body/brain-body-systems-deepening-wave-2.json","knowledge/body/brain-body-organ-axes-deepening-wave-3.json","knowledge/body/tim-neurobiology-relational-reconciliation.json"],
+  "epistemic_rule":"This file borrows standard dynamical-systems, network and control notation to make project analogies precise. It does not establish a new force, new biological law, universal spiritual fluid or single equation of life.",
+  "formal_object":{
+    "notation":"B = (X, L, E, F, G, O, T, C)",
+    "meaning":{
+      "X":"organism state variables",
+      "L":"layer/channel set",
+      "E":"within-layer and cross-layer relations",
+      "F":"flows and state-change laws",
+      "G":"gates/transition functions",
+      "O":"observables/sensed variables",
+      "T":"timescales and delays",
+      "C":"control/feedback relations"
+    },
+    "relation_to_potato_dynamics":"B is a domain-specific biological instantiation/comparator for P=(S,g,A,D,O,I), not a replacement or empirical validation of the Potato Dynamics master object."
+  },
+  "state_vector":{
+    "schematic":"X(t) = [x_neural, x_autonomic, x_cardio, x_resp, x_endocrine, x_immune, x_metabolic, x_fluid, x_organ, x_behavior, x_environment]",
+    "rule":"Each component is itself high-dimensional. Never add unlike variables until units/scales are defined or variables are explicitly nondimensionalized.",
+    "examples":[
+      {"variable":"heart rate","unit":"beats/min","layer":"cardiovascular"},
+      {"variable":"arterial pressure","unit":"mmHg","layer":"cardiovascular"},
+      {"variable":"arterial CO2 partial pressure","unit":"mmHg","layer":"respiratory/chemical"},
+      {"variable":"plasma osmolality","unit":"mOsm/kg","layer":"fluid/homeostasis"},
+      {"variable":"blood glucose","unit":"mmol/L or mg/dL","layer":"metabolic"},
+      {"variable":"hormone concentration","unit":"molecule-specific concentration","layer":"endocrine"},
+      {"variable":"neural firing/activity","unit":"spikes/s or modality-specific signal","layer":"neural"},
+      {"variable":"CSF flow/velocity/pressure","unit":"measurement-specific physical units","layer":"fluid"},
+      {"variable":"cytokine concentration","unit":"molecule-specific concentration","layer":"immune"}
+    ]
+  },
+  "layers":[
+    {
+      "id":"neural-fast",
+      "medium":"action potentials + synaptic signaling",
+      "typical_timescale":"milliseconds to seconds",
+      "topology":"directed neural networks with recurrent loops",
+      "examples":["sensory afferents","brainstem reflexes","motor efferents","thalamocortical loops"],
+      "potatoverse":"fast roads/branches; not the whole River"
+    },
+    {
+      "id":"autonomic",
+      "medium":"sympathetic/parasympathetic neural signaling plus local ganglia",
+      "typical_timescale":"seconds to minutes, with longer consequences",
+      "topology":"central ↔ ganglia ↔ organs with afferent feedback",
+      "examples":["baroreflex","vagal gut signaling","renal sympathetic control","cardiac regulation"],
+      "potatoverse":"ascending/descending Ladder tributary"
+    },
+    {
+      "id":"cardiovascular",
+      "medium":"blood flow and pressure carrying gases, nutrients, hormones, immune cells and metabolites",
+      "typical_timescale":"seconds to hours depending on variable",
+      "topology":"closed-loop vascular network driven by heart and local vascular regulation",
+      "examples":["oxygen delivery","hormone distribution","heat transport","immune-cell circulation"],
+      "potatoverse":"major material River"
+    },
+    {
+      "id":"respiratory",
+      "medium":"airflow + gas exchange + mechanical rhythm",
+      "typical_timescale":"seconds",
+      "topology":"environment ↔ airway/lungs ↔ blood with neural control",
+      "examples":["O2/CO2 exchange","respiratory rhythm","voluntary breathing"],
+      "potatoverse":"Breath/Spirit analogue at voluntary-autonomic Door"
+    },
+    {
+      "id":"endocrine",
+      "medium":"circulating hormones and local paracrine signals",
+      "typical_timescale":"minutes to days depending on hormone and target",
+      "topology":"source tissues → circulation → receptor-expressing targets with feedback",
+      "examples":["HPA","HPT","HPG","insulin/glucagon","leptin","vasopressin"],
+      "potatoverse":"slow messengers / seasons / Steward's provision"
+    },
+    {
+      "id":"immune",
+      "medium":"immune cells, cytokines, chemokines, antibodies and tissue signaling",
+      "typical_timescale":"minutes to days/weeks",
+      "topology":"blood + lymph + tissue niches + barrier interfaces + neural/endocrine cross-talk",
+      "examples":["neuroimmune vagal loops","meningeal immunity","skull marrow","gut immunity"],
+      "potatoverse":"guardians/gardeners; not purity or moral warfare"
+    },
+    {
+      "id":"metabolic",
+      "medium":"nutrients, metabolites, substrate flux and cellular energy transformations",
+      "typical_timescale":"seconds to days",
+      "topology":"gut ↔ liver ↔ pancreas ↔ adipose ↔ muscle ↔ circulation ↔ brain",
+      "examples":["glucose flux","lipid storage/mobilization","ketones","lactate","amino acids"],
+      "potatoverse":"harvest/provision/transformation"
+    },
+    {
+      "id":"csf-interstitial",
+      "medium":"CSF and interstitial fluid exchange",
+      "typical_timescale":"seconds-to-hours depending on process and measurement",
+      "topology":"ventricles ↔ subarachnoid spaces ↔ perivascular/interstitial interfaces with production and drainage routes",
+      "examples":["CSF circulation","choroid plexus secretion","perivascular exchange","ventricular chemistry"],
+      "potatoverse":"inner River/chamber tributary, not Spirit itself"
+    },
+    {
+      "id":"lymphatic",
+      "medium":"lymph and lymphatic transport",
+      "typical_timescale":"minutes to hours/days",
+      "topology":"tissue interstitium/meningeal routes → lymphatic vessels/nodes → systemic return",
+      "examples":["meningeal lymphatic drainage","intestinal lymph","immune-cell trafficking"],
+      "potatoverse":"drain/return tributary"
+    },
+    {
+      "id":"behavior-environment",
+      "medium":"movement, ingestion, speech, social action and environmental modification",
+      "typical_timescale":"milliseconds to years",
+      "topology":"organism ↔ environment",
+      "examples":["drinking","feeding","thermoregulatory behavior","exercise","avoidance/approach","sleep scheduling"],
+      "potatoverse":"manifest action that changes the next state of the Garden"
+    }
+  ],
+  "multilayer_graph":{
+    "notation":"M = (V, {E_l}, {E_lm})",
+    "meaning":"V are biological entities/states; E_l are relations inside a channel layer l; E_lm are cross-layer couplings between layers l and m.",
+    "examples":[
+      "gut enteroendocrine cell --neural→ vagal afferent",
+      "gut enteroendocrine cell --endocrine→ circulation",
+      "circulation --endocrine→ hypothalamus/brainstem targets",
+      "brainstem --autonomic→ heart/lung/gut",
+      "kidney --endocrine→ renin-angiotensin circulation",
+      "muscle --metabolic/endocrine→ circulation",
+      "meninges --lymphatic→ cervical lymph nodes"
+    ],
+    "project_value":"One Potatoverse relation may occupy several biological layers; this is why River should not be represented by one edge type."
+  },
+  "door_formalization":{
+    "principle":"A biological Door is any explicitly defined state-dependent transfer, threshold or selective interface. Different Doors use different mathematics.",
+    "examples":[
+      {"door":"ion channel","gate":"open probability depends on voltage/ligand/mechanics","status":"literal biological gate"},
+      {"door":"synapse","gate":"release probability + receptor state + postsynaptic excitability","status":"literal biological transition"},
+      {"door":"BBB/BCSFB transport","gate":"molecule/cell-specific permeability, transporters and cellular state","status":"selective interface"},
+      {"door":"endocrine receptor","gate":"signal requires ligand, receptor and downstream cellular context","status":"molecular selectivity"},
+      {"door":"sleep/wake transition","gate":"network-state transition produced by interacting circadian/homeostatic/arousal systems","status":"system-level transition"},
+      {"door":"pineal in Potatoverse","gate":"symbolic timing/Eye/Door mapping","status":"project canon, not a literal anatomical portal"}
+    ],
+    "generic_notation":"J_i = G_i(X,t) · D_i(X,t)",
+    "meaning":"For channel i, realized transfer/flux J_i depends on a gate/selectivity function G_i and a channel-specific driving/dynamics term D_i. This is schematic until variables and units are specified."
+  },
+  "axis_formalization":{
+    "principle":"In biology Axis is best treated as directed organization or flow through a defined state/structure, not an extra physical dimension.",
+    "state_equation":"dX/dt = F(X, u, e)",
+    "meaning":"The organism state X changes under internal dynamics F, regulatory/control inputs u and environmental/body perturbations e.",
+    "project_relation":"The Potatoverse Axis can compare to preferred directions/flows only after the biological coordinate and measurable variable are named."
+  },
+  "eye_observation_formalization":{
+    "notation":"y = O(X) + η",
+    "meaning":"A sensing subsystem obtains partial/noisy observations y of organism state X through observation map O with noise/uncertainty η.",
+    "examples":["baroreceptors observe pressure/stretch indirectly","chemoreceptors observe chemical conditions","retina samples light","interoceptive afferents sample organ state"],
+    "project_relation":"Eye maps most cleanly to observation/discernment as a function, not one universal anatomical eye."
+  },
+  "return_feedback_formalization":{
+    "loop":"X_t → O(X_t) → controller/regulator → action u_t → X_(t+Δt) → new observation",
+    "control_equation":"u(t) = C(ŷ(t), r(t), history)",
+    "meaning":"Regulatory output depends on an estimate of current state ŷ, reference/need r and potentially prior state/history.",
+    "examples":["baroreflex pressure regulation","thermoregulation","glucose homeostasis","thirst/fluid balance","sleep-wake regulation"],
+    "project_relation":"Return-to-center is scientifically strongest as recursive feedback/state estimation rather than movement to one anatomical point."
+  },
+  "timescale_matrix":[
+    {"scale":"10^-3–10^0 s","dominant_examples":["action potentials","synaptic transmission","rapid sensory reflexes"]},
+    {"scale":"seconds–minutes","dominant_examples":["autonomic reflexes","breathing/heart-rate changes","fast hormonal release"]},
+    {"scale":"minutes–hours","dominant_examples":["endocrine/metabolic adaptation","immune signaling","feeding/satiety","CSF/fluid-state changes"]},
+    {"scale":"hours–days","dominant_examples":["circadian programs","sleep recovery","immune programs","gene-expression changes"]},
+    {"scale":"days–years","dominant_examples":["learning/plasticity","development","remodeling","aging","ecological/microbiome shifts"]}
+  ],
+  "testability_rules":[
+    "Every proposed biological coupling must name source, target, medium and direction.",
+    "Where possible, give a measurable variable and unit for source/target state.",
+    "State the expected timescale and delay.",
+    "Distinguish neural, endocrine, immune, vascular, metabolic and fluid channels even when they affect the same organs.",
+    "Specify whether evidence is human observational, human intervention, animal causal, cellular/in-vitro or theoretical.",
+    "A Potatoverse analogy is not a causal mechanism and receives no scientific confidence merely from structural resemblance.",
+    "A unified equation is not useful if its terms combine incompatible units without explicit normalization or model derivation."
+  ],
+  "candidate_observables":[
+    "heart rate and heart-rate variability with context-specific interpretation",
+    "blood pressure",
+    "respiratory rate/volume and blood gases",
+    "plasma osmolality/electrolytes",
+    "glucose/insulin and metabolic substrates",
+    "hormones with circadian/time context",
+    "EEG/fMRI/neural recordings with modality boundaries",
+    "CSF chemistry/flow measurements with compartment and method specified",
+    "immune-cell/cytokine measures",
+    "behavioral outputs such as feeding, drinking, sleep and movement"
+  ],
+  "project_synthesis":{
+    "River":"set of typed flows F_l, not a universal substance",
+    "Door":"channel-specific gate G_i or system transition, with Pineal Door retained as project symbolism",
+    "Axis":"directed structural/state flow after a coordinate is specified",
+    "Eye":"partial observation map O rather than one universal organ",
+    "House":"organized state-space/subsystems; thalamus remains canonical project House without owning all regulation",
+    "Steward":"feedback controller family rather than a single homunculus",
+    "Garden":"the coupled living system and its environment",
+    "Return":"closed-loop updating after action changes state"
+  },
+  "hard_boundaries":[
+    "This is not evidence for a fifth biological force.",
+    "No equation here demonstrates God, Spirit, soul or divine identity.",
+    "River channels are not interchangeable; blood, nerves, hormones, CSF and lymph have different dynamics and units.",
+    "Door is not one universal threshold variable across all biology.",
+    "Control-system language does not imply a conscious controller inside the brain.",
+    "Homeostasis is not perfect constancy; regulation can be anticipatory, adaptive, context-dependent and sometimes maladaptive.",
+    "Mathematical elegance does not substitute for empirical parameterization and falsification."
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "id":"internet-extremism-information-ecology-wave-017",
+  "version":"1.0.0",
+  "updated":"2026-09-07",
+  "purpose":"Research layer for online communities, extremist ecosystems, hate symbols, incidents, migration between platforms and the relationship between online information environments and documented offline events.",
+  "epistemic_rule":"Community membership, posting activity, association, symbol use or presence in an archive does not by itself establish ideology, criminality or participation in violence. Store identity, ideology, incident and allegation as separate fields.",
+  "heatmap_schema":{
+    "event_fields":["event_id","date","city","region","country","latitude_approx","longitude_approx","online_origin","platform","group","symbol_or_slogan","event_type","target","evidence_status","sources"],
+    "event_types":["hate_incident","harassment_campaign","doxxing_report","threat","violent_attack","terrorism_case","rally","recruitment_event","propaganda_distribution","platform_ban","moderation_change","migration_event","counter-extremism_action"],
+    "geographic_rule":"Use city/country or approximate public geography where appropriate; never publish private addresses or precise locations of individuals.",
+    "time_rule":"Every event should carry a date or bounded period and distinguish original event date from archive/publication date."
+  },
+  "platforms":[
+    {"id":"4chan","founded":2003,"founder":"Christopher Poole / moot","origin":"imageboard culture influenced by Japanese anonymous imageboards","structure":"anonymous or pseudonymous boards with board-specific rules and moderators","research_fields":["board creation/closure","moderation changes","meme diffusion","political communities","harassment episodes","extremist migration","archive survival"],"important_distinction":"4chan is a platform containing many communities; it should not be treated as one ideology or one organization.","history_leads":["2003 launch","growth of many topical boards","major role in internet meme culture","recurrent controversy around harassment, extremist content and anonymity"],"source_quality":"Use platform records, archived pages, academic work and reputable reporting together; Wikipedia can be a discovery lead rather than sole evidence."},
+    {"id":"kiwi-farms","founded":2013,"founder":"Joshua Moon / Null","origin":"grew from earlier online communities including CWCki-related forum culture","structure":"forum/community centered on discussion of individuals and internet subcultures","research_fields":["forum history","moderation","targeted harassment","platform hosting","deplatforming","migration","legal/advocacy response","archived threads"],"important_distinction":"Map the site and its documented community behavior without treating every user as sharing the same beliefs or conduct.","major_history_leads":["2013 establishment","2022 major deplatforming and hosting controversy","continued archival and migration questions"],"source_quality":"Use academic studies, court/legal records, reputable journalism and platform/administrator statements; hostile archives are leads, not automatically reliable evidence."},
+    {"id":"reddit","founded":2005,"founders":"Steve Huffman, Alexis Ohanian and Aaron Swartz involvement in early development","structure":"large federated-by-community subreddit system with moderators and platform administrators","research_fields":["subreddit creation/closure","moderation policies","API/data-access changes","political communities","extremist communities","harassment","advertising","algorithmic ranking","content migration"],"important_distinction":"Reddit is a platform of many communities and should not be represented as a single political or ideological actor.","historical_data_value":"Older Reddit threads can preserve contemporary attitudes and discourse, but archival completeness is imperfect and platform ranking/search behavior can distort historical sampling."}
+  ],
+  "hate_and_extremism_sources":[
+    {"id":"adl-hate-on-display","publisher":"ADL","type":"hate-symbol-database","fields":["symbol","meaning","groups-using","historical-context","alternative-non-hate-meanings","category"],"coverage":"white supremacist, neo-Nazi, prison gang and other hate symbols","caution":"Symbols are contextual; a symbol alone is insufficient evidence of extremist identity."},
+    {"id":"adl-heat-map","publisher":"ADL","type":"incident-map","fields":["incident","date","location","type","target","group/context","raw-data-availability"],"coverage":"hate, extremism, antisemitism and terrorism incidents"},
+    {"id":"splc-census","publisher":"SPLC","type":"annual-group-census","start_year":1990,"coverage":"hate and antigovernment groups in the United States","fields":["group","category","approximate-location","year-tracked","activity"],"caution":"SPLC classifications are an external analytical classification and should be stored as such rather than as an objective legal status."},
+    {"id":"fbi-hate-crime-data","publisher":"FBI","type":"official-crime-statistics","coverage":"reported hate crime incidents and offenses","caution":"Reported-crime statistics measure reported incidents under the relevant collection system; they are not a census of all hate activity."}
+  ],
+  "group_record_schema":{
+    "required_fields":["group_id","name","aliases","country","city_or_region","founded_or_first_documented","status","ideology_category","membership_estimate","public_activity","symbols","platforms","offline_incidents","sources","confidence"],
+    "membership_rule":"Record membership estimates only when a source gives a basis. Use ranges and date-stamp them. Do not manufacture numbers from social-media followers.",
+    "status_values":["active","inactive","defunct","splintered","uncertain"],
+    "ideology_categories":["white-supremacist","neo-Nazi","antisemitic","anti-government","accelerationist","jihadist","ethno-nationalist","extremist-left","religious-extremist","militia","gang","terrorist-designated","mixed/uncertain"],
+    "legal_status_rule":"A designation by a government should be represented with the designating jurisdiction and date. Do not treat an advocacy organization's label as equivalent to a legal designation."
+  },
+  "network_dynamics":{
+    "platform_migration":"community -> moderation event -> migration destination -> new community -> archive trail",
+    "symbol_diffusion":"symbol -> origin/context -> reinterpretation -> platform adoption -> group adoption -> offline appearance",
+    "harassment_chain":"target mention -> thread/post -> amplification -> cross-platform migration -> contact/harassment -> moderation/report -> archive",
+    "violence_chain":"ideological content -> mobilization evidence -> threat -> planning evidence -> attack -> investigation -> court record -> historical assessment",
+    "counter_extremism_chain":"incident -> monitoring -> platform action -> law-enforcement inquiry -> prosecution/designation where applicable -> archival record",
+    "rule":"Do not infer causality merely from temporal sequence. Store evidence connecting stages."
+  },
+  "anchor_group_research":{
+    "ku_klux_klan":{"country":"United States","founded_or_first_documented":"1860s","category":"white-supremacist","research_fields":["multiple historical incarnations","regional organization","violence","federal investigations","civil-rights litigation"]},
+    "neo-nazi_movements":{"category":"neo-Nazi","research_fields":["post-1945 development","international networks","symbols","splinter groups","online migration"]},
+    "atomwaffen-division":{"country":"United States","category":"accelerationist","research_fields":["online recruitment","violent rhetoric","international affiliates","law-enforcement cases"],"caution":"Use law-enforcement records and court documents for criminal allegations."},
+    "proud-boys":{"country":"United States","category":"political/extremist group","research_fields":["founding","chapters","January 6","court records","leadership","online communications"],"caution":"Do not collapse political identity, group membership and individual criminal liability."},
+    "patriot-front":{"country":"United States","category":"white-nationalist","research_fields":["formation","marches","stickers/propaganda","membership estimates","public incidents"]},
+    "islamic-state":{"category":"jihadist","research_fields":["online propaganda","territorial period","foreign fighters","terrorism cases","platform migration"]},
+    "al-qaeda":{"category":"jihadist","research_fields":["formation","affiliate network","propaganda","terrorist attacks","counterterrorism investigations"]}
+  },
+  "case_schema_for_violence_and_assassination":{
+    "fields":["case_id","victim","date","location","death_or_event","suspected_actor","attribution_status","official_finding","court_result","intelligence-agency-claim","journalistic-claim","counterevidence","primary-records"],
+    "attribution_values":["established-by-court","established-by-official-investigation","strongly-supported","credible-allegation","disputed","unsupported","unknown"],
+    "critical_rule":"Never turn an intelligence-agency allegation, internet theory, anonymous post or mere association into a factual attribution."
+  },
+  "epstein_information_ecosystem":{
+    "period":"2000s-present investigations and subsequent document releases","nodes":["Jeffrey Epstein","Ghislaine Maxwell","victims/survivors","law-enforcement agencies","prosecutors","courts","financial institutions","universities/charities where documented","media","released records"],
+    "document_types":["indictments","plea agreement","sentencing records","deposition material","flight logs where authenticated","contact books where authenticated","financial records","FBI releases","court filings","FOIA releases","journalistic investigations"],
+    "graph_rule":"Every person/entity connection should specify relationship type and source. A contact, meeting, flight, payment, employment relationship or mention is not by itself evidence of participation in abuse or trafficking.",
+    "timeline_fields":["event-date","record-date","release-date","investigation-date","court-date"],
+    "release_tracking":"Track when records were created, when they were sealed/unsealed, when agencies released them and whether later redactions or corrections occurred."
+  },
+  "4chan_kiwifarms_reddit_comparison":{
+    "dimensions":["founding","ownership","governance","identity model","moderation","archive persistence","searchability","community migration","advertising/monetization","law-enforcement exposure","extremist use","harassment patterns","data-access changes"],
+    "core_relationships":["4chan -> influences -> meme/ecology","4chan -> migration-source -> other platforms","Kiwi Farms -> forum-based-community -> targeted discussion","Reddit -> subreddit architecture -> community specialization","platform moderation -> migration -> archive fragmentation","archive -> historical evidence -> caveated reconstruction"]
+  },
+  "research_next":{
+    "platforms":["8kun","Gab","Telegram","Discord","X","Rumble","Twitch","Kick","Truth Social","Mastodon","Facebook","YouTube","TikTok"],
+    "data_sets":["Internet Archive snapshots","Pushshift historical Reddit datasets where legally/publicly available","court exhibits","platform transparency reports","FBI hate-crime statistics","ADL H.E.A.T. raw data","SPLC annual group censuses","EU Internet Referral Unit/public Europol reports","academic datasets"],
+    "niche_topics":["doxxing economies","swatting history","raid culture","imageboard migration","copypasta diffusion","anonymous identity systems","moderation evasion history","deplatforming cascades","extremist meme genealogy","online-to-offline mobilization","foreign influence operations","bot/amplification networks","platform API changes","archive loss events"],
+    "geographic_output":"Generate a heatmap from dated public events, not from guesses about where individual users live."
+  },
+  "sources":[
+    {"publisher":"ADL","title":"Hate on Display","url":"https://www.adl.org/sites/default/files/about.html"},
+    {"publisher":"ADL","title":"Center on Extremism / H.E.A.T. Map","url":"https://www.adl.org/research-centers/center-on-extremism"},
+    {"publisher":"SPLC","title":"Annual census and hate-group research","url":"https://www.splcenter.org/resources/reports/hate-southern-states/"},
+    {"publisher":"FBI","title":"FBI Vault and records","url":"https://vault.fbi.gov/"},
+    {"publisher":"Reddit","title":"Reddit historical/platform research lead","url":"https://www.reddit.com/"},
+    {"publisher":"4chan","title":"Platform research lead","url":"https://www.4chan.org/"}
+  ]
+}

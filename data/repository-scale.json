@@ -1,0 +1,31 @@
+{
+  "version":"1.0.0",
+  "updated":"2026-09-08",
+  "title":"Repository Scale — Source to Ground",
+  "purpose":"A neutral navigation scale for the archive. It describes how concretely a record is expressed, from source/orientation through structures and actors to events, records and the smallest material traces.",
+  "principle":"Scale is not importance, truth, value or power. It is granularity. Domain, time, epistemic status and graph relationships remain independent coordinates.",
+  "axis":[
+    {"id":"source","order":1,"label":"Source","question":"What gives the system its originating direction or premise?","examples":["origin","source","axiom","cosmology","ultimate premise"]},
+    {"id":"principle","order":2,"label":"Principles","question":"What rules, values or ideas organize what follows?","examples":["values","ethics","laws of thought","worldviews","design principles"]},
+    {"id":"concept","order":3,"label":"Concepts & Patterns","question":"What recurring ideas, symbols, classifications or patterns are being formed?","examples":["concepts","symbols","theories","models","patterns"]},
+    {"id":"world","order":4,"label":"Worlds & Domains","question":"What broad field or environment does the subject inhabit?","examples":["Earth","civilization","religious worlds","economic domains","ecosystems"]},
+    {"id":"region","order":5,"label":"Regions & Territories","question":"Where is the field divided geographically or jurisdictionally?","examples":["continents","regions","seas","countries","territories"]},
+    {"id":"institution","order":6,"label":"Institutions & Structures","question":"What durable structures coordinate people, resources or authority?","examples":["governments","firms","churches","banks","universities","infrastructure"]},
+    {"id":"network","order":7,"label":"Networks & Groups","question":"What collections of actors are connected through relationships?","examples":["alliances","markets","communities","movements","supply chains"]},
+    {"id":"person","order":8,"label":"People & Living Actors","question":"Who or what living actors participate?","examples":["persons","families","populations","animals","organizations as actors"]},
+    {"id":"object","order":9,"label":"Bodies & Objects","question":"What embodied or material things carry the system?","examples":["bodies","buildings","machines","land","minerals","artifacts"]},
+    {"id":"event","order":10,"label":"Events & Actions","question":"What happens, changes, moves or is done?","examples":["wars","elections","transactions","births","deaths","decisions"]},
+    {"id":"record","order":11,"label":"Records & Signals","question":"What trace lets us observe, remember or communicate what happened?","examples":["books","documents","measurements","images","datasets","words"]},
+    {"id":"ground","order":12,"label":"Ground / Grain / Dust","question":"What is the smallest concrete or material trace relevant to this investigation?","examples":["particles","grains","dust","fragments","individual measurements"]}
+  ],
+  "placement_rules":[
+    "Place each record at its most useful primary scale, not at every scale it touches.",
+    "Use explicit scale overrides for canonical records where automatic inference would be misleading.",
+    "Keep domains separate from scale: religion, politics, economy, science, geography and Potatoism can occur at any scale.",
+    "Keep time separate from scale: a source can be ancient, a current institution can have a long history, and a record can describe the future.",
+    "Keep epistemic status separate from scale: mythic canon, project theory, historical record and observable evidence can all exist at any scale.",
+    "A graph edge can cross any number of scale levels. The tree is a reading route, not a claim that reality is strictly hierarchical."
+  ],
+  "explicit_overrides":{"source":"source","father":"source","heaven":"world","axis":"concept","ladder":"concept","tree-of-life":"concept","potatoism":"principle","red-potato":"concept","blue-potato":"concept","door":"event","narrow-gate":"event","son":"person","jesus-christ":"person","thomas":"person","north-axis":"concept","matter":"object","biology":"world","people":"person","families":"network","animals":"person","places":"region","nations":"region","kingdoms":"institution","societies":"network","institutions":"institution","laws":"principle","economies":"network","technology":"object","infrastructure":"institution","history":"record","war":"event","trade":"event","money":"object","ownership":"principle","obligations":"principle","alliances":"network","european-economic-graph":"network","north-programme":"principle","european-union":"institution","single-market":"network","euro-area":"world","european-central-bank":"institution","denmark":"region","kingdom-of-denmark":"institution","greenland":"region","faroe-islands":"region","canada":"region","iceland":"region"},
+  "fallback":"concept"
+}

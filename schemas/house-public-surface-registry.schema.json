@@ -1,0 +1,286 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://thepotatooflife.github.io/TimDooley/schemas/house-public-surface-registry.schema.json",
+  "title": "Potato House Public Surface Registry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "updated",
+    "authority",
+    "room_registry",
+    "primary_gateway_ids",
+    "secondary_global_ids",
+    "visibility_policy",
+    "surfaces",
+    "parent_semantics"
+  ],
+  "properties": {
+    "version": {
+      "type": "string"
+    },
+    "updated": {
+      "type": "string"
+    },
+    "authority": {
+      "const": "public-route-identity"
+    },
+    "room_registry": {
+      "const": "data/house/rooms.json"
+    },
+    "primary_gateway_ids": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      }
+    },
+    "secondary_global_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      }
+    },
+    "surfaces": {
+      "type": "array",
+      "minItems": 15,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "route",
+          "canonical_route",
+          "surface_type",
+          "title",
+          "reader_job",
+          "primary_parent",
+          "primary_room_ids",
+          "status",
+          "visibility",
+          "primary_navigation",
+          "is_view",
+          "knowledge_owner",
+          "legacy_routes"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          },
+          "route": {
+            "type": "string",
+            "pattern": "^/"
+          },
+          "canonical_route": {
+            "type": "string",
+            "pattern": "^/"
+          },
+          "surface_type": {
+            "enum": [
+              "home",
+              "hub",
+              "subject",
+              "guide",
+              "explorer",
+              "evidence"
+            ]
+          },
+          "title": {
+            "type": "string"
+          },
+          "primary_parent": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "primary_room_ids": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string"
+            }
+          },
+          "status": {
+            "enum": [
+              "active",
+              "compatibility",
+              "retired"
+            ]
+          },
+          "visibility": {
+            "enum": [
+              "primary",
+              "secondary",
+              "specialist",
+              "compatibility"
+            ]
+          },
+          "primary_navigation": {
+            "type": "boolean"
+          },
+          "is_view": {
+            "type": "boolean"
+          },
+          "knowledge_owner": {
+            "const": false
+          },
+          "legacy_routes": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "pattern": "^/"
+            }
+          },
+          "reader_job": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "visibility_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "visible",
+        "semi_visible",
+        "compatibility",
+        "invisible"
+      ],
+      "properties": {
+        "visible": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "surface_visibility",
+            "meaning",
+            "navigation_rule"
+          ],
+          "properties": {
+            "surface_visibility": {
+              "type": "array",
+              "items": {
+                "enum": [
+                  "primary",
+                  "secondary"
+                ]
+              },
+              "minItems": 2,
+              "maxItems": 2,
+              "uniqueItems": true
+            },
+            "meaning": {
+              "type": "string"
+            },
+            "navigation_rule": {
+              "type": "string"
+            }
+          }
+        },
+        "semi_visible": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "surface_visibility",
+            "meaning",
+            "navigation_rule"
+          ],
+          "properties": {
+            "surface_visibility": {
+              "type": "array",
+              "items": {
+                "const": "specialist"
+              },
+              "minItems": 1,
+              "maxItems": 1
+            },
+            "meaning": {
+              "type": "string"
+            },
+            "navigation_rule": {
+              "type": "string"
+            }
+          }
+        },
+        "compatibility": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "surface_visibility",
+            "meaning",
+            "navigation_rule"
+          ],
+          "properties": {
+            "surface_visibility": {
+              "type": "array",
+              "items": {
+                "const": "compatibility"
+              },
+              "minItems": 1,
+              "maxItems": 1
+            },
+            "meaning": {
+              "type": "string"
+            },
+            "navigation_rule": {
+              "type": "string"
+            }
+          }
+        },
+        "invisible": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "represented_by",
+            "meaning",
+            "navigation_rule"
+          ],
+          "properties": {
+            "represented_by": {
+              "type": "string"
+            },
+            "meaning": {
+              "type": "string"
+            },
+            "navigation_rule": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "parent_semantics": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "meaning",
+          "child_rule",
+          "allowed_child_ids"
+        ],
+        "properties": {
+          "meaning": {
+            "type": "string"
+          },
+          "child_rule": {
+            "type": "string"
+          },
+          "allowed_child_ids": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "id": "duaaaht",
+  "display_name": "duaaaht",
+  "bureau": "FBI — Figures, Bonds & Incidents",
+  "depth_tier": "working-file",
+  "depth_note": "Recurring figure with enough dated presence for a working dossier; raw-source recovery can still deepen it.",
+  "entity_class": "person-or-handle",
+  "aliases": [],
+  "archive_status": "historical-current-unknown",
+  "room_policy": "cluster",
+  "room_path": null,
+  "tim_relation": {
+    "archetypes": [
+      "mystic-interpreter",
+      "bard-jester",
+      "seeker-student"
+    ],
+    "narrative_functions": [
+      "science-spirit jokes",
+      "surreal interpretation"
+    ],
+    "regions": [
+      "Saloon",
+      "Threshold"
+    ],
+    "editorial_reading": "Chronicle fuses scientific jokes and spiritual interpretation around this figure.",
+    "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+  },
+  "chronology": {
+    "chronicle_occurrence_count": 10,
+    "chronicle_dates": [
+      "November 3 2024",
+      "November 6, 2024",
+      "November 9, 2024",
+      "November 19, 2024"
+    ],
+    "cast_period_roles": [],
+    "recovered_social_days": [
+      {
+        "date": "2024-11-03",
+        "title": "Tanks, pipe, coffee and the first dense social snapshot",
+        "minimum_event": "Tim spends the day around Tanks/voice-chat social life while the Great Book is actively discussed. Optimistique urges him back into play, Rahu/Tdog supply religious interpretation, and Termite marks group camaraderie.",
+        "source_mode": "chronicle_retelling"
+      },
+      {
+        "date": "2024-11-06",
+        "title": "Marty as Chance & Taylor; Optimistique's creative thread",
+        "minimum_event": "Marty discusses being removed from another chat while Tim is already distancing from him; Optimistique discusses music, AI-generated instrumentals and Jungian-shadow creativity.",
+        "source_mode": "chronicle_retelling"
+      }
+    ]
+  },
+  "top_co_presence": [
+    {
+      "name": "Tim Dooley",
+      "count": 2
+    },
+    {
+      "name": "Optimistique",
+      "count": 2
+    },
+    {
+      "name": "Tdog",
+      "count": 2
+    },
+    {
+      "name": "Termite",
+      "count": 2
+    },
+    {
+      "name": "Marty",
+      "count": 1
+    },
+    {
+      "name": "Port Monkey",
+      "count": 1
+    },
+    {
+      "name": "Mr. E",
+      "count": 1
+    },
+    {
+      "name": "Klunty",
+      "count": 1
+    }
+  ],
+  "symbolic_roles": [],
+  "highlighted_incidents": [
+    {
+      "date": "2024-11-03",
+      "title": "Tanks, pipe, coffee and the first dense social snapshot",
+      "summary": "Tim spends the day around Tanks/voice-chat social life while the Great Book is actively discussed. Optimistique urges him back into play, Rahu/Tdog supply religious interpretation, and Termite marks group camaraderie.",
+      "source_mode": "chronicle_retelling"
+    },
+    {
+      "date": "2024-11-06",
+      "title": "Marty as Chance & Taylor; Optimistique's creative thread",
+      "summary": "Marty discusses being removed from another chat while Tim is already distancing from him; Optimistique discusses music, AI-generated instrumentals and Jungian-shadow creativity.",
+      "source_mode": "chronicle_retelling"
+    }
+  ],
+  "source_strata": [
+    {
+      "type": "character_archive",
+      "path": "knowledge/story/character-archive-v2.json"
+    },
+    {
+      "type": "dated_social_ledger",
+      "path": "knowledge/story/social-presence-ledger-2024-2025.json"
+    }
+  ],
+  "recovery_leads": [
+    "Recover closer/raw chat, stream, post or screenshot evidence behind the densest dated appearances.",
+    "Separate direct speech from Chronicle paraphrase and later project interpretation.",
+    "Promote this file to a deeper tier only when chronology, relationships and source strata materially improve."
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "version":"1.0.0","status":"active-blueprint","purpose":"Trace physical and service value chains from raw inputs through processing, logistics, production, distribution and end use, including concentration and substitution.","entity":"supply_chain_system",
+  "record_schema":{
+    "identity":["chain_id","product_or_service","sector","geography","observation_period"],
+    "stages":["raw_material","processing","components","manufacturing","assembly","warehousing","transport","distribution","retail","end_use","recycling","waste"],
+    "actors":["producer","processor","manufacturer","supplier","distributor","customer","operator","logistics_provider","regulator"],
+    "flows":["quantity","unit","value","currency","origin","destination","route","mode","lead_time","inventory","capacity"],
+    "dependencies":["critical_input","single_source","few_source","geographic_concentration","technology_dependency","energy_dependency","water_dependency","skilled_labor_dependency","financial_dependency"],
+    "contracts":["supplier_contract","duration","price_formula","minimum_volume","take_or_pay","exclusivity","incoterm","renewal","termination"],
+    "resilience":["buffer_stock","alternative_supplier","alternative_route","substitute_material","repair_time","surge_capacity","bottleneck","failure_mode","stress_event"],
+    "economics":["cost_breakdown","margin","value_added","freight_cost","energy_cost","labor_cost","capital_intensity","inventory_cost","price_transmission"],
+    "environment":["energy","emissions","water","land","waste","recycling","pollution","life_cycle_boundary"],
+    "evidence":["trade_statistics","company_filing","procurement_record","industry_report","customs_data","transport_data","academic_study","methodology","retrieved_at","confidence"]
+  },
+  "derived_measures":["supplier_concentration","country_concentration","route_concentration","import_dependency","critical_input_share","inventory_coverage_days","substitution_time","value_added_by_stage"],
+  "relationship_templates":["supplier-supplies-manufacturer","manufacturer-produces-product","port-routes-goods","country-imports-input","company-depends-on-input","product-contains-component","customer-purchases-output"],
+  "integrity_rules":["A supply relationship requires evidence of an actual flow, contract, or documented dependency.","Import share is not automatically supply vulnerability.","Supplier concentration and geographic concentration are separate measures.","Do not confuse ownership with supply.","Trade statistics require product definitions and reference periods.","Derived concentration metrics retain their denominator and classification system."]
+}

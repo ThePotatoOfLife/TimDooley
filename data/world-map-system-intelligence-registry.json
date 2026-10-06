@@ -1,0 +1,12 @@
+{
+  "version":"1.0.0",
+  "updated":"2026-09-12",
+  "purpose":"Contextual-only World Map registry for capability, dependency, resilience evidence, active builds and gateways. These entries extend the shared runtime without adding ordinary top-level navigation.",
+  "entries":[
+    {"id":"derived.capability","label":"Capability evidence","family":"capability","availability":"current","map_priority":"contextual","ordinary":false,"source_owner":"data/world-map-data-runtime.json","source_path":"countries.*.systems.capabilities","epistemic_type":"derived-from-explicit-canonical-fields"},
+    {"id":"derived.dependency","label":"Dependency evidence","family":"dependency","availability":"current","map_priority":"contextual","ordinary":false,"source_owner":"data/world-map-data-runtime.json","source_path":"countries.*.systems.dependencies","epistemic_type":"derived-from-explicit-canonical-fields"},
+    {"id":"derived.resilience","label":"Resilience evidence context","family":"resilience","availability":"current","map_priority":"contextual","ordinary":false,"source_owner":"data/world-map-data-runtime.json","source_path":"countries.*.systems.resilience","epistemic_type":"derived","notes":"No aggregate resilience score is inferred."},
+    {"id":"derived.builds","label":"Active builds / projects","family":"projects","availability":"current","map_priority":"contextual","ordinary":false,"source_owner":"data/world-map-data-runtime.json","source_path":"countries.*.systems.builds","epistemic_type":"observed-source-projected"},
+    {"id":"gateway.context","label":"Gateways / chokepoints","family":"infrastructure","availability":"current","map_priority":"contextual","ordinary":false,"source_owner":"data/world-map-data-runtime.json","source_path":"gateways","epistemic_type":"observed"}
+  ]
+}

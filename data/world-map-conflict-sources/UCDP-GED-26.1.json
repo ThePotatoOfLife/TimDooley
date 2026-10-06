@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0.0",
+  "id": "ucdp-ged-26.1",
+  "status": "source-verified-download-pending",
+  "reviewed_on": "2026-09-21",
+  "dataset": "UCDP Georeferenced Event Dataset (GED) Global version 26.1",
+  "owner": "Uppsala Conflict Data Program (UCDP), Uppsala University",
+  "source_url": "https://ucdp.uu.se/downloads/",
+  "download_url": "https://ucdp.uu.se/downloads/ged/ged261-csv.zip",
+  "version": "26.1",
+  "coverage": "1989-2025",
+  "license": "CC BY 4.0",
+  "attribution": "UCDP GED 26.1; Davies, Pettersson & Öberg (2026); Sundberg & Melander (2013)",
+  "intended_geometry_meaning": "event_aggregate",
+  "runtime_fetch_allowed": false,
+  "importer": {
+    "script": "scripts/import_world_conflict_event_aggregate.py",
+    "default_grid_degrees": 1,
+    "minimum_events_per_cell": 3,
+    "maximum_output_features": 2500,
+    "maximum_output_bytes": 1500000
+  },
+  "required_input_columns": [
+    "id",
+    "date_start",
+    "date_end",
+    "latitude",
+    "longitude",
+    "country",
+    "best"
+  ],
+  "promotion_requirements": [
+    "Acquire the official UCDP GED 26.1 CSV ZIP and record the acquired source SHA-256.",
+    "Use a closed historical observation period ending no later than 2025-12-31.",
+    "Aggregate raw events into coarse grid cells; never publish raw event coordinates through this conflict snapshot layer.",
+    "Suppress cells below the minimum event threshold.",
+    "Do not project actor names, source headlines, operational routes or event-level tactical detail.",
+    "Review generated feature count, byte size, temporal coverage and not-live boundary before manifest activation.",
+    "Keep administrative geography independent."
+  ]
+}

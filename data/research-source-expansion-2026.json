@@ -1,0 +1,23 @@
+{
+  "version":"1.0.0",
+  "updated":"2026-09-07",
+  "sources":[
+    {"id":"europol-tesat-2026","publisher":"Europol","title":"EU Terrorism Situation and Trend Report 2026","year":2026,"url":"https://www.europol.europa.eu/publication-events/main-reports/european-union-terrorism-situation-and-trend-report-2026-eu-te-sat","use":"EU terrorism attacks, arrests, ideological categories and emerging online/network trends."},
+    {"id":"europol-tesat-2025","publisher":"Europol","title":"EU Terrorism Situation and Trend Report 2025","year":2025,"url":"https://www.europol.europa.eu/publication-events/main-reports/european-union-terrorism-situation-and-trend-report-2025-eu-te-sat","use":"EU terrorism activity and trends in 2024; attacks, arrests and ideological categories."},
+    {"id":"europol-socta-2025","publisher":"Europol","title":"EU Serious and Organised Crime Threat Assessment 2025","year":2025,"url":"https://www.europol.europa.eu/publication-events/main-reports/changing-dna-of-serious-and-organised-crime","use":"Serious and organised crime networks, threat dynamics and emerging criminal trends."},
+    {"id":"europol-terrorism-overview","publisher":"Europol","title":"Terrorism and violent extremism","year":2026,"url":"https://www.europol.europa.eu/crime-areas/terrorism-and-violent-extremism","use":"Definitions and recurring categories used in EU terrorism reporting."},
+    {"id":"splc-white-nationalist-2024","publisher":"Southern Poverty Law Center","title":"White Nationalist extremist files / 2024 mapping","year":2024,"url":"https://www.splcenter.org/resources/extremist-files/white-nationalist/","use":"U.S. white-nationalist organizations and publicly documented locations; location is not membership."},
+    {"id":"splc-racist-skinhead-2024","publisher":"Southern Poverty Law Center","title":"Racist Skinhead extremist files / 2024 mapping","year":2024,"url":"https://www.splcenter.org/resources/extremist-files/racist-skinhead/","use":"Racist-skinhead organizations, terminology and locations."},
+    {"id":"cia-history","publisher":"Central Intelligence Agency","title":"CIA history and mission materials","year":1947,"use":"Establishment, statutory history and public mission of the CIA."},
+    {"id":"fbi-history","publisher":"Federal Bureau of Investigation","title":"FBI history materials","year":1908,"use":"Origin in 1908, development and federal investigative mandate."},
+    {"id":"mi5-history","publisher":"Security Service","title":"MI5 history","year":1909,"use":"Origin of the British Security Service and domestic security role."},
+    {"id":"mi6-history","publisher":"Secret Intelligence Service","title":"MI6 history","year":1909,"use":"Origin of SIS and foreign-intelligence role."},
+    {"id":"mossad-about","publisher":"Mossad","title":"About Mossad","year":1949,"use":"Public institutional identity and broad intelligence/special-operations mandate."}
+  ],
+  "captured_2026_metrics":{
+    "eu_tesat_2026":{"report_year":2026,"activity_year":2025,"attacks":45,"terrorism_arrests":486,"jihadist_share_of_attacks":24,"jihadist_share_of_arrests":347,"interpretation":"These are EU-level reported figures for terrorism activity and arrests, not membership counts of terrorist organizations."},
+    "eu_tesat_2025":{"report_year":2025,"activity_year":2024,"reported_attacks":58,"member_states_reporting_attacks":14,"completed":34,"failed":5,"foiled":19,"terrorism_arrests":449,"member_states_with_arrests":20},
+    "splc_active_club_2024":{"metric":"documented locations","not_membership":true,"interpretation":"SPLC's map lists many U.S. Active Club locations. Store these as locations/chapters, not people."}
+  },
+  "provenance_rule":"Every numerical field must carry a year, unit, scope and source. A reported incident count is never converted into an organization membership count. A location list is never converted into a member count. A legal designation is never converted into a statement of ideology without source context."
+}

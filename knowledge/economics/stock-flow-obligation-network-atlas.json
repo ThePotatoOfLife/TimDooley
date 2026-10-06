@@ -1,0 +1,261 @@
+{
+  "id": "stock-flow-obligation-network-atlas",
+  "title": "Economy & Finance Stock–Flow–Obligation Network Atlas",
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "owner_room": "economy-finance",
+  "purpose": "Represent observable economic systems as linked balance sheets, flows, contracts, ownership/control, prices, production and dependencies rather than isolated headline numbers.",
+  "master_distinctions": [
+    "stock != flow",
+    "asset != income",
+    "debt != deficit",
+    "ownership != control",
+    "gross exposure != net exposure",
+    "commitment != cash payment",
+    "nominal != real",
+    "market value != book value",
+    "liquidity != solvency",
+    "currency denomination != economic location",
+    "public obligation != project-symbolic/karmic accounting"
+  ],
+  "accounting_core": {
+    "identity": "Assets = Liabilities + Equity/net worth for a balance-sheet entity, subject to the accounting framework used.",
+    "flow_relation": "Period income/receipts and expenses/payments change cash and net worth together with valuation and other adjustments.",
+    "sector_rule": "One entity's financial asset is generally another entity's liability; sector consolidation removes internal positions.",
+    "time_rule": "Every stock needs an as-of date; every flow needs a period."
+  },
+  "node_types": [
+    "household",
+    "company",
+    "bank",
+    "fund",
+    "insurer/pension fund",
+    "government",
+    "central bank",
+    "public corporation",
+    "nonprofit",
+    "project/infrastructure asset",
+    "country/territory",
+    "market/sector"
+  ],
+  "edge_types": [
+    {
+      "id": "owns",
+      "fields": [
+        "share_or_amount",
+        "direct_or_indirect",
+        "voting/economic rights",
+        "date"
+      ]
+    },
+    {
+      "id": "controls",
+      "fields": [
+        "control_basis",
+        "percentage_if_applicable",
+        "date"
+      ],
+      "boundary": "Control may arise without majority economic ownership."
+    },
+    {
+      "id": "lends_to",
+      "fields": [
+        "principal",
+        "currency",
+        "rate_type",
+        "maturity",
+        "security/seniority",
+        "date"
+      ]
+    },
+    {
+      "id": "issues_security_to",
+      "fields": [
+        "instrument",
+        "face_or_market_value",
+        "currency",
+        "maturity",
+        "holder"
+      ]
+    },
+    {
+      "id": "pays_receives",
+      "fields": [
+        "flow_type",
+        "amount",
+        "period",
+        "currency",
+        "gross_or_net"
+      ]
+    },
+    {
+      "id": "contracts_with",
+      "fields": [
+        "contract_type",
+        "value",
+        "term",
+        "counterparty",
+        "procurement/source"
+      ]
+    },
+    {
+      "id": "trades_with",
+      "fields": [
+        "good/service",
+        "value/volume",
+        "period",
+        "direction"
+      ]
+    },
+    {
+      "id": "employs",
+      "fields": [
+        "employment_measure",
+        "compensation",
+        "period"
+      ]
+    },
+    {
+      "id": "depends_on",
+      "fields": [
+        "dependency_type",
+        "criticality",
+        "substitutability",
+        "time_horizon",
+        "evidence"
+      ]
+    },
+    {
+      "id": "guarantees",
+      "fields": [
+        "guaranteed_amount_or_scope",
+        "beneficiary",
+        "trigger",
+        "expiry"
+      ]
+    },
+    {
+      "id": "taxes_or_transfers",
+      "fields": [
+        "flow_type",
+        "amount",
+        "period",
+        "legal_basis"
+      ]
+    }
+  ],
+  "debt_anatomy": [
+    "borrower",
+    "creditor/holder",
+    "principal",
+    "currency",
+    "interest/coupon and rate type",
+    "issue/origination date",
+    "maturity",
+    "amortization",
+    "collateral/security",
+    "seniority",
+    "guarantee",
+    "governing law",
+    "market/book/face value",
+    "arrears/default/restructuring status"
+  ],
+  "risk_vectors": [
+    {
+      "id": "liquidity",
+      "question": "Can near-term payments be met without disorderly asset sales or emergency funding?"
+    },
+    {
+      "id": "solvency",
+      "question": "Do assets/income capacity plausibly cover liabilities/obligations over the relevant horizon?"
+    },
+    {
+      "id": "refinancing",
+      "question": "How much debt must be rolled over and under what rate/market conditions?"
+    },
+    {
+      "id": "currency",
+      "question": "Are obligations in a currency mismatched with revenues/assets?"
+    },
+    {
+      "id": "interest-rate",
+      "question": "How quickly do financing costs reset?"
+    },
+    {
+      "id": "concentration",
+      "question": "How dependent is the entity/system on a few customers, suppliers, lenders or markets?"
+    },
+    {
+      "id": "counterparty",
+      "question": "What happens if a linked entity fails to perform?"
+    },
+    {
+      "id": "supply",
+      "question": "How replaceable are critical inputs and routes?"
+    },
+    {
+      "id": "fiscal",
+      "question": "How do revenues, expenditure, transfers, debt service and contingent liabilities interact?"
+    },
+    {
+      "id": "valuation",
+      "question": "How sensitive are balance sheets to market prices, exchange rates or accounting assumptions?"
+    }
+  ],
+  "magnitude_contract": {
+    "stocks": [
+      "assets",
+      "liabilities",
+      "debt",
+      "cash",
+      "reserves",
+      "capital",
+      "market value"
+    ],
+    "flows": [
+      "revenue",
+      "wages",
+      "taxes",
+      "interest",
+      "investment",
+      "trade",
+      "transfers",
+      "procurement",
+      "dividends"
+    ],
+    "ratios": [
+      "debt-to-income_or_GDP",
+      "interest-burden",
+      "capital ratios",
+      "dependency shares",
+      "concentration measures"
+    ],
+    "rule": "Ratios require named numerator, denominator, period/date, units and source; unlike ratios must not be ranked as if interchangeable."
+  },
+  "shock_propagation": [
+    "price shock → income/cost change → cash flow → borrowing/investment/consumption response",
+    "rate shock → debt-service/refinancing change → balance-sheet response",
+    "supply disruption → inventory/production change → prices/substitution → trade/investment response",
+    "counterparty failure → credit loss/payment delay → liquidity/capital response → network spillover",
+    "policy/tax/transfer change → disposable resources/incentives → sectoral flows"
+  ],
+  "current_snapshot_contract": [
+    "as_of_or_period",
+    "geography",
+    "currency",
+    "nominal_or_real",
+    "seasonal_adjustment_if_relevant",
+    "source_release",
+    "revision_vintage",
+    "coverage",
+    "method"
+  ],
+  "joins": [
+    "north-obligation-graph-schema",
+    "data/countries/index.json",
+    "infrastructure-capability",
+    "politics-governance",
+    "provenance-evidence",
+    "foundation-room-atlas"
+  ]
+}

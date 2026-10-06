@@ -1,0 +1,15 @@
+/* Forge / Repair: page-specific content only.
+   Shared Room geometry lives in room-home.css; lower-layer.css owns Below skin. */
+.forge-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:18px 0}
+.forge-card{border:1px solid var(--site-line);padding:14px}
+.forge-card b{display:block;font:400 20px var(--site-font-serif);color:var(--site-gold);margin-bottom:5px}
+.forge-card p{margin:0;color:var(--site-muted);font-size:var(--site-text-sm);line-height:1.55}
+.conflict-stack{display:grid;gap:8px;margin:18px 0}
+.conflict-row{display:grid;grid-template-columns:155px minmax(0,1fr);gap:14px;border-top:1px solid var(--site-line);padding:10px 0}
+.conflict-row b{color:var(--site-gold)}
+.conflict-row span{color:var(--site-muted);line-height:1.5}
+.severity-line{font-family:var(--site-font-mono);border:1px solid var(--site-line);padding:13px;line-height:1.7;margin:16px 0;color:var(--site-muted)}
+.forge-return{margin:26px 0;padding:22px 18px;border:1px solid var(--site-line)}
+.forge-return h2{margin:.1rem 0 .7rem}
+.forge-return .return-line{font-family:var(--site-font-mono);border:1px solid var(--site-line);padding:13px;line-height:1.7;margin:15px 0}
+@media(max-width:700px){.forge-grid{grid-template-columns:1fr}.conflict-row{grid-template-columns:1fr;gap:4px}}

@@ -1,0 +1,251 @@
+{
+  "id": "potato-physical-chemistry-biophysics-atlas",
+  "title": "Potato Physical Chemistry & Biophysics — Water, Starch, Ions, Pressure, Heat and Fields",
+  "version": "1.0.0",
+  "updated": "2026-09-20",
+  "owner_room": "potato-biology",
+  "status": "canonical external physical-chemistry/biophysics layer",
+  "purpose": "Explain potato behavior using measurable physical chemistry: water chemical potential, osmotic/turgor pressure, semi-crystalline starch, ion binding, diffusion, gas transport, mechanics, thermal transitions, dielectric response and electrochemistry.",
+  "epistemic_boundary": "These are ordinary physical and chemical processes. They provide grounded comparators for project language such as storage, pressure, flow, boundary and release, but they do not imply a new fundamental force.",
+  "composition_as_material": {
+    "bulk": "Fresh potato tubers are typically about 80% water and about 20% dry matter, with starch the dominant dry-matter component; exact composition is cultivar- and condition-dependent.",
+    "material_view": "The tuber is a water-rich, porous, pressurized cellular composite containing polymer-rich cell walls, ion-containing aqueous phases and semi-crystalline starch granules.",
+    "consequence": "Its macroscopic behavior emerges from coupled water, polymer, membrane, cell-wall and granular-starch physics rather than from starch alone."
+  },
+  "water_and_chemical_potential": {
+    "compartments": [
+      "vacuole/cytosol",
+      "cell wall/apoplast",
+      "intercellular air spaces",
+      "starch granules",
+      "vascular tissues"
+    ],
+    "osmotic_principle": "Water moves in response to water-potential/chemical-potential differences across semipermeable membranes and porous tissues.",
+    "turgor": "Cellular osmotic water uptake generates hydrostatic turgor pressure that pre-stresses cell walls and contributes strongly to raw-tuber firmness.",
+    "loss_of_turgor": "Water loss, membrane damage or thermal loss of semipermeability reduces turgor and changes mechanical response.",
+    "model_examples": [
+      "van't Hoff ideal osmotic comparator: Π ≈ i C R T for dilute solutions",
+      "water-potential bookkeeping: Ψ = Ψ_s + Ψ_p + Ψ_g + Ψ_m, with relevant terms depending on scale",
+      "diffusive transport: J = -D ∇c as a first approximation"
+    ],
+    "caution": "Plant tissues are non-ideal, heterogeneous and multicompartmental; these equations are local approximations, not whole-tuber exact laws."
+  },
+  "starch_as_soft_matter": {
+    "molecular_components": {
+      "amylose": "Mostly linear alpha-glucan fraction, commonly about 20–33% of potato starch depending on cultivar/source.",
+      "amylopectin": "Highly branched alpha-glucan forming most of the semi-crystalline granule structure.",
+      "phosphate": "Potato amylopectin carries relatively abundant covalently bound phosphate monoesters, especially at C-6 and C-3 positions, contributing to hydration, ion interactions, swelling and viscosity.",
+      "lipids": "Native potato starch contains very little endogenous lipid compared with many cereal starches."
+    },
+    "granule_structure": {
+      "size": "Potato starch granules are unusually large, often spanning roughly 10–100 micrometres depending on source and fraction.",
+      "crystallinity": "Native potato starch commonly shows B-type crystallinity with alternating amorphous and semi-crystalline lamellae.",
+      "birefringence": "Ordered radial/semi-crystalline structure produces birefringence under crossed polarizers; gelatinization destroys this ordered optical signature.",
+      "internal_water": "NMR work resolves multiple water populations inside native potato starch, including water associated with amorphous and semi-crystalline regions and channel water in B-type crystalline structure."
+    },
+    "gelatinization_phase_transition": {
+      "process": [
+        "hydration",
+        "granule swelling",
+        "loss of birefringence",
+        "loss of crystalline order",
+        "polymer rearrangement/leaching"
+      ],
+      "typical_range": "Cultivar-dependent potato starch gelatinization commonly begins around the high-50s to low-60s °C, peaks around low- to mid-60s °C and concludes around upper-60s to low-70s °C in high-moisture conditions.",
+      "thermodynamics": "Differential scanning calorimetry measures onset, peak, conclusion and gelatinization enthalpy; representative cultivar studies report enthalpies around 15–18 J/g.",
+      "project_value": "This is a literal, measurable phase transition from ordered granular polymer structure to a hydrated, swollen, viscoelastic state."
+    },
+    "retrogradation": "On cooling/storage, gelatinized starch chains can reassociate into more ordered structures; extent depends on amylose/amylopectin architecture, water and thermal history.",
+    "rheology": {
+      "behavior": "Gelatinized potato starch forms high-viscosity, viscoelastic pastes and gels.",
+      "observables": [
+        "storage modulus G'",
+        "loss modulus G''",
+        "loss tangent tan δ",
+        "viscosity vs shear rate",
+        "gelatinization enthalpy"
+      ],
+      "cause": "Granule swelling, polymer entanglement, amylose/amylopectin architecture, phosphate groups, water and shear history jointly determine flow."
+    }
+  },
+  "cell_wall_and_mechanics": {
+    "structural_components": [
+      "cellulose",
+      "hemicellulose",
+      "pectin-rich middle lamella",
+      "membranes",
+      "turgor pressure"
+    ],
+    "raw_tissue": "Raw potato texture is produced by pressurized cells whose walls and middle lamella carry and redistribute mechanical stress.",
+    "anisotropy": "Potato parenchyma exhibits direction-dependent mechanical response; anisotropy and stiffness change with turgor and storage history.",
+    "cooking_transition": [
+      "starch granules absorb water and swell",
+      "membrane semipermeability is lost and turgor falls",
+      "pectin chemistry changes and intercellular adhesion weakens",
+      "fracture mode shifts toward cell separation rather than cell rupture"
+    ],
+    "calcium_pectin": "Ca2+ can ionically crosslink de-esterified pectin domains and strengthen intercellular adhesion; pulsed-electric-field or mild-thermal treatments can alter pectin methylesterification and calcium binding.",
+    "acid_effect": "Acidic pretreatment can remodel pectin chemistry and its interaction with cellulose, changing cooked texture.",
+    "micromechanics": "Single-cell compression experiments show cultivar- and heat-dependent force–deformation behavior and bursting events."
+  },
+  "heat_and_mass_transfer": {
+    "heat_equation": "ρ c_p ∂T/∂t = ∇·(k ∇T) + q_dot is a standard local heat-transfer model, with temperature- and composition-dependent material properties.",
+    "thermal_diffusivity": "Experimental potato values are of order 10^-7 m^2/s; one classic study reported about 1.3–1.4 × 10^-7 m^2/s for a fresh potato cultivar.",
+    "thermal_conductivity": "Thermal conductivity depends strongly on moisture content and tends to fall as potato tissue dries.",
+    "drying": "Drying couples heat transfer, water diffusion, shrinkage/structural change and evolving porosity; effective moisture diffusivity and surface-transfer coefficients are process-dependent.",
+    "frying": "Frying couples rapid heat input to water evaporation, steam formation, moisture diffusion, crust formation and oil uptake; effective moisture diffusivity rises strongly with frying temperature.",
+    "project_value": "The tuber is a coupled heat-and-mass-transfer object, so 'release' is physically better modeled as flux through gradients than as a single stored quantity suddenly vanishing."
+  },
+  "gas_transport": {
+    "pathway": "O2 entry and CO2 exit occur primarily through lenticels, then through internal air spaces and tissue diffusion.",
+    "permeability": "Mature periderm without lenticels is far less permeable to gases than lenticel regions.",
+    "internal_porosity": "Intercellular air space is only a small fraction of tuber volume but provides a fast gas-phase route because gas diffusivity in air is orders of magnitude greater than in water.",
+    "storage_consequence": "Lenticel state, temperature, respiration rate and atmosphere determine internal gas conditions and can influence dormancy, sprouting and hypoxia risk.",
+    "simple_model": "J_gas = -D_eff ∇c with D_eff determined by gas/water pathways, porosity, tortuosity and boundary permeability."
+  },
+  "electrical_and_dielectric_physics": {
+    "ionic_conduction": "Potato tissue contains water and dissolved ions, so it supports ionic conduction rather than metallic electronic conduction.",
+    "dielectric_response": "Alternating electric fields polarize membranes, ions and water; dielectric spectroscopy can therefore sense tissue composition and dry matter.",
+    "impedance_model": "Living tissue can be approximated by equivalent circuits with extracellular resistance, membrane capacitance and intracellular resistance; drying, heating or membrane damage shifts the spectrum.",
+    "electroporation": "Pulsed electric fields can raise transmembrane voltage enough to create transient or permanent pores in cell membranes, changing permeability and texture without requiring bulk cooking.",
+    "food_processing_use": "PEF is studied as a way to alter potato cell permeability, facilitate cutting/extraction and tune subsequent texture.",
+    "project_value": "A potato has real field-dependent behavior, but it is ordinary dielectric polarization, ionic current and membrane electroporation—not an exotic Potato field."
+  },
+  "electrochemistry_and_potato_battery": {
+    "correction": "The potato is not the fuel in the familiar zinc/copper 'potato battery'.",
+    "mechanism": "Two dissimilar metal electrodes supply the redox couple; the potato's water, salts and acids act mainly as an electrolyte supporting ionic charge transport.",
+    "circuit": "electrode oxidation/reduction + external electron flow + internal ionic current",
+    "project_value": "This is a clean example of medium versus source: the tuber can enable charge transport without being the origin of the electrode free energy."
+  },
+  "chemical_reactivity_and_processing": {
+    "reducing_sugars": [
+      "glucose",
+      "fructose"
+    ],
+    "amino_acid_interest": "Asparagine is especially important in fried-potato chemistry.",
+    "maillard": "At high processing temperatures, reducing sugars react with amino compounds through Maillard chemistry, generating color/flavor compounds and potentially acrylamide from asparagine-rich systems.",
+    "cold_storage_link": "Cold-induced sweetening raises reducing sugars, connecting storage temperature directly to later frying chemistry.",
+    "glycoalkaloids": [
+      "alpha-solanine",
+      "alpha-chaconine"
+    ],
+    "glycoalkaloid_rule": "Light/stress can accompany greening and glycoalkaloid changes; chlorophyll itself is not the toxic principle.",
+    "redox": "Potato tissue maintains measurable redox state and pH; wound, stress and metabolism alter ROS/antioxidant chemistry."
+  },
+  "useful_formalisms": [
+    {
+      "name": "chemical free-energy flow",
+      "form": "dG = dH - T dS",
+      "use": "frame storage/release reactions thermodynamically rather than as a new force"
+    },
+    {
+      "name": "diffusion",
+      "form": "J = -D∇c",
+      "use": "water, solute and gas transport approximation"
+    },
+    {
+      "name": "heat diffusion",
+      "form": "∂T/∂t = α∇²T",
+      "use": "cooking/cooling first approximation"
+    },
+    {
+      "name": "Darcy/porous flow comparator",
+      "form": "q = -(k_perm/μ)∇P",
+      "use": "pressure-driven flow only where porous-continuum assumptions are justified"
+    },
+    {
+      "name": "viscoelasticity",
+      "form": "G*(ω)=G'(ω)+iG''(ω)",
+      "use": "starch pastes and tissue rheology"
+    },
+    {
+      "name": "dielectric response",
+      "form": "ε*(ω)=ε'(ω)-iε''(ω)",
+      "use": "field-frequency response of water/ions/membranes"
+    },
+    {
+      "name": "electrical impedance",
+      "form": "Z(ω)=V(ω)/I(ω)",
+      "use": "non-destructive membrane/tissue-state measurement"
+    },
+    {
+      "name": "Arrhenius kinetics",
+      "form": "k=A exp(-Ea/RT)",
+      "use": "temperature-dependent reactions and effective transport models where empirically justified"
+    }
+  ],
+  "sources": [
+    {
+      "title": "Understanding starch biosynthesis in potatoes for metabolic engineering to improve starch quality: A detailed review",
+      "year": 2024,
+      "url": "https://www.sciencedirect.com/science/article/abs/pii/S014486172400818X"
+    },
+    {
+      "title": "Physico-chemical properties of potato starches",
+      "year": 2011,
+      "url": "https://www.sciencedirect.com/science/article/pii/S0308814610012008"
+    },
+    {
+      "title": "Physical, Chemical and Biochemical Modification Approaches of Potato (Peel) Constituents for Bio-Based Food Packaging Concepts: A Review",
+      "year": 2022,
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9498702/"
+    },
+    {
+      "title": "Understanding the mechanical performance of raw and cooked potato cells",
+      "year": 2021,
+      "url": "https://www.sciencedirect.com/science/article/pii/S0963996921003264"
+    },
+    {
+      "title": "The effect of osmotic adjustment on the mechanical properties of potato parenchyma",
+      "year": 1996,
+      "url": "https://www.sciencedirect.com/science/article/pii/S0963996996000555"
+    },
+    {
+      "title": "Effect of pulsed electric field, mild thermal pretreatment and calcium on texture changes of potato during subsequent cooking",
+      "year": 2021,
+      "url": "https://www.sciencedirect.com/science/article/abs/pii/S1466856421002319"
+    },
+    {
+      "title": "Thermal conductivity of potato as a function of moisture content",
+      "year": 1992,
+      "url": "https://www.sciencedirect.com/science/article/pii/026087749290058E"
+    },
+    {
+      "title": "Measurement of thermal diffusivity of potato, malt bread and wheat flour",
+      "year": 1995,
+      "url": "https://www.sciencedirect.com/science/article/pii/0260877494000255"
+    },
+    {
+      "title": "Electrical impedance analysis of potato tissues during drying",
+      "year": 2014,
+      "url": "https://www.sciencedirect.com/science/article/pii/S0260877413004123"
+    },
+    {
+      "title": "Cold electroporation in potato tissue induced by pulsed electric field",
+      "year": 2013,
+      "url": "https://www.sciencedirect.com/science/article/abs/pii/S026087741200475X"
+    },
+    {
+      "title": "Potato Tuber Lenticels: A Review of Their Development, Structure, Function, and Disease Susceptibility",
+      "year": 2023,
+      "url": "https://link.springer.com/article/10.1007/s12230-023-09923-5"
+    },
+    {
+      "title": "Morphological changes of lenticels and their role in gas exchange and sprouting physiology of potato tubers during postharvest storage",
+      "year": 2025,
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12188445/"
+    },
+    {
+      "title": "Build-a-Battery Workshop: From Nature to Battery",
+      "year": 2024,
+      "url": "https://www.acs.org/education/celebrating-chemistry-editions/2024-ccew/build-a-battery-workshop-from-nature-to-battery.html"
+    }
+  ],
+  "connections": [
+    "potato-molecular-development-and-signalling",
+    "potato-anatomy-metabolism-ecology",
+    "potato-life-cycle-state-machine",
+    "potato-pathology-immunity-storage",
+    "potato-measurement-physics"
+  ]
+}

@@ -1,0 +1,448 @@
+{
+  "id": "works-fruit-wave-001",
+  "version": "1.0.0",
+  "updated": "2026-09-20",
+  "status": "first concrete Works/Fruit instrumentation wave",
+  "authority": "data/house/works-fruit-contract.json",
+  "source_owners": [
+    "knowledge/culture/creative-systems-archive.json",
+    "knowledge/creative/artifact-history-registry.json",
+    "knowledge/creative/tim-dooley-suno-music-archive.json",
+    "knowledge/creative/visual-art-symbolic-composition-archive.json"
+  ],
+  "purpose": "Exercise the Works/Fruit contract on real project artifacts without equating existence, completion, popularity or canon relevance with good Fruit.",
+  "rules": [
+    "Unknown reception remains unknown; do not infer audience size or value from archive presence.",
+    "Creative provenance and recovery status remain separate from Fruit evaluation.",
+    "Fruit types are intended/evaluative categories, not claims that the work achieved the intended effect.",
+    "Future Seed names reusable capability the work could create; it is not evidence that the capability has already reproduced.",
+    "A Work may carry several Fruit types and risks simultaneously."
+  ],
+  "records": [
+    {
+      "work_id": "potato-growth-game",
+      "title": "Potato of Life Growth Game",
+      "work_type": "game / generational simulation",
+      "source_rooms": [
+        "games-simulations",
+        "potato-biology",
+        "symbolic-architecture"
+      ],
+      "center_nodes": [
+        "potato",
+        "seed",
+        "tree",
+        "fruit",
+        "return"
+      ],
+      "fruit_types": [
+        "creative",
+        "informational",
+        "reproductive"
+      ],
+      "intended_audience": [
+        "players interested in Potatoverse systems",
+        "readers who learn better through simulation"
+      ],
+      "intended_effect": "Turn growth, inheritance, selection, seasons, tradeoffs and generational memory into playable state transitions.",
+      "claim/evidence_boundary": "Simulation outcomes are consequences of its rules; they are not biological or economic evidence unless independently calibrated.",
+      "observable_reception": {
+        "status": "not-yet-instrumented",
+        "needed": [
+          "play sessions",
+          "return rate",
+          "which mechanics are understood/reused",
+          "player feedback"
+        ]
+      },
+      "externalities_or_risks": [
+        "systems may imply false biological realism if mechanics are not labeled as abstractions",
+        "optimization can crowd out the project's cultivation/variety themes"
+      ],
+      "future_seed": [
+        "reusable simulation engine for Seed→Root→Tree→Fruit cycles",
+        "test-bed for Door/state-transition mechanics",
+        "teaching module for inheritance and tradeoffs"
+      ],
+      "revision_status": "concept/archive stage; implementation maturity should be tracked separately from design",
+      "provenance": {
+        "origin_class": "USER_CONVERSATION_PRIMARY",
+        "owner": "knowledge/culture/creative-systems-archive.json"
+      }
+    },
+    {
+      "work_id": "tim-trading-game",
+      "title": "Tim Dooley Trading Game",
+      "work_type": "browser market simulation",
+      "source_rooms": [
+        "games-simulations",
+        "economy-finance",
+        "information-ecology"
+      ],
+      "center_nodes": [
+        "eye",
+        "flow",
+        "door",
+        "fruit"
+      ],
+      "fruit_types": [
+        "creative",
+        "informational"
+      ],
+      "intended_audience": [
+        "players interested in market interfaces and Potato humor"
+      ],
+      "intended_effect": "Make price signals, attention, narrative and feedback visible through a playful market-style interface.",
+      "claim/evidence_boundary": "The interface is not a market-data authority and simulated behavior is not evidence about real asset prices.",
+      "observable_reception": {
+        "status": "not-yet-instrumented",
+        "needed": [
+          "usage",
+          "decision traces",
+          "comprehension feedback",
+          "false-realism confusion reports"
+        ]
+      },
+      "externalities_or_risks": [
+        "could be mistaken for financial guidance if real-looking tickers are insufficiently bounded",
+        "attention mechanics may reward noise rather than learning"
+      ],
+      "future_seed": [
+        "generic signal-and-attention simulation components",
+        "market-literacy teaching experiments"
+      ],
+      "revision_status": "concept/archive stage",
+      "provenance": {
+        "origin_class": "USER_CONVERSATION_PRIMARY",
+        "owner": "knowledge/culture/creative-systems-archive.json"
+      }
+    },
+    {
+      "work_id": "ai-potato-town",
+      "title": "Self-Playing AI Potato Town",
+      "work_type": "agent simulation / pixel-game concept",
+      "source_rooms": [
+        "games-simulations",
+        "systems-dynamics",
+        "culture-information"
+      ],
+      "center_nodes": [
+        "house",
+        "room",
+        "door",
+        "eye",
+        "spiral",
+        "fruit"
+      ],
+      "fruit_types": [
+        "creative",
+        "informational",
+        "reproductive"
+      ],
+      "intended_audience": [
+        "observers of emergent agent systems",
+        "Potatoverse readers"
+      ],
+      "intended_effect": "Compress time so local rules, agent interaction, seasonal change and threshold events generate inspectable larger stories.",
+      "claim/evidence_boundary": "Emergence inside the simulation demonstrates properties of the implemented rules, not spontaneous evidence for Potatoverse cosmology or real social systems.",
+      "observable_reception": {
+        "status": "not-yet-instrumented",
+        "needed": [
+          "simulation runs",
+          "event diversity",
+          "repeatability",
+          "observer annotations",
+          "rule-ablation comparisons"
+        ]
+      },
+      "externalities_or_risks": [
+        "anthropomorphizing agents",
+        "confusing generated narrative with autonomous intelligence",
+        "over-reading small-rule simulations as social proof"
+      ],
+      "future_seed": [
+        "agent-based House/Room demonstrator",
+        "Door-event sandbox",
+        "compressed-time lifecycle laboratory"
+      ],
+      "revision_status": "concept/archive stage",
+      "provenance": {
+        "origin_class": "USER_CONVERSATION_PRIMARY",
+        "owner": "knowledge/culture/creative-systems-archive.json"
+      }
+    },
+    {
+      "work_id": "potato-school",
+      "title": "Secret Hidden Esoteric Potato School (Advanced)",
+      "work_type": "interactive quest / teaching satire",
+      "source_rooms": [
+        "games-simulations",
+        "practice-ethics",
+        "culture-information"
+      ],
+      "center_nodes": [
+        "door",
+        "eye",
+        "ladder",
+        "seed",
+        "garden"
+      ],
+      "fruit_types": [
+        "creative",
+        "informational",
+        "reproductive",
+        "poison-risk"
+      ],
+      "intended_audience": [
+        "readers who enjoy absurdist interactive teaching",
+        "Potatoverse community"
+      ],
+      "intended_effect": "Teach cultivation, thresholds and discernment through quests while parodying prestige, tuition, credentials and esoteric gatekeeping.",
+      "claim/evidence_boundary": "It is a creative teaching satire, not a real secret institution, credential or required initiation.",
+      "observable_reception": {
+        "status": "not-yet-instrumented",
+        "needed": [
+          "completion paths",
+          "which lessons transfer outside the game",
+          "misreading/gatekeeping reports"
+        ]
+      },
+      "externalities_or_risks": [
+        "satire can accidentally reproduce the prestige/exclusion mechanics it mocks",
+        "hidden-door framing can be misread as real authority"
+      ],
+      "future_seed": [
+        "quest-based philosophy curriculum",
+        "interactive Door/key/puzzle framework"
+      ],
+      "revision_status": "memory-recovery source; original specification still needs recovery",
+      "provenance": {
+        "origin_class": "MEMORY_RECOVERY",
+        "owner": "knowledge/culture/creative-systems-archive.json"
+      }
+    },
+    {
+      "work_id": "potatoverse-poetry",
+      "title": "Dense Potatoverse Poetry",
+      "work_type": "poetry / incantatory prose",
+      "source_rooms": [
+        "great-book-literature",
+        "culture-information",
+        "potatoverse-canon"
+      ],
+      "center_nodes": [
+        "door",
+        "axis",
+        "root",
+        "swamp",
+        "light"
+      ],
+      "fruit_types": [
+        "creative",
+        "informational",
+        "poison-risk"
+      ],
+      "intended_audience": [
+        "readers drawn to compressed symbolic language and performance cadence"
+      ],
+      "intended_effect": "Compress many recurring motifs into rhythm so relations can be felt, remembered and recombined outside expository prose.",
+      "claim/evidence_boundary": "Symbolic density can reveal project associations but is not independent evidence for historical, scientific or theological claims.",
+      "observable_reception": {
+        "status": "not-yet-instrumented",
+        "needed": [
+          "reader interpretation",
+          "motif recall",
+          "misinterpretation/ambiguity reports",
+          "reuse in later works"
+        ]
+      },
+      "externalities_or_risks": [
+        "compression can erase evidence boundaries",
+        "dense association can make accidental proximity look like causal relation"
+      ],
+      "future_seed": [
+        "motif lexicon",
+        "performance material",
+        "memory/compression experiments"
+      ],
+      "revision_status": "living creative form; individual artifacts need dated provenance",
+      "provenance": {
+        "owner": "knowledge/culture/creative-systems-archive.json"
+      }
+    },
+    {
+      "work_id": "sermon-comedy-hybrid",
+      "title": "Sermon / Comedy / Speech Hybrid",
+      "work_type": "performance writing",
+      "source_rooms": [
+        "great-book-literature",
+        "culture-information",
+        "practice-ethics"
+      ],
+      "center_nodes": [
+        "face",
+        "eye",
+        "fruit",
+        "return"
+      ],
+      "fruit_types": [
+        "creative",
+        "informational",
+        "repair",
+        "poison-risk"
+      ],
+      "intended_audience": [
+        "live or written audiences able to distinguish serious argument from parody"
+      ],
+      "intended_effect": "Use register switching between sermon, rant, comedy and systems analysis to lower prestige barriers and expose contradictions.",
+      "claim/evidence_boundary": "Rhetorical force, sacred register or audience laughter does not establish factual truth.",
+      "observable_reception": {
+        "status": "not-yet-instrumented",
+        "needed": [
+          "audience comprehension",
+          "which claims are remembered accurately",
+          "whether satire reduces or increases confusion"
+        ]
+      },
+      "externalities_or_risks": [
+        "register shifts can blur literal and comic claims",
+        "institutional critique can become personal caricature if boundaries fail"
+      ],
+      "future_seed": [
+        "performance grammar for sacred-absurd translation",
+        "teaching examples for claim/register separation"
+      ],
+      "revision_status": "living creative form",
+      "provenance": {
+        "owner": "knowledge/culture/creative-systems-archive.json"
+      }
+    },
+    {
+      "work_id": "suno-music-archive",
+      "title": "Suno Music Archive",
+      "work_type": "music / lyric experiment corpus",
+      "source_rooms": [
+        "music-sound",
+        "great-book-literature",
+        "culture-information"
+      ],
+      "center_nodes": [
+        "flow",
+        "spirit",
+        "fruit",
+        "seed"
+      ],
+      "fruit_types": [
+        "creative",
+        "reproductive",
+        "informational"
+      ],
+      "intended_audience": [
+        "listeners",
+        "future collaborators",
+        "researchers tracing project motif development"
+      ],
+      "intended_effect": "Carry project mood, cadence, motifs and narrative through sound while preserving dated creative experiments.",
+      "claim/evidence_boundary": "Songs are creative artifacts and provenance records; lyrical assertions are not independent factual evidence.",
+      "observable_reception": {
+        "status": "partially-observable-but-not-yet-normalized",
+        "needed": [
+          "dated releases",
+          "plays/listens where available",
+          "reuse/remix lineage",
+          "listener feedback"
+        ],
+        "boundary": "Do not infer truth or value directly from play counts."
+      },
+      "externalities_or_risks": [
+        "generated-music authorship/provenance can blur if prompts and outputs are not linked",
+        "lyric compression can backdate later canon if chronology is ignored"
+      ],
+      "future_seed": [
+        "reusable music aesthetics",
+        "motif chronology",
+        "prompt/composition library",
+        "future remix material"
+      ],
+      "revision_status": "active archive; continue source and date normalization",
+      "provenance": {
+        "owner": "knowledge/creative/tim-dooley-suno-music-archive.json"
+      }
+    },
+    {
+      "work_id": "visual-art-symbolic-compositions",
+      "title": "Visual Art & Symbolic Composition Corpus",
+      "work_type": "image concepts / diagrams / generated-art lineage",
+      "source_rooms": [
+        "visual-art",
+        "symbolic-architecture",
+        "culture-information"
+      ],
+      "center_nodes": [
+        "house",
+        "door",
+        "axis",
+        "tree",
+        "garden",
+        "eye"
+      ],
+      "fruit_types": [
+        "creative",
+        "informational",
+        "reproductive",
+        "poison-risk"
+      ],
+      "intended_audience": [
+        "visual readers",
+        "future artists/designers",
+        "researchers tracing symbol development"
+      ],
+      "intended_effect": "Make project relationships spatially inspectable and preserve the evolution of compositions that prose alone can flatten.",
+      "claim/evidence_boundary": "A compelling composition is a visual interpretation, not empirical evidence or proof of scriptural/historical identity.",
+      "observable_reception": {
+        "status": "not-yet-instrumented",
+        "needed": [
+          "artifact dates",
+          "variant lineage",
+          "reuse on public pages",
+          "viewer interpretation",
+          "accessibility/clarity feedback"
+        ]
+      },
+      "externalities_or_risks": [
+        "visual proximity can imply false identity",
+        "AI-generated style/content provenance can be lost",
+        "symbolic imagery can overpower textual evidence boundaries"
+      ],
+      "future_seed": [
+        "reusable diagram language",
+        "composition lineage",
+        "visual House/Axis teaching assets"
+      ],
+      "revision_status": "active archival consolidation",
+      "provenance": {
+        "owner": "knowledge/creative/visual-art-symbolic-composition-archive.json"
+      }
+    }
+  ],
+  "coverage": {
+    "records": 8,
+    "categories": [
+      "games/simulation",
+      "interactive teaching",
+      "poetry/performance",
+      "music",
+      "visual art"
+    ],
+    "intentionally_deferred": [
+      "Dog House fiction",
+      "Wall Practice / Carving Sequence",
+      "Mashy Arc",
+      "Infinite Potato",
+      "Reverse Triangulation",
+      "Ultimate Eyebrow",
+      "Great Book of Potato"
+    ],
+    "next_wave_rule": "Prefer artifacts with recoverable owner/provenance; memory-recovered works may be instrumented only when their uncertainty remains explicit."
+  }
+}

@@ -1,0 +1,230 @@
+#!/usr/bin/env python3
+"""Build compact country identity/geography facts for the public atlas.
+
+Canonical data/countries records remain first priority. Missing display facts are
+filled from GeoNames countryInfo at build time so browser hover stays same-origin,
+fast, and resilient. The runtime snapshot records field provenance explicitly and
+preserves the definition of the winning area field instead of flattening land area
+and generic area into an unlabeled number.
+"""
+from __future__ import annotations
+
+import json
+import os
+import urllib.request
+from datetime import datetime, timezone
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+INDEX = ROOT / "data" / "countries" / "index.json"
+COUNTRIES_DIR = ROOT / "data" / "countries"
+OUT = Path(os.environ.get("ATLAS_COUNTRY_FACTS_OUT", ROOT / "data" / "world-country-facts.json"))
+EXPECTED = 195
+GEONAMES_URL = "https://download.geonames.org/export/dump/countryInfo.txt"
+USER_AGENT = "ThePotatoOfLife-world-atlas-country-facts/1.3"
+CONTINENTS = {
+    "AF": "Africa", "AS": "Asia", "EU": "Europe", "NA": "North America",
+    "OC": "Oceania", "SA": "South America", "AN": "Antarctica",
+}
+
+
+def clean(value):
+    if value is None:
+        return None
+    if isinstance(value, str):
+        value = value.strip()
+        return value or None
+    return value
+
+
+def number(value):
+    if value is None or value == "":
+        return None
+    try:
+        return float(value)
+    except (TypeError, ValueError):
+        return None
+
+
+def first_number(*values):
+    for value in values:
+        parsed = number(value)
+        if parsed is not None:
+            return parsed
+    return None
+
+
+def canonical_area_value(geography: dict, record: dict) -> tuple[float | None, str | None, str | None]:
+    """Return the first canonical area value together with its exact field semantics."""
+    candidates = (
+        (geography.get("land_area_km2"), "geography.land_area_km2", "land area"),
+        (geography.get("area_km2"), "geography.area_km2", "area"),
+        (record.get("area_km2"), "area_km2", "area"),
+    )
+    for raw, field, definition in candidates:
+        parsed = number(raw)
+        if parsed is not None:
+            return parsed, field, definition
+    return None, None, None
+
+
+def fetch_geonames() -> dict[str, dict]:
+    req = urllib.request.Request(GEONAMES_URL, headers={"User-Agent": USER_AGENT})
+    with urllib.request.urlopen(req, timeout=120) as response:
+        text = response.read().decode("utf-8-sig")
+    rows = {}
+    for line in text.splitlines():
+        if not line or line.startswith("#"):
+            continue
+        parts = line.split("\t")
+        if len(parts) < 18:
+            continue
+        iso3 = clean(parts[1])
+        if not iso3 or len(iso3) != 3:
+            continue
+        area = first_number(parts[6])
+        rows[iso3.upper()] = {
+            "name": clean(parts[4]),
+            "capital": clean(parts[5]),
+            "area_km2": int(round(area)) if area is not None else None,
+            "continent": CONTINENTS.get(clean(parts[8]) or "", clean(parts[8])),
+            "currency": clean(parts[10]),
+            "languages": [x for x in (clean(parts[15]) or "").split(",") if x],
+            "neighbors": [x for x in (clean(parts[17]) or "").split(",") if x],
+        }
+    if len(rows) < 190:
+        raise RuntimeError(f"GeoNames countryInfo coverage unexpectedly low: {len(rows)}")
+    return rows
+
+
+def country_record(index_row: dict) -> dict:
+    path = COUNTRIES_DIR / f"{index_row['id']}.json"
+    if not path.exists():
+        return {}
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except Exception:
+        return {}
+
+
+def country_facts(index_row: dict, fallback: dict) -> dict:
+    record = country_record(index_row)
+    identity = record.get("identity") if isinstance(record.get("identity"), dict) else {}
+    geography = record.get("geography") if isinstance(record.get("geography"), dict) else {}
+    code = index_row["iso3"]
+    external = fallback.get(code, {})
+    owner = f"data/countries/{index_row['id']}.json"
+
+    canonical_name = clean(identity.get("name")) or clean(index_row.get("name"))
+    canonical_official_name = clean(identity.get("official_name"))
+    canonical_area, canonical_area_field, canonical_area_definition = canonical_area_value(geography, record)
+    canonical_capital = clean(identity.get("capital"))
+    canonical_continent = clean(identity.get("continent"))
+    canonical_region = clean(identity.get("region"))
+    canonical_subregion = clean(identity.get("subregion"))
+    canonical_currency = clean(identity.get("currency"))
+    canonical_national_day = clean(identity.get("national_day"))
+
+    name = canonical_name or external.get("name")
+    capital = canonical_capital or external.get("capital")
+    area = canonical_area if canonical_area is not None else external.get("area_km2")
+    continent = canonical_continent or external.get("continent")
+    currency = canonical_currency or external.get("currency")
+    area_field = canonical_area_field if canonical_area is not None else ("GeoNames countryInfo.Area(in sq km)" if area is not None else None)
+    area_definition = canonical_area_definition if canonical_area is not None else ("GeoNames Area(in sq km)" if area is not None else None)
+
+    field_sources = {
+        "name": owner if canonical_name else ("GeoNames countryInfo" if name else None),
+        "official_name": owner if canonical_official_name else None,
+        "capital": owner if canonical_capital else ("GeoNames countryInfo" if capital else None),
+        "area_km2": owner if canonical_area is not None else ("GeoNames countryInfo" if area is not None else None),
+        "continent": owner if canonical_continent else ("GeoNames countryInfo" if continent else None),
+        "region": owner if canonical_region else None,
+        "subregion": owner if canonical_subregion else None,
+        "currency": owner if canonical_currency else ("GeoNames countryInfo" if currency else None),
+        "national_day": owner if canonical_national_day else None,
+        "languages": "GeoNames countryInfo" if external.get("languages") else None,
+        "neighbors": "GeoNames countryInfo" if external.get("neighbors") else None,
+    }
+
+    facts = {
+        "name": name,
+        "official_name": canonical_official_name,
+        "capital": capital,
+        "continent": continent,
+        "region": canonical_region,
+        "subregion": canonical_subregion,
+        "currency": currency,
+        "national_day": canonical_national_day,
+        "area_km2": int(round(area)) if area is not None else None,
+        "area_field": area_field,
+        "area_definition": area_definition,
+        "languages": external.get("languages") or None,
+        "neighbors": external.get("neighbors") or None,
+        "source_owner": owner,
+        "fallback_source": "GeoNames countryInfo",
+        "fallback_source_url": GEONAMES_URL,
+        "field_sources": {key: value for key, value in field_sources.items() if value},
+    }
+    return {key: value for key, value in facts.items() if value is not None}
+
+
+def main() -> int:
+    index = json.loads(INDEX.read_text(encoding="utf-8"))
+    countries = index.get("countries", [])
+    if len(countries) != EXPECTED:
+        raise RuntimeError(f"Expected {EXPECTED} canonical countries; found {len(countries)}")
+
+    try:
+        geonames = fetch_geonames()
+    except Exception as exc:
+        print(f"GeoNames fallback unavailable; canonical-only facts will be built: {exc}", flush=True)
+        geonames = {}
+
+    rows = {country["iso3"]: country_facts(country, geonames) for country in countries}
+    capital_coverage = sum(1 for row in rows.values() if row.get("capital"))
+    area_coverage = sum(1 for row in rows.values() if row.get("area_km2") is not None)
+    region_coverage = sum(1 for row in rows.values() if row.get("region") or row.get("continent"))
+    currency_coverage = sum(1 for row in rows.values() if row.get("currency"))
+    area_definition_coverage = sum(1 for row in rows.values() if row.get("area_definition"))
+
+    if geonames:
+        if capital_coverage < 190:
+            raise RuntimeError(f"Capital coverage unexpectedly low after GeoNames fallback: {capital_coverage}")
+        if area_coverage < 190:
+            raise RuntimeError(f"Area coverage unexpectedly low after GeoNames fallback: {area_coverage}")
+        if region_coverage < 190:
+            raise RuntimeError(f"Region/continent coverage unexpectedly low after GeoNames fallback: {region_coverage}")
+        if area_definition_coverage != area_coverage:
+            raise RuntimeError(f"Area semantics incomplete: {area_definition_coverage}/{area_coverage} area values have definitions")
+
+    payload = {
+        "version": "1.3.0",
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "record_type": "world-country-facts-runtime",
+        "scope": "Presentation/runtime snapshot over canonical country records; missing display facts may be filled from GeoNames countryInfo with per-field provenance and explicit area-field semantics.",
+        "country_count": len(rows),
+        "capital_coverage": capital_coverage,
+        "area_coverage": area_coverage,
+        "area_definition_coverage": area_definition_coverage,
+        "region_coverage": region_coverage,
+        "currency_coverage": currency_coverage,
+        "fallback_source": {"name": "GeoNames countryInfo", "url": GEONAMES_URL},
+        "countries": rows,
+    }
+    OUT.parent.mkdir(parents=True, exist_ok=True)
+    OUT.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print(json.dumps({
+        "output": str(OUT),
+        "countries": len(rows),
+        "capital_coverage": capital_coverage,
+        "area_coverage": area_coverage,
+        "area_definition_coverage": area_definition_coverage,
+        "region_coverage": region_coverage,
+        "currency_coverage": currency_coverage,
+    }, indent=2))
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

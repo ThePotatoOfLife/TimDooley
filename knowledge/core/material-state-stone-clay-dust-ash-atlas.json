@@ -1,0 +1,147 @@
+{
+  "id": "material-state-stone-clay-dust-ash-atlas",
+  "title": "Stone, Rock, Clay, Dust, Ash, Mud & Soil — Material-State Grammar",
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "status": "material metaphor + biblical context + project transformation grammar",
+  "purpose": "Separate durable solids, formable earth, fine particulate, combustion residue, wet unresolved mixture and living substrate so the project's lower/material symbols can transform without becoming a single moralized 'mud' category.",
+  "master_rule": "Material state precedes moral value. A thing can be below, broken, dusty, muddy, stony or ashy without being evil. Ask what properties and transitions matter.",
+  "states": [
+    {
+      "id": "stone",
+      "material_class": "durable discrete solid",
+      "project_functions": [
+        "compressed potential",
+        "marker/witness",
+        "foundation unit",
+        "kingdom/Mountain transformation comparator",
+        "identity token depending text"
+      ],
+      "distinctions": [
+        "Stone ≠ Rock mass/source",
+        "Stone ≠ Cornerstone role",
+        "Stone ≠ Philosopher's Stone automatically"
+      ]
+    },
+    {
+      "id": "rock",
+      "material_class": "larger geological mass/outcrop category",
+      "project_functions": [
+        "refuge",
+        "source/foundation",
+        "stability"
+      ],
+      "distinction": "Rock is a material/landform category; Cornerstone is an architectural role."
+    },
+    {
+      "id": "cornerstone",
+      "material_class": "architectural/reference role",
+      "project_functions": [
+        "alignment",
+        "structural reference",
+        "relation among building elements"
+      ],
+      "distinction": "Cornerstone meaning depends on building practice/textual metaphor; it is not every important stone."
+    },
+    {
+      "id": "clay",
+      "material_class": "fine-grained formable earth when water-bearing/plastic",
+      "project_functions": [
+        "formability",
+        "potter/formation",
+        "mud→form potential"
+      ],
+      "scholarly_context": "Jewish texts could combine Genesis dust-creation and prophetic potter/clay traditions as related but distinct creation/formability images.",
+      "source": "https://portal.research.lu.se/en/publications/taken-from-dust-formed-from-clay-compound-allusions-amp-scriptura/",
+      "distinction": "Clay is not simply hardened mud and is not stone without geological/ceramic transformation."
+    },
+    {
+      "id": "dust",
+      "material_class": "loose fine particulate",
+      "project_functions": [
+        "mortality",
+        "fragility",
+        "unformed/dispersed material",
+        "return-to-earth"
+      ],
+      "distinction": "Dust is not Soil; dust lacks the living ecological structure implied by healthy soil."
+    },
+    {
+      "id": "ash",
+      "material_class": "residue remaining after combustion",
+      "project_functions": [
+        "post-rupture evidence",
+        "memory/debris",
+        "possible input to repair"
+      ],
+      "biblical_neighbor": "Numbers 19 uses burned red-heifer ash mixed with water in corpse-impurity purification ritual.",
+      "distinction": "Ash is not automatically fertile, pure or dead; composition and context matter."
+    },
+    {
+      "id": "mud",
+      "material_class": "wet mixture/soft sediment state",
+      "project_functions": [
+        "unresolved mixing",
+        "drag",
+        "path dependence",
+        "material before contextualization"
+      ],
+      "distinction": "Mud is not Swamp: Mud is material/state; Swamp is terrain/regime of accumulated entanglement."
+    },
+    {
+      "id": "soil",
+      "material_class": "structured living growth substrate",
+      "project_functions": [
+        "contextualized memory",
+        "root support",
+        "nutrient/growth medium",
+        "repaired residue"
+      ],
+      "distinction": "Soil is not purity; healthy soil contains decomposed history and complex living/nonliving matter."
+    }
+  ],
+  "transition_grammar": [
+    {
+      "from": "dust/clay material",
+      "to": "formed vessel/brick/ceramic",
+      "condition": "water, shaping, drying and possibly firing depending material/product",
+      "boundary": "This is not a universal spiritual sequence."
+    },
+    {
+      "from": "organic/material rupture",
+      "to": "ash",
+      "condition": "combustion/fire",
+      "project_neighbor": "destruction or transformation leaves recoverable residue"
+    },
+    {
+      "from": "ash/mud",
+      "to": "soil-like project state",
+      "condition": "contextualization, integration, suitable chemistry/ecology, repair",
+      "boundary": "Literal ash can harm soils at high concentration or unsuitable chemistry; project 'Ash→Soil' is primarily a repair metaphor."
+    },
+    {
+      "from": "stone",
+      "to": "mountain",
+      "condition": "Daniel 2 literary-symbolic transformation",
+      "boundary": "Not a geological mechanism; biblical kingdom imagery."
+    }
+  ],
+  "project_cycle": {
+    "sequence": "Dust/raw material → mixture/Mud → {capture/Swamp | shaping/Clay | contextualization/Soil} → Root/Seed → Tree/Fruit; rupture may create Ash that re-enters the fork.",
+    "correction": "Do not force every material through every state. This is a routing grammar, not one universal lifecycle."
+  },
+  "moral_boundary": [
+    "Hardness can protect or obstruct.",
+    "Softness can enable formation or create instability.",
+    "Residue can preserve evidence or contaminate.",
+    "Burial/depth can nourish roots or conceal harm.",
+    "Only downstream function, relation and Fruit determine project valence."
+  ],
+  "connections": [
+    "stone-mountain-footstool-seat-ascent-atlas",
+    "garden-mud-orientation",
+    "repair-forge-protocol",
+    "alchemy-transmutation-symbol-atlas",
+    "water-flow-river-drain-atlas"
+  ]
+}

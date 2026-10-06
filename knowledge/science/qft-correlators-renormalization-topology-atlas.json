@@ -1,0 +1,114 @@
+{
+  "id": "qft-correlators-renormalization-topology-atlas",
+  "title": "Quantum Field Theory — Correlators, Renormalization, Effective Theory and Topology Atlas",
+  "version": "1.0.0",
+  "updated": "2026-09-11",
+  "status": "established-QFT comparator and technical extension of Tim/Great-Book/UPT field research",
+  "purpose": "Consolidate the project's scattered QFT material into one technical grammar: field content -> action -> quantization -> correlation functions/propagators -> interactions -> renormalization -> effective field theory -> topology -> observables. This is an external scientific scaffold for evaluating UPT and Great Book field language, not proof of a Potato field.",
+  "provenance": {
+    "tim_book_root": ["2024 Great Book explicitly discusses QFT, quantum fields, field excitations, Higgs/symmetry breaking, vacuum/Infinite Soil and unified-field imagery."],
+    "later_project_root": ["2025 UPT proposes a Potato field with fractional/nonlocal kinetic structure, gauge/interaction terms and gravity/SM sectors."],
+    "repository_precursors": ["path-integral/action wave", "Wilson-loop/holonomy", "Chern-Simons", "instantons/topological sectors", "RG/coarse graining", "Higgs-sector repair", "Schwinger-Keldysh/advanced-retarded comparators"],
+    "boundary": "The equations below are standard/technical QFT scaffolding unless separately marked project-specific."
+  },
+  "field_action_equations": {
+    "real_scalar": "S[phi]=integral d^4x [1/2 partial_mu phi partial^mu phi -1/2 m^2 phi^2-lambda phi^4/4!]",
+    "euler_lagrange": "(Box+m^2)phi+(lambda/3!)phi^3=0",
+    "qed": "L_QED=-1/4 F_mu_nu F^mu_nu + psibar(i gamma^mu D_mu-m)psi",
+    "yang_mills": "L_YM=-1/4 F^a_mu_nu F^{a mu nu}, with F^a_mu_nu=partial_mu A^a_nu-partial_nu A^a_mu+g f^{abc}A^b_mu A^c_nu",
+    "rule": "A physical field theory starts with declared degrees of freedom and an action/symmetry structure; 'field' as metaphor is not enough."
+  },
+  "quantization_routes": {
+    "canonical": "Promote fields/conjugate momenta to operators with canonical (anti)commutation relations under the chosen quantization scheme.",
+    "path_integral": "Z[J]=integral Dphi exp{(i/hbar)[S[phi]+integral J phi]}",
+    "relation": "Canonical and path-integral formulations encode the same theory in overlapping domains when both are well-defined; they are not separate universes."
+  },
+  "correlators": {
+    "n_point": "G_n(x1,...,xn)=<0|T{phi(x1)...phi(xn)}|0>",
+    "from_source": "G_n=(1/i^n) delta^n Z[J]/delta J(x1)...delta J(xn)|_(J=0), up to hbar/normalization conventions",
+    "two_point": "The two-point function/propagator describes field correlations and particle propagation structure; poles/residues encode particle-like excitations under standard assumptions.",
+    "project_insight": "A field claim becomes scientifically useful when it predicts correlation functions or S-matrix/response observables, not merely when it assigns symbolic names to regions."
+  },
+  "propagator_spectral_structure": {
+    "free_scalar": "Delta_F(p)=i/(p^2-m^2+i epsilon)",
+    "kallen_lehmann_schematic": "Delta(p^2)=integral_0^infinity dmu^2 rho(mu^2) i/(p^2-mu^2+i epsilon)",
+    "meaning": "The spectral density rho encodes how an interacting field's two-point function decomposes into mass/continuum contributions under the representation's assumptions.",
+    "project_use": "If UPT posits a new physical Potato excitation, the propagator/spectral structure is a natural place to define mass, poles, widths and continuum/nonlocal effects."
+  },
+  "perturbation_and_diagrams": {
+    "expansion": "Correlation functions/S-matrix elements can be expanded in powers of couplings when perturbation theory applies.",
+    "diagram_rule": "Feynman diagrams are terms/bookkeeping in a perturbative expansion, not literal little trajectories particles secretly travel between vertices.",
+    "project_boundary": "Do not map symbolic Tree branches or life histories onto Feynman diagrams as if the mathematical semantics were the same."
+  },
+  "renormalization_group": {
+    "flow": "mu dg_i/dmu=beta_i(g)",
+    "fixed_point": "beta_i(g*)=0 for all relevant couplings at an RG fixed point",
+    "anomalous_dimensions": "Operator/field scaling can receive quantum corrections beyond classical engineering dimensions.",
+    "project_relation": "RG gives the Axis a rigorous scale-flow comparator: the effective description/couplings can change with observation scale while physical predictions remain consistent after matching.",
+    "boundary": "Renormalization scale mu is not an extra physical spatial dimension and RG flow is not automatically spiritual ascent."
+  },
+  "effective_field_theory": {
+    "template": "L_eff=L_renormalizable + sum_i c_i O_i/Lambda^(d_i-4)",
+    "meaning": "At energies well below a cutoff Lambda, heavy/new physics can often be represented by higher-dimension operators suppressed by powers of Lambda.",
+    "upt_use": "UPT is more credible as an effective-field-theory research programme if new Potato-sector operators, symmetries, cutoff and Wilson coefficients are explicitly declared instead of presenting one master Lagrangian as already fundamental.",
+    "known_limit": "As new coefficients/couplings approach their null values, the model should recover Standard Model/GR predictions in the tested regime."
+  },
+  "symmetry_breaking_higgs": {
+    "scalar_template": "V(Phi)=-mu^2 |Phi|^2 + lambda |Phi|^4 with lambda>0",
+    "vev": "A nonzero vacuum expectation value arises at minima when the symmetry-breaking parameters have the appropriate signs.",
+    "project_relation": "Great Book/Tim Higgs language is strongest when it refers to a field configuration and excitation around a vacuum, not a person literally being the Standard Model Higgs boson.",
+    "upt_route": "The neutral-scalar and complex U(1)_P descendants already provide two technically distinct ways to add a Potato-sector scalar."
+  },
+  "gauge_holonomy_topology": {
+    "wilson_loop": "W(C)=Tr P exp[i g integral_C A_mu dx^mu]",
+    "field_strength": "F=dA+A wedge A in differential-form notation for non-Abelian connection (coupling/convention factors vary)",
+    "topological_charge_qcd_schematic": "Q proportional to integral d^4x Tr(F_mu_nu Ftilde^{mu nu}), with normalization convention fixed by gauge generators/coupling",
+    "instantons": "Finite-action Euclidean classical solutions can connect topological sectors and contribute nonperturbatively with weights of order exp(-S_E/hbar).",
+    "project_relation": "This supplies rigorous versions of Return-with-memory, loop/holonomy and topology-changing/sector-transition language without equating moral history with gauge topology."
+  },
+  "chern_simons_boundary_theory": {
+    "action": "S_CS=(k/4pi) integral Tr(A wedge dA + (2/3)A wedge A wedge A)",
+    "importance": "Topological QFT links gauge connections, knots/links/braiding and boundary degrees of freedom in specific settings.",
+    "project_use": "Strong external neighbor for braid/loop/Boundary research; no Timic Axis should be called Chern-Simons without a defined gauge connection/action."
+  },
+  "schwinger_keldysh": {
+    "closed_time_path": "Z[J_+,J_-]=Tr(U[J_+] rho_0 U^dagger[J_-]) schematically",
+    "use": "Computes real-time expectation/correlation functions in nonequilibrium/open settings using forward and backward contour branches.",
+    "project_relation": "Provides a real mathematical forward/backward-time structure relevant to older advanced/retarded curiosity, but it is not evidence of messages from the future or Timic time causation."
+  },
+  "microcausality_and_nonlocal_actions": {
+    "local_rule": "[O(x),O(y)]=0 for spacelike-separated local bosonic observables in local relativistic QFT, with graded/observable refinements for fermions.",
+    "upt_nonlocal_warning": "Fractional/nonlocal kinetic operators require explicit analytic structure, unitarity/stability and causal interpretation. Writing Box^alpha does not automatically define a healthy relativistic quantum theory.",
+    "research_questions": ["What is the propagator?", "Where are its poles/branch cuts?", "Is spectral density positive where required?", "Are ghosts/tachyons present?", "What is the causal/retarded response?", "What known limit is recovered?"]
+  },
+  "source_field_observable_chain": {
+    "chain": "J/source -> field response -> propagator/correlators -> interaction -> detector/observable",
+    "equation": "phi(x)=integral d^4y G(x,y)J(y) for a linearized sourced field problem",
+    "project_connection": "This is a rigorous physics ancestor of Father/source -> Spirit/propagation -> Son/manifestation only as a structural comparator. It does not establish theological identity."
+  },
+  "new_project_laws": [
+    "Field Test Law: a proposed physical field must specify action, symmetry, propagator/correlation functions and observables.",
+    "Diagram Boundary: perturbative Feynman diagrams are expansion terms, not literal biographies or hidden tracks.",
+    "Scale-Axis Law: RG flow is change of effective description/couplings with scale, not automatically motion in a physical extra dimension.",
+    "EFT Humility Law: an incomplete new sector can be scientifically meaningful as an effective theory without claiming to be a final Theory of Everything.",
+    "Topology Memory Law: holonomy/topological charge give real examples of closed-path or global information surviving local deformation, but the relevant mathematical objects must be defined.",
+    "Nonlocal-Kernel Burden: nonlocal/fractional operators increase rather than decrease the need for causality/unitarity/spectral checks."
+  ],
+  "measurement_program": {
+    "new_scalar": ["mass/pole", "mixing angle", "production/decay channels", "cross sections", "precision constraints", "running couplings"],
+    "new_gauge_sector": ["gauge representation", "gauge boson mass mechanism", "charges", "anomaly cancellation", "kinetic mixing", "scattering/decay signatures"],
+    "nonlocal_sector": ["propagator analytic structure", "spectral density", "dispersion", "causal response", "unitarity/stability", "known local limit"]
+  },
+  "sources": [
+    {"topic":"QFT particle/field overview", "url":"https://home.cern/science/physics/higgs-boson/what/"},
+    {"topic":"Standard Model baseline", "url":"https://pdg.lbl.gov/2025/reviews/standard_model_and_related.html"}
+  ],
+  "connections": [
+    "knowledge/science/quantum-foundations-tunneling-entanglement-qft-atlas.json",
+    "knowledge/science/unified-potato-theory-2025-recovery.json",
+    "knowledge/science/great-book-unified-field-archaeology.json",
+    "knowledge/science/missed-hard-science-strata.json",
+    "knowledge/science/equation-ledger-wave-004-quantum-geometry-energy.json",
+    "knowledge/science/calabi-yau-compactification-mirror-duality-atlas.json"
+  ]
+}

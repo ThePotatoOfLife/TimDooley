@@ -1,0 +1,74 @@
+{
+  "id": "cia-symbolic-account-contract-v1",
+  "title": "CIA Symbolic Account / Karma Ledger Contract",
+  "updated": "2026-09-21",
+  "scope": "Potatoverse project-internal symbolic accounting attached to character dossiers",
+  "boundary": "This is not money, credit scoring, legal debt, guilt, diagnosis, or an objective measurement of human worth. Entries must be explicitly sourced as project language, authored interpretation, or a recorded repair/credit claim.",
+  "states": [
+    "unassessed",
+    "open",
+    "balanced",
+    "credit",
+    "debt",
+    "repair-active",
+    "dormant",
+    "closed"
+  ],
+  "account_fields": {
+    "status": "Symbolic account state. Defaults to unassessed.",
+    "good_karma": "Optional sourced/project-authored credits. Never inferred from popularity, loyalty or inactivity.",
+    "karmic_debt": "Optional sourced/project-authored debits. Never treated as legal/financial debt.",
+    "dooley_welfare": "Optional playful project allowance. If enabled, a display-only accrual may be calculated from an explicit start date and rate.",
+    "interest": "Optional project-defined symbolic interest on a specific sourced entry; never silently compounded.",
+    "outstanding": "Open repair conditions, promises, unresolved project obligations or recovery questions.",
+    "entries": "Dated ledger rows with type, amount_or_scale, source_mode, source_ref, note and status.",
+    "debt_evidence_id": "Optional link into knowledge/cia/debt-evidence-ledger.json for priced or unpriced negative candidates.",
+    "project_adjustment_susd": "Evidence-discounted fictional sUSD adjustment calculated by the Mud Bank contract; never real debt."
+  },
+  "welfare_rule": {
+    "enabled_by_default": true,
+    "unit": "sUSD",
+    "display_only": true,
+    "required_fields": [
+      "best_recovered_story_entry_date"
+    ],
+    "note": "Continuous Dooley Welfare is universal story-participation credit at the governing Mud Bank rate. Exact dates accrue exactly; fuzzy/period starts remain provisional. It is theatrical project UI, not a financial asset."
+  },
+  "activity_visualization": {
+    "rule": "Visual prominence reflects archive recency/status only, never moral value.",
+    "active": 1,
+    "recovery_active": 0.94,
+    "historical_current_unknown": 0.82,
+    "dormant_or_index": 0.72,
+    "deceased_or_closed": 0.76,
+    "interaction": "Hover/focus restores full opacity for readability."
+  },
+  "media": {
+    "portrait": "Optional dossier-owned image path/URL with caption and source.",
+    "evidence_images": "Optional screenshots, memes, posts or project images with source metadata.",
+    "rule": "Do not attach an image to a real person unless the archive explicitly identifies the source and subject."
+  },
+  "event_types": {
+    "project-credit": "A source-bounded helpful/supportive contribution recorded by the project; not an objective moral score.",
+    "repair-attempt": "An apology, reconciliation, restitution or bridge-building attempt; may remain disputed/open.",
+    "yield": "A constructive result, creation, support act or growth event; morally neutral unless the source explicitly frames it otherwise.",
+    "achievement": "A dated accomplishment retained for texture; never counted as moral credit automatically.",
+    "project-debit": "A source-bounded project criticism/harm entry; not legal or financial debt and may be disputed.",
+    "dispute": "A contested claim or unresolved account item.",
+    "welfare": "A display-only Dooley Welfare entry when explicitly enrolled.",
+    "growth": "A dated source-bounded growth/development event; small positive project adjustment.",
+    "entanglement": "A relation/conflict entanglement retained for accounting context at zero weight unless a separate sourced debit exists."
+  },
+  "rules": [
+    "Prefer event entries over aggregate moral scores.",
+    "Do not convert achievements, loyalty, popularity, inactivity or opposition into good/bad karma automatically.",
+    "A repair attempt can be recorded without declaring the dispute resolved.",
+    "Aggregate good_karma/karmic_debt labels summarize explicit entries only; unassessed remains the default.",
+    "A negative entry requires a distinct dated conduct event, an evidence tier, a conduct category and a linked debt-evidence record.",
+    "Repeated conduct is counted only when separate dated events are recovered; repetition multipliers cap at the governing Mud Bank limit.",
+    "Do not double-charge one incident merely because several negative descriptions could fit it."
+  ],
+  "contracts": {
+    "mud_bank": "knowledge/cia/mud-bank-contract.json"
+  }
+}

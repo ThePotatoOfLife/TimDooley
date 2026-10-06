@@ -1,0 +1,186 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-20",
+  "title": "Conflict Role Crosswalk — Person × Scene × Source",
+  "purpose": "Describe recurring conflict mechanisms without converting temporary roles, allegations or literary characterizations into permanent identities.",
+  "governing_rules": [
+    "A person is not a conflict mode.",
+    "Roles attach to dated scenes or bounded periods.",
+    "Allegations remain attributed to the source that makes them.",
+    "Retrospective karmic or prophetic interpretations do not replace the original event record.",
+    "Medical outcomes are never treated as caused by symbolic warnings or social metaphors.",
+    "Real political/legal cases route to evidence-led case files rather than mythic cast labels."
+  ],
+  "modes": [
+    {
+      "id": "social-orbit",
+      "label": "Social Orbit",
+      "definition": "A second center gathers people, attention, activity or loyalty.",
+      "examples": [
+        "Marty 2024 room/rival-orbit arc"
+      ]
+    },
+    {
+      "id": "disruption-pressure",
+      "label": "Disruption / Raid Pressure",
+      "definition": "A shared room is flooded, diverted or made harder to govern; each incident needs independent source support.",
+      "examples": [
+        "Late-2024 Marty Chronicle claims"
+      ]
+    },
+    {
+      "id": "meta-framing",
+      "label": "Meta-Framing",
+      "definition": "Conflict over context, identity, authorship or which narrative becomes authoritative.",
+      "examples": [
+        "Metalorian/Meta retrospective role",
+        "TXT retrospective/Farm role"
+      ]
+    },
+    {
+      "id": "boundary-pressure",
+      "label": "Boundary Pressure",
+      "definition": "Bans, filters, servers, doors, follows and cross-community movement make belonging observable.",
+      "examples": [
+        "Marty separation",
+        "TXT/Dim July 2026 public conflict"
+      ]
+    },
+    {
+      "id": "attribution-conflict",
+      "label": "Attribution Conflict",
+      "definition": "Disagreement over who said, authored, intended or caused an event; requires proposition-level provenance.",
+      "examples": [
+        "Mai Mercado 2016 case subsystem"
+      ]
+    },
+    {
+      "id": "aftermath-metabolization",
+      "label": "Aftermath / Metabolization",
+      "definition": "Conflict is transformed into grief, music, doctrine, humor, repair or new boundaries.",
+      "examples": [
+        "Goodbye Marty",
+        "later karmic interpretation"
+      ]
+    }
+  ],
+  "figures": [
+    {
+      "id": "marty-biz",
+      "room": "rooms/potatoverse-canon/beings/marty/",
+      "source_status": "mixed",
+      "periods": [
+        {
+          "period": "2024 early/mid",
+          "modes": [
+            "social-orbit"
+          ],
+          "minimum_event": "Recurring room/voice/game presence preserved in Chronicle material."
+        },
+        {
+          "period": "late 2024",
+          "modes": [
+            "social-orbit",
+            "boundary-pressure",
+            "disruption-pressure"
+          ],
+          "minimum_event": "Chronicle retellings move Marty from companion into separate/rival orbit and attribute disruptive incidents to Marty/circle.",
+          "boundary": "Treat raid/sabotage claims as source-attributed unless closer evidence is recovered."
+        },
+        {
+          "period": "early 2025",
+          "modes": [
+            "aftermath-metabolization"
+          ],
+          "minimum_event": "Death enters the Story; exact date conflict remains unresolved. Goodbye Marty survives as creative grief artifact."
+        }
+      ]
+    },
+    {
+      "id": "metalorian",
+      "room": "rooms/potatoverse-canon/beings/metalorian/",
+      "source_status": "retrospective-heavy",
+      "periods": [
+        {
+          "period": "around 2017",
+          "modes": [
+            "meta-framing"
+          ],
+          "minimum_event": "Later biography remembers warnings/adversarial relation; original interaction and warning wording missing."
+        },
+        {
+          "period": "2018-2019 retrospective",
+          "modes": [
+            "meta-framing",
+            "attribution-conflict"
+          ],
+          "minimum_event": "Old manuscripts place Meta within narrative-control/crucifixion/Farm interpretation.",
+          "boundary": "Do not upgrade motive, criminality, diagnosis or causation claims without primary evidence."
+        },
+        {
+          "period": "2023 later interpretation",
+          "modes": [
+            "aftermath-metabolization"
+          ],
+          "minimum_event": "Metalorian suffering is placed near Cube/karmic interpretation in later timeline.",
+          "boundary": "Retrospective correspondence only."
+        }
+      ]
+    },
+    {
+      "id": "txt",
+      "room": "rooms/potatoverse-canon/beings/txt/",
+      "source_status": "mixed_with_long_gap",
+      "periods": [
+        {
+          "period": "2017 onward old-profile claim",
+          "modes": [
+            "meta-framing"
+          ],
+          "minimum_event": "Old profile says antagonism begins in 2017; primary sequence missing."
+        },
+        {
+          "period": "2019 retrospective",
+          "modes": [
+            "meta-framing",
+            "attribution-conflict"
+          ],
+          "minimum_event": "Later biography groups TXT with Meta in digital-crucifixion/Farm narrative."
+        },
+        {
+          "period": "2024 literary",
+          "modes": [
+            "meta-framing"
+          ],
+          "minimum_event": "TXT's Shadow Games literary form."
+        },
+        {
+          "period": "2026-07-07 public",
+          "modes": [
+            "boundary-pressure",
+            "attribution-conflict"
+          ],
+          "minimum_event": "Tim publicly names TXT and Dim in the same conflict field; allegations remain attributed to Tim."
+        }
+      ]
+    }
+  ],
+  "institutional_routes": [
+    {
+      "id": "mai-mercado-2016",
+      "entity_class": "public_political_figure_and_legal_case_subject",
+      "route": "knowledge/legal/mai-mercado-2016-research-index.md",
+      "canonical_synthesis": "knowledge/timeline/mai-mercado-2016-case-master-synthesis.json",
+      "mode": [
+        "attribution-conflict"
+      ],
+      "rule": "Do not convert the political/legal actor into a Potatoverse moral caste. Preserve legal/public-source provenance and later mythic interpretation as separate layers."
+    }
+  ],
+  "unresolved": [
+    "Recover original Marty conversation texture and exact death chronology.",
+    "Recover earliest direct Metalorian/Meta source and exact 2017 warning.",
+    "Recover TXT 2017-2019 sequence and alias continuity.",
+    "Continue claim-level legal source recovery in the Mai Mercado subsystem without mythologizing unresolved propositions."
+  ]
+}

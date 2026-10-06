@@ -1,0 +1,44 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-10-04",
+  "purpose": "Declare source files whose substantive changes should count toward public-page lastmod when the page is a composite/runtime projection. This is an SEO freshness projection, not a content-ownership map.",
+  "rule": "Bind only files whose changes materially alter rendered or crawlable page content. Do not bind generic CSS, unrelated registries, generated diagnostics, or broad backend families merely because they are adjacent.",
+  "routes": {
+    "politics": [
+      "politics/index.html",
+      "politics/politics-manifest.json",
+      "politics/parts/part-01.html",
+      "politics/parts/part-02.html",
+      "politics/parts/part-03.html",
+      "politics/parts/part-04.html",
+      "knowledge/politics/tim-dooley-politics-geopolitics-compendium.json"
+    ],
+    "timeline": [
+      "timeline/index.html",
+      "data/timeline-events.json"
+    ],
+    "works": [
+      "works/index.html",
+      "knowledge/creative/artifact-history-registry.json",
+      "knowledge/creative/tim-dooley-suno-music-archive.json",
+      "data/works/music-discography.json",
+      "data/works/music-archive-dated.json"
+    ],
+    "explore": [
+      "explore/index.html",
+      "knowledge/indexes/context-graph.json"
+    ],
+    "questions": [
+      "questions/index.html",
+      "knowledge/indexes/faq-answer-atlas.json",
+      "knowledge/indexes/faq-question-bank.json",
+      "knowledge/reader/tim-dooley-question-index.json"
+    ],
+    "music": [
+      "music/index.html",
+      "data/works/music-discography.json",
+      "data/works/music-archive-dated.json",
+      "knowledge/creative/tim-dooley-suno-music-archive.json"
+    ]
+  }
+}

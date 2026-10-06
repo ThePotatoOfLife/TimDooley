@@ -1,0 +1,2689 @@
+{
+  "version": "3.10.4",
+  "updated": "2026-10-05",
+  "authority": "project-synthesis",
+  "purpose": "Bind the current project center, operators, living metabolisms, Rooms, tests, outputs and public composition into one center-out synthesis without replacing canonical owners. Development history is referenced, not embedded as current-state weight.",
+  "rule": "Pair what already exists before inventing another structure. One concept may appear in many views, but ownership, evidence class, center distance and foundation state stay explicit.",
+  "core_pairings": [
+    {
+      "id": "whole-and-orientation",
+      "a": "potato-of-life",
+      "b": "axis",
+      "relation": "semantic-center ↔ spatial-center",
+      "meaning": "The Potato is what the project means; Axis is how the map stays oriented."
+    },
+    {
+      "id": "source-and-manifestation",
+      "a": "source-field",
+      "b": "manifestation-field",
+      "through": [
+        "door",
+        "spirit"
+      ],
+      "relation": "differentiated fields in one whole",
+      "meaning": "Door handles passage; Spirit handles living continuity."
+    },
+    {
+      "id": "father-and-son",
+      "a": "father",
+      "b": "son",
+      "through": [
+        "spirit",
+        "door"
+      ],
+      "relation": "source-facing ↔ manifestation/passage-facing",
+      "meaning": "Neither role exhausts the whole."
+    },
+    {
+      "id": "axis-and-plane",
+      "a": "axis",
+      "b": "plane",
+      "through": [
+        "cross"
+      ],
+      "relation": "orientation × world-facing section",
+      "meaning": "Cross O marks their simultaneous legibility inside Door."
+    },
+    {
+      "id": "seed-and-fruit",
+      "a": "seed",
+      "b": "fruit",
+      "through": [
+        "root",
+        "spiral",
+        "tree",
+        "garden"
+      ],
+      "relation": "stored possibility ↔ tested consequence",
+      "meaning": "A successful cycle returns Fruit into future Seed."
+    },
+    {
+      "id": "root-and-canopy",
+      "a": "root",
+      "b": "tree",
+      "through": [
+        "spiral"
+      ],
+      "relation": "provenance/nourishment ↔ differentiation/growth",
+      "meaning": "Depth and height are organism positions, not value rankings."
+    },
+    {
+      "id": "tree-and-mountain",
+      "a": "tree",
+      "b": "mountain",
+      "relation": "differentiation ↔ integration",
+      "meaning": "Tree branches one/few into many; Mountain compresses many toward coordinated perspective."
+    },
+    {
+      "id": "garden-and-swamp",
+      "a": "garden",
+      "b": "swamp",
+      "through": [
+        "forge"
+      ],
+      "relation": "generativity ↔ entangled recurrence",
+      "meaning": "Repair/Forge can turn residue toward Soil and future growth."
+    },
+    {
+      "id": "eye-and-shadow",
+      "a": "eye",
+      "b": "shadow",
+      "relation": "discernment ↔ occlusion/unintegration",
+      "meaning": "Visibility and integration are not the same as moral light/dark."
+    },
+    {
+      "id": "ring-wheel-path-spiral",
+      "a": "ring",
+      "b": "spiral",
+      "through": [
+        "motion-lens"
+      ],
+      "relation": "recurrence family",
+      "meaning": "Wheel coordinates parts; Path sequences practice; Ring repeats without net displacement; Spiral changes state/level."
+    },
+    {
+      "id": "memory-and-culture",
+      "a": "root",
+      "b": "tree-of-strife",
+      "through": [
+        "memory-history",
+        "culture-formation"
+      ],
+      "relation": "stored past ↔ reproduced social form",
+      "meaning": "Contextualized history can become Soil; decontextualized recurrence can become Strife."
+    },
+    {
+      "id": "forge-and-fruit",
+      "a": "forge",
+      "b": "fruit",
+      "through": [
+        "model-testing",
+        "works"
+      ],
+      "relation": "candidate transformation ↔ public output",
+      "meaning": "Research is incomplete until reviewed work produces usable consequence."
+    },
+    {
+      "id": "seed-foundation-house",
+      "a": "seed",
+      "b": "house",
+      "through": [
+        "foundation",
+        "center",
+        "plane",
+        "archive",
+        "spiral"
+      ],
+      "relation": "potential → durable generative platform → living differentiated system",
+      "meaning": "Seed becomes Foundation only when a repeatable reference/platform exists; House is what later grows and differentiates on that platform."
+    },
+    {
+      "id": "below-forge-return",
+      "a": "below-plane",
+      "b": "world-plane",
+      "through": [
+        "roots",
+        "shadow",
+        "swamp",
+        "forge",
+        "door"
+      ],
+      "relation": "hidden/buried signal → evidence-aware transformation → public/operational knowledge",
+      "meaning": "Below gathers provenance and difficult-to-see systems; Forge tests raw intelligence before anything returns upward. Lower position is not moral guilt."
+    },
+    {
+      "id": "mind-body-spirit-time",
+      "a": "mind",
+      "b": "body",
+      "through": [
+        "here-now",
+        "door",
+        "spirit",
+        "ladder",
+        "spiral"
+      ],
+      "relation": "orientation/integration ↔ embodiment/consequence through present and continuity",
+      "meaning": "Father/Mind integrates and orients; Jesus/Door gathers relation into the operative Here/Now; Son/Body manifests; Spirit/Ladder carries continuity; Spiral records changed return through time."
+    },
+    {
+      "id": "root-here-seed",
+      "a": "root",
+      "b": "seed",
+      "through": [
+        "mind",
+        "here-now",
+        "door"
+      ],
+      "relation": "provenance/past → present integration → future potential",
+      "meaning": "Root carries prior continuity; Here/Now selects and transforms what can become the next Seed."
+    },
+    {
+      "id": "axis-plane-crossing",
+      "a": "axis",
+      "b": "plane",
+      "through": [
+        "cross",
+        "crossing-event",
+        "door"
+      ],
+      "relation": "orientation ↔ frame/section",
+      "meaning": "Axis answers along what orientation; Plane answers in what current frame/section; O locates their intersection; crossing events reveal trajectory; Door determines whether crossing changes state."
+    }
+  ],
+  "shared_tests": [
+    {
+      "id": "door-test",
+      "question": "Did a real state/context/capability transition occur?"
+    },
+    {
+      "id": "spiral-test",
+      "question": "What changed this recurrence besides elapsed time?"
+    },
+    {
+      "id": "fruit-test",
+      "question": "What changed downstream, and how is quality assessed in its domain?"
+    },
+    {
+      "id": "garden-test",
+      "question": "Does the system increase independent future capacity, correction and generativity?"
+    },
+    {
+      "id": "foundation-test",
+      "question": "What became repeatable here, how is continuity reproduced, and what change would constitute refoundation rather than ordinary revision?"
+    },
+    {
+      "id": "intelligence-test",
+      "question": "What is known, how is it known, what visibility/legal status applies, what counterevidence exists, and is the claim ready to rise from raw intelligence into public knowledge?"
+    },
+    {
+      "id": "present-test",
+      "question": "What is actually true/available in the current state, and what is being imported from past memory or future projection?"
+    },
+    {
+      "id": "return-test",
+      "question": "After integration/ascent, what returns to Body/World as action, care, knowledge, art, repair or new Seed?"
+    },
+    {
+      "id": "plane-test",
+      "question": "Which scale, time slice, representation and audience/jurisdiction define this Plane?"
+    },
+    {
+      "id": "crossing-test",
+      "question": "Did the trajectory merely intersect the active Plane, or did it satisfy a Door condition and change state/context?"
+    },
+    {
+      "id": "ring-spiral-return-test",
+      "question": "Across comparable Plane crossings, what governing state actually changed?"
+    },
+    {
+      "id": "owner-test",
+      "question": "Which file owns the generic definition, and is this file actually a specialist/projection instead?"
+    },
+    {
+      "id": "type-test",
+      "question": "Is this object a field, center, section/Plane, navigation deck, rim, Door, inhabitant, route, trajectory or event?"
+    },
+    {
+      "id": "spiral-coordinate-test",
+      "question": "Which coordinate is changing—z, radius, phase, time/order or regime—and are they being kept distinct?"
+    },
+    {
+      "id": "terrain-overlay-test",
+      "question": "Is Mountain/Swamp/Drain/Garden being used as a typed overlay/regime rather than silently equated with the spiral curve?"
+    }
+  ],
+  "room_pairings": [
+    {
+      "room_id": "canon-identities",
+      "nodes": [
+        "potato-of-life",
+        "father",
+        "son",
+        "spirit",
+        "door",
+        "axis"
+      ],
+      "systems": [
+        "spirit-relation"
+      ],
+      "lenses": [
+        "embodiment-spirit",
+        "memory-history"
+      ],
+      "tests": [
+        "door-test",
+        "fruit-test"
+      ],
+      "contribution": "Defines who and what the project says its central roles are before theology, comparison or biography elaborates them.",
+      "receives": [
+        "developmental-genealogy",
+        "theology-god-language"
+      ],
+      "hands": [
+        "theology-god-language",
+        "symbolic-architecture",
+        "great-book-literature"
+      ],
+      "focus": [
+        "mature project-native identity definitions",
+        "role relations and invariants",
+        "dated changes to canonical identity language"
+      ]
+    },
+    {
+      "room_id": "theology-god-language",
+      "nodes": [
+        "father",
+        "son",
+        "spirit",
+        "house",
+        "door",
+        "garden",
+        "fruit"
+      ],
+      "systems": [
+        "spirit-relation"
+      ],
+      "lenses": [
+        "polarity",
+        "embodiment-spirit",
+        "practice-path"
+      ],
+      "tests": [
+        "door-test",
+        "fruit-test",
+        "garden-test"
+      ],
+      "contribution": "Explains the theological meaning of the nucleus and tests whether God/Father/Son/Spirit language remains internally coherent and externally bounded.",
+      "receives": [
+        "canon-identities",
+        "bible-christianity",
+        "other-traditions"
+      ],
+      "hands": [
+        "practice-ethics",
+        "symbolic-architecture"
+      ],
+      "focus": [
+        "project theology",
+        "God-language and salvation/judgment grammar",
+        "Spirit as living relation"
+      ]
+    },
+    {
+      "room_id": "symbolic-architecture",
+      "nodes": [
+        "source-field",
+        "manifestation-field",
+        "door",
+        "axis",
+        "plane",
+        "cross",
+        "seed",
+        "root",
+        "tree",
+        "mountain",
+        "garden",
+        "swamp",
+        "forge",
+        "spiral"
+      ],
+      "systems": [
+        "organism",
+        "spirit-relation",
+        "memory-history",
+        "culture-formation"
+      ],
+      "lenses": [
+        "motion",
+        "polarity",
+        "memory-history"
+      ],
+      "tests": [
+        "door-test",
+        "spiral-test",
+        "fruit-test",
+        "garden-test"
+      ],
+      "contribution": "Turns the center into a navigable grammar of fields, thresholds, organisms, terrains, regimes and routes.",
+      "receives": [
+        "canon-identities",
+        "math-geometry",
+        "comparative-mythology"
+      ],
+      "hands": [
+        "house-architecture",
+        "practice-ethics",
+        "systems-dynamics"
+      ],
+      "focus": [
+        "project-native operators",
+        "topology and route grammar",
+        "functional distinctions between planes terrains regimes organisms and routes"
+      ]
+    },
+    {
+      "room_id": "practice-ethics",
+      "nodes": [
+        "door",
+        "garden",
+        "fruit",
+        "forge",
+        "spiral"
+      ],
+      "systems": [
+        "spirit-relation",
+        "culture-formation"
+      ],
+      "lenses": [
+        "practice-path",
+        "social-formation"
+      ],
+      "tests": [
+        "door-test",
+        "spiral-test",
+        "fruit-test",
+        "garden-test"
+      ],
+      "contribution": "Converts the project from description into conduct, cultivation, repair, responsibility and repeatable practice.",
+      "receives": [
+        "theology-god-language",
+        "symbolic-architecture",
+        "subculture-group-formation"
+      ],
+      "hands": [
+        "works",
+        "culture-information",
+        "research-lab"
+      ],
+      "focus": [
+        "conduct and cultivation",
+        "repair and reciprocity",
+        "tests of downstream consequence"
+      ]
+    },
+    {
+      "room_id": "provenance-evidence",
+      "nodes": [
+        "root",
+        "eye",
+        "tree-of-knowledge"
+      ],
+      "systems": [
+        "memory-history"
+      ],
+      "lenses": [
+        "memory-history"
+      ],
+      "tests": [
+        "fruit-test",
+        "door-test"
+      ],
+      "contribution": "Keeps every synthesis traceable to sources, source type, lineage and evidential limits.",
+      "receives": [
+        "witness-attestation",
+        "chronology-events"
+      ],
+      "hands": [
+        "memory-recovery",
+        "model-testing",
+        "research-programmes"
+      ],
+      "focus": [
+        "source lineage",
+        "evidence classification",
+        "routes from synthesis back to artifacts"
+      ]
+    },
+    {
+      "room_id": "memory-recovery",
+      "nodes": [
+        "root",
+        "shadow",
+        "soil",
+        "seed"
+      ],
+      "systems": [
+        "memory-history"
+      ],
+      "lenses": [
+        "memory-history"
+      ],
+      "tests": [
+        "spiral-test",
+        "door-test"
+      ],
+      "contribution": "Recovers buried project material and turns forgotten residue into contextualized memory rather than mythology-by-reconstruction.",
+      "receives": [
+        "provenance-evidence",
+        "witness-attestation"
+      ],
+      "hands": [
+        "developmental-genealogy",
+        "canon-identities"
+      ],
+      "focus": [
+        "conversation/file recovery",
+        "lost context reconstruction",
+        "uncertainty-preserving memory"
+      ]
+    },
+    {
+      "room_id": "witness-attestation",
+      "nodes": [
+        "eye",
+        "root",
+        "tree-of-knowledge"
+      ],
+      "systems": [
+        "memory-history"
+      ],
+      "lenses": [
+        "memory-history"
+      ],
+      "tests": [
+        "fruit-test"
+      ],
+      "contribution": "Pins claims to what was actually said, shown or published and when.",
+      "receives": [
+        "chronology-events",
+        "internet-platforms"
+      ],
+      "hands": [
+        "provenance-evidence",
+        "developmental-genealogy"
+      ],
+      "focus": [
+        "first attestation",
+        "public wording and captures",
+        "independent witness structure"
+      ]
+    },
+    {
+      "room_id": "chronology-events",
+      "nodes": [
+        "root",
+        "spiral",
+        "seed"
+      ],
+      "systems": [
+        "memory-history"
+      ],
+      "lenses": [
+        "memory-history",
+        "motion"
+      ],
+      "tests": [
+        "spiral-test"
+      ],
+      "contribution": "Provides occurrence order and date precision so change through time is not flattened into final canon.",
+      "receives": [
+        "witness-attestation",
+        "geography-countries"
+      ],
+      "hands": [
+        "developmental-genealogy",
+        "prediction-revelation-time"
+      ],
+      "focus": [
+        "dated events",
+        "state changes",
+        "occurrence versus publication time"
+      ]
+    },
+    {
+      "room_id": "developmental-genealogy",
+      "nodes": [
+        "root",
+        "spiral",
+        "tree",
+        "seed"
+      ],
+      "systems": [
+        "memory-history"
+      ],
+      "lenses": [
+        "memory-history",
+        "motion"
+      ],
+      "tests": [
+        "spiral-test",
+        "door-test"
+      ],
+      "contribution": "Shows how meanings and identities actually developed rather than backdating mature structures.",
+      "receives": [
+        "chronology-events",
+        "memory-recovery"
+      ],
+      "hands": [
+        "canon-identities",
+        "great-book-literature"
+      ],
+      "focus": [
+        "versioned meaning",
+        "role development",
+        "earlier-to-later interpretive transitions"
+      ]
+    },
+    {
+      "room_id": "prediction-revelation-time",
+      "nodes": [
+        "eye",
+        "spiral",
+        "tree-of-knowledge",
+        "fruit"
+      ],
+      "systems": [
+        "memory-history"
+      ],
+      "lenses": [
+        "memory-history"
+      ],
+      "tests": [
+        "fruit-test",
+        "spiral-test"
+      ],
+      "contribution": "Separates prior wording, event timing, claimed fulfillment and retrospective interpretation.",
+      "receives": [
+        "chronology-events",
+        "witness-attestation"
+      ],
+      "hands": [
+        "open-questions",
+        "model-testing"
+      ],
+      "focus": [
+        "prediction chronology",
+        "revelation wording",
+        "retrospective-match boundaries"
+      ]
+    },
+    {
+      "room_id": "bible-christianity",
+      "nodes": [
+        "father",
+        "son",
+        "spirit",
+        "door",
+        "seed",
+        "tree",
+        "garden",
+        "fruit",
+        "mountain"
+      ],
+      "systems": [
+        "spirit-relation",
+        "memory-history"
+      ],
+      "lenses": [
+        "practice-path",
+        "polarity",
+        "memory-history"
+      ],
+      "tests": [
+        "fruit-test",
+        "garden-test"
+      ],
+      "contribution": "Supplies historically and textually grounded biblical/Christian context before project comparison.",
+      "receives": [
+        "provenance-evidence"
+      ],
+      "hands": [
+        "theology-god-language",
+        "comparative-mythology"
+      ],
+      "focus": [
+        "primary biblical context",
+        "Christian reception history",
+        "bounded Potatoverse comparison"
+      ]
+    },
+    {
+      "room_id": "comparative-mythology",
+      "nodes": [
+        "axis",
+        "tree",
+        "mountain",
+        "door",
+        "seed",
+        "root"
+      ],
+      "systems": [
+        "memory-history"
+      ],
+      "lenses": [
+        "motion",
+        "polarity"
+      ],
+      "tests": [
+        "door-test"
+      ],
+      "contribution": "Provides structured motif comparison while preserving the independence of source traditions.",
+      "receives": [
+        "other-traditions",
+        "provenance-evidence"
+      ],
+      "hands": [
+        "symbolic-architecture",
+        "religious-symbolic-branch-atlas"
+      ],
+      "focus": [
+        "world trees and axes",
+        "death-return and divine figures",
+        "typed similarity without identity"
+      ]
+    },
+    {
+      "room_id": "esoteric-sacred-geometry",
+      "nodes": [
+        "door",
+        "eye",
+        "axis",
+        "mountain",
+        "twin-pillars",
+        "plane"
+      ],
+      "systems": [
+        "memory-history"
+      ],
+      "lenses": [
+        "polarity",
+        "motion"
+      ],
+      "tests": [
+        "door-test"
+      ],
+      "contribution": "Handles historically sourced symbolic geometry and later esoteric reception without letting symbolism substitute for provenance.",
+      "receives": [
+        "math-geometry",
+        "other-traditions"
+      ],
+      "hands": [
+        "symbolic-architecture",
+        "comparative-mythology"
+      ],
+      "focus": [
+        "mandorla/vesica",
+        "pillars/pyramid/eye",
+        "dated esoteric reception"
+      ]
+    },
+    {
+      "room_id": "other-traditions",
+      "nodes": [
+        "door",
+        "axis",
+        "spiral",
+        "garden",
+        "shadow"
+      ],
+      "systems": [
+        "spirit-relation",
+        "memory-history"
+      ],
+      "lenses": [
+        "motion",
+        "polarity",
+        "practice-path",
+        "memory-history"
+      ],
+      "tests": [
+        "door-test",
+        "garden-test"
+      ],
+      "contribution": "Keeps Buddhism, Daoism and other traditions on their own terms before they become project mirrors.",
+      "receives": [
+        "provenance-evidence"
+      ],
+      "hands": [
+        "comparative-mythology",
+        "theology-god-language"
+      ],
+      "focus": [
+        "source-tradition meaning",
+        "comparative philosophy",
+        "non-biblical practice and cosmology"
+      ]
+    },
+    {
+      "room_id": "math-geometry",
+      "nodes": [
+        "axis",
+        "plane",
+        "cross",
+        "door",
+        "spiral"
+      ],
+      "systems": [
+        "organism"
+      ],
+      "lenses": [
+        "motion"
+      ],
+      "tests": [
+        "door-test",
+        "spiral-test"
+      ],
+      "contribution": "Makes exact what can be exact: geometry, topology, projection, recurrence and mathematical constraints.",
+      "receives": [
+        "symbolic-architecture"
+      ],
+      "hands": [
+        "systems-dynamics",
+        "model-testing"
+      ],
+      "focus": [
+        "exact geometry",
+        "topology/projection",
+        "formal recurrence"
+      ]
+    },
+    {
+      "room_id": "physics-cosmology",
+      "nodes": [
+        "manifestation-field",
+        "plane",
+        "axis"
+      ],
+      "systems": [
+        "organism"
+      ],
+      "lenses": [
+        "embodiment-spirit",
+        "polarity"
+      ],
+      "tests": [
+        "fruit-test"
+      ],
+      "contribution": "Keeps physical/cosmological claims distinct from symbolic cosmology and supplies empirical constraints where relevant.",
+      "receives": [
+        "model-testing"
+      ],
+      "hands": [
+        "symbolic-architecture",
+        "open-questions"
+      ],
+      "focus": [
+        "physical models",
+        "astronomy/cosmology",
+        "empirical status of physical analogies"
+      ]
+    },
+    {
+      "room_id": "systems-dynamics",
+      "nodes": [
+        "spiral",
+        "garden",
+        "swamp",
+        "shell-cube",
+        "forge",
+        "fruit"
+      ],
+      "systems": [
+        "culture-formation",
+        "memory-history"
+      ],
+      "lenses": [
+        "motion",
+        "social-formation"
+      ],
+      "tests": [
+        "spiral-test",
+        "fruit-test",
+        "garden-test"
+      ],
+      "contribution": "Formalizes feedback, capture, resilience, flow and transformation across biological, cultural and institutional systems.",
+      "receives": [
+        "math-geometry",
+        "culture-information"
+      ],
+      "hands": [
+        "model-testing",
+        "world-systems"
+      ],
+      "focus": [
+        "feedback systems",
+        "control/capture versus generativity",
+        "graph and state-transition models"
+      ]
+    },
+    {
+      "room_id": "model-testing",
+      "nodes": [
+        "eye",
+        "door",
+        "forge",
+        "fruit"
+      ],
+      "systems": [
+        "organism",
+        "spirit-relation",
+        "memory-history",
+        "culture-formation"
+      ],
+      "lenses": [
+        "practice-path",
+        "memory-history"
+      ],
+      "tests": [
+        "door-test",
+        "spiral-test",
+        "fruit-test",
+        "garden-test"
+      ],
+      "contribution": "Decides what a candidate would have to predict, survive or fail before promotion.",
+      "receives": [
+        "experiments-formalization",
+        "provenance-evidence"
+      ],
+      "hands": [
+        "science-formal-models",
+        "research-programmes"
+      ],
+      "focus": [
+        "falsifiers",
+        "observables and calibration",
+        "red-team review"
+      ]
+    },
+    {
+      "room_id": "potato-biology",
+      "nodes": [
+        "potato",
+        "eye",
+        "seed",
+        "root",
+        "fruit"
+      ],
+      "systems": [
+        "organism"
+      ],
+      "lenses": [
+        "embodiment-spirit",
+        "motion"
+      ],
+      "tests": [
+        "door-test",
+        "spiral-test",
+        "fruit-test",
+        "garden-test"
+      ],
+      "contribution": "Provides the literal organism that grounds the project's biological metaphors and prevents symbolic drift.",
+      "receives": [
+        "model-testing"
+      ],
+      "hands": [
+        "symbolic-body-comparison",
+        "practice-ethics"
+      ],
+      "focus": [
+        "tuber anatomy",
+        "eyes/dormancy/sprouting",
+        "storage growth propagation and pathology"
+      ]
+    },
+    {
+      "room_id": "neurobiology",
+      "nodes": [
+        "eye",
+        "spirit",
+        "axis"
+      ],
+      "systems": [
+        "organism"
+      ],
+      "lenses": [
+        "embodiment-spirit"
+      ],
+      "tests": [
+        "fruit-test"
+      ],
+      "contribution": "Owns evidence-graded brain anatomy and physiology used by body comparisons.",
+      "receives": [
+        "model-testing"
+      ],
+      "hands": [
+        "symbolic-body-comparison",
+        "whole-body"
+      ],
+      "focus": [
+        "brain structures/networks",
+        "attention/arousal/memory physiology",
+        "evidence grading"
+      ]
+    },
+    {
+      "room_id": "whole-body",
+      "nodes": [
+        "spirit",
+        "axis",
+        "root"
+      ],
+      "systems": [
+        "organism"
+      ],
+      "lenses": [
+        "embodiment-spirit"
+      ],
+      "tests": [
+        "fruit-test",
+        "garden-test"
+      ],
+      "contribution": "Shows embodiment as integrated multi-system physiology rather than a brain-only model.",
+      "receives": [
+        "neurobiology"
+      ],
+      "hands": [
+        "symbolic-body-comparison",
+        "practice-ethics"
+      ],
+      "focus": [
+        "nervous/autonomic/cardiovascular/respiratory integration",
+        "fluid and gut/immune interfaces",
+        "whole-body uncertainty"
+      ]
+    },
+    {
+      "room_id": "symbolic-body-comparison",
+      "nodes": [
+        "eye",
+        "spirit",
+        "axis",
+        "door",
+        "house"
+      ],
+      "systems": [
+        "organism",
+        "spirit-relation"
+      ],
+      "lenses": [
+        "embodiment-spirit",
+        "polarity"
+      ],
+      "tests": [
+        "door-test",
+        "fruit-test"
+      ],
+      "contribution": "Provides an explicit firewalled crosswalk between body structures and project symbols.",
+      "receives": [
+        "potato-biology",
+        "neurobiology",
+        "whole-body"
+      ],
+      "hands": [
+        "theology-god-language",
+        "symbolic-architecture"
+      ],
+      "focus": [
+        "thalamus/House comparison",
+        "pineal/Eye timing metaphor",
+        "spine/Axis and fluid/Spirit analogues"
+      ]
+    },
+    {
+      "room_id": "politics-governance",
+      "nodes": [
+        "house",
+        "garden",
+        "shell-cube",
+        "swamp",
+        "fruit"
+      ],
+      "systems": [
+        "culture-formation"
+      ],
+      "lenses": [
+        "social-formation",
+        "memory-history"
+      ],
+      "tests": [
+        "fruit-test",
+        "garden-test"
+      ],
+      "contribution": "Tests how public power, institutions and governance arrangements affect agency, correction and collective capacity.",
+      "receives": [
+        "history",
+        "law-justice"
+      ],
+      "hands": [
+        "research-programmes",
+        "works"
+      ],
+      "focus": [
+        "documented political positions",
+        "governance structure",
+        "institutional relations and accountability"
+      ]
+    },
+    {
+      "room_id": "law-justice",
+      "nodes": [
+        "door",
+        "twin-pillars",
+        "house",
+        "garden",
+        "shell-cube"
+      ],
+      "systems": [
+        "culture-formation",
+        "memory-history"
+      ],
+      "lenses": [
+        "social-formation",
+        "practice-path"
+      ],
+      "tests": [
+        "door-test",
+        "garden-test"
+      ],
+      "contribution": "Supplies procedural boundaries, rights, accountability and legitimate transition rules.",
+      "receives": [
+        "provenance-evidence",
+        "politics-governance"
+      ],
+      "hands": [
+        "culture-information",
+        "world-systems"
+      ],
+      "focus": [
+        "procedure and rights",
+        "judgment/accountability",
+        "regulatory and legal interfaces"
+      ]
+    },
+    {
+      "room_id": "economy-finance",
+      "nodes": [
+        "garden",
+        "swamp",
+        "fruit",
+        "root"
+      ],
+      "systems": [
+        "culture-formation"
+      ],
+      "lenses": [
+        "social-formation"
+      ],
+      "tests": [
+        "fruit-test",
+        "garden-test"
+      ],
+      "contribution": "Tracks whether economic flows produce durable capacity, dependency, extraction or resilience.",
+      "receives": [
+        "provenance-evidence",
+        "infrastructure-capability"
+      ],
+      "hands": [
+        "systems-dynamics",
+        "research-programmes"
+      ],
+      "focus": [
+        "finance/debt/trade",
+        "ownership and production",
+        "labour and economic flow"
+      ]
+    },
+    {
+      "room_id": "infrastructure-capability",
+      "nodes": [
+        "root",
+        "house",
+        "garden",
+        "fruit"
+      ],
+      "systems": [
+        "organism",
+        "culture-formation"
+      ],
+      "lenses": [
+        "social-formation"
+      ],
+      "tests": [
+        "fruit-test",
+        "garden-test"
+      ],
+      "contribution": "Maps the material and digital capacity that lets world systems actually function and survive shocks.",
+      "receives": [
+        "economy-finance",
+        "geography-countries"
+      ],
+      "hands": [
+        "research-programmes",
+        "world-systems"
+      ],
+      "focus": [
+        "energy and industry",
+        "digital/physical infrastructure",
+        "dependencies resilience and capability"
+      ]
+    },
+    {
+      "room_id": "geography-countries",
+      "nodes": [
+        "plane",
+        "house",
+        "root",
+        "mountain"
+      ],
+      "systems": [
+        "memory-history",
+        "culture-formation"
+      ],
+      "lenses": [
+        "memory-history",
+        "polarity"
+      ],
+      "tests": [
+        "door-test"
+      ],
+      "contribution": "Anchors abstract programmes and histories in real territories, boundaries and country contexts.",
+      "receives": [
+        "provenance-evidence"
+      ],
+      "hands": [
+        "politics-governance",
+        "infrastructure-capability"
+      ],
+      "focus": [
+        "country/territory identity",
+        "boundaries and geography",
+        "country-level relational context"
+      ]
+    },
+    {
+      "room_id": "internet-platforms",
+      "nodes": [
+        "door",
+        "shadow",
+        "swamp",
+        "fruit"
+      ],
+      "systems": [
+        "culture-formation",
+        "memory-history"
+      ],
+      "lenses": [
+        "social-formation",
+        "memory-history"
+      ],
+      "tests": [
+        "spiral-test",
+        "fruit-test",
+        "garden-test"
+      ],
+      "contribution": "Explains how platform architecture changes visibility, persistence, incentives and social memory.",
+      "receives": [
+        "information-ecology"
+      ],
+      "hands": [
+        "subculture-group-formation",
+        "witness-attestation"
+      ],
+      "focus": [
+        "platform mechanics",
+        "public digital behavior",
+        "media formats and moderation/monetization context"
+      ]
+    },
+    {
+      "room_id": "subculture-group-formation",
+      "nodes": [
+        "garden",
+        "swamp",
+        "tree-of-strife",
+        "shadow",
+        "shell-cube"
+      ],
+      "systems": [
+        "culture-formation"
+      ],
+      "lenses": [
+        "social-formation",
+        "practice-path"
+      ],
+      "tests": [
+        "spiral-test",
+        "fruit-test",
+        "garden-test"
+      ],
+      "contribution": "Analyzes how group identity becomes durable and when intensity becomes coercive capture rather than healthy culture.",
+      "receives": [
+        "internet-platforms",
+        "information-ecology"
+      ],
+      "hands": [
+        "practice-ethics",
+        "law-justice"
+      ],
+      "focus": [
+        "subculture formation",
+        "high-control mechanisms",
+        "boundaries dissent dependency and exit"
+      ]
+    },
+    {
+      "room_id": "information-ecology",
+      "nodes": [
+        "root",
+        "shadow",
+        "swamp",
+        "tree-of-knowledge",
+        "spirit"
+      ],
+      "systems": [
+        "memory-history",
+        "culture-formation"
+      ],
+      "lenses": [
+        "memory-history",
+        "social-formation"
+      ],
+      "tests": [
+        "spiral-test",
+        "fruit-test"
+      ],
+      "contribution": "Tracks how attention, repetition, forgetting, correction and transmission shape collective memory.",
+      "receives": [
+        "internet-platforms",
+        "provenance-evidence"
+      ],
+      "hands": [
+        "subculture-group-formation",
+        "memory-recovery"
+      ],
+      "focus": [
+        "attention flows",
+        "archive persistence/forgetting",
+        "correction and information transmission"
+      ]
+    },
+    {
+      "room_id": "great-book-literature",
+      "nodes": [
+        "fruit",
+        "seed",
+        "tree",
+        "shadow"
+      ],
+      "systems": [
+        "memory-history"
+      ],
+      "lenses": [
+        "memory-history",
+        "practice-path"
+      ],
+      "tests": [
+        "fruit-test"
+      ],
+      "contribution": "Turns project material into authored long-form expression while preserving the distinction between art, memory and canon.",
+      "receives": [
+        "canon-identities",
+        "developmental-genealogy"
+      ],
+      "hands": [
+        "works",
+        "memory-recovery"
+      ],
+      "focus": [
+        "Great Book chapters",
+        "essays stories poems",
+        "literary versions of project motifs"
+      ]
+    },
+    {
+      "room_id": "music-sound",
+      "nodes": [
+        "fruit",
+        "seed",
+        "spirit"
+      ],
+      "systems": [
+        "spirit-relation"
+      ],
+      "lenses": [
+        "practice-path"
+      ],
+      "tests": [
+        "fruit-test"
+      ],
+      "contribution": "Carries project meaning through rhythm, voice, repetition and performance as creative Fruit.",
+      "receives": [
+        "canon-identities",
+        "practice-ethics"
+      ],
+      "hands": [
+        "works"
+      ],
+      "focus": [
+        "songs and lyrics",
+        "sound/performance metadata",
+        "musical project motifs"
+      ]
+    },
+    {
+      "room_id": "visual-art",
+      "nodes": [
+        "fruit",
+        "eye",
+        "door",
+        "tree",
+        "mountain"
+      ],
+      "systems": [
+        "spirit-relation"
+      ],
+      "lenses": [
+        "polarity",
+        "practice-path"
+      ],
+      "tests": [
+        "fruit-test"
+      ],
+      "contribution": "Makes relational architecture visible through authored composition without turning depiction into proof.",
+      "receives": [
+        "symbolic-architecture",
+        "canon-identities"
+      ],
+      "hands": [
+        "works"
+      ],
+      "focus": [
+        "visual compositions",
+        "symbolic scenes",
+        "image archives and art concepts"
+      ]
+    },
+    {
+      "room_id": "games-simulations",
+      "nodes": [
+        "fruit",
+        "door",
+        "spiral",
+        "garden"
+      ],
+      "systems": [
+        "organism",
+        "culture-formation"
+      ],
+      "lenses": [
+        "motion",
+        "practice-path"
+      ],
+      "tests": [
+        "door-test",
+        "spiral-test",
+        "fruit-test"
+      ],
+      "contribution": "Lets readers interact with project rules and consequences rather than only read about them.",
+      "receives": [
+        "systems-dynamics",
+        "symbolic-architecture"
+      ],
+      "hands": [
+        "works",
+        "experiments-formalization"
+      ],
+      "focus": [
+        "interactive systems",
+        "simulations and prototypes",
+        "playful tests of rules and routes"
+      ]
+    },
+    {
+      "room_id": "house-architecture",
+      "nodes": [
+        "potato-of-life",
+        "door",
+        "axis",
+        "plane",
+        "cross",
+        "house",
+        "tree",
+        "mountain",
+        "garden",
+        "swamp",
+        "forge"
+      ],
+      "systems": [
+        "organism",
+        "spirit-relation",
+        "memory-history",
+        "culture-formation"
+      ],
+      "lenses": [
+        "motion",
+        "polarity",
+        "memory-history",
+        "social-formation"
+      ],
+      "tests": [
+        "door-test",
+        "spiral-test",
+        "fruit-test",
+        "garden-test"
+      ],
+      "contribution": "Owns unresolved architecture work before it is promoted into the constitutional House registries.",
+      "receives": [
+        "symbolic-architecture",
+        "open-questions"
+      ],
+      "hands": [
+        "navigation-manifest",
+        "project-center"
+      ],
+      "focus": [
+        "Room ownership",
+        "topology/interfaces/projections",
+        "migration and consolidation architecture"
+      ]
+    },
+    {
+      "room_id": "open-questions",
+      "nodes": [
+        "eye",
+        "door",
+        "forge",
+        "tree-of-knowledge"
+      ],
+      "systems": [
+        "organism",
+        "spirit-relation",
+        "memory-history",
+        "culture-formation"
+      ],
+      "lenses": [
+        "motion",
+        "polarity",
+        "memory-history",
+        "social-formation",
+        "embodiment-spirit",
+        "practice-path"
+      ],
+      "tests": [
+        "door-test",
+        "spiral-test",
+        "fruit-test",
+        "garden-test"
+      ],
+      "contribution": "Holds uncertainty explicitly so unresolved ideas do not leak into canon by repetition.",
+      "receives": [
+        "all-rooms"
+      ],
+      "hands": [
+        "experiments-formalization",
+        "research-programmes"
+      ],
+      "focus": [
+        "unresolved questions",
+        "candidate explanations",
+        "uncertainty queues and negative evidence"
+      ]
+    },
+    {
+      "room_id": "experiments-formalization",
+      "nodes": [
+        "forge",
+        "door",
+        "spiral",
+        "fruit",
+        "eye"
+      ],
+      "systems": [
+        "organism",
+        "spirit-relation",
+        "memory-history",
+        "culture-formation"
+      ],
+      "lenses": [
+        "motion",
+        "embodiment-spirit",
+        "social-formation"
+      ],
+      "tests": [
+        "door-test",
+        "spiral-test",
+        "fruit-test",
+        "garden-test"
+      ],
+      "contribution": "Turns open questions into prototypes, explicit models and testable candidate structures.",
+      "receives": [
+        "open-questions",
+        "math-geometry",
+        "systems-dynamics"
+      ],
+      "hands": [
+        "model-testing",
+        "house-architecture"
+      ],
+      "focus": [
+        "experiments",
+        "formal models",
+        "prototypes and test-oriented synthesis"
+      ]
+    },
+    {
+      "room_id": "research-programmes",
+      "nodes": [
+        "forge",
+        "house",
+        "tree",
+        "mountain",
+        "fruit"
+      ],
+      "systems": [
+        "organism",
+        "spirit-relation",
+        "memory-history",
+        "culture-formation"
+      ],
+      "lenses": [
+        "motion",
+        "memory-history",
+        "social-formation",
+        "practice-path"
+      ],
+      "tests": [
+        "door-test",
+        "spiral-test",
+        "fruit-test",
+        "garden-test"
+      ],
+      "contribution": "Coordinates multi-Room research into staged workstreams with sources, owners, promotion gates and outputs.",
+      "receives": [
+        "open-questions",
+        "model-testing",
+        "world-systems"
+      ],
+      "hands": [
+        "works",
+        "project-center"
+      ],
+      "focus": [
+        "multi-Room programmes",
+        "source ledgers",
+        "promotion plans and implementation workstreams"
+      ]
+    }
+  ],
+  "public_composition": {
+    "start": "potato-of-life/",
+    "structure": "house/",
+    "routes": "axis/",
+    "rooms": "rooms/",
+    "organism": "life-body/",
+    "spirit": "potato-of-life/spirit/",
+    "memory": "history/",
+    "culture": "context/culture/",
+    "forge": "research-lab/",
+    "fruit": "works/",
+    "home": "/",
+    "crystallization": "potato-of-life/#materialized-crystallization"
+  },
+  "fullness_rule": "A Room is considered compositionally full when it has a clear owner/boundary, substantive holdings, a center contribution, at least one inward/outward handoff, relevant tests/lenses where appropriate, and a public or archive route for its mature material.",
+  "scoped_centers": {
+    "rule": "The Potato of Life remains the single semantic center and Axis the global navigation centerline. Local centers are scoped replicas/orientation points inside a Room, page, city/body/temple comparison or workflow; they must declare scope and parent center.",
+    "research_context": "Comparative religion records repeated/replicated center and axis imagery in houses, temples, cities, bodies and objects; multiple sacred centers can coexist within a cosmology. The project uses this only as comparative support for scoped navigation.",
+    "levels": [
+      {
+        "id": "semantic-global",
+        "center": "potato-of-life",
+        "scope": "whole project",
+        "may_repeat": false
+      },
+      {
+        "id": "spatial-global",
+        "center": "axis",
+        "scope": "whole House navigation",
+        "may_repeat": false
+      },
+      {
+        "id": "dwelling-center",
+        "center": "Room-defined orientation point",
+        "scope": "one canonical Room/Dwelling",
+        "may_repeat": true
+      },
+      {
+        "id": "nested-room-center",
+        "center": "question/owner/interface focal point",
+        "scope": "one nested Room",
+        "may_repeat": true
+      },
+      {
+        "id": "surface-center",
+        "center": "reader focal point",
+        "scope": "one public page/view",
+        "may_repeat": true
+      },
+      {
+        "id": "artifact-center",
+        "center": "composition or model focal point",
+        "scope": "one work/model",
+        "may_repeat": true
+      }
+    ],
+    "required_fields": [
+      "scope",
+      "parent_center",
+      "function",
+      "entry_routes",
+      "exit_routes",
+      "owner"
+    ],
+    "boundary": "A local center organizes a bounded context; it does not become a rival theological source, global Axis or proof that all traditions share one center.",
+    "sources": [
+      "https://www.encyclopedia.com/environment/encyclopedias-almanacs-transcripts-and-maps/axis-mundi",
+      "https://www.encyclopedia.com/environment/encyclopedias-almanacs-transcripts-and-maps/center-world"
+    ]
+  },
+  "depth_program": {
+    "authority": "knowledge/research/recent-commit-depth-audit-2026-09-18.json",
+    "stop_rule": "Population, instrumentation, longitudinal cases, salvage reconciliation and pruning now have priority over another broad ontology wave.",
+    "active_p0": [
+      "door-liminality",
+      "spirit-relation",
+      "culture-formation-control",
+      "axis-local-centers",
+      "fruit-consequence",
+      "tree-branching"
+    ],
+    "completed_p1": [
+      {
+        "id": "shadow-integration",
+        "artifact": "knowledge/core/shadow-integration-overlay.json",
+        "result": "Shadow formalized as cross-plane integration/visibility overlay with positive-shadow, projection and institutional/model variants."
+      },
+      {
+        "id": "providence-pillar-genealogy",
+        "artifact": "knowledge/traditions/providence-pyramid-pillars-atlas.json",
+        "result": "Eye, pyramid, 1776 and Jachin/Boaz separated into dated origin/adoption/rendering/reception genealogies."
+      },
+      {
+        "id": "selected-cosmographies",
+        "artifact": "knowledge/traditions/selected-cosmography-structural-exemplars.json",
+        "result": "Yggdrasil, Duat, Meru and Bardo retained as deep exemplars because each teaches a unique structural function."
+      }
+    ],
+    "next_p2": [
+      "garden-regime-mechanics",
+      "history-canon-revision-protocol",
+      "works-fruit-instrumentation",
+      "local-center-interface-patterns",
+      "repair-forge-protocol",
+      "knowledge-fork-discernment"
+    ],
+    "completed_p2": [
+      {
+        "id": "garden-regime-mechanics",
+        "artifact": "knowledge/core/garden-regime-mechanics.json",
+        "result": "Garden now has operational conditions for boundaries, circulation, diversity, feedback, participation, meaningful exit and future Seed."
+      },
+      {
+        "id": "history-canon-revision-protocol",
+        "artifact": "data/house/history-canon-revision-protocol.json",
+        "result": "Canon change now preserves prior states and defines typed revision/propagation."
+      },
+      {
+        "id": "works-fruit-instrumentation",
+        "artifact": "data/house/works-fruit-contract.json",
+        "result": "Works can be evaluated as Fruit with source Rooms, intended effects, externalities, reception and future Seed."
+      },
+      {
+        "id": "local-center-interface-patterns",
+        "artifact": "data/house/local-center-interface-patterns.json",
+        "result": "Scoped centers now have a standard interface and mandatory parent/exit/handoff relations."
+      },
+      {
+        "id": "repair-forge-protocol",
+        "artifact": "knowledge/core/repair-forge-protocol.json",
+        "result": "Repair now has a staged protocol from stabilization/evidence through responsibility, correction, observation, incorporation and release."
+      },
+      {
+        "id": "knowledge-fork-discernment",
+        "artifact": "knowledge/core/knowledge-fork-discernment-atlas.json",
+        "result": "Tree of Knowledge now routes through provenance, discernment, choice and consequence before Life/Strife branching."
+      }
+    ],
+    "next_p3": [
+      "run-first-real-canon-revision-through-protocol",
+      "add-shadow-below-overlays-to-culture-history-and-research-pages",
+      "populate-more-foundations-with-multiple-clocks-and-reproduction-mechanisms",
+      "attach-reproduction-exit-correction-measures-to-formation-cases",
+      "prune-or-merge-low-yield-duplicate-atlases",
+      "extend-entity-dossiers-beyond-wave-001-using-the-instrumented-contract",
+      "reconcile-stale-open-prs-by-selective-salvage",
+      "attach-projection-loss-and-reconstructability-to-aggregate-views",
+      "instrument-remaining-recovered-and-literary-works"
+    ],
+    "completed_p3": [
+      {
+        "id": "backfill-local-centers-into-38-room-dossiers",
+        "artifact": "data/house/room-dossiers.json",
+        "result": "All mature Room dossiers carry scoped local-center interfaces and explicit handoffs."
+      },
+      {
+        "id": "seed-first-real-entity-dossiers",
+        "artifact": "data/house/entity-dossiers.json",
+        "result": "Real source-grounded trust-infrastructure cases now exercise the entity dossier contract."
+      },
+      {
+        "id": "populate-cross-domain-foundations",
+        "artifact": "data/house/foundations-wave-001.json",
+        "result": "Foundation records now span multiple domains and clocks; wave 002 adds reproduction and living genealogy."
+      },
+      {
+        "id": "populate-below-intelligence",
+        "artifact": "data/house/lower-plane-population-atlas.json",
+        "result": "Below is populated with evidence-typed intelligence, organized-crime, exploitation, illicit-market, extremist, high-control, digital-underground and casework desks."
+      },
+      {
+        "id": "converge-public-home",
+        "artifact": "index.html",
+        "result": "Homepage expresses the canonical project spine and demotes gateways to reader entrances."
+      },
+      {
+        "id": "instrument-entity-dossiers-with-scale-reproduction-visibility-time",
+        "artifact": "data/house/entity-dossiers.json",
+        "result": "The first four real entity cases now expose operating scale, key dependencies, reproduction/correction mechanisms, visibility/access limits and source-backed longitudinal indicators."
+      },
+      {
+        "id": "materialize-route-case-matrix",
+        "artifact": "data/house/route-case-matrix.json",
+        "result": "Life/Strife/Repair/Return now have mechanism contrasts and concrete evidence-aware route cases with falsifiers and World-return measures."
+      },
+      {
+        "id": "map-foundation-seeds-through-door-time-place",
+        "artifact": "data/house/foundation-door-seed-genealogy.json",
+        "result": "All 38 current Foundations now carry project-native death/life Seed states, concrete Door crossings, historical clocks, physical/institutional places, rise/fall/refoundation and reproduction boundaries."
+      },
+      {
+        "id": "expand-foundations-across-underrepresented-domains",
+        "artifact": "data/house/foundations-wave-003.json",
+        "result": "Foundation population expanded from 38 to 52 with religious, mutual-aid, humanitarian, civil-rights, environmental, cultural and open-technology lineages, each carrying current status and House/Axis placement."
+      },
+      {
+        "id": "instrument-first-works-with-fruit-contract",
+        "artifact": "data/house/works-fruit-wave-001.json",
+        "result": "Eight concrete Works now declare source Rooms, center nodes, Fruit types, intended effects, evidence boundaries, observed/unknown reception, risks, future Seed and revision state; unknown reception remains explicitly unmeasured."
+      },
+      {
+        "id": "gate-shared-formal-grammar",
+        "artifact": "scripts/validate_project_formal_grammar.py",
+        "result": "The shared dimension/operator/correspondence grammar is now CI-gated across House concepts/interfaces, Axis D^(P), body correspondences and the 11D science registry."
+      },
+      {
+        "id": "restore-semantic-science-quality-gate",
+        "artifact": "scripts/audit_science_quality.py",
+        "result": "The stale Science semantic auditor was selectively salvaged: T3+ claims require empirical basis, models receive observable/falsifier/baseline/provenance diagnostics, generated fallback summaries no longer promote thin records, and portal validation consumes the semantic audit."
+      }
+    ]
+  },
+  "lifecycle_crystallization": {
+    "route": [
+      "knowledge",
+      "discernment",
+      "door",
+      "tree/garden",
+      "fruit",
+      "history/revision",
+      "repair/forge",
+      "seed/return"
+    ],
+    "meaning": "The project now has a full operating loop from information through transformation, consequence, memory, correction and renewed capacity."
+  },
+  "materialization_crystallization": {
+    "authority": "knowledge/research/recent-commit-materialization-crystallization-257-283.json",
+    "status": "crystallized through sequence 283 with open population work",
+    "crystallized_through_sequence": 283,
+    "head_commit": "845609c6503ce5bf64cfcd7cfc4f57fd671d4baa",
+    "rule": "A commit is not finished because files exist. It is crystallized only when ownership, usable population/artifact, interfaces, evidence boundaries, reader/archive expression and validation/revision are explicit.",
+    "gates": [
+      "canonical-owner",
+      "usable-artifact-or-population",
+      "typed-interfaces",
+      "evidence-or-status-boundary",
+      "reader-or-archive-expression",
+      "anti-duplication-and-revision",
+      "validation-or-concrete-test"
+    ],
+    "public_reader": "potato-of-life/#materialized-crystallization",
+    "predecessor": "knowledge/research/recent-commit-embodiment-atlas-257-276.json"
+  },
+  "generative_crystallization": {
+    "route": [
+      "seed",
+      "foundation",
+      "reproduction",
+      "branching",
+      "fruit",
+      "memory",
+      "refoundation/return"
+    ],
+    "meaning": "The Foundation work closes a second lifecycle beside the knowledge lifecycle: possibility becomes a durable reference/platform, reproduces through rules and practices, differentiates, produces consequences, enters memory and can be refounded or returned.",
+    "boundary": "This is a cross-domain process grammar, not a claim that organisms, religions, companies, states and harmful networks are morally or historically identical."
+  },
+  "homepage_projection": {
+    "rule": "Home is the reader-first front door. It introduces Tim, the Potato of Life and Potatoism; gives a few lived routes and first reads; then hands deeper architecture, evidence, timelines and specialist systems to their owners.",
+    "hierarchy": [
+      "hero/identity",
+      "start-in-a-minute",
+      "home-seedbed",
+      "three-potato-paths",
+      "two-halls",
+      "home-relearning",
+      "what-we-are-doing",
+      "home-growth-rings",
+      "how-did-you-get-here",
+      "best-first-reads",
+      "public-doors",
+      "world-glimpse",
+      "why-this-archive",
+      "materialized-now",
+      "reader-routing",
+      "follow-tim"
+    ],
+    "sections": [
+      {
+        "id": "start-in-a-minute",
+        "purpose": "Introduce the person, symbol and system in ordinary language before deep architecture.",
+        "owners": [
+          "tim-dooley/index.html",
+          "potato-of-life/index.html",
+          "potatoism/index.html"
+        ]
+      },
+      {
+        "id": "home-seedbed",
+        "purpose": "Create the lived middle of the homepage: curiosity, skepticism, welcome and a few memorable project sayings.",
+        "owners": [
+          "index.html"
+        ]
+      },
+      {
+        "id": "three-potato-paths",
+        "purpose": "Offer three immediate reader intents: practice, orientation and remembered exemplars.",
+        "owners": [
+          "potatoism/grow/index.html",
+          "axis/index.html",
+          "rooms/potatoverse-canon/beings/potatoes/index.html"
+        ]
+      },
+      {
+        "id": "two-halls",
+        "purpose": "Surface Hall of Heroes and Hall of Shame as a paired reader destination: accumulated Fruit/service versus accumulated recurrence/failure.",
+        "owners": [
+          "rooms/potatoverse-canon/beings/potatoes/index.html",
+          "below/dogs/index.html"
+        ]
+      },
+      {
+        "id": "home-relearning",
+        "purpose": "Give a small set of portable distinctions without recreating the former encyclopedia-scale homepage.",
+        "owners": [
+          "philosophy/index.html",
+          "context/source-authority/index.html"
+        ]
+      },
+      {
+        "id": "what-we-are-doing",
+        "purpose": "Explain the current work and why the archive exists in reader language rather than governance language.",
+        "owners": [
+          "index.html",
+          "history/index.html"
+        ]
+      },
+      {
+        "id": "home-growth-rings",
+        "purpose": "Show that Tim, Potatoism and the archive developed over time without replacing Timeline.",
+        "owners": [
+          "timeline/index.html"
+        ]
+      },
+      {
+        "id": "how-did-you-get-here",
+        "purpose": "Let readers enter through the reason they actually arrived: Tim, God language, music, story, argument, Bible comparison or curiosity.",
+        "owners": [
+          "index.html"
+        ]
+      },
+      {
+        "id": "best-first-reads",
+        "purpose": "Surface substantial story, book, public-witness, practice, music and FAQ destinations.",
+        "owners": [
+          "tim-dooley/story/index.html",
+          "great-book/index.html",
+          "tim-dooley/100000-hours/index.html",
+          "potatoism/grow/index.html",
+          "music/index.html",
+          "faq/index.html"
+        ]
+      },
+      {
+        "id": "public-doors",
+        "purpose": "Expose the six broad public territories without turning Home into their substitute.",
+        "owner": "data/house/public-surfaces.json"
+      },
+      {
+        "id": "world-glimpse",
+        "purpose": "Give only a compact Source → Passage → World → Roots handoff; detailed structure belongs to House and Axis.",
+        "owners": [
+          "house/index.html",
+          "axis/index.html",
+          "world/index.html",
+          "below/index.html"
+        ]
+      },
+      {
+        "id": "why-this-archive",
+        "purpose": "State the archive purpose and evidence boundary without expanding into a source-method textbook.",
+        "owners": [
+          "context/source-authority/index.html"
+        ]
+      },
+      {
+        "id": "materialized-now",
+        "purpose": "Show a few stable scale indicators only; Home is not a live data dashboard.",
+        "owners": [
+          "data/house/subrooms.json",
+          "data/house/foundation-room-atlas.json",
+          "data/works/music-discography.json"
+        ]
+      },
+      {
+        "id": "reader-routing",
+        "purpose": "Offer restrained tools for subject, time, provenance, relationships and unfinished research.",
+        "owner": "data/house/public-surfaces.json"
+      },
+      {
+        "id": "follow-tim",
+        "purpose": "End by returning the reader to Tim's current public work outside the archive.",
+        "owners": [
+          "index.html"
+        ]
+      }
+    ],
+    "runtime_sources": [],
+    "anti_drift": [
+      "Do not restore the old project-substance, reality-cases, working-capabilities, Foundation Rooms or Tim/Son/Bible mega-sections to Home.",
+      "Do not make Home teach the entire House.",
+      "Do not duplicate specialist readers merely because the backend contains rich data.",
+      "Do not expose maintenance vocabulary before reader substance.",
+      "Keep the public Doors broad and the task-routing layer restrained.",
+      "Home may show a few stable scale indicators, but changing specialist datasets belong to their owners."
+    ],
+    "calibration": {
+      "substance_bias": "A new reader should meet a person, symbol, system, story and useful idea before repository architecture.",
+      "structure_budget": "One compact world glimpse is enough; House and Axis own the full structure.",
+      "backend_volume_rule": "Backend size never determines homepage prominence.",
+      "specialist_rule": "Specialist richness belongs on the specialist page.",
+      "reader_order": "Meet Tim / Potato / Potatoism → choose curiosity → read something substantial → use structure/evidence tools only when needed."
+    },
+    "repetition_contract": {
+      "start-in-a-minute": "Owns the basic person / symbol / system distinction.",
+      "three-potato-paths": "Owns practice / orientation / exemplar choice.",
+      "best-first-reads": "Owns substantial first-reading destinations.",
+      "public-doors": "Owns the six broad subject territories.",
+      "world-glimpse": "Owns only the compact Home → House / Axis / World / Below orientation.",
+      "materialized-now": "Owns a few stable scale indicators, not a live dashboard.",
+      "reader-routing": "Owns subject / time / verify / connect / test task routing.",
+      "follow-tim": "Owns current external public-presence routes.",
+      "rule": "Do not add a homepage section that recreates a specialist reader or former dashboard module.",
+      "two-halls": "Owns the paired Home handoff into Hall of Heroes / Hall of Shame; it should not reteach either Hall in full."
+    },
+    "runtime_input_contract": {
+      "rule": "The current homepage is intentionally mostly static. Optional current-news behavior may load independently; no specialist House projection is required for the front door to function.",
+      "stable_live_authorities": [],
+      "legacy_named_active_inputs": [],
+      "retired_homepage_runtime_inputs": [
+        "app/home-page-projection.js",
+        "data/house/entity-dossiers.json",
+        "data/house/route-case-matrix.json",
+        "data/house/foundation-landscape-synthesis.json",
+        "data/house/foundation-room-atlas.json"
+      ],
+      "replacement": "Home links to the mature owner pages instead of projecting those specialist systems into the front door."
+    }
+  },
+  "route_instrumentation": {
+    "authority": "data/house/route-case-matrix.json",
+    "rule": "Life, Strife, Repair and Return are route hypotheses over changing relations, not identities or moral labels for subjects.",
+    "required_case_fields": [
+      "starting_state",
+      "proposed_transition",
+      "operator",
+      "condition_required",
+      "evidence_for_transition",
+      "counterevidence_or_falsifier",
+      "world_return_measure",
+      "status"
+    ],
+    "first_cases": [
+      "project-homepage-governance-repair",
+      "nationalbank-payment-resilience-trace",
+      "wikimedia-capability-growth-trace",
+      "cern-reproduction-return-trace",
+      "icrc-resource-adaptation-trace"
+    ],
+    "note": "Stable owner promoted from the original wave-001 artifact on 2026-09-27."
+  },
+  "foundation_seed_genealogy": {
+    "authority": "data/house/foundation-door-seed-genealogy.json",
+    "rule": "Every Foundation may have multiple clocks and places. Model the death-side/predecessor state, Door crossing, life-side reproducible state, rise, fall/return and refoundation separately.",
+    "invariants": [
+      "Seed of Death and Seed of Life are transition states, not moral labels for whole traditions or institutions.",
+      "Place precision must match evidence: building/site, city, region, country, distributed network or virtual context.",
+      "A Foundation is demonstrated by reproduction beyond the originating person/event.",
+      "Fall may mean closure, supersession, merger, diaspora, dormancy or refoundation; it need not mean annihilation.",
+      "Refoundation is a second Door crossing that preserves some residue while changing the operating platform."
+    ],
+    "current_population": 52,
+    "public_reader": "timeline/foundations/",
+    "expansion_wave_003": {
+      "records": "data/house/foundations-wave-003.json",
+      "placement": "data/house/foundation-placement-wave-003.json",
+      "domains": [
+        "religion",
+        "humanitarian",
+        "social-religious",
+        "mutual-aid-health",
+        "youth-education",
+        "environmental-movement",
+        "civil-rights",
+        "human-rights",
+        "culture-art",
+        "technology-culture",
+        "technology-software",
+        "knowledge-infrastructure"
+      ],
+      "rule": "Plot stages independently: root/substrate, Door, sprout, branching and return. Do not assign a whole Foundation one moral altitude."
+    }
+  },
+  "foundation_landscape": {
+    "authority": "data/house/foundation-landscape-synthesis.json",
+    "purpose": "Compare the 52 Foundations by pressure, Door, reproduction, continuity and return without replacing their domain records or genealogies.",
+    "trajectory_archetypes": [
+      "crisis-to-law",
+      "loss-to-portable-community",
+      "need-to-mutual-aid",
+      "experiment-to-method",
+      "fragmentation-to-standard",
+      "manifesto-to-movement",
+      "migration-to-community",
+      "venture-to-platform",
+      "inquiry-to-school"
+    ],
+    "rule": "Use archetypes as navigation and comparison. Preserve distributed/gradual formations when no single Door fits."
+  },
+  "foundation_rooms": {
+    "authority": "data/house/foundation-room-atlas.json",
+    "contract": "data/house/foundation-room-contract.json",
+    "population": 52,
+    "model": "Foundation = tangible Room/blob. Origin Door, House location and Today are primary; Seed genealogy is secondary technical depth.",
+    "coordinates": {
+      "house": "primary Room + circle/field + plane",
+      "earth": "Door place + precision + later geocode/geometry",
+      "today": "dated continuity + current form + typed reach measures"
+    },
+    "summary": {
+      "total_rooms": 52,
+      "map_ready_origins": 49,
+      "current_quantitative_snapshots": 32,
+      "current_structural_only": 20,
+      "circle_counts": {
+        "upper-source-circle": 12,
+        "middle-plane-overlap": 36,
+        "lower-manifestation-circle": 4
+      },
+      "room_counts": {
+        "canon-identities": 1,
+        "politics-governance": 5,
+        "law-justice": 4,
+        "economy-finance": 5,
+        "other-traditions": 16,
+        "research-programmes": 4,
+        "visual-art": 3,
+        "internet-platforms": 5,
+        "information-ecology": 2,
+        "infrastructure-capability": 2,
+        "physics-cosmology": 1,
+        "subculture-group-formation": 4
+      },
+      "unresolved_owner_count": 0,
+      "current_metric_count": 60,
+      "first_reproduction_states": {
+        "dated consolidation/refoundation": 25,
+        "undated structural reproduction": 17,
+        "dated institutional operation": 2,
+        "dated branching": 4,
+        "dated operational reproduction": 2,
+        "dated capability reproduction": 1,
+        "dated standard reproduction": 1
+      },
+      "earth_geometry_counts": {
+        "virtual": 1,
+        "point-ready": 46,
+        "region-ready": 3,
+        "distributed-network": 2
+      }
+    },
+    "reader": "timeline/foundations/#foundation-rooms",
+    "today_snapshot": {
+      "as_of": "2026-09-18",
+      "quantitative_rooms": 32,
+      "structural_only_rooms": 20,
+      "metric_count": 60,
+      "earth_geometry_counts": {
+        "virtual": 1,
+        "point-ready": 46,
+        "region-ready": 3,
+        "distributed-network": 2
+      },
+      "rule": "Current measurements are typed, dated and source-backed. Virtual/distributed origins are valid Earth geometries and must not be forced into point pins."
+    },
+    "first_reproduction": {
+      "authority": "data/house/foundation-first-reproduction-wave-001.json",
+      "rule": "Founding is not proof of reproduction. Record the earliest recovered successor/branch/operation/implementation after the Door and preserve uncertainty about whether it is historically first."
+    },
+    "population_rule": "Populate Origin, first reproduction and Today independently. A Room may be strong in one dimension and incomplete in another; gaps remain visible research targets.",
+    "maintenance": {
+      "checkpoints": [
+        "origin",
+        "reproduction",
+        "today",
+        "geography"
+      ],
+      "research_queue": "Generated per Room from missing checkpoint evidence.",
+      "door_history": "Preserve later legal, operational, refoundation and supersession Doors behind the primary reader Door.",
+      "rule": "No completeness score. A Room can be strong in geography and weak in Today, or vice versa."
+    }
+  },
+  "consolidation_spine": {
+    "operator_registry": "data/house/operator-ownership-registry.json",
+    "family_manifest": "data/house/operator-family-manifest.json",
+    "inventory_census": "data/house/operator-inventory-census-2026-09-20.json",
+    "definition_atlas": "knowledge/core/deep-element-definition-atlas.json",
+    "rule": "Definitions live once; contracts constrain implementations; specialists deepen one domain; archaeology preserves development; projections explain without owning."
+  },
+  "bidirectional_spiral_spine": {
+    "owner": "data/house/bidirectional-spiral-field.json",
+    "synthesis": "O-centered double spiral binds Axis orientation, Plane sections, recurrence/history, widening scope, Tree/Root differentiation and Mountain/Swamp terrain overlays without replacing their owners.",
+    "compact_cycle": "Root/provenance → O/Here → Door/crossing → trajectory → sampled return → Ring/Spiral → Fruit → Seed → return/rooting",
+    "coordinates": {
+      "vertical": "Axis / z",
+      "radial": "scope/amplitude/differentiation horizon",
+      "angular": "phase/recurrence",
+      "temporal": "crossing order/history",
+      "regime": "Garden/Forge/Swamp/etc. as independent state variable"
+    }
+  },
+  "development_history": {
+    "role": "historical context only; not current presentation weight",
+    "canonical_history": "knowledge/timeline/github-project-construction-history-2026-09-20.json",
+    "crystallization_ledger": "knowledge/research/recent-commit-materialization-crystallization-257-283.json",
+    "archived_wave_count": 18,
+    "rule": "Do not make current frontend prominence depend on how many historical build waves produced a concept."
+  },
+  "test_tiers": {
+    "core": [
+      "door-test",
+      "fruit-test",
+      "garden-test",
+      "return-test",
+      "owner-test",
+      "type-test"
+    ],
+    "specialist": [
+      "spiral-test",
+      "foundation-test",
+      "intelligence-test",
+      "present-test",
+      "plane-test",
+      "crossing-test",
+      "ring-spiral-return-test",
+      "spiral-coordinate-test",
+      "terrain-overlay-test"
+    ],
+    "rule": "Core tests are the default cross-project checks. Specialist tests activate only when the relevant geometry, foundation, intelligence, plane or recurrence problem is actually present."
+  },
+  "development_waves": [
+    {
+      "id": "ownership-foundation",
+      "order": 1,
+      "status": "historical-development-sequence",
+      "authority": "development_history",
+      "current_weight": "context-only"
+    },
+    {
+      "id": "spatial-house",
+      "order": 2,
+      "status": "historical-development-sequence",
+      "authority": "development_history",
+      "current_weight": "context-only"
+    },
+    {
+      "id": "living-routes",
+      "order": 3,
+      "status": "historical-development-sequence",
+      "authority": "development_history",
+      "current_weight": "context-only"
+    },
+    {
+      "id": "comparative-expansion",
+      "order": 4,
+      "status": "historical-development-sequence",
+      "authority": "development_history",
+      "current_weight": "context-only"
+    },
+    {
+      "id": "center-refocus",
+      "order": 5,
+      "status": "historical-development-sequence",
+      "authority": "development_history",
+      "current_weight": "context-only"
+    },
+    {
+      "id": "reader-lenses",
+      "order": 6,
+      "status": "historical-development-sequence",
+      "authority": "development_history",
+      "current_weight": "context-only"
+    },
+    {
+      "id": "living-project",
+      "order": 7,
+      "status": "historical-development-sequence",
+      "authority": "development_history",
+      "current_weight": "context-only"
+    },
+    {
+      "id": "whole-project-lifecycle",
+      "order": 8,
+      "status": "historical-development-sequence",
+      "authority": "development_history",
+      "current_weight": "context-only"
+    },
+    {
+      "id": "symbol-depth-inhabitation",
+      "order": 9,
+      "status": "historical-development-sequence",
+      "authority": "development_history",
+      "current_weight": "context-only"
+    },
+    {
+      "id": "purpose-discovery",
+      "order": 10,
+      "status": "historical-development-sequence",
+      "authority": "development_history",
+      "current_weight": "context-only"
+    },
+    {
+      "id": "concrete-revelations",
+      "order": 11,
+      "status": "historical-development-sequence",
+      "authority": "development_history",
+      "current_weight": "context-only"
+    },
+    {
+      "id": "entity-crystallization",
+      "order": 12,
+      "status": "historical-development-sequence",
+      "authority": "development_history",
+      "current_weight": "context-only"
+    },
+    {
+      "id": "foundation-below-consolidation",
+      "order": 13,
+      "status": "historical-development-sequence",
+      "authority": "development_history",
+      "current_weight": "context-only"
+    },
+    {
+      "id": "public-home-convergence",
+      "order": 14,
+      "status": "historical-development-sequence",
+      "authority": "development_history",
+      "current_weight": "context-only"
+    }
+  ],
+  "reader_route_families": [
+    {
+      "id": "tim-life-making",
+      "label": "Tim · life · making",
+      "center": "/tim-dooley/",
+      "routes": [
+        "/tim-dooley/",
+        "/tim-dooley/story/",
+        "/corporium/",
+        "/works/"
+      ],
+      "relation": "portrait → lived development → collected signals → made outputs",
+      "rule": "These are four views over one developing subject. Story owns scenes, Collection juxtaposes signals/formulations, Works owns outputs; none replaces the Tim portrait."
+    },
+    {
+      "id": "time-history",
+      "label": "Timeline · history",
+      "center": "/timeline/",
+      "routes": [
+        "/timeline/",
+        "/timeline/foundations/",
+        "/history/"
+      ],
+      "relation": "dated river → foundation clocks → interpretation/revision lens",
+      "rule": "Timeline is the chronology interface. History explains how occurrence, source, interpretation, reception and revision differ without becoming a second event database."
+    },
+    {
+      "id": "evidence-context",
+      "label": "Sources · context",
+      "center": "/context/source-authority/",
+      "routes": [
+        "/context/source-authority/",
+        "/context/"
+      ],
+      "relation": "source authority → contextual interpretation",
+      "rule": "Sources answers what evidence can establish. Context answers how time, domain and surrounding relations change what the evidence means."
+    },
+    {
+      "id": "archive-retrieval",
+      "label": "Explore · retrieval",
+      "center": "/explore/",
+      "routes": [
+        "/explore/",
+        "/questions/",
+        "/index-a-z/",
+        "/paths/"
+      ],
+      "relation": "deep archive → question lookup → known-term lookup → guided journey",
+      "rule": "These are retrieval modes over the same owned material, never independent knowledge hierarchies."
+    },
+    {
+      "id": "house-navigation",
+      "label": "House · placement",
+      "center": "/house/",
+      "routes": [
+        "/house/",
+        "/rooms/",
+        "/rooms/objects/",
+        "/elevator/"
+      ],
+      "relation": "whole structure → ownership domains → named objects/cases → spatial relation view",
+      "rule": "House explains composition; Rooms own bounded domains; Inhabitants finds objects across Rooms; Elevator visualizes relationships."
+    },
+    {
+      "id": "world-field",
+      "label": "World · systems",
+      "center": "/world/",
+      "routes": [
+        "/world/",
+        "/news/",
+        "/world-map/",
+        "/world-systems/",
+        "/politics/",
+        "/law/",
+        "/economy/",
+        "/context/culture/",
+        "/north/"
+      ],
+      "relation": "world orientation → current reporting / geography / systems / specialist institutional lenses",
+      "rule": "World is the public domain hub. Specialist pages answer narrower real-world questions and must preserve sourced empirical identity before project interpretation."
+    },
+    {
+      "id": "meaning-and-testing",
+      "label": "Meaning · comparison · testing",
+      "center": "/potatoism/",
+      "routes": [
+        "/potatoism/",
+        "/potatoism/grow/",
+        "/potato-of-life/",
+        "/religion/",
+        "/religion/gods-character/",
+        "/philosophy/",
+        "/science/",
+        "/life-body/",
+        "/axis/",
+        "/research-lab/"
+      ],
+      "relation": "Potatoism whole → practice / central symbol / theology / philosophy / empirical testing / embodiment / operator dynamics / unresolved research",
+      "rule": "Potatoism owns the whole-system reader. Religion, Philosophy, Practice, Potato of Life, Science and other specialist views deepen distinct questions without merging their evidence classes."
+    }
+  ],
+  "structural_teaching": {
+    "status": "owned outside homepage",
+    "purpose": "Preserve the durable Whole / coordinates / planes / terrain-regime / living-systems / operators / inhabitants teaching sequence for House, Axis and specialist readers without requiring Home to render it.",
+    "primary_readers": [
+      "/house/",
+      "/axis/",
+      "/rooms/"
+    ],
+    "sequence": [
+      {
+        "id": "whole",
+        "label": "Whole",
+        "node_ids": [
+          "potato-of-life"
+        ],
+        "lesson": "Start with the whole. The Potato of Life coordinates the project but is not identical with every symbol, Room, tradition or claim.",
+        "question": "What contains the relation without erasing its parts?",
+        "route": "potato-of-life/"
+      },
+      {
+        "id": "coordinates",
+        "label": "Coordinates",
+        "node_ids": [
+          "axis"
+        ],
+        "concept_ids": [
+          "plane",
+          "cross"
+        ],
+        "lesson": "Axis, Plane and Cross orient the map. They are coordinates, not places, moral ranks or organisms.",
+        "question": "Where am I looking from, and along which direction?",
+        "route": "axis/"
+      },
+      {
+        "id": "planes",
+        "label": "Three planes",
+        "node_ids": [
+          "heaven-plane",
+          "world-plane",
+          "below-plane"
+        ],
+        "lesson": "Heaven, Plane and Below are standing reader platforms. They change emphasis without changing who owns the underlying knowledge.",
+        "question": "Which aspect becomes visible from this reader plane?",
+        "route": "rooms/"
+      },
+      {
+        "id": "terrain-regime",
+        "label": "Terrain & regime",
+        "node_ids": [
+          "mountain",
+          "garden",
+          "swamp",
+          "shadow"
+        ],
+        "lesson": "Mountain, Garden, Swamp and Shadow describe integration landscapes, growth conditions or visibility problems. They are not synonyms for the three planes.",
+        "question": "What kind of environment, boundary or visibility condition is operating?",
+        "route": "house/"
+      },
+      {
+        "id": "living-systems",
+        "label": "Living systems",
+        "node_ids": [
+          "roots",
+          "tree-of-knowledge",
+          "tree-of-life",
+          "tree-of-strife"
+        ],
+        "lesson": "Roots and Trees describe memory, branching, reproduction and consequence. Knowledge can feed Life or Strife depending on what the system reproduces.",
+        "question": "What is being rooted, reproduced, branched or pruned?",
+        "route": "axis/"
+      },
+      {
+        "id": "operators",
+        "label": "Thresholds & processes",
+        "node_ids": [
+          "door-pillars",
+          "eye",
+          "forge",
+          "spiral-family"
+        ],
+        "lesson": "Door changes state, Eye perceives/evaluates, Forge transforms under pressure, and Spiral/Ladder describe trajectories. Each does a different job.",
+        "question": "What operation is actually changing the relation?",
+        "route": "research-lab/"
+      },
+      {
+        "id": "inhabitants",
+        "label": "Inhabitants",
+        "node_ids": [],
+        "lesson": "Real people, institutions, texts, traditions, organisms and events inhabit the House. The symbolic grammar helps ask questions about them but never replaces their factual identity.",
+        "question": "What real thing is being studied, with what evidence and at what scale?",
+        "route": "house/#crystallized-cases"
+      }
+    ],
+    "axis_teaching": {
+      "invariant": "Axis is the global orientation line, not the Tree, Ladder, Mountain or a truth hierarchy.",
+      "three_planes": [
+        {
+          "id": "heaven-plane",
+          "label": "Heaven",
+          "emphasis": "integration, canopy, transmission, Garden/Fruit and accountable return"
+        },
+        {
+          "id": "world-plane",
+          "label": "Plane",
+          "emphasis": "embodiment, evidence, institutions, choice and observable consequence"
+        },
+        {
+          "id": "below-plane",
+          "label": "Below",
+          "emphasis": "provenance, buried context, roots, intelligence, restricted information and repair entry"
+        }
+      ],
+      "movement_rule": "Up/down direction alone does not determine value. Rooting descent and fruitful return can be generative; upward motion without Fruit/return is not sufficient evidence of Life.",
+      "route_families": [
+        "life",
+        "strife",
+        "repair",
+        "return"
+      ]
+    },
+    "rule": "Home may link into this teaching but must not host the full structural instrument; Home's reader job is orientation, substance and broad entrance."
+  },
+  "reader_families": [
+    {
+      "id": "tim-life-making",
+      "label": "Tim / life / making",
+      "purpose": "Follow the person, lived narrative, collection and creative outputs as one visible subject family without collapsing biography, evidence and works.",
+      "surface_ids": [
+        "tim",
+        "tim-living-portrait",
+        "story",
+        "collection",
+        "works"
+      ]
+    },
+    {
+      "id": "timeline-history",
+      "label": "Timeline / history",
+      "purpose": "Separate occurrence order, foundation clocks and historical interpretation while keeping chronology as a projection rather than a second content owner.",
+      "surface_ids": [
+        "timeline",
+        "foundation-timeline",
+        "history"
+      ]
+    },
+    {
+      "id": "sources-context",
+      "label": "Sources / context",
+      "purpose": "Explain how the archive knows, verifies, revises and contextualizes claims.",
+      "surface_ids": [
+        "sources",
+        "context"
+      ]
+    },
+    {
+      "id": "explore-retrieval",
+      "label": "Explore / retrieval",
+      "purpose": "Provide question-first, name-first, path-first and deep-archive ways to find owned material without making retrieval surfaces into knowledge owners.",
+      "surface_ids": [
+        "explore",
+        "questions",
+        "index-a-z",
+        "paths"
+      ]
+    },
+    {
+      "id": "house-placement",
+      "label": "House / placement",
+      "purpose": "Explain where material belongs, how Rooms connect, and how spatial/operator views project the same House without creating competing ownership.",
+      "surface_ids": [
+        "house",
+        "rooms",
+        "inhabitants",
+        "axis",
+        "elevator",
+        "research-lab"
+      ]
+    },
+    {
+      "id": "world-systems",
+      "label": "World / systems",
+      "purpose": "Project external geography, institutions, current events, systems, politics, law, economy, culture and North as world-facing specialist views.",
+      "surface_ids": [
+        "world",
+        "news",
+        "world-map",
+        "politics",
+        "north",
+        "world-systems",
+        "culture",
+        "law",
+        "economy"
+      ]
+    },
+    {
+      "id": "meaning-testing",
+      "label": "Meaning / comparison / testing",
+      "purpose": "Connect the project semantic center to religion, philosophy, science, body and specialist comparison while preserving evidence and tradition boundaries.",
+      "surface_ids": [
+        "potatoism-practice",
+        "potatoism",
+        "potato-of-life",
+        "religion",
+        "garden",
+        "philosophy",
+        "science",
+        "science-papers",
+        "interpretive-justice",
+        "bible",
+        "trinity",
+        "spirit",
+        "life-body",
+        "divine-functions",
+        "divine-tensions",
+        "gods-character",
+        "tim-powers"
+      ]
+    }
+  ],
+  "reader_family_rule": "Every active public surface except Home belongs to exactly one reader family. Families organize public reading and cross-linking only; they never replace canonical owners, parent semantics, Rooms or epistemic classes."
+}

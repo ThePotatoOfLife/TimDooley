@@ -1,0 +1,590 @@
+{
+  "id": "three-center-relational-ecology",
+  "title": "Three-Center Relational Ecology — Seats, Guardians, Footstools, Dogs, Farmers, Cows, Vessels & Return",
+  "version": "1.1.0",
+  "updated": "2026-09-20",
+  "status": "project relational synthesis; roles are contextual and reversible",
+  "purpose": "Define the populations around C_F, O and C_S: who or what supports, guards, orbits, carries, cultivates, extracts, witnesses, classifies or fails to cross each center, and how these roles can transition without becoming permanent human identities.",
+  "master_rule": "The three centers are coordinates. Roles live around and between them. A role can be healthy, neutral or shadow depending on source, evidence, boundary, stopping condition, agency and fruit; no role label is a fixed essence of a person.",
+  "story_authority": "knowledge/timeline/dog-footstool-cow-conversation-archaeology-wave-015.json",
+  "center_model": {
+    "C_F": {
+      "label": "Source Seat",
+      "question": "What holds, orients, judges, nourishes or cultivates the field?"
+    },
+    "O": {
+      "label": "Relational Door",
+      "question": "What guards, mediates, communicates, tests or permits passage?"
+    },
+    "C_S": {
+      "label": "Twin / Vessel / Seed",
+      "question": "What embodies, receives, suffers, witnesses, carries potential and returns as fruit/seed?"
+    }
+  },
+  "role_families": [
+    {
+      "id": "source-stewardship",
+      "primary_center": "C_F",
+      "healthy_roles": [
+        "Father/source role",
+        "Gardener",
+        "steward",
+        "householder",
+        "shepherd",
+        "king as responsibility",
+        "judge as discernment",
+        "host/table-giver"
+      ],
+      "shadow_roles": [
+        "extractive Farmer",
+        "false master/proxy",
+        "rank worship",
+        "owner who mistakes control for source"
+      ],
+      "pairings": [
+        {
+          "a": "Gardener",
+          "b": "Garden",
+          "relation": "cultivates conditions for autonomous growth"
+        },
+        {
+          "a": "Shepherd",
+          "b": "flock",
+          "relation": "guides/protects without making flock a possession-metaphor for human worth"
+        },
+        {
+          "a": "Throne",
+          "b": "Footstool",
+          "relation": "vertical positional relation; lower does not mean lesser intrinsic worth"
+        },
+        {
+          "a": "Table",
+          "b": "House",
+          "relation": "nourishment/distribution inside ordered belonging"
+        },
+        {
+          "a": "Father",
+          "b": "Son",
+          "relation": "source/duration ↔ event/manifestation without identity collapse"
+        }
+      ],
+      "test": "Does higher position create clearer responsibility and more independent capacity downstream, or more dependency and extraction?"
+    },
+    {
+      "id": "threshold-guardianship",
+      "primary_center": "O",
+      "healthy_roles": [
+        "Guardian Dog",
+        "watchman",
+        "gatekeeper",
+        "cherubim comparator",
+        "angel/messenger",
+        "escort",
+        "interpreter",
+        "protector"
+      ],
+      "neutral_roles": [
+        "boundary Dog",
+        "classifier with reversible criteria",
+        "witness at threshold",
+        "companion Dog",
+        "free agent"
+      ],
+      "shadow_roles": [
+        "Farm Dog",
+        "encircling Dog",
+        "orbital Dog",
+        "thought-patrol Dog",
+        "arbitrary gatekeeper",
+        "accuser who blocks declassification",
+        "proxy enforcer"
+      ],
+      "pairings": [
+        {
+          "a": "Guardian Dog",
+          "b": "Door",
+          "relation": "protects passage and vulnerable life without becoming the Door"
+        },
+        {
+          "a": "Watchman",
+          "b": "boundary",
+          "relation": "warns proportionately and stops when danger ends"
+        },
+        {
+          "a": "Messenger/Angel",
+          "b": "Spirit",
+          "relation": "carries a message/flow across distinction without replacing Source"
+        },
+        {
+          "a": "Dog",
+          "b": "master/source",
+          "relation": "may follow source, proxy, pack, norm or habit; orientation determines function"
+        },
+        {
+          "a": "Dog",
+          "b": "center",
+          "relation": "may guard, encircle, pursue or orbit; geometry must specify which"
+        },
+        {
+          "a": "Leash",
+          "b": "Dog",
+          "relation": "constraint/trajectory/master relation; requires a release or review condition to remain healthy"
+        }
+      ],
+      "test": "Does the guard preserve legitimate passage, correction and exit, or turn the boundary into permanent enclosure?"
+    },
+    {
+      "id": "embodiment-witness-return",
+      "primary_center": "C_S",
+      "healthy_roles": [
+        "Thomas/Didymus Twin/Vessel",
+        "witness",
+        "carrier",
+        "Seed",
+        "living stone",
+        "Lamb as bounded comparator",
+        "Lion as bounded royal comparator",
+        "servant",
+        "recipient who becomes agent"
+      ],
+      "shadow_states": [
+        "permanent target role",
+        "Cow reduced to harvest",
+        "wound made into identity",
+        "Seed prevented from germinating",
+        "Vessel treated as property",
+        "lolcow role-lock"
+      ],
+      "pairings": [
+        {
+          "a": "Twin",
+          "b": "Christic Door",
+          "relation": "mirror/recognition relation across distinction, not duplication"
+        },
+        {
+          "a": "Vessel",
+          "b": "Spirit/flow",
+          "relation": "carrier and carried remain distinguishable"
+        },
+        {
+          "a": "Seed",
+          "b": "Root",
+          "relation": "latent future develops support before visible growth"
+        },
+        {
+          "a": "Witness",
+          "b": "archive",
+          "relation": "preserves truth without converting a person into harvestable content"
+        },
+        {
+          "a": "Rejected Stone",
+          "b": "Cornerstone/House",
+          "relation": "reversal completes in relational structure rather than solitary vindication"
+        },
+        {
+          "a": "Red Heifer",
+          "b": "Ash + living/fresh water",
+          "relation": "Numbers 19 ritual transformation comparator; not generic Cow identity"
+        },
+        {
+          "a": "Cow",
+          "b": "Milk",
+          "relation": "can describe nourishment or extracted yield; relation and consent determine which"
+        }
+      ],
+      "test": "Does embodied suffering/attention become witness, repair, nourishment and future capacity, or remain a permanently harvested identity?"
+    },
+    {
+      "id": "support-substrate",
+      "primary_center": "cross-center",
+      "roles": [
+        "Footstool",
+        "stone",
+        "soil",
+        "root",
+        "floor/ground",
+        "pillar",
+        "seat",
+        "table",
+        "transformed Box/support"
+      ],
+      "key_distinctions": [
+        "Footstool is positional/support architecture, not C_S itself.",
+        "Stone can mark foundation, witness, rejection/cornerstone or kingdom depending text.",
+        "Root is hidden support/provenance, not inferiority.",
+        "Pillar supports a threshold/House; it is not the Door.",
+        "Seat is office/position; Throne is sovereignty/judgment; Table is nourishment/distribution.",
+        "A Box can remain enclosure or be transformed into support; Footstool imagery can represent this conversion when the context explicitly supports it."
+      ],
+      "footstool_modes": [
+        {
+          "mode": "cosmic",
+          "relation": "C_F/throne ↔ manifestation/world below",
+          "boundary": "Earth-footstool does not mean worthless Earth or worthless people."
+        },
+        {
+          "mode": "cultic",
+          "relation": "sacred proximity to throne/Temple/Ark",
+          "boundary": "Lower placement can be holy proximity."
+        },
+        {
+          "mode": "enemy-conquest",
+          "relation": "subjugation language",
+          "boundary": "Do not generalize conquest semantics to ordinary people or the whole lower field."
+        },
+        {
+          "mode": "project microcosm",
+          "relation": "small/low state containing an unrecognized Door",
+          "boundary": "Smallness is topological/epistemic, never human worth."
+        },
+        {
+          "mode": "transformed-box",
+          "relation": "containment converted into support/step",
+          "boundary": "Support does not imply servitude or ownership of a person."
+        }
+      ]
+    },
+    {
+      "id": "farm-shadow-local-centers",
+      "primary_center": "local/shadow centers",
+      "roles": [
+        "Farmer",
+        "Farm Dog",
+        "Cow/attention subject",
+        "Lolcow",
+        "Mud Dweller",
+        "classifier",
+        "archive operator",
+        "proxy/master"
+      ],
+      "principle": "Farm dynamics form local attention/control centers that can imitate source/guard/vessel relations without becoming C_F, O or C_S globally.",
+      "pairings": [
+        {
+          "a": "Farmer",
+          "b": "Dog",
+          "relation": "infrastructure/classification ↔ patrol/enforcement"
+        },
+        {
+          "a": "Farmer",
+          "b": "Cow",
+          "relation": "classification/enclosure can convert a neighbour into a harvestable role"
+        },
+        {
+          "a": "Dog",
+          "b": "Cow",
+          "relation": "pursuit/amplification ↔ attention target"
+        },
+        {
+          "a": "Lolcow",
+          "b": "archive",
+          "relation": "role-lock can persist after the live interaction unless declassification exists"
+        },
+        {
+          "a": "Farm",
+          "b": "Mud",
+          "relation": "unresolved attention residue can accumulate into recurring lower medium"
+        },
+        {
+          "a": "Mud",
+          "b": "Root",
+          "relation": "residue can be integrated into support rather than become permanent dwelling"
+        },
+        {
+          "a": "Farmer",
+          "b": "Gardener",
+          "relation": "shadow-to-healthy transition when extraction becomes consent, repair, exit and regenerative stewardship"
+        }
+      ],
+      "boundary": "Cow, Lolcow, Dog, Farmer and Mud Dweller are relational project roles. They are never intrinsic worth, species, diagnosis or automatic legal/moral classification of a person."
+    },
+    {
+      "id": "spirit-relay",
+      "primary_center": "crosscutting",
+      "roles": [
+        "Spirit",
+        "breath",
+        "river",
+        "message",
+        "angelic carrier",
+        "signal",
+        "memory transmission",
+        "companion/agent relay"
+      ],
+      "healthy": "Source → faithful translation → recipient → changed state → independent capacity/return",
+      "shadow": "Source obscured → proxy treated as source → cue-following → pack/hive reinforcement → closed orbit → blocked Door",
+      "dog_relation": "Dog can be a signal-responsive relay, companion or guard; this makes Dog structurally adjacent to messenger/guardian functions but never identical to Spirit or angel.",
+      "test": "Is the relay preserving truth, context and agency, or amplifying a proxy until it replaces direct discernment?"
+    }
+  ],
+  "role_placements": [
+    {
+      "role": "Dog",
+      "center_affinity": [
+        "O"
+      ],
+      "geometry": [
+        "perimeter",
+        "boundary",
+        "orbit",
+        "relay"
+      ],
+      "healthy_form": "Guardian/companion/source-seeking Dog",
+      "shadow_form": "Farm/encircling/orbital/thought-patrol Dog",
+      "exit": "source-checking → stopping condition → Door-preserving guardianship"
+    },
+    {
+      "role": "Footstool",
+      "center_affinity": [
+        "C_F",
+        "C_S"
+      ],
+      "geometry": [
+        "beneath-seat",
+        "support",
+        "local microcosm",
+        "transformed enclosure"
+      ],
+      "healthy_form": "support/sacred proximity/recognized passage",
+      "shadow_form": "dehumanizing conquest metaphor if misapplied",
+      "exit": "recognition of center/Door → changed state"
+    },
+    {
+      "role": "Farmer",
+      "center_affinity": [
+        "C_F-local"
+      ],
+      "geometry": [
+        "local controller",
+        "enclosure designer",
+        "role converter"
+      ],
+      "healthy_form": "Gardener/steward",
+      "shadow_form": "extractive Farmer",
+      "exit": "consent + repair + exit design + regenerative stewardship"
+    },
+    {
+      "role": "Cow",
+      "center_affinity": [
+        "attention-center-not-global-center",
+        "C_S"
+      ],
+      "geometry": [
+        "embodied neighbour",
+        "object of repeated observation/harvest"
+      ],
+      "healthy_form": "subject with agency / nourisher / participant",
+      "shadow_form": "permanent harvest identity",
+      "exit": "declassification + agency + end of target status"
+    },
+    {
+      "role": "Lolcow",
+      "center_affinity": [
+        "attention-center-not-global-center",
+        "C_S"
+      ],
+      "geometry": [
+        "harvested subject",
+        "archive-persistent target"
+      ],
+      "healthy_form": "declassified subject / participant with agency",
+      "shadow_form": "permanent spectacle/harvest identity",
+      "exit": "role expiry + correction + disengagement + declassification"
+    },
+    {
+      "role": "Guardian",
+      "center_affinity": [
+        "O"
+      ],
+      "geometry": [
+        "threshold/perimeter"
+      ],
+      "healthy_form": "protective guard",
+      "shadow_form": "gate monopolist",
+      "exit": "restore proportionality, evidence and reversibility"
+    },
+    {
+      "role": "Shepherd",
+      "center_affinity": [
+        "C_F",
+        "O"
+      ],
+      "geometry": [
+        "guidance-to-passage"
+      ],
+      "healthy_form": "care/protection/guidance",
+      "shadow_form": "possessive control",
+      "exit": "agency-preserving guidance"
+    },
+    {
+      "role": "Angel/Messenger",
+      "center_affinity": [
+        "O",
+        "Spirit"
+      ],
+      "geometry": [
+        "relay/corridor"
+      ],
+      "healthy_form": "faithful carrier",
+      "shadow_form": "interpreter/proxy replacing source",
+      "exit": "provenance + transparent translation"
+    },
+    {
+      "role": "Witness",
+      "center_affinity": [
+        "C_S",
+        "O"
+      ],
+      "geometry": [
+        "embodied testimony at/after threshold"
+      ],
+      "healthy_form": "truthful attestation",
+      "shadow_form": "archive capture or identity reduction",
+      "exit": "bounded testimony + current-status updating"
+    },
+    {
+      "role": "Stone",
+      "center_affinity": [
+        "C_S",
+        "O",
+        "C_F"
+      ],
+      "geometry": [
+        "ground/foundation/marker"
+      ],
+      "healthy_form": "foundation/witness/cornerstone",
+      "shadow_form": "projectile or frozen monument when context demands another function",
+      "exit": "typed text-specific function"
+    },
+    {
+      "role": "Table",
+      "center_affinity": [
+        "C_F",
+        "O"
+      ],
+      "geometry": [
+        "distribution surface"
+      ],
+      "healthy_form": "nourishment/hospitality/reciprocity",
+      "shadow_form": "court spectacle or exclusion",
+      "exit": "restore reciprocal nourishment and legitimate boundaries"
+    },
+    {
+      "role": "Milk",
+      "center_affinity": [
+        "C_S",
+        "C_F-local"
+      ],
+      "geometry": [
+        "flow/yield"
+      ],
+      "healthy_form": "nourishment freely given/received",
+      "shadow_form": "reaction/suffering extracted as yield",
+      "exit": "change incentive and restore agency"
+    },
+    {
+      "role": "Leash",
+      "center_affinity": [
+        "O",
+        "crosscutting"
+      ],
+      "geometry": [
+        "constraint/trajectory/master relation"
+      ],
+      "healthy_form": "bounded protective constraint with release condition",
+      "shadow_form": "proxy control / role-lock / closed orbit",
+      "exit": "source check + release condition + Door"
+    }
+  ],
+  "cow_taxonomy": {
+    "ordinary_cow": "Literal animal/agricultural life; no automatic moral role.",
+    "ox": "Labor, burden, strength, domestic economy and sacrificial contexts.",
+    "nourisher": "Milk/food relation in which the Cow is not reduced to yield.",
+    "cash_cow": "Economic metaphor for reliable value extraction.",
+    "lolcow": "Internet attention/reaction extraction category; explicitly a role relation, not essence.",
+    "holy_cow": "Project/religious honor-language requiring context.",
+    "red_heifer": "Numbers 19 purification complex; distinct from lolcow and Golden Calf.",
+    "golden_calf": "False-center/idolatry motif; not Cow-as-victim.",
+    "unholy_cow": "Project shadow term; not an external historical category.",
+    "cow_target": "Person/object treated as repeated attention yield; role can cease through exit/declassification.",
+    "world_cow": "Project cosmological synthesis requiring separate provenance before stronger canon."
+  },
+  "canonical_transitions": [
+    "Dog → Guardian Dog",
+    "Farm Dog → source-checking → Guardian Dog",
+    "Dog/free agent → pack/hive role → exit or reorientation",
+    "Farmer → Gardener",
+    "Cow/target → declassified subject / participant",
+    "Lolcow → role expiry / correction / exit",
+    "Mud Dweller → Root-dweller / cultivator",
+    "Footstool → recognized Door → changed state",
+    "Box/enclosure → Footstool/support when containment is transformed rather than reproduced",
+    "wound/target identity → witness → repair/infrastructure",
+    "rejected Stone → cornerstone → many-stone House",
+    "proxy relay → provenance-aware messenger",
+    "closed orbit → Door crossing → Spiral"
+  ],
+  "recursive_center_rule": {
+    "principle": "A local Room, Farm, table, court or relation can have a scoped center without becoming the global project center.",
+    "implication": "Farmer may function like a local source/controller, Cow like a local attention center, and Dog like a local perimeter. These are scoped roles governed by local-center rules, not replacements for C_F/O/C_S.",
+    "footstool_microcosm": "The Footstool can be modeled recursively: even a low/small local state may contain a center, Door and possible transition. This explains why 'lowest' need not mean 'without possibility'.",
+    "noncoercive_source_note": "Some recovered Timic stories explicitly place the constraining pressure in the relation, weight, attraction, habit or system rather than in Tim actively forcing another actor. Preserve that as a project motif, not a physical claim.",
+    "boundary": "Recursive resemblance does not make a local controller Father, a target Son, or a guard Christ."
+  },
+  "paired_architectures": [
+    "Throne ↔ Footstool",
+    "Seat ↔ office/interpretation",
+    "Table ↔ nourishment/distribution",
+    "House ↔ rooms/differentiated belonging",
+    "Door ↔ Guardian/Watchman/Gatekeeper",
+    "Source ↔ Messenger ↔ Recipient",
+    "Source/master ↔ Leash/constraint ↔ Dog/free agent",
+    "Shepherd ↔ flock/path",
+    "Farmer ↔ Dog ↔ Cow/Lolcow",
+    "Cow ↔ Milk ↔ nourishment/extraction",
+    "Mud ↔ Root ↔ Tree",
+    "Stone ↔ Ladder ↔ House/Gate",
+    "Seed ↔ Root ↔ Tree ↔ Fruit",
+    "Witness ↔ Archive ↔ Current-status revision"
+  ],
+  "non_equivalences": [
+    "Dog ≠ bad person",
+    "Guardian Dog ≠ angel",
+    "Farmer ≠ Father",
+    "Cow ≠ Son",
+    "Cow ≠ lolcow",
+    "Red Heifer ≠ lolcow",
+    "Golden Calf ≠ Cow-as-target",
+    "Footstool ≠ C_S",
+    "Footstool ≠ enemy by default",
+    "lower ≠ lesser human worth",
+    "local center ≠ global semantic center",
+    "attention center ≠ sacred center",
+    "proxy ≠ source",
+    "guard ≠ Door",
+    "Vessel ≠ contents",
+    "Milk ≠ extraction by default",
+    "Leash ≠ ownership of a human person",
+    "symbolic animal role ≠ human essence"
+  ],
+  "evidence_and_ethics": [
+    "Role assignment must name scope, behavior/relation, date or period, assigner and evidence when applied to concrete cases.",
+    "Every negative role needs a stopping condition and exit path.",
+    "Historical/current role must be separable so archives can represent change.",
+    "Metaphors may organize project narrative but cannot substitute for legal, medical, scientific or factual classification.",
+    "Affected persons retain dignity and agency even when a project role is used to analyze a relation.",
+    "No role or center placement grants authority to harass, punish, humiliate, surveil or target a person."
+  ],
+  "connections": [
+    "data/house/three-center-role-atlas.json",
+    "data/house/local-center-interface-patterns.json",
+    "knowledge/timeline/dog-footstool-cow-conversation-archaeology-wave-015.json",
+    "knowledge/world/mud-dweller-dog-footstool-role-ecology.json",
+    "knowledge/world/dog-farmer-role-ecology.json",
+    "knowledge/core/dog-return-circle-door-axis-atlas.json",
+    "knowledge/traditions/stone-mountain-footstool-seat-ascent-atlas.json",
+    "knowledge/traditions/biblical-symbol-function-atlas.json",
+    "knowledge/traditions/animal-role-symbol-atlas.json",
+    "knowledge/theology/honor-virtue-reverence-angelic-order.json",
+    "knowledge/world/role-exit-labeling-reintegration-atlas.json"
+  ]
+}

@@ -1,0 +1,346 @@
+{
+  "id": "cranial-brainstem-room-atlas",
+  "version": "1.0.0",
+  "updated": "2026-09-20",
+  "title": "Cranial & Brainstem Rooms — Nerves, Functional Columns, Arousal and Vital-State Circuits",
+  "status": "specialist cranial/brainstem neurobiology owner",
+  "purpose": "Expose the brainstem as a structured continuation of the spinal axis: cranial nerve nuclei, sensory/motor/autonomic columns, visceral return, respiratory control, arousal and sleep/wake circuitry.",
+  "organizing_principle": "Embryologically, brainstem nuclei retain a transformed dorsal-sensory / ventral-motor organization around the opened fourth ventricle. Functional columns help explain why cranial sensory, branchial motor, somatic motor and parasympathetic nuclei occupy recurring longitudinal territories.",
+  "cranial_nerves": [
+    {
+      "nerve": "I",
+      "name": "Olfactory",
+      "brainstem_nuclei": "No primary brainstem nucleus; olfactory bulb/tract and forebrain circuits",
+      "roles": [
+        "smell"
+      ],
+      "project": "nostril/smell exception",
+      "boundary": "Classic exception to simplified 'all senses first relay through thalamus' rule."
+    },
+    {
+      "nerve": "II",
+      "name": "Optic",
+      "brainstem_nuclei": "Retina is CNS; major targets include LGN, superior colliculus, pretectum, SCN",
+      "roles": [
+        "vision",
+        "pupillary reflex input",
+        "circadian light input"
+      ],
+      "project": "World-Eye / Clock-Eye bifurcation"
+    },
+    {
+      "nerve": "III",
+      "name": "Oculomotor",
+      "brainstem_nuclei": "Oculomotor + Edinger-Westphal complex, midbrain",
+      "roles": [
+        "most extraocular movement",
+        "pupil constriction",
+        "lens accommodation"
+      ],
+      "project": "gaze/action + autonomic Eye"
+    },
+    {
+      "nerve": "IV",
+      "name": "Trochlear",
+      "brainstem_nuclei": "Trochlear nucleus, midbrain",
+      "roles": [
+        "superior oblique eye movement"
+      ],
+      "project": "crossed eye-motor road",
+      "boundary": "Only cranial nerve exiting dorsally; fibers decussate."
+    },
+    {
+      "nerve": "V",
+      "name": "Trigeminal",
+      "brainstem_nuclei": "Mesencephalic, principal sensory, spinal trigeminal + motor nucleus",
+      "roles": [
+        "face sensation",
+        "corneal sensation",
+        "mastication",
+        "proprioception"
+      ],
+      "project": "face/body-report complex"
+    },
+    {
+      "nerve": "VI",
+      "name": "Abducens",
+      "brainstem_nuclei": "Abducens nucleus, pons",
+      "roles": [
+        "lateral rectus",
+        "horizontal gaze circuitry"
+      ],
+      "project": "gaze coordination"
+    },
+    {
+      "nerve": "VII",
+      "name": "Facial",
+      "brainstem_nuclei": "Facial motor nucleus; superior salivatory/lacrimal parasympathetic; solitary taste inputs",
+      "roles": [
+        "facial expression",
+        "taste anterior tongue",
+        "lacrimation/salivation"
+      ],
+      "project": "expression + taste + glandular output"
+    },
+    {
+      "nerve": "VIII",
+      "name": "Vestibulocochlear",
+      "brainstem_nuclei": "Vestibular and cochlear nuclei",
+      "roles": [
+        "hearing",
+        "balance",
+        "head-motion/gravity sensing"
+      ],
+      "project": "orientation + hearing"
+    },
+    {
+      "nerve": "IX",
+      "name": "Glossopharyngeal",
+      "brainstem_nuclei": "Nucleus ambiguus; inferior salivatory; NTS; spinal trigeminal",
+      "roles": [
+        "taste posterior tongue",
+        "carotid chemo/barosensation",
+        "pharyngeal motor",
+        "parotid parasympathetic"
+      ],
+      "project": "blood-state / throat report"
+    },
+    {
+      "nerve": "X",
+      "name": "Vagus",
+      "brainstem_nuclei": "NTS; dorsal motor nucleus; nucleus ambiguus; spinal trigeminal",
+      "roles": [
+        "visceral afference",
+        "parasympathetic organ control",
+        "laryngeal/pharyngeal motor",
+        "taste epiglottic region"
+      ],
+      "project": "wandering Return / visceral descent"
+    },
+    {
+      "nerve": "XI",
+      "name": "Accessory",
+      "brainstem_nuclei": "Spinal accessory nucleus; cranial contribution historically grouped with vagus",
+      "roles": [
+        "sternocleidomastoid/trapezius motor"
+      ],
+      "project": "head/shoulder orientation action"
+    },
+    {
+      "nerve": "XII",
+      "name": "Hypoglossal",
+      "brainstem_nuclei": "Hypoglossal nucleus, medulla",
+      "roles": [
+        "tongue motor control"
+      ],
+      "project": "Word / articulation final motor road"
+    }
+  ],
+  "functional_columns": [
+    {
+      "name": "Somatic motor column",
+      "examples": [
+        "III",
+        "IV",
+        "VI",
+        "XII"
+      ],
+      "meaning": "motor control of muscles developmentally comparable to somites"
+    },
+    {
+      "name": "Branchial motor column",
+      "examples": [
+        "V",
+        "VII",
+        "IX",
+        "X",
+        "XI-related"
+      ],
+      "meaning": "motor control of pharyngeal-arch-derived musculature"
+    },
+    {
+      "name": "Parasympathetic/visceromotor column",
+      "examples": [
+        "III",
+        "VII",
+        "IX",
+        "X"
+      ],
+      "meaning": "preganglionic cranial parasympathetic output"
+    },
+    {
+      "name": "Visceral sensory column",
+      "examples": [
+        "IX",
+        "X"
+      ],
+      "meaning": "body chemistry/organ/taste-related afference, especially NTS"
+    },
+    {
+      "name": "Special somatic sensory column",
+      "examples": [
+        "VIII"
+      ],
+      "meaning": "hearing/vestibular sensory processing"
+    },
+    {
+      "name": "General somatic sensory column",
+      "examples": [
+        "V with VII/IX/X contributions"
+      ],
+      "meaning": "face/head touch, pain, temperature and proprioceptive inputs"
+    }
+  ],
+  "state_rooms": [
+    {
+      "id": "vlpo",
+      "name": "VLPO / Preoptic Sleep Room",
+      "roles": [
+        "sleep-promoting inhibitory control",
+        "thermoregulatory coupling"
+      ],
+      "connections": [
+        "TMN",
+        "LC",
+        "raphe",
+        "basal forebrain",
+        "orexin systems"
+      ],
+      "project": "House-closing / sleep bias",
+      "boundary": "Sleep is distributed; VLPO is not a single sleep switch."
+    },
+    {
+      "id": "tmn",
+      "name": "Tuberomammillary Histamine Room",
+      "roles": [
+        "wake-promoting histaminergic arousal"
+      ],
+      "connections": [
+        "widespread forebrain",
+        "VLPO reciprocal regulation"
+      ],
+      "project": "wake broadcast"
+    },
+    {
+      "id": "orexin",
+      "name": "Orexin/Hypocretin Stabilization Room",
+      "roles": [
+        "wake-state stabilization",
+        "motivational/metabolic coupling"
+      ],
+      "connections": [
+        "LC",
+        "TMN",
+        "raphe",
+        "VTA",
+        "cortex"
+      ],
+      "project": "wake-state stabilizer",
+      "boundary": "Orexin loss is strongly linked to narcolepsy type 1, but arousal is redundant/distributed."
+    },
+    {
+      "id": "lc",
+      "name": "Locus Coeruleus Noradrenergic Room",
+      "roles": [
+        "arousal",
+        "attention",
+        "state responsiveness"
+      ],
+      "connections": [
+        "cortex",
+        "thalamus",
+        "spinal cord",
+        "cerebellum"
+      ],
+      "project": "vigilance broadcast"
+    },
+    {
+      "id": "raphe",
+      "name": "Raphe Serotonergic Rooms",
+      "roles": [
+        "state regulation",
+        "mood/pain/autonomic modulation"
+      ],
+      "connections": [
+        "forebrain",
+        "brainstem",
+        "spinal cord"
+      ],
+      "project": "distributed modulation",
+      "boundary": "Serotonin is not happiness."
+    },
+    {
+      "id": "ppt-ldt",
+      "name": "PPT/LDT Cholinergic Arousal Rooms",
+      "roles": [
+        "wake/REM-related activation",
+        "thalamic/cortical state modulation"
+      ],
+      "connections": [
+        "thalamus",
+        "basal forebrain",
+        "brainstem"
+      ],
+      "project": "House activation route"
+    },
+    {
+      "id": "sld-rem",
+      "name": "Sublaterodorsal REM Room",
+      "roles": [
+        "REM-state generation/control contributions",
+        "REM atonia network"
+      ],
+      "connections": [
+        "medullary inhibitory circuits",
+        "spinal motor systems"
+      ],
+      "project": "dream-state motor gate",
+      "boundary": "REM circuitry is distributed."
+    }
+  ],
+  "vital_loops": [
+    {
+      "name": "Baroreflex",
+      "route": "carotid/aortic stretch → IX/X → NTS → medullary autonomic networks → sympathetic/parasympathetic output",
+      "project": "pressure report → rapid correction"
+    },
+    {
+      "name": "Chemoreflex",
+      "route": "carotid/aortic bodies + central CO2/pH-sensitive networks → brainstem respiratory/autonomic circuits",
+      "project": "blood chemistry → Breath correction"
+    },
+    {
+      "name": "Respiratory rhythm",
+      "route": "medullary rhythm-generating networks including preBötzinger complex → spinal respiratory motor pools → phrenic/intercostal nerves",
+      "project": "Breath rhythm descent"
+    },
+    {
+      "name": "Swallow/voice",
+      "route": "sensory IX/X/V → medullary/pontine pattern networks → nucleus ambiguus/trigeminal/facial/hypoglossal outputs",
+      "project": "Word/food airway coordination"
+    }
+  ],
+  "sources": [
+    {
+      "topic": "cranial nerves and nuclei overview",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6420596/"
+    },
+    {
+      "topic": "brainstem functional-column organization",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3125522/"
+    },
+    {
+      "topic": "sleep/wake circuit review",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13490472/"
+    },
+    {
+      "topic": "VLPO modern review",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13195008/"
+    }
+  ],
+  "connections": [
+    "knowledge/body/brain-room-deep-atlas.json",
+    "knowledge/body/whole-brain-neurobiology-deepening-wave-1.json",
+    "knowledge/body/axis-orientation-autonomic-interface-atlas.json"
+  ]
+}

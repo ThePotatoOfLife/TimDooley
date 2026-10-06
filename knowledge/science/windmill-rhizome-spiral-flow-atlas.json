@@ -1,0 +1,119 @@
+{
+  "id": "windmill-rhizome-spiral-flow-atlas",
+  "title": "Windmill, Mill, Rhizome and Spiral Flow — Conversion and Distributed-Growth Atlas",
+  "version": "1.0.0",
+  "updated": "2026-09-11",
+  "status": "project archaeology + established wind-energy/plant science + archive-developed systems formalization",
+  "purpose": "Turn Tim's Windmill/Wheel/Mill imagery and the newly investigated rhizome/root architecture into usable scientific operators. Windmill becomes flow-to-rotation-to-work conversion; Rhizome becomes distributed horizontal persistence and clonal propagation; their combination with the existing spiral equations produces new rotation-plus-flow and Tree-versus-Rhizome distinctions.",
+  "epistemic_rule": "Tim's windmill/chariot/mill symbolism is project material. Wind-turbine equations and rhizome biology are established external science. A social network is not literally a turbine or a plant rhizome; mappings are valid only where their declared operations and measurements are preserved.",
+  "recovered_tim_layer": {
+    "2026_09_05": "Prior-conversation recovery records Tim explicitly coupling chariot, windmill, wheels, fourfold/seasons, Mountain, Ladder and Seed of Light; Denmark/windmills/green-energy entered the symbolic field.",
+    "2026_09_07": "The corpus included Lord of Windmills, Mill, Windmill and Millstone alongside Denmark->Greenland->Arctic->North-Pole and Tree/Root/Axis structures.",
+    "2026_09_09": "Tim explicitly asked the archive to recover windmills, millstones, spokes, wheels-within-wheels, grain, Ladder, Philosopher's Stone, winding tunnel and mud/tower imagery.",
+    "existing_owner": "knowledge/traditions/wheels-spokes-millstone-babel-ladder-grain-atlas.json already defines Windmill functionally as wind -> rotation -> work and keeps it distinct from Ezekiel's wheels."
+  },
+  "wind_to_work_chain": {
+    "available_wind_power": "P_wind=(1/2) rho A v^3",
+    "extracted_power": "P_rotor=C_P(lambda,beta) (1/2) rho A v^3",
+    "tip_speed_ratio": "lambda=omega R/v",
+    "torque": "tau=P_rotor/omega for omega != 0",
+    "betz_bound": "For an ideal actuator-disk wind turbine C_P <= 16/27 approximately 0.593.",
+    "variables": {"rho":"air density", "A":"rotor swept area", "v":"incoming wind speed", "omega":"rotor angular speed", "R":"rotor radius", "beta":"blade-pitch variable where applicable", "C_P":"power coefficient"},
+    "sources": ["https://www.energy.gov/sites/prod/files/2015/05/f22/Enabling%20Wind%20Power%20Nationwide_18MAY2015_FINAL.pdf", "https://www.energy.gov/cmei/systems/windexchange/small-wind-guidebook"]
+  },
+  "conversion_insights": {
+    "flow_not_center_alone": "The hub does not generate wind power by being central. Useful power exists because an incoming flux couples to a rotor and a load.",
+    "matching": "Performance depends on tip-speed ratio and blade/load conditions; spinning arbitrarily faster or slower than the coupled flow can reduce extracted power.",
+    "load": "A rotor without a useful load can rotate without producing the intended downstream work; a load that is too strong can stall or move operation away from the useful regime.",
+    "new_project_law": "Conversion-Center Law: centrality is productive only when source flow, coupling, rotation and load are jointly matched. A center that merely accumulates flow is not yet a mill.",
+    "garden_relation": "This extends the Garden/Farm distinction: measure useful downstream capability/work and losses rather than praising throughput or centrality alone."
+  },
+  "mill_operator": {
+    "windmill": "flow -> rotor -> shaft/torque -> load",
+    "millstone": "torque -> contact/shear/compression -> transformed material",
+    "grain": "input substrate whose downstream result depends on processing conditions and purpose",
+    "project_distinction": "Wheel is rotational kinematics; Windmill is energy conversion; Mill is processing; Millstone is a load/tool. These should no longer be collapsed into one 'wheel' symbol.",
+    "ethical_boundary": "Mechanical milling has no moral valence. The project's moral use of Mill/Farm must come from objective, agency, harm and outcome, not from grinding as a physical process."
+  },
+  "rotation_plus_translation": {
+    "helix": ["x(t)=R cos(omega t)", "y(t)=R sin(omega t)", "z(t)=v_z t"],
+    "pitch_per_turn": "p=2 pi v_z/omega",
+    "meaning": "A point rotating about an Axis while the medium/system translates along it traces a helix. This is the exact kinematic bridge between Wheel and Ladder-like displacement.",
+    "relation_to_existing_master_flow": "The project's existing dr/dt=alpha r, dtheta/dt=omega, dz/dt=u contains this helix as alpha=0 and u=v_z.",
+    "expanding_helical_spiral": "r(t)=r0 exp(alpha t), theta(t)=omega t, z(t)=u t gives a radius-changing helical logarithmic spiral; alpha=0 returns a cylinder helix, u=0 returns a planar logarithmic spiral.",
+    "new_project_law": "Wheel + through-flow need not remain circular: adding a translational degree of freedom turns recurrence into displacement."
+  },
+  "wake_and_transport": {
+    "concept": "Rotating machinery embedded in flow can generate helical/twisted wake structures because advection transports rotationally organized disturbances downstream.",
+    "minimal_particle_model": "dtheta/dt=omega_wake, dz/dt=v_advect",
+    "project_use": "This is a real physical neighbor for 'the wheel becomes a spiral when flow carries its structure onward'. It is better than treating every spiral as the same golden spiral.",
+    "boundary": "No fixed golden-ratio parameter follows from wind-turbine wake kinematics."
+  },
+  "rhizome_biology": {
+    "definition": "A rhizome is a horizontal underground stem capable of producing roots and new shoots; many species spread clonally through branching rhizome systems.",
+    "examples": [
+      "Bigelow's sedge forms extensive clones of interconnected rhizomes; aboveground tillers can die while rhizomes persist and continue directional expansion.",
+      "Golden bamboo produces long branching horizontal rhizomes whose internodes can generate new rhizomes or stems.",
+      "Joshua-tree rhizomes can extend horizontally underground and produce clonal stems away from the parent plant."
+    ],
+    "sources": ["https://research.fs.usda.gov/feis/species-reviews/carbig", "https://research.fs.usda.gov/feis/species-reviews/phyaur", "https://research.fs.usda.gov/feis/species-reviews/yucspp"]
+  },
+  "tree_vs_rhizome": {
+    "tree": "A rooted arborescent architecture emphasizes trunk, hierarchical ancestry and outward branching. It is excellent for provenance and one-to-many descent.",
+    "rhizome": "A rhizomatous architecture emphasizes lateral persistence, distributed underground connections, repeated emergence points and survival even when individual aboveground shoots disappear.",
+    "shared": ["rooted/substrate dependence", "growth", "branching", "stored capacity", "regeneration"],
+    "different": ["hierarchical trunk versus lateral network", "single visible main axis versus distributed hidden connectors", "branch ancestry versus clonal spread", "vertical canopy emphasis versus horizontal substrate expansion"],
+    "project_upgrade": "Tree and Rhizome should become complementary archive/network operators rather than synonyms for connectedness. Tree answers 'where did this descend from?'; Rhizome asks 'what hidden lateral network lets it reappear elsewhere?'."
+  },
+  "rhizome_graph_model": {
+    "graph": "G_R=(V_ramet,E_rhizome)",
+    "edge_weights": ["transport capacity", "distance", "age", "survival probability", "resource flow"],
+    "growth": "V_(t+1)=V_t union new ramets; E_(t+1)=E_t union new rhizome segments subject to local growth/resource constraints",
+    "persistence_metric": "P_survive(cut)=fraction of aboveground function retained after removal of selected visible ramets/trunks",
+    "redundancy": "Alternative underground paths can be measured with edge connectivity, cycle rank or algebraic-connectivity-type metrics where appropriate.",
+    "archive_use": "A project can be Tree-like for provenance while Rhizome-like for cross-links, tags, mirrors, cached evidence and multiple retrieval routes."
+  },
+  "root_rhizome_potato": {
+    "botanical_correction": "Potato tubers are modified underground stems and arise on stolons; 'root' is often symbolic rather than botanically exact in Potatoverse language.",
+    "structural_use": "Rhizome/stolon/tuber distinctions can strengthen rather than weaken the mythology by assigning different underground functions: root=resource anchoring/uptake, rhizome/stolon=lateral propagation, tuber=storage/compressed regenerative capacity.",
+    "new_chain": "Soil -> Root (uptake/anchor) -> Rhizome/Stolon (lateral connection) -> Tuber/Potato (storage/seed-capacity) -> Eye/Sprout -> Shoot/Tree -> Fruit/Seed.",
+    "boundary": "Botanical structures vary by species; the chain is a project functional taxonomy, not one universal plant anatomy."
+  },
+  "windmill_rhizome_duality": {
+    "windmill": "captures an external distributed flow and converts it through a visible central rotor/load",
+    "rhizome": "stores and propagates capability through a mostly hidden distributed substrate with many possible emergence points",
+    "project_insight": "They are opposite network architectures: Windmill is flow-to-center-to-work; Rhizome is substrate-network-to-many-emergences.",
+    "combined_system": "source flow -> visible converter -> stored/transported capacity -> hidden lateral network -> multiple local sprouts/outputs",
+    "application": "This can model knowledge projects: public attention enters through visible interfaces, gets converted into structured archive work, then spreads laterally through provenance links and reappears as many reader-facing outputs."
+  },
+  "spiral_taxonomy_upgrade": {
+    "golden_log_spiral": "r=a exp(b theta), fixed project b only where source/fit warrants it",
+    "helix": "constant radius + rotation + axial translation",
+    "expanding_helix": "radial exponential/linear change + rotation + translation",
+    "wake_spiral": "rotation plus advective transport in a physical medium",
+    "reaction_diffusion_spiral": "self-organized rotating wave from local nonlinear reaction/diffusion",
+    "parker_spiral": "solar rotation plus outward solar-wind advection producing large-scale magnetic-field winding",
+    "rule": "Every new spiral claim must identify the generating dynamics; visual similarity is not a shared cause."
+  },
+  "measurement_program": {
+    "windmill": ["rho", "A", "v", "omega", "R", "C_P", "torque", "load", "power in/out", "uncertainty"],
+    "rhizome": ["node/ramet count", "rhizome lengths/branching", "resource flow", "persistence after local loss", "new-emergence distance", "network redundancy"],
+    "spiral_flow": ["omega", "axial speed u", "radial growth alpha", "pitch", "radius", "held-out trajectory residual"],
+    "project_test": "Choose whether the target system is a converter, processor, branching tree, rhizome network or spiral flow before importing its equations."
+  },
+  "new_project_laws": [
+    "Windmill Law: flow becomes work only through matched coupling and load; centrality alone does not generate useful power.",
+    "Helical Conversion Law: rotation plus axial transport produces a helix; recurrence becomes displacement when a translational coordinate is added.",
+    "Rhizome Law: persistence can live in hidden lateral connectivity even when individual visible shoots die.",
+    "Tree-Rhizome Complementarity: Tree preserves rooted ancestry; Rhizome preserves distributed lateral recurrence and redundancy.",
+    "Spiral Causation Rule: classify the generator—growth, advection, rotation, reaction-diffusion, magnetic winding or project geometry—before equating spiral forms."
+  ],
+  "connections": [
+    "knowledge/traditions/wheels-spokes-millstone-babel-ladder-grain-atlas.json",
+    "knowledge/science/recurrence-orbit-spiral-dynamics-atlas.json",
+    "knowledge/science/tree-branching-provenance-growth-model.json",
+    "knowledge/science/garden-farm-control-network-model.json",
+    "knowledge/science/equation-ledger-wave-004-quantum-geometry-energy.json",
+    "knowledge/philosophy/timic-dynamics.json"
+  ]
+}

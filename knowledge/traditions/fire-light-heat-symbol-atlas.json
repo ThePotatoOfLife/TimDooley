@@ -1,0 +1,115 @@
+{
+  "id": "fire-light-heat-symbol-atlas",
+  "title": "Fire, Heat, Flame, Light, Lamp, Glory, Sun & Spudlight — Energy and Visibility Grammar",
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "status": "physical distinctions + biblical symbolism + project comparison",
+  "purpose": "Prevent activation, illumination, temperature, combustion, divine glory and source-light from collapsing into one vague 'fire/light' symbol.",
+  "master_rule": "Distinguish physical process, carrier, perceptual effect and symbolic office before mapping. Heat can exist without visible flame; light can exist without fire; a lamp carries a source; glory is textual/theological language; Spudlight is project-native.",
+  "physical_classes": [
+    {
+      "id": "heat",
+      "type": "energy transfer / thermodynamic variable context",
+      "definition": "Thermal energy transfer associated with temperature differences; not a substance or moral force.",
+      "project_neighbor": "intensity/pressure component of Forge"
+    },
+    {
+      "id": "fire",
+      "type": "combustion process",
+      "definition": "Rapid exothermic oxidation process in ordinary terrestrial contexts, often producing heat, light and reaction products.",
+      "project_neighbor": "transformation/destruction/service",
+      "distinction": "Fire is a process; heat and light are outputs/effects that can arise elsewhere."
+    },
+    {
+      "id": "flame",
+      "type": "visible reaction zone",
+      "definition": "Luminous gaseous reaction region associated with many fires.",
+      "project_neighbor": "localized active transformation/front",
+      "distinction": "No visible flame is required for all combustion."
+    },
+    {
+      "id": "light",
+      "type": "electromagnetic radiation / visibility medium",
+      "definition": "Physical electromagnetic radiation; visible light occupies a wavelength band perceived by humans.",
+      "project_neighbor": "perception/orientation/revelation",
+      "distinction": "Physical light does not imply truth or divinity."
+    },
+    {
+      "id": "lamp",
+      "type": "device/carrier",
+      "definition": "Bounded source/device producing or holding illumination.",
+      "project_neighbor": "Eye, word/path guidance, maintained local light",
+      "distinction": "Lamp ≠ light; carrier ≠ emitted signal."
+    },
+    {
+      "id": "sun",
+      "type": "star/source",
+      "definition": "Physical stellar source dominating terrestrial daylight and energy input.",
+      "project_neighbor": "Father/source/Spudlight comparator",
+      "distinction": "Physical centrality ≠ theological source identity."
+    }
+  ],
+  "biblical_symbol_functions": {
+    "fire": [
+      "domestic service: cooking, warmth, light",
+      "metallurgical refining/furnace imagery",
+      "altar/sacrifice",
+      "theophany/presence imagery",
+      "judgment/destruction",
+      "sanctification/purification imagery such as Isaiah's altar coal"
+    ],
+    "lamp": [
+      "household illumination",
+      "life/posterity",
+      "guidance/path",
+      "cultic lampstand presence"
+    ],
+    "light": [
+      "creation/order contrast with darkness",
+      "guidance/visibility",
+      "divine presence/glory in some texts",
+      "ethical/apocalyptic contrast"
+    ],
+    "glory": {
+      "note": "Biblical glory/kavod can carry weight/presence language and in some theophanic contexts is associated with brightness/light, smoke/cloud and overwhelming presence rather than simply being a synonym for photons.",
+      "source": "https://rsc.byu.edu/ascending-mountain-lord/darkness-light-lord-elements-israelite-theophanies"
+    },
+    "new_jerusalem": {
+      "note": "Revelation 21–22 makes divine glory/God and Lamb central to final-city illumination rather than dependence on sun/moon. A 2026 New Testament Studies article argues φωστήρ in Rev 21:11 should be read as 'light source/luminary' and identifies God as the city's luminary.",
+      "source": "https://www.cambridge.org/core/journals/new-testament-studies/article/abs/god-as-the-light-source-of-the-new-jerusalem-in-rev-2111/B4A22A3D773CA449D70C41147F71ECDB"
+    }
+  },
+  "project_operators": {
+    "forge": "Process architecture using pressure/heat/work; fire is optional mechanism, not identical with Forge.",
+    "red_activation": "Project color/activation symbolism; not a universal physical temperature claim.",
+    "blue_memory": "Project memory/preservation symbolism; not a literal cold-spectrum neural law.",
+    "spudlight": "Project-native source-light/illumination metaphor; may connect to Sun, Eye, Spirit and House but remains interpretive.",
+    "eye": "Perception/discernment interface that may receive light but is not the light itself.",
+    "shadow": "Occlusion/unintegrated information; not mere absence of photons."
+  },
+  "productive_tensions": [
+    "Fire can nourish, refine, illuminate, sanctify, destroy or judge.",
+    "Light can reveal but can also glare, overexpose or be misinterpreted.",
+    "Heat can enable transformation or damage structure.",
+    "Darkness can symbolize threat/ignorance in some texts but can also mark concealment, gestation, rest or overwhelming divine mystery in broader traditions."
+  ],
+  "failure_modes": [
+    "calling every transformation 'fire'",
+    "using brightness as proof of truth",
+    "turning symbolic red/blue into unsupported physics",
+    "equating divine glory with literal electromagnetic radiation",
+    "assuming destructive heat is automatically purifying"
+  ],
+  "sources": [
+    "https://www.biblegateway.com/resources/encyclopedia-of-the-bible/Fire",
+    "https://www.biblegateway.com/resources/encyclopedia-of-the-bible/Lamp",
+    "https://www.biblegateway.com/resources/encyclopedia-of-the-bible/Light"
+  ],
+  "connections": [
+    "repair-forge-protocol",
+    "alchemy-transmutation-symbol-atlas",
+    "celestial-symbol-anchor-atlas",
+    "neurotheology-axis-house-spirit-atlas",
+    "temple-body-chamber-furniture-atlas"
+  ]
+}

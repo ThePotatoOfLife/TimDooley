@@ -1,0 +1,1328 @@
+{
+  "id": "brain-room-deep-atlas",
+  "version": "1.0.0",
+  "updated": "2026-09-20",
+  "title": "Brain Rooms Deep Atlas — Cortex, Nuclei, Circuits, Interfaces and Supply",
+  "status": "canonical granular brain-room expansion",
+  "purpose": "Expand the whole-brain atlas into navigable rooms below lobe-level anatomy. Each room records position, function, inputs/outputs, project relation and boundary.",
+  "evidence_rule": "Room labels are navigation aids. Brain functions emerge from distributed circuits, cell types, state, development and body interactions; no room is treated as an isolated faculty organ.",
+  "room_count": 71,
+  "groups": [
+    "cortex-frontal",
+    "cingulate",
+    "insula",
+    "cortex-parietal",
+    "cortex-occipital",
+    "cortex-temporal",
+    "language",
+    "hippocampus",
+    "amygdala",
+    "basal-ganglia",
+    "hypothalamus",
+    "thalamus",
+    "epithalamus",
+    "midbrain",
+    "pons",
+    "medulla",
+    "cerebellum",
+    "medulla-cerebellar",
+    "basal-forebrain",
+    "subcortical",
+    "interfaces",
+    "vascular"
+  ],
+  "rooms": [
+    {
+      "id": "dlpfc",
+      "group": "cortex-frontal",
+      "name": "Dorsolateral Prefrontal Room",
+      "location": "lateral frontal association cortex",
+      "functions": [
+        "working memory",
+        "rule maintenance",
+        "goal-directed control",
+        "task-set organization"
+      ],
+      "inputs_outputs": [
+        "parietal association cortex",
+        "mediodorsal thalamus",
+        "basal ganglia loops",
+        "premotor systems"
+      ],
+      "project": "Deliberation / plan-holding",
+      "boundary": "No single executive-control center."
+    },
+    {
+      "id": "vmPFC",
+      "group": "cortex-frontal",
+      "name": "Ventromedial Prefrontal Room",
+      "location": "medial/orbital frontal cortex",
+      "functions": [
+        "valuation",
+        "affective integration",
+        "social decision context",
+        "autonomic-affective coupling"
+      ],
+      "inputs_outputs": [
+        "amygdala",
+        "hippocampal systems",
+        "hypothalamus",
+        "ventral striatum"
+      ],
+      "project": "Value / consequence integration",
+      "boundary": "Not a moral conscience organ."
+    },
+    {
+      "id": "ofc",
+      "group": "cortex-frontal",
+      "name": "Orbitofrontal Room",
+      "location": "ventral frontal surface above orbits",
+      "functions": [
+        "reward/value updating",
+        "outcome representation",
+        "sensory-affective valuation"
+      ],
+      "inputs_outputs": [
+        "amygdala",
+        "insula",
+        "striatum",
+        "sensory association cortex"
+      ],
+      "project": "Fruit / consequence valuation",
+      "boundary": "Reward coding is context-dependent and distributed."
+    },
+    {
+      "id": "acc",
+      "group": "cingulate",
+      "name": "Anterior Cingulate Room",
+      "location": "medial frontal cingulate cortex",
+      "functions": [
+        "action monitoring",
+        "effort allocation",
+        "pain affect",
+        "motivation",
+        "autonomic coordination"
+      ],
+      "inputs_outputs": [
+        "prefrontal cortex",
+        "insula",
+        "thalamus",
+        "brainstem/autonomic systems"
+      ],
+      "project": "Conflict / effort / consequence monitor",
+      "boundary": "Not a guilt center."
+    },
+    {
+      "id": "midcingulate",
+      "group": "cingulate",
+      "name": "Midcingulate Action Room",
+      "location": "mid cingulate cortex",
+      "functions": [
+        "action selection under demand",
+        "pain/action coupling",
+        "motor preparation"
+      ],
+      "inputs_outputs": [
+        "motor cortex",
+        "thalamus",
+        "insula",
+        "brainstem"
+      ],
+      "project": "Action under pressure",
+      "boundary": "Functions overlap with neighboring cingulate sectors."
+    },
+    {
+      "id": "pcc",
+      "group": "cingulate",
+      "name": "Posterior Cingulate Room",
+      "location": "posteromedial cortex",
+      "functions": [
+        "self/world model integration",
+        "memory context",
+        "default-network processing"
+      ],
+      "inputs_outputs": [
+        "retrosplenial cortex",
+        "hippocampal network",
+        "medial prefrontal",
+        "parietal association cortex"
+      ],
+      "project": "Context / self-model",
+      "boundary": "Default-network activity is not proof of a metaphysical self."
+    },
+    {
+      "id": "rsc",
+      "group": "cingulate",
+      "name": "Retrosplenial Orientation Room",
+      "location": "posterior medial cortex behind splenium",
+      "functions": [
+        "spatial orientation",
+        "landmark integration",
+        "memory-context transformation",
+        "heading/world-frame conversion"
+      ],
+      "inputs_outputs": [
+        "anterior thalamus",
+        "hippocampal formation",
+        "visual cortex",
+        "parietal cortex"
+      ],
+      "project": "Orientation / map conversion",
+      "boundary": "Not a geographic-North detector."
+    },
+    {
+      "id": "anterior-insula",
+      "group": "insula",
+      "name": "Anterior Insula Room",
+      "location": "anterior insular cortex",
+      "functions": [
+        "salience",
+        "subjective feeling",
+        "interoceptive integration",
+        "social-emotional awareness"
+      ],
+      "inputs_outputs": [
+        "ACC",
+        "amygdala",
+        "striatum",
+        "frontal cortex"
+      ],
+      "project": "Inward Eye / felt-state integration",
+      "boundary": "No single seat of feeling."
+    },
+    {
+      "id": "posterior-insula",
+      "group": "insula",
+      "name": "Posterior Insula Room",
+      "location": "posterior insular cortex",
+      "functions": [
+        "viscerosensory/somatosensory integration",
+        "temperature/pain-related body representation"
+      ],
+      "inputs_outputs": [
+        "thalamic sensory nuclei",
+        "somatosensory cortex",
+        "brainstem body-state systems"
+      ],
+      "project": "Raw inward body report",
+      "boundary": "Interoception remains distributed."
+    },
+    {
+      "id": "tpj",
+      "group": "cortex-parietal",
+      "name": "Temporoparietal Junction Room",
+      "location": "posterior superior temporal/inferior parietal junction",
+      "functions": [
+        "attention reorienting",
+        "social inference",
+        "body/self-location contributions"
+      ],
+      "inputs_outputs": [
+        "attention networks",
+        "temporal cortex",
+        "parietal cortex",
+        "frontal control systems"
+      ],
+      "project": "Reorientation / perspective",
+      "boundary": "No single out-of-body center."
+    },
+    {
+      "id": "precuneus",
+      "group": "cortex-parietal",
+      "name": "Precuneus Room",
+      "location": "medial parietal cortex",
+      "functions": [
+        "visuospatial imagery",
+        "self-referential processing",
+        "episodic integration",
+        "default-network function"
+      ],
+      "inputs_outputs": [
+        "PCC",
+        "parietal association",
+        "hippocampal networks",
+        "frontal cortex"
+      ],
+      "project": "Inner scene / perspective",
+      "boundary": "Functions depend on task/network state."
+    },
+    {
+      "id": "v1",
+      "group": "cortex-occipital",
+      "name": "Primary Visual Room",
+      "location": "calcarine cortex",
+      "functions": [
+        "retinotopic early visual processing",
+        "orientation/spatial-frequency feature analysis"
+      ],
+      "inputs_outputs": [
+        "LGN",
+        "extrastriate cortex"
+      ],
+      "project": "World-Eye cortical entry",
+      "boundary": "Seeing is not completed in V1."
+    },
+    {
+      "id": "ventral-visual",
+      "group": "cortex-temporal",
+      "name": "Ventral Visual Object Room",
+      "location": "occipitotemporal cortex",
+      "functions": [
+        "object/form/face category processing",
+        "visual recognition"
+      ],
+      "inputs_outputs": [
+        "visual cortex",
+        "temporal association",
+        "memory systems"
+      ],
+      "project": "What-is stream",
+      "boundary": "Distributed and category-selective, not one recognition box."
+    },
+    {
+      "id": "dorsal-visual",
+      "group": "cortex-parietal",
+      "name": "Dorsal Visual Action Room",
+      "location": "occipitoparietal networks",
+      "functions": [
+        "spatial vision",
+        "visuomotor transformation",
+        "action guidance"
+      ],
+      "inputs_outputs": [
+        "visual cortex",
+        "parietal cortex",
+        "premotor cortex"
+      ],
+      "project": "Where/how stream",
+      "boundary": "Dorsal/ventral division is useful but not absolute."
+    },
+    {
+      "id": "broca-network",
+      "group": "language",
+      "name": "Frontal Speech Network Room",
+      "location": "inferior frontal/premotor language-related cortex",
+      "functions": [
+        "speech planning",
+        "phonological/syntactic control",
+        "articulatory sequencing"
+      ],
+      "inputs_outputs": [
+        "temporal language areas",
+        "motor cortex",
+        "arcuate/SLF pathways"
+      ],
+      "project": "Word / expression",
+      "boundary": "Language is not localized to Broca area alone."
+    },
+    {
+      "id": "wernicke-network",
+      "group": "language",
+      "name": "Temporal Comprehension Network Room",
+      "location": "posterior superior/middle temporal language-related cortex",
+      "functions": [
+        "speech-sound processing",
+        "lexical-semantic integration",
+        "language comprehension contributions"
+      ],
+      "inputs_outputs": [
+        "auditory cortex",
+        "inferior frontal cortex",
+        "inferior parietal cortex"
+      ],
+      "project": "Hearing → meaning",
+      "boundary": "Classic Wernicke box is incomplete."
+    },
+    {
+      "id": "dentate",
+      "group": "hippocampus",
+      "name": "Dentate Gyrus Room",
+      "location": "hippocampal formation",
+      "functions": [
+        "sparse coding",
+        "pattern-separation-related processing"
+      ],
+      "inputs_outputs": [
+        "entorhinal cortex",
+        "CA3 via mossy fibers"
+      ],
+      "project": "Seeded distinction / pattern separation",
+      "boundary": "Pattern separation is not exclusive to dentate."
+    },
+    {
+      "id": "ca3",
+      "group": "hippocampus",
+      "name": "CA3 Associative Room",
+      "location": "hippocampus",
+      "functions": [
+        "recurrent associative memory",
+        "pattern-completion-related processing"
+      ],
+      "inputs_outputs": [
+        "dentate gyrus",
+        "CA1",
+        "entorhinal inputs"
+      ],
+      "project": "Memory completion / recurrent chamber",
+      "boundary": "Computational description, not a literal archive."
+    },
+    {
+      "id": "ca1",
+      "group": "hippocampus",
+      "name": "CA1 Comparator Room",
+      "location": "hippampus",
+      "functions": [
+        "sequence/context integration",
+        "mismatch/comparison-like operations",
+        "major hippocampal output"
+      ],
+      "inputs_outputs": [
+        "CA3",
+        "entorhinal cortex",
+        "subiculum"
+      ],
+      "project": "Context comparator",
+      "boundary": "No single 'truth comparator' function."
+    },
+    {
+      "id": "subiculum",
+      "group": "hippocampus",
+      "name": "Subiculum Exit Room",
+      "location": "hippocampal output zone",
+      "functions": [
+        "memory output",
+        "spatial/contextual coding"
+      ],
+      "inputs_outputs": [
+        "CA1",
+        "entorhinal cortex",
+        "fornix targets"
+      ],
+      "project": "Memory road exit",
+      "boundary": "Multiple outputs bypass or supplement this route."
+    },
+    {
+      "id": "entorhinal",
+      "group": "hippocampus",
+      "name": "Entorhinal Gateway Room",
+      "location": "medial temporal cortex",
+      "functions": [
+        "hippocampal cortical gateway",
+        "grid/spatial/context coding"
+      ],
+      "inputs_outputs": [
+        "association cortex",
+        "dentate/CA fields",
+        "subiculum"
+      ],
+      "project": "Memory Door / map gateway",
+      "boundary": "Grid-like coding is not a mystical geometry proof."
+    },
+    {
+      "id": "lateral-amygdala",
+      "group": "amygdala",
+      "name": "Lateral Amygdala Room",
+      "location": "amygdaloid complex",
+      "functions": [
+        "sensory association learning",
+        "stimulus-value learning"
+      ],
+      "inputs_outputs": [
+        "sensory thalamus/cortex",
+        "basal amygdala",
+        "central amygdala"
+      ],
+      "project": "Salience-learning entrance",
+      "boundary": "Not simply fear center."
+    },
+    {
+      "id": "basal-amygdala",
+      "group": "amygdala",
+      "name": "Basal Amygdala Room",
+      "location": "basolateral complex",
+      "functions": [
+        "value/context integration",
+        "learning",
+        "action-state association"
+      ],
+      "inputs_outputs": [
+        "lateral amygdala",
+        "prefrontal cortex",
+        "hippocampus",
+        "striatum"
+      ],
+      "project": "Valence/context chamber",
+      "boundary": "Positive and negative learning both represented."
+    },
+    {
+      "id": "central-amygdala",
+      "group": "amygdala",
+      "name": "Central Amygdala Output Room",
+      "location": "centromedial amygdala",
+      "functions": [
+        "autonomic/behavioral response orchestration",
+        "salience response output"
+      ],
+      "inputs_outputs": [
+        "hypothalamus",
+        "PAG",
+        "brainstem",
+        "basolateral amygdala"
+      ],
+      "project": "Response gate",
+      "boundary": "Not a standalone fear generator."
+    },
+    {
+      "id": "caudate",
+      "group": "basal-ganglia",
+      "name": "Caudate Room",
+      "location": "dorsal striatum",
+      "functions": [
+        "action/cognitive selection",
+        "learning",
+        "goal-directed loops"
+      ],
+      "inputs_outputs": [
+        "cortex",
+        "GPi/GPe",
+        "substantia nigra"
+      ],
+      "project": "Selection / routing",
+      "boundary": "Basal ganglia do not simply start movement."
+    },
+    {
+      "id": "putamen",
+      "group": "basal-ganglia",
+      "name": "Putamen Room",
+      "location": "dorsal striatum",
+      "functions": [
+        "sensorimotor action selection",
+        "habit/action learning"
+      ],
+      "inputs_outputs": [
+        "sensorimotor cortex",
+        "pallidum",
+        "substantia nigra"
+      ],
+      "project": "Action habit room",
+      "boundary": "Functions overlap with caudate."
+    },
+    {
+      "id": "nacc",
+      "group": "basal-ganglia",
+      "name": "Nucleus Accumbens Room",
+      "location": "ventral striatum",
+      "functions": [
+        "motivation",
+        "reward prediction/action vigor",
+        "reinforcement integration"
+      ],
+      "inputs_outputs": [
+        "PFC",
+        "amygdala",
+        "hippocampus",
+        "VTA",
+        "ventral pallidum"
+      ],
+      "project": "Motivational threshold",
+      "boundary": "Not a pleasure center."
+    },
+    {
+      "id": "gpi",
+      "group": "basal-ganglia",
+      "name": "GPi Output Gate",
+      "location": "internal globus pallidus",
+      "functions": [
+        "inhibitory basal-ganglia output to thalamus"
+      ],
+      "inputs_outputs": [
+        "striatum",
+        "STN",
+        "thalamus"
+      ],
+      "project": "Action gate / brake-release comparator",
+      "boundary": "Circuit effect depends on loop/context."
+    },
+    {
+      "id": "gpe",
+      "group": "basal-ganglia",
+      "name": "GPe Routing Room",
+      "location": "external globus pallidus",
+      "functions": [
+        "indirect-pathway regulation",
+        "network timing/control"
+      ],
+      "inputs_outputs": [
+        "striatum",
+        "STN",
+        "GPi/SNr"
+      ],
+      "project": "Intermediate selection controller",
+      "boundary": "Direct/indirect pathway textbook model is simplified."
+    },
+    {
+      "id": "stn",
+      "group": "basal-ganglia",
+      "name": "Subthalamic Stop/Global-Control Room",
+      "location": "subthalamic nucleus",
+      "functions": [
+        "rapid action suppression/control",
+        "basal-ganglia network regulation"
+      ],
+      "inputs_outputs": [
+        "cortex",
+        "GPe",
+        "GPi/SNr"
+      ],
+      "project": "Pause / brake comparator",
+      "boundary": "Not literally a stop button."
+    },
+    {
+      "id": "snc",
+      "group": "basal-ganglia",
+      "name": "Substantia Nigra Dopamine Room",
+      "location": "midbrain pars compacta",
+      "functions": [
+        "dopaminergic modulation of striatal learning/action"
+      ],
+      "inputs_outputs": [
+        "striatum",
+        "brainstem/midbrain networks"
+      ],
+      "project": "Learning-weight modulation",
+      "boundary": "Dopamine is not pleasure itself."
+    },
+    {
+      "id": "scn",
+      "group": "hypothalamus",
+      "name": "SCN Clock Room",
+      "location": "anterior hypothalamus above optic chiasm",
+      "functions": [
+        "circadian timing",
+        "light entrainment",
+        "daily phase coordination"
+      ],
+      "inputs_outputs": [
+        "retinohypothalamic tract",
+        "PVN/autonomic/endocrine systems"
+      ],
+      "project": "Clock-Eye / Watchman",
+      "boundary": "Not the only body clock."
+    },
+    {
+      "id": "pvn",
+      "group": "hypothalamus",
+      "name": "PVN Command/Integration Room",
+      "location": "paraventricular hypothalamus",
+      "functions": [
+        "neuroendocrine control",
+        "autonomic regulation",
+        "stress/fluid-balance integration"
+      ],
+      "inputs_outputs": [
+        "pituitary-related systems",
+        "brainstem/spinal autonomics",
+        "SCN",
+        "visceral inputs"
+      ],
+      "project": "Steward command room",
+      "boundary": "Contains heterogeneous cell types with distinct roles."
+    },
+    {
+      "id": "son",
+      "group": "hypothalamus",
+      "name": "Supraoptic Water Room",
+      "location": "supraoptic hypothalamus",
+      "functions": [
+        "vasopressin/oxytocin neurosecretion",
+        "fluid/osmotic regulation"
+      ],
+      "inputs_outputs": [
+        "posterior pituitary",
+        "osmoregulatory circuits"
+      ],
+      "project": "Water-balance room",
+      "boundary": "Oxytocin/vasopressin have broad context-dependent effects."
+    },
+    {
+      "id": "arcuate",
+      "group": "hypothalamus",
+      "name": "Arcuate Metabolic Room",
+      "location": "mediobasal hypothalamus",
+      "functions": [
+        "energy balance",
+        "pituitary regulation",
+        "metabolic hormone sensing"
+      ],
+      "inputs_outputs": [
+        "median eminence",
+        "PVN",
+        "lateral/ventromedial hypothalamus"
+      ],
+      "project": "Provision / hunger / endocrine ledger",
+      "boundary": "Human cell types differ in important ways from mouse models; 2025 HYPOMAP highlights species-specific features."
+    },
+    {
+      "id": "vmh",
+      "group": "hypothalamus",
+      "name": "Ventromedial Hypothalamic Room",
+      "location": "medial hypothalamus",
+      "functions": [
+        "energy balance",
+        "defensive/social/reproductive state contributions"
+      ],
+      "inputs_outputs": [
+        "amygdala",
+        "brainstem",
+        "metabolic circuits"
+      ],
+      "project": "State-defense/metabolic room",
+      "boundary": "Not a satiety center in isolation."
+    },
+    {
+      "id": "dmh",
+      "group": "hypothalamus",
+      "name": "Dorsomedial Hypothalamic Room",
+      "location": "dorsomedial hypothalamus",
+      "functions": [
+        "circadian/autonomic integration",
+        "feeding/thermoregulatory contributions"
+      ],
+      "inputs_outputs": [
+        "SCN",
+        "PVN",
+        "brainstem"
+      ],
+      "project": "Daily-state routing",
+      "boundary": "Roles are distributed and species-dependent."
+    },
+    {
+      "id": "lateral-hypothalamus",
+      "group": "hypothalamus",
+      "name": "Lateral Hypothalamic Drive Room",
+      "location": "lateral hypothalamic area",
+      "functions": [
+        "arousal",
+        "feeding",
+        "motivation",
+        "orexin/MCH systems"
+      ],
+      "inputs_outputs": [
+        "brainstem",
+        "cortex",
+        "limbic systems",
+        "VTA"
+      ],
+      "project": "Drive / wake / seek",
+      "boundary": "Not simply hunger center."
+    },
+    {
+      "id": "mammillary",
+      "group": "hypothalamus",
+      "name": "Mammillary Memory Relay",
+      "location": "posterior hypothalamus",
+      "functions": [
+        "memory/navigation circuit relay"
+      ],
+      "inputs_outputs": [
+        "fornix/hippocampal outputs",
+        "anterior thalamus via mammillothalamic tract"
+      ],
+      "project": "Memory road station",
+      "boundary": "Not merely endocrine hypothalamus."
+    },
+    {
+      "id": "anterior-thalamus",
+      "group": "thalamus",
+      "name": "Anterior Thalamic Orientation Room",
+      "location": "anterior thalamic nuclear group",
+      "functions": [
+        "memory",
+        "spatial orientation",
+        "head-direction network participation"
+      ],
+      "inputs_outputs": [
+        "mammillary bodies",
+        "hippocampal/retrosplenial/cingulate networks"
+      ],
+      "project": "Orientation / remembered path room",
+      "boundary": "Heading is environment-relative, not sacred North detection."
+    },
+    {
+      "id": "md-thalamus",
+      "group": "thalamus",
+      "name": "Mediodorsal Thalamic Council Room",
+      "location": "medial dorsal thalamus",
+      "functions": [
+        "prefrontal cognition",
+        "memory",
+        "motivation",
+        "decision-related processing"
+      ],
+      "inputs_outputs": [
+        "prefrontal cortex",
+        "amygdala",
+        "basal ganglia"
+      ],
+      "project": "Council / meaning room",
+      "boundary": "No single decision-maker."
+    },
+    {
+      "id": "pulvinar",
+      "group": "thalamus",
+      "name": "Pulvinar Attention Room",
+      "location": "posterior thalamus",
+      "functions": [
+        "visual attention",
+        "association coordination",
+        "cortico-cortical interaction"
+      ],
+      "inputs_outputs": [
+        "visual/parietal/temporal cortex",
+        "superior colliculus"
+      ],
+      "project": "Attention chamber",
+      "boundary": "Multiple pulvinar subdivisions differ."
+    },
+    {
+      "id": "trn",
+      "group": "thalamus",
+      "name": "Thalamic Reticular Wall",
+      "location": "thin GABAergic shell lateral to thalamus",
+      "functions": [
+        "inhibitory gating",
+        "attention",
+        "sleep spindle/rhythm contributions"
+      ],
+      "inputs_outputs": [
+        "thalamocortical/corticothalamic collaterals"
+      ],
+      "project": "Wall / sieve / gate",
+      "boundary": "Not a physical wall sealing the House."
+    },
+    {
+      "id": "intralaminar",
+      "group": "thalamus",
+      "name": "Intralaminar Wake/Passage Room",
+      "location": "within internal medullary lamina",
+      "functions": [
+        "arousal",
+        "attention",
+        "striatal/cortical coordination"
+      ],
+      "inputs_outputs": [
+        "brainstem arousal",
+        "cortex",
+        "striatum"
+      ],
+      "project": "House passage / wake corridor",
+      "boundary": "Consciousness is distributed."
+    },
+    {
+      "id": "habenula",
+      "group": "epithalamus",
+      "name": "Habenula Rein Room",
+      "location": "epithalamus near posterior thalamus",
+      "functions": [
+        "aversive/reward learning",
+        "monoaminergic regulation",
+        "behavioral adaptation"
+      ],
+      "inputs_outputs": [
+        "limbic/basal forebrain",
+        "midbrain monoamine nuclei"
+      ],
+      "project": "Rein / guidance comparator",
+      "boundary": "Etymology is not evidence of spiritual control."
+    },
+    {
+      "id": "pineal",
+      "group": "epithalamus",
+      "name": "Pineal Timing Door",
+      "location": "posterior roof of third ventricle",
+      "functions": [
+        "melatonin secretion",
+        "circadian timing output"
+      ],
+      "inputs_outputs": [
+        "SCN→PVN→spinal sympathetic→superior cervical ganglion"
+      ],
+      "project": "Door / Single Eye / timing threshold",
+      "boundary": "Not a retinal eye or proven seat of soul."
+    },
+    {
+      "id": "pag",
+      "group": "midbrain",
+      "name": "Periaqueductal Threshold Ring",
+      "location": "gray matter around cerebral aqueduct",
+      "functions": [
+        "pain modulation",
+        "defense",
+        "autonomic response",
+        "vocalization-related control"
+      ],
+      "inputs_outputs": [
+        "hypothalamus",
+        "amygdala",
+        "RVM/brainstem",
+        "spinal nociceptive systems"
+      ],
+      "project": "Guard-ring / threshold response",
+      "boundary": "Not moral judgment circuitry."
+    },
+    {
+      "id": "superior-colliculus",
+      "group": "midbrain",
+      "name": "Superior Colliculus Orienting Room",
+      "location": "dorsal midbrain tectum",
+      "functions": [
+        "visual orienting",
+        "saccades",
+        "multisensory target selection"
+      ],
+      "inputs_outputs": [
+        "retina",
+        "visual cortex",
+        "brainstem eye-movement circuits",
+        "pulvinar"
+      ],
+      "project": "Turn-toward / orienting gate",
+      "boundary": "Orienting is not conscious seeing by itself."
+    },
+    {
+      "id": "inferior-colliculus",
+      "group": "midbrain",
+      "name": "Inferior Colliculus Hearing-Orienting Room",
+      "location": "dorsal midbrain",
+      "functions": [
+        "auditory integration",
+        "sound localization/orienting"
+      ],
+      "inputs_outputs": [
+        "brainstem auditory nuclei",
+        "MGN"
+      ],
+      "project": "Sound crossroads",
+      "boundary": "Not the sole hearing center."
+    },
+    {
+      "id": "vta",
+      "group": "midbrain",
+      "name": "VTA Motivation Modulator Room",
+      "location": "ventral midbrain",
+      "functions": [
+        "dopaminergic modulation of reward learning",
+        "motivation",
+        "salience"
+      ],
+      "inputs_outputs": [
+        "nucleus accumbens",
+        "PFC",
+        "amygdala",
+        "hippocampus"
+      ],
+      "project": "Motivational teaching signal",
+      "boundary": "Dopamine is not equivalent to reward/pleasure."
+    },
+    {
+      "id": "lc",
+      "group": "pons",
+      "name": "Locus Coeruleus Arousal Room",
+      "location": "dorsal pons",
+      "functions": [
+        "noradrenergic arousal",
+        "attention",
+        "uncertainty/state regulation"
+      ],
+      "inputs_outputs": [
+        "widespread cortex",
+        "thalamus",
+        "spinal cord",
+        "cerebellum"
+      ],
+      "project": "Wake / vigilance broadcast",
+      "boundary": "Not a single alertness switch."
+    },
+    {
+      "id": "parabrachial",
+      "group": "pons",
+      "name": "Parabrachial Body-State Relay",
+      "location": "dorsolateral pons",
+      "functions": [
+        "visceral/respiratory/taste/pain integration",
+        "arousal/homeostatic signaling"
+      ],
+      "inputs_outputs": [
+        "NTS",
+        "hypothalamus",
+        "amygdala",
+        "thalamus"
+      ],
+      "project": "Body-report crossroads",
+      "boundary": "Subnuclei are heterogeneous."
+    },
+    {
+      "id": "pons-pontine",
+      "group": "pons",
+      "name": "Pontine Bridge Room",
+      "location": "basis pontis",
+      "functions": [
+        "corticopontocerebellar relay",
+        "motor learning coordination"
+      ],
+      "inputs_outputs": [
+        "cortex",
+        "cerebellum"
+      ],
+      "project": "Bridge to correction system",
+      "boundary": "Pons means bridge historically, but not a spiritual bridge."
+    },
+    {
+      "id": "nts",
+      "group": "medulla",
+      "name": "NTS Visceral Report Room",
+      "location": "dorsal medulla",
+      "functions": [
+        "visceral sensory integration",
+        "baroreflex/chemoreflex",
+        "taste-related visceral signaling"
+      ],
+      "inputs_outputs": [
+        "vagus/glossopharyngeal afferents",
+        "parabrachial",
+        "hypothalamus",
+        "autonomic nuclei"
+      ],
+      "project": "Return gate / inward-report station",
+      "boundary": "Not all interoception goes through NTS."
+    },
+    {
+      "id": "dorsal-vagal",
+      "group": "medulla",
+      "name": "Dorsal Motor Vagus Room",
+      "location": "medulla",
+      "functions": [
+        "parasympathetic output to thoracoabdominal organs"
+      ],
+      "inputs_outputs": [
+        "NTS",
+        "vagus nerve",
+        "hypothalamic/brainstem control"
+      ],
+      "project": "Descending regulation road",
+      "boundary": "Vagal regulation is organ-specific and distributed."
+    },
+    {
+      "id": "nucleus-ambiguus",
+      "group": "medulla",
+      "name": "Nucleus Ambiguus Voice/Cardiac Room",
+      "location": "ventrolateral medulla",
+      "functions": [
+        "laryngeal/pharyngeal motor control",
+        "cardiac parasympathetic output"
+      ],
+      "inputs_outputs": [
+        "cranial nerves IX/X",
+        "respiratory/autonomic networks"
+      ],
+      "project": "Voice + heart bridge",
+      "boundary": "Not the whole throat/heart center."
+    },
+    {
+      "id": "prebotzinger",
+      "group": "medulla",
+      "name": "PreBötzinger Rhythm Room",
+      "location": "ventrolateral medulla",
+      "functions": [
+        "respiratory rhythm generation contribution"
+      ],
+      "inputs_outputs": [
+        "respiratory premotor networks",
+        "chemosensory/autonomic systems",
+        "spinal phrenic output"
+      ],
+      "project": "Breath rhythm generator comparator",
+      "boundary": "Breathing rhythm is distributed; this complex is crucial but not solitary."
+    },
+    {
+      "id": "rvm",
+      "group": "medulla",
+      "name": "Rostral Ventromedial Pain-Control Room",
+      "location": "ventromedial medulla",
+      "functions": [
+        "descending pain facilitation/inhibition"
+      ],
+      "inputs_outputs": [
+        "PAG",
+        "spinal dorsal horn"
+      ],
+      "project": "Descending modulation gate",
+      "boundary": "Not simply an analgesia center."
+    },
+    {
+      "id": "dentate-nucleus",
+      "group": "cerebellum",
+      "name": "Dentate Correction Output Room",
+      "location": "deep lateral cerebellar nucleus",
+      "functions": [
+        "planning/cognitive-motor cerebellar output"
+      ],
+      "inputs_outputs": [
+        "cerebellar cortex",
+        "thalamus",
+        "red nucleus"
+      ],
+      "project": "Refinement output",
+      "boundary": "Cerebellum participates in nonmotor functions too."
+    },
+    {
+      "id": "fastigial",
+      "group": "cerebellum",
+      "name": "Fastigial Balance/Autonomic Room",
+      "location": "medial deep cerebellar nucleus",
+      "functions": [
+        "posture",
+        "eye/head coordination",
+        "vestibular/autonomic contributions"
+      ],
+      "inputs_outputs": [
+        "vermis",
+        "vestibular/brainstem systems"
+      ],
+      "project": "Balance / axis correction",
+      "boundary": "Not a spiritual equilibrium center."
+    },
+    {
+      "id": "purkinje",
+      "group": "cerebellum",
+      "name": "Purkinje Gate Layer",
+      "location": "cerebellar cortex",
+      "functions": [
+        "inhibitory cortical output",
+        "learning/timing-dependent control"
+      ],
+      "inputs_outputs": [
+        "parallel/climbing fibers",
+        "deep nuclei"
+      ],
+      "project": "Pruning / correction gate",
+      "boundary": "Error signals are computational/physiological, not moral."
+    },
+    {
+      "id": "inferior-olive",
+      "group": "medulla-cerebellar",
+      "name": "Inferior Olive Teaching-Signal Room",
+      "location": "ventral medulla",
+      "functions": [
+        "climbing-fiber input to cerebellum",
+        "timing/error-related teaching signals"
+      ],
+      "inputs_outputs": [
+        "spinal/cortical/brainstem inputs",
+        "Purkinje cells"
+      ],
+      "project": "Teaching/correction signal",
+      "boundary": "Not a truth oracle."
+    },
+    {
+      "id": "basal-forebrain",
+      "group": "basal-forebrain",
+      "name": "Basal Forebrain Cholinergic Room",
+      "location": "subcortical forebrain",
+      "functions": [
+        "attention",
+        "cortical activation",
+        "learning/memory modulation"
+      ],
+      "inputs_outputs": [
+        "widespread cortex",
+        "hippocampus",
+        "amygdala"
+      ],
+      "project": "House lighting / attention support comparator",
+      "boundary": "Cholinergic signaling is only one arousal/attention system."
+    },
+    {
+      "id": "septal",
+      "group": "basal-forebrain",
+      "name": "Septal Rhythm/Memory Room",
+      "location": "medial septal/basal forebrain region",
+      "functions": [
+        "hippocampal theta modulation",
+        "memory/navigation contributions"
+      ],
+      "inputs_outputs": [
+        "hippocampus via fornical pathways",
+        "hypothalamic/basal forebrain systems"
+      ],
+      "project": "Rhythmic memory support",
+      "boundary": "Not a single pacemaker for memory."
+    },
+    {
+      "id": "claustrum",
+      "group": "subcortical",
+      "name": "Claustrum Integration Neighbor",
+      "location": "thin gray-matter sheet between insula and putamen",
+      "functions": [
+        "broad cortical connectivity",
+        "attention/state integration hypotheses"
+      ],
+      "inputs_outputs": [
+        "widespread cortex",
+        "insula",
+        "subcortical partners"
+      ],
+      "project": "Integration-neighbor / hidden sheet",
+      "boundary": "Function remains actively researched; do not call it seat of consciousness."
+    },
+    {
+      "id": "choroid",
+      "group": "interfaces",
+      "name": "Choroid Plexus Spring Room",
+      "location": "ventricular system",
+      "functions": [
+        "CSF secretion",
+        "blood-CSF barrier",
+        "transport",
+        "immune interface"
+      ],
+      "inputs_outputs": [
+        "blood",
+        "ventricular CSF",
+        "epithelial transport systems"
+      ],
+      "project": "Spring / guarded water-maker",
+      "boundary": "Does not generate Spirit."
+    },
+    {
+      "id": "area-postrema",
+      "group": "interfaces",
+      "name": "Area Postrema Window",
+      "location": "dorsal medulla at fourth ventricle",
+      "functions": [
+        "blood-borne chemical sensing",
+        "emetic/homeostatic signaling"
+      ],
+      "inputs_outputs": [
+        "blood",
+        "NTS",
+        "autonomic networks"
+      ],
+      "project": "Blood→brain sensing window",
+      "boundary": "Special permeability is physiology, not portal metaphysics."
+    },
+    {
+      "id": "sfo",
+      "group": "interfaces",
+      "name": "Subfornical Organ Thirst Window",
+      "location": "near third ventricle",
+      "functions": [
+        "osmotic/angiotensin sensing",
+        "thirst/fluid-balance control"
+      ],
+      "inputs_outputs": [
+        "blood",
+        "hypothalamic thirst circuits"
+      ],
+      "project": "Water-status window",
+      "boundary": "No spiritual thirst inference."
+    },
+    {
+      "id": "ovlt",
+      "group": "interfaces",
+      "name": "OVLT Osmotic Window",
+      "location": "anterior third-ventricle region",
+      "functions": [
+        "osmolality/temperature-related sensing",
+        "fluid-balance signaling"
+      ],
+      "inputs_outputs": [
+        "blood",
+        "hypothalamic networks"
+      ],
+      "project": "Boundary sensor",
+      "boundary": "Not a mystical third-ventricle eye."
+    },
+    {
+      "id": "circle-willis",
+      "group": "vascular",
+      "name": "Circle of Willis Supply Ring",
+      "location": "base of brain arterial network",
+      "functions": [
+        "major arterial distribution/collateral potential"
+      ],
+      "inputs_outputs": [
+        "internal carotid and vertebrobasilar systems",
+        "ACA/MCA/PCA branches"
+      ],
+      "project": "Supply ring / life-support route",
+      "boundary": "Anatomical completeness and collateral effectiveness vary between people."
+    },
+    {
+      "id": "perforators",
+      "group": "vascular",
+      "name": "Deep Perforator Supply Roads",
+      "location": "small deep arteries from basal cerebral vessels",
+      "functions": [
+        "supply thalamus",
+        "basal ganglia",
+        "internal capsule",
+        "brainstem territories"
+      ],
+      "inputs_outputs": [
+        "PCA/PCom/ACA/MCA/basilar parent arteries"
+      ],
+      "project": "Hidden supply roads into House",
+      "boundary": "Small-vessel territories overlap and variants matter."
+    }
+  ],
+  "missing_depth_targets": [
+    "cell-type/circuit detail for human thalamic nuclei beyond classical nuclear labels",
+    "complete cranial-nerve nuclei map with sensory/motor/parasympathetic columns",
+    "full spinal dorsal-horn Rexed laminae and ascending tract microcircuit",
+    "complete cerebellar lobule/zone map and vestibulocerebellar topology",
+    "full cerebral arterial branch/perforator territory atlas with individual-variation warnings",
+    "complete cortical cytoarchitectonic/parcellation crosswalk (Brodmann, multimodal HCP, histological atlases)",
+    "human cell-type atlas links for cortex, hypothalamus, hippocampus, thalamus and brainstem",
+    "developmental lineage / embryology route from neural tube vesicles to adult rooms",
+    "sleep-state generator interaction map across hypothalamus, brainstem, basal forebrain and thalamocortex",
+    "glial and extracellular-space room layer: astrocyte territories, oligodendrocyte lineage, microglial niches, pericytes and perivascular cells"
+  ],
+  "sources": [
+    {
+      "topic": "2025 human hypothalamus spatio-cellular atlas",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11922758/"
+    },
+    {
+      "topic": "2025 thalamus structure/function review",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12014413/"
+    },
+    {
+      "topic": "2025 human amygdala histology/function",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11825128/"
+    },
+    {
+      "topic": "amygdala nuclear organization review",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11953536/"
+    },
+    {
+      "topic": "insula cellular/systems review",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11796093/"
+    },
+    {
+      "topic": "retrosplenial orientation/connectivity",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11709228/"
+    },
+    {
+      "topic": "cerebrovascular morphology and deep perforator supply",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12048404/"
+    }
+  ],
+  "connections": [
+    "knowledge/body/whole-brain-neurobiology-atlas.json",
+    "knowledge/body/whole-brain-neurobiology-deepening-wave-1.json",
+    "knowledge/body/thalamus-house-horus-crown-atlas.json",
+    "knowledge/body/inner-axis-integrated-atlas.json",
+    "life-body/index.html"
+  ]
+}

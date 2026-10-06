@@ -1,0 +1,156 @@
+{
+  "id": "public-page-semantic-gap-audit",
+  "version": "1.3.0",
+  "updated": "2026-10-02",
+  "purpose": "Track older public pages that are technically reachable but still need coherence, fallback substance, consolidation or authored synthesis. This audit targets semantic gaps, not raw word count.",
+  "principles": [
+    "Do not solve thinness by adding more links.",
+    "A dynamic page should still explain its subject before or when the data widget fails.",
+    "A substantive specialist page can still need work if its relation to neighboring project concepts is unclear.",
+    "Strong hubs should be left alone when additional prose would only duplicate material.",
+    "Legacy aliases and obsolete institutional routes should be consolidated rather than deepened."
+  ],
+  "issue_types": {
+    "no_js_shell": "Useful meaning disappears when data/runtime fails.",
+    "isolated_substantive": "Page teaches its local topic but does not explain how it differs from or connects to adjacent project models.",
+    "legacy_wrapper": "Route remains mostly for compatibility and should not become a second owner.",
+    "duplicate_owner_risk": "Several pages may explain the same concept without a clear primary reader.",
+    "generic_hub": "Page contains many categories but insufficient synthesis between them.",
+    "strong_no_action": "Page already has coherent authored substance; avoid gratuitous expansion."
+  },
+  "wave_001": [
+    {
+      "path": "rooms/objects/index.html",
+      "issue": "no_js_shell",
+      "status": "fixed",
+      "action": "Added static explanation of inhabitant/object/Room distinction and useful registry-failure fallback."
+    },
+    {
+      "path": "science/quantum/index.html",
+      "issue": "isolated_substantive",
+      "status": "fixed",
+      "action": "Separated literal physics, recovered formalisms and project comparison; positioned Spudlight and Vibe/Gates as different modeling layers."
+    },
+    {
+      "path": "science/spudlight/index.html",
+      "issue": "isolated_substantive",
+      "status": "fixed",
+      "action": "Separated photon carrier, information gain and Potatoverse symbol; clarified storage/expression relation to Starchforce and neighboring models."
+    },
+    {
+      "path": "science/vibe-gates/index.html",
+      "issue": "isolated_substantive",
+      "status": "fixed",
+      "action": "Separated chakra, psychological state and network-transition maps; clarified where physics and Spudlight enter the chain."
+    },
+    {
+      "path": "context/index.html",
+      "issue": "strong_no_action",
+      "status": "reviewed",
+      "action": "Already provides strong cross-domain evidence/context synthesis; expansion would likely duplicate other owners."
+    },
+    {
+      "path": "world/index.html",
+      "issue": "strong_no_action",
+      "status": "reviewed",
+      "action": "Already has substantial mechanism-first synthesis and clear empirical/project boundaries."
+    },
+    {
+      "path": "religion/index.html",
+      "issue": "strong_no_action",
+      "status": "reviewed",
+      "action": "Already long and internally structured; future work should improve compression/visual hierarchy rather than add prose."
+    },
+    {
+      "path": "science/research-map/index.html",
+      "issue": "isolated_substantive",
+      "status": "fixed",
+      "action": "Added active science-owner map and typed shared-vocabulary rules."
+    },
+    {
+      "path": "rooms/potatoverse-canon/beings/cia/index.html",
+      "issue": "strong_no_action",
+      "status": "reviewed",
+      "action": "Already clearly distinguishes CIA as Potatoverse Character Archive, retired FBI predecessor, documentary vs symbolic layers and current archive ownership."
+    },
+    {
+      "path": "rooms/potatoverse-canon/beings/cia/associations/index.html",
+      "issue": "strong_no_action",
+      "status": "reviewed",
+      "action": "Already states that co-presence does not establish friendship, alliance, conflict, influence or motive; no expansion needed."
+    },
+    {
+      "path": "rooms/potatoverse-canon/beings/cia/incidents/index.html",
+      "issue": "strong_no_action",
+      "status": "reviewed",
+      "action": "Already defines incident as a dated knowledge-changing scene and explicitly says incident does not mean wrongdoing."
+    },
+    {
+      "path": "rooms/potatoverse-canon/beings/cia/bank/index.html",
+      "issue": "strong_no_action",
+      "status": "reviewed",
+      "action": "Already labels the ledger fictional/symbolic, separates it from real finance, and constrains accounting to source-bounded events."
+    }
+  ],
+  "next_wave": [
+    {
+      "path": "science/index.html",
+      "issue": "strong_no_action",
+      "question": "Re-review only for compression after specialist ownership changes; do not lengthen unless a genuine gap appears."
+    },
+    {
+      "path": "rooms/potatoverse-canon/beings/*/index.html",
+      "issue": "duplicate_owner_risk",
+      "question": "Audit named-being dossiers for provenance, role development, uncertainty and overlap with canonical character/archive owners."
+    },
+    {
+      "path": "rooms/potatoverse-canon/beings/*/index.html",
+      "issue": "duplicate_owner_risk",
+      "question": "Continue named-being provenance/ownership audit; distinguish documentary person data, created-being canon, and later symbolic roles."
+    },
+    {
+      "path": "dynamic public surfaces",
+      "issue": "no_js_shell",
+      "question": "Audit data-driven pages for useful static subject meaning when fetch/JavaScript fails."
+    }
+  ],
+  "long_term": [
+    "Audit every top-level Dwelling and secondary public surface qualitatively, not by file size.",
+    "Add graceful static fallback to data-driven public pages whose main body currently depends on fetch/JavaScript.",
+    "Consolidate legacy redirect/wrapper routes so they remain compatibility surfaces rather than alternate owners.",
+    "Review older science pages as one layered scientific grammar: literal physics → measurable biology/psychology → information/network models → project metaphor.",
+    "Review older theology/mythology pages for terms that silently changed meaning after 2025–2026 and date those shifts instead of rewriting history.",
+    "Review long hubs for duplication and compression after specialist pages mature; sometimes coherence means removing repeated explanation.",
+    "Track semantic-gap status separately from Room maturity because a page can be inhabited yet still poorly integrated."
+  ],
+  "findings": [
+    {
+      "date": "2026-09-26",
+      "finding": "Expected celestial-matter and entanglement public routes do not exist on current main.",
+      "decision": "Do not create them. Consolidate dark-sector astronomy into Celestial + Particles and entanglement/nonlocality into Quantum; use Research Map to make ownership explicit."
+    }
+  ],
+  "wave_002": [
+    {
+      "path": "science/axis-11d-sun-spiral/index.html",
+      "issue": "isolated_substantive",
+      "question": "Audit whether speculative 11D/Axis physics is sufficiently separated from established M-theory and from symbolic Axis geometry throughout the full long page.",
+      "status": "fixed",
+      "action": "Added an explicit four-way boundary between established physics, project models, structural comparators and the promotion threshold for literal physical claims."
+    },
+    {
+      "path": "explore/index.html",
+      "issue": "generic_hub",
+      "question": "Check whether archive navigation has enough explanatory orientation for non-expert readers.",
+      "status": "fixed",
+      "action": "Added a compact object-type key distinguishing reader, primary/recovered source, later synthesis and tool/dataset before deep archive browsing."
+    },
+    {
+      "path": "index-a-z/index.html",
+      "issue": "generic_hub",
+      "question": "Assess whether alphabetical discovery exposes definitions/context rather than only labels.",
+      "status": "fixed",
+      "action": "Added literal Home wayfinding and an entry-type orientation layer so people/handles, project concepts, tradition terms and evidence systems route differently."
+    }
+  ]
+}

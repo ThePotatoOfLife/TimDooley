@@ -1,0 +1,96 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-08",
+  "purpose": "Catalog large public datasets that can be progressively carved into dense, source-linked graph records.",
+  "ingestion_rule": "Do not mirror entire external datasets blindly. Preserve source identifiers and extract high-value records into normalized project data.",
+  "reservoirs": [
+    {
+      "id": "fec",
+      "domain": "political-finance",
+      "scale": "very-large",
+      "source": "https://www.fec.gov/data/browse-data/",
+      "extract": ["committees", "committee_types", "candidates", "donors", "transactions", "disbursements", "independent_expenditures", "filings", "audits", "enforcement"],
+      "keys": ["committee_id", "candidate_id", "transaction_id", "filing_id"],
+      "priority": "critical"
+    },
+    {
+      "id": "irs-exempt-organizations",
+      "domain": "nonprofits",
+      "scale": "approximately 1.96 million BMF records in August 2026",
+      "source": "https://www.irs.gov/charities-non-profits/exempt-organizations-business-master-file-extract-eo-bmf",
+      "extract": ["EIN", "legal_name", "DBA", "status", "address", "exemption_type", "foundation_status", "990_financials", "officers", "related_organizations", "grants", "lobbying", "foreign_activity"],
+      "keys": ["EIN", "IRS object ID"],
+      "priority": "critical"
+    },
+    {
+      "id": "euromo",
+      "domain": "media",
+      "scale": "3000-plus EU outlets and owners",
+      "source": "https://media-ownership.eu/",
+      "extract": ["outlets", "owners", "direct_ownership", "indirect_ownership", "beneficial_ownership", "country", "market", "revenue", "funding", "platforms", "regulators"],
+      "keys": ["outlet", "owner", "country"],
+      "priority": "critical"
+    },
+    {
+      "id": "sipri-arms",
+      "domain": "defense",
+      "scale": "Top 100 plus historical series from 2002",
+      "source": "https://www.sipri.org/databases/armsindustry",
+      "extract": ["rank", "company", "country", "arms_revenue", "year", "industry", "historical_series"],
+      "keys": ["company", "year"],
+      "priority": "high"
+    },
+    {
+      "id": "odni-ic",
+      "domain": "intelligence",
+      "scale": "18 US Intelligence Community elements",
+      "source": "https://www.odni.gov/",
+      "extract": ["agency", "department", "mission", "legal_authority", "oversight", "public_programs", "budget", "contracts", "declassified_material"],
+      "keys": ["agency"],
+      "priority": "high"
+    },
+    {
+      "id": "eu-terror-sanctions",
+      "domain": "security",
+      "scale": "designation lists plus separate sanctions regimes",
+      "source": "https://www.consilium.europa.eu/en/policies/sanctions-against-terrorism/",
+      "extract": ["group", "alias", "designation_authority", "legal_basis", "designation_date", "review_date", "geography", "status"],
+      "keys": ["group", "designation_authority", "date"],
+      "priority": "high"
+    },
+    {
+      "id": "opencorporates",
+      "domain": "ownership",
+      "scale": "200m-plus companies and very large relationship universe",
+      "source": "https://opencorporates.com/",
+      "extract": ["company", "jurisdiction", "status", "officers", "directors", "parent", "subsidiary", "relationships", "filings"],
+      "keys": ["company_number", "jurisdiction_code"],
+      "priority": "critical-selective"
+    },
+    {
+      "id": "figaro",
+      "domain": "trade-value-chain",
+      "scale": "64 industries and 64 products across EU members and major trading partners",
+      "source": "https://joint-research-centre.ec.europa.eu/scientific-activities/trade-and-industrial-policy-analysis/input-output-accounts/figaro-tables_en",
+      "extract": ["input_output", "trade", "jobs", "value_added", "employment", "energy", "greenhouse_gases"],
+      "keys": ["country", "industry", "product", "year"],
+      "priority": "critical"
+    },
+    {
+      "id": "ameco",
+      "domain": "macro-fiscal",
+      "scale": "EU, euro area, member states, candidates and OECD countries",
+      "source": "https://economy-finance.ec.europa.eu/economic-research-and-databases/economic-databases/ameco-database_en",
+      "extract": ["GDP", "population", "employment", "wages", "debt", "deficit", "interest", "tax", "expenditure", "trade"],
+      "keys": ["country", "year", "indicator"],
+      "priority": "critical"
+    }
+  ],
+  "record_strategy": {
+    "source_index": "One compact source record per dataset.",
+    "normalized_entity": "One record per important organization/company/person/institution.",
+    "relationship": "One edge per documented relationship, with date, value, jurisdiction and source.",
+    "metric": "One time-stamped measurement with units and methodology.",
+    "article": "Long-form human-readable explanation generated from structured evidence, never replacing it."
+  }
+}

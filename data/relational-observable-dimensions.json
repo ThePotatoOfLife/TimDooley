@@ -1,0 +1,135 @@
+{
+  "id": "relational-observable-dimensions",
+  "version": "1.0.0",
+  "updated": "2026-09-11",
+  "status": "active relational measurement contract",
+  "purpose": "Define measurable coordinates that cut across D1-D11 so the Atlas can distinguish what a relation is, what moves through it, how much capacity exists, how it changes, how dependent actors are, and how certain the evidence is without collapsing those properties into one Axis score.",
+  "core_rule": "D1-D11 are analytical/project-symbolic depth operators. The dimensions in this registry are orthogonal observables or model attributes. They may inform an Axis projection but do not themselves determine spiritual height.",
+  "extends": ["data/entanglement.json", "data/relational-edge-state.schema.json", "data/relationship-verticality-contract.json", "data/atlas-time-contract.json"],
+  "dimensions": {
+    "relation_order": {
+      "question": "Is the relation pairwise or genuinely group-level?",
+      "values": ["pairwise", "higher-order", "derived-pairwise-projection", "unknown"],
+      "warning": "Do not replace a group interaction with a complete clique of pairwise edges unless the projection and information loss are explicit."
+    },
+    "quantity_semantics": {
+      "question": "What kind of quantity is represented?",
+      "fields": ["stock", "flow", "capacity", "utilization", "balance", "rate", "share", "index"],
+      "examples": ["debt stock vs interest flow", "pipeline capacity vs actual gas flow", "military capability vs actual deployment", "credit line vs drawn credit"],
+      "rule": "Never compare or animate quantities whose stock/flow/rate semantics are incompatible."
+    },
+    "potential_vs_realized": {
+      "question": "What could happen versus what actually happened?",
+      "fields": ["available_capacity", "realized_value", "utilization_fraction", "reserve_margin", "activation_condition"],
+      "axis_relevance": [5,7,8,10],
+      "visual_candidate": "Outer corridor/tube may represent documented capacity while inner flow represents realized use, but only with compatible units and periods."
+    },
+    "direction_and_reciprocity": {
+      "question": "Who sends, receives, initiates, returns or circulates?",
+      "fields": ["direction", "gross_a_to_b", "gross_b_to_a", "net", "reciprocity", "circulation"],
+      "rule": "Net flow must not hide large opposing gross flows when gross data materially changes interpretation."
+    },
+    "time_and_cadence": {
+      "question": "When does the relation operate and at what rhythm?",
+      "fields": ["validity", "observation_period", "frequency", "seasonality", "cadence", "latency", "lead_lag", "phase"],
+      "axis_relevance": [3,5,6,9],
+      "rule": "Time remains orthogonal to Axis depth; cadence and phase may support D6/D9 analysis but do not become vertical height."
+    },
+    "scale": {
+      "question": "At what organizational and geographic scale is the relation meaningful?",
+      "fields": ["micro", "meso", "macro", "local", "subnational", "national", "regional", "global", "cross-scale"],
+      "rule": "Aggregation across scales must report what is lost. A national relation may conceal regional or firm-level asymmetry."
+    },
+    "dependence": {
+      "question": "How costly or difficult is replacement or exit?",
+      "fields": ["counterparty_share", "concentration", "substitute_count", "substitution_time", "substitution_cost", "exit_cost", "asymmetry", "criticality"],
+      "axis_relevance": [2,5,8,10],
+      "rule": "Dependence is not automatically bad; distinguish mutual specialization, efficient interdependence, fragility and coercive lock-in."
+    },
+    "delay_and_congestion": {
+      "question": "How quickly can the relation transmit and where does it queue or saturate?",
+      "fields": ["latency", "throughput", "capacity", "utilization", "queue", "bottleneck", "loss_rate"],
+      "axis_relevance": [5,9,10],
+      "examples": ["ports", "payment rails", "electric interconnectors", "telecom links", "border crossings"],
+      "rule": "Congestion requires a capacity/throughput model; do not infer it from visual crowding."
+    },
+    "reversibility_and_hysteresis": {
+      "question": "Can the relation return to its former state along the same path?",
+      "fields": ["reversible", "reversal_condition", "switching_cost", "hysteresis_evidence", "path_dependence"],
+      "axis_relevance": [3,5,6],
+      "rule": "A return to the same headline state may conceal a different internal state; D6 should display the delta."
+    },
+    "dynamics": {
+      "question": "How does the relation change through time?",
+      "fields": ["growth", "decay", "volatility", "acceleration", "recurrence", "persistence", "rewiring", "branching", "synchronization", "regime"],
+      "axis_relevance": [2,3,6,7,9],
+      "rule": "Synchronization should only be used when comparable time-dependent state or phase variables are defined."
+    },
+    "resilience": {
+      "question": "What remains functional after disturbance?",
+      "fields": ["redundancy", "alternate_paths", "service_loss", "cascade_depth", "recovery_time", "reserve_margin", "single_point_of_failure", "robustness_under_removal"],
+      "axis_relevance": [2,7,8,10],
+      "rule": "Resilience is defined relative to a function and disturbance model; there is no universal resilience score."
+    },
+    "threshold_and_tipping": {
+      "question": "When does continuous change produce a qualitative regime change?",
+      "fields": ["threshold", "guard", "activation", "criticality", "early_warning_signal", "post_transition_state"],
+      "axis_relevance": [1,2,5,6],
+      "rule": "Only show tipping proximity or early-warning signals when the domain has a validated dynamical model and adequate time series."
+    },
+    "information_and_visibility": {
+      "question": "How much of the relation is observable and how fresh/reliable is the record?",
+      "fields": ["visibility", "confidence", "coverage", "freshness", "source_count", "contradictions", "missingness", "measurement_error"],
+      "axis_relevance": [3,4,9,10],
+      "rule": "Unknown is not zero. Confidential is not false. Inferred is not observed."
+    },
+    "causal_status": {
+      "question": "What kind of claim is being made about cause?",
+      "values": ["association", "temporal-precedence", "mechanistic-hypothesis", "causal-inference", "experimental-or-quasi-experimental", "scenario-intervention", "unknown"],
+      "axis_relevance": [3,5,10],
+      "rule": "Graph adjacency, temporal order and centrality do not establish causation. Derived causal claims must expose method and assumptions."
+    },
+    "counterfactual_sensitivity": {
+      "question": "What changes if this relation is removed, weakened, strengthened or rerouted?",
+      "fields": ["edge_removal_effect", "substitute_path", "rerouting_cost", "service_delta", "exposure_delta"],
+      "axis_relevance": [5,7,8,10,11],
+      "rule": "Counterfactuals are analysis/scenario outputs, not observations of what actually happened."
+    },
+    "agency_and_governance": {
+      "question": "Who can create, modify, veto, terminate, enforce or audit the relation?",
+      "fields": ["controller", "initiator", "veto_holder", "enforcer", "auditor", "termination_right", "delegation", "accountability"],
+      "axis_relevance": [5,8,10,11],
+      "rule": "Formal authority, practical influence and moral legitimacy are separate concepts."
+    },
+    "accounting_and_conservation": {
+      "question": "Does the represented quantity obey a domain accounting identity?",
+      "fields": ["source_total", "sink_total", "losses", "storage_change", "scope", "residual"],
+      "examples": ["energy balance", "material flow", "financial balance sheet", "population stock-flow"],
+      "rule": "Apply conservation/accounting only where the domain defines it. A social or symbolic relation must not inherit physical conservation laws by analogy."
+    }
+  },
+  "visual_encoding_rules": {
+    "width": "Magnitude only when units are compatible inside the active view.",
+    "arrow_or_particle_motion": "Direction/rate only when a real directed flow exists.",
+    "outer_capacity_inner_flow": "Candidate encoding for documented capacity versus realized use.",
+    "spiral_turns": "Recurrence/cycles only when recurrence is measured or explicitly modeled.",
+    "spiral_radius": "At most one declared variable such as volatility or unresolved dispersion in one view.",
+    "dashing": "Epistemic uncertainty/inference rather than weakness by default.",
+    "opacity": "May encode evidence confidence or temporal freshness only when the legend says which one.",
+    "vertical_axis": "Axis analytical projection; never silently reuse it for raw magnitude, moral rank or physical altitude."
+  },
+  "derived_analysis_gate": {
+    "required": ["metric definition", "input records", "compatible units", "time scope", "method", "uncertainty", "source coverage", "projection loss"],
+    "examples": ["dependency concentration", "resilience under removal", "observed-vs-expected flow", "trophic/upstream position", "centrality", "community", "early-warning indicator"],
+    "rule": "A derived metric is an analysis product, not a canonical fact, until independently validated and promoted through the archive lifecycle."
+  },
+  "connections": [
+    "data/entanglement.json",
+    "data/relational-edge-state.schema.json",
+    "data/relationship-verticality-contract.json",
+    "data/relationship-axis-projection-matrix.json",
+    "data/atlas-time-contract.json",
+    "data/atlas-mathematical-calibration.json",
+    "data/axis-flow-contract.json"
+  ]
+}

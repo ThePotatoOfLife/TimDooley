@@ -1,0 +1,18 @@
+{
+  "version":"1.0.0","status":"active-blueprint","purpose":"Deep network blueprint for transport, telecommunications, utilities and critical infrastructure, connecting assets to operators, users, finance and dependencies.","entity":"infrastructure_network",
+  "record_schema":{
+    "identity":["infrastructure_id","name","asset_type","operator","owner","jurisdiction","status","commission_date","retirement_date"],
+    "physical":["location","coordinates","capacity","throughput","condition","age","design_life","maintenance","failure_modes"],
+    "network_position":["upstream","downstream","nodes","links","corridors","hub","chokepoint","cross_border","redundancy","alternate_route"],
+    "service":["users","service_area","coverage","availability","reliability","quality","peak_demand","capacity_utilization"],
+    "utilities":["power","water","fuel","telecom","data","waste","heating","cooling"],
+    "finance":["construction_cost","funding_source","debt","grant","tariff","revenue","maintenance_budget","replacement_cost","insurance"],
+    "control":["owner","operator","concessionaire","regulator","contractor","financier","licensor","emergency_authority"],
+    "resilience":["backup","redundancy","spare_parts","repair_time","weather_exposure","cyber_exposure","physical_security","single_point_of_failure","substitution"],
+    "projects":["planned_upgrade","construction","expansion","modernization","decommissioning","procurement","schedule","cost_overrun","delivery_status"],
+    "evidence":["operator","regulator","planning_document","procurement","financial_report","engineering_assessment","geospatial_source","usage_statistics","retrieved_at","confidence"]
+  },
+  "derived_measures":["capacity_utilization","network_centrality","single_point_of_failure_score","service_coverage","redundancy_ratio","maintenance_gap","cross_border_dependency"],
+  "relationship_templates":["asset-connects-asset","asset-serves-place","operator-operates-asset","owner-owns-asset","asset-depends-on-asset","corridor-carries-flow","project-upgrades-asset"],
+  "integrity_rules":["Capacity is not actual throughput.","Owner, operator and regulator are separate roles.","Criticality requires a defined service and failure consequence.","Planned infrastructure is not operational infrastructure.","Network dependencies require an identifiable path or service relationship.","Engineering condition assessments retain date and methodology."]
+}
