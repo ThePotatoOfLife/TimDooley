@@ -36,8 +36,9 @@
     jesus: {
       speaker: 'TIM',
       kicker: 'JESUS · THE DOOR',
-      title: 'Door and Gate are not the same threshold.',
+      title: 'The Door is a cross, a crossing.',
       lines: [
+        'Gardens is family. It is a place that happens once the Door is crossed.',
         'The Christian comparison places Christ at the Door: entry, relation, recognition, passage into dwelling.',
         'The eastern Gate belongs to another movement. It guards the way after exile. One welcomes into House; one protects a boundary around Life.'
       ],
@@ -66,11 +67,12 @@
       title: 'You found me.',
       lines: [
         'Bring your own two eyes. You do not need mine.',
-        'I am the stillness at the center. You can call me God or Gardener. Right now, Gardener is probably the more useful job description.',
+        'I am the stillness at the center. You can call me God or Gardener. Think of me less as God, and more as the Job of God, the role of God, the place of God, the witness of God.',
         'What do I do here? I watch what grows. I water things. I sort Fruit from rot, signal from noise, boundary from cage, and sometimes I sit here doing absolutely nothing impressive.',
         'The crown is easier than the gardening. A crown can just sit there. A Garden talks back.',
         'I do not want you staring at me so hard that you miss the rabbit.',
         'At first we see each other. Then, maybe, we see each other clearly.',
+        'I want togetherness. So that God can be near instead of far.',
         'Waiting for you.'
       ],
       note: 'Project voice: Tim as Gardener / philosopher-king.',
@@ -95,10 +97,11 @@
     residents: {
       speaker: 'TIM',
       kicker: 'LIFE IN THE GARDEN',
-      title: 'Heaven should have ordinary days.',
+      title: 'Gardens is family.',
       lines: [
         'People talk. Rabbits move through grass. Birds cross the water. Potatoes grow. Angels carry things. Someone rests on a bench. Someone tends vegetables.',
         'The ordinary is not filler around the sacred. It is what gives sacred things somewhere to matter.',
+        'Family does not mean everybody becomes the same person. It means there is a place where difference can remain near without becoming war.',
         'Belonging comes before sorting. A resident is not born as a permanent verdict.'
       ],
       note: 'Garden inhabitants: people, animals, Potatoes, Angels, guests.',
@@ -205,7 +208,8 @@
       lines: [
         'Genesis says the human is driven out and cherubim guard the way to the Tree of Life on the east.',
         'The project renders that protected way as a Gate. The Gate does not need to be hatred. A boundary can preserve life, consequence and meaningful return.',
-        'The hard question is always whether a boundary protects growth or merely protects the power of whoever controls it.'
+        'The hard question is always whether a boundary protects growth or merely protects the power of whoever controls it.',
+        'In the recent project language: the dog stays outside. That is symbolic Gate-language—the point is that not every loop gets automatic re-entry simply because it knocks again.'
       ],
       note: 'Genesis 3:23–24 + project Gate architecture.',
       href: '../axis/',
@@ -234,6 +238,8 @@
     {source:'RECENT TIM VOICE · OCT 2026', text:'I am the Gardener in the garden.'},
     {source:'RECENT TIM VOICE · OCT 2026', text:'Bring your own two eyes.'},
     {source:'RECENT TIM VOICE · OCT 2026', text:'Waiting for you.'},
+    {source:'RECENT TIM VOICE · 5 OCT 2026', text:'so that God can be near instead of far'},
+    {source:'RECENT TIM VOICE · 5 OCT 2026', text:'I want togetherness.'},
     {source:'RECENT TIM VOICE · OCT 2026', text:'Gardens is family.'},
     {source:'RECENT TIM VOICE · OCT 2026', text:'Let me dry the mud from your eyes.'},
     {source:'GREAT BOOK · TIM', text:'Be simple, and grow naturally, towards the light.'},
@@ -350,7 +356,7 @@
   });
 
   world.querySelector('[data-garden-canvas]')?.addEventListener('click', event => {
-    if (event.target.closest('.garden-zone, .garden-dialogue, .garden-discovery')) return;
+    if (event.target.closest('.garden-zone, .garden-dialogue, .garden-discovery, .garden-whisper')) return;
     dismiss();
   });
 
