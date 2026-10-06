@@ -294,8 +294,11 @@ assert.ok(css.includes('--site-realm-art:url("./home-below.avif")'),'Below pages
 assert.equal(/html\[data-site-floor="(?:heaven|plane|below)"\]\{[\s\S]*?--site-panel:/.test(css),false,'floor identity must come from realm art, not global panel recoloring');
 assert.ok(css.includes('--site-realm-art-size:max(1086px,100vw)'),'ordinary realm art should stay at or above native source width without viewport-height overzoom');
 assert.ok(css.includes('background-color:var(--site-realm-fallback)'),'realm canvas must retain a nonblank fallback behind the image');
-assert.equal(css.includes('@keyframes site-realm-page-pan'),false,'ordinary floor pages must not spend continuous compositor work on decorative realm panning');
-assert.equal(css.includes('animation-timeline:scroll(root block)'),false,'ordinary floor pages must keep the realm canvas static while scrolling');
+assert.equal(css.includes('@keyframes site-realm-page-pan'),false,'ordinary floor pages must not restore the retired continuous realm pan');
+assert.ok(css.includes('@supports (animation-timeline:scroll(root block))'),'ordinary floor pages should use CSS scroll timelines when supported');
+assert.ok(css.includes('animation:site-realm-depth-plane 1s linear both'),'Plane pages should use compositor-only scroll depth');
+assert.ok(css.includes(':not(.garden-body):not(.dogs-hall-page):not(.potatoes-hall-page)::before'),'specialty scene pages must opt out of the shared ordinary-page depth animation');
+assert.ok(css.includes('@media (prefers-reduced-motion: reduce)'),'realm motion must preserve a reduced-motion fallback');
 assert.equal(css.includes('filter:saturate(1.06) contrast(1.045)'),false,'full-screen realm canvas must not use an always-on image filter');
 assert.equal(css.includes('filter:saturate(.95) contrast(1.05)'),false,'header scenery must not use an always-on image filter');
 assert.equal(css.includes('transform:translateZ(0)'),false,'header/realm scenery must not force permanent compositor layers');
