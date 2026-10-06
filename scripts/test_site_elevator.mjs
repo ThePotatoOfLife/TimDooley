@@ -205,7 +205,7 @@ assert.equal(css.includes('target-reference refinement'),false,'retired target-r
 assert.equal(css.includes('exact target-reference desktop skin'),false,'retired exact desktop override must not coexist with panorama strip');
 assert.ok(css.includes('background-image:var(--site-header-art)'),'responsive strip must use the dedicated panorama asset directly');
 assert.ok(css.includes('background-size:100% 100%'),'responsive strip must fill the full shared composition box');
-assert.match(css,/--elevator-shell-height:clamp\(106px,13\.96vw,286px\)/,'header height must scale continuously with viewport width');
+assert.match(css,/--elevator-shell-height:clamp\(106px,13\.96vw,320px\)/,'header height must scale continuously with viewport width and preserve ultrawide art');
 assert.match(css,/\.site-elevator-main\{[\s\S]*?width:100%;[\s\S]*?max-width:none;/,'live geometry must share the full panorama width');
 assert.equal(css.includes('grid-template-columns:repeat(var(--elevator-visible-count),minmax(0,1fr))'),false,'desktop hit map must not regress to equal-width plaque columns');
 assert.match(css,/\.site-elevator-room-rail\{[\s\S]*?inset:0;[\s\S]*?pointer-events:none;/,'desktop rail must use the whole painted banner as its coordinate system');
