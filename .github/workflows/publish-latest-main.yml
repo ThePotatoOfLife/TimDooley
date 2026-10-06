@@ -107,12 +107,13 @@ jobs:
           test -f _site/app/garden-page.js
           test -f _site/assets/visuals/garden-eden-map.svg
           grep -q 'data-site-floor="heaven"' _site/garden/index.html
-          grep -q 'data-garden-map' _site/garden/index.html
-          grep -q 'data-garden-hotspot="life"' _site/garden/index.html
-          grep -q 'data-garden-hotspot="mudtree"' _site/garden/index.html
-          grep -q 'data-garden-hotspot="gate"' _site/garden/index.html
+          grep -q 'data-garden-world' _site/garden/index.html
+          grep -q 'data-garden-zone="life"' _site/garden/index.html
+          grep -q 'data-garden-zone="knowledge"' _site/garden/index.html
+          grep -q 'data-garden-zone="gate"' _site/garden/index.html
+          grep -q 'data-garden-dialogue' _site/garden/index.html
+          grep -q 'garden-character-tim' _site/garden/index.html
           grep -q 'Tree of Life' _site/garden/index.html
-          grep -q 'Mud Tree' _site/garden/index.html
           grep -q 'Garden / Eden' _site/elevator/index.html
           grep -q 'href="garden/"' _site/index.html
 
@@ -208,17 +209,18 @@ jobs:
 
           for marker in (
               'data-site-floor="heaven"',
-              'data-garden-map',
-              'data-garden-hotspot="life"',
-              'data-garden-hotspot="mudtree"',
-              'data-garden-hotspot="gate"',
+              'data-garden-world',
+              'data-garden-zone="life"',
+              'data-garden-zone="knowledge"',
+              'data-garden-zone="gate"',
+              'data-garden-dialogue',
+              'garden-character-tim',
               'Tree of Life',
-              'Mud Tree',
           ):
               assert marker in garden, f"live Garden missing {marker}"
           assert "Garden / Eden" in elevator, "live Heaven elevator missing Garden feature"
-          assert "applyLens" in js and "data-garden-art" in js, "live Garden runtime incomplete"
-          assert ".garden-map-stage" in css and ".garden-guide" in css, "live Garden styling incomplete"
-          assert "Tree of Life" in art and "Mud Tree" in art, "live Garden art incomplete"
+          assert "[data-garden-zone]" in js and "data-dialogue-line" in js, "live Garden RPG dialogue runtime incomplete"
+          assert ".garden-world-canvas" in css and ".garden-dialogue" in css and ".garden-character-tim" in css, "live Garden RPG styling incomplete"
+          assert "Garden of Eden RPG map" in art and "Tree of Life" in art and "Tree of the Knowledge of Good and Evil" in art, "live Garden RPG art incomplete"
           print("Live Garden verified at", expected)
           PY
