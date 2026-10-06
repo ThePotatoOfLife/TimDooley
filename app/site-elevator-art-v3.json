@@ -1,44 +1,32 @@
 {
-  "version": 3,
+  "version": 4,
   "artboard": {
     "width": 2172,
     "height": 239,
     "aspect_ratio": "2172:239"
   },
   "breakpoint_px": 860,
-  "columns": {
-    "elevator": {
-      "x": 0,
-      "width": 105,
-      "percent": 4.834254
-    },
-    "floor_board": {
-      "x": 105,
-      "width": 366,
-      "percent": 16.850829
-    },
-    "scene_and_navigation": {
-      "x": 471,
-      "width": 1701,
-      "percent": 78.314917
-    }
+  "alignment": {
+    "axis_x": 1086,
+    "description": "Heaven canopy/light, Plane trunk, and Below roots share the same central world-tree axis."
   },
   "navigation": {
     "top_y": 180,
-    "height": 44
+    "height": 44,
+    "note": "Vertical navigation geometry is shared; horizontal plaque extents are floor-specific and measured from the approved art."
   },
   "assets": {
     "heaven": {
       "file": "header-heaven-v3.avif",
-      "sha256": "649c2fac16d981a83b228e8bdc844a2f9ec511f826baf81ade408deb4d59c818"
+      "sha256": "52427ad6bb35d8f2d8ac07b56e68d95c547a8569c49ae86e5137c15a00f82e62"
     },
     "plane": {
       "file": "header-plane-v3.avif",
-      "sha256": "199f97edbc2e0ba046eba06aeeb3ef32dd7232fb097ee72b52b3c99d12fcee00"
+      "sha256": "aab2416db9ed57346e3d200877a8cbfa4b4898cff956587b0e25c9172187d1ad"
     },
     "below": {
       "file": "header-below-v3.avif",
-      "sha256": "3619bc38f77a940242aff269fb4663cd4536521ac35eeead66d05e45dc0fa767"
+      "sha256": "e6aee7d19fdd93646937192e2781f982749412a79afd636ef5c986000323d42e"
     }
   }
 }
