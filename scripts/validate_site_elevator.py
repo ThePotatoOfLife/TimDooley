@@ -139,7 +139,8 @@ def main() -> int:
             "@media (min-width:761px)",
             "overflow:visible",
             ".site-elevator-floor-code",
-            "grid-template-columns:repeat(var(--elevator-visible-count),minmax(0,1fr))",
+            "pointer-events:none",
+            ".site-elevator[data-elevator-level=\"plane\"] .site-elevator-room:nth-child(5)",
             "--site-header-art:",
             "background-image:var(--site-header-art)",
             "background-size:100% 100%",
@@ -166,6 +167,10 @@ def main() -> int:
             errors.append("retired desktop header skins must not coexist with the approved panorama strip")
         if css.count("@media (min-width:761px)") != 1:
             errors.append("desktop/tablet panorama should be owned by one min-width:761px media block")
+        if "grid-template-columns:repeat(var(--elevator-visible-count)" in css:
+            errors.append("desktop interaction map must not regress to equal-width plaque columns")
+        if ".site-elevator[data-elevator-direction] .site-elevator-room-rail" not in css or "animation:none" not in css:
+            errors.append("desktop invisible hit rail must not inherit settling animation")
         if css.count("!important") > 8:
             errors.append("site elevator CSS specificity escalation exceeds the approved limit")
 
