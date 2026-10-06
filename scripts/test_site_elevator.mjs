@@ -229,6 +229,10 @@ assert.equal(artManifest.breakpoint_px,860,'v3 breakpoint must be derived from t
 assert.equal(hotspots.artboard.width,2172,'hotspot width must match art manifest');
 assert.equal(hotspots.artboard.height,239,'hotspot height must match art manifest');
 assert.equal(hotspots.artboard.nav_top_y,180,'all floor navigation rails must share y=180');
+assert.equal(artManifest.version,4,'approved world-tree art manifest must be v4');
+assert.equal(hotspots.version,4,'approved world-tree hotspot map must be v4');
+assert.equal(artManifest.alignment.axis_x,1086,'Heaven, Plane and Below must share the same central world-tree axis');
+
 for(const floor of ['heaven','plane','below']){
   const asset=artManifest.assets[floor].file;
   assert.ok(fs.existsSync(path.join(ROOT,'app',asset)),asset+' must exist');
