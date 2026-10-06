@@ -101,6 +101,84 @@
       label: 'Meet the inhabitants ↓',
       side: 'right'
     },
+    picnic: {
+      speaker: 'TIM',
+      kicker: 'AN ORDINARY TABLE',
+      title: 'Not every meal has to become a ceremony.',
+      lines: [
+        'Sometimes Fruit is simply lunch. Bread, vegetables, potatoes, conversation, rest.',
+        'A Garden becomes believable when nourishment is ordinary enough to share without turning every bite into status.'
+      ],
+      note: 'Garden life: nourishment before spectacle.',
+      href: '#day-in-the-garden',
+      label: 'Spend a day in the Garden ↓',
+      side: 'right'
+    },
+    rabbit: {
+      speaker: 'TIM',
+      kicker: 'A RABBIT',
+      title: 'It does not need a theological job.',
+      lines: [
+        'You found a rabbit.',
+        'That can be enough. A living Garden should contain things whose value is not exhausted by what they symbolize.'
+      ],
+      note: 'Not everything present has to become allegory.',
+      href: '#inhabitants',
+      label: 'Life in the Garden ↓',
+      side: 'up'
+    },
+    potato: {
+      speaker: 'TIM',
+      kicker: 'A POTATO',
+      title: 'Hidden is not empty.',
+      lines: [
+        'A potato stores life underground. Its eyes are buds. What looks inert can contain several future directions.',
+        'The project keeps returning to that ordinary fact because it makes a good discipline: do not confuse visibility with value.'
+      ],
+      note: 'Potato of Life: buried capacity, nourishment, future Seed.',
+      href: '../potato-of-life/',
+      label: 'Open Potato of Life →',
+      side: 'up'
+    },
+    angel: {
+      speaker: 'TIM',
+      kicker: 'A MESSENGER',
+      title: 'Carry something useful across the boundary.',
+      lines: [
+        'The deeper Angel role is not decoration around a throne. Messenger, guardian, witness, healer, carrier, builder, cultivator.',
+        'A good messenger preserves what matters while helping it arrive somewhere new.'
+      ],
+      note: 'Potato Angel service-role.',
+      href: '../rooms/potatoverse-canon/beings/potatoes/#angel-hall',
+      label: 'Enter the Angel hall →',
+      side: 'left'
+    },
+    fruitbasket: {
+      speaker: 'TIM',
+      kicker: 'A BASKET OF FRUIT',
+      title: 'Arguments eventually become harvest.',
+      lines: [
+        'Fruit is the downstream test. What did the teaching, system, relationship or power actually produce?',
+        'If the answer is nourishment, capacity, repair and future Seed, the theory has become useful. If not, the title cannot save it.'
+      ],
+      note: 'Fruit as consequence and evaluation.',
+      href: '#fruit',
+      label: 'Read the Fruit test ↓',
+      side: 'up'
+    },
+    bridge: {
+      speaker: 'TIM',
+      kicker: 'A LITTLE BRIDGE',
+      title: 'Small crossings matter too.',
+      lines: [
+        'Not every transition needs a cosmic Gate. Sometimes a bridge is just enough structure to cross water without pretending the two banks are the same place.',
+        'The project is full of large Doors and Ladders. A Garden should remember the dignity of small passages.'
+      ],
+      note: 'Connection without collapse.',
+      href: '../rooms/inside/symbolic-architecture/',
+      label: 'Open Symbolic Architecture →',
+      side: 'up'
+    },
     knowledge: {
       speaker: 'TIM',
       kicker: 'THE OTHER TREE · MUD',
@@ -176,7 +254,11 @@
     }
     active = key;
     step = 0;
+    dialogue.hidden = true;
+    void dialogue.offsetWidth;
     dialogue.hidden = false;
+    const activeZone = zones.find(zone => zone.dataset.gardenZone === key);
+    activeZone?.classList.add('is-found');
     render();
     if (focus) dialogue.focus({preventScroll:true});
   }
@@ -191,12 +273,6 @@
 
   zones.forEach(zone => {
     zone.addEventListener('click', () => open(zone.dataset.gardenZone));
-    zone.addEventListener('keydown', event => {
-      if (event.key === 'Enter' || event.key === ' ') {
-        event.preventDefault();
-        open(zone.dataset.gardenZone, true);
-      }
-    });
   });
 
   next?.addEventListener('click', () => {
@@ -225,6 +301,11 @@
         reveal.textContent = 'show clues';
       }, 7000);
     }
+  });
+
+  world.querySelector('[data-garden-canvas]')?.addEventListener('click', event => {
+    if (event.target.closest('.garden-zone, .garden-dialogue, .garden-discovery')) return;
+    dismiss();
   });
 
   document.addEventListener('keydown', event => {
