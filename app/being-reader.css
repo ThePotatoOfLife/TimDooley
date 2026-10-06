@@ -1,0 +1,149 @@
+/* Shared Potatoverse Being / Cast reader.
+   Keeps the existing site architecture, but gives person/character dossiers one
+   coherent frosted-reader material and provenance-first rhythm. */
+.being-reader{
+  --being-pane:rgba(242,239,225,.76);
+  --being-pane-soft:rgba(242,239,225,.60);
+  --being-pane-line:rgba(206,177,104,.42);
+  --being-ink:#1a1a18;
+  --being-copy:#3f4039;
+  --being-muted:#686b61;
+  --being-gold:#9a722a;
+  max-width:980px;
+  color:var(--being-copy)
+}
+.being-reader .page-header{
+  position:relative;
+  overflow:hidden;
+  max-width:900px;
+  padding:clamp(24px,3vw,34px);
+  border:1px solid var(--being-pane-line);
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.38),rgba(255,255,255,.08)),
+    var(--being-pane);
+  color:var(--being-ink);
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.62),
+    inset 0 0 0 1px rgba(255,247,220,.24),
+    0 16px 34px rgba(0,0,0,.16);
+  backdrop-filter:blur(10px) saturate(.88)
+}
+.being-reader .page-header::after{
+  content:"";
+  position:absolute;
+  left:7%;right:7%;bottom:0;height:1px;
+  background:linear-gradient(90deg,transparent,#caa24e,transparent);
+  opacity:.72
+}
+.being-reader .page-header h1{color:#171814}
+.being-reader .page-header .summary{color:#43463f}
+.being-reader .eyebrow{color:var(--being-gold)}
+.being-reader>.lede{
+  max-width:900px;
+  margin:22px 0 28px;
+  padding:18px 20px;
+  border-left:3px solid rgba(184,147,67,.54);
+  background:rgba(244,240,225,.56);
+  color:#2d302b;
+  font:400 clamp(19px,2.4vw,28px)/1.56 var(--site-font-serif);
+  box-shadow:0 10px 26px rgba(0,0,0,.10);
+  backdrop-filter:blur(8px)
+}
+.being-reader p,.being-reader li{line-height:1.72}
+.being-reader h2{
+  margin:0 0 12px;
+  color:#23241f;
+  font:400 clamp(25px,3.2vw,36px)/1.1 var(--site-font-serif)
+}
+.being-reader h3{
+  color:#2f312a;
+  font:400 21px/1.25 var(--site-font-serif)
+}
+.being-reader .facts,
+.being-reader .fact-run{
+  display:flex;flex-wrap:wrap;gap:7px 10px;
+  margin:18px 0 28px;padding:12px 0;
+  border-top:1px solid rgba(122,103,66,.20);
+  border-bottom:1px solid rgba(122,103,66,.20);
+  color:var(--being-muted);font-size:10px
+}
+.being-reader .facts span,
+.being-reader .fact-run span,
+.being-reader .retained span{
+  border:1px solid rgba(143,119,72,.22);
+  border-radius:999px;
+  padding:6px 9px;
+  background:rgba(255,255,255,.20)
+}
+.being-reader .facts b,
+.being-reader .fact-run b,
+.being-reader .retained b{
+  color:var(--being-gold);font-weight:650
+}
+.being-reader .retained{
+  display:flex;gap:6px;flex-wrap:wrap;margin:12px 0 26px
+}
+.being-reader section{
+  margin:28px 0;
+  padding:22px 22px 24px;
+  border:1px solid rgba(143,119,72,.18);
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.15),transparent 22%),
+    var(--being-pane-soft);
+  color:var(--being-copy);
+  box-shadow:0 14px 30px rgba(0,0,0,.11);
+  backdrop-filter:blur(8px)
+}
+.being-reader section:nth-of-type(even){
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.10),transparent 22%),
+    rgba(235,231,213,.52)
+}
+.being-reader .s,
+.being-reader .storyline{
+  position:relative;
+  margin:18px 0;
+  padding:15px 16px 15px 18px;
+  border-left:3px solid rgba(173,137,58,.46);
+  background:rgba(255,255,255,.18)
+}
+.being-reader .s time,
+.being-reader .storyline time{
+  display:block;margin-bottom:5px;
+  color:var(--being-gold);
+  font:700 9px/1.2 var(--site-font-sans);
+  letter-spacing:.08em;text-transform:uppercase
+}
+.being-reader .note,
+.being-reader .source-status,
+.being-reader .callout{
+  margin:22px 0;
+  padding:15px 17px;
+  border:1px solid rgba(143,119,72,.22);
+  background:rgba(255,249,228,.34);
+  color:#54574e
+}
+.being-reader .note strong,
+.being-reader .callout strong{color:#73551f}
+.being-reader .ability-list{
+  columns:2;column-gap:34px;padding-left:18px
+}
+.being-reader .ability-list li{break-inside:avoid;margin:6px 0}
+.being-reader .open-questions{margin:12px 0 0;padding-left:20px}
+.being-reader .open-questions li{margin:7px 0}
+.being-reader .links,
+.being-reader .room-links{
+  display:flex;gap:12px;flex-wrap:wrap;margin:28px 0
+}
+.being-reader .links a,
+.being-reader .room-links a{
+  color:#6d511f;text-decoration:none;
+  border-bottom:1px solid rgba(143,119,72,.34);
+  padding:5px 0
+}
+.being-reader .links a:hover,
+.being-reader .room-links a:hover{color:#3e2e12;border-bottom-color:#9b762f}
+@media(max-width:700px){
+  .being-reader .ability-list{columns:1}
+  .being-reader section{padding:18px}
+}
