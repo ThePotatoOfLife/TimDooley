@@ -12,3 +12,22 @@
 .potatoism-page .reader-trail{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.potatoism-page .reader-trail a{border:1px solid var(--site-line);border-radius:var(--site-radius-pill);padding:8px 11px;text-decoration:none;font-size:var(--site-text-meta)}
 .potatoism-page .tension{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:center;border-top:1px solid var(--site-line);border-bottom:1px solid var(--site-line);padding:18px 0;margin:24px 0}.potatoism-page .tension b{color:var(--site-gold)}.potatoism-page .tension i{font-style:normal;opacity:.5}
 @media(max-width:760px){.potatoism-page .potatoism-page .branch-grid,.potatoism-page .potatoism-page .principle-grid,.potatoism-page .potatoism-page .corruption-grid,.potatoism-page .path-grid{grid-template-columns:1fr}.potatoism-page .tension{grid-template-columns:1fr}.potatoism-page .tension i{display:none}}
+
+/* 2026-10-06 environmental depth pass */
+.potatoism-page .page-header{
+  background:
+    radial-gradient(circle at 18% 0,rgba(191,205,117,.08),transparent 42%),
+    linear-gradient(180deg,rgba(16,20,11,.64),rgba(9,11,8,.54))
+}
+.potatoism-page .branch,.potatoism-page .principle,.potatoism-page .corruption,.potatoism-page .path-step{
+  background:linear-gradient(180deg,rgba(20,23,12,.46),rgba(9,11,8,.38));
+  border-color:rgba(180,190,105,.14)
+}
+.potatoism-page .branch:hover,.potatoism-page .principle:hover,.potatoism-page .corruption:hover,.potatoism-page .path-step:hover{
+  background:linear-gradient(180deg,rgba(25,29,14,.56),rgba(10,13,9,.46));
+  border-color:rgba(201,205,122,.20)
+}
+.potatoism-page .statement{
+  box-shadow:inset 4px 0 rgba(216,181,107,.08),0 10px 28px rgba(0,0,0,.10)
+}
+

@@ -111,3 +111,22 @@
   .world-domain-page :is(.law-case,.econ-case){grid-template-columns:1fr;gap:4px}
   .world-domain-page :is(.law-checks,.econ-checks){grid-template-columns:1fr}
 }
+
+/* 2026-10-06 environmental depth pass */
+.world-domain-page .page-header{
+  background:
+    linear-gradient(135deg,rgba(176,176,126,.065),transparent 42%),
+    linear-gradient(180deg,rgba(11,16,13,.64),rgba(8,10,9,.52))
+}
+.world-domain-page .card,
+.world-domain-page :is(.law-reader,.econ-reader),
+.world-domain-page :is(.law-checks,.econ-checks) article{
+  background:linear-gradient(180deg,rgba(12,18,14,.50),rgba(8,11,9,.40));
+  border-color:rgba(178,180,124,.13)
+}
+.world-domain-page .card:hover,
+.world-domain-page :is(.law-checks,.econ-checks) article:hover{
+  border-color:rgba(203,198,137,.19);
+  background:linear-gradient(180deg,rgba(16,23,17,.58),rgba(9,13,10,.46))
+}
+

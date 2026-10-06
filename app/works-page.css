@@ -41,3 +41,23 @@
 .fruit-case h3{font:400 20px/1.2 var(--site-font-serif);color:var(--site-gold);margin:0 0 4px}.fruit-case small{color:var(--site-muted)}
 .fruit-case dl{display:grid;grid-template-columns:125px minmax(0,1fr);gap:6px 12px;margin:0}.fruit-case dt{color:var(--site-gold);font-size:10px;text-transform:uppercase;letter-spacing:.06em}.fruit-case dd{margin:0;color:var(--site-copy);font-size:11px}
 @media(max-width:760px){.fruit-case{grid-template-columns:1fr}.fruit-case dl{grid-template-columns:1fr}}
+
+/* 2026-10-06 environmental depth pass */
+.works-page .page-header{
+  background:
+    radial-gradient(circle at 20% 0,rgba(216,181,107,.075),transparent 44%),
+    linear-gradient(180deg,rgba(18,15,10,.64),rgba(9,10,8,.53))
+}
+.works-page .genre,.works-page .work-history,.works-page .artifact-shelf,.works-page .fruit-casebook,.works-page .life-work-bridge{
+  background:linear-gradient(180deg,rgba(18,15,10,.28),transparent);
+  padding-inline:18px
+}
+.works-page .work-card,.works-page .work-lesson,.works-page .artifact-card,.works-page .life-work-card{
+  background:rgba(18,15,10,.40);
+  border-color:rgba(206,181,119,.13)
+}
+.works-page .work-card:hover,.works-page .work-lesson:hover,.works-page .artifact-card:hover{
+  background:rgba(24,19,12,.52);
+  border-color:rgba(224,197,134,.20)
+}
+
