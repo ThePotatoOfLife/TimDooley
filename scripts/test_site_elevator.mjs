@@ -198,7 +198,7 @@ assert.ok(source.includes("disabled"),'boundary arrows must expose disabled stat
 
 assert.ok(css.includes('--elevator-slot-count:5'),'header must preserve the five-slot floor geometry contract');
 assert.ok(css.includes('@media (max-width:859px)'),'true mobile must retain a compact fallback');
-assert.equal((css.match(/@media \(min-width:761px\)/g)||[]).length,1,'tablet/desktop must have one responsive panorama owner');
+assert.equal((css.match(/@media \(min-width:860px\)/g)||[]).length,1,'desktop illustrated header must have one v3 responsive owner');
 assert.ok(css.includes('/* 2026-10-06 v3 canonical illustrated composition.'),'approved panorama architecture marker missing');
 assert.equal(css.includes('/* Desktop illustrated header skin.'),false,'retired desktop HUD skin must not coexist with panorama strip');
 assert.equal(css.includes('target-reference refinement'),false,'retired target-reference override must not coexist with panorama strip');
