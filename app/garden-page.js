@@ -15,6 +15,9 @@
   const reveal = world.querySelector('[data-reveal-zones]');
   const talkTim = document.querySelector('[data-talk-tim]');
   const reduceMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+  const whisper = world.querySelector('[data-garden-whisper]');
+  const whisperSource = world.querySelector('[data-garden-whisper-source]');
+  const whisperText = world.querySelector('[data-garden-whisper-text]');
 
   const entries = {
     house: {
@@ -222,6 +225,27 @@
       side: 'left'
     }
   };
+
+  const whispers = [
+    {source:'GREAT BOOK · TIM', text:'Be simple, and grow naturally, towards the light.'},
+    {source:'GREAT BOOK · TIM', text:'When the soil is ready, the potato is planted.'},
+    {source:'GREAT BOOK · TIM', text:'The book wouldn’t exist without the reader. You’re the soil in which it grows.'},
+    {source:'TIM · 7 JULY 2026', text:'The kingdom of God grows from the house.'},
+    {source:'TIM · 7 SEPTEMBER 2026', text:'Power is for protection. Knowledge is for understanding. Wealth is for building. Leadership is for service.'},
+    {source:'GENESIS 2:15', text:'to dress it and to keep it'}
+  ];
+  let whisperIndex = 0;
+  if (whisper && whisperText && whisperSource && !reduceMotion) {
+    window.setInterval(() => {
+      whisper.classList.add('is-changing');
+      window.setTimeout(() => {
+        whisperIndex = (whisperIndex + 1) % whispers.length;
+        whisperSource.textContent = whispers[whisperIndex].source;
+        whisperText.textContent = whispers[whisperIndex].text;
+        whisper.classList.remove('is-changing');
+      }, 320);
+    }, 13000);
+  }
 
   let active = null;
   let step = 0;
