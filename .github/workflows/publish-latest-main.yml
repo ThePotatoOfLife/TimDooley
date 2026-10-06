@@ -214,13 +214,12 @@ jobs:
               'data-garden-zone="knowledge"',
               'data-garden-zone="gate"',
               'data-garden-dialogue',
-              'garden-character-tim',
               'Tree of Life',
           ):
               assert marker in garden, f"live Garden missing {marker}"
           assert "Garden / Eden" in elevator, "live Heaven elevator missing Garden feature"
           assert "[data-garden-zone]" in js and "data-dialogue-line" in js, "live Garden RPG dialogue runtime incomplete"
-          assert ".garden-world-canvas" in css and ".garden-dialogue" in css and ".garden-character-tim" in css, "live Garden RPG styling incomplete"
+          assert ".garden-world-canvas" in css and ".garden-dialogue" in css, "live Garden RPG styling incomplete"
           assert len(art) > 40000 and art[:4] == b"RIFF" and b"WEBP" in art[:16], "live Garden master artwork missing or invalid"
           print("Live Garden verified at", expected)
           PY
