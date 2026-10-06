@@ -135,15 +135,14 @@ def main() -> int:
             "@media (prefers-reduced-motion: reduce)",
             ".site-elevator-room.is-active",
             "--elevator-slot-count:5",
-            "flex:0 0 calc((100% - (var(--elevator-room-gap) * (var(--elevator-slot-count) - 1))) / var(--elevator-slot-count))",
             "@media (max-width:760px)",
-            "display:flex;",
+            "@media (min-width:761px)",
             "overflow:visible",
             ".site-elevator-floor-code",
-            ".site-elevator-floor-emblem",
             "grid-template-columns:repeat(var(--elevator-visible-count),minmax(0,1fr))",
             "--site-header-art:",
-            "background-image:var(--site-header-art,var(--site-realm-art))",
+            "background-image:var(--site-header-art)",
+            "background-size:100% 100%",
             "border-radius:0",
             "background:transparent",
             ".site-elevator-room-rail{",
@@ -156,17 +155,19 @@ def main() -> int:
             "header-below.svg",
             "body:not(.home-body)::before",
             "--site-realm-art-size",
-            "--room-hardware-bright:",
-            "--room-hardware-dim:",
-            ".site-elevator-room-rail::before",
-            ".site-elevator-room-rail::after",
-            "outline:1px solid rgba(191,141,68,.18)",
-            "linear-gradient(135deg,#a87938 0 3px,transparent 3px) top left/10px 10px no-repeat",
-            "linear-gradient(135deg,#bc8540 0 4px,transparent 4px) top left/12px 12px no-repeat",
         )
         for token in css_tokens:
             if token not in css:
                 errors.append(f"site elevator CSS missing required marker: {token}")
+
+        if css.count("/* 2026-10-06 approved-reference responsive composition.") != 1:
+            errors.append("site elevator must have exactly one approved-reference responsive desktop/tablet owner")
+        if "/* Desktop illustrated header skin." in css or "target-reference refinement" in css or "exact target-reference desktop skin" in css:
+            errors.append("retired desktop header skins must not coexist with the approved panorama strip")
+        if css.count("@media (min-width:761px)") != 1:
+            errors.append("desktop/tablet panorama should be owned by one min-width:761px media block")
+        if css.count("!important") > 8:
+            errors.append("site elevator CSS specificity escalation exceeds the approved limit")
 
         # Geometry values may evolve; the invariant is shared ownership.
         for shared_geometry_token in (
