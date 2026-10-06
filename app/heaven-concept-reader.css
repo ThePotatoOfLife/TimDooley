@@ -337,3 +337,173 @@
   .god-question-reader .formula,
   .god-question-reader .grid{grid-template-columns:1fr}
 }
+
+
+/* God-in-real-life reader extensions */
+.heaven-concept-reader.god-reality-reader{
+  max-width:1060px;
+}
+.god-reality-reader>.back{
+  display:inline-block;
+  margin-bottom:18px;
+  color:#755824;
+  text-decoration:none;
+  font-size:13px
+}
+.god-reality-reader>.kicker{
+  margin-top:18px;
+  color:var(--heaven-gold);
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.15em;
+  text-transform:uppercase
+}
+.god-reality-reader>h1{
+  margin:10px 0 20px;
+  color:#1f211d;
+  font:400 clamp(48px,8vw,86px)/.95 var(--site-font-serif);
+  letter-spacing:-.045em
+}
+.god-reality-reader>.lead{
+  max-width:900px;
+  color:#474d46;
+  font:400 22px/1.55 var(--site-font-serif)
+}
+.god-reality-reader .claim{
+  margin:30px 0;
+  padding:22px;
+  border:1px solid var(--heaven-line);
+  border-radius:17px;
+  background:
+    radial-gradient(circle at 20% 0,rgba(223,236,201,.18),transparent 48%),
+    var(--heaven-pane-soft);
+  color:#50564e;
+  box-shadow:0 12px 28px rgba(0,0,0,.09)
+}
+.god-reality-reader .claim strong{
+  display:block;
+  margin-bottom:8px;
+  color:#694e1e;
+  font:400 31px var(--site-font-serif)
+}
+.god-reality-reader .jump{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin:24px 0 40px
+}
+.god-reality-reader .jump a{
+  border:1px solid var(--heaven-line);
+  padding:6px 10px;
+  border-radius:999px;
+  background:rgba(255,255,255,.15);
+  color:#66513a;
+  text-decoration:none;
+  font-size:12px
+}
+.god-reality-reader>h2,
+.god-reality-reader section>h2{
+  margin:52px 0 13px;
+  color:#332f28;
+  font:400 34px/1.2 var(--site-font-serif)
+}
+.god-reality-reader>h3,
+.god-reality-reader section>h3{
+  margin:28px 0 8px;
+  color:#463820;
+  font:400 23px/1.25 var(--site-font-serif)
+}
+.god-reality-reader .degrees,
+.god-reality-reader .case{
+  display:grid;
+  gap:10px
+}
+.god-reality-reader .degree{
+  display:grid;
+  grid-template-columns:58px minmax(0,1fr);
+  gap:15px;
+  padding:17px 18px;
+  border:1px solid var(--heaven-line);
+  border-radius:15px;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.14),transparent 28%),
+    var(--heaven-pane-soft);
+  box-shadow:0 9px 22px rgba(0,0,0,.08)
+}
+.god-reality-reader .n{
+  color:#745622;
+  font:400 30px var(--site-font-serif)
+}
+.god-reality-reader .degree strong{
+  color:#383a34;
+  font-size:18px
+}
+.god-reality-reader .status{
+  display:inline-block;
+  margin-left:7px;
+  color:var(--heaven-muted);
+  font-size:11px;
+  font-weight:500
+}
+.god-reality-reader .degree p{
+  margin:5px 0 0;
+  color:#5e655d
+}
+.god-reality-reader .matrix{
+  width:100%;
+  border-collapse:collapse;
+  margin:16px 0 28px;
+  font-size:14px
+}
+.god-reality-reader .matrix th,
+.god-reality-reader .matrix td{
+  text-align:left;
+  vertical-align:top;
+  padding:11px;
+  border-bottom:1px solid rgba(144,119,68,.20)
+}
+.god-reality-reader .matrix th{
+  color:#6c5020;
+  font:500 14px/1.35 var(--site-font-sans)
+}
+.god-reality-reader .matrix td{color:#585e56}
+.god-reality-reader .grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px
+}
+.god-reality-reader .card{
+  border:1px solid var(--heaven-line);
+  border-radius:15px;
+  padding:17px 18px;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.13),transparent 28%),
+    var(--heaven-pane-soft)
+}
+.god-reality-reader .card b{
+  display:block;
+  margin-bottom:5px;
+  color:#6c5020
+}
+.god-reality-reader .note{
+  margin:25px 0;
+  padding:17px 19px;
+  border:1px solid var(--heaven-line);
+  border-left:3px solid rgba(154,119,58,.42);
+  background:rgba(238,241,233,.42);
+  color:#545a52
+}
+.god-reality-reader .note.counter{
+  border-left-color:rgba(164,91,66,.42)
+}
+.god-reality-reader .small{
+  color:var(--heaven-muted);
+  font-size:13px
+}
+@media(max-width:720px){
+  .god-reality-reader .grid{grid-template-columns:1fr}
+  .god-reality-reader .degree{grid-template-columns:42px minmax(0,1fr)}
+  .god-reality-reader .matrix{display:block;overflow-x:auto;font-size:12px}
+  .god-reality-reader .matrix th,
+  .god-reality-reader .matrix td{padding:8px}
+}
