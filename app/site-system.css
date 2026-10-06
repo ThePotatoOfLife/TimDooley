@@ -165,6 +165,33 @@ textarea:focus-visible,
   max-width:900px;
   margin:0 0 32px;
 }
+html[data-site-floor] body:not(.home-body):not(.garden-body):not(.dogs-hall-page):not(.potatoes-hall-page){
+  --site-pane:rgba(8,10,10,.66);
+  --site-pane-strong:rgba(8,11,10,.76);
+  --site-pane-soft:rgba(8,10,10,.54);
+  --site-pane-shadow:0 14px 34px rgba(0,0,0,.20);
+}
+html[data-site-floor] body:not(.home-body):not(.garden-body):not(.dogs-hall-page):not(.potatoes-hall-page) .page{
+  position:relative;
+}
+html[data-site-floor] body:not(.home-body):not(.garden-body):not(.dogs-hall-page):not(.potatoes-hall-page) .page::before{
+  content:"";
+  position:absolute;
+  inset:-18px calc(-1 * var(--site-gutter)) -54px;
+  z-index:-1;
+  pointer-events:none;
+  background:
+    linear-gradient(90deg,
+      transparent 0%,
+      rgba(245,242,225,.012) 16%,
+      rgba(250,247,230,.035) 33%,
+      rgba(255,251,232,.055) 46%,
+      rgba(255,251,232,.06) 50%,
+      rgba(255,251,232,.055) 54%,
+      rgba(250,247,230,.035) 67%,
+      rgba(245,242,225,.012) 84%,
+      transparent 100%);
+}
 html[data-site-floor] .page-header{
   max-width:none;
   padding:clamp(18px,2.5vw,28px);
@@ -234,6 +261,16 @@ html[data-site-floor] .page > :where(section,article,aside,details):not(.surface
   background:var(--site-pane);
   box-shadow:var(--site-pane-shadow);
 }
+html[data-site-floor] body:not(.home-body):not(.garden-body):not(.dogs-hall-page):not(.potatoes-hall-page) .page > :where(section,article,aside,details):not(.surface-clear){
+  transition:background-color 160ms ease,border-color 160ms ease,box-shadow 160ms ease;
+}
+html[data-site-floor] body:not(.home-body):not(.garden-body):not(.dogs-hall-page):not(.potatoes-hall-page) .page > :where(section,article,aside,details):not(.surface-clear):nth-of-type(3n+2){
+  background:color-mix(in srgb,var(--site-pane) 88%,transparent);
+}
+html[data-site-floor] body:not(.home-body):not(.garden-body):not(.dogs-hall-page):not(.potatoes-hall-page) .page > :where(section,article,aside,details):not(.surface-clear):nth-of-type(3n){
+  background:color-mix(in srgb,var(--site-pane-soft) 92%,transparent);
+}
+
 html[data-site-floor] .page > :where(p.boundary,p.note,p.warning,p.lede,.boundary,.note,.warning):not(.surface-clear){
   padding:14px 16px;
   border:1px solid var(--site-pane-line);
