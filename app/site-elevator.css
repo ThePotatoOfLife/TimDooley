@@ -653,9 +653,9 @@ html[data-site-floor] body.home-body{min-height:100vh}
 html[data-site-floor] body.home-body::before{content:none;display:none}
 
 /* 2026-10-06 approved-reference responsive composition.
-   Tablet-landscape, laptop and desktop now share one visual system. The
-   artwork and live hit geometry scale together as one full-width strip;
-   only true mobile uses the compact fallback defined above. */
+   Tablet-landscape, laptop and desktop share one painted panorama. The live
+   controls are an interaction map over that exact 1655×231 composition:
+   no second HUD, no equal-width approximation, no moving invisible rail. */
 @media (min-width:761px){
   .site-elevator{
     --elevator-shell-height:clamp(106px,13.96vw,286px);
@@ -679,13 +679,14 @@ html[data-site-floor] body.home-body::before{content:none;display:none}
   .site-elevator::after{display:none}
 
   .site-elevator-main{
+    position:relative;
     grid-template-columns:5.55% 20.15% 74.30%;
     width:100%;
     max-width:none;
     height:var(--elevator-shell-height);
     min-height:var(--elevator-shell-height);
     max-height:var(--elevator-shell-height);
-    margin:0 auto;
+    margin:0;
     background:transparent;
     border:0;
     box-shadow:none;
@@ -711,7 +712,7 @@ html[data-site-floor] body.home-body::before{content:none;display:none}
   .site-elevator-controls::before,
   .site-elevator-controls::after{display:none}
 
-  /* Invisible controls sit exactly over the illustrated vine arrows. */
+  /* Arrow buttons remain real controls, but only their painted regions react. */
   .site-elevator-arrow{
     position:absolute;
     z-index:6;
@@ -745,55 +746,53 @@ html[data-site-floor] body.home-body::before{content:none;display:none}
     cursor:default;
   }
 
-  /* The reference strip already paints the floor board on large desktop. */
+  /* The floor board and scenery are already painted into the panorama. */
   .site-elevator-reel::before,
   .site-elevator-reel::after{display:none}
   .site-elevator-floor{
     opacity:0;
     pointer-events:none;
   }
-
-  .site-elevator-stage{overflow:visible}
+  .site-elevator-stage{
+    position:static;
+    overflow:visible;
+  }
   .site-elevator-stage::before,
   .site-elevator-stage::after{display:none}
 
-  /* Live links use the exact plaque geometry of the centered reference strip. */
+  /* One full-banner coordinate system. The rail itself never catches clicks. */
   .site-elevator-room-rail{
     position:absolute;
     z-index:5;
-    left:11.3%;
-    right:4.5%;
-    bottom:5.5%;
-    height:25%;
+    inset:0;
+    width:100%;
+    height:100%;
     min-height:0;
     margin:0;
     padding:0;
-    display:grid;
-    grid-template-columns:repeat(var(--elevator-visible-count),minmax(0,1fr));
-    align-items:stretch;
-    gap:1.15%;
+    display:block;
     overflow:visible;
+    pointer-events:none;
     background:transparent;
   }
-  .site-elevator[data-elevator-level="plane"] .site-elevator-room-rail{
-    left:.5%;
-    right:1.6%;
-    bottom:5.7%;
-    height:24%;
-    gap:.7%;
+  .site-elevator[data-elevator-direction] .site-elevator-room-rail{
+    animation:none;
+    transform:none;
+    opacity:1;
   }
   .site-elevator-room-rail::before,
   .site-elevator-room-rail::after{display:none}
 
   .site-elevator[data-elevator-level] .site-elevator-room{
+    position:absolute;
     width:auto;
     max-width:none;
-    height:100%;
     min-height:0;
     max-height:none;
     margin:0;
     padding:0;
     overflow:hidden;
+    pointer-events:auto;
     border:0;
     border-radius:0;
     clip-path:none;
@@ -803,19 +802,50 @@ html[data-site-floor] body.home-body::before{content:none;display:none}
     text-shadow:none;
     font-size:0;
     transform:none;
+    transition:background-color 90ms ease,box-shadow 90ms ease;
   }
   .site-elevator[data-elevator-level] .site-elevator-room::before,
-  .site-elevator[data-elevator-level] .site-elevator-room::after{
-    display:none;
+  .site-elevator[data-elevator-level] .site-elevator-room::after{display:none}
+
+  /* HEAVEN: three painted plaques. */
+  .site-elevator[data-elevator-level="heaven"] .site-elevator-room{
+    top:63.5%;
+    height:24.5%;
   }
+  .site-elevator[data-elevator-level="heaven"] .site-elevator-room:nth-child(1){left:33.78%;width:20.34%}
+  .site-elevator[data-elevator-level="heaven"] .site-elevator-room:nth-child(2){left:54.30%;width:20.22%}
+  .site-elevator[data-elevator-level="heaven"] .site-elevator-room:nth-child(3){left:74.70%;width:20.52%}
+
+  /* PLANE: five unequal plaques; equal grid columns visibly drift off-target. */
+  .site-elevator[data-elevator-level="plane"] .site-elevator-room{
+    top:66.5%;
+    height:24%;
+  }
+  .site-elevator[data-elevator-level="plane"] .site-elevator-room:nth-child(1){left:24.33%;width:14.04%}
+  .site-elevator[data-elevator-level="plane"] .site-elevator-room:nth-child(2){left:38.50%;width:16.16%}
+  .site-elevator[data-elevator-level="plane"] .site-elevator-room:nth-child(3){left:54.78%;width:13.02%}
+  .site-elevator[data-elevator-level="plane"] .site-elevator-room:nth-child(4){left:67.86%;width:14.35%}
+  .site-elevator[data-elevator-level="plane"] .site-elevator-room:nth-child(5){left:82.32%;width:16.89%}
+
+  /* BELOW: two field stations followed by two governed Rooms. */
+  .site-elevator[data-elevator-level="below"] .site-elevator-room{
+    top:60.5%;
+    height:25.5%;
+  }
+  .site-elevator[data-elevator-level="below"] .site-elevator-room:nth-child(1){left:34.44%;width:15.62%}
+  .site-elevator[data-elevator-level="below"] .site-elevator-room:nth-child(2){left:50.24%;width:15.74%}
+  .site-elevator[data-elevator-level="below"] .site-elevator-room:nth-child(3){left:66.16%;width:16.77%}
+  .site-elevator[data-elevator-level="below"] .site-elevator-room:nth-child(4){left:83.11%;width:15.86%}
+
   .site-elevator[data-elevator-level] .site-elevator-room:hover,
   .site-elevator[data-elevator-level] .site-elevator-room:focus-visible,
   .site-elevator[data-elevator-level] .site-elevator-room.is-active{
-    background:rgba(255,220,135,.05);
+    background:rgba(255,220,135,.045);
     box-shadow:
       inset 0 0 0 2px rgba(255,225,154,.34),
       0 0 12px rgba(229,180,83,.18);
     outline:0;
+    transform:none;
   }
   .site-elevator[data-elevator-level] .site-elevator-room:focus-visible{
     box-shadow:
