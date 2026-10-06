@@ -513,3 +513,131 @@ html{scroll-behavior:smooth}
   display:block;margin-top:7px;color:#8d7b6b;
   font:700 .58rem/1.2 ui-monospace,monospace;letter-spacing:.06em;text-transform:uppercase
 }
+
+/* --- Warmth / closeness pass --- */
+.garden-welcome{
+  position:relative;max-width:1180px;margin:54px auto 0;padding:58px 54px 52px;overflow:hidden;
+  border:1px solid rgba(232,208,137,.11);
+  background:
+    radial-gradient(circle at 13% 0,rgba(255,232,153,.16),transparent 33%),
+    linear-gradient(180deg,rgba(18,31,20,.96),rgba(9,17,11,.98));
+  box-shadow:0 26px 80px rgba(0,0,0,.18)
+}
+.garden-welcome-sun{
+  position:absolute;right:-90px;top:-120px;width:390px;height:390px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,231,150,.16),rgba(255,218,112,.05) 38%,transparent 68%);
+  pointer-events:none
+}
+.garden-welcome-copy{position:relative;max-width:920px}
+.garden-welcome h2{
+  max-width:15ch;margin:.1em 0 .42em;color:#f6eccf;
+  font:400 clamp(2.8rem,5.7vw,5.7rem)/.92 var(--site-font-serif);letter-spacing:-.045em
+}
+.garden-welcome-lead{
+  max-width:67ch;margin:0;color:#c8d2c5;font:400 1.12rem/1.75 var(--site-font-serif)
+}
+.garden-welcome-voice{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;
+  margin:32px 0 20px;border:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.07)
+}
+.garden-welcome-voice p{
+  margin:0;padding:17px 18px;background:rgba(7,15,9,.78);color:#eee4c5;
+  font:400 1.03rem/1.45 var(--site-font-serif)
+}
+.garden-welcome-voice small{
+  grid-column:1/-1;padding:10px 14px;background:rgba(7,15,9,.9);color:#887d61;
+  font:700 .58rem/1 ui-monospace,monospace;letter-spacing:.08em
+}
+.garden-welcome-note{
+  max-width:62ch;margin:0;color:#9ca99d;font:.82rem/1.6 ui-monospace,monospace
+}
+
+.garden-tim-conversation{
+  display:grid;grid-template-columns:.72fr 1.28fr;gap:28px;margin-top:32px;padding:28px;
+  border-top:1px solid rgba(226,197,112,.14);border-bottom:1px solid rgba(226,197,112,.14);
+  background:
+    radial-gradient(circle at 10% 15%,rgba(203,174,86,.09),transparent 31%),
+    #09110b
+}
+.garden-tim-presence{align-self:start;position:sticky;top:78px}
+.garden-tim-presence .eyebrow{margin:0 0 8px;color:#a88f50;font-size:.59rem;letter-spacing:.1em}
+.garden-tim-presence h3{
+  margin:0;color:#f0e4c1;font:400 clamp(1.7rem,3.2vw,2.8rem)/1.08 var(--site-font-serif)
+}
+.garden-tim-source{
+  margin:12px 0 0;color:#7b887e;font:700 .59rem/1.3 ui-monospace,monospace;letter-spacing:.05em
+}
+.garden-tim-talk p{
+  margin:0;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.06);
+  color:#abb8ad;font:400 1rem/1.72 var(--site-font-serif)
+}
+.garden-tim-talk p:first-child{padding-top:0}
+.garden-tim-talk p:last-child{border-bottom:0;padding-bottom:0}
+.garden-tim-talk strong{color:#eadbb1;font-weight:500}
+
+.garden-reader--near{
+  padding-top:34px;padding-bottom:34px;border-top:1px solid rgba(255,255,255,.06);
+  border-bottom:1px solid rgba(255,255,255,.06);
+  background:
+    radial-gradient(circle at 72% 8%,rgba(234,210,134,.065),transparent 28%),
+    linear-gradient(90deg,transparent,rgba(122,153,104,.025),transparent)
+}
+.garden-near-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:38px;align-items:start}
+.garden-near-grid .eyebrow{margin:0 0 7px;color:#9d8a58;font-size:.59rem;letter-spacing:.11em}
+.garden-near-grid h2{
+  margin:.1em 0 .44em;color:#f0e6ca;font:400 clamp(2.5rem,5vw,4.7rem)/.96 var(--site-font-serif);letter-spacing:-.04em
+}
+.garden-near-grid>div>p:last-child{color:#aab6ac;line-height:1.7}
+.garden-near-grid blockquote{
+  margin:10px 0 0;padding:20px 22px;border-left:2px solid rgba(219,190,107,.48);
+  background:#0b130d
+}
+.garden-near-grid blockquote p{
+  margin:0 0 14px;color:#eadfc3;font:400 1.16rem/1.5 var(--site-font-serif)
+}
+.garden-near-grid blockquote p:last-of-type{margin-bottom:17px}
+.garden-near-grid cite{
+  color:#7f8b83;font:700 .59rem/1.4 ui-monospace,monospace;letter-spacing:.05em
+}
+.garden-near-questions{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:1px;margin-top:28px;
+  border:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.06)
+}
+.garden-near-questions p{
+  margin:0;padding:17px 18px;background:#09110b;color:#abb7ad;
+  font:400 .94rem/1.55 var(--site-font-serif)
+}
+
+/* softer reading rhythm: fewer hard card edges in intimate sections */
+.garden-reader--inhabitants .garden-inhabitant-grid article,
+.garden-reader--day .garden-day-grid article{
+  border-color:rgba(255,255,255,.055)
+}
+.garden-reader--inhabitants .garden-inhabitant-grid article:hover,
+.garden-reader--day .garden-day-grid article:hover{
+  background:#0d160f
+}
+
+/* let the top scene feel sunnier without washing the art */
+.garden-world-frame{
+  box-shadow:0 26px 88px rgba(0,0,0,.34),0 -1px 0 rgba(245,223,159,.04)
+}
+.garden-world-heading h1{color:#f4ecd5}
+.garden-world-heading>p em{color:#d9c88f;font-style:normal}
+
+/* keep rotating whisper visually quiet */
+.garden-whisper{
+  opacity:.78
+}
+.garden-whisper:hover{opacity:1}
+
+@media(max-width:900px){
+  .garden-tim-conversation,.garden-near-grid{grid-template-columns:1fr}
+  .garden-tim-presence{position:static}
+}
+@media(max-width:650px){
+  .garden-welcome{margin-top:30px;padding:36px 18px}
+  .garden-welcome-voice,.garden-near-questions{grid-template-columns:1fr}
+  .garden-welcome-voice small{grid-column:auto}
+  .garden-tim-conversation{padding:22px 16px}
+}
