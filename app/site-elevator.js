@@ -248,12 +248,12 @@
     let selectedLevel='plane';
 
     const applyHotspotRect=(element,rect,artboard)=>{
-      if(!element||!rect||!artboard)return;
-      const pct=(value,total)=>((Number(value)||0)/(Number(total)||1)*100).toFixed(6)+'%';
-      element.style.left=pct(rect.x,artboard.width);
-      element.style.top=pct(rect.y,artboard.height);
-      element.style.width=pct(rect.width,artboard.width);
-      element.style.height=pct(rect.height,artboard.height);
+      if(!element||!rect||!artboard?.width||!artboard?.height)return;
+      const pct=(value,total)=>((Number(value)||0)/(Number(total)||1)*100)+'%';
+      element.style.setProperty('--hotspot-left',pct(rect.x,artboard.width));
+      element.style.setProperty('--hotspot-top',pct(rect.y,artboard.height));
+      element.style.setProperty('--hotspot-width',pct(rect.width,artboard.width));
+      element.style.setProperty('--hotspot-height',pct(rect.height,artboard.height));
     };
 
     const applyHotspots=()=>{
@@ -276,25 +276,6 @@
         link.hidden=false;
         applyHotspotRect(link,rect,artboard);
       });
-    };
-
-    const applyHotspotRect=(element,rect,artboard)=>{
-      if(!element||!rect||!artboard?.width||!artboard?.height)return;
-      element.style.setProperty('--hotspot-left',(rect.x/artboard.width*100)+'%');
-      element.style.setProperty('--hotspot-top',(rect.y/artboard.height*100)+'%');
-      element.style.setProperty('--hotspot-width',(rect.width/artboard.width*100)+'%');
-      element.style.setProperty('--hotspot-height',(rect.height/artboard.height*100)+'%');
-    };
-
-    const applyControlHotspots=()=>{
-      if(!hotspotContract?.artboard||!hotspotContract?.controls)return;
-      applyHotspotRect(up,hotspotContract.controls.up,hotspotContract.artboard);
-      applyHotspotRect(down,hotspotContract.controls.down,hotspotContract.artboard);
-    };
-
-    const hotspotRectForKey=(levelId,key)=>{
-      const rows=hotspotContract?.floors?.[levelId]?.entries||[];
-      return rows.find(row=>row?.key===key)||null;
     };
 
     const renderRooms=()=>{
@@ -320,8 +301,6 @@
           link.setAttribute('aria-current','location');
           link.classList.add('is-active');
         }
-        const rect=hotspotRectForKey(selectedLevel,link.dataset.hotspotKey);
-        if(rect)applyHotspotRect(link,rect,hotspotContract.artboard);
         fragment.appendChild(link);
       }
       for(const room of rows){
