@@ -139,11 +139,11 @@ def main() -> int:
             "@media (min-width:761px)",
             "overflow:visible",
             ".site-elevator-floor-code",
-            "pointer-events:none",
-            ".site-elevator[data-elevator-level=\"plane\"] .site-elevator-room:nth-child(5)",
             "--site-header-art:",
             "background-image:var(--site-header-art)",
-            "background-size:100% 100%",
+            "--elevator-nav-height:",
+            "grid-template-columns:1fr 1.18fr .92fr 1.06fr 1.20fr",
+            "clip-path:polygon(3% 0,97% 0,100% 18%,100% 82%,97% 100%,3% 100%,0 82%,0 18%)",
             "border-radius:0",
             "background:transparent",
             ".site-elevator-room-rail{",
@@ -161,16 +161,16 @@ def main() -> int:
             if token not in css:
                 errors.append(f"site elevator CSS missing required marker: {token}")
 
-        if css.count("/* 2026-10-06 approved-reference responsive composition.") != 1:
-            errors.append("site elevator must have exactly one approved-reference responsive desktop/tablet owner")
-        if "/* Desktop illustrated header skin." in css or "target-reference refinement" in css or "exact target-reference desktop skin" in css:
-            errors.append("retired desktop header skins must not coexist with the approved panorama strip")
+        if css.count("/* 2026-10-06 real-control panorama architecture.") != 1:
+            errors.append("site elevator must have exactly one real-control desktop/tablet architecture owner")
+        if "/* Desktop illustrated header skin." in css or "target-reference refinement" in css or "exact target-reference desktop skin" in css or "approved-reference responsive composition" in css:
+            errors.append("retired desktop header architectures must not coexist with the real-control panorama design")
         if css.count("@media (min-width:761px)") != 1:
-            errors.append("desktop/tablet panorama should be owned by one min-width:761px media block")
-        if "grid-template-columns:repeat(var(--elevator-visible-count)" in css:
-            errors.append("desktop interaction map must not regress to equal-width plaque columns")
-        if ".site-elevator[data-elevator-direction] .site-elevator-room-rail" not in css or "animation:none" not in css:
-            errors.append("desktop invisible hit rail must not inherit settling animation")
+            errors.append("desktop/tablet header should be owned by one min-width:761px media block")
+        if "position:absolute;\n    width:auto;" in css and "nth-child(" in css:
+            errors.append("desktop Room controls must not regress to invisible absolute hitboxes")
+        if "--elevator-nav-height:" not in css:
+            errors.append("desktop real Room controls need one shared navigation height token")
         if css.count("!important") > 8:
             errors.append("site elevator CSS specificity escalation exceeds the approved limit")
 
