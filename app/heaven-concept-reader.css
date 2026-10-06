@@ -1,0 +1,161 @@
+/* Shared Heaven-facing concept reader.
+   Frosted white panes, restrained gold rim, conceptual/theological content kept intact. */
+.heaven-concept-reader{
+  --heaven-pane:rgba(244,246,242,.76);
+  --heaven-pane-soft:rgba(238,242,236,.60);
+  --heaven-pane-deep:rgba(228,235,227,.50);
+  --heaven-line:rgba(188,161,94,.30);
+  --heaven-ink:#20231e;
+  --heaven-copy:#4b5149;
+  --heaven-muted:#687066;
+  --heaven-gold:#97722e;
+  max-width:1120px;
+  color:var(--heaven-copy)
+}
+.heaven-concept-reader .page-header{
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 50% 0,rgba(255,255,255,.54),transparent 42%),
+    linear-gradient(180deg,rgba(255,255,255,.22),rgba(255,255,255,.04)),
+    var(--heaven-pane);
+  border:1px solid var(--heaven-line);
+  color:var(--heaven-ink);
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.72),
+    inset 0 0 0 1px rgba(255,248,222,.20),
+    0 16px 34px rgba(0,0,0,.13);
+  backdrop-filter:blur(10px) saturate(.86)
+}
+.heaven-concept-reader .page-header::after{
+  content:"";
+  position:absolute;left:8%;right:8%;bottom:0;height:1px;
+  background:linear-gradient(90deg,transparent,#c39a45,transparent);
+  opacity:.68
+}
+.heaven-concept-reader .page-header h1{color:#1d201b}
+.heaven-concept-reader .page-header .summary{color:#4d534c}
+.heaven-concept-reader .eyebrow{color:var(--heaven-gold)}
+.heaven-concept-reader h2{
+  color:#2f332c;
+  font:400 clamp(27px,3.4vw,38px)/1.12 var(--site-font-serif)
+}
+.heaven-concept-reader .grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px
+}
+.heaven-concept-reader .card,
+.heaven-concept-reader .triad article,
+.heaven-concept-reader .whole,
+.heaven-concept-reader .rule,
+.heaven-concept-reader .note,
+.heaven-concept-reader .spirit-case{
+  border:1px solid var(--heaven-line);
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.16),transparent 25%),
+    var(--heaven-pane-soft);
+  box-shadow:inset 0 1px rgba(255,255,255,.24),0 10px 24px rgba(0,0,0,.09);
+  backdrop-filter:blur(8px)
+}
+.heaven-concept-reader .card,
+.heaven-concept-reader .triad article{border-radius:12px;padding:16px}
+.heaven-concept-reader .card h3,
+.heaven-concept-reader .triad b,
+.heaven-concept-reader .spirit-case h3,
+.heaven-concept-reader .item h3{
+  color:#6c5223;
+  font-family:var(--site-font-serif)
+}
+.heaven-concept-reader .card p,
+.heaven-concept-reader .card li,
+.heaven-concept-reader .triad span,
+.heaven-concept-reader .spirit-case p,
+.heaven-concept-reader .item p{
+  color:var(--heaven-muted)
+}
+.heaven-concept-reader .boundary{
+  color:var(--heaven-muted);
+  border-top:1px solid rgba(144,119,68,.20);
+  border-bottom:1px solid rgba(144,119,68,.20);
+  padding:14px 0
+}
+.heaven-concept-reader .rule,
+.heaven-concept-reader .note{
+  padding:16px 18px;
+  margin:24px 0;
+  border-left:3px solid rgba(155,116,43,.46);
+  color:#50564d
+}
+.heaven-concept-reader .whole{
+  border-radius:16px;
+  padding:20px;
+  margin:22px 0;
+  background:
+    radial-gradient(circle at center,rgba(204,225,181,.16),transparent 62%),
+    var(--heaven-pane-soft)
+}
+.heaven-concept-reader .timeline-row{
+  display:grid;
+  grid-template-columns:160px 1fr;
+  gap:20px;
+  padding:15px 0;
+  border-top:1px solid rgba(144,119,68,.20)
+}
+.heaven-concept-reader .timeline-row b{color:#755724;font:400 17px var(--site-font-serif)}
+.heaven-concept-reader .timeline-row p{margin:0;color:var(--heaven-muted)}
+.heaven-concept-reader .compare{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:16px;
+  font-size:12px
+}
+.heaven-concept-reader .compare th,
+.heaven-concept-reader .compare td{
+  text-align:left;vertical-align:top;padding:10px;
+  border-top:1px solid rgba(144,119,68,.20)
+}
+.heaven-concept-reader .compare th{color:#6c5020;font:400 15px var(--site-font-serif)}
+.heaven-concept-reader .compare td{color:#5f655d}
+.heaven-concept-reader .refs li{margin:9px 0;color:var(--heaven-muted)}
+.heaven-concept-reader .refs a,
+.heaven-concept-reader a{color:#73551f}
+.heaven-concept-reader .chain{
+  display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:18px 0
+}
+.heaven-concept-reader .chain span{
+  border:1px solid var(--heaven-line);
+  border-radius:999px;padding:6px 9px;font-size:10px;
+  background:rgba(255,255,255,.18)
+}
+.heaven-concept-reader .chain i{font-style:normal;color:var(--heaven-gold)}
+.heaven-concept-reader .spirit-cases{
+  margin:34px 0;padding:28px 0;
+  border-top:1px solid rgba(144,119,68,.20);
+  border-bottom:1px solid rgba(144,119,68,.20)
+}
+.heaven-concept-reader .spirit-case{
+  display:grid;
+  grid-template-columns:175px minmax(0,1fr);
+  gap:22px;
+  padding:18px;
+  margin:10px 0;
+  border-radius:12px
+}
+.heaven-concept-reader .spirit-case .q{
+  font-size:10px;color:var(--heaven-gold);
+  text-transform:uppercase;letter-spacing:.06em
+}
+.heaven-concept-reader .item{
+  padding:20px 0;
+  border-top:1px solid rgba(144,119,68,.20)
+}
+.heaven-concept-reader .yes{color:var(--heaven-gold)}
+.heaven-concept-reader .note{font-size:.92rem}
+@media(max-width:760px){
+  .heaven-concept-reader .grid,
+  .heaven-concept-reader .triad{grid-template-columns:1fr}
+  .heaven-concept-reader .timeline-row,
+  .heaven-concept-reader .spirit-case{grid-template-columns:1fr;gap:5px}
+  .heaven-concept-reader .compare{display:block;overflow-x:auto}
+}
