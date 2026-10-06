@@ -134,3 +134,157 @@
   .tradition-reader .grid{grid-template-columns:1fr}
   .tradition-reader :is(.event,.node,.layer){padding:13px 14px}
 }
+
+
+/* 2026-10-07 manuscript-glass depth pass
+   Religion/tradition pages keep their existing structure; this only raises the
+   material standard and historical-reading hierarchy. */
+.tradition-reader{
+  --tradition-paper:rgba(235,226,203,.72);
+  --tradition-paper-soft:rgba(232,222,197,.56);
+  --tradition-paper-deep:rgba(222,207,174,.48);
+  --tradition-ink:#211d16;
+  --tradition-copy:#4d473c;
+  --tradition-muted:#6b6457;
+  --tradition-rule:rgba(154,119,58,.24);
+  --tradition-gold:#9c7129;
+}
+.tradition-reader .page-header{
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 18% 0,rgba(255,247,215,.36),transparent 42%),
+    linear-gradient(180deg,rgba(255,255,255,.18),rgba(255,255,255,.02)),
+    var(--tradition-paper);
+  border-color:rgba(174,140,74,.34);
+  color:var(--tradition-ink);
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.54),
+    inset 0 0 0 1px rgba(255,247,218,.18),
+    0 16px 34px rgba(0,0,0,.13);
+  backdrop-filter:blur(8px) saturate(.88)
+}
+.tradition-reader .page-header::after{
+  content:"";
+  position:absolute;
+  left:8%;right:8%;bottom:0;height:1px;
+  background:linear-gradient(90deg,transparent,#b88c3f,transparent);
+  opacity:.68
+}
+.tradition-reader .page-header h1{color:#1d1a15}
+.tradition-reader .page-header .summary{color:#4f4a40}
+.tradition-reader>.lede{
+  padding:18px 20px;
+  border-left:3px solid rgba(164,126,55,.44);
+  background:rgba(239,230,207,.48);
+  color:#39362f;
+  box-shadow:0 10px 25px rgba(0,0,0,.09);
+  backdrop-filter:blur(7px)
+}
+.tradition-reader section{
+  position:relative;
+  margin:26px 0;
+  padding:22px 22px 24px;
+  border:1px solid var(--tradition-rule);
+  border-radius:var(--site-radius-lg);
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.11),transparent 22%),
+    var(--tradition-paper-soft);
+  color:var(--tradition-copy);
+  box-shadow:0 13px 28px rgba(0,0,0,.10);
+  backdrop-filter:blur(7px)
+}
+.tradition-reader section:nth-of-type(even){
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.08),transparent 20%),
+    var(--tradition-paper-deep)
+}
+.tradition-reader section>h2{
+  color:#29251d;
+  margin-bottom:14px
+}
+.tradition-reader :is(.timeline,.rail,.stack,.layers,.map){
+  position:relative;
+  gap:11px
+}
+.tradition-reader :is(.timeline,.rail,.stack,.layers,.map)::before{
+  content:"";
+  position:absolute;
+  left:14px;
+  top:8px;
+  bottom:8px;
+  width:1px;
+  pointer-events:none;
+  background:linear-gradient(180deg,transparent,var(--tradition-rule) 12%,var(--tradition-rule) 88%,transparent);
+  opacity:.85
+}
+.tradition-reader :is(.event,.node,.layer){
+  position:relative;
+  padding:15px 16px 15px 22px;
+  border-color:rgba(145,116,62,.22);
+  background:rgba(255,255,255,.18);
+  color:var(--tradition-copy);
+  box-shadow:inset 0 1px rgba(255,255,255,.16)
+}
+.tradition-reader :is(.event,.node,.layer)::before{
+  content:"";
+  position:absolute;
+  left:-4px;top:20px;
+  width:7px;height:7px;
+  border:1px solid rgba(157,119,49,.54);
+  background:#e8d8b1;
+  transform:rotate(45deg);
+  box-shadow:0 0 0 3px rgba(232,216,177,.30)
+}
+.tradition-reader :is(.event,.node,.layer,.row)>time,
+.tradition-reader .row time{
+  color:var(--tradition-gold)
+}
+.tradition-reader :is(.event,.node,.layer) :is(h3,b),
+.tradition-reader .branch b,
+.tradition-reader .card b{
+  color:#6c4d1f
+}
+.tradition-reader :is(.event,.node,.layer) p,
+.tradition-reader .branch small,
+.tradition-reader .card :is(p,small){
+  color:var(--tradition-muted)
+}
+.tradition-reader .branch,
+.tradition-reader .card{
+  position:relative;
+  border-color:rgba(145,116,62,.22);
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.15),transparent 30%),
+    rgba(245,238,218,.28);
+  box-shadow:inset 0 1px rgba(255,255,255,.14);
+  transition:background .15s ease,border-color .15s ease,transform .15s ease
+}
+.tradition-reader .branch:hover,
+.tradition-reader .card:hover{
+  transform:translateY(-1px);
+  border-color:rgba(167,130,61,.32);
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.20),transparent 30%),
+    rgba(247,240,220,.38)
+}
+.tradition-reader .boundary{
+  margin:26px 0;
+  padding:15px 17px;
+  border-left:3px solid rgba(154,119,58,.42);
+  background:rgba(236,227,205,.42);
+  color:#5d574c
+}
+.tradition-reader .page-nav{
+  border-color:rgba(145,116,62,.20)
+}
+.tradition-reader .page-nav a{
+  color:#785824
+}
+.tradition-reader .page-nav a:hover{color:#4d3716}
+@media(max-width:700px){
+  .tradition-reader section{padding:18px}
+  .tradition-reader :is(.timeline,.rail,.stack,.layers,.map)::before{display:none}
+  .tradition-reader :is(.event,.node,.layer){padding-left:14px}
+  .tradition-reader :is(.event,.node,.layer)::before{display:none}
+}
