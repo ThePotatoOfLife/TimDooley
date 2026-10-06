@@ -1526,3 +1526,157 @@ html[data-site-floor] body.home-body::before{content:none;display:none}
     .site-elevator[data-elevator-level="below"] .site-elevator-room{padding-left:34px}
   }
 }
+
+/* 2026-10-06 responsive header audit fixes */
+
+/* Avoid the 760 -> 761px geometry cliff. Portrait tablets keep the panoramic
+   treatment, but the console yields enough width for all five Plane Rooms. */
+@media (min-width:761px) and (max-width:900px){
+  .site-elevator{
+    --elevator-control-width:44px;
+    --elevator-board-width:188px;
+    --elevator-shell-height:96px;
+    --elevator-room-height:40px;
+    --elevator-room-gap:4px;
+  }
+  .site-elevator-floor{
+    grid-template-columns:28px 50px minmax(0,1fr);
+    column-gap:6px;
+    padding:7px 9px 7px 6px;
+  }
+  .site-elevator-floor-code{font-size:9px}
+  .site-elevator-floor-emblem{height:50px}
+  .site-elevator-floor-label{font-size:15px;letter-spacing:.04em}
+  .site-elevator-room-label{font-size:6.8px;letter-spacing:.035em}
+  .site-elevator-room-rail{padding:51px 7px 7px;gap:var(--elevator-room-gap)}
+  .site-elevator-room{
+    min-height:var(--elevator-room-height);
+    height:var(--elevator-room-height);
+    max-height:var(--elevator-room-height);
+    padding-right:4px;
+    font-size:8.4px;
+    line-height:1.04;
+  }
+  .site-elevator[data-elevator-level="heaven"] .site-elevator-room{font-size:9px}
+  .site-elevator[data-elevator-level="heaven"] .site-elevator-room,
+  .site-elevator[data-elevator-level="plane"] .site-elevator-room{padding-left:25px}
+  .site-elevator[data-elevator-level="heaven"] .site-elevator-room::before,
+  .site-elevator[data-elevator-level="plane"] .site-elevator-room::before{
+    left:5px;width:15px;height:15px;font-size:10px;line-height:13px;
+  }
+  .site-elevator[data-elevator-level="below"] .site-elevator-room{padding-left:29px;font-size:8.4px}
+  .site-elevator[data-elevator-level="below"] .site-elevator-room::before{
+    left:6px;width:17px;height:17px;font-size:11px;line-height:15px;
+  }
+}
+
+/* Mid-size laptops: keep the royal HUD but stop the left console from eating
+   the panoramic stage. */
+@media (min-width:901px) and (max-width:1080px){
+  .site-elevator{
+    --elevator-control-width:52px;
+    --elevator-board-width:250px;
+    --elevator-shell-height:106px;
+    --elevator-room-height:42px;
+    --elevator-room-gap:6px;
+  }
+  .site-elevator-floor{
+    grid-template-columns:34px 58px minmax(0,1fr);
+    column-gap:8px;
+    padding:8px 11px 8px 7px;
+  }
+  .site-elevator-floor-emblem{height:57px}
+  .site-elevator-floor-label{font-size:18px}
+  .site-elevator-room-label{font-size:7.5px}
+  .site-elevator-room-rail{padding:57px 9px 8px}
+  .site-elevator-room{font-size:10px;padding-right:6px}
+  .site-elevator[data-elevator-level="heaven"] .site-elevator-room{font-size:10.8px}
+  .site-elevator[data-elevator-level="heaven"] .site-elevator-room,
+  .site-elevator[data-elevator-level="plane"] .site-elevator-room{padding-left:29px}
+  .site-elevator[data-elevator-level="heaven"] .site-elevator-room::before,
+  .site-elevator[data-elevator-level="plane"] .site-elevator-room::before{
+    left:7px;width:17px;height:17px;font-size:11px;line-height:15px;
+  }
+  .site-elevator[data-elevator-level="below"] .site-elevator-room{padding-left:32px;font-size:10px}
+}
+
+/* Smooth the old 1180 -> 1181px jump; full showcase proportions wait until
+   a genuinely wide desktop. */
+@media (min-width:1081px) and (max-width:1439px){
+  .site-elevator{
+    --elevator-control-width:64px;
+    --elevator-board-width:320px;
+    --elevator-shell-height:116px;
+    --elevator-room-height:44px;
+    --elevator-room-gap:8px;
+  }
+  .site-elevator-floor{
+    grid-template-columns:42px 68px minmax(0,1fr);
+    column-gap:10px;
+    padding:9px 15px 9px 9px;
+  }
+  .site-elevator-floor-emblem{height:64px}
+  .site-elevator-floor-label{font-size:21px}
+  .site-elevator-room-label{font-size:8.2px}
+  .site-elevator-room-rail{padding:64px 12px 8px}
+  .site-elevator-room{font-size:12px}
+  .site-elevator[data-elevator-level="heaven"] .site-elevator-room{font-size:13px}
+  .site-elevator[data-elevator-level="below"] .site-elevator-room{font-size:12px}
+}
+
+/* Phones cannot honestly fit five full multi-word Room titles into one row.
+   Keep the full text in the DOM/aria label, but render a concise visual label. */
+@media (max-width:560px){
+  .site-elevator-room{
+    font-size:0!important;
+    line-height:1!important;
+    padding:2px!important;
+  }
+  .site-elevator-room::before{
+    content:attr(data-short-label)!important;
+    inset:0!important;
+    width:auto!important;
+    height:auto!important;
+    transform:none!important;
+    display:flex!important;
+    align-items:center;
+    justify-content:center;
+    padding:2px!important;
+    border:0!important;
+    background:transparent!important;
+    box-shadow:none!important;
+    color:#f1eee5!important;
+    font:700 7px/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace!important;
+    letter-spacing:-.02em;
+    text-shadow:0 1px 2px #000,0 0 5px var(--site-elevator-glow);
+  }
+  .site-elevator-room.is-active::before{
+    color:#fff7dd!important;
+    text-shadow:0 0 6px var(--site-elevator-glow),0 1px 2px #000;
+  }
+  .site-elevator-room::after{display:none!important}
+}
+
+/* Give the compact elevator the same living-vine cue as desktop without
+   making the arrows harder to tap. */
+@media (max-width:760px){
+  .site-elevator-controls{position:relative;overflow:hidden}
+  .site-elevator-controls::before{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:3px;
+    bottom:3px;
+    width:18px;
+    transform:translateX(-50%);
+    pointer-events:none;
+    opacity:.45;
+    background:
+      radial-gradient(ellipse at 20% 15%,#62794a 0 3px,transparent 4px),
+      radial-gradient(ellipse at 80% 38%,#6d814d 0 3px,transparent 4px),
+      radial-gradient(ellipse at 22% 67%,#62794a 0 3px,transparent 4px),
+      radial-gradient(ellipse at 75% 88%,#6d814d 0 3px,transparent 4px),
+      linear-gradient(100deg,transparent 43%,#8e7139 45% 53%,transparent 55%);
+  }
+  .site-elevator-arrow{z-index:1}
+}
