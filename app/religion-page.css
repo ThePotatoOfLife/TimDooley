@@ -15,3 +15,30 @@ html{scroll-behavior:smooth}.religion-page{line-height:1.62}.method{margin:16px 
 .religious-life-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:18px}.religious-life-card{border:1px solid var(--site-line);border-radius:12px;padding:16px;background:var(--site-panel)}.religious-life-card h3{font:400 21px var(--site-font-serif);color:var(--site-gold);margin:0 0 6px}.religious-life-card p{color:var(--site-muted);font-size:12px;line-height:1.48;margin:0 0 8px}.religious-life-card a{color:var(--site-gold);font-size:10px}
 .text-anchor{padding:17px 0;border-top:1px solid rgba(255,255,255,.055)}.text-anchor h3{font:400 22px var(--site-font-serif);color:var(--site-gold);margin:0 0 6px}.text-anchor p{margin:0 0 7px;color:var(--site-copy)}.text-anchor small{color:var(--site-muted)}.text-anchor a{color:var(--site-gold)}
 @media(max-width:760px){.dev-row{grid-template-columns:1fr;gap:4px}.religious-life-grid{grid-template-columns:1fr}}
+
+/* 2026-10-06 environmental depth pass */
+.religion-page .page-header{
+  background:
+    radial-gradient(circle at 50% -20%,rgba(222,191,116,.11),transparent 48%),
+    linear-gradient(180deg,rgba(24,20,12,.64),rgba(10,12,10,.56));
+  border-color:rgba(222,190,112,.20)
+}
+.theology-core,.traditions-atlas{
+  position:relative;
+  padding:26px 22px;
+  border:1px solid rgba(218,190,121,.14);
+  background:linear-gradient(180deg,rgba(24,20,12,.42),rgba(9,12,10,.34))
+}
+.core-line,.text-anchor{border-color:rgba(218,190,121,.11)}
+.tradition-card,.branch-node,.religious-life-card{
+  background:linear-gradient(180deg,rgba(28,23,14,.48),rgba(9,12,10,.42));
+  border-color:rgba(213,188,119,.12)
+}
+.tradition-card:hover,.branch-node:hover,.religious-life-card:hover{
+  border-color:rgba(229,204,137,.20);
+  background:linear-gradient(180deg,rgba(33,27,16,.58),rgba(10,14,11,.48))
+}
+.bible-lab-cta{
+  box-shadow:0 18px 38px rgba(0,0,0,.18),inset 0 1px rgba(255,244,202,.04)
+}
+

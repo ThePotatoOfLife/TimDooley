@@ -14,3 +14,27 @@
 @media(max-width:760px){.culture-page .culture-page .reader-questions,.culture-page .culture-page .culture-choice-grid,.culture-page .culture-walk{grid-template-columns:1fr}}
 @media(max-width:760px){.culture-page .culture-field-row{grid-template-columns:1fr;gap:5px}}
 .culture-page .shadow-vocab{border:1px solid var(--site-line);padding:18px;margin:20px 0;background:rgba(255,255,255,.012)}.culture-page .shadow-vocab h2{margin-top:0}.culture-page .shadow-vocab .culture-page .card strong{color:var(--site-gold)}.culture-page .shadow-vocab .culture-page .mini a{color:var(--site-gold)}.culture-page .distinction{padding:16px;border:1px solid var(--site-line);margin:1rem 0}.culture-page .distinction strong{display:block;margin-bottom:.35rem}.culture-page .media-band{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(220px,.65fr);gap:14px;margin:1.4rem 0 2.2rem}.culture-page .media-band--single{grid-template-columns:1fr}.culture-page .media-figure{margin:0;border:1px solid var(--site-line);background:rgba(255,255,255,.015);overflow:hidden}.culture-page .media-figure img{display:block;width:100%;height:clamp(220px,34vw,420px);object-fit:cover;background:#111}.culture-page .media-figure--portrait img{object-position:center 24%}.culture-page .media-figure figcaption{padding:9px 11px;color:var(--site-muted);font-size:var(--site-text-sm);line-height:1.35}.culture-page .media-figure figcaption strong{color:var(--site-gold);font-weight:600}.culture-page .media-figure figcaption a{color:inherit}@media(max-width:720px){.culture-page .media-band{grid-template-columns:1fr}.culture-page .media-figure img{height:clamp(210px,62vw,360px)}}
+
+/* 2026-10-06 environmental depth pass */
+.culture-page .page-header{
+  background:
+    linear-gradient(135deg,rgba(170,150,110,.08),transparent 40%),
+    linear-gradient(180deg,rgba(15,15,12,.66),rgba(8,10,9,.54))
+}
+.culture-page .culture-entry,
+.culture-page .shadow-vocab,
+.culture-page .distinction{
+  background:linear-gradient(180deg,rgba(18,17,13,.50),rgba(8,10,9,.40));
+  border-color:rgba(195,176,125,.13)
+}
+.culture-page .media-figure{
+  box-shadow:0 16px 34px rgba(0,0,0,.18);
+  border-color:rgba(197,180,128,.15)
+}
+.culture-page .media-figure img{
+  filter:saturate(.94) contrast(1.02);
+  transition:filter .18s ease,transform .18s ease
+}
+.culture-page .media-figure:hover img{filter:saturate(1.03) contrast(1.035);transform:scale(1.005)}
+.culture-page .culture-step,.culture-page .reader-question{background:rgba(12,13,11,.38)}
+

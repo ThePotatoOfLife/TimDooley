@@ -29,3 +29,28 @@
 .axis-route-live b{display:block;font:400 16px var(--site-font-serif);color:var(--site-gold);text-transform:capitalize}
 .axis-route-live span{display:block;color:var(--site-muted);font-size:9px;line-height:1.45;margin-top:5px}
 @media(max-width:760px){.axis-level-live,.axis-route-live{grid-template-columns:1fr}.axis-level-live{gap:4px}}
+
+/* 2026-10-06 environmental depth pass */
+.axis-page .page-header{
+  background:
+    linear-gradient(90deg,transparent 49.86%,rgba(216,181,107,.10) 50%,transparent 50.14%),
+    radial-gradient(circle at 50% 14%,rgba(184,220,130,.07),transparent 42%),
+    rgba(8,12,9,.60)
+}
+.axis-page .gateway,
+.axis-page .axis-section{
+  position:relative;
+}
+.axis-page .gateway::before,
+.axis-page .axis-section::before{
+  content:"";position:absolute;left:50%;top:0;bottom:0;width:1px;pointer-events:none;
+  background:linear-gradient(180deg,transparent,rgba(216,181,107,.06) 18%,rgba(216,181,107,.06) 82%,transparent)
+}
+.axis-page .gateway-card,.axis-page .path-panel,.axis-page .transition-explorer,.axis-page .routing-plane{
+  background:linear-gradient(180deg,rgba(13,20,13,.52),rgba(8,12,9,.42));
+  border-color:rgba(159,175,123,.13)
+}
+.axis-page .root-state,.axis-page .map-band{
+  background:rgba(8,13,9,.34)
+}
+

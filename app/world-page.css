@@ -8,3 +8,32 @@
 .world-page .world-case h3{font:400 22px/1.1 var(--site-font-serif);color:var(--site-gold);margin:0 0 6px}.world-page .world-case .question{color:var(--site-gold);font-size:var(--site-text-caption)}.world-page .world-case p{margin:0 0 8px;color:var(--site-copy)}.world-page .world-case a{color:var(--site-gold);font-size:var(--site-text-caption)}
 .world-page .world-loop{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:16px}.world-page .world-loop span{border:1px solid var(--site-line);border-radius:var(--site-radius-pill);padding:6px 9px;color:var(--site-muted);font-size:var(--site-text-xs)}.world-page .world-loop i{font-style:normal;color:var(--site-gold)}
 .world-page .country-casebook{margin:38px 0;padding:28px 0;border-top:1px solid var(--site-line);border-bottom:1px solid var(--site-line)}.world-page .country-casebook h2{font:400 var(--site-text-section)/1.06 var(--site-font-serif);color:var(--site-gold);margin:4px 0 10px}.world-page .country-casebook>.lead{font:400 18px/1.55 var(--site-font-serif);color:var(--site-copy);max-width:880px}.world-page .country-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:18px}.world-page .country-card{border:1px solid var(--site-line);border-radius:var(--site-radius);padding:16px;background:var(--site-panel)}.world-page .country-card h3{font:400 24px/1.15 var(--site-font-serif);margin:0 0 7px;color:var(--site-gold)}.world-page .country-card p{margin:0 0 9px;color:var(--site-copy)}.world-page .country-card ul{margin:9px 0 12px;padding-left:18px;color:var(--site-muted);font-size:var(--site-text-sm)}.world-page .country-card a{color:var(--site-gold);font-size:var(--site-text-caption)}.world-page .country-card .status{display:inline-block;margin-bottom:8px;font-size:var(--site-text-micro);letter-spacing:.08em;text-transform:uppercase;color:var(--site-gold)}@media(max-width:700px){.world-page .world-case,.world-page .country-grid{grid-template-columns:1fr;gap:4px}}
+
+/* 2026-10-06 environmental depth pass */
+.world-page .page-header{
+  background:
+    radial-gradient(circle at 50% 0,rgba(160,191,140,.08),transparent 48%),
+    linear-gradient(180deg,rgba(8,16,14,.68),rgba(7,11,10,.54));
+}
+.world-page .routes{
+  position:relative;
+  background:linear-gradient(180deg,rgba(7,14,12,.28),transparent);
+}
+.world-page .routes a{
+  position:relative;
+  padding-inline:14px;
+  background:linear-gradient(90deg,rgba(255,255,255,.012),transparent 72%);
+  transition:background-color .16s ease,border-color .16s ease,transform .16s ease;
+}
+.world-page .routes a:hover{
+  background:linear-gradient(90deg,rgba(178,198,137,.06),rgba(255,255,255,.012) 72%);
+  transform:translateX(2px)
+}
+.world-page .world-purpose,
+.world-page .paths{
+  background:
+    linear-gradient(180deg,rgba(12,20,17,.58),rgba(7,12,10,.45));
+}
+.world-page .country-card{background:rgba(8,14,12,.52);border-color:rgba(191,190,130,.12)}
+.world-page .country-card:hover{background:rgba(12,20,16,.62);border-color:rgba(207,198,132,.18)}
+
