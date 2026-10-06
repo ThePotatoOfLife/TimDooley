@@ -197,33 +197,45 @@ assert.ok(source.includes("Home"),'header keyboard contract needs Home → Plane
 assert.ok(source.includes("disabled"),'boundary arrows must expose disabled state');
 
 assert.ok(css.includes('--elevator-slot-count:5'),'header must preserve the five-slot floor geometry contract');
-assert.ok(css.includes('@media (max-width:760px)'),'true mobile must retain a compact fallback');
+assert.ok(css.includes('@media (max-width:859px)'),'true mobile must retain a compact fallback');
 assert.equal((css.match(/@media \(min-width:761px\)/g)||[]).length,1,'tablet/desktop must have one responsive panorama owner');
-assert.ok(css.includes('/* 2026-10-06 approved-reference responsive composition.'),'approved panorama architecture marker missing');
+assert.ok(css.includes('/* 2026-10-06 v3 canonical illustrated composition.'),'approved panorama architecture marker missing');
 assert.equal(css.includes('/* Desktop illustrated header skin.'),false,'retired desktop HUD skin must not coexist with panorama strip');
 assert.equal(css.includes('target-reference refinement'),false,'retired target-reference override must not coexist with panorama strip');
 assert.equal(css.includes('exact target-reference desktop skin'),false,'retired exact desktop override must not coexist with panorama strip');
 assert.ok(css.includes('background-image:var(--site-header-art)'),'responsive strip must use the dedicated panorama asset directly');
 assert.ok(css.includes('background-size:100% 100%'),'responsive strip must fill the full shared composition box');
-assert.match(css,/--elevator-shell-height:clamp\(106px,13\.96vw,320px\)/,'header height must scale continuously with viewport width and preserve ultrawide art');
+assert.match(css,/--elevator-shell-height:clamp\(94\.632px,11\.003683vw,300px\)/,'header height must scale continuously with viewport width and preserve ultrawide art');
 assert.match(css,/\.site-elevator-main\{[\s\S]*?width:100%;[\s\S]*?max-width:none;/,'live geometry must share the full panorama width');
 assert.equal(css.includes('grid-template-columns:repeat(var(--elevator-visible-count),minmax(0,1fr))'),false,'desktop hit map must not regress to equal-width plaque columns');
 assert.match(css,/\.site-elevator-room-rail\{[\s\S]*?inset:0;[\s\S]*?pointer-events:none;/,'desktop rail must use the whole painted banner as its coordinate system');
 assert.match(css,/\.site-elevator\[data-elevator-level\] \.site-elevator-room\{[\s\S]*?position:absolute;[\s\S]*?pointer-events:auto;/,'painted plaque links must be absolute interactive zones');
-assert.ok(css.includes('.site-elevator[data-elevator-level="plane"] .site-elevator-room:nth-child(5){left:82.32%;width:16.89%}'),'Plane fifth plaque needs measured artwork geometry');
-assert.ok(css.includes('.site-elevator[data-elevator-level="heaven"] .site-elevator-room:nth-child(3){left:74.70%;width:20.52%}'),'Heaven third plaque needs measured artwork geometry');
-assert.ok(css.includes('.site-elevator[data-elevator-level="below"] .site-elevator-room:nth-child(4){left:83.11%;width:15.86%}'),'Below fourth plaque needs measured artwork geometry');
+assert.equal(/\.site-elevator\[data-elevator-level=.*nth-child/.test(css),false,'desktop click geometry must come from the shared hotspot contract, not nth-child guesses');
+assert.ok(source.includes("fetchJson('/app/site-elevator-hotspots.json')"),'runtime must load the canonical hotspot map');
+assert.ok(source.includes("link.dataset.hotspotKey='room:'+room.id"),'Room links must identify their canonical hotspot key');
+assert.ok(source.includes("link.dataset.hotspotKey='landmark:'+landmark.id"),'landmark links must identify their canonical hotspot key');
+assert.ok(source.includes('applyHotspotRect(link,rect,artboard)'),'runtime must project artboard coordinates onto live links');
 assert.match(css,/\.site-elevator\[data-elevator-direction\] \.site-elevator-room-rail\{[\s\S]*?animation:none;/,'invisible desktop hitboxes must not inherit rail motion');
 assert.equal(css.includes('overflow-x:auto'),false,'Room rail must not horizontally scroll');
 assert.equal(css.includes('scrollbar-width'),false,'Room rail must not render a scrollbar');
 assert.ok((css.match(/!important/g)||[]).length<=8,'elevator CSS should keep specificity escalation tightly bounded');
-assert.ok(css.includes('--site-header-art:url("./header-heaven.svg")'),'Heaven panorama token missing');
-assert.ok(css.includes('--site-header-art:url("./header-plane.svg")'),'Plane panorama token missing');
-assert.ok(css.includes('--site-header-art:url("./header-below.svg")'),'Below panorama token missing');
-for(const asset of ['header-heaven.svg','header-plane.svg','header-below.svg']){
-  const art=fs.readFileSync(path.join(ROOT,'app',asset),'utf8');
-  assert.ok(art.includes('viewBox="0 0 1655 231"'),asset+' must share the canonical 1655×231 composition');
-  assert.ok(art.includes('preserveAspectRatio="xMidYMid slice"'),asset+' must preserve panorama proportions');
+assert.ok(css.includes('--site-header-art:url("./header-heaven-v3.avif")'),'Heaven panorama token missing');
+assert.ok(css.includes('--site-header-art:url("./header-plane-v3.avif")'),'Plane panorama token missing');
+assert.ok(css.includes('--site-header-art:url("./header-below-v3.avif")'),'Below panorama token missing');
+const artManifest=JSON.parse(fs.readFileSync(path.join(ROOT,'app','site-elevator-art-v3.json'),'utf8'));
+const hotspots=JSON.parse(fs.readFileSync(path.join(ROOT,'app','site-elevator-hotspots.json'),'utf8'));
+assert.deepEqual(artManifest.artboard,{width:2172,height:239,aspect_ratio:'2172:239'},'v3 art manifest must own the canonical artboard');
+assert.equal(artManifest.breakpoint_px,860,'v3 breakpoint must be derived from the shared art ratio');
+assert.equal(hotspots.artboard.width,2172,'hotspot width must match art manifest');
+assert.equal(hotspots.artboard.height,239,'hotspot height must match art manifest');
+assert.equal(hotspots.artboard.nav_top_y,180,'all floor navigation rails must share y=180');
+for(const floor of ['heaven','plane','below']){
+  const asset=artManifest.assets[floor].file;
+  assert.ok(fs.existsSync(path.join(ROOT,'app',asset)),asset+' must exist');
+  for(const entry of hotspots.floors[floor].entries){
+    assert.equal(entry.y,180,floor+' hotspot rail must share y=180');
+    assert.equal(entry.height,44,floor+' hotspot plaques must share a 44px height');
+  }
 }
 assert.equal(css.includes('backdrop-filter:'),false,'elevator must not use blur-heavy legacy HUD materials');
 assert.equal(css.includes('.site-elevator-room.is-secondary'),false,'header CSS must not preserve cross-floor Room affordances');

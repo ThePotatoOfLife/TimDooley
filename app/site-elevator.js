@@ -243,8 +243,40 @@
     let projection=null;
     let roomContract=null;
     let subroomContract=null;
+    let hotspotContract=null;
     let spatial={levelId:'plane',roomId:null,room:null,subroomId:null,source:'fallback'};
     let selectedLevel='plane';
+
+    const applyHotspotRect=(element,rect,artboard)=>{
+      if(!element||!rect||!artboard)return;
+      const pct=(value,total)=>((Number(value)||0)/(Number(total)||1)*100).toFixed(6)+'%';
+      element.style.left=pct(rect.x,artboard.width);
+      element.style.top=pct(rect.y,artboard.height);
+      element.style.width=pct(rect.width,artboard.width);
+      element.style.height=pct(rect.height,artboard.height);
+    };
+
+    const applyHotspots=()=>{
+      const artboard=hotspotContract?.artboard;
+      const floor=hotspotContract?.floors?.[selectedLevel];
+      if(!artboard||!floor)return;
+
+      applyHotspotRect(up,hotspotContract?.controls?.up,artboard);
+      applyHotspotRect(down,hotspotContract?.controls?.down,artboard);
+
+      const byKey=new Map((floor.entries||[]).map(entry=>[entry.key,entry]));
+      roomRail.querySelectorAll('.site-elevator-room').forEach(link=>{
+        const rect=byKey.get(link.dataset.hotspotKey||'');
+        if(!rect){
+          link.hidden=true;
+          link.dataset.hotspotMissing='true';
+          return;
+        }
+        delete link.dataset.hotspotMissing;
+        link.hidden=false;
+        applyHotspotRect(link,rect,artboard);
+      });
+    };
 
     const renderRooms=()=>{
       if(!projection||!roomContract){
@@ -262,6 +294,7 @@
         link.href=siteHref(landmark.homepage,context.siteBase);
         link.textContent=landmark.title||landmark.id;
         link.dataset.landmarkId=landmark.id;
+        link.dataset.hotspotKey='landmark:'+landmark.id;
         link.dataset.shortLabel=headerShortLabel(landmark.id,landmark.title);
         const targetRoute=normalizeRoute(new URL(link.href,document.baseURI).pathname,new URL(context.siteBase).pathname);
         if(selectedLevel===spatial.levelId&&currentRoute===targetRoute){
@@ -282,6 +315,7 @@
           link.setAttribute('aria-label',fullRoomTitle);
         }
         link.dataset.roomId=room.id;
+        link.dataset.hotspotKey='room:'+room.id;
         if(spatial.roomId===room.id&&selectedLevel===spatial.levelId){
           link.setAttribute('aria-current','location');
           link.classList.add('is-active');
@@ -293,6 +327,7 @@
       roomRail.dataset.roomCount=String(visibleCount);
       roomRail.style.setProperty('--elevator-visible-count',String(Math.max(1,visibleCount)));
       roomRail.hidden=!visibleCount;
+      applyHotspots();
     };
 
     const linkSpatialTarget=link=>{
@@ -429,11 +464,13 @@
     Promise.all([
       fetchJson('/data/house/elevator-spatial-projection.json'),
       fetchJson('/data/house/rooms.json'),
-      fetchJson('/data/house/subrooms.json')
-    ]).then(([nextProjection,nextRooms,nextSubrooms])=>{
+      fetchJson('/data/house/subrooms.json'),
+      fetchJson('/app/site-elevator-hotspots.json')
+    ]).then(([nextProjection,nextRooms,nextSubrooms,nextHotspots])=>{
       projection=nextProjection;
       roomContract=nextRooms;
       subroomContract=nextSubrooms;
+      hotspotContract=nextHotspots;
       const siteBasePath=new URL(context.siteBase).pathname;
       const currentRoute=normalizeRoute(location.pathname,siteBasePath);
       spatial=resolveSpatialContext(currentRoute,projection,roomContract,subroomContract);

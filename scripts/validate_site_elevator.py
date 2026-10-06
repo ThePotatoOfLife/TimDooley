@@ -135,12 +135,12 @@ def main() -> int:
             "@media (prefers-reduced-motion: reduce)",
             ".site-elevator-room.is-active",
             "--elevator-slot-count:5",
-            "@media (max-width:760px)",
-            "@media (min-width:761px)",
+            "@media (max-width:859px)",
+            "@media (min-width:860px)",
             "overflow:visible",
             ".site-elevator-floor-code",
             "pointer-events:none",
-            ".site-elevator[data-elevator-level=\"plane\"] .site-elevator-room:nth-child(5)",
+            "site-elevator-hotspots.json",
             "--site-header-art:",
             "background-image:var(--site-header-art)",
             "background-size:100% 100%",
@@ -151,9 +151,9 @@ def main() -> int:
             "home-heaven.avif",
             "home-plane.avif",
             "home-below.avif",
-            "header-heaven.svg",
-            "header-plane.svg",
-            "header-below.svg",
+            "header-heaven-v3.avif",
+            "header-plane-v3.avif",
+            "header-below-v3.avif",
             "body:not(.home-body)::before",
             "--site-realm-art-size",
         )
@@ -161,14 +161,18 @@ def main() -> int:
             if token not in css:
                 errors.append(f"site elevator CSS missing required marker: {token}")
 
-        if css.count("/* 2026-10-06 approved-reference responsive composition.") != 1:
-            errors.append("site elevator must have exactly one approved-reference responsive desktop/tablet owner")
+        if css.count("/* 2026-10-06 v3 canonical illustrated composition.") != 1:
+            errors.append("site elevator must have exactly one v3 canonical illustrated desktop/tablet owner")
         if "/* Desktop illustrated header skin." in css or "target-reference refinement" in css or "exact target-reference desktop skin" in css:
             errors.append("retired desktop header skins must not coexist with the approved panorama strip")
-        if css.count("@media (min-width:761px)") != 1:
-            errors.append("desktop/tablet panorama should be owned by one min-width:761px media block")
+        if css.count("@media (min-width:860px)") != 1:
+            errors.append("desktop/tablet panorama should be owned by one min-width:860px media block")
         if "grid-template-columns:repeat(var(--elevator-visible-count)" in css:
             errors.append("desktop interaction map must not regress to equal-width plaque columns")
+        if "nth-child(" in css[css.find("/* 2026-10-06 v3 canonical illustrated composition."):]:
+            errors.append("v3 desktop hotspot geometry must not use nth-child coordinate guesses")
+        if "fetchJson('/app/site-elevator-hotspots.json')" not in js or "applyHotspotRect(link,rect,artboard)" not in js:
+            errors.append("site elevator runtime must load and apply the canonical hotspot map")
         if ".site-elevator[data-elevator-direction] .site-elevator-room-rail" not in css or "animation:none" not in css:
             errors.append("desktop invisible hit rail must not inherit settling animation")
         if css.count("!important") > 8:
@@ -225,23 +229,40 @@ def main() -> int:
                     "Heaven, Plane and Below share one header measurement system"
                 )
 
-        header_art_viewboxes = {}
-        for art_name in ("header-heaven.svg", "header-plane.svg", "header-below.svg"):
-            art_path = ROOT / "app" / art_name
-            if not art_path.exists():
-                errors.append(f"missing dedicated header panorama: {art_name}")
-                continue
-            art_text = art_path.read_text(encoding="utf-8", errors="replace")
-            match = re.search(r'viewBox=["\']([^"\']+)["\']', art_text)
-            if not match:
-                errors.append(f"header panorama missing viewBox: {art_name}")
-                continue
-            header_art_viewboxes[art_name] = match.group(1).strip()
-        if header_art_viewboxes and len(set(header_art_viewboxes.values())) != 1:
-            errors.append(
-                "Heaven, Plane and Below header panoramas must share one viewBox "
-                f"for uniform composition: {header_art_viewboxes}"
-            )
+        art_manifest_path = ROOT / "app" / "site-elevator-art-v3.json"
+        hotspot_path = ROOT / "app" / "site-elevator-hotspots.json"
+        if not art_manifest_path.exists():
+            errors.append("missing v3 header art manifest")
+        if not hotspot_path.exists():
+            errors.append("missing canonical header hotspot map")
+        if art_manifest_path.exists() and hotspot_path.exists():
+            import hashlib
+            art_manifest = json.loads(art_manifest_path.read_text(encoding="utf-8"))
+            hotspots = json.loads(hotspot_path.read_text(encoding="utf-8"))
+            expected_artboard = {"width": 2172, "height": 239, "aspect_ratio": "2172:239"}
+            if art_manifest.get("artboard") != expected_artboard:
+                errors.append(f"v3 header artboard must equal {expected_artboard}, got {art_manifest.get('artboard')}")
+            if art_manifest.get("breakpoint_px") != 860:
+                errors.append("v3 header breakpoint must be 860px")
+            hotspot_artboard = hotspots.get("artboard", {})
+            if hotspot_artboard.get("width") != 2172 or hotspot_artboard.get("height") != 239:
+                errors.append("hotspot map must share the 2172x239 v3 artboard")
+            if hotspot_artboard.get("nav_top_y") != 180:
+                errors.append("hotspot navigation baseline must be y=180")
+            for floor_id in ("heaven", "plane", "below"):
+                asset = (art_manifest.get("assets") or {}).get(floor_id, {})
+                art_name = asset.get("file")
+                art_path = ROOT / "app" / str(art_name)
+                if not art_name or not art_path.exists():
+                    errors.append(f"missing v3 header panorama for {floor_id}: {art_name}")
+                    continue
+                digest = hashlib.sha256(art_path.read_bytes()).hexdigest()
+                if digest != asset.get("sha256"):
+                    errors.append(f"v3 header panorama checksum mismatch for {floor_id}")
+                entries = (((hotspots.get("floors") or {}).get(floor_id) or {}).get("entries") or [])
+                for entry in entries:
+                    if entry.get("y") != 180 or entry.get("height") != 44:
+                        errors.append(f"{floor_id} hotspot {entry.get('key')} must use shared y=180, height=44 geometry")
         if "installSceneParallax" in js or "--site-scene-y" in js:
             errors.append("site elevator runtime must not restore retired scene parallax")
         if "overflow-x:auto" in css:
