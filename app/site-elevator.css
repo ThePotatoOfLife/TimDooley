@@ -1230,356 +1230,52 @@ html[data-site-floor] body.home-body::before{content:none;display:none}
   }
 }
 
-/* 2026-10-06 target-reference refinement.
-   Keep the existing elevator mechanics; make the illustrated header read as
-   one panorama with restrained royal hardware rather than stacked UI boxes. */
-@media (min-width:761px){
-  .site-elevator{
-    --elevator-control-width:62px;
-    --elevator-board-width:330px;
-    --elevator-shell-height:118px;
-    --elevator-room-height:48px;
-    --elevator-room-gap:10px;
-    --header-vine:#897338;
-    --header-leaf:#687b42;
-    --site-header-shade:rgba(5,9,12,.13);
-    background:#080b0d;
-  }
-
-  /* One continuous realm panorama. Hardware floats over it. */
-  .site-elevator::before{
-    opacity:1;
-    background-image:
-      linear-gradient(180deg,rgba(3,5,7,.02),rgba(3,5,7,.03) 48%,rgba(2,3,4,.20) 100%),
-      var(--site-header-art,var(--site-realm-art));
-    background-repeat:no-repeat;
-    background-position:50% 50%,var(--site-header-art-position);
-    background-size:100% 100%,cover;
-    filter:saturate(1.04) contrast(1.03);
-  }
-  .site-elevator-main{background:transparent}
-  .site-elevator-stage{
-    background:transparent;
-    box-shadow:inset 0 1px rgba(255,245,215,.08),inset 0 -1px rgba(0,0,0,.62);
-  }
-  .site-elevator-stage::before{opacity:0}
-  .site-elevator-stage::after{
-    z-index:-1;
-    background:
-      linear-gradient(180deg,transparent 0 48%,rgba(2,3,4,.08) 64%,rgba(2,3,4,.33) 100%),
-      linear-gradient(90deg,rgba(3,5,6,.12),transparent 8%,transparent 92%,rgba(3,5,6,.12));
-  }
-
-  /* Narrower console = more art. The frame stays royal, but no longer becomes
-     the dominant object in the header. */
-  .site-elevator-controls{
-    padding:7px 8px;
-    gap:5px;
-    background:
-      radial-gradient(ellipse at 15% 12%,var(--header-leaf) 0 4px,transparent 5px),
-      radial-gradient(ellipse at 82% 31%,var(--header-leaf) 0 4px,transparent 5px),
-      radial-gradient(ellipse at 19% 67%,var(--header-leaf) 0 4px,transparent 5px),
-      radial-gradient(ellipse at 78% 88%,var(--header-leaf) 0 4px,transparent 5px),
-      linear-gradient(102deg,transparent 46%,var(--header-vine) 47% 52%,transparent 53%),
-      linear-gradient(180deg,rgba(21,29,34,.90),rgba(7,10,12,.91));
-    border-right:1px solid rgba(166,117,55,.72);
-    box-shadow:
-      inset 0 0 0 2px #07090a,
-      inset 0 0 0 3px rgba(208,161,77,.18);
-  }
-  .site-elevator-arrow{
-    margin:0;
-    width:100%;
-    border-color:rgba(178,145,88,.48);
-    background:linear-gradient(180deg,rgba(34,43,46,.78),rgba(10,13,14,.88));
-  }
-  .site-elevator-arrow::before{
-    font-size:22px;
-    color:#f0dfb8;
-    text-shadow:0 0 7px var(--site-elevator-glow),0 2px 0 #000;
-  }
-
-  .site-elevator-reel{
-    background:
-      radial-gradient(ellipse at 5% 12%,var(--header-leaf) 0 5px,transparent 6px),
-      radial-gradient(ellipse at 96% 84%,var(--header-leaf) 0 4px,transparent 5px),
-      linear-gradient(180deg,rgba(18,28,35,.90),rgba(6,10,13,.92));
-    border-right:1px solid rgba(151,104,47,.78);
-    box-shadow:
-      inset 0 0 0 1px #050708,
-      inset 0 0 0 3px rgba(194,142,66,.14),
-      4px 0 12px rgba(0,0,0,.16);
-  }
-  .site-elevator-floor{
-    grid-template-columns:42px 68px minmax(0,1fr);
-    column-gap:11px;
-    padding:9px 16px 9px 9px;
-  }
-  .site-elevator-floor-code{
-    font-size:14px;
-    border-right-color:rgba(207,160,82,.24);
-  }
-  .site-elevator-floor-label{
-    font-size:22px;
-    letter-spacing:.045em;
-  }
-  .site-elevator-room-label{
-    font-size:8px;
-    letter-spacing:.07em;
-    color:#c9c2b4;
-  }
-
-  /* Replace the blocky abstract emblems with clear living silhouettes. */
-  .site-elevator-floor-emblem{
-    height:64px;
-    background:
-      radial-gradient(circle at 50% 46%,color-mix(in srgb,var(--site-elevator-accent) 18%,transparent),transparent 58%),
-      linear-gradient(180deg,rgba(11,20,26,.88),rgba(4,9,12,.94));
-  }
-  .site-elevator-floor-emblem::after{display:none}
-  .site-elevator-floor-emblem::before{
-    left:50%;
-    top:50%;
-    width:48px!important;
-    height:48px!important;
-    transform:translate(-50%,-50%)!important;
-    background:currentColor!important;
-    filter:drop-shadow(0 0 5px var(--site-elevator-glow));
-    -webkit-mask-repeat:no-repeat;
-    mask-repeat:no-repeat;
-    -webkit-mask-position:center;
-    mask-position:center;
-    -webkit-mask-size:contain;
-    mask-size:contain;
-  }
-  .site-elevator[data-elevator-level="heaven"] .site-elevator-floor-emblem::before{
-    -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='black' d='M29 57h6V41l13-11-4-4-9 8V24l9-9-4-4-5 5V6h-6v13l-7-7-4 4 11 11v9L17 27l-4 5 16 12zM18 57h28v4H18z'/%3E%3C/svg%3E");
-    mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='black' d='M29 57h6V41l13-11-4-4-9 8V24l9-9-4-4-5 5V6h-6v13l-7-7-4 4 11 11v9L17 27l-4 5 16 12zM18 57h28v4H18z'/%3E%3C/svg%3E");
-  }
-  .site-elevator[data-elevator-level="plane"] .site-elevator-floor-emblem::before{
-    -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='24' cy='24' r='13' fill='black'/%3E%3Ccircle cx='39' cy='22' r='14' fill='black'/%3E%3Ccircle cx='33' cy='12' r='12' fill='black'/%3E%3Cpath fill='black' d='M29 28h7v25h-7zM20 52h25v5H20z'/%3E%3C/svg%3E");
-    mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='24' cy='24' r='13' fill='black'/%3E%3Ccircle cx='39' cy='22' r='14' fill='black'/%3E%3Ccircle cx='33' cy='12' r='12' fill='black'/%3E%3Cpath fill='black' d='M29 28h7v25h-7zM20 52h25v5H20z'/%3E%3C/svg%3E");
-  }
-  .site-elevator[data-elevator-level="below"] .site-elevator-floor-emblem::before{
-    -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='black' d='M29 5h6v25l9 9 9-7 4 4-11 10-11-9v22h-6V37l-11 9L7 36l4-4 9 7 9-9zM18 43l5 4-9 12-5-3zm28 0 9 13-5 3-9-12z'/%3E%3C/svg%3E");
-    mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='black' d='M29 5h6v25l9 9 9-7 4 4-11 10-11-9v22h-6V37l-11 9L7 36l4-4 9 7 9-9zM18 43l5 4-9 12-5-3zm28 0 9 13-5 3-9-12z'/%3E%3C/svg%3E");
-  }
-
-  /* Buttons: royal plaques with free-standing symbols, not icons trapped in
-     mini square widgets. */
-  .site-elevator-room-rail{
-    display:grid;
-    grid-template-columns:repeat(var(--elevator-visible-count),minmax(0,1fr));
-    align-items:end;
-    padding:59px 16px 10px;
-    gap:var(--elevator-room-gap);
-  }
-  .site-elevator-room{
-    min-width:0;
-    width:auto;
-    max-width:none;
-    height:var(--elevator-room-height);
-    min-height:var(--elevator-room-height);
-    max-height:var(--elevator-room-height);
-    padding:6px 12px 6px 40px;
-    font:600 14px/1.06 var(--site-font-serif);
-    white-space:nowrap;
-    color:#f0e8d9;
-    background:
-      linear-gradient(135deg,var(--room-hardware-bright) 0 3px,transparent 3px) top left/10px 10px no-repeat,
-      linear-gradient(225deg,var(--room-hardware-bright) 0 3px,transparent 3px) top right/10px 10px no-repeat,
-      linear-gradient(45deg,var(--room-hardware-dim) 0 3px,transparent 3px) bottom left/10px 10px no-repeat,
-      linear-gradient(315deg,var(--room-hardware-dim) 0 3px,transparent 3px) bottom right/10px 10px no-repeat,
-      linear-gradient(180deg,var(--room-plate-top),var(--room-plate-bottom));
-    box-shadow:
-      inset 0 0 0 1px #050606,
-      inset 0 0 0 2px color-mix(in srgb,var(--site-elevator-accent) 12%,transparent),
-      0 5px 10px rgba(0,0,0,.35);
-  }
-  .site-elevator-room::before,
-  .site-elevator[data-elevator-level="below"] .site-elevator-room::before{
-    left:13px;
-    right:auto;
-    top:50%;
-    width:22px;
-    height:24px;
-    transform:translateY(-50%);
-    display:grid;
-    place-items:center;
-    border:0;
-    background:transparent;
-    box-shadow:none;
-    color:var(--room-hardware-bright);
-    font:700 19px/1 Georgia,serif;
-    text-shadow:0 0 7px var(--site-elevator-glow),0 1px 0 #000;
-  }
-  .site-elevator[data-elevator-level="heaven"] .site-elevator-room::before{content:"✦"}
-  .site-elevator[data-elevator-level="plane"] .site-elevator-room[data-room-id="time-history"]::before{content:"⌛"}
-  .site-elevator[data-elevator-level="plane"] .site-elevator-room[data-room-id="science-formal-models"]::before{content:"⚛"}
-  .site-elevator[data-elevator-level="plane"] .site-elevator-room[data-room-id="life-body"]::before{content:"❧"}
-  .site-elevator[data-elevator-level="plane"] .site-elevator-room[data-room-id="world-systems"]::before{content:"◎"}
-  .site-elevator[data-elevator-level="plane"] .site-elevator-room[data-room-id="culture-information"]::before{content:"⌂"}
-  .site-elevator[data-elevator-level="below"] .site-elevator-room[data-landmark-id="below"]::before{content:"♨"}
-  .site-elevator[data-elevator-level="below"] .site-elevator-room[data-landmark-id="shadow-farm"]::before{content:"♣"}
-  .site-elevator[data-elevator-level="below"] .site-elevator-room[data-room-id="archive-sources"]::before{content:"Ψ"}
-  .site-elevator[data-elevator-level="below"] .site-elevator-room[data-room-id="research-lab"]::before{content:"⚒"}
-  .site-elevator[data-elevator-level="heaven"] .site-elevator-room{font-size:15px}
-  .site-elevator[data-elevator-level="plane"] .site-elevator-room{font-size:13.2px}
-  .site-elevator[data-elevator-level="below"] .site-elevator-room{font-size:13.2px}
-
-  /* Active state stays a plaque state; do not replace the icon with a line. */
-  .site-elevator[data-elevator-level] .site-elevator-room.is-active::before{
-    left:13px;
-    right:auto;
-    top:50%;
-    width:22px;
-    height:24px;
-    transform:translateY(-50%);
-    border:0;
-    background:transparent;
-    box-shadow:none;
-    color:#ffe2a0;
-  }
-}
-
-/* Width bands preserve the same composition instead of changing design. */
-@media (min-width:1181px) and (max-width:1439px){
-  .site-elevator{
-    --elevator-control-width:58px;
-    --elevator-board-width:305px;
-    --elevator-shell-height:110px;
-    --elevator-room-height:44px;
-    --elevator-room-gap:8px;
-  }
-  .site-elevator-floor{grid-template-columns:38px 62px minmax(0,1fr);column-gap:9px;padding:8px 13px 8px 8px}
-  .site-elevator-floor-emblem{height:58px}
-  .site-elevator-floor-label{font-size:20px}
-  .site-elevator-room-rail{padding:56px 12px 8px}
-  .site-elevator-room{font-size:11.8px;padding-left:34px}
-  .site-elevator[data-elevator-level="heaven"] .site-elevator-room{font-size:13px}
-  .site-elevator-room::before,
-  .site-elevator[data-elevator-level="below"] .site-elevator-room::before{left:10px;width:19px;font-size:16px}
-  .site-elevator[data-elevator-level] .site-elevator-room.is-active::before{left:10px;width:19px}
-}
-@media (min-width:901px) and (max-width:1180px){
-  .site-elevator{
-    --elevator-control-width:52px;
-    --elevator-board-width:255px;
-    --elevator-shell-height:104px;
-    --elevator-room-height:42px;
-    --elevator-room-gap:6px;
-  }
-  .site-elevator-floor{grid-template-columns:34px 54px minmax(0,1fr);column-gap:7px;padding:7px 10px 7px 7px}
-  .site-elevator-floor-emblem{height:54px}
-  .site-elevator-floor-label{font-size:18px}
-  .site-elevator-room-label{font-size:7px}
-  .site-elevator-room-rail{padding:54px 8px 8px}
-  .site-elevator-room{font-size:9.5px;padding-left:29px;padding-right:5px}
-  .site-elevator[data-elevator-level="heaven"] .site-elevator-room{font-size:11px}
-  .site-elevator-room::before,
-  .site-elevator[data-elevator-level="below"] .site-elevator-room::before{left:7px;width:17px;font-size:14px}
-  .site-elevator[data-elevator-level] .site-elevator-room.is-active::before{left:7px;width:17px}
-}
-@media (min-width:761px) and (max-width:900px){
-  .site-elevator{
-    --elevator-control-width:44px;
-    --elevator-board-width:192px;
-    --elevator-shell-height:94px;
-    --elevator-room-height:38px;
-    --elevator-room-gap:4px;
-  }
-  .site-elevator-floor{grid-template-columns:27px 45px minmax(0,1fr);column-gap:5px;padding:6px 8px 6px 5px}
-  .site-elevator-floor-code{font-size:9px}
-  .site-elevator-floor-emblem{height:46px}
-  .site-elevator-floor-label{font-size:14px}
-  .site-elevator-room-label{font-size:6.2px}
-  .site-elevator-room-rail{padding:49px 6px 7px}
-  .site-elevator-room{font-size:7.8px;padding-left:22px;padding-right:3px;white-space:normal}
-  .site-elevator[data-elevator-level="heaven"] .site-elevator-room{font-size:8.6px}
-  .site-elevator-room::before,
-  .site-elevator[data-elevator-level="below"] .site-elevator-room::before{left:4px;width:14px;font-size:11px}
-  .site-elevator[data-elevator-level] .site-elevator-room.is-active::before{left:4px;width:14px}
-}
-
-/* Mobile: preserve the floor idea without pretending five long labels fit. */
-@media (max-width:760px){
-  .site-elevator-controls{position:relative;overflow:hidden}
-  .site-elevator-controls::before{
-    content:"";
-    position:absolute;
-    left:50%;
-    top:3px;
-    bottom:3px;
-    width:18px;
-    transform:translateX(-50%);
-    pointer-events:none;
-    opacity:.40;
-    background:
-      radial-gradient(ellipse at 20% 15%,#62794a 0 3px,transparent 4px),
-      radial-gradient(ellipse at 80% 38%,#6d814d 0 3px,transparent 4px),
-      radial-gradient(ellipse at 22% 67%,#62794a 0 3px,transparent 4px),
-      radial-gradient(ellipse at 75% 88%,#6d814d 0 3px,transparent 4px),
-      linear-gradient(100deg,transparent 43%,#8e7139 45% 53%,transparent 55%);
-  }
-  .site-elevator-arrow{z-index:1}
-}
-@media (max-width:560px){
-  .site-elevator-room{
-    font-size:0!important;
-    line-height:1!important;
-    padding:2px!important;
-  }
-  .site-elevator-room::before{
-    content:attr(data-short-label)!important;
-    inset:0!important;
-    width:auto!important;
-    height:auto!important;
-    transform:none!important;
-    display:flex!important;
-    align-items:center;
-    justify-content:center;
-    padding:2px!important;
-    border:0!important;
-    background:transparent!important;
-    box-shadow:none!important;
-    color:#f1eee5!important;
-    font:700 7px/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace!important;
-    letter-spacing:-.02em;
-    text-shadow:0 1px 2px #000,0 0 5px var(--site-elevator-glow);
-  }
-  .site-elevator-room::after{display:none!important}
-}
-
-
-/* 2026-10-06 exact target-reference desktop skin */
+/* 2026-10-06 approved-reference desktop composition.
+   Large desktop uses the approved panorama at its native composition width.
+   The artwork and the live hit geometry share the same centered canvas, so a
+   1920px monitor no longer stretches a 1655px reference strip. Compact/laptop
+   widths keep the real responsive elevator UI defined above. */
 @media (min-width:1100px){
   .site-elevator{
-    --elevator-shell-height:clamp(170px,13.78vw,228px);
+    --elevator-art-width:1655px;
+    --elevator-shell-height:min(231px,13.96vw);
     --site-header-shade:transparent;
-    background:transparent;
+    background:#080b0d;
     border:0;
-    box-shadow:0 7px 18px rgba(0,0,0,.22);
+    box-shadow:0 7px 18px rgba(0,0,0,.24);
   }
 
-  /* The approved panorama strip is the visual shell. DOM controls stay live as
-     transparent hit targets over the exact pixel-art artwork. */
   .site-elevator::before{
     inset:0;
     z-index:-2;
     opacity:1;
-    background-image:var(--site-header-art);
+    background-color:#080b0d;
+    background-image:
+      linear-gradient(90deg,
+        #080b0d 0,
+        rgba(8,11,13,.96) 4%,
+        rgba(8,11,13,.26) 12%,
+        rgba(8,11,13,0) 20%,
+        rgba(8,11,13,0) 80%,
+        rgba(8,11,13,.26) 88%,
+        rgba(8,11,13,.96) 96%,
+        #080b0d 100%),
+      var(--site-header-art);
     background-repeat:no-repeat;
-    background-position:center;
-    background-size:100% 100%;
+    background-position:center,center;
+    background-size:100% 100%,min(100%,var(--elevator-art-width)) 100%;
     filter:none;
   }
   .site-elevator::after{display:none}
 
   .site-elevator-main{
     grid-template-columns:5.55% 20.15% 74.30%;
+    width:min(100%,var(--elevator-art-width));
+    max-width:var(--elevator-art-width);
     height:var(--elevator-shell-height);
     min-height:var(--elevator-shell-height);
     max-height:var(--elevator-shell-height);
+    margin:0 auto;
     background:transparent;
     border:0;
     box-shadow:none;
@@ -1591,11 +1287,12 @@ html[data-site-floor] body.home-body::before{content:none;display:none}
   .site-elevator-reel,
   .site-elevator-stage{
     min-height:var(--elevator-shell-height);
-    background:transparent!important;
-    border:0!important;
-    outline:0!important;
-    box-shadow:none!important;
+    background:transparent;
+    border:0;
+    outline:0;
+    box-shadow:none;
   }
+
   .site-elevator-controls{
     position:relative;
     display:block;
@@ -1604,51 +1301,53 @@ html[data-site-floor] body.home-body::before{content:none;display:none}
   .site-elevator-controls::before,
   .site-elevator-controls::after{display:none}
 
-  /* Exact invisible click zones for the illustrated vine elevator arrows. */
+  /* Invisible controls sit exactly over the illustrated vine arrows. */
   .site-elevator-arrow{
     position:absolute;
+    z-index:6;
     left:17%;
     right:17%;
-    width:66%;
+    width:auto;
     height:24%;
     min-height:0;
     margin:0;
     padding:0;
-    border:0!important;
-    background:transparent!important;
-    box-shadow:none!important;
+    border:0;
+    background:transparent;
+    box-shadow:none;
     opacity:0;
-    color:transparent!important;
+    color:transparent;
   }
   .site-elevator-up{top:10%}
   .site-elevator-down{bottom:10%}
   .site-elevator-arrow::before,
-  .site-elevator-arrow::after{display:none!important}
+  .site-elevator-arrow::after{display:none}
   .site-elevator-arrow:hover:not(:disabled),
   .site-elevator-arrow:focus-visible{
     opacity:1;
     outline:2px solid rgba(255,221,145,.54);
     outline-offset:-2px;
-    background:rgba(255,215,120,.055)!important;
-    box-shadow:0 0 13px rgba(236,190,96,.20)!important;
+    background:rgba(255,215,120,.055);
+    box-shadow:0 0 13px rgba(236,190,96,.20);
   }
   .site-elevator-arrow:disabled{
     opacity:0;
     cursor:default;
   }
 
-  /* The left board lettering/emblem is already rendered in the reference art. */
+  /* The reference strip already paints the floor board on large desktop. */
   .site-elevator-reel::before,
-  .site-elevator-reel::after{display:none!important}
-  .site-elevator-floor{opacity:0;pointer-events:none}
+  .site-elevator-reel::after{display:none}
+  .site-elevator-floor{
+    opacity:0;
+    pointer-events:none;
+  }
 
-  /* Do not redraw the panorama inside the stage; the shell image already owns it. */
   .site-elevator-stage{overflow:visible}
   .site-elevator-stage::before,
-  .site-elevator-stage::after{display:none!important}
+  .site-elevator-stage::after{display:none}
 
-  /* Room links remain real links, but their pixel-art plaques come from the
-     target strip. Hover/focus only adds a restrained light response. */
+  /* Live links use the exact plaque geometry of the centered reference strip. */
   .site-elevator-room-rail{
     position:absolute;
     z-index:5;
@@ -1674,12 +1373,9 @@ html[data-site-floor] body.home-body::before{content:none;display:none}
     gap:.7%;
   }
   .site-elevator-room-rail::before,
-  .site-elevator-room-rail::after{display:none!important}
+  .site-elevator-room-rail::after{display:none}
 
-  .site-elevator-room,
-  .site-elevator[data-elevator-level="heaven"] .site-elevator-room,
-  .site-elevator[data-elevator-level="plane"] .site-elevator-room,
-  .site-elevator[data-elevator-level="below"] .site-elevator-room{
+  .site-elevator[data-elevator-level] .site-elevator-room{
     width:auto;
     max-width:none;
     height:100%;
@@ -1688,34 +1384,32 @@ html[data-site-floor] body.home-body::before{content:none;display:none}
     margin:0;
     padding:0;
     overflow:hidden;
-    border:0!important;
+    border:0;
     border-radius:0;
     clip-path:none;
-    background:transparent!important;
-    box-shadow:none!important;
-    color:transparent!important;
-    text-shadow:none!important;
-    font-size:0!important;
-    transform:none!important;
+    background:transparent;
+    box-shadow:none;
+    color:transparent;
+    text-shadow:none;
+    font-size:0;
+    transform:none;
   }
-  .site-elevator-room::before,
-  .site-elevator-room::after,
   .site-elevator[data-elevator-level] .site-elevator-room::before,
   .site-elevator[data-elevator-level] .site-elevator-room::after{
-    display:none!important;
+    display:none;
   }
-  .site-elevator-room:hover,
-  .site-elevator-room:focus-visible,
-  .site-elevator-room.is-active{
-    background:rgba(255,220,135,.055)!important;
+  .site-elevator[data-elevator-level] .site-elevator-room:hover,
+  .site-elevator[data-elevator-level] .site-elevator-room:focus-visible,
+  .site-elevator[data-elevator-level] .site-elevator-room.is-active{
+    background:rgba(255,220,135,.05);
     box-shadow:
       inset 0 0 0 2px rgba(255,225,154,.34),
-      0 0 12px rgba(229,180,83,.18)!important;
+      0 0 12px rgba(229,180,83,.18);
     outline:0;
   }
-  .site-elevator-room:focus-visible{
+  .site-elevator[data-elevator-level] .site-elevator-room:focus-visible{
     box-shadow:
       inset 0 0 0 2px rgba(255,237,190,.72),
-      0 0 14px rgba(234,190,98,.30)!important;
+      0 0 14px rgba(234,190,98,.30);
   }
 }
