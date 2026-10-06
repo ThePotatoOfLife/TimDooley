@@ -1,0 +1,120 @@
+/* Source / provenance reader.
+   A pale archival pane: inspectable, quiet, traceable, and distinct from both
+   Heaven theology glass and Plane science stone. */
+.source-reader{
+  --source-paper:rgba(235,231,218,.74);
+  --source-paper-soft:rgba(229,224,209,.58);
+  --source-paper-deep:rgba(216,208,190,.48);
+  --source-line:rgba(128,111,76,.24);
+  --source-ink:#24231f;
+  --source-copy:#514f48;
+  --source-muted:#6d6a61;
+  --source-gold:#87672c;
+  max-width:1040px;
+  color:var(--source-copy)
+}
+.source-reader .page-header{
+  position:relative;
+  overflow:hidden;
+  background:
+    linear-gradient(90deg,rgba(78,67,47,.035),transparent 18% 82%,rgba(78,67,47,.035)),
+    radial-gradient(circle at 50% 0,rgba(255,255,255,.42),transparent 44%),
+    linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.02)),
+    var(--source-paper);
+  border:1px solid rgba(146,119,61,.28);
+  color:var(--source-ink);
+  box-shadow:inset 0 1px rgba(255,255,255,.50),0 16px 34px rgba(0,0,0,.11);
+  backdrop-filter:blur(8px) saturate(.84)
+}
+.source-reader .page-header::after{
+  content:"";
+  position:absolute;left:7%;right:7%;bottom:0;height:1px;
+  background:linear-gradient(90deg,transparent,#a77e31,transparent);
+  opacity:.64
+}
+.source-reader .page-header h1{color:#201f1b}
+.source-reader .page-header .summary{color:#4e4c45}
+.source-reader .eyebrow{color:var(--source-gold)}
+.source-reader .callout{
+  border:1px solid var(--source-line);
+  border-left:3px solid rgba(139,104,43,.48);
+  padding:16px 18px;
+  border-radius:12px;
+  margin:24px 0;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.12),transparent 25%),
+    var(--source-paper-soft);
+  color:#504c43;
+  box-shadow:0 10px 24px rgba(0,0,0,.08)
+}
+.source-reader .small{font-size:.9rem;color:var(--source-muted)}
+.source-reader .prov{
+  margin:32px 0;
+  padding:24px 22px 28px;
+  border:1px solid var(--source-line);
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.10),transparent 22%),
+    var(--source-paper-soft);
+  box-shadow:0 12px 28px rgba(0,0,0,.09)
+}
+.source-reader .prov:nth-of-type(even){
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.08),transparent 22%),
+    var(--source-paper-deep)
+}
+.source-reader .prov h2{
+  margin:0 0 12px;
+  color:#302c23;
+  font:400 clamp(1.8rem,4vw,2.7rem)/1.1 var(--site-font-serif)
+}
+.source-reader .prov>.lead2{
+  font:400 1.15rem/1.6 var(--site-font-serif);
+  color:#49463d
+}
+.source-reader .prov-row{
+  position:relative;
+  display:grid;
+  grid-template-columns:170px minmax(0,1fr);
+  gap:24px;
+  padding:18px 0;
+  border-top:1px solid rgba(128,111,76,.18)
+}
+.source-reader .prov-row::before{
+  content:"";
+  position:absolute;
+  left:-4px;top:24px;
+  width:7px;height:7px;
+  border:1px solid rgba(138,105,45,.42);
+  background:#e3d9bd;
+  transform:rotate(45deg)
+}
+.source-reader .prov-row h3{
+  font:400 1.25rem var(--site-font-serif);
+  margin:0 0 5px;
+  color:#664d20
+}
+.source-reader .prov-row .kind{
+  font-size:.72rem;color:var(--source-gold);
+  text-transform:uppercase;letter-spacing:.06em
+}
+.source-reader .prov-row p{margin:0 0 7px;color:var(--source-muted)}
+.source-reader .prov-row a{font-size:.82rem;color:#694f21}
+.source-reader .prov-chain{
+  display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin:17px 0
+}
+.source-reader .prov-chain span{
+  border:1px solid var(--source-line);
+  border-radius:999px;
+  padding:5px 8px;
+  font-size:.76rem;
+  color:#5f5b52;
+  background:rgba(255,255,255,.12)
+}
+.source-reader .prov-chain i{font-style:normal;color:var(--source-gold)}
+.source-reader a{color:#6b5022}
+.source-reader a:hover{color:#3f2f15}
+@media(max-width:680px){
+  .source-reader .prov{padding:18px 16px}
+  .source-reader .prov-row{grid-template-columns:1fr;gap:4px}
+  .source-reader .prov-row::before{display:none}
+}

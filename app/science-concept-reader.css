@@ -106,3 +106,39 @@
 @media(max-width:700px){
   .science-concept-reader .grid{grid-template-columns:1fr}
 }
+
+
+/* Wide research-map variant */
+.science-concept-reader.research-map-reader{
+  max-width:1320px;
+}
+.research-map-reader>.grid{
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+}
+.research-map-reader .tag{
+  display:block;
+  margin-bottom:5px;
+  color:var(--science-gold);
+  font-size:.76rem;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  opacity:.82
+}
+.research-map-reader>h2{
+  position:relative;
+  margin-top:2.8rem;
+  padding-top:14px;
+  border-top:1px solid rgba(124,96,50,.18)
+}
+.research-map-reader>h2::before{
+  content:"";
+  position:absolute;
+  left:0;top:-1px;width:72px;height:1px;
+  background:rgba(139,103,45,.48)
+}
+.research-map-reader>ul{
+  padding:18px 20px 18px 38px;
+  border:1px solid rgba(124,96,50,.18);
+  background:rgba(220,203,167,.42)
+}
+.research-map-reader>ul li{margin:7px 0;color:var(--science-muted)}
