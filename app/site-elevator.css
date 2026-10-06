@@ -652,365 +652,142 @@ html[data-site-floor] body:not(.home-body)::before{
 html[data-site-floor] body.home-body{min-height:100vh}
 html[data-site-floor] body.home-body::before{content:none;display:none}
 
-/* 2026-10-06 real-control panorama architecture.
-   The panorama is scenery only. Elevator controls, floor board and Room plaques
-   are real DOM controls with one shared measurement system, so visible geometry
-   and clickable geometry cannot drift apart. */
+/* 2026-10-06 approved-reference responsive composition.
+   Tablet-landscape, laptop and desktop share one painted panorama. The live
+   controls are an interaction map over that exact 1655×231 composition:
+   no second HUD, no equal-width approximation, no moving invisible rail. */
 @media (min-width:761px){
   .site-elevator{
     --elevator-shell-height:clamp(106px,13.96vw,320px);
-    --elevator-nav-height:clamp(38px,3.55vw,64px);
-    --elevator-gold:#c79b48;
-    --elevator-gold-bright:#efd38a;
-    --elevator-ink:#fff7df;
-    --elevator-panel-top:#10282c;
-    --elevator-panel-bottom:#071418;
-    --elevator-control-top:#152c31;
-    --elevator-control-bottom:#09171b;
-    --elevator-room-top:#123039;
-    --elevator-room-bottom:#07191e;
-    --elevator-room-hover-top:#173b42;
-    --elevator-room-hover-bottom:#092026;
-    --elevator-room-active-top:#17343a;
-    --elevator-room-active-bottom:#0a1d21;
-    --elevator-stage-base:#0b171a;
     --site-header-shade:transparent;
-    background:#071014;
+    background:#080b0d;
     border:0;
-    box-shadow:0 6px 18px rgba(0,0,0,.34);
+    box-shadow:0 7px 18px rgba(0,0,0,.24);
   }
 
-  /* Same geometry, different realm material. */
-  .site-elevator[data-elevator-level="heaven"]{
-    --elevator-gold:#c9a85b;
-    --elevator-gold-bright:#f0dda0;
-    --elevator-panel-top:#16243f;
-    --elevator-panel-bottom:#091321;
-    --elevator-control-top:#1b3152;
-    --elevator-control-bottom:#0b1728;
-    --elevator-room-top:#163451;
-    --elevator-room-bottom:#0a1928;
-    --elevator-room-hover-top:#1c4267;
-    --elevator-room-hover-bottom:#0c2134;
-    --elevator-room-active-top:#1a3b59;
-    --elevator-room-active-bottom:#0c1f30;
-    --elevator-stage-base:#0a1422;
-  }
-  .site-elevator[data-elevator-level="plane"]{
-    --elevator-gold:#b99a50;
-    --elevator-gold-bright:#ead58f;
-    --elevator-panel-top:#17302d;
-    --elevator-panel-bottom:#091a18;
-    --elevator-control-top:#1a3935;
-    --elevator-control-bottom:#0a1c19;
-    --elevator-room-top:#173a35;
-    --elevator-room-bottom:#091d1a;
-    --elevator-room-hover-top:#1d4841;
-    --elevator-room-hover-bottom:#0c2723;
-    --elevator-room-active-top:#1a403a;
-    --elevator-room-active-bottom:#0b2420;
-    --elevator-stage-base:#0a1917;
-  }
-  .site-elevator[data-elevator-level="below"]{
-    --elevator-gold:#c2793e;
-    --elevator-gold-bright:#f0b469;
-    --elevator-panel-top:#321916;
-    --elevator-panel-bottom:#180a09;
-    --elevator-control-top:#3b201b;
-    --elevator-control-bottom:#1b0d0a;
-    --elevator-room-top:#3a1d18;
-    --elevator-room-bottom:#1b0c0a;
-    --elevator-room-hover-top:#4a261e;
-    --elevator-room-hover-bottom:#26110d;
-    --elevator-room-active-top:#44221c;
-    --elevator-room-active-bottom:#21100c;
-    --elevator-stage-base:#1a0d0a;
-  }
-
-  /* No baked full-header UI on desktop. Only the scenic window consumes art. */
   .site-elevator::before{
     inset:0;
     z-index:-2;
     opacity:1;
-    background:
-      linear-gradient(180deg,rgba(255,255,255,.025),transparent 42%),
-      #071014;
+    background-color:#080b0d;
+    background-image:var(--site-header-art);
+    background-repeat:no-repeat;
+    background-position:center;
+    background-size:100% 100%;
     filter:none;
   }
-  .site-elevator::after{
-    display:block;
-    left:0;
-    right:0;
-    bottom:0;
-    height:2px;
-    opacity:.9;
-    background:linear-gradient(90deg,transparent 0,var(--elevator-gold) 5%,var(--elevator-gold-bright) 50%,var(--elevator-gold) 95%,transparent 100%);
-    box-shadow:0 0 8px rgba(222,178,84,.26);
-  }
+  .site-elevator::after{display:none}
 
   .site-elevator-main{
     position:relative;
-    display:grid;
-    grid-template-columns:5.8% 20.5% 73.7%;
+    grid-template-columns:5.55% 20.15% 74.30%;
     width:100%;
     max-width:none;
     height:var(--elevator-shell-height);
     min-height:var(--elevator-shell-height);
     max-height:var(--elevator-shell-height);
     margin:0;
-    background:#071014;
-    border-top:1px solid rgba(230,191,101,.48);
-    border-bottom:1px solid rgba(66,45,16,.9);
-    box-shadow:
-      inset 0 1px rgba(255,247,220,.08),
-      inset 0 -2px rgba(0,0,0,.46);
+    background:transparent;
+    border:0;
+    box-shadow:none;
+  }
+  .site-elevator-main::before,
+  .site-elevator-main::after{display:none}
+
+  .site-elevator-controls,
+  .site-elevator-reel,
+  .site-elevator-stage{
+    min-height:var(--elevator-shell-height);
+    background:transparent;
+    border:0;
+    outline:0;
+    box-shadow:none;
   }
 
-  /* Real elevator column. */
   .site-elevator-controls{
     position:relative;
-    display:grid;
-    grid-template-rows:1fr 1fr;
-    min-height:var(--elevator-shell-height);
-    padding:clamp(4px,.45vw,9px);
-    gap:clamp(4px,.35vw,7px);
-    box-sizing:border-box;
-    background:
-      linear-gradient(90deg,rgba(255,255,255,.035),transparent 28%,transparent 72%,rgba(0,0,0,.24)),
-      linear-gradient(180deg,#102127,#071116);
-    border-right:2px solid var(--elevator-gold);
-    box-shadow:
-      inset 0 0 0 1px rgba(245,215,145,.16),
-      inset -3px 0 rgba(0,0,0,.24);
+    display:block;
+    padding:0;
   }
   .site-elevator-controls::before,
-  .site-elevator-controls::after{
-    content:"";
-    position:absolute;
-    left:18%;
-    right:18%;
-    height:1px;
-    pointer-events:none;
-    background:linear-gradient(90deg,transparent,var(--elevator-gold-bright),transparent);
-    opacity:.58;
-  }
-  .site-elevator-controls::before{top:3px}
-  .site-elevator-controls::after{bottom:3px}
+  .site-elevator-controls::after{display:none}
 
+  /* Arrow buttons remain real controls, but only their painted regions react. */
   .site-elevator-arrow{
-    position:relative;
-    display:grid;
-    place-items:center;
-    width:100%;
-    height:auto;
+    position:absolute;
+    z-index:6;
+    left:27%;
+    right:4%;
+    width:auto;
+    height:24%;
     min-height:0;
     margin:0;
     padding:0;
-    border:1px solid rgba(222,178,84,.72);
-    border-radius:0;
-    clip-path:polygon(8% 0,92% 0,100% 14%,100% 86%,92% 100%,8% 100%,0 86%,0 14%);
-    background:
-      linear-gradient(180deg,rgba(255,255,255,.045),transparent 34%),
-      linear-gradient(180deg,var(--elevator-control-top),var(--elevator-control-bottom));
-    box-shadow:
-      inset 0 0 0 1px rgba(255,230,165,.10),
-      inset 0 -4px rgba(0,0,0,.18),
-      0 1px 2px rgba(0,0,0,.35);
-    opacity:1;
-    color:var(--elevator-gold-bright);
+    border:0;
+    background:transparent;
+    box-shadow:none;
+    opacity:0;
+    color:transparent;
   }
-  .site-elevator-arrow::before{
-    display:block;
-    position:absolute;
-    inset:50% auto auto 50%;
-    transform:translate(-50%,-50%);
-    color:currentColor;
-    font:400 clamp(17px,1.9vw,31px)/1 Georgia,serif;
-    text-shadow:0 1px 0 #000,0 0 7px rgba(238,207,132,.34);
-  }
-  .site-elevator-up::before{content:"△"}
-  .site-elevator-down::before{content:"▽"}
+  .site-elevator-up{top:24%}
+  .site-elevator-down{bottom:8%}
+  .site-elevator-arrow::before,
+  .site-elevator-arrow::after{display:none}
   .site-elevator-arrow:hover:not(:disabled){
-    color:#fff2bd;
-    border-color:var(--elevator-gold-bright);
-    background:
-      linear-gradient(180deg,rgba(255,244,202,.09),transparent 38%),
-      linear-gradient(180deg,color-mix(in srgb,var(--elevator-control-top) 84%,#fff 16%),var(--elevator-control-bottom));
-    box-shadow:
-      inset 0 0 0 1px rgba(255,240,194,.18),
-      0 0 10px rgba(232,190,93,.16);
+    opacity:1;
+    outline:0;
+    background:rgba(255,215,120,.04);
+    box-shadow:inset 0 0 0 1px rgba(255,226,151,.28),0 0 10px rgba(236,190,96,.14);
   }
   .site-elevator-arrow:focus-visible{
-    color:#fff7d7;
-    outline:2px solid rgba(255,241,199,.86);
-    outline-offset:1px;
+    opacity:1;
+    outline:2px solid rgba(255,239,196,.78);
+    outline-offset:-2px;
+    background:rgba(255,215,120,.045);
+    box-shadow:0 0 12px rgba(236,190,96,.20);
   }
   .site-elevator-arrow:disabled{
-    opacity:.28;
-    color:#a58e62;
+    opacity:0;
     cursor:default;
   }
 
-  /* Real floor board: one height and one typography system on every floor. */
+  /* The floor board and scenery are already painted into the panorama. */
   .site-elevator-reel{
-    position:relative;
-    min-height:var(--elevator-shell-height);
-    overflow:hidden;
+    overflow:visible;
     perspective:none;
-    background:
-      radial-gradient(circle at 14% 50%,rgba(231,196,112,.09),transparent 30%),
-      linear-gradient(180deg,var(--elevator-panel-top),var(--elevator-panel-bottom));
-    border-right:2px solid var(--elevator-gold);
-    box-shadow:
-      inset 0 0 0 1px rgba(245,215,145,.13),
-      inset 4px 0 rgba(0,0,0,.16),
-      inset -4px 0 rgba(0,0,0,.18),
-      4px 0 10px rgba(0,0,0,.10);
   }
-  .site-elevator-reel::before{
-    content:"";
-    position:absolute;
-    inset:clamp(5px,.45vw,9px);
-    display:block;
-    pointer-events:none;
-    border:1px solid rgba(222,178,84,.54);
-    clip-path:polygon(3% 0,97% 0,100% 8%,100% 92%,97% 100%,3% 100%,0 92%,0 8%);
-    box-shadow:inset 0 0 0 1px rgba(255,234,176,.05);
-  }
-  .site-elevator-reel::after{
-    content:"";
-    position:absolute;
-    left:8%;
-    right:8%;
-    bottom:6%;
-    height:1px;
-    display:block;
-    background:linear-gradient(90deg,transparent,var(--elevator-gold-bright),transparent);
-    opacity:.5;
-  }
-
+  .site-elevator-reel::before,
+  .site-elevator-reel::after{display:none}
   .site-elevator-floor{
-    opacity:1;
+    opacity:0;
     pointer-events:none;
     transform:none;
-    min-height:var(--elevator-shell-height);
-    height:var(--elevator-shell-height);
-    display:grid;
-    grid-template-columns:minmax(34px,24%) minmax(0,1fr);
-    grid-template-rows:1fr auto auto 1fr;
-    grid-template-areas:". ." "code floor" "code room" ". .";
-    align-items:center;
-    column-gap:clamp(8px,.8vw,16px);
-    row-gap:clamp(2px,.24vw,5px);
-    padding:clamp(8px,.8vw,16px) clamp(12px,1.15vw,22px) clamp(8px,.8vw,16px) clamp(9px,.8vw,16px);
   }
   .site-elevator[data-elevator-direction] .site-elevator-floor{
     animation:none;
     transform:none;
   }
-  .site-elevator-floor-code{
-    align-self:stretch;
-    display:grid;
-    place-items:center;
-    padding-top:clamp(10px,1vw,20px);
-    border-right:1px solid rgba(222,178,84,.48);
-    color:var(--elevator-gold-bright);
-    font-size:clamp(13px,1.15vw,22px);
-    letter-spacing:.06em;
-    text-shadow:0 1px 0 #000,0 0 8px rgba(231,195,111,.22);
-  }
-  .site-elevator-floor-code::before{
-    top:6%;
-    width:clamp(9px,.8vw,15px);
-    height:clamp(5px,.42vw,8px);
-    background:var(--elevator-gold-bright);
-  }
-  .site-elevator-floor-label{
-    color:var(--elevator-ink);
-    font:800 clamp(18px,2vw,36px)/1 Georgia,"Times New Roman",serif;
-    letter-spacing:.035em;
-    text-transform:uppercase;
-    text-shadow:0 2px 0 #000,0 0 8px rgba(231,195,111,.18);
-  }
-  .site-elevator-room-label{
-    color:#d7d4c8;
-    font-size:clamp(8px,.68vw,12px);
-    letter-spacing:.08em;
-    text-transform:uppercase;
-    text-shadow:0 1px 0 #000;
-  }
-
-  /* Scenic crop: use only the panorama portion of the composite artwork. */
   .site-elevator-stage{
-    position:relative;
-    min-height:var(--elevator-shell-height);
-    overflow:hidden;
-    isolation:isolate;
-    background:var(--elevator-stage-base);
-    box-shadow:none;
+    position:static;
+    overflow:visible;
   }
-  .site-elevator-stage::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    z-index:0;
-    display:block;
-    pointer-events:none;
-    opacity:1;
-    background-image:var(--site-header-art);
-    background-repeat:no-repeat;
-    background-position:right top;
-    /* The full source panorama stays viewport-scaled and aspect-correct.
-       The stage crops its right-hand scenic portion instead of stretching it. */
-    background-size:100vw auto;
-    filter:none;
-  }
-  .site-elevator-stage::after{
-    content:"";
-    position:absolute;
-    inset:0 0 var(--elevator-nav-height) 0;
-    z-index:1;
-    display:block;
-    pointer-events:none;
-    background:
-      linear-gradient(180deg,rgba(3,8,10,.03),transparent 66%,rgba(3,8,10,.20)),
-      linear-gradient(90deg,rgba(2,7,9,.06),transparent 18%,transparent 82%,rgba(2,7,9,.08));
-  }
+  .site-elevator-stage::before,
+  .site-elevator-stage::after{display:none}
 
-  /* Real Room navigation. Same height on Heaven, Plane and Below. */
+  /* One full-banner coordinate system. The rail itself never catches clicks. */
   .site-elevator-room-rail{
     position:absolute;
-    z-index:3;
-    left:0;
-    right:0;
-    bottom:0;
-    width:auto;
-    height:var(--elevator-nav-height);
-    min-height:var(--elevator-nav-height);
+    z-index:5;
+    inset:0;
+    width:100%;
+    height:100%;
+    min-height:0;
     margin:0;
-    padding:clamp(3px,.28vw,6px) clamp(5px,.45vw,10px);
-    display:grid;
-    align-items:stretch;
-    gap:clamp(4px,.42vw,9px);
-    overflow:hidden;
-    pointer-events:auto;
-    box-sizing:border-box;
-    background:
-      linear-gradient(180deg,rgba(18,42,45,.98),rgba(5,16,19,.995));
-    border-top:1px solid var(--elevator-gold-bright);
-    box-shadow:
-      inset 0 1px rgba(255,244,211,.09),
-      inset 0 -2px rgba(0,0,0,.22),
-      0 -4px 10px rgba(0,0,0,.16);
-  }
-  .site-elevator[data-elevator-level="heaven"] .site-elevator-room-rail{
-    grid-template-columns:1fr 1fr .92fr;
-  }
-  .site-elevator[data-elevator-level="plane"] .site-elevator-room-rail{
-    grid-template-columns:1fr 1.18fr .92fr 1.06fr 1.20fr;
-  }
-  .site-elevator[data-elevator-level="below"] .site-elevator-room-rail{
-    grid-template-columns:1fr 1.04fr 1.10fr 1.05fr;
+    padding:0;
+    display:block;
+    overflow:visible;
+    pointer-events:none;
+    background:transparent;
   }
   .site-elevator[data-elevator-direction] .site-elevator-room-rail{
     animation:none;
@@ -1021,87 +798,81 @@ html[data-site-floor] body.home-body::before{content:none;display:none}
   .site-elevator-room-rail::after{display:none}
 
   .site-elevator[data-elevator-level] .site-elevator-room{
-    position:relative;
+    position:absolute;
     width:auto;
     max-width:none;
-    height:100%;
     min-height:0;
     max-height:none;
     margin:0;
-    padding:0 clamp(8px,.8vw,15px);
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    padding:0;
     overflow:hidden;
     pointer-events:auto;
-    border:1px solid rgba(222,178,84,.76);
+    border:0;
     border-radius:0;
-    clip-path:polygon(3% 0,97% 0,100% 18%,100% 82%,97% 100%,3% 100%,0 82%,0 18%);
-    background:
-      linear-gradient(180deg,rgba(255,255,255,.035),transparent 34%),
-      linear-gradient(180deg,var(--elevator-room-top),var(--elevator-room-bottom));
-    box-shadow:
-      inset 0 0 0 1px rgba(255,232,170,.08),
-      inset 0 -4px rgba(0,0,0,.16),
-      0 2px 3px rgba(0,0,0,.28);
-    color:#f8f1dd;
-    text-shadow:0 1px 0 #000,0 0 4px rgba(255,229,166,.10);
-    font:700 clamp(10px,.95vw,18px)/1.02 Georgia,"Times New Roman",serif;
-    letter-spacing:.005em;
-    text-align:center;
-    white-space:normal;
+    clip-path:none;
+    background:transparent;
+    box-shadow:none;
+    color:transparent;
+    text-shadow:none;
+    font-size:0;
     transform:none;
-    transition:border-color 110ms ease,background 110ms ease,box-shadow 110ms ease,color 110ms ease;
+    transition:background-color 90ms ease,box-shadow 90ms ease;
   }
-  .site-elevator[data-elevator-level] .site-elevator-room::before{
-    content:"";
-    position:absolute;
-    left:8%;
-    right:8%;
-    top:3px;
-    height:1px;
-    display:block;
-    pointer-events:none;
-    background:linear-gradient(90deg,transparent,rgba(255,232,170,.46),transparent);
+  .site-elevator[data-elevator-level] .site-elevator-room::before,
+  .site-elevator[data-elevator-level] .site-elevator-room::after{display:none}
+
+  /* HEAVEN: three painted plaques. */
+  .site-elevator[data-elevator-level="heaven"] .site-elevator-room{
+    top:63.5%;
+    height:24.5%;
   }
-  .site-elevator[data-elevator-level] .site-elevator-room::after{
-    content:"";
-    position:absolute;
-    right:clamp(5px,.5vw,9px);
-    top:clamp(5px,.45vw,8px);
-    width:clamp(3px,.3vw,5px);
-    height:clamp(3px,.3vw,5px);
-    display:block;
-    pointer-events:none;
-    border:1px solid rgba(222,178,84,.66);
-    transform:rotate(45deg);
-    background:var(--elevator-room-bottom);
+  .site-elevator[data-elevator-level="heaven"] .site-elevator-room:nth-child(1){left:33.78%;width:20.34%}
+  .site-elevator[data-elevator-level="heaven"] .site-elevator-room:nth-child(2){left:54.30%;width:20.22%}
+  .site-elevator[data-elevator-level="heaven"] .site-elevator-room:nth-child(3){left:74.70%;width:20.52%}
+
+  /* PLANE: five unequal plaques; equal grid columns visibly drift off-target. */
+  .site-elevator[data-elevator-level="plane"] .site-elevator-room{
+    top:66.5%;
+    height:24%;
   }
+  .site-elevator[data-elevator-level="plane"] .site-elevator-room:nth-child(1){left:24.33%;width:14.04%}
+  .site-elevator[data-elevator-level="plane"] .site-elevator-room:nth-child(2){left:38.50%;width:16.16%}
+  .site-elevator[data-elevator-level="plane"] .site-elevator-room:nth-child(3){left:54.78%;width:13.02%}
+  .site-elevator[data-elevator-level="plane"] .site-elevator-room:nth-child(4){left:67.86%;width:14.35%}
+  .site-elevator[data-elevator-level="plane"] .site-elevator-room:nth-child(5){left:82.32%;width:16.89%}
+
+  /* BELOW: two field stations followed by two governed Rooms. */
+  .site-elevator[data-elevator-level="below"] .site-elevator-room{
+    top:60.5%;
+    height:25.5%;
+  }
+  .site-elevator[data-elevator-level="below"] .site-elevator-room:nth-child(1){left:34.44%;width:15.62%}
+  .site-elevator[data-elevator-level="below"] .site-elevator-room:nth-child(2){left:50.24%;width:15.74%}
+  .site-elevator[data-elevator-level="below"] .site-elevator-room:nth-child(3){left:66.16%;width:16.77%}
+  .site-elevator[data-elevator-level="below"] .site-elevator-room:nth-child(4){left:83.11%;width:15.86%}
+
   .site-elevator[data-elevator-level] .site-elevator-room:hover{
-    color:#fff8de;
-    border-color:var(--elevator-gold-bright);
-    background:
-      linear-gradient(180deg,rgba(255,244,207,.07),transparent 34%),
-      linear-gradient(180deg,var(--elevator-room-hover-top),var(--elevator-room-hover-bottom));
+    background:rgba(255,229,168,.028);
     box-shadow:
-      inset 0 0 0 1px rgba(255,239,193,.13),
-      0 0 10px rgba(231,188,91,.15);
+      inset 0 0 0 1px rgba(255,225,154,.30),
+      inset 0 0 16px rgba(255,220,135,.035);
+    outline:0;
+    transform:none;
   }
   .site-elevator[data-elevator-level] .site-elevator-room.is-active{
-    color:#fff9e8;
-    border-color:var(--elevator-gold-bright);
-    background:
-      linear-gradient(180deg,rgba(255,233,167,.10),transparent 38%),
-      linear-gradient(180deg,var(--elevator-room-active-top),var(--elevator-room-active-bottom));
+    background:rgba(255,229,168,.038);
     box-shadow:
-      inset 0 0 0 1px rgba(255,240,199,.22),
-      inset 0 3px rgba(255,229,166,.05),
-      inset 0 -3px rgba(0,0,0,.16),
-      0 0 10px rgba(231,188,91,.14);
+      inset 0 0 0 1px rgba(255,225,154,.42),
+      inset 0 0 18px rgba(255,220,135,.045);
+    outline:0;
+    transform:none;
   }
   .site-elevator[data-elevator-level] .site-elevator-room:focus-visible{
-    color:#fff;
-    outline:2px solid rgba(255,244,210,.92);
-    outline-offset:1px;
+    background:rgba(255,229,168,.045);
+    box-shadow:
+      inset 0 0 0 2px rgba(255,241,205,.78),
+      0 0 10px rgba(234,190,98,.18);
+    outline:0;
+    transform:none;
   }
 }
