@@ -423,3 +423,83 @@ html{scroll-behavior:smooth}
 @media(prefers-reduced-motion:reduce){
   .garden-grove-grid a{transition:none}
 }
+
+/* --- Garden words / echoes / prehistory --- */
+.garden-whisper{
+  position:absolute;z-index:10;left:18px;bottom:18px;max-width:min(390px,36%);
+  padding:9px 11px;border-left:2px solid rgba(222,194,112,.62);
+  background:linear-gradient(90deg,rgba(7,12,8,.72),rgba(7,12,8,.22));
+  color:#f0e6cb;backdrop-filter:blur(5px);
+  text-shadow:0 1px 6px rgba(0,0,0,.45);
+  transition:opacity .3s ease,transform .3s ease
+}
+.garden-whisper.is-changing{opacity:0;transform:translateY(5px)}
+.garden-whisper-source{display:block;margin-bottom:4px;color:#c8ad61;font:800 8px/1 ui-monospace,monospace;letter-spacing:.11em}
+.garden-whisper q{display:block;font:400 12px/1.45 Georgia,var(--site-font-serif);quotes:"“" "”"}
+.garden-whisper q:before{content:open-quote}.garden-whisper q:after{content:close-quote}
+
+.garden-bible-echoes{
+  display:grid;grid-template-columns:.78fr 1.22fr;gap:22px;margin-top:30px;padding:24px;
+  border:1px solid rgba(255,255,255,.08);
+  background:radial-gradient(circle at 5% 0,rgba(177,149,76,.09),transparent 34%),#0a120c
+}
+.garden-bible-echoes-intro .eyebrow{margin:0 0 7px;color:#9e8956;font-size:.61rem;letter-spacing:.11em}
+.garden-bible-echoes-intro h3{margin:0;color:#eadfc3;font:400 1.55rem/1.15 var(--site-font-serif)}
+.garden-bible-echoes-intro p:last-child{color:#92a096;font-size:.82rem;line-height:1.58}
+.garden-bible-echo-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.garden-bible-echo-grid article{padding:15px;border:1px solid rgba(255,255,255,.07);background:#0d160f}
+.garden-bible-echo-grid small{color:#a8925d;font:800 .58rem ui-monospace,monospace;letter-spacing:.1em}
+.garden-bible-echo-grid q{display:block;margin:7px 0;color:#e9dec3;font:400 1rem/1.35 var(--site-font-serif)}
+.garden-bible-echo-grid p{margin:0;color:#89988c;font-size:.74rem;line-height:1.48}
+
+.garden-prehistory{
+  display:grid;grid-template-columns:.85fr 1.25fr auto;gap:20px;align-items:center;
+  margin-top:26px;padding:19px 20px;border-top:1px solid rgba(255,255,255,.07);
+  border-bottom:1px solid rgba(255,255,255,.07);background:#09110b
+}
+.garden-prehistory .eyebrow{margin:0 0 5px;color:#918055;font-size:.58rem;letter-spacing:.1em}
+.garden-prehistory h3{margin:0;color:#eadfbe;font:400 1.28rem/1.2 var(--site-font-serif)}
+.garden-prehistory>p{margin:0;color:#95a297;font-size:.82rem;line-height:1.55}
+.garden-prehistory>a{font-size:.7rem;text-decoration:none;white-space:nowrap}
+
+.garden-reader--words{position:relative}
+.garden-reader--words:before{
+  content:"";position:absolute;inset:-24px -40px auto;height:210px;z-index:-1;pointer-events:none;
+  background:radial-gradient(circle at 50% 0,rgba(189,158,76,.07),transparent 64%)
+}
+.garden-quote-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:26px}
+.garden-quote-grid figure{
+  display:flex;flex-direction:column;min-height:180px;margin:0;padding:20px;
+  border:1px solid rgba(255,255,255,.08);background:#0b130d
+}
+.garden-quote-grid blockquote{
+  margin:0;color:#ebe0c2;font:400 1.15rem/1.48 var(--site-font-serif)
+}
+.garden-quote-grid figcaption{margin-top:auto;padding-top:18px;border-top:1px solid rgba(255,255,255,.06)}
+.garden-quote-grid figcaption strong{display:block;color:#bda968;font:800 .61rem ui-monospace,monospace;letter-spacing:.07em}
+.garden-quote-grid figcaption span{display:block;margin-top:3px;color:#748078;font-size:.66rem}
+.garden-public-line{
+  margin-top:12px;padding:24px;border:1px solid rgba(204,173,91,.2);
+  background:linear-gradient(90deg,rgba(107,86,38,.12),rgba(10,18,12,.96))
+}
+.garden-public-line small{color:#a58c50;font:800 .6rem ui-monospace,monospace;letter-spacing:.11em}
+.garden-public-line p{max-width:28ch;margin:9px 0;color:#f1e5c0;font:400 clamp(1.45rem,3vw,2.4rem)/1.15 var(--site-font-serif)}
+.garden-public-line span{color:#859188;font-size:.78rem}
+.garden-word-reflection{
+  display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:26px
+}
+.garden-word-reflection p{margin:0;color:#a9b5ab;font:400 .96rem/1.68 var(--site-font-serif)}
+.garden-word-reflection strong{color:#ddd1ad;font-weight:500}
+
+@media(max-width:900px){
+  .garden-bible-echoes{grid-template-columns:1fr}
+  .garden-prehistory{grid-template-columns:1fr}
+  .garden-prehistory>a{white-space:normal}
+}
+@media(max-width:650px){
+  .garden-whisper{max-width:330px;left:12px;bottom:42px}
+  .garden-bible-echo-grid,.garden-quote-grid,.garden-word-reflection{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){
+  .garden-whisper{transition:none}
+}
