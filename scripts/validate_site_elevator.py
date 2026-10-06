@@ -171,7 +171,7 @@ def main() -> int:
             errors.append("desktop interaction map must not regress to equal-width plaque columns")
         if "nth-child(" in css[css.find("/* 2026-10-06 v3 canonical illustrated composition."):]:
             errors.append("v3 desktop hotspot geometry must not use nth-child coordinate guesses")
-        if "fetchJson('/app/site-elevator-hotspots.json')" not in js or "applyHotspotRect(link,rect,hotspotContract.artboard)" not in js:
+        if "fetchJson('/app/site-elevator-hotspots.json')" not in js or "applyHotspotRect(link,rect,artboard)" not in js:
             errors.append("site elevator runtime must load and apply the canonical hotspot map")
         if ".site-elevator[data-elevator-direction] .site-elevator-room-rail" not in css or "animation:none" not in css:
             errors.append("desktop invisible hit rail must not inherit settling animation")
