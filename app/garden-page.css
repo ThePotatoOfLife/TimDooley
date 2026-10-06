@@ -23,3 +23,10 @@
 
 @media(max-width:800px){.garden-intro{padding-left:12px;padding-right:12px}.garden-world{padding:0}.garden-world-canvas{min-width:980px}.garden-dialogue{position:sticky;left:0;right:auto;bottom:0;width:min(100vw,680px);margin-left:max(0px,calc((100vw - 680px)/2));min-height:165px}.garden-reading-split,.garden-paths>div{grid-template-columns:1fr}.garden-field-notes{padding:0 16px}.garden-world-access{padding:0 12px}}
 @media(prefers-reduced-motion:reduce){.garden-ambient{animation:none!important}.garden-world-prompt{transition:none}}
+
+.garden-character{position:absolute;z-index:5;pointer-events:none;image-rendering:pixelated;filter:drop-shadow(0 2px 1px rgba(0,0,0,.42))}
+.garden-character-tim{left:39.1%;top:45.2%;width:3.35%;min-width:30px;max-width:56px;transform-origin:50% 100%;animation:tim-idle 1.35s steps(2,end) infinite}
+.garden-character-tim .tim-hand{transform-origin:13px 15px;animation:tim-hand 4.8s steps(2,end) infinite}
+@keyframes tim-idle{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
+@keyframes tim-hand{0%,78%,100%{transform:translate(0,0)}82%,92%{transform:translate(0,-2px)}}
+@media(prefers-reduced-motion:reduce){.garden-character-tim,.garden-character-tim .tim-hand{animation:none!important}}
