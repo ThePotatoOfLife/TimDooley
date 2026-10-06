@@ -8,3 +8,65 @@
 .memorial-note{border-left:2px solid rgba(216,181,107,.42);padding:10px 14px;margin:12px 0 24px;opacity:.9}
 .layer-spine h2{margin:.1rem 0 .65rem}.layer-step a{color:inherit}.layer-handoff{padding:12px 14px;margin:18px 0;line-height:1.55}
 @media(max-width:760px){.memorials{grid-template-columns:1fr}}
+
+
+/* 2026-10-07 black-glass Farm material */
+.lower-layer-page--farm{
+  --farm-glass:rgba(4,5,6,.70);
+  --farm-glass-soft:rgba(6,7,8,.56);
+  --farm-line:rgba(192,91,49,.20);
+}
+.lower-layer-page--farm .note,
+.lower-layer-page--farm .warning,
+.lower-layer-page--farm .flow,
+.lower-layer-page--farm .ledger article,
+.lower-layer-page--farm .memorial,
+.lower-layer-page--farm .case-line,
+.lower-layer-page--farm .layer-handoff{
+  position:relative;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.018),transparent 26%),
+    var(--farm-glass-soft);
+  border-color:var(--farm-line);
+  box-shadow:inset 0 1px rgba(255,255,255,.024),0 10px 26px rgba(0,0,0,.15);
+  backdrop-filter:blur(8px) saturate(.78)
+}
+.lower-layer-page--farm .note,
+.lower-layer-page--farm .case-line{
+  border-left-color:rgba(207,103,55,.36)
+}
+.lower-layer-page--farm .grid .card{
+  position:relative;
+  overflow:hidden;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.018),transparent 28%),
+    rgba(5,6,7,.58);
+  border-color:rgba(192,91,49,.16);
+  box-shadow:inset 0 1px rgba(255,255,255,.022)
+}
+.lower-layer-page--farm .grid .card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  opacity:.22;
+  background:
+    linear-gradient(122deg,transparent 0 74%,rgba(221,112,60,.16) 74.15%,transparent 74.38%),
+    linear-gradient(57deg,transparent 0 88%,rgba(221,112,60,.10) 88.12%,transparent 88.30%);
+}
+.lower-layer-page--farm .grid .card:hover,
+.lower-layer-page--farm .ledger article:hover{
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.025),transparent 28%),
+    rgba(8,8,9,.68);
+  border-color:rgba(210,106,59,.23)
+}
+.lower-layer-page--farm .eq{
+  background:rgba(3,4,5,.62);
+  border-color:rgba(192,91,49,.18);
+  box-shadow:inset 3px 0 rgba(205,102,54,.15)
+}
+.lower-layer-page--farm .pill,
+.lower-layer-page--farm .ns-badge{
+  background:rgba(5,6,7,.58)
+}
