@@ -159,3 +159,34 @@
   .heaven-concept-reader .spirit-case{grid-template-columns:1fr;gap:5px}
   .heaven-concept-reader .compare{display:block;overflow-x:auto}
 }
+
+
+/* Honor / reverence reader extensions */
+.heaven-concept-reader .callout{
+  margin:24px 0;
+  padding:16px 18px;
+  border:1px solid var(--heaven-line);
+  border-left:3px solid rgba(155,116,43,.46);
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.13),transparent 28%),
+    var(--heaven-pane-soft);
+  color:#51574f;
+  box-shadow:0 10px 24px rgba(0,0,0,.09)
+}
+.heaven-concept-reader .meta{
+  color:var(--heaven-muted);
+  font-size:.82rem;
+  letter-spacing:.12em;
+  text-transform:uppercase
+}
+.heaven-concept-reader .qa{
+  padding:16px 0;
+  border-top:1px solid rgba(144,119,68,.20)
+}
+.heaven-concept-reader .qa strong{
+  display:block;
+  margin-bottom:5px;
+  color:#62491e;
+  font:400 21px/1.2 var(--site-font-serif)
+}
+.heaven-concept-reader .qa p{color:var(--heaven-muted)}
