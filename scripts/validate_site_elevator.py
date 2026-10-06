@@ -263,6 +263,22 @@ def main() -> int:
                 for entry in entries:
                     if entry.get("y") != 180 or entry.get("height") != 44:
                         errors.append(f"{floor_id} hotspot {entry.get('key')} must use shared y=180, height=44 geometry")
+            projection_data = json.loads((ROOT / "data" / "house" / "elevator-spatial-projection.json").read_text(encoding="utf-8"))
+            room_data = json.loads((ROOT / "data" / "house" / "rooms.json").read_text(encoding="utf-8"))
+            known_rooms = {str(row.get("id")) for row in (room_data.get("rooms") or []) if row.get("id")}
+            known_landmarks = {
+                str(landmark.get("id"))
+                for level in (projection_data.get("levels") or [])
+                for landmark in (level.get("landmarks") or [])
+                if landmark.get("id")
+            }
+            for floor_id, floor in ((hotspots.get("floors") or {}).items()):
+                for entry in (floor.get("entries") or []):
+                    key = str(entry.get("key") or "")
+                    if key.startswith("room:") and key[5:] not in known_rooms:
+                        errors.append(f"{floor_id} hotspot references unknown Room: {key}")
+                    elif key.startswith("landmark:") and key[9:] not in known_landmarks:
+                        errors.append(f"{floor_id} hotspot references unknown landmark: {key}")
         if "installSceneParallax" in js or "--site-scene-y" in js:
             errors.append("site elevator runtime must not restore retired scene parallax")
         if "overflow-x:auto" in css:
