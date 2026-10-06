@@ -503,3 +503,13 @@ html{scroll-behavior:smooth}
 @media(prefers-reduced-motion:reduce){
   .garden-whisper{transition:none}
 }
+
+.garden-mud-saying{
+  margin:16px 0 0;padding:12px 13px;border-left:2px solid rgba(146,103,61,.62);
+  background:rgba(52,35,23,.24);color:#d8c5aa;
+  font:400 .88rem/1.5 var(--site-font-serif)
+}
+.garden-mud-saying cite{
+  display:block;margin-top:7px;color:#8d7b6b;
+  font:700 .58rem/1.2 ui-monospace,monospace;letter-spacing:.06em;text-transform:uppercase
+}
