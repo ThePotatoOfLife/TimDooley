@@ -290,3 +290,136 @@ html{scroll-behavior:smooth}
   .garden-dialogue{animation:none!important}
   .garden-reader[data-garden-reveal]{opacity:1;transform:none}
 }
+
+/* --- Garden depth pass: tiny discoveries, ordinary Heaven, hospitality, reading grove --- */
+.garden-zone--small{width:22px;height:22px}
+.garden-zone--small .garden-zone-mark{
+  width:18px;height:18px;border-radius:50%;
+  font-size:0;background:rgba(246,236,201,.62);
+  border-color:rgba(88,69,37,.42);
+  opacity:.28;transform:scale(.66)
+}
+.garden-zone--small .garden-zone-mark:after{
+  content:"";width:4px;height:4px;border-radius:50%;background:#6f5b31;
+  box-shadow:0 0 0 1px rgba(255,255,255,.28)
+}
+.garden-zone--small:hover .garden-zone-mark,
+.garden-zone--small:focus-visible .garden-zone-mark,
+.garden-zone--small.is-active .garden-zone-mark,
+.garden-world.is-revealing .garden-zone--small .garden-zone-mark{
+  opacity:.95;transform:scale(1)
+}
+.garden-zone--small .garden-zone-tip{top:26px;font-size:9px;padding:4px 6px}
+.zone-picnic{left:24%;top:58%}
+.zone-rabbit{left:34%;top:70%}
+.zone-potato{left:38%;top:56%}
+.zone-angel{left:79%;top:51%}
+.zone-fruitbasket{left:50%;top:50%}
+.zone-bridge{left:58%;top:72%}
+
+.garden-day-grid,
+.garden-hospitality-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:24px
+}
+.garden-day-grid article,
+.garden-hospitality-grid article{
+  min-height:160px;padding:19px;border:1px solid rgba(255,255,255,.08);
+  background:linear-gradient(180deg,#0d160f,#0a110c)
+}
+.garden-day-grid time{
+  display:block;color:#9f8b57;font:800 .61rem/1 ui-monospace,monospace;letter-spacing:.12em
+}
+.garden-day-grid h3{
+  margin:8px 0;color:#eee2c8;font:400 1.35rem/1.15 var(--site-font-serif)
+}
+.garden-day-grid p{
+  margin:0;color:#98a79b;font-size:.84rem;line-height:1.62
+}
+.garden-hospitality-grid article{
+  min-height:132px;background:#0b130d
+}
+.garden-hospitality-grid strong{
+  display:block;margin-bottom:7px;color:#e4d4a0;font:400 1.15rem/1.15 var(--site-font-serif)
+}
+.garden-hospitality-grid span{
+  color:#96a398;font-size:.8rem;line-height:1.55
+}
+
+.garden-reader--day{
+  position:relative
+}
+.garden-reader--day:before{
+  content:"";position:absolute;left:-22px;top:18px;bottom:18px;width:1px;
+  background:linear-gradient(transparent,rgba(190,163,91,.32),transparent)
+}
+.garden-reader--hospitality{
+  padding-top:30px;padding-bottom:30px;border-top:1px solid rgba(255,255,255,.06);
+  border-bottom:1px solid rgba(255,255,255,.06)
+}
+.garden-grove-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:24px
+}
+.garden-grove-grid a{
+  display:flex;flex-direction:column;min-height:150px;padding:20px;
+  border:1px solid rgba(255,255,255,.08);
+  background:
+    radial-gradient(circle at 88% 14%,rgba(194,165,86,.07),transparent 28%),
+    #0b130d;
+  text-decoration:none;transition:transform .18s ease,border-color .18s ease,background .18s ease
+}
+.garden-grove-grid a:hover,
+.garden-grove-grid a:focus-visible{
+  transform:translateY(-2px);border-color:rgba(212,183,102,.28);
+  background:
+    radial-gradient(circle at 88% 14%,rgba(194,165,86,.11),transparent 32%),
+    #0d160f
+}
+.garden-grove-grid small{
+  color:#908260;font:800 .6rem/1 ui-monospace,monospace;letter-spacing:.1em
+}
+.garden-grove-grid strong{
+  margin-top:auto;color:#eadfbe;font:400 1.4rem/1.15 var(--site-font-serif)
+}
+.garden-grove-grid span{
+  margin-top:7px;color:#7f8f83;font-size:.75rem;line-height:1.45
+}
+
+/* discovered points remember that the visitor has been there without becoming permanent plaques */
+.garden-zone.is-found .garden-zone-mark{
+  opacity:.48
+}
+.garden-zone.is-found .garden-zone-mark:before{
+  content:"";position:absolute;width:4px;height:4px;border-radius:50%;
+  background:#d7ba69;transform:translate(11px,-11px);
+  box-shadow:0 0 6px rgba(215,186,105,.5)
+}
+.garden-zone--small.is-found .garden-zone-mark:before{
+  transform:translate(7px,-7px)
+}
+
+/* make content links feel like paths, not button rows */
+.garden-deep-link a,
+.garden-reader a{
+  text-underline-offset:3px
+}
+.garden-door-grid a:hover,
+.garden-walk-strip a:hover,
+.garden-descent-links a:hover{
+  background:#0d160f
+}
+
+/* subtle life in long-reading area */
+.garden-reader:nth-of-type(even){
+  background-image:linear-gradient(90deg,transparent,rgba(144,168,113,.018),transparent)
+}
+
+@media(max-width:900px){
+  .garden-day-grid,.garden-hospitality-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:650px){
+  .garden-day-grid,.garden-hospitality-grid,.garden-grove-grid{grid-template-columns:1fr}
+  .garden-reader--day:before{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .garden-grove-grid a{transition:none}
+}
