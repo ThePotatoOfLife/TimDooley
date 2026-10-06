@@ -36,7 +36,7 @@ const cases=[
   ['/context/', 'below', 'archive-sources'],
   ['/corporium/', 'plane', null],
   ['/axis/', 'heaven', 'potatoverse-canon'],
-  ['/north/', 'heaven', null],
+  ['/north/', 'plane', null],
   ['/traditions/bible/', 'heaven', 'traditions-texts'],
   ['/history/', 'plane', 'time-history'],
   ['/law/', 'plane', 'world-systems'],
