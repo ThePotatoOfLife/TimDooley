@@ -278,6 +278,25 @@
       });
     };
 
+    const applyHotspotRect=(element,rect,artboard)=>{
+      if(!element||!rect||!artboard?.width||!artboard?.height)return;
+      element.style.setProperty('--hotspot-left',(rect.x/artboard.width*100)+'%');
+      element.style.setProperty('--hotspot-top',(rect.y/artboard.height*100)+'%');
+      element.style.setProperty('--hotspot-width',(rect.width/artboard.width*100)+'%');
+      element.style.setProperty('--hotspot-height',(rect.height/artboard.height*100)+'%');
+    };
+
+    const applyControlHotspots=()=>{
+      if(!hotspotContract?.artboard||!hotspotContract?.controls)return;
+      applyHotspotRect(up,hotspotContract.controls.up,hotspotContract.artboard);
+      applyHotspotRect(down,hotspotContract.controls.down,hotspotContract.artboard);
+    };
+
+    const hotspotRectForKey=(levelId,key)=>{
+      const rows=hotspotContract?.floors?.[levelId]?.entries||[];
+      return rows.find(row=>row?.key===key)||null;
+    };
+
     const renderRooms=()=>{
       if(!projection||!roomContract){
         roomRail.hidden=true;
@@ -301,6 +320,8 @@
           link.setAttribute('aria-current','location');
           link.classList.add('is-active');
         }
+        const rect=hotspotRectForKey(selectedLevel,link.dataset.hotspotKey);
+        if(rect)applyHotspotRect(link,rect,hotspotContract.artboard);
         fragment.appendChild(link);
       }
       for(const room of rows){
