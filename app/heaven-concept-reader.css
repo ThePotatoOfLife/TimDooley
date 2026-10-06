@@ -190,3 +190,150 @@
   font:400 21px/1.2 var(--site-font-serif)
 }
 .heaven-concept-reader .qa p{color:var(--heaven-muted)}
+
+
+/* Godhood long-question reader extensions */
+.heaven-concept-reader.god-question-reader{
+  max-width:1040px;
+}
+.god-question-reader>.back{
+  display:inline-block;
+  margin-bottom:18px;
+  color:#755824;
+  text-decoration:none;
+  font-size:13px
+}
+.god-question-reader>.kicker{
+  margin-top:18px;
+  color:var(--heaven-gold);
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase
+}
+.god-question-reader>h1{
+  margin:10px 0 18px;
+  color:#1f211d;
+  font:400 clamp(48px,8vw,84px)/.96 var(--site-font-serif);
+  letter-spacing:-.045em
+}
+.god-question-reader>.dek{
+  max-width:900px;
+  color:#464c44;
+  font:400 22px/1.55 var(--site-font-serif)
+}
+.god-question-reader .jump{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin:24px 0 32px
+}
+.god-question-reader .jump a{
+  border:1px solid var(--heaven-line);
+  border-radius:999px;
+  padding:6px 10px;
+  background:rgba(255,255,255,.16);
+  color:#66513a;
+  text-decoration:none;
+  font-size:12px
+}
+.god-question-reader .formula{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:10px;
+  margin:34px 0
+}
+.god-question-reader .formula>div{
+  border:1px solid var(--heaven-line);
+  border-radius:16px;
+  padding:18px;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.16),transparent 25%),
+    var(--heaven-pane-soft);
+  box-shadow:0 10px 24px rgba(0,0,0,.08)
+}
+.god-question-reader .formula strong{
+  display:block;
+  margin-bottom:6px;
+  color:#6d5120;
+  font:400 30px var(--site-font-serif)
+}
+.god-question-reader .formula p{
+  margin:0;
+  color:var(--heaven-muted);
+  font-size:14px
+}
+.god-question-reader>h2,
+.god-question-reader section>h2{
+  margin:42px 0 10px;
+  color:#332f28;
+  font:400 32px/1.2 var(--site-font-serif)
+}
+.god-question-reader>h3,
+.god-question-reader section>h3{
+  margin:28px 0 8px;
+  color:#473921;
+  font:400 23px/1.25 var(--site-font-serif)
+}
+.god-question-reader p{color:#4e554c}
+.god-question-reader .layer{
+  padding:16px 0;
+  border-top:1px solid rgba(144,119,68,.20)
+}
+.god-question-reader .layer b{color:#6b4f20}
+.god-question-reader .metric{
+  padding:14px 16px;
+  border:1px solid var(--heaven-line);
+  background:rgba(240,243,236,.42);
+  color:#555b53;
+  font-size:14px
+}
+.god-question-reader .metric strong{
+  color:#745622;
+  font-size:1.2em
+}
+.god-question-reader .grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+  margin:18px 0
+}
+.god-question-reader .grid>div{
+  border:1px solid var(--heaven-line);
+  border-radius:14px;
+  padding:16px;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.14),transparent 28%),
+    var(--heaven-pane-soft);
+  color:#545a52
+}
+.god-question-reader .grid b{
+  display:block;
+  margin-bottom:5px;
+  color:#6c5020
+}
+.god-question-reader .truth{
+  display:grid;
+  gap:8px
+}
+.god-question-reader .truth>div{
+  padding:12px 14px;
+  border:1px solid rgba(144,119,68,.18);
+  border-left:3px solid rgba(154,119,58,.42);
+  background:rgba(239,242,235,.40);
+  color:#545a52
+}
+.god-question-reader .truth b{color:#6c5020}
+.god-question-reader .research{
+  margin-top:50px;
+  padding:18px;
+  border:1px dashed rgba(144,119,68,.28);
+  border-radius:14px;
+  background:rgba(237,240,232,.34);
+  color:var(--heaven-muted);
+  font-size:13px
+}
+@media(max-width:700px){
+  .god-question-reader .formula,
+  .god-question-reader .grid{grid-template-columns:1fr}
+}
