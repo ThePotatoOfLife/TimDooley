@@ -1,0 +1,108 @@
+/* Shared Plane science concept reader.
+   Warm stone / sand material, restrained engraving, existing content preserved. */
+.science-concept-reader{
+  --science-stone:rgba(216,199,163,.72);
+  --science-stone-soft:rgba(211,192,154,.56);
+  --science-stone-deep:rgba(196,174,132,.46);
+  --science-ink:#201d17;
+  --science-copy:#4b4539;
+  --science-muted:#6a6253;
+  --science-rule:rgba(120,93,47,.22);
+  --science-gold:#8c6828;
+  max-width:1120px;
+  color:var(--science-copy)
+}
+.science-concept-reader .page-header{
+  position:relative;
+  overflow:hidden;
+  background:
+    linear-gradient(90deg,rgba(119,88,44,.05),transparent 17% 83%,rgba(119,88,44,.05)),
+    radial-gradient(circle at 50% 0,rgba(255,244,211,.28),transparent 42%),
+    linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.02)),
+    var(--science-stone);
+  border:1px solid rgba(142,108,53,.34);
+  color:var(--science-ink);
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.35),
+    inset 0 0 0 1px rgba(255,245,220,.14),
+    0 14px 32px rgba(0,0,0,.14);
+  backdrop-filter:blur(7px) saturate(.88)
+}
+.science-concept-reader .page-header::before{
+  content:"";
+  position:absolute;
+  inset:8px;
+  pointer-events:none;
+  border:1px solid rgba(120,91,43,.12)
+}
+.science-concept-reader .page-header h1{color:#1d1b16}
+.science-concept-reader .page-header .summary{color:#4e493f}
+.science-concept-reader .eyebrow{color:var(--science-gold)}
+.science-concept-reader h2{
+  margin-top:2.4rem;
+  color:#3a311f;
+  font:400 var(--site-text-section)/1.1 var(--site-font-serif)
+}
+.science-concept-reader .grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:14px
+}
+.science-concept-reader .card{
+  position:relative;
+  min-width:0;
+  border:1px solid rgba(124,96,50,.22);
+  border-radius:var(--site-radius);
+  padding:18px;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.12),transparent 26%),
+    var(--science-stone-soft);
+  box-shadow:inset 0 1px rgba(255,255,255,.16),0 10px 24px rgba(0,0,0,.09);
+  transition:background .15s ease,border-color .15s ease,transform .15s ease
+}
+.science-concept-reader .card:hover{
+  transform:translateY(-1px);
+  border-color:rgba(143,108,51,.32);
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.16),transparent 26%),
+    rgba(218,201,165,.64)
+}
+.science-concept-reader .card strong{
+  color:#5c451e;
+  font:500 18px/1.2 var(--site-font-serif)
+}
+.science-concept-reader .card p{
+  color:var(--science-muted);
+  line-height:1.58
+}
+.science-concept-reader .eq{
+  position:relative;
+  overflow:auto;
+  white-space:pre-wrap;
+  margin:13px 0 18px;
+  padding:15px 17px;
+  border:1px solid rgba(117,88,44,.24);
+  border-radius:var(--site-radius);
+  background:
+    repeating-linear-gradient(0deg,transparent 0 31px,rgba(112,86,49,.035) 32px),
+    rgba(225,211,181,.52);
+  color:#2e2b25;
+  box-shadow:inset 3px 0 rgba(143,105,47,.12);
+  font-family:var(--site-font-mono)
+}
+.science-concept-reader .note{
+  margin:18px 0 24px;
+  padding:14px 16px;
+  border-left:3px solid rgba(144,104,41,.56);
+  background:rgba(223,208,177,.48);
+  color:#565044
+}
+.science-concept-reader .note strong{color:#6d501f}
+.science-concept-reader section{
+  border-color:rgba(124,96,50,.17)
+}
+.science-concept-reader a{color:#6f531f}
+.science-concept-reader a:hover{color:#3e2f13}
+@media(max-width:700px){
+  .science-concept-reader .grid{grid-template-columns:1fr}
+}
