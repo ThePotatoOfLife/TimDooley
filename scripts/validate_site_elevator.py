@@ -107,6 +107,8 @@ def main() -> int:
 
     if "position:sticky;top:var(--site-elevator-clearance,0px)" not in garden_css:
         errors.append("Garden sticky navigation must sit below measured elevator clearance")
+    if ".garden-tim-presence{align-self:start;position:sticky;top:calc(var(--site-elevator-clearance,0px) + 14px)" not in garden_css:
+        errors.append("Garden Tim sticky presence must sit below measured elevator clearance")
     if "top:calc(var(--site-elevator-clearance,0px) + 6px)" not in tts_drawer_css:
         errors.append("sticky TTS host must sit below measured elevator clearance")
 
