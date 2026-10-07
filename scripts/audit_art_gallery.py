@@ -32,15 +32,19 @@ for marker,label in [
 ]:
     if marker not in html: fatal.append(f"gallery missing {label}")
 for marker,label in [
-    ("ONE-ROOM HORIZONTAL WALL V2","horizontal wall override"),
-    ("scroll-snap-type:x mandatory","horizontal scroll snapping"),
+    ("MUSEUM STAGE V3","museum stage stylesheet"),
+    (".gallery-card.is-active","active painting state"),
+    ("width:auto!important;height:auto!important","native artwork proportions"),
 ]:
     if marker not in css: fatal.append(f"gallery CSS missing {label}")
 for marker,label in [
-    ("Chronological wall ordering","chronological runtime"),
-    ("grid.addEventListener('wheel'","wheel-to-horizontal runtime"),
+    ("Controlled wall rotation. No wheel handler","controlled wall runtime"),
+    ("const renderWall","painting-stage renderer"),
+    ("data-wall-prev","previous-work runtime"),
 ]:
     if marker not in js: fatal.append(f"gallery JS missing {label}")
+if "addEventListener('wheel'" in js or 'addEventListener("wheel"' in js:
+    fatal.append("gallery JS must not hijack page wheel scrolling")
 
 figures=re.findall(r'<figure\b[^>]*class="[^"]*gallery-card[^"]*"[^>]*>[\s\S]*?</figure>',html,re.I)
 ids=[]
@@ -110,7 +114,7 @@ if dynamic:
     warnings.append(f"{dynamic} gallery image(s) still depend on runtime GitHub blob hydration")
 
 payload={
-    "schema_version":"1.0.0",
+    "schema_version":"1.1.0",
     "gallery_cards":len(figures),
     "static_dates":dates,
     "dynamic_blob_images":dynamic,

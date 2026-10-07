@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="../../../app/site-system.css?v=20260914a">
 <link rel="stylesheet" href="../../../app/room-interior.css?v=20260920c">
 <link rel="stylesheet" href="../../../app/works-room.css?v=20261007b">
-<link rel="stylesheet" href="../../../app/art-gallery.css?v=20261007wall2">
+<link rel="stylesheet" href="../../../app/art-gallery.css?v=20261007stage3">
 </head>
 <body>
 <main class="page page--reading inner-home works-room art-gallery-page">
@@ -21,7 +21,7 @@
 <header class="page-header gallery-header">
 <p class="eyebrow">Works · Visual Art</p>
 <h1>Visual Art Gallery</h1>
-<p class="summary">One continuous museum wall, arranged chronologically. Scroll normally and the exhibition travels sideways: one framed work at a time, from the earliest recovered image toward the later visual language.</p>
+<p class="summary">One museum room, arranged chronologically. The page scroll stays ordinary; inside the room, use the gallery controls to bring the previous or next painting into the central frame.</p>
 <div class="gallery-stats" aria-label="Gallery summary">
 <span><b>19</b> works currently hung</span>
 <span><b>Oldest → newest</b></span>
@@ -39,8 +39,10 @@
 </nav>
 
 <section id="recovered-gallery" aria-labelledby="gallery-title" data-room-reader-body>
-<p class="museum-intro"><span>One room · one wall</span><strong>The collection moves; the visitor stays with it.</strong> Dates come from the supplied filenames. The wall begins with the earliest recovered work and moves forward through the visual development of 2025. Use the wheel, trackpad, scrollbar or arrow keys to travel sideways.</p><h2 id="gallery-title" class="visually-hidden">Museum wall</h2>
-<div class="gallery-grid museum-wall" data-gallery-grid>
+<p class="museum-intro"><span>One room · one wall</span><strong>The wall moves; the page does not fight you.</strong> Dates come from the supplied filenames. Use Previous / Next, the keyboard arrows while the museum is focused, or swipe across the stage. Portraits, landscapes and square works keep their own proportions.</p><h2 id="gallery-title" class="visually-hidden">Museum wall</h2>
+<div class="museum-stage-shell" data-museum-stage>
+<button class="museum-nav museum-nav--prev" type="button" data-wall-prev aria-label="Previous artwork"><span aria-hidden="true">‹</span><small>Previous</small></button>
+<div class="gallery-grid museum-wall" data-gallery-grid tabindex="0" aria-label="Chronological Art Museum. Use Previous and Next to change paintings.">
 <figure data-date="2025-05-16" class="gallery-card" id="art-zombie-puppet-popemobile" data-category="authority" data-description="A crowned bearded driver sits above a pope-like figure inside a glass-front vehicle. Hierarchy is literally stacked, turning authority into visual satire." data-motifs="Motifs: hierarchy · crown · pope · vehicle · satire">
 <button class="gallery-open" type="button" data-gallery-open aria-label="View Zombie Puppet Popemobile">
 <span class="gallery-image-frame"><img loading="lazy" decoding="async" src="../../../assets/visual-art/2025/zombie-puppet-popemobile.webp" alt="Zombie Puppet Popemobile: A crowned bearded driver sits above a pope-like figure inside a glass-front vehicle. Hierarchy is literally stacked, turning authority into visual satire."></span>
@@ -150,6 +152,26 @@
 <button class="gallery-open" type="button" data-gallery-open aria-label="View Cosmic Weaver at Loom"><span class="gallery-image-frame"><img loading="eager" decoding="async" src="../../../assets/visual-art/2025/cosmic-weaver-at-loom.webp" alt="Cosmic Weaver at Loom: a crowned royal figure works a loom as golden threads cross a star-filled space."></span></button>
 <figcaption><span class="museum-number">Acquisition 02</span><strong>Cosmic Weaver at Loom</strong><em>17 Sep 2025 · supplied artwork</em><p class="gallery-card-desc">Power becomes craft. The crown announces authority, but the hands are occupied with a loom: order is made by connecting, crossing and holding tension between many luminous lines. The cosmic setting enlarges the gesture without changing its basic character. It is still handwork—patient, relational and constructed strand by strand.</p></figcaption></figure>
 </div>
+<button class="museum-nav museum-nav--next" type="button" data-wall-next aria-label="Next artwork"><small>Next</small><span aria-hidden="true">›</span></button>
+<div class="museum-audience" aria-hidden="true">
+  <span class="museum-person museum-person--a"></span>
+  <span class="museum-person museum-person--b"></span>
+  <span class="museum-person museum-person--c"></span>
+  <span class="museum-person museum-person--d"></span>
+</div>
+<div class="museum-floor" aria-hidden="true"></div>
+</div>
+<article class="gallery-plaque" data-wall-plaque aria-live="polite">
+  <div class="gallery-plaque__topline"><span data-plaque-counter>Work 01 / 19</span><span data-plaque-date></span></div>
+  <h3 data-plaque-title>Visual Art</h3>
+  <p class="gallery-plaque__body" data-plaque-body></p>
+  <p class="gallery-plaque__motifs" data-plaque-motifs></p>
+  <div class="gallery-plaque__controls" aria-label="Artwork controls">
+    <button type="button" data-wall-prev-secondary>← Previous work</button>
+    <button type="button" data-wall-open>Open full view</button>
+    <button type="button" data-wall-next-secondary>Next work →</button>
+  </div>
+</article>
 <p class="gallery-empty" data-gallery-empty hidden>No works match this filter.</p>
 </section>
 
@@ -185,7 +207,7 @@
 </div>
 </dialog>
 
-<script src="../../../app/art-gallery.js?v=20261007wall2"></script>
+<script src="../../../app/art-gallery.js?v=20261007stage3"></script>
 <script src="../../../app/house-journey.js"></script>
 </body>
 </html>
