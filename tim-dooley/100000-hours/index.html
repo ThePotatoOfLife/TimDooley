@@ -767,7 +767,22 @@ function render(){
  const progress=Math.min(100,(total/THRESHOLD)*100);
  document.getElementById('progress-ring').style.setProperty('--progress',progress+'%');
 }
-render();setInterval(render,1000);
+let liveTimer=0;
+function stopLiveTimer(){
+  if(liveTimer)window.clearInterval(liveTimer);
+  liveTimer=0;
+}
+function startLiveTimer(){
+  if(document.hidden||liveTimer)return;
+  render();
+  liveTimer=window.setInterval(render,1000);
+}
+startLiveTimer();
+document.addEventListener('visibilitychange',()=>{
+  if(document.hidden)stopLiveTimer();
+  else startLiveTimer();
+});
+window.addEventListener('pagehide',stopLiveTimer,{once:true});
 })();
 </script>
 <script src="../../app/tts-reader.js"></script>
