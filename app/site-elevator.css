@@ -95,9 +95,13 @@ html[data-site-floor]{
 html[data-site-floor="heaven"]{
   --site-realm-art:url("./home-heaven.avif");
   --site-realm-art-position:50% 18%;
-  --site-realm-shaft:rgba(245,239,211,.085);
-  --site-realm-glow:rgba(219,196,118,.11);
-  --site-realm-edge:rgba(5,10,15,.30);
+  --site-realm-fallback:#dfe6e9;
+  --site-realm-overlay:
+    radial-gradient(ellipse at 50% 8%,rgba(255,255,255,.24),transparent 48%),
+    linear-gradient(90deg,rgba(246,250,252,.08),rgba(255,255,255,.16) 50%,rgba(246,250,252,.08));
+  --site-realm-shaft:rgba(255,253,240,.16);
+  --site-realm-glow:rgba(255,248,215,.18);
+  --site-realm-edge:rgba(236,242,245,.10);
 }
 html[data-site-floor="plane"]{
   --site-realm-art:url("./home-plane.avif");
@@ -131,10 +135,18 @@ html[data-site-floor="below"]{
 
 .site-elevator[data-elevator-level="heaven"]{
   --site-header-art:url("./header-heaven-v3.avif");
-  --site-elevator-accent:#e7cb78;
-  --site-elevator-glow:rgba(231,203,120,.26);
+  --site-elevator-accent:#f0d98f;
+  --site-elevator-glow:rgba(240,217,143,.30);
   --site-header-art-position:50% 16%;
-  --site-header-shade:rgba(8,12,20,.42);
+  --site-header-shade:rgba(17,23,29,.24);
+}
+.site-elevator[data-elevator-level="heaven"] .site-elevator-stage::before{
+  filter:brightness(1.12) saturate(.82);
+}
+.site-elevator[data-elevator-level="heaven"] .site-elevator-stage::after{
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.08),transparent 35%,transparent 70%,rgba(8,12,16,.28)),
+    linear-gradient(90deg,rgba(15,21,27,.24),rgba(255,255,255,.03) 30%,rgba(255,255,255,.04) 70%,rgba(15,21,27,.24));
 }
 .site-elevator[data-elevator-level="plane"]{
   --site-header-art:url("./header-plane-v3.avif");
@@ -683,6 +695,14 @@ html[data-site-floor] body:not(.home-body):not(.garden-body):not(.dogs-hall-page
       rgba(245,241,222,.01) 82%,
       transparent 100%),
     linear-gradient(180deg,rgba(0,0,0,.12),transparent 18%,transparent 76%,rgba(0,0,0,.34));
+}
+/* Heaven gets mist and light rather than the generic dark vignette. */
+html[data-site-floor="heaven"] body:not(.home-body):not(.garden-body):not(.dogs-hall-page):not(.potatoes-hall-page)::after{
+  background:
+    radial-gradient(ellipse at 50% 9%,rgba(255,255,255,.30),transparent 48%),
+    linear-gradient(90deg,rgba(245,249,251,.10),transparent 24%,transparent 76%,rgba(245,249,251,.10)),
+    linear-gradient(90deg,transparent 0%,rgba(255,253,239,.04) 18%,rgba(255,253,239,.14) 42%,rgba(255,255,248,.19) 50%,rgba(255,253,239,.14) 58%,rgba(255,253,239,.04) 82%,transparent 100%),
+    linear-gradient(180deg,rgba(255,255,255,.12),transparent 22%,transparent 78%,rgba(235,242,244,.08));
 }
 
 @keyframes site-realm-depth-heaven{
