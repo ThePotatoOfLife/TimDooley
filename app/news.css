@@ -16,7 +16,7 @@
 .news-filter-drawer>summary::-webkit-details-marker{display:none}
 .news-filter-drawer>summary span:first-child{display:flex;gap:8px;align-items:baseline;min-width:0}
 .news-filter-drawer>summary b{font:400 16px var(--site-font-serif);color:#dbe1d7}
-.news-filter-drawer>summary small{font-size:8px;color:var(--site-faint)}
+.news-filter-drawer>summary small{font-size:10px;line-height:1.25;color:var(--site-faint)}
 .news-filter-drawer>summary:after{content:"＋";color:var(--site-gold);font-size:16px;line-height:1}
 .news-filter-drawer[open]>summary:after{content:"−"}
 .news-filter-drawer[open]>summary{border-bottom:1px solid var(--site-line)}
@@ -25,7 +25,7 @@
 .news-console-block{display:grid;grid-template-columns:118px minmax(0,1fr);gap:11px;align-items:start;padding:7px 0;border-top:1px solid rgba(255,255,255,.045)}
 .news-console-block:first-child{border-top:0;padding-top:0}
 .news-console-label span{display:block;color:#d6ddd2;font:400 14px var(--site-font-serif)}
-.news-console-label small{display:block;color:var(--site-faint);font-size:8px;line-height:1.3;margin-top:2px}
+.news-console-label small{display:block;color:var(--site-faint);font-size:10px;line-height:1.35;margin-top:2px}
 .news-tabs,.news-lenses,.news-horizons{display:flex;gap:5px;flex-wrap:wrap}
 .news-tab,.news-lens,.news-horizon,.news-refresh,.news-search button{appearance:none;border:1px solid var(--site-line);background:var(--site-panel);color:var(--site-muted);border-radius:999px;min-height:31px;padding:6px 10px;font:700 9px/1 var(--site-font-sans);letter-spacing:.045em;cursor:pointer}
 .news-tab[aria-pressed="true"],.news-lens[aria-pressed="true"],.news-horizon[aria-pressed="true"],.news-tab:hover,.news-lens:hover,.news-horizon:hover,.news-refresh:hover,.news-search button:hover{color:var(--site-gold);border-color:#625b52;background:#141414}
@@ -185,7 +185,7 @@
 .news-story--lead{min-height:188px}
 .news-story--compact{min-height:0;padding:11px 12px}
 .news-story--compact h3{font-size:16px;line-height:1.2;margin:7px 0 9px}
-.news-story--compact .news-story-kicker{font-size:7px}
+.news-story--compact .news-story-kicker{font-size:9px}
 .news-story--compact .news-story-footer{padding-top:8px}
 .news-story--compact .news-story-footer span:nth-child(2){display:none}
 .news-story h2,.news-story h3{margin-top:8px}
