@@ -173,6 +173,27 @@ html[data-site-floor] body:not(.home-body):not(.garden-body):not(.dogs-hall-page
   --site-pane-soft:rgba(8,10,10,.54);
   --site-pane-shadow:0 14px 34px rgba(0,0,0,.20);
 }
+html[data-site-floor="plane"] body:not(.home-body):not(.garden-body):not(.dogs-hall-page):not(.potatoes-hall-page){
+  --site-ink:#20241f;
+  --site-copy:#4c544c;
+  --site-copy-strong:#2b312b;
+  --site-muted:#687168;
+  --site-faint:#7a8279;
+  --site-line:rgba(88,106,92,.24);
+  --site-gold:#806128;
+  --site-panel:rgba(249,250,247,.86);
+  --site-panel-strong:rgba(255,255,252,.94);
+  --site-pane:rgba(255,255,252,.82);
+  --site-pane-strong:rgba(255,255,252,.91);
+  --site-pane-soft:rgba(248,250,246,.72);
+  --site-pane-mist:rgba(255,255,255,.38);
+  --site-pane-mist-strong:rgba(255,255,255,.56);
+  --site-pane-line:rgba(92,116,97,.24);
+  --site-pane-shadow:0 15px 36px rgba(25,36,30,.14);
+  --site-focus:#816329;
+}
+/* Plane keeps the green/blue mountain world visible through neutral white glass.
+   Reader text stays dark; the navigation HUD remains dark for stable contrast. */
 /* Heaven is a light material floor, not the dark site palette with a pale picture
    behind it. Keep the HUD/nav dark for contrast, but let reader surfaces, cards,
    prose and Room materials become warm white / ivory with dark ink. */
