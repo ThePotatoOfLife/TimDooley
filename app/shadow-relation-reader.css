@@ -22,7 +22,7 @@
   border:1px solid var(--rel-line);
   color:var(--rel-ink);
   box-shadow:inset 0 1px rgba(255,255,255,.025),0 18px 38px rgba(0,0,0,.26);
-  backdrop-filter:blur(10px) saturate(.80)
+  backdrop-filter:none;
 }
 .below-relation-reader .page-header::after{
   content:"";
@@ -45,7 +45,7 @@
     linear-gradient(180deg,rgba(255,255,255,.014),transparent 24%),
     var(--rel-soft);
   box-shadow:0 14px 30px rgba(0,0,0,.16);
-  backdrop-filter:blur(8px) saturate(.76)
+  backdrop-filter:none;
 }
 .below-relation-reader section h2{
   color:#eee8df;
