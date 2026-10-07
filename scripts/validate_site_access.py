@@ -224,9 +224,11 @@ for token in ("data-site-access-listen","setTTSOpen","ttsDrawer.open?.()","ttsDr
         errors.append(f"site-access TTS dock missing behavior marker: {token}")
 if "ttsDrawer.expand?.()" in js:
     errors.append("site-access Listen must open compact; direct expand() on dock open is a regression")
-for token in ("backdrop-filter:blur(16px)", 'html[data-site-floor="heaven"] .site-access', 'html[data-site-floor="plane"] .site-access', 'html[data-site-floor="below"] .site-access'):
+for token in ("backdrop-filter:none", 'html[data-site-floor="heaven"] .site-access', 'html[data-site-floor="plane"] .site-access', 'html[data-site-floor="below"] .site-access'):
     if token not in css:
-        errors.append(f"compact glass dock missing visual contract marker: {token}")
+        errors.append(f"compact static-glass dock missing visual contract marker: {token}")
+if "backdrop-filter:blur(" in css or "-webkit-backdrop-filter:blur(" in css:
+    errors.append("site-access must not restore live backdrop blur on fixed UI surfaces")
 if css.rfind("@media(max-width:680px)") < css.rfind(".site-access-tts-console .ptts-reading"):
     errors.append("site-access mobile overrides must stay after the base TTS console rules")
 
