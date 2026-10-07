@@ -230,8 +230,6 @@
       const elevatorObserver=new ResizeObserver(publishClearance);
       elevatorObserver.observe(header);
     }
-    window.addEventListener('resize',publishClearance,{passive:true});
-
     const up=header.querySelector('.site-elevator-up');
     const down=header.querySelector('.site-elevator-down');
     const floorCode=header.querySelector('.site-elevator-floor-code');
@@ -298,7 +296,20 @@
     };
 
     const refreshHotspots=()=>{if(hotspotContract)applyHotspots();};
-    window.addEventListener('resize',refreshHotspots,{passive:true});
+    let geometryFrame=0;
+    const refreshGeometry=()=>{
+      geometryFrame=0;
+      publishClearance();
+      refreshHotspots();
+    };
+    const scheduleGeometryRefresh=()=>{
+      if(geometryFrame)return;
+      if(typeof requestAnimationFrame==='function')geometryFrame=requestAnimationFrame(refreshGeometry);
+      else refreshGeometry();
+    };
+    // One coalesced viewport listener owns both clearance and hotspot geometry.
+    // This avoids duplicate layout reads during mobile browser chrome/orientation resizes.
+    window.addEventListener('resize',scheduleGeometryRefresh,{passive:true});
 
     const renderRooms=()=>{
       if(!projection||!roomContract){
