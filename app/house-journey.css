@@ -8,8 +8,8 @@
 .room-floor-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:15px}
 .room-floor-card{position:relative;min-height:126px;padding:13px;border:1px solid var(--site-line,#302d29);background:rgba(0,0,0,.12)}
 .room-floor-card strong{display:block;font:400 19px/1.05 var(--site-font-serif,serif);letter-spacing:.06em;text-transform:uppercase}
-.room-floor-card small{display:block;margin-top:4px;text-transform:uppercase;letter-spacing:.08em;font-size:7px;font-weight:800}
-.room-floor-card p{margin:11px 0 0;color:var(--site-muted,#aaa49a);font-size:9px;line-height:1.5}
+.room-floor-card small{display:block;margin-top:4px;text-transform:uppercase;letter-spacing:.08em;font-size:9px;line-height:1.2;font-weight:800}
+.room-floor-card p{margin:11px 0 0;color:var(--site-muted,#aaa49a);font-size:11px;line-height:1.5}
 .room-floor-card[data-floor="heaven"]{
   border-color:rgba(225,190,126,.34);
   background:
@@ -46,10 +46,10 @@
 .room-inhabitant-card{border:1px solid var(--site-line,#302d29);padding:12px;color:inherit;display:flex;flex-direction:column;min-height:150px}
 .room-inhabitant-card:hover{border-color:#625b52}
 .room-inhabitant-card strong{display:block;color:var(--site-gold,#d5ba74);font:400 17px var(--site-font-serif,serif)}
-.room-inhabitant-card small{display:block;color:var(--site-muted,#aaa49a);margin-top:4px;text-transform:uppercase;letter-spacing:.05em;font-size:7px}
-.room-inhabitant-card p{color:var(--site-muted,#aaa49a);font-size:9px;line-height:1.45;margin:8px 0 12px;flex:1}
+.room-inhabitant-card small{display:block;color:var(--site-muted,#aaa49a);margin-top:4px;text-transform:uppercase;letter-spacing:.05em;font-size:9px;line-height:1.2}
+.room-inhabitant-card p{color:var(--site-muted,#aaa49a);font-size:11px;line-height:1.5;margin:8px 0 12px;flex:1}
 .room-inhabitant-actions{display:flex;flex-wrap:wrap;gap:7px 12px;margin-top:auto}
-.room-inhabitant-actions a{color:var(--site-gold,#d8b56b);font-size:8px;text-decoration:none;border-bottom:1px solid transparent;padding-bottom:2px}
+.room-inhabitant-actions a{color:var(--site-gold,#d8b56b);font-size:10px;line-height:1.25;text-decoration:none;border-bottom:1px solid transparent;padding-bottom:2px}
 .room-inhabitant-actions a:hover,.room-inhabitant-actions a:focus-visible{border-bottom-color:var(--site-line,#302d29);outline:none}
 
 .room-richness{margin:52px 0 60px;max-width:930px}
@@ -91,7 +91,7 @@
 .dwelling-object-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:9px}
 .dwelling-object-card{display:flex;min-height:175px;flex-direction:column;border:1px solid var(--site-line,#302d29);padding:15px;text-decoration:none;color:inherit;background:rgba(255,255,255,.012)}
 .dwelling-object-card:hover{border-color:#625b52;background:rgba(255,255,255,.025)}
-.dwelling-object-card small{text-transform:uppercase;letter-spacing:.08em;font-size:7px;font-weight:800;color:var(--site-gold,#d8b56b)}
+.dwelling-object-card small{text-transform:uppercase;letter-spacing:.08em;font-size:9px;line-height:1.2;font-weight:800;color:var(--site-gold,#d8b56b)}
 .dwelling-object-card strong{font:400 21px/1.15 var(--site-font-serif,serif);color:var(--site-gold,#d5ba74);margin:7px 0 8px}
 .dwelling-object-card span{color:var(--site-muted,#aaa49a);font-size:10px;line-height:1.55;flex:1}
 .dwelling-object-card em{font-style:normal;color:var(--site-gold,#d8b56b);font-size:9px;margin-top:14px}
