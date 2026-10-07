@@ -18,6 +18,12 @@ def read(path:Path)->str:
 js=read(ROOT/"app/site-access.js")
 css=read(ROOT/"app/site-access.css")
 tts_drawer=read(ROOT/"app/tts-drawer.js")
+for reader_css in (ROOT/"app").glob("*.css"):
+    if reader_css.name in {"site-system.css","elevator-page.css"}:
+        continue
+    reader_text=reader_css.read_text(encoding="utf-8",errors="replace")
+    if re.search(r"\.page-nav(?:\s|\{|\.|>|:)",reader_text):
+        errors.append(f"{reader_css.relative_to(ROOT)} must not restyle shared .page-nav; keep geometry/skin in app/site-system.css")
 patch=read(ROOT/"scripts/patch_public_navigation.py")
 contract_text=read(ROOT/"data/house/site-access.json")
 journey_text=read(ROOT/"data/house/access-journeys.json")
