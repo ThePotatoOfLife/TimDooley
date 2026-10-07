@@ -236,7 +236,8 @@ html[data-site-floor="below"] .inner-home{
   border-color:var(--room-material-line);
   color:var(--room-material-ink);
   box-shadow:inset 0 1px rgba(255,255,255,.12),0 13px 30px rgba(0,0,0,.11);
-  backdrop-filter:blur(8px) saturate(.86)
+  backdrop-filter:none;
+  -webkit-backdrop-filter:none
 }
 html[data-site-floor="below"] .inner-home .page-header,
 html[data-site-floor="below"] .inner-home .room-language,
