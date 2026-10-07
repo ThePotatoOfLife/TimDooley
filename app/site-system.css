@@ -54,6 +54,10 @@
   --site-content-shell: 1320px;
   --site-gutter: clamp(16px, 3vw, 24px);
   --site-focus: #e0c17c;
+  --site-nav-ink:#eef1eb;
+  --site-nav-muted:#b8c0b8;
+  --site-nav-faint:#8f9990;
+  --site-nav-accent:#d8b56b;
   --site-z-elevator: 9997;
   --site-z-journey: 10040;
   --site-z-counter: 10049;
@@ -284,27 +288,27 @@ html[data-site-floor="below"] .page-nav{
 .page-nav-current{white-space:nowrap}
 
 .page-nav-home{
-  color:var(--site-ink);
+  color:var(--site-nav-ink);
   font-weight:700;
 }
-.page-nav-directory{color:var(--site-muted)}
+.page-nav-directory{color:var(--site-nav-muted)}
 .page-nav-dwelling{
-  color:var(--site-ink);
+  color:var(--site-nav-ink);
   font-weight:650;
 }
 .page-nav-current{
-  color:var(--site-gold);
+  color:var(--site-nav-accent);
   font-weight:750;
   text-decoration-thickness:1px;
   text-underline-offset:3px;
 }
 .page-nav-room,
 .page-nav-subject{
-  color:color-mix(in srgb,var(--site-gold) 74%,var(--site-muted));
+  color:color-mix(in srgb,var(--site-nav-accent) 72%,var(--site-nav-muted));
 }
 .page-nav-subject{font-weight:650}
 .page-nav > :is(.page-nav-home,.page-nav-directory,.page-nav-dwelling,.page-nav-current,.page-nav-room,.page-nav-subject):is(:hover,:focus-visible){
-  color:var(--site-gold);
+  color:#fff8e8;
 }
 html[data-site-floor] .page > :where(section,article,aside,details):not(.surface-clear){
   padding:clamp(18px,2.4vw,26px);
