@@ -170,20 +170,25 @@ def main() -> int:
     for row in interiors.get("interiors", []):
         if not isinstance(row, dict):
             continue
-        route=row.get("route","")
-        slug=route.strip("/").split("/")[-1] if route else ""
-        if not slug:
-            errors.append(f"Room interior missing route slug: {row.get('subroom_id')}")
+        route=str(row.get("route","")).strip()
+        if not route or not route.startswith("/"):
+            errors.append(f"Room interior missing canonical route: {row.get('subroom_id')}")
             continue
-        page=ROOT/"rooms"/"inside"/slug/"index.html"
+        clean=route.strip("/")
+        page=(ROOT/clean/"index.html") if not clean.endswith(".html") else (ROOT/clean)
         if not page.exists():
-            errors.append(f"missing nested Room shell page: {slug}")
+            errors.append(f"missing nested Room public page: {route}")
             continue
         text=page.read_text(encoding="utf-8",errors="replace")
-        if 'app/room-interior.css' not in text:
-            errors.append(f"{slug} must use shared room-interior.css")
-        if re.search(r"<style>[\s\S]*?(?:\.inner-home|\.inner-center|\.adj-grid|\.actions)[\s\S]*?</style>", text, flags=re.I):
-            errors.append(f"{slug} reintroduced duplicated Room shell CSS")
+        # Standard /rooms/inside/* Rooms share the generic shell. Specialty Rooms
+        # such as /garden/ intentionally own a dedicated scene while remaining
+        # governed by the same Room registry.
+        if route.startswith("/rooms/inside/"):
+            slug=clean.split("/")[-1]
+            if 'app/room-interior.css' not in text:
+                errors.append(f"{slug} must use shared room-interior.css")
+            if re.search(r"<style>[\s\S]*?(?:\.inner-home|\.inner-center|\.adj-grid|\.actions)[\s\S]*?</style>", text, flags=re.I):
+                errors.append(f"{slug} reintroduced duplicated Room shell CSS")
 
     rooms_text = page_text.get("rooms/index.html", "")
     if "cult" not in rooms_text.lower() or "high-control" not in rooms_text.lower():
