@@ -7,7 +7,7 @@
     try{
       const link=document.createElement('link');
       link.rel='stylesheet';
-      const cssUrl=new URL('house-journey.css',baseUrl);
+      const cssUrl=new URL('house-journey.css?v=20261007b',baseUrl);
       link.href=cssUrl.href;
       link.dataset.houseJourneyStyle='';
       document.head.appendChild(link);
@@ -303,7 +303,7 @@
     });
     if(document.querySelector('.room-section-guide'))return;
     const guide=document.createElement('nav');
-    guide.className='room-section-guide';
+    guide.className='room-section-guide surface-pane';
     guide.setAttribute('aria-label','In this Room');
     guide.innerHTML='<div><p class="eyebrow">In this Room</p><strong>'+esc(headings.length)+' sections</strong></div><div class="room-section-links">'
       +headings.map(h=>'<a href="#'+esc(h.id)+'">'+esc(h.textContent.trim())+'</a>').join('')
