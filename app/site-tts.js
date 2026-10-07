@@ -108,8 +108,9 @@
     await loadCss(asset('tts-drawer.css'));
     await loadScript(asset('tts-reader.js'),()=>Boolean(root.PotatoTTS?.TTSEngine));
     await loadScript(asset('tts-drawer.js'),()=>Boolean(root.PotatoTTSDrawer?.mount));
+    // The adapter auto-mounts itself when loaded; do not immediately rescan every
+    // longform host a second time here.
     await loadScript(asset('longform-tts-adapter.js'),()=>Boolean(root.PotatoLongformTTS?.autoMount));
-    root.PotatoLongformTTS?.autoMount?.(doc);
   }
 
   const start=()=>{void boot()};
