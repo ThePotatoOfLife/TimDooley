@@ -3,6 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<script>
+(function(){
+  if(!location.hash.startsWith('#record='))return;
+  var raw=location.hash.slice(8),path='';
+  try{path=decodeURIComponent(raw)}catch(_){return}
+  var art='knowledge/creative/visual-art-symbolic-composition-archive.json';
+  var dest=path===art?'rooms/inside/visual-art/':'explore/#record='+encodeURIComponent(path);
+  location.replace(new URL(dest,location.href).href);
+})();
+</script>
 <title>The Potato of Life — Start Here | Tim Dooley & Potatoism</title>
 <meta name="description" content="Start here with Tim Dooley, the Potato of Life and Potatoism: meet the person, understand the philosophy and religion, read the story, explore the Great Book, music, public witness and source-backed archive.">
 <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
@@ -193,7 +203,7 @@
 <div class="home-mission-grid">
 <article><em>Remember</em><strong>Keep the public life larger than a clip.</strong><p>Years of internet life are easy to flatten into one quote, one accusation, one title or one mythology. Story, Timeline and sources keep development visible: what happened, what Tim said then, what he says now, and what remains uncertain.</p><a href="tim-dooley/story/">Story →</a> <a href="timeline/">Timeline →</a></article>
 <article><em>Grow</em><strong>Turn the Potato into something people can use.</strong><p>Potatoism asks whether growth can produce more capable, truthful and independent people rather than more obedient followers. The philosophy is allowed to leave Tim, be criticized, be improved and fail its own Fruit test.</p><a href="potatoism/">Potatoism →</a> <a href="potatoism/grow/">Practice →</a></article>
-<article><em>Make</em><strong>Let the ideas become books, music, images, games and code.</strong><p>The Great Book, albums, TimAmp, maps and the repository are not decoration around the philosophy. They are places where the ideas have to become something concrete enough to work, break, delight somebody or teach us something we did not know before making it.</p><a href="works/">Works →</a> <a href="music/">Music →</a></article>
+<article><em>Make</em><strong>Let the ideas become books, music, images, games and code.</strong><p>The Great Book, albums, TimAmp, maps and the repository are not decoration around the philosophy. They are places where the ideas have to become something concrete enough to work, break, delight somebody or teach us something we did not know before making it.</p><a href="works/">Works →</a> <a href="rooms/inside/visual-art/">Art Gallery →</a> <a href="music/">Music →</a></article>
 <article><em>Test</em><strong>Keep mythology and evidence close enough to argue.</strong><p>Religion can compare texts. Philosophy can question premises. Science can reject a model. World can impose material constraints. Sources can correct memory. The archive is strongest when those rooms disagree productively instead of all becoming proof of the same conclusion.</p><a href="science/">Science →</a> <a href="context/source-authority/">Evidence →</a></article>
 <article><em>Return</em><strong>Put something useful back into the world.</strong><p>The project keeps returning to one stubborn standard: Fruit. Does a claim, role, archive, relationship or system produce capability, nourishment, clarity, repair, art, protection or better future Seed—or only more attention around itself?</p><a href="philosophy/">Philosophy →</a> <a href="world/">World →</a></article>
 </div>
