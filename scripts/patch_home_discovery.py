@@ -52,13 +52,20 @@ patch_text(
     ),
 )
 
+world_map_path = SITE / "world-map" / "index.html"
+world_map_text = world_map_path.read_text(encoding="utf-8")
+if 'id="atlasWorldBarHost"' not in world_map_text:
+    quick_actions = '<div class="quick-actions"><button id="compare">Compare</button><button id="panelToggle" class="panel-toggle" title="Show or hide deeper inspector" aria-label="Show or hide deeper inspector">Inspect</button></div>'
+    world_map_text = world_map_text.replace(
+        quick_actions,
+        quick_actions + '<div id="atlasWorldBarHost" aria-label="World map controls"></div>',
+        1,
+    )
+    world_map_path.write_text(world_map_text, encoding="utf-8")
+
 patch_text(
-    SITE / "world-map" / "index.html",
+    world_map_path,
     (
-        (
-            '<div class="quick-actions"><button id="compare">Compare</button><button id="panelToggle" class="panel-toggle" title="Show or hide deeper inspector" aria-label="Show or hide deeper inspector">Inspect</button></div>',
-            '<div class="quick-actions"><button id="compare">Compare</button><button id="panelToggle" class="panel-toggle" title="Show or hide deeper inspector" aria-label="Show or hide deeper inspector">Inspect</button></div><div id="atlasWorldBarHost" aria-label="World map controls"></div>',
-        ),
         ('<details class="menu" id="layersMenu">', '<details class="menu" id="layersMenu" hidden>'),
         ('<details class="menu" id="traceMenu">', '<details class="menu" id="traceMenu" hidden>'),
         ('<details class="menu" id="timeMenu">', '<details class="menu" id="timeMenu" hidden>'),
