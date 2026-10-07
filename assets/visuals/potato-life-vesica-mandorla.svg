@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" role="img" aria-labelledby="title desc">
+<title id="title">Potato of Life — Vesica, Mandorla, Door and Bridge</title>
+<desc id="desc">Project-symbolic diagram showing Heaven and Earth as overlapping circles, the mandorla as Door and Bridge, and Spirit as movement through the shared center.</desc>
+<defs>
+  <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#edf7ff"/><stop offset="1" stop-color="#d9e9f2"/></linearGradient>
+  <linearGradient id="earth" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b8c99f"/><stop offset="1" stop-color="#765b3b"/></linearGradient>
+  <linearGradient id="door" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff8d5"/><stop offset=".52" stop-color="#e7c56c"/><stop offset="1" stop-color="#a77b31"/></linearGradient>
+  <linearGradient id="flow" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".45" stop-color="#8ed8ff"/><stop offset="1" stop-color="#c8a8ff"/></linearGradient>
+  <filter id="glow"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#7faec4"/></marker>
+</defs>
+<rect width="1200" height="820" rx="34" fill="#f7f5ed"/>
+<text x="60" y="76" font-family="Georgia,serif" font-size="42" fill="#2d302c">The Door, Bridge &amp; Mandorla</text>
+<text x="60" y="112" font-family="system-ui,sans-serif" font-size="17" letter-spacing="3" fill="#82672f">POTATO OF LIFE · PROJECT-SYMBOLIC MAP</text>
+
+<circle cx="600" cy="322" r="250" fill="url(#sky)" fill-opacity=".88" stroke="#b99545" stroke-width="3"/>
+<circle cx="600" cy="535" r="250" fill="url(#earth)" fill-opacity=".72" stroke="#b99545" stroke-width="3"/>
+<path d="M600 285 C492 339 473 450 600 572 C727 450 708 339 600 285Z" fill="url(#door)" fill-opacity=".42" stroke="#d2aa4e" stroke-width="4" filter="url(#glow)"/>
+
+<text x="600" y="172" text-anchor="middle" font-family="Georgia,serif" font-size="34" fill="#26343d">HEAVEN / ABOVE</text>
+<text x="600" y="202" text-anchor="middle" font-family="system-ui,sans-serif" font-size="15" letter-spacing="2" fill="#64767f">SOURCE · HOUSE · LIGHT · POTENTIAL</text>
+<text x="600" y="691" text-anchor="middle" font-family="Georgia,serif" font-size="34" fill="#352d24">EARTH / BELOW</text>
+<text x="600" y="719" text-anchor="middle" font-family="system-ui,sans-serif" font-size="15" letter-spacing="2" fill="#5d5144">ROOT · FORM · FRUIT · EMBODIMENT</text>
+
+<path d="M600 220 C555 313 652 353 600 430 C548 507 645 566 600 650" fill="none" stroke="url(#flow)" stroke-width="16" stroke-linecap="round" filter="url(#glow)"/>
+<path d="M600 235 C565 315 638 355 600 430 C562 505 635 557 600 633" fill="none" stroke="#ffffff" stroke-opacity=".84" stroke-width="3" stroke-linecap="round"/>
+
+<text x="600" y="405" text-anchor="middle" font-family="Georgia,serif" font-size="38" fill="#5b441b">THE DOOR</text>
+<text x="600" y="438" text-anchor="middle" font-family="system-ui,sans-serif" font-size="17" letter-spacing="2" fill="#6b5425">VESICA · MANDORLA · BRIDGE</text>
+<text x="600" y="469" text-anchor="middle" font-family="system-ui,sans-serif" font-size="15" fill="#665a43">the overlap produced by relation</text>
+
+<g font-family="system-ui,sans-serif" fill="#444943" font-size="17">
+ <rect x="65" y="248" width="310" height="168" rx="18" fill="#ffffff" fill-opacity=".78" stroke="#c9b474"/>
+ <text x="92" y="282" font-family="Georgia,serif" font-size="25" fill="#6f531d">TWO CIRCLES</text>
+ <text x="92" y="318">Distinct domains remain distinct.</text>
+ <text x="92" y="347">Their overlap creates a third</text>
+ <text x="92" y="376">visible region: the threshold.</text>
+ <path d="M374 337H463" stroke="#9a7a3d" stroke-width="2" marker-end="url(#arrow)"/>
+</g>
+
+<g font-family="system-ui,sans-serif" fill="#444943" font-size="17">
+ <rect x="825" y="248" width="310" height="208" rx="18" fill="#ffffff" fill-opacity=".78" stroke="#c9b474"/>
+ <text x="852" y="282" font-family="Georgia,serif" font-size="25" fill="#6f531d">LIVING MOVEMENT</text>
+ <text x="852" y="320">UP · return / ascent</text>
+ <text x="852" y="350">DOWN · embodiment / grounding</text>
+ <text x="852" y="380">IN · encounter / transformation</text>
+ <text x="852" y="410">OUT · expression / fruit</text>
+ <path d="M825 356H743" stroke="#9a7a3d" stroke-width="2" marker-end="url(#arrow)"/>
+</g>
+
+<g transform="translate(425 744)">
+ <line x1="0" y1="0" x2="350" y2="0" stroke="#d2c39b"/>
+ <text x="175" y="31" text-anchor="middle" font-family="system-ui,sans-serif" font-size="15" fill="#6c6e68">SPIRIT = FLOW THROUGH THE RELATION, NOT A THIRD WALL</text>
+</g>
+</svg>
