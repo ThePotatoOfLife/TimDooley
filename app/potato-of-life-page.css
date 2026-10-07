@@ -93,3 +93,39 @@ html[data-site-floor="heaven"] .center-page :is(.meaning-lead,.development-step 
 .pol-orbit-grid span{margin-top:8px;font-size:10px;line-height:1.55;color:var(--site-muted)}
 @media(max-width:920px){.pol-perspectives{grid-template-columns:repeat(2,minmax(0,1fr))}.pol-orbit-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:650px){.pol-perspectives,.pol-motion-grid,.pol-theses,.pol-orbit-grid{grid-template-columns:1fr}.pol-nesting>div{grid-template-columns:32px 1fr}.pol-nesting small{grid-column:2}.pol-diagram-reserved{padding:22px 18px}}
+
+
+/* North Axis / World Tree research layer */
+.pol-north-axis{max-width:1040px}
+.north-axis-law{font:400 clamp(23px,3.5vw,36px)/1.25 var(--site-font-serif);padding:18px 0;border-top:1px solid var(--site-line);border-bottom:1px solid var(--site-line);color:var(--site-copy-strong)}
+.pol-coordinate-stack{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:7px;margin:22px 0 30px}
+.pol-coordinate-stack article{padding:14px;border:1px solid var(--site-pane-line);background:var(--site-pane-soft)}
+.pol-coordinate-stack b{display:block;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--site-muted)}
+.pol-coordinate-stack strong{display:block;margin-top:7px;font:400 17px/1.2 var(--site-font-serif);color:var(--site-gold)}
+.pol-coordinate-stack p{margin:8px 0 0;font-size:10px;line-height:1.5;color:var(--site-muted)}
+.pol-text-mirrors{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:20px 0 30px}
+.pol-text-mirrors article{padding:16px;border-top:2px solid var(--site-gold);background:var(--site-pane-soft)}
+.pol-text-mirrors span{font-size:8px;text-transform:uppercase;letter-spacing:.13em;color:var(--site-muted)}
+.pol-text-mirrors h3{margin:7px 0 8px;font:400 21px/1.2 var(--site-font-serif);color:var(--site-gold)}
+.pol-text-mirrors p{font-size:11px;line-height:1.62;color:var(--site-muted)}
+.pol-text-mirrors a{font-size:9px;color:var(--site-gold);margin-right:8px}
+.world-tree-anatomy{margin:24px 0;border:1px solid var(--site-pane-line);background:var(--site-pane-soft)}
+.world-tree-anatomy>div{display:grid;grid-template-columns:100px minmax(210px,.45fr) 1fr;gap:14px;padding:15px;border-bottom:1px solid var(--site-line);align-items:center}
+.world-tree-anatomy>div:last-child{border-bottom:0}
+.world-tree-anatomy b{font-size:8px;letter-spacing:.14em;color:var(--site-muted)}
+.world-tree-anatomy strong{font:400 18px var(--site-font-serif);color:var(--site-gold)}
+.world-tree-anatomy span{font-size:10px;line-height:1.5;color:var(--site-muted)}
+.son-grave-axis{margin:28px 0;padding:22px;border:1px solid var(--site-pane-line);background:linear-gradient(180deg,var(--site-pane-soft),transparent)}
+.son-grave-axis h3{margin:6px 0 10px;font:400 clamp(25px,3.4vw,38px)/1.15 var(--site-font-serif);color:var(--site-gold)}
+.pol-star-distinction{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:20px 0 30px}
+.pol-star-distinction article{padding:15px;border:1px solid var(--site-pane-line);background:var(--site-pane-soft)}
+.pol-star-distinction b{display:block;font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:var(--site-muted)}
+.pol-star-distinction strong{display:block;margin-top:7px;font:400 20px var(--site-font-serif);color:var(--site-gold)}
+.pol-star-distinction p{margin:8px 0 0;font-size:10px;line-height:1.55;color:var(--site-muted)}
+.pol-source-shelf{margin:28px 0;padding:18px;border-top:1px solid var(--site-line);border-bottom:1px solid var(--site-line)}
+.pol-source-shelf>div{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-top:10px}
+.pol-source-shelf a{display:flex;flex-direction:column;padding:10px 12px;border:1px solid var(--site-pane-line);text-decoration:none;background:var(--site-pane-soft)}
+.pol-source-shelf strong{font:400 16px var(--site-font-serif);color:var(--site-gold)}
+.pol-source-shelf span{margin-top:3px;font-size:9px;line-height:1.4;color:var(--site-muted)}
+@media(max-width:900px){.pol-coordinate-stack{grid-template-columns:repeat(2,minmax(0,1fr))}.pol-text-mirrors{grid-template-columns:1fr}}
+@media(max-width:650px){.pol-coordinate-stack,.pol-star-distinction,.pol-source-shelf>div{grid-template-columns:1fr}.world-tree-anatomy>div{grid-template-columns:1fr;gap:5px}}
