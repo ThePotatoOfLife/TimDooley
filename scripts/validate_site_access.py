@@ -171,6 +171,17 @@ if "new URL('house-journey.css',baseUrl)" not in journey_ui:
     errors.append("House journey runtime must retain the local/source CSS fallback")
 if "inject_house_journey_css" not in patch or 'SHARED_ASSET_VERSIONS["house-journey.css"]' not in patch:
     errors.append("public build must inject fingerprinted House Journey CSS")
+fingerprint_call="changed.update(patch_shared_asset_versions(OUT))"
+for earlier_call in (
+    "changed.update(patch_house_journey_css(OUT))",
+    "changed.update(patch_legacy_tts_readers(OUT))",
+    "changed.update(patch_site_elevator(OUT))",
+    "changed.update(patch_site_access(OUT))",
+    "changed.update(patch_universal_tts(OUT))",
+):
+    if earlier_call not in patch or fingerprint_call not in patch or patch.rfind(fingerprint_call) < patch.rfind(earlier_call):
+        errors.append("shared app-asset fingerprinting must run after every shell asset injector")
+        break
 if "data-house-journey-style" not in journey_ui:
     errors.append("House journey stylesheet loader missing: data-house-journey-style")
 if "style.textContent" in journey_ui or "createElement('style')" in journey_ui:
