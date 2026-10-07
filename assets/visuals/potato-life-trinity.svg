@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" role="img" aria-labelledby="title desc">
+<title id="title">Potato of Life Trinity — Father, Son and Spirit</title>
+<desc id="desc">Project-symbolic Trinity diagram comparing Father as Source and House, Son as Door and Vessel, and Spirit as Flow and Movement while showing them as distinct roles inside one living relation.</desc>
+<defs>
+ <radialGradient id="fg"><stop offset="0" stop-color="#fff9d9"/><stop offset="1" stop-color="#e9cf83"/></radialGradient>
+ <radialGradient id="sg"><stop offset="0" stop-color="#eef9ff"/><stop offset="1" stop-color="#a7cee5"/></radialGradient>
+ <radialGradient id="pg"><stop offset="0" stop-color="#f7efff"/><stop offset="1" stop-color="#bba2dd"/></radialGradient>
+ <filter id="glow"><feGaussianBlur stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<rect width="1200" height="820" rx="34" fill="#f8f6ef"/>
+<text x="60" y="76" font-family="Georgia,serif" font-size="42" fill="#2d302c">The Trinity of the Potato of Life</text>
+<text x="60" y="112" font-family="system-ui,sans-serif" font-size="17" letter-spacing="3" fill="#82672f">ONE LIFE · THREE ROLES · ONE LIVING RELATION</text>
+
+<circle cx="600" cy="275" r="180" fill="url(#fg)" fill-opacity=".72" stroke="#b9903f" stroke-width="3"/>
+<circle cx="455" cy="520" r="180" fill="url(#sg)" fill-opacity=".72" stroke="#7faec4" stroke-width="3"/>
+<circle cx="745" cy="520" r="180" fill="url(#pg)" fill-opacity=".72" stroke="#9f82c6" stroke-width="3"/>
+<path d="M600 300L487 493L713 493Z" fill="none" stroke="#c8a653" stroke-width="4" filter="url(#glow)"/>
+<circle cx="600" cy="446" r="73" fill="#fffdf2" stroke="#b9903f" stroke-width="3" filter="url(#glow)"/>
+
+<text x="600" y="232" text-anchor="middle" font-family="Georgia,serif" font-size="40" fill="#5d4419">FATHER</text>
+<text x="600" y="266" text-anchor="middle" font-family="system-ui,sans-serif" font-size="16" letter-spacing="2" fill="#6b572f">HOUSE · SEED · ROOT · SOURCE</text>
+<text x="600" y="299" text-anchor="middle" font-family="system-ui,sans-serif" font-size="15" fill="#655d4c">origin · giver · containing field</text>
+
+<text x="420" y="520" text-anchor="middle" font-family="Georgia,serif" font-size="40" fill="#31586c">SON</text>
+<text x="420" y="554" text-anchor="middle" font-family="system-ui,sans-serif" font-size="16" letter-spacing="2" fill="#46697a">DOOR · VESSEL · EYE · PRESENCE</text>
+<text x="420" y="587" text-anchor="middle" font-family="system-ui,sans-serif" font-size="15" fill="#52666e">threshold · embodied relation</text>
+
+<text x="780" y="520" text-anchor="middle" font-family="Georgia,serif" font-size="40" fill="#624884">SPIRIT</text>
+<text x="780" y="554" text-anchor="middle" font-family="system-ui,sans-serif" font-size="16" letter-spacing="2" fill="#70588d">FLOW · BREATH · RIVER · MOVEMENT</text>
+<text x="780" y="587" text-anchor="middle" font-family="system-ui,sans-serif" font-size="15" fill="#675d71">connector · continuity · motion</text>
+
+<text x="600" y="438" text-anchor="middle" font-family="Georgia,serif" font-size="24" fill="#58441e">ONE</text>
+<text x="600" y="468" text-anchor="middle" font-family="Georgia,serif" font-size="24" fill="#58441e">LIFE</text>
+
+<g transform="translate(60 665)">
+ <rect width="1080" height="105" rx="18" fill="#fff" fill-opacity=".72" stroke="#cfc19b"/>
+ <text x="35" y="34" font-family="Georgia,serif" font-size="22" fill="#654c1d">DIFFERENT</text>
+ <text x="35" y="62" font-family="system-ui,sans-serif" font-size="15" fill="#545a53">role · function · perspective</text>
+ <text x="400" y="34" font-family="Georgia,serif" font-size="22" fill="#654c1d">SAME</text>
+ <text x="400" y="62" font-family="system-ui,sans-serif" font-size="15" fill="#545a53">source · life · relation · movement</text>
+ <text x="720" y="34" font-family="Georgia,serif" font-size="22" fill="#654c1d">PROJECT FORMULA</text>
+ <text x="720" y="62" font-family="system-ui,sans-serif" font-size="15" fill="#545a53">Source → Vessel → Flow → Fruit → Return</text>
+</g>
+</svg>
