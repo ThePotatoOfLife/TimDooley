@@ -23,26 +23,12 @@
 })();
 
 (()=> {
-  const KEY='potato-house-journey-v1';
   const marker='/TimDooley/';
   const pathName=location.pathname;
   const markerIndex=pathName.indexOf(marker);
   const base=markerIndex>=0?pathName.slice(0,markerIndex+marker.length):'/';
 
   const esc=(v)=>String(v??'').replace(/[&<>"]/g,s=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[s]));
-  const viaLabel=(v)=>({
-    'dwelling-door':'dwelling',
-    'local-door':'local door',
-    'wormhole-door':'wormhole',
-    'wormhole-elevator':'wormhole + elevator',
-    'elevator':'elevator',
-    'portal':'portal',
-    'read':'read',
-    'return':'return',
-    'object-focus':'object',
-    'start':'start'
-  })[v]||v||'step';
-
   const jsonCache=new Map();
   function getJson(path){
     if(!jsonCache.has(path)){
@@ -55,62 +41,6 @@
   }
   async function getOptionalJson(path,fallback){
     try{return await getJson(path)}catch(_){return fallback}
-  }
-
-  function loadTrail(){
-    try{
-      const x=JSON.parse(localStorage.getItem(KEY)||'[]');
-      return Array.isArray(x)?x:[];
-    }catch(e){return []}
-  }
-
-  function elevatorUrl(st={}){
-    const q=new URLSearchParams();
-    if(st.room)q.set('room',st.room);
-    if(st.inner)q.set('inner',st.inner);
-    if(st.object)q.set('object',st.object);
-    const level=st.level==='world'?'plane':st.level;
-    if(level&&level!=='plane')q.set('level',level);
-    return base+'elevator/'+(q.toString()?'?'+q:'');
-  }
-
-  function installRibbon(){
-    const trail=loadTrail();
-    if(!trail.length)return;
-
-    const ribbon=document.createElement('aside');
-    ribbon.className='house-journey-ribbon';
-    ribbon.setAttribute('aria-label','Your journey through the House');
-    const shown=trail.slice(-2);
-    const history=trail.slice().reverse();
-    ribbon.innerHTML='<div class="house-journey-ribbon-main"><span class="house-journey-ribbon-title"><b>Your path</b><small>recent places</small></span><div class="house-journey-ribbon-track">'+shown.map(st=>
-      '<a href="'+elevatorUrl(st)+'" title="'+esc(st.reason||'Return to this spatial center')+'"><span>'+esc(st.label||'House')+'</span><small>'+esc(viaLabel(st.via))+'</small></a>'
-    ).join('')+'</div></div><div class="house-journey-ribbon-actions"><button type="button" data-journey-history aria-expanded="false">History</button><a href="'+base+'elevator/">Elevator</a></div><div class="house-journey-popover" data-journey-popover hidden><p><strong>Your path</strong> remembers places you entered through House/Elevator navigation so you can retrace them. It does not change the page or create a separate reading mode.</p><div class="house-journey-history">'+history.map(st=>
-      '<a href="'+elevatorUrl(st)+'"><span>'+esc(st.label||'House')+'</span><small>'+esc(viaLabel(st.via))+'</small></a>'
-    ).join('')+'</div></div>';
-    document.body.appendChild(ribbon);
-
-    // Keep the journey ribbon clear of the universal fixed access layer.
-    // Measure the actual wrapper so mobile wrapping and local institution shortcuts
-    // are handled without a brittle hard-coded offset.
-    const access=document.querySelector('.site-access');
-    const syncFixedClearance=()=>{
-      if(!access){ribbon.style.removeProperty('bottom');return}
-      const rect=access.getBoundingClientRect();
-      const viewportBottomGap=Math.max(0,window.innerHeight-rect.bottom);
-      ribbon.style.bottom=Math.ceil(viewportBottomGap+rect.height+6)+'px';
-    };
-    syncFixedClearance();
-    if(access&&typeof ResizeObserver!=='undefined'){
-      const observer=new ResizeObserver(syncFixedClearance);
-      observer.observe(access);
-    }
-    window.addEventListener('resize',syncFixedClearance,{passive:true});
-
-    const historyButton=ribbon.querySelector('[data-journey-history]'),popover=ribbon.querySelector('[data-journey-popover]');
-    historyButton?.addEventListener('click',()=>{const open=popover.hidden;popover.hidden=!open;historyButton.setAttribute('aria-expanded',String(open));});
-    document.addEventListener('keydown',e=>{if(e.key==='Escape'&&popover&&!popover.hidden){popover.hidden=true;historyButton?.setAttribute('aria-expanded','false')}});
-    document.addEventListener('pointerdown',e=>{if(popover&&!popover.hidden&&!ribbon.contains(e.target)){popover.hidden=true;historyButton?.setAttribute('aria-expanded','false')}});
   }
 
   async function installRoomFloorProjection(){
