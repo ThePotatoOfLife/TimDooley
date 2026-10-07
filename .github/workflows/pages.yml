@@ -191,13 +191,13 @@ jobs:
           print("Live provenance verified:",actual)
           PY
 
-          for route in "" "elevator/" "garden/" "potato-of-life/" "north/" "tim-dooley/" "religion/" "science/" "science/papers/" "science/papers/advanced-retarded-door-handshake-recovery/" "world/" "traditions/bible/" "context/culture/" "below/" "below/dogs/" "rooms/potatoverse-canon/beings/potatoes/" "shadow-farm/" "rooms/archive-sources/" "rooms/research-lab/"; do
+          for route in "" "elevator/" "garden/" "potato-of-life/" "north/" "tim-dooley/" "religion/" "science/" "science/papers/" "science/papers/advanced-retarded-door-handshake-recovery/" "world/" "traditions/bible/" "context/culture/" "below/" "below/dogs/" "rooms/potatoverse-canon/beings/potatoes/" "shadow-farm/" "rooms/archive-sources/" "rooms/research-lab/" "rooms/inside/visual-art/"; do
             safe_name="${route//\//_}"
             [ -n "$safe_name" ] || safe_name="home"
             fetch_live "${base}${route}" ".live-smoke/${safe_name}.html"
           done
 
-          for asset in             "science/science-papers.css"             "science/science-paper.css"             "assets/visuals/science-time-door-handshake.svg"             "app/site-elevator.js"             "app/site-elevator.css"             "app/elevator-page.js"             "app/elevator-page.css"             "app/garden-page.js"             "app/garden-page.css"             "assets/visuals/garden-eden-master.webp"             "app/header-heaven-v3.avif"             "app/header-plane-v3.avif"             "app/header-below-v3.avif"             "app/site-elevator-art-v3.json"             "app/site-elevator-hotspots.json"             "app/house-journey.js"             "app/house-journey.css"             "app/home-heaven.avif"             "app/home-plane.avif"             "app/home-below.avif"             "app/hall-of-shame.avif"             "app/hall-of-heroes.avif"             "app/dogs-hall.css"             "app/potatoes-hall.css"             "app/lower-layer.css"             "data/house/elevator-spatial-projection.json" \
+          for asset in             "science/science-papers.css"             "science/science-paper.css"             "assets/visuals/science-time-door-handshake.svg"             "app/site-elevator.js"             "app/site-elevator.css"             "app/elevator-page.js"             "app/elevator-page.css"             "app/garden-page.js"             "app/garden-page.css"             "assets/visuals/garden-eden-master.webp"             "app/header-heaven-v3.avif"             "app/header-plane-v3.avif"             "app/header-below-v3.avif"             "app/site-elevator-art-v3.json"             "app/site-elevator-hotspots.json"             "app/house-journey.js"             "app/house-journey.css"             "app/home-heaven.avif"             "app/home-plane.avif"             "app/home-below.avif"             "app/hall-of-shame.avif"             "app/hall-of-heroes.avif"             "app/dogs-hall.css"             "app/potatoes-hall.css"             "app/lower-layer.css"             "app/art-gallery.css"             "app/art-gallery.js"             "assets/visual-art/2025/divine-gardener-with-potato.webp"             "data/house/elevator-spatial-projection.json" \
             "knowledge/core/spudlight-field-manual.json" \
             "knowledge/core/lower-field-orientation.json" \
             "knowledge/world/lower-field-population-severity-estimate.json" \
@@ -264,8 +264,22 @@ jobs:
           below=Path(".live-smoke/below_.html").read_text(encoding="utf-8",errors="replace")
           shadow=Path(".live-smoke/shadow-farm_.html").read_text(encoding="utf-8",errors="replace")
           culture=Path(".live-smoke/context_culture_.html").read_text(encoding="utf-8",errors="replace")
+          art_gallery=Path(".live-smoke/rooms_inside_visual-art_.html").read_text(encoding="utf-8",errors="replace")
+          art_css=Path(".live-smoke/app_art-gallery.css").read_text(encoding="utf-8",errors="replace")
+          art_js=Path(".live-smoke/app_art-gallery.js").read_text(encoding="utf-8",errors="replace")
+          art_gardener=Path(".live-smoke/assets_visual-art_2025_divine-gardener-with-potato.webp").read_bytes()
           potato_life=Path(".live-smoke/potato-of-life_.html").read_text(encoding="utf-8",errors="replace")
           north=Path(".live-smoke/north_.html").read_text(encoding="utf-8",errors="replace")
+          assert 'class="gallery-grid museum-wall"' in art_gallery, "live Art Museum missing horizontal wall"
+          assert "One continuous museum wall" in art_gallery, "live Art Museum missing one-room chronology copy"
+          assert "The Lamb in the Yard" in art_gallery, "live Art Museum missing curated Lamb work"
+          assert 'data-date="2025-05-16"' in art_gallery, "live Art Museum missing static chronological dates"
+          assert "ONE-ROOM HORIZONTAL WALL V2" in art_css, "live Art Museum missing horizontal CSS"
+          assert "scroll-snap-type:x mandatory" in art_css, "live Art Museum missing horizontal scroll snapping"
+          assert "Chronological wall ordering" in art_js, "live Art Museum missing chronological runtime"
+          assert "grid.addEventListener('wheel'" in art_js, "live Art Museum missing wheel-to-wall runtime"
+          assert len(art_gardener) > 1000 and art_gardener[:4] == b"RIFF", "live Art Museum gardener asset missing/invalid"
+          assert "../../rooms/inside/visual-art/" in culture, "live canonical Culture page missing Art Museum doorway"
           assert 'id="north-axis-world-tree"' in potato_life, "live Potato of Life missing North Axis / World Tree section"
           assert "At the pole, “north” stops being merely a direction." in potato_life, "live Potato of Life missing North-of-North research text"
           assert "Sirius above the grave" in potato_life, "live Potato of Life missing Sirius/grave distinction"

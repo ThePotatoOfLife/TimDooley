@@ -286,6 +286,16 @@ jobs:
           PY
       - name: Finalize universal TTS projection
         run: python scripts/patch_public_navigation.py
+      - name: Audit Art Museum
+        run: python scripts/audit_art_gallery.py
+      - name: Upload Art Museum audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quality-art-gallery
+          path: art-gallery-audit.json
+          if-no-files-found: warn
+          retention-days: 7
       - name: Validate built site shell
         run: python scripts/validate_site_shell.py
       - name: Validate TTS coverage
