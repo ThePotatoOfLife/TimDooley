@@ -561,7 +561,7 @@ html{scroll-behavior:smooth}
     radial-gradient(circle at 10% 15%,rgba(203,174,86,.09),transparent 31%),
     #09110b
 }
-.garden-tim-presence{align-self:start;position:sticky;top:78px}
+.garden-tim-presence{align-self:start;position:sticky;top:calc(var(--site-elevator-clearance,0px) + 14px)}
 .garden-tim-presence .eyebrow{margin:0 0 8px;color:#a88f50;font-size:.59rem;letter-spacing:.1em}
 .garden-tim-presence h3{
   margin:0;color:#f0e4c1;font:400 clamp(1.7rem,3.2vw,2.8rem)/1.08 var(--site-font-serif)
