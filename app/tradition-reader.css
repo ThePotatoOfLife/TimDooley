@@ -162,7 +162,7 @@
     inset 0 1px rgba(255,255,255,.54),
     inset 0 0 0 1px rgba(255,247,218,.18),
     0 16px 34px rgba(0,0,0,.13);
-  backdrop-filter:blur(8px) saturate(.88)
+  backdrop-filter:none;
 }
 .tradition-reader .page-header::after{
   content:"";
@@ -179,7 +179,7 @@
   background:rgba(239,230,207,.48);
   color:#39362f;
   box-shadow:0 10px 25px rgba(0,0,0,.09);
-  backdrop-filter:blur(7px)
+  backdrop-filter:none;
 }
 .tradition-reader section{
   position:relative;
@@ -192,7 +192,7 @@
     var(--tradition-paper-soft);
   color:var(--tradition-copy);
   box-shadow:0 13px 28px rgba(0,0,0,.10);
-  backdrop-filter:blur(7px)
+  backdrop-filter:none;
 }
 .tradition-reader section:nth-of-type(even){
   background:
