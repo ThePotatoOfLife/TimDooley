@@ -33,7 +33,7 @@
   border-radius:var(--site-radius);
   text-decoration:none;
   color:inherit;
-  background:rgba(8,10,10,.68)
+  background:var(--site-pane-soft)
 }
 .door-card strong,.sub-card strong{
   display:block;
@@ -65,7 +65,7 @@
   text-decoration:none;
   color:var(--site-muted);
   font-size:var(--site-text-xs);
-  background:color-mix(in srgb,var(--site-panel) 62%,transparent)
+  background:var(--site-pane-soft)
 }
 .room-actions a:hover,
 .room-actions a:focus-visible,
