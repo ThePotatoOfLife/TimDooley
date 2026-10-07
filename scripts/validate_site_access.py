@@ -56,6 +56,7 @@ except (SyntaxError,ValueError,TypeError) as exc:
 journey_text=read(ROOT/"data/house/access-journeys.json")
 journey_ui=read(ROOT/"app/house-journey.js")
 journey_css=read(ROOT/"app/house-journey.css")
+home_source=read(ROOT/"index.html")
 try:
     contract=json.loads(contract_text) if contract_text else {}
 except json.JSONDecodeError as exc:
@@ -227,6 +228,14 @@ for bad_regex in ('r"<html\\\\b"', 'r"</head\\\\s*>"', 'r"</body\\\\s*>"'):
 for good_regex in ('r"<html\\b"', 'r"</head\\s*>"', 'r"</body\\s*>"'):
     if good_regex not in patch:
         errors.append(f"public navigation injector missing active HTML regex: {good_regex}")
+
+# Keep source-authored Home navigation honest too, so local development matches
+# the deployed first-screen budget instead of relying on a build-only rewrite.
+home_source_match=re.search(r'<nav\b[^>]*\bclass=["\'][^"\']*\bpage-nav\b[^"\']*\bhome-nav\b[^"\']*["\'][^>]*>(.*?)</nav\s*>',home_source,flags=re.I|re.S)
+if not home_source_match:
+    errors.append("source Home missing page-nav home-nav")
+elif home_source_match.group(1).count("<a ")>5:
+    errors.append("source Home first-screen navigation exceeds compact five-link budget")
 
 if OUT.exists():
     required=[
