@@ -82,7 +82,7 @@ padding:26px 18px;border:1px solid var(--site-line)}
 .mire-root-art .root-main,.mire-root-art .root-branch{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round}
 .mire-root-art .root-main{stroke-width:3.2}.mire-root-art .root-branch{stroke-width:1.55}
 .mire-root-art .soil-line{stroke:currentColor;stroke-width:1;stroke-dasharray:3 7;opacity:.62}
-.mire-scripture{max-width:720px;margin:22px auto 26px;padding:18px 22px;border-top:1px solid rgba(216,181,107,.35);border-bottom:1px solid rgba(216,181,107,.22);text-align:center;background:rgba(8,8,8,.46);backdrop-filter:blur(2px)}
+.mire-scripture{max-width:720px;margin:22px auto 26px;padding:18px 22px;border-top:1px solid rgba(216,181,107,.35);border-bottom:1px solid rgba(216,181,107,.22);text-align:center;background:rgba(8,8,8,.46);backdrop-filter:none}
 .mire-scripture blockquote{margin:0;font:italic 400 clamp(20px,2.6vw,28px)/1.45 var(--site-font-serif);color:#e1dcc8}
 .mire-scripture figcaption{margin-top:9px;font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--site-muted)}
 .mire-scripture a{color:inherit;text-decoration-thickness:1px;text-underline-offset:3px}
@@ -169,7 +169,8 @@ padding:26px 18px;border:1px solid var(--site-line)}
     inset 0 1px rgba(255,255,255,.045),
     inset 0 0 0 1px rgba(255,138,80,.025),
     0 18px 38px rgba(0,0,0,.28);
-  backdrop-filter:blur(10px) saturate(.82)
+  backdrop-filter:none;
+  -webkit-backdrop-filter:none
 }
 .below-page .page-header::after{
   content:"";
