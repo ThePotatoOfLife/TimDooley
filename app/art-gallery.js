@@ -1,4 +1,21 @@
 (() => {
+  const hydrateBlobImages = async () => {
+    const images = [...document.querySelectorAll('img[data-github-blob]')];
+    for (const img of images) {
+      try {
+        const response = await fetch('https://api.github.com/repos/ThePotatoOfLife/TimDooley/git/blobs/' + img.dataset.githubBlob);
+        if (!response.ok) continue;
+        const payload = await response.json();
+        const binary = atob(String(payload.content || '').replace(/\\s/g, ''));
+        const bytes = new Uint8Array(binary.length);
+        for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+        const url = URL.createObjectURL(new Blob([bytes], {type: img.dataset.githubMime || 'image/webp'}));
+        img.src = url;
+      } catch (_) {}
+    }
+  };
+  hydrateBlobImages();
+
   const grid = document.querySelector('[data-gallery-grid]');
   const dialog = document.querySelector('#gallery-viewer');
   if (!grid || !dialog) return;
