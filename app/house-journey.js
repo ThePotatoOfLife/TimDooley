@@ -3,10 +3,11 @@
   if(typeof document==='undefined')return;
   const current=document.currentScript;
   const baseUrl=current?.src||document.baseURI;
+  const journeyNeeded=/\/rooms(?:\/|$)|\/house(?:\/|$)/.test(location.pathname)||Boolean(document.querySelector('[data-room-reader-body]'));
   const journeyStyle=[...document.querySelectorAll('link[rel="stylesheet"]')].find(link=>
     link.dataset.houseJourneyStyle!==undefined||/\/app\/house-journey\.css(?:\?|$)/.test(link.href||'')
   );
-  if(!journeyStyle){
+  if(journeyNeeded&&!journeyStyle){
     try{
       const link=document.createElement('link');
       link.rel='stylesheet';
@@ -26,7 +27,8 @@
 })();
 
 (()=> {
-  if(window.__potatoHouseJourneyBooted)return;
+  const journeyNeeded=/\/rooms(?:\/|$)|\/house(?:\/|$)/.test(location.pathname)||Boolean(document.querySelector('[data-room-reader-body]'));
+  if(!journeyNeeded||window.__potatoHouseJourneyBooted)return;
   window.__potatoHouseJourneyBooted=true;
   const marker='/TimDooley/';
   const pathName=location.pathname;
