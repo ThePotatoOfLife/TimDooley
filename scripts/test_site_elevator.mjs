@@ -204,8 +204,8 @@ assert.equal(css.includes('/* Desktop illustrated header skin.'),false,'retired 
 assert.equal(css.includes('target-reference refinement'),false,'retired target-reference override must not coexist with panorama strip');
 assert.equal(css.includes('exact target-reference desktop skin'),false,'retired exact desktop override must not coexist with panorama strip');
 assert.ok(css.includes('background-image:var(--site-header-art)'),'responsive strip must use the dedicated panorama asset directly');
-assert.ok(css.includes('background-size:100% 100%'),'responsive strip must fill the full shared composition box');
-assert.match(css,/--elevator-shell-height:clamp\(94\.632px,11\.003683vw,300px\)/,'header height must scale continuously with viewport width and preserve ultrawide art');
+assert.ok(css.includes('background-size:100% auto'),'responsive strip must preserve the panorama aspect ratio instead of stretching it vertically');
+assert.match(css,/--elevator-shell-height:clamp\(96px,6\.25vw,120px\)/,'desktop header must stay inside the compact 96–120px height band');
 assert.match(css,/\.site-elevator-main\{[\s\S]*?width:100%;[\s\S]*?max-width:none;/,'live geometry must share the full panorama width');
 assert.equal(css.includes('grid-template-columns:repeat(var(--elevator-visible-count),minmax(0,1fr))'),false,'desktop hit map must not regress to equal-width plaque columns');
 assert.match(css,/\.site-elevator-room-rail\{[\s\S]*?inset:0;[\s\S]*?pointer-events:none;/,'desktop rail must use the whole painted banner as its coordinate system');
@@ -215,6 +215,9 @@ assert.ok(source.includes("fetchJson('/app/site-elevator-hotspots.json')"),'runt
 assert.ok(source.includes("link.dataset.hotspotKey='room:'+room.id"),'Room links must identify their canonical hotspot key');
 assert.ok(source.includes("link.dataset.hotspotKey='landmark:'+landmark.id"),'landmark links must identify their canonical hotspot key');
 assert.ok(source.includes('applyHotspotRect(link,rect,artboard)'),'runtime must project canonical artboard coordinates onto live links');
+assert.ok(source.includes('desktopPanoramaMetrics'),'desktop hotspot projection must account for panorama cropping');
+assert.ok(source.includes('offsetY:(host.height-renderedHeight)/2'),'desktop hotspots must stay aligned to the vertically centered crop');
+assert.ok(source.includes("window.addEventListener('resize',refreshHotspots"),'desktop hotspots must be recomputed when viewport geometry changes');
 assert.match(css,/\.site-elevator\[data-elevator-direction\] \.site-elevator-room-rail\{[\s\S]*?animation:none;/,'invisible desktop hitboxes must not inherit rail motion');
 assert.equal(css.includes('overflow-x:auto'),false,'Room rail must not horizontally scroll');
 assert.equal(css.includes('scrollbar-width'),false,'Room rail must not render a scrollbar');
