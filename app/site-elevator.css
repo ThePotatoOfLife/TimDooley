@@ -752,7 +752,10 @@ html[data-site-floor] body.home-body::before{content:none;display:none}
    targets use the same coordinate system instead of floor-specific guesses. */
 @media (min-width:860px){
   .site-elevator{
-    --elevator-shell-height:clamp(96px,6.25vw,120px);
+    /* Preserve the 2172×239 panorama's native aspect ratio on desktop.
+       239 / 2172 = 11.003683%, so artwork, painted labels and hotspots stay
+       vertically aligned instead of being squeezed into a 96–120px crop. */
+    --elevator-shell-height:clamp(94.632px,11.003683vw,300px);
     --site-header-shade:transparent;
     background:#080b0d;
     border:0;
