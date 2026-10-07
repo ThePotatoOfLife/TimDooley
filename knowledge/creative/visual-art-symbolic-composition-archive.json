@@ -1,7 +1,7 @@
 {
   "id": "visual-art-symbolic-composition-archive",
   "title": "Visual Art & Symbolic Composition Archive",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "updated": "2026-10-07",
   "status": "creative-archaeology owner",
   "purpose": "Preserve how Potatoverse concepts were staged together in visual compositions, prompts, diagrams and generated imagery without treating those images as empirical evidence for theology, anatomy, politics or science.",
@@ -206,7 +206,7 @@
         "id": "moshiach-on-dragon",
         "title": "Moshiach on Dragon",
         "date": "2025-06-05",
-        "file": "assets/visual-art/2025/moshiach-on-dragon.webp",
+        "file": null,
         "description": "An armored messianic rider sits on a dragon with a radiant sword before a cracked moon. Kingship is staged as apocalyptic combat and cosmic rupture.",
         "motifs": [
           "messiah",
@@ -216,7 +216,7 @@
           "apocalypse"
         ],
         "gallery_status": "recovery-needed",
-        "recovery_note": "The recovered repository derivative is truncated and is intentionally not hung until a complete source artifact is recovered."
+        "recovery_note": "The truncated repository derivative was removed from the public asset tree. Rehang only after a complete source artifact is recovered and passes the binary-integrity gate."
       },
       {
         "id": "royal-grief-and-vengeance",
@@ -400,7 +400,7 @@
         "id": "art-school-rejection",
         "title": "Art School Rejection",
         "date": "2025-07-27",
-        "file": "assets/visual-art/2025/art-school-rejection.webp",
+        "file": null,
         "description": "A crying bearded artist clutches paintings outside an ART SCHOOL while a stern figure points away and a strange small statue watches. Rejection becomes tragicomic autobiography.",
         "motifs": [
           "rejection",
@@ -410,13 +410,13 @@
           "outsider"
         ],
         "gallery_status": "recovery-needed",
-        "recovery_note": "The recovered repository derivative is truncated and is intentionally not hung until a complete source artifact is recovered."
+        "recovery_note": "The truncated repository derivative was removed from the public asset tree. Rehang only after a complete source artifact is recovered and passes the binary-integrity gate."
       },
       {
         "id": "melancholic-potato-peeler",
         "title": "Melancholic Potato Peeler",
         "date": "2025-07-27",
-        "file": "assets/visual-art/2025/melancholic-potato-peeler.webp",
+        "file": null,
         "description": "A tearful woman slices potatoes at a rough table in dim window light. Potato imagery returns to poverty, labor and grief rather than cosmic prestige.",
         "motifs": [
           "potato",
@@ -426,7 +426,7 @@
           "peasant"
         ],
         "gallery_status": "recovery-needed",
-        "recovery_note": "The recovered repository derivative is truncated and is intentionally not hung until a complete source artifact is recovered."
+        "recovery_note": "The truncated repository derivative was removed from the public asset tree. Rehang only after a complete source artifact is recovered and passes the binary-integrity gate."
       },
       {
         "id": "royal-portrait-hallway",
@@ -513,7 +513,7 @@
         "source_original_dimensions": "1536×1024"
       }
     ],
-    "quality_note": "The Art Museum now treats binary integrity as a deployment gate: every hung local WEBP/AVIF must be structurally complete. Complete 1536×1024 sources are retained at full pixel dimensions in optimized AVIF/WebP assets. Older 240×360 / 360×240 derivatives remain a resolution-upgrade queue rather than being mislabeled as high resolution.",
+    "quality_note": "The Art Museum treats binary integrity as a deployment gate. Every local WEBP/AVIF under the visual-art asset tree is structurally checked; corrupt legacy derivatives are removed from the public build instead of lingering as tempting but unusable files. Hung 1536×1024 sources are retained at full pixel dimensions in optimized AVIF/WebP assets. Older valid 240×360 / 360×240 derivatives remain a resolution-upgrade queue.",
     "integrity_gate": {
       "status": "enforced",
       "introduced": "2026-10-07",

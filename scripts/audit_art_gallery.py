@@ -137,6 +137,9 @@ for fig in figures:
         continue
     image_srcs.append(match.group(1))
 
+# No corrupt visual-art binary may remain hidden in the public asset tree.
+visual_asset_root=ROOT/"assets/visual-art"
+referenced_paths=set()
 for src in image_srcs:
     if src.startswith(("http:","https:","data:")):
         fatal.append(f"gallery image is not local: {src}"); continue
@@ -160,13 +163,29 @@ for src in image_srcs:
     elif suffix==".webp" and row.get("width") and row.get("height") and max(row["width"],row["height"])<1024:
         warnings.append(f"low-resolution gallery asset: {rel}: {row['width']}x{row['height']}")
     assets.append(row)
+    referenced_paths.add(str(rel))
+
+asset_tree_corrupt=[]
+if visual_asset_root.is_dir():
+    for target in sorted(visual_asset_root.rglob("*")):
+        if not target.is_file() or target.suffix.lower() not in {".webp",".avif"}:
+            continue
+        rel=target.relative_to(ROOT)
+        if str(rel) in referenced_paths:
+            continue
+        result=webp_info(target) if target.suffix.lower()==".webp" else avif_info(target)
+        if not result.get("valid"):
+            msg=f"corrupt/truncated unreferenced visual-art asset: {rel}: {result.get('error','invalid payload')}"
+            asset_tree_corrupt.append(msg)
+            fatal.append(msg)
 
 payload={
-    "schema_version":"2.0.0",
+    "schema_version":"2.1.0",
     "gallery_cards":len(figures),
     "static_dates":dates,
     "dynamic_blob_images":0,
     "assets":assets,
+    "unreferenced_corrupt_assets":asset_tree_corrupt,
     "fatal":fatal,
     "warnings":warnings,
 }
