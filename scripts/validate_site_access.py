@@ -278,6 +278,18 @@ if OUT.exists():
         first_nav=home[nav_start:nav_end]
         if first_nav.count("<a ")>5:
             errors.append("Home first-screen navigation exceeds compact local-link budget")
+    for page in OUT.rglob("*.html"):
+        rel=page.relative_to(OUT).as_posix()
+        text=read(page)
+        nav_match=re.search(r'<nav\b[^>]*\bclass=["\'][^"\']*\bpage-nav\b[^"\']*["\'][^>]*>(.*?)</nav\s*>',text,flags=re.I|re.S)
+        if not nav_match:
+            continue
+        first_nav=nav_match.group(1)
+        current_count=len(re.findall(r'aria-current=["\']page["\']',first_nav,flags=re.I))
+        if current_count>1:
+            errors.append(f"{rel} top subheader exposes {current_count} current-page links")
+        if re.fullmatch(r"rooms/inside/[^/]+/index\.html",rel) and current_count!=1:
+            errors.append(f"{rel} nested Room subheader must expose exactly one current-page link")
     if "/rooms/potatoverse-canon/beings/cia/" not in js:
         errors.append("CIA character archive direct route missing from quick access")
     if "/rooms/potatoverse-canon/beings/cia/bank/" not in js:
