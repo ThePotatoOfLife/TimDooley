@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+<title id="title">Potato of Life — Up, Down, In and Out</title>
+<desc id="desc">Project-symbolic movement diagram showing four directions through the Door: upward return, downward embodiment, inward encounter and outward expression.</desc>
+<defs>
+ <linearGradient id="axis" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff7cf"/><stop offset=".5" stop-color="#9fd9f4"/><stop offset="1" stop-color="#b79bd8"/></linearGradient>
+ <filter id="g"><feGaussianBlur stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+ <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#a98539"/></marker>
+</defs>
+<rect width="1200" height="760" rx="34" fill="#f8f6ef"/>
+<text x="60" y="75" font-family="Georgia,serif" font-size="42" fill="#2d302c">The Living Movement Through the Door</text>
+<text x="60" y="111" font-family="system-ui,sans-serif" font-size="17" letter-spacing="3" fill="#82672f">UP · DOWN · IN · OUT</text>
+<ellipse cx="600" cy="375" rx="155" ry="265" fill="#fffdf4" stroke="#c5a553" stroke-width="4"/>
+<path d="M600 160V590" stroke="url(#axis)" stroke-width="20" stroke-linecap="round" filter="url(#g)"/>
+<path d="M600 350V152" stroke="#a98539" stroke-width="4" marker-end="url(#a)"/>
+<path d="M600 400V602" stroke="#a98539" stroke-width="4" marker-end="url(#a)"/>
+<path d="M520 375H350" stroke="#a98539" stroke-width="4" marker-end="url(#a)"/>
+<path d="M680 375H850" stroke="#a98539" stroke-width="4" marker-end="url(#a)"/>
+<circle cx="600" cy="375" r="72" fill="#fff7d5" stroke="#c6a24c" stroke-width="3"/>
+<text x="600" y="367" text-anchor="middle" font-family="Georgia,serif" font-size="28" fill="#5c451c">DOOR</text>
+<text x="600" y="394" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" letter-spacing="2" fill="#6a562b">ENCOUNTER</text>
+<g font-family="system-ui,sans-serif" fill="#4c524c">
+ <text x="600" y="143" text-anchor="middle" font-family="Georgia,serif" font-size="28" fill="#654c1d">UP</text>
+ <text x="600" y="181" text-anchor="middle" font-size="16">return · union · ascent</text>
+ <text x="600" y="655" text-anchor="middle" font-family="Georgia,serif" font-size="28" fill="#654c1d">DOWN</text>
+ <text x="600" y="686" text-anchor="middle" font-size="16">embodiment · grounding · form</text>
+ <text x="290" y="355" text-anchor="middle" font-family="Georgia,serif" font-size="28" fill="#654c1d">IN</text>
+ <text x="290" y="387" text-anchor="middle" font-size="16">attention · encounter</text>
+ <text x="290" y="413" text-anchor="middle" font-size="16">transformation</text>
+ <text x="910" y="355" text-anchor="middle" font-family="Georgia,serif" font-size="28" fill="#654c1d">OUT</text>
+ <text x="910" y="387" text-anchor="middle" font-size="16">expression · fruit</text>
+ <text x="910" y="413" text-anchor="middle" font-size="16">blessing / consequence</text>
+</g>
+<text x="600" y="731" text-anchor="middle" font-family="Georgia,serif" font-size="19" fill="#68665d">One relation can be read from different directions without becoming four different systems.</text>
+</svg>
