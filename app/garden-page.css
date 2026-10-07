@@ -1255,3 +1255,24 @@ html{scroll-behavior:smooth}
     margin:0;
   }
 }
+
+
+.garden-example-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;
+  margin:28px 0 36px;
+}
+.garden-example-card{
+  padding:18px;
+  border:1px solid rgba(239,224,168,.22);
+  background:linear-gradient(180deg,rgba(20,32,20,.88),rgba(11,18,13,.92));
+  box-shadow:0 12px 30px rgba(0,0,0,.16);
+}
+.garden-example-card h3{
+  margin:6px 0 9px;
+  font:400 clamp(18px,2vw,24px)/1.16 var(--site-font-serif);
+}
+.garden-example-card p{line-height:1.58}
+.garden-example-card a{display:inline-block;margin-top:4px}
+@media(max-width:820px){.garden-example-grid{grid-template-columns:1fr}}
