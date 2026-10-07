@@ -532,3 +532,14 @@ html[data-site-floor] .page > :where(p.boundary,p.note,p.warning,p.lede,.boundar
   .related-context > nav{justify-content:flex-start}
 }
 
+
+
+/* Mobile reader compositor budget — 2026-10-07.
+   Reader panes already own legible material backgrounds. On narrow devices,
+   avoid repeatedly blurring the full pixel-art canvas behind ordinary content. */
+@media(max-width:700px){
+  html[data-site-floor] .page :where(.page-header,section,article,aside,.lede,.boundary,.note,.callout,.rule,.whole,.card,.room-language,.room-essay,.room-ledger,.room-quote,.room-reader,.dwelling-reflection){
+    backdrop-filter:none!important;
+    -webkit-backdrop-filter:none!important;
+  }
+}
