@@ -26,7 +26,7 @@
     inset 0 1px rgba(255,255,255,.62),
     inset 0 0 0 1px rgba(255,247,220,.24),
     0 16px 34px rgba(0,0,0,.16);
-  backdrop-filter:blur(10px) saturate(.88)
+  backdrop-filter:none;
 }
 .being-reader .page-header::after{
   content:"";
@@ -47,7 +47,7 @@
   color:#2d302b;
   font:400 clamp(19px,2.4vw,28px)/1.56 var(--site-font-serif);
   box-shadow:0 10px 26px rgba(0,0,0,.10);
-  backdrop-filter:blur(8px)
+  backdrop-filter:none;
 }
 .being-reader p,.being-reader li{line-height:1.72}
 .being-reader h2{
@@ -92,7 +92,7 @@
     var(--being-pane-soft);
   color:var(--being-copy);
   box-shadow:0 14px 30px rgba(0,0,0,.11);
-  backdrop-filter:blur(8px)
+  backdrop-filter:none;
 }
 .being-reader section:nth-of-type(even){
   background:
