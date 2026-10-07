@@ -1,9 +1,5 @@
 #!/usr/bin/env python3
-"""Audit the built Art Museum without requiring Pillow.
-
-Structure/reference failures are fatal. Resolution and legacy-asset quality debt
-are reported so the collection can be repaired progressively without hiding it.
-"""
+"""Audit the built Art Museum, including binary integrity of every hung image."""
 from __future__ import annotations
 import json, re, struct
 from pathlib import Path
@@ -40,6 +36,7 @@ for marker,label in [
     (".gallery-card.is-active","active painting state"),
     ("width:auto!important;height:auto!important","native artwork proportions"),
     ("MUSEUM STAGE V5","orientation-aware museum navigation"),
+    ("MUSEUM STAGE V6","broken-image containment"),
 ]:
     if marker not in css: fatal.append(f"gallery CSS missing {label}")
 for marker,label in [
@@ -48,10 +45,13 @@ for marker,label in [
     ("data-wall-prev","previous-work runtime"),
     ("const classifyImage","orientation classifier"),
     ("const rebuildMonthRail","chronological month rail"),
+    ("const guardImage","runtime broken-image guard"),
 ]:
     if marker not in js: fatal.append(f"gallery JS missing {label}")
 if "addEventListener('wheel'" in js or 'addEventListener("wheel"' in js:
     fatal.append("gallery JS must not hijack page wheel scrolling")
+if 'data-github-blob=' in html or "api.github.com/repos/ThePotatoOfLife/TimDooley/git/blobs" in js:
+    fatal.append("gallery must not depend on runtime GitHub blob hydration")
 
 figures=re.findall(r'<figure\b[^>]*class="[^"]*gallery-card[^"]*"[^>]*>[\s\S]*?</figure>',html,re.I)
 ids=[]
@@ -65,18 +65,19 @@ if len(figures)<15: fatal.append(f"too few gallery works: {len(figures)}")
 if len(ids)!=len(set(ids)): fatal.append("duplicate gallery card ids")
 if len(dates)!=len(figures): fatal.append(f"not every gallery card has data-date ({len(dates)}/{len(figures)})")
 if dates and dates!=sorted(dates): fatal.append("gallery source order is not chronological")
+mcount=re.search(r'<span><b>(\d+)</b> works currently hung</span>',html)
+if not mcount or int(mcount.group(1))!=len(figures):
+    fatal.append(f"displayed hung-work count does not match cards ({mcount.group(1) if mcount else 'missing'} vs {len(figures)})")
 
 def webp_info(path:Path):
     data=path.read_bytes()
     out={"bytes":len(data),"valid":False,"width":None,"height":None}
     if len(data)<20 or data[:4]!=b"RIFF" or data[8:12]!=b"WEBP":
-        out["error"]="not a RIFF WEBP"
-        return out
+        out["error"]="not a RIFF WEBP"; return out
     declared=struct.unpack_from("<I",data,4)[0]+8
     out["declared_bytes"]=declared
     if declared!=len(data):
-        out["error"]=f"truncated/mismatched RIFF: declares {declared}, has {len(data)}"
-        return out
+        out["error"]=f"truncated/mismatched RIFF: declares {declared}, has {len(data)}"; return out
     chunk=data[12:16]
     try:
         if chunk==b"VP8 ":
@@ -96,35 +97,75 @@ def webp_info(path:Path):
     out["valid"]=True
     return out
 
-for src in re.findall(r'<img\b[^>]*\bsrc="([^"]+)"',html,re.I):
-    if src.startswith(("http:","https:","data:")): continue
+def avif_info(path:Path):
+    data=path.read_bytes()
+    out={"bytes":len(data),"valid":False}
+    if len(data)<16:
+        out["error"]="AVIF too small"; return out
+    pos=0
+    boxes=[]
+    try:
+        while pos<len(data):
+            if pos+8>len(data): raise ValueError("truncated ISO-BMFF box header")
+            size=struct.unpack_from(">I",data,pos)[0]
+            typ=data[pos+4:pos+8]
+            header=8
+            if size==1:
+                if pos+16>len(data): raise ValueError("truncated extended box header")
+                size=struct.unpack_from(">Q",data,pos+8)[0]; header=16
+            elif size==0:
+                size=len(data)-pos
+            if size<header: raise ValueError(f"invalid {typ!r} box size {size}")
+            if pos+size>len(data): raise ValueError(f"truncated {typ!r} box: ends {pos+size}, file has {len(data)}")
+            boxes.append(typ.decode("ascii","replace"))
+            pos+=size
+        if pos!=len(data): raise ValueError("ISO-BMFF parse did not end at EOF")
+        if not boxes or boxes[0]!="ftyp": raise ValueError("AVIF missing leading ftyp box")
+        ftyp=data[8:min(len(data),64)]
+        if b"avif" not in ftyp and b"avis" not in ftyp: raise ValueError("ftyp does not advertise AVIF")
+    except Exception as exc:
+        out["error"]=str(exc); return out
+    out["boxes"]=boxes
+    out["valid"]=True
+    return out
+
+image_srcs=[]
+for fig in figures:
+    match=re.search(r'<img\b[^>]*\bsrc="([^"]+)"',fig,re.I)
+    if not match:
+        fatal.append("gallery card has no local image src")
+        continue
+    image_srcs.append(match.group(1))
+
+for src in image_srcs:
+    if src.startswith(("http:","https:","data:")):
+        fatal.append(f"gallery image is not local: {src}"); continue
     clean=src.split("?",1)[0].split("#",1)[0]
     target=(PAGE.parent/clean).resolve()
     try: rel=target.relative_to(ROOT.resolve())
     except ValueError:
-        fatal.append(f"image escapes site root: {src}")
-        continue
+        fatal.append(f"image escapes site root: {src}"); continue
     if not target.is_file():
-        fatal.append(f"missing gallery image: {src}")
-        continue
+        fatal.append(f"missing gallery image: {src}"); continue
     row={"src":src,"path":str(rel),"bytes":target.stat().st_size}
-    if target.suffix.lower()==".webp":
+    suffix=target.suffix.lower()
+    if suffix==".webp":
         row.update(webp_info(target))
-        if not row.get("valid"):
-            warnings.append(f"corrupt gallery WEBP: {rel}: {row.get('error')}")
-        elif row.get("width") and row.get("height") and max(row["width"],row["height"])<1024:
-            warnings.append(f"low-resolution gallery asset: {rel}: {row['width']}x{row['height']}")
+    elif suffix==".avif":
+        row.update(avif_info(target))
+    else:
+        row["valid"]=target.stat().st_size>0
+    if not row.get("valid"):
+        fatal.append(f"corrupt/truncated gallery image: {rel}: {row.get('error','invalid payload')}")
+    elif suffix==".webp" and row.get("width") and row.get("height") and max(row["width"],row["height"])<1024:
+        warnings.append(f"low-resolution gallery asset: {rel}: {row['width']}x{row['height']}")
     assets.append(row)
 
-dynamic=len(re.findall(r'\bdata-github-blob="',html))
-if dynamic:
-    warnings.append(f"{dynamic} gallery image(s) still depend on runtime GitHub blob hydration")
-
 payload={
-    "schema_version":"1.1.0",
+    "schema_version":"2.0.0",
     "gallery_cards":len(figures),
     "static_dates":dates,
-    "dynamic_blob_images":dynamic,
+    "dynamic_blob_images":0,
     "assets":assets,
     "fatal":fatal,
     "warnings":warnings,

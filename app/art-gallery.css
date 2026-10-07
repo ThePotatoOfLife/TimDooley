@@ -282,3 +282,6 @@
 .museum-index__month:hover,.museum-index__month[aria-current="true"]{color:var(--museum-gold-bright)}
 @media(max-width:1100px){.museum-wall-label{display:none}}
 @media(max-width:620px){.gallery-card.orientation-landscape .gallery-image-frame img{max-width:79vw!important;max-height:48vh!important}.gallery-card.orientation-portrait .gallery-image-frame img{max-width:62vw!important;max-height:50vh!important}.gallery-card.orientation-square .gallery-image-frame img{max-width:70vw!important;max-height:48vh!important}.museum-index{width:calc(100% - 18px);padding-inline:10px}.museum-index__months{overflow-x:auto;justify-content:flex-start;gap:14px;scrollbar-width:none}.museum-index__month{white-space:nowrap}}
+
+/* MUSEUM STAGE V6 — broken-image containment */
+.gallery-card[data-image-failed="true"]{display:none!important}

@@ -197,7 +197,7 @@ jobs:
             fetch_live "${base}${route}" ".live-smoke/${safe_name}.html"
           done
 
-          for asset in             "science/science-papers.css"             "science/science-paper.css"             "assets/visuals/science-time-door-handshake.svg"             "app/site-elevator.js"             "app/site-elevator.css"             "app/elevator-page.js"             "app/elevator-page.css"             "app/garden-page.js"             "app/garden-page.css"             "assets/visuals/garden-eden-master.webp"             "app/header-heaven-v3.avif"             "app/header-plane-v3.avif"             "app/header-below-v3.avif"             "app/site-elevator-art-v3.json"             "app/site-elevator-hotspots.json"             "app/house-journey.js"             "app/house-journey.css"             "app/home-heaven.avif"             "app/home-plane.avif"             "app/home-below.avif"             "app/hall-of-shame.avif"             "app/hall-of-heroes.avif"             "app/dogs-hall.css"             "app/potatoes-hall.css"             "app/lower-layer.css"             "app/art-gallery.css"             "app/art-gallery.js"             "assets/visual-art/2025/divine-gardener-with-potato.webp"             "data/house/elevator-spatial-projection.json" \
+          for asset in             "science/science-papers.css"             "science/science-paper.css"             "assets/visuals/science-time-door-handshake.svg"             "app/site-elevator.js"             "app/site-elevator.css"             "app/elevator-page.js"             "app/elevator-page.css"             "app/garden-page.js"             "app/garden-page.css"             "assets/visuals/garden-eden-master.webp"             "app/header-heaven-v3.avif"             "app/header-plane-v3.avif"             "app/header-below-v3.avif"             "app/site-elevator-art-v3.json"             "app/site-elevator-hotspots.json"             "app/house-journey.js"             "app/house-journey.css"             "app/home-heaven.avif"             "app/home-plane.avif"             "app/home-below.avif"             "app/hall-of-shame.avif"             "app/hall-of-heroes.avif"             "app/dogs-hall.css"             "app/potatoes-hall.css"             "app/lower-layer.css"             "app/art-gallery.css"             "app/art-gallery.js"             "assets/visual-art/2025/divine-gardener-with-potato.webp"             "assets/visual-art/2025/godly-robes-transformation.webp"             "assets/visual-art/2025/cosmic-weaver-at-loom.avif"             "assets/visual-art/2025/divine-foot-marble-wail.avif"             "assets/visual-art/2025/farmers-brunch-delight.avif"             "assets/visual-art/2025/dark-arctic-crucifixion.avif"             "assets/visual-art/2025/god-at-vending-machine.avif"             "data/house/elevator-spatial-projection.json" \
             "knowledge/core/spudlight-field-manual.json" \
             "knowledge/core/lower-field-orientation.json" \
             "knowledge/world/lower-field-population-severity-estimate.json" \
@@ -268,6 +268,32 @@ jobs:
           art_css=Path(".live-smoke/app_art-gallery.css").read_text(encoding="utf-8",errors="replace")
           art_js=Path(".live-smoke/app_art-gallery.js").read_text(encoding="utf-8",errors="replace")
           art_gardener=Path(".live-smoke/assets_visual-art_2025_divine-gardener-with-potato.webp").read_bytes()
+          import struct
+          art_vending=Path(".live-smoke/assets_visual-art_2025_god-at-vending-machine.avif").read_bytes()
+          art_arctic=Path(".live-smoke/assets_visual-art_2025_dark-arctic-crucifixion.avif").read_bytes()
+          art_farmer=Path(".live-smoke/assets_visual-art_2025_farmers-brunch-delight.avif").read_bytes()
+          art_foot=Path(".live-smoke/assets_visual-art_2025_divine-foot-marble-wail.avif").read_bytes()
+          art_cosmic=Path(".live-smoke/assets_visual-art_2025_cosmic-weaver-at-loom.avif").read_bytes()
+          art_godly=Path(".live-smoke/assets_visual-art_2025_godly-robes-transformation.webp").read_bytes()
+          def valid_webp(data):
+              return len(data)>=20 and data[:4]==b"RIFF" and data[8:12]==b"WEBP" and struct.unpack_from("<I",data,4)[0]+8==len(data)
+          def valid_avif(data):
+              if len(data)<16: return False
+              pos=0
+              try:
+                  while pos<len(data):
+                      if pos+8>len(data): return False
+                      size=struct.unpack_from(">I",data,pos)[0]
+                      header=8
+                      if size==1:
+                          if pos+16>len(data): return False
+                          size=struct.unpack_from(">Q",data,pos+8)[0]; header=16
+                      elif size==0: size=len(data)-pos
+                      if size<header or pos+size>len(data): return False
+                      pos+=size
+                  return pos==len(data) and data[4:12]==b"ftypavif"
+              except Exception:
+                  return False
           potato_life=Path(".live-smoke/potato-of-life_.html").read_text(encoding="utf-8",errors="replace")
           north=Path(".live-smoke/north_.html").read_text(encoding="utf-8",errors="replace")
           assert 'class="museum-stage-shell"' in art_gallery, "live Art Museum missing controlled stage"
@@ -287,6 +313,11 @@ jobs:
           assert "const classifyImage" in art_js and "const rebuildMonthRail" in art_js, "live Art Museum missing orientation or chronology runtime"
           assert "addEventListener('wheel'" not in art_js and 'addEventListener("wheel"' not in art_js, "live Art Museum must not hijack page wheel scrolling"
           assert len(art_gardener) > 1000 and art_gardener[:4] == b"RIFF", "live Art Museum gardener asset missing/invalid"
+          assert valid_webp(art_gardener), "live Art Museum gardener WEBP is truncated"
+          assert valid_webp(art_godly), "live Art Museum Godly Robes WEBP is truncated"
+          for label,payload in (("vending",art_vending),("arctic",art_arctic),("farmer",art_farmer),("foot",art_foot),("cosmic",art_cosmic)):
+              assert valid_avif(payload), f"live Art Museum {label} AVIF is truncated/invalid"
+          assert 'data-github-blob=' not in art_gallery, "live Art Museum restored runtime GitHub blob dependency"
           assert "../../rooms/inside/visual-art/" in culture, "live canonical Culture page missing Art Museum doorway"
           assert 'id="north-axis-world-tree"' in potato_life, "live Potato of Life missing North Axis / World Tree section"
           assert "At the pole, “north” stops being merely a direction." in potato_life, "live Potato of Life missing North-of-North research text"

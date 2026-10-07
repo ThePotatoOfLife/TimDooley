@@ -1,19 +1,4 @@
 (() => {
-  const hydrateBlobImages = async () => {
-    const images = [...document.querySelectorAll('img[data-github-blob]')];
-    for (const img of images) {
-      try {
-        const response = await fetch('https://api.github.com/repos/ThePotatoOfLife/TimDooley/git/blobs/' + img.dataset.githubBlob);
-        if (!response.ok) continue;
-        const payload = await response.json();
-        const binary = atob(String(payload.content || '').replace(/\s/g, ''));
-        const bytes = new Uint8Array(binary.length);
-        for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
-        img.src = URL.createObjectURL(new Blob([bytes], {type: img.dataset.githubMime || 'image/webp'}));
-      } catch (_) {}
-    }
-  };
-  hydrateBlobImages();
 
   const grid = document.querySelector('[data-gallery-grid]');
   const stage = document.querySelector('[data-museum-stage]');
@@ -95,6 +80,23 @@
     if (img.complete) apply(); else img.addEventListener('load',apply,{once:true});
   };
   cards.forEach(classifyImage);
+
+  const guardImage = card => {
+    const img = card.querySelector('img');
+    if (!img) return;
+    const fail = () => {
+      if (card.dataset.imageFailed === 'true') return;
+      card.dataset.imageFailed = 'true';
+      card.hidden = true;
+      const visible = visibleCards();
+      wallIndex = Math.min(wallIndex,Math.max(0,visible.length - 1));
+      rebuildMonthRail(visible);
+      renderWall();
+    };
+    img.addEventListener('error',fail,{once:true});
+    if (img.complete && !img.naturalWidth) queueMicrotask(fail);
+  };
+  cards.forEach(guardImage);
 
   const warmNeighbors = (visible,index) => {
     [index - 1,index,index + 1].forEach(i => {
@@ -269,7 +271,7 @@
     const filter = button.dataset.galleryFilter;
     filters.forEach(item => item.setAttribute('aria-pressed',String(item === button)));
     cards.forEach(card => {
-      card.hidden = filter !== 'all' && card.dataset.category !== filter;
+      card.hidden = card.dataset.imageFailed === 'true' || (filter !== 'all' && card.dataset.category !== filter);
     });
     wallIndex = 0;
     rebuildMonthRail(visibleCards());
@@ -332,7 +334,8 @@
     viewerIndex = -1;
   });
 
-  const hashCard = location.hash && document.querySelector(location.hash);
+  let hashCard = null;
+  try { hashCard = location.hash ? document.querySelector(location.hash) : null; } catch (_) {}
   if (hashCard?.classList.contains('gallery-card')) {
     const index = visibleCards().indexOf(hashCard);
     if (index >= 0) wallIndex = index;

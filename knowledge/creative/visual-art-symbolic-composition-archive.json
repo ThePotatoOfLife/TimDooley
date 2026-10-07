@@ -1,7 +1,7 @@
 {
   "id": "visual-art-symbolic-composition-archive",
   "title": "Visual Art & Symbolic Composition Archive",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "updated": "2026-10-07",
   "status": "creative-archaeology owner",
   "purpose": "Preserve how Potatoverse concepts were staged together in visual compositions, prompts, diagrams and generated imagery without treating those images as empirical evidence for theology, anatomy, politics or science.",
@@ -123,7 +123,7 @@
   "recovered_image_corpus": {
     "id": "tim-dooley-art-corpus-2025-may-september",
     "recovery_date": "2026-10-07",
-    "source_status": "24 dated image artifacts catalogued from Tim Dooley's supplied/recovered corpus; 23 are currently hung in the Art Museum. Royal at Jesus' Tomb remains catalogued pending binary transfer.",
+    "source_status": "24 dated image artifacts catalogued from Tim Dooley's supplied/recovered corpus; 20 complete assets are currently hung in the Art Museum. Three truncated legacy recoveries are quarantined pending complete source recovery, and Royal at Jesus' Tomb remains catalogued pending its public binary.",
     "production_note": "Tim states the group contains works he either painted himself or conceptualized and had rendered with AI. Per-item production method is not yet resolved; do not infer it.",
     "date_rule": "Dates are derived from the supplied artifact filenames.",
     "public_route": "/rooms/inside/visual-art/#recovered-gallery",
@@ -214,7 +214,9 @@
           "sword",
           "moon",
           "apocalypse"
-        ]
+        ],
+        "gallery_status": "recovery-needed",
+        "recovery_note": "The recovered repository derivative is truncated and is intentionally not hung until a complete source artifact is recovered."
       },
       {
         "id": "royal-grief-and-vengeance",
@@ -268,7 +270,7 @@
         "id": "divine-foot-marble-wail",
         "title": "Divine Foot, Marble Wail",
         "date": "2025-06-29",
-        "file": "assets/visual-art/2025/divine-foot-marble-wail.webp",
+        "file": "assets/visual-art/2025/divine-foot-marble-wail.avif",
         "source_original_dimensions": "1536×1024",
         "gallery_status": "hung",
         "description": "A marble head weeps as a haloed foot enters its open mouth, collapsing devotional iconography, bodily humiliation and classical statuary into one impossible object. The material belongs to monuments and museums, while the gesture belongs to abasement, contact and grotesque comedy. The halo complicates the violence by sanctifying what would otherwise read simply as insult. The work asks whether reverence can survive disgust, and what happens when sacred imagery enters the body instead of hovering safely above it.",
@@ -406,7 +408,9 @@
           "artist",
           "tears",
           "outsider"
-        ]
+        ],
+        "gallery_status": "recovery-needed",
+        "recovery_note": "The recovered repository derivative is truncated and is intentionally not hung until a complete source artifact is recovered."
       },
       {
         "id": "melancholic-potato-peeler",
@@ -420,7 +424,9 @@
           "grief",
           "domestic",
           "peasant"
-        ]
+        ],
+        "gallery_status": "recovery-needed",
+        "recovery_note": "The recovered repository derivative is truncated and is intentionally not hung until a complete source artifact is recovered."
       },
       {
         "id": "royal-portrait-hallway",
@@ -467,7 +473,9 @@
           "keyboard",
           "headphones",
           "guitar"
-        ]
+        ],
+        "file": "assets/visual-art/2025/godly-robes-transformation.webp",
+        "source_original_dimensions": "1536×1024"
       },
       {
         "id": "desert-dog-odyssey",
@@ -492,7 +500,7 @@
         "title": "Cosmic Weaver at Loom",
         "date": "2025-09-17",
         "gallery_status": "hung",
-        "file": "assets/visual-art/2025/cosmic-weaver-at-loom.webp",
+        "file": "assets/visual-art/2025/cosmic-weaver-at-loom.avif",
         "description": "A crowned royal figure works at a loom while luminous threads cross a star-filled field, recasting sovereignty as relational craft.",
         "motifs": [
           "crown",
@@ -501,9 +509,15 @@
           "golden threads",
           "network",
           "craft"
-        ]
+        ],
+        "source_original_dimensions": "1536×1024"
       }
     ],
-    "quality_note": "New 1536×1024 originals are being retained at full pixel dimensions in optimized gallery assets rather than collapsed to thumbnail dimensions. Legacy 240×360 / 360×240 derivatives remain a repair queue; four older WEBPs are known corrupt/truncated and Godly Robes still uses runtime blob hydration."
+    "quality_note": "The Art Museum now treats binary integrity as a deployment gate: every hung local WEBP/AVIF must be structurally complete. Complete 1536×1024 sources are retained at full pixel dimensions in optimized AVIF/WebP assets. Older 240×360 / 360×240 derivatives remain a resolution-upgrade queue rather than being mislabeled as high resolution.",
+    "integrity_gate": {
+      "status": "enforced",
+      "introduced": "2026-10-07",
+      "rule": "A gallery card may ship only when its local image exists and its WEBP RIFF or AVIF ISO-BMFF container is structurally complete. Runtime GitHub blob hydration is forbidden for hung works."
+    }
   }
 }
