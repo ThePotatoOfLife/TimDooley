@@ -217,7 +217,7 @@ html[data-site-floor="heaven"] body:not(.home-body):not(.garden-body):not(.dogs-
   --site-pane-shadow:0 16px 38px rgba(31,38,38,.13);
   --site-focus:#8e6a2b;
 }
-html[data-site-floor="heaven"] :is(.summary,.dwelling-reflection p,.topology-traversal-card q){
+html[data-site-floor="heaven"] :is(.dwelling-reflection p,.topology-traversal-card q){
   color:var(--site-copy);
 }
 html[data-site-floor="heaven"] .dwelling-reflection p strong{color:#6f531f}
@@ -372,7 +372,7 @@ html[data-site-floor] .page > :where(p.boundary,p.note,p.warning,p.lede,.boundar
 .summary {
   max-width: 900px;
   margin: 0;
-  color: #dad5cd;
+  color: var(--site-copy);
   font-family: var(--site-font-serif);
   font-size: var(--site-text-lead);
   line-height: 1.52;
