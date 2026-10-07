@@ -20,8 +20,10 @@ permissions:
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
+# One production lane: an older validated revision must never race a newer deploy.
+# The freshness check runs after any queue wait, so stale revisions self-suppress.
 concurrency:
-  group: pages-${{ github.event.workflow_run.head_sha || inputs.quality_run_id }}
+  group: pages-production
   cancel-in-progress: false
 
 jobs:
