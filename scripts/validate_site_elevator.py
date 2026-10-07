@@ -143,7 +143,8 @@ def main() -> int:
             "site-elevator-hotspots.json",
             "--site-header-art:",
             "background-image:var(--site-header-art)",
-            "background-size:100% 100%",
+            "background-size:100% auto",
+            "--elevator-shell-height:clamp(96px,6.25vw,120px)",
             "border-radius:0",
             "background:transparent",
             ".site-elevator-room-rail{",
@@ -173,6 +174,8 @@ def main() -> int:
             errors.append("v3 desktop hotspot geometry must not use nth-child coordinate guesses")
         if "fetchJson('/app/site-elevator-hotspots.json')" not in js or "applyHotspotRect(link,rect,artboard)" not in js:
             errors.append("site elevator runtime must load and apply the canonical hotspot map")
+        if "desktopPanoramaMetrics" not in js or "offsetY:(host.height-renderedHeight)/2" not in js:
+            errors.append("desktop hotspot geometry must compensate for centered panorama cropping")
         if ".site-elevator[data-elevator-direction] .site-elevator-room-rail" not in css or "animation:none" not in css:
             errors.append("desktop invisible hit rail must not inherit settling animation")
         if css.count("!important") > 8:
