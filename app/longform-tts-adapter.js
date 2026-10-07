@@ -255,13 +255,23 @@
     container.addEventListener('potato:tts-current',onCurrent);
 
     const Observer=config.MutationObserver||root?.MutationObserver;
+    let mutationRefreshHandle=0;
+    const scheduleMutationRefresh=()=>{
+      if(mutationRefreshHandle)return;
+      const run=()=>{
+        mutationRefreshHandle=0;
+        pageHighlighter.invalidate();
+        if(preparing)return;
+        if(currentItem&&!container.contains(currentItem)){setReadingActive(false);currentItem=null;currentGuard.clear()}
+        ensureListenButtons();
+        refresh();
+      };
+      if(root?.requestAnimationFrame)mutationRefreshHandle=root.requestAnimationFrame(run);
+      else mutationRefreshHandle=root?.setTimeout?root.setTimeout(run,16):setTimeout(run,16);
+    };
     const observer=Observer?new Observer(records=>{
       if(mutationsAreInside(records,host))return;
-      pageHighlighter.invalidate();
-      if(preparing)return;
-      if(currentItem&&!container.contains(currentItem)){setReadingActive(false);currentItem=null;currentGuard.clear()}
-      ensureListenButtons();
-      refresh();
+      scheduleMutationRefresh();
     }):null;
     observer?.observe(container,{childList:true,subtree:true,characterData:true});
 
@@ -279,6 +289,11 @@
       pageHighlighter,
       destroy(){
         observer?.disconnect();
+        if(mutationRefreshHandle){
+          if(root?.cancelAnimationFrame)root.cancelAnimationFrame(mutationRefreshHandle);
+          else if(root?.clearTimeout)root.clearTimeout(mutationRefreshHandle);
+          mutationRefreshHandle=0;
+        }
         container.removeEventListener('click',onActivate);
         container.removeEventListener('focusin',onActivate);
         container.removeEventListener('potato:tts-current',onCurrent);
