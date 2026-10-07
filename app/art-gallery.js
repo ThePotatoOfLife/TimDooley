@@ -51,6 +51,16 @@
   const plaqueBody = plaque.querySelector('[data-plaque-body]');
   const plaqueMotifs = plaque.querySelector('[data-plaque-motifs]');
   const empty = document.querySelector('[data-gallery-empty]');
+  const wallLabel = stage.querySelector('[data-wall-label]');
+  const wallLabelNumber = wallLabel?.querySelector('[data-wall-label-number]');
+  const wallLabelTitle = wallLabel?.querySelector('[data-wall-label-title]');
+  const wallLabelDate = wallLabel?.querySelector('[data-wall-label-date]');
+  const indexNav = document.querySelector('[data-museum-index]');
+  const wallRange = indexNav?.querySelector('[data-wall-range]');
+  const indexStart = indexNav?.querySelector('[data-index-start]');
+  const indexCurrent = indexNav?.querySelector('[data-index-current]');
+  const indexEnd = indexNav?.querySelector('[data-index-end]');
+  const monthRail = indexNav?.querySelector('[data-wall-months]');
 
   const viewerImage = dialog.querySelector('#gallery-viewer-image');
   const viewerTitle = dialog.querySelector('#gallery-viewer-title');
@@ -66,6 +76,46 @@
   let viewerIndex = -1;
 
   const visibleCards = () => cards.filter(card => !card.hidden);
+
+  const monthLabel = card => {
+    const iso = card.dataset.date || '';
+    const d = new Date(iso + 'T12:00:00');
+    return Number.isFinite(d.getTime()) ? new Intl.DateTimeFormat(undefined,{month:'short',year:'numeric'}).format(d) : '';
+  };
+
+  const classifyImage = card => {
+    const img = card.querySelector('img');
+    if (!img) return;
+    const apply = () => {
+      if (!img.naturalWidth || !img.naturalHeight) return;
+      card.classList.remove('orientation-landscape','orientation-portrait','orientation-square');
+      const ratio = img.naturalWidth / img.naturalHeight;
+      card.classList.add(ratio > 1.12 ? 'orientation-landscape' : ratio < .89 ? 'orientation-portrait' : 'orientation-square');
+    };
+    if (img.complete) apply(); else img.addEventListener('load',apply,{once:true});
+  };
+  cards.forEach(classifyImage);
+
+  const warmNeighbors = (visible,index) => {
+    [index - 1,index,index + 1].forEach(i => {
+      const img = visible[i]?.querySelector('img');
+      if (!img) return;
+      img.loading = 'eager';
+      if (img.decode) img.decode().catch(() => {});
+    });
+  };
+
+  const rebuildMonthRail = visible => {
+    if (!monthRail || !visible.length) return;
+    const groups = [];
+    visible.forEach((card,index) => {
+      const label = monthLabel(card);
+      if (!groups.some(group => group.label === label)) groups.push({label,index});
+    });
+    monthRail.innerHTML = groups.map(group =>
+      '<button type="button" class="museum-index__month" data-month-index="' + group.index + '">' + group.label + '</button>'
+    ).join('');
+  };
 
   const cardData = card => {
     const img = card.querySelector('img');
@@ -88,6 +138,10 @@
     plaqueTitle.textContent = data.title;
     plaqueBody.textContent = data.description;
     plaqueMotifs.textContent = data.motifs;
+    if (wallLabelNumber) wallLabelNumber.textContent = 'Work ' + String(index + 1).padStart(2,'0');
+    if (wallLabelTitle) wallLabelTitle.textContent = data.title;
+    if (wallLabelDate) wallLabelDate.textContent = data.meta;
+    if (indexCurrent) indexCurrent.textContent = 'Work ' + String(index + 1).padStart(2,'0') + ' / ' + String(total).padStart(2,'0');
   };
 
   // Controlled wall rotation. No wheel handler: document scrolling remains normal.
@@ -128,6 +182,21 @@
     });
 
     updatePlaque(active,wallIndex,visible.length);
+    warmNeighbors(visible,wallIndex);
+    if (wallRange) {
+      wallRange.max = String(Math.max(0,visible.length - 1));
+      wallRange.value = String(wallIndex);
+      wallRange.disabled = visible.length < 2;
+    }
+    if (indexStart) indexStart.textContent = monthLabel(visible[0]);
+    if (indexEnd) indexEnd.textContent = monthLabel(visible[visible.length - 1]);
+    if (monthRail) {
+      [...monthRail.querySelectorAll('[data-month-index]')].forEach(button => {
+        const start = Number(button.dataset.monthIndex);
+        const next = button.nextElementSibling ? Number(button.nextElementSibling.dataset.monthIndex) : visible.length;
+        button.setAttribute('aria-current',String(wallIndex >= start && wallIndex < next));
+      });
+    }
     const atStart = wallIndex === 0;
     const atEnd = wallIndex === visible.length - 1;
     wallPrev.forEach(button => button.disabled = atStart);
@@ -203,8 +272,20 @@
       card.hidden = filter !== 'all' && card.dataset.category !== filter;
     });
     wallIndex = 0;
+    rebuildMonthRail(visibleCards());
     renderWall();
   }));
+
+  wallRange?.addEventListener('input',() => {
+    wallIndex = Number(wallRange.value) || 0;
+    renderWall();
+  });
+  monthRail?.addEventListener('click',event => {
+    const button = event.target.closest('[data-month-index]');
+    if (!button) return;
+    wallIndex = Number(button.dataset.monthIndex) || 0;
+    renderWall();
+  });
 
   const renderViewer = card => {
     const visible = visibleCards();
@@ -256,5 +337,6 @@
     const index = visibleCards().indexOf(hashCard);
     if (index >= 0) wallIndex = index;
   }
+  rebuildMonthRail(visibleCards());
   renderWall();
 })();
