@@ -2,7 +2,7 @@
    Behavior lives in house-journey.js; presentation stays here so it can be cached,
    audited and changed without injecting duplicate style elements. */
 
-.room-floor-projection{margin:26px 0 30px;padding:20px;border:1px solid var(--site-line,#302d29);background:rgba(255,255,255,.018)}
+.room-floor-projection{margin:26px 0 30px;padding:20px;border:1px solid var(--site-line,#302d29)}
 .room-floor-projection>p{max-width:820px;color:var(--site-muted,#aaa49a);line-height:1.6}
 .room-floor-projection h2{margin:5px 0 8px;font:400 clamp(25px,3.4vw,38px)/1.08 var(--site-font-serif,serif);color:var(--site-gold,#d5ba74)}
 .room-floor-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:15px}
@@ -89,8 +89,8 @@
 .dwelling-object-head h2{font:400 clamp(28px,4vw,42px)/1.08 var(--site-font-serif,serif);color:var(--site-gold,#d5ba74);margin:4px 0 0}
 .dwelling-object-head>p{color:var(--site-muted,#aaa49a);line-height:1.6;margin:0}
 .dwelling-object-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:9px}
-.dwelling-object-card{display:flex;min-height:175px;flex-direction:column;border:1px solid var(--site-line,#302d29);padding:15px;text-decoration:none;color:inherit;background:rgba(255,255,255,.012)}
-.dwelling-object-card:hover{border-color:#625b52;background:rgba(255,255,255,.025)}
+.dwelling-object-card{display:flex;min-height:175px;flex-direction:column;border:1px solid var(--site-line,#302d29);padding:15px;text-decoration:none;color:inherit}
+.dwelling-object-card:hover{border-color:#625b52}
 .dwelling-object-card small{text-transform:uppercase;letter-spacing:.08em;font-size:9px;line-height:1.2;font-weight:800;color:var(--site-gold,#d8b56b)}
 .dwelling-object-card strong{font:400 21px/1.15 var(--site-font-serif,serif);color:var(--site-gold,#d5ba74);margin:7px 0 8px}
 .dwelling-object-card span{color:var(--site-muted,#aaa49a);font-size:10px;line-height:1.55;flex:1}
@@ -103,8 +103,8 @@
 .rooms-best-head h2{font:400 clamp(30px,4vw,44px)/1.05 var(--site-font-serif,serif);color:var(--site-gold,#d5ba74);margin:4px 0 0}
 .rooms-best-head>p{color:var(--site-muted,#aaa49a);line-height:1.6;margin:0}
 .rooms-best-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:9px;margin-top:18px}
-.rooms-best-card{display:flex;min-height:175px;flex-direction:column;border:1px solid var(--site-line,#302d29);padding:15px;text-decoration:none;color:inherit;background:rgba(255,255,255,.012)}
-.rooms-best-card:hover{border-color:#625b52;background:rgba(255,255,255,.025)}
+.rooms-best-card{display:flex;min-height:175px;flex-direction:column;border:1px solid var(--site-line,#302d29);padding:15px;text-decoration:none;color:inherit}
+.rooms-best-card:hover{border-color:#625b52}
 .rooms-best-card small{text-transform:uppercase;letter-spacing:.08em;font-size:7px;font-weight:800;color:var(--site-gold,#d8b56b)}
 .rooms-best-card strong{font:400 20px/1.15 var(--site-font-serif,serif);color:var(--site-gold,#d5ba74);margin:7px 0 8px}
 .rooms-best-card span{color:var(--site-muted,#aaa49a);font-size:10px;line-height:1.55;flex:1}
@@ -149,8 +149,8 @@
 
 .house-deep-corpora{margin-top:10px}
 .house-corpus-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:9px;margin-top:18px}
-.house-corpus-card{display:flex;min-height:185px;flex-direction:column;border:1px solid var(--site-line,#302d29);padding:15px;text-decoration:none;color:inherit;background:rgba(255,255,255,.012)}
-.house-corpus-card:hover{border-color:#625b52;background:rgba(255,255,255,.025)}
+.house-corpus-card{display:flex;min-height:185px;flex-direction:column;border:1px solid var(--site-line,#302d29);padding:15px;text-decoration:none;color:inherit}
+.house-corpus-card:hover{border-color:#625b52}
 .house-corpus-card small{display:block;color:var(--site-gold,#d8b56b);font-size:8px;text-transform:uppercase;letter-spacing:.08em}
 .house-corpus-card strong{display:block;color:var(--site-gold,#d5ba74);font:400 20px/1.15 var(--site-font-serif,serif);margin:7px 0 8px}
 .house-corpus-card span{display:block;color:var(--site-muted,#aaa49a);font-size:10px;line-height:1.5;flex:1}
@@ -163,8 +163,8 @@
 .dwelling-archive-index-head h2{font:400 clamp(25px,3.4vw,36px)/1.1 var(--site-font-serif,serif);color:var(--site-gold,#d5ba74);margin:4px 0 0}
 .dwelling-archive-index-head>p{margin:0;color:var(--site-muted,#aaa49a);font-size:11px;line-height:1.55}
 .dwelling-archive-index-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:8px;margin-top:15px}
-.dwelling-archive-index-card{display:block;border:1px solid var(--site-line,#302d29);padding:13px;text-decoration:none;color:inherit;background:rgba(255,255,255,.01)}
-.dwelling-archive-index-card:hover{border-color:#625b52;background:rgba(255,255,255,.025)}
+.dwelling-archive-index-card{display:block;border:1px solid var(--site-line,#302d29);padding:13px;text-decoration:none;color:inherit}
+.dwelling-archive-index-card:hover{border-color:#625b52}
 .dwelling-archive-index-card small{display:block;color:var(--site-gold,#d8b56b);font-size:7px;text-transform:uppercase;letter-spacing:.08em}
 .dwelling-archive-index-card strong{display:block;color:var(--site-gold,#d5ba74);font:400 17px/1.2 var(--site-font-serif,serif);margin:5px 0}
 .dwelling-archive-index-card span{display:block;color:var(--site-muted,#aaa49a);font-size:9px;line-height:1.45}
