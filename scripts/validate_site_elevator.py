@@ -590,6 +590,19 @@ def main() -> int:
                     f"got css={elevator_css_count}, js={elevator_js_count}"
                 )
 
+        # Source nested Rooms must declare their canonical floor too. Build-time
+        # stamping is a fallback, not the styling contract: first-paint CSS and
+        # runtime-injected panes need the floor before later transforms run.
+        for subroom in active_subrooms:
+            route_id=subroom.get("route_id") or subroom.get("id")
+            parent=dwelling_by_id.get(subroom.get("parent_room_id")) or {}
+            floor=parent.get("primary_level") or "plane"
+            source_path=ROOT/"rooms"/"inside"/str(route_id)/"index.html"
+            if source_path.exists():
+                source=source_path.read_text(encoding="utf-8",errors="replace")
+                if f'data-site-floor="{floor}"' not in source:
+                    errors.append(f"rooms/inside/{route_id}/index.html: source missing canonical floor {floor!r}")
+
         # Every governed Room and active nested Room must ship with its canonical floor.
         for room_id,row in sorted(dwelling_by_id.items()):
             floor=row.get("primary_level") or "plane"
