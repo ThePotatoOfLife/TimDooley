@@ -7,17 +7,19 @@ import re
 ROOT=Path(__file__).resolve().parents[1]
 QUALITY=ROOT/".github/workflows/quality-checks.yml"
 PAGES=ROOT/".github/workflows/pages.yml"
+EMERGENCY=ROOT/".github/workflows/publish-latest-main.yml"
 QUALITY_RUNNER=ROOT/"scripts/run_quality_group.py"
 
 def main()->int:
     errors=[]
-    for p in (QUALITY,PAGES):
+    for p in (QUALITY,PAGES,EMERGENCY):
         if not p.is_file(): errors.append(f"missing workflow: {p.relative_to(ROOT)}")
     if errors:
         for e in errors: print("ERROR",e)
         return 1
     quality=QUALITY.read_text(encoding="utf-8",errors="replace")
     pages=PAGES.read_text(encoding="utf-8",errors="replace")
+    emergency=EMERGENCY.read_text(encoding="utf-8",errors="replace")
     runner=QUALITY_RUNNER.read_text(encoding="utf-8",errors="replace") if QUALITY_RUNNER.is_file() else ""
     quality_contract=quality+"\n"+runner
 
@@ -44,7 +46,7 @@ def main()->int:
     if re.search(r"(?m)^\s*push:\s*$", pages):
         errors.append("Pages workflow must not deploy directly from push; deploy only validated workflow_run revisions or explicit manual dispatch")
     for marker in (
-        'workflows: ["Repository quality checks"]',
+        'workflows: ["Repository quality checks v2"]',
         "types: [completed]",
         "github.event.workflow_run.conclusion == 'success'",
         "github.event.workflow_run.head_branch == 'main'",
@@ -67,6 +69,10 @@ def main()->int:
             errors.append(f"Pages workflow missing validated-revision marker: {marker}")
     if "github.event_name == 'push'" in pages:
         errors.append("Pages deploy condition still contains direct-push bypass")
+    if re.search(r"(?m)^\s*push:\s*$", emergency):
+        errors.append("Emergency Pages publisher must remain manual-only; automatic push deploys bypass validated artifacts")
+    if "workflow_dispatch:" not in emergency:
+        errors.append("Emergency Pages publisher must retain an explicit workflow_dispatch escape hatch")
     for forbidden in ("python scripts/build_site.py", "python scripts/optimize_seo.py", "python scripts/build_discovery.py", "curl -fsSL", "actions/checkout@"):
         if forbidden in pages:
             errors.append(f"Pages workflow must deploy the validated artifact without rebuilding or refetching: {forbidden}")
