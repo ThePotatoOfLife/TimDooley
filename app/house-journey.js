@@ -11,8 +11,7 @@
     try{
       const link=document.createElement('link');
       link.rel='stylesheet';
-      const jsVersion=(()=>{try{return new URL(baseUrl).searchParams.get('v')||'unversioned'}catch(_){return 'unversioned'}})();
-      const cssUrl=new URL('house-journey.css?v='+encodeURIComponent(jsVersion),baseUrl);
+      const cssUrl=new URL('house-journey.css',baseUrl);
       link.href=cssUrl.href;
       link.dataset.houseJourneyStyle='';
       document.head.appendChild(link);
