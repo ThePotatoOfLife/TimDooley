@@ -6,31 +6,17 @@
   try{appBase=new URL('./',script?.src||document.baseURI);siteBase=new URL('../',appBase)}catch(_){return}
   const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const href=route=>new URL(String(route||'/').replace(/^\//,''),siteBase).href;
-  const assetVersion=(()=>{
-    try{return new URL(script?.src||document.baseURI).searchParams.get('v')||'unversioned';}
-    catch(_){return 'unversioned';}
-  })();
   const sharedJsonCache=window.__potatoJsonPromiseCache||(window.__potatoJsonPromiseCache=new Map());
   const fetchJson=route=>{
     const url=href(route);
     if(sharedJsonCache.has(url))return sharedJsonCache.get(url);
-    const key='site-access:'+assetVersion+':'+route;
-    let cached=null;
-    try{cached=sessionStorage.getItem(key)}catch(_){}
-    if(cached){
-      try{
-        const data=JSON.parse(cached);
-        const ready=Promise.resolve(data);
-        sharedJsonCache.set(url,ready);
-        return ready;
-      }catch(_){}
-    }
-    const request=fetch(url,{cache:'default'}).then(async response=>{
-      if(!response.ok)return null;
-      const data=await response.json();
-      try{sessionStorage.setItem(key,JSON.stringify(data))}catch(_){}
-      return data;
-    }).catch(()=>null);
+    const request=fetch(url,{cache:'default'}).then(response=>{
+      if(!response.ok)throw new Error(route+' '+response.status);
+      return response.json();
+    }).catch(()=>{
+      sharedJsonCache.delete(url);
+      return null;
+    });
     sharedJsonCache.set(url,request);
     return request;
   };
