@@ -1,7 +1,7 @@
 {
   "id": "room-featured-objects",
-  "version": "1.1.0",
-  "updated": "2026-09-26",
+  "version": "1.1.1",
+  "updated": "2026-10-07",
   "purpose": "Editorially select the strongest explanatory objects for each Room so the front table is authored rather than incidental.",
   "rules": [
     "Featured objects should answer the Room's title before they showcase secondary culture or adjacency.",
@@ -388,6 +388,14 @@
         "memory-missed-clue-audit",
         "visual-infinite-potato",
         "programme-house-consolidation"
+      ]
+    },
+    {
+      "room_id": "garden",
+      "object_ids": [
+        "visual-heavenly-gardener",
+        "practice-potato-path",
+        "work-potato-growth-game"
       ]
     }
   ]
