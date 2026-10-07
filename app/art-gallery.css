@@ -259,3 +259,26 @@
 @media(prefers-reduced-motion:reduce){
   .gallery-card,.museum-nav{transition:none!important}
 }
+
+
+/* MUSEUM STAGE V5 */
+.gallery-card.orientation-landscape .gallery-image-frame img{max-width:min(74vw,1040px)!important;max-height:min(58vh,640px)!important}
+.gallery-card.orientation-portrait .gallery-image-frame img{max-width:min(48vw,650px)!important;max-height:min(64vh,700px)!important}
+.gallery-card.orientation-square .gallery-image-frame img{max-width:min(60vw,780px)!important;max-height:min(60vh,680px)!important}
+.museum-wall-label{position:absolute;right:22px;top:26%;z-index:7;width:clamp(138px,12vw,182px);padding:12px 13px 11px;border:1px solid rgba(42,34,24,.34);background:linear-gradient(180deg,#e8dfca,#d9cdb4);color:#211b14;box-shadow:0 8px 22px rgba(0,0,0,.30);transform:rotate(.15deg)}
+.museum-wall-label span{display:block;margin-bottom:6px;color:#76654c;font-size:8px;letter-spacing:.13em;text-transform:uppercase}
+.museum-wall-label strong{display:block;font:600 14px/1.22 var(--site-font-serif)}
+.museum-wall-label time{display:block;margin-top:7px;padding-top:6px;border-top:1px solid rgba(65,50,32,.18);color:#695941;font-size:9px;line-height:1.3}
+.museum-index{width:min(1060px,calc(100% - 28px));margin:15px auto 0;padding:12px 16px 10px;border:1px solid rgba(210,180,116,.14);background:linear-gradient(180deg,rgba(20,18,15,.9),rgba(12,11,9,.94));box-shadow:0 10px 26px rgba(0,0,0,.16)}
+.museum-index__readout{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:center;color:var(--site-muted);font-size:8px;letter-spacing:.08em;text-transform:uppercase}
+.museum-index__readout span:last-child{text-align:right}.museum-index__readout strong{color:var(--museum-gold-bright);font-size:9px;font-weight:500}
+.museum-index__range{width:100%;height:20px;margin:6px 0 2px;appearance:none;-webkit-appearance:none;background:transparent;cursor:pointer}
+.museum-index__range::-webkit-slider-runnable-track{height:3px;border-radius:3px;background:linear-gradient(90deg,#5c4726,#b8924c 50%,#5c4726)}
+.museum-index__range::-moz-range-track{height:3px;border-radius:3px;background:linear-gradient(90deg,#5c4726,#b8924c 50%,#5c4726)}
+.museum-index__range::-webkit-slider-thumb{appearance:none;-webkit-appearance:none;width:13px;height:13px;margin-top:-5px;border:1px solid #d5b873;border-radius:50%;background:#17130d;box-shadow:0 0 0 3px rgba(200,164,90,.12)}
+.museum-index__range::-moz-range-thumb{width:13px;height:13px;border:1px solid #d5b873;border-radius:50%;background:#17130d}
+.museum-index__months{display:flex;justify-content:space-between;gap:8px;min-height:20px}
+.museum-index__month{appearance:none;border:0;padding:3px 0;background:transparent;color:#766c5f;font:inherit;font-size:8px;letter-spacing:.07em;text-transform:uppercase;cursor:pointer}
+.museum-index__month:hover,.museum-index__month[aria-current="true"]{color:var(--museum-gold-bright)}
+@media(max-width:1100px){.museum-wall-label{display:none}}
+@media(max-width:620px){.gallery-card.orientation-landscape .gallery-image-frame img{max-width:79vw!important;max-height:48vh!important}.gallery-card.orientation-portrait .gallery-image-frame img{max-width:62vw!important;max-height:50vh!important}.gallery-card.orientation-square .gallery-image-frame img{max-width:70vw!important;max-height:48vh!important}.museum-index{width:calc(100% - 18px);padding-inline:10px}.museum-index__months{overflow-x:auto;justify-content:flex-start;gap:14px;scrollbar-width:none}.museum-index__month{white-space:nowrap}}
