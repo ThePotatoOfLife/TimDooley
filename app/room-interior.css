@@ -46,16 +46,14 @@
 .room-language-carry{margin:15px 0 0;color:#d6d1c7;font:400 15px/1.62 var(--site-font-serif)}
 @media(max-width:700px){.room-language-head,.room-language-grid{grid-template-columns:1fr}.room-language{margin:24px 0 30px}}
 
-/* Nested Room readability: long-form prose must never float naked over realm art. */
+/* Nested Room readability: layout only.
+   Visual material is owned once by the floor-material block below. */
 .inner-home>.room-essay,
 .inner-home>.room-ledger,
 .inner-home>.room-quote,
 .inner-home>.adj-grid,
 .inner-home>.actions{
-  border:1px solid var(--site-pane-line);
   border-radius:var(--site-radius-lg);
-  background:var(--site-pane);
-  box-shadow:var(--site-pane-shadow);
 }
 .inner-home>.room-essay,
 .inner-home>.room-ledger{
