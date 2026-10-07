@@ -85,13 +85,28 @@ function renderAccountRail(){
 function setScope(x){scope=x;document.getElementById('bankAll')?.classList.toggle('active',x==='all');document.getElementById('bankCurrent')?.classList.toggle('active',x==='current');renderAccountRail()}
 function scrollRail(id,direction){const el=document.getElementById(id);if(!el)return;const amount=Math.max(220,Math.min(el.clientWidth*.78,620));el.scrollBy({left:amount*direction,behavior:'smooth'})}
 function tick(){
- const rate=Number(contract?.welfare?.rate_per_second_susd||0);for(const a of accounts){if(!a.exact)continue;a.welfare+=rate;a.balance+=rate;document.querySelectorAll('[data-statement-welfare="'+CSS.escape(a.id)+'"],[data-statement-welfare-top="'+CSS.escape(a.id)+'"]').forEach(n=>n.textContent=money(a.welfare));document.querySelectorAll('[data-statement-balance="'+CSS.escape(a.id)+'"]').forEach(n=>n.textContent=money(a.balance))}
- refreshLiveAggregate();const selected=accounts.find(a=>a.id===activeId);if(selected){const card=document.querySelector('[data-select-account="'+CSS.escape(selected.id)+'"] em');if(card)card.textContent=selected.exact?money(selected.balance):money(selected.adjustment)+' + welfare'}
+ for(const a of accounts){
+  if(!a.exact)continue;
+  a.welfare=welfare(a.start).value;
+  a.balance=a.welfare+a.adjustment;
+ }
+ refreshLiveAggregate();
+ const selected=accounts.find(a=>a.id===activeId);
+ if(!selected)return;
+ document.querySelectorAll('[data-statement-welfare="'+CSS.escape(selected.id)+'"],[data-statement-welfare-top="'+CSS.escape(selected.id)+'"]').forEach(n=>n.textContent=money(selected.welfare));
+ document.querySelectorAll('[data-statement-balance="'+CSS.escape(selected.id)+'"]').forEach(n=>n.textContent=money(selected.balance));
+ const card=document.querySelector('[data-select-account="'+CSS.escape(selected.id)+'"] em');
+ if(card)card.textContent=selected.exact?money(selected.balance):money(selected.adjustment)+' + welfare';
 }
+let bankTimer=null;
+function stopBankClock(){if(bankTimer)clearInterval(bankTimer);bankTimer=null}
+function startBankClock(){if(document.hidden||bankTimer)return;tick();bankTimer=setInterval(tick,1000)}
+document.addEventListener('visibilitychange',()=>{if(document.hidden)stopBankClock();else startBankClock()});
+window.addEventListener('pagehide',stopBankClock,{once:true});
 (async()=>{
  [manifest,activity,currentDesk,contract,postureIndex,systemLedger,fieldExposure,roleCensus,coverageModel,capitalModel,trajectoryModel]=await Promise.all([get('knowledge/cia/manifest.json'),get('knowledge/cia/activity-index.json'),get('knowledge/cia/current-desk.json'),get('knowledge/cia/mud-bank-contract.json'),get('knowledge/cia/account-posture-index.json'),get('knowledge/cia/system-liability-ledger.json'),get('knowledge/cia/field-exposure-model.json'),get('knowledge/cia/role-archetype-census.json'),get('knowledge/cia/us-exposure-coverage-model.json'),get('knowledge/cia/capital-formation-42t-model.json'),get('knowledge/cia/trajectory-projection-model.json')]);
  const ds=await Promise.all((manifest.characters||[]).map(async m=>[m,await get(m.path)]));accounts=ds.map(([m,d])=>buildAccount(m,d)).sort((a,b)=>b.balance-a.balance||a.name.localeCompare(b.name));if(activeId&&!accounts.some(a=>a.id===activeId))activeId='';
  renderSystemDomains();renderOverview();renderCapitalBridge();renderTrajectory();renderFieldExposure();renderAccountRail();renderStatement();updateUrl();document.querySelectorAll('[data-trajectory-mode]').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('[data-trajectory-mode]').forEach(b=>b.classList.toggle('active',b===btn));renderTrajectory(btn.dataset.trajectoryMode)}));
- document.getElementById('bankSearch')?.addEventListener('input',renderAccountRail);document.getElementById('bankAll')?.addEventListener('click',()=>setScope('all'));document.getElementById('bankCurrent')?.addEventListener('click',()=>setScope('current'));document.getElementById('accountPrev')?.addEventListener('click',()=>scrollRail('accountRail',-1));document.getElementById('accountNext')?.addEventListener('click',()=>scrollRail('accountRail',1));document.querySelectorAll('[data-rail-prev]').forEach(btn=>btn.addEventListener('click',()=>scrollRail(btn.dataset.railPrev,-1)));document.querySelectorAll('[data-rail-next]').forEach(btn=>btn.addEventListener('click',()=>scrollRail(btn.dataset.railNext,1)));setInterval(tick,1000)
+ document.getElementById('bankSearch')?.addEventListener('input',renderAccountRail);document.getElementById('bankAll')?.addEventListener('click',()=>setScope('all'));document.getElementById('bankCurrent')?.addEventListener('click',()=>setScope('current'));document.getElementById('accountPrev')?.addEventListener('click',()=>scrollRail('accountRail',-1));document.getElementById('accountNext')?.addEventListener('click',()=>scrollRail('accountRail',1));document.querySelectorAll('[data-rail-prev]').forEach(btn=>btn.addEventListener('click',()=>scrollRail(btn.dataset.railPrev,-1)));document.querySelectorAll('[data-rail-next]').forEach(btn=>btn.addEventListener('click',()=>scrollRail(btn.dataset.railNext,1)));startBankClock()
 })().catch(()=>{document.getElementById('bankOverview').innerHTML='<p>The symbolic bank could not open all books. Character Archive dossiers remain available individually.</p>'});
 })();
