@@ -1861,3 +1861,19 @@ North-star rule: **Potato of Life explains the symbol; Potatoism teaches; Grow t
 - [ ] **GARDEN-015 · Walk-with-Tim copy pass:** tighten every stop to one welcome sentence, one meaning sentence and one deeper link.
 - [ ] **GARDEN-016 · Genesis citation pane:** add compact verse references for Garden planted, river, work/keep, two trees, eating, exile and guarded way without turning the map into a Bible article.
 - [ ] **GARDEN-017 · Browser QA:** verify GitHub Pages deploy, hotspot focus/keyboard use, mobile horizontal map, TTS exclusions, image LCP and page contrast.
+
+## Stability / mobile / performance pass — 2026-10-07
+
+- [x] **STABLE-001 · Mobile header seam:** remove the old narrow-screen shell shadow/accent seam and make Heaven / Plane / Below use one painted 2172×239 artboard crop.
+- [x] **STABLE-002 · Mobile hotspot parity:** project mobile arrow/Room hit areas from the same height-scaled artboard used to paint the cropped panorama.
+- [x] **STABLE-003 · Elevator resize consolidation:** replace duplicate window resize handlers with one rAF-coalesced geometry refresh for clearance + hotspots.
+- [x] **STABLE-004 · Hidden-tab counter work:** pause the 100,000 Hours live counter while the document is hidden and stop it on pagehide.
+- [x] **STABLE-005 · Mobile Home compositor budget:** use one stable Plane realm on <=700px instead of three full-screen scroll-linked realm layers.
+- [ ] **STABLE-006 · Mobile visual regression set:** capture 320 / 390 / 430 / 768px screenshots for Heaven, Plane and Below and compare frame edge, plaque crop, lower seam and page-nav clearance.
+- [ ] **STABLE-007 · Home scroll-profile:** browser-profile the desktop Home realm crossfade after deployment; measure paint/compositor cost and verify it stays smooth on integrated graphics.
+- [ ] **STABLE-008 · Below-fold Home rendering experiment:** test restoring `content-visibility:auto` only for deep Home sections with stable intrinsic sizes; keep it only if scroll position and realm timing remain deterministic.
+- [ ] **STABLE-009 · Specialist glass audit:** profile `backdrop-filter` on non-Home reader families (traditions, source/public-record, Heaven concepts, Below/Farm, Garden and TTS surfaces); remove blur where it creates measurable mobile compositor cost.
+- [ ] **STABLE-010 · Garden motion budget verification:** confirm whisper/falling-fruit timers remain single-instance, pause while hidden, honor reduced motion and never create parallel loops after visibility changes.
+- [ ] **STABLE-011 · World Map runtime module budget:** use the existing map telemetry/auditor to identify compatibility modules, duplicate style/control owners and provider requests that can be retired or lazy-loaded.
+- [ ] **STABLE-012 · Long-page timer inventory:** audit remaining public `setInterval` / recurring timeout users and require visibility/pagehide cleanup unless the timer is strictly user-triggered.
+
