@@ -388,12 +388,13 @@ def main() -> int:
             errors.append("dedicated elevator must isolate optional data failures instead of all-or-nothing fetch gating")
         if "level='world'" in dedicated_elevator or "||'world'" in dedicated_elevator:
             errors.append("dedicated elevator must not restore the retired world floor")
+        if "st?.level==='world'?'plane':st?.level" not in dedicated_runtime:
+            errors.append("dedicated Elevator journey replay must normalize legacy world states to Plane")
 
     if not house_journey_js:
         errors.append("missing app/house-journey.js")
-    else:
-        if "st.level==='world'?'plane':st.level" not in house_journey_js:
-            errors.append("House journey links must normalize legacy world states to Plane")
+    elif "house-journey-ribbon" in house_journey_js or "function installRibbon()" in house_journey_js:
+        errors.append("retired global House journey ribbon/runtime must stay removed; dedicated Elevator owns replay history")
 
     dwellings = [row for row in projection.get("dwellings", []) if isinstance(row, dict)]
     dwelling_by_id = {row.get("id"): row for row in dwellings if row.get("id")}
