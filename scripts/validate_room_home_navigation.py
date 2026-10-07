@@ -44,6 +44,8 @@ def main()->int:
             errors.append(f"{room_id}: repeated 'Stand inside this Dwelling in the Elevator' action must be removed")
         if 'class="room-actions"' not in source:
             errors.append(f"{room_id}: Room actions container missing")
+        if "Open primary public surface" in source:
+            errors.append(f"{room_id}: internal 'primary public surface' terminology leaked into reader UI")
 
     if errors:
         print("ROOM HOME NAVIGATION VALIDATION FAILED")
