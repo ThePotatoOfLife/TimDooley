@@ -274,3 +274,26 @@
 .inner-home :is(.room-holding-list,.room-holding,.room-passage,.room-featured-objects,.room-more-objects){
   border-color:var(--room-material-line,var(--site-line));
 }
+
+
+/* Nested Room injected detail surfaces.
+   Runtime cards and dividers inherit the active Room material instead of carrying
+   hard-coded dark-site colors into Plane/Heaven subrooms. */
+.inner-home .adj-interface,
+.inner-home .room-archive-drawer{
+  border-color:var(--room-material-line,var(--site-line));
+}
+.inner-home :is(.room-archive-entry,.dwelling-archive-index-card,.house-corpus-card){
+  background:var(--room-material-soft,var(--site-pane-soft));
+  border-color:var(--room-material-line,var(--site-pane-line));
+}
+.inner-home :is(.room-archive-entry,.dwelling-archive-index-card,.house-corpus-card):hover{
+  background:color-mix(in srgb,var(--room-material-soft,var(--site-pane-soft)) 88%,var(--room-material-accent,var(--site-gold)) 12%);
+  border-color:color-mix(in srgb,var(--room-material-line,var(--site-line)) 60%,var(--room-material-accent,var(--site-gold)) 40%);
+}
+.inner-home :is(.room-archive-entry strong,.dwelling-archive-index-card strong,.house-corpus-card strong){
+  color:var(--room-material-accent,var(--site-gold));
+}
+.inner-home :is(.room-archive-entry small,.dwelling-archive-index-card span,.house-corpus-card span,.adj-interface>span,.adj-interface>small){
+  color:var(--room-material-copy,var(--site-muted));
+}
