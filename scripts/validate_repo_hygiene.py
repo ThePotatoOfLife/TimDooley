@@ -13,6 +13,7 @@ EXPECTED_WORKFLOWS = {
     "import-edda-texts.yml",
     "pages.yml",
     "quality-checks.yml",
+    "publish-latest-main.yml",
 }
 FORBIDDEN_TEMPORARY = {
     ".github/workflows/timeline-naming-migration.yml",
