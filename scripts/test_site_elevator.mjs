@@ -198,6 +198,9 @@ assert.ok(source.includes("disabled"),'boundary arrows must expose disabled stat
 
 assert.ok(css.includes('--elevator-slot-count:5'),'header must preserve the five-slot floor geometry contract');
 assert.ok(css.includes('@media (max-width:859px)'),'true mobile must retain a compact fallback');
+assert.ok(css.includes('/* Mobile canonical panorama crop — 2026-10-07.'),'mobile header must have one canonical painted-art owner');
+assert.ok(css.includes('background-size:auto 100%'),'mobile panorama must scale by height and crop from the left');
+assert.match(css,/@media \(max-width:859px\)\{[\s\S]*?\.site-elevator\{[\s\S]*?box-shadow:none;/,'mobile header must not paint the old black seam shadow');
 assert.equal((css.match(/@media \(min-width:860px\)/g)||[]).length,1,'desktop illustrated header must have one v3 responsive owner');
 assert.ok(css.includes('/* 2026-10-06 v3 canonical illustrated composition.'),'approved panorama architecture marker missing');
 assert.equal(css.includes('/* Desktop illustrated header skin.'),false,'retired desktop HUD skin must not coexist with panorama strip');
@@ -217,8 +220,9 @@ assert.ok(source.includes("fetchJson('/app/site-elevator-hotspots.json')"),'runt
 assert.ok(source.includes("link.dataset.hotspotKey='room:'+room.id"),'Room links must identify their canonical hotspot key');
 assert.ok(source.includes("link.dataset.hotspotKey='landmark:'+landmark.id"),'landmark links must identify their canonical hotspot key');
 assert.ok(source.includes('applyHotspotRect(link,rect,artboard)'),'runtime must project canonical artboard coordinates onto live links');
-assert.ok(source.includes('desktopPanoramaMetrics'),'desktop hotspot projection must share the rendered artboard geometry');
+assert.ok(source.includes('panoramaMetrics'),'desktop hotspot projection must share the rendered artboard geometry');
 assert.ok(source.includes('scaleX:host.width/Number(artboard.width)'),'desktop hotspots must use the exact rendered horizontal scale');
+assert.ok(source.includes('const scale=host.height/Number(artboard.height)'),'mobile hotspots must use the same height-derived scale as the auto × 100% artboard crop');
 assert.ok(source.includes('scaleY:host.height/Number(artboard.height)'),'desktop hotspots must use the exact rendered vertical scale');
 assert.ok(source.includes("window.addEventListener('resize',refreshHotspots"),'desktop hotspots must be recomputed when viewport geometry changes');
 assert.match(css,/\.site-elevator\[data-elevator-direction\] \.site-elevator-room-rail\{[\s\S]*?animation:none;/,'invisible desktop hitboxes must not inherit rail motion');
