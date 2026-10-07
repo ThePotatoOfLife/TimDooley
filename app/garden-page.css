@@ -1,4 +1,6 @@
-:root{
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+.garden-body{
   --garden-bg:#071009;
   --garden-panel:#0c150f;
   --garden-ink:#f3eedf;
@@ -6,10 +8,10 @@
   --garden-gold:#d7b861;
   --garden-cream:#efe4c1;
   --garden-brown:#5d4728;
+  margin:0;
+  background:var(--garden-bg);
+  color:var(--garden-ink);
 }
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-.garden-body{margin:0;background:var(--garden-bg);color:var(--garden-ink)}
 .garden-page{max-width:none;margin:0;padding:0 0 100px;background:
   radial-gradient(circle at 30% 12%,rgba(126,151,87,.09),transparent 28%),
   linear-gradient(180deg,#071009 0,#09110b 45%,#060a07 100%)}
