@@ -1,11 +1,8 @@
-name: Publish latest main to Pages
+name: Emergency publish current main to Pages
 
+# Manual escape hatch only. Normal production deploys are owned by pages.yml
+# after Repository quality checks v2 succeeds for the exact current main SHA.
 on:
-  push:
-    branches: [main]
-    paths-ignore:
-      - 'TODO.md'
-      - 'docs/**'
   workflow_dispatch:
 
 permissions:
@@ -16,10 +13,10 @@ permissions:
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
-# Keep only the newest source revision. Rapid edits should collapse to one publish.
+# Never race the validated deployment path. This workflow is operator-invoked only.
 concurrency:
-  group: pages-latest-main
-  cancel-in-progress: true
+  group: pages-emergency-main
+  cancel-in-progress: false
 
 jobs:
   publish:
