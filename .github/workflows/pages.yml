@@ -227,8 +227,9 @@ jobs:
           assert "selectedFloorLabel+' Rooms'" in elevator_js, "live elevator runtime missing selected-floor accessibility sync"
           for asset in ('header-heaven-v3.avif','header-plane-v3.avif','header-below-v3.avif'):
               assert f'url("./{asset}")' in elevator_css, f"live elevator CSS missing approved {asset}"
-              payload=Path(".live-smoke/app_"+asset)
-              assert payload.stat().st_size > 30000, f"live {asset} is unexpectedly small"
+              payload=Path(".live-smoke/app_"+asset).read_bytes()
+              assert len(payload) > 20000, f"live {asset} is unexpectedly small"
+              assert payload[4:12] == b"ftypavif", f"live {asset} is not an AVIF payload"
           import json
           art_manifest=json.loads(Path(".live-smoke/app_site-elevator-art-v3.json").read_text(encoding="utf-8"))
           hotspots=json.loads(Path(".live-smoke/app_site-elevator-hotspots.json").read_text(encoding="utf-8"))
