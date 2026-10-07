@@ -191,7 +191,7 @@ jobs:
           print("Live provenance verified:",actual)
           PY
 
-          for route in "" "elevator/" "garden/" "tim-dooley/" "religion/" "science/" "science/papers/" "science/papers/advanced-retarded-door-handshake-recovery/" "world/" "traditions/bible/" "context/culture/" "below/" "below/dogs/" "rooms/potatoverse-canon/beings/potatoes/" "shadow-farm/" "rooms/archive-sources/" "rooms/research-lab/"; do
+          for route in "" "elevator/" "garden/" "potato-of-life/" "north/" "tim-dooley/" "religion/" "science/" "science/papers/" "science/papers/advanced-retarded-door-handshake-recovery/" "world/" "traditions/bible/" "context/culture/" "below/" "below/dogs/" "rooms/potatoverse-canon/beings/potatoes/" "shadow-farm/" "rooms/archive-sources/" "rooms/research-lab/"; do
             safe_name="${route//\//_}"
             [ -n "$safe_name" ] || safe_name="home"
             fetch_live "${base}${route}" ".live-smoke/${safe_name}.html"
@@ -264,6 +264,14 @@ jobs:
           below=Path(".live-smoke/below_.html").read_text(encoding="utf-8",errors="replace")
           shadow=Path(".live-smoke/shadow-farm_.html").read_text(encoding="utf-8",errors="replace")
           culture=Path(".live-smoke/context_culture_.html").read_text(encoding="utf-8",errors="replace")
+          potato_life=Path(".live-smoke/potato-of-life_.html").read_text(encoding="utf-8",errors="replace")
+          north=Path(".live-smoke/north_.html").read_text(encoding="utf-8",errors="replace")
+          assert 'id="north-axis-world-tree"' in potato_life, "live Potato of Life missing North Axis / World Tree section"
+          assert "At the pole, “north” stops being merely a direction." in potato_life, "live Potato of Life missing North-of-North research text"
+          assert "Sirius above the grave" in potato_life, "live Potato of Life missing Sirius/grave distinction"
+          assert 'id="north-of-north-deep"' in north, "live North page missing North-of-North deep section"
+          assert "The Son's grave makes the pole a root-threshold" in north, "live North page missing Son grave / root-threshold section"
+          assert "Sirius belongs to return, not to the pole" in north, "live North page missing Sirius return-star distinction"
           assert "data-site-floor=" not in home, "live Home must remain multi-realm instead of inheriting one floor canvas"
           assert "home-page.css?v=" in home, "live Home missing fingerprinted homepage CSS"
           assert "site-elevator.css?v=" in home, "live Home missing fingerprinted elevator CSS"
