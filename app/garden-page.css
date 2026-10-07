@@ -17,7 +17,7 @@ html{scroll-behavior:smooth}
   linear-gradient(180deg,#071009 0,#09110b 45%,#060a07 100%)}
 .garden-page a{color:#e3cb84}
 .garden-top-nav{
-  position:sticky;top:0;z-index:40;max-width:1720px;margin:0 auto;padding:8px 18px;
+  position:sticky;top:var(--site-elevator-clearance,0px);z-index:40;max-width:1720px;margin:0 auto;padding:8px 18px;
   background:rgba(5,11,7,.74);backdrop-filter:blur(12px) saturate(120%);
   border-bottom:1px solid rgba(255,255,255,.06)
 }
