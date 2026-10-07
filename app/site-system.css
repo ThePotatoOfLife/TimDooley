@@ -579,10 +579,3 @@ html[data-site-floor] body:not(.home-body):not(.garden-body):not(.dogs-hall-page
   -webkit-backdrop-filter:none!important;
 }
 
-/* Let the browser skip layout/paint work for long sections that are far outside
-   the viewport. The first section stays eager so initial reading never waits. */
-html[data-site-floor] body:not(.home-body):not(.garden-body):not(.dogs-hall-page):not(.potatoes-hall-page)
-.page > section:not(:first-of-type){
-  content-visibility:auto;
-  contain-intrinsic-size:auto 720px;
-}
