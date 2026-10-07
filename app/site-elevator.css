@@ -669,7 +669,6 @@ html[data-site-floor] body:not(.home-body):not(.garden-body):not(.dogs-hall-page
   inset:-8vh -2.5vw;
   transform:translate3d(0,-2vh,0) scale(1.035);
   transform-origin:50% 50%;
-  will-change:transform;
 }
 html[data-site-floor] body:not(.home-body):not(.garden-body):not(.dogs-hall-page):not(.potatoes-hall-page)::after{
   content:"";
@@ -921,5 +920,169 @@ html[data-site-floor] body.home-body::before{content:none;display:none}
       0 0 10px rgba(234,190,98,.18);
     outline:0;
     transform:none;
+  }
+}
+
+
+/* Mobile canonical panorama crop — 2026-10-07.
+   Narrow screens use the exact same 2172×239 painted artboard as desktop,
+   scaled by height and cropped from the left. This keeps the floor console,
+   title plaque, frame thickness and hotspot geometry identical across
+   Heaven / Plane / Below while preserving readable artwork on phones. */
+@media (max-width:859px){
+  .site-elevator{
+    --elevator-shell-height:clamp(150px,45vw,196px);
+    --site-header-shade:transparent;
+    height:var(--elevator-shell-height);
+    min-height:var(--elevator-shell-height);
+    max-height:var(--elevator-shell-height);
+    background:transparent;
+    border:0;
+    box-shadow:none;
+    overflow:hidden;
+  }
+  .site-elevator::before{
+    inset:0;
+    z-index:-2;
+    opacity:1;
+    background-color:transparent;
+    background-image:var(--site-header-art);
+    background-repeat:no-repeat;
+    background-position:0 0;
+    background-size:auto 100%;
+    filter:none;
+  }
+  .site-elevator::after{display:none}
+
+  .site-elevator-main{
+    position:relative;
+    display:block;
+    width:100%;
+    max-width:none;
+    height:var(--elevator-shell-height);
+    min-height:var(--elevator-shell-height);
+    max-height:var(--elevator-shell-height);
+    margin:0;
+    padding:0;
+    background:transparent;
+    border:0;
+    box-shadow:none;
+  }
+  .site-elevator-main::before,
+  .site-elevator-main::after,
+  .site-elevator-controls::before,
+  .site-elevator-controls::after,
+  .site-elevator-reel::before,
+  .site-elevator-reel::after,
+  .site-elevator-stage::before,
+  .site-elevator-stage::after{display:none}
+
+  .site-elevator-controls,
+  .site-elevator-reel,
+  .site-elevator-stage{
+    position:static;
+    display:block;
+    min-width:0;
+    min-height:var(--elevator-shell-height);
+    height:var(--elevator-shell-height);
+    margin:0;
+    padding:0;
+    background:transparent;
+    border:0;
+    outline:0;
+    box-shadow:none;
+  }
+  .site-elevator-reel{
+    overflow:visible;
+    perspective:none;
+  }
+  .site-elevator-stage{overflow:visible}
+
+  .site-elevator-floor{
+    opacity:0;
+    pointer-events:none;
+    transform:none;
+    animation:none!important;
+  }
+
+  .site-elevator-arrow{
+    position:absolute;
+    z-index:6;
+    left:var(--hotspot-left,0);
+    top:var(--hotspot-top,0);
+    width:var(--hotspot-width,0);
+    height:var(--hotspot-height,0);
+    min-width:0;
+    min-height:0;
+    margin:0;
+    padding:0;
+    border:0;
+    background:transparent;
+    box-shadow:none;
+    opacity:0;
+    color:transparent;
+    animation:none!important;
+  }
+  .site-elevator-up,
+  .site-elevator-down{right:auto;bottom:auto}
+  .site-elevator-arrow::before,
+  .site-elevator-arrow::after{display:none}
+  .site-elevator-arrow:focus-visible{
+    opacity:1;
+    outline:2px solid rgba(255,239,196,.78);
+    outline-offset:-2px;
+    background:rgba(255,215,120,.045);
+  }
+  .site-elevator-arrow:disabled{
+    opacity:0;
+    cursor:default;
+  }
+
+  .site-elevator-room-rail{
+    position:absolute;
+    z-index:5;
+    inset:0;
+    display:block;
+    width:100%;
+    height:100%;
+    min-height:0;
+    margin:0;
+    padding:0;
+    overflow:visible;
+    pointer-events:none;
+    background:transparent;
+    animation:none!important;
+    transform:none!important;
+  }
+  .site-elevator[data-elevator-level] .site-elevator-room{
+    position:absolute;
+    left:var(--hotspot-left,0);
+    top:var(--hotspot-top,0);
+    width:var(--hotspot-width,0);
+    height:var(--hotspot-height,0);
+    max-width:none;
+    min-height:0;
+    max-height:none;
+    margin:0;
+    padding:0;
+    overflow:hidden;
+    pointer-events:auto;
+    border:0;
+    border-radius:0;
+    clip-path:none;
+    background:transparent;
+    box-shadow:none;
+    color:transparent;
+    text-shadow:none;
+    font-size:0;
+    transform:none;
+    transition:background-color 90ms ease,box-shadow 90ms ease;
+  }
+  .site-elevator[data-elevator-level] .site-elevator-room::before,
+  .site-elevator[data-elevator-level] .site-elevator-room::after{display:none}
+  .site-elevator[data-elevator-level] .site-elevator-room:focus-visible{
+    outline:2px solid rgba(255,239,196,.78);
+    outline-offset:-2px;
+    background:rgba(255,229,168,.04);
   }
 }
