@@ -488,10 +488,11 @@
     const fetchJson=route=>{
       const href=siteHref(route,context.siteBase);
       if(sharedJsonCache.has(href))return sharedJsonCache.get(href);
-      // Static deploy contracts are shared by Elevator, Access and House Journey.
-      // Cache the promise as well as the HTTP response so overlapping boot phases
-      // cannot start the same request twice on one page.
-      const request=fetch(href,{cache:'default'}).then(response=>{
+      // House topology changes independently of this JavaScript asset. Always read
+      // the currently deployed governance data, while the shared promise cache keeps
+      // overlapping Elevator/Access/House boot phases from requesting it twice on
+      // this page.
+      const request=fetch(href,{cache:'no-store'}).then(response=>{
         if(!response.ok)throw new Error('Elevator data request failed: '+route+' '+response.status);
         return response.json();
       }).catch(error=>{sharedJsonCache.delete(href);throw error});
