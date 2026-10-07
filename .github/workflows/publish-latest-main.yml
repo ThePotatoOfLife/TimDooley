@@ -51,6 +51,38 @@ jobs:
       - name: Remove internal archive
         run: rm -rf _site/archive && test ! -e _site/archive
 
+      - name: Vendor World Map engine into public artifact
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p _site/world-map/vendor
+          base='https://cdn.jsdelivr.net/npm/maplibre-gl@6.9.0/dist'
+          curl -fsSL --retry 3 --retry-delay 1 "$base/maplibre-gl.mjs" -o _site/world-map/vendor/maplibre-gl.mjs
+          curl -fsSL --retry 3 --retry-delay 1 "$base/maplibre-gl-worker.mjs" -o _site/world-map/vendor/maplibre-gl-worker.mjs
+          curl -fsSL --retry 3 --retry-delay 1 "$base/maplibre-gl-shared.mjs" -o _site/world-map/vendor/maplibre-gl-shared.mjs
+          curl -fsSL --retry 3 --retry-delay 1 "$base/maplibre-gl.css" -o _site/world-map/vendor/maplibre-gl.css
+          test -s _site/world-map/vendor/maplibre-gl.mjs
+          test -s _site/world-map/vendor/maplibre-gl-worker.mjs
+          test -s _site/world-map/vendor/maplibre-gl-shared.mjs
+          test -s _site/world-map/vendor/maplibre-gl.css
+
+      - name: Snapshot World Map runtime data
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p _site/data
+          curl -fsSL --retry 3 --retry-delay 1 \
+            https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json \
+            -o _site/data/world-countries.geo.json
+          test -s _site/data/world-countries.geo.json
+          if ! curl -fsSL --retry 3 --retry-delay 1 \
+            'https://restcountries.com/v3.1/all?fields=name,cca3,population,area,latlng,capital,capitalInfo,region,subregion,borders' \
+            -o _site/data/rest-countries-runtime.json; then
+            rm -f _site/data/rest-countries-runtime.json
+            echo 'REST Countries snapshot unavailable; runtime fallback remains enabled.'
+          fi
+          ATLAS_DEMOGRAPHY_OUT=_site/data/world-country-demography.json python scripts/build_world_demography.py
+
       - name: Build Bible comparator
         run: |
           python scripts/build_bible_study.py
@@ -81,6 +113,33 @@ jobs:
           python scripts/validate_public_navigation.py
           python scripts/validate_site_shell.py
           python scripts/validate_tts_coverage.py
+
+      - name: Finalize World Map runtime in public artifact
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import os
+          from pathlib import Path
+          source_sha=os.environ['GITHUB_SHA']
+          version=source_sha[:12]
+          page_path=Path('_site/world-map/index.html')
+          page=page_path.read_text(encoding='utf-8')
+          old_css='https://cdn.jsdelivr.net/npm/maplibre-gl@6.9.0/dist/maplibre-gl.css'
+          local_css='./vendor/maplibre-gl.css?v=6.9.0'
+          page=page.replace(old_css,local_css)
+          for old,new in (
+              ('./maplibre-loader.js?v=6466194',f'./maplibre-loader.js?v={version}'),
+              ('./3d-boot-guard.js?v=6466194',f'./3d-boot-guard.js?v={version}'),
+              ('src="./3d-bootstrap.js"',f'src="./3d-bootstrap.js?v={version}"'),
+          ):
+              page=page.replace(old,new)
+          page_path.write_text(page,encoding='utf-8')
+          assert local_css in page and old_css not in page
+          assert f'./maplibre-loader.js?v={version}' in page
+          assert f'./3d-boot-guard.js?v={version}' in page
+          assert f'src="./3d-bootstrap.js?v={version}"' in page
+          PY
 
       - name: Validate universal elevator header
         run: |
