@@ -67,12 +67,12 @@ A strong page should usually move:
 
 - [x] Add reader-first higher-purpose reflections to House, Rooms and Dwelling homepages.
 - [x] Add FAQ answers on what Potatoism is trying to teach, Jesus parallels, and other philosophical comparisons.
-- [ ] Rewrite the main Potato of Life page opening around the **reversal of prestige**: buried, ordinary, nourishing, regenerative.
+- [x] Rewrite the main Potato of Life page opening around the **reversal of prestige**: buried, ordinary, nourishing, regenerative.
 - [ ] Build a coherent “Potato Wisdom” reader: humility, growth, nourishment, independence, repair, fruit, release.
 - [ ] Expand Divine Kneel as the theological test of authority.
 - [ ] Expand Holy Soil as memory transformed into generative ground.
 - [ ] Turn Gardener into a full ethics chapter: cultivation, pruning, carrying, release, non-capture.
-- [ ] Write “God as relation” in plain language before Father/Son/Spirit diagrams.
+- [x] Write “God as relation” in plain language before Father/Son/Spirit diagrams.
 - [ ] Write “Why a Door?” as a philosophical essay on difference, relation and state change.
 - [ ] Write “Why a House?” as an essay on containment, identity, hospitality and exit.
 - [ ] Write “Why a Tree?” as an essay on invisible support, growth, differentiation, fruit and return.
@@ -509,7 +509,7 @@ The “Word” is treated as more than terminology. A strong saying should:
 - [ ] **North:** add recalibration after discovering the chosen reference was wrong; orientation must itself be corrigible.
 - [ ] **House:** use guest/host/privacy/exit as the lived sequence that explains rooms, boundaries and hospitality.
 - [ ] **Spirit:** add breakdown/repair conversation where translation fails and is restored.
-- [ ] **Trinity:** add one non-theological analogy (author/message/reader or source/expression/response) and explicitly show where it fails.
+- [x] **Trinity:** add one non-theological analogy (author/message/reader or source/expression/response) and explicitly show where it fails.
 
 
 ## Voice discernment — fit the expression to the material
