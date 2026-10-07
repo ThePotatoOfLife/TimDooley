@@ -109,10 +109,10 @@ def main() -> int:
                 f"Hall of Shame artwork below desktop delivery standard: "
                 f"{dims[0]}x{dims[1]}; require at least 1920x1080"
             )
-        elif path == HERO_ART and (dims[0] < 1000 or dims[1] < 560):
+        elif path == HERO_ART and (dims[0] < 2560 or dims[1] < 1440):
             errors.append(
-                f"Hall of Heroes artwork below current delivery floor: "
-                f"{dims[0]}x{dims[1]}; require at least 1000x560 until the HQ replacement lands"
+                f"Hall of Heroes artwork below HQ desktop standard: "
+                f"{dims[0]}x{dims[1]}; require at least 2560x1440"
             )
 
     if errors:

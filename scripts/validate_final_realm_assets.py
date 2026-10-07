@@ -17,6 +17,11 @@ HALL_ART = {
     "shame": ROOT / "app/hall-of-shame.avif",
 }
 
+HALL_MIN_DIMENSIONS = {
+    "heroes": (2560, 1440),
+    "shame": (1920, 1080),
+}
+
 HALL_SURFACES = {
     "heroes": (
         ROOT / "rooms/potatoverse-canon/beings/potatoes/index.html",
@@ -87,11 +92,13 @@ def main() -> int:
             errors.append(f"{hall}: Hall artwork exceeds page-background budget ({size} bytes)")
         if dims is None:
             errors.append(f"{hall}: Hall artwork is not a valid AVIF with readable dimensions")
-        elif dims[0] < 800 or dims[1] < 450:
-            errors.append(
-                f"{hall}: Hall artwork below delivery resolution "
-                f"({dims[0]}x{dims[1]}; require at least 800x450)"
-            )
+        else:
+            min_width, min_height = HALL_MIN_DIMENSIONS[hall]
+            if dims[0] < min_width or dims[1] < min_height:
+                errors.append(
+                    f"{hall}: Hall artwork below delivery resolution "
+                    f"({dims[0]}x{dims[1]}; require at least {min_width}x{min_height})"
+                )
 
     texts: dict[Path, str] = {}
     for path in LIVE_FILES:
