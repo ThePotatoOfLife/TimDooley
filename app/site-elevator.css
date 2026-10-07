@@ -513,29 +513,6 @@ html[data-site-floor="below"]{
   text-shadow:0 0 7px rgba(255,255,255,.24);
 }
 
-@keyframes site-elevator-stage-up{
-  0%{opacity:.45;transform:translate3d(0,7px,0) scale(1.008)}
-  100%{opacity:.94;transform:translate3d(0,0,0) scale(1)}
-}
-@keyframes site-elevator-stage-down{
-  0%{opacity:.45;transform:translate3d(0,-7px,0) scale(1.008)}
-  100%{opacity:.94;transform:translate3d(0,0,0) scale(1)}
-}
-@keyframes site-elevator-rail-settle{
-  0%{opacity:.55;transform:translateY(3px)}
-  100%{opacity:1;transform:translateY(0)}
-}
-@keyframes site-elevator-reel-down{
-  0%{opacity:.12;transform:translateY(-58%) rotateX(68deg) scale(.98)}
-  58%{opacity:.88;transform:translateY(5%) rotateX(-7deg) scale(1)}
-  100%{opacity:1;transform:translateY(0) rotateX(0deg) scale(1)}
-}
-@keyframes site-elevator-reel-up{
-  0%{opacity:.12;transform:translateY(58%) rotateX(-68deg) scale(.98)}
-  58%{opacity:.88;transform:translateY(-5%) rotateX(7deg) scale(1)}
-  100%{opacity:1;transform:translateY(0) rotateX(0deg) scale(1)}
-}
-
 @media (prefers-contrast: more){
   .site-elevator{
     --site-elevator-bg:#050607;
@@ -550,90 +527,9 @@ html[data-site-floor="below"]{
   .site-elevator-room.is-active{border-color:var(--site-elevator-accent)}
 }
 
-@media (max-width:859px){
-  .site-elevator[data-elevator-direction="down"] .site-elevator-floor{
-    animation:site-elevator-reel-down 420ms cubic-bezier(.2,.8,.2,1);
-  }
-  .site-elevator[data-elevator-direction="up"] .site-elevator-floor{
-    animation:site-elevator-reel-up 420ms cubic-bezier(.2,.8,.2,1);
-  }
-  .site-elevator[data-elevator-direction="up"] .site-elevator-stage::before{
-    animation:site-elevator-stage-up 260ms cubic-bezier(.2,.8,.2,1);
-  }
-  .site-elevator[data-elevator-direction="down"] .site-elevator-stage::before{
-    animation:site-elevator-stage-down 260ms cubic-bezier(.2,.8,.2,1);
-  }
-  .site-elevator[data-elevator-direction="up"] .site-elevator-room-rail,
-  .site-elevator[data-elevator-direction="down"] .site-elevator-room-rail{
-    animation:site-elevator-rail-settle 220ms ease-out;
-  }
-
-  .site-elevator{
-    --elevator-control-width:34px;
-    --elevator-board-width:118px;
-    --elevator-shell-height:clamp(82px,11vw,95px);
-    --elevator-room-height:38px;
-    --elevator-room-gap:3px;
-    --elevator-floor-size:11px;
-    --elevator-floor-spacing:.07em;
-    --elevator-room-text:7.5px;
-    --elevator-arrow-size:18px;
-  }
-  .site-elevator-main{
-    grid-template-columns:var(--elevator-control-width) var(--elevator-board-width) minmax(0,1fr);
-  }
-  .site-elevator-floor{
-    grid-template-columns:23px minmax(0,1fr);
-    column-gap:6px;
-    padding:5px 7px 5px 5px;
-  }
-  .site-elevator-floor-code{font-size:8px}
-  .site-elevator-room-label{font-size:6.5px;letter-spacing:.02em}
-  .site-elevator-room-rail{
-    display:flex;
-    align-items:flex-end;
-    justify-content:center;
-    min-height:var(--elevator-shell-height);
-    padding:calc(var(--elevator-shell-height) - var(--elevator-room-height) - 7px) 4px 7px;
-    gap:var(--elevator-room-gap);
-  }
-  .site-elevator-room{
-    flex:0 0 calc((100% - (var(--elevator-room-gap) * (var(--elevator-slot-count) - 1))) / var(--elevator-slot-count));
-    width:calc((100% - (var(--elevator-room-gap) * (var(--elevator-slot-count) - 1))) / var(--elevator-slot-count));
-    max-width:calc((100% - (var(--elevator-room-gap) * (var(--elevator-slot-count) - 1))) / var(--elevator-slot-count));
-    height:var(--elevator-room-height);
-    min-height:var(--elevator-room-height);
-    max-height:var(--elevator-room-height);
-    padding:4px 3px;
-  }
-}
-@media (max-width:480px){
-  .site-elevator{
-    --elevator-control-width:30px;
-    --elevator-board-width:92px;
-    --elevator-room-height:38px;
-    --elevator-room-text:6.5px;
-  }
-  .site-elevator-floor{
-    grid-template-columns:18px minmax(0,1fr);
-    column-gap:4px;
-    padding-inline:4px;
-  }
-  .site-elevator-floor-code{font-size:7px}
-  .site-elevator-room-label{display:none}
-  .site-elevator-room{
-    padding-inline:2px;
-    line-height:1.02;
-  }
-}
 @media (prefers-reduced-motion: reduce){
-  .site-elevator[data-elevator-direction] .site-elevator-floor,
-  .site-elevator[data-elevator-direction] .site-elevator-stage::before,
-  .site-elevator[data-elevator-direction] .site-elevator-room-rail{
-    animation:none!important;
-    transform:none!important;
-  }
-  .site-elevator-room{transition:none}
+  .site-elevator-room,
+  .site-elevator-arrow{transition:none}
 }
 
 /* Canonical single-floor realm renderer.
