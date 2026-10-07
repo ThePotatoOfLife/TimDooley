@@ -136,6 +136,8 @@ def main() -> int:
             ".site-elevator-room.is-active",
             "--elevator-slot-count:5",
             "@media (max-width:859px)",
+            "Mobile canonical panorama crop — 2026-10-07.",
+            "background-size:auto 100%",
             "@media (min-width:860px)",
             "overflow:visible",
             ".site-elevator-floor-code",
@@ -181,8 +183,8 @@ def main() -> int:
             errors.append("v3 desktop hotspot geometry must not use nth-child coordinate guesses")
         if "fetchJson('/app/site-elevator-hotspots.json')" not in js or "applyHotspotRect(link,rect,artboard)" not in js:
             errors.append("site elevator runtime must load and apply the canonical hotspot map")
-        if "desktopPanoramaMetrics" not in js or "scaleX:host.width/Number(artboard.width)" not in js or "scaleY:host.height/Number(artboard.height)" not in js:
-            errors.append("desktop hotspot geometry must share the exact rendered artboard scale")
+        if "panoramaMetrics" not in js or "scaleX:host.width/Number(artboard.width)" not in js or "scaleY:host.height/Number(artboard.height)" not in js or "const scale=host.height/Number(artboard.height)" not in js:
+            errors.append("desktop and mobile hotspot geometry must share the exact rendered artboard scale")
         if ".site-elevator[data-elevator-direction] .site-elevator-room-rail" not in css or "animation:none" not in css:
             errors.append("desktop invisible hit rail must not inherit settling animation")
         if css.count("!important") > 8:
