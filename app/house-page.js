@@ -22,11 +22,18 @@
 (async()=>{
   const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   try{
+    const sharedJsonCache=window.__potatoJsonPromiseCache||(window.__potatoJsonPromiseCache=new Map());
     async function loadJson(path,fallback,required=false){
+      const href=new URL(path,location.href).href;
       try{
-        const response=await fetch(path,{cache:'no-cache'});
-        if(!response.ok)throw new Error(path+' '+response.status);
-        return {ok:true,value:await response.json()};
+        if(!sharedJsonCache.has(href)){
+          const request=fetch(href,{cache:'no-cache'}).then(response=>{
+            if(!response.ok)throw new Error(path+' '+response.status);
+            return response.json();
+          }).catch(error=>{sharedJsonCache.delete(href);throw error});
+          sharedJsonCache.set(href,request);
+        }
+        return {ok:true,value:await sharedJsonCache.get(href)};
       }catch(error){
         if(required)throw error;
         return {ok:false,value:fallback,error};
