@@ -1,7 +1,7 @@
 {
   "id": "visual-art-symbolic-composition-archive",
   "title": "Visual Art & Symbolic Composition Archive",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "updated": "2026-10-07",
   "status": "creative-archaeology owner",
   "purpose": "Preserve how Potatoverse concepts were staged together in visual compositions, prompts, diagrams and generated imagery without treating those images as empirical evidence for theology, anatomy, politics or science.",
@@ -123,7 +123,7 @@
   "recovered_image_corpus": {
     "id": "tim-dooley-art-corpus-2025-may-september",
     "recovery_date": "2026-10-07",
-    "source_status": "17 image artifacts supplied directly by Tim Dooley in conversation",
+    "source_status": "24 dated image artifacts catalogued from Tim Dooley's supplied/recovered corpus; 23 are currently hung in the Art Museum. Royal at Jesus' Tomb remains catalogued pending binary transfer.",
     "production_note": "Tim states the group contains works he either painted himself or conceptualized and had rendered with AI. Per-item production method is not yet resolved; do not infer it.",
     "date_rule": "Dates are derived from the supplied artifact filenames.",
     "public_route": "/rooms/inside/visual-art/#recovered-gallery",
@@ -265,6 +265,60 @@
         ]
       },
       {
+        "id": "divine-foot-marble-wail",
+        "title": "Divine Foot, Marble Wail",
+        "date": "2025-06-29",
+        "file": "assets/visual-art/2025/divine-foot-marble-wail.webp",
+        "source_original_dimensions": "1536×1024",
+        "gallery_status": "hung",
+        "description": "A marble head weeps as a haloed foot enters its open mouth, collapsing devotional iconography, bodily humiliation and classical statuary into one impossible object. The material belongs to monuments and museums, while the gesture belongs to abasement, contact and grotesque comedy. The halo complicates the violence by sanctifying what would otherwise read simply as insult. The work asks whether reverence can survive disgust, and what happens when sacred imagery enters the body instead of hovering safely above it.",
+        "motifs": [
+          "marble",
+          "foot",
+          "halo",
+          "tears",
+          "humiliation",
+          "devotional grotesque",
+          "sculpture"
+        ]
+      },
+      {
+        "id": "dark-arctic-crucifixion",
+        "title": "Dark Arctic Crucifixion",
+        "date": "2025-07-01",
+        "file": "assets/visual-art/2025/dark-arctic-crucifixion.avif",
+        "source_original_dimensions": "1536×1024",
+        "gallery_status": "hung",
+        "description": "A crucified figure hangs beneath a North Pole sign while a Santa-like gunman confronts him and bundled spectators gather in the snow. The image combines Christian Passion structure with holiday myth, Arctic extremity and armed spectacle. Its force comes from cultural collision: Christmas innocence is inverted into execution imagery, while the North Pole becomes both scenery and an edge-of-world coordinate. Within the project it functions as mythic and memetic composition rather than historical documentation.",
+        "motifs": [
+          "crucifixion",
+          "North Pole",
+          "Santa",
+          "snow",
+          "star",
+          "spectators",
+          "meme martyrdom"
+        ]
+      },
+      {
+        "id": "god-at-vending-machine",
+        "title": "God at the Vending Machine",
+        "date": "2025-07-01",
+        "file": "assets/visual-art/2025/god-at-vending-machine.avif",
+        "source_original_dimensions": "1536×1024",
+        "gallery_status": "hung",
+        "description": "An elderly robed figure touches a machine whose screen declares “Tim Dooley is the God in the machine” above a ChatGPT interface. The composition literalizes a modern theological metaphor by relocating revelation into commercial interface design: glass, slots, buttons and branded software stand where icon panels or oracles might once have stood. The machine is neither treated as merely profane nor simply divine; it becomes an ambiguous threshold where image, text, model and human projection meet.",
+        "motifs": [
+          "machine",
+          "ChatGPT",
+          "interface",
+          "touch",
+          "reflection",
+          "digital theology",
+          "oracle"
+        ]
+      },
+      {
         "id": "rising-lion-revelation",
         "title": "Rising Lion Revelation",
         "date": "2025-07-02",
@@ -291,6 +345,25 @@
           "pipe",
           "tools",
           "halo"
+        ]
+      },
+      {
+        "id": "farmers-brunch-delight",
+        "title": "Farmer’s Brunch Delight",
+        "date": "2025-07-05",
+        "file": "assets/visual-art/2025/farmers-brunch-delight.avif",
+        "source_original_dimensions": "1536×1024",
+        "gallery_status": "hung",
+        "description": "A bearded farmer eats bacon and eggs beside a pig enclosure under clear pastoral light. The picture is almost aggressively ordinary after the collection’s crowns, moons and cosmic scenes. That ordinariness is its strength: production, appetite and animal life occupy the same visual field, making the meal impossible to detach completely from the bodies and labor that sustain it. The cheerful palette keeps the scene genial while the proximity of pigs and pork quietly introduces an ethical tension beneath the rustic comfort.",
+        "motifs": [
+          "farmer",
+          "pigs",
+          "bacon",
+          "eggs",
+          "appetite",
+          "pastoral",
+          "labor",
+          "food ethics"
         ]
       },
       {
@@ -431,6 +504,6 @@
         ]
       }
     ],
-    "quality_note": "Originals re-supplied on 2026-10-07 for Divine Gardener with Potato, Royal Grief and Vengeance, source-filename Bearded Man in Car / display title The Lamb in the Yard, and Royal at Jesus' Tomb are 1536×1024. Current repository derivatives for the first three are still low-resolution and are marked for binary replacement from those originals."
+    "quality_note": "New 1536×1024 originals are being retained at full pixel dimensions in optimized gallery assets rather than collapsed to thumbnail dimensions. Legacy 240×360 / 360×240 derivatives remain a repair queue; four older WEBPs are known corrupt/truncated and Godly Robes still uses runtime blob hydration."
   }
 }

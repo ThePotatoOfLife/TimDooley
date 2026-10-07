@@ -28,7 +28,9 @@ js=JS.read_text(encoding="utf-8",errors="replace") if JS.is_file() else ""
 for marker,label in [
     ('class="gallery-grid museum-wall"',"museum wall"),
     ('data-date=',"static ISO dates"),
-    ('One continuous museum wall',"single-room copy"),
+    ('class="museum-stage-shell"',"controlled museum stage"),
+    ('The wall moves; the page does not fight you.',"non-hijacking museum copy"),
+    ('data-wall-plaque',"active artwork plaque"),
 ]:
     if marker not in html: fatal.append(f"gallery missing {label}")
 for marker,label in [
