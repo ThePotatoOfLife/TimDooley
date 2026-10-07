@@ -1054,24 +1054,24 @@ body.home-body{
 
 
 /* Mobile homepage performance budget — 2026-10-07.
-   Keep the reader smooth on narrow devices: one fixed Plane canvas instead of
-   three viewport-sized scroll-timeline layers. Desktop retains the full realm
-   transition; reduced-motion already uses the same stable composition. */
+   Keep the reader smooth on narrow devices: one fixed, already-preloaded Heaven
+   canvas instead of three viewport-sized scroll-timeline layers. Desktop retains
+   the full realm transition and mobile avoids fetching/animating hidden realms. */
 @media(max-width:700px){
-  .home-world-realm--heaven,
+  .home-world-realm--plane,
   .home-world-realm--below{
     display:none;
     animation:none;
   }
-  .home-world-realm--plane{
+  .home-world-realm--heaven{
     display:block;
     opacity:1;
     animation:none;
     transform:none;
   }
-  .home-world-realm--plane img{
+  .home-world-realm--heaven img{
     animation:none;
-    transform:translate3d(-50%,-28%,0);
+    transform:translate3d(-50%,-8%,0);
     backface-visibility:visible;
   }
 }
