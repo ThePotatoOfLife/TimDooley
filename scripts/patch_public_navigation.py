@@ -492,16 +492,27 @@ def _has_asset_reference(text: str, asset: str) -> bool:
 
 
 def normalize_shared_asset_versions(text: str) -> str:
-    """Stamp shared UI asset attributes with deterministic content-derived versions."""
-    for asset, version in SHARED_ASSET_VERSIONS.items():
-        pattern = rf'''(?P<head>\b(?:href|src)\s*=\s*["'][^"']*app/{re.escape(asset)})(?:\?v=[A-Za-z0-9._-]+)?(?P<tail>["'])'''
-        text = re.sub(
-            pattern,
-            lambda match: f'{match.group("head")}?v={version}{match.group("tail")}',
-            text,
-            flags=re.I,
-        )
-    return text
+    """Fingerprint local app CSS/JS references by the exact deployed bytes.
+
+    The curated registry still owns assets injected by the build, but authored
+    pages should not need a second maintenance list just to avoid stale CSS/JS.
+    """
+    pattern = re.compile(
+        r'''(?P<head>\b(?:href|src)\s*=\s*["'](?P<prefix>[^"']*app/)(?P<asset>[^/"'?]+\.(?:css|js)))(?:\?v=[A-Za-z0-9._-]+)?(?P<tail>["'])''',
+        re.I,
+    )
+
+    def replace(match: re.Match[str]) -> str:
+        asset = match.group("asset")
+        built = OUT / "app" / asset
+        source = ROOT / "app" / asset
+        path = built if built.is_file() else source
+        if not path.is_file():
+            return match.group(0)
+        version = hashlib.sha256(path.read_bytes()).hexdigest()[:12]
+        return f'{match.group("head")}?v={version}{match.group("tail")}'
+
+    return pattern.sub(replace, text)
 
 
 def patch_shared_asset_versions(out: Path = OUT) -> set[Path]:
