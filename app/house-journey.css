@@ -43,7 +43,7 @@
 
 .room-inhabitants-panel{margin:34px 0 90px}
 .room-inhabitant-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:9px;margin-top:14px}
-.room-inhabitant-card{border:1px solid var(--site-line,#302d29);padding:12px;color:inherit;display:flex;flex-direction:column;min-height:150px}
+.room-inhabitant-card{border:1px solid var(--site-pane-line,var(--site-line,#302d29));padding:12px;color:inherit;display:flex;flex-direction:column;min-height:150px;background:var(--site-pane-soft,rgba(255,255,255,.04));border-radius:var(--site-radius-sm,10px)}
 .room-inhabitant-card:hover{border-color:#625b52}
 .room-inhabitant-card strong{display:block;color:var(--site-gold,#d5ba74);font:400 17px var(--site-font-serif,serif)}
 .room-inhabitant-card small{display:block;color:var(--site-muted,#aaa49a);margin-top:4px;text-transform:uppercase;letter-spacing:.05em;font-size:9px;line-height:1.2}
@@ -60,12 +60,12 @@
 .room-richness-run{display:flex;flex-wrap:wrap;gap:6px 9px;margin:9px 0 3px}
 .room-richness-run span{color:var(--site-muted,#aaa49a);font-size:9px}
 .room-richness-run span:not(:last-child)::after{content:' ·';color:var(--site-line,#4a4540);margin-left:9px}
-.room-holding-list{margin:7px 0 0;border-top:1px solid rgba(255,255,255,.055)}
-.room-holding{display:grid;grid-template-columns:minmax(180px,.75fr) minmax(0,1.25fr);gap:22px;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.055);text-decoration:none;color:inherit}
+.room-holding-list{margin:7px 0 0;border-top:1px solid var(--site-line,#302d29)}
+.room-holding{display:grid;grid-template-columns:minmax(180px,.75fr) minmax(0,1.25fr);gap:22px;padding:13px 0;border-bottom:1px solid var(--site-line,#302d29);text-decoration:none;color:inherit}
 .room-holding:hover strong{color:var(--site-gold,#d8b56b)}
 .room-holding strong{font:400 17px var(--site-font-serif,serif);color:var(--site-gold,#d5ba74)}
 .room-holding small{color:var(--site-muted,#aaa49a);font-size:9px;line-height:1.45;overflow-wrap:anywhere}
-.room-passage{padding:13px 0;border-top:1px solid rgba(255,255,255,.055)}
+.room-passage{padding:13px 0;border-top:1px solid var(--site-line,#302d29)}
 .room-passage b{color:var(--site-gold,#d5ba74);font-weight:500}.room-passage em{color:var(--site-gold,#d8b56b);font-style:normal}
 .room-passage small{display:block;color:var(--site-muted,#aaa49a);margin-top:4px;line-height:1.45}
 .room-next{margin:8px 0 0;padding-left:20px;color:var(--site-muted,#aaa49a)}
@@ -112,7 +112,7 @@
 
 
 
-.room-section-guide{display:grid;grid-template-columns:auto minmax(0,1fr);gap:20px;align-items:start;margin:28px 0 18px;padding:14px 0;border-top:1px solid var(--site-line,#302d29);border-bottom:1px solid var(--site-line,#302d29)}
+.room-section-guide{display:grid;grid-template-columns:auto minmax(0,1fr);gap:20px;align-items:start;margin:28px 0 18px;padding:16px 18px;border:1px solid var(--site-pane-line,var(--site-line,#302d29));border-radius:var(--site-radius-lg,16px);background:var(--site-pane,rgba(8,10,10,.66));box-shadow:var(--site-pane-shadow,0 12px 30px rgba(0,0,0,.18))}
 .room-section-guide>div:first-child{min-width:110px}.room-section-guide>div:first-child strong{display:block;font:400 17px var(--site-font-serif,serif);color:var(--site-gold,#d5ba74)}
 .room-section-links{display:flex;flex-wrap:wrap;gap:6px 12px}
 .room-section-links a{color:var(--site-muted,#aaa49a);font-size:9px;text-decoration:none;border-bottom:1px solid transparent;padding:3px 0}
@@ -171,10 +171,10 @@
 
 
 
-.room-featured-objects{margin:22px 0 18px;padding:18px 0;border-top:1px solid var(--site-line,#302d29);border-bottom:1px solid rgba(255,255,255,.055)}
+.room-featured-objects{margin:22px 0 18px;padding:18px 0;border-top:1px solid var(--site-line,#302d29);border-bottom:1px solid var(--site-line,#302d29)}
 .room-featured-objects h3{font:400 23px/1.15 var(--site-font-serif,serif);color:var(--site-gold,#d5ba74);margin:4px 0 6px}
-.room-inhabitant-grid--featured .room-inhabitant-card{background:rgba(255,255,255,.018);border-color:#4a4540}
-.room-more-objects{margin-top:16px;border-top:1px solid rgba(255,255,255,.055);padding-top:12px}
+.room-inhabitant-grid--featured .room-inhabitant-card{background:var(--site-pane-soft,rgba(255,255,255,.04));border-color:var(--site-pane-line,var(--site-line,#4a4540))}
+.room-more-objects{margin-top:16px;border-top:1px solid var(--site-line,#302d29);padding-top:12px}
 .room-more-objects summary{cursor:pointer;color:var(--site-gold,#d8b56b);font:700 9px/1.4 var(--site-font-sans,sans-serif);letter-spacing:.07em;text-transform:uppercase;list-style:none}
 .room-more-objects summary::-webkit-details-marker{display:none}
 .room-more-objects summary::before{content:"＋";display:inline-block;width:15px;color:var(--site-muted,#aaa49a)}
@@ -243,4 +243,34 @@
   background:rgba(11,15,12,.48);
   border-color:rgba(216,181,107,.16);
   transform:translateY(-1px)
+}
+
+
+/* 2026-10-07 Nested Room runtime material contract.
+   house-journey.js injects these after the authored HTML, so they must inherit the
+   same floor material as the nested Room instead of falling back to dark/clear UI. */
+.inner-home .room-section-guide{
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.08),transparent 23%),
+    var(--room-material-bg,var(--site-pane));
+  border-color:var(--room-material-line,var(--site-pane-line));
+  color:var(--room-material-ink,var(--site-ink));
+  box-shadow:inset 0 1px rgba(255,255,255,.12),0 13px 30px rgba(0,0,0,.11);
+}
+.inner-home .room-section-links a{
+  color:var(--room-material-copy,var(--site-muted));
+}
+.inner-home .room-section-links a:hover,
+.inner-home .room-section-links a:focus-visible{
+  color:var(--room-material-accent,var(--site-gold));
+  border-bottom-color:var(--room-material-line,var(--site-line));
+}
+.inner-home .room-inhabitant-card{
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.06),transparent 26%),
+    var(--room-material-soft,var(--site-pane-soft));
+  border-color:var(--room-material-line,var(--site-pane-line));
+}
+.inner-home :is(.room-holding-list,.room-holding,.room-passage,.room-featured-objects,.room-more-objects){
+  border-color:var(--room-material-line,var(--site-line));
 }
