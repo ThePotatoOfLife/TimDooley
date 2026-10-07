@@ -43,7 +43,7 @@
 .room-word b{display:block;color:var(--site-ink);font:400 18px/1.18 var(--site-font-serif);margin-bottom:4px}
 .room-word em{display:block;color:var(--site-gold);font:700 9px/1.35 var(--site-font-sans);letter-spacing:.08em;text-transform:uppercase;margin-bottom:5px}
 .room-word p{margin:0;color:var(--site-muted);font-size:var(--site-text-sm);line-height:1.52}
-.room-language-carry{margin:15px 0 0;color:#d6d1c7;font:400 15px/1.62 var(--site-font-serif)}
+.room-language-carry{margin:15px 0 0;color:var(--room-material-copy,var(--site-copy));font:400 15px/1.62 var(--site-font-serif)}
 @media(max-width:700px){.room-language-head,.room-language-grid{grid-template-columns:1fr}.room-language{margin:24px 0 30px}}
 
 /* Nested Room readability: layout only.
@@ -385,7 +385,7 @@ html[data-site-floor="below"] .inner-home .case{
   border:1px solid var(--room-material-line);
   border-radius:999px;
   padding:6px 9px;
-  background:rgba(255,255,255,.10);
+  background:var(--room-material-soft);
   color:var(--room-material-copy);
   font-size:10px
 }
