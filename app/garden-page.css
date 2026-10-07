@@ -431,7 +431,7 @@ html{scroll-behavior:smooth}
   position:absolute;z-index:10;left:18px;bottom:18px;max-width:min(390px,36%);
   padding:9px 11px;border-left:2px solid rgba(222,194,112,.62);
   background:linear-gradient(90deg,rgba(7,12,8,.72),rgba(7,12,8,.22));
-  color:#f0e6cb;backdrop-filter:blur(5px);
+  color:#f0e6cb;backdrop-filter:none;-webkit-backdrop-filter:none;
   text-shadow:0 1px 6px rgba(0,0,0,.45);
   transition:opacity .3s ease,transform .3s ease
 }
