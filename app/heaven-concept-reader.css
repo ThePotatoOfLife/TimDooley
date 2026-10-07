@@ -153,6 +153,52 @@
 }
 .heaven-concept-reader .yes{color:var(--heaven-gold)}
 .heaven-concept-reader .note{font-size:.92rem}
+
+/* Keep all shared explanatory components on the Heaven material system.
+   These components normally inherit the site's dark base palette on pages that
+   do not declare a floor, so Heaven readers explicitly reclaim them here. */
+.heaven-concept-reader .editorial-visual,
+.heaven-concept-reader .topology-context,
+.heaven-concept-reader .topology-traversal-card,
+.heaven-concept-reader .three-center-runtime-node{
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.26),transparent 26%),
+    var(--heaven-pane-soft);
+  border-color:var(--heaven-line);
+  color:var(--heaven-copy);
+  box-shadow:0 12px 30px rgba(0,0,0,.09);
+}
+.heaven-concept-reader .editorial-visual img{
+  background:#fbfbf7;
+}
+.heaven-concept-reader .editorial-visual figcaption{
+  border-top-color:var(--heaven-line);
+  color:var(--heaven-muted);
+  background:rgba(255,255,252,.72);
+}
+.heaven-concept-reader .editorial-visual figcaption strong,
+.heaven-concept-reader .topology-context h2,
+.heaven-concept-reader .topology-traversal-card h3,
+.heaven-concept-reader .three-center-runtime-node h3,
+.heaven-concept-reader .three-center-runtime-node>b{
+  color:var(--heaven-gold);
+}
+.heaven-concept-reader .topology-context-relations li{
+  border-top-color:rgba(144,119,68,.20);
+}
+.heaven-concept-reader .topology-context :is(p,small,span,q),
+.heaven-concept-reader .topology-traversal-card :is(p,q),
+.heaven-concept-reader .three-center-runtime-node :is(p,small),
+.heaven-concept-reader .three-center-runtime-tags span{
+  color:var(--heaven-muted);
+}
+.heaven-concept-reader .topology-context a,
+.heaven-concept-reader .three-center-section a{
+  color:#73551f;
+}
+.heaven-concept-reader .three-center-section{
+  border-color:rgba(144,119,68,.20);
+}
 @media(max-width:760px){
   .heaven-concept-reader .grid,
   .heaven-concept-reader .triad{grid-template-columns:1fr}
