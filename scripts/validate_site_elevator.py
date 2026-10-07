@@ -20,6 +20,8 @@ SITE_SYSTEM_CSS = ROOT / "app" / "site-system.css"
 COMPARATIVE_COSMOLOGY = ROOT / "traditions" / "comparative-cosmology" / "index.html"
 DEDICATED_ELEVATOR = ROOT / "elevator" / "index.html"
 HOUSE_JOURNEY_JS = ROOT / "app" / "house-journey.js"
+GARDEN_CSS = ROOT / "app" / "garden-page.css"
+TTS_DRAWER_CSS = ROOT / "app" / "tts-drawer.css"
 
 EXPECTED_LEVELS = ["heaven", "plane", "below"]
 REPRESENTATIVE_CONTEXTS = {
@@ -67,6 +69,8 @@ def main() -> int:
     comparative_cosmology = COMPARATIVE_COSMOLOGY.read_text(encoding="utf-8", errors="replace") if COMPARATIVE_COSMOLOGY.exists() else ""
     dedicated_elevator = DEDICATED_ELEVATOR.read_text(encoding="utf-8", errors="replace") if DEDICATED_ELEVATOR.exists() else ""
     house_journey_js = HOUSE_JOURNEY_JS.read_text(encoding="utf-8", errors="replace") if HOUSE_JOURNEY_JS.exists() else ""
+    garden_css = GARDEN_CSS.read_text(encoding="utf-8", errors="replace") if GARDEN_CSS.exists() else ""
+    tts_drawer_css = TTS_DRAWER_CSS.read_text(encoding="utf-8", errors="replace") if TTS_DRAWER_CSS.exists() else ""
     room_contract = load_json(ROOMS, errors)
     public_surfaces = load_json(PUBLIC_SURFACES, errors)
     subroom_contract = load_json(SUBROOMS, errors)
@@ -100,6 +104,11 @@ def main() -> int:
 
     if ".page [id]" not in site_system_css or "--site-elevator-clearance" not in site_system_css:
         errors.append("shared page deep links must reserve measured elevator clearance")
+
+    if "position:sticky;top:var(--site-elevator-clearance,0px)" not in garden_css:
+        errors.append("Garden sticky navigation must sit below measured elevator clearance")
+    if "top:calc(var(--site-elevator-clearance,0px) + 6px)" not in tts_drawer_css:
+        errors.append("sticky TTS host must sit below measured elevator clearance")
 
     compact_comparative = re.sub(r"\s+", "", comparative_cosmology)
     if ".cross-head{position:sticky;top:var(--site-elevator-clearance,0px)" not in compact_comparative:
