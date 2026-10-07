@@ -515,6 +515,34 @@ def patch_shared_asset_versions(out: Path = OUT) -> set[Path]:
     return changed
 
 
+def inject_house_journey_css(text: str, page: Path) -> str:
+    """Give every House Journey page the fingerprinted shared stylesheet.
+
+    Source HTML may rely on the JS fallback during local editing, but production
+    should never derive the CSS cache key from the JavaScript version.
+    """
+    if not _has_asset_reference(text, "house-journey.js"):
+        return text
+    if _has_asset_reference(text, "house-journey.css"):
+        return text
+    if not re.search(r"</head\s*>", text, flags=re.I):
+        return text
+    prefix = _relative_asset_prefix(page)
+    css = f'<link rel="stylesheet" data-house-journey-style href="{prefix}app/house-journey.css?v={SHARED_ASSET_VERSIONS["house-journey.css"]}">'
+    return re.sub(r"</head\s*>", css + "</head>", text, count=1, flags=re.I)
+
+
+def patch_house_journey_css(out: Path = OUT) -> set[Path]:
+    changed: set[Path] = set()
+    for page in out.rglob("*.html"):
+        text = page.read_text(encoding="utf-8", errors="replace")
+        projected = inject_house_journey_css(text, page)
+        if projected != text:
+            page.write_text(projected, encoding="utf-8")
+            changed.add(page)
+    return changed
+
+
 def inject_universal_tts(text: str, page: Path) -> str:
     """Ensure every deployed prose HTML document has shared TTS coverage.
 
@@ -1285,6 +1313,7 @@ def main() -> None:
             changed.add(page)
 
     changed.update(patch_page_navs(OUT))
+    changed.update(patch_house_journey_css(OUT))
     changed.update(patch_shared_asset_versions(OUT))
     changed.update(patch_legacy_tts_readers(OUT))
     changed.update(patch_site_floors(OUT))
