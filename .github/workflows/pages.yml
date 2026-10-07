@@ -99,9 +99,10 @@ jobs:
           python - <<'PY'
           import json, os
           from pathlib import Path
-          primary_routes=['tim-dooley/','potatoism/','religion/','philosophy/','science/','world/','garden/']
+          primary_routes=['tim-dooley/','potatoism/','religion/','philosophy/','science/','world/']
           for route in primary_routes:
               assert Path("_site", route, "index.html").is_file(), route
+          assert Path("_site","garden","index.html").is_file(), "garden/"
           p=Path("_site/build-provenance.json")
           data=json.loads(p.read_text(encoding="utf-8"))
           assert data.get("artifact")=="validated-pages-site", data
