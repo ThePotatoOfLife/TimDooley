@@ -92,7 +92,11 @@ def main():
         fail("Body relational lens stylesheet missing")
     if "projectUrl(x.body_route||'/life-body/')" not in body_lens:
         fail("Body relational lens does not project body routes through the site base")
-    if "const jsonCache=new Map()" not in journey or "function getJson(path)" not in journey:
+    shared_cache_patterns=(
+        "window.__potatoJsonPromiseCache",
+        "const jsonCache=new Map()",
+    )
+    if not any(pattern in journey for pattern in shared_cache_patterns) or "function getJson(path)" not in journey:
         fail("House journey runtime does not reuse shared JSON requests")
     if "x.id===roomId||x.route_id===roomId" not in journey or "const canonicalRoomId=room.id" not in journey:
         fail("nested Room enrichment does not resolve governed route aliases")
