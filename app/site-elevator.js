@@ -252,20 +252,22 @@
       if(!window.matchMedia?.('(min-width:860px)').matches)return null;
       const host=header.getBoundingClientRect();
       if(!host.width||!host.height)return null;
-      const scale=host.width/Number(artboard.width);
-      const renderedHeight=Number(artboard.height)*scale;
-      return {scale,offsetX:0,offsetY:(host.height-renderedHeight)/2};
+      return {
+        scaleX:host.width/Number(artboard.width),
+        scaleY:host.height/Number(artboard.height)
+      };
     };
 
     const applyHotspotRect=(element,rect,artboard)=>{
       if(!element||!rect||!artboard?.width||!artboard?.height)return;
       const desktop=desktopPanoramaMetrics(artboard);
       if(desktop){
-        const px=value=>(Number(value)||0)*desktop.scale;
-        element.style.setProperty('--hotspot-left',(desktop.offsetX+px(rect.x))+'px');
-        element.style.setProperty('--hotspot-top',(desktop.offsetY+px(rect.y))+'px');
-        element.style.setProperty('--hotspot-width',px(rect.width)+'px');
-        element.style.setProperty('--hotspot-height',px(rect.height)+'px');
+        const pxX=value=>(Number(value)||0)*desktop.scaleX;
+        const pxY=value=>(Number(value)||0)*desktop.scaleY;
+        element.style.setProperty('--hotspot-left',pxX(rect.x)+'px');
+        element.style.setProperty('--hotspot-top',pxY(rect.y)+'px');
+        element.style.setProperty('--hotspot-width',pxX(rect.width)+'px');
+        element.style.setProperty('--hotspot-height',pxY(rect.height)+'px');
         return;
       }
       const pct=(value,total)=>((Number(value)||0)/(Number(total)||1)*100)+'%';
