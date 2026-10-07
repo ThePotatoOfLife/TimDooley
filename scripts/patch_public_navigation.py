@@ -1325,12 +1325,14 @@ def main() -> None:
 
     changed.update(patch_page_navs(OUT))
     changed.update(patch_house_journey_css(OUT))
-    changed.update(patch_shared_asset_versions(OUT))
     changed.update(patch_legacy_tts_readers(OUT))
     changed.update(patch_site_floors(OUT))
     changed.update(patch_site_elevator(OUT))
     changed.update(patch_site_access(OUT))
     changed.update(patch_universal_tts(OUT))
+    # Cache fingerprinting must be the final shell pass so assets injected by
+    # legacy TTS, Elevator, Access or universal TTS cannot escape unversioned.
+    changed.update(patch_shared_asset_versions(OUT))
 
     religion = OUT / "religion" / "index.html"
     if patch_text(
