@@ -439,22 +439,6 @@ body.home-body{
 @media(max-width:820px){
   .home-intro,.home-section-head,.home-fast-head,.news-preview-head,.reader-routing,.substance-prose{padding:13px 14px}
 }
-@media(max-width:700px){
-  .home-nav{
-    margin:0 0 20px;
-    flex-wrap:wrap;
-    overflow:visible;
-    overscroll-behavior:auto;
-    scroll-snap-type:none;
-  }
-  .home-nav a{
-    flex:0 1 auto;
-    white-space:normal;
-    padding:5px 8px;
-    border:0;
-    scroll-snap-align:none;
-  }
-}
 @media(max-width:560px){
   .home-page::after{
     background:
