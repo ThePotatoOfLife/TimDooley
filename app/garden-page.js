@@ -298,6 +298,14 @@
   let step = 0;
   let revealTimer = null;
 
+  window.addEventListener('pagehide', () => {
+    stopWhispers();
+    if (revealTimer) window.clearTimeout(revealTimer);
+    revealTimer = null;
+    if (mudFruitTimeout) window.clearTimeout(mudFruitTimeout);
+    mudFruitTimeout = null;
+  }, {once:true});
+
   function render() {
     const entry = entries[active];
     if (!entry) return;
