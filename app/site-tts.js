@@ -28,7 +28,7 @@
     '.science-controls','.science-library','.science-results','.timeline-explorer-standalone',
     '#archive-explorer','.archive-nav','.search','.gb-toolbar','.longform-toc',
     '.basin-modebar','.explorer-toolbar','.explorer-nav','.body-finder-box','.body-finder-results',
-    '.house-journey-ribbon','.map-action','[role="map"]','[data-no-tts]','.ptts-drawer',
+    '.map-action','[role="map"]','[data-no-tts]','.ptts-drawer',
     '.ptts-selection-listen','.ptts-inline-listen'
   ].join(',');
 
