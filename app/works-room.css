@@ -100,3 +100,88 @@
   .works-room .artifact-row{grid-template-columns:1fr}
   .works-room :is(.game-registry,.artifact-status){padding:16px}
 }
+
+/* Recovered visual-art corpus. Images are intentionally lightweight, lazy-loaded
+   gallery derivatives so the reading Room does not pay for every source PNG. */
+.works-room .art-gallery-section{
+  margin:30px 0;
+  padding:22px;
+  border:1px solid var(--site-pane-line);
+  border-radius:var(--site-radius-lg);
+  background:var(--site-pane-soft);
+  box-shadow:0 8px 22px rgba(0,0,0,.12);
+}
+.works-room .art-gallery-section h2{
+  margin:4px 0 10px;
+  color:var(--site-gold);
+  font:400 clamp(28px,4vw,42px)/1.08 var(--site-font-serif);
+}
+.works-room .gallery-note{
+  max-width:78ch;
+  color:var(--site-muted);
+  font-size:var(--site-text-xs);
+  line-height:1.6;
+}
+.works-room .art-gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:16px;
+  margin:18px 0 8px;
+  align-items:start;
+}
+.works-room .art-card{
+  margin:0;
+  overflow:hidden;
+  border:1px solid var(--site-pane-line);
+  border-radius:var(--site-radius-sm);
+  background:var(--site-pane);
+  box-shadow:0 7px 18px rgba(0,0,0,.14);
+}
+.works-room .art-image{
+  display:grid;
+  place-items:center;
+  min-height:190px;
+  background:rgba(8,8,7,.92);
+  border-bottom:1px solid var(--site-pane-line);
+}
+.works-room .art-card img{
+  display:block;
+  width:100%;
+  height:260px;
+  object-fit:contain;
+  background:rgba(8,8,7,.92);
+}
+.works-room .art-card figcaption{padding:13px 14px 15px}
+.works-room .art-card strong{
+  display:block;
+  color:var(--site-gold);
+  font:400 18px/1.15 var(--site-font-serif);
+}
+.works-room .art-card em{
+  display:block;
+  margin-top:4px;
+  color:var(--site-muted);
+  font-size:9px;
+  font-style:normal;
+  letter-spacing:.055em;
+  text-transform:uppercase;
+}
+.works-room .art-card p{
+  margin:9px 0 7px;
+  color:var(--site-muted);
+  font-size:var(--site-text-xs);
+  line-height:1.5;
+}
+.works-room .art-card small{
+  display:block;
+  padding-top:7px;
+  border-top:1px solid var(--site-line);
+  color:var(--site-muted);
+  font-size:var(--site-text-micro);
+  line-height:1.4;
+}
+@media(max-width:720px){
+  .works-room .art-gallery-section{padding:16px}
+  .works-room .art-gallery{grid-template-columns:1fr}
+  .works-room .art-card img{height:auto;max-height:520px}
+}
