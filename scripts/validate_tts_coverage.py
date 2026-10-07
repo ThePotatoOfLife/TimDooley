@@ -139,6 +139,11 @@ def main() -> int:
         for marker in ("QUIET_ROUTES", "INTERACTIVE_EXCLUDE", "data-tts-longform", "PotatoLongformTTS", "selectionOnly:quiet", "ttsSelectionOnly", "options.selectionOnly?doc.body:null"):
             if marker not in text:
                 errors.append(f"app/site-tts.js missing {marker}")
+        for marker in ("requestIdleCallback", "pointerdown", "keydown", "touchstart", "timeout:isHome?2600:1600"):
+            if marker not in text:
+                errors.append(f"app/site-tts.js missing deferred-boot performance marker: {marker}")
+        if "if(!doc.body?.classList.contains('home-body')){start();return}" in text:
+            errors.append("site-tts must not synchronously boot the full TTS stack on every non-home page")
 
     journey = ROOT / "app/house-journey.js"
     if not journey.exists() or "site-tts.js" not in journey.read_text(encoding="utf-8"):
