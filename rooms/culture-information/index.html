@@ -9,60 +9,7 @@
 <link rel="stylesheet" href="../../app/site-system.css?v=20260914a">
 <link rel="stylesheet" href="../../app/room-home.css">
 <link rel="stylesheet" href="../../app/institution-entrances.css?v=20260921a">
-<style>
-.culture-home{--culture-measure:820px}
-.culture-home .page-header .summary{max-width:780px}
-.culture-home>section{position:relative;overflow:hidden}
-.culture-home #already-inside{padding-top:30px}
-.culture-home #already-inside:before{content:"";position:absolute;inset:0 auto 0 0;width:3px;background:linear-gradient(to bottom,var(--site-gold),transparent 72%);opacity:.7}
-.culture-home .big-thought{max-width:25ch;margin:18px 0 20px;font:400 clamp(26px,3.3vw,42px)/1.18 var(--site-font-serif);color:var(--site-gold);letter-spacing:-.02em}
-.culture-home .culture-copy{max-width:var(--culture-measure);font-size:clamp(15px,1.25vw,18px);line-height:1.8;color:var(--site-copy)}
-.culture-home .culture-copy strong{color:var(--site-ink)}
-.culture-home .culture-ribbon{display:flex;flex-wrap:wrap;gap:7px;margin:20px 0 8px;padding:0;list-style:none}
-.culture-home .culture-ribbon li{padding:6px 9px;border:1px solid var(--site-line);border-radius:999px;color:var(--site-muted);font-size:10px;letter-spacing:.05em;text-transform:uppercase;background:var(--site-pane-soft)}
-.culture-home .culture-ribbon li:nth-child(odd){transform:translateY(-2px)}
-.culture-home .culture-lens{display:grid;grid-template-columns:minmax(160px,.7fr) minmax(0,1.8fr);gap:18px;padding:15px 0;border-top:1px solid var(--site-line)}
-.culture-home .culture-lens:first-of-type{margin-top:18px}
-.culture-home .culture-lens b{font:400 20px/1.25 var(--site-font-serif);color:var(--site-gold)}
-.culture-home .culture-lens p{margin:0;max-width:700px;color:var(--site-copy);line-height:1.7}
-.culture-home .culture-questions{counter-reset:cultureq;margin:20px 0 4px;border-top:1px solid var(--site-line)}
-.culture-home .culture-question{counter-increment:cultureq;display:grid;grid-template-columns:54px minmax(0,1fr);gap:13px;padding:15px 0;border-bottom:1px solid var(--site-line)}
-.culture-home .culture-question:before{content:"0" counter(cultureq);font:700 11px/1 var(--site-font-mono);color:var(--site-gold);padding-top:5px}
-.culture-home .culture-question b{display:block;color:var(--site-ink);margin-bottom:4px}
-.culture-home .culture-question span{display:block;color:var(--site-muted);line-height:1.55}
-.culture-home .formation{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:20px 0 24px}
-.culture-home .formation span{padding:7px 9px;border:1px solid var(--site-line);background:var(--site-pane-soft);color:var(--site-copy);font-size:11px}
-.culture-home .formation i{font-style:normal;color:var(--site-gold)}
-.culture-home .scene-note{margin:22px 0;padding:20px 22px;border-left:3px solid var(--site-gold);background:var(--site-pane-soft);max-width:850px}
-.culture-home .scene-note strong{display:block;margin-bottom:6px;color:var(--site-gold);font:400 22px var(--site-font-serif)}
-.culture-home .scene-note p{margin:0;color:var(--site-copy);line-height:1.72}
-.culture-home .pair{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:20px 0}
-.culture-home .pair article{padding:19px 0;border-top:1px solid var(--site-line);border-bottom:1px solid var(--site-line)}
-.culture-home .pair em{font-style:normal;color:var(--site-muted);font-size:10px;text-transform:uppercase;letter-spacing:.08em}
-.culture-home .pair h3{margin:7px 0 8px;font:400 23px/1.2 var(--site-font-serif);color:var(--site-gold)}
-.culture-home .pair p{margin:0;color:var(--site-copy);line-height:1.7}
-.culture-home .field-example{margin:18px 0 0;padding:20px;border:1px dashed var(--site-line);background:color-mix(in srgb,var(--site-pane-soft) 72%,transparent)}
-.culture-home .field-example h3{margin:0 0 8px;color:var(--site-gold);font:400 22px var(--site-font-serif)}
-.culture-home .field-example p{margin:7px 0;max-width:800px;color:var(--site-copy);line-height:1.72}
-.culture-home .culture-map{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:20px 0}
-.culture-home .culture-map div{min-height:118px;padding:14px;border:1px solid var(--site-line);background:var(--site-pane-soft)}
-.culture-home .culture-map b{display:block;color:var(--site-gold);font:400 18px var(--site-font-serif);margin-bottom:5px}
-.culture-home .culture-map span{color:var(--site-muted);font-size:11px;line-height:1.5}
-.culture-home .fieldwalk{list-style:none;padding:0;margin:20px 0;max-width:860px}
-.culture-home .fieldwalk li{display:grid;grid-template-columns:110px minmax(0,1fr);gap:15px;padding:13px 0;border-top:1px solid var(--site-line)}
-.culture-home .fieldwalk strong{color:var(--site-gold);font:400 18px var(--site-font-serif)}
-.culture-home .fieldwalk span{color:var(--site-copy);line-height:1.65}
-.culture-home .source-shelf{columns:2;column-gap:30px;margin:17px 0 0;padding:0;list-style:none}
-.culture-home .source-shelf li{break-inside:avoid;padding:10px 0;border-top:1px solid var(--site-line);color:var(--site-muted);font-size:11px;line-height:1.55}
-.culture-home .source-shelf a{color:var(--site-gold)}
-.culture-home .closing-line{max-width:28ch;margin:15px 0 4px;font:400 clamp(25px,3vw,37px)/1.28 var(--site-font-serif);color:var(--site-gold)}
-@media(max-width:760px){
-  .culture-home .culture-lens,.culture-home .pair,.culture-home .culture-map{grid-template-columns:1fr}
-  .culture-home .culture-question{grid-template-columns:38px minmax(0,1fr)}
-  .culture-home .fieldwalk li{grid-template-columns:1fr;gap:4px}
-  .culture-home .source-shelf{columns:1}
-}
-</style>
+<link rel="stylesheet" href="../../app/culture-information.css?v=20261007b">
 </head>
 <body>
 <main class="page page--reading room-home culture-home">
@@ -111,6 +58,21 @@
 <p class="scene-note"><strong>Culture is often visible in the correction.</strong> The official values tell you what a group says it is. The handling of embarrassment, dissent, mistakes, outsiders and status tells you what the group repeatedly becomes.</p>
 </section>
 
+
+<section id="enculturation-practice">
+<p class="eyebrow">Enculturation · apprenticeship · identity</p>
+<h2>Nobody joins a culture by memorizing its dictionary</h2>
+<p class="culture-copy">Anthropologists use <strong>enculturation</strong> for the process by which people acquire a culture. Some of that learning is deliberate—parents explain manners, elders teach ritual, moderators post rules—but much of it is absorbed by watching what competent members do. A newcomer learns timing before theory: when to speak, when to stay quiet, what counts as trying too hard, which mistake earns a gentle correction and which one marks you as somebody who does not yet understand the room.</p>
+<p class="culture-copy">That is why learning a culture is also learning a possible identity. Etienne Wenger's work on <strong>communities of practice</strong> treats participation, meaning and identity as inseparable. The learner is not merely collecting facts. They are becoming the kind of person who can participate recognizably in that practice. A cook develops a hand for the kitchen. A musician learns when not to play. A forum regular learns the difference between a sincere question and bait. A ritual participant learns the moment at which everybody stands.</p>
+<div class="apprentice-grid">
+<article><b>Notice</b><span>The newcomer detects recurring words, gestures, heroes, silences and punishments before understanding the whole system.</span></article>
+<article><b>Imitate</b><span>They borrow a phrase, posture, recipe, workflow, joke or rhythm. Copying is often the first bridge into competence.</span></article>
+<article><b>Risk</b><span>They improvise. The group corrects, ignores, rewards or rejects the variation. Culture teaches through consequences.</span></article>
+<article><b>Recognition</b><span>Eventually other people stop treating them as somebody who needs every convention explained. Membership has become partly embodied.</span></article>
+</div>
+<p class="scene-note"><strong>The real initiation is often boring.</strong> Not a secret ceremony, but the moment you know where the mugs are kept, which reference needs no explanation, how late “late” actually means, and who can tease whom without the room becoming dangerous.</p>
+</section>
+
 <section id="subculture">
 <p class="eyebrow">Subculture · scene · taste-public · neo-tribe</p>
 <h2>A subculture is not merely a smaller culture. It is a place where difference becomes legible to itself.</h2>
@@ -122,6 +84,19 @@
 <article><em>Status</em><h3>Knowing the right obscure thing can become currency</h3><p>Sarah Thornton’s idea of <strong>subcultural capital</strong> captures a familiar phenomenon: prestige inside a scene may come from knowing the earlier band, the forgotten lore, the correct venue, the uncool commercial imitation, the right way to pronounce a name—or knowing what not to explain to outsiders.</p></article>
 </div>
 <p class="culture-copy">This produces a delicious paradox. A scene can be organized around escaping the mainstream while constantly measuring itself against the mainstream. The moment outsiders understand the haircut, the phrase, the meme or the sound, insiders may move again. Difference has to be reproduced.</p>
+</section>
+
+
+<section id="outsider-mirror">
+<p class="eyebrow">Ethnocentrism · spectacle · moral panic</p>
+<h2>From the outside, unfamiliar order is easy to mistake for no order at all</h2>
+<p class="culture-copy">One of the oldest traps in cultural interpretation is to treat our own conventions as neutral reality and somebody else's conventions as peculiar behavior. Anthropology's answer is not “everything is equally good.” It is simpler and harder: understand a practice inside the larger system that gives it meaning <em>before</em> deciding what you think of it. Otherwise difference gets mistaken for deficiency.</p>
+<div class="inside-outside">
+<article><h3>From inside the scene</h3><p>The clothes may distinguish eras, affiliations and degrees of commitment. The noise may have etiquette. An insult may be affectionate in one relationship and unacceptable in another. A chaotic dance floor may contain learned rules about bodies, help and danger.</p></article>
+<article><h3>From outside the scene</h3><p>The same details can collapse into one spectacle: strange clothes, strange speech, unruly youth, threatening music, “these people.” Nuance disappears precisely because the observer has not learned the distinctions participants use.</p></article>
+</div>
+<p class="culture-copy">Subcultures are especially vulnerable to this compression because visible style gives newspapers, institutions and anxious outsiders an easy symbol. Stanley Cohen's classic work on <strong>moral panics</strong> showed how groups can be turned into “folk devils”: a bounded figure through which a society narrates a larger fear about disorder, youth or decline. Later work has repeatedly found youth cultures becoming screens for anxieties much bigger than the actual scene.</p>
+<p class="culture-copy">The lesson cuts both ways. A moral panic can exaggerate a threat; calling criticism a moral panic can also become a lazy way to avoid examining real harm. Good analysis asks what actually happened, how representative it was, who amplified it, what wider fear it came to symbolize, and whether the public reaction remained proportionate to the evidence.</p>
 </section>
 
 <section id="ritual-boundary">
@@ -190,6 +165,38 @@
 <p class="culture-copy">The useful question is not “did the mainstream steal it?” in every case. Ask what changed during translation. Was the object detached from the community that gave it meaning? Did commercialization widen participation, flatten the symbolism, fund the creators, erase the origin, or produce a new culture altogether? Often several of those things happen simultaneously.</p>
 </section>
 
+
+<section id="hybridity">
+<p class="eyebrow">Diffusion · diaspora · hybridity · appropriation</p>
+<h2>Cultures travel by changing</h2>
+<p class="culture-copy">The picture of cultures as sealed containers becomes especially weak once people migrate, trade, marry, colonize, flee, tour, post, translate, remix and return home changed. Anthropology uses terms such as <strong>diffusion</strong>, <strong>diaspora</strong>, <strong>transnationalism</strong> and <strong>cultural hybridity</strong> to describe different parts of this traffic. People carry foods, sounds, stories, religious practices, aesthetics and social habits across boundaries, where they are reinterpreted rather than merely photocopied.</p>
+<p class="culture-copy">Hybridity is not automatically harmonious. Cultural movement occurs inside unequal histories. Colonialism moved people and symbols through conquest as well as curiosity; global markets can spread an art form while concentrating profit elsewhere; migration can create extraordinary invention while also involving displacement and loss. The fact that culture mixes does not make power disappear.</p>
+<div class="exchange-grid">
+<article><b>Borrowing</b><p>A practice travels and is adapted. Ask what changed, what remained recognizable and whether the new users acknowledge where it came from.</p></article>
+<article><b>Hybridization</b><p>Elements meet and generate something that cannot be reduced cleanly to either source. The result can become a tradition of its own.</p></article>
+<article><b>Appropriation</b><p>The ethical question becomes sharper when a powerful outsider extracts a valued or sacred form while ignoring the people, restrictions, credit or history attached to it.</p></article>
+<article><b>Return</b><p>Sometimes a transformed cultural form travels back toward its earlier source. Culture can arrive home wearing clothes it acquired elsewhere.</p></article>
+</div>
+<p class="scene-note"><strong>“Is this authentic?” is often the wrong first question.</strong> Ask instead: authentic to which period, which region, which generation, which faction, which migration route, which memory of the tradition—and who gets to answer?</p>
+</section>
+
+<section id="culture-biography-section">
+<p class="eyebrow">The biography of a scene</p>
+<h2>A culture can be born, thicken, split, commercialize, fossilize and grow again</h2>
+<p class="culture-copy">Cultures are easier to understand when we stop picturing them as objects and start giving them biographies. The sequence below is not a law. Some cultures skip stages, reverse them or occupy several at once. It is a diagnostic map for asking what kind of cultural moment you are looking at.</p>
+<div class="culture-biography">
+<div><small>01</small><b>Spark</b><span>A practice, place, person, problem or aesthetic gathers unusual attention.</span></div>
+<div><small>02</small><b>Density</b><span>Participants meet often enough that references and expectations can accumulate.</span></div>
+<div><small>03</small><b>Code</b><span>Names, styles, rituals, jokes, techniques and stories begin compressing shared experience.</span></div>
+<div><small>04</small><b>Boundary</b><span>Members can increasingly tell who “gets it,” and outsiders can increasingly recognize the scene.</span></div>
+<div><small>05</small><b>Institution</b><span>Venues, moderators, labels, archives, businesses, elders or rules stabilize what was once informal.</span></div>
+<div><small>06</small><b>Extraction</b><span>The scene becomes legible to markets, media or institutions that can package parts of it for other audiences.</span></div>
+<div><small>07</small><b>Schism</b><span>Arguments over purity, leadership, money, politics, memory or style produce factions and successor scenes.</span></div>
+<div><small>08</small><b>Renewal</b><span>A new generation inherits the archive selectively, revives neglected forms and changes what the culture is for.</span></div>
+</div>
+<p class="culture-copy">This is why a dead-looking scene can still matter. Its venues may close while its style becomes ordinary. Its members may disperse while its vocabulary survives. Its music may become a genre. Its archive may seed a revival twenty years later. Cultural death is rarely the same thing as total disappearance.</p>
+</section>
+
 <section id="potato-symbol">
 <p class="eyebrow">A local specimen</p>
 <h2>The Potato House is itself a culture-making machine, so this room should study its own floorboards</h2>
@@ -197,6 +204,16 @@
 <p class="culture-copy">Then take 🍟. Outside this project it ordinarily means fries or fast food. Inside the Potatoverse it has accumulated extra uses through repetition and interaction: recognition, “fried,” judgment, a comic bonk, an observing symbol, and at times a sword. That is culture happening in miniature. <strong>A sign acquires a local surplus of meaning because people repeatedly use it inside a shared history.</strong></p>
 <p class="culture-copy">The important part is not to freeze that symbol in a dictionary. Living symbols remain negotiable. Somebody can misuse them, parody them, reinterpret them, reject them, teach them badly, or invent a use that later becomes canonical. A dead glossary tells you what a sign once meant. A culture tells you what people can still do with it.</p>
 <div class="room-actions"><a href="../potatoverse-canon/"><strong>Potatoverse / Canon →</strong></a><a href="../works/">Works / Fruit →</a><a href="../../context/culture/turbles/">Turble Thesis →</a></div>
+</section>
+
+
+<section id="memory-community">
+<p class="eyebrow">Cultural memory</p>
+<h2>Every durable culture eventually answers a dangerous question: what must we not forget?</h2>
+<p class="memory-question">Memory is not only storage. It is a recurring decision about which past should still be present.</p>
+<p class="culture-copy">Jan Assmann distinguishes the short horizon of everyday communicative memory from more durable <strong>cultural memory</strong> carried by texts, rites, monuments, images and recurring ceremonies. Once a culture builds those memory technologies, later members can inherit events they never personally witnessed. That is immensely powerful: a dead founder can still speak through a text; a disaster can structure identity generations later; an anniversary can synchronize people who otherwise share very little daily life.</p>
+<p class="culture-copy">But memory always selects. The official monument may preserve what the family story omits; the family story may preserve what the state archive ignored. A screenshot can outlive the room that made it intelligible. A canon can rescue fragile knowledge and also crowd alternatives out of view. The cultural question is therefore not merely <em>what survived?</em> It is <strong>who built the mechanism that keeps bringing this particular past back?</strong></p>
+<div class="room-actions"><a href="../inside/information-ecology/"><strong>Information Ecology &amp; Memory →</strong></a><a href="../archive-sources/">Archive &amp; Sources →</a></div>
 </section>
 
 <section id="healthy-culture">
@@ -250,6 +267,11 @@
 <li><strong>Dick Hebdige / Birmingham cultural studies</strong> — subculture, style, bricolage and the politics of cultural meaning. <a href="https://academic.oup.com/reference/62382/reference-article-abstract/555029775" rel="external">overview</a></li>
 <li><strong>Sarah Thornton</strong> — subcultural capital: how insider taste and knowledge become status within scenes. <a href="https://academic.oup.com/jcmc/article/13/1/252/4583067" rel="external">discussion</a></li>
 <li><strong>Andy Bennett and post-subcultural theory</strong> — challenges to treating youth identities as fixed, class-bound tribes; scenes and fluid “neo-tribes” can sometimes fit better. <a href="https://www.cambridge.org/core/journals/sociology/article/abs/subcultures-or-neotribes-rethinking-the-relationship-between-youth-style-and-musical-taste/5C46818AC3FBBC07EB5798625C378114" rel="external">article</a></li>
+<li><strong>Etienne Wenger</strong> — communities of practice: learning as participation, negotiation of meaning and becoming recognizable as a certain kind of participant. <a href="https://www.cambridge.org/highereducation/books/communities-of-practice/724C22A03B12D11DFC345EEF0AD3F22A" rel="external">book overview</a></li>
+<li><strong>Michèle Lamont &amp; Virág Molnár</strong> — symbolic boundaries: how categories of people, membership and inequality are culturally drawn and maintained. <a href="https://www.annualreviews.org/content/journals/10.1146/annurev.soc.28.110601.141107" rel="external">review</a></li>
+<li><strong>Stanley Cohen and moral-panic research</strong> — how public anxieties can condense around visible “folk devils,” particularly youth and subcultural groups. <a href="https://www.cambridge.org/core/books/revisiting-moral-panics/03D96CD5BCC1B88EE5B8C57135E53E81/listing" rel="external">research tradition</a></li>
+<li><strong>Jan Assmann</strong> — cultural memory: the texts, rituals, images and recurring practices through which groups make selected pasts durable across generations. <a href="https://www.cambridge.org/core/books/cultural-memory-and-early-civilization/BCCB31EDCBF10BAF4F9B084B4BC6E5A7" rel="external">book overview</a></li>
+<li><strong>OpenStax Anthropology</strong> — enculturation, diffusion, diaspora, transnationalism and cultural hybridity, with culture treated as mobile rather than sealed to one place. <a href="https://openstax.org/books/introduction-anthropology/pages/10-2-early-global-movements-and-cultural-hybridity" rel="external">hybridity overview</a></li>
 <li><strong>Mary Douglas</strong> — purity, taboo and the cultural work of boundaries and classification. <a href="https://openstax.org/books/introduction-anthropology/pages/3-5-modes-of-cultural-analysis" rel="external">overview</a></li>
 <li><strong>Henry Jenkins &amp; Limor Shifman</strong> — participatory culture, remix and why internet memes deserve to be studied as cultural forms rather than dismissed as noise. <a href="https://mitpress.mit.edu/9780262513623/confronting-the-challenges-of-participatory-culture/" rel="external">Jenkins</a> · <a href="https://mitpress.mit.edu/9780262525435/memes-in-digital-culture/" rel="external">Shifman</a></li>
 </ul>
