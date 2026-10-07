@@ -185,6 +185,8 @@ def main() -> int:
             errors.append("site elevator runtime must load and apply the canonical hotspot map")
         if "panoramaMetrics" not in js or "scaleX:host.width/Number(artboard.width)" not in js or "scaleY:host.height/Number(artboard.height)" not in js or "const scale=host.height/Number(artboard.height)" not in js:
             errors.append("desktop and mobile hotspot geometry must share the exact rendered artboard scale")
+        if "window.addEventListener('resize',scheduleGeometryRefresh" not in js or js.count("window.addEventListener('resize'") != 1:
+            errors.append("site elevator must coalesce viewport geometry work behind one resize listener")
         if ".site-elevator[data-elevator-direction] .site-elevator-room-rail" not in css or "animation:none" not in css:
             errors.append("desktop invisible hit rail must not inherit settling animation")
         if css.count("!important") > 8:
