@@ -130,7 +130,12 @@ def fingerprint_shared_assets() -> dict[str, str]:
         digest = hashlib.sha256(asset.read_bytes()).hexdigest()[:12]
         versions[rel] = digest
         basename = Path(rel).name
-        pattern = re.compile(rf"({re.escape(basename)})(?:\\?v=[^\"'<>\\s]+)?")
+        # Match the asset as a complete basename token. Without this boundary,
+        # "style.css" corrupts JavaScript properties such as style.cssText and
+        # "foo.js" can corrupt longer filenames such as foo.json.
+        pattern = re.compile(
+            rf"({re.escape(basename)})(?![A-Za-z0-9._-])(?:\\?v=[^\"'<>\\s]+)?"
+        )
         changed = 0
         targets = [*OUT.rglob("*.html"), *OUT.rglob("*.css"), *OUT.rglob("*.js")]
         for page in targets:
@@ -144,16 +149,20 @@ def fingerprint_shared_assets() -> dict[str, str]:
                 changed += count
         print(f"Fingerprint {rel}: {digest} · {changed} references")
 
-    # Never ship a literal regex backreference in a URL. This catches failures in
-    # the fingerprint rewrite itself before the validated Pages artifact is uploaded.
-    bad_backrefs = []
+    # Guard the built artifact, not only the replacement expression. These two
+    # signatures previously escaped validation while breaking live pages:
+    #   data/foo.js?v=<hash>on   (foo.json was partially matched)
+    #   node.style.css?v=<hash>Text (style.cssText was partially matched)
+    malformed = []
+    fingerprint_tail = re.compile(r"\\?v=[0-9a-f]{12}(?:[A-Za-z0-9._-])")
     for page in [*OUT.rglob("*.html"), *OUT.rglob("*.css"), *OUT.rglob("*.js")]:
-        if "\\1?v=" in page.read_text(encoding="utf-8", errors="replace"):
-            bad_backrefs.append(page.relative_to(OUT).as_posix())
-    if bad_backrefs:
+        page_text = page.read_text(encoding="utf-8", errors="replace")
+        if "\\1?v=" in page_text or fingerprint_tail.search(page_text):
+            malformed.append(page.relative_to(OUT).as_posix())
+    if malformed:
         raise SystemExit(
-            "Shared asset fingerprinting emitted a literal regex backreference: "
-            + ", ".join(bad_backrefs[:20])
+            "Shared asset fingerprinting corrupted a token boundary: "
+            + ", ".join(malformed[:20])
         )
     return versions
 
