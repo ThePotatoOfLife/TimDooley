@@ -24,7 +24,7 @@
   border:1px solid var(--tim-pane-line);
   color:var(--tim-ink);
   box-shadow:inset 0 1px rgba(255,255,255,.58),0 16px 34px rgba(0,0,0,.12);
-  backdrop-filter:blur(9px) saturate(.86)
+  backdrop-filter:none;
 }
 .tim-living .page-header:after{
   content:"";
@@ -55,7 +55,7 @@
     linear-gradient(180deg,rgba(255,255,255,.14),transparent 25%),
     var(--tim-pane-soft);
   box-shadow:inset 0 1px rgba(255,255,255,.22),0 13px 30px rgba(0,0,0,.10);
-  backdrop-filter:blur(8px) saturate(.84)
+  backdrop-filter:none;
 }
 .living-room h2{
   margin:0 0 18px;
