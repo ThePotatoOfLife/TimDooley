@@ -117,8 +117,9 @@
   if(typeof ResizeObserver!=='undefined'){
     const accessObserver=new ResizeObserver(publishClearance);
     accessObserver.observe(wrapper);
+  }else{
+    window.addEventListener('resize',publishClearance,{passive:true});
   }
-  window.addEventListener('resize',publishClearance,{passive:true});
 
   const panel=wrapper.querySelector('[data-site-access-panel]');
   const input=wrapper.querySelector('.site-access-search input');
@@ -329,5 +330,6 @@
   });
   document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!panel.hidden){setOpen(false);returnFocus?.focus?.()}});
   document.addEventListener('pointerdown',e=>{if(!panel.hidden&&!wrapper.contains(e.target))setOpen(false)});
-  if(!document.body.classList.contains('home-body'))void renderDefault();
+  // The fixed dock is fully usable without the heavy search index.
+  // Load the four registry JSONs only when Places/Find is actually opened.
 })();
