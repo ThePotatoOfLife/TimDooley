@@ -157,9 +157,11 @@ for group_name in ("go_now","find","direct_doors"):
         if entry_id not in entries:
             errors.append(f"site-access group {group_name} references unknown entry: {entry_id}")
 
-for token in ("label===t","priority(e)","site-access-context","await loadIndex()","returnFocus","--site-access-clearance","resultLinks","focusResult","moveResultFocus","ArrowDown","ArrowUp","Home","End","sessionStorage.getItem(key)","cache:'no-cache'","loadPromise=null","if(loadPromise)return loadPromise","loaded=received"):
+for token in ("label===t","priority(e)","site-access-context","await loadIndex()","returnFocus","--site-access-clearance","resultLinks","focusResult","moveResultFocus","ArrowDown","ArrowUp","Home","End","__potatoJsonPromiseCache","cache:'default'","loadPromise=null","if(loadPromise)return loadPromise","loaded=received"):
     if token not in js and token not in css:
         errors.append(f"quick-access behavior missing regression marker: {token}")
+if "sessionStorage.getItem(" in js or "sessionStorage.setItem(" in js:
+    errors.append("site-access registry data must not be pinned in sessionStorage; use shared in-page promise dedupe plus HTTP cache")
 if "if(!document.body.classList.contains('home-body'))void renderDefault()" in js:
     errors.append("site-access must not eagerly fetch registry/search data before the user opens Places/Find")
 if "if(typeof ResizeObserver!=='undefined')" not in js or "}else{\n    window.addEventListener('resize',publishClearance" not in js:
