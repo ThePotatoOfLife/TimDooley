@@ -461,14 +461,26 @@
   // Journey history is stored for Elevator replay, but no longer rendered as a
   // persistent site-wide navigation ribbon. The page sub-header owns discovery;
   // the global access dock owns utilities.
-  installHouseDeepCorpusIndex();
-  installRoomArchiveDrawers();
-  annotateAdjacentRoomDoors();
+  //
+  // Keep authored reading and its section guide on the critical path. Nested-Room
+  // archive enrichment lives below that content, so hydrate it during idle time
+  // instead of competing with first paint, font/layout work and the universal shell.
   installRoomSectionGuide();
+  installHouseDeepCorpusIndex();
   installRoomsBestOf();
   installDwellingFeaturedObjects();
   installDwellingArchiveIndex();
   installRoomFloorProjection();
-  installInhabitants();
-  installRoomKnowledge();
+
+  const isNestedRoom=/\/rooms\/inside\/[^/]+\//.test(location.pathname);
+  if(isNestedRoom){
+    const hydrateNested=()=>{
+      installRoomArchiveDrawers();
+      annotateAdjacentRoomDoors();
+      installInhabitants();
+      installRoomKnowledge();
+    };
+    if('requestIdleCallback' in window)requestIdleCallback(hydrateNested,{timeout:900});
+    else setTimeout(hydrateNested,80);
+  }
 })();
