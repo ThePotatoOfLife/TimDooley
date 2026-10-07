@@ -36,7 +36,7 @@
   border-radius:var(--site-radius-sm);
   background:color-mix(in srgb,var(--site-pane) 92%,transparent);
   box-shadow:0 8px 22px rgba(0,0,0,.14);
-  backdrop-filter:blur(10px);
+  backdrop-filter:none;-webkit-backdrop-filter:none;
 }
 .art-gallery-page .gallery-toolbar-label{
   margin-right:4px;
@@ -199,8 +199,8 @@
   box-shadow:0 28px 80px rgba(0,0,0,.6);
 }
 .gallery-lightbox::backdrop{
-  background:rgba(0,0,0,.82);
-  backdrop-filter:blur(5px);
+  background:rgba(0,0,0,.92);
+  backdrop-filter:none;-webkit-backdrop-filter:none;
 }
 .gallery-dialog{
   position:relative;
@@ -233,10 +233,10 @@
   display:grid;
   place-items:center;
   border:1px solid rgba(255,255,255,.22);
-  background:rgba(10,10,10,.72);
+  background:rgba(10,10,10,.90);
   color:#fff;
   cursor:pointer;
-  backdrop-filter:blur(6px);
+  backdrop-filter:none;-webkit-backdrop-filter:none;
 }
 .gallery-close{
   top:10px;
