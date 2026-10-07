@@ -486,10 +486,10 @@
 
     const fetchJson=async route=>{
       const href=siteHref(route,context.siteBase);
-      // House topology changes independently of this JavaScript asset. Do not pin
-      // floor/Room data to a sessionStorage key derived from the JS version, or an
-      // open browser session can keep showing an obsolete floor after data deploys.
-      const response=await fetch(href,{cache:'no-store'});
+      // These contracts are static deploy assets. Use the browser HTTP cache so
+      // navigating across the site does not redownload the same four JSON files.
+      // Normal cache revalidation still picks up a later deployment.
+      const response=await fetch(href,{cache:'default'});
       if(!response.ok)throw new Error('Elevator data request failed: '+route+' '+response.status);
       return response.json();
     };
