@@ -18,7 +18,7 @@ html{scroll-behavior:smooth}
 .garden-page a{color:#e3cb84}
 .garden-top-nav{
   position:sticky;top:var(--site-elevator-clearance,0px);z-index:40;max-width:1720px;margin:0 auto;padding:8px 18px;
-  background:rgba(5,11,7,.74);backdrop-filter:blur(12px) saturate(120%);
+  background:rgba(5,11,7,.94);backdrop-filter:none;-webkit-backdrop-filter:none;
   border-bottom:1px solid rgba(255,255,255,.06)
 }
 .garden-top-nav a{font-size:.66rem;letter-spacing:.025em}
@@ -136,7 +136,7 @@ html{scroll-behavior:smooth}
   position:absolute;z-index:9;left:50%;bottom:10px;transform:translateX(-50%);
   display:flex;align-items:center;gap:7px;padding:4px 7px;
   border:1px solid rgba(239,228,193,.22);border-radius:4px;
-  background:rgba(8,12,8,.44);backdrop-filter:blur(5px);
+  background:rgba(8,12,8,.84);backdrop-filter:none;-webkit-backdrop-filter:none;
   color:#f0e7cd;font:700 8px/1.2 ui-monospace,monospace;letter-spacing:.05em
 }
 .garden-discovery button{
