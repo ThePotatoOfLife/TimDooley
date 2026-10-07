@@ -31,18 +31,23 @@ for marker,label in [
     ('class="museum-stage-shell"',"controlled museum stage"),
     ('The wall moves; the page does not fight you.',"non-hijacking museum copy"),
     ('data-wall-plaque',"active artwork plaque"),
+    ('data-museum-index',"chronological museum rail"),
+    ('data-wall-label',"museum wall label"),
 ]:
     if marker not in html: fatal.append(f"gallery missing {label}")
 for marker,label in [
     ("MUSEUM STAGE V3","museum stage stylesheet"),
     (".gallery-card.is-active","active painting state"),
     ("width:auto!important;height:auto!important","native artwork proportions"),
+    ("MUSEUM STAGE V5","orientation-aware museum navigation"),
 ]:
     if marker not in css: fatal.append(f"gallery CSS missing {label}")
 for marker,label in [
     ("Controlled wall rotation. No wheel handler","controlled wall runtime"),
     ("const renderWall","painting-stage renderer"),
     ("data-wall-prev","previous-work runtime"),
+    ("const classifyImage","orientation classifier"),
+    ("const rebuildMonthRail","chronological month rail"),
 ]:
     if marker not in js: fatal.append(f"gallery JS missing {label}")
 if "addEventListener('wheel'" in js or 'addEventListener("wheel"' in js:
