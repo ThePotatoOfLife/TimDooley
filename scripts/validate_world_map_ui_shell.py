@@ -49,6 +49,8 @@ def main() -> int:
         for menu_id in ("layersMenu", "traceMenu", "timeMenu", "viewMenu"):
             if f'id="{menu_id}"' not in html:
                 errors.append(f"World Map source must retain compatibility control host {menu_id}")
+        if html.count('id="atlasWorldBarHost"') != 1:
+            errors.append("World Map source must contain exactly one atlasWorldBarHost")
         if 'id="moreMenu"' in html or "id='moreMenu'" in html:
             errors.append("World Map must not hide the Home link inside a fifth collapsible More menu")
         if not re.search(r'<a[^>]+class=["\'][^"\']*top-home[^"\']*["\'][^>]+href=["\']\.\./["\']', html, re.I):
@@ -70,8 +72,9 @@ def main() -> int:
 
     if public_patch:
         for token in (
-            'atlasWorldBarHost',
-            'World map controls',
+            'world_map_path',
+            'if \'id="atlasWorldBarHost"\' not in world_map_text',
+            'quick_actions + \'<div id="atlasWorldBarHost" aria-label="World map controls"></div>\'',
             "'<details class=\"menu\" id=\"layersMenu\">', '<details class=\"menu\" id=\"layersMenu\" hidden>'",
             "'<details class=\"menu\" id=\"traceMenu\">', '<details class=\"menu\" id=\"traceMenu\" hidden>'",
             "'<details class=\"menu\" id=\"timeMenu\">', '<details class=\"menu\" id=\"timeMenu\" hidden>'",
