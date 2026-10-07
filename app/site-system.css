@@ -567,3 +567,22 @@ html[data-site-floor] .page > :where(p.boundary,p.note,p.warning,p.lede,.boundar
     -webkit-backdrop-filter:none!important;
   }
 }
+
+
+/* 2026-10-07 Ordinary reader compositor budget.
+   Reader panes already carry opaque-enough material fills. Live backdrop sampling
+   over a fixed realm is expensive on long documents and adds little visual value.
+   Specialty scene pages keep their own intentional effects. */
+html[data-site-floor] body:not(.home-body):not(.garden-body):not(.dogs-hall-page):not(.potatoes-hall-page)
+.page :where(.page-header,section,article,aside,details,.lede,.boundary,.note,.callout,.rule,.whole,.card,.room-language,.room-essay,.room-ledger,.room-quote,.room-reader,.dwelling-reflection){
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+}
+
+/* Let the browser skip layout/paint work for long sections that are far outside
+   the viewport. The first section stays eager so initial reading never waits. */
+html[data-site-floor] body:not(.home-body):not(.garden-body):not(.dogs-hall-page):not(.potatoes-hall-page)
+.page > section:not(:first-of-type){
+  content-visibility:auto;
+  contain-intrinsic-size:auto 720px;
+}
