@@ -265,6 +265,17 @@ if OUT.exists():
         for asset in ("site-access.css","site-access.js"):
             if asset not in text:
                 errors.append(f"{rel} missing generated {asset}")
+
+    # A boot guard prevents duplicate behavior, but duplicate local assets still
+    # waste fetch/parse/style work and make cascade order unpredictable.
+    app_asset_re=re.compile(r'''(?:href|src)=["'][^"']*app/([^"'?]+\.(?:css|js))(?:\?[^"']*)?["']''',re.I)
+    for page in OUT.rglob("*.html"):
+        text=read(page)
+        assets=app_asset_re.findall(text)
+        duplicates=sorted({asset for asset in assets if assets.count(asset)>1})
+        if duplicates:
+            rel=page.relative_to(OUT).as_posix()
+            errors.append(f"{rel}: duplicate local app assets: {', '.join(duplicates)}")
     world=read(OUT/"world/index.html")
     news=read(OUT/"news/index.html")
     house=read(OUT/"house/index.html")
