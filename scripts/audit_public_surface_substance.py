@@ -25,6 +25,7 @@ LINK_RE=re.compile(r"<a\b[^>]*href=[\"']([^\"']+)[\"']",re.I)
 FETCH_RE=re.compile(r"\bfetch\s*\(",re.I)
 SCRIPT_SRC_RE=re.compile(r"<script\b[^>]*src=[\"']",re.I)
 INSPECT_RE=re.compile(r"(?:^|/)(?:data|knowledge)/|\.json(?:[#?]|$)|source-authority|evidence",re.I)
+GENERATED_SURFACES={"science-papers"}
 
 def load(rel):
     return json.loads((ROOT/rel).read_text(encoding="utf-8"))
@@ -56,6 +57,10 @@ def main()->int:
         route=surface.get("canonical_route") or surface.get("route") or "/"
         path=route_file(route)
         if not path.exists():
+            # Some governed public readers are build products rather than checked-in
+            # source pages. Their existence/content is validated by the build group.
+            if sid in GENERATED_SURFACES:
+                continue
             missing.append({"surface_id":sid,"route":route,"expected_file":path.relative_to(ROOT).as_posix()})
             continue
         raw=path.read_text(encoding="utf-8",errors="replace")
@@ -122,7 +127,7 @@ def main()->int:
     rows.sort(key=lambda r:(-r["priority_weight"],r["metrics"]["static_text_chars"],r["surface_id"]))
     report={
         "version":"1.0.0",
-        "generated_from":"source HTML + data/house/public-surfaces.json + public-surface-missions.json",
+        "generated_from":"source HTML + data/house/public-surfaces.json + public-surface-missions.json; build-generated surfaces are validated by the build group",
         "purpose":"Prioritize public-surface development by static substance, degraded-mode usefulness, object/source escape and declared mission. Not a truth, importance or quality score.",
         "thresholds":{
             "thin_static_chars":1800,
