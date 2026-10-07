@@ -120,36 +120,6 @@ padding:26px 18px;border:1px solid var(--site-line)}
 @media(max-width:760px){.field-instruments,.field-notes,.position-stack{grid-template-columns:1fr}}
 @media(max-width:700px){#lower-field-orientation:before{position:static;display:block;margin-bottom:10px}}
 
-/* 2026-10-06 environmental depth pass */
-.below-page .page-header{
-  background:
-    radial-gradient(ellipse at 50% 100%,rgba(151,86,48,.10),transparent 48%),
-    linear-gradient(180deg,rgba(25,14,11,.68),rgba(11,8,7,.58));
-  border-color:rgba(196,111,70,.18)
-}
-.below-page .lower-orientation,
-.below-page .archetype-guide,
-.below-page .conflict-field{
-  background:
-    linear-gradient(180deg,rgba(27,16,12,.46),rgba(10,8,7,.38));
-  border-color:rgba(178,101,65,.14)
-}
-.below-page .card,
-.below-page .desk,
-.below-page .case-path,
-.below-page .field-instrument{
-  background:rgba(19,12,9,.42);
-  border-color:rgba(169,102,72,.13)
-}
-.below-page .card:hover,
-.below-page .desk:hover,
-.below-page .case-path:hover{
-  background:rgba(25,15,11,.54);
-  border-color:rgba(194,117,78,.19)
-}
-
-
-
 /* 2026-10-07 black-glass Below material */
 .below-page{
   --below-glass:rgba(5,6,7,.68);
