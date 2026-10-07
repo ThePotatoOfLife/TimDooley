@@ -2,6 +2,7 @@
 """Validate the universal fast-access layer in source assets and the built site."""
 from __future__ import annotations
 from pathlib import Path
+import ast
 import json
 import re
 
@@ -26,6 +27,32 @@ for reader_css in (ROOT/"app").glob("*.css"):
         errors.append(f"{reader_css.relative_to(ROOT)} must not restyle shared .page-nav; keep geometry/skin in app/site-system.css")
 patch=read(ROOT/"scripts/patch_public_navigation.py")
 contract_text=read(ROOT/"data/house/site-access.json")
+
+# First-match contextual nav families must be ordered most-specific first.
+# Parse the literal registry instead of duplicating it in this validator.
+try:
+    patch_tree=ast.parse(patch)
+    family_value=None
+    for node in patch_tree.body:
+        if isinstance(node,ast.Assign) and any(isinstance(t,ast.Name) and t.id=="_CONTEXT_NAV_FAMILIES" for t in node.targets):
+            family_value=ast.literal_eval(node.value)
+            break
+    if family_value is None:
+        errors.append("public navigation patcher missing literal _CONTEXT_NAV_FAMILIES registry")
+    else:
+        family_prefixes=[tuple(row[0]) for row in family_value]
+        for broad_index,broad_group in enumerate(family_prefixes):
+            for specific_index,specific_group in enumerate(family_prefixes):
+                if broad_index>=specific_index:
+                    continue
+                for broad in broad_group:
+                    for specific in specific_group:
+                        if specific!=broad and specific.startswith(broad):
+                            errors.append(
+                                f"context nav prefix order is ambiguous: broader {broad!r} appears before specific {specific!r}"
+                            )
+except (SyntaxError,ValueError,TypeError) as exc:
+    errors.append(f"cannot inspect contextual navigation prefix order: {exc}")
 journey_text=read(ROOT/"data/house/access-journeys.json")
 journey_ui=read(ROOT/"app/house-journey.js")
 journey_css=read(ROOT/"app/house-journey.css")
