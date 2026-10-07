@@ -19,6 +19,8 @@ OUT = ROOT / "_site"
 
 SHARED_ASSET_NAMES = (
     "site-system.css",
+    "room-interior.css",
+    "house-journey.css",
     "style.css",
     "reader.css",
     "house-page.css",
