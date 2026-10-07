@@ -275,13 +275,6 @@
   background:rgba(236,227,205,.42);
   color:#5d574c
 }
-.tradition-reader .page-nav{
-  border-color:rgba(145,116,62,.20)
-}
-.tradition-reader .page-nav a{
-  color:#785824
-}
-.tradition-reader .page-nav a:hover{color:#4d3716}
 @media(max-width:700px){
   .tradition-reader section{padding:18px}
   .tradition-reader :is(.timeline,.rail,.stack,.layers,.map)::before{display:none}
