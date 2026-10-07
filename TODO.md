@@ -58,8 +58,8 @@ These missions remain. **What changes is how we store them: fewer, thicker, clea
 - [x] **VISSTD-009 · Science extraction regression:** repair accidental double `.science-page` scope introduced during stylesheet extraction and guard current shared ownership.
 
 ### Next
-- [ ] **VISSTD-010 · World reader cleanup:** extract `/world/` inline CSS, align cards/sections with shared copy/type/radius tokens, and decide which casebook pieces belong in an existing reader family.
-- [ ] **VISSTD-011 · Culture reader cleanup:** move `/context/culture/` out of raw inline/fallback CSS; remove generic `.card/.cards/.chain` leakage, raw Georgia stacks and fallback token syntax.
+- [x] **VISSTD-010 · World reader cleanup:** `/world/` no longer carries inline structural CSS and now uses the scoped `app/world-page.css` owner with the shared site shell.
+- [x] **VISSTD-011 · Culture reader cleanup:** `/context/culture/` now has no inline style block or raw Georgia stack and uses the scoped `app/culture-page.css` owner alongside the shared reader shell.
 - [ ] **VISSTD-012 · Great Book shell audit:** inspect the separate Great Book long-form shell after the Politics cleanup; preserve literary identity while removing redundant width/type/palette systems.
 - [ ] **VISSTD-013 · Corporium family decision:** compare Collection/Corporium purpose-case-chain patterns with Pillar/World-domain reader components before creating another stylesheet.
 - [ ] **VISSTD-014 · Remaining hero-width audit:** inspect specialist Halls, lower-field readers and tool pages for intentional versus accidental local `.page-header` width/padding overrides.
@@ -96,7 +96,7 @@ These missions remain. **What changes is how we store them: fewer, thicker, clea
 
 ### Next small-bug targets
 - [ ] **PAPER-016 · House runtime decomposition:** now that House JavaScript has a dedicated owner, split the 23 KB runtime into coherent data-loading, topology rendering and interaction modules only if that improves testability without adding loader chatter.
-- [ ] **PAPER-017 · Potato of Life inline CSS extraction:** move the remaining ~8 KB page-local style block into a dedicated scoped stylesheet and register it for deterministic fingerprinting.
+- [x] **PAPER-017 · Potato of Life inline CSS extraction:** `/potato-of-life/` has no inline style block and owns its specialist presentation through `app/potato-of-life-page.css` plus shared site components.
 - [x] **PAPER-019 · Quantum reader shell migration:** `science/quantum/` now uses the shared `.page / .page-nav / .page-header` contract, keeps its physics/formalism distinctions, and owns only scoped page-specific styles in `app/quantum-page.css`.
 - [ ] **PAPER-021 · Extracted specialist app tests:** add focused regression coverage for Foundation Timeline filtering/data rendering and House Inhabitants search/filter behavior now that their runtimes have dedicated owners.
 - [ ] **PAPER-022 · Sources inline-style cleanup:** the Sources reader still carries a small ~1.2 KB inline style block; extract only if it remains structurally unique after comparing Pillar/Source reader families.
