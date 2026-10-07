@@ -1,14 +1,14 @@
 /* Shared Heaven-facing concept reader.
    Frosted white panes, restrained gold rim, conceptual/theological content kept intact. */
 .heaven-concept-reader{
-  --heaven-pane:rgba(244,246,242,.76);
-  --heaven-pane-soft:rgba(238,242,236,.60);
-  --heaven-pane-deep:rgba(228,235,227,.50);
-  --heaven-line:rgba(188,161,94,.30);
-  --heaven-ink:#20231e;
-  --heaven-copy:#4b5149;
-  --heaven-muted:#687066;
-  --heaven-gold:#97722e;
+  --heaven-pane:rgba(255,255,252,.91);
+  --heaven-pane-soft:rgba(252,252,248,.79);
+  --heaven-pane-deep:rgba(248,249,245,.69);
+  --heaven-line:rgba(177,148,79,.30);
+  --heaven-ink:#20231f;
+  --heaven-copy:#4b524b;
+  --heaven-muted:#687068;
+  --heaven-gold:#8f6b29;
   max-width:1120px;
   color:var(--heaven-copy)
 }
@@ -92,7 +92,8 @@
   padding:20px;
   margin:22px 0;
   background:
-    radial-gradient(circle at center,rgba(204,225,181,.16),transparent 62%),
+    radial-gradient(circle at center,rgba(255,248,213,.24),transparent 62%),
+    linear-gradient(180deg,rgba(255,255,255,.30),transparent 34%),
     var(--heaven-pane-soft)
 }
 .heaven-concept-reader .timeline-row{
