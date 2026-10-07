@@ -224,7 +224,8 @@ assert.ok(source.includes('panoramaMetrics'),'desktop hotspot projection must sh
 assert.ok(source.includes('scaleX:host.width/Number(artboard.width)'),'desktop hotspots must use the exact rendered horizontal scale');
 assert.ok(source.includes('const scale=host.height/Number(artboard.height)'),'mobile hotspots must use the same height-derived scale as the auto × 100% artboard crop');
 assert.ok(source.includes('scaleY:host.height/Number(artboard.height)'),'desktop hotspots must use the exact rendered vertical scale');
-assert.ok(source.includes("window.addEventListener('resize',refreshHotspots"),'desktop hotspots must be recomputed when viewport geometry changes');
+assert.ok(source.includes("window.addEventListener('resize',scheduleGeometryRefresh"),'header geometry must be coalesced and recomputed when viewport geometry changes');
+assert.equal((source.match(/window\.addEventListener\('resize'/g)||[]).length,1,'site elevator must own one viewport resize listener');
 assert.match(css,/\.site-elevator\[data-elevator-direction\] \.site-elevator-room-rail\{[\s\S]*?animation:none;/,'invisible desktop hitboxes must not inherit rail motion');
 assert.equal(css.includes('overflow-x:auto'),false,'Room rail must not horizontally scroll');
 assert.equal(css.includes('scrollbar-width'),false,'Room rail must not render a scrollbar');
