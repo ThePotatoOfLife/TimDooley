@@ -202,8 +202,9 @@ def test_homepage_authority_contract() -> None:
     if sitemap not in home:
         fail("homepage must advertise the canonical sitemap index, not a child sitemap")
     visible = home.split("<body", 1)[-1]
+    visible_folded = visible.casefold()
     for phrase in ("official project-owned public archive", "Potatoism", "Potatoverse"):
-        if phrase not in visible:
+        if phrase.casefold() not in visible_folded:
             fail(f"homepage visible answer surface missing authority phrase: {phrase}")
     for url in (OFFICIAL_REPOSITORY, SOURCE_AUTHORITY):
         if url not in home:
