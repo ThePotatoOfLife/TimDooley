@@ -144,6 +144,8 @@ def main() -> int:
             "--site-header-art:",
             "background-image:var(--site-header-art)",
             "background-size:100% 100%",
+            "box-shadow:none",
+            "overflow:hidden",
             "--elevator-shell-height:clamp(94.632px,11.003683vw,300px)",
             "border-radius:0",
             "background:transparent",
@@ -162,6 +164,11 @@ def main() -> int:
             if token not in css:
                 errors.append(f"site elevator CSS missing required marker: {token}")
 
+        desktop_owner=css.split("/* 2026-10-06 v3 canonical illustrated composition.",1)[1] if "/* 2026-10-06 v3 canonical illustrated composition." in css else ""
+        if desktop_owner and "box-shadow:none" not in desktop_owner:
+            errors.append("desktop header must suppress outer shadow seams")
+        if desktop_owner and "overflow:hidden" not in desktop_owner:
+            errors.append("desktop header must clip sub-pixel artwork seams")
         if css.count("/* 2026-10-06 v3 canonical illustrated composition.") != 1:
             errors.append("site elevator must have exactly one v3 canonical illustrated desktop/tablet owner")
         if "/* Desktop illustrated header skin." in css or "target-reference refinement" in css or "exact target-reference desktop skin" in css:
