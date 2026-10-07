@@ -206,15 +206,20 @@
       },
     });
 
-    let lastId=read().id;
-    const observer=new MutationObserver(()=>{
+    let lastId=read().id,mutationFrame=0;
+    const refreshFromMutation=()=>{
+      mutationFrame=0;
       const next=read();
-      if(next.id!==lastId){lastId=next.id;setRelationActive(false);pageHighlighter.invalidate();drawer?.setPayload(next)}
-      else drawer?.setPayload(next);
+      if(next.id!==lastId){lastId=next.id;setRelationActive(false);pageHighlighter.invalidate()}
+      drawer?.setPayload(next);
+    };
+    const observer=new MutationObserver(()=>{
+      if(mutationFrame)return;
+      mutationFrame=root.requestAnimationFrame?root.requestAnimationFrame(refreshFromMutation):root.setTimeout(refreshFromMutation,16);
     });
     observer.observe(active,{childList:true,subtree:true,characterData:true});
     const selectionAction=root.PotatoTTSDrawer.mountSelectionAction?.({container:active,drawer,getPayload:read});
-    return {drawer,observer,selectionAction,pageHighlighter,refresh:()=>{pageHighlighter.invalidate();drawer?.setPayload(read())},destroy(){observer.disconnect();selectionAction?.destroy?.();pageHighlighter.clear();setRelationActive(false);drawer?.stop?.()}};
+    return {drawer,observer,selectionAction,pageHighlighter,refresh:()=>{pageHighlighter.invalidate();drawer?.setPayload(read())},destroy(){observer.disconnect();if(mutationFrame){if(root.cancelAnimationFrame)root.cancelAnimationFrame(mutationFrame);else root.clearTimeout?.(mutationFrame);mutationFrame=0}selectionAction?.destroy?.();pageHighlighter.clear();setRelationActive(false);drawer?.stop?.()}};
   }
   if(typeof document!=='undefined'){
     if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount,{once:true});else setTimeout(mount,0);
