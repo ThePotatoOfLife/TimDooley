@@ -20,7 +20,45 @@
   const dialog = document.querySelector('#gallery-viewer');
   if (!grid || !dialog) return;
 
+  // Chronological wall ordering: oldest supplied filename date first.
+  const parseDate = card => {
+    if (card.dataset.date) return Date.parse(card.dataset.date);
+    const raw = card.querySelector('em')?.textContent.split('·')[0].trim() || '';
+    const parsed = Date.parse(raw);
+    return Number.isFinite(parsed) ? parsed : Number.MAX_SAFE_INTEGER;
+  };
+  const initialCards = [...grid.querySelectorAll('.gallery-card')];
+  initialCards.sort((a,b) => parseDate(a) - parseDate(b)).forEach(card => grid.appendChild(card));
   const cards = [...grid.querySelectorAll('.gallery-card')];
+  cards.forEach((card,index) => {
+    let number = card.querySelector('.museum-number');
+    if (!number) {
+      number = document.createElement('span');
+      number.className = 'museum-number';
+      card.querySelector('figcaption')?.prepend(number);
+    }
+    if (number) number.textContent = 'Work ' + String(index + 1).padStart(2,'0');
+  });
+  grid.tabIndex = 0;
+  grid.setAttribute('aria-label','Chronological visual art wall. Scroll horizontally or use left and right arrow keys.');
+
+  grid.addEventListener('wheel', event => {
+    if (Math.abs(event.deltaY) <= Math.abs(event.deltaX)) return;
+    const max = grid.scrollWidth - grid.clientWidth;
+    if (max <= 0) return;
+    const right = event.deltaY > 0;
+    const canMove = right ? grid.scrollLeft < max - 2 : grid.scrollLeft > 2;
+    if (!canMove) return;
+    event.preventDefault();
+    grid.scrollLeft += event.deltaY;
+  }, {passive:false});
+
+  grid.addEventListener('keydown', event => {
+    if (!['ArrowLeft','ArrowRight','PageUp','PageDown'].includes(event.key)) return;
+    event.preventDefault();
+    const direction = (event.key === 'ArrowLeft' || event.key === 'PageUp') ? -1 : 1;
+    grid.scrollBy({left: direction * Math.max(320, grid.clientWidth * .78), behavior:'smooth'});
+  });
   const filters = [...document.querySelectorAll('[data-gallery-filter]')];
   const image = dialog.querySelector('#gallery-viewer-image');
   const title = dialog.querySelector('#gallery-viewer-title');
@@ -91,6 +129,7 @@
     });
     const count = visibleCards().length;
     if (empty) empty.hidden = count !== 0;
+    grid.scrollTo({left:0,behavior:'smooth'});
   }));
 
   close?.addEventListener('click', () => dialog.close());

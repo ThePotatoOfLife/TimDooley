@@ -1,7 +1,7 @@
 {
   "id": "visual-art-symbolic-composition-archive",
   "title": "Visual Art & Symbolic Composition Archive",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "updated": "2026-10-07",
   "status": "creative-archaeology owner",
   "purpose": "Preserve how Potatoverse concepts were staged together in visual compositions, prompts, diagrams and generated imagery without treating those images as empirical evidence for theology, anatomy, politics or science.",
@@ -121,7 +121,7 @@
     "data/geometry-vesica-pisces-mandorla.json"
   ],
   "recovered_image_corpus": {
-    "id": "tim-dooley-art-corpus-2025-may-august",
+    "id": "tim-dooley-art-corpus-2025-may-september",
     "recovery_date": "2026-10-07",
     "source_status": "17 image artifacts supplied directly by Tim Dooley in conversation",
     "production_note": "Tim states the group contains works he either painted himself or conceptualized and had rendered with AI. Per-item production method is not yet resolved; do not infer it.",
@@ -176,7 +176,7 @@
         "title": "Divine Gardener with Potato",
         "date": "2025-05-27",
         "file": "assets/visual-art/2025/divine-gardener-with-potato.webp",
-        "description": "A Potato of Life figure kneels over a sprouting potato in cultivated earth beneath luminous sky and a mature tree. Authority resolves into cultivation.",
+        "description": "This is a pastoral icon of stewardship rather than conquest. The kneeling body lowers authority to the level of soil; the hand is almost larger than the sprout, yet its gesture is careful rather than possessive. A mature tree occupies the distance while the potato-seed occupies the foreground, making growth visible as a continuum from buried potential to rooted abundance. The T-shirt refuses ecclesiastical costume and returns the sacred image to ordinary labor.",
         "motifs": [
           "gardener",
           "potato",
@@ -184,7 +184,9 @@
           "soil",
           "tree",
           "care"
-        ]
+        ],
+        "source_original_dimensions": "1536×1024",
+        "replacement_status": "high-resolution original re-supplied; repository binary replacement pending"
       },
       {
         "id": "moses-parting-mud",
@@ -219,7 +221,7 @@
         "title": "Royal Grief and Vengeance",
         "date": "2025-06-08",
         "file": "assets/visual-art/2025/royal-grief-and-vengeance.webp",
-        "description": "A red-cloaked bearded mourner kneels beside a grave naming Jesus Christ as Tim's only begotten son, fist raised beneath sun and red moon. Grief turns toward reckoning.",
+        "description": "The picture is built as a funerary tableau, but it refuses quiet resignation. Lilies, meadow light and the grave establish the language of mourning; the clenched fist and red moon pull the image toward protest and reckoning. The inscription makes the grief explicitly internal to the project’s own mythology, so the work functions less like documentary claim than private devotional history: loss translated into landscape, color and posture.",
         "motifs": [
           "Son",
           "grave",
@@ -227,21 +229,26 @@
           "reckoning",
           "moon",
           "lilies"
-        ]
+        ],
+        "source_original_dimensions": "1536×1024",
+        "replacement_status": "high-resolution original re-supplied; repository binary replacement pending"
       },
       {
         "id": "bearded-man-in-car",
         "title": "Bearded Man in Car",
         "date": "2025-06-09",
         "file": "assets/visual-art/2025/bearded-man-in-car.webp",
-        "description": "A prison-yard scene places a white-robed bearded figure beside a man pointing toward him while text identifies the figure as Jesus Christ, the Lamb. Recognition and contested identity become public spectacle.",
+        "description": "The composition turns recognition into a public event. A white-robed figure remains unusually calm while another man points, speaks and effectively performs the act of naming before an audience enclosed by prison architecture. The painted text is intentionally blunt—almost poster-like—so the tension sits between serenity and accusation, private identity and social declaration, sacred costume and institutional confinement.",
         "motifs": [
           "Jesus",
           "Lamb",
           "prison",
           "recognition",
           "witness"
-        ]
+        ],
+        "display_title": "The Lamb in the Yard",
+        "source_original_dimensions": "1536×1024",
+        "replacement_status": "high-resolution original re-supplied; repository binary replacement pending"
       },
       {
         "id": "modern-holy-portrait",
@@ -357,6 +364,39 @@
         ]
       },
       {
+        "id": "royal-at-jesus-tomb",
+        "title": "Royal at Jesus' Tomb",
+        "date": "2025-08-27",
+        "gallery_status": "catalogued; repository binary transfer pending",
+        "source_original_dimensions": "1536×1024",
+        "description": "A crowned figure stands beside a rock-cut tomb under a pale moon, holding a volume titled The Blood of Christ. Royal authority is placed beside absence rather than triumph: crown, sealed stone, book and moon turn the scene into an icon of witness, custody and unresolved return.",
+        "motifs": [
+          "crown",
+          "tomb",
+          "stone",
+          "moon",
+          "book",
+          "blood",
+          "witness",
+          "absence"
+        ]
+      },
+      {
+        "id": "godly-robes-transformation",
+        "title": "Godly Robes Transformation",
+        "date": "2025-08-28",
+        "gallery_status": "hung",
+        "description": "A haloed robed figure sits at an ordinary computer in a warm domestic room, pulling devotional portraiture into contemporary creative labor.",
+        "motifs": [
+          "halo",
+          "robes",
+          "computer",
+          "keyboard",
+          "headphones",
+          "guitar"
+        ]
+      },
+      {
         "id": "desert-dog-odyssey",
         "title": "Desert Dog Odyssey",
         "date": "2025-08-29",
@@ -373,7 +413,24 @@
           "glyphs",
           "journey"
         ]
+      },
+      {
+        "id": "cosmic-weaver-at-loom",
+        "title": "Cosmic Weaver at Loom",
+        "date": "2025-09-17",
+        "gallery_status": "hung",
+        "file": "assets/visual-art/2025/cosmic-weaver-at-loom.webp",
+        "description": "A crowned royal figure works at a loom while luminous threads cross a star-filled field, recasting sovereignty as relational craft.",
+        "motifs": [
+          "crown",
+          "loom",
+          "stars",
+          "golden threads",
+          "network",
+          "craft"
+        ]
       }
-    ]
+    ],
+    "quality_note": "Originals re-supplied on 2026-10-07 for Divine Gardener with Potato, Royal Grief and Vengeance, source-filename Bearded Man in Car / display title The Lamb in the Yard, and Royal at Jesus' Tomb are 1536×1024. Current repository derivatives for the first three are still low-resolution and are marked for binary replacement from those originals."
   }
 }
