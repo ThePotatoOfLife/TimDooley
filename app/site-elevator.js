@@ -484,14 +484,19 @@
 
     render();
 
-    const fetchJson=async route=>{
+    const sharedJsonCache=root.__potatoJsonPromiseCache||(root.__potatoJsonPromiseCache=new Map());
+    const fetchJson=route=>{
       const href=siteHref(route,context.siteBase);
-      // These contracts are static deploy assets. Use the browser HTTP cache so
-      // navigating across the site does not redownload the same four JSON files.
-      // Normal cache revalidation still picks up a later deployment.
-      const response=await fetch(href,{cache:'default'});
-      if(!response.ok)throw new Error('Elevator data request failed: '+route+' '+response.status);
-      return response.json();
+      if(sharedJsonCache.has(href))return sharedJsonCache.get(href);
+      // Static deploy contracts are shared by Elevator, Access and House Journey.
+      // Cache the promise as well as the HTTP response so overlapping boot phases
+      // cannot start the same request twice on one page.
+      const request=fetch(href,{cache:'default'}).then(response=>{
+        if(!response.ok)throw new Error('Elevator data request failed: '+route+' '+response.status);
+        return response.json();
+      }).catch(error=>{sharedJsonCache.delete(href);throw error});
+      sharedJsonCache.set(href,request);
+      return request;
     };
 
     Promise.all([
