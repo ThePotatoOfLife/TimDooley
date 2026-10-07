@@ -1,6 +1,6 @@
 {
-  "version": "2.6.0",
-  "updated": "2026-10-05",
+  "version": "2.6.1",
+  "updated": "2026-10-07",
   "authority": "room-inhabitant-registry",
   "purpose": "Place cases, entities, concepts, artifacts and dossiers inside nested Rooms without promoting each object into a Room or changing canonical ownership.",
   "rules": [
@@ -2991,7 +2991,8 @@
       "room_ids": [
         "games-simulations",
         "potato-biology",
-        "symbolic-architecture"
+        "symbolic-architecture",
+        "garden"
       ],
       "route": "/works/#actual-works",
       "summary": "Generational growth simulation concept where inheritance, weather, selection, resources and future viability become explicit state transitions.",
@@ -3413,7 +3414,8 @@
       "kind": "practice-path",
       "room_ids": [
         "practice-ethics",
-        "symbolic-architecture"
+        "symbolic-architecture",
+        "garden"
       ],
       "route": "/knowledge/practice/potato-path.json",
       "summary": "Canonical practical growth sequence from Mud and Burial through Eye, Root, Sprout, Door, Ladder, Tree, Fruit, Seed and Return.",
