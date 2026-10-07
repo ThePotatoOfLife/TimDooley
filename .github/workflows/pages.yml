@@ -213,7 +213,11 @@ jobs:
           journey_css=Path(".live-smoke/app_house-journey.css").read_text(encoding="utf-8",errors="replace")
           assert 'html[data-site-floor="plane"]' in elevator_css, "live elevator CSS missing Plane canvas"
           assert 'body:not(.home-body)::before' in elevator_css, "live elevator CSS missing universal single-floor realm canvas"
-          assert '--elevator-shell-height:96px' in elevator_css, "live elevator CSS missing 96px desktop shell"
+          assert '--elevator-shell-height:clamp(94.632px,11.003683vw,300px)' in elevator_css, "live elevator CSS missing aspect-correct desktop shell"
+          assert 'background-size:100% 100%' in elevator_css, "live elevator CSS missing seam-free canonical panorama fill"
+          assert 'box-shadow:none' in elevator_css and 'overflow:hidden' in elevator_css, "live elevator CSS restored desktop shell seams"
+          assert 'scaleX:host.width/Number(artboard.width)' in elevator_js, "live elevator runtime missing exact horizontal hotspot projection"
+          assert 'scaleY:host.height/Number(artboard.height)' in elevator_js, "live elevator runtime missing exact vertical hotspot projection"
           assert '--elevator-slot-count:5' in elevator_css, "live elevator CSS missing uniform five-slot Room geometry"
           assert '.site-elevator-stage' in elevator_css, "live elevator CSS missing scenic Room stage"
           assert 'site-elevator-stage' in elevator_js, "live elevator runtime missing scenic Room stage"
