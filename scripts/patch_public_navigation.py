@@ -1117,8 +1117,8 @@ def normalize_page_nav(text: str, page: Path) -> str:
                 hub = _ROOM_PUBLIC_HUBS.get(parent_id)
                 if hub:
                     add(_nav_anchor(page, hub[0], hub[1], cls="page-nav-subject"))
-                add(_dwelling_anchor(page))
                 add(_current_subroom_anchor(page))
+                add(_dwelling_anchor(page))
                 for row in _room_nav_candidates(page):
                     add(_room_candidate_anchor(page, row))
         elif dwelling and dwelling.group(1) != "inside":
