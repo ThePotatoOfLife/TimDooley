@@ -247,34 +247,32 @@
     let spatial={levelId:'plane',roomId:null,room:null,subroomId:null,source:'fallback'};
     let selectedLevel='plane';
 
-    const desktopPanoramaMetrics=artboard=>{
+    const panoramaMetrics=artboard=>{
       if(!artboard?.width||!artboard?.height||typeof window==='undefined')return null;
-      if(!window.matchMedia?.('(min-width:860px)').matches)return null;
       const host=header.getBoundingClientRect();
       if(!host.width||!host.height)return null;
-      return {
-        scaleX:host.width/Number(artboard.width),
-        scaleY:host.height/Number(artboard.height)
-      };
+      if(window.matchMedia?.('(min-width:860px)').matches){
+        return {
+          scaleX:host.width/Number(artboard.width),
+          scaleY:host.height/Number(artboard.height)
+        };
+      }
+      // Mobile paints the same artboard at auto × 100% and crops from x=0.
+      // Use that exact rendered scale so hit zones remain glued to the artwork.
+      const scale=host.height/Number(artboard.height);
+      return {scaleX:scale,scaleY:scale};
     };
 
     const applyHotspotRect=(element,rect,artboard)=>{
       if(!element||!rect||!artboard?.width||!artboard?.height)return;
-      const desktop=desktopPanoramaMetrics(artboard);
-      if(desktop){
-        const pxX=value=>(Number(value)||0)*desktop.scaleX;
-        const pxY=value=>(Number(value)||0)*desktop.scaleY;
-        element.style.setProperty('--hotspot-left',pxX(rect.x)+'px');
-        element.style.setProperty('--hotspot-top',pxY(rect.y)+'px');
-        element.style.setProperty('--hotspot-width',pxX(rect.width)+'px');
-        element.style.setProperty('--hotspot-height',pxY(rect.height)+'px');
-        return;
-      }
-      const pct=(value,total)=>((Number(value)||0)/(Number(total)||1)*100)+'%';
-      element.style.setProperty('--hotspot-left',pct(rect.x,artboard.width));
-      element.style.setProperty('--hotspot-top',pct(rect.y,artboard.height));
-      element.style.setProperty('--hotspot-width',pct(rect.width,artboard.width));
-      element.style.setProperty('--hotspot-height',pct(rect.height,artboard.height));
+      const metrics=panoramaMetrics(artboard);
+      if(!metrics)return;
+      const pxX=value=>(Number(value)||0)*metrics.scaleX;
+      const pxY=value=>(Number(value)||0)*metrics.scaleY;
+      element.style.setProperty('--hotspot-left',pxX(rect.x)+'px');
+      element.style.setProperty('--hotspot-top',pxY(rect.y)+'px');
+      element.style.setProperty('--hotspot-width',pxX(rect.width)+'px');
+      element.style.setProperty('--hotspot-height',pxY(rect.height)+'px');
     };
 
     const applyHotspots=()=>{
