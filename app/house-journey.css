@@ -182,9 +182,8 @@
 .room-more-objects>.room-inhabitant-grid{margin-top:12px}
 
 /* Consolidated responsive overrides: broad → narrow. */
-@media(max-width:720px){.house-journey-ribbon{width:min(360px,calc(100vw - 108px));max-width:calc(100vw - 108px)}.house-journey-ribbon-title{display:none}.house-journey-ribbon-track a:nth-last-child(n+2){display:none}.house-journey-ribbon-actions a{display:none}.room-floor-grid{grid-template-columns:1fr}.room-floor-card{min-height:auto}.dwelling-object-head{grid-template-columns:1fr;gap:8px}.dwelling-object-card{min-height:auto}.rooms-best-head{grid-template-columns:1fr;gap:8px}.rooms-best-card{min-height:auto}.room-archive-head{grid-template-columns:1fr;gap:8px}.room-archive-drawer-title{display:block}.room-archive-drawer-title>a{display:inline-block;margin-top:8px}.house-corpus-card{min-height:auto}.dwelling-archive-index-head{grid-template-columns:1fr;gap:8px}}
+@media(max-width:720px){.room-floor-grid{grid-template-columns:1fr}.room-floor-card{min-height:auto}.dwelling-object-head{grid-template-columns:1fr;gap:8px}.dwelling-object-card{min-height:auto}.rooms-best-head{grid-template-columns:1fr;gap:8px}.rooms-best-card{min-height:auto}.room-archive-head{grid-template-columns:1fr;gap:8px}.room-archive-drawer-title{display:block}.room-archive-drawer-title>a{display:inline-block;margin-top:8px}.house-corpus-card{min-height:auto}.dwelling-archive-index-head{grid-template-columns:1fr;gap:8px}}
 @media(max-width:680px){.room-section-guide{grid-template-columns:1fr;gap:8px}.room-section-guide>div:first-child{min-width:0}}
-@media(max-width:420px){.house-journey-ribbon{left:6px;width:calc(100vw - 102px);max-width:calc(100vw - 102px);padding:3px 4px}.house-journey-ribbon-track a{max-width:128px}.house-journey-ribbon-actions button{padding:4px}}
 
 
 /* 2026-10-06 journey depth pass */
