@@ -23,7 +23,7 @@ env:
 # One production lane: an older validated revision must never race a newer deploy.
 # The freshness check runs after any queue wait, so stale revisions self-suppress.
 concurrency:
-  group: pages-production
+  group: pages-production-v2
   cancel-in-progress: false
 
 jobs:

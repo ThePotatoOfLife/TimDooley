@@ -15,7 +15,7 @@ env:
 
 # Never race the validated deployment path. This workflow is operator-invoked only.
 concurrency:
-  group: pages-production
+  group: pages-production-v2
   cancel-in-progress: false
 
 jobs:
