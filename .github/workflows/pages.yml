@@ -222,6 +222,7 @@ jobs:
           assert 'scaleX:host.width/Number(artboard.width)' in elevator_js, "live elevator runtime missing exact horizontal hotspot projection"
           assert 'scaleY:host.height/Number(artboard.height)' in elevator_js, "live elevator runtime missing exact vertical hotspot projection"
           assert 'const scale=host.height/Number(artboard.height)' in elevator_js, "live elevator runtime missing mobile artboard crop projection"
+          assert "window.addEventListener('resize',scheduleGeometryRefresh" in elevator_js, "live elevator runtime restored duplicate resize geometry listeners"
           assert 'background-size:auto 100%' in elevator_css, "live elevator CSS missing canonical mobile panorama crop"
           assert '--elevator-slot-count:5' in elevator_css, "live elevator CSS missing uniform five-slot Room geometry"
           assert '.site-elevator-stage' in elevator_css, "live elevator CSS missing scenic Room stage"
