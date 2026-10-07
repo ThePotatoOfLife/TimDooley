@@ -55,6 +55,16 @@ GOD_CHARACTER_READER_PAGES = [
     ROOT / "religion" / "gods-character" / "divine-tensions" / "index.html",
     ROOT / "religion" / "gods-character" / "divine-functions" / "index.html",
 ]
+SCIENCE_CONCEPT_READER_PAGES = [
+    ROOT / "science" / name / "index.html"
+    for name in (
+        "spudlight",
+        "vibe-gates",
+        "research-map",
+        "celestial-particles",
+        "axis-11d-sun-spiral",
+    )
+]
 CANONICAL_TOKEN_LITERALS = ("#070707", "#f4f0e5", "#d8b56b", "#302d29", "#0d0d0d")
 RETIRED_GREEN_MARKERS = ("--site-green", "var(--site-green", "--green:", "#b8dc82", "#a8ce72")
 
@@ -501,6 +511,37 @@ for page in GOD_CHARACTER_READER_PAGES:
         errors.append(f"{page.relative_to(ROOT)} must load reader.css before god-character-reader.css so family styling wins")
     if re.search(r"<style\b", text, flags=re.I):
         errors.append(f"{page.relative_to(ROOT)} drifted back to inline structural CSS")
+
+# Shared science concept reader family: project-specific science pages share one
+# current visual owner for grids, cards, equations and evidence notes.
+science_concept_css = ROOT / "app" / "science-concept-reader.css"
+if not science_concept_css.exists():
+    errors.append("app/science-concept-reader.css is missing")
+else:
+    science_concept_text = science_concept_css.read_text(encoding="utf-8", errors="ignore")
+    for marker in (
+        ".science-concept-reader .grid",
+        ".science-concept-reader .card",
+        ".science-concept-reader .eq",
+        ".science-concept-reader .note",
+        ".science-concept-reader h2",
+    ):
+        if marker not in science_concept_text:
+            errors.append(f"science-concept-reader.css missing family marker: {marker}")
+
+for page in SCIENCE_CONCEPT_READER_PAGES:
+    text = page.read_text(encoding="utf-8", errors="ignore") if page.exists() else ""
+    if "science-concept-reader.css" not in text:
+        errors.append(f"{page.relative_to(ROOT)} missing shared science-concept-reader.css")
+    if "science-concept-reader" not in text:
+        errors.append(f"{page.relative_to(ROOT)} missing science-concept-reader scope class")
+    if 'class="page-nav"' not in text:
+        errors.append(f"{page.relative_to(ROOT)} missing shared page-nav")
+    if 'class="page-header"' not in text:
+        errors.append(f"{page.relative_to(ROOT)} missing shared page-header")
+    if re.search(r"<style\b", text, flags=re.I):
+        errors.append(f"{page.relative_to(ROOT)} drifted back to inline structural CSS")
+
 
 # Realm readability/fidelity contract: background art may remain expressive, but
 # ordinary text surfaces must not rely on text-shadow alone for legibility.
