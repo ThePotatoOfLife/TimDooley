@@ -135,7 +135,13 @@
   });
   let loaded=false,loadPromise=null,index=[...curatedEntries];
   const aliasText=e=>Array.isArray(e.aliases)?e.aliases.join(' '):(e.aliases||'');
-  const key=e=>(e.label+' '+aliasText(e)+' '+(e.note||'')+' '+(e.kind||'')).toLowerCase();
+  const searchKeyCache=new WeakMap();
+  const key=e=>{
+    if(e&&typeof e==='object'&&searchKeyCache.has(e))return searchKeyCache.get(e);
+    const value=(e.label+' '+aliasText(e)+' '+(e.note||'')+' '+(e.kind||'')).toLowerCase();
+    if(e&&typeof e==='object')searchKeyCache.set(e,value);
+    return value;
+  };
   const priority=e=>({object:5,'case-ready':5,direct:4,world:3,project:2,page:1,find:1,start:0}[e.kind]??1);
   const unique=rows=>{
     const seen=new Set();
@@ -292,7 +298,13 @@
   listenBtn.addEventListener('click',()=>{setOpen(false);setTTSOpen(ttsConsole.hidden)});
   ttsCloseBtn.addEventListener('click',()=>{setTTSOpen(false);listenBtn.focus()});
   closeBtn.addEventListener('click',()=>{setOpen(false);returnFocus?.focus?.()});
-  input.addEventListener('input',renderSearch);
+  let searchFrame=0;
+  const scheduleSearch=()=>{
+    if(searchFrame)return;
+    const run=()=>{searchFrame=0;void renderSearch()};
+    searchFrame=window.requestAnimationFrame?window.requestAnimationFrame(run):window.setTimeout(run,16);
+  };
+  input.addEventListener('input',scheduleSearch);
   const resultLinks=()=>[...content.querySelectorAll('.site-access-result')];
   const focusResult=(index)=>{
     const rows=resultLinks();if(!rows.length)return false;
