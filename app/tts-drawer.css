@@ -165,7 +165,7 @@
   cursor:pointer;
 }
 .ptts-selection-listen:hover{border-color:rgba(216,181,107,.50)}
-[data-tts-primary]{position:sticky;top:6px;z-index:35;isolation:isolate}
+[data-tts-primary]{position:sticky;top:calc(var(--site-elevator-clearance,0px) + 6px);z-index:35;isolation:isolate}
 .ptts-reading-active{
   border-radius:7px;
   box-shadow:inset 2px 0 rgba(216,181,107,.48);
