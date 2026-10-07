@@ -247,8 +247,27 @@
     let spatial={levelId:'plane',roomId:null,room:null,subroomId:null,source:'fallback'};
     let selectedLevel='plane';
 
+    const desktopPanoramaMetrics=artboard=>{
+      if(!artboard?.width||!artboard?.height||typeof window==='undefined')return null;
+      if(!window.matchMedia?.('(min-width:860px)').matches)return null;
+      const host=header.getBoundingClientRect();
+      if(!host.width||!host.height)return null;
+      const scale=host.width/Number(artboard.width);
+      const renderedHeight=Number(artboard.height)*scale;
+      return {scale,offsetX:0,offsetY:(host.height-renderedHeight)/2};
+    };
+
     const applyHotspotRect=(element,rect,artboard)=>{
       if(!element||!rect||!artboard?.width||!artboard?.height)return;
+      const desktop=desktopPanoramaMetrics(artboard);
+      if(desktop){
+        const px=value=>(Number(value)||0)*desktop.scale;
+        element.style.setProperty('--hotspot-left',(desktop.offsetX+px(rect.x))+'px');
+        element.style.setProperty('--hotspot-top',(desktop.offsetY+px(rect.y))+'px');
+        element.style.setProperty('--hotspot-width',px(rect.width)+'px');
+        element.style.setProperty('--hotspot-height',px(rect.height)+'px');
+        return;
+      }
       const pct=(value,total)=>((Number(value)||0)/(Number(total)||1)*100)+'%';
       element.style.setProperty('--hotspot-left',pct(rect.x,artboard.width));
       element.style.setProperty('--hotspot-top',pct(rect.y,artboard.height));
@@ -277,6 +296,9 @@
         applyHotspotRect(link,rect,artboard);
       });
     };
+
+    const refreshHotspots=()=>{if(hotspotContract)applyHotspots();};
+    window.addEventListener('resize',refreshHotspots,{passive:true});
 
     const renderRooms=()=>{
       if(!projection||!roomContract){
