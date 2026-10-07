@@ -167,8 +167,10 @@ if "if(!document.body.classList.contains('home-body'))void renderDefault()" in j
 if "if(typeof ResizeObserver!=='undefined')" not in js or "}else{\n    window.addEventListener('resize',publishClearance" not in js:
     errors.append("site-access clearance should use ResizeObserver with resize only as a fallback, not duplicate both paths")
 
-if not re.search(r"house-journey\.css\?v=[A-Za-z0-9._-]+", journey_ui):
-    errors.append("House journey stylesheet loader must use a versioned asset URL")
+if "new URL('house-journey.css',baseUrl)" not in journey_ui:
+    errors.append("House journey runtime must retain the local/source CSS fallback")
+if "inject_house_journey_css" not in patch or 'SHARED_ASSET_VERSIONS["house-journey.css"]' not in patch:
+    errors.append("public build must inject fingerprinted House Journey CSS")
 if "data-house-journey-style" not in journey_ui:
     errors.append("House journey stylesheet loader missing: data-house-journey-style")
 if "style.textContent" in journey_ui or "createElement('style')" in journey_ui:
