@@ -10,19 +10,29 @@
     try{return new URL(script?.src||document.baseURI).searchParams.get('v')||'unversioned';}
     catch(_){return 'unversioned';}
   })();
-  const fetchJson=async route=>{
+  const sharedJsonCache=window.__potatoJsonPromiseCache||(window.__potatoJsonPromiseCache=new Map());
+  const fetchJson=route=>{
+    const url=href(route);
+    if(sharedJsonCache.has(url))return sharedJsonCache.get(url);
     const key='site-access:'+assetVersion+':'+route;
-    try{
-      const cached=sessionStorage.getItem(key);
-      if(cached)return JSON.parse(cached);
-    }catch(_){}
-    try{
-      const response=await fetch(href(route),{cache:'no-cache'});
+    let cached=null;
+    try{cached=sessionStorage.getItem(key)}catch(_){}
+    if(cached){
+      try{
+        const data=JSON.parse(cached);
+        const ready=Promise.resolve(data);
+        sharedJsonCache.set(url,ready);
+        return ready;
+      }catch(_){}
+    }
+    const request=fetch(url,{cache:'default'}).then(async response=>{
       if(!response.ok)return null;
       const data=await response.json();
-      try{sessionStorage.setItem(key,JSON.stringify(data));}catch(_){}
+      try{sessionStorage.setItem(key,JSON.stringify(data))}catch(_){}
       return data;
-    }catch(_){return null}
+    }).catch(()=>null);
+    sharedJsonCache.set(url,request);
+    return request;
   };
   const routePath=()=>{
     try{
