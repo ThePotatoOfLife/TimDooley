@@ -171,6 +171,33 @@ html[data-site-floor] body:not(.home-body):not(.garden-body):not(.dogs-hall-page
   --site-pane-soft:rgba(8,10,10,.54);
   --site-pane-shadow:0 14px 34px rgba(0,0,0,.20);
 }
+/* Heaven is a light material floor, not the dark site palette with a pale picture
+   behind it. Keep the HUD/nav dark for contrast, but let reader surfaces, cards,
+   prose and Room materials become warm white / ivory with dark ink. */
+html[data-site-floor="heaven"] body:not(.home-body):not(.garden-body):not(.dogs-hall-page):not(.potatoes-hall-page){
+  --site-ink:#20231f;
+  --site-copy:#4d544d;
+  --site-copy-strong:#2b302a;
+  --site-muted:#697168;
+  --site-faint:#7d847a;
+  --site-line:rgba(105,94,70,.26);
+  --site-gold:#8b6727;
+  --site-panel:rgba(250,250,246,.88);
+  --site-panel-strong:rgba(255,254,249,.94);
+  --site-pane:rgba(255,255,252,.84);
+  --site-pane-strong:rgba(255,255,252,.92);
+  --site-pane-soft:rgba(249,250,246,.72);
+  --site-pane-mist:rgba(255,255,255,.40);
+  --site-pane-mist-strong:rgba(255,255,255,.58);
+  --site-pane-line:rgba(157,132,74,.26);
+  --site-pane-shadow:0 16px 38px rgba(31,38,38,.13);
+  --site-focus:#8e6a2b;
+}
+html[data-site-floor="heaven"] :is(.summary,.dwelling-reflection p,.topology-traversal-card q){
+  color:var(--site-copy);
+}
+html[data-site-floor="heaven"] .dwelling-reflection p strong{color:#6f531f}
+
 html[data-site-floor] body:not(.home-body):not(.garden-body):not(.dogs-hall-page):not(.potatoes-hall-page) .page{
   position:relative;
 }
@@ -213,8 +240,9 @@ html[data-site-floor] .page-nav{
   border-color:rgba(255,255,255,.11);
 }
 html[data-site-floor="heaven"] .page-nav{
-  background:linear-gradient(180deg,rgba(19,29,39,.78),rgba(8,12,17,.76));
-  border-color:rgba(222,190,112,.20);
+  background:linear-gradient(180deg,rgba(22,30,38,.88),rgba(10,14,19,.84));
+  border-color:rgba(231,207,145,.28);
+  box-shadow:0 10px 26px rgba(18,24,28,.20),inset 0 1px rgba(255,255,255,.055);
 }
 html[data-site-floor="plane"] .page-nav{
   background:linear-gradient(180deg,rgba(20,30,28,.78),rgba(8,13,12,.76));
