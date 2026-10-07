@@ -52,6 +52,11 @@
   }
   function meaningful(el){
     if(!el||el.matches?.(INTERACTIVE_SECTION_MATCH))return false;
+    // Most reader sections are plain prose. Avoid cloning the whole subtree
+    // unless there is actually interactive/navigation content to strip.
+    let hasExcluded=false;
+    try{hasExcluded=Boolean(el.querySelector?.(INTERACTIVE_EXCLUDE))}catch{}
+    if(!hasExcluded)return clean(el.textContent).length>=90;
     const clone=el.cloneNode(true);
     try{clone.querySelectorAll(INTERACTIVE_EXCLUDE).forEach(n=>n.remove())}catch{}
     return clean(clone.textContent).length>=90;
