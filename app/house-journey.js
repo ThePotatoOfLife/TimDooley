@@ -3,7 +3,10 @@
   if(typeof document==='undefined')return;
   const current=document.currentScript;
   const baseUrl=current?.src||document.baseURI;
-  if(!document.querySelector('link[data-house-journey-style]')){
+  const journeyStyle=[...document.querySelectorAll('link[rel="stylesheet"]')].find(link=>
+    link.dataset.houseJourneyStyle!==undefined||/\/app\/house-journey\.css(?:\?|$)/.test(link.href||'')
+  );
+  if(!journeyStyle){
     try{
       const link=document.createElement('link');
       link.rel='stylesheet';
@@ -23,21 +26,25 @@
 })();
 
 (()=> {
+  if(window.__potatoHouseJourneyBooted)return;
+  window.__potatoHouseJourneyBooted=true;
   const marker='/TimDooley/';
   const pathName=location.pathname;
   const markerIndex=pathName.indexOf(marker);
   const base=markerIndex>=0?pathName.slice(0,markerIndex+marker.length):'/';
 
   const esc=(v)=>String(v??'').replace(/[&<>"]/g,s=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[s]));
-  const jsonCache=new Map();
+  const jsonCache=window.__potatoJsonPromiseCache||(window.__potatoJsonPromiseCache=new Map());
   function getJson(path){
-    if(!jsonCache.has(path)){
-      jsonCache.set(path,fetch(base+path).then(response=>{
+    const href=new URL(base+path,location.href).href;
+    if(!jsonCache.has(href)){
+      const request=fetch(href,{cache:'default'}).then(response=>{
         if(!response.ok)throw new Error(path+' '+response.status);
         return response.json();
-      }));
+      }).catch(error=>{jsonCache.delete(href);throw error});
+      jsonCache.set(href,request);
     }
-    return jsonCache.get(path);
+    return jsonCache.get(href);
   }
   async function getOptionalJson(path,fallback){
     try{return await getJson(path)}catch(_){return fallback}
