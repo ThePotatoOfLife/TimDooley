@@ -18,7 +18,7 @@ CANONICAL_MARKERS = (
     'id="progress-ring"',
     'id="live-total-number"',
     'class="metric-unit"',
-    'width:min(370px,100%)',
+    'width:min(338px,82vw)',
     'Live model · story archaeology · evidence ledger',
     'MODELLED 100,000-HOUR CROSSING',
     '≈ July 4, 2026 · 13:20 CEST',
