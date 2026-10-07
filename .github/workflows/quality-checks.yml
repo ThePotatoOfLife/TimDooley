@@ -1,11 +1,11 @@
 name: Repository quality checks v2
 
 on:
+  # Every main SHA must be eligible for the exact-SHA Pages freshness gate.
+  # Do not ignore docs/TODO-only commits here: otherwise main advances without
+  # a matching validated artifact and the production deploy correctly self-suppresses.
   push:
     branches: [main]
-    paths-ignore:
-      - 'TODO.md'
-      - 'docs/**'
   pull_request:
     branches: [main]
   workflow_dispatch:
