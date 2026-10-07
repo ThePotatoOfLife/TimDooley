@@ -26,6 +26,57 @@
   },
   "room_population": [
     {
+      "id": "garden",
+      "title": "Garden",
+      "dwelling_id": "potatoverse-canon",
+      "compass_direction": "n",
+      "plane_ids": [
+        "world-plane",
+        "heaven-plane"
+      ],
+      "tree_zone_ids": [
+        "trunk",
+        "life-branches",
+        "canopy"
+      ],
+      "depth": "room",
+      "visibility": "room-detail",
+      "purpose": "Develop the Garden as a source-facing cultivation and stewardship Room joining Father/Gardener, River, Tree, Fruit, boundary, work, keeping and return while preserving Genesis as a comparator rather than independent proof.",
+      "public_surface_ids": [
+        "garden",
+        "religion"
+      ],
+      "topology_coordinates": [
+        "within",
+        "up",
+        "through",
+        "across"
+      ],
+      "primary_file_count": 4,
+      "featured_holdings": [
+        {
+          "id": "heaven-spirit-father",
+          "path": "knowledge/core/heaven-spirit-father.json",
+          "kind": "Father, Heaven and stewardship context"
+        },
+        {
+          "id": "root-system",
+          "path": "knowledge/core/root-system.json",
+          "kind": "Root, Tree, Garden and vertical continuity"
+        },
+        {
+          "id": "biblical-adam-seed-garden-farm-atlas",
+          "path": "knowledge/traditions/biblical-adam-seed-garden-farm-atlas.json",
+          "kind": "Genesis-facing Garden comparison"
+        },
+        {
+          "id": "architectural-vocabulary",
+          "path": "data/house/architectural-vocabulary.json",
+          "kind": "House and Garden spatial vocabulary"
+        }
+      ]
+    },
+    {
       "id": "canon-identities",
       "title": "Core Identities & Roles",
       "dwelling_id": "potatoverse-canon",
