@@ -114,7 +114,6 @@
 
   const start=()=>{void boot()};
   const scheduleStart=()=>{
-    if(!doc.body?.classList.contains('home-body')){start();return}
     let done=false;
     const run=()=>{
       if(done)return;
@@ -122,9 +121,12 @@
       ['pointerdown','keydown','touchstart'].forEach(type=>root.removeEventListener(type,run));
       start();
     };
+    // Keep initial navigation/paint light. First real interaction starts the
+    // reader immediately; otherwise idle time mounts it shortly afterwards.
     ['pointerdown','keydown','touchstart'].forEach(type=>root.addEventListener(type,run,{once:true,passive:true}));
-    if('requestIdleCallback' in root)root.requestIdleCallback(run,{timeout:2600});
-    else root.setTimeout(run,1800);
+    const isHome=doc.body?.classList.contains('home-body');
+    if('requestIdleCallback' in root)root.requestIdleCallback(run,{timeout:isHome?2600:1600});
+    else root.setTimeout(run,isHome?1800:900);
   };
   doc.readyState==='loading'?doc.addEventListener('DOMContentLoaded',scheduleStart,{once:true}):scheduleStart();
 })(typeof globalThis!=='undefined'?globalThis:window);
