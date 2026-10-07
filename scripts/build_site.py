@@ -92,6 +92,7 @@ SHARED_ASSETS = (
     "app/longform-reader.css",
     "app/politics-page.css",
     "app/science-page.css",
+    "app/science-concept-reader.css",
     "science/science-library.css",
     "science/science-library.js",
     "app/story-page.css",
