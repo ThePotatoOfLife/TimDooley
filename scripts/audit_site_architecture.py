@@ -20,6 +20,7 @@ BASE_HREF=re.compile(r"""<base\b[^>]*href=["\']([^"\']+)["\']""",re.I)
 VAGUE_STANDALONE_LABEL=re.compile(r"^(more|deep|explore|context|archive)\s*(?:→|↗)?$",re.I)
 EXTERNAL=("http://","https://","//","mailto:","tel:","javascript:","data:","blob:")
 PUBLIC_SCAN_EXCLUDE={".git",".github","_site","archive","docs","node_modules","components","vendor","scripts"}
+GENERATED_SURFACES={"science-papers"}
 BUDGETS={
  "home":{"pre_links":20,"pre_buttons":6,"total_links":100},
  "hub":{"pre_links":14,"pre_buttons":8,"total_links":120},
@@ -101,6 +102,9 @@ def main()->int:
         sid=row["id"]; route=normalize_route(row.get("canonical_route") or row.get("route") or "/")
         path=source_path(route)
         if not path.is_file():
+            if sid in GENERATED_SURFACES:
+                target_sets[sid]=set()
+                continue
             errors.append(f"{sid} source surface missing: {path.relative_to(ROOT)}"); continue
         raw=path.read_text(encoding="utf-8",errors="replace")
         visible=STYLE_SCRIPT.sub("",raw)
