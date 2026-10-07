@@ -185,3 +185,153 @@
   .works-room .art-gallery{grid-template-columns:1fr}
   .works-room .art-card img{height:auto;max-height:520px}
 }
+
+
+/* Visual Art room — gallery-first exhibition treatment */
+.works-room .art-page-header{padding-bottom:24px}
+.works-room .art-page-stats{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 18px;
+  margin:18px 0 0;
+  color:var(--site-muted);
+  font-size:var(--site-text-xs);
+}
+.works-room .art-page-stats span{
+  display:inline-flex;
+  align-items:baseline;
+  gap:6px;
+}
+.works-room .art-page-stats b{
+  color:var(--site-gold);
+  font:400 18px var(--site-font-serif);
+}
+.works-room .art-jump-nav{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:16px;
+}
+.works-room .art-jump-nav a{
+  padding:8px 11px;
+  border:1px solid var(--site-pane-line);
+  border-radius:999px;
+  background:var(--site-pane-soft);
+  color:var(--site-gold);
+  font-size:var(--site-text-xs);
+  text-decoration:none;
+}
+.works-room .art-jump-nav a:hover{background:var(--site-pane)}
+.works-room .art-provenance{
+  margin:18px 0 26px;
+  padding:12px 14px;
+  border-left:3px solid var(--site-gold);
+  background:var(--site-pane-soft);
+  color:var(--site-muted);
+  font-size:var(--site-text-xs);
+  line-height:1.6;
+}
+.works-room .art-gallery-section{
+  padding:clamp(16px,2.4vw,28px);
+}
+.works-room .art-family{
+  margin:28px 0 36px;
+  padding-top:22px;
+  border-top:1px solid var(--site-line);
+}
+.works-room .art-family:first-of-type{
+  margin-top:22px;
+  padding-top:0;
+  border-top:0;
+}
+.works-room .art-family-head{
+  display:grid;
+  grid-template-columns:minmax(0,1.05fr) minmax(260px,.95fr);
+  gap:18px 30px;
+  align-items:end;
+  margin-bottom:16px;
+}
+.works-room .art-family-head h3{
+  margin:4px 0 0;
+  color:var(--site-gold);
+  font:400 clamp(24px,3vw,34px)/1.1 var(--site-font-serif);
+}
+.works-room .art-family-head>p{
+  margin:0;
+  color:var(--site-muted);
+  line-height:1.6;
+  font-size:var(--site-text-xs);
+}
+.works-room .art-family .art-gallery{
+  grid-template-columns:repeat(12,minmax(0,1fr));
+  gap:18px;
+}
+.works-room .art-family .art-card{
+  grid-column:span 4;
+  transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease;
+}
+.works-room .art-family .art-card:hover{
+  transform:translateY(-2px);
+  box-shadow:0 12px 28px rgba(0,0,0,.2);
+}
+.works-room .art-family .art-card--lead{
+  grid-column:span 6;
+}
+.works-room .art-family .art-card--lead img{
+  height:360px;
+}
+.works-room .art-card img{
+  height:300px;
+  transition:transform .2s ease;
+}
+.works-room .art-card:hover img{transform:scale(1.012)}
+.works-room .art-image{min-height:220px}
+.works-room .art-reading{
+  margin-top:34px;
+}
+.works-room .art-reading-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+  margin:18px 0 22px;
+}
+.works-room .art-reading-grid article{
+  padding:15px 16px;
+  border:1px solid var(--site-pane-line);
+  border-radius:var(--site-radius-sm);
+  background:var(--site-pane-soft);
+}
+.works-room .art-reading-grid strong{
+  display:block;
+  margin-bottom:6px;
+  color:var(--site-gold);
+  font:400 18px/1.2 var(--site-font-serif);
+}
+.works-room .art-reading-grid p{
+  margin:0;
+  color:var(--site-muted);
+  font-size:var(--site-text-xs);
+  line-height:1.6;
+}
+.works-room .art-reading-grid a{color:var(--site-gold)}
+.works-room .art-archive-notes{
+  margin-top:38px;
+  padding-top:28px;
+  border-top:1px solid var(--site-line);
+}
+@media(max-width:900px){
+  .works-room .art-family .art-card,
+  .works-room .art-family .art-card--lead{grid-column:span 6}
+  .works-room .art-family .art-card--lead img,
+  .works-room .art-card img{height:300px}
+}
+@media(max-width:720px){
+  .works-room .art-family-head,
+  .works-room .art-reading-grid{grid-template-columns:1fr}
+  .works-room .art-family .art-gallery{display:grid;grid-template-columns:1fr}
+  .works-room .art-family .art-card,
+  .works-room .art-family .art-card--lead{grid-column:auto}
+  .works-room .art-card img,
+  .works-room .art-family .art-card--lead img{height:auto;max-height:560px}
+  .works-room .art-jump-nav a{flex:1 1 auto;text-align:center}
+}
