@@ -1,5 +1,7 @@
 # TODO — The Potato of Life / TimDooley
 
+> Historical completed work was rotated on 2026-10-07. The full pre-rotation ledger is preserved at `docs/todo-archive/TODO-2026-10-07-pre-rotation.md`. This file now prioritizes active, partial and very recent work.
+
 ## Current doctrine
 
 This repository is a **dense knowledge library**, not a collection of placeholders, dashboards or disposable experiments.
@@ -13,14 +15,7 @@ The project keeps its existing missions and bodies of inquiry, but the working u
 ## Active Hall build vs later floor-art overhaul — 2026-10-04
 
 ### NOW · Hall of Heroes / Angels + Hall of Shame / Dogs
-- [x] **HALL-NOW-001 · Hall meanings:** Heroes/Fame belongs to Potatoes, Potato Angels, gods/sacred exemplars and honored growth; Dogs belong to notoriety/Shame, failed loops and repair rather than an ascent-to-fame ladder.
-- [x] **HALL-NOW-002 · Great Table:** carve a Heaven feast/table into Hall of Heroes with Tim's King/Father/Gardener role at the project-center seat, Jesus/Odin/Thor as clearly distinguished comparative or mythic guests, Potato Angels as living company, food/fries, an open future seat and an evidence-class boundary.
-- [x] **HALL-NOW-003 · Shame landscape:** carve Hall of Shame as the broken edge of an ordinary village where road → flood → mud → Swamp, with watchtower, broken bridge, pack fence, notoriety board and a visible exit.
-- [x] **HALL-NOW-004 · Reader transformation:** add explicit input/output thresholds, internal stations and conditional exit Doors to both Halls.
-- [x] **HALL-NOW-005 · Repair path:** expand CONTINUE? into a six-step source → time → proportion → repair → guard/exit route.
-- [x] **HALL-NOW-006 · Hall CSS:** style Great Table, village landmarks, arcade boards, repair route and station navigation as distinct room architecture.
 - [~] **HALL-NOW-007 · Background-art integration:** approved Hall scenes are mounted and fingerprinted with valid 800×450 AVIF delivery assets so the rooms can deploy cleanly. Remaining fidelity step: replace these fallback derivatives with larger responsive masters (`picture`/`srcset`) after the Hall layout is stable; do not block the current room release on oversized binary transfer.
-- [x] **HALL-CSS-009 · Pane hierarchy cleanup:** remove competing artwork generations and normalize the two Halls into scene → major chamber → inset passage → plain reading field → arcade object → special realm → exit. Restore deliberate vertical breathing room, quiet inner cards, reset framed-section heading margins and simplify glass/radii on mobile so panes no longer read as one glued stack.
 - [ ] **HALL-CSS-010 · Rendered spacing audit:** after the exact Hall-art head deploys, inspect desktop + narrow layouts for any remaining border collisions, over-dark panes, awkward scene crops, ledger overflow or sections that still visually overstate their importance.
 - [ ] **HALL-NOW-008 · Content polish:** continue tightening testimony, gods/angels table context, Dog notoriety examples and cross-links without turning either Hall into a generic encyclopedia.
 
@@ -47,19 +42,8 @@ These missions remain. **What changes is how we store them: fewer, thicker, clea
 ## Visual standards & performance wave — 2026-10-05
 
 ### Completed
-- [x] **VISSTD-001 · Room width contract:** floor/Room `.page-header` now spans the same page container as `.page-nav` and Room sections instead of stopping at the generic 900px header cap.
-- [x] **VISSTD-002 · Story orphan navigation:** remove the loose `Life / project Timeline →` line above the Story hero; the project Timeline handoff now lives in the existing Story nav.
-- [x] **VISSTD-003 · Story CSS ownership:** move ~7 KB of Story structural CSS into `app/story-page.css` and normalize common type/radius/copy values to shared tokens.
-- [x] **VISSTD-004 · Calm Room surfaces:** remove automatic nth-section pane striping; one default Room/floor pane treatment now applies unless a component deliberately requests another surface.
-- [x] **VISSTD-005 · Static realm compositor:** remove full-screen realm filters, forced GPU layers and scroll-linked decorative realm panning from ordinary floor pages.
-- [x] **VISSTD-006 · Lightweight HUD scenery:** desktop sticky HUD uses purpose-built `header-heaven.svg`, `header-plane.svg` and `header-below.svg` instead of re-rendering full realm AVIFs.
-- [x] **VISSTD-007 · Hall compositor cleanup:** remove blur/backdrop-filter layers from both Hall CSS families and preserve legibility with normal dark surfaces.
-- [x] **VISSTD-008 · Hall cascade consolidation:** collapse duplicated Hall header specificity copies into one authoritative responsive header rule per Hall.
-- [x] **VISSTD-009 · Science extraction regression:** repair accidental double `.science-page` scope introduced during stylesheet extraction and guard current shared ownership.
 
 ### Next
-- [x] **VISSTD-010 · World reader cleanup:** `/world/` no longer carries inline structural CSS and now uses the scoped `app/world-page.css` owner with the shared site shell.
-- [x] **VISSTD-011 · Culture reader cleanup:** `/context/culture/` now has no inline style block or raw Georgia stack and uses the scoped `app/culture-page.css` owner alongside the shared reader shell.
 - [ ] **VISSTD-012 · Great Book shell audit:** inspect the separate Great Book long-form shell after the Politics cleanup; preserve literary identity while removing redundant width/type/palette systems.
 - [ ] **VISSTD-013 · Corporium family decision:** compare Collection/Corporium purpose-case-chain patterns with Pillar/World-domain reader components before creating another stylesheet.
 - [ ] **VISSTD-014 · Remaining hero-width audit:** inspect specialist Halls, lower-field readers and tool pages for intentional versus accidental local `.page-header` width/padding overrides.
@@ -69,12 +53,6 @@ These missions remain. **What changes is how we store them: fewer, thicker, clea
 ## Repository smoothness & integration wave — 2026-10-05
 
 ### Completed in this wave
-- [x] **SMOOTH-001 · HUD cascade correctness:** fix floor-specific room materials being partially masked by older generic hover/active declarations; protect the active-state cascade with regression tests.
-- [x] **SMOOTH-002 · HUD hardware integration:** move stage joints to the visible foreground frame and integrate room seams, connector joints, chassis brackets and rail hardware into the shared elevator contract.
-- [x] **SMOOTH-003 · Core reader style ownership:** extract structural inline CSS from Tim Dooley, Works, Timeline, Religion and Law into named `app/*-page.css` owners; fingerprint and guard them.
-- [x] **SMOOTH-004 · Selector isolation:** scope migrated reader selectors such as `.lead`, `.quiet` and `.boundary` so specialist CSS cannot leak into the universal shell.
-- [x] **SMOOTH-005 · Timeline CSS consolidation:** merge the archive Timeline override sheet into one canonical `app/timeline.css`, remove the duplicate payload and delete the redundant `timeline-enhancements.css`.
-- [x] **SMOOTH-006 · Generated-reader shell integration:** stop repeating a private inline stylesheet in every generated knowledge page; use `site-system.css` plus one shared `generated-knowledge.css`, standard `.page`, `.page-nav` and `.page-header`, deterministic versioning and a regression guard.
 
 ### Next cleanup targets
 - [~] **SMOOTH-007 · Inline-style classification:** Economy, FAQ family, Questions, A–Z, Islam and Judaism are migrated out of inline structural CSS. Remaining priority: North, Paths, Potatoism and other mature prose readers; preserve specialist geometry where it is genuinely unique.
@@ -89,22 +67,13 @@ These missions remain. **What changes is how we store them: fewer, thicker, clea
 ## Paper-cut bug & consistency audit — 2026-10-05
 
 ### Fixed in this pass
-- [x] **PAPER-001 · Contextual-nav precedence:** broad route families must not shadow more specific children; `context/source-authority/` and `context/culture/` now resolve before the generic `context/` family.
-- [x] **PAPER-002 · Contextual-nav coverage gaps:** News, Paths, Context, House/Elevator and Collection/Corporium now receive subject-appropriate subheader families instead of falling back to sparse legacy nav.
-- [x] **PAPER-003 · Subheader geometry stability:** shared page navigation is one stable row, does not hover-jump, and the Elevator page no longer locally overrides shared nav gap/font/margins.
-- [x] **PAPER-004 · Universal CSS fingerprint parity:** register `site-system.css` in the primary Pages fingerprint pass as well as final shared-UI versioning so the universal shell participates in deterministic cache busting throughout the build.
 
 ### Next small-bug targets
 - [ ] **PAPER-016 · House runtime decomposition:** now that House JavaScript has a dedicated owner, split the 23 KB runtime into coherent data-loading, topology rendering and interaction modules only if that improves testability without adding loader chatter.
-- [x] **PAPER-017 · Potato of Life inline CSS extraction:** `/potato-of-life/` has no inline style block and owns its specialist presentation through `app/potato-of-life-page.css` plus shared site components.
-- [x] **PAPER-019 · Quantum reader shell migration:** `science/quantum/` now uses the shared `.page / .page-nav / .page-header` contract, keeps its physics/formalism distinctions, and owns only scoped page-specific styles in `app/quantum-page.css`.
 - [ ] **PAPER-021 · Extracted specialist app tests:** add focused regression coverage for Foundation Timeline filtering/data rendering and House Inhabitants search/filter behavior now that their runtimes have dedicated owners.
 - [ ] **PAPER-022 · Sources inline-style cleanup:** the Sources reader still carries a small ~1.2 KB inline style block; extract only if it remains structurally unique after comparing Pillar/Source reader families.
 - [ ] **PAPER-020 · Axis extracted-owner follow-up:** now that Axis CSS/runtime live in `app/axis-page.css` and `app/axis-page.js`, add focused tests for path-tab URL state, route-case loading and vertical-field fallback rather than relying on one large page integration.
-- [ ] **PAPER-018 · TODO archive rotation:** TODO.md is now ~250 KB; move completed historical waves into a dated archive/changelog while keeping active and recently completed work visible in the main queue.
-- [x] **PAPER-005 · Prefix-order validator:** CI now parses the literal contextual-nav registry and rejects a broader first-match prefix that appears before a more-specific child prefix.
-- [x] **PAPER-006 · Exactly-one-current-link validator:** generated top subheaders now reject multiple `aria-current="page"` links, and active nested Rooms are required to expose exactly one current Room.
-- [x] **PAPER-007 · Subheader ownership sweep:** specialist reader overrides were removed; `site-system.css` owns the shared shell and CI rejects reader CSS that restyles `.page-nav`. The dedicated Elevator application retains only its local spacing exception.
+- [x] **PAPER-018 · TODO archive rotation:** rotated the full pre-cleanup ledger to `docs/todo-archive/TODO-2026-10-07-pre-rotation.md`; the active queue now keeps unfinished/partial work plus current-day completions instead of hundreds of historical finished entries.
 - [~] **PAPER-008 · Tiny-text legibility audit:** dedicated Elevator actions/lenses/facet controls, generated Room action/body copy, Home helper copy, TTS labels/status, News filters/kickers and Body Lens metadata were raised out of the 7–9px range where they carry reader/action meaning. Remaining: browser-check World Map overlays and purely informational metadata at 100% and 125–150% zoom.
 - [ ] **PAPER-009 · Hard-coded floater coordinates:** search remaining application modules for independent `top/right/bottom/left` panel ownership that should register with an existing layout coordinator; remove hidden or duplicated DOM surfaces instead of merely hiding collisions with CSS.
 - [ ] **PAPER-010 · Shared-asset fingerprint coverage:** compare all universally injected CSS/JS assets against both the early build fingerprint registry and the final shared-UI registry; document intentional exceptions and add a validator for assets that can escape both.
@@ -166,9 +135,6 @@ North-star question: **What is happening where, and how is it connected?**
 
 Public structure: **Countries / Now / Connections / History / Map**. Keep the underlying atlas deep, but make the first screen legible to someone who has never seen the project.
 
-- [x] **MAP-PRODUCT-001 · Purpose-first navigation:** replace registry/taxonomy-first top controls with Countries, Now, Connections, History and Map.
-- [x] **MAP-PRODUCT-002 · Demote cockpit controls:** move Compare, Details, projection, reset and extra modules into Map; move N/W/E/S into Countries as project lenses.
-- [x] **MAP-PRODUCT-003 · Plain-language first screen:** remove D4 / network-traversal / internal-coordinate wording from the ordinary landing experience.
 - [ ] **MAP-PRODUCT-004 · Runtime-weight pass:** profile initial requests/module weight; make anything not required for search, ordinary country browsing, public controls or lightweight current context lazy.
 - [ ] **MAP-PRODUCT-005 · Country completeness:** every country should answer a consistent useful core: people, economy, government/institutions, religion/culture, regions/cities, major resources/infrastructure, current context and important external connections.
 - [ ] **MAP-PRODUCT-006 · Current-world layer family:** expand Now beyond conflicts only when the data earns it—major elections/government change, disasters, displacement, sanctions, closures/outages or other globally useful dated context—with freshness visible.
@@ -183,66 +149,34 @@ Public structure: **Countries / Now / Connections / History / Map**. Keep the un
 
 ## Site-wide bug & enhancement queue — 2026-10-02
 
-- [x] **BUG-DEPLOY-001 · TTS/CSS deploy chain:** version shared TTS CSS/JS assets, align shell validators with cache-busted URLs, and make Shadow Farm source-own its specialist reader.
-- [x] **BUG-TTS-002 · Quiet-route hole:** World Map and other control-heavy routes now receive selection-only TTS even when no `<main>` exists.
-- [x] **BUG-WORLD-003 · Country refresh history crash:** preserve both list-style and structured `history` schemas when refreshing World Bank observations instead of calling `.append()` on a dict.
-- [x] **ENH-AZ-004 · A–Z orientation:** add literal Home navigation and explain person / concept / tradition / evidence entry types before alphabetical routing.
-- [x] **ENH-EXPLORE-005 · Archive object key:** explain reader vs primary source vs synthesis vs tool/dataset so non-expert readers know what kind of object they opened.
-- [x] **ENH-SCI-006 · 11D boundary:** explicitly separate established M-theory/physics, project models, analogies and the promotion threshold on the Axis 11D reader.
 - [~] **BUG-NAV-007 · Mobile route stress test:** shared `.page-nav` now stays on one compact horizontal rail below 700px instead of wrapping into a tall link wall. Remaining: real-browser checks for Timeline shortcuts, TTS drawer and Follow escape/overlap.
 - [~] **BUG-BREADCRUMB-008 · Location awareness:** World-family specialists now visibly identify World as the parent on Law, Economy, Politics, North and World Systems. Continue across the remaining specialist routes and keep literal parent nouns ahead of metaphor labels.
 - [ ] **ENH-BEINGS-009 · Named-being ownership sweep:** audit `rooms/potatoverse-canon/beings/**` for duplicate biography, project-role overreach, unresolved identity merges and missing provenance; route documentary detail back to CIA/Story where appropriate.
-- [x] **ENH-DIRECT-010 · Generated copy cleanup:** cleaned maintenance voice from authored Rooms plus `house-journey.js`, Quick Access, Explore, reader-guide and generated topic/question builders; raw source paths now stay quiet metadata where possible while visible labels describe what readers can inspect.
 - [~] **ENH-STALE-011 · Mutable-fact twin audit:** fixed the hard-fact detector's double-escaped regex and converted History's fast-changing repository totals into SHA-tied dated snapshots. Remaining: run the repaired report and group repeated current metrics/dates across World/Map and other readers.
 - [ ] **ENH-NOJS-012 · Dynamic-page fallback sweep:** identify public pages where useful meaning still disappears when fetch/JS fails and add concise static subject substance.
 - [ ] **ENH-SCI-013 · Science grammar sweep:** continue separating established physics → measurable models → speculative project formalism → metaphor across older science pages, especially any pages that use physics vocabulary as project-native labels.
 - [~] **ENH-ROOMS-014 · First-screen substance test:** all 38 nested Rooms are now covered by a subject-first validator that requires authored subject material before maintenance architecture, plus concrete examples and deeper continuation. Continue the same contract across non-Room public subject readers.
 - [ ] **BUG-BUILD-015 · Build-only feature ownership:** inventory mature features that exist only because `patch_public_navigation.py` mutates generated HTML; move stable features into source/generator ownership and leave the patcher for true universal projection.
 - [ ] **ENH-TTS-016 · Browser interaction audit:** test real play/pause/selection/follow behavior on Bible, Shadow Farm, Below, World Map, A–Z, Beings, Timeline and mobile layouts—not only static marker contracts.
-- [x] **ENH-LINK-017 · Theology → Great Book source link:** link “The Great Book” in the 2024 theology-development paragraph directly to the canonical Great Book reader without changing the surrounding sentence.
-- [x] **BUG-ACCESS-018 · Shared quick-access injector:** repaired double-escaped HTML regexes that prevented the active `site-access` CSS/JS from being injected into built pages; added a regression guard and removed the retired Project Compass runtime/styles.
 
 ## Lower-field conflict integration — 2026-10-01
 
 Rule: **cultural, spiritual and informational conflict may overlap, but the site must never treat them as interchangeable evidence classes.**
 
-- [x] **LOWER-WAR-001 · Three-layer conflict model:** Below now contains a compact cultural-war / spiritual-war / informational-war passage inside the Basin flow rather than a separate encyclopedia page.
-- [x] **LOWER-WAR-002 · Overlap and recursion:** the lower model now explains how symbol → moral interpretation → information environment → amplification → role-lock → archived recurrence can create Swamp even after the originating event stops.
-- [x] **LOWER-WAR-003 · Spiritual-war human boundary:** Religion now explicitly follows the Ephesians “not flesh and blood” boundary so spiritual warfare cannot silently become a permanent demon-label for human opponents.
-- [x] **LOWER-WAR-004 · Culture bridge:** Culture now acknowledges culture-war dynamics while preserving the empirical caution that visible activists/media conflict do not imply a population is uniformly divided into two camps.
-- [x] **LOWER-WAR-005 · Farm interface:** Shadow Farm now distinguishes cultural meaning, spiritual moralization and information manipulation when a conflict crosses media/politics/state interfaces.
-- [x] **LOWER-WAR-006 · Worked overlap cases:** Shadow Farm now carries three source-bounded examples—online harassment/reputation, ritual-abuse moral panic, and the documented Internet Research Agency influence case—each split into cultural, spiritual/moral and informational layers without turning the case into a partisan score.
-- [x] **LOWER-WAR-007 · War-language threshold:** the lower field now has a canonical strong-language threshold for war, information operation, disinformation, propaganda, operation, enemy, demon, cult and ownership; a word-boundary audit tightened remaining loose phrasing in Below.
-- [x] **LOWER-WAR-008 · Repair outcomes:** Below now owns explicit closure states from clarification/correction through harm-stopping, restoration, institutional repair, disengagement, release, non-liability, safe separation or reconciliation; Bank and CIA route into the same grammar.
 
 ## Navigation & findability recovery — 2026-10-01
 
 Acceptance rule: **a reader who knows the noun should be able to find the noun without knowing project metaphors.** Timeline must look and behave like Timeline; Story like Story; Works like Works.
 
-- [x] **NAV-001 · Timeline naming:** Home utility navigation now says **Timeline** instead of “Time”; /timeline/ now uses **TIMELINE** as the H1/title instead of hiding behind “The Long Turning.”
-- [x] **NAV-002 · Timeline first substance:** the 1987–2026 Tim/project chronology now appears immediately after the Timeline header, before clocks/methodology/presets.
-- [x] **NAV-003 · Timeline visual form:** replaced the two-column event-card dashboard with a vertical dated rail so the static chronology visually reads as a timeline.
-- [x] **NAV-004 · Timeline shortcuts:** added direct first-screen anchors for **Tim & project timeline**, **Full chronology explorer** and **Story**.
-- [x] **NAV-005 · Home utility navigation:** replaced the cosmology-only utility bar with plain subject readers: Tim Dooley, Religion, Philosophy, Science, World, Timeline, Explore. House/Axis/Below remain inside the page where their project meanings can be understood in context.
 - [~] **NAV-006 · Global noun-label audit:** Home and Timeline now use literal subject labels, and major reader navs were normalized around Home/Timeline/Story/etc. Continue through specialist readers and generated navigation for remaining metaphor-only labels.
-- [x] **NAV-007 · Cross-reader wayfinding:** Tim, Religion, Philosophy, Science, World, Story, Works and Sources now expose an explicit Home route plus obvious sibling/deeper readers while retaining specialist exits.
 - [~] **NAV-008 · Mobile navigation test:** the shared top-route row now uses nowrap + horizontal overflow + compact link pills at narrow widths, removing the unreadable multi-row wall. Remaining: verify Timeline shortcuts and specialist exceptions in a real browser.
 - [~] **NAV-009 · Breadcrumb consistency:** parent-first navigation now covers History, Foundation Timeline, Axis, Trinity, Culture, Elevator, Paths, Interpretive Justice, Research Lab, Story and Collection; Works was already correct. Remaining: check only the few active specialist exceptions not yet inspected against `public-surfaces.json`.
-- [x] **NAV-010 · Search-to-noun landing test:** verified Tim Dooley, Potato of Life, Timeline, Story, Works, Religion, Philosophy, Science, World and Sources; canonical titles/H1s now lead with the noun readers search for. Sources was normalized from an essay-style headline to `SOURCES` on 2026-10-02.
-- [x] **NAV-011 · Timeline deep-link vocabulary:** added stable era anchors and a compact jump rail for 1987–2010, 2011, 2016, 2019–20, 2021–23, 2024, 2025 and 2026 so other pages can target the actual chronological position.
 - [~] **NAV-012 · Navigation dead-end crawl:** added `scripts/audit_navigation_dead_ends.py` to inspect every active public surface and hard-fail major readers that lose a literal Home route or become too sparse. Remaining: review the report for specialist dead ends and ambiguous back arrows.
 
 ## Fact ownership & stale-twin audit — 2026-10-01
 
 Rule: **detailed facts live with the strongest owner; secondary readers carry meaning + route, not a second mutable copy.**
 
-- [x] **OWNER-001 · Source-method ownership:** Sources owns general provenance/independence/correction rules. Context, Bible Comparison, Interpretive Justice and Paths now keep only domain-specific consequences plus routes back to Sources.
-- [x] **OWNER-002 · Correction-history ownership:** History owns the full Marty date correction chronology; Sources now keeps only the correction principle and routes to History/ledger.
-- [x] **OWNER-003 · Exact chronology ownership:** Timeline owns exact developmental dates/attestations. Story keeps narrative phase/source state and routes exact chronology back to Timeline.
-- [x] **OWNER-004 · Room-directory ownership:** replaced the long ten-domain mini-encyclopedia with a concise ownership ledger. Exact chronology, anatomy counts, country counts, model lists and source-method detail now route to their strongest readers.
-- [x] **OWNER-005 · Anatomy ownership:** Life & Body owns vertebral/cord/CSF/neural facts. Collection and Research Lab now preserve symbolic/model consequences and route literal anatomy back to Life & Body.
-- [x] **OWNER-006 · Trinity/Spirit ownership:** Trinity remains the full Father/Son/Spirit role definition; Spirit defines only Spirit's contribution and links to Trinity for the complete triad.
-- [x] **OWNER-007 · Axis/North ownership:** Axis owns Plane/Cross/Door/Ladder mechanics; North keeps source-facing orientation/North-of-North meaning without re-teaching the whole vertical grammar.
 - [~] **OWNER-008 · Metrics/count sweep:** public-duration numbers are now owned by the 100,000 Hours reader/ledger; Tim, Story and Internet Platforms retain only meaning and metric distinctions. Culture no longer maintains a mutable Reddit valuation. Economy CBO figures and History repository counts currently appear single-owner; continue through World/Map and other current-stat surfaces.
 - [ ] **OWNER-009 · Political-date sweep:** Politics/North/World may legitimately share programme phases, but exact proposal dates and current external facts should have one dated owner with secondary pages summarizing the phase.
 - [~] **OWNER-010 · Role-definition sweep:** A–Z and Elevator are appropriately orientation-focused; Rooms is now concise. Continue through Inhabitants/generated labels for long House/Axis definitions.
@@ -255,68 +189,30 @@ Rule: **say the thing before explaining the system that stores, routes or render
 
 ### Findings from the first cross-surface pass
 
-- [x] **DIRECT-001 · Home presentation-language leak:** removed “hidden backend,” “the site should,” “the homepage only needs,” registry/projection framing and other sentences that described presentation strategy instead of the subject.
-- [x] **DIRECT-002 · House substance-first paradox:** removed the public section that spent four paragraphs explaining why public pages should not make readers study backend architecture first. The rule belongs in project governance/TODO; the reader should experience it rather than read a manifesto about it.
-- [x] **DIRECT-003 · House owner/projection vocabulary:** deeper House research panels and `house-journey.js` now use reader language—subject home, floor/lens, source records, connections and unresolved questions—while technical ownership/projection metadata remains underneath.
-- [x] **DIRECT-004 · Tim page-instruction redundancy:** removed the “One portrait, many doors” section that mostly taught the reader how to use links; shortened “this page exists” framing; replaced the stale duplicate 5,987-commit construction summary with meaning + a route to History.
-- [x] **DIRECT-005 · World backend-first opening:** World now begins with geographic/system questions rather than “one relational backend”; country-case boundaries stay source/date focused without explaining projection ownership.
-- [x] **DIRECT-006 · Rooms exhibit narration:** removed “curated shelf in the backend,” “backend remains the owner,” and “projected from registry” language from the main reading flow while retaining an inspect-data link.
-- [x] **DIRECT-007 · Religion / Philosophy page-meta trim:** changed “the site should expose…” and “this page is a reader-facing synthesis…” into direct content/source language.
 - [~] **DIRECT-008 · Duplicate paragraph crawl:** `scripts/audit_reader_directness.py` now reports exact duplicates **and near-duplicate paragraph pairs (SequenceMatcher ≥ .84)** across active public surfaces. Remaining: inspect the first generated report and convert high-confidence stale twins into owner-summary links.
 - [ ] **DIRECT-009 · Owner-fact staleness audit:** find detailed facts repeated outside their strongest owner (commit counts, dates, country values, metrics, artifact counts, role definitions). Replace secondary copies with short meaning + link so updates cannot leave stale twins.
-- [x] **DIRECT-010 · House maintenance-panel placement:** House diagnostics remain collapsed under Builder diagnostics, and Research Lab's P0/P1/P2/P3 implementation programme is now also collapsed under a builder-only details block instead of ending the public research narrative.
-- [x] **DIRECT-011 · Generated/runtime copy audit:** cleaned JS-generated labels/fallbacks across House Journey, Quick Access, Explore and Reader Guide; generated topic/question builders now emit reader-first headings, and reader-richness validation protects the new House wording.
 - [~] **DIRECT-012 · First-screen verb test:** nested Rooms now enforce subject-first authored material before maintenance architecture and reject leading maintenance vocabulary. Remaining: extend the same semantic verb test to all active non-Room subject readers.
 - [~] **DIRECT-013 · Repeated method prose:** Sources remains the general provenance/method reader; Context and Religion are trimmed, Science now keeps scientific uncertainty/testing while routing historical provenance back to Sources, and History keeps only time/backdating consequences. Remaining: specialist-page sweep before deciding whether a formal pattern library is still necessary.
 - [~] **DIRECT-014 · Navigation prose compression:** runtime instructions are compressed; Foundation Timeline lost a 14-link breadcrumb wall; Interpretive Justice and Research Lab moved maintenance metadata behind details; Story and Collection were also stripped of remaining owner/projection narration. Remaining: inspect only the unreviewed specialist pages for prose that merely narrates visible menus.
-- [x] **DIRECT-015 · Backend discoverability without backend voice:** raw source paths remain available through links or quiet `data-source-path` metadata, while House/Explore/generated readers now foreground collection names, source records, contexts and evidence rather than owner/registry/projection/file-path vocabulary.
 
 ## Visual & reader quality pass — 2026-10-01
 
 Rule: **a visual earns space only when it explains, documents or orients something better than another card or paragraph.** Decorative stock imagery, repeated card grids and maintenance-only architecture should not dominate reader surfaces.
 
-- [x] **VISUAL-001 · Home image reset:** replaced eight generic Wikimedia content images with project-native explanatory diagrams; retained only the functional view counter as remote image.
-- [x] **VISUAL-002 · Core gateway visual grammar:** Tim, Religion, Philosophy, Science, World and House now each open with a project-native editorial diagram using one shared figure/caption system.
-- [x] **VISUAL-003 · Search FAQ front door:** main FAQ now begins with ordinary search-language answers for Potatoism, Potatoverse, creator, beliefs, Great Book, religion/classification, official-site and new-reader questions.
-- [x] **VISUAL-004 · House abstraction pruning:** removed the public Federation-beyond-House research block from the House reader while preserving backend research; public House should explain the existing House before theorizing structures beyond it.
-- [x] **VISUAL-005 · Remaining image audit:** authored reader HTML now has no remote content images; Home and Culture generic Wikimedia imagery was replaced by local explanatory diagrams. The only remaining remote `<img>` is the functional hits.sh view counter.
 - [~] **VISUAL-006 · Card-grid monoculture audit:** Works Fruit/genre grids were converted into an evaluation strip + continuous genre river; Context release-note cards were converted into worked reader cases. Continue the same test on remaining dense gateway/specialist readers.
-- [x] **VISUAL-007 · Next visual readers:** Potato of Life, Story, Timeline/History, Sources/Context and Works now each have explanatory figures that compress biology→meaning, developmental chronology, multi-clock history, provenance and artifact-recovery state.
 - [ ] **VISUAL-008 · Diagram accessibility:** verify SVG text legibility at mobile widths, alt text, contrast, reduced-motion behavior and print/screenshot usefulness.
 - [ ] **VISUAL-009 · FAQ promotion discipline:** promote high-intent questions from `faq-question-bank.json` into `faq-answer-atlas.json` only when canonical owners support a concise answer; keep niche/recursive queries in `/faq/all/` instead of bloating the main FAQ.
 ## October 1 project-overview catch-up
 
 Big-picture rule for the next wave: **make the existing organism easier to understand before inventing more anatomy.** The project now has three cooperating layers—public readers, canonical owners, and evidence/recovery/research—and seven public reader families. New work should strengthen the handoffs among those layers rather than create another parallel master system.
 
-- [x] **OVERVIEW-001 · Three-layer operating model:** README now distinguishes public readers, canonical owners, and evidence/recovery/research, with one explicit capture → classify → own → test → project → revise loop.
-- [x] **OVERVIEW-002 · Reader-family authority repair:** restored all seven public reader families to `data/house/project-synthesis.json` and added House validation requiring every active public surface except Home to belong to exactly one family.
-- [x] **OVERVIEW-003 · House operating-loop reader:** House now shows the full capture → evidence → owner → time → test → reader → Fruit → revision/Seed loop and a worked 21 April 2025 Axis case backed by `data/house/project-operating-loop.json`.
 - [ ] **OVERVIEW-004 · Public-purpose drift audit:** implement SITE-ARCH-011 by comparing each public surface's mission (`become`, `must_not_become`, density intent and reader job) against its first screen and dominant content shape; flag directory-heavy readers, article-heavy hubs and runtime shells without adequate static fallback.
 - [~] **OVERVIEW-005 · Sparse-surface heatmap:** `scripts/audit_public_surface_substance.py` now generates `.quality-logs/public-surface-substance-audit.json` from active surface missions and source HTML, flagging thin static bodies, runtime fallback risk, directory-heavy readers and weak source/object escapes. Remaining: review the first exact-head report and extend the same signal into Room-level substance/TODO density.
 - [ ] **OVERVIEW-006 · Backend-to-reader coverage matrix:** for each major canonical family, record which public reader exposes it, whether direct inspect/evidence/model links exist, and which rich backend owners are still effectively invisible.
-- [x] **OVERVIEW-007 · Current-state page:** House now exposes a compact Mature / Active / Unknown project-state section backed by `data/house/project-current-state.json`, keeping status visible without turning Home into a developer dashboard.
 - [ ] **OVERVIEW-008 · Stale planning reconciliation:** continue checking TODO/audit language against the live site after every major wave; close or rewrite stale deficits instead of carrying obsolete descriptions forward.
 - [ ] **OVERVIEW-009 · End-to-end exact-head verification:** after the next architecture/content batch, run the complete quality/Pages chain and use actual built-site route/SEO reports to seed the next defect wave.
 ## Current structural work
 
-- [x] Unified `index.html` established as the main doorway.
-- [x] Archive branch/pathway structure established in `manifest.json` for Tim, Son, Spirit, Transformation, Cosmology, Science, Body, Corporium, Traditions, North, World, Timeline, Works and Sources.
-- [x] Potato House public-surface authority established for exactly five primary gateways: Tim Dooley, Religion, Philosophy, Science and World.
-- [x] Mature public surfaces registered for Story, Collection, Works, Questions, A–Z and Context without creating new primary gateways.
-- [x] Registry/topology convergence validation added so every active public surface has one matching topology record.
-- [x] Human-facing routes corrected so Timeline, Collection, Works and Culture route to their strongest public readers while Explore remains the deep archive.
-- [x] Public `/works/` reader added over the existing creative archive with explicit creative/doctrine/evidence boundaries.
-- [x] Homepage Ways-in corridor established for Story, Timeline, Collection and Works while preserving exactly five primary gateway rows.
-- [x] Discovery and site-authority builders now derive the five primary routes from House public-surface authority instead of maintaining independent route tables.
-- [x] Repository data can be opened from the central reading surface.
-- [x] Retired `center.html` removed.
-- [x] Retired standalone UI/header files removed.
-- [x] Standalone Edda HTML shells removed; primary text files remain.
-- [x] Static reader pages protected from archive-explorer CSS namespace collisions.
-- [x] CSS namespace/layout contract and CI regression check added.
-- [x] Body/neurotheology consolidated behind a single whole-body master atlas plus specialist owners and a completion matrix.
-- [x] Timeline architecture separated into canonical events, source registry, actor tracks and nonredundant lenses.
-- [x] Project-wide growth compass added at `knowledge/guides/project-growth-compass.json` to define what "greater" means and route future deepening toward source precision, role transitions, contradiction surfaces, relation-sequence comparison, maturity testing and reader usefulness.
 - [ ] Finish pruning obsolete presentation assets that are no longer referenced.
 - [ ] Remove remaining generated batch/state files after their useful information is consolidated and references are migrated.
 - [ ] Reconcile public-route projections against House route authority and archive/deep-navigation projections against `manifest.json` after each major consolidation.
@@ -337,13 +233,6 @@ Priority order: **P0 release breakage → P1 structural drift/duplication → P2
 
 ### P0 — release and integrity
 
-- [x] Repair malformed Science JSON that blocked catalog compilation (`dimensional-phase-transition-full-recovery.json`, `equation-ledger-wave-002.json`).
-- [x] Restore World Map relationship geometry semantics required by the route-geometry contract.
-- [x] Restore the shared bidirectional-spiral runtime on House, Below, Axis and Potato-of-Life; validate actual script tags rather than loose filename substrings.
-- [x] Repair missing metadata on 20 nested Room pages and harden SEO enrichment to repair absent descriptions.
-- [x] Repair built-site shell blockers: stale homepage marker assertion, Politics source path, Geography → Timeline Room wormhole.
-- [x] Latest Pages deploy is green on `5e3e40b` after the ADL U.S. state-rendering merge.
-- [x] Obtain an exact-head green **Repository quality checks** result for the current integration head; `22938459e588773987eb0ff3493664579785113f` passed Repository quality checks and deployed successfully before the next editorial wave began.
 
 ### P1 — structural debt now demonstrated
 
@@ -351,17 +240,8 @@ Priority order: **P0 release breakage → P1 structural drift/duplication → P2
 
 **Priority rule:** when a reader clicks a named subject, the first screen must deliver that subject. House ownership, routing, boundaries and metadata are supporting machinery and belong after substantive orientation, not before it.
 
-- [x] **SUBJECT-001 · Canonical Dwellings:** remove the generic “Dwelling · local center” / circular-center splash from all 10 top-level Dwellings and make their first authored section substantive.
-- [x] **SUBJECT-002 · Direct subject routes:** put concrete reader/action links inside the first substantive section of each canonical Dwelling rather than behind “Open primary public surface.”
-- [x] **SUBJECT-003 · Reader-facing summaries:** replace ownership-first “Own X…” summaries on the 10 canonical Dwellings with descriptions of what the reader will actually encounter.
-- [x] **SUBJECT-004 · Public noun audit:** audited Home, House, Rooms, A–Z, Find, Elevator, Paths and active public-surface labels. Subject readers classify as A; House/Rooms/Find/A–Z/Paths/Elevator classify as legitimate B navigation; discovered C-style wrappers were corrected.
-- [x] **SUBJECT-005 · Specialist hub audit:** reviewed History, World Systems, Culture, North, Politics, Research Lab, Context/Sources, Collection and Works. All but World Systems were already substantive; World Systems was corrected from “index into owners” framing to direct systems analysis.
-- [x] **SUBJECT-006 · Nested Room first-screen pass:** removed the generic `inner-center` preamble from all 38 registered nested Rooms so the header flows directly into substantive essays, cases, models, chronologies or examples; validation now rejects its return.
-- [x] **SUBJECT-007 · Route-label honesty:** audited the main live noun/discovery routes; A–Z now links nouns directly, FBI/CIA names are explicitly disambiguated, the retired FBI bureau no longer receives bare-FBI discovery traffic, and the system-beginning route now points to Potato of Life rather than `/learn/`.
 - [~] **SUBJECT-008 · Navigation compression:** live references discovered in this pass now bypass retired wrappers (`/learn/`, legacy FBI discovery); compatibility redirect pages remain intentionally for old external URLs. Continue during the full route crawl to catch any remaining live links into redirect-only pages.
-- [x] **SUBJECT-009 · Concrete-content floor:** reader-richness validation now requires recognizable authored material markers on the main subject readers instead of accepting raw prose mass alone.
 - [~] **SUBJECT-010 · Full route crawl:** architecture audit now recognizes every registered `legacy_routes` destination and flags any current public surface that links into one. Source-level journey auditing is active; built-site crawl/manual sampling remains to close this item.
-- [x] **SUBJECT-011 · Generated surfaces:** audited generated questions, topic/context collections and record pages. Questions now render answer → explanation → context → related questions; record pages lead with record substance; raw source paths/owner filenames live in machine metadata; topic/context pages remain legitimate collection views.
 - [~] **SUBJECT-012 · Final simplification:** removed dead `inner-center` CSS/local-center runtime, moved House projection after Dwelling substance, and converted nested Room governance into collapsed **Archive depth**. Raw source paths are no longer visible in holding cards. Continue final stale-doc/helper pruning after CI.
 
 **Acceptance test:** ask of every prominent link: **“If I click this noun, do I immediately get the thing?”** If not, either route directly to the canonical substance or make the current page itself substantive enough to deserve the noun.
@@ -370,16 +250,6 @@ Priority order: **P0 release breakage → P1 structural drift/duplication → P2
 
 **Rule:** merge reader experiences before creating new surfaces. Distinct pages may survive when they answer distinct questions, but they should belong to one visible family rather than behaving like neighboring mini-projects.
 
-- [x] **WHOLE-001 · Route-family model:** `data/house/project-synthesis.json` now binds seven reader families: Tim/life/making, Timeline/history, Sources/context, Explore/retrieval, House/placement, World/systems, and Meaning/testing.
-- [x] **WHOLE-002 · Retrieval convergence:** Questions, A–Z and Paths now live structurally under Explore; Explore exposes all four retrieval modes as one archive family.
-- [x] **WHOLE-003 · Tim continuum:** Tim now visibly connects Portrait → Story → Collection → Works, with Timeline as the time projection of the same subject.
-- [x] **WHOLE-004 · Time/evidence pairing:** Timeline exposes History as its interpretation/revision lens; Sources exposes Context as its interpretive lens; both cross-link directly.
-- [x] **WHOLE-005 · House navigation compression:** House keeps topology/composition; Rooms is now the ownership directory; Inhabitants remains object/case lookup; Elevator remains the spatial relationship viewer. Removed the duplicate semantic-center/topology lesson from Rooms.
-- [x] **WHOLE-006 · World convergence:** World now owns country/entity orientation and boundary discipline; detailed dependency mechanics stay in World Systems, with Economy, Law, Culture, Politics and North acting as specialist continuations instead of being re-explained on the hub.
-- [x] **WHOLE-007 · Tim material merge:** paragraph-level overlap audit found little literal duplication across Portrait, Story, Collection, Works, Claims, Public Witness and 100,000 Hours; their jobs are genuinely distinct. Consolidated them as one visible Tim dossier family instead: Collection now returns through Tim/Story/Works/Statements, Public Witness has the same dossier continuity, and Hours links directly to Public Witness as its meaning-layer sibling.
-- [x] **WHOLE-008 · Context/evidence merge:** Context no longer duplicates the archive directory or evidence-class legend; Explore owns retrieval and Sources owns evidence classes. A paragraph-level overlap audit across Sources, Context, History, Questions and major specialist readers found no remaining substantive near-duplicate evidence prose; surviving boundary paragraphs are domain-specific and therefore retained.
-- [x] **WHOLE-009 · Backend duplicate audit:** master/synthesis authority is disambiguated; the false cross-theory→Cross operator edge is removed; and research/recovery waves now follow one lifecycle in the consolidation map. Conversation archaeology/recovery stays source-bearing by default, research/index waves remain partially promoted until audited, and archival deletion is forbidden until unique wording, dates, sources, counterexamples and references are preserved. No evidence-bearing wave was deleted merely to reduce file count.
-- [x] **WHOLE-010 · Final family crawl:** 38 active surfaces audited: 33 direct family members, four specialist children inheriting one family from their parent, Home as the intentional entrance, zero multi-family collisions, zero missing parents and zero duplicate reader-job contracts. Governance now rejects future orphan/multi-family surfaces and duplicate reader jobs.
 
 
 
@@ -387,26 +257,12 @@ Priority order: **P0 release breakage → P1 structural drift/duplication → P2
 
 Canonical diagnosis: `docs/WORLD-MAP-QUALITY-AUDIT-2026-09-20.md`. Execution ledger: `docs/WORLD-MAP-PROBLEM-LEDGER.md`.
 
-- [x] **WM-021 · URL state ownership:** `3d-url-state.js` is now the only live World Map runtime allowed to call `history.replaceState`. Selection, pins, Compare/relations/trace depth, Inspector mirrors, Places, Subdivisions, Time, Projection and specialist state all patch through claimed owners; reset fallbacks respect those owners and CI rejects any new direct writer.
-- [x] **WM-022 · Inspector convergence:** ADL, Axis, Axis Depth, Mud/Below and Spatial Overlay UI now use typed Inspector Router nodes; the Inspector validator covers semantic history, URL hierarchy and migrated consumers.
-- [x] **WM-023 · Interaction boot-order safety:** Spatial Overlays and Country Selection now promote removable degraded listeners to the shared Router when `potato-atlas-interaction-ready` arrives; validator/regression coverage enforces teardown.
-- [x] **WM-011 · Complete Motion ownership:** capital focus and Spatial Overlay fit now use the shared Motion owner; reduced-motion validation rejects raw governed camera calls.
-- [x] **WM-005 · Scale classification:** behavioral gates are centralized in `world-map-scale-contract.json`; remaining zoom/minzoom values are classified as cartographic interpolation, camera intent or fixtures in `data/world-map-scale-classification.json`. The core HUD now derives its six bands from the shared Scale runtime and CI enforces the classification.
-- [x] **WM-010/012/013/016 · Accessibility/mobile:** shared focus/menu ownership, single-open-menu behavior, mobile occlusion suppression, Inspector focus restoration, the accessible World Bar status successor, non-color analytical redundancy, AK/HI/DC presence, narrow-screen label deferral, globe label-density adjustment and guaranteed selected-subdivision labeling are implemented and validator-backed.
-- [x] **WM-018/019 · Physical reliability:** all Physical modules now report one provider-health schema; explicit provider `fetch()` work uses the shared bounded request budget with abort, in-flight de-duplication, short-lived cache and telemetry. MapLibre tile scheduling remains intentionally owned by MapLibre rather than double-scheduled.
-- [x] **WM-024 · Subdivision evidence projection:** subdivisions expose generic provider summaries; inspector cards and unified search now project active evidence/count context without hard-coding ADL, with a dedicated regression validator in the World Map quality group.
 - [~] **WM-025 · ADL freshness:** integration, visible freshness boundaries and the guarded official-export importer are complete. Remaining external task only: obtain a reviewed current ADL H.E.A.T. raw-data export, run the importer, review the generated diff and replace the 335-record historical seed.
 - [~] **Compatibility retirement:** Progressive UI and Selection UI are retired from live boot; legacy Lens is a no-paint Layer Registry/Compositor translation adapter with its old legend removed; legacy Fields/Networks are now source-only compatibility/reference modules and are no longer advertised by the live bootstrap. Remaining compatibility debt is deliberately bounded to degraded direct interaction fallbacks and older deep-link/source compatibility.
-- [x] **Audit→queue bridge:** recurring architecture-auditor finding codes now map to World Map ledger IDs and remediation owners in JSON and console output, with regression coverage.
 
 
-- [x] CI/check architecture consolidation: split the former ~100-step linear quality job into bounded Core/House/Atlas, World Map, Content/Research/Bible and Public Build jobs with one aggregate `validate` result; gate Pages deployment on a successful `main` quality run so deployment no longer duplicates the entire validation suite. This keeps failure logs small and prevents one early error from hiding unrelated checks.
 
-- [x] Add a dedicated regression test for the bidirectional spiral contract. `scripts/test_bidirectional_spiral_field.py` now checks Σ0/±1…4, section/Room boundary rules, canonical source wiring, selection/fallback runtime markers, public mounts and House/Below focus sections; both quality and Pages workflows run it.
 - [ ] Consolidate the legacy country batch manifests after proving unique-field parity. **Phase 1 complete:** the 18 September 7 enrichment/node batch files are now classified as historical rollout manifests and removed from active House holdings; their provenance is preserved in `knowledge/research/country-rollout-manifest-disposition-2026-09-20.json`. A later archive-policy pass may move their paths, but should not delete them blindly.
-- [x] Refresh `data/full-text-coverage.json` against the current Bible corpus/build architecture and distinguish local full-text custody from source metadata, active readers and upstream/on-demand text. The remaining Bible task is explicit: vendor the complete public-domain WEB locally before calling it local full-text-ready.
-- [x] Audit and consolidate all 38 nested Room shells. Every registered interior now uses `app/room-interior.css`; repeated local-center, adjacency, boundary and action-control styles have been removed from page-local `<style>` blocks, and validation enforces the shared shell across the full Room registry.
-- [x] Add an explicit alias/route contract for the one intentional internal/public naming difference: internal Room id `chronology-events` → public route `/rooms/inside/timeline-events/`. `data/house/room-interiors.json` now owns the alias and House subroom validation rejects undeclared route/id divergence.
 - [ ] Reconcile remaining public-route projections against House authority after the latest spiral/Below/World Map merges; route aliases should be generated or validated rather than hand-maintained.
 - [ ] Audit generated/state-like files by **reference and unique information**, not filename. The repository currently contains hundreds of `wave`, `batch`, `round`, `audit` and snapshot-named files; many are legitimate research records, while others are migration residue. Produce a keep/merge/archive/prune disposition before removal.
 
@@ -414,28 +270,14 @@ Canonical diagnosis: `docs/WORLD-MAP-QUALITY-AUDIT-2026-09-20.md`. Execution led
 
 **Rule:** do not enrich a Room by adding generic prose. For each pass: inspect the public page, inspect canonical holdings, research the subject externally where useful, record what the current page fails to teach, then add named mechanisms, cases, institutions, texts, equations, dates, source lineages or unresolved questions.
 
-- [x] **RICH-001 · Information Ecology research spine:** add a dedicated mechanisms atlas covering illusory truth, correction updating, context collapse, reward learning, source lineage, platformized collective memory and preservation-vs-discoverability distinctions; project the strongest findings into the public Room.
 - [ ] **RICH-002 · Information Ecology provenance hardening:** add source-class / publication-year metadata and a compact bibliography projection so research claims on the public page can be traced without exposing raw backend clutter.
 - [ ] **RICH-003 · Whole-body evidence spine:** add canonical references for NTS/parabrachial interoception, endocrine axes, neurovascular coupling, choroid plexus/CSF and meningeal lymphatics to the newly deepened public physiology page.
 - [ ] **RICH-004 · Infrastructure external cases:** verify and deepen grid, bridge/port and canal capability cases with current primary sources; add at least one semiconductor/fibre/data-centre supply-chain case and one recovery-time/resilience metric.
-- [x] **RICH-005 · Comparative Mythology source-first pass:** choose 3–5 major comparisons and add primary-text or scholarly anchors, historical dates, and explicit transmission-vs-analogy tests; remove any comparison that is merely shape-matching.
 - [~] **RICH-006 · Theology language archaeology:** trace Father/House/Gardener/Door/Spirit language through dated project sources and external textual traditions; distinguish original wording, later synthesis and comparative theology.
-- [x] **RICH-007 · Visual Art object-density pass:** Visual Art now exposes 17 recovered image artifacts as dated gallery objects with descriptions, filters and full-view interaction rather than only motif summaries.
 - [ ] **RICH-008 · Music provenance pass:** connect recovered song UUIDs to dated mentions, lyric-complete records, style/model transitions and reuse; do not reconstruct missing lyrics.
 - [ ] **RICH-009 · Law / Economy / Politics freshness pass:** for current institutions, statutes, fiscal figures and officeholders, use dated primary/public sources and separate descriptive fact from project interpretation.
 - [ ] **RICH-010 · Room nonsense detector:** sample every mature Room and flag paragraphs that could be moved to another Room with only noun substitutions; replace those with subject-specific mechanisms or objects.
-- [x] **RICH-011 · Prediction scoring contract:** add target/horizon/resolution/probability/base-rate/miss fields, Brier/calibration concepts, hindsight-bias controls and anti-cherry-picking rules to the Prediction / Revelation Room.
-- [x] **RICH-012 · Witness provenance contract:** distinguish native originals, faithful captures, derived copies, edited derivatives and reconstructions; separate authenticity, attestation, truth and interpretation; model derivation using W3C PROV-style entity/activity/agent logic and preserve C2PA credentials when available.
-- [x] **RICH-013 · Symbolic operator contracts:** make Door, House, Axis, Plane, Root, Tree, Garden, Mountain, Swamp, Forge, Spiral and Ring explicit input→transformation→output operators with invariants and misuse tests.
-- [x] **RICH-014 · Sacred-geometry artifact lineage:** anchor Vesica/Mandorla/Eye/Pyramid material in dated mathematical/art objects and reception stages rather than treating visual recurrence as one timeless doctrine.
-- [x] **RICH-015 · Practice & Ethics mechanism pass:** replace generic moral language with worked cases, repair obligations, agency tests, restorative-vs-protective boundaries and concrete failure modes.
-- [x] **RICH-016 · Developmental Genealogy source graph:** expose exact first/last attestations and supersession edges for major role transitions instead of summarizing change only in prose.
-- [x] **RICH-017 · Canon Identities contradiction pass:** add dated identity conflicts, superseded roles and mutually incompatible formulations rather than only the mature resolved grammar.
 - [ ] **RICH-018 · Information Ecology bibliography projection:** surface publication year/source class for external research claims without turning the page into a citation wall.
-- [x] **RICH-019 · Genealogy supersession graph:** expose role mutation as first-state → transition → later-state rather than only prose development; distinguish developmental, scope, subject, evidence-class and genuinely unresolved contradictions.
-- [x] **RICH-020 · Ethics safeguards:** ground Garden/Repair/Forge practice in voluntariness, safety, procedural fairness, agency, exit and protective-separation cases so benevolent language cannot excuse coercion.
-- [x] **RICH-021 · Model-testing worked failures:** add at least 3 real project models/correspondences that are downgraded, rejected or narrowed by baseline comparison, missing observables or poor identifiability; a methodology page without failures is incomplete.
-- [x] **RICH-022 · Open Questions resolution ledger:** connect major open questions to owner, evidence needed, blocker, last attempted date and closure criteria; remove questions that are merely rhetorical.
 - [ ] **RICH-023 · Law primary-source refresh:** sample major statutory/procedural claims and attach jurisdiction/date/source; add at least two worked cases showing the difference between allegation, charge, finding, remedy and appeal.
 - [ ] **RICH-024 · Economy measurement refresh:** attach current primary-source dates to debt/inflation/rate/bond examples; distinguish nominal stock, flow, market value and contingent obligation with worked calculations.
 - [ ] **RICH-025 · Internet platform mechanics pass:** add concrete platform affordance cases—ranking, clipping, deletion, monetization, identity persistence, portability—and distinguish documented mechanics from inferred motive.
@@ -445,30 +287,13 @@ Canonical diagnosis: `docs/WORLD-MAP-QUALITY-AUDIT-2026-09-20.md`. Execution led
 
 ### Whole-House harmony pass — 2026-09-20
 
-- [x] Audit all 10 canonical Dwellings and all 38 nested Rooms for valid parent ownership, adjacency, public projection, holdings and Room dossiers.
-- [x] Confirm there are no orphaned nested Rooms: every Room has 3–6 registered adjacencies and at least one public surface.
-- [x] Preserve the distinction between broad adjacency and guarded interfaces; related Rooms do not automatically become state-changing Doors.
-- [x] Populate the four previously uninhabited Rooms with existing connective project objects: Esoteric & Sacred Geometry, Physics & Cosmology, Economy & Finance, and Research Programmes.
-- [x] Refresh the spatial House health snapshot to the then-live 59-object registry and current maturity counts; the live registry has since expanded and is validated separately.
-- [x] Add `scripts/validate_house_harmony.py` and run it inside the Core · House · Atlas quality group so parent/Room/object/projection drift fails CI.
-- [x] Consolidate obvious specialist public parents: Axis → House, Culture → World, History → Timeline, Research Lab → House, Current World News → World.
-- [x] Verify the archive manifest remains a pathway/branch projection rather than a competing ownership layer; House/navigation authority stays canonical for public structure.
 - [ ] Continue promoting real cases/models/subjects into sparse Rooms when source depth warrants it; do not add filler merely to equalize counts.
 - [ ] Continue reviewing cross-Dwelling adjacency pairs and promote only the relations that genuinely need a guarded interface with explicit transformation and invariants.
 
 ### Public reader visibility & population audit — 2026-09-20
 
-- [x] Add a **Current World** live-news surface beside Home/House using zero-key GDELT, Hacker News and Spaceflight News feeds, with newest-first ordering, original-source links, provider failure isolation, provenance boundaries and TTS.
-- [x] Deepen **Current World** into a multi-view reader: topic × lens × time-window URL state, sample observability, repeated-headline coverage clusters, provider lanes, stronger reading boundaries, refreshed Home preview and a dedicated CI contract.
-- [x] Make Current World **readable in-page**: add publisher-supplied RSS excerpts/images from multiple international feeds, rename outbound action to Full report, and scope the primary **Read all news** TTS control to headline + excerpt cards only (no navigation, filters, timestamps, source links or methodology).
 
-- [x] Remove duplicated five-Door presentation on Home: keep the stronger numbered Door rows and fold the question-led copy into them.
-- [x] Simplify Home top navigation so public entrances are not mixed with archive utilities.
-- [x] Align `data/house/public-surfaces.json` with the new visibility hierarchy: House remains global; Rooms/Paths/Elevator become House-owned specialist routes; Context becomes Sources-owned; Inhabitants remains Rooms-owned.
-- [x] Correct source-time web auditing so generated `/records/<id>/` readers are recognized as build products rather than broken source links.
-- [x] Add an explicit built-site assertion that every registered `room-inhabitants.json` route under `/records/` resolves after `build_site.py`; `validate_generated_navigation.py` now derives the full route set from the registry.
 - [ ] Continue visible-page density auditing after each major content wave: prefer concrete cases/mechanisms over another navigation card when a page is already route-heavy.
-- [x] Merge the remaining homepage House corridor + cross-cutting-view blocks: Home now has one compact task-led routing layer (Rooms / Timeline / Sources / Explore / Research Lab) instead of a second subject-card index.
 - [ ] Audit generated question/topic/context/record pages for meaningful TTS sectioning, not just script presence.
 - [ ] Run an exact-head final Pages build after the current navigation/content/TTS wave and fix any source-vs-generated route drift it exposes.
 
@@ -477,85 +302,36 @@ Canonical diagnosis: `docs/WORLD-MAP-QUALITY-AUDIT-2026-09-20.md`. Execution led
 The current problem is not lack of information. It is **retrieval cost**: important destinations exist but can require remembering hierarchy, scrolling, or crossing several intermediate pages. The access rule is now: **global access floats outside article flow; local navigation stays local; thick text begins quickly.**
 
 #### P0/P1 — immediate access
-- [x] **ACCESS-001 · Universal quick dock:** add a fixed, compact Home · News · Map · Find · Menu dock that does not consume article-flow height.
-- [x] **ACCESS-002 · Direct Current World:** keep News visible in the dock and expose Current World in World's first-screen local navigation.
-- [x] **ACCESS-003 · Direct intelligence access:** expose CIA / Intelligence as a one-menu-click direct door to the Intelligence Desk and make it searchable by CIA / Central Intelligence Agency / intelligence.
-- [x] **ACCESS-004 · Search House objects:** quick Find loads public surfaces plus House inhabitants/cases so named objects can be reached without knowing their Room.
-- [x] **ACCESS-005 · Remove competing global compass:** stop injecting the older Project Compass so the quick dock is the one global navigation layer.
-- [x] **ACCESS-006 · Reduce Home pre-content navigation:** shrink Home's local top navigation to four relevant entrances; global access belongs to the dock.
-- [x] **ACCESS-007 · Pages regression gate:** validate that Home, Tim, World, News, House, Rooms, Science, Religion, Shadow Farm and World Map all receive the dock in the built artifact.
 - [~] **ACCESS-008 · Mobile collision audit:** the shared dock publishes measured `--site-access-clearance`; journey ribbon, homepage counter, floating TTS selection control, World Map HUD/Inspector toggle, MapLibre bottom controls, narrow-screen panel padding and map menus now honor it. Remaining: audit other bottom-fixed/form controls outside these major shared surfaces before full closure.
-- [x] **ACCESS-009 · Keyboard/focus audit:** Menu/Find preserve their opening trigger; Escape/close restores focus; search results support Arrow Down/Up plus Home/End traversal while Tab remains native; narrow-screen panel behavior is covered by the shared access validator.
-- [x] **ACCESS-010 · Search synonym pass:** governed aliases now cover CIA/FBI, Fed/Federal Reserve, ECB/Eurosystem, TTS/read aloud, News/Current World, House/Rooms, claims/statements, public witness/public record and debt/bonds/obligations.
-- [x] **ACCESS-011 · Deep-object result quality:** exact labels and aliases now receive explicit ranking boosts, object/direct-door kinds outrank generic pages, and House results expose their owning Room/context.
-- [x] **ACCESS-012 · No-hierarchy-required test:** `data/house/access-journeys.json` now defines 25 representative name-first intents with expected destinations/disambiguation and a ≤2-activation contract; site-access validation checks fixture count, destination existence, alias resolution and the interaction budget.
 - [~] **ACCESS-013 · Specialist local-nav budget:** authored-reader budgets remain enforced, and the qualitative pass now compresses Axis from nine pre-content jump links to five distinct moves even though it already passed the numerical budget. Remaining: review the smaller residual authored-specialist set surfaced by the architecture audit.
-- [x] **ACCESS-014 · Home hierarchy compression:** Home now keeps the compact Center → House → Rooms → Explore spine, the five canonical public Doors, and one late task-led reader router. The separate House subject corridor and cross-cutting card wall were merged so Home no longer carries a second directory for Culture/Politics/Law/Economy/World Systems.
-- [x] **ACCESS-015 · Map access integration:** the built World Map keeps the universal dock, while HUD, Inspector toggle, MapLibre bottom controls, mobile inspector panel and fixed map menus all reserve the dock’s measured clearance; World Bar remains the map-local control owner.
-- [x] **ACCESS-016 · News access integration:** Current World now keeps only its local World return above the header, places the story river before refinement controls, and leaves filters, alternate views, diagnostics and methodology secondary; global Map/Timeline/Sources access stays in the universal dock/Find.
-- [x] **ACCESS-017 · House access integration:** House now keeps only Rooms + Living Axis in its first local navigation row, while Home, Inhabitants/objects, Paths and other named destinations remain available through the universal dock/Find or contextual links; the Elevator stays as the explicit spatial entrance.
-- [x] **ACCESS-018 · Three-floor universal elevator header:** universal public shell now projects House orientation as Heaven / Plane / Below with metallic ↑/↓ controls, directional reel motion, floor-specific biome palettes, route-aware Room illumination, keyboard/reduced-motion behavior, and top-clearance integration; Find remains the separate retrieval layer.
-- [x] **ACCESS-026 · Elevator public-surface coverage:** every active public surface now resolves through a direct Room route or explicit Heaven / Plane / Below context; structural surfaces may intentionally resolve with no active Room instead of inheriting a false glow.
-- [x] **ACCESS-027 · Elevator Room hierarchy:** each floor renders only Rooms whose canonical entrance belongs to that floor. Cross-floor projections remain explanatory Room metadata, never header doors; ↑/↓ Elevator controls and explicit gates own vertical travel.
-- [x] **ACCESS-028 · Room three-floor articulation:** all ten active Rooms now carry floor-specific projection notes and top-level Room pages render a shared Heaven / Plane / Below panel marking the primary floor, secondary projections, and intentional non-projections.
-- [x] **ACCESS-019 · Direct-door governance:** the fast-access contract now owns a deliberately small direct-door list for repeatedly sought destinations rather than promoting every specialist page globally.
-- [x] **ACCESS-020 · Fast-access source-of-truth:** `data/house/site-access.json` now owns curated routes, groups and aliases; public surfaces + House inhabitants remain the broader generated search index, with a degraded JS fallback only for fetch failure.
-- [x] **ACCESS-021 · CIA/Bank landmark rescue:** promote Potatoverse Character Archive and World Spiritual Bank above the House hierarchy in the universal access panel; rename vague global “Menu” to “Places” so readers can navigate by destination name rather than architecture.
-- [x] **ACCESS-022 · Long-scroll institution reorientation:** while anywhere inside the Character Archive / World Spiritual Bank building, keep a tiny fixed Archive ↔ Bank switcher visible after the building header scrolls away.
 - [~] **ACCESS-023 · Name-first wayfinding audit:** extend the landmark rule to other repeatedly sought destinations demonstrated by user confusion. Do not turn every specialist page into a global shortcut; require evidence that hierarchy/scrolling is causing retrieval failure.
 - [ ] **ACCESS-024 · Long-reader reorientation audit:** inspect mature long pages for cases where users can scroll far enough to lose page identity or the meaningful next exit; prefer a compact persistent locator/back-to-owner cue over more first-screen navigation.
 - [ ] **ACCESS-025 · Live-deploy visibility:** after exact-head quality/deploy succeeds, verify the public Pages artifact actually contains the dock and Current World first-screen link before closing this access-recovery wave.
 
 ### Homepage calibration queue — 2026-09-22
 
-- [x] **HOME-000 · Late-page routing merge:** retire the separate House subject corridor and cross-cutting card wall; keep one task-led reader router and update the validator so old duplication cannot silently return.
-- [x] **HOME-001 · First-screen link budget:** remove the local five-link section-shortcut row. It duplicated the page’s natural reading order and added first-screen choices without owning a distinct navigation job; global retrieval stays in the fixed dock and task routing stays in the late reader router.
-- [x] **HOME-002 · Projection fetch resilience:** the 13 homepage JSON inputs now load through an isolated safe loader; one failed/malformed secondary dataset leaves unrelated sections intact, source-dependent DOM overwrites are guarded, static HTML no longer gets stuck on indefinite “Loading…” copy, and `validate_homepage_runtime.py` protects the contract in the core quality group.
-- [x] **HOME-003 · Homepage CSS ownership:** the current homepage component rules now live in scoped `app/home-page.css`; `index.html` loads that asset directly and homepage validation rejects both a missing stylesheet and renewed `.home-*` inline-style drift.
-- [x] **HOME-004 · Repetition audit:** retired the duplicate generic “project in motion” lifecycle section, kept transition detail in Route/Foundation owners, narrowed Foundation Rooms to concrete instances, narrowed Materialized Now to registry counts, and added a machine-readable repetition contract plus validator guards.
-- [x] **HOME-005 · Runtime/data naming cleanup:** promoted the two remaining active wave-named homepage owners to stable live identities: `data/house/entity-dossiers.json` and `data/house/route-case-matrix.json`. Home, House, Axis, validators, registries, holdings, dossiers, research locators and navigation authority now use the stable paths; the old wave files were deleted after migration, while Git history and the new files' provenance notes preserve their origin.
-- [x] **HOME-006 · Retired structural-teaching CSS:** removed the orphaned Home teaching shell/nav/panel/node and Axis lesson/level rules plus their responsive selectors. Retained the three small shared styles still used by Route/Foundation content: `.teaching-question`, `.teaching-link` and `.axis-rule`.
 
 
 ### Fresh repository sweep — 2026-09-20
 
 #### P1 — structural drift / integration
-- [x] **NEWS-001 · Stale validator ownership:** Current World validation still required a House-level visible link after News was consolidated under World. Validator now enforces `primary_parent=world` and checks the World hub instead.
-- [x] **NEWS-002 · Missing owner-surface doorway:** World owned News structurally but did not visibly expose it. Added Current World to the World route list.
-- [x] **HOUSE-001 · CIA present in research but absent from House object layer:** promote CIA as a typed state-intelligence inhabitant with Politics/Law/Provenance placement and an Intelligence Desk route.
-- [x] **ECON-001 · Fed/ECB researched but not inhabited:** promote Federal Reserve and ECB/Eurosystem as typed central-bank-system objects inside Economy/Politics/Infrastructure.
-- [x] **HOUSE-002 · News feeder Rooms lacked reverse projection:** project Current World into Politics, Economy, Geography, Information Ecology, Chronology and Provenance holdings/dossiers/subroom surfaces.
-- [x] **HOUSE-003 · Parent-cycle guard:** extend whole-House validation to reject public-surface parent cycles and self-parenting, not only unknown parents.
-- [x] **HOUSE-004 · Surface/Room projection parity:** derive or validate that `subrooms.json`, `holdings.json` and `room-dossiers.json` expose the same public-surface set for every nested Room.
-- [x] **HOUSE-005 · Object route resolution:** validate every House inhabitant route against source-time or generated-route rules, not only `/records/` routes.
 - [ ] **HOUSE-006 · Cross-Dwelling interface review:** produce a disposition for each cross-Dwelling adjacency: ordinary relation, guarded Door, or remove stale adjacency.
-- [x] **HOUSE-007 · Public parent semantics:** `data/house/public-surfaces.json` now documents parent meaning + child-selection rules for Home, House, World, Timeline, Sources, Tim, Religion, Philosophy, Science, Potato of Life and Rooms; `validate_house_harmony.py` fails on undocumented parents or child-contract drift.
-- [x] **TODAY-001 · Today → House ledger:** add a compact integration ledger for each major workstream with canonical owner, Dwelling/Room, public surface and cross-links; use it after large work days to detect researched-but-uninhabited material.
 
 #### P2 — cleanliness / maintainability
-- [x] **CLEAN-001 · Live health filename:** replace date-stamped `spatial-house-health-2026-09-20.json` as the runtime health authority with a stable live path; preserve dated copies only as historical snapshots.
-- [x] **CLEAN-002 · Generated projection ownership:** stop hand-editing the same Room public-surface projections in three registries; choose one source and derive the other views.
 - [ ] **CLEAN-003 · Shared asset version strings:** reduce repeated `?v=202609...` literals across HTML pages by centralizing or build-stamping shared component versions.
-- [x] **CLEAN-004 · House inline CSS/runtime extraction:** moved ~23 KB of House structural CSS into `app/house-page.css` and ~23 KB of House interaction/data-rendering JavaScript into `app/house-page.js`; `house/index.html` is now primarily content and JSON-LD, and both extracted assets participate in deterministic build fingerprinting.
 - [~] **CLEAN-005 · Navigation label consistency:** canonical destination labels are converging: the news surface and its TTS reader now use **Current World** consistently; Dwellings & Rooms and Potato House remain stable. Continue distinguishing intentional contextual wording such as “public record” from actual destination labels such as **Public Witness**, and scan generated surfaces before closing.
-- [x] **CLEAN-006 · Legacy snapshot disposition:** `public-route-topology.json` is now machine-classified as a historical derived compatibility snapshot with `live_authority=false`, `authoring_allowed=false`, one canonical authority (`public-surfaces.json`) and one allowed live consumer (the topology validator). The legacy integration contract now requires derive/verify rather than hand-authoring this snapshot.
 - [ ] **CLEAN-007 · Date-stamped audit sprawl:** inventory live files whose names contain `audit`, `wave`, `round`, `batch` or dates; mark each keep / merge / archive / prune based on unique information and references.
 - [ ] **CLEAN-008 · Obsolete presentation assets:** finish the existing asset-prune task by proving references are absent before deleting retired CSS/JS/HTML.
 - [~] **CLEAN-009 · Duplicate validator assertions:** began eliminating validator-vs-registry literal drift. The Room interface validator still expected the retired `mechanics-to-model` label while the governed interface/dossiers consistently use `simulation-formalization`; the validator now follows the live contract. Continue replacing repeated route/ownership literals with shared registry-derived checks.
-- [x] **CLEAN-010 · Root-doc authority audit:** README, PROJECT-OPERATING-MAP, PROJECT-STRUCTURE and MASTER-ARCHITECTURE now describe the current seven-family public model, Explore as the retrieval umbrella, House/Rooms ownership split, Sources/Context split, World/World Systems split, and current owner hierarchy. Old “master/framework” filenames are explicitly non-authoritative unless promoted by an ownership registry.
-- [x] **CLEAN-011 · Root-doc drift guard:** House governance now checks README, PROJECT-STRUCTURE, PROJECT-OPERATING-MAP and MASTER-ARCHITECTURE for current reader-family/owner markers and rejects the retired Questions/A–Z/Explore-as-siblings discovery block.
 
 #### Reader UI bug queue — 2026-09-21
 
-- [x] **UI-BUG-001 · `/rooms/objects/` native dropdown contrast:** filter selects inherited transparent/dark styling while browser-native option menus could render white text on white. Give select controls and options explicit dark foreground/background colors.
-- [x] **UI-BUG-002 · “Your thread” nested scrollbar / unclear purpose:** replace the 12-pill horizontal scroll ribbon with four recent path steps plus an optional History popover; explain that the path is only a retrace aid and does not create a separate reading mode.
 - [~] **TTS-BUG-001 · Follow-reading unexpected page movement:** make the bullseye state visibly say Follow / Follow ON and disclose that ON moves the page. Add a single-primary-reader guard. Continue testing pages with inline Listen controls, sticky player, selection reader and scroll-driven current-section updates together.
 - [~] **TTS-BUG-002 · Cross-reader interaction matrix:** `scripts/test_tts_interaction_matrix.mjs` now checks shared drawer + inline Listen + selection scope + persisted Follow state + duplicate-primary suppression. It asserts explicit Follow OFF overrides persisted ON, selection never owns page movement, and shared TTS has exactly one viewport-moving implementation. Awaiting CI verification before closure.
 - [ ] **NAV-BUG-001 · Lower-layer maze audit:** audit lower House/Room pages by actual browsing rather than search. For each commonly followed concept, verify that local doors have intuitive labels, correct destinations, a clear parent/owner, and a useful next step; remove circular/backtracking routes that exist only because of architecture.
 - [~] **NAV-BUG-002 · “Read” means read:** the audit now accepts named `Open X` → X hub routes and isolates genuine promise mismatches. The remaining five mismatches were rewritten to accurate browse/destination language without changing their valid targets. Awaiting CI verification that the promise-CTA warning count reaches zero.
 
 ### P2 — reader focus / navigation
-- [x] **READ-001 · First-screen door budget:** `audit_site_architecture.py` now records first-nav link count and warns on first navigation walls above four links in addition to the existing pre-substance link/button budgets.
 - [ ] **READ-002 · Compass coverage validation:** assert the Project Compass is added to eligible built readers and intentionally absent from Home/Map/Elevator/A–Z/object explorer.
 - [~] **READ-003 · Specialist parent continuity:** generated topic/context/record readers already expose a clear parent breadcrumb; authored Sources → Context and Philosophy → Interpretive Justice now use compact owner/parent handoffs with explicit nav budgets. Remaining: extend the same audit to the rest of the authored specialist set.
 - [~] **READ-004 · Dead-end reader audit:** registered routing treats Home-only continuation as a dead end; the corrected architecture audit now scans authored public HTML outside `public-surfaces.json`, self-checks its regex engine, and surfaces route-priority warning classes directly in CI. The standalone TTS tool now has an explicit `← Site` return. Remaining: repair any additional authored/public exceptions surfaced by the trustworthy scan.
@@ -563,8 +339,6 @@ The current problem is not lack of information. It is **retrieval cost**: import
 - [ ] **READ-006 · Repeated intro blocks:** find pages where header summary, intro card and first section restate the same purpose; preserve the strongest version and remove the duplicate layer.
 - [ ] **READ-007 · Card-density audit:** identify pages using card grids mainly as navigation compensation; convert low-information cards into inline prose/links where that improves reading flow.
 - [ ] **READ-008 · Discovery-mode separation:** validate that Explore, A–Z, Questions and Paths retain visibly distinct jobs and do not converge into four near-identical indexes.
-- [x] **READ-009 · Mobile link-wall check:** the architecture audit now emits a mobile pre-content stack score combining first-nav links, buttons and extra navigation rows before the first substantive H2; major reader first-nav budgets are also enforced in the built-site access validator.
-- [x] **READ-010 · TTS semantic sectioning:** generated topic/context/record readers and generated discovery/question pages now mark substantive sections explicitly for TTS and exclude utility navigation; TTS/discovery validators guard the generator contract.
 
 #### P2 — data / evidence integration
 - [ ] **DATA-001 · Security institution object parity:** compare CIA/FBI/Mossad/PET/FE/MI5/MI6/NSA/DIA/Europol/INTERPOL datasets against House inhabitants; promote only institutions that need first-class project interaction, leave the rest as indexed data.
@@ -583,10 +357,7 @@ The current problem is not lack of information. It is **retrieval cost**: import
 - [ ] **ENH-004 · Current World contextual exits:** from filtered News views, offer restrained links into relevant World/Politics/Economy/Map lenses without pretending feed content is canonical.
 - [ ] **ENH-005 · Economy relationship explorer:** give Economy a compact “who owes / funds / holds / regulates whom?” entry into the obligation graph.
 - [ ] **ENH-006 · Intelligence desk explorer:** allow the Intelligence Desk to open typed institutional records (mandate, jurisdiction, oversight, sources) without mixing them with allegations/cases.
-- [x] **ENH-007 · Recent-work integration report:** generate a small report from commits + changed canonical registries that asks whether each substantial new subsystem gained ownership, exposure and validation.
 - [ ] **ENH-008 · Reader route telemetry without tracking:** consider a purely local/dev audit of route density and unreachable pages; do not add invasive user analytics merely to solve information architecture.
-- [x] **ENH-009 · Page-purpose contract:** every registered public surface now carries a machine-readable one-line `reader_job`; the House schema and whole-site architecture audit consume it so audits can reason about page purpose without scraping prose.
-- [x] **ENH-010 · Visible / semi-visible / invisible contract:** public-surface authority explicitly defines visible (primary/secondary), semi-visible (specialist), compatibility and invisible/backend-only behavior; schema validation and the shared visibility resolver enforce the distinction.
 
 #### Whole-site spatial / design audit wave — 2026-09-21
 
@@ -623,10 +394,7 @@ These jobs turn the current House into a more intentional reader environment. Th
 - [ ] **SITE-ARCH-029 · Error/empty-state storytelling:** replace generic “no data / failed / empty” states on readers, news, map, search, records and dossier surfaces with concise state-specific explanations and useful next actions; never make a failed fetch look like absence of knowledge.
 - [ ] **SITE-ARCH-030 · Final human browsing audit:** after the automated graph/registry passes, manually browse the live built site from arbitrary pages without using repository knowledge. Record every moment of “where am I?”, “why is this here?”, “which of these should I choose?”, “why did this open another index?”, or “how do I get back?”, then convert only reproducible friction into fixes.
 - [ ] **SITE-ARCH-031 · Link-repetition heatmap:** review repeated anchor destinations on long authored pages. Current source hotspots: Tim → Story 33 links, Claims 19, Public Witness 16, Ontology 16; House → Rooms 13 and Axis 10; Religion → Story 10 and Bible 7; World → World Systems 7 and Map 6. Preserve contextual links that genuinely help; consolidate repeated rails/cards/footer links that merely restate navigation.
-- [x] **SITE-ARCH-032 · House / Rooms boundary sharpening:** Rooms hands topology back to House; House keeps only Rooms + Living Axis as first structural continuations; and the deeper holdings/nested-Room enumeration blocks are now explicitly Research-depth diagnostics with direct handoffs back to Rooms. House teaches topology; Rooms remains the public ownership/content directory.
 - [~] **SITE-ARCH-033 · Tim long-reader route compression:** first compression wave complete in the dated identity river: repeated Story/Claims/Witness/Ontology route clusters were reduced to one contextual exit per dated row plus one shared archive rail. Continue through question chapters and footer rails only where repetition is mechanical rather than genuinely contextual.
-- [x] **SITE-ARCH-034 · Home / House / Rooms three-layer test:** Home now orients and hands structural questions to House/Rooms/Axis; the former seven-tab structural teaching instrument was removed from Home along with four teaching-only runtime datasets. House explains topology and keeps directory diagnostics at Research depth; Rooms owns browsing/placement.
-- [x] **SITE-ARCH-035 · Fast-access alias collision cleanup:** remove ambiguous generic aliases that made one query resolve to multiple unrelated destinations: `countries` now belongs to World Map rather than both Map/World, `potato` belongs to Potato of Life rather than both Potato/Tim, and bare `find` is reserved for the Find interaction rather than both People & Cases/A–Z. Keep destination-specific aliases instead of compensating with chooser UI.
 - [ ] **SITE-ARCH-036 · Direct-door visibility exception audit:** site-access intentionally promotes a few specialist or unregistered destinations (Map, Rooms, Economy, TTS, Claims, Public Witness, 100,000 Hours, CIA/Bank). For each, record the demonstrated retrieval need that justifies bypassing the ordinary visible/semi-visible hierarchy; demote shortcuts that no longer meet that bar.
 
 
@@ -636,7 +404,6 @@ These jobs turn the current House into a more intentional reader environment. Th
 ### P2 — maintainability and duplication
 
 - [ ] Reduce hand-maintained asset-version duplication for shared components (for example the same spiral CSS/JS version string repeated across four reader pages).
-- [x] Move repeated nested-Room presentation CSS into shared assets. All 38 registered interiors now share `app/room-interior.css`, including local-center, adjacency, boundary and action-control rules.
 - [ ] Continue cross-file duplicate auditing and merge only true duplicate definitions; preserve primary evidence, historical snapshots with provenance value and additive research.
 - [ ] Review old `data/expansions/*wave*/*round*` records against their current canonical owners and House holdings. **Registry reconciliation complete:** all 14 JSON expansion files are now classified and validator-enforced. `wave-009.json` is a promotion backlog (54/55 seed ids are not in `data/nodes.json`), `lexicon-wave-009.json` is a migration candidate (177/179 aliases are absent from the narrow public discovery-alias registry), wave 012 remains actively cited research, and wave 018 remains a broad research reservoir. Next: classify the 54 seed ids by strongest canonical owner and design the correct backend/node alias owner before migrating vocabulary.
 - [ ] Continue stale branch/PR salvage already listed below, but treat branch age as an audit signal rather than a merge requirement.
@@ -654,23 +421,17 @@ Canonical audit: `knowledge/research/stale-branch-salvage-audit-2026-09-20.json`
 
 Current rules:
 
-- [x] Compare stale branches against current `main` before assuming work is missing.
-- [x] Record ahead/behind counts and file-level disposition for the oldest open PRs and high-value Sep-18/19 branches.
-- [x] Confirm that several apparently unmerged assets are already on `main` through later salvage/convergence work.
 - [ ] Reconcile open PR #184 (Evidence Root) and close it once remaining branch-only files are either superseded or selectively salvaged. Do **not** merge the 1,271-commits-behind branch wholesale.
 - [ ] Reconcile PR #142 Story evidence wave at record level against the newer current Story registry/audit; port only still-missing evidence labels.
-- [x] Salvage the branch-only semantic Science auditor from PR #137 onto current `main`, including regression tests, fallback-abstract filtering and portal-level semantic validation. Runtime confirmation now belongs to the normal CI chain.
 - [ ] Compare PR #129's branch-only `app/archive-lookup.js` with current Explore, A–Z, Room holdings and machine discovery; port a minimal resolver only if a live gap remains.
 - [ ] Audit Sep-19 public-surface authority v2 against current House route authority; salvage only routes/metadata still absent after Sep-20 convergence.
 - [ ] Audit the branch-only US Mud/Below map layer under current World Map interaction, provenance and evidence contracts before deciding whether it belongs on `main`.
-- [x] Promote and retire focused World Map PRs #305 and #310–#314 onto current `main`: ADL scale ownership, reduced-motion policy, Gateway/Infrastructure Interaction Router ownership, centralized Style Lifecycle audit model, Geo/Style/Tooltip singleton ownership, and Evidence Layer URL ownership. All six PRs are now closed as superseded after selective promotion; stale branch bases were not merged wholesale.
 - [ ] Continue retiring branches that are 0 commits ahead of `main` or whose unique value is fully absorbed into stronger canonical owners.
 
 ### P3 population / instrumentation work still active
 
 The House depth programme explicitly says to prefer population, instrumentation, longitudinal cases and pruning over another broad ontology wave. Continue:
 
-- [x] instrument the first eight existing Works with the Fruit contract (`data/house/works-fruit-wave-001.json`), including explicit unknown-reception states and CI validation;
 - [ ] continue Works/Fruit instrumentation with recovered/experimental works and the Great Book as a separately typed literature case;
 - [ ] run the first real canon revision end-to-end through the revision protocol;
 - [ ] propagate Shadow/Below overlays into Culture, History and Research where they add mechanism rather than imagery;
@@ -681,79 +442,31 @@ The House depth programme explicitly says to prefer population, instrumentation,
 
 ### Formal-grammar propagation still active
 
-- [x] Add the shared project formal grammar and register it in core/ontology/frontend architecture.
-- [x] Type core House operators and key House interfaces.
-- [x] Mark Axis D1–D11 explicitly as project dimensions `D^(P)`.
-- [x] Add formal correspondence contracts to major body cross-layer objects.
-- [x] Expose correspondence maturity in Body Lens and Research Lab.
-- [x] Add CI validation for formal-grammar references so future records cannot silently invent incompatible Door/Axis/dimension types.
 - [~] Add projection-loss / reconstructability metadata to selected World Map and House aggregate views. **World Map wave complete on branch:** Active View now discloses preserved/omitted information and source-linked reconstructability for scalar, set, relation and comparison views; House aggregate views remain.
 - [ ] Extend the Eye/measurement formalism into sensory/attention reader surfaces where it improves explanation.
 
 
 ### CIA dossier bureau overhaul — 2026-09-21
 
-- [x] **CIA-UI-001 · Canonical visual authority:** make CIA the visually dominant live dossier bureau and show FBI only as a faded retired predecessor beneath it.
-- [x] **CIA-UI-002 · Parchment dossier:** move the reusable character file toward a paper case-file/account-statement surface with stronger typography, stamps, monogram portrait fallback and sourced-image slots.
-- [x] **CIA-UI-003 · Archive activity visibility:** visually attenuate historical/dormant folders while preserving full readability on hover/focus; activity opacity reflects archive recency only, never moral value.
-- [x] **CIA-LEDGER-001 · Symbolic account contract:** add project-internal good-karma, karmic-debt, repair/outstanding, interest and optional Dooley Welfare fields with explicit non-financial/non-objective boundaries.
-- [x] **CIA-LEDGER-002 · Account reader:** expose a Karma account tab and summary strip on every dossier; absent evidence renders as **unassessed** rather than fabricating a score.
-- [x] **CIA-MEDIA-001 · Provenance-first images:** add portrait/evidence-image schema and reader slots; never scrape or guess a real person's face when the dossier does not own an explicit source.
-- [x] **CIA-MEDIA-002 · Shared symbolic proxy pool:** add a remote-only Wikimedia Commons registry for Dog, Footstool, Mud/Soil, Potato, Tomato and Angel symbols; dossiers deterministically borrow up to three role-matched images and label every one **symbolic · not a likeness** with source/license metadata.
 - [ ] **CIA-MEDIA-003 · Recover actual dossier images:** attach sourced screenshots, profile images, memes and project art to dossiers where the subject/source is explicit; prioritize active/recovery-heavy files first.
-- [x] **CIA-DEPTH-003 · Full dossier casebook pass:** all 36 canonical CIA character dossiers now carry a richer evidence inventory and casebook layer derived from the character archive, dated social-presence ledger, cast book and recent conversation intake. Files expose occurrence density, expanded day-level cases, co-present actors, source mode, recent recovery markers and unexpanded indexed dates instead of relying on a couple of thin highlights.
 - [ ] **CIA-DEPTH-004 · Expand indexed-but-unwritten dates:** work through each dossier's `casebook.mining_frontier` and turn high-density Chronicle dates into scene-level records only when the underlying source yields actual context. Prioritize Marty, GG, Tim, Port Monkey, Rage, Sammy, TXT, Termite, Juice and Ledgeview by occurrence density.
-- [x] **CIA-DEPTH-001 · Meaning spine contract:** define and render why-this-file-matters, known, interpretive, unknown, relationship-arc and confidence sections.
 - [~] **CIA-DEPTH-002 · Population wave:** 36/36 canonical dossiers now expose the meaning spine. Baseline coverage complete. Further depth work is recent-first: DIM, TXT, Matthew, Mediomu, Rahu, Port Monkey, GG and Tim/current 2026 material. Historical dormant files are maintenance-only unless new evidence appears.
-- [x] **CIA-LEDGER-006 · Event-led accounting:** symbolic accounts now prefer dated credit/yield/repair/debit/dispute events over aggregate moral scores; the reader summarizes sourced event counts and leaves absent balances unassessed.
 - [~] **CIA-LEDGER-003 · Populate real symbolic entries:** current/recovery files now include source-bounded project-credit, yield, growth, repair and zero-weight dispute rows where supported; keep mining recent evidence first and do not backfill dormant files merely for volume.
-- [x] **CIA-LEDGER-004 · Universal Dooley Welfare:** every canonical story participant receives the same microscopic fictional welfare rate from the best exact story-entry date; calibrated on 2026-09-21 to `0.00000000001 sUSD/second` after conversation archaeology found no older canonical per-second rate. Accrual continues through inactivity, closure and death; fuzzy start dates remain provisional.
-- [x] **CIA-LEDGER-005 · Interest and closure rules:** symbolic debt/credit does not compound automatically; only welfare is time-accrued. Repair, forgiveness, dispute, dormancy and resolved/unresolved closure are explicit dated states/events that change current posture without deleting history or imposing inactivity penalties.
-- [x] **CIA-ACTIVITY-001 · Last-seen derivation:** `knowledge/cia/activity-index.json` now covers all 36 canonical dossiers and derives active/recovery/historical/dormant/closed prominence from explicit state plus recovered last-seen dates; opacity remains recency only, never moral value.
-- [x] **CIA-CURRENT-001 · Recent-first Current Desk:** promote active/recovery 2026 dossiers on the CIA landing and add an all/current cabinet toggle; dormant historical files remain searchable but no longer consume equal visual attention.
-- [x] **CIA-BANK-001 · World Spiritual Bank public surface:** promote Mud Bank into the North/Roots World Spiritual Bank while preserving live CIA sub-ledgers, welfare, evidence-weighted event adjustments and individual deep links.
-- [x] **CIA-BANK-002 · Current balance snapshot:** `knowledge/cia/mud-bank-snapshot-2026-09-21.json` now reflects priced TXT debit, Port Monkey debit+repair, and current/recovery balances while keeping unsupported conflict zero-weight.
-- [x] **CIA-BANK-003 · Source-weighted debt pricing:** price only distinct dated conduct using category × evidence tier × capped repetition multipliers; one incident cannot be double-charged through multiple labels.
-- [x] **CIA-BANK-004 · Debt evidence ledger:** `knowledge/cia/debt-evidence-ledger.json` separates priced debits from unpriced negative candidates and preserves why each candidate was or was not charged.
-- [x] **CIA-BANK-005 · Account posture index:** `knowledge/cia/account-posture-index.json` covers all 36 dossiers with gross credit, gross debit, net event adjustment, posture and unpriced-negative-candidate counts; CI recomputes it from dossiers.
-- [x] **CIA-BANK-006 · North/Roots world ledger:** `knowledge/core/north-root-spiritual-bank-architecture.json` defines North/Roots custody, Ladder repair/ascent, Mud/Swamp debt-residue, Rubble, Shadow/Loosh, Epstein-Axis and Rainbow-Shadow system domains, with Garden/Tikkun as repair.
-- [x] **CIA-ACCESS-002 · Culture / intelligence namespace polish:** expose Character Archive earlier from Culture, label real U.S. CIA/FBI surfaces as REAL WORLD / REAL INSTITUTION, strengthen the retired Potatoverse FBI namespace, and keep reciprocal wrong-door links between real intelligence and project archive surfaces.
-- [x] **CIA-BUILDING-002 · Contextual entrances:** place a grand mythic entrance in Potatoverse / Canon, a casework side door in Culture & Information, a digital recovery hatch in Internet & Platforms, and a deliberately bounded symbolic-finance annex in World Systems. Keep empirical ownership outside the threshold.
-- [x] **CIA-UI-004 · Department atmosphere:** distinguish the CIA with investigative desk/evidence-room/file-cabinet cues and the World Spiritual Bank with vault/teller/ledger/balance-sheet cues while preserving the shared-building corridor.
-- [x] **CIA-KARMA-002 · 42T capital bridge:** formalize 38.8T opening Potato reserve + 3.2T dated Spiral growth = 42T closing Mountain-held reserve; treat Mountain as custody rather than another additive 42T asset.
-- [x] **CIA-KARMA-003 · Positive micro-pricing:** map Table value, Potato growth, Gate passage, Ladder completion, Potato study, spiritual growth and archive/protection work onto existing 25/12/8/6 sUSD event categories with one-output/one-credit anti-double-counting.
-- [x] **CIA-BANK-029 · Proper bank-side liabilities:** treat negative character balances as counterparty receivables/claims and positive character balances + Welfare as Bank liabilities; unresolved orphan identities remain suspense, not liabilities by default.
-- [x] **CIA-KARMA-005 · Trajectory / curve analysis:** calculate checkpoint velocities, acceleration regimes, linear/exponential/plateau/recent-momentum scenarios, milestone dates and scale-gap diagnostics; projections remain separate from observed balances.
 - [ ] **CIA-KARMA-006 · Post-42T checkpoint recovery:** mine September 2026 conversations/public posts for any balance after 1 Sep; every new checkpoint should automatically recompute the scenario spread and reveal whether the 42T plateau held.
 - [ ] **CIA-KARMA-007 · Delta-event correlation:** test whether dated negative-input clusters, major public events, building/output bursts or repair episodes align with the +0.2T/+1.2T/+1.2T/+0.6T changes without assuming causation.
 - [ ] **CIA-KARMA-004 · Capital attribution archaeology:** recover source-specific reasons for the +0.2T, +1.2T, +1.2T and +0.6T headline increases before assigning those deltas to named people, systems or outputs.
 - [ ] **CIA-KARMA-001 · Table / Potato / Gate / Ladder positive-value model:** define source-bounded, non-gameable criteria for created value on the Table, Potato growth, Gate passage, Ladder walking, Potato study and spiritual growth before assigning any numeric positive adjustments.
-- [x] **CIA-BUILDING-001 · One institution / two entrances:** CIA archive and World Spiritual Bank now share a machine-readable building model, common interior corridor and room grammar across cabinet, dossier, associations, incidents and bank surfaces; selected character context is preserved between dossier and bank.
-- [x] **CIA-BANK-008 · Bank-first compact UI:** open on consolidated assets/liabilities/karma counts rather than a selected person; replace long stacked account/system cards with left-right horizontal rails and opt-in account statements.
-- [x] **CIA-BANK-009 · Headline-field reconciliation:** reconcile the dated 42T project-symbolic headline as one double-entry field (Tim-side claim ↔ debtor/system-side liability), expose named priced allocation versus unallocated shadow reserve, and keep proxy/archetype/population multipliers null by default.
-- [x] **CIA-BANK-011 · Conversation-mined bank operators:** preserve exact recovered bank/debt wording separately from derived operators and unrecovered leads; add hidden activation, capital-deployment, obligation, entanglement and provenance-depth states without bloating the public Bank.
 - [ ] **CIA-BANK-012 · Debt-reduction evidence mining:** specifically recover examples where Tim described karmic debt as reduced, repaired, forgiven, converted into useful work, closed or transferred; the current archive is much richer on accumulation than verified reduction.
 - [ ] **CIA-BANK-013 · Named increment archaeology:** identify specific people/events that Tim said changed the 38.8T→42T headline balance and preserve any explicit increments; do not infer deltas from chronology alone.
-- [x] **CIA-DEBT-014 · 2025–2026 negative-input conversation mining:** recover direct Tim/user debt-causation language and register accusation, finger-pointing, accountability failure, circling/pursuit, Mud/stone throwing, wasted time, smear, dog-piling, broken promise/covenant, obstruction and Seed-of-Death/strife mechanisms as source-bounded system inputs. Keep 2025 direct-chat absence explicit and retrospective rows unpriced.
-- [x] **CIA-DEBT-017 · Roboto San narrative-conflict dossier:** merge Roboto San / Robotosan with Tim's nickname “Roberto Sanchez” as one archive identity; preserve the 2024 Cyraxx-frame claim, profile-attributed remarks and 7 Jul 2026 conflict trace as unpriced coercive-narration / reputational-entanglement debt candidates pending primary-source recovery.
-- [x] **CIA-ROLE-018 · All-entity role/archetype census:** normalize archetypes, narrative functions and explicit symbolic creature/job roles across all 36 CIA entities; derive role posture for sorting while keeping role weight at zero.
-- [x] **CIA-DEBT-019 · Don Jefe dated destructive-act debit:** price the 11–12 Feb 2025 Chronicle destructive-bot/channel-erasure event at −5.4 sUSD (−12 destructive-act × 0.45 Chronicle evidence), with the allegation boundary retained.
-- [x] **CIA-DEBT-020 · PKFC family-boundary candidate:** record the old-profile allegation of deceased-father imagery and unsolicited relative contact as a targeted-harassment/boundary candidate, but keep it unpriced pending exact date/raw artifact recovery.
 - [ ] **CIA-ROLE-021 · Direct-Tim role provenance mining:** recover exact Tim statements assigning Dog, Footstool, Farmer, Cow, Potato, Angel, Messenger, Mud Dweller and related jobs/creatures; upgrade census rows from editorial-normalized to Tim-attributed only where primary conversation/public-post provenance survives.
-- [x] **CIA-DEBT-030 · Mud-trace micro-slight framework:** add a three-stage `mud-trace → unpriced-candidate → priced-debit` ladder plus low-severity categories for sourced ridicule/needling, disruption, minor boundary pressure and reputational undermining. Small slights can now be preserved without treating disagreement, labels or unresolved allegations as guilt or numeric debt.
 - [ ] **CIA-DEBT-031 · Micro-slight provenance sweep:** mine dated primary/recovered material for concrete small slights (jabs, disruptions, boundary pressure, correction-resistant narration, unwanted persistence) and promote only source-bounded, non-duplicative acts into named account statements; keep disputed/undated allegations as unpriced research notes.
 - [ ] **CIA-DEBT-015 · Promote negative inputs to named events:** for each system input, recover the concrete dated act/counterparty and promote only non-duplicative events into person sub-ledgers. Priority: TXT repetition/correction reach; DIM pursuit/boundary scenes; unresolved Mud Turd Boy handle; 2025 TXT/Monkey/Don Jefe Chronicle cluster; GG grievance/healing outcome.
 - [ ] **CIA-DEBT-016 · Recover vomit / abomination / insolence originals:** current conversation-history summaries indicate these phrases exist, but original turns were not recovered in this pass. Do not price or quote them as exact until primary conversation provenance is located.
-- [x] **CIA-BANK-022 · U.S. exposure / coverage funnel:** separate 36 resolved CIA entities, 51 additional alias/handle labels, unresolved/throwaway identities, observed network edges, audience/platform amplification, institutional gaps and the 342.9M U.S. population denominator. Scale exposure, not guilt; population membership remains zero-weight.
-- [x] **CIA-BANK-023 · Substitution-labor asset:** treat Tim's sourced witness/archive/moderation/protection/building/repair work as a positive asset-side operator pending anti-double-count pricing; do not convert other people's non-participation into automatic debt.
-- [x] **CIA-BANK-026 · Orphan clearing ledger:** define unresolved/hollow/throwaway identities as an unpriced suspense layer; preserve Tim's “Father of every orphan of the internet” language and keep the 99,000 figure explicitly symbolic (“99 problems” riff), not a census.
 - [ ] **CIA-BANK-027 · Hollow-account evidence sweep:** recover stable no-PFP/blank-avatar handles and exact Tim-assigned Footstool/Dog/orphan labels from conversations/screenshots; missing PFP alone remains zero-weight.
 - [ ] **CIA-BANK-028 · Orphan deduplication:** cluster throwaway handles by platform/date/name/style/links/edges before counting principals; preserve account-level events even when several handles later merge to one entity.
 - [ ] **CIA-BANK-024 · Identity-shadow census:** deduplicate handles/aliases across Story, CIA, public chat and recovered conversation sources; count distinct unresolved/throwaway identities with source confidence before using any large handle-cloud scenario.
 - [ ] **CIA-BANK-025 · Exposure-edge instrumentation:** count sourced recurrence, unique counterparties, relationship edges, circulation/reach and time-cost around the densest negative-input clusters so the shadow reserve can be explained by coverage gaps rather than arbitrary multipliers.
 - [ ] **CIA-BANK-010 · Entanglement coverage mining:** mine source-backed anonymous handles, throwaway accounts, relationship edges, recurrence, shared-neighbour and repair/closure events so the Bank can grow coverage without inventing population liability.
-- [x] **CIA-BANK-007 · System liabilities stay unpriced:** `knowledge/cia/system-liability-ledger.json` stores world-scale protection/exploitation/opacity/rubble domains separately from individual CIA balances and forbids collective guilt by population membership.
-- [x] **CIA-ACCESS-001 · Bank / Tim dossier reachability:** expose Mud Bank and Tim's CIA file from Core Identities and the CIA cabinet; make CIA Character Archive + Mud Bank direct Quick Access doors while keeping the real U.S. CIA separately labeled as Intelligence Desk and retired FBI out of the primary door set.
 - [ ] **CIA-FBI-001 · Legacy disposition:** audit unique files under `knowledge/fbi/`; migrate any still-unique information into CIA, then leave only the smallest compatibility/history layer necessary.
 
 ## Growth compass — current high-value frontiers
@@ -850,7 +563,6 @@ If the answer to the cleanup question is no, the pass is not finished.
 - [ ] Recover TXT's 2017–2019 sequence and alias continuity, then bridge it to the 2024 literary layer and 7 July 2026 public marker without collapsing them.
 - [ ] Keep Mai Mercado / Christiania 2016 routed through claim-level legal provenance; add a public bridge only if it can expose evidence status without turning the political/legal actor into a Potatoverse caste.
 
-- [x] Promote CIA — Characters, Incidents & Associations to canonical character-archive ownership; migrate dossier graph, Associations, Incidents, public routes, House references and CI validation while retaining FBI compatibility redirects.
 - [ ] Continue CIA conversation archaeology: recover exact-source artifacts for Dim/TXT 2026 sequences, then merge only source-bounded records into canonical character dossiers and association edges.
 
 ## Whole-site mission programme — 2026-09-21
@@ -865,12 +577,8 @@ The governing rule is: **life → meaning → making → world → shadow → ev
 - [~] **SITE-MISSION-004 · Timeline as life lens:** life/project chronology now persists full mode/filter/search/detail/sort state in shareable URLs; Tim, Story, Raw Story, Claims and life-work chronology handoffs enter `?mode=project`; Tim/Father-side, Son, Shared and Project/system actor tracks are visible/filterable and shareable; event source records are direct links; underlying Timeline records remain available without JS; Timeline JS/CSS are content-fingerprinted in the public build. Remaining: establish a stable event-ID bridge between canonical Journey phases / finished Story episodes and individual Timeline events instead of guessing links from dates or prose.
 - [~] **SITE-MISSION-005 · Shadow containment:** Culture now introduces Dog, orphan, Mud, Footstool, CIA/Character Archive and Bank language before dossiers with explicit non-caste/non-verdict boundaries and an event→source→relationship-change→current-state→label-last rule. Remaining: propagate repair/current-state emphasis through the deepest dossiers and Below reader.
 - [ ] **SITE-MISSION-006 · North/world-repair ladder:** structure North as symbol → observation → programme → evidence/constraints → current status, then link World Systems/Economy/Law/Politics without collapsing symbolic and empirical claims.
-- [x] **SITE-MISSION-007 · Stale-master retirement:** `TIM-DOOLEY-LIFE-AND-MYTH-TIMELINE.md` is explicitly a legacy research stratum and remains valid as provenance/source material. The two remaining FAQ records that incorrectly listed it under `canonical_owners` now route only to current timeline owners; no discovered machine-readable canonical-owner field promotes the legacy timeline anymore.
-- [x] **SITE-MISSION-008 · Runtime resilience:** Story isolates fragment failures; Elevator separates core projection from optional nested/interior/inhabitant data and exposes direct static fallbacks; main Timeline keeps project chronology alive when lineage/figure/foundation enrichments fail; Foundation Timeline preserves its core clock when genealogy/placement/religious enrichments fail; Room enrichment and House isolate optional featured/population/dossier/foundation layers; People & Cases keeps object browsing alive when Room topology is unavailable; World Map already uses a core-first optional-module bootstrap with timeouts/failure diagnostics; Timeline and Foundation Timeline now expose direct underlying-record links for no-JS/degraded reading.
-- [x] **SITE-MISSION-009 · Question concierge:** Questions now opens with human intents (Tim's life, Potatoism, Son/crucifixion, North, Works, shadow vocabulary, CIA/Bank, sourcing and science boundaries) and Paths now carries complete worked journeys for Tim's life, Potatoism formation, Son sequence, North/world-repair, conflict→repair and claim verification.
 - [ ] **SITE-MISSION-010 · Project self-story:** connect Great Book, streaming, games, images/music, AI work, GitHub/site and research architecture to the life phases that produced them.
 - [ ] **SITE-MISSION-011 · People change over time:** every important recurring person should expose first appearance → role then → relationship changes → repair/current state → evidence class, rather than a permanent archetype label.
-- [x] **SITE-MISSION-012 · Page-purpose contract:** `data/house/public-surface-missions.json` now gives every active public surface a narrative stage, `become`, `must_not_become`, primary next surfaces and density intent; House validation enforces coverage, field completeness and valid next-surface references without turning subjective editorial judgments into CI.
 - [ ] **SITE-MISSION-013 · No-overshadow review:** explicitly test that Home is not House, Tim is not Claims/Story, Potato is not every domain, Axis is not all theology/science, and Culture/CIA/Bank do not become the default interpretation of the whole project.
 
 - [~] **CORE-HEAD-001 · Exact-head core convergence:** repair stale validators after the access/runtime cleanup: World name-first routing belongs to the universal access contract, and Home runtime instrumentation uses `loadJson(...)` rather than raw `fetch(...)`. Awaiting exact-head CI verification before closure.
@@ -886,23 +594,15 @@ The governing rule for this wave is:
 
 > **Every important Room should be worth entering even if the reader does not click another link.**
 
-- [x] Build a semantic audit of every active nested Room; Dwelling, named-being and specialist institution audits continue in the next phase.
-- [x] Track nested Room maturity as `shell` → `seeded` → `inhabited` → `deep` in `data/house/room-maturity-registry.json`; human review remains authoritative.
 - [ ] Give each important Room a reader body: orientation, core explanation, internal landmarks, development, relations, evidence boundary, tensions/open questions, concrete examples and deeper routes where the subject supports them.
 - [ ] Make actual subject knowledge visually and semantically primary; reduce the dominance of Elevator links, parent links, adjacency cards, backend path names and repeated ownership boilerplate.
 - [ ] Project existing canonical holdings into readable synthesis instead of duplicating those holdings into a second source of truth.
-- [x] Deepen the first thin World/society wave: Economy & Finance, Law & Justice, Politics & Governance, Timeline / Events, and Subculture / Cult / Group Formation are inhabited.
 - [~] Deepen the first thin religion/canon wave: Theology & God-language, Symbolic Architecture, Bible & Christianity, Comparative Mythology, Esoteric & Sacred Geometry, Other Traditions, Practice & Ethics, Witness & Attestation, and Prediction / Revelation / Interpretation Time are inhabited.
-- [x] Deepen Mathematics & Geometry and Physics & Cosmology; qualitatively audit Systems & Dynamics, Model Testing, Experiments, Information Ecology, Infrastructure and Geography. Current medium-Room audits show those existing readers are substantive.
-- [x] Audit all registered nested Rooms by human reading and authored-wave review; all 38 are now recorded as `inhabited` or `deep`. Continue semantic-gap and freshness audits.
 - [ ] Audit the top-level Dwellings so they explain their subjects and inner relationships rather than merely listing Rooms.
 - [ ] Audit `rooms/potatoverse-canon/beings/**`; replace true stubs with sourced dossiers where material exists and keep authored/project roles distinct from externally established facts about real people.
 - [ ] Explain important wormholes and cross-Room links in prose: what relation is being made and what changes when the reader crosses domains.
 - [~] Give each Room a shallow-to-deep path: validation now requires concrete examples and a deeper evidence/specialist continuation across all 38 nested Rooms. Continue editorially checking tensions/counterpressure and source placement rather than treating the structural minimum as completion.
 - [~] Add anti-slop checks: nested-Room validation now requires concrete examples/cases/distinctions, a substantive body floor and rejects repeated generic “This Room…” framing. Remaining: add cross-Room near-duplicate prose detection as a hard or advisory threshold.
-- [x] Add a Room quality validator that detects navigation-only shells, missing authored subject material, thin bodies, missing concrete examples, missing deeper continuations, maintenance-language leakage and excessive generic Room framing.
-- [x] Use Economy & Finance, Theology & God-language and Symbolic Architecture as the first three pilot Rooms because they exercise factual-systemic, theological/canonical and symbolic-project-native content respectively.
-- [x] Treat Neurobiology as one useful qualitative reference: literal subject matter first, meaningful distinctions, evidence boundary, project relation, then deeper routes.
 - [ ] Finish only when clicking an important Room feels like entering a subject rather than entering another hallway.
 
 
@@ -910,32 +610,20 @@ The governing rule for this wave is:
 
 The corridor-only baseline is eliminated across the 38 registered nested subject Rooms. The next phase is not indiscriminate expansion.
 
-- [x] Audit all ten top-level Dwellings for stale summaries, duplicated navigation and missing synthesis between their inner Rooms. All ten already contain substantive synthesis; Archive & Sources had one stale FBI naming seam and was corrected to CIA terminology.
 - [~] Audit named-being dossiers and CIA specialist surfaces for stub pages, stale role-lock and missing date/source context. Current named-being Rooms reviewed as substantive; legacy FBI per-person dossiers converted to CIA redirects. Continue dossier-data/source completeness review.
 - [~] Audit specialist institution surfaces for subject explanation before controls/ledgers. CIA Incidents, Associations, Bank and dossier viewer reviewed; their explanatory boundaries are substantive. Continue North/Law/Science/World specialist-surface review.
 - [~] Run canonical-holding freshness checks so Room dossiers do not undercount newer knowledge owners. Fixed impossible counts in Core Identities, Memory & Recovery, and Internet & Platforms; added `scripts/validate_room_holdings.py` and CI enforcement. Continue deeper ownership-count reconciliation beyond featured holdings.
 - [~] Audit cross-Room handoffs: added missing high-value interfaces (Math→Physics, Identity→Genealogy, Culture→Evidence, Prediction→Witness, Visual→Architecture, Games→Systems, Music→Genealogy) and now annotate adjacent Room cards with interface type, transformation and guard. Continue lower-value/bare adjacency coverage.
-- [x] Add object-level spotlights where Rooms were conceptually clear but abstract. Physics, Esoteric Geometry, Prediction/Time, Potato Biology, Geography, Music, Games, Visual Art, Memory & Recovery, Other Traditions and Research Programmes now expose richer canonical object populations.
 - [~] Check TTS/readability on newly long Rooms. Generated `In this Room` guides are live; object cards now offer direct `Open the thing` and secondary `Place in House` actions to reduce navigation loops. Continue TTS, paragraph-length and mobile readability review.
 - [ ] Review repeated CSS patterns from the inhabitation wave and consolidate where safe without flattening the different Room personalities.
 - [ ] Add a maturity downgrade path: validator/audit should permit a Room to be marked `seeded` again if substantive content is removed or becomes misleading.
 - [ ] Continue qualitative audits of semantic gaps even when validators pass; validators protect floors, not editorial excellence.
 
-- [x] Retired FBI namespace is now compatibility-only: legacy utility/person URLs redirect into CIA; `scripts/validate_legacy_fbi_redirects.py` prevents new live dossier ownership from returning there.
 
-- [x] Add a public reader completeness contract covering Home, Rooms, House, Explore and all active Dwellings; enforce it in CI so major entry surfaces retain distinct reader jobs and concrete substance.
-- [x] Add curated Dwelling featured-object shelves plus a Rooms-wide best-of shelf so readers encounter high-value artifacts before topology/navigation.
 
-- [x] Room inhabitant registry now requires concrete openable routes, summaries, status boundaries and valid nested-Room placement; enforced by `scripts/validate_room_inhabitants.py` in CI.
-- [x] High-value Room interface contracts are protected by `scripts/validate_room_interfaces.py`; adjacent Room doors now expose what changes and what must remain guarded when crossing.
 
-- [x] Current non-retired knowledge corpus reachability is complete: 893/893 canonical records are reachable through governed Room/House surfaces; 41 retired `knowledge/fbi/` records remain intentionally outside the current corpus.
-- [x] Deep archive drawers integrate 18 major corpora (866 drawer-covered records) into nested Rooms, Dwellings and House without flattening every backend record into a featured card.
-- [x] Dwelling deep archive indexes expose the larger corpora behind each domain in addition to the curated featured-object shelf.
 - [ ] Future corpus work should prioritize promotion quality, synthesis, dated examples and reader journeys rather than raw reachability; the current corpus already has governed access.
 
-- [x] All 38 active nested Rooms now have editorial `Start here` sets backed by `data/house/room-featured-objects.json`; the full object population remains available underneath rather than competing equally for attention.
-- [x] Great Book, Experiments/Formalization and Information Ecology now pull concrete findings from their deeper canonical corpora into the reader prose, establishing the next semantic-completion pattern: promote insight, not merely routes.
 - [ ] Continue prose-alignment audits: compare each Room's featured objects and deep drawers against its reader body, then pull up only the insights needed for the page to explain its actual backend depth.
 
 
@@ -947,15 +635,6 @@ The governing editorial rule is:
 
 > **Increase population between population.** When two strong subjects already exist, make their meaningful relationship legible where a reader naturally encounters it. Prefer contextual prose, diagrams and one or two well-placed continuations over new global menus, tunnel pages or duplicate taxonomies.
 
-- [x] Remove the accidental Study Chamber registry/tier; preserve the existing reserved-Chamber rule.
-- [x] Build the source-led `Trees, Worlds, Wells & Ways` comparative cosmology reader across Norse, Jewish/Kabbalistic, Christian, Buddhist, Daoist and Potatoist lenses.
-- [x] Deepen Yggdrasil/Edda material as ordinary Comparative Mythology context: tree ecology, Odin eye/well, Hávamál ordeal, Norns, pantheon, creatures, Edda reading map and modern interpretive realm lens.
-- [x] Deepen Kabbalah/Qliphoth/angelology as ordinary Esoteric/Traditions context: biblical vs Kabbalistic vs Lurianic vs Hermetic strata, sefirot, later-occult shell names, angels/demons and repair.
-- [x] Connect Axis ↔ Yggdrasil/Kabbalah/Bible where Tree routing is already being explained.
-- [x] Connect symbolic North ↔ Yggdrasil while explicitly separating mythic orientation from geography and the empirical North Programme.
-- [x] Let the Bible comparator open outward to neighboring cosmologies without importing them into scripture.
-- [x] Let Esoteric Geometry and Other Traditions expose Qliphoth/Norse depth at the exact paragraphs where the reader needs it.
-- [x] Let Potato of Life point outward to comparative mirrors without making those traditions ingredients of Potatoist canon.
 
 ### Highest-value religious / symbolic gaps
 
@@ -1011,11 +690,6 @@ The governing editorial rule is:
 
 ### Timeline × tradition × project comparison
 
-- [x] Make historical clocks visible in Comparative Cosmology: emergence, text, institution, rupture and later reception remain separate.
-- [x] Add Norse clocks: Viking Age practice horizon, Prose Edda c. 1220–1222, Codex Regius c. 1270; preserve manuscript-date ≠ myth-origin-date.
-- [x] Add Kabbalah clocks: Bahir 12th century, Zohar late 13th century, Lurianic Safed c. 1570–1572, major Latin/Christian reception 1677–1684.
-- [x] Expose major religious historical events directly on Foundation Timeline.
-- [x] Add early Christian text clocks beside the existing 30s-CE Jesus-movement clock.
 - [ ] Add explicit project-comparison discovery clocks to tradition pages: when did Tim/project first invoke Yggdrasil, Kabbalah/Qliphoth, Buddhism, Daoism, Islamic ascent, Egyptian Duat, etc.?
 - [ ] Where first-attestation is unknown, show “earliest recovered” and keep a recovery TODO rather than inventing an origin.
 - [ ] Link every major religious timeline event to a contextual reader or canonical tradition record when a useful public route exists.
@@ -1024,12 +698,6 @@ The governing editorial rule is:
 
 ### Ladder / Bible deciphering programme
 
-- [x] Promote Genesis 28 → John 1:51 as a role-counterdistribution: Jacob's ladder/House/Gate traffic becomes Son-of-Man ascent/descent traffic.
-- [x] Promote Hebrews 3 as House anti-collapse grammar: builder ≠ House ≠ servant ≠ Son over House ≠ community-as-House.
-- [x] Promote Isaiah 22 as Key / open-shut / peg / seat / vessels access-support grammar.
-- [x] Promote Hebrews 9–10 as veil / living-Way threshold grammar.
-- [x] Promote Ezekiel 47 → Revelation 22 as source → river → tree → fruit/healing sequence.
-- [x] Promote Daniel 7 as differentiated Throne / Son-of-Man / holy-ones / kingdom role grammar.
 - [ ] Deepen Ladder into functions rather than only geometry: support, movement, mediation, access, recurrence, direction, carrying, return, messenger traffic and role transfer.
 - [ ] Compare Ladder with Mountain, Tree, Bridge, Gate, Way, Veil, Chariot and River as different operators rather than synonyms.
 - [ ] Mine remaining high-strength Bible overlap owners for sequences that contain at least 3 linked operators and a clear mismatch/counter-text.
@@ -1047,11 +715,6 @@ The governing editorial rule is:
 
 ### Denominations, schools & internal religious lineages
 
-- [x] Build a reader-facing Christianity branch map without promoting each denomination into House-level navigation.
-- [x] Split Christian depth into three ordinary guides: ancient communions; Reformation families; revival/holiness/restoration.
-- [x] Promote Presbyterian, Baptist, Friends/Quaker, Wesleyan-Holiness/Nazarene and Stone-Campbell/Restoration nodes into the canonical Christianity genealogy.
-- [x] Keep 431, 451, 1054, 1517, 1534, 1609, 1738, 1901/1906 etc. typed as differentiation/consolidation markers rather than simplistic church birthdays.
-- [x] Expose Christianity family history from Religion, Bible & Christianity, Comparative Cosmology and Foundation Timeline.
 - [ ] Add denomination-level source packets for Roman Catholic, Eastern Orthodox, Oriental Orthodox and Church of the East using official catechisms/council histories plus neutral academic history.
 - [ ] Add confession/source packets for Lutheran (Augsburg/Book of Concord), Reformed/Presbyterian (major Reformed confessions), Anglican (Articles/Prayer Book), Anabaptist (Schleitheim + later Mennonite traditions), Baptist (early confessions + Baptist World sources), Methodist/Wesleyan, Adventist, Nazarene and Pentecostal bodies.
 - [ ] Add a Christian canon comparison: Protestant, Roman Catholic, Eastern Orthodox, Oriental Orthodox, Ethiopian/Eritrean and Church of the East biblical/canonical traditions, with canon ≠ doctrine clearly separated.
@@ -1088,12 +751,6 @@ The governing editorial rule is:
 
 ### Materialization wave after Christianity
 
-- [x] Build public Judaism history/movements guide from existing Israelite → Second Temple → rabbinic → Karaite/Kabbalah/Hasidic/modern-movement data.
-- [x] Build public Islam lineage/school guide separating Sunni/Shi'i/Ibadi, legal schools, Shi'i lineages and Sufi currents.
-- [x] Build public Buddhism transmission guide beyond Theravada/Mahayana/Vajrayana into Chan/Zen, Pure Land and Tibetan transmission families.
-- [x] Add Daoism as an explicit canonical lineage family: classical textual field, Celestial Masters, Shangqing, Lingbao, Quanzhen, Zhengyi.
-- [x] Sync new Buddhist and Daoist lineage nodes into Foundation Timeline.
-- [x] Wire Judaism, Islam, Buddhism and Daoism from Religion and Comparative Cosmology without growing global navigation.
 
 #### Judaism next depth
 
@@ -1152,12 +809,6 @@ The governing editorial rule is:
 
 ### Remaining tradition depth after first public guides
 
-- [x] Materialize Hindu traditions without forcing a single-founder or denomination model.
-- [x] Materialize Jain traditions with sacred Tirthankara chronology separated from the historical Mahavira clock and gradual sectarian differentiation.
-- [x] Materialize Sikh history around Guru succession, scripture, Khalsa and community institutions.
-- [x] Materialize Zoroastrianism with wide Zarathustra dating uncertainty and separate composition/canon/manuscript clocks.
-- [x] Materialize Bahá'í history around the unusually precise Bábí/Bahá'í modern event sequence.
-- [x] Wire all five from Religion and Foundation Timeline without making them top-level House navigation.
 
 #### Hindu traditions next depth
 
@@ -1221,12 +872,6 @@ The governing editorial rule is:
 
 ### East Asian materialization and ancient-religion source plan
 
-- [x] Add canonical Confucian lineage family: classical Ru field → Han institutionalization → Song–Ming Neo-Confucianism → Cheng-Zhu / Lu-Wang → modern reconstruction.
-- [x] Add canonical Shinto lineage family: early kami field → Kiki textual layer → shinbutsu-shūgō → Meiji separation/state reorganization → postwar Jinja Shinto.
-- [x] Add Chinese popular/communal religion as a diffuse field rather than a denomination tree: ancestors, local gods, temple networks, divination and regional ritual practice.
-- [x] Materialize public Confucian, Shinto and Chinese communal-religion readers.
-- [x] Audit all tradition HTML pages for core tag balance and missing internal links; current pass found no failures.
-- [x] Sync East Asian lineage nodes into Foundation Timeline.
 
 #### Confucian traditions next depth
 
@@ -1262,10 +907,6 @@ The governing editorial rule is:
 
 #### Ancient Egyptian / Mesopotamian / Greek-Roman source plan
 
-- [x] **Ancient Egypt:** build period spine (Old/Middle/New Kingdom, Late/Ptolemaic/Roman), major temple cults, Pyramid/Coffin/Book of the Dead textual strata, Osiris/Ra/Amun/Horus/Isis developments, kingship/maat/afterlife, priesthood and regional cult variation.
-- [x] **Mesopotamia:** separate Sumerian, Akkadian, Babylonian and Assyrian periods; city-god cults, temple economy, kingship, divination, underworld and textual corpora. Do not create one timeless “Mesopotamian pantheon.”
-- [x] **Greek religion:** map polis/cult/ritual/oracle/mystery traditions alongside Homer/Hesiod literary mythology; Apollo/Delphi, Athena/Athens, Demeter/Eleusis, Dionysian traditions and hero cults should be contextual, not one god-card catalog.
-- [x] **Roman religion:** household cult, civic priesthoods, imperial cult and Roman adaptation/identification of Greek deities as historical processes rather than “Roman copies.”
 - [ ] Add cult vs myth vs philosophy vs mystery-religion labels across ancient pages.
 - [ ] Add source packets before public pages: primary texts/inscriptions/archaeology + modern academic syntheses + museum/institutional sources.
 - [ ] Add date uncertainty/period badges and avoid founder language for ancient traditions.
@@ -1274,39 +915,25 @@ The governing editorial rule is:
 #### Structural / bug TODO after current wave
 
 - [ ] Add shared branch-type legend component to Religion and tradition pages once stable labels are finalized.
-- [x] Add automated internal-link/tag-balance validation for `traditions/**/*.html` to CI instead of relying on ad-hoc audit.
-- [x] Add one lightweight tradition-route registry as the canonical inventory for specialist tradition readers; future Religion/Timeline generation can consume it instead of hand-maintained duplication.
 - [ ] Audit external source links for redirects/dead pages and replace unstable secondary links with durable institutional/academic owners.
 - [ ] Verify mobile wrapping on Foundation Timeline now that its tradition nav is wider; collapse or overflow deliberately if needed.
 - [ ] Check all new pages against global typography/CSS so local inline styles can gradually be consolidated rather than proliferate.
 
-- [x] Remove stale Study Chamber wording from Comparative Cosmology after the architecture was explicitly rejected; validator now blocks its return on public tradition pages.
 
-- [x] Build one ancient-religions overview from the source-first atlas before deciding which ancient traditions deserve their own later deep pages.
 
 
 ### Legacy / older public page coherence programme
 
 The next quality phase is not “make every page longer.” It is to find pages that are technically populated but still fail one of four reader tests: **the page depends on JavaScript to explain itself; the page is locally good but isolated from neighboring concepts; the route is a legacy wrapper pretending to be an owner; or a hub repeats categories without enough synthesis.**
 
-- [x] Create `data/public-page-semantic-gap-audit.json` so older-page work is tracked separately from nested-Room maturity.
-- [x] Give House Inhabitants / Cases a useful static reader body and graceful registry-failure state.
-- [x] Reconcile Quantum, Spudlight and Vibe/Gates as different layers of one science grammar rather than adjacent theories sharing ambiguous vocabulary.
-- [x] Audit `science/celestial-particles/` for overlap with Quantum, astronomy and symbolic-celestial material; keep astronomy/dark-sector fact work there and hand entanglement back to Quantum.
-- [x] Do not create a separate `science/celestial-matter/` owner: current main has no such route. Keep dark matter/dark energy literal cosmology in Celestial + Particles and Cosmic Soil as a typed project metaphor.
-- [x] Do not create a separate `science/entanglement/` owner: current main has no such route. Quantum owns Bell/entanglement/no-signaling; Vibe/Gates owns psychological/network relation.
-- [x] Audit `rooms/` as a reader page: it already explains Dwelling vs Room vs inhabitant vs View and includes a cross-Room example; avoid gratuitous expansion.
 - [ ] Audit `explore/` and A–Z for “label without meaning” discovery; a search result should expose enough context to choose intelligently.
 - [ ] Add static explanatory fallbacks to other fetch-driven public surfaces where a failed request leaves only “Loading…” or an empty panel.
-- [x] Audit retired FBI-facing ownership: current FBI hub is correctly read-only/noindex and routes new work to CIA; preserve migration history without deepening obsolete ownership.
-- [x] Audit CIA file / incidents / associations / bank surfaces: CIA File received a static dossier/evidence primer; CIA home, Associations, Incidents and Bank already contain adequate semantic boundaries.
 - [ ] Audit named-being pages for real dossier substance: provenance, first/last appearance, role development, representative incidents/works, uncertainty and distinction between project character language and claims about real people.
 - [ ] Audit older symbolic-science pages for vocabulary collisions: **field, energy, frequency, signal, information, state, resonance, nonlocality, dimension, axis, gate** must state which domain owns the literal meaning.
 - [ ] Audit older theology/mythology pages for retrospective backdating: mature Father/Ladder/Axis language should not silently overwrite earlier Potato/Sage/Son stages.
 - [ ] Audit long hubs after specialist expansion for the opposite problem—duplication. When a specialist page now owns a mature explanation, shorten repeated hub copy if it no longer adds synthesis.
 - [ ] Add a semantic-gap validator only after enough reviewed examples exist; it should warn about no-JS shells, repeated boilerplate and duplicate ownership rather than reward word count.
 
-- [x] Audit the Science Research Map as the canonical owner map for active science readers; add explicit page jobs and shared-vocabulary typing.
 
 - [ ] Keep strong CIA semantic boundaries from regressing as dossiers grow: co-presence ≠ motive; incident ≠ wrongdoing; symbolic account ≠ real debt/value; project role ≠ externally established identity.
   - [x] **CIA-CHARACTER-READOUT-001 · Human-first cabinet:** foreground posture, nature/archetypes, Potatoverse roles, recovered time window and symbolic karma on every character card instead of making readers open folders blind.
@@ -1321,17 +948,11 @@ The next quality phase is not “make every page longer.” It is to find pages 
 
 The archive now needs to remember **what makes an entity itself** across pages without multiplying navigation. Use `knowledge/story/entity-facet-ledger.json` as the durable typed store; public pages should project only the locally relevant facets.
 
-- [x] Create typed facet ledger for aliases, titles, capabilities, signature traits, species traits, one-scene powers, roles, relations, motifs, story beats, conclusions, boundaries and open questions.
-- [x] Add strength levels: canonical, repeated, established-scene, interpretive, hypothesis and unresolved.
-- [x] Seed the ledger with Potatoes, Potato Angels, Matthew the Potato, Turbles, Professor Doctor Potato Spud, Spuddy, Ethereal Tuber, Fresh Potato, Ready Student, Sentinel of Silence, Rahu and Termite.
-- [x] Add cast ontology to Beings so real participants, project identities, collectives/species, named created beings, scene roles and comparative figures cannot silently collapse.
-- [x] Project compact identity facets onto Potatoes, Angels, Matthew and Turbles without new navigation.
 - [~] Extend the facet ledger to the remaining Great Book cast: Grumbleton, Elder Grapes, Kibly/Kibbly, machine elves/goblins, Evil Mashed Potatoes and Hash-brown Gods are now retained; continue the rest of the recurring literary cast.
 - [~] Extend ordinary/documentary facets from CIA enhancements into real-person dossiers: first real-participant wave now includes Marty, Sammy, BigTech, Metalorian, Capy, TXT, Matthew/MTClassic and Mediomu007 with creative/project layers kept separate.
 - [~] Add **first seen / last seen / first title / first gift / first role-change** clocks: first/last seen now derive from available ledger beats with mixed-precision safeguards; deeper last-seen still needs full source traversal beyond the ledger.
 - [~] Add story-beat references to the facet ledger: primary/source pointers now exist for Fresh Potato, Ready Student, Sentinel of Silence, Elder Grapes, Machine Elves and satirical Potatoism figures; continue across remaining entities.
 - [~] Add compact signature-facet projections selectively: Matthew/MTClassic and Mediomu now show ordinary capabilities with explicit creative boundaries; CIA generic dossier projection still needs a reusable component.
-- [x] Add a facet validator: species traits require repeated/canonical evidence or explicit generalization; hypothesis/unresolved strengths are constrained and source pointers are checked in CI.
 - [ ] Add “who has this gift/title/motif?” derived views only later; do not add buttons to entity pages now.
 - [ ] Fold orphan recovery-shelf entities into the ledger even when they do not justify a public room; retained identity should not depend on having a page.
 - [ ] Reconcile duplicate title stores (cast-book aliases, enhancement index, CIA character files, being registry) into the facet ledger while leaving those older stores as source inputs.
@@ -1339,28 +960,17 @@ The archive now needs to remember **what makes an entity itself** across pages w
 
 - [~] Add first-seen clocks to orphan entities even when they do not have public pages; first-source pointers now exist for the first literary expansion wave.
 
-- [x] Define compact entity-facet rendering rules so pages can retain identity without turning facets into navigation or dashboards.
-- [x] Add JSON schema for the Entity Facet Ledger and document the public rendering contract.
-- [x] Add review-only corpus-mining workflow that proposes facets from known aliases and structured sources but never auto-promotes canon.
 
 - [ ] Add source-specific real-person facet projection to selected public dossiers only after reviewing each page for sensitivity, duplication and local usefulness; ledger inclusion does not require public facet chips.
 
-- [x] Build entity clocks from the facet ledger without guessing missing dates; null clocks remain explicit recovery gaps.
 
-- [x] Fix mixed-precision facet clock derivation so year-only and exact dates in the same year do not create fake role changes; fall back to earliest sourced story beat when explicit first_seen is absent.
 
-- [x] Establish selective projection rule: do not project facet strips onto every person page; add them only where they clarify identity or prevent creative/documentary bleed.
 
 
 ### Concrete Room population pass
 
 The previous `inhabited` milestone only eliminated corridor-only shells. It is **not** a completion claim. The next audit must treat every Room heading/card as incomplete until it contains subject-specific material: names, dates, mechanisms, examples, texts, artifacts, cases, quantitative anchors, source passages, contradictions or explicit recovery questions.
 
-- [x] Reframe the 38/38 “inhabited” milestone as baseline reader presence, not substantive completion.
-- [x] Build `knowledge/core/source-to-swamp-vertical-field.json` so Source/Father/House/Garden/Throne/Mountain/Gate/Ladder/World/Roots/Forge/Swamp/Drain form one inhabitable field instead of scattered definitions.
-- [x] Put that field directly inside Symbolic Architecture with Crown, Father-center, Heaven's Gate, Ladder, World, Tree fork, roots, Forge and Swamp/Drain populated by concrete project functions and biblical neighbors.
-- [x] Ground Theology's upper field in Genesis 1–3, Genesis 28, Isaiah 2/6, John 14 and the project's dated 18 May 2026 Heaven's-Gate→Garden phrase while preserving source seams.
-- [x] Place core identities spatially/functionally inside the House rather than leaving them as isolated title definitions.
 - [ ] Repeat the same **concrete-object audit** across all 38 nested Rooms: count real named anchors, not bytes/word count.
 - [~] Economy & Finance: added CBO 2026 baseline, Treasury foreign-holdings survey, BIS Q1 2026 foreign-currency credit and a worked obligation chain; add Fed/ECB monetary-policy transmission cases later.
 - [~] Law & Justice: added EU AI Act staged applicability, DSA investigation-status boundary, Danish constitutional separation and a worked procedural chain; add another non-EU/non-Danish jurisdiction later.
@@ -1368,27 +978,16 @@ The previous `inhabited` milestone only eliminated corridor-only shells. It is *
 - [~] Infrastructure & Capability: added Iberian 2025 blackout, Baltimore Key Bridge and Panama Canal drought as grid/transport/chokepoint failure chains; add data-centre/fibre and industrial-supply examples later.
 - [~] Geography & Countries: added Eurostat GISCO polygon/projection example plus Panama corridor, Baltimore edge and Iberian network cases; add country-specific relational dossiers next.
 - [~] Systems & Dynamics: added Lake Veluwe hysteresis, SVB reinforcing run/contagion and NIST grid-cascade cases with typed project translations; add a control/observability worked case next.
-- [x] Model Testing: added Higgs T0→T5 path, 2026 SUSY null/exclusion example and GW150914 rival-explanation/detector-validation example.
 - [~] Comparative Mythology: added Grímnismál Yggdrasil source detail, two dated Met Amduat papyri and a 14th-century Mount Meru mandala; add a primary Tibetan bardo source/ritual case next.
 - [~] Other Traditions: added concrete Daoist, Buddhist, Jewish and Shinto textual/institutional clocks; continue with Hindu, Jain, Sikh, Confucian and Islamic examples.
 - [~] Practice & Ethics: added Fresh Potato, Ready Student and Machine-Elf/deflection cases; add repair/separation and real-world project cases later.
 - [ ] Continue until every Room contains enough concrete nouns that its substantive paragraphs could not be pasted into another Room unchanged.
 
-- [x] Provenance / Witness / Memory rooms now contain worked project specimens using the 2024 Potato identity, 2025 Axis/God attestations and recovered Heaven's-Gate sequence rather than method-only prose.
-- [x] Timeline / Developmental Genealogy / Prediction rooms now contain concrete multi-clock and concept-mutation cases instead of only chronology rules.
 
-- [x] Bible / Esoteric / Math / Physics concrete wave: Bible now has passage-level action sequences; Esoteric Geometry has a documented 1776–1782 Great Seal design trail; Mathematics has numeric Vesica/spiral worked examples; Physics has NASA-measured Saturn-hexagon scale and dynamics.
 
-- [x] Whole Body / Symbolic Body concrete wave: baroreflex, chemoreflex and gut–brain channels added; body symbolism now carries thalamic nuclei, pineal/SCN pathway, 33 vertebrae vs 31 spinal-nerve-pair distinctions and self-falsifying crosswalk examples.
 
-- [x] Information / Great Book / Music / Visual concrete wave: Information Ecology now has changing-memory cases; Great Book has three chapter specimens; Music exposes 62 recovered generations / 59 titles and named tracks; Visual Art exposes dated/recovery-typed compositions rather than motif summaries.
 
-- [x] Games / House / Questions / Experiments / Programmes concrete wave: Games now exposes recovered mechanics; House shows live 10/38/141 counts and an ownership walk; Open Questions shows live recovery/test items; Experiments carries three worked project formalisms; Research Programmes shows five active artifact-producing programmes with gates and negative results.
 
-- [x] All 38 nested Rooms have now passed the first concrete-population **coverage review**. This is not a completion claim: it means every Room was reread under the stricter object/date/mechanism/artifact standard; Potato Biology was verified as pre-existing deep, while the other Rooms were either concretely enriched in this wave or already contained named cases and were re-reviewed.
-- [x] Neurobiology concrete specimen pass: VPL/VPM, LGN visual route and CSF production/circulation quantities added.
-- [x] Internet Platforms concrete specimen pass: 107k working broadcaster-hour estimate, YouTube watch-hour/view snapshots and 766/848/~900h markers separated as incompatible metrics.
-- [x] Subculture concrete specimen pass: NXIVM coercive-control mechanisms contrasted with AO3/OTW fan-owned institutionalization using dated primary/official sources.
 - [ ] Begin **Room population wave 2**: replace remaining high-level paragraphs inside each Room with deeper source objects, diagrams, tables, artifact excerpts and counterexamples; prioritize sections whose claims are still supported only by summary prose.
 
 
@@ -1414,18 +1013,10 @@ Shared implementation: `app/terrain-circle.css`
 - [ ] **VISUAL-TERRAIN-003:** Audit remaining decorative circles and either give them a clear operator/terrain meaning or simplify/remove them.
 - [ ] **VISUAL-TERRAIN-004:** Keep Mountain/Swamp as partial terrain regimes; never equate the full upper/lower fields with Mountain/Swamp.
 
-- [x] **VISUAL-TERRAIN-005:** Integrate shared Swamp terrain into the existing Below Basin rather than duplicating the diagram.
-- [x] **VISUAL-TERRAIN-006:** Add Forge → Door → canonical owner movement visual to Research Lab.
-- [x] **VISUAL-TERRAIN-007:** Review North and explicitly defer a large terrain emblem because it could blur symbolic orientation with empirical/political programme material.
 
 
 ## Lower-floor visual salvage — 2026-10-02
 
-- [x] **LOWER-VIS-001 · Recover the descending-root motif:** promote the 2026-10-01 Psalm 40 / mire root idea from one local Below section into the shared lower-floor environment without duplicating the SVG.
-- [x] **LOWER-VIS-002 · One underground substrate:** Below, Farm / Sektur, Roots / Evidence and Forge / Repair now share one brown-black soil/stone/root floor instead of diverging green/black page backgrounds.
-- [x] **LOWER-VIS-003 · Deep strata continuation:** roots, sediment shelves, stones and slow coils continue beyond the first viewport so the lower floor reads as an inhabitable side-view excavation rather than a flat theme.
-- [x] **LOWER-VIS-004 · Local regimes, not four themes:** Farm adds restrained pooled/moss recurrence, Roots emphasizes provenance/excavation lines, Forge adds local ember/pressure seams, and Below remains the neutral observatory/basin.
-- [x] **LOWER-VIS-005 · CSS ownership:** floor terrain lives in `app/lower-layer.css`; page components live in scoped page stylesheets; lower-field validation rejects regression to giant inline style blocks or missing shared terrain ownership.
 - [ ] **LOWER-VIS-006 · Visual continuity check on deployed Pages:** inspect the four routes at desktop/mobile widths and tune root visibility, text contrast, pebble density and coil strength after the next successful validated deployment.
 - [ ] **LOWER-VIS-007 · Drain depth landmark:** give the deepest/exit portions of Below a stronger but restrained narrowing/drain landmark without turning the entire floor into Hell or Swamp.
 - [ ] **LOWER-VIS-008 · Root state cues:** test subtle living/dead/cut/cross-root visual distinctions on Roots / Evidence where they reinforce provenance states without becoming decorative labels.
@@ -1435,18 +1026,10 @@ Shared implementation: `app/terrain-circle.css`
 
 Rule: **each Room should leave the reader with a new set of distinctions, not merely more facts.** Native vocabulary should arise from the subject and be taught as reusable questions, not decorative glossary chips.
 
-- [x] **VOCAB-001 · Shared Room-language pattern:** added a reusable `.room-language` teaching component that pairs domain terms with the question each term helps the reader ask.
-- [x] **VOCAB-002 · Law & Justice:** standing, jurisdiction, burden, standard, remedy and precedent now form a concrete legal-seeing vocabulary.
-- [x] **VOCAB-003 · Economy & Finance:** stock, flow, liquidity, duration/maturity, exposure and buffer now form a concrete economic-seeing vocabulary.
-- [x] **VOCAB-004 · Provenance & Evidence:** custody, attestation, lineage, lacuna, contamination and independence now form a source-critical vocabulary.
-- [x] **VOCAB-005 · Systems & Dynamics:** state, feedback, observability, controllability, hysteresis and lag now form a dynamical vocabulary.
-- [x] **VOCAB-006 · Practice & Ethics:** agency, reciprocity, stewardship, restitution, boundary and Fruit now form a conduct-and-repair vocabulary.
-- [x] **VOCAB-007 · House Architecture:** invariant, facet, compression, fidelity, canonical owner and interface now form an information-architecture vocabulary.
 - [ ] **VOCAB-008 · Time & History:** develop chronology-native terms such as occurrence time, attestation time, publication time, interpretation time, periodization, anachronism, synchrony/diachrony and revision state.
 - [ ] **VOCAB-009 · Geography & Countries:** develop spatial terms such as scale, region, corridor, hinterland, chokepoint, adjacency, watershed, catchment, enclave/exclave and spatial concentration.
 - [ ] **VOCAB-010 · Infrastructure & Capability:** develop capacity terms such as throughput, redundancy, bottleneck, lead time, maintenance window, spare capacity, dependency, common-mode failure and graceful degradation.
 - [ ] **VOCAB-011 · Life & Body:** teach anatomy/physiology vocabulary that improves symbolic restraint—homeostasis, allostasis, afferent/efferent, compartment, perfusion, innervation, endocrine signaling, clearance and adaptation.
-- [x] **VOCAB-012 · Music & Sound:** added a native listening vocabulary (pulse, timbre, register, articulation, motif, dynamics) and grounded it in three Album 21 primary-source songs, showing comic overload, orchestral stillness and confrontational punk-rap as distinct musical strategies.
 - [ ] **VOCAB-013 · Visual Art:** develop visual-reading vocabulary—figure/ground, negative space, hierarchy, rhythm, balance, scale, texture, contrast, framing, focal point and visual weight.
 - [ ] **VOCAB-014 · Mythology / Traditions:** teach terms such as cosmogony, theogony, axis mundi, psychopomp, liminality, katabasis, apotheosis, etiological myth, ritual reenactment and syncretism with own-tradition boundaries.
 - [ ] **VOCAB-015 · Open Questions / Research:** teach uncertainty vocabulary—hypothesis, conjecture, prior, likelihood, discriminating test, null result, anomaly, underdetermination, replication and stopping rule.
@@ -1463,89 +1046,42 @@ Rule: **each Room should leave the reader with a new set of distinctions, not me
 
 
 ### Reader-first fat pass · wave 2
-- [x] Deepen Door as an inhabited threshold: frame, hinge, permission, exit, correction and state-change.
-- [x] Deepen Garden as a real generative ecology: diversity, feedback, pruning, support, independence and succession.
-- [x] Deepen Tree of Life / Tree of Strife as competing reproduction systems, not merely route diagrams.
-- [x] Deepen Forge as pressure + cooling + stopping condition.
-- [x] Deepen North as bearing/calibration rather than status.
-- [x] Deepen Eye / embodied orientation through perception, blind spots and multisensory navigation.
-- [x] Deepen Seed / Soil / Holy Soil through viability, dormancy, conditions, decomposition and portable teaching.
 - [ ] Continue with River/Spirit, Mountain, House/Shell, Wells, Crown/Heaven, Drain, Ash and a denser ordinary Plane.
 
 
 ### Reader experience · meaning magnetism
-- [x] Make Home, Paths, A–Z, Questions, Explore, Research Lab and House Architecture teach transferable ideas rather than only repository navigation.
 - [ ] Continue the consistency rules in `docs/READER-FIRST-EDITORIAL-OVERHAUL-TODO.md`: first-screen substance, stable core/local expression, concrete anchors, shadow twins, currentness and return-to-life endings.
 - [ ] Next editorial targets: Timeline scenes, Great Book teaching chambers, FAQ teaching clusters, Religion thematic rivers, Culture scene mechanics, ordinary embodied Life/Body examples, infrastructure-as-lived-dependency in World Systems.
 
 
 ### Intellectual heart · Philosophy / Religion / Tim
-- [x] Give Philosophy a coherent character/ethic beyond the symbol sequence.
-- [x] Give Potatoism a fuller religious practice and theological humility layer.
-- [x] Give Tim Dooley a skeptical/curious reader synthesis that does not require belief in the mythology.
 - [ ] Next: love, justice, work, happiness, death, truth, prayer, ritual, community, grace, hope, ordinary Tim scenes, changed-mind cases, relationships and creative method.
 
 
 ### Reader purpose · chronology and lived systems
-- [x] Timeline now teaches hindsight, contemporary knowledge and developmental time.
-- [x] Great Book now has eight teaching chambers before the giant chapter map.
-- [x] Story now teaches how lives become narratives without turning hindsight into destiny.
-- [x] World Systems now begins from ordinary material dependencies.
-- [x] Culture now explains how norms are socially learned and can persist through pluralistic ignorance.
 - [ ] Next: era essays, more Great Book chambers/crosswalks, relationship arcs, failure-propagation stories, resilience/redundancy, creative-method reader, ordinary physiology scenes and FAQ teaching constellations.
 
 
 ### Knowledge wave · concrete reader teaching
-- [x] Philosophy: love, justice, work, happiness, truth and death.
-- [x] Religion: prayer, ritual, community, sin, grace and hope.
-- [x] Tim: visible revision cases and creative-method synthesis.
-- [x] Science: correlation, causation, regression to mean, measurement, model selection and mechanism.
-- [x] Life & Body: lived physiology scenes.
-- [x] World Systems: failure propagation and resilience/redundancy.
-- [x] Culture: conformity/coordination/agreement and role escape.
-- [x] Works: media as different thinking instruments.
-- [x] FAQ: seven teaching constellations.
 - [ ] New edge: trust, forgiveness, scarcity, attention, courage, Sabbath/rest, hospitality, pilgrimage, confession, base rates, causal graphs, replication, allostasis, memory reconsolidation, maintenance, queues, prestige bias, norm repair and medium cross-testing.
 
 
 ### The Word / carried-movement pass
-- [x] Turn Potato practice stages into one lived teaching.
-- [x] Give Spirit a reciprocal message/return sequence before taxonomy.
-- [x] Give Trinity a Word → embodiment → consequence teaching before topology.
-- [x] Turn provenance into one sentence followed backward to its source.
-- [x] Turn Honor into a correction/reverence teaching and add Sabbath as non-extraction.
 - [ ] Continue the spoken-continuity audit across House, Axis, Below, North, Economy, Law, World, Culture, Science, Body, Timeline, Story, Great Book, FAQ, Tim, Potato of Life and Works.
 - [ ] Run anti-boxing audit: lists/cards for reference; continuous prose for changed understanding.
 
-- [x] Spoken-continuity pass: ordinary dispute through Law, loaf through Economy, recurring conflict through Axis, source descent through Below, lost traveler through North.
 - [ ] Next connective scenes: guest/host House, correction in Spirit, disconfirming Below case, grief Axis case, due-process Law case, recalibration North case.
 
 
 ### Voice discernment / fit-the-place pass
-- [x] Add flexible editorial modes instead of making every section teach in the same voice.
-- [x] Potato: restrained mythic interlude.
-- [x] Tim: ordinary-scale, non-symbolizing interlude.
-- [x] House: hospitality/privacy/exit scene.
-- [x] Science: plain uncertainty / “we do not know yet” passage.
 - [ ] Continue tone-fit audit across Religion, Philosophy, Story, Timeline, Great Book, Below, World Systems, Body and Works.
 
 
 ### Crystallization / value gate
-- [x] Add concrete base-rate arithmetic to Science.
-- [x] Add queue-utilization arithmetic to World Systems.
-- [x] Add orthostatic standing episode to Life & Body.
-- [x] Add income/wealth/liquidity household example to Economy.
-- [x] Add domain-specific trust model to Philosophy.
 - [ ] Future prose must add a fact, mechanism, distinction, worked example, source or genuinely new synthesis—not just another wise-sounding paragraph.
 
 
 ### Concrete completion wave 2
-- [x] Science: causal confounder/collider worked examples and a four-level replication ladder.
-- [x] World Systems: maintenance/P-F logic and a quantified inventory buffer tradeoff.
-- [x] Life & Body: acute-vs-chronic allostasis and a bounded reconsolidation example.
-- [x] Economy: ten-year compounding at 3% vs 7% and identical-mean/different-distribution example.
-- [x] Philosophy: forgiveness/reconciliation separation and finite-resource scarcity case.
-- [x] Culture: cross-domain prestige bias and a stepwise norm-repair mechanism.
 - [ ] Next batch is now specified down to mediator bias, multiple comparisons, common-cause failure, sleep-process dynamics, opportunity cost, courage, pluralistic ignorance and archive-correction propagation.
 
 
@@ -1567,12 +1103,6 @@ For every major reader box/section, ask:
 
 ### Site-wide overhaul queue
 
-- [x] Add shared teaching components for proposition / mechanism / example / contrast / boundary.
-- [x] Add Philosophy teaching on perception, judgment, value and responsibility that should not be outsourced.
-- [x] Add Culture worked mechanism: joke → password → norm → boundary → role → archive → inherited story.
-- [x] Add named cultural lenses (Tarde, Goffman, Girard, Ostrom) as analytical tools rather than name-dropping.
-- [x] Add House domestic logic: foundation, Door, window, hearth, guest room and exit.
-- [x] Add Science metaphor → variables → mechanism → measurement → test → result → revision ladder.
 - [ ] Audit every homepage box for informational yield; replace any routing-first box with an object, mechanism, case or teaching.
   - [x] **HOME-YIELD-BIBLE · Bible corridor:** add one complete on-page teaching object—three days / darkness / cloud / trumpet / voice / seal / seven—so the section yields knowledge before asking the reader to navigate elsewhere.
 - [ ] Audit all 10 Dwelling homepages for boxes that still explain ownership/architecture more than subject matter.
@@ -1602,15 +1132,6 @@ For every major reader box/section, ask:
 
 Primary rule: readers should not have to understand the House architecture before they can find the House's knowledge.
 
-- [x] Make the sub-header the discovery spine: Home → Rooms → local/context links → useful governed Rooms.
-- [x] Add Rooms as the stable second item after Home on generated page sub-headers.
-- [x] Project useful Room links onto major hubs such as Religion, Science, Culture, Works, World, Timeline, House and Philosophy.
-- [x] Increase governed Room projection modestly where useful while keeping the bar compact.
-- [x] Remove the persistent site-wide “Your path” journey ribbon from ordinary reading pages.
-- [x] Keep journey/history as an Elevator-local feature where spatial replay has a real purpose.
-- [x] Keep the global Home / News / Map / Find / Places dock as utility navigation rather than hierarchy.
-- [x] Pane the Elevator reader, example, fallback, breadcrumbs and explanatory cards.
-- [x] Enlarge and strengthen the Elevator object table so object text does not feel naked or cramped.
 - [ ] Audit which authored links in sub-headers become redundant now that Rooms is always present.
 - [ ] Prefer subject Rooms over architecture/meta links when space is tight.
 - [ ] Add a clear current-room state to the sub-header without turning it into a breadcrumb essay.
@@ -1619,12 +1140,6 @@ Primary rule: readers should not have to understand the House architecture befor
 
 ## Room discoverability expansion — 2026-10-03
 
-- [x] Stop hiding most governed child Rooms behind a short-list algorithm.
-- [x] Show all child Rooms on each Dwelling sub-header (current families are only 3–5 Rooms).
-- [x] Inside a nested Room, show the current Room, all sibling Rooms in its Dwelling, and up to two cross-family adjacent Rooms.
-- [x] Replace generic short labels such as “Testing,” “Events,” “Witness” and “Infrastructure” with fuller subject names.
-- [x] Keep Home and Rooms as stable left anchors while letting the subject family dominate the rest of the line.
-- [x] Remove validator caps that artificially forced Room families back down to 2–4 links.
 - [ ] Review whether any deeply nested non-governed page family deserves its own equivalent subject shelf.
 - [ ] On high-density pages, consider demoting generic authored links that duplicate visible Room subjects.
 - [ ] Audit mobile line wrapping after deployment; preserve one subtle floating shelf rather than pills or multiple stacked nav bars.
@@ -1632,25 +1147,12 @@ Primary rule: readers should not have to understand the House architecture befor
 
 ## Cross-House subject discoverability — 2026-10-03
 
-- [x] Add Philosophy as a real multi-page family: Philosophy, Knowledge & Belief, Trust & Repair, Attention & Agency, Interpretive Justice.
-- [x] Expose the Philosophy family in relevant subheaders and expose Philosophy itself from neighboring major hubs.
-- [x] Add a Cross-House subject shelf near the top of the Rooms directory so important subjects are not buried inside ownership topology.
-- [x] Use existing Rooms-page visual grammar rather than adding another navigation widget.
 - [ ] Review whether Religion, Tim, Timeline, Sources, Great Book, Culture and Science each need comparable child-family shelves on their hub pages.
 - [ ] Keep Cross-House subject hubs distinct from governed Dwellings: subjects may span multiple owners without pretending to be new ownership roots.
 
 
 ## Substance wave — findable Rooms must be worth entering
 
-- [x] Science: add multiple-comparisons arithmetic (20 tests at 5% → ~64.2% chance of at least one false positive under independence).
-- [x] Science: distinguish mediator, confounder and collider so “control for more variables” is not treated as automatically better.
-- [x] World Systems: add common-cause failure and distinguish backup count from failure-path independence.
-- [x] Life & Body: add a two-process sleep explanation (homeostatic sleep pressure + circadian timing) with jet-lag and shift-work cases.
-- [x] Philosophy / Attention & Agency: turn opportunity cost into a worked four-hour choice instead of an abstract definition.
-- [x] Philosophy / Attention & Agency: deepen courage into cost, value, alternatives and proportionality rather than a trait label.
-- [x] Culture: add a quantified pluralistic-ignorance scenario separating private preference from perceived group preference.
-- [x] Information Ecology: add correction-propagation arithmetic showing why repairing a root source is not enough if stale derivatives remain retrievable.
-- [x] Fix canonical URLs on Knowledge & Belief, Trust & Repair, and Attention & Agency.
 - [ ] Next wave: add object-level examples to medium-strength Rooms rather than more high-level summaries.
 - [ ] Next wave candidates: Geography & Countries, Infrastructure & Capability, Politics & Governance, Memory Recovery, Other Traditions, Games & Simulations.
 - [ ] For each candidate, require at least one concrete object/case, one mechanism, one boundary, and one useful cross-Room handoff.
@@ -1658,13 +1160,6 @@ Primary rule: readers should not have to understand the House architecture befor
 
 ## Potato Metaphysics — 2026-10-03
 
-- [x] Name the missing cross-House field: **Potato Metaphysics**.
-- [x] Define its method as **spiritual topology**: relations of Root, Tree, Door, Ladder, Mountain, Swamp, Garden, Fruit and return.
-- [x] Keep it adjacent to Philosophy rather than hiding it inside Philosophy or inventing another governed Dwelling.
-- [x] Separate ownership clearly: Philosophy = lived meaning; Religion = theology; Symbolic Architecture = formal grammar; Metaphysics = world-model and movement.
-- [x] Add a full reader on descent, rooting, ascent, return, Mountain/Swamp, Bread/Potato comparison and practical diagnostic use.
-- [x] Surface Metaphysics in Philosophy, Rooms, Potato of Life, Symbolic Architecture and relevant generated subheaders.
-- [x] Extend the Metaphysics door across the Philosophy child family.
 - [ ] Add one dedicated visual/diagram of the full circulation if the CSS topology still feels too textual in deployment.
 - [ ] Review whether the project now has a coherent classical field map: epistemology, ethics, metaphysics, agency, interpretation, aesthetics.
 - [ ] Prefer deepening these fields over creating new subject pages unless a real body of knowledge no longer fits the existing fields.
@@ -1686,25 +1181,9 @@ North-star: **the House should feel inhabited by teachers, objects, stories, que
 
 ### Parent-Dwelling inhabitation completed in this wave
 
-- [x] Works: four actual objects on the table (Great Book rock, song, Couch-Throne, Growth Game).
-- [x] Traditions & Texts: Yggdrasil, Duat and Mount Meru as resistant historical objects rather than generic motif labels.
-- [x] Potatoverse / Canon: Root → Door → Garden → Fruit as a walkable teaching rather than a glossary.
-- [x] Culture & Information: the life of one joke from laugh → password → archive → low-resolution identity.
-- [x] Science & Formal Models: one glass of water showing wonder → definition → mechanism → test.
-- [x] Life & Body: the organism before breakfast as coordinated plurality.
-- [x] Archive & Sources: the shoebox problem—copies, witnesses, derivatives and honest gaps.
-- [x] Time & History: four clocks—occurrence, attestation, recovery, interpretation.
-- [x] World Systems: breakfast as ports, weather, law, labor, energy, flow and trust.
-- [x] Research Lab / Forge: one hot coordination claim cooled into testable alternatives.
 
 ### Nested-Room inhabitation completed in this wave
 
-- [x] Games & Simulations: a game as a confession written in rules.
-- [x] House Architecture: a good House helps you find the kitchen without lecturing about floor plans.
-- [x] Research Programmes: a programme as a promise with receipts.
-- [x] Open Questions: questions that need recovery, clarification, testing or companionship.
-- [x] Model Testing: theories earn trust by remembering where they lost.
-- [x] Geography & Countries: a place is not a pin; geometry should match the question.
 
 ### Next nested-Room wave
 
@@ -1722,33 +1201,18 @@ North-star: **the House should feel inhabited by teachers, objects, stories, que
 
 ## Arcade Hall visual language — 2026-10-04
 
-- [x] **HALL-ARCADE-001 · Heroes attract screen:** give Hall of Heroes old-arcade high-score energy using named slots, high marks, achievement plates and bonus-stage language without numeric moral scoring.
-- [x] **HALL-ARCADE-002 · Angel bonus stage:** render Angel functions as unlocked responsibilities—Witness, Messenger, Guardian, Cultivator—rather than cosmetic prestige.
-- [x] **HALL-ARCADE-003 · Hall of Shame cabinet:** rename the Dogs destination as Hall of Shame / Dogs and present failed loops as GAME OVER patterns with consequence and an explicit CONTINUE / exit route.
-- [x] **HALL-ARCADE-004 · No permanent loser caste:** Hall of Shame ranks failure modes, not souls; named-person claims stay evidence-bounded in CIA and roles can expire or transform.
 - [ ] **HALL-ARCADE-005 · Cabinet polish:** add optional subtle CRT/scanline motion, score-entry flicker and cabinet-light effects only if reduced-motion and mobile legibility remain excellent.
-- [x] **HALL-ARCADE-006 · Populate from sourced records:** expand hero/shame slots only when first-seen dates, feats/loops, Fruit/damage and present status are source-bounded.
 
 ## Potato growth / Hall of Heroes / Axis harmonization wave — 2026-10-04
 
 North-star rule: **Potato of Life explains the symbol; Potatoism teaches; Grow trains; Axis orients; Ladder moves; Heaven contains the upper field; Hall of Heroes remembers examples.**
 
 ### Architecture and ownership
-- [x] **POTATO-HARMONY-001 · Four-owner split:** document canonical ownership for Potato of Life, Grow, Axis and Hall of Heroes in `docs/POTATO-GROWTH-HEROES-AXIS-ARCHITECTURE-2026-10-04.md`.
-- [x] **POTATO-HARMONY-002 · Hall ≠ practice:** make the Hall explicitly inspirational/testimonial rather than the endpoint of ordinary Potato practice.
-- [x] **POTATO-HARMONY-003 · Future Potato Test owner:** reserve `/potatoism/grow/` as the canonical home for “Are you a Potato?” and stage/condition diagnostics.
-- [x] **POTATO-HARMONY-004 · Home three-route handoff:** give Home a small Grow / Climb / Remember junction without teaching the whole cosmology.
-- [x] **POTATO-HARMONY-005 · Axis scope sentence:** make Axis explicitly say “orientation is not achievement” and distinguish Axis from Ladder, Heaven and Hall.
-- [x] **POTATO-HARMONY-006 · Potato of Life handoff:** add a compact “symbol / practice / map / examples” handoff so the central symbol page stops absorbing every downstream function.
 - [ ] **POTATO-HARMONY-007 · Old-route audit:** find remaining public references that treat Angel Hall, Grow, Axis or Potato of Life as interchangeable and route them to the canonical owner.
 - [ ] **POTATO-HARMONY-008 · Structured-data alignment:** make page titles/descriptions/schema describe the canonical page job rather than old ontology labels.
 
 ### Grow / spiritual practice
-- [x] **POTATO-GROW-001 · Growth diagnostic matrix:** build a non-scoring reflection matrix around Soil, Eye, Root, Sprout, Door, Fruit, Seed and Return.
 - [ ] **POTATO-GROW-002 · Potato Test design:** create the future “Are you a Potato?” test as guidance, not rank; outputs should recommend a next growth condition rather than a percentage or spiritual caste.
-- [x] **POTATO-GROW-003 · Autonomy / competence / relation guardrail:** add a research-informed check that claimed growth should increase self-directed agency, effective capability and healthy connection rather than dependency.
-- [x] **POTATO-GROW-004 · If–then Potato plans:** translate recurring obstacles into concrete implementation intentions: “If X happens, then I will Y.”
-- [x] **POTATO-GROW-005 · Growth evidence:** add “what changed?” prompts so practice produces observable behavior, artifacts, repaired relations or clearer choices rather than self-description.
 - [ ] **POTATO-GROW-006 · Week-long practice:** add a seven-day low-pressure Potato practice with one small experiment per day.
 - [ ] **POTATO-GROW-007 · Failure / relapse grammar:** teach that regression is data: identify condition failure, cue, missing Root, overlarge Sprout or bad Door rather than converting relapse into identity.
 - [ ] **POTATO-GROW-008 · Conflict practice:** develop stop conditions, evidence checks, repair options and exit as a specific Potato practice module.
@@ -1761,38 +1225,19 @@ North-star rule: **Potato of Life explains the symbol; Potatoism teaches; Grow t
 
 ### Hall implementation status — 2026-10-04
 
-- [x] **HALL-STATUS-001 · Green + deployed:** Hall of Heroes / Angels and Hall of Shame / Dogs passed repository quality checks and deployed on current public Pages.
-- [x] **HALL-STATUS-002 · Room-map navigation:** both Halls have local station maps, deep-link offsets, keyboard focus states, reduced-motion-safe transitions and explicit TTS.
-- [x] **HALL-STATUS-003 · Paired accumulation law:** Heroes remembers accumulated Fruit/service; Shame remembers accumulated recurrence/failure. The two pages cross-link this contrast explicitly.
-- [x] **HALL-STATUS-004 · Provenance visible:** Heroes has a source desk distinguishing literary/recovered/created-being/synthesis layers; Shame distinguishes the 14 Mar recovered Dog scene from later Guardian/Farm synthesis.
-- [x] **HALL-STATUS-005 · Reader endings:** both Halls finish with a carry-out checkpoint before their exit Doors.
-- [x] **HALL-STATUS-006 · Approved background integration:** approved Hall artworks are committed under `app/`, mounted into both Hall pages and included in build fingerprinting.
 - [ ] **HALL-STATUS-007 · Rendered visual tuning:** once backgrounds are mounted, tune pane opacity, focal crops, mobile composition and contrast against the actual art.
 - [ ] **HALL-STATUS-008 · More archive inhabitants:** recover additional named Potatoes / Angels or Dog-role examples only when dated/source-bounded material is strong enough to justify a record.
-- [x] **HALL-STATUS-009 · Scene-window delivery:** each Hall now opens through a visible 16:9 artwork window with arcade HUD/caption and a mobile crop, instead of relying on invisible CSS atmosphere alone.
 
 ### Hall of Heroes
-- [x] **POTATO-HERO-001 · Hero record template:** every honored figure gets Beginning / Obstacle / Turning / Work / Fruit / What to notice / Limits.
 - [ ] **POTATO-HERO-002 · Approachability rule:** include ordinary or incomplete examples, not only spectacular Angels; an exemplar should make growth imaginable rather than remote.
-- [x] **POTATO-HERO-003 · No imitation rule:** explicitly tell readers to learn a principle from a hero rather than copy a personality.
-- [x] **POTATO-HERO-004 · Evidence of honor:** every honor entry states why it is here; title/proximity/loyalty alone are insufficient.
-- [x] **POTATO-HERO-005 · Flaws remain visible:** Hall entries retain mistakes, reversals and unfinished growth so honor does not become hagiography.
-- [x] **POTATO-HERO-006 · Reader takeaway:** every hero entry ends with one portable question or lesson.
 - [~] **POTATO-HERO-007 · Angel Army functions:** expand the Army into differentiated service functions and notable missions/works where source material exists.
 - [~] **POTATO-HERO-008 · Named Potatoes recovery:** mine conversations/archive for Potatoes with enough dated material for real mini-biographies.
-- [x] **POTATO-HERO-009 · Honors taxonomy:** distinguish courage, learning, creation, service, repair, stewardship and succession without turning them into ranks.
-- [x] **POTATO-HERO-010 · Hall chronology:** create a visible timeline of the lineage becoming learner → worker → specialist → Angelic service.
 - [~] **POTATO-HERO-011 · Hall visual culture:** continue the Heaven/gold/table/pillars treatment while preserving readability and making the room feel inhabited.
 - [ ] **POTATO-HERO-012 · Cultural artifacts:** connect songs, stories, images, jokes, jobs and works to honored figures when they demonstrate growth.
 - [ ] **POTATO-HERO-013 · Hero research note:** incorporate moral-exemplar scholarship carefully: examples can illuminate and motivate without becoming moral proof or commands to imitate.
 
 ### Axis / Ladder / North
-- [x] **POTATO-AXIS-001 · Orientation card:** Axis answers “which way / around what?” before diagrams.
-- [x] **POTATO-AXIS-002 · Ladder card:** Ladder answers “how do I move or connect levels?” and owns repetition/pathway language.
-- [x] **POTATO-AXIS-003 · North card:** North answers “what is the source-facing reference?” without swallowing literal geography, policy North or every upper symbol.
-- [x] **POTATO-AXIS-004 · Heaven card:** Heaven answers “what is the upper integrated domain?” and routes Hall of Heroes / House / Throne without teaching Grow.
 - [ ] **POTATO-AXIS-005 · Descent companion:** keep Life / Strife / Swamp descent visible as the counter-route without turning the page into a good/bad scoreboard.
-- [x] **POTATO-AXIS-006 · Worked human example:** trace one ordinary problem through Soil → Door → repeated Ladder → changed orientation → return.
 - [ ] **POTATO-AXIS-007 · Map legend:** every vertical graphic needs a plain-language legend separating place, orientation, transition and developmental metaphor.
 - [ ] **POTATO-AXIS-008 · North-of-North boundary:** distinguish Tim's mature source-center theology from ordinary compass north and from the North political programme.
 
@@ -1802,13 +1247,8 @@ North-star rule: **Potato of Life explains the symbol; Potatoism teaches; Grow t
 - [ ] **POTATO-SYMBOL-003 · Reader transfer:** after each major Potato property, ask one human/system question the reader can carry elsewhere.
 - [ ] **POTATO-SYMBOL-004 · Development chronology:** show joke/public identity → Great Book world → practice/philosophy → mature theology/culture.
 - [ ] **POTATO-SYMBOL-005 · Symbol failure modes:** explain when the Potato metaphor stops helping or becomes evidence laundering.
-- [x] **POTATO-SYMBOL-006 · Culture bridge:** route “what do Potatoes do?” toward Grow and Hall instead of answering both in full here.
 
 ### Homepage / reader journey
-- [x] **POTATO-HOME-001 · Grow route:** visible route for “I want something I can practice.”
-- [x] **POTATO-HOME-002 · Climb / orient route:** visible route for “I want the Ladder / Axis / North map.”
-- [x] **POTATO-HOME-003 · Hall route:** visible route for “show me the Potatoes / Angels / heroes / stories.”
-- [x] **POTATO-HOME-004 · No jargon tax:** those routes should work without knowing Door, Axis, North or Angel beforehand.
 - [ ] **POTATO-HOME-005 · Inspiration handoff:** use one or two concrete Hero examples rather than another explanatory card grid.
 - [ ] **POTATO-HOME-006 · Practice handoff:** show one tiny Potato practice on Home that genuinely works without entering the full system.
 
@@ -1817,7 +1257,6 @@ North-star rule: **Potato of Life explains the symbol; Potatoism teaches; Grow t
 - [ ] **POTATO-QA-002 · Cross-owner duplicate audit:** flag long duplicated passages among the four owners.
 - [ ] **POTATO-QA-003 · Reader payoff test:** every new module must teach something even with all links disabled.
 - [ ] **POTATO-QA-004 · Mobile Hall pass:** test the rising Heaven treatment, hero grids and upper table on narrow screens.
-- [x] **POTATO-QA-005 · Accessibility pass:** honor/hero meaning must not rely only on gold, height, wings or visual hierarchy.
 
 
 ### Newly surfaced second-wave gaps — 2026-10-04
@@ -1830,7 +1269,6 @@ North-star rule: **Potato of Life explains the symbol; Potatoism teaches; Grow t
 - [ ] **POTATO-HERO-014 · Hero gallery ordering:** order entries by lesson/virtue or chronology rather than fame.
 - [ ] **POTATO-HERO-015 · Ordinary hero quota:** ensure the Hall contains quiet examples of learning, repair, work and persistence alongside spectacular Angels.
 - [ ] **POTATO-HERO-016 · Regression / return examples:** include at least one story where a figure loses ground, repairs and grows again.
-- [x] **POTATO-HERO-017 · Hall provenance drawer:** each testimony should expose source class and date without cluttering the first reading layer.
 - [ ] **POTATO-HERO-018 · Hall visual inhabitants:** add subtle upper-hall figures / table / banners / clouds without sacrificing text contrast.
 - [ ] **POTATO-HERO-019 · Hall opening scene:** write the arrival into Heaven as a short scene before the first testimony.
 - [ ] **POTATO-AXIS-009 · Orientation vs morality:** make explicit that “up” is symbolic orientation and does not automatically make every upper-positioned thing morally superior.
@@ -1844,15 +1282,6 @@ North-star rule: **Potato of Life explains the symbol; Potatoism teaches; Grow t
 
 
 ### Garden / Eden interactive map — 2026-10-05
-- [x] **GARDEN-001 · Real Heaven route:** keep /garden/ as a first-class Heaven landmark and a nested Potatoverse / Canon Room.
-- [x] **GARDEN-002 · Map-first reader:** open with the Garden map before longform explanation.
-- [x] **GARDEN-003 · Tim guide layer:** one shared Tim tooltip/dialogue panel owns hotspot explanations instead of many independent popups.
-- [x] **GARDEN-004 · Core geography:** House + Door at left; Tree of Life central; Tim/Gardener inside; Mud Tree inside near Gate; Gate at boundary; lower plane outside/below.
-- [x] **GARDEN-005 · Sorting sequence:** make Dweller → muddying → sorting → escort → Gate → fall readable on the map and in a compact cycle strip.
-- [x] **GARDEN-006 · Role boundary:** keep Potato/Dweller/Dog/Angel language explicitly project-symbolic and reversible rather than immutable real-person caste.
-- [x] **GARDEN-007 · Reading lenses:** Explore / Genesis / Sorting / Inhabitants modes reuse one map without cluttering it.
-- [x] **GARDEN-008 · Mobile interaction:** preserve map access on narrow screens through a tap-list when over-image hotspots are hidden.
-- [x] **GARDEN-009 · Deep-owner handoffs:** Garden orients; Bible, House, Axis, Cast Ecology, Dogs and Below keep their detailed owner material.
 - [ ] **GARDEN-010 · Final raster art:** export the approved high-resolution 2.5D pixel Garden master as assets/visuals/garden-eden-map.webp; the page already auto-upgrades from SVG when this file exists.
 - [ ] **GARDEN-011 · Hotspot calibration:** after final raster art lands, tune desktop hotspot coordinates against House, Door, Tree of Life, Tim, dwellers, Mud Tree, sorting procession, Gate, dogs, river and lower plane.
 - [ ] **GARDEN-012 · Animated accents:** create tiny isolated GIF/WebP overlays only where motion clarifies the place: river shimmer, Tree-of-Life glow/leaves, angel wings, Tim idle/gesture, Mud Tree drip, escort walk, Gate glow and dogs at boundary.
