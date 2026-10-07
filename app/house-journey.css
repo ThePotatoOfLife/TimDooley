@@ -297,3 +297,12 @@
 .inner-home :is(.room-archive-entry small,.dwelling-archive-index-card span,.house-corpus-card span,.adj-interface>span,.adj-interface>small){
   color:var(--room-material-copy,var(--site-muted));
 }
+
+
+/* 2026-10-07 Deferred House enrichment paint budget.
+   Only runtime/deep archive surfaces are eligible for off-screen skipping.
+   Authored Room prose stays eagerly laid out to avoid mid-scroll wake-up hitches. */
+:is(.room-archive-drawers,.room-inhabitants-panel,.room-richness,.dwelling-archive-index,.house-deep-corpora){
+  content-visibility:auto;
+  contain-intrinsic-size:auto 560px;
+}
