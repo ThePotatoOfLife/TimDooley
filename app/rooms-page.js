@@ -1,3 +1,16 @@
+const sharedHouseJson=(path=>{
+  const cache=window.__potatoJsonPromiseCache||(window.__potatoJsonPromiseCache=new Map());
+  const href=new URL(path,location.href).href;
+  if(!cache.has(href)){
+    const request=fetch(href,{cache:'default'}).then(response=>{
+      if(!response.ok)throw new Error(path+' '+response.status);
+      return response.json();
+    }).catch(error=>{cache.delete(href);throw error});
+    cache.set(href,request);
+  }
+  return cache.get(href);
+});
+
 (async function renderFeaturedDwellingShelves(){
   const tabs=document.getElementById('featuredDwellingTabs'),shelf=document.getElementById('featuredDwellingShelf');
   if(!tabs||!shelf)return;
@@ -8,9 +21,7 @@
     'world-systems':'World','culture-information':'Culture','works':'Works','research-lab':'Forge'
   };
   try{
-    const res=await fetch('../data/house/dwelling-featured-objects.json');
-    if(!res.ok)throw new Error('featured shelves unavailable');
-    const data=await res.json(),rows=data.shelves||[];
+    const data=await sharedHouseJson('../data/house/dwelling-featured-objects.json'),rows=data.shelves||[];
     let active=rows[0]?.dwelling_id||'';
     function route(href){return href?'../'+String(href).replace(/^\.?\//,''):'../'}
     function draw(){
@@ -34,9 +45,7 @@
   async function renderPlanes(){
     const root=document.getElementById('planeStack'); if(!root)return;
     try{
-      const [topologyRes,roomsRes]=await Promise.all([fetch('../data/house/topology.json'),fetch('../data/house/rooms.json')]);
-      if(!topologyRes.ok||!roomsRes.ok)throw new Error('plane data unavailable');
-      const [topology,rooms]=await Promise.all([topologyRes.json(),roomsRes.json()]);
+      const [topology,rooms]=await Promise.all([sharedHouseJson('../data/house/topology.json'),sharedHouseJson('../data/house/rooms.json')]);
       const roomTitles=Object.fromEntries((rooms.rooms||[]).map(r=>[r.id,r.title||r.id]));
       const planes=topology.symbolic_planes?.planes||[];
       root.innerHTML=planes.map(p=>{
@@ -53,8 +62,7 @@
     const root=document.getElementById('orientationCompass'),detail=document.getElementById('orientationDetail'),tabs=document.getElementById('orientationTabs');
     if(!root||!detail||!tabs)return;
     try{
-      const [res,popRes]=await Promise.all([fetch('../data/house/topology.json'),fetch('../data/house/orientation-population.json')]);if(!res.ok||!popRes.ok)throw new Error('compass unavailable');
-      const [topo,orientationPopulation]=await Promise.all([res.json(),popRes.json()]),model=topo.symbolic_compass;if(!model?.directions)throw new Error('compass missing');
+      const [topo,orientationPopulation]=await Promise.all([sharedHouseJson('../data/house/topology.json'),sharedHouseJson('../data/house/orientation-population.json')]),model=topo.symbolic_compass;if(!model?.directions)throw new Error('compass missing');
       let plane='world-plane',selected='n';
       const planeLabel=p=>p==='world-plane'?'Plane':p.replace('-plane','');
       const planeQuery=p=>p==='world-plane'?'plane':p.replace('-plane','');
@@ -95,9 +103,7 @@
  const controls=document.getElementById('placementControls'),grid=document.getElementById('placementGrid'),count=document.getElementById('placementCount');if(!controls||!grid)return;
  const esc=v=>String(v??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
  try{
-  const [layerRes,branchRes]=await Promise.all([fetch('../data/house/layer-terrain-regime-atlas.json'),fetch('../data/house/religious-symbolic-branch-atlas.json')]);
-  if(!layerRes.ok||!branchRes.ok)throw new Error('placement data unavailable');
-  const [layer,branch]=await Promise.all([layerRes.json(),branchRes.json()]);
+  const [layer,branch]=await Promise.all([sharedHouseJson('../data/house/layer-terrain-regime-atlas.json'),sharedHouseJson('../data/house/religious-symbolic-branch-atlas.json')]);
   const structural=(layer.nodes||[]).map(n=>({id:n.id,label:n.label,category:n.category,planes:n.plane_ids||[],note:n.definition||'',source:'structure'}));
   const inhabited=(branch.nodes||[]).map(n=>({id:n.id,label:n.label,category:n.layer_category||'inhabitant',planes:n.planes||[],note:n.note||'',source:'inhabitant'}));
   const rows=[...structural,...inhabited];
@@ -125,8 +131,7 @@
  if(!grid||!kinds||!search)return;
  const esc=v=>String(v??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
  try{
-  const res=await fetch('../data/house/room-inhabitants.json');if(!res.ok)throw new Error('inhabitants unavailable');
-  const data=await res.json(),rows=data.inhabitants||[];
+  const data=await sharedHouseJson('../data/house/room-inhabitants.json'),rows=data.inhabitants||[];
   const kindCounts={};rows.forEach(x=>kindCounts[x.kind]=(kindCounts[x.kind]||0)+1);
   const topKinds=Object.entries(kindCounts).sort((a,b)=>b[1]-a[1]).slice(0,10).map(x=>x[0]);
   let active='all',q='';
