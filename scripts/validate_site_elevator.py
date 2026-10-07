@@ -129,9 +129,6 @@ def main() -> int:
             '[data-elevator-level="heaven"]',
             '[data-elevator-level="plane"]',
             '[data-elevator-level="below"]',
-            "rotateX(",
-            "420ms",
-            "cubic-bezier(.2,.8,.2,1)",
             "@media (prefers-reduced-motion: reduce)",
             ".site-elevator-room.is-active",
             "--elevator-slot-count:5",
@@ -177,6 +174,11 @@ def main() -> int:
             errors.append("retired desktop header skins must not coexist with the approved panorama strip")
         if css.count("@media (min-width:860px)") != 1:
             errors.append("desktop/tablet panorama should be owned by one min-width:860px media block")
+        if css.count("@media (max-width:859px)") != 1:
+            errors.append("mobile panorama should be owned by exactly one max-width:859px media block")
+        for retired_motion in ("@keyframes site-elevator-reel-down","@keyframes site-elevator-reel-up","@keyframes site-elevator-stage-up","@keyframes site-elevator-stage-down","@keyframes site-elevator-rail-settle","420ms cubic-bezier(.2,.8,.2,1)"):
+            if retired_motion in css:
+                errors.append(f"retired mobile elevator motion must not coexist with canonical painted header: {retired_motion}")
         if "grid-template-columns:repeat(var(--elevator-visible-count)" in css:
             errors.append("desktop interaction map must not regress to equal-width plaque columns")
         if "nth-child(" in css[css.find("/* 2026-10-06 v3 canonical illustrated composition."):]:
