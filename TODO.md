@@ -103,16 +103,16 @@ These missions remain. **What changes is how we store them: fewer, thicker, clea
 - [ ] **PAPER-020 · Axis extracted-owner follow-up:** now that Axis CSS/runtime live in `app/axis-page.css` and `app/axis-page.js`, add focused tests for path-tab URL state, route-case loading and vertical-field fallback rather than relying on one large page integration.
 - [ ] **PAPER-018 · TODO archive rotation:** TODO.md is now ~250 KB; move completed historical waves into a dated archive/changelog while keeping active and recently completed work visible in the main queue.
 - [ ] **PAPER-005 · Prefix-order validator:** add a regression that rejects a broad contextual-nav prefix appearing before a more-specific child prefix and rejects ambiguous first-match ownership.
-- [ ] **PAPER-006 · Exactly-one-current-link validator:** every generated top subheader should expose at most one `aria-current="page"`; nested routes must select the most-specific matching destination.
-- [ ] **PAPER-007 · Subheader ownership sweep:** find page/module styles that still restyle `.page-nav`, `.page-nav a` or a page-specific alias after `site-system.css`; move geometry/font/hover ownership back to the shared shell unless the page is a true application/tool surface.
-- [ ] **PAPER-008 · Tiny-text legibility audit:** inspect 7–9px labels in Elevator, World Map overlays, Room metadata and specialist controls at 100% and 125–150% browser zoom; raise interactive/read-critical text where it becomes illegible while preserving compact metadata where appropriate.
+- [x] **PAPER-006 · Exactly-one-current-link validator:** generated top subheaders now reject multiple `aria-current="page"` links, and active nested Rooms are required to expose exactly one current Room.
+- [x] **PAPER-007 · Subheader ownership sweep:** specialist reader overrides were removed; `site-system.css` owns the shared shell and CI rejects reader CSS that restyles `.page-nav`. The dedicated Elevator application retains only its local spacing exception.
+- [~] **PAPER-008 · Tiny-text legibility audit:** dedicated Elevator actions/lenses/facet controls and generated Room action/body copy were raised out of the 7–9px range. Remaining: browser-check World Map overlays and purely informational metadata at 100% and 125–150% zoom.
 - [ ] **PAPER-009 · Hard-coded floater coordinates:** search remaining application modules for independent `top/right/bottom/left` panel ownership that should register with an existing layout coordinator; remove hidden or duplicated DOM surfaces instead of merely hiding collisions with CSS.
 - [ ] **PAPER-010 · Shared-asset fingerprint coverage:** compare all universally injected CSS/JS assets against both the early build fingerprint registry and the final shared-UI registry; document intentional exceptions and add a validator for assets that can escape both.
 - [ ] **PAPER-011 · Source/build drift check:** verify source-authored nav and built contextual nav do not diverge enough to make local development misleading; either keep source nav minimally honest or provide a deterministic preview/build command in contributor docs.
 - [ ] **PAPER-012 · Specialist reader shell sweep:** inspect Ancient Religions, Christianity branch readers, remaining Tradition pages, relation rooms and Beings pages for small inline structural CSS blocks, stale one-off widths and duplicate card primitives before creating any new stylesheet family.
 - [ ] **PAPER-013 · World Map bootstrap dependency graph:** classify the ~20 sequential core startup modules as strict dependencies vs parallel-safe groups; only parallelize groups with explicit ownership tests and preserve first-interaction correctness.
 - [ ] **PAPER-014 · Horizontal-nav affordance:** on narrow widths, verify the single-row subheader gives a visible cue that more links exist offscreen without reintroducing scrollbars or a multi-row link wall.
-- [ ] **PAPER-015 · Responsive sticky-offset audit:** browser-check sticky tables/rails and deep-link anchors against the measured `--site-elevator-clearance` at mobile, 761–1180px pressure widths and wide desktop so no sticky heading lands under the HUD.
+- [~] **PAPER-015 · Responsive sticky-offset audit:** Garden sticky navigation, TTS sticky hosts, World Map overlays, Comparative Cosmology and deep-link anchors now use measured elevator clearance. Remaining: browser-check 761–1180px pressure widths and any specialist sticky table headers.
 
 ## The cleanup pass
 
@@ -1864,16 +1864,18 @@ North-star rule: **Potato of Life explains the symbol; Potatoism teaches; Grow t
 
 ## Stability / mobile / performance pass — 2026-10-07
 
+- [x] **STABLE-000 · Retired journey ribbon cleanup:** removed the globally fixed House journey ribbon runtime/CSS that had already stopped rendering; dedicated Elevator remains the owner of journey replay/history.
+
 - [x] **STABLE-001 · Mobile header seam:** remove the old narrow-screen shell shadow/accent seam and make Heaven / Plane / Below use one painted 2172×239 artboard crop.
 - [x] **STABLE-002 · Mobile hotspot parity:** project mobile arrow/Room hit areas from the same height-scaled artboard used to paint the cropped panorama.
 - [x] **STABLE-003 · Elevator resize consolidation:** replace duplicate window resize handlers with one rAF-coalesced geometry refresh for clearance + hotspots.
 - [x] **STABLE-004 · Hidden-tab counter work:** pause the 100,000 Hours live counter while the document is hidden and stop it on pagehide.
-- [x] **STABLE-005 · Mobile Home compositor budget:** use one stable Plane realm on <=700px instead of three full-screen scroll-linked realm layers.
+- [x] **STABLE-005 · Mobile Home compositor budget:** use one stable preloaded Heaven realm on <=700px instead of three full-screen scroll-linked realm layers.
 - [ ] **STABLE-006 · Mobile visual regression set:** capture 320 / 390 / 430 / 768px screenshots for Heaven, Plane and Below and compare frame edge, plaque crop, lower seam and page-nav clearance.
 - [ ] **STABLE-007 · Home scroll-profile:** browser-profile the desktop Home realm crossfade after deployment; measure paint/compositor cost and verify it stays smooth on integrated graphics.
 - [ ] **STABLE-008 · Below-fold Home rendering experiment:** test restoring `content-visibility:auto` only for deep Home sections with stable intrinsic sizes; keep it only if scroll position and realm timing remain deterministic.
-- [ ] **STABLE-009 · Specialist glass audit:** profile `backdrop-filter` on non-Home reader families (traditions, source/public-record, Heaven concepts, Below/Farm, Garden and TTS surfaces); remove blur where it creates measurable mobile compositor cost.
+- [~] **STABLE-009 · Specialist glass audit:** mobile shared-reader, access-dock and Garden blur has been removed where the material background already carries readability. Remaining: profile desktop specialist panes before removing any intentional glass effect there.
 - [ ] **STABLE-010 · Garden motion budget verification:** confirm whisper/falling-fruit timers remain single-instance, pause while hidden, honor reduced motion and never create parallel loops after visibility changes.
 - [ ] **STABLE-011 · World Map runtime module budget:** use the existing map telemetry/auditor to identify compatibility modules, duplicate style/control owners and provider requests that can be retired or lazy-loaded.
-- [ ] **STABLE-012 · Long-page timer inventory:** audit remaining public `setInterval` / recurring timeout users and require visibility/pagehide cleanup unless the timer is strictly user-triggered.
+- [~] **STABLE-012 · Long-page timer inventory:** the 100,000 Hours counter now pauses while hidden; the remaining direct `setInterval` users found in active source are Garden ambient whispers and dedicated Elevator replay. Remaining: verify Garden's single-instance visibility lifecycle in-browser.
 
