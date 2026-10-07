@@ -191,10 +191,10 @@
   position:relative;
   overflow:hidden;
   background:
-    radial-gradient(ellipse at 50% 0,rgba(216,181,107,.045),transparent 54%),
-    linear-gradient(180deg,rgba(8,12,10,.52),rgba(7,9,8,.40));
-  border-color:rgba(255,255,255,.10);
-  box-shadow:0 14px 32px rgba(0,0,0,.15)
+    radial-gradient(ellipse at 50% 0,color-mix(in srgb,var(--site-gold) 7%,transparent),transparent 54%),
+    var(--site-pane);
+  border-color:var(--site-pane-line);
+  box-shadow:var(--site-pane-shadow)
 }
 .room-floor-projection::before{
   content:"";
@@ -235,13 +235,13 @@
   padding-inline:16px
 }
 .dwelling-object-card,.rooms-best-card,.house-corpus-card,.dwelling-archive-index-card{
-  background:rgba(8,11,9,.34);
-  border-color:rgba(255,255,255,.085);
+  background:var(--site-pane-soft);
+  border-color:var(--site-pane-line);
   transition:background .15s ease,border-color .15s ease,transform .15s ease
 }
 .dwelling-object-card:hover,.rooms-best-card:hover,.house-corpus-card:hover,.dwelling-archive-index-card:hover{
-  background:rgba(11,15,12,.48);
-  border-color:rgba(216,181,107,.16);
+  background:color-mix(in srgb,var(--site-pane-soft) 88%,var(--site-gold) 12%);
+  border-color:color-mix(in srgb,var(--site-pane-line) 66%,var(--site-gold) 34%);
   transform:translateY(-1px)
 }
 
