@@ -144,7 +144,7 @@ def main() -> int:
             "--site-header-art:",
             "background-image:var(--site-header-art)",
             "background-size:100% auto",
-            "--elevator-shell-height:clamp(96px,6.25vw,120px)",
+            "--elevator-shell-height:clamp(94.632px,11.003683vw,300px)",
             "border-radius:0",
             "background:transparent",
             ".site-elevator-room-rail{",
