@@ -307,9 +307,6 @@
   ttsCloseBtn.addEventListener('click',()=>{setTTSOpen(false);listenBtn.focus()});
   closeBtn.addEventListener('click',()=>{setOpen(false);returnFocus?.focus?.()});
   input.addEventListener('input',renderSearch);
-  document.addEventListener('keydown',event=>{
-    if(event.key==='Escape'&&!ttsConsole.hidden){setTTSOpen(false);listenBtn.focus()}
-  });
   const resultLinks=()=>[...content.querySelectorAll('.site-access-result')];
   const focusResult=(index)=>{
     const rows=resultLinks();if(!rows.length)return false;
@@ -338,7 +335,18 @@
     const first=content.querySelector('.site-access-result');
     if(first)location.href=first.href;
   });
-  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!panel.hidden){setOpen(false);returnFocus?.focus?.()}});
+  document.addEventListener('keydown',event=>{
+    if(event.key!=='Escape')return;
+    if(!ttsConsole.hidden){
+      setTTSOpen(false);
+      listenBtn.focus();
+      return;
+    }
+    if(!panel.hidden){
+      setOpen(false);
+      returnFocus?.focus?.();
+    }
+  });
   document.addEventListener('pointerdown',e=>{if(!panel.hidden&&!wrapper.contains(e.target))setOpen(false)});
   // The fixed dock is fully usable without the heavy search index.
   // Load the four registry JSONs only when Places/Find is actually opened.
