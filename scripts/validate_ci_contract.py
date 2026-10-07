@@ -34,6 +34,8 @@ def main()->int:
     ):
         if marker not in quality:
             errors.append(f"quality workflow missing contract marker: {marker}")
+    if "paths-ignore:" in quality:
+        errors.append("quality workflow must validate every main SHA because Pages freshness requires exact current-main provenance")
 
     for marker in (
         "python scripts/validate_reader_richness.py",
