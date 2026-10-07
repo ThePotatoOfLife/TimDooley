@@ -197,8 +197,11 @@ assert.ok(source.includes("Home"),'header keyboard contract needs Home → Plane
 assert.ok(source.includes("disabled"),'boundary arrows must expose disabled state');
 
 assert.ok(css.includes('--elevator-slot-count:5'),'header must preserve the five-slot floor geometry contract');
-assert.ok(css.includes('@media (max-width:859px)'),'true mobile must retain a compact fallback');
+assert.equal((css.match(/@media \(max-width:859px\)/g)||[]).length,1,'mobile illustrated header must have exactly one responsive owner');
 assert.ok(css.includes('/* Mobile canonical panorama crop — 2026-10-07.'),'mobile header must have one canonical painted-art owner');
+assert.equal(css.includes('@keyframes site-elevator-reel-down'),false,'retired mobile reel animation must not coexist with painted header');
+assert.equal(css.includes('@keyframes site-elevator-stage-up'),false,'retired mobile stage animation must not coexist with painted header');
+assert.equal(css.includes('420ms cubic-bezier(.2,.8,.2,1)'),false,'retired mobile HUD motion timing must be removed');
 assert.ok(css.includes('background-size:auto 100%'),'mobile panorama must scale by height and crop from the left');
 assert.match(css,/@media \(max-width:859px\)\{[\s\S]*?\.site-elevator\{[\s\S]*?box-shadow:none;/,'mobile header must not paint the old black seam shadow');
 assert.equal((css.match(/@media \(min-width:860px\)/g)||[]).length,1,'desktop illustrated header must have one v3 responsive owner');
