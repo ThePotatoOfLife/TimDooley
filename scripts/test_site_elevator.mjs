@@ -205,6 +205,8 @@ assert.equal(css.includes('target-reference refinement'),false,'retired target-r
 assert.equal(css.includes('exact target-reference desktop skin'),false,'retired exact desktop override must not coexist with panorama strip');
 assert.ok(css.includes('background-image:var(--site-header-art)'),'responsive strip must use the dedicated panorama asset directly');
 assert.ok(css.includes('background-size:100% 100%'),'desktop panorama must fill the canonical shell exactly without hairline seams');
+assert.match(css,/@media \(min-width:860px\)\{[\s\S]*?\.site-elevator\{[\s\S]*?box-shadow:none;/,'desktop header must not paint an extra black shell shadow');
+assert.match(css,/@media \(min-width:860px\)\{[\s\S]*?\.site-elevator\{[\s\S]*?overflow:hidden;/,'desktop header must clip sub-pixel artwork overflow at its canonical border');
 assert.match(css,/--elevator-shell-height:clamp\(94\.632px,11\.003683vw,300px\)/,'desktop header must preserve the 2172×239 panorama ratio instead of cropping the painted navigation');
 assert.match(css,/\.site-elevator-main\{[\s\S]*?width:100%;[\s\S]*?max-width:none;/,'live geometry must share the full panorama width');
 assert.equal(css.includes('grid-template-columns:repeat(var(--elevator-visible-count),minmax(0,1fr))'),false,'desktop hit map must not regress to equal-width plaque columns');
