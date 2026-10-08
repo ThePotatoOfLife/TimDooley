@@ -60,7 +60,7 @@
   let wallIndex = 0;
   let viewerIndex = -1;
 
-  const visibleCards = () => cards.filter(card => !card.hidden);
+  const visibleCards = () => cards.filter(card => !card.hidden && card.dataset.imageFailed !== 'true');
 
   const monthLabel = card => {
     const iso = card.dataset.date || '';
@@ -108,7 +108,8 @@
   };
 
   const rebuildMonthRail = visible => {
-    if (!monthRail || !visible.length) return;
+    if (!monthRail) return;
+    if (!visible.length) { monthRail.replaceChildren(); return; }
     const groups = [];
     visible.forEach((card,index) => {
       const label = monthLabel(card);
@@ -151,25 +152,35 @@
     const visible = visibleCards();
     if (!visible.length) {
       if (empty) empty.hidden = false;
+      if (plaque) plaque.hidden = true;
+      if (wallRange) { wallRange.disabled = true; wallRange.value = '0'; }
+      if (monthRail) monthRail.replaceChildren();
+      wallPrev.forEach(button => button.disabled = true);
+      wallNext.forEach(button => button.disabled = true);
+      if (wallOpen) wallOpen.disabled = true;
       cards.forEach(card => {
         card.classList.remove('is-active','is-prev','is-next','is-away-left','is-away-right');
         card.setAttribute('aria-hidden','true');
+        card.querySelector('[data-gallery-open]')?.setAttribute('tabindex','-1');
       });
       return;
     }
     if (empty) empty.hidden = true;
+    if (plaque) plaque.hidden = false;
     wallIndex = Math.max(0,Math.min(wallIndex,visible.length - 1));
     const active = visible[wallIndex];
 
     cards.forEach(card => {
       card.classList.remove('is-active','is-prev','is-next','is-away-left','is-away-right');
       card.setAttribute('aria-hidden','true');
+      card.querySelector('[data-gallery-open]')?.setAttribute('tabindex','-1');
     });
 
     visible.forEach((card,index) => {
       if (index === wallIndex) {
         card.classList.add('is-active');
         card.setAttribute('aria-hidden','false');
+        card.querySelector('[data-gallery-open]')?.setAttribute('tabindex', index === wallIndex ? '0' : '-1');
       } else if (index === wallIndex - 1) {
         card.classList.add('is-prev');
         card.setAttribute('aria-hidden','false');
@@ -204,7 +215,8 @@
     wallPrev.forEach(button => button.disabled = atStart);
     wallNext.forEach(button => button.disabled = atEnd);
     if (wallOpen) wallOpen.disabled = false;
-    history.replaceState(null,'','#' + active.id);
+    // Preserve deep links without needlessly mutating the URL on every repaint.
+    if (location.hash !== '#' + active.id) history.replaceState(null,'','#' + active.id);
   };
 
   const moveWall = step => {
@@ -239,6 +251,7 @@
   });
 
   grid.addEventListener('keydown', event => {
+    if (event.target.matches('button') && event.key === 'Enter') return;
     if (event.key === 'ArrowLeft') {
       event.preventDefault();
       moveWall(-1);
