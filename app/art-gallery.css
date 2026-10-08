@@ -285,3 +285,27 @@
 
 /* MUSEUM STAGE V6 — broken-image containment */
 .gallery-card[data-image-failed="true"]{display:none!important}
+
+/* Museum resolution and accessibility pass — 2026-10-08.
+   Never upscale small recovered works beyond their own pixel dimensions.
+   Supplied originals remain eligible for native-size full-view display. */
+.gallery-image-frame img{width:auto;height:auto;object-fit:contain;image-rendering:auto}
+.gallery-card.is-active .gallery-image-frame img{object-fit:contain}
+.gallery-lightbox .gallery-stage img{width:auto;height:auto;max-width:100%;max-height:min(90vh,1100px);object-fit:contain;image-rendering:auto}
+.gallery-open:focus-visible,.museum-nav:focus-visible,.gallery-plaque__controls button:focus-visible,
+.gallery-filter:focus-visible,.museum-index__range:focus-visible{
+ outline:3px solid #efd393;outline-offset:4px
+}
+.gallery-lightbox .gallery-stage{overflow:hidden}
+@media(min-width:1800px){
+ .art-gallery-page .museum-stage-shell{max-width:1740px;margin-inline:auto}
+ .art-gallery-page .gallery-card.orientation-landscape .gallery-image-frame img{
+  max-width:min(78vw,1536px)!important;max-height:min(68vh,1024px)!important
+ }
+ .art-gallery-page .gallery-card.orientation-portrait .gallery-image-frame img{
+  max-width:min(55vw,1024px)!important;max-height:min(72vh,1536px)!important
+ }
+}
+@media(prefers-reduced-motion:reduce){
+ .gallery-card,.gallery-image-frame,.museum-wall,.museum-stage-shell{animation:none!important;transition:none!important}
+}
