@@ -1,0 +1,959 @@
+{
+  "id": "world-financial-system-foundation",
+  "version": "1.2.0",
+  "updated": "2026-09-20",
+  "status": "active-foundation",
+  "purpose": "Canonical seed layer for central banks, currencies, sovereign and supranational debt, reserve assets, settlement systems, creditor classes, cross-border claims and financial obligations. It is designed to answer who issues, who owes, who holds, in what currency, through which institution, at what date, and with what evidence.",
+  "boundary": "This file is an empirical finance layer. Tim/Potatoverse Axis geography remains a separate project-interpretive overlay. A country appearing in a North aggregation does not imply sovereignty, legal authority, consent, ownership or political control. Monetary membership, debt holdings, custody, settlement links and lending relationships must never be silently converted into Axis membership or authority claims.",
+  "modeling_principles": [
+    "Separate monetary authority from fiscal issuer: a central bank can set monetary policy while national treasuries issue sovereign debt.",
+    "Separate issuer from holder: the debtor is the issuer; a creditor is a holder or lender only to the extent supported by the instrument or claim data.",
+    "Separate custody location from beneficial ownership: TIC and similar custody-based datasets can misidentify the ultimate beneficial owner.",
+    "Separate central-government debt, general-government debt, debt held by the public, gross debt, net debt and external debt.",
+    "Separate a security funding leg from a downstream loan leg: an investor buying an ESM or EU bond is not automatically a direct creditor of the final programme beneficiary.",
+    "Keep currency denomination distinct from economic exposure and from the nationality of creditor or debtor.",
+    "Every numeric observation retains concept, unit, reference period, source and evidence status.",
+    "Missing counterparty detail is represented as unknown or an aggregate creditor class rather than guessed.",
+    "BIS locational banking statistics are residence-based and unconsolidated; BIS consolidated banking statistics are nationality-based and consolidated. They are not additive views.",
+    "BIS international debt securities identify issuers and instrument structure but do not identify bond holders; holder endpoints require a holdings dataset."
+  ],
+  "relationship_model": {
+    "edge_schema_required": [
+      "from_id",
+      "verb",
+      "to_id",
+      "reference_period",
+      "source_id",
+      "evidence_status"
+    ],
+    "edge_schema_recommended": [
+      "instrument_id",
+      "value",
+      "unit",
+      "currency",
+      "maturity",
+      "rate_type",
+      "holder_class",
+      "residency_basis",
+      "valuation_basis",
+      "notes",
+      "reporting_country",
+      "parent_country",
+      "counterparty_country",
+      "counterparty_basis",
+      "issuer_residence",
+      "issuer_nationality",
+      "bis_series_key"
+    ],
+    "verbs": [
+      "issues_currency",
+      "sets_monetary_policy_for",
+      "operates_settlement_system",
+      "fiscal_agent_for",
+      "manages_debt_for",
+      "issues_debt",
+      "owes",
+      "holds_security",
+      "lends_to",
+      "borrows_from",
+      "guarantees",
+      "funds",
+      "provides_liquidity_to",
+      "holds_reserve_asset",
+      "settles_through",
+      "pegged_to",
+      "reports_claim_on",
+      "reports_liability_to",
+      "custodies_for",
+      "member_of_monetary_system"
+    ]
+  },
+  "debt_concepts": [
+    {
+      "id": "general-government-gross-debt",
+      "label": "General government gross debt",
+      "scope": "Consolidated gross debt of general government under the applicable statistical framework.",
+      "do_not_substitute": [
+        "central-government-debt",
+        "debt-held-by-public",
+        "external-debt"
+      ]
+    },
+    {
+      "id": "central-government-debt",
+      "label": "Central government debt",
+      "scope": "Debt of central government; excludes other general-government subsectors unless the source explicitly consolidates them.",
+      "do_not_substitute": [
+        "general-government-gross-debt"
+      ]
+    },
+    {
+      "id": "debt-held-by-public",
+      "label": "U.S. federal debt held by the public",
+      "scope": "Treasury definition: federal debt held outside federal government accounts, including domestic and foreign holders and Federal Reserve Banks.",
+      "do_not_substitute": [
+        "total-public-debt-outstanding",
+        "intragovernmental-holdings"
+      ]
+    },
+    {
+      "id": "total-public-debt-outstanding",
+      "label": "U.S. total public debt outstanding",
+      "scope": "Debt held by the public plus intragovernmental holdings under U.S. Treasury reporting."
+    },
+    {
+      "id": "debt-securities-outstanding",
+      "label": "Debt securities outstanding",
+      "scope": "Tradable debt instruments such as bills, commercial paper, negotiable certificates of deposit, bonds and debentures; BIS datasets distinguish domestic and international markets."
+    },
+    {
+      "id": "cross-border-bank-claim",
+      "label": "Cross-border bank claim",
+      "scope": "Banking-system claim reported under BIS international banking statistics; not the same thing as sovereign debt."
+    },
+    {
+      "id": "official-reserve-assets",
+      "label": "Official reserve assets",
+      "scope": "Reserve assets held by monetary authorities. IMF COFER publishes allocated reserve currency composition in aggregate and keeps individual economy submissions confidential."
+    },
+    {
+      "id": "custody-reported-us-treasury-holdings",
+      "label": "Custody-reported foreign holdings of U.S. Treasury securities",
+      "scope": "TIC country attribution based primarily on custodial location; it is not guaranteed to identify the ultimate beneficial owner."
+    }
+  ],
+  "creditor_resolution": [
+    {
+      "level": 1,
+      "id": "identified-counterparty",
+      "meaning": "A named lender or holder is directly evidenced."
+    },
+    {
+      "level": 2,
+      "id": "holder-sector-or-country",
+      "meaning": "A source identifies a holder sector or country but not the underlying legal person."
+    },
+    {
+      "level": 3,
+      "id": "custody-location",
+      "meaning": "A source identifies the location of a custodian or intermediary; beneficial ownership may differ."
+    },
+    {
+      "level": 4,
+      "id": "confidential-aggregate",
+      "meaning": "Only an aggregate is published because individual positions are confidential."
+    },
+    {
+      "level": 5,
+      "id": "unknown",
+      "meaning": "Counterparty detail is not available from the current evidence."
+    }
+  ],
+  "central_banks": [
+    {
+      "id": "federal-reserve",
+      "name": "Federal Reserve System",
+      "jurisdiction_iso3": [
+        "USA"
+      ],
+      "currency_ids": [
+        "USD"
+      ],
+      "roles": [
+        "central_bank",
+        "monetary_policy",
+        "bank_supervision",
+        "payment_system",
+        "fiscal_services"
+      ],
+      "structure": "Board of Governors plus 12 Federal Reserve Banks; monetary-policy decisions are made through the Federal Open Market Committee.",
+      "source_ids": [
+        "fed-who-we-are",
+        "fed-monetary-objectives"
+      ]
+    },
+    {
+      "id": "ecb-eurosystem",
+      "name": "European Central Bank / Eurosystem",
+      "jurisdiction_iso3": [
+        "AUT",
+        "BEL",
+        "BGR",
+        "HRV",
+        "CYP",
+        "EST",
+        "FIN",
+        "FRA",
+        "DEU",
+        "GRC",
+        "IRL",
+        "ITA",
+        "LVA",
+        "LTU",
+        "LUX",
+        "MLT",
+        "NLD",
+        "PRT",
+        "SVK",
+        "SVN",
+        "ESP"
+      ],
+      "currency_ids": [
+        "EUR"
+      ],
+      "roles": [
+        "central_bank",
+        "monetary_policy",
+        "banking_supervision",
+        "payment_and_settlement"
+      ],
+      "structure": "The Eurosystem is the ECB plus the national central banks of euro-area countries; the wider ESCB also includes EU national central banks outside the euro area.",
+      "source_ids": [
+        "ecb-escb-eurosystem",
+        "ecb-bulgaria-euro-2026",
+        "ecb-target-services"
+      ]
+    },
+    {
+      "id": "danmarks-nationalbank",
+      "name": "Danmarks Nationalbank",
+      "jurisdiction_iso3": [
+        "DNK"
+      ],
+      "currency_ids": [
+        "DKK"
+      ],
+      "roles": [
+        "central_bank",
+        "monetary_policy",
+        "currency_issuer",
+        "payment_system",
+        "government_debt_management"
+      ],
+      "structure": "Denmark retains the krone and operates a fixed-exchange-rate policy against the euro. Danmarks Nationalbank manages central-government borrowing and debt on behalf of the Minister of Finance.",
+      "source_ids": [
+        "dnb-exchange-rates",
+        "dnb-government-debt-management",
+        "dnb-funding-strategy-2026"
+      ]
+    },
+    {
+      "id": "bank-of-england",
+      "name": "Bank of England",
+      "jurisdiction_iso3": [
+        "GBR"
+      ],
+      "currency_ids": [
+        "GBP"
+      ],
+      "roles": [
+        "central_bank",
+        "monetary_policy",
+        "financial_stability",
+        "currency_issuer"
+      ],
+      "source_ids": [
+        "boe-about"
+      ]
+    },
+    {
+      "id": "bank-of-canada",
+      "name": "Bank of Canada",
+      "jurisdiction_iso3": [
+        "CAN"
+      ],
+      "currency_ids": [
+        "CAD"
+      ],
+      "roles": [
+        "central_bank",
+        "monetary_policy",
+        "financial_stability",
+        "currency_issuer",
+        "fiscal_agent",
+        "reserve_management"
+      ],
+      "source_ids": [
+        "boc-central-bank-2026"
+      ]
+    },
+    {
+      "id": "norges-bank",
+      "name": "Norges Bank",
+      "jurisdiction_iso3": [
+        "NOR"
+      ],
+      "currency_ids": [
+        "NOK"
+      ],
+      "roles": [
+        "central_bank",
+        "monetary_policy",
+        "financial_stability",
+        "currency_issuer",
+        "reserve_management"
+      ],
+      "source_ids": [
+        "norges-about",
+        "norges-eurosystem-settlement-dialogue"
+      ]
+    },
+    {
+      "id": "sveriges-riksbank",
+      "name": "Sveriges Riksbank",
+      "jurisdiction_iso3": [
+        "SWE"
+      ],
+      "currency_ids": [
+        "SEK"
+      ],
+      "roles": [
+        "central_bank",
+        "monetary_policy",
+        "currency_issuer",
+        "payment_system"
+      ],
+      "source_ids": [
+        "riksbank-monetary-policy"
+      ]
+    },
+    {
+      "id": "bank-of-japan",
+      "name": "Bank of Japan",
+      "jurisdiction_iso3": [
+        "JPN"
+      ],
+      "currency_ids": [
+        "JPY"
+      ],
+      "roles": [
+        "central_bank",
+        "monetary_policy",
+        "currency_issuer",
+        "payment_and_settlement"
+      ],
+      "source_ids": [
+        "boj-monetary-policy"
+      ]
+    },
+    {
+      "id": "reserve-bank-of-australia",
+      "name": "Reserve Bank of Australia",
+      "jurisdiction_iso3": [
+        "AUS"
+      ],
+      "currency_ids": [
+        "AUD"
+      ],
+      "roles": [
+        "central_bank",
+        "monetary_policy",
+        "financial_stability",
+        "currency_issuer",
+        "reserve_management",
+        "government_banking"
+      ],
+      "source_ids": [
+        "rba-role"
+      ]
+    }
+  ],
+  "currency_systems": [
+    {
+      "id": "USD",
+      "name": "United States dollar",
+      "monetary_authority_id": "federal-reserve",
+      "primary_jurisdiction_iso3": [
+        "USA"
+      ],
+      "regime_note": "National currency of the United States; also widely used internationally as a reserve, invoicing and funding currency."
+    },
+    {
+      "id": "EUR",
+      "name": "Euro",
+      "monetary_authority_id": "ecb-eurosystem",
+      "member_jurisdiction_iso3": [
+        "AUT",
+        "BEL",
+        "BGR",
+        "HRV",
+        "CYP",
+        "EST",
+        "FIN",
+        "FRA",
+        "DEU",
+        "GRC",
+        "IRL",
+        "ITA",
+        "LVA",
+        "LTU",
+        "LUX",
+        "MLT",
+        "NLD",
+        "PRT",
+        "SVK",
+        "SVN",
+        "ESP"
+      ],
+      "regime_note": "Single currency of 21 EU member states as of 1 January 2026; national fiscal issuers remain distinct."
+    },
+    {
+      "id": "DKK",
+      "name": "Danish krone",
+      "monetary_authority_id": "danmarks-nationalbank",
+      "primary_jurisdiction_iso3": [
+        "DNK"
+      ],
+      "exchange_rate_anchor": {
+        "anchor_currency": "EUR",
+        "central_rate_dkk_per_eur": 7.46038,
+        "regime": "fixed exchange rate policy"
+      },
+      "source_ids": [
+        "dnb-exchange-rates"
+      ]
+    },
+    {
+      "id": "GBP",
+      "name": "Pound sterling",
+      "monetary_authority_id": "bank-of-england",
+      "primary_jurisdiction_iso3": [
+        "GBR"
+      ]
+    },
+    {
+      "id": "CAD",
+      "name": "Canadian dollar",
+      "monetary_authority_id": "bank-of-canada",
+      "primary_jurisdiction_iso3": [
+        "CAN"
+      ]
+    },
+    {
+      "id": "NOK",
+      "name": "Norwegian krone",
+      "monetary_authority_id": "norges-bank",
+      "primary_jurisdiction_iso3": [
+        "NOR"
+      ]
+    },
+    {
+      "id": "SEK",
+      "name": "Swedish krona",
+      "monetary_authority_id": "sveriges-riksbank",
+      "primary_jurisdiction_iso3": [
+        "SWE"
+      ]
+    },
+    {
+      "id": "JPY",
+      "name": "Japanese yen",
+      "monetary_authority_id": "bank-of-japan",
+      "primary_jurisdiction_iso3": [
+        "JPN"
+      ]
+    },
+    {
+      "id": "AUD",
+      "name": "Australian dollar",
+      "monetary_authority_id": "reserve-bank-of-australia",
+      "primary_jurisdiction_iso3": [
+        "AUS"
+      ]
+    }
+  ],
+  "sovereign_and_supranational_issuers": [
+    {
+      "id": "us-treasury",
+      "name": "United States Department of the Treasury",
+      "jurisdiction_iso3": [
+        "USA"
+      ],
+      "issuer_type": "sovereign_treasury",
+      "currency_ids": [
+        "USD"
+      ],
+      "tracked_concepts": [
+        "debt-held-by-public",
+        "total-public-debt-outstanding",
+        "custody-reported-us-treasury-holdings"
+      ],
+      "source_ids": [
+        "us-treasury-debt-to-penny",
+        "us-treasury-tic"
+      ]
+    },
+    {
+      "id": "denmark-central-government",
+      "name": "Kingdom of Denmark central government",
+      "jurisdiction_iso3": [
+        "DNK"
+      ],
+      "issuer_type": "sovereign_central_government",
+      "currency_ids": [
+        "DKK",
+        "EUR",
+        "USD"
+      ],
+      "debt_manager_id": "danmarks-nationalbank",
+      "source_ids": [
+        "dnb-government-debt-management",
+        "dnb-funding-strategy-2026",
+        "dnb-central-government-debt-2025"
+      ]
+    },
+    {
+      "id": "euro-area-national-treasuries",
+      "name": "Euro-area national fiscal issuers",
+      "jurisdiction_iso3": [
+        "AUT",
+        "BEL",
+        "BGR",
+        "HRV",
+        "CYP",
+        "EST",
+        "FIN",
+        "FRA",
+        "DEU",
+        "GRC",
+        "IRL",
+        "ITA",
+        "LVA",
+        "LTU",
+        "LUX",
+        "MLT",
+        "NLD",
+        "PRT",
+        "SVK",
+        "SVN",
+        "ESP"
+      ],
+      "issuer_type": "sovereign_treasury_group",
+      "currency_ids": [
+        "EUR"
+      ],
+      "modeling_note": "The ECB is the monetary authority for EUR, but sovereign bonds remain liabilities of their respective national issuers unless an instrument is explicitly supranational.",
+      "source_ids": [
+        "eurostat-government-debt",
+        "ecb-escb-eurosystem"
+      ]
+    },
+    {
+      "id": "european-commission-eu-bonds",
+      "name": "European Commission EU-Bonds",
+      "issuer_type": "supranational_eu_borrowing",
+      "currency_ids": [
+        "EUR"
+      ],
+      "modeling_note": "EU-Bonds fund EU programmes under the Commission's unified funding approach. They are not interchangeable with a member state's national sovereign bonds.",
+      "source_ids": [
+        "ec-eu-funding-plan-2026"
+      ]
+    },
+    {
+      "id": "esm",
+      "name": "European Stability Mechanism",
+      "issuer_type": "euro_area_stability_institution",
+      "currency_ids": [
+        "EUR"
+      ],
+      "modeling_note": "The ESM raises funds from markets and can lend to ESM members. Model the ESM security and the downstream ESM loan as separate obligations.",
+      "source_ids": [
+        "esm-members",
+        "esm-lending-rates-2026"
+      ]
+    }
+  ],
+  "settlement_and_infrastructure": [
+    {
+      "id": "eurosystem-target-services",
+      "name": "TARGET Services",
+      "operator_id": "ecb-eurosystem",
+      "components": [
+        "T2",
+        "T2S",
+        "TIPS",
+        "ECMS"
+      ],
+      "roles": [
+        "wholesale_payments",
+        "securities_settlement",
+        "instant_payments",
+        "collateral_management"
+      ],
+      "source_ids": [
+        "ecb-target-services",
+        "ecb-t2s"
+      ]
+    },
+    {
+      "id": "norway-eurosystem-settlement-bridge",
+      "name": "Norway / Eurosystem settlement integration track",
+      "participants": [
+        "norges-bank",
+        "ecb-eurosystem"
+      ],
+      "status": "empirical_connection",
+      "note": "Norges Bank has formal work with the ECB around Eurosystem settlement infrastructure, including an agreement to use the Eurosystem platform for instant payments. This is a financial-infrastructure relationship, not euro-area membership.",
+      "source_ids": [
+        "norges-eurosystem-settlement-dialogue"
+      ]
+    }
+  ],
+  "observations": [
+    {
+      "id": "euro-area-debt-gdp-2026q1",
+      "entity_id": "euro-area-21",
+      "concept_id": "general-government-gross-debt",
+      "value": 88.9,
+      "unit": "percent of GDP",
+      "reference_period": "2026Q1",
+      "source_id": "eurostat-government-debt",
+      "evidence_status": "sourced"
+    },
+    {
+      "id": "eu-debt-gdp-2026q1",
+      "entity_id": "european-union",
+      "concept_id": "general-government-gross-debt",
+      "value": 82.9,
+      "unit": "percent of GDP",
+      "reference_period": "2026Q1",
+      "source_id": "eurostat-government-debt",
+      "evidence_status": "sourced"
+    },
+    {
+      "id": "denmark-general-government-debt-gdp-2026q1",
+      "entity_id": "DNK",
+      "concept_id": "general-government-gross-debt",
+      "value": 26.8,
+      "unit": "percent of GDP",
+      "reference_period": "2026Q1",
+      "source_id": "eurostat-government-debt",
+      "evidence_status": "sourced"
+    },
+    {
+      "id": "denmark-central-government-debt-2025",
+      "entity_id": "denmark-central-government",
+      "concept_id": "central-government-debt",
+      "value": 235.4,
+      "unit": "DKK billion",
+      "reference_period": "2025-12-31",
+      "source_id": "dnb-central-government-debt-2025",
+      "evidence_status": "sourced",
+      "notes": "Do not compare this stock directly with Eurostat general-government debt without reconciling sector coverage and statistical method."
+    },
+    {
+      "id": "denmark-central-government-debt-gdp-2025",
+      "entity_id": "denmark-central-government",
+      "concept_id": "central-government-debt",
+      "value": 7.6,
+      "unit": "percent of GDP",
+      "reference_period": "2025-12-31",
+      "source_id": "dnb-central-government-debt-2025",
+      "evidence_status": "sourced"
+    },
+    {
+      "id": "denmark-domestic-bond-issuance-target-2026",
+      "entity_id": "denmark-central-government",
+      "concept_id": "debt-securities-outstanding",
+      "value": 65,
+      "unit": "DKK billion issuance target",
+      "reference_period": "2026",
+      "source_id": "dnb-funding-strategy-2026",
+      "evidence_status": "sourced",
+      "notes": "Issuance target is a funding-flow plan, not an outstanding-debt stock."
+    },
+    {
+      "id": "imf-cofer-total-reserves-2026q1",
+      "entity_id": "global-official-reserves",
+      "concept_id": "official-reserve-assets",
+      "value": 13.1,
+      "unit": "USD trillion",
+      "reference_period": "2026Q1",
+      "source_id": "imf-cofer-2026q1",
+      "evidence_status": "sourced"
+    },
+    {
+      "id": "imf-cofer-usd-share-2026q1",
+      "entity_id": "global-official-foreign-exchange-reserves",
+      "concept_id": "official-reserve-assets",
+      "value": 57.13,
+      "unit": "percent",
+      "reference_period": "2026Q1",
+      "source_id": "imf-cofer-2026q1",
+      "evidence_status": "sourced",
+      "notes": "COFER publishes world reserve-currency aggregates. From 2025Q3, with revisions back to 2000Q1, the IMF eliminated the old unallocated-reserve category using an imputation method while preserving confidentiality of individual economy submissions; do not infer a particular country's portfolio."
+    },
+    {
+      "id": "tic-japan-us-treasury-holdings-2026-07",
+      "entity_id": "JPN",
+      "counterparty_id": "us-treasury",
+      "concept_id": "custody-reported-us-treasury-holdings",
+      "value": 1103.9,
+      "unit": "USD billion",
+      "reference_period": "2026-07",
+      "source_id": "us-treasury-tic",
+      "evidence_status": "sourced",
+      "creditor_resolution_level": 3
+    },
+    {
+      "id": "tic-uk-us-treasury-holdings-2026-07",
+      "entity_id": "GBR",
+      "counterparty_id": "us-treasury",
+      "concept_id": "custody-reported-us-treasury-holdings",
+      "value": 998.3,
+      "unit": "USD billion",
+      "reference_period": "2026-07",
+      "source_id": "us-treasury-tic",
+      "evidence_status": "sourced",
+      "creditor_resolution_level": 3
+    },
+    {
+      "id": "tic-china-us-treasury-holdings-2026-07",
+      "entity_id": "CHN",
+      "counterparty_id": "us-treasury",
+      "concept_id": "custody-reported-us-treasury-holdings",
+      "value": 618,
+      "unit": "USD billion",
+      "reference_period": "2026-07",
+      "source_id": "us-treasury-tic",
+      "evidence_status": "sourced",
+      "creditor_resolution_level": 3
+    },
+    {
+      "id": "eu-bonds-2026-total-target",
+      "entity_id": "european-commission-eu-bonds",
+      "concept_id": "debt-securities-outstanding",
+      "value": 180,
+      "unit": "EUR billion planned issuance",
+      "reference_period": "2026",
+      "source_id": "ec-eu-funding-plan-2026",
+      "evidence_status": "sourced",
+      "notes": "Funding-plan issuance target; not the same as outstanding EU debt."
+    },
+    {
+      "id": "eu-bonds-2026h2-target",
+      "entity_id": "european-commission-eu-bonds",
+      "concept_id": "debt-securities-outstanding",
+      "value": 80,
+      "unit": "EUR billion planned long-term issuance",
+      "reference_period": "2026H2",
+      "source_id": "ec-eu-funding-plan-2026",
+      "evidence_status": "sourced"
+    }
+  ],
+  "source_layers": [
+    {
+      "id": "fed-who-we-are",
+      "publisher": "Board of Governors of the Federal Reserve System",
+      "domain": "Federal Reserve structure and responsibilities",
+      "url": "https://www.federalreserve.gov/aboutthefed/fedexplained/who-we-are.htm"
+    },
+    {
+      "id": "fed-monetary-objectives",
+      "publisher": "Board of Governors of the Federal Reserve System",
+      "domain": "Statutory monetary-policy objectives",
+      "url": "https://www.federalreserve.gov/frrs/statutes/section-2a-monetary-policy-objectives.htm"
+    },
+    {
+      "id": "ecb-escb-eurosystem",
+      "publisher": "European Central Bank",
+      "domain": "ECB, ESCB and Eurosystem institutional structure",
+      "url": "https://www.ecb.europa.eu/ecb/orga/escb/html/index.en.html"
+    },
+    {
+      "id": "ecb-bulgaria-euro-2026",
+      "publisher": "European Central Bank",
+      "domain": "Bulgaria joining euro area on 1 January 2026",
+      "url": "https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr260101~c830245e42.en.html"
+    },
+    {
+      "id": "ecb-target-services",
+      "publisher": "European Central Bank",
+      "domain": "TARGET Services infrastructure",
+      "url": "https://www.ecb.europa.eu/press/intro/news/html/ecb.mipnews260904.en.html"
+    },
+    {
+      "id": "ecb-t2s",
+      "publisher": "European Central Bank",
+      "domain": "TARGET2-Securities settlement",
+      "url": "https://www.ecb.europa.eu/paym/target/t2s/html/index.en.html"
+    },
+    {
+      "id": "dnb-exchange-rates",
+      "publisher": "Danmarks Nationalbank",
+      "domain": "Danish fixed-exchange-rate policy and EUR central rate",
+      "url": "https://www.nationalbanken.dk/en/what-we-do/stable-prices-monetary-policy-and-the-danish-economy/exchange-rates"
+    },
+    {
+      "id": "dnb-government-debt-management",
+      "publisher": "Danmarks Nationalbank",
+      "domain": "Danish central-government debt management",
+      "url": "https://www.nationalbanken.dk/en/what-we-do/government-debt/about-government-debt-management"
+    },
+    {
+      "id": "dnb-funding-strategy-2026",
+      "publisher": "Danmarks Nationalbank",
+      "domain": "Danish central-government funding strategy 2026",
+      "url": "https://www.nationalbanken.dk/en/government-debt/funding-strategy"
+    },
+    {
+      "id": "dnb-central-government-debt-2025",
+      "publisher": "Danmarks Nationalbank",
+      "domain": "Danish central-government debt at end-2025",
+      "url": "https://www.nationalbanken.dk/en/what-we-do/government-debt"
+    },
+    {
+      "id": "eurostat-government-debt",
+      "publisher": "Eurostat",
+      "domain": "Quarterly general-government gross debt and instrument composition",
+      "url": "https://ec.europa.eu/eurostat/web/products-euro-indicators/w/2-21072026-ap"
+    },
+    {
+      "id": "bis-debt-securities",
+      "publisher": "Bank for International Settlements",
+      "domain": "Domestic and international debt securities statistics",
+      "url": "https://data.bis.org/topics/DSS"
+    },
+    {
+      "id": "bis-bulk-data",
+      "publisher": "Bank for International Settlements",
+      "domain": "International banking, debt securities, credit and related statistical datasets",
+      "url": "https://data.bis.org/bulkdownload"
+    },
+    {
+      "id": "imf-cofer-2026q1",
+      "publisher": "International Monetary Fund",
+      "domain": "Currency Composition of Official Foreign Exchange Reserves",
+      "url": "https://www.imf.org/en/Blogs/Articles/2026/07/01/currency-composition-of-official-foreign-exchange-reserves"
+    },
+    {
+      "id": "imf-cofer-dataset",
+      "publisher": "International Monetary Fund",
+      "domain": "COFER dataset and confidentiality framework",
+      "url": "https://data.imf.org/Datasets/COFER",
+      "caveat": "Individual economy data remain confidential. From 2025Q3, with revisions back to 2000Q1, COFER allocates 100 percent of reported/imputed world foreign-exchange reserves across currencies; the imputed share is separately disclosed."
+    },
+    {
+      "id": "us-treasury-debt-to-penny",
+      "publisher": "U.S. Department of the Treasury, Fiscal Data",
+      "domain": "Total public debt, debt held by the public and intragovernmental holdings",
+      "url": "https://fiscaldata.treasury.gov/datasets/debt-to-the-penny/"
+    },
+    {
+      "id": "us-treasury-tic",
+      "publisher": "U.S. Department of the Treasury",
+      "domain": "Treasury International Capital holdings and cross-border flows",
+      "url": "https://ticdata.treasury.gov/Publish/slt_table5.html",
+      "caveat": "Country attribution is primarily custodial and may not identify the ultimate beneficial owner."
+    },
+    {
+      "id": "ec-eu-funding-plan-2026",
+      "publisher": "European Commission",
+      "domain": "EU-Bond funding plans and unified funding approach",
+      "url": "https://commission.europa.eu/strategy-and-policy/eu-budget/eu-borrower-investor-relations/funding-plans_en"
+    },
+    {
+      "id": "esm-members",
+      "publisher": "European Stability Mechanism",
+      "domain": "ESM membership and lending eligibility",
+      "url": "https://www.esm.europa.eu/content/can-esm-provide-loans-countries-outside-euro-area"
+    },
+    {
+      "id": "esm-lending-rates-2026",
+      "publisher": "European Stability Mechanism",
+      "domain": "ESM and EFSF pooled funding and lending rates",
+      "url": "https://www.esm.europa.eu/content/what-are-esm-and-efsf-average-lending-rates"
+    },
+    {
+      "id": "boe-about",
+      "publisher": "Bank of England",
+      "domain": "UK central-bank role",
+      "url": "https://www.bankofengland.co.uk/about"
+    },
+    {
+      "id": "boc-central-bank-2026",
+      "publisher": "Bank of Canada",
+      "domain": "Canadian central-bank functions and federal fiscal-agent role",
+      "url": "https://www.bankofcanada.ca/2026/05/what-is-a-central-bank/"
+    },
+    {
+      "id": "norges-about",
+      "publisher": "Norges Bank",
+      "domain": "Norwegian central-bank role and reserve management",
+      "url": "https://www.norges-bank.no/en/topics/about/"
+    },
+    {
+      "id": "norges-eurosystem-settlement-dialogue",
+      "publisher": "Norges Bank",
+      "domain": "Norway and Eurosystem settlement-infrastructure integration",
+      "url": "https://www.norges-bank.no/en/news-events/news-publications/News-items/2025/2025-11-14-tips/"
+    },
+    {
+      "id": "riksbank-monetary-policy",
+      "publisher": "Sveriges Riksbank",
+      "domain": "Swedish monetary policy and central-bank role",
+      "url": "https://www.riksbank.se/en-gb/monetary-policy/"
+    },
+    {
+      "id": "boj-monetary-policy",
+      "publisher": "Bank of Japan",
+      "domain": "Japanese monetary-policy framework",
+      "url": "https://www.boj.or.jp/en/mopo/outline/"
+    },
+    {
+      "id": "rba-role",
+      "publisher": "Reserve Bank of Australia",
+      "domain": "Australian central-bank role",
+      "url": "https://www.rba.gov.au/about-rba/our-role.html"
+    }
+  ],
+  "north_axis_bridge": {
+    "axis_source": "data/world-axis-fields.json",
+    "mode": "project_interpretive_aggregation_over_empirical_finance",
+    "boundary": "North is a project-defined analytical lens only. Finance records remain unchanged and independently sourced when viewed through it.",
+    "seed_financial_nodes": [
+      "danmarks-nationalbank",
+      "ecb-eurosystem",
+      "bank-of-canada",
+      "norges-bank",
+      "sveriges-riksbank",
+      "bank-of-england"
+    ],
+    "planned_queries": [
+      "Which project-North jurisdictions share the euro and which retain national currencies?",
+      "Which project-North central banks participate directly in Eurosystem infrastructure and which connect from outside it?",
+      "Which project-North fiscal issuers issue in their own monetary currency and which borrow in foreign currencies?",
+      "Which creditor sectors and countries hold each sovereign or supranational security when the evidence can resolve them?",
+      "What cross-border bank claims run between project-North jurisdictions and the rest of the world?",
+      "What reserve-currency exposures and settlement dependencies are visible without inferring confidential country portfolios?",
+      "How much debt is central-government, general-government, supranational, bank, household or corporate rather than collapsing all obligations into one total?",
+      "Which obligations mature when, in which currency, and through which clearing or settlement infrastructure?"
+    ],
+    "map_integration_target": {
+      "point_layer": "central banks, treasuries, settlement institutions and debt-management offices",
+      "line_layer": "directed debt, holdings, lending, settlement and liquidity edges with period/unit/source",
+      "polygon_layer": "currency area, debt-to-GDP and other comparable scalar/set overlays",
+      "inspector": "issuer, creditor class, instrument, currency, maturity, concept definition, source, period and caveats"
+    }
+  },
+  "research_queue": [
+    "Use LEIs to resolve legal entities and parent relationships before scaling named institution graphs.",
+    "Add financial-market infrastructure roles for messaging, payment settlement, securities settlement/custody and clearing without treating them as ownership.",
+    "Add multilateral lender funding chains so member capital, institution bonds and downstream project/sovereign loans remain separate obligations.",
+    "Add IMF PIP/CPIS counterpart-economy portfolio holdings as the primary holder-side complement to BIS IDS issuer data.",
+    "Build the BIS LBS/CBS/DSS/IDS generated runtime described in data/bis-banking-bond-data.json.",
+    "Add the remaining major and North-relevant central banks with primary-source institutional records, including the Central Bank of Iceland and Swiss National Bank.",
+    "Build country-by-country sovereign issuer records and maturity/auction calendars without confusing funding flows with debt stocks.",
+    "Ingest Eurostat general-government debt by instrument and counterpart sector for EU comparability.",
+    "Add ECB and national-central-bank securities holdings only where programmes and balance-sheet categories are source-resolvable.",
+    "Add U.S. Treasury holder-sector and TIC country data with custody-versus-beneficial-owner disclosure.",
+    "Add IMF external-sector and reserve-asset aggregates without reverse-engineering confidential COFER country submissions.",
+    "Add EU, EIB, ESM and other supranational issuers as distinct debtors rather than attributing their liabilities directly to member states.",
+    "Add FX swap lines, standing liquidity arrangements, collateral frameworks and payment-system links as separate relationship types.",
+    "Create a dated obligation graph that can answer issuer-to-creditor, creditor-to-issuer, currency exposure, maturity wall and refinancing questions.",
+    "Only after comparable directed edges exist, expose money/debt flow arrows in the World Map relation renderer."
+  ],
+  "bis_data_foundation": "data/bis-banking-bond-data.json",
+  "institution_topology": "data/world-financial-institution-topology.json"
+}
