@@ -59,6 +59,8 @@
 
   let wallIndex = 0;
   let viewerIndex = -1;
+  let lastGalleryFocus = null;
+  const formatIndex = (index,total) => 'Work ' + String(index + 1).padStart(2,'0') + ' / ' + String(total).padStart(2,'0');
 
   const visibleCards = () => cards.filter(card => !card.hidden && card.dataset.imageFailed !== 'true');
 
@@ -137,9 +139,11 @@
     };
   };
 
+  const dataForRange = (card,index,total) => formatIndex(index,total) + ': ' + (card.querySelector('figcaption strong')?.textContent.trim() || 'Untitled');
+
   const updatePlaque = (card,index,total) => {
     const data = cardData(card);
-    plaqueCounter.textContent = 'Work ' + String(index + 1).padStart(2,'0') + ' / ' + String(total).padStart(2,'0');
+    plaqueCounter.textContent = formatIndex(index,total);
     plaqueDate.textContent = data.meta;
     plaqueTitle.textContent = data.title;
     plaqueBody.textContent = data.description;
@@ -147,7 +151,7 @@
     if (wallLabelNumber) wallLabelNumber.textContent = 'Work ' + String(index + 1).padStart(2,'0');
     if (wallLabelTitle) wallLabelTitle.textContent = data.title;
     if (wallLabelDate) wallLabelDate.textContent = data.meta;
-    if (indexCurrent) indexCurrent.textContent = 'Work ' + String(index + 1).padStart(2,'0') + ' / ' + String(total).padStart(2,'0');
+    if (indexCurrent) indexCurrent.textContent = formatIndex(index,total);
   };
 
   // Controlled wall rotation. No wheel handler: document scrolling remains normal.
@@ -200,6 +204,7 @@
     updatePlaque(active,wallIndex,visible.length);
     warmNeighbors(visible,wallIndex);
     if (wallRange) {
+      wallRange.setAttribute('aria-valuetext',dataForRange(active,wallIndex,visible.length));
       wallRange.max = String(Math.max(0,visible.length - 1));
       wallRange.value = String(wallIndex);
       wallRange.disabled = visible.length < 2;
@@ -322,6 +327,7 @@
 
   function openViewer(card) {
     renderViewer(card);
+    lastGalleryFocus = document.activeElement;
     if (typeof dialog.showModal === 'function') dialog.showModal();
     else dialog.setAttribute('open','');
   }
@@ -348,6 +354,8 @@
   dialog.addEventListener('close',() => {
     viewerImage.removeAttribute('src');
     viewerIndex = -1;
+    if (lastGalleryFocus?.isConnected && !lastGalleryFocus.disabled) lastGalleryFocus.focus({preventScroll:true});
+    lastGalleryFocus = null;
   });
 
   let hashCard = null;
