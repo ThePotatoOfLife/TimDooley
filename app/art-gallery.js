@@ -16,6 +16,8 @@
   const initialCards = [...grid.querySelectorAll('.gallery-card')];
   initialCards.sort((a,b) => parseDate(a) - parseDate(b)).forEach(card => grid.appendChild(card));
   const cards = [...grid.querySelectorAll('.gallery-card')];
+  const hungCount = document.querySelector('[data-gallery-hung-count]');
+  if (hungCount) hungCount.textContent = String(cards.length);
   cards.forEach((card,index) => {
     let number = card.querySelector('.museum-number');
     if (!number) {
@@ -53,6 +55,7 @@
   const viewerDescription = dialog.querySelector('#gallery-viewer-description');
   const viewerMotifs = dialog.querySelector('#gallery-viewer-motifs');
   const viewerCounter = dialog.querySelector('#gallery-viewer-counter');
+  const originalLink = dialog.querySelector('[data-gallery-original]');
   const viewerClose = dialog.querySelector('[data-gallery-close]');
   const viewerPrev = dialog.querySelector('[data-gallery-prev]');
   const viewerNext = dialog.querySelector('[data-gallery-next]');
@@ -316,6 +319,7 @@
     viewerIndex = visible.indexOf(card);
     viewerImage.src = data.src;
     viewerImage.alt = data.alt;
+    if (originalLink) { originalLink.href = data.src; originalLink.setAttribute('download', ''); }
     viewerTitle.textContent = data.title;
     viewerMeta.textContent = data.meta;
     viewerDescription.textContent = data.description;
@@ -347,6 +351,10 @@
   viewerPrev?.addEventListener('click',() => moveViewer(-1));
   viewerNext?.addEventListener('click',() => moveViewer(1));
   dialog.addEventListener('click',event => { if (event.target === dialog) dialog.close(); });
+  viewerImage.addEventListener('load',() => {
+    const dimensions = dialog.querySelector('[data-gallery-dimensions]');
+    if (dimensions) dimensions.textContent = viewerImage.naturalWidth + ' × ' + viewerImage.naturalHeight + ' px';
+  });
   dialog.addEventListener('keydown',event => {
     if (event.key === 'ArrowLeft') { event.preventDefault(); moveViewer(-1); }
     else if (event.key === 'ArrowRight') { event.preventDefault(); moveViewer(1); }
