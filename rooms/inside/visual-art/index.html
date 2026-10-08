@@ -23,7 +23,7 @@
 <h1>Visual Art Gallery</h1>
 <p class="summary">One museum room, arranged chronologically. The page scroll stays ordinary; inside the room, use the gallery controls to bring the previous or next painting into the central frame.</p>
 <div class="gallery-stats" aria-label="Gallery summary">
-<span><b>20</b> works currently hung</span>
+<span><b data-gallery-hung-count>20</b> works currently hung</span>
 <span><b>Oldest → newest</b></span>
 <span><b>4</b> visual families</span>
 </div>
@@ -207,13 +207,14 @@
 <div class="gallery-viewer-counter" id="gallery-viewer-counter"></div>
 <h2 id="gallery-viewer-title"></h2>
 <div class="gallery-viewer-meta" id="gallery-viewer-meta"></div>
+<p class="gallery-viewer-meta">Native file: <span data-gallery-dimensions>Loading dimensions…</span> · <a data-gallery-original href="#" download>Open original image</a></p>
 <p class="gallery-viewer-description" id="gallery-viewer-description"></p>
 <p class="gallery-viewer-motifs" id="gallery-viewer-motifs"></p>
 </aside>
 </div>
 </dialog>
 
-<script src="../../../app/art-gallery.js?v=20261008museum2"></script>
+<script src="../../../app/art-gallery.js?v=20261008original3"></script>
 <script src="../../../app/house-journey.js"></script>
 </body>
 </html>
