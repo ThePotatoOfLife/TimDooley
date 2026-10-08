@@ -309,3 +309,24 @@
 @media(prefers-reduced-motion:reduce){
  .gallery-card,.gallery-image-frame,.museum-wall,.museum-stage-shell{animation:none!important;transition:none!important}
 }
+
+/* Museum refinement: understated royal architecture, painted light and legibility. */
+.art-gallery-page .gallery-header h1{letter-spacing:.025em;text-wrap:balance}
+.art-gallery-page .museum-stage-shell{
+ background:
+ radial-gradient(ellipse at 50% 0%,rgba(245,211,139,.16),transparent 42%),
+ linear-gradient(90deg,rgba(53,29,31,.22),transparent 22% 78%,rgba(53,29,31,.22)),
+ linear-gradient(180deg,#201a19 0%,#181311 66%,#100d0c);
+}
+.art-gallery-page .gallery-image-frame{
+ box-shadow:0 22px 46px rgba(0,0,0,.5),0 0 42px rgba(237,205,137,.05);
+}
+.art-gallery-page .gallery-plaque{border-color:rgba(218,184,111,.25)}
+.art-gallery-page .gallery-plaque__body{max-width:85ch;margin-inline:auto}
+.art-gallery-page .museum-index__range:disabled{opacity:.3;cursor:default}
+.art-gallery-page [hidden]{display:none!important}
+@media(max-width:620px){
+ .art-gallery-page .gallery-header h1{overflow-wrap:anywhere}
+ .art-gallery-page .gallery-toolbar{gap:4px 8px}
+ .art-gallery-page .gallery-filter{min-height:36px;padding:8px}
+}
