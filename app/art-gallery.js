@@ -109,10 +109,9 @@
       const img = visible[i]?.querySelector('img');
       if (!img) return;
       img.loading = 'eager';
-      // Request a decode only once per image, not on every arrow or slider movement.
-      if (img.dataset.galleryDecodeRequested === 'true') return;
-      img.dataset.galleryDecodeRequested = 'true';
-      if (img.decode) img.decode().catch(() => {});
+      img.fetchPriority = i === index ? 'high' : 'auto';
+      // The browser handles decoding once loaded. Repeated decode() promises
+      // on off-screen images can keep unnecessary work in flight.
     });
   };
 
