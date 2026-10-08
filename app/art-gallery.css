@@ -440,3 +440,35 @@ body:has(.art-gallery-page) .art-gallery-page>*{position:relative;z-index:1}
  max-width:100%!important;max-height:54dvh!important
  }
 }
+
+/* Correct native-size-only layout: fill the available wall without cropping. */
+.art-gallery-page .gallery-card.is-active .gallery-image-frame img {
+  width:auto!important;
+  height:auto!important;
+  object-fit:contain!important;
+}
+.art-gallery-page .gallery-card.is-active.orientation-landscape .gallery-image-frame img {
+  width:min(100%,1100px)!important;
+  height:auto!important;
+  max-height:min(68dvh,790px)!important;
+}
+.art-gallery-page .gallery-card.is-active.orientation-portrait .gallery-image-frame img {
+  height:min(68dvh,790px)!important;
+  width:auto!important;
+  max-width:100%!important;
+}
+.art-gallery-page .gallery-card.is-active.orientation-square .gallery-image-frame img {
+  width:min(70dvh,790px,100%)!important;
+  height:auto!important;
+}
+@media(max-width:740px) {
+ .art-gallery-page .gallery-card.is-active.orientation-landscape .gallery-image-frame img {
+   width:100%!important;max-height:54dvh!important;
+ }
+ .art-gallery-page .gallery-card.is-active.orientation-portrait .gallery-image-frame img {
+   height:min(54dvh,580px)!important;max-width:100%!important;
+ }
+ .art-gallery-page .gallery-card.is-active.orientation-square .gallery-image-frame img {
+   width:min(54dvh,100%)!important;max-height:54dvh!important;
+ }
+}
