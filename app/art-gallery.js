@@ -227,7 +227,7 @@
     wallNext.forEach(button => button.disabled = atEnd);
     if (wallOpen) wallOpen.disabled = false;
     // Preserve deep links without needlessly mutating the URL on every repaint.
-    if (location.hash !== '#' + active.id) history.replaceState(null,'','#' + active.id);
+    if (location.hash !== '#' + active.id) history.replaceState(null,'',location.pathname + location.search + '#' + active.id);
   };
 
   const moveWall = step => {
@@ -366,12 +366,26 @@
     lastGalleryFocus = null;
   });
 
-  let hashCard = null;
-  try { hashCard = location.hash ? document.querySelector(location.hash) : null; } catch (_) {}
-  if (hashCard?.classList.contains('gallery-card')) {
-    const index = visibleCards().indexOf(hashCard);
-    if (index >= 0) wallIndex = index;
+  // Deep links refer to absolutely-positioned cards; native anchor scrolling
+  // can otherwise jump to an invisible/off-stage element.
+  const applyDeepLink = () => {
+    let id;
+    try { id = decodeURIComponent(location.hash.slice(1)); } catch (_) { return false; }
+    const target = cards.find(card => card.id === id);
+    if (!target || target.dataset.imageFailed === 'true') return false;
+    const filter = filters.find(button => button.dataset.galleryFilter === 'all');
+    if (target.hidden) {
+      filters.forEach(button => button.setAttribute('aria-pressed', String(button === filter)));
+      cards.forEach(card => {card.hidden = card.dataset.imageFailed === 'true';});
+    }
+    wallIndex = visibleCards().indexOf(target);
+    rebuildMonthRail(visibleCards());
+    renderWall();
+    return true;
+  };
+  if (!applyDeepLink()) {
+    rebuildMonthRail(visibleCards());
+    renderWall();
   }
-  rebuildMonthRail(visibleCards());
-  renderWall();
+  window.addEventListener('hashchange',() => { applyDeepLink(); });
 })();
