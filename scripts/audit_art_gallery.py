@@ -65,9 +65,11 @@ if len(figures)<15: fatal.append(f"too few gallery works: {len(figures)}")
 if len(ids)!=len(set(ids)): fatal.append("duplicate gallery card ids")
 if len(dates)!=len(figures): fatal.append(f"not every gallery card has data-date ({len(dates)}/{len(figures)})")
 if dates and dates!=sorted(dates): fatal.append("gallery source order is not chronological")
-mcount=re.search(r'<span><b>(\d+)</b> works currently hung</span>',html)
+mcount=re.search(r'<span><b(?:\\s+[^>]*)?>(\\d+)</b> works currently hung</span>',html)
 if not mcount or int(mcount.group(1))!=len(figures):
     fatal.append(f"displayed hung-work count does not match cards ({mcount.group(1) if mcount else 'missing'} vs {len(figures)})")
+if 'data-gallery-hung-count' in html and 'data-gallery-hung-count' not in js:
+    fatal.append("dynamic gallery count marker lacks matching JavaScript renderer")
 
 def webp_info(path:Path):
     data=path.read_bytes()
