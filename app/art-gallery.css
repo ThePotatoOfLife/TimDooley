@@ -386,3 +386,57 @@
 @media(prefers-reduced-motion:reduce){
  .art-gallery-page .gallery-card{transition:none!important}
 }
+
+/* October 8 screenshot-driven museum repair. A quiet room, not a tiny picture in a black void. */
+body:has(.art-gallery-page){background:#100e0c!important;background-image:none!important}
+body:has(.art-gallery-page)::before,
+body:has(.art-gallery-page)::after{background:none!important;pointer-events:none}
+body:has(.art-gallery-page) .art-gallery-page{
+  width:min(1600px,100%)!important;max-width:1600px!important;
+  margin-inline:auto!important;background:#100e0c!important;
+}
+body:has(.art-gallery-page) .art-gallery-page::before{
+  z-index:0!important;background:linear-gradient(180deg,#211915,#110e0c 65%,#0c0b0a)!important
+}
+body:has(.art-gallery-page) .art-gallery-page>*{position:relative;z-index:1}
+.art-gallery-page .museum-stage-shell{
+  width:min(1500px,100%)!important;
+  height:clamp(490px,75dvh,920px)!important;
+  background:radial-gradient(ellipse at 50% 3%,#30251b 0%,#181411 42%,#100e0c 90%)!important;
+}
+.art-gallery-page .museum-wall{inset:14px 64px 6%!important;overflow:hidden}
+.art-gallery-page .gallery-card{padding:8px!important}
+.art-gallery-page .gallery-card.is-active{z-index:4}
+.art-gallery-page .gallery-card.is-prev,.art-gallery-page .gallery-card.is-next{
+ opacity:.14!important;pointer-events:none!important
+}
+.art-gallery-page .gallery-open{display:flex!important;align-items:center!important;justify-content:center!important}
+.art-gallery-page .gallery-image-frame{
+ display:inline-flex!important;align-items:center!important;justify-content:center!important;
+ max-width:100%!important;max-height:100%!important;
+ padding:10px!important;box-sizing:border-box
+}
+.art-gallery-page .gallery-image-frame img,
+.art-gallery-page .gallery-card.orientation-landscape .gallery-image-frame img,
+.art-gallery-page .gallery-card.orientation-portrait .gallery-image-frame img,
+.art-gallery-page .gallery-card.orientation-square .gallery-image-frame img{
+ max-width:min(100%,1100px)!important;
+ max-height:min(68dvh,790px)!important;
+}
+.art-gallery-page .museum-audience,.art-gallery-page .museum-person,
+.art-gallery-page .museum-wall-label{display:none!important}
+.art-gallery-page .museum-floor{height:5%!important;opacity:.18!important}
+.art-gallery-page .museum-stage-shell:after{bottom:5%!important}
+.art-gallery-page .museum-index,.art-gallery-page .gallery-plaque{
+ width:min(1100px,calc(100% - 24px))!important;
+}
+@media(max-width:740px){
+ .art-gallery-page .museum-stage-shell{height:clamp(360px,64dvh,660px)!important}
+ .art-gallery-page .museum-wall{inset:12px 40px 5%!important}
+ .art-gallery-page .gallery-image-frame img,
+ .art-gallery-page .gallery-card.orientation-landscape .gallery-image-frame img,
+ .art-gallery-page .gallery-card.orientation-portrait .gallery-image-frame img,
+ .art-gallery-page .gallery-card.orientation-square .gallery-image-frame img{
+ max-width:100%!important;max-height:54dvh!important
+ }
+}
