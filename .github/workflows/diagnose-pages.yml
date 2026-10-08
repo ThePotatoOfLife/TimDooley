@@ -1,0 +1,60 @@
+name: Diagnose Pages publication
+
+on:
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  contents: read
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Compare main, validations, deployments and live provenance
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          LIVE_URL: https://thepotatooflife.github.io/TimDooley/build-provenance.json
+        shell: python
+        run: |
+          import json, os, urllib.request, urllib.error
+          from datetime import datetime, timezone
+          repo=os.environ["REPO"]
+          token=os.environ["GH_TOKEN"]
+          def fetch(url, auth=False):
+              headers={"Accept":"application/vnd.github+json","User-Agent":"Gallery-Deploy-Diagnostics/1.0"}
+              if auth: headers["Authorization"]="Bearer "+token
+              with urllib.request.urlopen(urllib.request.Request(url,headers=headers),timeout=18) as r:
+                  return json.load(r)
+          rows=["# Pages deployment diagnosis",""]
+          branch=fetch(f"https://api.github.com/repos/{repo}/branches/main",True)
+          head=branch["commit"]["sha"]
+          rows.append(f"**Current main:** \`{head}\`")
+          runs=fetch(f"https://api.github.com/repos/{repo}/actions/runs?per_page=80",True).get("workflow_runs",[])
+          for workflow in ("Repository quality checks v2","Deploy Potato of Life"):
+              relevant=[r for r in runs if r.get("name")==workflow and r.get("head_branch")=="main"][:8]
+              rows.extend(["",f"## {workflow}","| SHA | Status | Conclusion | Run |","|---|---|---|---|"])
+              for r in relevant:
+                  rows.append(f"| \`{r['head_sha'][:12]}\` | {r['status']} | {r.get('conclusion') or '—'} | [#{r['run_number']}]({r['html_url']}) |")
+              if not relevant: rows.append("No matching runs in latest 80; inspect Actions retention and workflow triggers.")
+          rows.extend(["","## Live website"])
+          try:
+              live=fetch(os.environ["LIVE_URL"])
+              live_sha=live.get("source_sha","(missing)")
+              rows.append(f"**Live source SHA:** \`{live_sha}\`")
+              rows.append("**Matches main:** "+("YES" if live_sha==head else "NO — publishing is behind"))
+              rows.append(f"**Live quality run:** {live.get('quality_run_id','unknown')}")
+          except Exception as exc:
+              rows.append(f"Could not fetch live provenance: {type(exc).__name__}: {exc}")
+          rows.extend(["","## Follow-up checklist",
+              "- [ ] If quality failed, open its failed job; fix the first failing test before another push.",
+              "- [ ] If quality was cancelled, allow a fresh main validation to finish without further pushes.",
+              "- [ ] If quality succeeded but deployment did not run, inspect workflow_run conditions and Actions permissions.",
+              "- [ ] If deployment succeeded but live SHA differs, inspect deploy smoke-test and Pages environment.",
+              "- [ ] Only after live SHA matches main: test gallery layout and original artwork URLs.",
+          ])
+          result="\n".join(rows)+"\n"
+          print(result)
+          with open(os.environ["GITHUB_STEP_SUMMARY"],"a",encoding="utf-8") as f: f.write(result)
