@@ -62,6 +62,7 @@
 
   let wallIndex = 0;
   let viewerIndex = -1;
+  let initialized = false;
   let lastGalleryFocus = null;
   const formatIndex = (index,total) => 'Work ' + String(index + 1).padStart(2,'0') + ' / ' + String(total).padStart(2,'0');
 
@@ -227,7 +228,7 @@
     wallNext.forEach(button => button.disabled = atEnd);
     if (wallOpen) wallOpen.disabled = false;
     // Preserve deep links without needlessly mutating the URL on every repaint.
-    if (location.hash !== '#' + active.id) history.replaceState(null,'',location.pathname + location.search + '#' + active.id);
+    if (initialized && location.hash !== '#' + active.id) history.replaceState(null,'',location.pathname + location.search + '#' + active.id);
   };
 
   const moveWall = step => {
@@ -387,5 +388,6 @@
     rebuildMonthRail(visibleCards());
     renderWall();
   }
+  initialized = true;
   window.addEventListener('hashchange',() => { applyDeepLink(); });
 })();
