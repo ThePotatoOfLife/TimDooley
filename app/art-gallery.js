@@ -317,8 +317,10 @@
     const visible = visibleCards();
     const data = cardData(card);
     viewerIndex = visible.indexOf(card);
-    viewerImage.src = data.src;
+    const dimensions = dialog.querySelector('[data-gallery-dimensions]');
+    if (dimensions) dimensions.textContent = 'Loading dimensions…';
     viewerImage.alt = data.alt;
+    viewerImage.src = data.src;
     if (originalLink) { originalLink.href = data.src; originalLink.setAttribute('download', ''); }
     viewerTitle.textContent = data.title;
     viewerMeta.textContent = data.meta;
@@ -354,6 +356,11 @@
   viewerImage.addEventListener('load',() => {
     const dimensions = dialog.querySelector('[data-gallery-dimensions]');
     if (dimensions) dimensions.textContent = viewerImage.naturalWidth + ' × ' + viewerImage.naturalHeight + ' px';
+  });
+  viewerImage.addEventListener('error',() => {
+    const dimensions = dialog.querySelector('[data-gallery-dimensions]');
+    if (dimensions) dimensions.textContent = 'Original file unavailable';
+    if (originalLink) originalLink.removeAttribute('download');
   });
   dialog.addEventListener('keydown',event => {
     if (event.key === 'ArrowLeft') { event.preventDefault(); moveViewer(-1); }
