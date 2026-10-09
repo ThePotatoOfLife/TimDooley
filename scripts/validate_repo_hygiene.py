@@ -10,6 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 WORKFLOWS = ROOT / ".github" / "workflows"
 EXPECTED_WORKFLOWS = {
     "country-refresh.yml",
+    "diagnose-pages.yml",
     "import-edda-texts.yml",
     "pages.yml",
     "quality-checks.yml",
