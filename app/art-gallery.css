@@ -141,24 +141,6 @@
     linear-gradient(180deg,#21170f,#0e0b08);
   box-shadow:inset 0 10px 28px rgba(0,0,0,.38);
 }
-.museum-audience{position:absolute;inset:0;z-index:6;pointer-events:none}
-.museum-person{position:absolute;bottom:7%;width:80px;height:92px;opacity:.68;filter:blur(.15px)}
-.museum-person:before{
-  content:"";position:absolute;left:50%;top:-36px;width:52px;height:52px;transform:translateX(-50%);
-  border-radius:48% 48% 46% 46%;background:linear-gradient(145deg,#30251d,#17120f 72%);
-  box-shadow:0 -8px 0 -3px rgba(38,29,23,.8)
-}
-.museum-person:after{
-  content:"";position:absolute;inset:10px -18px 0;border-radius:48% 48% 8px 8px;
-  background:linear-gradient(145deg,#29231e,#100e0c 78%);box-shadow:0 12px 24px rgba(0,0,0,.35)
-}
-.museum-person--a{left:5%;height:84px;transform:scale(.88)}
-.museum-person--b{left:17%;height:104px;transform:scale(1.06)}
-.museum-person--c{right:17%;height:96px;transform:scale(.98)}
-.museum-person--d{right:5%;height:78px;transform:scale(.82)}
-.museum-person--a:before{background:linear-gradient(145deg,#5a4535,#1d1712 72%)}
-.museum-person--c:before{background:linear-gradient(145deg,#49362a,#17110e 72%)}
-
 .museum-nav{
   position:absolute;top:50%;z-index:10;display:flex;align-items:center;gap:7px;
   transform:translateY(-65%);
@@ -236,8 +218,6 @@
   .gallery-image-frame img{max-width:min(76vw,860px)!important;max-height:min(55vh,590px)!important}
   .gallery-card.is-prev{transform:translateX(-78%) scale(.71)}
   .gallery-card.is-next{transform:translateX(78%) scale(.71)}
-  .museum-person--b{left:10%}.museum-person--c{right:10%}
-  .museum-person--a,.museum-person--d{display:none}
   .gallery-dialog{grid-template-columns:1fr;max-height:95vh;overflow:auto}
   .gallery-stage{min-height:52vh}.gallery-stage img{max-height:70vh}
   .gallery-viewer-copy{overflow:visible;border-left:0;border-top:1px solid var(--site-pane-line)}
@@ -250,7 +230,6 @@
   .gallery-image-frame img{max-width:78vw!important;max-height:48vh!important}
   .gallery-card.is-prev{transform:translateX(-86%) scale(.64)}
   .gallery-card.is-next{transform:translateX(86%) scale(.64)}
-  .museum-person{bottom:8%;transform:scale(.72)}
   .gallery-plaque{width:calc(100% - 18px);padding:17px}
   .gallery-plaque__body{font-size:14px}
   .gallery-lightbox{width:100vw;max-height:100vh;border:0}
@@ -313,7 +292,7 @@
  max-width:min(100%,1440px)!important;max-height:min(68dvh,790px)!important;
  object-fit:contain!important;image-rendering:auto
 }
-.art-gallery-page .museum-audience,.art-gallery-page .museum-person,.art-gallery-page .museum-wall-label{display:none}
+.art-gallery-page .museum-wall-label{display:none}
 .art-gallery-page .museum-floor{height:5%;opacity:.18}
 .art-gallery-page .museum-stage-shell:after{bottom:5%}
 .art-gallery-page .museum-nav{top:47%}
