@@ -105,13 +105,13 @@
   cards.forEach(guardImage);
 
   const warmNeighbors = (visible,index) => {
-    [index - 1,index,index + 1].forEach(i => {
-      const img = visible[i]?.querySelector('img');
+    // Only prioritize the currently displayed painting. Setting every visited
+    // neighbor to eager eventually forces the entire catalogue to download.
+    visible.forEach((card,i) => {
+      const img = card.querySelector('img');
       if (!img) return;
-      img.loading = 'eager';
+      img.loading = i === index ? 'eager' : 'lazy';
       img.fetchPriority = i === index ? 'high' : 'auto';
-      // The browser handles decoding once loaded. Repeated decode() promises
-      // on off-screen images can keep unnecessary work in flight.
     });
   };
 
