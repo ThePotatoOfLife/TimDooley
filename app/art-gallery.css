@@ -342,3 +342,49 @@
   animation:none!important;transition:none!important
  }
 }
+
+/* Collection entrance and acquisition information. Keep artwork central. */
+.art-gallery-page .gallery-entrance{
+  display:flex;align-items:center;justify-content:space-between;gap:22px;
+  max-width:920px;margin:25px auto 8px;padding:22px 26px;
+  border:1px solid rgba(218,184,111,.24);
+  background:linear-gradient(120deg,rgba(68,47,28,.38),rgba(19,17,15,.75));
+  text-align:left;
+}
+.art-gallery-page .gallery-entrance__copy{min-width:0}
+.art-gallery-page .gallery-entrance__eyebrow,
+.art-gallery-page .gallery-acquisitions__eyebrow{
+  display:block;margin-bottom:7px;color:var(--museum-gold-bright);
+  font-size:10px;letter-spacing:.13em;text-transform:uppercase;
+}
+.art-gallery-page .gallery-entrance__copy strong{
+  display:block;color:var(--museum-cream);font:400 clamp(22px,2.8vw,32px)/1.18 var(--site-font-serif);
+}
+.art-gallery-page .gallery-entrance__copy p{
+  max-width:64ch;margin:9px 0 0;color:var(--site-muted);font-size:13px;line-height:1.65;
+}
+.art-gallery-page .gallery-entrance__link{
+  flex:none;padding:11px 15px;border:1px solid rgba(234,209,141,.4);
+  color:var(--museum-gold-bright);text-decoration:none;font-size:12px;
+}
+.art-gallery-page .gallery-entrance__link:hover,
+.art-gallery-page .gallery-entrance__link:focus-visible{
+  background:rgba(234,209,141,.1);outline-color:var(--museum-gold-bright);
+}
+.art-gallery-page .gallery-acquisitions{
+  width:min(920px,calc(100% - 24px));margin:36px auto 20px;padding:24px 27px;
+  border-top:1px solid rgba(218,184,111,.28);
+  border-bottom:1px solid rgba(218,184,111,.16);
+}
+.art-gallery-page .gallery-acquisitions h2{
+  margin:0 0 12px;color:var(--museum-cream);
+  font:400 clamp(25px,3vw,36px)/1.2 var(--site-font-serif);
+}
+.art-gallery-page .gallery-acquisitions p{
+  max-width:80ch;color:var(--site-muted);font-size:13px;line-height:1.75;
+}
+@media(max-width:700px){
+  .art-gallery-page .gallery-entrance{display:block;padding:18px}
+  .art-gallery-page .gallery-entrance__link{display:inline-block;margin-top:16px}
+  .art-gallery-page .gallery-acquisitions{padding:20px 10px}
+}
