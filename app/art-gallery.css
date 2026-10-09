@@ -400,7 +400,7 @@ body:has(.art-gallery-page) .art-gallery-page::before{
 }
 body:has(.art-gallery-page) .art-gallery-page>*{position:relative;z-index:1}
 .art-gallery-page .museum-stage-shell{
-  width:min(1500px,100%)!important;
+  width:min(1600px,100%)!important;
   height:clamp(490px,75dvh,920px)!important;
   background:radial-gradient(ellipse at 50% 3%,#30251b 0%,#181411 42%,#100e0c 90%)!important;
 }
@@ -420,7 +420,7 @@ body:has(.art-gallery-page) .art-gallery-page>*{position:relative;z-index:1}
 .art-gallery-page .gallery-card.orientation-landscape .gallery-image-frame img,
 .art-gallery-page .gallery-card.orientation-portrait .gallery-image-frame img,
 .art-gallery-page .gallery-card.orientation-square .gallery-image-frame img{
- max-width:min(100%,1100px)!important;
+ max-width:min(100%,1440px)!important;
  max-height:min(68dvh,790px)!important;
 }
 .art-gallery-page .museum-audience,.art-gallery-page .museum-person,
@@ -428,7 +428,7 @@ body:has(.art-gallery-page) .art-gallery-page>*{position:relative;z-index:1}
 .art-gallery-page .museum-floor{height:5%!important;opacity:.18!important}
 .art-gallery-page .museum-stage-shell:after{bottom:5%!important}
 .art-gallery-page .museum-index,.art-gallery-page .gallery-plaque{
- width:min(1100px,calc(100% - 24px))!important;
+ width:min(1440px,calc(100% - 24px))!important;
 }
 @media(max-width:740px){
  .art-gallery-page .museum-stage-shell{height:clamp(360px,64dvh,660px)!important}
@@ -448,7 +448,7 @@ body:has(.art-gallery-page) .art-gallery-page>*{position:relative;z-index:1}
   object-fit:contain!important;
 }
 .art-gallery-page .gallery-card.is-active.orientation-landscape .gallery-image-frame img {
-  width:min(100%,1100px)!important;
+  width:min(100%,1440px)!important;
   height:auto!important;
   max-height:min(68dvh,790px)!important;
 }
