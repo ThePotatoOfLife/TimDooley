@@ -262,7 +262,9 @@
   });
 
   grid.addEventListener('keydown', event => {
-    if (event.target.matches('button') && event.key === 'Enter') return;
+    // Let focused artwork buttons retain their native Enter/Space behavior.
+    // Enter on the gallery wall itself opens the currently displayed work.
+    if (event.key === 'Enter' && event.target !== grid) return;
     if (event.key === 'ArrowLeft') {
       event.preventDefault();
       moveWall(-1);
