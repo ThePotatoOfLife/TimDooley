@@ -262,8 +262,8 @@
   });
 
   grid.addEventListener('keydown', event => {
-    // Let focused artwork buttons retain their native Enter/Space behavior.
-    // Enter on the gallery wall itself opens the currently displayed work.
+    // Do not intercept browser shortcuts or native focused-control activation.
+    if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
     if (event.key === 'Enter' && event.target !== grid) return;
     if (event.key === 'ArrowLeft') {
       event.preventDefault();
@@ -271,6 +271,12 @@
     } else if (event.key === 'ArrowRight') {
       event.preventDefault();
       moveWall(1);
+    } else if (event.key === 'Home' || event.key === 'End') {
+      event.preventDefault();
+      const visible = visibleCards();
+      if (!visible.length) return;
+      wallIndex = event.key === 'Home' ? 0 : visible.length - 1;
+      renderWall();
     } else if (event.key === 'Enter') {
       event.preventDefault();
       const active = visibleCards()[wallIndex];
@@ -382,8 +388,15 @@
     }
   });
   dialog.addEventListener('keydown',event => {
+    if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
     if (event.key === 'ArrowLeft') { event.preventDefault(); moveViewer(-1); }
     else if (event.key === 'ArrowRight') { event.preventDefault(); moveViewer(1); }
+    else if (event.key === 'Home' || event.key === 'End') {
+      const visible = visibleCards();
+      if (!visible.length) return;
+      event.preventDefault();
+      renderViewer(visible[event.key === 'Home' ? 0 : visible.length - 1]);
+    }
   });
   dialog.addEventListener('close',() => {
     viewerImage.removeAttribute('src');
