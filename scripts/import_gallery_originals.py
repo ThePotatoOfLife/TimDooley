@@ -68,7 +68,7 @@ def main():
             dest = DEST / (slug + ".png")
             expected = f"../../../assets/visual-art/originals/{slug}.png"
             # Update ONLY the artwork matched by its existing card ID.
-            pattern = re.compile(r'(<figure\\b(?=[^>]*\\bid="art-' + re.escape(slug) + r'")[\\s\\S]*?</figure>)')
+            pattern = re.compile(r'(<figure\b(?=[^>]*\bid="art-' + re.escape(slug) + r'")[\s\S]*?</figure>)')
             match = pattern.search(page)
             if not match:
                 print(f"STAGED (no gallery card yet): {file.name}")
@@ -77,13 +77,13 @@ def main():
                 dest.write_bytes(file.read_bytes())
                 if match:
                     card = match.group(1)
-                    card_new = re.sub(r'(<img\\b[^>]*\\bsrc=")[^"]+(")', lambda m: m.group(1) + html.escape(expected) + m.group(2), card, count=1)
+                    card_new = re.sub(r'(<img\b[^>]*\bsrc=")[^"]+(")', lambda m: m.group(1) + html.escape(expected) + m.group(2), card, count=1)
                     page = page[:match.start()] + card_new + page[match.end():]
             imported.append(dict(source=file.name, path=dest.relative_to(ROOT).as_posix(), width=w, height=h, bytes=file.stat().st_size, cardMatched=bool(match)))
             print(f"{'IMPORT' if args.apply else 'WOULD IMPORT'} {file.name} -> {dest.relative_to(ROOT)} ({w}x{h})")
     if args.apply:
         PAGE.write_text(page, encoding="utf-8")
-        (ROOT / "knowledge/creative/gallery-import-report.json").write_text(json.dumps(imported, indent=2) + "\\n", encoding="utf-8")
+        (ROOT / "knowledge/creative/gallery-import-report.json").write_text(json.dumps(imported, indent=2) + "\n", encoding="utf-8")
     print(f"Candidates: {len(imported)}. Originals are kept without recompression.")
 
 if __name__ == "__main__":
