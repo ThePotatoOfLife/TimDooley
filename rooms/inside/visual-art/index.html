@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="../../../app/site-system.css?v=20260914a">
 <link rel="stylesheet" href="../../../app/room-interior.css?v=20260920c">
 <link rel="stylesheet" href="../../../app/works-room.css?v=20261007b">
-<link rel="stylesheet" href="../../../app/art-gallery.css?v=20261009museum-pruned">
+<link rel="stylesheet" href="../../../app/art-gallery.css?v=20261009acquisition">
 </head>
 <body>
 <main class="page page--reading inner-home works-room art-gallery-page">
@@ -21,7 +21,11 @@
 <header class="page-header gallery-header">
 <p class="eyebrow">Works · Visual Art</p>
 <h1>Visual Art Gallery</h1>
-<p class="summary">One museum room, arranged chronologically. The page scroll stays ordinary; inside the room, use the gallery controls to bring the previous or next painting into the central frame.</p>
+<p class="summary">A living collection of paintings, visual stories, satire and symbolic worlds. One continuous museum wall, organized by creation date, with each work given its own frame and interpretation.</p>
+<div class="gallery-entrance" aria-label="Collection information">
+  <div class="gallery-entrance__copy"><span class="gallery-entrance__eyebrow">The collection grows</span><strong>New works belong on this wall.</strong><p>Artwork is added chronologically, without creating separate galleries. Each piece keeps its full image, its date, its title, and the story behind it.</p></div>
+  <a class="gallery-entrance__link" href="#recovered-gallery">Enter the gallery <span aria-hidden="true">→</span></a>
+</div>
 <div class="gallery-stats" aria-label="Gallery summary">
 <span><b data-gallery-hung-count>20</b> works currently hung</span>
 <span><b>Oldest → newest</b></span>
@@ -176,6 +180,12 @@
 <p class="gallery-empty" data-gallery-empty hidden>No works match this filter.</p>
 </section>
 
+<section class="gallery-acquisitions" id="adding-artwork" aria-labelledby="acquisitions-heading">
+  <p class="gallery-acquisitions__eyebrow">Collection notes</p>
+  <h2 id="acquisitions-heading">Adding new paintings</h2>
+  <p>Send the highest-quality image available in our conversation. When a date is known, the painting is placed in chronological order; undated works can be recorded without inventing a date. A title, description, symbols and source/provenance notes accompany each work.</p>
+  <p>The image shown on the wall should be a display-quality derivative, while the original file remains separately available when it has actually been supplied. The gallery does not call a reduced image an original.</p>
+</section>
 <section class="gallery-about" id="about-collection">
 <details>
 <summary>About this collection</summary>
