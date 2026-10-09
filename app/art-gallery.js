@@ -280,18 +280,25 @@
 
   let pointerStart = null;
   stage.addEventListener('pointerdown', event => {
-    if (event.pointerType === 'mouse' && event.button !== 0) return;
-    pointerStart = {x:event.clientX,y:event.clientY};
+    if (!event.isPrimary || (event.pointerType === 'mouse' && event.button !== 0)) return;
+    // A swipe must begin on the artwork wall, never on navigation buttons.
+    if (event.target.closest('button, a, input, select, textarea')) return;
+    pointerStart = {id:event.pointerId,x:event.clientX,y:event.clientY};
   });
   stage.addEventListener('pointerup', event => {
-    if (!pointerStart) return;
+    if (!pointerStart || pointerStart.id !== event.pointerId) return;
     const dx = event.clientX - pointerStart.x;
     const dy = event.clientY - pointerStart.y;
     pointerStart = null;
     if (Math.abs(dx) < 45 || Math.abs(dx) < Math.abs(dy) * 1.25) return;
     moveWall(dx < 0 ? 1 : -1);
   });
-  stage.addEventListener('pointercancel',() => { pointerStart = null; });
+  stage.addEventListener('pointercancel',event => {
+    if (pointerStart?.id === event.pointerId) pointerStart = null;
+  });
+  stage.addEventListener('pointerleave',event => {
+    if (pointerStart?.id === event.pointerId) pointerStart = null;
+  });
 
   filters.forEach(button => button.addEventListener('click',() => {
     const filter = button.dataset.galleryFilter;
