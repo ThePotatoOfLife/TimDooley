@@ -330,7 +330,12 @@
     if (dimensions) dimensions.textContent = 'Loading dimensions…';
     viewerImage.alt = data.alt;
     viewerImage.src = data.src;
-    if (originalLink) { originalLink.href = data.src; originalLink.setAttribute('download', ''); }
+    if (originalLink) {
+      originalLink.href = data.src;
+      originalLink.setAttribute('download','');
+      originalLink.removeAttribute('aria-disabled');
+      originalLink.removeAttribute('tabindex');
+    }
     viewerTitle.textContent = data.title;
     viewerMeta.textContent = data.meta;
     viewerDescription.textContent = data.description;
@@ -368,8 +373,13 @@
   });
   viewerImage.addEventListener('error',() => {
     const dimensions = dialog.querySelector('[data-gallery-dimensions]');
-    if (dimensions) dimensions.textContent = 'Original file unavailable';
-    if (originalLink) originalLink.removeAttribute('download');
+    if (dimensions) dimensions.textContent = 'Published image unavailable';
+    if (originalLink) {
+      originalLink.removeAttribute('download');
+      originalLink.removeAttribute('href');
+      originalLink.setAttribute('aria-disabled','true');
+      originalLink.setAttribute('tabindex','-1');
+    }
   });
   dialog.addEventListener('keydown',event => {
     if (event.key === 'ArrowLeft') { event.preventDefault(); moveViewer(-1); }
