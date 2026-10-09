@@ -1962,7 +1962,7 @@
       "title": "Visual Art & Symbolic Composition",
       "dwelling_id": "works",
       "purpose": "Own visual compositions, artwork concepts, image archives and symbolic visual systems as creative works.",
-      "primary_file_count": 2,
+      "primary_file_count": 3,
       "featured_holdings": [
         {
           "path": "knowledge/creative/artifact-history-registry.json",
@@ -1973,6 +1973,12 @@
         {
           "path": "knowledge/creative/visual-art-symbolic-composition-archive.json",
           "id": "visual-art-symbolic-composition-archive",
+          "kind": "room holding",
+          "basis": "exact-owner"
+        },
+        {
+          "path": "knowledge/creative/art-gallery-pending-acquisitions-2026-10.json",
+          "id": "art-gallery-pending-acquisitions-2026-10",
           "kind": "room holding",
           "basis": "exact-owner"
         }
@@ -6441,6 +6447,11 @@
       "path": "knowledge/prophecy/prediction-audit-and-forecast-scoring-atlas.json",
       "primary_owner_room_id": "prediction-revelation-time",
       "basis": "prophecy-family"
+    },
+    {
+      "path": "knowledge/creative/art-gallery-pending-acquisitions-2026-10.json",
+      "primary_owner_room_id": "visual-art",
+      "basis": "exact-owner"
     }
   ],
   "curated_unowned_paths": [
@@ -6579,8 +6590,8 @@
     "knowledge/story/story-registry.json"
   ],
   "summary": {
-    "scoped_files": 883,
-    "primary_owned_files": 750,
+    "scoped_files": 884,
+    "primary_owned_files": 751,
     "curated_or_navigation_files": 133,
     "rooms": 38,
     "rooms_with_zero_primary_files": []
