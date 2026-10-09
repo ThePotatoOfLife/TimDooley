@@ -56,7 +56,7 @@ if 'data-github-blob=' in html or "api.github.com/repos/ThePotatoOfLife/TimDoole
 # Guard integration drift: gallery CSS/JS must be versioned together and
 # navigation must not eagerly fetch paintings that are no longer active.
 for asset,label in [("art-gallery.css","stylesheet"),("art-gallery.js","runtime")]:
-    matches=re.findall(r'(?:href|src)="[^"]*/'+re.escape(asset)+r'\\?v=([^"]+)"',html)
+    matches=re.findall(r'(?:href|src)="[^"]*/'+re.escape(asset)+r'\?v=([^"]+)"',html)
     if len(matches)!=1 or not matches[0].strip():
         fatal.append(f"gallery {label} needs exactly one versioned reference")
 if "img.loading = i === index ? 'eager' : 'lazy'" not in js:
