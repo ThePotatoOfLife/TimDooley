@@ -181,8 +181,22 @@ for src in image_srcs:
         row.update(webp_info(target))
     elif suffix==".avif":
         row.update(avif_info(target))
+    elif suffix==".png":
+        data=target.read_bytes()
+        signature=bytes.fromhex("89504e470d0a1a0a")
+        valid=(len(data)>=45 and data[:8]==signature and data[12:16]==b"IHDR"
+               and data[-12:-8]==bytes(4) and data[-8:-4]==b"IEND")
+        row["valid"]=valid
+        if valid:
+            row["width"],row["height"]=struct.unpack_from(">II",data,16)
+            if row["width"]<1000 or row["height"]<700:
+                warnings.append(f"low-resolution PNG master: {rel}: {row['width']}x{row['height']}")
+        else:
+            row["error"]="PNG signature, IHDR or IEND invalid"
     else:
         row["valid"]=target.stat().st_size>0
+    if row.get("valid") and row["bytes"]<20000:
+        warnings.append(f"tiny gallery asset needs original-quality replacement: {rel}: {row['bytes']} bytes")
     if not row.get("valid"):
         fatal.append(f"corrupt/truncated gallery image: {rel}: {row.get('error','invalid payload')}")
     elif suffix==".webp" and row.get("width") and row.get("height") and max(row["width"],row["height"])<1024:
