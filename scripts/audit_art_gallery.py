@@ -66,6 +66,16 @@ if "img.fetchPriority = i === index ? 'high' : 'auto'" not in js:
 if 'id="art-zombie-puppet-popemobile"' not in html:
     fatal.append("Zombie Puppet Popemobile deep link is missing")
 
+# Interaction contracts: keyboard access and controlled viewer state.
+for marker,label in [
+    ("event.key === 'Home' || event.key === 'End'","Home/End gallery navigation"),
+    ("event.altKey || event.ctrlKey || event.metaKey || event.shiftKey","browser shortcut guard"),
+    ("originalLink.removeAttribute('href')","broken viewer download disabled"),
+    ("stage.addEventListener('pointercancel'","cancelled swipes cleared"),
+    ("pointerStart.id !== event.pointerId","gesture pointer identity"),
+]:
+    if marker not in js:
+        fatal.append(f"gallery runtime missing {label}")
 figures=re.findall(r'<figure\b[^>]*class="[^"]*gallery-card[^"]*"[^>]*>[\s\S]*?</figure>',html,re.I)
 ids=[]
 dates=[]
