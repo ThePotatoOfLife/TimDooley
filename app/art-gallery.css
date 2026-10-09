@@ -282,81 +282,51 @@
 /* MUSEUM STAGE V6 — broken-image containment */
 .gallery-card[data-image-failed="true"]{display:none!important}
 
-/* Museum resolution and accessibility pass — 2026-10-08.
-   Never upscale small recovered works beyond their own pixel dimensions.
-   Supplied originals remain eligible for native-size full-view display. */
-.gallery-image-frame img{width:auto;height:auto;object-fit:contain;image-rendering:auto}
-.gallery-card.is-active .gallery-image-frame img{object-fit:contain}
-.gallery-lightbox .gallery-stage img{width:auto;height:auto;max-width:100%;max-height:min(90vh,1100px);object-fit:contain;image-rendering:auto}
-.gallery-open:focus-visible,.museum-nav:focus-visible,.gallery-plaque__controls button:focus-visible,
-.gallery-filter:focus-visible,.museum-index__range:focus-visible{
- outline:3px solid #efd393;outline-offset:4px
-}
-.gallery-lightbox .gallery-stage{overflow:hidden}
-@media(min-width:1800px){
- .art-gallery-page .museum-stage-shell{max-width:1740px;margin-inline:auto}
- .art-gallery-page .gallery-card.orientation-landscape .gallery-image-frame img{
-  max-width:min(78vw,1536px)!important;max-height:min(68vh,1024px)!important
- }
- .art-gallery-page .gallery-card.orientation-portrait .gallery-image-frame img{
-  max-width:min(55vw,1024px)!important;max-height:min(72vh,1536px)!important
- }
-}
-@media(prefers-reduced-motion:reduce){
- .gallery-card,.gallery-image-frame,.museum-wall,.museum-stage-shell{animation:none!important;transition:none!important}
-}
-
-/* Museum refinement: understated royal architecture, painted light and legibility. */
+/* Museum presentation — canonical responsive layout.
+   Consolidates the October 8 experiments into one predictable policy.
+   All paintings retain their intrinsic aspect ratio; no image is cropped. */
 .art-gallery-page .gallery-header h1{letter-spacing:.025em;text-wrap:balance}
-.art-gallery-page .museum-stage-shell{
- background:
- radial-gradient(ellipse at 50% 0%,rgba(245,211,139,.16),transparent 42%),
- linear-gradient(90deg,rgba(53,29,31,.22),transparent 22% 78%,rgba(53,29,31,.22)),
- linear-gradient(180deg,#201a19 0%,#181311 66%,#100d0c);
-}
-.art-gallery-page .gallery-image-frame{
- box-shadow:0 22px 46px rgba(0,0,0,.5),0 0 42px rgba(237,205,137,.05);
-}
-.art-gallery-page .gallery-plaque{border-color:rgba(218,184,111,.25)}
-.art-gallery-page .gallery-plaque__body{max-width:85ch;margin-inline:auto}
+.art-gallery-page .gallery-plaque{width:min(1100px,calc(100% - 24px));margin-top:14px;border-color:rgba(218,184,111,.25)}
+.art-gallery-page .gallery-plaque__body{max-width:85ch;margin-inline:auto;line-height:1.65}
+.art-gallery-page .museum-index{width:min(1100px,calc(100% - 24px))}
 .art-gallery-page .museum-index__range:disabled{opacity:.3;cursor:default}
-.art-gallery-page [hidden]{display:none!important}
-@media(max-width:620px){
- .art-gallery-page .gallery-header h1{overflow-wrap:anywhere}
- .art-gallery-page .gallery-toolbar{gap:4px 8px}
- .art-gallery-page .gallery-filter{min-height:36px;padding:8px}
-}
-
-
-/* Gallery layout consolidation — 2026-10-08 */
-/* Artwork itself is the focal point: one responsive size policy for all orientations. */
 .art-gallery-page .museum-stage-shell{
-  width:min(1500px,calc(100% - 16px));
-  height:clamp(460px,70dvh,880px);
+ width:min(1600px,100%);height:clamp(490px,75dvh,920px);margin-inline:auto;
+ background:radial-gradient(ellipse at 50% 3%,#30251b 0%,#181411 42%,#100e0c 90%);
 }
-.art-gallery-page .museum-wall{inset:18px 68px 9%;overflow:hidden;perspective:none}
-.art-gallery-page .gallery-card{padding:10px;will-change:auto;filter:none;transition:transform 260ms ease,opacity 220ms ease,visibility 0s linear 260ms}
-.art-gallery-page .gallery-card.is-active{transform:translateX(0);filter:none;transition-delay:0s}
-.art-gallery-page .gallery-card.is-prev{opacity:.18;transform:translateX(-78%) scale(.78);filter:none;transition-delay:0s}
-.art-gallery-page .gallery-card.is-next{opacity:.18;transform:translateX(78%) scale(.78);filter:none;transition-delay:0s}
-.art-gallery-page .gallery-open{width:100%;min-width:0;min-height:0}
-.art-gallery-page .gallery-image-frame{display:block;max-width:100%;max-height:100%;padding:clamp(7px,.8vw,13px)}
+.art-gallery-page .museum-wall{inset:14px 64px 6%;overflow:hidden;perspective:none}
+.art-gallery-page .gallery-card{padding:8px;will-change:auto;filter:none;transition:transform 260ms ease,opacity 220ms ease,visibility 0s linear 260ms}
+.art-gallery-page .gallery-card.is-active{z-index:4;transform:translateX(0);filter:none;transition-delay:0s}
+.art-gallery-page .gallery-card.is-prev{opacity:.14;transform:translateX(-78%) scale(.78);filter:none;pointer-events:none;transition-delay:0s}
+.art-gallery-page .gallery-card.is-next{opacity:.14;transform:translateX(78%) scale(.78);filter:none;pointer-events:none;transition-delay:0s}
+.art-gallery-page .gallery-open{display:flex;align-items:center;justify-content:center;width:100%;min-width:0;min-height:0}
+.art-gallery-page .gallery-image-frame{
+ display:inline-flex;align-items:center;justify-content:center;max-width:100%;max-height:100%;
+ padding:10px;box-sizing:border-box;
+ box-shadow:0 22px 46px rgba(0,0,0,.5),0 0 42px rgba(237,205,137,.05)
+}
 .art-gallery-page .gallery-image-frame img,
 .art-gallery-page .gallery-card.orientation-landscape .gallery-image-frame img,
 .art-gallery-page .gallery-card.orientation-portrait .gallery-image-frame img,
 .art-gallery-page .gallery-card.orientation-square .gallery-image-frame img{
-  width:auto!important;height:auto!important;
-  max-width:min(100%,calc(100vw - 180px),1280px)!important;
-  max-height:min(58dvh,740px)!important;
-  object-fit:contain!important;
+ display:block;width:auto!important;height:auto!important;
+ max-width:min(100%,1440px)!important;max-height:min(68dvh,790px)!important;
+ object-fit:contain!important;image-rendering:auto
 }
-.art-gallery-page .museum-audience{display:none}
-.art-gallery-page .museum-floor{height:9%;opacity:.45}
-.art-gallery-page .museum-stage-shell:after{bottom:9%}
-.art-gallery-page .museum-wall-label{display:none}
-.art-gallery-page .gallery-plaque{width:min(1000px,calc(100% - 16px));margin-top:14px}
-.art-gallery-page .gallery-plaque__body{line-height:1.65}
+.art-gallery-page .museum-audience,.art-gallery-page .museum-person,.art-gallery-page .museum-wall-label{display:none}
+.art-gallery-page .museum-floor{height:5%;opacity:.18}
+.art-gallery-page .museum-stage-shell:after{bottom:5%}
 .art-gallery-page .museum-nav{top:47%}
+.art-gallery-page .gallery-lightbox .gallery-stage{overflow:hidden}
+.art-gallery-page .gallery-lightbox .gallery-stage img{
+ width:auto;height:auto;max-width:100%;max-height:min(90dvh,1100px);object-fit:contain;image-rendering:auto
+}
+.art-gallery-page .gallery-open:focus-visible,
+.art-gallery-page .museum-nav:focus-visible,
+.art-gallery-page .gallery-plaque__controls button:focus-visible,
+.art-gallery-page .gallery-filter:focus-visible,
+.art-gallery-page .museum-index__range:focus-visible{outline:3px solid #efd393;outline-offset:4px}
+.art-gallery-page [hidden]{display:none!important}
 @media(max-width:900px){
  .art-gallery-page .museum-stage-shell{height:clamp(410px,64dvh,720px)}
  .art-gallery-page .museum-wall{inset:10px 48px 8%}
@@ -364,19 +334,23 @@
  .art-gallery-page .gallery-card.orientation-landscape .gallery-image-frame img,
  .art-gallery-page .gallery-card.orientation-portrait .gallery-image-frame img,
  .art-gallery-page .gallery-card.orientation-square .gallery-image-frame img{
-   max-width:min(100%,calc(100vw - 120px))!important;max-height:50dvh!important
+  max-width:100%!important;max-height:50dvh!important
  }
  .art-gallery-page .gallery-card.is-prev{transform:translateX(-85%) scale(.73)}
  .art-gallery-page .gallery-card.is-next{transform:translateX(85%) scale(.73)}
 }
 @media(max-width:620px){
+ .art-gallery-page .gallery-header h1{overflow-wrap:anywhere}
+ .art-gallery-page .gallery-toolbar{gap:4px 8px}
+ .art-gallery-page .gallery-filter{min-height:36px;padding:8px}
  .art-gallery-page .museum-stage-shell{height:clamp(360px,58dvh,570px)}
  .art-gallery-page .museum-wall{inset:8px 34px 6%}
+ .art-gallery-page .gallery-image-frame{padding:7px}
  .art-gallery-page .gallery-image-frame img,
  .art-gallery-page .gallery-card.orientation-landscape .gallery-image-frame img,
  .art-gallery-page .gallery-card.orientation-portrait .gallery-image-frame img,
  .art-gallery-page .gallery-card.orientation-square .gallery-image-frame img{
-   max-width:min(100%,calc(100vw - 86px))!important;max-height:44dvh!important
+  max-width:100%!important;max-height:44dvh!important
  }
  .art-gallery-page .museum-nav{width:36px;min-width:36px;height:48px}
  .art-gallery-page .museum-nav--prev{left:2px}
@@ -384,91 +358,8 @@
  .art-gallery-page .gallery-plaque{padding:16px}
 }
 @media(prefers-reduced-motion:reduce){
- .art-gallery-page .gallery-card{transition:none!important}
-}
-
-/* October 8 screenshot-driven museum repair. A quiet room, not a tiny picture in a black void. */
-body:has(.art-gallery-page){background:#100e0c!important;background-image:none!important}
-body:has(.art-gallery-page)::before,
-body:has(.art-gallery-page)::after{background:none!important;pointer-events:none}
-body:has(.art-gallery-page) .art-gallery-page{
-  width:min(1600px,100%)!important;max-width:1600px!important;
-  margin-inline:auto!important;background:#100e0c!important;
-}
-body:has(.art-gallery-page) .art-gallery-page::before{
-  z-index:0!important;background:linear-gradient(180deg,#211915,#110e0c 65%,#0c0b0a)!important
-}
-body:has(.art-gallery-page) .art-gallery-page>*{position:relative;z-index:1}
-.art-gallery-page .museum-stage-shell{
-  width:min(1600px,100%)!important;
-  height:clamp(490px,75dvh,920px)!important;
-  background:radial-gradient(ellipse at 50% 3%,#30251b 0%,#181411 42%,#100e0c 90%)!important;
-}
-.art-gallery-page .museum-wall{inset:14px 64px 6%!important;overflow:hidden}
-.art-gallery-page .gallery-card{padding:8px!important}
-.art-gallery-page .gallery-card.is-active{z-index:4}
-.art-gallery-page .gallery-card.is-prev,.art-gallery-page .gallery-card.is-next{
- opacity:.14!important;pointer-events:none!important
-}
-.art-gallery-page .gallery-open{display:flex!important;align-items:center!important;justify-content:center!important}
-.art-gallery-page .gallery-image-frame{
- display:inline-flex!important;align-items:center!important;justify-content:center!important;
- max-width:100%!important;max-height:100%!important;
- padding:10px!important;box-sizing:border-box
-}
-.art-gallery-page .gallery-image-frame img,
-.art-gallery-page .gallery-card.orientation-landscape .gallery-image-frame img,
-.art-gallery-page .gallery-card.orientation-portrait .gallery-image-frame img,
-.art-gallery-page .gallery-card.orientation-square .gallery-image-frame img{
- max-width:min(100%,1440px)!important;
- max-height:min(68dvh,790px)!important;
-}
-.art-gallery-page .museum-audience,.art-gallery-page .museum-person,
-.art-gallery-page .museum-wall-label{display:none!important}
-.art-gallery-page .museum-floor{height:5%!important;opacity:.18!important}
-.art-gallery-page .museum-stage-shell:after{bottom:5%!important}
-.art-gallery-page .museum-index,.art-gallery-page .gallery-plaque{
- width:min(1440px,calc(100% - 24px))!important;
-}
-@media(max-width:740px){
- .art-gallery-page .museum-stage-shell{height:clamp(360px,64dvh,660px)!important}
- .art-gallery-page .museum-wall{inset:12px 40px 5%!important}
- .art-gallery-page .gallery-image-frame img,
- .art-gallery-page .gallery-card.orientation-landscape .gallery-image-frame img,
- .art-gallery-page .gallery-card.orientation-portrait .gallery-image-frame img,
- .art-gallery-page .gallery-card.orientation-square .gallery-image-frame img{
- max-width:100%!important;max-height:54dvh!important
- }
-}
-
-/* Correct native-size-only layout: fill the available wall without cropping. */
-.art-gallery-page .gallery-card.is-active .gallery-image-frame img {
-  width:auto!important;
-  height:auto!important;
-  object-fit:contain!important;
-}
-.art-gallery-page .gallery-card.is-active.orientation-landscape .gallery-image-frame img {
-  width:min(100%,1440px)!important;
-  height:auto!important;
-  max-height:min(68dvh,790px)!important;
-}
-.art-gallery-page .gallery-card.is-active.orientation-portrait .gallery-image-frame img {
-  height:min(68dvh,790px)!important;
-  width:auto!important;
-  max-width:100%!important;
-}
-.art-gallery-page .gallery-card.is-active.orientation-square .gallery-image-frame img {
-  width:min(70dvh,790px,100%)!important;
-  height:auto!important;
-}
-@media(max-width:740px) {
- .art-gallery-page .gallery-card.is-active.orientation-landscape .gallery-image-frame img {
-   width:100%!important;max-height:54dvh!important;
- }
- .art-gallery-page .gallery-card.is-active.orientation-portrait .gallery-image-frame img {
-   height:min(54dvh,580px)!important;max-width:100%!important;
- }
- .art-gallery-page .gallery-card.is-active.orientation-square .gallery-image-frame img {
-   width:min(54dvh,100%)!important;max-height:54dvh!important;
+ .art-gallery-page .gallery-card,.art-gallery-page .museum-nav,
+ .art-gallery-page .gallery-image-frame,.art-gallery-page .museum-stage-shell{
+  animation:none!important;transition:none!important
  }
 }
