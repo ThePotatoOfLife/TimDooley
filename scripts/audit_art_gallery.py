@@ -53,6 +53,19 @@ if "addEventListener('wheel'" in js or 'addEventListener("wheel"' in js:
 if 'data-github-blob=' in html or "api.github.com/repos/ThePotatoOfLife/TimDooley/git/blobs" in js:
     fatal.append("gallery must not depend on runtime GitHub blob hydration")
 
+# Guard integration drift: gallery CSS/JS must be versioned together and
+# navigation must not eagerly fetch paintings that are no longer active.
+for asset,label in [("art-gallery.css","stylesheet"),("art-gallery.js","runtime")]:
+    matches=re.findall(r'(?:href|src)="[^"]*/'+re.escape(asset)+r'\\?v=([^"]+)"',html)
+    if len(matches)!=1 or not matches[0].strip():
+        fatal.append(f"gallery {label} needs exactly one versioned reference")
+if "img.loading = i === index ? 'eager' : 'lazy'" not in js:
+    fatal.append("gallery image scheduling must restore lazy loading for off-stage works")
+if "img.fetchPriority = i === index ? 'high' : 'auto'" not in js:
+    fatal.append("gallery image scheduling must prioritize only the active painting")
+if 'id="art-zombie-puppet-popemobile"' not in html:
+    fatal.append("Zombie Puppet Popemobile deep link is missing")
+
 figures=re.findall(r'<figure\b[^>]*class="[^"]*gallery-card[^"]*"[^>]*>[\s\S]*?</figure>',html,re.I)
 ids=[]
 dates=[]
