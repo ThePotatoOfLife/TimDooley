@@ -1,7 +1,7 @@
 {
   "id": "dwelling-featured-object-shelves",
-  "version": "1.0.0",
-  "updated": "2026-10-01",
+  "version": "1.2.1",
+  "updated": "2026-10-13",
   "purpose": "Curated concrete objects surfaced directly inside each top-level Dwelling so readers meet substantive material before another navigation layer.",
   "shelves": [
     {
@@ -75,6 +75,12 @@
           "title": "Witness & Attestation",
           "summary": "Who actually saw what, how close they were to the event, and what a timestamp or surviving artifact can establish.",
           "href": "rooms/inside/witness-attestation/"
+        },
+        {
+          "kind": "source inventory",
+          "title": "Original artwork files · Library recovery inventory",
+          "summary": "A recoverable inventory of image originals reported in the external ChatGPT Library. Filenames and sizes help trace acquisition; bytes are not claimed to exist in this GitHub repository or gallery.",
+          "href": "knowledge/creative/chatgpt-library-originals-inventory-2026-10-10.json"
         }
       ]
     },

@@ -1,5 +1,37 @@
 # TODO — The Potato of Life / TimDooley
 
+
+## Whole-House coordinated overhaul — execution wave 2026-10-13
+
+Source and implementation map: [`docs/WHOLE-HOUSE-CONTENT-OVERHAUL-MATRIX-2026-10-13.md`](docs/WHOLE-HOUSE-CONTENT-OVERHAUL-MATRIX-2026-10-13.md). This supplements the October 13 DEPTH3 list with an exact cross-room action map, explicit release contract, and the first implemented content slices; it **does not** reset older unfinished tasks. Mark work complete only when the page, source, validator, links and (for publication) the live commit have been checked.
+
+### Implemented in this source batch; verification still required
+- [~] **DEPTH4-001 · Good growth vs mere expansion:** `potatoism/index.html#growth-vs-expansion` now separates increase, regeneration and independence; inspect rendering and compare against existing philosophy before declaring finished.
+- [~] **DEPTH4-002 · A five-turn simulation you can recompute:** `rooms/inside/games-simulations/index.html#growth-game-test` uses transparent toy rules (12 vs 15 points over five turns); verify mathematics, link targets and mobile reading; later add user-selectable horizon/renewal.
+- [~] **DEPTH4-003 · Comparative gallery criticism:** `rooms/inside/visual-art/index.html#curatorial-pairs` compares two documented pairs on the same wall. Verify actual picture identities, smooth wall navigation, scroll/anchor behavior, and CSS before closing.
+- [~] **DEPTH4-004 · Four live question contracts:** `rooms/inside/open-questions/index.html#resolution-contract-examples` identifies owners, evidence, promotion and downgrade; check against the active resolution ledger.
+- [~] **DEPTH4-005 · Stairs as physiology:** `rooms/inside/whole-body/index.html#whole-body-stairs` grounds the multi-loop metaphor in a routine exertion case. Domain-review physiological accuracy and contrast against symbolic-body room.
+- [~] **DEPTH4-006 · Orphan original-image inventory:** `data/house/dwelling-featured-objects.json` now exposes `knowledge/creative/chatgpt-library-originals-inventory-2026-10-10.json` in Archive/Sources. `data/house/corpus-surface-coverage.json` totals corrected for one newly reachable canonical record. Run explicit contracts; no image binaries were transferred or published.
+
+### Next concrete editing slices, in dependency order
+- [ ] **DEPTH4-007 · Growth game parameter controls:** implement unobtrusive in-page control for soil, regeneration, reward, turn horizon; maintain a JS-off static truth table and a basic deterministic test.
+- [ ] **DEPTH4-008 · Great Book three-chapter genealogy:** select three original 2024 chapter HTML files after reading their bodies; preserve exact quotes and their historical edition, then add a small chapter-transition reader in the Great Book Literature Room.
+- [ ] **DEPTH4-009 · Visual media fidelity:** audit all published gallery image `naturalWidth`/`naturalHeight` and source type against original-file evidence; label unknown provenance; restore only originals actually available in supported image bytes.
+- [ ] **DEPTH4-010 · Source-grounded theology:** three claim ledgers with dated original wording, alternative interpretations and scope-limited inferences across God in Real Life and Biblical Case.
+- [ ] **DEPTH4-011 · Four-clock case:** reconstruct one real event across occurrence, attestation, recovery and retrospective meaning, with blanks where sources are absent.
+- [ ] **DEPTH4-012 · Tim public-day scene:** reconstruct one actual dated stream/workday from extant sources with breaks and uncertainty, rather than inventing a continuous daily record.
+- [ ] **DEPTH4-013 · Broken-covenant non-exemption test:** in the existing section identify a shepherd failure that applies even to the highest religious title; connect biblical context and project ethics.
+- [ ] **DEPTH4-014 · Door taxonomy:** show state transition vs knowledge threshold vs real social exit, with a counterexample where formal exit exists but coercive costs nullify freedom.
+- [ ] **DEPTH4-015 · Role/voice time audit:** first-attested titles and later Father/Son/Spirit formulation changes; verify actual historical record and compare with Christianity on its own terms.
+- [ ] **DEPTH4-016 · Cross-media motif:** read one original chapter, view one actual artwork, listen to one source track; explain medium-specific gains, without substituting titles for observations.
+- [ ] **DEPTH4-017 · North-world dependency chain:** select one source-dated electricity/logistics/policy case; trace material constraints through institutions and actual outcomes; keep symbolic Axis on a separate layer.
+- [ ] **DEPTH4-018 · Information recirculation case:** one truly sourced public utterance with original, clip, derivative copies, alternative reading and correction route; avoid fabricated hostile intent.
+- [ ] **DEPTH4-019 · Research model loss ledger:** select a documented rejected or narrowed scientific/mathematical project claim and show exactly what survived the test.
+- [ ] **DEPTH4-020 · Clear no-action verdicts:** review remaining authored/generator/redirect/chapter families using the new matrix; mark mature strong pages **no expansion needed**, not “missing depth.”
+- [ ] **DEPTH4-021 · Content and interface acceptance:** exact URL anchors; responsive keyboard/gallery/TTS/readability; no lost canon or broken source links; quality gates green for the exact commit.
+- [ ] **DEPTH4-022 · Live publication attestation:** verify Pages deployment provenance and browser-rendered examples for the exact main commit after quality passes. Keep failure state visible until verified.
+
+
 ## Editorial synthesis wave 3 — 2026-10-13
 
 **Audit basis:** inventoried the current 427 HTML paths on `main` (including 168 historical Great Book chapters, story fragments, redirects and technical shells); directly read all 38 `rooms/inside/` subject rooms and a broad sample of central public readers; reviewed `README.md`, this TODO, the reader-first editorial TODO, older page-completeness/richness audits, and issue #466. This is **not** a claim to have read every historical chapter or runtime-generated document. Existing pages are often already strong. **Do not add another generic introductory paragraph to them.** Capture new knowledge in canonical owners first, then publish one excellent worked piece per page. The list below adds *specific editorial deliverables* to older general obligations, not a second ontology.
