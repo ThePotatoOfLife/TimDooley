@@ -100,3 +100,18 @@
   .works-room .artifact-row{grid-template-columns:1fr}
   .works-room :is(.game-registry,.artifact-status){padding:16px}
 }
+
+/* The small harvest experiment lives only in its Games & Simulations Room. */
+.works-room .growth-game-interactive{margin:18px 0 24px;padding:16px;border:1px solid var(--site-pane-line);border-radius:var(--site-radius-sm);background:var(--site-pane-soft)}
+.works-room .growth-game-controls{border:0;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.works-room .growth-game-controls legend{grid-column:1/-1;float:left;width:100%;margin-bottom:12px;font-weight:700;color:var(--site-gold)}
+.works-room .growth-game-controls label{display:flex;flex-direction:column;gap:6px;min-width:0;font-size:var(--site-text-xs);line-height:1.4}
+.works-room .growth-game-controls input{box-sizing:border-box;width:100%;max-width:150px;min-height:40px;padding:7px 10px;color:inherit;font:inherit;background:var(--site-pane);border:1px solid var(--site-pane-line);border-radius:5px}
+.works-room .growth-game-controls input:focus-visible{outline:2px solid var(--site-gold);outline-offset:2px}
+.works-room .growth-game-summary{font-size:var(--site-text-xs);font-weight:700;line-height:1.6;margin:16px 0 10px}
+.works-room .growth-game-table-wrap{max-width:100%;overflow-x:auto}
+.works-room .growth-game-table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums;font-size:var(--site-text-xs)}
+.works-room .growth-game-table caption{text-align:left;font-size:var(--site-text-xs);padding:8px 0}
+.works-room .growth-game-table :is(th,td){padding:8px 10px;text-align:left;border-bottom:1px solid var(--site-pane-line);white-space:nowrap}
+.works-room .growth-game-table th{color:var(--site-gold)}
+.works-room .growth-game-note{margin:12px 0 0;color:var(--site-muted);font-size:var(--site-text-xs);line-height:1.6}

@@ -1,6 +1,17 @@
 # TODO — The Potato of Life / TimDooley
 
 
+### October 14 · Completed-source work and verification
+
+- [x] **DEPTH5-001 · Preserve mixed-date Great Book edition honestly:** `great-book/index.html#edition-strata` and `rooms/inside/great-book-literature/#book-edition-genealogy` now use actual chapter texts 2, 13.5, 15.11 and 24 to separate current edition order from first-attested composition date. Chapter 24 explicitly extends through 2026, so never label every chapter an untouched 2024 original. **Source implementation complete; quality and public deployment remain separately gated.**
+- [x] **DEPTH5-002 · Interactive harvest model implemented:** `rooms/inside/games-simulations/#growth-game-test` has route-scoped `app/growth-game.js` and shared Works Room styles, a variable-horizon two-strategy table and static no-script explanation. **Source implementation complete; browser usability and tests remain.**
+- [ ] **DEPTH5-003 · Versioned chapter witnesses:** recover the original ODT or earlier documented snapshots of Chapters 2, 13.5, 15.11 and 24; compare date, content hash and revision lines, recording earliest attestation, not narrative event year. Link to `rooms/inside/memory-recovery/`.
+- [ ] **DEPTH5-004 · Make growth model reproducible in CI:** add a deterministic check for defaults (extract=12, tend=15 after five turns), no-recovery boundary, equal-score horizon, and no-soil states; optionally isolate the pure simulation function for unit testing without a browser.
+- [ ] **DEPTH5-005 · Accessible actual-browser pass:** test 320/390/768px in Heaven for simulator focus, numeric inputs, live result status, table scrolling, JS-disabled fallback; TTS should not read rapidly changing result rows without request.
+- [ ] **DEPTH5-006 · Reader-wide time-language audit:** check Story, Science and other Great Book links for sweeping 'the 2024 text already said' statements whose only currently accessible witness is the 2026 composite. Do not bulk-rewrite historically evidenced material; require source-by-source correction.
+- [ ] **DEPTH5-007 · Public revision proof:** after this change, verify quality checks and Pages on the *exact new SHA* and compare live `build-provenance.json` if accessible. Current previous SHA `5ab86dff` already passed both quality and deploy; that proves nothing about new SHA.
+
+
 ## Whole-House coordinated overhaul — execution wave 2026-10-13
 
 Source and implementation map: [`docs/WHOLE-HOUSE-CONTENT-OVERHAUL-MATRIX-2026-10-13.md`](docs/WHOLE-HOUSE-CONTENT-OVERHAUL-MATRIX-2026-10-13.md). This supplements the October 13 DEPTH3 list with an exact cross-room action map, explicit release contract, and the first implemented content slices; it **does not** reset older unfinished tasks. Mark work complete only when the page, source, validator, links and (for publication) the live commit have been checked.
@@ -14,8 +25,8 @@ Source and implementation map: [`docs/WHOLE-HOUSE-CONTENT-OVERHAUL-MATRIX-2026-1
 - [~] **DEPTH4-006 · Orphan original-image inventory:** `data/house/dwelling-featured-objects.json` now exposes `knowledge/creative/chatgpt-library-originals-inventory-2026-10-10.json` in Archive/Sources. `data/house/corpus-surface-coverage.json` totals corrected for one newly reachable canonical record. Run explicit contracts; no image binaries were transferred or published.
 
 ### Next concrete editing slices, in dependency order
-- [ ] **DEPTH4-007 · Growth game parameter controls:** implement unobtrusive in-page control for soil, regeneration, reward, turn horizon; maintain a JS-off static truth table and a basic deterministic test.
-- [ ] **DEPTH4-008 · Great Book three-chapter genealogy:** select three original 2024 chapter HTML files after reading their bodies; preserve exact quotes and their historical edition, then add a small chapter-transition reader in the Great Book Literature Room.
+- [x] **DEPTH4-007 · Growth game parameter controls:** implement unobtrusive in-page control for soil, regeneration, reward, turn horizon; maintain a JS-off static truth table and a basic deterministic test.
+- [x] **DEPTH4-008 · Great Book three-chapter genealogy:** select three original 2024 chapter HTML files after reading their bodies; preserve exact quotes and their historical edition, then add a small chapter-transition reader in the Great Book Literature Room.
 - [ ] **DEPTH4-009 · Visual media fidelity:** audit all published gallery image `naturalWidth`/`naturalHeight` and source type against original-file evidence; label unknown provenance; restore only originals actually available in supported image bytes.
 - [ ] **DEPTH4-010 · Source-grounded theology:** three claim ledgers with dated original wording, alternative interpretations and scope-limited inferences across God in Real Life and Biblical Case.
 - [ ] **DEPTH4-011 · Four-clock case:** reconstruct one real event across occurrence, attestation, recovery and retrospective meaning, with blanks where sources are absent.

@@ -93,3 +93,13 @@
 - Other content jobs were still running when inspected; do not infer their eventual result.
 - Older #465 issues remain relevant where a new run confirms them. Track precise current failures rather than repeating outdated historical counts.
 - The original-resolution artwork bytes require an actual supported acquisition/publishing path; linking an inventory is only discoverability, never publication of originals.
+
+## October 14 continuation: newly verified source-status issue and implemented improvements
+
+The prior main `5ab86dffaa526f294f44dad0483913ad43abfdc7` passed [Repository quality checks](https://github.com/ThePotatoOfLife/TimDooley/actions/runs/38472515034) and [Pages deployment](https://github.com/ThePotatoOfLife/TimDooley/actions/runs/38473152675). Live build-provenance could not be fetched using the available public read interface, so no direct provenance equality is claimed.
+
+**New source-integrity finding:** `great-book/book-index.json` identifies the imported chapter-file source as `The Great Book Of Potato2.odt`. The Chapter 24 source body calls itself a year-by-year biography **1987–2026**, although multiple pages used to describe the entire edition as an original unchanged 2024 primary text. This does not invalidate 2024 beginnings or older passages, but current chapter presence does not prove when each passage first existed. The remediation carefully edits **only reader commentary**, not the 168 retained chapter identities/bodies.
+
+**Implemented reader work:** interactive configurable Games & Simulations five-turn model; two-sided point/remaining-soil table; source-aware editorial reading route across Chapters 2, 13.5, 15.11 and 24; accurate provenance language in Great Book and Literature introductions. Recheck source-specific claims in Science, Story, and the contextual source authority pages. Retain earlier working tasks for imagery, canonical source recovery, mobile and deployment verification.
+
+**Open QA:** create an automated model regression test, validate browser a11y/width, verify no broken links/anchors, preserve the original chapter HTML, and attest quality/Pages for each newer SHA rather than inheriting older successes.

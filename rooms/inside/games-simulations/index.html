@@ -45,7 +45,22 @@
 <article class="teaching-card"><em>Extract · short-run lead</em><strong>Turn 3: 12 points. Turn 5: still 12.</strong><p>Soil follows 6 → 4 → 2 → 0. Extracting produces 4 + 4 + 4 points and then cannot harvest on turns four and five. Its early lead was real; its missing future was real too.</p></article>
 <article class="teaching-card"><em>Tend · slower early score</em><strong>Turn 3: 9 points. Turn 5: 15.</strong><p>Soil stays at six under the stipulated renewal rule. Tending produces three points per turn. On turn three it appears to lose; by turn five it leads. Change the regeneration assumption and the result must be calculated again.</p></article>
 </div>
-<p><strong>What this tests:</strong> whether an apparent victory survives a change of horizon. <strong>What it cannot establish:</strong> that tending always wins, that social growth behaves like soil, or that every ecological process follows these cartoon mechanics. The next game revision should let players change initial soil, extraction rate, recovery rate, and horizon, then display both score and remaining capacity. See <a href="../model-testing/">Model Testing</a> for falsifiers and <a href="../../../potatoism/#growth-vs-expansion">Potatoism</a> for the moral question the toy model makes visible.</p>
+<p><strong>What this tests:</strong> whether an apparent victory survives a change of horizon. <strong>What it cannot establish:</strong> that tending always wins, that social growth behaves like soil, or that every ecological process follows these cartoon mechanics. Try different harvest rewards, soil restoration, starting soil and horizons below. An apparent win is meaningful only under declared rules. See <a href="../model-testing/">Model Testing</a> for falsifiers and <a href="../../../potatoism/#growth-vs-expansion">Potatoism</a> for the moral question the toy model makes visible.</p>
+<div class="growth-game-interactive" data-growth-game aria-label="Change the harvest model's assumptions">
+<fieldset class="growth-game-controls"><legend>Change the assumptions · toy model</legend>
+<label>Starting soil units <input type="number" min="2" max="20" step="1" value="6" data-growth-input="soil"></label>
+<label>Number of turns <input type="number" min="1" max="20" step="1" value="5" data-growth-input="turns"></label>
+<label>Extract reward / harvest <input type="number" min="0" max="20" step="1" value="4" data-growth-input="extract"></label>
+<label>Tend reward / harvest <input type="number" min="0" max="20" step="1" value="3" data-growth-input="tend"></label>
+<label>Soil restored by tending <input type="number" min="0" max="4" step="1" value="2" data-growth-input="recovery"></label>
+</fieldset>
+<div data-growth-results hidden>
+<p class="growth-game-summary" role="status" aria-live="polite" data-growth-summary></p>
+<div class="growth-game-table-wrap"><table class="growth-game-table"><caption>Same starting soil, two independently repeated strategies; all numbers are model units</caption><thead><tr><th scope="col">Turn</th><th scope="col">Extract score</th><th scope="col">Extract soil left</th><th scope="col">Tend score</th><th scope="col">Tend soil left</th></tr></thead><tbody data-growth-rows></tbody></table></div>
+<p class="growth-game-note">Each successful harvest costs two soil units. Tending restores the selected amount, capped at the starting soil. An action with fewer than two soil units produces no score. There is no passive recovery and no strategy switching. The model makes no claim about literal crop yield.</p>
+</div>
+<noscript><p>The static worked example above remains readable without JavaScript. Enable JavaScript to change the model parameters.</p></noscript>
+</div>
 </section>
 <div class="room-synthesis" aria-label="How this Room contributes to the House">
 <article><em>Contribution</em><strong>Ideas become behavior</strong><p>Games make hidden assumptions explicit by turning them into rules, state changes and consequences that can actually run.</p></article>
@@ -53,4 +68,4 @@
 <article><em>Next handoff</em><strong>From play to test</strong><p><a href="../experiments-formalization/">Experiments &amp; Formalization</a> asks which mechanics deserve variables, observables and failure conditions.</p></article>
 </div>
 <section><p class="eyebrow">Doors around you</p><h2>Adjacent Rooms</h2><div class="adj-grid"><a class="adj" href="../visual-art/"><strong>Visual Art</strong><small>world-building and interface composition</small></a><a class="adj wormhole" href="../systems-dynamics/"><strong>Systems &amp; Dynamics</strong><small>formalize feedback and state change</small></a><a class="adj wormhole" href="../model-testing/"><strong>Testing &amp; Falsifiability</strong><small>separate toy behavior from real-world claims</small></a></div></section>
-</main><script src="../../../app/house-journey.js"></script></body></html>
+</main><script defer src="../../../app/growth-game.js"></script><script src="../../../app/house-journey.js"></script></body></html>
