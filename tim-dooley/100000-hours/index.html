@@ -140,6 +140,58 @@
   line-height:1.6;
 }
 
+/* Dark archival reading plate: own the surface, not just inherited floor
+   tokens. Heaven/Plane may provide a light wallpaper, but NEVER a white
+   page-header or an unreadable white-on-ivory story panel here. */
+.hours-page{
+  background:linear-gradient(180deg,rgba(11,12,11,.97),rgba(8,9,8,.985));
+  border:1px solid rgba(216,181,107,.16);
+  border-radius:14px;
+}
+html[data-site-floor] .hours-page > .page-header,
+.hours-page > .page-header{
+  background:#111310;
+  border:1px solid rgba(216,181,107,.27);
+  box-shadow:0 16px 38px rgba(0,0,0,.28);
+  color:#eae8dd;
+  max-width:none;
+  padding:clamp(20px,3vw,36px);
+}
+html[data-site-floor] .hours-page > .page-header h1,
+.hours-page > .page-header h1{color:#f6eddb}
+html[data-site-floor] .hours-page > .page-header .summary,
+.hours-page > .page-header .summary{color:#daddd5}
+html[data-site-floor] .hours-page > .page-header .eyebrow,
+.hours-page > .page-header .eyebrow{color:#d3b879}
+html[data-site-floor] .hours-page > .page-header .boundary,
+.hours-page > .page-header .boundary{
+  background:#191b17;
+  border-color:rgba(216,181,107,.25);
+  border-left-color:#d8b56b;
+  color:#d2d4cc;
+  box-shadow:none;
+}
+.hours-page > .page-header .boundary a{color:#eacb86;text-decoration-color:rgba(234,203,134,.5)}
+html[data-site-floor] .hours-page > :is(section.opening-essay,section.celebration,section.exposure-thesis,section.longread,section.texture){
+  background:transparent;
+  border:0;
+  border-radius:0;
+  box-shadow:none;
+  padding:0;
+}
+html[data-site-floor] .hours-page > section.stage{
+  background:transparent;
+  border:0;
+  padding:0;
+  box-shadow:none;
+}
+html[data-site-floor] .hours-page > section.card,
+html[data-site-floor] .hours-page > section.plain-section{
+  background:#111310;
+  border-color:rgba(216,181,107,.18);
+  color:#d2d4cf;
+}
+
 /* TTS mounts here, then the shared site dock adopts the player. */
 .reader-host{display:contents}
 .reader-kicker{display:none}
