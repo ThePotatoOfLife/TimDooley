@@ -19,6 +19,26 @@
 <style>
 /* 100,000 Hours — fixed archival reader overhaul · 2026-10-05 */
 .hours-page{
+  /* This is a deliberately dark archival reader on every site floor.
+     Scope the shared tokens HERE: Heaven/Plane set light tokens on body,
+     and the shared .page > section/header rules otherwise inject white
+     panels into this page's black counters and cards. */
+  color-scheme:dark;
+  --site-ink:#f0ecdf;
+  --site-copy:#d2d4cf;
+  --site-copy-strong:#ebe5d8;
+  --site-muted:#aaa69d;
+  --site-faint:#77746c;
+  --site-gold:#d8b56b;
+  --site-line:rgba(255,255,255,.12);
+  --site-panel:#0d0d0d;
+  --site-panel-strong:#111210;
+  --site-pane:rgba(16,17,16,.96);
+  --site-pane-soft:rgba(19,20,18,.93);
+  --site-pane-line:rgba(216,181,107,.18);
+  --site-pane-shadow:0 12px 30px rgba(0,0,0,.22);
+  --site-focus:#e0c17c;
+  color:var(--site-copy);
   --hours-accent:var(--site-gold);
   --hours-accent-soft:rgba(216,181,107,.16);
   --hours-line:rgba(255,255,255,.105);
