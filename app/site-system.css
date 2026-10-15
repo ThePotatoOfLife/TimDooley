@@ -5,6 +5,9 @@
 :root {
   --site-bg: #070707;
   --site-ink: #f4f0e5;
+  /* Foreground for controls filled with the current ink and accent colours. */
+  --site-on-ink: #090b09;
+  --site-on-gold: #161109;
   --site-copy: #cfd3cc;
   --site-copy-strong: #e1dfd5;
   --site-muted: #aaa49a;
@@ -180,6 +183,8 @@ html[data-site-floor] body:not(.home-body):not(.garden-body):not(.dogs-hall-page
 }
 html[data-site-floor="plane"] body:not(.home-body):not(.garden-body):not(.dogs-hall-page):not(.potatoes-hall-page){
   --site-ink:#20241f;
+  --site-on-ink:#fff9ed;
+  --site-on-gold:#fff9ed;
   --site-copy:#4c544c;
   --site-copy-strong:#2b312b;
   --site-muted:#687168;
@@ -204,6 +209,8 @@ html[data-site-floor="plane"] body:not(.home-body):not(.garden-body):not(.dogs-h
    prose and Room materials become warm white / ivory with dark ink. */
 html[data-site-floor="heaven"] body:not(.home-body):not(.garden-body):not(.dogs-hall-page):not(.potatoes-hall-page){
   --site-ink:#20231f;
+  --site-on-ink:#fff9ed;
+  --site-on-gold:#fff9ed;
   --site-copy:#4d544d;
   --site-copy-strong:#2b302a;
   --site-muted:#697168;
