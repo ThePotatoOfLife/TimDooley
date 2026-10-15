@@ -4,7 +4,7 @@
 
 .god-character-reader .lede{
   max-width:900px;
-  color:#dde1d8;
+  color:var(--site-copy);
   font:400 clamp(21px,2.7vw,30px)/1.55 var(--site-font-serif);
 }
 
@@ -61,7 +61,7 @@
   margin-top:12px;
   padding-top:10px;
   border-top:1px solid var(--site-line);
-  color:#e4dfd4;
+  color:var(--site-ink);
   font:400 19px/1.5 var(--site-font-serif);
 }
 .god-character-reader .turn,
