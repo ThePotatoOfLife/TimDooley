@@ -71,7 +71,7 @@
 
 * { box-sizing: border-box; }
 
-html { background: var(--site-bg); }
+html { background: var(--site-bg); color-scheme: dark; }
 
 body {
   margin: 0;
@@ -182,6 +182,7 @@ html[data-site-floor] body:not(.home-body):not(.garden-body):not(.dogs-hall-page
   --site-pane-shadow:0 14px 34px rgba(0,0,0,.20);
 }
 html[data-site-floor="plane"] body:not(.home-body):not(.garden-body):not(.dogs-hall-page):not(.potatoes-hall-page){
+  color-scheme:light;
   --site-ink:#20241f;
   --site-on-ink:#fff9ed;
   --site-on-gold:#fff9ed;
@@ -208,6 +209,7 @@ html[data-site-floor="plane"] body:not(.home-body):not(.garden-body):not(.dogs-h
    behind it. Keep the HUD/nav dark for contrast, but let reader surfaces, cards,
    prose and Room materials become warm white / ivory with dark ink. */
 html[data-site-floor="heaven"] body:not(.home-body):not(.garden-body):not(.dogs-hall-page):not(.potatoes-hall-page){
+  color-scheme:light;
   --site-ink:#20231f;
   --site-on-ink:#fff9ed;
   --site-on-gold:#fff9ed;

@@ -39,7 +39,7 @@
 .bible-reader-source{margin-top:11px!important;padding-top:10px;border-top:1px solid #443a29;color:#a99f87!important}
 .bible-reference-form{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;margin-top:13px}
 .bible-reference-help{margin-top:6px;color:#788275;font-size:10px}
-.scripture-dialog{width:min(760px,calc(100vw - 28px));max-height:86vh;border:1px solid #594c32;border-radius:18px;background:var(--site-panel);color:#f4f0e5;padding:0}
+.scripture-dialog{/* May be mounted outside .bible-page; preserve dark modal contrast. */color-scheme:dark;--site-panel:#0d0d0d;--site-panel-strong:#121212;--site-ink:#f4f0e5;--site-copy:#cfd3cc;--site-muted:#aaa49a;--site-line:#302d29;--site-gold:#d8b56b;width:min(760px,calc(100vw - 28px));max-height:86vh;border:1px solid #594c32;border-radius:18px;background:var(--site-panel);color:#f4f0e5;padding:0}
 .scripture-dialog::backdrop{background:rgba(0,0,0,.76)}
 .scripture-dialog-inner{padding:18px}
 .scripture-dialog-inner header{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;position:sticky;top:-18px;background:var(--site-panel);padding:4px 0 12px;border-bottom:1px solid var(--site-line);z-index:1}
