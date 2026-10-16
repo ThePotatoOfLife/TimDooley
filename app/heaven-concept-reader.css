@@ -554,3 +554,192 @@
   .god-reality-reader .matrix th,
   .god-reality-reader .matrix td{padding:8px}
 }
+
+/* God in Real Life: contained, responsive article layout (2026-10-16). */
+/* Unlike the rest of the site, this standalone article does not set
+   html[data-site-floor]. Give its own chapters actual reading surfaces;
+   never depend on a floor selector for its text containment. */
+body:has(.god-reality-reader){
+  background:
+    radial-gradient(ellipse at 50% 0,rgba(115,132,99,.26),transparent 56rem),
+    linear-gradient(180deg,#17201b 0%,#0d1210 48%,#080b0a 100%);
+}
+.heaven-concept-reader.god-reality-reader{
+  --heaven-pane:rgba(255,254,248,.97);
+  --heaven-pane-soft:rgba(252,251,246,.96);
+  --heaven-line:rgba(153,124,67,.32);
+  width:min(100%,calc(1060px + 2 * var(--site-gutter)));
+  max-width:1120px;
+  min-width:0;
+  color:#424a42;
+}
+.god-reality-reader :where(.reality-hero,section,.claim,.note,.card,.degree,.matrix,.reality-table-wrap,.jump){
+  min-width:0;
+  max-width:100%;
+}
+.god-reality-reader :where(p,li,td,th,.card,.degree,.small,.note,.claim){
+  overflow-wrap:break-word;
+}
+.god-reality-reader :where(.small,.card a,code){
+  overflow-wrap:anywhere;
+}
+/* The introduction and each article chapter are complete, padded panels.
+   This also fixes headings and paragraphs previously orphaned on the page. */
+.heaven-concept-reader.god-reality-reader > .reality-hero,
+.heaven-concept-reader.god-reality-reader > section{
+  margin:0 0 20px;
+  padding:clamp(20px,3.2vw,34px);
+  border:1px solid var(--heaven-line);
+  border-radius:18px;
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.65),transparent 52%),
+    var(--heaven-pane);
+  color:#424a42;
+  box-shadow:0 18px 46px rgba(0,0,0,.19),inset 0 1px rgba(255,255,255,.68);
+}
+.god-reality-reader > :is(.reality-hero,section) > :first-child{margin-top:0}
+.god-reality-reader > :is(.reality-hero,section) > :last-child{margin-bottom:0}
+.god-reality-reader .reality-hero .back{
+  display:inline-block;
+  margin:0 0 18px;
+  color:#73551f;
+  text-decoration:none;
+  font-size:13px;
+}
+.god-reality-reader .reality-hero .kicker{
+  margin:4px 0 10px;
+  color:var(--heaven-gold);
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+.god-reality-reader .reality-hero h1{
+  max-width:18ch;
+  margin:0 0 22px;
+  color:#24271f;
+  font:400 clamp(42px,6.5vw,72px)/1.07 var(--site-font-serif);
+  letter-spacing:-.035em;
+  text-wrap:balance;
+}
+.god-reality-reader .reality-hero .lead{
+  max-width:76ch;
+  color:#424a42;
+  font:400 clamp(17px,2vw,21px)/1.55 var(--site-font-serif);
+}
+.god-reality-reader .reality-hero .lead:last-child{margin-bottom:0}
+.god-reality-reader > section > h2,
+.god-reality-reader > section > h2:first-child{
+  margin:0 0 16px;
+  color:#302f28;
+  font:400 clamp(27px,3vw,35px)/1.17 var(--site-font-serif);
+  letter-spacing:-.012em;
+  text-wrap:pretty;
+}
+.god-reality-reader > section > h3{
+  color:#493a25;
+}
+.god-reality-reader > section :is(p,li){
+  line-height:1.68;
+}
+.god-reality-reader > .jump{
+  margin:16px 0 22px;
+  padding:15px;
+  border:1px solid var(--heaven-line);
+  border-radius:14px;
+  background:rgba(252,251,246,.96);
+  box-shadow:0 12px 28px rgba(0,0,0,.12);
+}
+.god-reality-reader .jump a{
+  background:#f0eee5;
+  border-color:rgba(153,124,67,.36);
+  color:#55431f;
+  line-height:1.35;
+}
+.god-reality-reader .jump a:hover,
+.god-reality-reader .jump a:focus-visible{
+  background:#e7dfcb;
+  border-color:#94733d;
+}
+.god-reality-reader .claim{
+  margin:20px 0;
+  background:var(--heaven-pane-soft);
+}
+.god-reality-reader .degrees,
+.god-reality-reader .case,
+.god-reality-reader .grid{
+  max-width:100%;
+  min-width:0;
+}
+.god-reality-reader .degrees > *,
+.god-reality-reader .case > *,
+.god-reality-reader .grid > *,
+.god-reality-reader .degree > *{
+  min-width:0;
+}
+.god-reality-reader .degree,
+.god-reality-reader .card{
+  background:rgba(255,255,253,.89);
+}
+.god-reality-reader .card{
+  overflow-wrap:break-word;
+}
+.god-reality-reader .reality-table-wrap{
+  width:100%;
+  margin:17px 0 24px;
+  overflow-x:auto;
+  overscroll-behavior-inline:contain;
+  border:1px solid var(--heaven-line);
+  border-radius:12px;
+  background:rgba(255,255,252,.90);
+}
+.god-reality-reader .reality-table-wrap:focus-visible{
+  outline:3px solid #977238;
+  outline-offset:3px;
+}
+.god-reality-reader .reality-table-wrap .matrix{
+  display:table;
+  width:100%;
+  min-width:550px;
+  max-width:none;
+  margin:0;
+  table-layout:fixed;
+  border-collapse:collapse;
+}
+.god-reality-reader .matrix th{
+  background:rgba(222,211,188,.28);
+}
+.god-reality-reader .matrix th,
+.god-reality-reader .matrix td{
+  overflow-wrap:break-word;
+  white-space:normal;
+}
+.god-reality-reader .matrix tr:last-child td{border-bottom:none}
+.god-reality-reader .note{background:#f4f3e9}
+.god-reality-reader > section .case{margin:18px 0}
+.god-reality-reader > section .case:last-child{margin-bottom:0}
+.god-reality-reader > section :where(ul,ol){padding-left:1.4em}
+@media(max-width:720px){
+  .heaven-concept-reader.god-reality-reader{padding-inline:clamp(12px,4vw,20px)}
+  .heaven-concept-reader.god-reality-reader > :is(.reality-hero,section){
+    margin-bottom:14px;
+    padding:20px 17px;
+    border-radius:13px;
+  }
+  .god-reality-reader .reality-hero h1{
+    font-size:clamp(36px,9vw,55px);
+    line-height:1.08;
+  }
+  .god-reality-reader .reality-hero .lead{font-size:18px}
+  .god-reality-reader > section > h2{font-size:clamp(25px,6.4vw,32px)}
+  .god-reality-reader .degree{grid-template-columns:38px minmax(0,1fr);padding:14px 12px;gap:9px}
+  .god-reality-reader .degree strong{font-size:16px}
+  .god-reality-reader .status{display:block;margin:4px 0 0}
+  .god-reality-reader .case,.god-reality-reader .grid{grid-template-columns:minmax(0,1fr)}
+  .god-reality-reader .claim{padding:18px 16px}
+  .god-reality-reader .claim strong{font-size:clamp(23px,6vw,30px)}
+  .god-reality-reader .reality-table-wrap .matrix{min-width:550px;font-size:13px}
+  .god-reality-reader .reality-table-wrap .matrix th,
+  .god-reality-reader .reality-table-wrap .matrix td{padding:10px}
+  .god-reality-reader > .jump{gap:7px;padding:12px}
+}
