@@ -1,0 +1,668 @@
+{
+  "id": "world-financial-institution-topology",
+  "version": "1.0.0",
+  "updated": "2026-09-21",
+  "status": "active-gap-closure",
+  "purpose": "Role-based institutional topology closing the explanatory gaps between central banks, sovereign debt, bond holders, development finance, payment/settlement plumbing, prudential standards, legal-entity identity and large non-bank capital pools.",
+  "design_rule": "Add an institution only when it closes a distinct causal or evidentiary gap. Messaging is not settlement; settlement is not custody; custody is not beneficial ownership; a development-bank bond is not the same obligation as its downstream project loan; a standard setter is not a supervisor; an asset manager is not the legal owner of every asset it manages.",
+  "layers": [
+    {
+      "id": "holder-side-data",
+      "label": "Holder-side capital and external position data",
+      "gap_closed": "BIS IDS identifies issuers but not bond holders. We need a holder-side dataset to answer which economy owns securities issued by another economy.",
+      "map_role": "Directed portfolio-holding edges only where counterpart economy and instrument class are published.",
+      "nodes": [
+        {
+          "id": "imf-pip",
+          "name": "IMF Portfolio Investment Positions by Counterpart Economy (PIP; formerly CPIS)",
+          "type": "official-statistical-system",
+          "priority": "critical-now",
+          "role": "Cross-border holdings of equities, investment fund shares and short/long-term debt securities by counterpart issuer economy.",
+          "why": "This is the cleanest official bridge from issuer-side bond data to country-level holder-side portfolio positions.",
+          "caveat": "Portfolio positions are reported by participating economies and remain subject to coverage, valuation and confidentiality limitations. A country position does not identify the underlying private legal entity.",
+          "source_id": "imf-pip-source"
+        },
+        {
+          "id": "imf-iip",
+          "name": "IMF International Investment Position framework",
+          "type": "official-statistical-system",
+          "priority": "critical-now",
+          "role": "Country external financial assets and liabilities by functional category.",
+          "why": "Provides the balance-sheet frame around portfolio holdings, direct investment, reserves and other investment so isolated bond holdings can be interpreted as part of a country's external position.",
+          "caveat": "Aggregate external position is not automatically bilateral unless the underlying source exposes counterpart geography.",
+          "source_id": "imf-external-sector-source"
+        }
+      ]
+    },
+    {
+      "id": "official-liquidity-and-multilateral-finance",
+      "label": "Official liquidity and multilateral development finance",
+      "gap_closed": "The project has sovereign issuers and central banks but lacks the institutions that lend to governments, issue supranational bonds, transform shareholder capital into project finance, and provide crisis liquidity.",
+      "graph_pattern": "shareholders/capital -> multilateral institution -> bond investors/funding -> loan/guarantee/grant -> sovereign/project borrower",
+      "nodes": [
+        {
+          "id": "imf",
+          "name": "International Monetary Fund",
+          "type": "international-monetary-institution",
+          "priority": "critical-now",
+          "roles": [
+            "balance-of-payments-financing",
+            "surveillance",
+            "capacity-development",
+            "SDR-system"
+          ],
+          "why": "Explains official crisis lending, reserve support, IMF quotas and SDR positions that otherwise appear as unexplained sovereign obligations or reserve assets.",
+          "source_ids": [
+            "imf-role-source",
+            "imf-sdr-source",
+            "imf-sdr-holdings-source"
+          ]
+        },
+        {
+          "id": "ibrd",
+          "name": "International Bank for Reconstruction and Development",
+          "type": "multilateral-development-bank",
+          "priority": "critical-now",
+          "roles": [
+            "capital-markets-issuer",
+            "sovereign-lender",
+            "guarantees",
+            "risk-management",
+            "advisory"
+          ],
+          "why": "IBRD raises funds in capital markets and lends onward to sovereign/sub-sovereign borrowers, creating a two-leg obligation chain the graph must preserve.",
+          "source_id": "ibrd-source"
+        },
+        {
+          "id": "ida",
+          "name": "International Development Association",
+          "type": "concessional-development-finance",
+          "priority": "high",
+          "roles": [
+            "concessional-credit",
+            "grants",
+            "donor-replenishment",
+            "capital-markets-borrowing"
+          ],
+          "why": "Separates concessional development obligations from market-rate sovereign debt and from IBRD lending.",
+          "source_id": "ida-source"
+        },
+        {
+          "id": "eib",
+          "name": "European Investment Bank",
+          "type": "multilateral-development-bank",
+          "priority": "critical-north",
+          "shareholders": "27 EU Member States",
+          "roles": [
+            "EU-policy-bank",
+            "capital-markets-issuer",
+            "project-lender",
+            "guarantees"
+          ],
+          "why": "A major financing bridge between EU member-state capital, capital markets and infrastructure/industrial projects; already mentioned in the North Europe atlas but not yet modeled as an obligation transformer.",
+          "source_id": "eib-source"
+        },
+        {
+          "id": "nib",
+          "name": "Nordic Investment Bank",
+          "type": "multilateral-development-bank",
+          "priority": "critical-north",
+          "member_countries": [
+            "Denmark",
+            "Estonia",
+            "Finland",
+            "Iceland",
+            "Latvia",
+            "Lithuania",
+            "Norway",
+            "Sweden"
+          ],
+          "roles": [
+            "capital-markets-issuer",
+            "project-lender",
+            "Nordic-Baltic-infrastructure-finance"
+          ],
+          "why": "This is the most direct existing financial institution connecting the Nordic-Baltic North geography. It belongs close to the North obligation graph, not as a symbolic Axis claim but as a real member-owned lender.",
+          "source_id": "nib-source"
+        },
+        {
+          "id": "ebrd",
+          "name": "European Bank for Reconstruction and Development",
+          "type": "multilateral-development-bank",
+          "priority": "high-north-interface",
+          "roles": [
+            "capital-markets-issuer",
+            "project-finance",
+            "private-sector-finance",
+            "transition-and-reconstruction-finance"
+          ],
+          "why": "Connects European/North shareholders with investment in Central/Eastern Europe and wider regions, making it important for Ukraine/reconstruction and cross-axis capital flows.",
+          "source_ids": [
+            "ebrd-shareholder-source",
+            "ebrd-funding-source"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "market-infrastructure",
+      "label": "Messaging, payment, FX and securities infrastructure",
+      "gap_closed": "A debt or security can exist without explaining how instructions, cash and securities actually move. These institutions form the rails between counterparties.",
+      "nodes": [
+        {
+          "id": "swift",
+          "name": "Swift",
+          "type": "financial-messaging-network",
+          "priority": "critical-now",
+          "role": "Secure standardized messaging between financial institutions and market infrastructures.",
+          "why": "Explains communication paths but must not be shown as moving or holding the underlying money merely because a payment message traverses Swift.",
+          "caveat": "Messaging is not settlement and Swift is not itself the debtor, creditor or beneficial owner.",
+          "source_id": "swift-source"
+        },
+        {
+          "id": "cls",
+          "name": "CLSSettlement",
+          "type": "fx-settlement-infrastructure",
+          "priority": "critical-now",
+          "role": "Payment-versus-payment settlement for 18 major currencies through central-bank accounts.",
+          "why": "Closes the FX settlement-risk gap and links DKK, EUR, USD, CAD, GBP, NOK, SEK, CHF, JPY and other major currencies through a real settlement mechanism.",
+          "source_ids": [
+            "cls-source",
+            "cls-currencies-source"
+          ]
+        },
+        {
+          "id": "euroclear",
+          "name": "Euroclear",
+          "type": "securities-settlement-and-custody",
+          "priority": "critical-europe",
+          "role": "Issuance, settlement, custody, asset servicing and collateral infrastructure for securities.",
+          "why": "Provides the post-trade layer between a bond issuer and the chain of intermediaries/holders; essential for understanding why custody location is not beneficial ownership.",
+          "source_ids": [
+            "euroclear-source",
+            "euroclear-business-source"
+          ]
+        },
+        {
+          "id": "clearstream",
+          "name": "Clearstream",
+          "type": "securities-settlement-and-custody",
+          "priority": "critical-europe",
+          "role": "CSD/ICSD settlement, custody, collateral, repo and securities-lending infrastructure.",
+          "why": "Together with Euroclear, closes the Eurobond/post-trade custody gap for European and international securities.",
+          "source_id": "clearstream-source"
+        },
+        {
+          "id": "fedwire-funds",
+          "name": "Fedwire Funds Service",
+          "type": "large-value-payment-system",
+          "priority": "high-global",
+          "role": "Final same-day USD transfers across Federal Reserve accounts.",
+          "why": "Completes the dollar payment rail beneath Treasury, bank and interbank obligations; unlike Swift, Fedwire effects settlement in central-bank money.",
+          "source_id": "fedwire-source"
+        },
+        {
+          "id": "dtcc",
+          "name": "DTCC clearing and settlement infrastructure",
+          "type": "securities-clearing-settlement",
+          "priority": "high-global",
+          "role": "Central counterparty, netting, clearing and settlement infrastructure in major U.S. securities markets.",
+          "why": "Explains how U.S. securities obligations are netted and settled after trade execution and why gross trading volume is not the same as final cash obligation.",
+          "source_id": "dtcc-source"
+        }
+      ]
+    },
+    {
+      "id": "rules-supervision-resolution",
+      "label": "Standards, supervision and resolution",
+      "gap_closed": "The graph currently shows institutions and exposures but not the rules that constrain bank capital, market infrastructure, supervision or failure resolution.",
+      "nodes": [
+        {
+          "id": "fsb",
+          "name": "Financial Stability Board",
+          "type": "international-coordination-body",
+          "priority": "critical-now",
+          "role": "Coordinates national authorities and international standard setters on global financial stability.",
+          "why": "Provides the coordination layer above sector-specific standards; it should be modeled as policy/coordination, not as a regulator with direct universal legal authority.",
+          "source_id": "fsb-source"
+        },
+        {
+          "id": "bcbs",
+          "name": "Basel Committee on Banking Supervision",
+          "type": "global-bank-standard-setter",
+          "priority": "critical-now",
+          "role": "Global prudential banking standards and supervisory cooperation.",
+          "why": "Bank capital, liquidity and exposure data cannot be interpreted well without the Basel framework that shapes internationally active banks.",
+          "source_id": "bcbs-source"
+        },
+        {
+          "id": "cpmi",
+          "name": "Committee on Payments and Market Infrastructures",
+          "type": "global-market-infrastructure-standard-setter",
+          "priority": "critical-now",
+          "role": "Standards and policy for payment, clearing and settlement infrastructure.",
+          "why": "Provides the rule layer governing the safety/efficiency of the same payment and settlement systems the map will display.",
+          "source_id": "cpmi-source"
+        },
+        {
+          "id": "eba",
+          "name": "European Banking Authority",
+          "type": "eu-prudential-authority",
+          "priority": "critical-europe",
+          "role": "EU banking Single Rulebook, risk assessment and supervisory convergence.",
+          "why": "Separates EU-level rulemaking/convergence from national supervision and ECB Banking Supervision.",
+          "source_id": "eba-source"
+        },
+        {
+          "id": "esma",
+          "name": "European Securities and Markets Authority",
+          "type": "eu-securities-authority",
+          "priority": "high-europe",
+          "role": "EU securities-market regulation, supervision and convergence.",
+          "why": "Needed once bonds, funds, trading venues, rating agencies and securities infrastructures become first-class graph objects.",
+          "source_id": "esma-source"
+        },
+        {
+          "id": "eiopa",
+          "name": "European Insurance and Occupational Pensions Authority",
+          "type": "eu-insurance-pensions-authority",
+          "priority": "high-europe",
+          "role": "EU insurance and occupational-pension supervision/convergence.",
+          "why": "Pension funds and insurers are major bond holders; their regulatory layer is necessary when holder-sector data becomes visible.",
+          "source_id": "eiopa-source"
+        },
+        {
+          "id": "srb",
+          "name": "Single Resolution Board",
+          "type": "bank-resolution-authority",
+          "priority": "critical-euro-area",
+          "role": "Central resolution authority in the Banking Union.",
+          "why": "Adds the failure/restructuring path: a stressed bank can move from exposure to resolution without treating taxpayer support or creditor bail-in as automatic.",
+          "source_id": "srb-source"
+        }
+      ]
+    },
+    {
+      "id": "identity-and-ownership",
+      "label": "Legal identity and ownership resolution",
+      "gap_closed": "Names are not stable enough for a global obligation graph; banks, funds and issuers need persistent legal-entity identity and parent relationships.",
+      "nodes": [
+        {
+          "id": "gleif",
+          "name": "Global Legal Entity Identifier Foundation / Global LEI System",
+          "type": "legal-entity-identity-infrastructure",
+          "priority": "critical-now",
+          "role": "Global identifiers and reference/ownership relationship data for legal entities.",
+          "why": "This is the canonical answer to entity resolution. It reduces duplicate nodes and supports 'who is who' and 'who owns whom' without guessing from names.",
+          "source_ids": [
+            "gleif-lei-source",
+            "gleif-source"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "large-nonbank-capital-pools",
+      "label": "Large non-bank capital pools",
+      "gap_closed": "Country-level creditor data still hides the actual institutional investors holding bonds and equities. Large pension and sovereign funds are important named holder nodes where public holdings data exist.",
+      "nodes": [
+        {
+          "id": "gpfg-nbim",
+          "name": "Government Pension Fund Global / Norges Bank Investment Management",
+          "type": "sovereign-investment-fund-manager",
+          "priority": "critical-north",
+          "role": "Large global owner of equities and fixed-income securities on behalf of Norway.",
+          "why": "A major North-origin capital pool with highly transparent holdings; it can turn country-level portfolio exposure into a named institutional-holder graph where the data support it.",
+          "source_ids": [
+            "nbim-source",
+            "nbim-2026-source"
+          ]
+        },
+        {
+          "id": "atp",
+          "name": "ATP Livslang Pension",
+          "type": "public-pension-investor",
+          "priority": "critical-denmark",
+          "role": "Large Danish pension institution investing across bonds, swaps, equities, real estate and infrastructure.",
+          "why": "Provides a concrete Danish holder-side institutional node and connects pensions, long-duration liabilities, bonds and infrastructure investment.",
+          "source_ids": [
+            "atp-source",
+            "atp-2026-source"
+          ]
+        }
+      ],
+      "sector_classes_to_add": [
+        "pension_funds",
+        "insurance_corporations",
+        "mutual_funds",
+        "money_market_funds",
+        "sovereign_wealth_funds",
+        "asset_managers",
+        "banks",
+        "households",
+        "central_banks",
+        "foreign_official",
+        "other_nonbank_financial_institutions"
+      ]
+    },
+    {
+      "id": "global-development-bank-expansion",
+      "label": "Global development-bank expansion",
+      "gap_closed": "Once the architecture works for EIB/NIB/EBRD/World Bank, equivalent regional lenders are required for a genuinely global map.",
+      "priority": "second-wave",
+      "nodes": [
+        {
+          "id": "aiib",
+          "name": "Asian Infrastructure Investment Bank",
+          "type": "multilateral-development-bank",
+          "why": "Infrastructure lender and capital-markets bridge across Asia and beyond.",
+          "source_id": "aiib-source"
+        },
+        {
+          "id": "adb",
+          "name": "Asian Development Bank",
+          "type": "multilateral-development-bank",
+          "why": "Major Asia-Pacific sovereign/private development-finance node.",
+          "source_id": "adb-source"
+        },
+        {
+          "id": "afdb",
+          "name": "African Development Bank",
+          "type": "multilateral-development-bank",
+          "why": "Major African sovereign/private development-finance node that also issues in international capital markets.",
+          "source_id": "afdb-source"
+        },
+        {
+          "id": "idb",
+          "name": "Inter-American Development Bank",
+          "type": "multilateral-development-bank",
+          "why": "Major public-sector development lender in Latin America and the Caribbean.",
+          "source_id": "idb-source"
+        }
+      ]
+    }
+  ],
+  "missing_functions_after_this_wave": [
+    {
+      "id": "deposit-insurance",
+      "priority": "later",
+      "why": "Needed for complete bank-failure waterfalls, but it becomes useful only after named banking-system and deposit-liability data exist."
+    },
+    {
+      "id": "central-counterparties-and-derivatives",
+      "priority": "later",
+      "why": "LCH, CME and other CCPs matter for derivatives/collateral networks, but adding them before derivative exposure data would create decorative nodes."
+    },
+    {
+      "id": "national-debt-management-offices",
+      "priority": "country-expansion",
+      "why": "Required for auction calendars and sovereign maturity walls; add them country-by-country where debt issuance becomes detailed."
+    },
+    {
+      "id": "credit-rating-agencies",
+      "priority": "later",
+      "why": "Ratings affect funding costs and eligibility but should enter as observations/assessments rather than becoming causal substitutes for market pricing."
+    }
+  ],
+  "map_placement": {
+    "default_hidden": [
+      "fsb",
+      "bcbs",
+      "cpmi",
+      "eba",
+      "esma",
+      "eiopa",
+      "srb",
+      "swift",
+      "gleif"
+    ],
+    "point_when_relevant": [
+      "imf",
+      "ibrd",
+      "ida",
+      "eib",
+      "nib",
+      "ebrd",
+      "cls",
+      "euroclear",
+      "clearstream",
+      "fedwire-funds",
+      "dtcc",
+      "gpfg-nbim",
+      "atp"
+    ],
+    "line_when_sourced": [
+      "portfolio-holding",
+      "multilateral-loan",
+      "guarantee",
+      "settles-through",
+      "custodies-for",
+      "member-capital",
+      "bond-issued-to-market"
+    ],
+    "card_only_when_semantic": [
+      "standard-setter",
+      "supervisory-authority",
+      "identity-infrastructure"
+    ],
+    "rule": "Institutional importance does not justify permanent map clutter. Nodes surface when selected, traced, filtered or required by an active relationship."
+  },
+  "sources": [
+    {
+      "id": "imf-pip-source",
+      "publisher": "International Monetary Fund",
+      "url": "https://data.imf.org/en/Datasets/PIP",
+      "use": "Portfolio investment positions by counterpart economy"
+    },
+    {
+      "id": "imf-external-sector-source",
+      "publisher": "International Monetary Fund",
+      "url": "https://data.imf.org/",
+      "use": "International investment position and external-sector framework"
+    },
+    {
+      "id": "imf-role-source",
+      "publisher": "International Monetary Fund",
+      "url": "https://www.imf.org/",
+      "use": "Surveillance, lending and capacity-development institutional role"
+    },
+    {
+      "id": "imf-sdr-source",
+      "publisher": "International Monetary Fund",
+      "url": "https://www.imf.org/en/about/factsheets/sheets/2023/special-drawing-rights-sdr",
+      "use": "SDR definition and reserve-asset role"
+    },
+    {
+      "id": "imf-sdr-holdings-source",
+      "publisher": "International Monetary Fund",
+      "url": "https://www.imf.org/external/np/fin/tad/extsdr1.aspx",
+      "use": "Member SDR allocations and holdings"
+    },
+    {
+      "id": "ibrd-source",
+      "publisher": "World Bank",
+      "url": "https://www.worldbank.org/en/who-we-are/ibrd",
+      "use": "IBRD ownership, market funding, lending and guarantees"
+    },
+    {
+      "id": "ida-source",
+      "publisher": "World Bank / IDA",
+      "url": "https://ida.worldbank.org/en/about/how-does-ida-work",
+      "use": "IDA grants, credits, replenishments and market funding"
+    },
+    {
+      "id": "eib-source",
+      "publisher": "European Investment Bank",
+      "url": "https://www.eib.org/en/about/governance-and-structure/shareholders/index",
+      "use": "EIB ownership by EU member states and lending capacity"
+    },
+    {
+      "id": "nib-source",
+      "publisher": "Nordic Investment Bank",
+      "url": "https://www.nib.int/about",
+      "use": "NIB members and capital structure"
+    },
+    {
+      "id": "ebrd-shareholder-source",
+      "publisher": "European Bank for Reconstruction and Development",
+      "url": "https://www.ebrd.com/home/who-we-are/our-organisation/shareholders.html",
+      "use": "EBRD shareholders/governance"
+    },
+    {
+      "id": "ebrd-funding-source",
+      "publisher": "European Bank for Reconstruction and Development",
+      "url": "https://www.ebrd.com/home/corporate-and-investor-information/how-ebrd-is-funded.html",
+      "use": "EBRD capital markets funding"
+    },
+    {
+      "id": "swift-source",
+      "publisher": "Swift",
+      "url": "https://www.swift.com/about-us/who-we-are/what-swift",
+      "use": "Financial messaging role and network scope"
+    },
+    {
+      "id": "cls-source",
+      "publisher": "CLS",
+      "url": "https://www.cls-group.com/products/settlement/clssettlement/",
+      "use": "FX payment-versus-payment settlement"
+    },
+    {
+      "id": "cls-currencies-source",
+      "publisher": "CLS",
+      "url": "https://www.cls-group.com/products/settlement/clssettlement/currencies/",
+      "use": "Eligible currencies and central-bank relationships"
+    },
+    {
+      "id": "euroclear-source",
+      "publisher": "Euroclear",
+      "url": "https://www.euroclear.com/about/en.html",
+      "use": "Financial market infrastructure role"
+    },
+    {
+      "id": "euroclear-business-source",
+      "publisher": "Euroclear",
+      "url": "https://www.euroclear.com/about/en/business.html",
+      "use": "CSD/ICSD issuance, settlement and custody roles"
+    },
+    {
+      "id": "clearstream-source",
+      "publisher": "Clearstream",
+      "url": "https://www.clearstream.com/clearstream-en/about-clearstream",
+      "use": "Securities settlement, custody, CSD/ICSD and collateral services"
+    },
+    {
+      "id": "fedwire-source",
+      "publisher": "Federal Reserve Financial Services",
+      "url": "https://www.frbservices.org/financial-services/wires",
+      "use": "USD central-bank-money funds transfer and finality"
+    },
+    {
+      "id": "dtcc-source",
+      "publisher": "DTCC",
+      "url": "https://www.dtcc.com/products-and-services/clearing-settlement-services",
+      "use": "U.S. clearing, CCP, netting and settlement"
+    },
+    {
+      "id": "fsb-source",
+      "publisher": "Financial Stability Board",
+      "url": "https://www.fsb.org/about/",
+      "use": "Global financial stability coordination"
+    },
+    {
+      "id": "bcbs-source",
+      "publisher": "Bank for International Settlements / BCBS",
+      "url": "https://www.bis.org/committees/bcbs/overview",
+      "use": "Global bank prudential standards"
+    },
+    {
+      "id": "cpmi-source",
+      "publisher": "Bank for International Settlements / CPMI",
+      "url": "https://www.bis.org/committees/cpmi/overview",
+      "use": "Payment, clearing and settlement standards"
+    },
+    {
+      "id": "eba-source",
+      "publisher": "European Banking Authority",
+      "url": "https://www.eba.europa.eu/about-us",
+      "use": "EU banking regulation and supervisory convergence"
+    },
+    {
+      "id": "esma-source",
+      "publisher": "European Securities and Markets Authority",
+      "url": "https://www.esma.europa.eu/",
+      "use": "EU securities-market authority"
+    },
+    {
+      "id": "eiopa-source",
+      "publisher": "EIOPA",
+      "url": "https://www.eiopa.europa.eu/about_en",
+      "use": "EU insurance and occupational-pension authority"
+    },
+    {
+      "id": "srb-source",
+      "publisher": "Single Resolution Board",
+      "url": "https://www.srb.europa.eu/en/about",
+      "use": "Banking Union resolution authority"
+    },
+    {
+      "id": "gleif-lei-source",
+      "publisher": "GLEIF",
+      "url": "https://www.gleif.org/en/organizational-identity/lei-vlei/the-legal-entity-identifier-lei",
+      "use": "LEI definition and ownership/reference data"
+    },
+    {
+      "id": "gleif-source",
+      "publisher": "GLEIF",
+      "url": "https://www.gleif.org/en/about/this-is-gleif",
+      "use": "Global LEI System institutional role"
+    },
+    {
+      "id": "nbim-source",
+      "publisher": "Norges Bank Investment Management",
+      "url": "https://www.nbim.no/en/about-us/norges-bank-investment-management/",
+      "use": "GPFG manager and global asset-owner role"
+    },
+    {
+      "id": "nbim-2026-source",
+      "publisher": "Norges Bank Investment Management",
+      "url": "https://www.nbim.no/en/news-and-insights/reports/2026/half-year-report-2026/web-report-half-year-report-2026/",
+      "use": "2026 portfolio and bond holdings baseline"
+    },
+    {
+      "id": "atp-source",
+      "publisher": "ATP",
+      "url": "https://www.atp.dk/en/our-purpose",
+      "use": "ATP role and scale"
+    },
+    {
+      "id": "atp-2026-source",
+      "publisher": "ATP",
+      "url": "https://www.atp.dk/en/foreign-equities-lift-atp-through-first-half-year",
+      "use": "2026 assets, pension liabilities and investment/hedging baseline"
+    },
+    {
+      "id": "aiib-source",
+      "publisher": "Asian Infrastructure Investment Bank",
+      "url": "https://www.aiib.org/en/about-aiib/index.html",
+      "use": "AIIB mandate and member/capital baseline"
+    },
+    {
+      "id": "adb-source",
+      "publisher": "Asian Development Bank",
+      "url": "https://www.adb.org/who-we-are",
+      "use": "ADB mandate and membership"
+    },
+    {
+      "id": "afdb-source",
+      "publisher": "African Development Bank",
+      "url": "https://www.afdb.org/en/about-us/overview/african-development-bank-adb",
+      "use": "AfDB mandate, members and capital-market funding"
+    },
+    {
+      "id": "idb-source",
+      "publisher": "Inter-American Development Bank",
+      "url": "https://www.iadb.org/en/who-we-are/about-us",
+      "use": "IDB public-sector development-finance role"
+    }
+  ]
+}
