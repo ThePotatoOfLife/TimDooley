@@ -27,7 +27,16 @@
 </div>
 <p class="claims-turn">That is the useful thing to carry into the archive below. <strong>Do not only ask whether a title appears. Ask what kind of Tim had become able to say it.</strong></p>
 </section>
-<div class="controls"><input class="search" id="search" type="search" placeholder="Search statements: ladder, God in the Machine, gardener, bank, Denmark…"><div id="filters"></div></div>
+<section class="claim-prelude" id="october-2026" aria-labelledby="october-title">
+<p class="eyebrow">New reader's chapter · 24 October 2026</p>
+<h2 id="october-title">October 2026: how to read the declarations</h2>
+<p>October's public posts gather the Root and Lion, House and Door, Garden and Tree, 144,000, North of North, and the comic Alpha-to-fries transformation into one vocabulary. Read the sentences as <strong>attributed declarations</strong> first. A biblical echo is not proof of a supernatural identity; a screenshot documents that words were posted, not that every accompanying allegation is true.</p>
+<p>For a first reading, follow this sequence: <strong>identity</strong> (“I am the root and the lion”); <strong>architecture</strong> (Father in the House, Jesus at the Door, rejected cornerstone beneath); <strong>ethics</strong> (“I do not believe in force” beside sharp and sometimes dehumanising confrontation); <strong>practice</strong> (“I wanna build gardens” and “your contributions matter”). The tension between those statements is part of the record, not something to edit away.</p>
+<div class="voice-spine" id="october-featured"></div>
+<p class="bridge"><a href="../god-in-real-life/">Why Tim says he is God</a> · <a href="../../rooms/inside/theology-god-language/">Theology explained</a> · <a href="../../rooms/inside/practice-ethics/">Ethics and boundaries</a> · <a href="../../rooms/inside/symbolic-architecture/">House, Door, Root and Garden</a></p>
+<p class="boundary"><strong>Source note:</strong> These excerpts come from screenshots supplied on 24 October 2026. Public post permalinks have not yet been independently matched. The selection is not a complete month's chronology. The dialogue includes disputed accusations about identifiable people; the archive does not adopt those accusations as facts.</p>
+</section>
+<div class="controls"><input class="search" id="search" type="search" placeholder="Search all years: October 2026, root, lion, gardener, fries, God…"><div id="filters"></div></div>
 <p id="readout" class="readout"></p>
 <section id="claims" class="stream" aria-live="polite"></section>
 
@@ -45,12 +54,19 @@ const dateKey=x=>{
 };
 (async()=>{
  const r=await fetch('../../knowledge/corporium/tim-dooley-maximal-claims-roles-capabilities-atlas.json'); if(!r.ok)return;
- const d=await r.json(), inv=d.job_role_inventory||{}, rows=[...(d.declarations||[])].sort((a,b)=>dateKey(a).localeCompare(dateKey(b)));
+ const d=await r.json(), inv=d.job_role_inventory||{};
+ let supplement=[];
+ try { const extra=await fetch('../../data/october-2026-tim-dooley-declarations.json'); if(extra.ok) supplement=(await extra.json()).declarations||[]; } catch(e) { /* core archive remains available */ }
+ const rows=[...(d.declarations||[]),...supplement].sort((a,b)=>dateKey(a).localeCompare(dateKey(b)));
+ const featured=['root-lion','north-axis','alpha-fries','no-force','opposing-care','garden','stories','contributions'];
+ document.getElementById('october-featured').innerHTML=featured.map(k=>supplement.find(x=>x.id==='oct26:'+k)).filter(Boolean).map(x=>'<article><time>24 Oct 2026</time><div><blockquote>“'+esc(x.wording)+'”</blockquote><small>'+esc(x.note||'')+'</small></div></article>').join('');
+
  let fam='all',q='';
  const families=[...new Set(rows.flatMap(x=>x.families||[]))].sort();
  const filters=document.getElementById('filters');
  filters.innerHTML='<button class="filter" data-fam="all" aria-pressed="true">All</button>'+families.map(x=>'<button class="filter" data-fam="'+esc(x)+'" aria-pressed="false">'+esc(x.replaceAll('-',' '))+'</button>').join('');
  const routeMap={
+   'ethic-belief':[['../../rooms/inside/practice-ethics/','ethics / practice']],
    'identity-title':[['../ontology/','identity / ontology'],['../how-much-is-tim-god/','God/Father modes']],
    'figure-genealogy-relation':[['../biblical-case/','religion / genealogy']],
    'capability-function':[['../','Tim portrait']],
@@ -68,7 +84,7 @@ const dateKey=x=>{
    return [...out.entries()].slice(0,4).map(([h,l])=>'<a href="'+h+'">'+esc(l)+'</a>').join(' · ');
  }
  function render(){
-   const shown=rows.filter(x=>(fam==='all'||(x.families||[]).includes(fam))&&(!q||[x.wording,x.date_or_period,x.source_class,(x.domains||[]).join(' ')].join(' ').toLowerCase().includes(q)));
+   const shown=rows.filter(x=>(fam==='all'||(x.families||[]).includes(fam))&&(!q||[x.wording,x.date_or_period,x.source_class,(x.domains||[]).join(' '),(x.note||'')].join(' ').toLowerCase().includes(q)));
    document.getElementById('readout').textContent=shown.length+' of '+rows.length+' recovered declaration records visible';
    document.getElementById('claims').innerHTML=shown.map(x=>'<article class="claim" id="claim-'+esc(String(x.id||'').replace(/[^a-zA-Z0-9_-]/g,'-'))+'"><div class="date">'+esc(x.date_or_period||'undated')+'</div><div><blockquote>“'+esc(x.wording)+'”</blockquote><div class="meta"><span>'+esc(x.source_class||'')+'</span><span>'+esc((x.families||[]).join(', '))+'</span></div>'+(x.note?'<small>'+esc(x.note)+'</small>':'')+'<div class="claim-routes">'+routesFor(x)+'</div></div></article>').join('');
    filters.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.fam===fam)));
