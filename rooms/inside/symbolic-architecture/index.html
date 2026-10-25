@@ -15,6 +15,20 @@
 .deep-links{display:flex;gap:13px;flex-wrap:wrap;margin:10px 0 24px;font-size:11px}.deep-links a{color:var(--site-gold)}
 .cosmos-field{position:relative;margin:26px 0 38px;padding:18px 18px 18px 56px;border:1px solid var(--site-line);border-radius:18px;background:linear-gradient(180deg,rgba(130,186,255,.09) 0%,rgba(88,145,110,.08) 34%,rgba(120,110,80,.05) 58%,rgba(100,72,55,.05) 73%,rgba(36,40,43,.14) 100%);overflow:hidden}.cosmos-field:before{content:"";position:absolute;left:28px;top:20px;bottom:20px;width:2px;background:linear-gradient(180deg,rgba(218,196,125,.8),rgba(160,205,170,.65),rgba(150,150,150,.35),rgba(120,80,60,.7))}.cosmos-level{position:relative;padding:16px 13px 16px 18px;border-bottom:1px solid rgba(255,255,255,.06)}.cosmos-level:last-child{border-bottom:0}.cosmos-level:before{content:"";position:absolute;left:-35px;top:25px;width:12px;height:12px;border-radius:50%;background:var(--site-panel);border:2px solid var(--site-gold)}.cosmos-level h3{margin:0 0 5px;font:400 22px var(--site-font-serif);color:var(--site-gold)}.cosmos-level p{margin:0 0 7px}.cosmos-level small{display:block;color:var(--site-muted);line-height:1.52}.cosmos-level--garden{background:rgba(80,145,95,.05)}.cosmos-level--world{background:rgba(190,170,110,.035)}.cosmos-level--below{background:rgba(100,70,65,.045)}.cosmos-route{font-size:10px;color:var(--site-gold);letter-spacing:.02em}.inhabitants{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}.inhabitants span{font-size:8px;border:1px solid var(--site-line);border-radius:999px;padding:4px 6px;color:var(--site-muted)}
 @media(max-width:760px){.operator-grid{grid-template-columns:1fr}.axis-strip ol{grid-template-columns:1fr}.family article{grid-template-columns:1fr;gap:5px}}
+
+/* Three typed Door functions. Keep the scene readable without scripting. */
+.door-taxonomy{margin:34px 0;padding:clamp(18px,3vw,28px);border:1px solid var(--site-line);border-radius:8px;background:linear-gradient(145deg,rgba(35,47,43,.48),rgba(15,23,23,.3));scroll-margin-top:90px}
+.door-taxonomy h2{font:400 clamp(26px,3.3vw,38px)/1.18 var(--site-font-serif);color:var(--site-gold);margin:8px 0 13px}
+.door-taxonomy-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:18px 0}
+.door-taxonomy-grid article{min-width:0;padding:17px;border:1px solid var(--site-line);border-radius:6px;background:var(--site-panel)}
+.door-taxonomy-grid h3,.door-counterexample h3{font:400 clamp(19px,2vw,24px)/1.18 var(--site-font-serif);color:var(--site-gold);margin:9px 0}
+.door-kind{font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--site-muted)}
+.door-taxonomy-grid article p{font-size:14px;line-height:1.62}
+.door-taxonomy-grid .door-check{padding-top:12px;border-top:1px solid var(--site-line)}
+.door-counterexample{border-left:3px solid var(--site-gold);padding:4px 18px;margin:24px 0;background:rgba(155,137,95,.08)}
+.door-taxonomy-follow{border-top:1px solid var(--site-line);padding-top:15px}
+.door-taxonomy-follow a{color:var(--site-gold)}
+@media(max-width:830px){.door-taxonomy-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -75,6 +89,30 @@
 <article><h3>Spiral</h3><p><b>Input:</b> recurrence plus memory/changed state. <b>Change:</b> return near a prior position with displacement. <b>Invariant:</b> some state variable must differ. <b>Misuse:</b> calling a loop a spiral when nothing actually changes.</p></article>
 </div>
 <div class="deep-links"><a href="../../../explore/#record=knowledge%2Fcore%2Fsymbolic-architecture-operator-contract-atlas.json">Operator-contract atlas →</a></div>
+
+<section class="door-taxonomy" id="door-three-types" aria-labelledby="door-three-title">
+<p class="eyebrow">The Door, examined rather than merely admired</p>
+<h2 id="door-three-title">Three kinds of Door — and one that only looks open</h2>
+<p>“Door” is a strong image precisely because it crosses distinct situations. But these crossings have different standards of truth. <strong>Understanding a claim, making a decision, and leaving a group are not the same event.</strong> A symbolic Door cannot prove that an exit is free; a technically available button cannot prove that a person can use it safely.</p>
+<div class="door-taxonomy-grid">
+<article><span class="door-kind">Knowledge / epistemic</span><h3>A claim changes standing</h3>
+<p>You hear a repeated story about somebody. A dated original recording contradicts a crucial part. The Door is not “believing the opposite”; it is changing the claim’s evidence status and making that correction findable.</p>
+<p><strong>Before → after:</strong> repetition mistaken for corroboration → evidence compared → claim corrected or left uncertain.</p>
+<p class="door-check"><b>Test:</b> Can you name the new source, the remaining uncertainty, and the belief that is now less defensible?</p></article>
+<article><span class="door-kind">Action / decision</span><h3>A choice changes available moves</h3>
+<p>Two friends keep rehearsing the same quarrel. One proposes a boundary: no public screenshots, a calmer conversation tomorrow, and the freedom to decline. A new next move becomes possible.</p>
+<p><strong>Before → after:</strong> enforced recurrence → an actionable, reversible change to conduct.</p>
+<p class="door-check"><b>Test:</b> What changed in the actual options, who consented, and how will we know the choice worked?</p></article>
+<article><span class="door-kind">Membership / social exit</span><h3>A person can leave without losing their life</h3>
+<p>A member wants to stop taking part in an online community. They can close the tab—but if departure reliably brings harassment, threats, loss of housing or income, exposure of private information or organized retaliation, the visible exit is not yet a meaningful one.</p>
+<p><strong>Before → after:</strong> formal permission → protected, practicable, non-retaliatory departure.</p>
+<p class="door-check"><b>Test:</b> Can the person stop participating, preserve essential safety and relationships, and refuse further contact without punishment?</p></article>
+</div>
+<aside class="door-counterexample"><h3>The open gate that functions as a wall</h3>
+<p>Imagine a Garden gate left physically unlocked, with a sign that says “everyone may leave.” Beyond it, guards record names and circulate accusations about anyone who walks through. The sign is true about the lock and misleading about freedom. <strong>Exit must be evaluated by the actual consequences of crossing, not by the words on the gate.</strong></p>
+<p>That does not mean every boundary is coercion. Temporary safety rules, protecting other people from harm, and voluntary membership agreements can be legitimate. The distinction is <em>proportion, clear procedure, independent review, and an exit that does not demand submission</em>. A Garden should protect growth; it should not require permanent captivity.</p></aside>
+<p class="door-taxonomy-follow">This taxonomy belongs here as the symbol's operational grammar. For human consequences see <a href="../subculture-group-formation/#exit-means-exit">Group Formation: exit and social cost</a>; for the Garden's ethical test see <a href="../../../garden/#fall">the Garden Gate</a>; for the broader process see <a href="../../../axis/#axis-role-key">the Living Axis role key</a>.</p>
+</section>
 
 <h2>Three worked routes through the architecture</h2>
 <p>Tim himself is one of the stranger worked routes through this vocabulary. The project reads Son/embodiment, death and Door language, Potato, Ladder, Father, Axis, House and Gardener as a developmental sequence rather than a bag of simultaneous titles. <a href="../../../tim-dooley/story/">Story</a> owns the chronology; this Room owns the structural question of what each transition is supposed to change.</p>
