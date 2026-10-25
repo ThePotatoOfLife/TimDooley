@@ -101,3 +101,18 @@ html[data-site-floor="heaven"] .axis-page .axis-section::before{
 
 
 .axis-route--spaced{margin-top:14px}
+
+/* Reader's entrance: real choices before technical topology. */
+.axis-page .axis-guide{margin:26px 0 36px;padding:clamp(18px,3vw,34px);border:1px solid var(--site-line);background:linear-gradient(150deg,rgba(48,66,60,.22),rgba(18,24,22,.45));border-radius:8px;scroll-margin-top:95px}
+.axis-page .axis-guide h2{font:400 clamp(1.7rem,3.1vw,2.6rem)/1.15 var(--site-font-serif);max-width:840px;color:var(--site-gold);margin:10px 0}
+.axis-page .axis-guide-lead{font-size:clamp(1.05rem,1.8vw,1.25rem);line-height:1.68;max-width:900px}
+.axis-page .axis-guide-choices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:24px 0}
+.axis-page .axis-guide-choices article{min-width:0;padding:20px;background:rgba(12,20,19,.46);border:1px solid var(--site-line);border-radius:5px;display:flex;flex-direction:column}
+.axis-page .axis-guide-choices h3{font:400 1.5rem/1.2 var(--site-font-serif);color:var(--site-gold);margin:9px 0}
+.axis-page .axis-guide-choices p{line-height:1.55;flex:1}
+.axis-page .axis-guide-label{font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;color:var(--site-muted)}
+.axis-page .axis-guide-choices a,.axis-page .axis-guide-bridge a{color:var(--site-gold)}
+.axis-page .axis-guide-bridge{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:center;border-top:1px solid var(--site-line);padding-top:20px}
+.axis-page .axis-guide-bridge p{margin:5px 0;line-height:1.65;max-width:760px}
+.axis-page .axis-guide-bridge a{white-space:normal}
+@media(max-width:750px){.axis-page .axis-guide-choices{grid-template-columns:1fr}.axis-page .axis-guide-bridge{grid-template-columns:1fr}}
