@@ -67,3 +67,6 @@
 @media(max-width:780px){.north-page .north-pole-sequence{grid-template-columns:repeat(2,minmax(0,1fr))}.north-page .north-role-ribbon{grid-template-columns:1fr}.north-page .north-development{padding:20px}}
 @media(max-width:600px){.north-page .north-distinction-grid,.north-page .north-study-grid,.north-page .north-examination,.north-page .north-pole-sequence{grid-template-columns:1fr}.north-page .north-chapter-nav{gap:5px}.north-page .north-chapter-nav a{padding:7px 8px}.north-page .north-pullquote{padding:12px 14px}}
 @media(prefers-reduced-motion:reduce){.north-page *{scroll-behavior:auto}}
+
+/* Preserve canonical reader-class hooks without applying the older two-column article layout to chapter sections. */
+.north-page section.north-development.north-section{display:block;grid-template-columns:none;gap:initial;border-bottom:1px solid var(--north-edge)}
