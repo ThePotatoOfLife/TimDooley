@@ -329,7 +329,7 @@ jobs:
               "north-question","four-norths","north-scripture",
               "north-of-north-deep","north-fourth-axis","north-table",
               "development","operating-logic","north-in-practice",
-              "north-test","north-return",
+              "north-test","north-contributions","north-return",
           )
           for chapter in north_chapters:
               assert f'id="{chapter}"' in north, f"live North reader missing chapter: {chapter}"
@@ -337,6 +337,7 @@ jobs:
               "The grave beneath the summit",
               "Why Sirius must not be mistaken for Polaris",
               "From a throne to a table",
+              "There is no useless place in a living garden.",
               "Map relationships, not isolated entities.",
               'data-north-role="meaning"',
               'data-north-role="geography"',
