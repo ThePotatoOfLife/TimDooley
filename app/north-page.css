@@ -70,3 +70,12 @@
 
 /* Preserve canonical reader-class hooks without applying the older two-column article layout to chapter sections. */
 .north-page section.north-development.north-section{display:block;grid-template-columns:none;gap:initial;border-bottom:1px solid var(--north-edge)}
+
+/* Contribution is a relationship, not a permanent rank. */
+.north-page .north-contributions{background:linear-gradient(145deg,rgba(25,43,32,.46),rgba(7,14,17,.48))}
+.north-page .north-contribution-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:22px 0 30px}
+.north-page .north-contribution-grid article{min-width:0;border:1px solid var(--north-edge);border-radius:6px;padding:16px 19px;background:rgba(6,18,15,.32)}
+.north-page .north-contribution-grid h3{margin:2px 0 10px;font-size:1.3rem}
+.north-page .north-contribution-grid p{margin:0;line-height:1.64}
+@media(max-width:850px){.north-page .north-contribution-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.north-page .north-contribution-grid{grid-template-columns:1fr}}
