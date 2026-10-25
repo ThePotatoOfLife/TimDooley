@@ -1,16 +1,16 @@
 {
   "id": "corpus-surface-coverage",
-  "version": "1.3.10",
-  "updated": "2026-10-13",
+  "version": "1.3.11",
+  "updated": "2026-10-25",
   "purpose": "Track whether canonical knowledge records are reachable from governed Room/House reader surfaces without requiring every record to be individually featured.",
   "totals": {
-    "canonical_knowledge_records": 970,
+    "canonical_knowledge_records": 971,
     "reachable_records": 929,
-    "reachable_percent_total": 95.8,
+    "reachable_percent_total": 95.7,
     "current_non_retired_records": 929,
     "current_non_retired_reachable": 929,
     "current_non_retired_reachable_percent": 100,
-    "intentionally_retired_unreachable": 41
+    "intentionally_retired_unreachable": 42
   },
   "reachability_channels": [
     "deep archive drawer scope",
@@ -23,6 +23,11 @@
       "prefix": "knowledge/fbi/",
       "record_count": 41,
       "reason": "Retired predecessor corpus. Current character/institution ownership lives under knowledge/cia/ and legacy public FBI routes are compatibility-only."
+    },
+    {
+      "prefix": "knowledge/creative/gallery-library-import-pending-2026-10-21.json",
+      "record_count": 1,
+      "reason": "Private-library artwork acquisition queue only. Original image bytes have not been imported into public GitHub gallery; exclude until published and properly linked, without marking artworks as publicly available."
     }
   ],
   "current_structure": {
@@ -31,5 +36,5 @@
     "current_records_reached_outside_drawer_prefixes": 28
   },
   "editorial_rule": "Reachability is not prominence. A record can be reachable through a deep drawer without being promoted to a featured object. Promotion remains an editorial decision based on explanatory value, provenance, maturity and reader need.",
-  "boundary": "Coverage measures navigable integration, not truth, freshness, equal depth, or reader quality."
+  "boundary": "Coverage measures navigable integration, not truth, freshness or reader quality. The intentionally excluded set includes 41 retired FBI records and one unpublished private-gallery import queue; excluded does not always mean retired."
 }
