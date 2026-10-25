@@ -343,7 +343,7 @@ jobs:
               'data-north-role="programme"',
               'data-north-role="repair"',
               'data-tts-item=".north-section"',
-              "north-page.css?v=20261025a",
+              "north-page.css",  # the build may fingerprint the query version
           ):
               assert marker in north, f"live North reader missing expected concept/contract: {marker}"
           assert "data-site-floor=" not in home, "live Home must remain multi-realm instead of inheriting one floor canvas"
