@@ -26,3 +26,44 @@
 }
 .north-page .north-machine article{background:rgba(8,16,18,.40);border-color:rgba(164,197,205,.12)}
 
+
+/* 2026-10-25 · North Axis longform editorial expansion. Scoped to this reader. */
+.north-page{--north-aurora:rgba(138,194,204,.11);--north-edge:rgba(172,208,212,.24)}
+.north-page .page-header{position:relative;overflow:hidden;padding:clamp(22px,4vw,46px);border:1px solid var(--north-edge);background:radial-gradient(ellipse at 82% 15%,rgba(140,192,198,.16),transparent 45%),linear-gradient(170deg,rgba(13,32,36,.94),rgba(6,13,17,.88))}
+.north-page .north-deck{font:italic 400 clamp(1.25rem,2.5vw,2rem)/1.25 var(--site-font-serif);color:var(--site-gold);margin:12px 0}
+.north-page .page-header .summary{max-width:920px;line-height:1.7}
+.north-page .north-chapter-nav{display:flex;gap:8px;flex-wrap:wrap;border-top:1px solid var(--north-edge);margin-top:24px;padding-top:18px}
+.north-page .north-chapter-nav a{display:inline-block;padding:8px 11px;border:1px solid var(--north-edge);border-radius:4px;color:var(--site-copy);font-size:var(--site-text-caption);text-decoration:none}
+.north-page .north-chapter-nav a:hover,.north-page .north-chapter-nav a:focus-visible{color:var(--site-gold);background:var(--north-aurora);outline-offset:3px}
+.north-page .north-development{margin:24px 0;padding:clamp(19px,3.5vw,36px);border-radius:8px;scroll-margin-top:90px}
+.north-page .north-development h2{font-size:clamp(1.7rem,3.2vw,2.75rem);line-height:1.18;max-width:870px;letter-spacing:-.015em}
+.north-page .north-development h3{font:400 clamp(1.2rem,2vw,1.65rem)/1.25 var(--site-font-serif);color:var(--site-gold);margin:22px 0 8px}
+.north-page .north-development>p:not(.eyebrow):not(.boundary):not(.lead):not(.north-source-line):not(.north-endline),.north-page .north-reading>p{max-width:850px;line-height:1.75}
+.north-page .north-development .lead{font-size:clamp(1.08rem,2vw,1.35rem);line-height:1.65}
+.north-page .north-pullquote{border-left:3px solid var(--site-gold);padding:15px 20px;margin:24px 0;max-width:800px;font:italic 400 clamp(1.25rem,2.4vw,1.9rem)/1.45 var(--site-font-serif);color:var(--site-copy);background:linear-gradient(90deg,var(--north-aurora),transparent)}
+.north-page .north-distinction-grid,.north-page .north-study-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:22px 0}
+.north-page .north-distinction-grid article,.north-page .north-study{border:1px solid var(--north-edge);padding:clamp(16px,2.4vw,24px);background:rgba(5,12,16,.31);border-radius:6px}
+.north-page .north-distinction-grid h3,.north-page .north-study h3{margin:9px 0 8px}
+.north-page .north-kicker{display:block;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--site-muted)}
+.north-page .north-question-line,.north-page .north-lesson{border-top:1px solid var(--north-edge);padding-top:12px;margin-top:16px;color:var(--site-gold);font-size:.94rem}
+.north-page .north-role-ribbon{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;border:1px solid var(--north-edge);background:var(--north-edge);margin:24px 0}
+.north-page .north-role-ribbon>div{padding:18px;background:var(--site-pane)}
+.north-page .north-role-ribbon span,.north-page .north-pole-sequence span{font-size:.78rem;letter-spacing:.07em;text-transform:uppercase;color:var(--site-muted)}
+.north-page .north-role-ribbon b{display:block;color:var(--site-gold);margin:7px 0}
+.north-page .north-role-ribbon p{margin:0;line-height:1.6}
+.north-page .north-pole-sequence{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:24px 0 30px}
+.north-page .north-pole-sequence article{position:relative;border-top:3px solid var(--site-gold);padding:14px;background:rgba(10,21,24,.5)}
+.north-page .north-pole-sequence h3{margin:7px 0}
+.north-page .north-pole-sequence p{line-height:1.55}
+.north-page .north-source-line{font-size:.94rem;padding-top:14px;border-top:1px solid var(--north-edge);margin-top:22px}
+.north-page .north-source-line a{color:var(--site-gold)}
+.north-page .north-table-story{background:radial-gradient(ellipse at 85% 35%,rgba(175,146,81,.09),transparent 55%),linear-gradient(180deg,rgba(8,17,19,.56),rgba(7,11,12,.42))}
+.north-page .north-examination{counter-reset:northtest;list-style:none;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:22px 0}
+.north-page .north-examination li{border-left:2px solid var(--north-edge);padding:12px 16px;background:rgba(6,14,17,.3);line-height:1.65}
+.north-page .north-examination strong{color:var(--site-gold)}
+.north-page .north-conclusion{border-color:rgba(196,167,107,.36)}
+.north-page .north-endline{font:italic 400 clamp(1.15rem,2.3vw,1.7rem)/1.5 var(--site-font-serif);color:var(--site-gold);margin:24px 0}
+.north-page a:focus-visible{outline:2px solid var(--site-gold);outline-offset:2px}
+@media(max-width:780px){.north-page .north-pole-sequence{grid-template-columns:repeat(2,minmax(0,1fr))}.north-page .north-role-ribbon{grid-template-columns:1fr}.north-page .north-development{padding:20px}}
+@media(max-width:600px){.north-page .north-distinction-grid,.north-page .north-study-grid,.north-page .north-examination,.north-page .north-pole-sequence{grid-template-columns:1fr}.north-page .north-chapter-nav{gap:5px}.north-page .north-chapter-nav a{padding:7px 8px}.north-page .north-pullquote{padding:12px 14px}}
+@media(prefers-reduced-motion:reduce){.north-page *{scroll-behavior:auto}}
