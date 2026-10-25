@@ -322,9 +322,30 @@ jobs:
           assert 'id="north-axis-world-tree"' in potato_life, "live Potato of Life missing North Axis / World Tree section"
           assert "At the pole, “north” stops being merely a direction." in potato_life, "live Potato of Life missing North-of-North research text"
           assert "Sirius above the grave" in potato_life, "live Potato of Life missing Sirius/grave distinction"
-          assert 'id="north-of-north-deep"' in north, "live North page missing North-of-North deep section"
-          assert "The Son's grave makes the pole a root-threshold" in north, "live North page missing Son grave / root-threshold section"
-          assert "Sirius belongs to return, not to the pole" in north, "live North page missing Sirius return-star distinction"
+          # North is now an eleven-chapter reader: verify stable semantic anchors,
+          # its source boundaries, and the newly published stylesheet rather than
+          # locking the deploy check to retired editorial headings.
+          north_chapters=(
+              "north-question","four-norths","north-scripture",
+              "north-of-north-deep","north-fourth-axis","north-table",
+              "development","operating-logic","north-in-practice",
+              "north-test","north-return",
+          )
+          for chapter in north_chapters:
+              assert f'id="{chapter}"' in north, f"live North reader missing chapter: {chapter}"
+          for marker in (
+              "The grave beneath the summit",
+              "Why Sirius must not be mistaken for Polaris",
+              "From a throne to a table",
+              "Map relationships, not isolated entities.",
+              'data-north-role="meaning"',
+              'data-north-role="geography"',
+              'data-north-role="programme"',
+              'data-north-role="repair"',
+              'data-tts-item=".north-section"',
+              "north-page.css?v=20261025a",
+          ):
+              assert marker in north, f"live North reader missing expected concept/contract: {marker}"
           assert "data-site-floor=" not in home, "live Home must remain multi-realm instead of inheriting one floor canvas"
           assert "home-page.css?v=" in home, "live Home missing fingerprinted homepage CSS"
           assert "site-elevator.css?v=" in home, "live Home missing fingerprinted elevator CSS"
