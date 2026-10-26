@@ -133,6 +133,7 @@
     const meta = card.querySelector('em')?.textContent.trim() || '';
     return {
       src: img.currentSrc || img.src,
+      originalSrc: img.dataset.originalSrc || img.currentSrc || img.src,
       alt: img.alt,
       title: card.querySelector('strong')?.textContent.trim() || '',
       meta,
@@ -337,7 +338,7 @@
     viewerImage.alt = data.alt;
     viewerImage.src = data.src;
     if (originalLink) {
-      originalLink.href = data.src;
+      originalLink.href = data.originalSrc;
       originalLink.setAttribute('download','');
       originalLink.removeAttribute('aria-disabled');
       originalLink.removeAttribute('tabindex');
