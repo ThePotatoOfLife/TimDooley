@@ -21,6 +21,7 @@ from pathlib import Path
 from urllib.parse import quote, urlparse
 
 from house_public_surfaces import primary_gateway_rows, surface_rows
+from build_discovery import robots_text
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "_site"
@@ -503,7 +504,7 @@ def rebuild_sitemaps(pages: list[dict]) -> dict[str, int]:
         if child_lastmod.get(name):
             ET.SubElement(node, f"{{{SITEMAP_NS}}}lastmod").text = child_lastmod[name]
     ET.ElementTree(index_root).write(OUT / "sitemap-index.xml", encoding="utf-8", xml_declaration=True)
-    (OUT / "robots.txt").write_text("User-agent: OAI-SearchBot\nAllow: /\n\nUser-agent: *\nAllow: /\n\n" + f"Sitemap: {BASE_URL}/sitemap-index.xml\n", encoding="utf-8")
+    # The final SEO pass must not silently replace the discoverability builder\'s\n    # explicit crawler policy with a different set of rules.\n    (OUT / "robots.txt").write_text(robots_text(), encoding="utf-8")
     return counts
 
 
