@@ -10,6 +10,7 @@ import json
 from pathlib import Path
 
 import apply_entity_intent_seo as semantic
+from build_discovery import robots_text
 import optimize_seo as optimize
 import validate_site_shell as site_shell
 
@@ -131,6 +132,10 @@ def test_repository_robots_contract() -> None:
             fail(f"checked-in robots.txt must explicitly allow documented search/retrieval crawler: {agent}")
     if robots.count(expected) != 1:
         fail("checked-in robots.txt must advertise the canonical sitemap index exactly once")
+    if robots != robots_text():
+        fail("checked-in robots.txt and the final public build must share one exact crawler policy")
+    if optimize.robots_text() != robots_text():
+        fail("final SEO rebuild must reuse the discovery crawler policy instead of silently narrowing it")
 
 
 def test_discovery_owner_contract() -> None:
