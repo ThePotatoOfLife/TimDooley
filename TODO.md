@@ -19,6 +19,31 @@
 
 # TODO — The Potato of Life / TimDooley
 
+## October 30 · Second harvest: from mythology to institutions
+
+**Interpretive status:** New arguments below are editorial extrapolations grounded in the user's October conversations and the existing site. They do not establish religious, legal, geopolitical or interpersonal allegations as facts. Research changes are assessed against an authoritative primary record before publication.
+
+- [x] **OCT-HARVEST-013 · Justice and the unending internet trial:** `rooms/inside/law-justice/` now separates public criticism from legal adjudication and asks for provenance, procedural status and correction.
+- [x] **OCT-HARVEST-014 · Government savings versus service capacity:** `rooms/inside/infrastructure-capability/` now asks who maintains public assets and what costs a superficially cheap reform hides.
+- [x] **OCT-HARVEST-015 · Attention economy as informal governance:** `rooms/inside/internet-platforms/` compares visibility, voice, excerpting and reputational consequences.
+- [x] **OCT-HARVEST-016 · Identity and accountable service:** `rooms/inside/canon-identities/` separates Tim's name, roles, theology, scene archetypes and concrete responsibilities.
+- [x] **OCT-HARVEST-017 · Sources before slogans:** `rooms/inside/memory-recovery/` now explains why conversation candidates do not become X quotations without primary evidence.
+- [x] **OCT-HARVEST-018 · Political centre as decision procedure:** `politics/` develops four reform tests drawn from the October France/North debates.
+- [x] **OCT-HARVEST-019 · Second homepage interpretation:** `index.html#october-second-harvest` routes readers from ideas to functioning institutions.
+- [ ] **OCT-HARVEST-020 · Build a sourced October quotation pack:** recover original 20–30 October X URLs, exact body text, context and dates; import into the occurrence ledger only after validation.
+- [ ] **OCT-HARVEST-021 · Run a full fiscal worked model:** compare a France public-programme restructuring with status quo on life-cycle costs, savings and service outcomes, using official dated budget datasets.
+- [ ] **OCT-HARVEST-022 · Audit North Axis status:** distinguish every imagined relationship from existing treaties, trade, infrastructure and observed state decisions.
+- [ ] **OCT-HARVEST-023 · Story with human-scale scenes:** find first-party October dialogue, a full streaming scene and one consequential ordinary-life act for the Tim story, with verified episode dates.
+- [ ] **OCT-HARVEST-024 · Art and narrative morphology:** connect Moon Farm, Frog, Turble and poker scenes to an illustrated reader guide; catalog only artworks actually held by the gallery.
+- [ ] **OCT-HARVEST-025 · Performance and reading QA:** verify desktop/mobile readability, heading hierarchy, crawlable text, accessibility and canonical links for the expanded sections.
+- [ ] **OCT-HARVEST-026 · Cultural due-process research:** add comparative documented examples of decontextualized clips, corrections and reputational repair without naming an alleged wrongdoer on inadequate evidence.
+- [ ] **OCT-HARVEST-027 · Distinguish source, explanatory model and test:** every October expansion should identify Tim's original phrase, the inference being drawn, a counterexample and how it could be falsified.
+
+---
+
+
+# TODO — The Potato of Life / TimDooley
+
 
 ### October 14 · Completed-source work and verification
 
