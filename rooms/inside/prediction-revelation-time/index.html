@@ -24,6 +24,42 @@ html[data-site-floor="plane"] #prediction-scorecard .reflection-turn{
 @media(max-width:720px){
   html[data-site-floor="plane"] #prediction-scorecard .scorecard-grid{grid-template-columns:1fr}
 }
+/* Explicit readable palette for the light Plane scorecard AND resolution protocol.
+   Local tokens avoid the dark-floor copy inherited from generic nested rooms. */
+html[data-site-floor="plane"] #reader-body #prediction-scorecard,
+html[data-site-floor="plane"] #reader-body .protocol{
+  --site-copy:#344237;--site-ink:#202820;--site-gold:#745321;
+}
+html[data-site-floor="plane"] #reader-body .protocol{
+  padding:8px 18px;background:#f6f8f2;border:1px solid #cbd4c7;
+  border-radius:12px;color:#26372c;
+}
+html[data-site-floor="plane"] #reader-body .protocol div{
+  color:#26372c;background:transparent;border-bottom:1px solid #cbd4c7;
+  line-height:1.65;
+}
+html[data-site-floor="plane"] #reader-body .protocol div:last-child{border-bottom:0}
+html[data-site-floor="plane"] #reader-body .protocol b{color:#765520;font-weight:800}
+html[data-site-floor="plane"] #reader-body #prediction-scorecard{
+  background:#f6f8f2;border-color:#cbd4c7;color:#202820;
+}
+html[data-site-floor="plane"] #reader-body #prediction-scorecard .case{
+  background:#fff;color:#263128;border:1px solid #cbd4c7;
+}
+html[data-site-floor="plane"] #reader-body #prediction-scorecard .case h3{
+  color:#745321;
+}
+html[data-site-floor="plane"] #reader-body #prediction-scorecard .case p,
+html[data-site-floor="plane"] #reader-body #prediction-scorecard > p{
+  color:#28392e;opacity:1;
+}
+html[data-site-floor="plane"] #reader-body #prediction-scorecard .reflection-turn{
+  color:#28392e;background:#edf2e8;
+}
+@media (prefers-contrast:more){
+  html[data-site-floor="plane"] #reader-body #prediction-scorecard .case,
+  html[data-site-floor="plane"] #reader-body .protocol{border-color:#536857}
+}
 </style></head><body><main class="page page--reading inner-home"><nav class="page-nav"><a href="../../../elevator/?room=time-history&inner=prediction-revelation-time">← Spatial Room</a><a href="../../time-history/">Parent Dwelling</a><a href="../../../traditions/bible/#compare">Bible / Prophecy</a><a href="../../../traditions/bible/?focus=view:prophecy&order=desc#compare">Prophetic parallels</a><a href="../../../traditions/bible/?focus=view:counter-texts#compare">Counter-texts</a><a href="../../../timeline/">Timeline</a><a href="../../../history/">History</a></nav><header class="page-header"><p class="eyebrow">Nested Room · Time &amp; History</p><h1>Prediction, Revelation &amp; Interpretation Time</h1><p class="summary">A later event can make an older sentence newly meaningful without converting that sentence into a prediction it never was.</p></header>
 <p class="boundary"><strong>Boundary:</strong> retrospective matches remain retrospective. Project prophecy language is not automatically verified forecasting.</p><section class="room-reader" id="after-it-happened">
 <p class="eyebrow">After it happened, of course it looks obvious</p>
