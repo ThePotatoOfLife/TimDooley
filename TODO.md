@@ -1,3 +1,22 @@
+## October 30 · Living interpretation and public-surface integration (tracked work)
+
+**Editorial rule:** prefer improvements to existing Rooms over a new collection of disconnected pages. Recover Tim's direct speech separately from assistant synthesis, proposed mythology, fictional art, political forecasts and independently checked events. An X occurrence requires actual attributed post text; conversation material must not be fabricated into an X post.
+
+- [x] **OCT-LIVE-001 · Home editorial entrance:** give new readers a substantial October guide linking Dogs, Frogs/Turbles, meme culture, Garden ethics and concrete governance to established Room owners. `index.html#october-living-ideas`.
+- [x] **OCT-LIVE-002 · Group-role transformation:** expand `rooms/inside/subculture-group-formation/` with the frog-at-poker-table example and image → role → sanction mechanism.
+- [x] **OCT-LIVE-003 · Conduct before labels:** give `rooms/inside/practice-ethics/` the Dog-to-Bird / safe-exit test, with a livestream conflict example.
+- [x] **OCT-LIVE-004 · Moon Farm and Dog:** distinguish cartoon allegory from factual claims; clarify how protective watch can become rewarded pursuit in `below/dogs/`.
+- [x] **OCT-LIVE-005 · Public finance through mechanisms:** expand `rooms/inside/politics-governance/` with France debt / North programme screening questions, not asserted future outcomes.
+- [ ] **OCT-LIVE-006 · Recover actual Oct 20–30 X occurrences:** capture complete post text, links/status IDs, original date/time and screenshots from primary sources before appending to `data/evidence/rational-potato-x-occurrence-ledger-2024-2026.json`; keep conversation candidates separate.
+- [ ] **OCT-LIVE-007 · Statement chronology:** reconcile newly verified X occurrences with the existing public-statement root, its derivation builders and `tim-dooley/claims/`. Do not invent tweets or inflate frequency counts.
+- [x] **OCT-LIVE-008 · Sound and visual motifs:** enrich `rooms/inside/music-sound/` and `rooms/inside/visual-art/` with October's Quack percussion, math guitar, glitch transitions and Turble/Poker/Moon Farm compositional examples. Attach actual created assets only when they exist.
+- [x] **OCT-LIVE-009 · Information ecology worked provenance:** demonstrate how one linked post becomes an excerpt, an interpreted meme and a later assistant summary without multiplying independent witnesses in `rooms/inside/information-ecology/`.
+- [ ] **OCT-LIVE-010 · Cultural memory / political spillover:** develop `context/culture/`'s discussion of humiliation economies, social role persistence, spectatorship, counterpublics and conditions for dignified exit; retain real-world comparison limits.
+- [ ] **OCT-LIVE-011 · October narrative:** integrate dated, sourced first-person episodes into `tim-dooley/story/`; keep creative songs, religious self-description and externally checkable chronology in separate layers.
+- [ ] **OCT-LIVE-012 · Site quality:** verify mobile/desktop legibility, links, indexable text and the build/SEO tests before deployment. Preserve existing room styling and navigation.
+
+---
+
 # TODO — The Potato of Life / TimDooley
 
 
