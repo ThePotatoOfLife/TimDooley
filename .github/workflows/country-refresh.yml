@@ -40,6 +40,8 @@ jobs:
       - name: Consolidate country records and remove generated clutter
         run: python scripts/consolidate_country_library.py
       - name: Commit canonical country library
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -e
           git config user.name 'country-atlas-bot'
@@ -55,7 +57,13 @@ jobs:
           git fetch origin main
           git rebase origin/main
           for attempt in 1 2 3; do
-            if git push origin HEAD:main; then exit 0; fi
+            if git push origin HEAD:main; then
+              # A push made with GITHUB_TOKEN does not trigger the usual push
+              # workflows. Explicitly start the quality gate on the new main,
+              # which in turn publishes its exact verified Pages artifact.
+              gh workflow run quality-checks.yml --ref main
+              exit 0
+            fi
             echo "Push attempt ${attempt} lost a race; rebasing onto origin/main."
             git fetch origin main
             git rebase origin/main
