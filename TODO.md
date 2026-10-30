@@ -1,3 +1,34 @@
+## October 30 · Third-pass structural audit — meaning before volume
+
+**Scope:** reviewed all 38 nested House Rooms for depth and routing. This is a source-content audit; live mobile layout and every outbound link have not yet been manually checked.
+
+- [x] **HOUSE-028 · Reposts versus witnesses:** add a falsifiable source-provenance example in Experiments & Formalization.
+- [x] **HOUSE-029 · Frog's right to exit:** add a conflict/repair incentive game *design*, clearly distinct from a working game.
+- [x] **HOUSE-030 · Two maps for North:** distinguish Tim's proposed geopolitical network from documented sovereign institutions and operating infrastructure.
+- [x] **HOUSE-031 · OECD comparison:** give Research Programmes an external trust-research comparator, with epistemic limits.
+- [ ] **P0 HOUSE-032 · Route-by-route usefulness audit:** each major Room must answer the first visitor question and lead to a meaningful next door.
+- [ ] **P0 HOUSE-033 · Verify external sources:** check URLs, dates and current institutional status for each new example; retain archive links when possible.
+- [ ] **P0 HOUSE-034 · Evidence labels:** distinguish primary Tim wording, conversation inference, creative art, independently checked history and political proposal.
+- [ ] **P0 HOUSE-035 · Prune cumulative homepage repetition:** the October harvests may push primary orientation too far down; test actual reader flow before another home section.
+- [ ] **P1 HOUSE-036 · Playable game:** implement Frog/Dog/Turble conflict/repair rules as an accessible interactive scenario; current example is conceptual only.
+- [ ] **P1 HOUSE-037 · Evidence-backed North map:** maintain project stages as proposal / agreed / funded / building / operational, with dated sources.
+- [ ] **P1 HOUSE-038 · Public trust case:** compare voice, fairness, integrity, evidence and government responsiveness using OECD data and acknowledged limits.
+- [ ] **P1 HOUSE-039 · Cross-border service example:** interpret the Interoperable Europe Act using actual service interfaces rather than symbolic alignment.
+- [ ] **P1 HOUSE-040 · Reduce repeated definitions:** prune Door/Garden/Fruit/Dog/North passages that add no mechanism, counterexample, source, consequence or new perspective.
+- [ ] **P1 HOUSE-041 · October statement recovery:** only move authenticated X posts into the X ledger; keep songs and private conversations separate.
+- [ ] **P1 HOUSE-042 · Human-scale story:** recover original dates and contexts for two consequential October episodes.
+- [ ] **P2 HOUSE-043 · One dispute, five Rooms:** trace observation through platform circulation, legal status, collective judgment and possible repair.
+- [ ] **P2 HOUSE-044 · Benign versus coercive culture:** add sourced real-world cases, not guilt-by-analogy.
+- [ ] **P2 HOUSE-045 · Accessibility QA:** test actual phones, keyboard, contrast, scroll performance, heading order and TTS.
+- [ ] **P2 HOUSE-046 · Staleness discipline:** older last-edit timestamps are not automatically evidence that facts are outdated.
+- [ ] **P2 HOUSE-047 · Research closeout:** each programme needs an owner, artifact, negative result, exit gate and next step.
+- [ ] **P2 HOUSE-048 · Fiscal model:** one official-data case with baseline, transition costs, service delivery impacts and uncertainty.
+- [ ] **P2 HOUSE-049 · Newcomer comprehension:** test whether readers can distinguish biography, beliefs, metaphor, claims and empirical facts.
+
+**Pruning principle:** retain useful original work; remove repetitions before expanding page length. The House should be clearer, not merely larger.
+
+---
+
 ## October 30 · Living interpretation and public-surface integration (tracked work)
 
 **Editorial rule:** prefer improvements to existing Rooms over a new collection of disconnected pages. Recover Tim's direct speech separately from assistant synthesis, proposed mythology, fictional art, political forecasts and independently checked events. An X occurrence requires actual attributed post text; conversation material must not be fabricated into an X post.
