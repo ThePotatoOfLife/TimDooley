@@ -355,3 +355,21 @@ jobs:
           test "$WORLD_MAP_RESULT" = success
           test "$CONTENT_RESULT" = success
           test "$BUILD_RESULT" = success
+
+  dispatch_validated_pages:
+    name: Dispatch Pages after automated quality run
+    needs: [validate]
+    # GITHUB_TOKEN workflow_dispatch does not reliably fan out via workflow_run.
+    # Use the explicit Pages workflow_dispatch lane only for bot-started quality runs.
+    if: ${{ github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' && needs.validate.result == 'success' }}
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+      contents: read
+    steps:
+      - name: Dispatch exact validated Pages artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+          QUALITY_RUN_ID: ${{ github.run_id }}
+        run: gh workflow run pages.yml --repo "$REPOSITORY" --ref main --field "quality_run_id=$QUALITY_RUN_ID"
