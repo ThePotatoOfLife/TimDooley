@@ -6,7 +6,7 @@ const crypto={type:'crypto',provider:'coingecko',source:'live',checkedAt:at,upda
 const stock={type:'stock',provider:'twelve',source:'live',checkedAt:at,updatedAt:at-3600_000,marketOpen:true,quoteProvider:'Twelve Data'};
 test('crypto: fresh trades; stale and manual quotes never trade',()=>{
  assert.equal(E.blockQuote(crypto,at+60_000),null);
- assert.match(E.blockQuote(crypto,at+360_000),/five minutes/);
+ assert.match(E.blockQuote({...crypto,checkedAt:at+360_000},at+360_000),/five minutes/);
  assert.ok(E.blockQuote({...crypto,source:'manual'},at+1_000));
 });
 test('stocks: session status, provider evidence, quote freshness',()=>{
