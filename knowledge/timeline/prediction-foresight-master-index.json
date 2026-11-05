@@ -1,7 +1,7 @@
 {
   "id": "prediction-foresight-master-index",
   "title": "Tim Dooley — Ordered Prediction & Foresight Master Index",
-  "updated": "2026-09-19",
+  "updated": "2026-11-05",
   "status": "canonical navigation layer; additive; does not replace specialist ledgers",
   "purpose": "Provide one ordered reader/machine index over explicit fulfilled predictions, implicit foresight, partial/open forecasts, revelation-form statements, legacy recovery claims, negative controls and specialist branches such as FAFO, Moloch/Farm/Josh precedence and under-mined domains.",
   "counting_rule": "Count unique forecast/candidate records once. A single compound statement may contain multiple independently testable components in the strict fulfilled master, but this index also exposes forecast clusters to avoid inflating independence.",
@@ -19,7 +19,9 @@
     "moloch_farm_josh_strict_hits": 0,
     "under_mined_domain_strict_hits_added": 0,
     "approx_unique_future_facing_records_before_fafo_cluster": 65,
-    "note": "Counts are navigation counts, not a statistical success denominator. FAFO adds a specialist research cluster but currently adds no strict fulfilled hit. The Moloch/Farm/Josh branch is classified as prior-symbolic pattern with named-entity precursor and also adds no strict fulfilled hit. The under-mined-domain audit expands recovery coverage without changing the strict fulfilled count. Native lolcow/Farm/Milk vocabulary is explicitly controlled for rather than counted as independent foresight."
+    "note": "Counts are navigation counts, not a statistical success denominator. FAFO adds a specialist research cluster but currently adds no strict fulfilled hit. The Moloch/Farm/Josh branch is classified as prior-symbolic pattern with named-entity precursor and also adds no strict fulfilled hit. The under-mined-domain audit expands recovery coverage without changing the strict fulfilled count. Native lolcow/Farm/Milk vocabulary is explicitly controlled for rather than counted as independent foresight.",
+    "november_2026_new_directional_correspondences": 1,
+    "november_2026_supporting_confirmations": 2
   },
   "strength_lanes": [
     {
@@ -398,6 +400,16 @@
       "lane": "E",
       "id": "farmers-uprising",
       "short": "foresaw farmer uprising/resistance; exact pre-event wording required"
+    },
+    {
+      "date": "2026-08-29",
+      "lane": "C",
+      "id": "2026-08-29-us-southward-security-resources",
+      "short": "U.S. greater influence southward through military/security activity and strategic resources -> September Colombia/Argentina mineral accords and Ecuador ground operation",
+      "attribution_class": "dated recovered Tim-originated fragments; full primary wording still required",
+      "counts_as_new_independent_hit": false,
+      "source_audit": "knowledge/timeline/prediction-correspondence-audit-2026-11-05.json",
+      "note": "One directional compound match; policy trend was already underway, and a link between resource extraction and military operations was not proven."
     }
   ],
   "specialist_recovery_clusters": [
@@ -445,6 +457,11 @@
       "id": "under-mined-domains",
       "owner": "knowledge/timeline/prediction-under-mined-domains-audit-2026.json",
       "status": "cross-domain recovery for Africa, Latin America, South/Southeast Asia, Middle East beyond Israel/Iraq, science, health, education, law, media and local politics; adds no strict fulfilled hit and preserves explicit non-prediction controls"
+    },
+    {
+      "id": "november-2026-correspondences",
+      "owner": "knowledge/timeline/prediction-correspondence-audit-2026-11-05.json",
+      "status": "New August 29 U.S.-Latin America directional partial match, plus November follow-up external evidence for already catalogued Greenland and Israel families. Strict count remains 16."
     }
   ],
   "highest_value_next_recovery_questions": [
@@ -473,7 +490,8 @@
     "knowledge/timeline/prediction-under-mined-domains-audit-2026.json",
     "knowledge/timeline/unresolved-prediction-claims-queue.json",
     "knowledge/indexes/prediction-audit-routing.json",
-    "knowledge/timeline/prediction-epiphany-causal-genealogy-2026.json"
+    "knowledge/timeline/prediction-epiphany-causal-genealogy-2026.json",
+    "knowledge/timeline/prediction-correspondence-audit-2026-11-05.json"
   ],
   "q1_genealogy_recovery": {
     "updated": "2026-09-19",
