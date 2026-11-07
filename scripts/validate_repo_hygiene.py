@@ -15,6 +15,7 @@ EXPECTED_WORKFLOWS = {
     "pages.yml",
     "quality-checks.yml",
     "publish-latest-main.yml",
+    "potato-exchange-tests.yml",
 }
 FORBIDDEN_TEMPORARY = {
     ".github/workflows/timeline-naming-migration.yml",
