@@ -1,3 +1,34 @@
+## October 30 · Third-pass structural audit — meaning before volume
+
+**Scope:** reviewed all 38 nested House Rooms for depth and routing. This is a source-content audit; live mobile layout and every outbound link have not yet been manually checked.
+
+- [x] **HOUSE-028 · Reposts versus witnesses:** add a falsifiable source-provenance example in Experiments & Formalization.
+- [x] **HOUSE-029 · Frog's right to exit:** add a conflict/repair incentive game *design*, clearly distinct from a working game.
+- [x] **HOUSE-030 · Two maps for North:** distinguish Tim's proposed geopolitical network from documented sovereign institutions and operating infrastructure.
+- [x] **HOUSE-031 · OECD comparison:** give Research Programmes an external trust-research comparator, with epistemic limits.
+- [ ] **P0 HOUSE-032 · Route-by-route usefulness audit:** each major Room must answer the first visitor question and lead to a meaningful next door.
+- [ ] **P0 HOUSE-033 · Verify external sources:** check URLs, dates and current institutional status for each new example; retain archive links when possible.
+- [ ] **P0 HOUSE-034 · Evidence labels:** distinguish primary Tim wording, conversation inference, creative art, independently checked history and political proposal.
+- [ ] **P0 HOUSE-035 · Prune cumulative homepage repetition:** the October harvests may push primary orientation too far down; test actual reader flow before another home section.
+- [ ] **P1 HOUSE-036 · Playable game:** implement Frog/Dog/Turble conflict/repair rules as an accessible interactive scenario; current example is conceptual only.
+- [ ] **P1 HOUSE-037 · Evidence-backed North map:** maintain project stages as proposal / agreed / funded / building / operational, with dated sources.
+- [ ] **P1 HOUSE-038 · Public trust case:** compare voice, fairness, integrity, evidence and government responsiveness using OECD data and acknowledged limits.
+- [ ] **P1 HOUSE-039 · Cross-border service example:** interpret the Interoperable Europe Act using actual service interfaces rather than symbolic alignment.
+- [ ] **P1 HOUSE-040 · Reduce repeated definitions:** prune Door/Garden/Fruit/Dog/North passages that add no mechanism, counterexample, source, consequence or new perspective.
+- [ ] **P1 HOUSE-041 · October statement recovery:** only move authenticated X posts into the X ledger; keep songs and private conversations separate.
+- [ ] **P1 HOUSE-042 · Human-scale story:** recover original dates and contexts for two consequential October episodes.
+- [ ] **P2 HOUSE-043 · One dispute, five Rooms:** trace observation through platform circulation, legal status, collective judgment and possible repair.
+- [ ] **P2 HOUSE-044 · Benign versus coercive culture:** add sourced real-world cases, not guilt-by-analogy.
+- [ ] **P2 HOUSE-045 · Accessibility QA:** test actual phones, keyboard, contrast, scroll performance, heading order and TTS.
+- [ ] **P2 HOUSE-046 · Staleness discipline:** older last-edit timestamps are not automatically evidence that facts are outdated.
+- [ ] **P2 HOUSE-047 · Research closeout:** each programme needs an owner, artifact, negative result, exit gate and next step.
+- [ ] **P2 HOUSE-048 · Fiscal model:** one official-data case with baseline, transition costs, service delivery impacts and uncertainty.
+- [ ] **P2 HOUSE-049 · Newcomer comprehension:** test whether readers can distinguish biography, beliefs, metaphor, claims and empirical facts.
+
+**Pruning principle:** retain useful original work; remove repetitions before expanding page length. The House should be clearer, not merely larger.
+
+---
+
 ## October 30 · Living interpretation and public-surface integration (tracked work)
 
 **Editorial rule:** prefer improvements to existing Rooms over a new collection of disconnected pages. Recover Tim's direct speech separately from assistant synthesis, proposed mythology, fictional art, political forecasts and independently checked events. An X occurrence requires actual attributed post text; conversation material must not be fabricated into an X post.
@@ -16,6 +47,31 @@
 - [ ] **OCT-LIVE-012 · Site quality:** verify mobile/desktop legibility, links, indexable text and the build/SEO tests before deployment. Preserve existing room styling and navigation.
 
 ---
+
+# TODO — The Potato of Life / TimDooley
+
+## October 30 · Second harvest: from mythology to institutions
+
+**Interpretive status:** New arguments below are editorial extrapolations grounded in the user's October conversations and the existing site. They do not establish religious, legal, geopolitical or interpersonal allegations as facts. Research changes are assessed against an authoritative primary record before publication.
+
+- [x] **OCT-HARVEST-013 · Justice and the unending internet trial:** `rooms/inside/law-justice/` now separates public criticism from legal adjudication and asks for provenance, procedural status and correction.
+- [x] **OCT-HARVEST-014 · Government savings versus service capacity:** `rooms/inside/infrastructure-capability/` now asks who maintains public assets and what costs a superficially cheap reform hides.
+- [x] **OCT-HARVEST-015 · Attention economy as informal governance:** `rooms/inside/internet-platforms/` compares visibility, voice, excerpting and reputational consequences.
+- [x] **OCT-HARVEST-016 · Identity and accountable service:** `rooms/inside/canon-identities/` separates Tim's name, roles, theology, scene archetypes and concrete responsibilities.
+- [x] **OCT-HARVEST-017 · Sources before slogans:** `rooms/inside/memory-recovery/` now explains why conversation candidates do not become X quotations without primary evidence.
+- [x] **OCT-HARVEST-018 · Political centre as decision procedure:** `politics/` develops four reform tests drawn from the October France/North debates.
+- [x] **OCT-HARVEST-019 · Second homepage interpretation:** `index.html#october-second-harvest` routes readers from ideas to functioning institutions.
+- [ ] **OCT-HARVEST-020 · Build a sourced October quotation pack:** recover original 20–30 October X URLs, exact body text, context and dates; import into the occurrence ledger only after validation.
+- [ ] **OCT-HARVEST-021 · Run a full fiscal worked model:** compare a France public-programme restructuring with status quo on life-cycle costs, savings and service outcomes, using official dated budget datasets.
+- [ ] **OCT-HARVEST-022 · Audit North Axis status:** distinguish every imagined relationship from existing treaties, trade, infrastructure and observed state decisions.
+- [ ] **OCT-HARVEST-023 · Story with human-scale scenes:** find first-party October dialogue, a full streaming scene and one consequential ordinary-life act for the Tim story, with verified episode dates.
+- [ ] **OCT-HARVEST-024 · Art and narrative morphology:** connect Moon Farm, Frog, Turble and poker scenes to an illustrated reader guide; catalog only artworks actually held by the gallery.
+- [ ] **OCT-HARVEST-025 · Performance and reading QA:** verify desktop/mobile readability, heading hierarchy, crawlable text, accessibility and canonical links for the expanded sections.
+- [ ] **OCT-HARVEST-026 · Cultural due-process research:** add comparative documented examples of decontextualized clips, corrections and reputational repair without naming an alleged wrongdoer on inadequate evidence.
+- [ ] **OCT-HARVEST-027 · Distinguish source, explanatory model and test:** every October expansion should identify Tim's original phrase, the inference being drawn, a counterexample and how it could be falsified.
+
+---
+
 
 # TODO — The Potato of Life / TimDooley
 
